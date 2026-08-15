@@ -15,6 +15,7 @@ build_index.py — 掃描 reports/*.html，重建 index.html（GitHub Pages 首�
     <meta name="report-summary-en" content="One-line English summary">
 
 沒有這些標籤的檔案會被跳過並在 stdout 提示。腳本不依賴任何第三方套件。
+產生的 index.html 已內含 Google Analytics 標籤（G-HJLDQZDK5V）。
 """
 
 import json
@@ -141,6 +142,14 @@ TEMPLATE = r"""<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AI／醫療AI 每日新知日報</title>
 <meta name="description" content="每日自動整理的 AI 與醫療 AI 新知、產業動向、法規與產品分析。">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HJLDQZDK5V');
+</script>
 <style>
 :root{
   --bg:#f7f8fa;--surface:#fff;--surface-2:#f0f2f5;--border:#e2e5ea;
