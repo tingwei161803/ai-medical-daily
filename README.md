@@ -2,21 +2,21 @@
 
 每天台北時間早上 08:00 由 Claude 自動產出並推送至此 repo，透過 GitHub Pages 發佈。
 
-**線上閱讀：** https://tingwei161803.github.io/ai-medical-daily/
+**線上閱讀：** https://ai-medical-daily.peteraim.com
 
 ---
 
 ## 每天輪值主題
 
-| 星期 | 主題 | `report-theme` |
-|---|---|---|
-| 一 | 臨床應用與研究 | `clinical` |
-| 二 | 產業與商業動向 | `industry` |
-| 三 | 法規與政策 | `regulation` |
-| 四 | 技術突破 | `technology` |
-| 五 | 產品與公司深度分析 | `product` |
-| 六 | 廣義 AI 新知 | `general-ai` |
-| 日 | 本週回顧與精選延伸閱讀 | `weekly-review` |
+| 星期 | 主題 | `report-theme` | `ci` |
+|---|---|---|---|
+| 一 | 臨床應用與研究 | `clinical` | 0 |
+| 二 | 產業與商業動向 | `industry` | 1 |
+| 三 | 法規與政策 | `regulation` | 2 |
+| 四 | 技術突破 | `technology` | 3 |
+| 五 | 產品與公司深度分析 | `product` | 4 |
+| 六 | 廣義 AI 新知 | `general-ai` | 5 |
+| 日 | 本週回顧與精選延伸閱讀 | `weekly-review` | 6 |
 
 每份日報固定包含：重點新聞 5–8 則、產品分析、公司狀況與競爭關係、台灣視角、延伸閱讀、參考文獻，並支援繁中／English 全頁切換與深色模式。
 
@@ -26,12 +26,15 @@
 
 ```
 .
+├── CNAME             ← 自訂網域設定，請勿刪除
 ├── index.html        ← 由 build_index.py 產生，請勿手動編輯
 ├── build_index.py    ← 掃描 reports/ 重建首頁
 ├── reports/
 │   └── YYYY-MM-DD.html
 └── README.md
 ```
+
+⚠️ `CNAME` 由 GitHub Pages 的自訂網域設定產生，內容為 `ai-medical-daily.peteraim.com`。刪掉它網站就會退回 `*.github.io` 網址。
 
 ## 索引如何運作
 
@@ -55,6 +58,23 @@
 ```bash
 python3 build_index.py
 ```
+
+## 網站分析
+
+所有頁面（首頁與每份日報）都必須在 `<head>` 內含 Google Analytics 標籤，測量 ID 為 `G-HJLDQZDK5V`：
+
+```html
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HJLDQZDK5V');
+</script>
+```
+
+首頁的標籤內建在 `build_index.py` 的樣板中，重建索引時會自動帶入；新增日報時請記得手動加上。
 
 ## 手動新增一份日報
 
