@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI／醫療AI 每日新知日報 · 2026-08-16</title>
+<meta name="report-date" content="2026-08-16">
+<meta name="report-theme" content="weekly-review">
+<meta name="report-title-zh" content="AI 開始被要求「證明自己」的一週">
+<meta name="report-title-en" content="The week AI was told to prove itself">
+<meta name="report-summary-zh" content="Medicare 破紀錄地為 AI 醫材加碼給付、STAT 調查 70 億美元的 Commure、英國 MHRA 劃出 AI 書記的醫材界線——本週的主線是錢與規則，不是新模型。">
+<meta name="report-summary-en" content="Record Medicare add-on payments for AI devices, STAT's investigation into $7B Commure, and the MHRA drawing a line around AI scribes — this week was about money and rules, not new models.">
+<style>
+:root{
+  --bg:#f7f8fa; --surface:#ffffff; --surface-2:#f0f2f5; --border:#e2e5ea;
+  --text:#16181d; --muted:#5c636e; --faint:#8a919c;
+  --accent:#0d7a6f; --accent-soft:#e3f2f0; --accent-text:#0a5c54;
+  --warn:#b45309; --warn-soft:#fdf3e3;
+  --shadow:0 1px 2px rgba(16,24,40,.04),0 4px 16px rgba(16,24,40,.05);
+}
+body.dark{
+  --bg:#0e1014; --surface:#171a20; --surface-2:#1e222a; --border:#2a2f39;
+  --text:#e8eaee; --muted:#a2a9b5; --faint:#6f7783;
+  --accent:#3fbfae; --accent-soft:#12332f; --accent-text:#6fd6c6;
+  --warn:#e0a34f; --warn-soft:#2e2415;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 20px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Helvetica Neue",Arial,sans-serif;
+  font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased;
+  transition:background .25s,color .25s;
+}
+body.lang-zh .en, body.lang-en .zh{display:none}
+body.lang-zh .en-inline, body.lang-en .zh-inline{display:none}
+.en-inline,.zh-inline{display:inline}
+
+/* ---------- top bar ---------- */
+header.bar{
+  position:sticky; top:0; z-index:50;
+  background:color-mix(in srgb,var(--surface) 88%,transparent);
+  backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+.bar-in{max-width:920px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px}
+.brand{font-weight:700;font-size:14px;letter-spacing:.02em;white-space:nowrap}
+.brand span{color:var(--accent)}
+.bar-sp{flex:1}
+.btn{
+  border:1px solid var(--border); background:var(--surface-2); color:var(--text);
+  border-radius:999px; padding:5px 12px; font-size:13px; font-weight:600;
+  cursor:pointer; font-family:inherit; transition:.15s; white-space:nowrap;
+}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.seg{display:flex;border:1px solid var(--border);border-radius:999px;overflow:hidden;background:var(--surface-2)}
+.seg button{
+  border:0;background:transparent;color:var(--muted);font-family:inherit;
+  padding:5px 13px;font-size:13px;font-weight:600;cursor:pointer;transition:.15s
+}
+.seg button.on{background:var(--accent);color:#fff}
+
+/* ---------- layout ---------- */
+main{max-width:920px;margin:0 auto;padding:0 20px 90px}
+.hero{padding:44px 0 28px;border-bottom:1px solid var(--border)}
+.kicker{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+h1{font-size:clamp(27px,5vw,40px);line-height:1.22;margin:0 0 8px;letter-spacing:-.02em;font-weight:750}
+.dateline{color:var(--faint);font-size:14px;margin-bottom:22px}
+.lede{
+  font-size:17px;line-height:1.7;color:var(--text);
+  background:var(--accent-soft);border-left:3px solid var(--accent);
+  padding:16px 18px;border-radius:0 10px 10px 0;margin:0;
+}
+nav.toc{
+  display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 0;
+}
+nav.toc a{
+  font-size:13px;font-weight:600;text-decoration:none;color:var(--muted);
+  border:1px solid var(--border);border-radius:999px;padding:5px 13px;background:var(--surface);
+  transition:.15s
+}
+nav.toc a:hover{color:var(--accent);border-color:var(--accent)}
+
+section{padding:44px 0 8px;scroll-margin-top:64px}
+h2{
+  font-size:13px;font-weight:750;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--accent);margin:0 0 6px;
+}
+.sec-title{font-size:clamp(21px,3.4vw,27px);margin:0 0 24px;letter-spacing:-.015em;font-weight:720;line-height:1.3}
+
+/* ---------- story cards ---------- */
+.card{
+  background:var(--surface);border:1px solid var(--border);border-radius:14px;
+  padding:22px 24px;margin-bottom:16px;box-shadow:var(--shadow);
+}
+.card h3{margin:0 0 10px;font-size:18px;line-height:1.45;letter-spacing:-.01em;font-weight:700}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.tag{
+  font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  padding:3px 9px;border-radius:5px;background:var(--surface-2);color:var(--muted);border:1px solid var(--border)
+}
+.tag.hot{background:var(--accent-soft);color:var(--accent-text);border-color:transparent}
+.tag.reg{background:var(--warn-soft);color:var(--warn);border-color:transparent}
+.row{display:flex;gap:12px;margin:11px 0;align-items:flex-start}
+.row .lab{
+  flex:0 0 84px;font-size:11px;font-weight:750;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--faint);padding-top:5px
+}
+.row .val{flex:1;margin:0;font-size:15px;line-height:1.7;color:var(--text)}
+.src{margin-top:14px;padding-top:12px;border-top:1px dashed var(--border);font-size:13px;color:var(--faint)}
+.src a{color:var(--accent);text-decoration:none;font-weight:600}
+.src a:hover{text-decoration:underline}
+
+/* ---------- misc blocks ---------- */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px 24px;box-shadow:var(--shadow)}
+.panel h3{margin:0 0 4px;font-size:18px;font-weight:700}
+.panel .sub{font-size:13px;color:var(--faint);margin:0 0 14px}
+.panel p{font-size:15px;line-height:1.72;margin:0 0 12px}
+.panel p:last-child{margin-bottom:0}
+ul.clean{margin:0;padding-left:19px}
+ul.clean li{font-size:15px;line-height:1.72;margin-bottom:9px}
+ul.clean li:last-child{margin-bottom:0}
+.pro{color:var(--accent-text);font-weight:700}
+body.dark .pro{color:var(--accent)}
+.con{color:var(--warn);font-weight:700}
+
+table{width:100%;border-collapse:collapse;font-size:14.5px;margin:0}
+.tbl-wrap{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow-x:auto;box-shadow:var(--shadow)}
+th{
+  text-align:left;padding:12px 16px;font-size:11px;font-weight:750;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--faint);border-bottom:1px solid var(--border);white-space:nowrap
+}
+td{padding:13px 16px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.6}
+tr:last-child td{border-bottom:0}
+td strong{font-weight:700}
+
+ol.reading{margin:0;padding-left:0;list-style:none;counter-reset:r}
+ol.reading li{
+  counter-increment:r;position:relative;padding:16px 0 16px 44px;border-bottom:1px solid var(--border)
+}
+ol.reading li:last-child{border-bottom:0;padding-bottom:0}
+ol.reading li::before{
+  content:counter(r);position:absolute;left:0;top:17px;
+  width:26px;height:26px;border-radius:50%;background:var(--accent-soft);color:var(--accent-text);
+  font-size:12px;font-weight:750;display:flex;align-items:center;justify-content:center
+}
+body.dark ol.reading li::before{color:var(--accent)}
+ol.reading a{color:var(--text);text-decoration:none;font-weight:700;font-size:15.5px;line-height:1.5}
+ol.reading a:hover{color:var(--accent)}
+ol.reading .why{margin:5px 0 0;font-size:14px;color:var(--muted);line-height:1.65}
+
+ol.refs{margin:0;padding-left:22px;font-size:13.5px;line-height:1.85;color:var(--muted)}
+ol.refs li{margin-bottom:9px}
+ol.refs a{color:var(--accent);text-decoration:none;word-break:break-word}
+ol.refs a:hover{text-decoration:underline}
+
+.note{
+  background:var(--warn-soft);border:1px solid transparent;border-left:3px solid var(--warn);
+  border-radius:0 10px 10px 0;padding:14px 18px;font-size:14px;color:var(--text);line-height:1.7;margin-top:18px
+}
+footer{
+  margin-top:56px;padding-top:24px;border-top:1px solid var(--border);
+  font-size:13px;color:var(--faint);line-height:1.8
+}
+.up{
+  position:fixed;right:20px;bottom:20px;width:42px;height:42px;border-radius:50%;
+  border:1px solid var(--border);background:var(--surface);color:var(--muted);
+  cursor:pointer;font-size:17px;box-shadow:var(--shadow);display:none;z-index:40
+}
+.up.show{display:block}
+@media(max-width:700px){
+  .grid2{grid-template-columns:1fr}
+  .row{flex-direction:column;gap:2px}
+  .row .lab{flex:none;padding-top:0}
+  .bar-in{padding:9px 14px;gap:8px}
+  .brand{font-size:12.5px}
+  main{padding:0 15px 80px}
+  .card,.panel{padding:18px}
+}
+</style>
+</head>
+<body class="lang-zh">
+
+<header class="bar">
+  <div class="bar-in">
+    <div class="brand"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span><span class="en-inline">AI &amp; Medical AI Daily</span></div>
+    <div class="bar-sp"></div>
+    <div class="seg">
+      <button id="b-zh" class="on" onclick="setLang('zh')">中文</button>
+      <button id="b-en" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
+  </div>
+</header>
+
+<main>
+
+<div class="hero">
+  <div class="kicker">
+    <span class="zh-inline">星期日 · 本週回顧與精選延伸閱讀</span>
+    <span class="en-inline">Sunday · Weekly Review &amp; Curated Reading</span>
+  </div>
+  <h1>
+    <span class="zh">AI 開始被要求「證明自己」的一週</span>
+    <span class="en">The week AI was told to prove itself</span>
+  </h1>
+  <div class="dateline">
+    <span class="zh-inline">2026 年 8 月 16 日（日）· 涵蓋 8/9–8/16 · 台北時間</span>
+    <span class="en-inline">Sunday, August 16, 2026 · Covering Aug 9–16 · Taipei time</span>
+  </div>
+  <p class="lede">
+    <span class="zh">本週的主線不是新模型，而是<strong>錢與規則</strong>。Medicare 破紀錄地把一批 AI 醫材納入新技術加成給付，同時研究者警告這會誘發過度使用；英國 MHRA 明確劃出「純轉錄摘要的 AI 助理不算醫材」的界線；歐盟一邊開始執行 AI Act 透明度義務、一邊把高風險醫材的合規期限延到 2027–2028。加上 STAT 對估值 70 億美元的 Commure 的調查，本週的共同提問是同一句：這些 AI 真的有效嗎，誰來付錢、誰來負責？</span>
+    <span class="en">This week's throughline wasn't a new model — it was <strong>money and rules</strong>. Medicare granted new-technology add-on payments to a record crop of AI devices while researchers warned the same payments invite overuse. The UK's MHRA drew a clean line saying pure transcription-and-summary assistants are not medical devices. Brussels began enforcing AI Act transparency duties even as it pushed high-risk medical-device deadlines out to 2027–2028. Add STAT's investigation into $7B-valued Commure and the week asks one question in four accents: does this stuff actually work, who pays, and who is accountable?</span>
+  </p>
+
+  <nav class="toc">
+    <a href="#top"><span class="zh-inline">本週重點</span><span class="en-inline">Top Stories</span></a>
+    <a href="#product"><span class="zh-inline">產品分析</span><span class="en-inline">Product Analysis</span></a>
+    <a href="#company"><span class="zh-inline">公司與競爭</span><span class="en-inline">Companies &amp; Competition</span></a>
+    <a href="#funding"><span class="zh-inline">募資一覽</span><span class="en-inline">Funding</span></a>
+    <a href="#taiwan"><span class="zh-inline">台灣視角</span><span class="en-inline">Taiwan Angle</span></a>
+    <a href="#reading"><span class="zh-inline">延伸閱讀</span><span class="en-inline">Further Reading</span></a>
+    <a href="#refs"><span class="zh-inline">參考文獻</span><span class="en-inline">References</span></a>
+  </nav>
+</div>
+
+<!-- ============ TOP STORIES ============ -->
+<section id="top">
+  <h2><span class="zh-inline">01 — Top Stories</span><span class="en-inline">01 — Top Stories</span></h2>
+  <div class="sec-title">
+    <span class="zh">本週最重要的 8 件事</span>
+    <span class="en">The eight things that mattered</span>
+  </div>
+
+  <!-- 1 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">給付政策</span><span class="en-inline">Reimbursement</span></span>
+      <span class="tag">CMS</span><span class="tag">NTAP</span><span class="tag">8/13</span>
+    </div>
+    <h3>
+      <span class="zh">Medicare 破紀錄地為 AI 醫材加碼給付，研究者同步警告「過度使用」</span>
+      <span class="en">A record number of AI devices win Medicare add-on payments — and researchers warn about overuse</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">STAT「Paying for AI」系列第四篇報導，2026 年有創紀錄數量的 AI 醫材取得 Medicare 的新技術加成給付（NTAP, New Technology Add-on Payment）。NTAP 是在新技術上市後 2–3 年內，以稅金支付給醫院的額外加給，目的是讓昂貴新科技更快到達病人手上。</span>
+        <span class="en">In part four of STAT's "Paying for AI" series: a record number of AI-enabled devices qualified for Medicare's New Technology Add-on Payment (NTAP) in 2026. NTAP is a taxpayer-funded top-up paid to hospitals for two to three years after a new technology reaches market, meant to pull expensive innovation to patients faster.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這是醫療 AI 商業模式的關鍵轉折——過去產品必須說服醫院「省時間」，現在可以直接說服醫院「有現金流」。但報導引述的研究者指出，按次加給的設計本身就會誘發過度使用：醫院用得越多、拿得越多，臨床必要性反而被推到第二順位。加給退場後（2–3 年）產品能不能站得住，將是下一輪真正的檢驗。</span>
+        <span class="en">This is the pivot point for medical-AI business models. Vendors used to sell hospitals on saved minutes; now they can sell them on cash flow. But researchers quoted in the piece flag the structural problem: a per-use top-up rewards volume, so clinical necessity slides to second place. The real test comes in two to three years, when the add-on expires and the product has to stand on its own economics.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">相關動態</span><span class="en-inline">Related</span></div>
+      <p class="val">
+        <span class="zh">同週 8/11，CMS 與 FDA 公布了 RAPID 通道的更多細節，目標是縮短突破性醫材從核准到取得給付之間的「死亡之谷」。兩件事合起來看，等於美國正在同時放寬 AI 醫材的「上市」與「收錢」兩道閘門。</span>
+        <span class="en">On Aug 11, CMS and FDA released further detail on the proposed RAPID pathway, aimed at the "valley of death" between clearance and coverage for breakthrough devices. Read together, the US is loosening both gates at once — getting to market, and getting paid.</span>
+      </p></div>
+    <div class="src">
+      <span class="zh-inline">來源：</span><span class="en-inline">Source: </span>
+      <a href="https://www.statnews.com/2026/08/13/how-medicare-cms-pays-ntap-for-new-ai-medical-devices/" target="_blank" rel="noopener">STAT · Aug 13</a> ·
+      <a href="https://www.statnews.com/2026/08/11/cms-rapid-breakthrough-device-coverage-health-tech/" target="_blank" rel="noopener">STAT · Aug 11 (RAPID)</a>
+      <span class="zh-inline">（STAT+ 付費牆）</span><span class="en-inline">(STAT+ paywall)</span>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">深度調查</span><span class="en-inline">Investigation</span></span>
+      <span class="tag">Commure</span><span class="tag">General Catalyst</span><span class="tag">8/12</span>
+    </div>
+    <h3>
+      <span class="zh">STAT 調查估值 70 億美元的 Commure：500 家客戶背後的推薦金與虧損爭議</span>
+      <span class="en">STAT investigates $7B Commure: referral payments, 500 customers, and clinics reporting losses</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">STAT 記者檢視內部通訊、法律文件與客戶合約，並訪談超過三十位前員工、合作夥伴與客戶，揭露 General Catalyst 支持、總部位於 Mountain View 的 Commure（估值 70 億美元）如何快速擴張。該公司以 AI 自動化帳務、排程與臨床文書，宣稱擁有超過 500 家醫療機構客戶，包含 HCA Healthcare、Tenet Healthcare 等「全美 130 家最大醫療體系」。</span>
+        <span class="en">STAT reviewed internal communications, legal filings and customer contracts and interviewed more than three dozen former employees, partners and customers to trace how General Catalyst-backed Commure (Mountain View, $7B valuation) scaled so fast. The company automates billing, scheduling and clinical documentation and claims 500-plus healthcare customers, including 130 of the largest US health systems such as HCA Healthcare and Tenet Healthcare.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">爭議點</span><span class="en-inline">The friction</span></div>
+      <p class="val">
+        <span class="zh">Commure 支付診所與轉介夥伴數千美元換取新客戶名單，這種類似通路獎金的做法在醫療場域格外敏感。報導指出，雖然許多客戶滿意，部分診所卻回報「嚴重財務損失」與其他負面結果——同一套產品在不同規模、不同科別的機構表現落差極大。執行長 Tanay Tandon 受訪時說：「我很希望有一天 UnitedHealth 的市值只剩五分之一」，同時讓醫師變得富有。</span>
+        <span class="en">Commure pays clinics and referral partners thousands of dollars for steering new business its way — a channel-bounty model that reads very differently inside healthcare than in SaaS. STAT reports that while many customers are happy, some clinics describe steep financial losses and other bad outcomes: the same product performs wildly differently across practice sizes and specialties. CEO Tanay Tandon told STAT he'd "love a world where the market cap of a UnitedHealth is a fifth" of what it is, with physicians getting rich instead.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這是醫療 AI 從「臨床工具」轉向「營運基礎設施」後的第一批壓力測試。當 AI 直接接管收費與排程，錯誤不再只是誤診風險，而是現金流風險；而診所端往往沒有議價能力也沒有稽核能力。值得留意後續是否引來監管或訴訟。</span>
+        <span class="en">This is the first stress test of medical AI's shift from clinical tool to operational infrastructure. When AI runs billing and scheduling, failure isn't a misdiagnosis — it's cash flow, and small practices typically have neither the leverage nor the audit capacity to catch it. Watch for regulatory or litigation follow-through.</span>
+      </p></div>
+    <div class="src">
+      <span class="zh-inline">來源：</span><span class="en-inline">Source: </span>
+      <a href="https://www.statnews.com/2026/08/12/inside-commure-athelas-mad-dash-automate-health-care/" target="_blank" rel="noopener">STAT · Aug 12</a>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag reg"><span class="zh-inline">法規</span><span class="en-inline">Regulation</span></span>
+      <span class="tag">MHRA</span><span class="tag">NHS England</span><span class="tag">8/10</span>
+    </div>
+    <h3>
+      <span class="zh">英國 MHRA 劃線：只做轉錄與摘要的 AI 助理，不算醫療器材</span>
+      <span class="en">MHRA draws the line: an AI scribe that only transcribes and summarises is not a medical device</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">MHRA 與 NHS England 共同發布的環境語音技術（Ambient Voice Technology, AVT）指引於 7/30 公布、8/10 更新。核心判準是「意圖」：若產品僅用於轉錄或摘要臨床對話、草擬信件、建議臨床代碼並交由醫師審閱，則不落入醫材規範；但若意圖支持診斷、治療或疾病預防，或在沒有臨床審閱下自動執行動作（例如直接開立醫囑），就是醫材。</span>
+        <span class="en">Joint MHRA / NHS England guidance on Ambient Voice Technology (AVT) published July 30 and updated August 10. The test is intended purpose: a tool meant solely to transcribe or summarise clinical conversations, draft letters, or suggest clinical codes for a clinician to review sits outside device regulation. A tool intended to support diagnosis, treatment or prevention — or one that takes automated action such as placing orders without clinician review — is a device.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這是目前全球最清楚的一條 AI 書記分界線，直接影響 NHS 大規模導入的採購速度，也給廠商一個明確的產品設計誘因：功能越往「自動下醫囑」延伸，監管成本越高。反過來說，這也創造了一個誘惑——把有臨床影響力的功能包裝成「僅供參考」。NHS 端被要求維持臨床監督、治理、教育訓練，並在產品功能變更時重新檢視分類。</span>
+        <span class="en">This is currently the clearest line any regulator has drawn around AI scribes, and it directly speeds NHS procurement. It also creates a sharp product-design incentive: the further you push toward auto-ordering, the more regulatory cost you take on. The flip side is an obvious temptation to dress clinically consequential features as "suggestions only." NHS boards are told to maintain clinical oversight, governance and training, and to re-examine classification whenever a product changes.</span>
+      </p></div>
+    <div class="src">
+      <span class="zh-inline">來源：</span><span class="en-inline">Source: </span>
+      <a href="https://htworld.co.uk/news/ai/mhra-clarifies-medical-device-rules-for-ai-scribes-in-the-nhs-htai26/" target="_blank" rel="noopener">HTWorld</a> ·
+      <a href="https://www.statnews.com/2026/08/04/ai-scribes-medical-devices-uk-regulator-view-health-tech/" target="_blank" rel="noopener">STAT · Aug 4</a>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag reg"><span class="zh-inline">法規</span><span class="en-inline">Regulation</span></span>
+      <span class="tag">EU AI Act</span><span class="tag">MHRA</span><span class="tag">8/14</span>
+    </div>
+    <h3>
+      <span class="zh">歐盟開始執行 AI Act 透明度義務，但高風險醫材合規期限延到 2027–2028</span>
+      <span class="en">Brussels starts enforcing AI Act transparency — while pushing high-risk device deadlines to 2027–2028</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">歐盟執委會 AI Office 開始執行 AI Act 的透明度規定，同時高風險醫療器材類別的合規期限被延後至 2027 年 12 月與 2028 年 8 月兩個時點。另一頭，英國 MHRA 公布國際採認（international reliance）路徑草案，讓已取得 FDA、Health Canada 或澳洲 TGA 核准的器材可快速進入英國市場。</span>
+        <span class="en">The European Commission's AI Office began enforcing the AI Act's transparency obligations, while compliance deadlines for high-risk medical device categories were extended to December 2027 and August 2028. Separately, the UK's MHRA published draft regulations for an international reliance pathway, fast-tracking market entry for devices already cleared by the FDA, Health Canada or Australia's TGA.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">歐洲正在做一個明顯的姿態調整：規則不鬆綁，但時間表放軟，避免把醫材創新推出歐洲市場。英國的國際採認路徑則是更直接的競爭動作——把美加澳的審查成果拿來用，降低廠商進入英國的邊際成本。對台灣廠商而言，這條路徑值得盯：FDA 或 TGA 取證後進英國的難度正在下降。</span>
+        <span class="en">Europe is making a visible posture adjustment: keep the rules, soften the calendar, and avoid chasing device innovation out of the bloc. The UK's reliance pathway is a sharper competitive move — borrow US, Canadian and Australian review work to cut the marginal cost of entering Britain. Taiwanese vendors should watch this one: an FDA or TGA clearance is becoming a cheaper on-ramp to the UK.</span>
+      </p></div>
+    <div class="src">
+      <span class="zh-inline">來源：</span><span class="en-inline">Source: </span>
+      <a href="https://www.healthcare.digital/single-post/this-week-in-european-healthtech-medtech-and-health-ai-14th-august-2026" target="_blank" rel="noopener">healthcare.digital · Aug 14</a>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="zh-inline">研究方法</span><span class="en-inline">Research</span></span>
+      <span class="tag">Nature Medicine</span><span class="tag">Mount Sinai</span>
+    </div>
+    <h3>
+      <span class="zh">Nature Medicine：同一個模型、同一個任務，準確率可以從 25% 到 98%</span>
+      <span class="en">Nature Medicine: same model, same task, accuracy anywhere from 25% to 98%</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">Omar、Klang、Nadkarni 等人的論文〈How to meaningfully evaluate AI in clinical medicine〉指出，相近模型在可比任務上的診斷準確率報告落在 25%–98% 之間，人口族群偏誤的研究結論也彼此矛盾。作者的核心命題直白得刺耳：「醫療 AI 你想要它是什麼，它就是什麼」——差異主要來自測試方法，而非模型本身能力。本週 STAT 的評論文章再度引用這條線索，主張不該把「醫療 AI」當成單一物件討論。</span>
+        <span class="en">In "How to meaningfully evaluate AI in clinical medicine," Omar, Klang, Nadkarni and colleagues show that reported diagnostic accuracy for comparable models on comparable tasks spans 25% to 98%, with demographic-bias findings contradicting each other outright. Their thesis is blunt: "medical AI is whatever you want it to be" — the spread reflects testing methodology far more than model capability. STAT's commentary this week picked up the same thread, arguing against treating "AI in medicine" as one monolithic thing.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">把這篇跟本週的 NTAP 新聞並排看，張力就出來了：付費體系正在加速把 AI 推進醫院，但評估體系還無法可靠地判斷哪一個 AI 真的有用。這也是為什麼「哪一家的數字比較漂亮」在採購時幾乎沒有參考價值——除非能看到測試協定。</span>
+        <span class="en">Put this next to the NTAP news and the tension is stark: the payment system is accelerating AI into hospitals faster than the evaluation system can tell which AI works. It's also why vendor accuracy numbers are close to useless in procurement unless you can see the test protocol behind them.</span>
+      </p></div>
+    <div class="src">
+      <span class="zh-inline">來源：</span><span class="en-inline">Source: </span>
+      <a href="https://www.nature.com/articles/s41591-026-04350-5" target="_blank" rel="noopener">Nature Medicine</a> ·
+      <a href="https://www.statnews.com/2026/08/06/ai-health-care-skepticism-advances-nature-medicine-scribe-sepsis/" target="_blank" rel="noopener">STAT · Aug 6</a>
+    </div>
+  </div>
+
+  <!-- 6 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="zh-inline">現場阻力</span><span class="en-inline">Workforce</span></span>
+      <span class="tag">STAT</span><span class="tag">8/11</span>
+    </div>
+    <h3>
+      <span class="zh">護理師開始對 AI 說不</span>
+      <span class="en">Nurses start pushing back on AI</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">STAT 8/11 的報導指出，第一線護理人員正在抵制 AI 的擴大部署，反映出科技公司預期之外的真實工作影響。與此同時，英國 NHS 各 trust 正加速導入環境語音文書工具以緩解臨床人員 burnout——同一項技術在不同角色身上，一邊是解方一邊是威脅。</span>
+        <span class="en">STAT reported on Aug 11 that frontline nurses are actively resisting broader AI deployment, surfacing real-world workflow effects that vendors did not anticipate. In parallel, NHS trusts are accelerating ambient documentation rollouts specifically to address clinician burnout — the same category of technology reading as relief to one profession and as threat to another.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">醫療 AI 的落地失敗案例中，很少是模型不準，多數是流程沒對齊、責任沒說清、以及沒有人問過真正要用它的人。工會化程度高的護理職場，會是 AI 部署速度的實質天花板之一。</span>
+        <span class="en">Most failed healthcare AI deployments don't fail on model accuracy — they fail on workflow misalignment, unclear accountability, and nobody asking the people who actually have to use the thing. In heavily unionised nursing environments, that becomes a hard ceiling on deployment speed.</span>
+      </p></div>
+    <div class="src">
+      <span class="zh-inline">來源：</span><span class="en-inline">Source: </span>
+      <a href="https://www.statnews.com/2026/08/11/cms-rapid-breakthrough-device-coverage-health-tech/" target="_blank" rel="noopener">STAT · Aug 11</a>
+    </div>
+  </div>
+
+  <!-- 7 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="zh-inline">影像 AI</span><span class="en-inline">Imaging</span></span>
+      <span class="tag">4DMedical</span><span class="tag">RevealDx</span><span class="tag">8/10</span>
+    </div>
+    <h3>
+      <span class="zh">4DMedical 投資 RevealDx 340 萬美元並取得全球代理，肺結節 AI 版圖整併中</span>
+      <span class="en">4DMedical takes a $3.4M stake in RevealDx plus global distribution as lung-nodule AI consolidates</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">呼吸影像 AI 公司 4DMedical 於 8/3 宣布（8/10 見報）對肺結節特徵化 AI 公司 RevealDx 進行 340 萬美元策略投資，並取得 RevealAI-Lung 在美國、歐洲、澳洲與紐西蘭的代理權。該產品已有 FDA clearance、歐盟 MDR 認證與澳洲 TGA 核准，並可依 CPT 0721T／0722T 取得 Medicare 給付。4DMedical 稍早已併購奧地利胸部 CT 公司 Contextflow，其肺結節偵測技術已整合進平台並在歐洲多個臨床場域運行。財務顧問為 Chestnut Partners。</span>
+        <span class="en">Respiratory imaging AI company 4DMedical announced on Aug 3 (reported Aug 10) a $3.4M strategic investment in RevealDx, which does AI lung-nodule characterisation, plus distribution rights for RevealAI-Lung across the US, Europe, Australia and New Zealand. The product holds FDA clearance, EU MDR certification and Australian TGA approval, and is Medicare-reimbursable under CPT codes 0721T and 0722T. 4DMedical had earlier acquired Austrian chest-CT company Contextflow, whose nodule detection is now integrated and live at European clinical sites. Chestnut Partners advised.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這是「取證 + 給付碼 + 通路」三件套的教科書級案例：單點 AI 演算法很難獨立成為生意，必須掛在有給付碼、有影像工作流通路的平台上。RevealDx 選擇被通路方投資而非硬撐獨立，是這一輪影像 AI 整併的典型走法。</span>
+        <span class="en">A textbook example of the clearance + reimbursement code + channel trifecta. A point-solution algorithm rarely survives as a standalone business; it has to attach to a platform that already owns a billing code and a place in the imaging workflow. RevealDx choosing investment from its distributor over going it alone is the signature move of this consolidation wave.</span>
+      </p></div>
+    <div class="src">
+      <span class="zh-inline">來源：</span><span class="en-inline">Source: </span>
+      <a href="https://www.healthcareittoday.com/2026/08/10/revealdx-announces-distribution-agreement-and-investment-prosper-medical-raises-16m/" target="_blank" rel="noopener">Healthcare IT Today · Aug 10</a>
+    </div>
+  </div>
+
+  <!-- 8 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="zh-inline">廣義 AI</span><span class="en-inline">General AI</span></span>
+      <span class="tag">Alibaba</span><span class="tag">Meta</span><span class="tag">OpenAI</span>
+    </div>
+    <h3>
+      <span class="zh">八月上旬模型密集發布：Qwen3.8-Max、Meta Muse 系列、GPT-5.6 Sol 更新</span>
+      <span class="en">Early-August model wave: Qwen3.8-Max, Meta's Muse line, and a GPT-5.6 Sol update</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">8/2 阿里巴巴發布 Qwen3.8-Max（MoE 架構，總參數 2.4T、活躍參數 95B，100 萬 token 脈絡，支援文字／影像／影片輸入）；8/4 Black Forest Labs 推出 FLUX 3 Video（最長 20 秒、原生 720p、含原生音訊與對白）；8/5 Meta 發布 Muse Spark 1.2（100 萬脈絡、平行工具呼叫、全 repo 訓練）與 Muse Code（多代理程式編碼，每次子代理生成／工具呼叫／導引／取消皆可透過事件日誌觀察）；8/6 OpenAI 更新 GPT-5.6 Sol，新增可調整思考深度的滑桿。</span>
+        <span class="en">Aug 2: Alibaba shipped Qwen3.8-Max — a mixture-of-experts model with 2.4T total / 95B active parameters, 1M context, and text, image and video input. Aug 4: Black Forest Labs released FLUX 3 Video, generating up to 20 seconds at native 720p with native audio and dialogue. Aug 5: Meta launched Muse Spark 1.2 (1M context, parallel tool calls, whole-repository training) and Muse Code, a multi-agent coding agent where every subagent spawn, tool call, steer and cancel is observable via an event log. Aug 6: OpenAI updated GPT-5.6 Sol with a slider for how much thought goes into a response.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">對醫療的意義</span><span class="en-inline">Healthcare read</span></div>
+      <p class="val">
+        <span class="zh">兩個訊號值得醫療端注意。其一，百萬級脈絡逐漸成為標配，意味著「整份病歷丟進去」在技術上不再是問題，剩下的障礙是隱私、稽核與責任歸屬。其二，Muse Code 強調「每一步代理行為都可觀察」——可觀察性（observability）正在成為代理式 AI 的產品賣點，而這恰好是醫療場域導入 AI agent 最缺、也最該要求的東西。</span>
+        <span class="en">Two signals worth reading from healthcare. First, million-token context is becoming table stakes, which means "drop the whole chart in" is no longer a technical obstacle — what's left is privacy, auditability and liability. Second, Muse Code's pitch is that every agent step is observable. Observability is becoming a product differentiator for agentic AI, and it happens to be exactly what healthcare deployments most lack and should most demand.</span>
+      </p></div>
+    <div class="src">
+      <span class="zh-inline">來源：</span><span class="en-inline">Source: </span>
+      <a href="https://www.digitalapplied.com/blog/ai-model-releases-august-2026-tracker" target="_blank" rel="noopener">Digital Applied · Aug 2026 tracker</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRODUCT ============ -->
+<section id="product">
+  <h2>02 — Product Analysis</h2>
+  <div class="sec-title">
+    <span class="zh">產品分析：RevealAI-Lung 與 Commure Suite</span>
+    <span class="en">Product analysis: RevealAI-Lung and the Commure suite</span>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>RevealAI-Lung</h3>
+      <p class="sub">RevealDx · <span class="zh-inline">肺結節特徵化 AI</span><span class="en-inline">AI lung-nodule characterisation</span></p>
+      <p>
+        <span class="zh"><strong>做什麼：</strong>在胸部 CT 上對已偵測到的肺結節做「惡性可能性」特徵化評分，協助放射科決定追蹤或切片，定位在偵測（detection）之後、決策（triage）之前的那一段。</span>
+        <span class="en"><strong>What it does:</strong> scores already-detected pulmonary nodules on chest CT for malignancy likelihood, helping radiology decide between surveillance and biopsy. It sits after detection and before triage.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro">＋</span>
+          <span class="zh">監管完整度罕見：FDA clearance、歐盟 MDR、澳洲 TGA 三地齊備。</span>
+          <span class="en">Unusually complete regulatory set: FDA clearance, EU MDR and Australian TGA all in hand.</span></li>
+        <li><span class="pro">＋</span>
+          <span class="zh">有 Medicare 給付碼（CPT 0721T／0722T），對美國醫院是可算帳的產品而非實驗品。</span>
+          <span class="en">Carries Medicare CPT codes 0721T / 0722T, so US hospitals can put it on a spreadsheet rather than in a pilot.</span></li>
+        <li><span class="con">－</span>
+          <span class="zh">單點功能，難以獨立擴張——這正是它需要 4DMedical 通路的原因。</span>
+          <span class="en">A point solution that can't scale distribution alone — precisely why it needed 4DMedical.</span></li>
+        <li><span class="con">－</span>
+          <span class="zh">泛化風險：本週另有研究指出前列腺癌 AI 分級在不同掃描機型間表現不穩，同類議題在肺結節 AI 同樣存在。</span>
+          <span class="en">Generalisation risk: a study circulating this week showed prostate-cancer AI grading degrades across scanner models — the same failure mode applies here.</span></li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>Commure <span class="zh-inline">營運自動化套件</span><span class="en-inline">operations suite</span></h3>
+      <p class="sub">Commure · <span class="zh-inline">帳務／排程／臨床文書</span><span class="en-inline">billing, scheduling, documentation</span></p>
+      <p>
+        <span class="zh"><strong>做什麼：</strong>以 AI 自動化醫療機構的收費循環、排程與病歷文書，把「行政人力」轉成「軟體訂閱」。定位不是臨床決策工具，而是醫療機構的營運作業系統。</span>
+        <span class="en"><strong>What it does:</strong> automates revenue cycle, scheduling and clinical documentation, converting administrative headcount into software subscription. It is not positioned as clinical decision support but as the operating system for a practice's back office.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro">＋</span>
+          <span class="zh">切在醫療最痛也最貴的地方：美國醫療行政成本佔比長期居高，ROI 故事好講。</span>
+          <span class="en">Aimed at the most expensive pain point in US healthcare — administrative overhead — which makes the ROI story easy to tell.</span></li>
+        <li><span class="pro">＋</span>
+          <span class="zh">大型體系客戶密度高（HCA、Tenet 等），有網路效應與資料飛輪。</span>
+          <span class="en">Dense penetration of large systems (HCA, Tenet) gives it network effects and a data flywheel.</span></li>
+        <li><span class="con">－</span>
+          <span class="zh">推薦金驅動的成長，在醫療場域容易觸及反回扣（anti-kickback）與利益衝突的敏感地帶。</span>
+          <span class="en">Referral-bounty-driven growth runs close to anti-kickback and conflict-of-interest territory in healthcare.</span></li>
+        <li><span class="con">－</span>
+          <span class="zh">效果高度依賴機構規模與科別，小型診所回報虧損顯示產品尚未真正標準化。</span>
+          <span class="en">Outcomes swing hard by practice size and specialty; clinics reporting losses suggest the product isn't genuinely standardised yet.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPANY ============ -->
+<section id="company">
+  <h2>03 — Companies &amp; Competition</h2>
+  <div class="sec-title">
+    <span class="zh">公司狀況與競爭關係</span>
+    <span class="en">Company positions and the competitive map</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th><span class="zh-inline">公司</span><span class="en-inline">Company</span></th>
+        <th><span class="zh-inline">戰場</span><span class="en-inline">Arena</span></th>
+        <th><span class="zh-inline">近況與競爭關係</span><span class="en-inline">Position &amp; competitive read</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Commure</strong></td>
+          <td><span class="zh-inline">營運自動化</span><span class="en-inline">Ops automation</span></td>
+          <td>
+            <span class="zh">估值 70 億美元、500+ 機構客戶。正面對上 Optum 與 Waystar 的收費循環業務，同時從下方蠶食傳統醫療 BPO。本週調查揭露的客戶落差，是它從「成長故事」轉向「交付故事」的轉折點。</span>
+            <span class="en">$7B valuation, 500+ customers. Squares off against Optum and Waystar in revenue cycle while eating traditional healthcare BPO from below. This week's reporting on uneven customer outcomes marks its shift from a growth story to a delivery story.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>UnitedHealth / Optum</strong></td>
+          <td><span class="zh-inline">支付方 AI</span><span class="en-inline">Payer AI</span></td>
+          <td>
+            <span class="zh">兩年內投入 30 億美元於 AI 自動化，宣稱每 1 美元支出取得 2 美元回報。作為全美最大保險公司，它既是 Commure 這類公司的天花板，也是它們的假想敵——Commure 執行長公開說希望 UnitedHealth 市值只剩五分之一。</span>
+            <span class="en">Committing $3B to AI automation over two years and claiming a 2-to-1 return. As the largest US insurer it is simultaneously the ceiling and the villain for companies like Commure, whose CEO says out loud he wants UnitedHealth worth a fifth of what it is.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Epic</strong></td>
+          <td><span class="zh-inline">AI 書記</span><span class="en-inline">Ambient scribing</span></td>
+          <td>
+            <span class="zh">2026 年 2 月推出內建 AI Charting，把原生於 EHR 的書記功能直接送到客戶面前，對 Abridge、Microsoft Dragon 等第三方形成通路壓力。MHRA 這次的分類指引對 Epic 相對有利——純書記功能不必背醫材成本。</span>
+            <span class="en">Launched native AI Charting in February 2026, putting scribing inside the EHR and squeezing third parties like Abridge and Microsoft Dragon on distribution. The MHRA classification helps Epic: pure scribing carries no device burden.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Abridge / Microsoft</strong></td>
+          <td><span class="zh-inline">AI 書記</span><span class="en-inline">Ambient scribing</span></td>
+          <td>
+            <span class="zh">面對 Epic 原生化的擠壓，差異化只剩準確度、專科深度與跨 EHR 佈署。若要往「自動下醫囑」延伸以拉開差距，就會踩進醫材監管——這正是本週指引劃出的取捨。</span>
+            <span class="en">Under pressure from Epic going native, differentiation narrows to accuracy, specialty depth and cross-EHR reach. Pushing toward auto-ordering to break away means stepping into device regulation — exactly the trade-off this week's guidance made explicit.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>4DMedical</strong></td>
+          <td><span class="zh-inline">呼吸影像</span><span class="en-inline">Respiratory imaging</span></td>
+          <td>
+            <span class="zh">以併購（Contextflow）加策略投資（RevealDx）建構肺部影像 AI 的完整堆疊，走的是「平台整併點解方」路線，對手是 Aidoc、Qure.ai 這類多器官平台。</span>
+            <span class="en">Building a full lung-imaging stack via acquisition (Contextflow) plus strategic investment (RevealDx) — a platform-absorbs-point-solutions play, up against multi-organ platforms like Aidoc and Qure.ai.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Qureight</strong></td>
+          <td><span class="zh-inline">影像資料基礎設施</span><span class="en-inline">Imaging data infra</span></td>
+          <td>
+            <span class="zh">本週完成 2,000 萬美元 B 輪。選擇賣「臨床影像 AI 基礎設施」而非賣單一演算法，避開了 RevealDx 那種通路困境，客戶多為藥廠與臨床試驗方。</span>
+            <span class="en">Closed a $20M Series B this week. By selling clinical imaging AI infrastructure rather than a single algorithm, it sidesteps the distribution trap RevealDx hit; its buyers are pharma and trial sponsors.</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note">
+    <span class="zh"><strong>一句話看競爭格局：</strong>2026 下半年醫療 AI 的勝負手已經不是模型，而是「誰掌握給付碼、誰掌握 EHR 通路、誰能承擔監管成本」。三者只要缺兩項，再好的演算法都只能被併購。</span>
+    <span class="en"><strong>The competitive map in one line:</strong> in the second half of 2026 the deciding factors in medical AI are no longer models but billing codes, EHR distribution, and the ability to absorb regulatory cost. Miss two of the three and even a great algorithm ends up as an acquisition target.</span>
+  </div>
+</section>
+
+<!-- ============ FUNDING ============ -->
+<section id="funding">
+  <h2>04 — Funding</h2>
+  <div class="sec-title">
+    <span class="zh">本週募資一覽（歐洲為主）</span>
+    <span class="en">This week's rounds — Europe-heavy</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th><span class="zh-inline">公司</span><span class="en-inline">Company</span></th>
+        <th><span class="zh-inline">地區</span><span class="en-inline">Region</span></th>
+        <th><span class="zh-inline">金額</span><span class="en-inline">Amount</span></th>
+        <th><span class="zh-inline">領域</span><span class="en-inline">Focus</span></th>
+      </tr></thead>
+      <tbody>
+        <tr><td><strong>Xeltis</strong></td><td><span class="zh-inline">荷蘭</span><span class="en-inline">Netherlands</span></td><td>€20.5M</td><td><span class="zh-inline">血管植入技術</span><span class="en-inline">Vascular implants</span></td></tr>
+        <tr><td><strong>Qureight</strong></td><td><span class="zh-inline">英國</span><span class="en-inline">UK</span></td><td>$20M (Series B)</td><td><span class="zh-inline">臨床影像 AI 基礎設施</span><span class="en-inline">Clinical imaging AI infrastructure</span></td></tr>
+        <tr><td><strong>Onalabs</strong></td><td><span class="zh-inline">西班牙</span><span class="en-inline">Spain</span></td><td>€9.3M (Series A)</td><td><span class="zh-inline">汗液生物標記監測</span><span class="en-inline">Sweat biomarker monitoring</span></td></tr>
+        <tr><td><strong>Ahead Health</strong></td><td><span class="zh-inline">瑞士</span><span class="en-inline">Switzerland</span></td><td>€8.7M</td><td><span class="zh-inline">預防性 MRI + AI 診斷</span><span class="en-inline">Preventative MRI + AI diagnostics</span></td></tr>
+        <tr><td><strong>Azalea Vision</strong></td><td><span class="zh-inline">比利時</span><span class="en-inline">Belgium</span></td><td>€7.5M (EIC)</td><td><span class="zh-inline">智慧隱形眼鏡生物感測</span><span class="en-inline">Smart contact lens biosensors</span></td></tr>
+        <tr><td><strong>RevealDx</strong></td><td><span class="zh-inline">美國</span><span class="en-inline">US</span></td><td>$3.4M</td><td><span class="zh-inline">肺結節特徵化 AI</span><span class="en-inline">Lung nodule characterisation AI</span></td></tr>
+        <tr><td><strong>EVERSION</strong></td><td><span class="zh-inline">德國</span><span class="en-inline">Germany</span></td><td>€2.3M (Seed)</td><td><span class="zh-inline">步態分析鞋墊感測</span><span class="en-inline">Gait-analysis insole sensors</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="note">
+    <span class="zh"><strong>觀察：</strong>本週歐洲案件明顯多於美國，且集中在「感測器 + 資料基礎設施」而非「診斷演算法」。這與 2026 上半年數位健康 VC 74 億美元的整體結構一致——資本正從模型層往下移到資料層與硬體層。</span>
+    <span class="en"><strong>Read:</strong> Europe out-dealt the US this week, and the money clustered in sensors and data infrastructure rather than diagnostic algorithms — consistent with the $7.4B digital-health VC total in H1 2026. Capital is moving down the stack, from the model layer to data and hardware.</span>
+  </div>
+</section>
+
+<!-- ============ TAIWAN ============ -->
+<section id="taiwan">
+  <h2>05 — Taiwan</h2>
+  <div class="sec-title">
+    <span class="zh">台灣視角：333 政策與 489 億預算</span>
+    <span class="en">Taiwan angle: the "333" policy and the NT$48.9B budget</span>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="zh">衛福部長石崇良提出的「333 政策」以三件事為核心：<strong>打破醫療資訊系統藩籬</strong>、<strong>資料結構一致化與標準化</strong>、<strong>推行 FHIR Box 統一資料格式以實現互通</strong>。時程上，目標是 2026 年底前讓全台醫學中心病歷互通，明後年推展至區域醫院與地區醫院，後續再提供診所與衛生所公版系統。</span>
+      <span class="en">Health Minister Shih Chung-liang's "333" policy rests on three moves: <strong>breaking down silos between hospital information systems</strong>, <strong>standardising data structures</strong>, and <strong>rolling out FHIR Box as a common data format for interoperability</strong>. The timeline targets record interoperability across all medical centres by end-2026, extending to regional and district hospitals over the following two years, with a government-issued baseline system for clinics and public health stations after that.</span>
+    </p>
+    <p>
+      <span class="zh">財源方面，賴總統推動的「健康台灣深耕計畫」五年編列 489 億元，支持全台醫院發展精準醫療、遠距醫療等創新服務，並改善醫療工作條件與人才培育。衛福部另設有三大 AI 中心，是政策落地的執行單位。</span>
+      <span class="en">On funding, President Lai's "Healthy Taiwan Deep Cultivation Plan" allocates NT$48.9 billion over five years to support precision medicine, telemedicine and other innovations across Taiwan's hospitals, alongside improving working conditions and training. The Ministry of Health and Welfare has also stood up three national AI centres as the delivery arm.</span>
+    </p>
+    <p>
+      <span class="zh"><strong>與本週國際新聞對照：</strong>美國正在用給付碼（NTAP）拉動 AI 導入，英國用分類指引降低低風險工具的門檻，台灣選的是先鋪資料底層（FHIR 互通）。三條路徑的先後順序不同，但台灣這條的長期槓桿最大——沒有互通的病歷，任何醫療 AI 都只能在單一醫院裡打轉。真正的檢驗點會是年底醫學中心互通的落地程度。</span>
+      <span class="en"><strong>Set against this week's international news:</strong> the US is pulling AI adoption with billing codes (NTAP), the UK is lowering the barrier for low-risk tools via classification, and Taiwan is laying the data substrate first through FHIR interoperability. Different orderings — but Taiwan's has the greatest long-run leverage, because without interoperable records any medical AI stays trapped inside one hospital. The real checkpoint is how much of the medical-centre interoperability target actually lands by year end.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============ READING ============ -->
+<section id="reading">
+  <h2>06 — Further Reading</h2>
+  <div class="sec-title">
+    <span class="zh">值得花時間深讀的五篇</span>
+    <span class="en">Five worth your time</span>
+  </div>
+
+  <div class="panel">
+    <ol class="reading">
+      <li>
+        <a href="https://www.nature.com/articles/s41591-026-04350-5" target="_blank" rel="noopener">How to meaningfully evaluate AI in clinical medicine — Nature Medicine</a>
+        <p class="why">
+          <span class="zh">如果這一年只讀一篇醫療 AI 方法學論文，就是這篇。它會永久改變你看廠商準確率數字的方式。</span>
+          <span class="en">If you read one methodology paper on medical AI this year, make it this one. It permanently changes how you read vendor accuracy claims.</span>
+        </p>
+      </li>
+      <li>
+        <a href="https://www.statnews.com/2026/08/12/inside-commure-athelas-mad-dash-automate-health-care/" target="_blank" rel="noopener">Inside a $7 billion startup's mad dash to automate the business of health care — STAT</a>
+        <p class="why">
+          <span class="zh">超過三十位受訪者、內部文件與合約的紮實調查報導。要理解醫療 AI 的商業現實，比任何分析師報告都有用。</span>
+          <span class="en">A properly reported investigation — three dozen sources, internal documents, contracts. More useful for understanding the commercial reality of medical AI than any analyst deck.</span>
+        </p>
+      </li>
+      <li>
+        <a href="https://www.statnews.com/2026/08/13/how-medicare-cms-pays-ntap-for-new-ai-medical-devices/" target="_blank" rel="noopener">What Medicare incentives for AI-based devices mean for tech companies — and hospitals — STAT</a>
+        <p class="why">
+          <span class="zh">「Paying for AI」系列的第四篇。想理解為什麼美國醫院突然願意買 AI，答案在給付結構裡，不在技術裡。</span>
+          <span class="en">Part four of the "Paying for AI" series. If you want to know why US hospitals suddenly want to buy AI, the answer is in the payment structure, not the technology.</span>
+        </p>
+      </li>
+      <li>
+        <a href="https://htworld.co.uk/news/ai/mhra-clarifies-medical-device-rules-for-ai-scribes-in-the-nhs-htai26/" target="_blank" rel="noopener">MHRA clarifies medical device rules for AI scribes in the NHS — HTWorld</a>
+        <p class="why">
+          <span class="zh">目前全球最清楚的 AI 書記監管分界線。任何在做臨床文書產品的團隊都該把這條「意圖判準」讀進產品規格書。</span>
+          <span class="en">The clearest regulatory line drawn anywhere on AI scribes. Any team building clinical documentation should write this intended-purpose test straight into their product spec.</span>
+        </p>
+      </li>
+      <li>
+        <a href="https://www.eurekalert.org/news-releases/1114399" target="_blank" rel="noopener">MASAI trial: AI-supported mammography screening — The Lancet</a>
+        <p class="why">
+          <span class="zh">2026 年 1 月發表，逾 10 萬名瑞典女性的隨機對照試驗：間隔癌減少 12%、侵襲性癌少 16%、大型癌少 21%、高侵襲性癌少 27%，偽陽性率相當（1.5% vs 1.4%），放射科工作量減少 44%。這是目前醫療 AI 少數真正達到 RCT 等級的證據，值得作為評估其他產品的參照基準。</span>
+          <span class="en">Published January 2026: a randomised controlled trial in over 100,000 Swedish women showing 12% fewer interval cancers, 16% fewer invasive, 21% fewer large and 27% fewer aggressive cancers, with comparable false positives (1.5% vs 1.4%) and 44% less radiologist workload. One of the few genuinely RCT-grade evidence bases in medical AI — use it as the bar you hold other products to.</span>
+        </p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ REFS ============ -->
+<section id="refs">
+  <h2>07 — References</h2>
+  <div class="sec-title">
+    <span class="zh">參考文獻</span>
+    <span class="en">References</span>
+  </div>
+  <div class="panel">
+    <ol class="refs">
+      <li>Katie Palmer, "What Medicare incentives for AI-based devices mean for tech companies — and hospitals," <em>STAT</em>, Aug 13, 2026. <a href="https://www.statnews.com/2026/08/13/how-medicare-cms-pays-ntap-for-new-ai-medical-devices/" target="_blank" rel="noopener">statnews.com</a></li>
+      <li>Katie Palmer, "An investigation into Commure, and Medicare's new-tech incentives for AI devices," <em>STAT Health Tech</em>, Aug 13, 2026. <a href="https://www.statnews.com/2026/08/13/commure-investigation-medicare-tech-incentives-health-tech/" target="_blank" rel="noopener">statnews.com</a></li>
+      <li>"Inside a $7 billion startup's mad dash to automate the business of health care," <em>STAT</em>, Aug 12, 2026. <a href="https://www.statnews.com/2026/08/12/inside-commure-athelas-mad-dash-automate-health-care/" target="_blank" rel="noopener">statnews.com</a></li>
+      <li>"STAT Health Tech: RAPID coverage for breakthrough devices, and nurses push back on AI," <em>STAT</em>, Aug 11, 2026. <a href="https://www.statnews.com/2026/08/11/cms-rapid-breakthrough-device-coverage-health-tech/" target="_blank" rel="noopener">statnews.com</a></li>
+      <li>Mario Aguilar, "Are AI scribes medical devices? UK regulator weighs in," <em>STAT</em>, Aug 4, 2026. <a href="https://www.statnews.com/2026/08/04/ai-scribes-medical-devices-uk-regulator-view-health-tech/" target="_blank" rel="noopener">statnews.com</a></li>
+      <li>Priya Abani, "AI in medicine is not all the same," <em>STAT First Opinion</em>, Aug 6, 2026. <a href="https://www.statnews.com/2026/08/06/ai-health-care-skepticism-advances-nature-medicine-scribe-sepsis/" target="_blank" rel="noopener">statnews.com</a></li>
+      <li>Omar M., Agbareia R., Gorenshtein A., Ramaswamy A., Sakhuja A., Barash Y., Ting D.S.W., Klang E., Nadkarni G.N., "How to meaningfully evaluate AI in clinical medicine," <em>Nature Medicine</em> 32(6), Apr 23, 2026. <a href="https://www.nature.com/articles/s41591-026-04350-5" target="_blank" rel="noopener">nature.com</a></li>
+      <li>"MHRA clarifies medical device rules for AI scribes in the NHS," <em>HTWorld</em>, guidance published Jul 30, updated Aug 10, 2026. <a href="https://htworld.co.uk/news/ai/mhra-clarifies-medical-device-rules-for-ai-scribes-in-the-nhs-htai26/" target="_blank" rel="noopener">htworld.co.uk</a></li>
+      <li>"This Week in European HealthTech, MedTech and Health AI: 14th August 2026," <em>healthcare.digital</em>. <a href="https://www.healthcare.digital/single-post/this-week-in-european-healthtech-medtech-and-health-ai-14th-august-2026" target="_blank" rel="noopener">healthcare.digital</a></li>
+      <li>"RevealDx Announces Distribution Agreement and Investment; Prosper Medical Raises $16M," <em>Healthcare IT Today</em>, Aug 10, 2026. <a href="https://www.healthcareittoday.com/2026/08/10/revealdx-announces-distribution-agreement-and-investment-prosper-medical-raises-16m/" target="_blank" rel="noopener">healthcareittoday.com</a></li>
+      <li>"The Health AI Brief — Week of August 10, 2026," <em>Yesil Science</em>. <a href="https://yesilscience.com/the-brief-2026-08-10/" target="_blank" rel="noopener">yesilscience.com</a></li>
+      <li>"AI Model Releases: August 2026 Tracker and Dated Ledger," <em>Digital Applied</em>. <a href="https://www.digitalapplied.com/blog/ai-model-releases-august-2026-tracker" target="_blank" rel="noopener">digitalapplied.com</a></li>
+      <li>"UnitedHealth Bets $3 Billion on AI to Cut Costs, Tame Backlash," <em>Bloomberg</em>, Jun 19, 2026. <a href="https://www.bloomberg.com/news/articles/2026-06-19/unitedhealth-bets-3-billion-on-ai-to-cut-costs-tame-backlash" target="_blank" rel="noopener">bloomberg.com</a></li>
+      <li>"Epic launches AI Charting, potentially scrambling the ambient scribe market," <em>STAT</em>, Feb 4, 2026. <a href="https://www.statnews.com/2026/02/04/epic-ai-charting-ambient-scribe-abridge-microsoft/" target="_blank" rel="noopener">statnews.com</a></li>
+      <li>"The Lancet: AI-supported mammography screening results in fewer aggressive and advanced breast cancers (MASAI trial)," <em>EurekAlert / The Lancet</em>, Jan 29, 2026. <a href="https://www.eurekalert.org/news-releases/1114399" target="_blank" rel="noopener">eurekalert.org</a></li>
+      <li>「高醫大論壇揭示AI醫療新局！衛福部推『333政策』 國家489億預算力挺」，<em>聯合新聞網</em>。<a href="https://udn.com/news/story/7266/9592218" target="_blank" rel="noopener">udn.com</a></li>
+      <li>衛生福利部智慧醫療三大 AI 中心。<a href="https://aicenter.mohw.gov.tw/" target="_blank" rel="noopener">aicenter.mohw.gov.tw</a></li>
+      <li>"Digital health VC hits $7.4B in H1 2026," <em>MarketScale</em>. <a href="https://www.marketscale.com/industries/healthcare/digital-health-vc-hits-74b-in-h1-2026-as-ai-agents-chronic-care-and-workforce-tools-capture-mega-deal-capital" target="_blank" rel="noopener">marketscale.com</a></li>
+    </ol>
+    <div class="note">
+      <span class="zh"><strong>編輯說明：</strong>STAT 多篇報導為 STAT+ 付費內容，本報告僅根據公開可見的標題、導言與摘要撰寫，未取得付費牆後的完整細節；相關段落已避免引用未經證實的數字。8/13 的 NTAP 報導未公開具體公司名稱與金額。</span>
+      <span class="en"><strong>Editor's note:</strong> several STAT pieces sit behind the STAT+ paywall. This report draws only on publicly visible headlines, standfirsts and summaries, and avoids citing figures that could not be verified. The Aug 13 NTAP story does not publicly disclose specific company names or dollar amounts.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="zh">AI／醫療AI 每日新知日報 · 由 Claude 於台北時間每日 08:00 自動產出 · 本期主題：星期日／本週回顧與精選延伸閱讀<br>本報告內容經來源查證，但不構成投資或醫療建議。所有數據請以原始出處為準。</span>
+  <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude at 08:00 Taipei time · Today's rotation: Sunday / weekly review and curated reading<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
+</footer>
+
+</main>
+
+<button class="up" id="up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+
+<script>
+function setLang(l){
+  document.body.classList.remove('lang-zh','lang-en');
+  document.body.classList.add('lang-'+l);
+  document.documentElement.lang = (l==='zh') ? 'zh-Hant' : 'en';
+  document.getElementById('b-zh').classList.toggle('on', l==='zh');
+  document.getElementById('b-en').classList.toggle('on', l==='en');
+  document.title = (l==='zh')
+    ? 'AI／醫療AI 每日新知日報 · 2026-08-16'
+    : 'AI & Medical AI Daily · 2026-08-16';
+}
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.getElementById('theme-ic').textContent =
+    document.body.classList.contains('dark') ? '◑' : '◐';
+}
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.body.classList.add('dark');
+  document.getElementById('theme-ic').textContent = '◑';
+}
+window.addEventListener('scroll', function(){
+  document.getElementById('up').classList.toggle('show', window.scrollY > 600);
+});
+</script>
+</body>
+</html>
