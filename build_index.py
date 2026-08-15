@@ -1,0 +1,400 @@
+#!/usr/bin/env python3
+"""
+build_index.py — 掃描 reports/*.html，重建 index.html（GitHub Pages 首頁）。
+
+用法：
+    python3 build_index.py
+
+每份日報必須在 <head> 內含下列 meta 標籤，本腳本靠它們取得資訊：
+
+    <meta name="report-date"       content="2026-08-16">
+    <meta name="report-theme"      content="weekly-review">
+    <meta name="report-title-zh"   content="中文標題">
+    <meta name="report-title-en"   content="English headline">
+    <meta name="report-summary-zh" content="一句話中文摘要">
+    <meta name="report-summary-en" content="One-line English summary">
+
+沒有這些標籤的檔案會被跳過並在 stdout 提示。腳本不依賴任何第三方套件。
+"""
+
+import json
+import os
+import re
+import sys
+from datetime import date
+
+ROOT = os.path.dirname(os.path.abspath(__file__))
+REPORTS_DIR = os.path.join(ROOT, "reports")
+OUT = os.path.join(ROOT, "index.html")
+
+# 星期輪值主題：key -> (中文, English, 色票 index)
+THEMES = {
+    "clinical":      ("臨床應用與研究", "Clinical & Research",      0),
+    "industry":      ("產業與商業動向", "Industry & Business",      1),
+    "regulation":    ("法規與政策",     "Regulation & Policy",      2),
+    "technology":    ("技術突破",       "Technology",               3),
+    "product":       ("產品與公司分析", "Product & Company",        4),
+    "general-ai":    ("廣義 AI 新知",   "General AI",               5),
+    "weekly-review": ("本週回顧",       "Weekly Review",            6),
+}
+FALLBACK_THEME = ("其他", "Other", 7)
+
+META_RE = {
+    "date":       re.compile(r'<meta\s+name="report-date"\s+content="([^"]*)"', re.I),
+    "theme":      re.compile(r'<meta\s+name="report-theme"\s+content="([^"]*)"', re.I),
+    "title_zh":   re.compile(r'<meta\s+name="report-title-zh"\s+content="([^"]*)"', re.I),
+    "title_en":   re.compile(r'<meta\s+name="report-title-en"\s+content="([^"]*)"', re.I),
+    "summary_zh": re.compile(r'<meta\s+name="report-summary-zh"\s+content="([^"]*)"', re.I),
+    "summary_en": re.compile(r'<meta\s+name="report-summary-en"\s+content="([^"]*)"', re.I),
+}
+
+WEEKDAY_ZH = ["一", "二", "三", "四", "五", "六", "日"]
+WEEKDAY_EN = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+
+
+def unescape(s: str) -> str:
+    return (s.replace("&amp;", "&").replace("&lt;", "<")
+             .replace("&gt;", ">").replace("&quot;", '"').replace("&#39;", "'"))
+
+
+def collect():
+    if not os.path.isdir(REPORTS_DIR):
+        print(f"! 找不到 {REPORTS_DIR}")
+        return []
+
+    items, skipped = [], []
+    for fn in sorted(os.listdir(REPORTS_DIR)):
+        if not fn.endswith(".html"):
+            continue
+        path = os.path.join(REPORTS_DIR, fn)
+        try:
+            with open(path, encoding="utf-8") as f:
+                head = f.read(20000)   # meta 一定在檔頭
+        except Exception as e:
+            skipped.append((fn, f"讀取失敗: {e}"))
+            continue
+
+        got = {}
+        for key, rx in META_RE.items():
+            m = rx.search(head)
+            got[key] = unescape(m.group(1).strip()) if m else ""
+
+        # 日期：優先 meta，其次檔名 YYYY-MM-DD.html
+        d = got["date"]
+        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", d or ""):
+            m = re.match(r"(\d{4}-\d{2}-\d{2})", fn)
+            if not m:
+                skipped.append((fn, "缺少 report-date 且檔名非 YYYY-MM-DD"))
+                continue
+            d = m.group(1)
+
+        y, mo, dd = (int(x) for x in d.split("-"))
+        try:
+            wd = date(y, mo, dd).weekday()
+        except ValueError:
+            skipped.append((fn, f"日期無效: {d}"))
+            continue
+
+        theme_key = got["theme"] if got["theme"] in THEMES else "other"
+        zh, en, ci = THEMES.get(theme_key, FALLBACK_THEME)
+
+        items.append({
+            "date": d,
+            "file": f"reports/{fn}",
+            "theme": theme_key,
+            "themeZh": zh,
+            "themeEn": en,
+            "ci": ci,
+            "wdZh": WEEKDAY_ZH[wd],
+            "wdEn": WEEKDAY_EN[wd],
+            "titleZh": got["title_zh"] or f"{d} 日報",
+            "titleEn": got["title_en"] or f"Daily brief for {d}",
+            "sumZh": got["summary_zh"],
+            "sumEn": got["summary_en"],
+        })
+
+    for fn, why in skipped:
+        print(f"  跳過 {fn} — {why}")
+
+    items.sort(key=lambda x: x["date"], reverse=True)
+    return items
+
+
+def render(items):
+    data = json.dumps(items, ensure_ascii=False, separators=(",", ":"))
+    themes = json.dumps(
+        [{"key": k, "zh": v[0], "en": v[1], "ci": v[2]} for k, v in THEMES.items()],
+        ensure_ascii=False, separators=(",", ":"))
+    total = len(items)
+    latest = items[0]["date"] if items else "—"
+
+    return TEMPLATE.replace("__DATA__", data) \
+                   .replace("__THEMES__", themes) \
+                   .replace("__TOTAL__", str(total)) \
+                   .replace("__LATEST__", latest)
+
+
+TEMPLATE = r"""<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI／醫療AI 每日新知日報</title>
+<meta name="description" content="每日自動整理的 AI 與醫療 AI 新知、產業動向、法規與產品分析。">
+<style>
+:root{
+  --bg:#f7f8fa;--surface:#fff;--surface-2:#f0f2f5;--border:#e2e5ea;
+  --text:#16181d;--muted:#5c636e;--faint:#8a919c;
+  --accent:#0d7a6f;--accent-soft:#e3f2f0;--accent-text:#0a5c54;
+  --shadow:0 1px 2px rgba(16,24,40,.04),0 4px 16px rgba(16,24,40,.05);
+  --c0:#0d7a6f;--c1:#1d5fa8;--c2:#a8562a;--c3:#6b4ba8;
+  --c4:#a83e6b;--c5:#2a7a3e;--c6:#8a6d1f;--c7:#5c636e;
+}
+body.dark{
+  --bg:#0e1014;--surface:#171a20;--surface-2:#1e222a;--border:#2a2f39;
+  --text:#e8eaee;--muted:#a2a9b5;--faint:#6f7783;
+  --accent:#3fbfae;--accent-soft:#12332f;--accent-text:#6fd6c6;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 20px rgba(0,0,0,.3);
+  --c0:#3fbfae;--c1:#63a8f0;--c2:#e0975c;--c3:#b192ee;
+  --c4:#ef8ab4;--c5:#63c47c;--c6:#d4b74e;--c7:#a2a9b5;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Helvetica Neue",Arial,sans-serif;
+  font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;transition:background .25s,color .25s}
+body.lang-zh .en,body.lang-en .zh{display:none}
+.zh,.en{display:inline}
+
+header.bar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--surface) 88%,transparent);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.bar-in{max-width:1000px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:10px}
+.brand{font-weight:700;font-size:14px;white-space:nowrap}
+.brand i{color:var(--accent);font-style:normal}
+.sp{flex:1}
+.btn{border:1px solid var(--border);background:var(--surface-2);color:var(--text);border-radius:999px;
+  padding:5px 12px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:.15s;white-space:nowrap}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.seg{display:flex;border:1px solid var(--border);border-radius:999px;overflow:hidden;background:var(--surface-2)}
+.seg button{border:0;background:transparent;color:var(--muted);font-family:inherit;padding:5px 12px;
+  font-size:13px;font-weight:600;cursor:pointer;transition:.15s}
+.seg button.on{background:var(--accent);color:#fff}
+
+main{max-width:1000px;margin:0 auto;padding:0 20px 90px}
+.hero{padding:46px 0 30px;border-bottom:1px solid var(--border)}
+.kicker{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+h1{font-size:clamp(28px,5vw,42px);line-height:1.2;margin:0 0 12px;letter-spacing:-.02em;font-weight:750}
+.tagline{font-size:16px;color:var(--muted);margin:0 0 20px;max-width:60ch}
+.stats{display:flex;gap:26px;flex-wrap:wrap}
+.stat b{display:block;font-size:24px;font-weight:750;letter-spacing:-.01em;line-height:1.2}
+.stat span{font-size:12px;color:var(--faint);font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+
+.controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:26px 0 18px}
+#q{flex:1;min-width:200px;border:1px solid var(--border);background:var(--surface);color:var(--text);
+  border-radius:10px;padding:10px 14px;font-size:15px;font-family:inherit}
+#q:focus{outline:2px solid var(--accent);outline-offset:-1px;border-color:transparent}
+.views{display:flex;border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--surface-2)}
+.views button{border:0;background:transparent;color:var(--muted);font-family:inherit;padding:9px 15px;
+  font-size:13.5px;font-weight:600;cursor:pointer}
+.views button.on{background:var(--accent);color:#fff}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:24px}
+.chip{font-size:12.5px;font-weight:650;border:1px solid var(--border);background:var(--surface);
+  color:var(--muted);border-radius:999px;padding:5px 12px;cursor:pointer;transition:.15s;font-family:inherit}
+.chip:hover{border-color:var(--accent)}
+.chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.chip .dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;vertical-align:1px}
+.chip.on .dot{background:#fff!important}
+
+a.item{display:block;text-decoration:none;color:inherit;background:var(--surface);border:1px solid var(--border);
+  border-radius:14px;padding:18px 20px;margin-bottom:12px;box-shadow:var(--shadow);transition:.15s;position:relative;overflow:hidden}
+a.item::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--bar,var(--accent))}
+a.item:hover{transform:translateY(-1px);border-color:var(--accent)}
+.meta{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:9px}
+.d{font-size:13px;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.th{font-size:11px;font-weight:750;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:5px;
+  background:var(--surface-2);color:var(--bar,var(--accent))}
+a.item h3{margin:0 0 6px;font-size:17.5px;line-height:1.45;font-weight:700;letter-spacing:-.01em}
+a.item p{margin:0;font-size:14.5px;color:var(--muted);line-height:1.65}
+
+.cal{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px 22px;
+  margin-bottom:14px;box-shadow:var(--shadow)}
+.cal h4{margin:0 0 14px;font-size:15px;font-weight:700;letter-spacing:.01em}
+.cg{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+.cg .hd{font-size:11px;font-weight:750;color:var(--faint);text-align:center;padding-bottom:5px;letter-spacing:.05em}
+.cg a,.cg span{height:42px;display:flex;align-items:center;justify-content:center;border-radius:8px;
+  font-size:13px;font-weight:650;text-decoration:none;font-variant-numeric:tabular-nums}
+.cg span{color:var(--faint);opacity:.4}
+.cg a{background:var(--bar,var(--accent));color:#fff;transition:.15s}
+.cg a:hover{transform:scale(1.09)}
+.empty{text-align:center;padding:56px 20px;color:var(--faint);font-size:15px}
+footer{margin-top:52px;padding-top:22px;border-top:1px solid var(--border);font-size:13px;color:var(--faint);line-height:1.8}
+footer a{color:var(--accent);text-decoration:none}
+@media(max-width:640px){
+  main{padding:0 15px 80px}
+  .cal{padding:15px}
+  .cg a,.cg span{font-size:12px;border-radius:6px}
+  .bar-in{padding:9px 14px;gap:8px}
+}
+</style>
+</head>
+<body class="lang-zh">
+
+<header class="bar">
+  <div class="bar-in">
+    <div class="brand"><i>◆</i> <span class="zh">AI／醫療AI 日報</span><span class="en">AI &amp; Medical AI Daily</span></div>
+    <div class="sp"></div>
+    <div class="seg">
+      <button id="bzh" class="on" onclick="setLang('zh')">中文</button>
+      <button id="ben" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="btn" onclick="toggleTheme()"><span id="ti">◐</span></button>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="kicker"><span class="zh">每日自動更新</span><span class="en">Updated daily</span></div>
+    <h1><span class="zh">AI／醫療AI 每日新知日報</span><span class="en">AI &amp; Medical AI Daily</span></h1>
+    <p class="tagline">
+      <span class="zh">每天台北時間早上 8:00 自動產出：AI 與醫療 AI 的重點新聞、產品分析、公司動向與競爭關係，附延伸閱讀與參考文獻。每天輪值不同主題。</span>
+      <span class="en">Generated automatically at 08:00 Taipei time: the day's news in AI and medical AI, with product analysis, company moves, competitive read, further reading and full references. Each weekday rotates through a different theme.</span>
+    </p>
+    <div class="stats">
+      <div class="stat"><b>__TOTAL__</b><span class="zh">份日報</span><span class="en">Reports</span></div>
+      <div class="stat"><b>__LATEST__</b><span class="zh">最新一期</span><span class="en">Latest</span></div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <input id="q" type="search" placeholder="搜尋標題、摘要或日期…" oninput="render()">
+    <div class="views">
+      <button id="vl" class="on" onclick="setView('list')"><span class="zh">列表</span><span class="en">List</span></button>
+      <button id="vc" onclick="setView('cal')"><span class="zh">月曆</span><span class="en">Calendar</span></button>
+    </div>
+  </div>
+
+  <div class="chips" id="chips"></div>
+  <div id="out"></div>
+
+  <footer>
+    <span class="zh">由 Claude 自動產出並推送至此 repo。內容經來源查證，但不構成投資或醫療建議。</span>
+    <span class="en">Generated and pushed automatically by Claude. Sourced and checked, but not investment or medical advice.</span>
+  </footer>
+</main>
+
+<script>
+const DATA = __DATA__;
+const THEMES = __THEMES__;
+let view = 'list', active = null;
+
+const cvar = i => `var(--c${i})`;
+const esc = s => (s||'').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const isZh = () => document.body.classList.contains('lang-zh');
+
+function setLang(l){
+  document.body.classList.remove('lang-zh','lang-en');
+  document.body.classList.add('lang-'+l);
+  document.documentElement.lang = l==='zh' ? 'zh-Hant' : 'en';
+  bzh.classList.toggle('on', l==='zh');
+  ben.classList.toggle('on', l==='en');
+  q.placeholder = l==='zh' ? '搜尋標題、摘要或日期…' : 'Search titles, summaries or dates…';
+  chips(); render();
+}
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  ti.textContent = document.body.classList.contains('dark') ? '◑' : '◐';
+  render();
+}
+function setView(v){
+  view = v;
+  vl.classList.toggle('on', v==='list');
+  vc.classList.toggle('on', v==='cal');
+  render();
+}
+function chips(){
+  const used = THEMES.filter(t => DATA.some(d => d.theme === t.key));
+  const all = isZh() ? '全部' : 'All';
+  document.getElementById('chips').innerHTML =
+    `<button class="chip${active===null?' on':''}" onclick="pick(null)">${all}</button>` +
+    used.map(t => `<button class="chip${active===t.key?' on':''}" onclick="pick('${t.key}')">
+      <span class="dot" style="background:${cvar(t.ci)}"></span>${esc(isZh()?t.zh:t.en)}</button>`).join('');
+}
+function pick(k){ active = k; chips(); render(); }
+
+function filtered(){
+  const s = q.value.trim().toLowerCase();
+  return DATA.filter(d => {
+    if (active && d.theme !== active) return false;
+    if (!s) return true;
+    return [d.date, d.titleZh, d.titleEn, d.sumZh, d.sumEn, d.themeZh, d.themeEn]
+      .join(' ').toLowerCase().includes(s);
+  });
+}
+
+function render(){
+  const items = filtered(), zh = isZh(), out = document.getElementById('out');
+  if (!items.length){
+    out.innerHTML = `<div class="empty">${zh?'沒有符合的日報。':'No reports match.'}</div>`;
+    return;
+  }
+  out.innerHTML = view === 'list' ? list(items) : cal(items);
+}
+
+function list(items){
+  return items.map(d => {
+    const zh = isZh();
+    return `<a class="item" href="${d.file}" style="--bar:${cvar(d.ci)}">
+      <div class="meta">
+        <span class="d">${d.date} · ${zh ? '星期'+d.wdZh : d.wdEn}</span>
+        <span class="th">${esc(zh ? d.themeZh : d.themeEn)}</span>
+      </div>
+      <h3>${esc(zh ? d.titleZh : d.titleEn)}</h3>
+      ${(zh?d.sumZh:d.sumEn) ? `<p>${esc(zh ? d.sumZh : d.sumEn)}</p>` : ''}
+    </a>`;
+  }).join('');
+}
+
+function cal(items){
+  const zh = isZh();
+  const byMonth = {};
+  items.forEach(d => { (byMonth[d.date.slice(0,7)] ||= []).push(d); });
+  const hdZh = ['一','二','三','四','五','六','日'], hdEn = ['M','T','W','T','F','S','S'];
+  const mZh = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+  const mEn = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+  return Object.keys(byMonth).sort().reverse().map(ym => {
+    const [y, m] = ym.split('-').map(Number);
+    const map = {};
+    byMonth[ym].forEach(d => { map[Number(d.date.slice(8,10))] = d; });
+    const first = (new Date(y, m-1, 1).getDay() + 6) % 7;   // 週一為第一欄
+    const days = new Date(y, m, 0).getDate();
+    let cells = (zh?hdZh:hdEn).map(h => `<div class="hd">${h}</div>`).join('');
+    for (let i=0;i<first;i++) cells += '<span></span>';
+    for (let n=1;n<=days;n++){
+      const d = map[n];
+      cells += d
+        ? `<a href="${d.file}" style="--bar:${cvar(d.ci)}" title="${esc(zh?d.titleZh:d.titleEn)}">${n}</a>`
+        : `<span>${n}</span>`;
+    }
+    return `<div class="cal"><h4>${zh ? y+' 年 '+mZh[m-1] : mEn[m-1]+' '+y}</h4>
+      <div class="cg">${cells}</div></div>`;
+  }).join('');
+}
+
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.body.classList.add('dark');
+  document.getElementById('ti').textContent = '◑';
+}
+chips(); render();
+</script>
+</body>
+</html>
+"""
+
+
+if __name__ == "__main__":
+    items = collect()
+    with open(OUT, "w", encoding="utf-8") as f:
+        f.write(render(items))
+    print(f"✓ index.html 已重建：{len(items)} 份日報" + (f"（最新 {items[0]['date']}）" if items else "（目前沒有日報）"))
+    sys.exit(0)
