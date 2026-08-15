@@ -18,7 +18,7 @@
 | 六 | 廣義 AI 新知 | `general-ai` | 5 |
 | 日 | 本週回顧與精選延伸閱讀 | `weekly-review` | 6 |
 
-每份日報固定包含：重點新聞 5–8 則、產品分析、公司狀況與競爭關係、台灣視角、延伸閱讀、參考文獻，並支援繁中／English 全頁切換與深色模式。
+每份日報固定包含：重點新聞 5–8 則、產品分析、公司狀況與競爭關係、台灣視角、延伸閱讀、參考文獻，並支援繁中／English 全頁切換與深色模式。每一則具體資訊都在原地附上來源連結。
 
 ---
 
@@ -58,23 +58,6 @@
 ```bash
 python3 build_index.py
 ```
-
-## 網站分析
-
-所有頁面（首頁與每份日報）都必須在 `<head>` 內含 Google Analytics 標籤，測量 ID 為 `G-HJLDQZDK5V`：
-
-```html
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-HJLDQZDK5V');
-</script>
-```
-
-首頁的標籤內建在 `build_index.py` 的樣板中，重建索引時會自動帶入；新增日報時請記得手動加上。
 
 ## 手動新增一份日報
 
