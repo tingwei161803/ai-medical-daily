@@ -236,6 +236,25 @@ a.item p{margin:0;font-size:14.5px;color:var(--muted);line-height:1.65}
 .cg a{background:var(--bar,var(--accent));color:#fff;transition:.15s}
 .cg a:hover{transform:scale(1.09)}
 .empty{text-align:center;padding:56px 20px;color:var(--faint);font-size:15px}
+/* --- GitHub 星星徽章 + 頁尾社群連結 --- */
+.gh-star{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--border);
+  background:var(--surface-2);color:var(--muted);border-radius:999px;padding:5px 10px;
+  font-size:13px;font-weight:700;text-decoration:none;font-variant-numeric:tabular-nums;
+  transition:.15s;white-space:nowrap}
+.gh-star:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+.gh-star svg{width:15px;height:15px;fill:currentColor;flex:none;display:block}
+.gh-star .st{color:#e3a008}
+.gh-star b{font-weight:700;min-width:1ch;font-size:12.5px}
+.foot-row{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.foot-row>div:first-child{flex:1 1 320px;min-width:0}
+.social{display:flex;gap:9px;align-items:center;flex:none}
+.social a{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;
+  border:1px solid var(--border);background:var(--surface-2);color:var(--muted);
+  border-radius:999px;transition:.15s;text-decoration:none}
+.social a:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);
+  transform:translateY(-1px)}
+.social svg{width:16px;height:16px;fill:currentColor;display:block}
+@media(max-width:430px){.gh-star b{display:none}.gh-star{padding:5px 9px;gap:4px}}
 footer{margin-top:52px;padding-top:22px;border-top:1px solid var(--border);font-size:13px;color:var(--faint);line-height:1.8}
 footer a{color:var(--accent);text-decoration:none}
 @media(max-width:640px){
@@ -252,6 +271,7 @@ footer a{color:var(--accent);text-decoration:none}
   <div class="bar-in">
     <div class="brand"><i>◆</i> <span class="zh">AI／醫療AI 日報</span><span class="en">AI &amp; Medical AI Daily</span></div>
     <div class="sp"></div>
+    <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub / 在 GitHub 給這個專案一顆星"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
     <div class="seg">
       <button id="bzh" class="on" onclick="setLang('zh')">中文</button>
       <button id="ben" onclick="setLang('en')">EN</button>
@@ -286,9 +306,14 @@ footer a{color:var(--accent);text-decoration:none}
   <div id="out"></div>
 
   <footer>
-    <span class="zh">由 Claude 自動產出並推送至此 repo。內容經來源查證，但不構成投資或醫療建議。</span>
+  <div class="foot-row">
+    <div>
+      <span class="zh">由 Claude 自動產出並推送至此 repo。內容經來源查證，但不構成投資或醫療建議。</span>
     <span class="en">Generated and pushed automatically by Claude. Sourced and checked, but not investment or medical advice.</span>
-  </footer>
+    </div>
+    <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com / 返回 peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg></a></div>
+  </div>
+</footer>
 </main>
 
 <script>
@@ -395,6 +420,20 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').match
   document.getElementById('ti').textContent = '◑';
 }
 chips(); render();
+
+/* GitHub 星星數：無需授權，失敗或被限流時靜默保留佔位符 */
+(function(){
+  var el = document.getElementById('ghs');
+  if (!el || typeof fetch !== 'function') return;
+  fetch('https://api.github.com/repos/tingwei161803/ai-medical-daily', {headers:{Accept:'application/vnd.github+json'}})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if (!d || typeof d.stargazers_count !== 'number') return;
+      var n = d.stargazers_count;
+      el.textContent = n >= 1000 ? (Math.round(n/100)/10) + 'k' : String(n);
+    })
+    .catch(function(){});
+})();
 </script>
 </body>
 </html>
