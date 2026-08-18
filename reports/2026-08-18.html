@@ -1,1 +1,865 @@
-PLACEHOLDER
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>AI／醫療AI 每日新知日報 · 2026-08-18</title>
+<meta name="report-date" content="2026-08-18">
+<meta name="report-theme" content="industry">
+<meta name="report-title-zh" content="錢變少、但每一張支票變大">
+<meta name="report-title-en" content="Fewer cheques, bigger cheques">
+<meta name="report-summary-zh" content="CB Insights 顯示 2026 Q2 數位健康交易件數 228 件、十年新低，資金卻集中到中位數 7.7 百萬美元的大案；本週 UHS 以 8.35 億美元完成 Talkspace 收購、Abridge 把臨床決策支援推上 300 家醫療體系、Databricks 以 1,900 億美元估值收下 50 億美元，而韓國 Lunit 用上半年 457.7 億韓元營收與腰斬的虧損，證明醫療 AI 也能走向損益兩平。">
+<meta name="report-summary-en" content="CB Insights counts just 228 digital health deals in Q2 2026 — the fewest in over a decade — while median deal size jumps 54%; this week UHS closed its $835M Talkspace buy, Abridge pushed clinical decision support to 300+ health systems, Databricks banked $5B at a $190B valuation, and Korea's Lunit posted record H1 revenue of 45.77bn won with losses cut 31%.">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HJLDQZDK5V');
+</script>
+<style>
+:root{
+  --bg:#f7f8fa; --surface:#ffffff; --surface-2:#f0f2f5; --border:#e2e5ea;
+  --text:#16181d; --muted:#5c636e; --faint:#8a919c;
+  --accent:#0d7a6f; --accent-soft:#e3f2f0; --accent-text:#0a5c54;
+  --warn:#b45309; --warn-soft:#fdf3e3;
+  --shadow:0 1px 2px rgba(16,24,40,.04),0 4px 16px rgba(16,24,40,.05);
+}
+body.dark{
+  --bg:#0e1014; --surface:#171a20; --surface-2:#1e222a; --border:#2a2f39;
+  --text:#e8eaee; --muted:#a2a9b5; --faint:#6f7783;
+  --accent:#3fbfae; --accent-soft:#12332f; --accent-text:#6fd6c6;
+  --warn:#e0a34f; --warn-soft:#2e2415;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 20px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Helvetica Neue",Arial,sans-serif;
+  font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased;
+  transition:background .25s,color .25s;
+}
+body.lang-zh .en, body.lang-en .zh{display:none}
+body.lang-zh .en-inline, body.lang-en .zh-inline{display:none}
+.en-inline,.zh-inline{display:inline}
+
+/* ---------- top bar ---------- */
+header.bar{
+  position:sticky; top:0; z-index:50;
+  background:color-mix(in srgb,var(--surface) 88%,transparent);
+  backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+.bar-in{max-width:920px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px}
+.brand{font-weight:700;font-size:14px;letter-spacing:.02em;white-space:nowrap}
+.brand span{color:var(--accent)}
+.bar-sp{flex:1}
+.btn{
+  border:1px solid var(--border); background:var(--surface-2); color:var(--text);
+  border-radius:999px; padding:5px 12px; font-size:13px; font-weight:600;
+  cursor:pointer; font-family:inherit; transition:.15s; white-space:nowrap;
+}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.seg{display:flex;border:1px solid var(--border);border-radius:999px;overflow:hidden;background:var(--surface-2)}
+.seg button{
+  border:0;background:transparent;color:var(--muted);font-family:inherit;
+  padding:5px 13px;font-size:13px;font-weight:600;cursor:pointer;transition:.15s
+}
+.seg button.on{background:var(--accent);color:#fff}
+
+/* ---------- layout ---------- */
+main{max-width:920px;margin:0 auto;padding:0 20px 90px}
+.hero{padding:44px 0 28px;border-bottom:1px solid var(--border)}
+.kicker{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+h1{font-size:clamp(27px,5vw,40px);line-height:1.22;margin:0 0 8px;letter-spacing:-.02em;font-weight:750}
+.dateline{color:var(--faint);font-size:14px;margin-bottom:22px}
+.lede{
+  font-size:17px;line-height:1.7;color:var(--text);
+  background:var(--accent-soft);border-left:3px solid var(--accent);
+  padding:16px 18px;border-radius:0 10px 10px 0;margin:0;
+}
+nav.toc{
+  display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 0;
+}
+nav.toc a{
+  font-size:13px;font-weight:600;text-decoration:none;color:var(--muted);
+  border:1px solid var(--border);border-radius:999px;padding:5px 13px;background:var(--surface);
+  transition:.15s
+}
+nav.toc a:hover{color:var(--accent);border-color:var(--accent)}
+
+section{padding:44px 0 8px;scroll-margin-top:64px}
+h2{
+  font-size:13px;font-weight:750;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--accent);margin:0 0 6px;
+}
+.sec-title{font-size:clamp(21px,3.4vw,27px);margin:0 0 24px;letter-spacing:-.015em;font-weight:720;line-height:1.3}
+
+/* ---------- story cards ---------- */
+.card{
+  background:var(--surface);border:1px solid var(--border);border-radius:14px;
+  padding:22px 24px;margin-bottom:16px;box-shadow:var(--shadow);
+}
+.card h3{margin:0 0 10px;font-size:18px;line-height:1.45;letter-spacing:-.01em;font-weight:700}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.tag{
+  font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  padding:3px 9px;border-radius:5px;background:var(--surface-2);color:var(--muted);border:1px solid var(--border)
+}
+.tag.hot{background:var(--accent-soft);color:var(--accent-text);border-color:transparent}
+.tag.reg{background:var(--warn-soft);color:var(--warn);border-color:transparent}
+.row{display:flex;gap:12px;margin:11px 0;align-items:flex-start}
+.row .lab{
+  flex:0 0 84px;font-size:11px;font-weight:750;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--faint);padding-top:5px
+}
+.row .val{flex:1;margin:0;font-size:15px;line-height:1.7;color:var(--text)}
+.src{margin-top:14px;padding-top:12px;border-top:1px dashed var(--border);font-size:13px;color:var(--faint)}
+.src a{color:var(--accent);text-decoration:none;font-weight:600}
+.src a:hover{text-decoration:underline}
+
+/* ---------- misc blocks ---------- */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px 24px;box-shadow:var(--shadow)}
+.panel h3{margin:0 0 4px;font-size:18px;font-weight:700}
+.panel .sub{font-size:13px;color:var(--faint);margin:0 0 14px}
+.panel p{font-size:15px;line-height:1.72;margin:0 0 12px}
+.panel p:last-child{margin-bottom:0}
+ul.clean{margin:0;padding-left:19px}
+ul.clean li{font-size:15px;line-height:1.72;margin-bottom:9px}
+ul.clean li:last-child{margin-bottom:0}
+.pro{color:var(--accent-text);font-weight:700}
+body.dark .pro{color:var(--accent)}
+.con{color:var(--warn);font-weight:700}
+
+table{width:100%;border-collapse:collapse;font-size:14.5px;margin:0}
+.tbl-wrap{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow-x:auto;box-shadow:var(--shadow)}
+th{
+  text-align:left;padding:12px 16px;font-size:11px;font-weight:750;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--faint);border-bottom:1px solid var(--border);white-space:nowrap
+}
+td{padding:13px 16px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.6}
+tr:last-child td{border-bottom:0}
+td strong{font-weight:700}
+
+ol.reading{margin:0;padding-left:0;list-style:none;counter-reset:r}
+ol.reading li{
+  counter-increment:r;position:relative;padding:16px 0 16px 44px;border-bottom:1px solid var(--border)
+}
+ol.reading li:last-child{border-bottom:0;padding-bottom:0}
+ol.reading li::before{
+  content:counter(r);position:absolute;left:0;top:17px;
+  width:26px;height:26px;border-radius:50%;background:var(--accent-soft);color:var(--accent-text);
+  font-size:12px;font-weight:750;display:flex;align-items:center;justify-content:center
+}
+body.dark ol.reading li::before{color:var(--accent)}
+ol.reading a{color:var(--text);text-decoration:none;font-weight:700;font-size:15.5px;line-height:1.5}
+ol.reading a:hover{color:var(--accent)}
+ol.reading .why{margin:5px 0 0;font-size:14px;color:var(--muted);line-height:1.65}
+
+ol.refs{margin:0;padding-left:22px;font-size:13.5px;line-height:1.85;color:var(--muted)}
+ol.refs li{margin-bottom:9px}
+ol.refs a{color:var(--accent);text-decoration:none;word-break:break-word}
+ol.refs a:hover{text-decoration:underline}
+
+.note{
+  background:var(--warn-soft);border:1px solid transparent;border-left:3px solid var(--warn);
+  border-radius:0 10px 10px 0;padding:14px 18px;font-size:14px;color:var(--text);line-height:1.7;margin-top:18px
+}
+/* --- GitHub 星星徽章 + 頁尾社群連結 --- */
+.gh-star{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--border);
+  background:var(--surface-2);color:var(--muted);border-radius:999px;padding:5px 10px;
+  font-size:13px;font-weight:700;text-decoration:none;font-variant-numeric:tabular-nums;
+  transition:.15s;white-space:nowrap}
+.gh-star:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+.gh-star svg{width:15px;height:15px;fill:currentColor;flex:none;display:block}
+.gh-star .st{color:#e3a008}
+.gh-star b{font-weight:700;min-width:1ch;font-size:12.5px}
+.foot-row{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.foot-row>div:first-child{flex:1 1 320px;min-width:0}
+.social{display:flex;gap:9px;align-items:center;flex:none}
+.social a{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;
+  border:1px solid var(--border);background:var(--surface-2);color:var(--muted);
+  border-radius:999px;transition:.15s;text-decoration:none}
+.social a:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);
+  transform:translateY(-1px)}
+.social svg{width:16px;height:16px;fill:currentColor;display:block}
+@media(max-width:430px){.gh-star b{display:none}.gh-star{padding:5px 9px;gap:4px}}
+a.brand{color:inherit;text-decoration:none;transition:.15s;cursor:pointer}
+a.brand:hover{opacity:.72}
+a.brand:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:5px}
+
+.fabs{position:fixed;right:20px;bottom:20px;display:flex;flex-direction:column;gap:10px;z-index:40}
+.home-fab{display:flex;align-items:center;justify-content:center;width:42px;height:42px;
+  border-radius:50%;border:1px solid var(--border);background:var(--surface);color:var(--muted);
+  box-shadow:var(--shadow);text-decoration:none;transition:.15s}
+.home-fab:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+.home-fab:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.home-fab svg{width:18px;height:18px;fill:currentColor;display:block}
+footer{
+  margin-top:56px;padding-top:24px;border-top:1px solid var(--border);
+  font-size:13px;color:var(--faint);line-height:1.8
+}
+.up{
+  position:static;width:42px;height:42px;border-radius:50%;
+  border:1px solid var(--border);background:var(--surface);color:var(--muted);
+  cursor:pointer;font-size:17px;box-shadow:var(--shadow);display:none;z-index:40
+}
+.up.show{display:block}
+@media(max-width:700px){
+  .grid2{grid-template-columns:1fr}
+  .row{flex-direction:column;gap:2px}
+  .row .lab{flex:none;padding-top:0}
+  .bar-in{padding:9px 14px;gap:8px}
+  .brand{font-size:12.5px}
+  main{padding:0 15px 80px}
+  .card,.panel{padding:18px}
+}
+</style>
+</head>
+
+<body class="lang-zh">
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span><span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <div class="bar-sp"></div>
+    <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub / 在 GitHub 給這個專案一顆星"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
+    <div class="seg">
+      <button id="b-zh" class="on" onclick="setLang('zh')">中文</button>
+      <button id="b-en" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
+  </div>
+</header>
+
+<main>
+
+<div class="hero">
+  <div class="kicker">
+    <span class="zh-inline">星期二 · 產業與商業動向</span>
+    <span class="en-inline">Tuesday · Industry &amp; Business</span>
+  </div>
+  <h1>
+    <span class="zh">錢變少、但每一張支票變大</span>
+    <span class="en">Fewer cheques, bigger cheques</span>
+  </h1>
+  <div class="dateline">
+    <span class="zh-inline">2026 年 8 月 18 日（二）· 涵蓋 8/4–8/18 · 台北時間</span>
+    <span class="en-inline">Tuesday, August 18, 2026 · Covering Aug 4–18 · Taipei time</span>
+  </div>
+  <p class="lede">
+    <span class="zh">今年醫療 AI 的資本市場出現一個很矛盾的畫面：<a href="https://hitconsultant.net/2026/07/30/cb-insights-q2-2026-state-of-digital-health-report/" target="_blank" rel="noopener">CB Insights 統計 2026 年第二季數位健康只成交 228 件、是十多年來最少</a>，總額 57 億美元季減 24%；但同一份報告裡，<strong>交易中位數卻從 2025 年的 500 萬美元跳到 770 萬美元、年內成長 54%</strong>。<a href="https://www.fiercehealthcare.com/digital-health/digital-health-brought-74b-vc-funding-ai-powered-rebound-fuels-market" target="_blank" rel="noopener">Rock Health 的上半年數字也指向同一件事</a>：74 億美元、244 件，其中 20 筆百萬美元級大案就吃掉 45% 的資本。錢沒有變少，是願意收錢的名單變短了。本週最能說明這個轉折的三件事：<a href="https://www.fiercehealthcare.com/finance/universal-health-services-closes-835m-talkspace-acquisition" target="_blank" rel="noopener">UHS 以 8.35 億美元完成 Talkspace 收購（8/17 交割）</a>、<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-expands-ai-decision-support-more-clinicians-bid-become-healthcares" target="_blank" rel="noopener">Abridge 把臨床決策支援推進到 300 家以上醫療體系</a>，以及韓國 <a href="https://en.sedaily.com/finance/2026/08/11/lunit-posts-record-first-half-revenue-of-458-billion-won" target="_blank" rel="noopener">Lunit 上半年營收 457.7 億韓元創新高、營業虧損收斂 31%</a>——三者共通的訊號都是：投資人現在買的不是「有 AI」，是「證明得出來的營收與留存」。</span>
+    <span class="en">Health AI's capital markets are showing a contradictory picture this year. <a href="https://hitconsultant.net/2026/07/30/cb-insights-q2-2026-state-of-digital-health-report/" target="_blank" rel="noopener">CB Insights counted just 228 digital health deals in Q2 2026 — the fewest in over a decade</a>, with $5.7B in equity funding, down 24% quarter on quarter. Yet in the same report the <strong>median deal size jumped from $5.0M in 2025 to $7.7M, up 54% year to date</strong>. <a href="https://www.fiercehealthcare.com/digital-health/digital-health-brought-74b-vc-funding-ai-powered-rebound-fuels-market" target="_blank" rel="noopener">Rock Health's H1 numbers point the same way</a>: $7.4B across 244 deals, with 20 megadeals absorbing 45% of all capital. The money hasn't shrunk — the list of companies allowed to take it has. Three items this week capture the turn: <a href="https://www.fiercehealthcare.com/finance/universal-health-services-closes-835m-talkspace-acquisition" target="_blank" rel="noopener">UHS closing its $835M Talkspace acquisition on Aug 17</a>, <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-expands-ai-decision-support-more-clinicians-bid-become-healthcares" target="_blank" rel="noopener">Abridge pushing clinical decision support to 300+ health systems</a>, and Korea's <a href="https://en.sedaily.com/finance/2026/08/11/lunit-posts-record-first-half-revenue-of-458-billion-won" target="_blank" rel="noopener">Lunit posting record H1 revenue of 45.77 billion won with operating losses down 31%</a>. What investors are buying now is not "we have AI" — it is revenue and retention they can audit.</span>
+  </p>
+
+  <nav class="toc">
+    <a href="#top"><span class="zh-inline">重點新聞</span><span class="en-inline">Top Stories</span></a>
+    <a href="#product"><span class="zh-inline">產品分析</span><span class="en-inline">Product Analysis</span></a>
+    <a href="#company"><span class="zh-inline">公司與競爭</span><span class="en-inline">Companies &amp; Competition</span></a>
+    <a href="#taiwan"><span class="zh-inline">台灣視角</span><span class="en-inline">Taiwan Angle</span></a>
+    <a href="#reading"><span class="zh-inline">延伸閱讀</span><span class="en-inline">Further Reading</span></a>
+    <a href="#refs"><span class="zh-inline">參考文獻</span><span class="en-inline">References</span></a>
+  </nav>
+</div>
+
+<!-- ============ TOP STORIES ============ -->
+<section id="top">
+  <h2>01 — Top Stories</h2>
+  <div class="sec-title">
+    <span class="zh">本週產業與資本的 8 則重點</span>
+    <span class="en">Eight things in health-AI business this week</span>
+  </div>
+
+  <!-- 1 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">併購交割</span><span class="en-inline">M&amp;A closed</span></span>
+      <span class="tag">UHS</span><span class="tag">Talkspace</span><span class="tag">$835M</span><span class="tag">8/17</span>
+    </div>
+    <h3>
+      <span class="zh">Universal Health Services 完成 8.35 億美元收購 Talkspace：實體醫院把虛擬行為健康買進門</span>
+      <span class="en">Universal Health Services closes its $835M Talkspace acquisition</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">美國最大精神／行為健康醫院集團之一 UHS 於 8 月 17 日完成對線上心理治療平台 Talkspace 的全現金收購，<a href="https://www.fiercehealthcare.com/finance/universal-health-services-closes-835m-talkspace-acquisition" target="_blank" rel="noopener">每股 5.25 美元、總對價 8.35 億美元，以舉債支應</a>；本案 2026 年 3 月宣布、8 月 17 日交割。Talkspace 2025 年營收 2.29 億美元、淨利 480 萬美元、調整後 EBITDA 1,580 萬美元，擁有 6,000 名以上臨床人員網絡，可觸及超過 2 億名商保、Medicare 與雇主計畫的納保人。交易後 Talkspace 成為全資子公司，但保留品牌與組織架構。</span>
+        <span class="en">UHS, one of the largest US behavioral health hospital operators, completed its all-cash purchase of online therapy platform Talkspace on Aug 17 — <a href="https://www.fiercehealthcare.com/finance/universal-health-services-closes-835m-talkspace-acquisition" target="_blank" rel="noopener">$5.25 per share, $835M total, debt-financed</a>. The deal was announced in March 2026 and closed Aug 17. Talkspace posted 2025 revenue of $229M, net income of $4.8M and adjusted EBITDA of $15.8M, with a network of 6,000+ clinicians reaching 200M+ covered lives across commercial, Medicare and employer plans. It becomes a wholly owned subsidiary while keeping its brand and structure.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這是數位健康「被實體照護體系整編」的標準劇本，也是這一年估值重設後最清楚的一次定價。UHS 財務長 Steve Filton 把它形容為在集團 30 家急性醫院與 380 家以上住院型行為健康機構之上、建立門診行為健康版圖的「加速器」（<a href="https://www.fiercehealthcare.com/finance/universal-health-services-closes-835m-talkspace-acquisition" target="_blank" rel="noopener">Fierce Healthcare</a>）。值得注意的是，買方看中的是<strong>納保人觸及與臨床人力網絡</strong>，不是演算法——這正是 <a href="https://www.healthcaredive.com/news/health-services-ma-active-deal-volume-down-reimbusement-uncertainty-pwc/823338/" target="_blank" rel="noopener">PwC 在 2026 年健康服務併購報告裡點出的「試點階段的宣稱不再撐得起估值溢價」</a>的具體體現。</span>
+        <span class="en">This is the canonical script for digital health being absorbed into physical care delivery, and the cleanest price point since valuations reset. UHS CFO Steve Filton called it an "accelerant" for building outpatient behavioral presence on top of the group's 30 acute hospitals and 380+ inpatient behavioral facilities (<a href="https://www.fiercehealthcare.com/finance/universal-health-services-closes-835m-talkspace-acquisition" target="_blank" rel="noopener">Fierce Healthcare</a>). Note what the buyer paid for: <strong>covered-life reach and a clinician network</strong>, not an algorithm — exactly the dynamic <a href="https://www.healthcaredive.com/news/health-services-ma-active-deal-volume-down-reimbusement-uncertainty-pwc/823338/" target="_blank" rel="noopener">PwC flagged in its 2026 health services M&amp;A work, where "pilot-stage claims no longer justify valuation uplift"</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">公司與產品</span><span class="en-inline">Players</span></div>
+      <p class="val">
+        <span class="zh">買方 Universal Health Services（NYSE: UHS）；標的 Talkspace（原 NASDAQ: TALK）。同期健康服務併購的宏觀背景：<a href="https://www.healthcaredive.com/news/health-services-ma-active-deal-volume-down-reimbusement-uncertainty-pwc/823338/" target="_blank" rel="noopener">PwC 統計 2026 Q1 交易金額 180 億美元、Q2 截至 5 月底 110 億美元，皆高於 2025 年同期，但件數持續下滑</a>。</span>
+        <span class="en">Buyer: Universal Health Services (NYSE: UHS). Target: Talkspace (formerly NASDAQ: TALK). Macro backdrop: <a href="https://www.healthcaredive.com/news/health-services-ma-active-deal-volume-down-reimbusement-uncertainty-pwc/823338/" target="_blank" rel="noopener">PwC counted $18B of health services M&amp;A value in Q1 2026 and $11B in Q2 through May 31, both above the same 2025 quarters — on falling deal counts</a>.</span>
+      </p></div>
+    <div class="src">
+      <span class="zh-inline">來源：</span><span class="en-inline">Sources: </span>
+      <a href="https://www.fiercehealthcare.com/finance/universal-health-services-closes-835m-talkspace-acquisition" target="_blank" rel="noopener">Fierce Healthcare · Aug 17, 2026</a> ·
+      <a href="https://www.healthcaredive.com/news/health-services-ma-active-deal-volume-down-reimbusement-uncertainty-pwc/823338/" target="_blank" rel="noopener">Healthcare Dive / PwC</a>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">競爭態勢</span><span class="en-inline">Competition</span></span>
+      <span class="tag">Abridge</span><span class="tag">OpenEvidence</span><span class="tag">CDS</span><span class="tag">8/17</span>
+    </div>
+    <h3>
+      <span class="zh">Abridge 從環境語音病歷跨進臨床決策支援：300 家醫療體系、查詢量兩個月內成長三倍</span>
+      <span class="en">Abridge crosses from ambient scribing into decision support: 300+ health systems, queries up 3x in two months</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">環境語音病歷（ambient scribe）龍頭 Abridge 揭露其臨床決策支援（CDS）產品自 2026 年 4 月推出後，<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-expands-ai-decision-support-more-clinicians-bid-become-healthcares" target="_blank" rel="noopener">已部署到 300 家以上企業級醫療體系，覆蓋 2.5 億名病人、每年 1 億場以上臨床對話</a>。<strong>超過半數符合資格的臨床醫師已是 CDS 月活用戶，人均查詢量在過去兩個月成長三倍</strong>；Duke Health 單一體系就有約 2,000 位醫師在用。內容來源為 UpToDate 授權合作，並整合 NEJM 與 JAMA。已具名客戶包括 Kaiser Permanente、Sutter Health、UNC Health、CHRISTUS Health 與 UPMC。執行長 Shiv Rao 表示：「決策支援的採用速度超過我們出過的任何產品。」</span>
+        <span class="en">Ambient-scribe leader Abridge disclosed that its clinical decision support product, launched in April 2026, has <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-expands-ai-decision-support-more-clinicians-bid-become-healthcares" target="_blank" rel="noopener">reached 300+ enterprise health systems covering 250M+ patients and 100M+ clinical conversations a year</a>. <strong>More than half of eligible clinicians are now monthly active CDS users, and queries per clinician have tripled in the past two months</strong>; Duke Health alone has roughly 2,000 clinicians on it. Content comes through a UpToDate partnership plus NEJM and JAMA integrations. Named customers include Kaiser Permanente, Sutter Health, UNC Health, CHRISTUS Health and UPMC. CEO Shiv Rao: "Adoption of decision support has outpaced anything we've shipped before."</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這是本週最重要的競爭訊號。環境語音病歷已經是紅海——本週同一份 Fierce 週報就記載 <a href="https://www.fiercehealthcare.com/health-tech/weekly-rundown-us-news-world-report-debuts-glp-1-telehealth-platform-rankings-chai" target="_blank" rel="noopener">Teladoc 把 Suki 的環境臨床 AI 直接嵌進 Solo 虛擬照護平台，並延伸到虛擬護理的入出院流程</a>，同時 <a href="https://www.fiercehealthcare.com/health-tech/weekly-rundown-us-news-world-report-debuts-glp-1-telehealth-platform-rankings-chai" target="_blank" rel="noopener">athenahealth 也把 AI 原生的臨床病歷能力擴展到 athenaOne 的 17 萬名以上醫師網絡</a>。Abridge 的解法是往上游走：用已經拿到的錄音入口去搶 <a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openevidence-weighs-200m-funding-round-at-20b-valuation-report/" target="_blank" rel="noopener">OpenEvidence（86 萬名以上美國執業臨床醫師、年化營收約 3 億美元）</a>的決策支援地盤。分銷通路 vs. 醫師心占率，是接下來 12 個月最值得追的一場對決。</span>
+        <span class="en">This is the week's most important competitive signal. Ambient scribing is now a red ocean — the same Fierce weekly rundown records <a href="https://www.fiercehealthcare.com/health-tech/weekly-rundown-us-news-world-report-debuts-glp-1-telehealth-platform-rankings-chai" target="_blank" rel="noopener">Teladoc embedding Suki's ambient clinical AI directly into its Solo Virtual Care Platform, extending into virtual nursing admission and discharge workflows</a>, while <a href="https://www.fiercehealthcare.com/health-tech/weekly-rundown-us-news-world-report-debuts-glp-1-telehealth-platform-rankings-chai" target="_blank" rel="noopener">athenahealth pushed AI-native clinical encounter capability across athenaOne's 170,000+ provider network</a>. Abridge's answer is to move upstream: use the microphone it already owns to attack <a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openevidence-weighs-200m-funding-round-at-20b-valuation-report/" target="_blank" rel="noopener">OpenEvidence's turf (860,000+ licensed US clinicians, roughly $300M annualised revenue)</a>. Distribution versus clinician mindshare is the fight worth watching for the next 12 months.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">公司與產品</span><span class="en-inline">Players</span></div>
+      <p class="val">
+        <span class="zh">Abridge（CDS + 環境語音病歷）· <a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openevidence-weighs-200m-funding-round-at-20b-valuation-report/" target="_blank" rel="noopener">OpenEvidence（2026/1 完成 2.5 億美元 D 輪、估值 120 億美元，由 Thrive Capital 與 DST Global 領投）</a>· Wolters Kluwer UpToDate（內容供應）· <a href="https://www.fiercehealthcare.com/health-tech/weekly-rundown-us-news-world-report-debuts-glp-1-telehealth-platform-rankings-chai" target="_blank" rel="noopener">Suki × Teladoc、athenahealth</a>。</span>
+        <span class="en">Abridge (CDS + ambient scribing) · <a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openevidence-weighs-200m-funding-round-at-20b-valuation-report/" target="_blank" rel="noopener">OpenEvidence (a $250M Series D in Jan 2026 at a $12B valuation, led by Thrive Capital and DST Global)</a> · Wolters Kluwer's UpToDate as content supplier · <a href="https://www.fiercehealthcare.com/health-tech/weekly-rundown-us-news-world-report-debuts-glp-1-telehealth-platform-rankings-chai" target="_blank" rel="noopener">Suki × Teladoc and athenahealth</a>.</span>
+      </p></div>
+    <div class="src">
+      <span class="zh-inline">來源：</span><span class="en-inline">Sources: </span>
+      <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-expands-ai-decision-support-more-clinicians-bid-become-healthcares" target="_blank" rel="noopener">Fierce Healthcare · Aug 17, 2026</a> ·
+      <a href="https://www.fiercehealthcare.com/health-tech/weekly-rundown-us-news-world-report-debuts-glp-1-telehealth-platform-rankings-chai" target="_blank" rel="noopener">Fierce Weekly Rundown · Aug 14</a> ·
+      <a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openevidence-weighs-200m-funding-round-at-20b-valuation-report/" target="_blank" rel="noopener">Becker's · OpenEvidence</a>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">市場數據</span><span class="en-inline">Market data</span></span>
+      <span class="tag">CB Insights</span><span class="tag">Rock Health</span><span class="tag">Q2 2026</span>
+    </div>
+    <h3>
+      <span class="zh">數位健康交易件數跌到十年新低，中位金額卻年內漲 54%：資本正在做一次殘酷的挑揀</span>
+      <span class="en">Deal counts hit a decade low while median size climbs 54%: capital is doing a brutal sort</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh"><a href="https://hitconsultant.net/2026/07/30/cb-insights-q2-2026-state-of-digital-health-report/" target="_blank" rel="noopener">CB Insights《State of Digital Health Q2 2026》顯示：228 件交易、季減 36%，比 2022 年第二季的 688 件少了 67%，是十多年來最低</a>；股權募資總額 57 億美元、季減 24%。但<strong>中位交易金額 770 萬美元，較 2025 年的 500 萬美元成長 54%</strong>（早期中位 480 萬、後期中位 5,000 萬）。併購出場 47 件，低於 2025 年第三季的 68 件。單季最大兩筆為 <strong>Isomorphic Labs 的 21 億美元 B 輪</strong>（獨佔全季資金 37%）與 <strong>Chai Discovery 的 4 億美元 C 輪</strong>；最大併購為 Celerion／Thomas H. Lee Partners 18 億美元與 Eucalyptus／Hims 12 億美元。</span>
+        <span class="en"><a href="https://hitconsultant.net/2026/07/30/cb-insights-q2-2026-state-of-digital-health-report/" target="_blank" rel="noopener">CB Insights' State of Digital Health Q2 2026 counts 228 deals, down 36% QoQ and 67% from Q2 2022's 688 — the fewest in over a decade</a>, on $5.7B of equity funding, down 24% QoQ. But the <strong>median deal size is $7.7M, up 54% from $5.0M in 2025</strong> (early-stage median $4.8M, late-stage median $50M). M&amp;A exits fell to 47 from 68 in Q3 2025. The quarter's two largest rounds were <strong>Isomorphic Labs' $2.1B Series B</strong> — 37% of all funding in the quarter by itself — and <strong>Chai Discovery's $400M Series C</strong>; largest M&amp;A were Celerion/Thomas H. Lee Partners at $1.8B and Eucalyptus/Hims at $1.2B.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">兩份主要報告的口徑不同但結論一致。<a href="https://www.fiercehealthcare.com/digital-health/digital-health-brought-74b-vc-funding-ai-powered-rebound-fuels-market" target="_blank" rel="noopener">Rock Health 統計 2026 上半年美國數位健康創投 74 億美元、244 件（Q1 42 億、Q2 32 億），較 2025 上半年的 64 億成長</a>；其中<strong>20 筆百萬美元級大案分布在 19 家公司，吃掉 45% 的資本——8% 的交易拿走近一半的錢</strong>。點名的大案包括 Whoop 5.75 億、Verily 3 億、OpenEvidence 2.5 億、Talkiatry 2.1 億、eMed 2 億、Forus 1.6 億、Aidoc 1.5 億、Grow Therapy 1.5 億。Rock Health 直接把投資人的提問變化寫進報告：從「誰有 AI」變成「<strong>誰擁有 AI 單獨給不了的東西</strong>」。對台灣與亞洲的中小型醫療 AI 團隊，這意味著純模型能力已不再是募資敘事，資料權、通路權與給付路徑才是。</span>
+        <span class="en">The two main trackers use different scopes but land in the same place. <a href="https://www.fiercehealthcare.com/digital-health/digital-health-brought-74b-vc-funding-ai-powered-rebound-fuels-market" target="_blank" rel="noopener">Rock Health puts US digital health VC at $7.4B across 244 deals in H1 2026 ($4.2B in Q1, $3.2B in Q2), up from $6.4B in H1 2025</a> — with <strong>20 megadeals across 19 companies taking 45% of all capital, meaning 8% of deals absorbed nearly half the money</strong>. Named megadeals: Whoop $575M, Verily $300M, OpenEvidence $250M, Talkiatry $210M, eMed $200M, Forus $160M, Aidoc $150M, Grow Therapy $150M. Rock Health writes the change in investor questioning straight into the report: from "who has AI?" to "<strong>who has something AI alone can't provide?</strong>" For smaller Asian and Taiwanese teams, that means raw model capability is no longer a fundraising story — data rights, distribution and a reimbursement path are.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">公司與產品</span><span class="en-inline">Players</span></div>
+      <p class="val">
+        <span class="zh">報告方：<a href="https://hitconsultant.net/2026/07/30/cb-insights-q2-2026-state-of-digital-health-report/" target="_blank" rel="noopener">CB Insights</a>、<a href="https://rockhealth.com/insights/h1-2026-funding-and-market-overview-durable-roots-shifting-routes/" target="_blank" rel="noopener">Rock Health（H1 2026 原始分析）</a>、<a href="https://www.healthcaredive.com/news/health-services-ma-active-deal-volume-down-reimbusement-uncertainty-pwc/823338/" target="_blank" rel="noopener">PwC 健康服務併購</a>。</span>
+        <span class="en">Publishers: <a href="https://hitconsultant.net/2026/07/30/cb-insights-q2-2026-state-of-digital-health-report/" target="_blank" rel="noopener">CB Insights</a>, <a href="https://rockhealth.com/insights/h1-2026-funding-and-market-overview-durable-roots-shifting-routes/" target="_blank" rel="noopener">Rock Health's own H1 2026 write-up</a>, and <a href="https://www.healthcaredive.com/news/health-services-ma-active-deal-volume-down-reimbusement-uncertainty-pwc/823338/" target="_blank" rel="noopener">PwC on health services M&amp;A</a>.</span>
+      </p></div>
+    <div class="src">
+      <span class="zh-inline">來源：</span><span class="en-inline">Sources: </span>
+      <a href="https://hitconsultant.net/2026/07/30/cb-insights-q2-2026-state-of-digital-health-report/" target="_blank" rel="noopener">HIT Consultant / CB Insights · Jul 30</a> ·
+      <a href="https://www.fiercehealthcare.com/digital-health/digital-health-brought-74b-vc-funding-ai-powered-rebound-fuels-market" target="_blank" rel="noopener">Fierce Healthcare / Rock Health · Jul 13</a> ·
+      <a href="https://rockhealth.com/insights/h1-2026-funding-and-market-overview-durable-roots-shifting-routes/" target="_blank" rel="noopener">Rock Health</a>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">大型募資</span><span class="en-inline">Mega round</span></span>
+      <span class="tag">Databricks</span><span class="tag">$5B</span><span class="tag">$190B</span><span class="tag">8/14</span>
+    </div>
+    <h3>
+      <span class="zh">Databricks 以 1,900 億美元估值完成 50 億美元策略性募資，醫療與生命科學是點名的核心垂直</span>
+      <span class="en">Databricks closes $5B at a $190B valuation, with healthcare and life sciences a named core vertical</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh"><a href="https://www.mobihealthnews.com/news/databricks-closes-5b-strategic-funding-190b-valuation" target="_blank" rel="noopener">Databricks 完成 50 億美元募資，投後估值 1,900 億美元</a>，由 Coatue 領投，Blackstone、MGX、T. Rowe Price、Sixth Street Growth 參與，既有股東 Andreessen Horowitz 與 Goldman Sachs Alternatives 續投。公司揭露<strong>年化營收執行率超過 70 億美元、年增超過 80%</strong>。醫療與生命科學被列為核心垂直之一，主打訴求是在企業私有資料上跑代理式 AI（agentic AI），同時控制成本與治理。</span>
+        <span class="en"><a href="https://www.mobihealthnews.com/news/databricks-closes-5b-strategic-funding-190b-valuation" target="_blank" rel="noopener">Databricks closed a $5B round at a $190B post-money valuation</a>, led by Coatue with Blackstone, MGX, T. Rowe Price and Sixth Street Growth, alongside existing backers Andreessen Horowitz and Goldman Sachs Alternatives. The company disclosed a <strong>revenue run-rate above $7B, growing more than 80% year over year</strong>. Healthcare and life sciences is one of its named core verticals; the pitch is agentic AI over private enterprise data with cost control and governance.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">醫療 AI 的價值鏈正在分層：應用層（Abridge、OpenEvidence）搶醫師時間，<strong>基礎設施層搶的是醫院的資料落地位置</strong>。醫療體系導入 AI 最難的一段從來不是模型，而是把散在 EHR、影像 PACS、檢驗與計費系統裡的資料整理到同一個治理框架下——這正是 Databricks 的賣點，也是它能在醫療系統採購清單上站住的原因。同一週的 <a href="https://www.techtimes.com/articles/324677/20260817/south-korea-hospital-ai-gets-platform-fix-kt-snuh-sign-infrastructure-mou.htm" target="_blank" rel="noopener">KT 與首爾大學醫院簽署 AI 基礎建設 MOU 的報導引述業界數據指出，70–80% 的醫療 AI 試點在規模化前失敗，根因就是資料破碎</a>，可以對照著讀。</span>
+        <span class="en">Health AI's value chain is stratifying. The application layer (Abridge, OpenEvidence) competes for clinician minutes; <strong>the infrastructure layer competes for where hospital data lands</strong>. The hardest part of deploying AI in a health system has never been the model — it is getting data scattered across the EHR, PACS, lab and billing systems under one governance frame. That is Databricks' pitch and why it holds a place on health system purchasing lists. Read it alongside this week's <a href="https://www.techtimes.com/articles/324677/20260817/south-korea-hospital-ai-gets-platform-fix-kt-snuh-sign-infrastructure-mou.htm" target="_blank" rel="noopener">KT–Seoul National University Hospital infrastructure MOU, whose coverage cites industry data that 70–80% of hospital AI pilots fail before scaling, with data fragmentation as the root cause</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">公司與產品</span><span class="en-inline">Players</span></div>
+      <p class="val">
+        <span class="zh"><a href="https://www.mobihealthnews.com/news/databricks-closes-5b-strategic-funding-190b-valuation" target="_blank" rel="noopener">Databricks（Coatue 領投）</a>· 亞洲對應案例：<a href="https://www.techtimes.com/articles/324677/20260817/south-korea-hospital-ai-gets-platform-fix-kt-snuh-sign-infrastructure-mou.htm" target="_blank" rel="noopener">KT × 首爾大學醫院（SNUH），KT 負責從規劃、開發、驗證到商化的全生命週期，並參與韓國政府「AI Native Hospital」示範計畫，目標是可複製到 2029 年前 72 家公立醫院</a>。</span>
+        <span class="en"><a href="https://www.mobihealthnews.com/news/databricks-closes-5b-strategic-funding-190b-valuation" target="_blank" rel="noopener">Databricks, led by Coatue</a>. Asian counterpart: <a href="https://www.techtimes.com/articles/324677/20260817/south-korea-hospital-ai-gets-platform-fix-kt-snuh-sign-infrastructure-mou.htm" target="_blank" rel="noopener">KT × Seoul National University Hospital, where KT owns the full lifecycle from planning through commercialisation and joins Korea's "AI Native Hospital" pilot, aiming at a template replicable across 72 public hospitals by 2029</a>.</span>
+      </p></div>
+    <div class="src">
+      <span class="zh-inline">來源：</span><span class="en-inline">Sources: </span>
+      <a href="https://www.mobihealthnews.com/news/databricks-closes-5b-strategic-funding-190b-valuation" target="_blank" rel="noopener">MobiHealthNews · Aug 14, 2026</a> ·
+      <a href="https://www.techtimes.com/articles/324677/20260817/south-korea-hospital-ai-gets-platform-fix-kt-snuh-sign-infrastructure-mou.htm" target="_blank" rel="noopener">Tech Times · Aug 17, 2026</a>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">亞洲商業化</span><span class="en-inline">Asia</span></span>
+      <span class="tag">Lunit</span><span class="tag">KOSDAQ 328130</span><span class="tag">H1 2026</span><span class="tag">8/11</span>
+    </div>
+    <h3>
+      <span class="zh">Lunit 上半年營收 457.7 億韓元創新高、營業虧損收斂 31%：亞洲醫療 AI 首個可信的「損益兩平路徑」</span>
+      <span class="en">Lunit posts record H1 revenue of 45.77bn won with losses down 31% — Asia's first credible path to break-even</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">韓國醫療 AI 龍頭 Lunit（KOSDAQ: 328130）公布 2026 上半年合併<a href="https://en.sedaily.com/finance/2026/08/11/lunit-posts-record-first-half-revenue-of-458-billion-won" target="_blank" rel="noopener">營收 457.7 億韓元（約 3,300 萬美元），較去年同期 370.8 億韓元成長 23%，創歷史新高</a>；<strong>營業虧損自 419.1 億韓元收斂至 289.6 億韓元（減少 31%），EBITDA 虧損從 292.5 億降至 146.4 億韓元、幾乎腰斬</strong>。海外營收 434.3 億韓元、占比 95%，北美年增 30%。產品線拆解：癌症篩檢的 Lunit INSIGHT 貢獻 428.3 億韓元（年增 20%），AI 生物標記平台 Lunit SCOPE 為 29.3 億韓元、但<strong>年增 114%</strong>。公司維持 2026 全年 EBITDA 損益兩平目標（<a href="https://www.koreabiomed.com/news/articleView.html?idxno=32755" target="_blank" rel="noopener">Korea Biomedical Review</a>）。</span>
+        <span class="en">Korea's medical-AI leader Lunit (KOSDAQ: 328130) reported <a href="https://en.sedaily.com/finance/2026/08/11/lunit-posts-record-first-half-revenue-of-458-billion-won" target="_blank" rel="noopener">consolidated H1 2026 revenue of 45.77 billion won (about $33M), up 23% from 37.08 billion a year earlier and an all-time high</a>. <strong>Operating loss narrowed from 41.91bn to 28.96bn won (down 31%), and EBITDA loss roughly halved from 29.25bn to 14.64bn won.</strong> Overseas revenue was 43.43bn won, 95% of the total, with North America up 30%. By line: cancer-screening product Lunit INSIGHT contributed 42.83bn won (+20%), while the AI biomarker platform Lunit SCOPE was 2.93bn won but <strong>grew 114%</strong>. The company is holding its full-year 2026 EBITDA break-even target (<a href="https://www.koreabiomed.com/news/articleView.html?idxno=32755" target="_blank" rel="noopener">Korea Biomedical Review</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">影像 AI 這個賽道長年被質疑「有臨床價值、沒有商業模式」，Lunit 是目前少數把兩條曲線同時證明出來的公司：<strong>營收年增 23%、虧損同時縮 31%</strong>，而且 95% 營收來自海外，代表它不是靠本國政策採購撐起來的。更值得注意的是 SCOPE 的 114% 年增——生物標記平台賣的是藥廠而非醫院，客戶付款能力與單價都高一個量級，這條線若持續放大，會改寫市場對影像 AI 天花板的判斷。韓國政府同期也在下注：<a href="https://en.sedaily.com/finance/2026/08/04/korea-accelerates-medical-ai-commercialization-backing" target="_blank" rel="noopener">保健福祉部選出六個聯盟，每個兩年約 18 億韓元補助，專攻「取證後進不了健保」的斷層，Lunit 主導癌症診斷聯盟並以累積 25 萬筆真實世界資料為目標</a>。</span>
+        <span class="en">Imaging AI has long been accused of having clinical value but no business model. Lunit is one of very few companies proving both curves at once: <strong>revenue up 23% while losses shrank 31%</strong>, with 95% of revenue from overseas — so it is not being propped up by domestic policy procurement. The number to watch is SCOPE's 114% growth: a biomarker platform sells to pharma rather than hospitals, where willingness to pay and unit prices are an order of magnitude higher. If that line keeps compounding it rewrites the ceiling the market assigns to imaging AI. Korea's government is betting alongside: <a href="https://en.sedaily.com/finance/2026/08/04/korea-accelerates-medical-ai-commercialization-backing" target="_blank" rel="noopener">the Ministry of Health and Welfare picked six consortiums, each getting about 1.8bn won over two years, aimed squarely at the approval-to-reimbursement gap, with Lunit leading the cancer-diagnosis consortium and targeting 250,000 real-world data cases</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">公司與產品</span><span class="en-inline">Players</span></div>
+      <p class="val">
+        <span class="zh">Lunit INSIGHT（胸部 X 光／乳房攝影篩檢）、Lunit SCOPE（病理 AI 生物標記，客戶為藥廠）。<a href="https://en.sedaily.com/finance/2026/08/04/korea-accelerates-medical-ai-commercialization-backing" target="_blank" rel="noopener">同批韓國政府補助的還有 JLK（322510，腦梗塞）、Heuron（帕金森氏症）、Prevenotics（胃鏡）、Synergy AI（心律不整風險）、Mediwhale（視網膜影像評估心血管風險）</a>。</span>
+        <span class="en">Lunit INSIGHT (chest X-ray and mammography screening) and Lunit SCOPE (pathology AI biomarkers, sold to pharma). <a href="https://en.sedaily.com/finance/2026/08/04/korea-accelerates-medical-ai-commercialization-backing" target="_blank" rel="noopener">The same Korean programme also backs JLK (322510, stroke), Heuron (Parkinson's), Prevenotics (gastroscopy), Synergy AI (arrhythmia risk) and Mediwhale (retinal-image cardiovascular risk)</a>.</span>
+      </p></div>
+    <div class="src">
+      <span class="zh-inline">來源：</span><span class="en-inline">Sources: </span>
+      <a href="https://en.sedaily.com/finance/2026/08/11/lunit-posts-record-first-half-revenue-of-458-billion-won" target="_blank" rel="noopener">Seoul Economic Daily · Aug 11, 2026</a> ·
+      <a href="https://www.koreabiomed.com/news/articleView.html?idxno=32755" target="_blank" rel="noopener">Korea Biomedical Review</a> ·
+      <a href="https://en.sedaily.com/finance/2026/08/04/korea-accelerates-medical-ai-commercialization-backing" target="_blank" rel="noopener">Seoul Economic Daily · Aug 4</a>
+    </div>
+  </div>
+
+  <!-- 6 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">代理式 AI</span><span class="en-inline">Agentic AI</span></span>
+      <span class="tag">Hippocratic AI</span><span class="tag">Cedar</span><span class="tag">8/13–8/14</span>
+    </div>
+    <h3>
+      <span class="zh">代理式 AI 從展示走進帳單與電話：Hippocratic AI 推 30 種以上「協調者」、Cedar 推 Kora 收款平台</span>
+      <span class="en">Agentic AI moves into billing and phone calls: Hippocratic AI ships 30+ orchestrators, Cedar launches Kora</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">語音護理 AI 公司 Hippocratic AI（2025 年 11 月 1.26 億美元 C 輪後估值 35 億美元）<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/hippocratic-ai-rolls-out-agentic-orchestrators-coordinate-voice-ai-teams" target="_blank" rel="noopener">推出 30 種以上代理式「協調者」（orchestrators），以一層監督智慧去調度多個語音 AI 代理團隊</a>；其 Polaris 安全架構累計支援<strong>逾 2.5 億次病人互動</strong>，並由 7,700 位以上美國執業臨床人員驗證。同時，病人付費體驗公司 Cedar <a href="https://hitconsultant.net/2026/08/13/cedar-launches-kora-platform-agentic-patient-financial-engagement/" target="_blank" rel="noopener">發表 Kora Platform，由自主 AI 代理處理進線／外撥語音與中英雙語簡訊，涵蓋帳單說明、保險資料蒐集、Medicaid 註冊與拒付處理</a>。Cedar 揭露的早期成效：60 萬場以上病人對話、進線電話 40% 由 AI 完結、付款嘗試率較真人客服高 7.4%、外撥接通率 20%（業界平均四倍）、七日付款率相對提升 21%。</span>
+        <span class="en">Voice-nursing AI company Hippocratic AI — valued at $3.5B after a $126M Series C in November 2025 — <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/hippocratic-ai-rolls-out-agentic-orchestrators-coordinate-voice-ai-teams" target="_blank" rel="noopener">launched 30+ agentic "orchestrators" that coordinate teams of voice AI agents through a supervising intelligence layer</a>. Its Polaris safety architecture has now supported <strong>250M+ patient interactions</strong>, validated by 7,700+ licensed US clinicians. In parallel, patient-payments company Cedar <a href="https://hitconsultant.net/2026/08/13/cedar-launches-kora-platform-agentic-patient-financial-engagement/" target="_blank" rel="noopener">unveiled Kora Platform: autonomous agents handling inbound and outbound voice plus bilingual English/Spanish texting for balance explanations, insurance capture, Medicaid enrolment and denial resolution</a>. Cedar's early results: 600,000+ patient conversations, 40% inbound call containment, a 7.4% lift in payment attempts versus live agents, 20% outbound pickup (four times the industry average) and a 21% relative lift in seven-day payment rate.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這兩則是同一個商業論證的兩個版本：<strong>當 AI 的成效可以直接換算成現金流，採購決策就不需要 CIO 以外的人背書</strong>。Cedar 引用的產業背景是自費部位已占可收帳款約 40%，所以「多收到的錢」本身就是 ROI；Hippocratic 的付費方場景（會員上線、慢病管理、藥事、再入院預防）同理。執行長 Munjal Shah 一句「單點解決方案只能帶你到這裡」道出這波產品邏輯的轉向——從單一功能工具轉為可組合的代理團隊。相對地，<a href="https://technews.tw/2026/08/09/medical-ai-hidden-fatal-flaw/" target="_blank" rel="noopener">獨立評測 NOHARM 指出主流醫療 LLM 有 76.6% 的有害錯誤來自「資訊遺漏」而非事實錯誤</a>，代理層一多，這種錯誤的追溯難度會等比放大，是導入方該先問的問題。</span>
+        <span class="en">These are two versions of the same commercial argument: <strong>when AI performance converts directly into cash flow, the purchase no longer needs anyone beyond the CIO to sponsor it</strong>. Cedar's cited backdrop is that self-pay is now around 40% of collectible healthcare dollars, so "money actually collected" is the ROI. Hippocratic's payer use cases — member onboarding, chronic care management, pharmacy, readmission prevention — work the same way. CEO Munjal Shah's line that "point solutions will only get you so far" captures the product shift from single-function tools to composable agent teams. The counterweight: <a href="https://technews.tw/2026/08/09/medical-ai-hidden-fatal-flaw/" target="_blank" rel="noopener">the independent NOHARM evaluation found 76.6% of harmful errors in leading medical LLMs came from omission rather than false statements</a> — and the more agent layers you stack, the harder omissions are to trace. That is the question buyers should ask first.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">公司與產品</span><span class="en-inline">Players</span></div>
+      <p class="val">
+        <span class="zh">Hippocratic AI（Polaris 安全架構；<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/hippocratic-ai-rolls-out-agentic-orchestrators-coordinate-voice-ai-teams" target="_blank" rel="noopener">並與 WellSpan Health 擴大多年期合作，在賓州院區共同開發臨床 AI 代理</a>）· Cedar（<a href="https://hitconsultant.net/2026/08/13/cedar-launches-kora-platform-agentic-patient-financial-engagement/" target="_blank" rel="noopener">累計 15 億次病人互動、處理 136 億美元付款、服務 6,300 萬名以上病人</a>）· 同週還有 <a href="https://www.healthitanswers.net/health-it-business-news-august-13-2026/" target="_blank" rel="noopener">ModMed 推出專科診所 RCM AI 平台、Athelas 推出代理式 Practice Manager 套件</a>。</span>
+        <span class="en">Hippocratic AI (Polaris safety architecture; <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/hippocratic-ai-rolls-out-agentic-orchestrators-coordinate-voice-ai-teams" target="_blank" rel="noopener">it also expanded a multi-year partnership with WellSpan Health to co-develop clinical AI agents at a Pennsylvania campus</a>) · Cedar (<a href="https://hitconsultant.net/2026/08/13/cedar-launches-kora-platform-agentic-patient-financial-engagement/" target="_blank" rel="noopener">1.5B+ patient interactions, $13.6B in payments processed, 63M+ patients served</a>) · the same week also brought <a href="https://www.healthitanswers.net/health-it-business-news-august-13-2026/" target="_blank" rel="noopener">ModMed's RCM AI platform for specialty practices and Athelas' agentic Practice Manager suite</a>.</span>
+      </p></div>
+    <div class="src">
+      <span class="zh-inline">來源：</span><span class="en-inline">Sources: </span>
+      <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/hippocratic-ai-rolls-out-agentic-orchestrators-coordinate-voice-ai-teams" target="_blank" rel="noopener">Fierce Healthcare · Aug 14</a> ·
+      <a href="https://hitconsultant.net/2026/08/13/cedar-launches-kora-platform-agentic-patient-financial-engagement/" target="_blank" rel="noopener">HIT Consultant · Aug 13</a> ·
+      <a href="https://www.healthitanswers.net/health-it-business-news-august-13-2026/" target="_blank" rel="noopener">Health IT Answers · Aug 13</a>
+    </div>
+  </div>
+
+  <!-- 7 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="zh-inline">募資</span><span class="en-inline">Funding</span></span>
+      <span class="tag">Flagler $50M</span><span class="tag">Qureight $20M</span><span class="tag">Vexev $6M</span><span class="tag">8/11–8/14</span>
+    </div>
+    <h3>
+      <span class="zh">中段市場仍在成交：Flagler Health 5,000 萬美元 B 輪、歐洲六筆新輪次、Vexev 600 萬美元</span>
+      <span class="en">The mid-market is still clearing: Flagler's $50M Series B, six European rounds, Vexev's $6M</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">美國方面，肌肉骨骼（MSK）照護的 AI 原生作業系統 Flagler Health <a href="https://hitconsultant.net/2026/08/11/flagler-health-raises-50m-series-b-bessemer-ai-musculoskeletal-care/" target="_blank" rel="noopener">完成 5,000 萬美元 B 輪，由 Bessemer Venture Partners 領投，SignalFire、Alumni Ventures、Streamlined、186 Ventures、Proof VC、Tribeca Venture Partners、Offscript 參與，累計募資 6,300 萬美元</a>；產品嵌入既有 EMR 自動化分流、成效追蹤、照護管理、計費與溝通，宣稱覆蓋 36 州數千位醫師、每位醫師年增約 16.4 萬美元營收。歐洲方面，<a href="https://www.healthcare.digital/single-post/this-week-in-european-healthtech-medtech-and-health-ai-14th-august-2026" target="_blank" rel="noopener">本週一次出現六筆：英國 Qureight 2,000 萬美元 B 輪（臨床試驗影像基礎建設與生物標記分析）、荷蘭 Xeltis 2,050 萬歐元、西班牙 Onalabs 930 萬歐元 A 輪、瑞士 Ahead Health 870 萬歐元、比利時 Azalea Vision 750 萬歐元 EIC 補助／股權、德國 EVERSION 230 萬歐元種子</a>。澳洲 <a href="https://www.mobihealthnews.com/news/australian-vexev-raises-6m-bring-ai-robotic-vascular-ultrasound-us" target="_blank" rel="noopener">Vexev 募得 600 萬美元、累計 1,900 萬美元</a>，資金用於 VxWave 的 FDA 取證與美國量產。</span>
+        <span class="en">In the US, AI-native musculoskeletal care operating system Flagler Health <a href="https://hitconsultant.net/2026/08/11/flagler-health-raises-50m-series-b-bessemer-ai-musculoskeletal-care/" target="_blank" rel="noopener">closed a $50M Series B led by Bessemer Venture Partners, with SignalFire, Alumni Ventures, Streamlined, 186 Ventures, Proof VC, Tribeca Venture Partners and Offscript participating, taking total funding to $63M</a>. It embeds in existing EMRs to automate triage, outcome tracking, care management, billing and communications, claiming coverage of thousands of providers across 36+ states and an average $164,000 in added annual revenue per provider. In Europe, <a href="https://www.healthcare.digital/single-post/this-week-in-european-healthtech-medtech-and-health-ai-14th-august-2026" target="_blank" rel="noopener">six rounds landed in one week: the UK's Qureight raised a $20M Series B for AI imaging infrastructure and biomarker analysis in clinical trials; Netherlands-based Xeltis €20.5M; Spain's Onalabs €9.3M Series A; Switzerland's Ahead Health €8.7M; Belgium's Azalea Vision €7.5M in EIC grant and equity; Germany's EVERSION €2.3M seed</a>. Australia's <a href="https://www.mobihealthnews.com/news/australian-vexev-raises-6m-bring-ai-robotic-vascular-ultrasound-us" target="_blank" rel="noopener">Vexev raised $6M, bringing total funding to $19M</a>, to fund FDA clearance and US manufacturing for VxWave.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這幾筆的共同點很值得注意：<strong>沒有一家是在賣「模型」，全部都在賣嵌進既有工作流的作業系統或設備</strong>。Flagler 直接把 ROI 量化到「每位醫師年增 16.4 萬美元」，執行長 Albert Katz 的說法是「MSK 是醫療體系失能最明顯的地方」；Qureight 賣的是臨床試驗影像基礎建設（客戶是藥廠）；Vexev 把 AI 包進機器人超音波硬體。這正好對應 <a href="https://www.fiercehealthcare.com/digital-health/digital-health-brought-74b-vc-funding-ai-powered-rebound-fuels-market" target="_blank" rel="noopener">Rock Health 說的「誰擁有 AI 單獨給不了的東西」</a>。此外，<a href="https://www.healthcare.digital/single-post/this-week-in-european-healthtech-medtech-and-health-ai-14th-august-2026" target="_blank" rel="noopener">EIT Health 正在對成熟臨床 AI 平台的多中心真實世界證據研究發放每案 65 萬歐元補助</a>——歐洲用公共資金補的是證據，不是模型。</span>
+        <span class="en">What these rounds share is worth noting: <strong>none of them is selling a model</strong>. All are selling an operating system or a device that embeds in an existing workflow. Flagler quantifies ROI down to $164,000 of added revenue per provider per year, with CEO Albert Katz framing it as "MSK is where the healthcare system's dysfunction is most visible." Qureight sells clinical-trial imaging infrastructure to pharma. Vexev wraps AI inside robotic ultrasound hardware. That maps precisely onto <a href="https://www.fiercehealthcare.com/digital-health/digital-health-brought-74b-vc-funding-ai-powered-rebound-fuels-market" target="_blank" rel="noopener">Rock Health's "who has something AI alone can't provide?"</a> Separately, <a href="https://www.healthcare.digital/single-post/this-week-in-european-healthtech-medtech-and-health-ai-14th-august-2026" target="_blank" rel="noopener">EIT Health is issuing €650k per-project grants for multi-centre real-world evidence on mature clinical AI platforms</a> — Europe is spending public money on evidence, not on models.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">公司與產品</span><span class="en-inline">Players</span></div>
+      <p class="val">
+        <span class="zh">Flagler Health（MSK 作業系統，Bessemer 領投）· Qureight（英國，臨床試驗影像 AI）· Vexev（澳洲，VxWave 機器人血管超音波，先攻洗腎血管通路監測）· <a href="https://www.healthcare.digital/single-post/this-week-in-european-healthtech-medtech-and-health-ai-14th-august-2026" target="_blank" rel="noopener">併購方面，法國 Clean Cells 收購質譜專家 Anaquant（金額未揭露）</a>。多數歐洲輪次未揭露投資人名單。</span>
+        <span class="en">Flagler Health (MSK operating system, Bessemer-led) · Qureight (UK, clinical-trial imaging AI) · Vexev (Australia, VxWave robotic vascular ultrasound, starting with dialysis vascular access) · <a href="https://www.healthcare.digital/single-post/this-week-in-european-healthtech-medtech-and-health-ai-14th-august-2026" target="_blank" rel="noopener">on M&amp;A, France's Clean Cells acquired mass-spectrometry specialist Anaquant on undisclosed terms</a>. Investor names were not disclosed for most European rounds.</span>
+      </p></div>
+    <div class="src">
+      <span class="zh-inline">來源：</span><span class="en-inline">Sources: </span>
+      <a href="https://hitconsultant.net/2026/08/11/flagler-health-raises-50m-series-b-bessemer-ai-musculoskeletal-care/" target="_blank" rel="noopener">HIT Consultant · Aug 11</a> ·
+      <a href="https://www.healthcare.digital/single-post/this-week-in-european-healthtech-medtech-and-health-ai-14th-august-2026" target="_blank" rel="noopener">Healthcare.Digital · Aug 14</a> ·
+      <a href="https://www.mobihealthnews.com/news/australian-vexev-raises-6m-bring-ai-robotic-vascular-ultrasound-us" target="_blank" rel="noopener">MobiHealthNews · Aug 11</a>
+    </div>
+  </div>
+
+  <!-- 8 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="zh-inline">資本配置</span><span class="en-inline">Capital allocation</span></span>
+      <span class="tag">OpenAI Foundation</span><span class="tag">PwC</span><span class="tag">Solventum</span><span class="tag">8/13–8/14</span>
+    </div>
+    <h3>
+      <span class="zh">錢往哪去：OpenAI 基金會 1 億美元投向 C 肝、PwC 看好女性腫瘤學到 2030 年破千億美元、Solventum 分拆健康資訊事業</span>
+      <span class="en">Where the money is pointing: OpenAI's $100M hepatitis C push, PwC's $100B+ women's oncology call, Solventum's HIS split</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh"><a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openai-foundations-100m-healthcare-push-starts-with-hepatitis-c/" target="_blank" rel="noopener">OpenAI 基金會投入 1 億美元、為期兩年的「Breakthroughs to Follow-Through」（B2F）計畫，與 Common Health Coalition 共同執行（創始組織含 AHIP、AHA、AMA、Kaiser Permanente、Alliance of Community Health Plans，現已逾 400 個成員）</a>；首發州為阿拉巴馬、伊利諾、路易斯安那與麻州，目標是把 C 型肝炎治癒率至少翻倍，做法是用 AI 找出失聯病人、彙整病歷、排序外展優先順序，後續將擴及 HIV 預防與可治癒癌症。市場面，<a href="https://www.fiercehealthcare.com/finance/pwc-report-claims-womens-oncology-will-grow-65b-75b-today-100b-110b-2030-recommends" target="_blank" rel="noopener">PwC 預估女性腫瘤學市場將從目前 650–750 億美元成長到 2030 年的 1,000–1,100 億美元，2020–2025 年間已有約 400 筆私募案、逾 65 億美元</a>。企業重組方面，<a href="https://investors.solventum.com/news-events/press-releases/detail/151/solventum-announces-intent-to-separate-its-health-information-systems-business" target="_blank" rel="noopener">Solventum 宣布有意分拆健康資訊系統（HIS）事業</a>，該部門即原 3M 血統的臨床文件與電腦輔助編碼資產，<a href="https://www.stocktitan.net/news/SOLV/solventum-announces-intent-to-separate-its-health-information-vzddn3hk0e2x.html" target="_blank" rel="noopener">規模約 14 億美元營收</a>。</span>
+        <span class="en"><a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openai-foundations-100m-healthcare-push-starts-with-hepatitis-c/" target="_blank" rel="noopener">The OpenAI Foundation committed $100M to a two-year programme, "Breakthroughs to Follow-Through" (B2F), built with the Common Health Coalition — founding organisations include AHIP, AHA, AMA, Kaiser Permanente and the Alliance of Community Health Plans, now with 400+ members</a>. Launch states are Alabama, Illinois, Louisiana and Massachusetts, with a goal of at least doubling hepatitis C cure rates by using AI to find patients lost to care, synthesise records and prioritise outreach; HIV prevention and curable cancers follow. On markets, <a href="https://www.fiercehealthcare.com/finance/pwc-report-claims-womens-oncology-will-grow-65b-75b-today-100b-110b-2030-recommends" target="_blank" rel="noopener">PwC projects women's oncology growing from $65-75B today to $100-110B by 2030, after roughly 400 private funding events totalling over $6.5B between 2020 and 2025</a>. On corporate structure, <a href="https://investors.solventum.com/news-events/press-releases/detail/151/solventum-announces-intent-to-separate-its-health-information-systems-business" target="_blank" rel="noopener">Solventum announced its intent to separate its Health Information Systems business</a> — the 3M-heritage clinical documentation and computer-assisted coding assets, <a href="https://www.stocktitan.net/news/SOLV/solventum-announces-intent-to-separate-its-health-information-vzddn3hk0e2x.html" target="_blank" rel="noopener">roughly $1.4B in sales</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">三件事湊起來，描出了 2026 下半年資本的三個方向。<strong>一、模型商開始用慈善資本買公共衛生的落地場域</strong>——OpenAI 基金會慈善與公民社會負責人 Anna Makanju 說這 1 億美元是「把前沿 AI 能力和受信任的在地夥伴專業配對起來」，實際效果是把 ChatGPT 級能力接進四州的公衛系統。<strong>二、投資題材從「疾病」細分到「被系統性低估的族群」</strong>——PwC 點名資金落差：卵巢癌每死亡人數僅獲約 4.3 萬美元 NIH 經費，乳癌近 7 萬、攝護腺癌近三倍於卵巢癌，而卵巢癌五年存活率從第一期逾 90% 掉到第四期約 20%，早期偵測是最大缺口。<strong>三、臨床編碼／文件 AI 資產正在被重新定價</strong>——Solventum 的分拆讓這塊出現一個十多億美元級的可交易標的，對 Abridge、Nuance 這類玩家是潛在的整併變數。</span>
+        <span class="en">Together these sketch three directions for capital in the second half of 2026. <strong>First, model companies are using philanthropic capital to buy public-health deployment ground.</strong> OpenAI Foundation's Anna Makanju described the $100M as "pairing frontier AI capabilities with the expertise of trusted local partners"; in practice it wires ChatGPT-class capability into four state public health systems. <strong>Second, the investment thesis is moving from disease categories to systematically under-served populations.</strong> PwC names the funding gap directly: ovarian cancer draws about $43,000 in NIH funding per death versus nearly $70,000 for breast cancer, with prostate cancer at nearly three times ovarian's rate — while ovarian five-year survival falls from over 90% at Stage I to roughly 20% at Stage IV, making early detection the largest gap. <strong>Third, clinical coding and documentation AI assets are being repriced.</strong> Solventum's separation creates a billion-dollar-plus tradeable asset in that market — a potential consolidation variable for Abridge, Nuance and their peers.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">公司與產品</span><span class="en-inline">Players</span></div>
+      <p class="val">
+        <span class="zh">OpenAI Foundation × Common Health Coalition · PwC（研究報告）· Solventum（NYSE: SOLV，原 3M Health Care 分拆）。同週其他商業動作：<a href="https://www.healthitanswers.net/health-it-business-news-august-13-2026/" target="_blank" rel="noopener">ModMed 與 IntrinsiQ Specialty Solutions 結盟成為 UroChartEHR 客戶的首選 EHR；Inovalon 與 OMNY Health 建立真實世界資料夥伴關係，結合封閉式理賠資料與 EHR 及臨床病歷紀錄</a>。</span>
+        <span class="en">OpenAI Foundation × Common Health Coalition · PwC (research) · Solventum (NYSE: SOLV, itself spun out of 3M Health Care). Other commercial moves the same week: <a href="https://www.healthitanswers.net/health-it-business-news-august-13-2026/" target="_blank" rel="noopener">ModMed allied with IntrinsiQ Specialty Solutions to become the preferred EHR for UroChartEHR customers, and Inovalon partnered with OMNY Health on real-world data combining closed claims with EHR data and clinical notes</a>.</span>
+      </p></div>
+    <div class="src">
+      <span class="zh-inline">來源：</span><span class="en-inline">Sources: </span>
+      <a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openai-foundations-100m-healthcare-push-starts-with-hepatitis-c/" target="_blank" rel="noopener">Becker's · Aug 13</a> ·
+      <a href="https://www.fiercehealthcare.com/finance/pwc-report-claims-womens-oncology-will-grow-65b-75b-today-100b-110b-2030-recommends" target="_blank" rel="noopener">Fierce Healthcare / PwC · Aug 14</a> ·
+      <a href="https://investors.solventum.com/news-events/press-releases/detail/151/solventum-announces-intent-to-separate-its-health-information-systems-business" target="_blank" rel="noopener">Solventum IR · Aug 5</a>
+    </div>
+  </div>
+
+</section>
+
+<!-- ============ PRODUCT ============ -->
+<section id="product">
+  <h2>02 — Product Analysis</h2>
+  <div class="sec-title">
+    <span class="zh">兩個產品拆解：搶醫師的時間 vs. 搶病人的帳單</span>
+    <span class="en">Two products, taken apart: competing for clinician minutes vs patient dollars</span>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>Abridge Clinical Decision Support</h3>
+      <p class="sub"><span class="zh-inline">臨床決策支援 · 由環境語音病歷延伸 · Abridge（美國）</span><span class="en-inline">Clinical decision support · extended from ambient scribing · Abridge (US)</span></p>
+      <p>
+        <span class="zh"><strong>功能與定位。</strong>在既有的環境語音病歷流程之上，讓醫師在門診當下直接查詢臨床證據；內容來自 UpToDate 授權合作並整合 NEJM 與 JAMA，<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-expands-ai-decision-support-more-clinicians-bid-become-healthcares" target="_blank" rel="noopener">2026 年 4 月推出後已覆蓋 300 家以上企業級醫療體系</a>。定位是「醫師工作台」而非獨立查詢工具。</span>
+        <span class="en"><strong>Function and position.</strong> Layered on top of an existing ambient documentation workflow, it lets clinicians query clinical evidence in the moment of the encounter. Content comes via a UpToDate partnership plus NEJM and JAMA integrations, and <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-expands-ai-decision-support-more-clinicians-bid-become-healthcares" target="_blank" rel="noopener">it has reached 300+ enterprise health systems since launching in April 2026</a>. The positioning is a clinician workbench, not a standalone lookup tool.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：分銷成本近乎為零——CDS 直接搭既有的病歷部署走，<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-expands-ai-decision-support-more-clinicians-bid-become-healthcares" target="_blank" rel="noopener">覆蓋 2.5 億病人、每年 1 億場臨床對話，逾半數符合資格醫師已是月活用戶</a>。</span>
+          <span class="en">: near-zero distribution cost — CDS rides the existing documentation deployment, <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-expands-ai-decision-support-more-clinicians-bid-become-healthcares" target="_blank" rel="noopener">covering 250M+ patients and 100M+ conversations a year, with more than half of eligible clinicians already monthly actives</a>.</span>
+        </li>
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：使用強度而非只有裝機數在成長——<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-expands-ai-decision-support-more-clinicians-bid-become-healthcares" target="_blank" rel="noopener">人均查詢量兩個月成長三倍，Duke Health 約 2,000 位醫師在用</a>，是留存而非嘗鮮的訊號。</span>
+          <span class="en">: usage intensity, not just seat count, is growing — <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-expands-ai-decision-support-more-clinicians-bid-become-healthcares" target="_blank" rel="noopener">queries per clinician tripled in two months, with about 2,000 clinicians at Duke Health</a>. That reads as retention rather than novelty.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：<a href="https://technews.tw/2026/08/09/medical-ai-hidden-fatal-flaw/" target="_blank" rel="noopener">獨立評測 NOHARM 以 1,100 個真實臨床案例、約 13,000 筆醫師標註測試主流醫療 AI，發現 76.6% 的有害錯誤來自「資訊遺漏」</a>——這類錯誤在門診當下最難察覺。</span>
+          <span class="en">: <a href="https://technews.tw/2026/08/09/medical-ai-hidden-fatal-flaw/" target="_blank" rel="noopener">the independent NOHARM evaluation — 1,100 real clinical cases and roughly 13,000 physician annotations across leading medical AI tools — found 76.6% of harmful errors came from omission</a>, the failure mode hardest to notice mid-encounter.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：內容護城河是租來的。UpToDate 授權自 Wolters Kluwer，同一套內容理論上可授權給競爭者；相對地 <a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openevidence-weighs-200m-funding-round-at-20b-valuation-report/" target="_blank" rel="noopener">OpenEvidence 已有 86 萬名以上臨床醫師的直接使用習慣</a>。</span>
+          <span class="en">: the content moat is rented. UpToDate is licensed from Wolters Kluwer and could in principle be licensed to rivals, whereas <a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openevidence-weighs-200m-funding-round-at-20b-valuation-report/" target="_blank" rel="noopener">OpenEvidence already owns the direct habit of 860,000+ clinicians</a>.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>Cedar Kora Platform</h3>
+      <p class="sub"><span class="zh-inline">病人財務互動 · 代理式語音與簡訊 · Cedar（美國）</span><span class="en-inline">Patient financial engagement · agentic voice and text · Cedar (US)</span></p>
+      <p>
+        <span class="zh"><strong>功能與定位。</strong>以自主 AI 代理處理病人帳單的進線與外撥語音、以及中英（英／西）雙語雙向簡訊，涵蓋餘額說明、保險資料蒐集、Medicaid 註冊與拒付處理（<a href="https://hitconsultant.net/2026/08/13/cedar-launches-kora-platform-agentic-patient-financial-engagement/" target="_blank" rel="noopener">HIT Consultant</a>）。賣點不是臨床，而是<strong>把催收轉成可衡量的收款率提升</strong>。</span>
+        <span class="en"><strong>Function and position.</strong> Autonomous agents handle inbound and outbound billing voice calls plus bilingual English/Spanish two-way texting, covering balance explanations, insurance capture, Medicaid enrolment and denial resolution (<a href="https://hitconsultant.net/2026/08/13/cedar-launches-kora-platform-agentic-patient-financial-engagement/" target="_blank" rel="noopener">HIT Consultant</a>). The pitch is not clinical — it is <strong>turning collections into a measurable lift in payment rates</strong>.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：ROI 可直接量化，這是目前醫療 AI 採購最短的說服路徑——<a href="https://hitconsultant.net/2026/08/13/cedar-launches-kora-platform-agentic-patient-financial-engagement/" target="_blank" rel="noopener">進線電話 40% 由 AI 完結、付款嘗試率高於真人客服 7.4%、七日付款率相對提升 21%</a>。</span>
+          <span class="en">: ROI is directly quantifiable, currently the shortest path to a signed health-AI contract — <a href="https://hitconsultant.net/2026/08/13/cedar-launches-kora-platform-agentic-patient-financial-engagement/" target="_blank" rel="noopener">40% inbound call containment, a 7.4% lift in payment attempts over live agents, and a 21% relative lift in seven-day payment rate</a>.</span>
+        </li>
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：規模化的資料回饋迴圈——<a href="https://hitconsultant.net/2026/08/13/cedar-launches-kora-platform-agentic-patient-financial-engagement/" target="_blank" rel="noopener">累計 15 億次病人互動、136 億美元付款、6,300 萬名以上病人</a>，且自費已占可收帳款約 40%，市場結構性擴大。</span>
+          <span class="en">: a data flywheel at scale — <a href="https://hitconsultant.net/2026/08/13/cedar-launches-kora-platform-agentic-patient-financial-engagement/" target="_blank" rel="noopener">1.5B+ patient interactions, $13.6B processed, 63M+ patients served</a> — against a structurally expanding market where self-pay is now around 40% of collectible dollars.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：所有效果數據皆為公司自行揭露的早期部署結果（<a href="https://hitconsultant.net/2026/08/13/cedar-launches-kora-platform-agentic-patient-financial-engagement/" target="_blank" rel="noopener">60 萬場對話</a>），無獨立第三方驗證，也未揭露對照組設計與樣本代表性。</span>
+          <span class="en">: every performance figure is company-disclosed from early deployments (<a href="https://hitconsultant.net/2026/08/13/cedar-launches-kora-platform-agentic-patient-financial-engagement/" target="_blank" rel="noopener">600,000 conversations</a>), with no independent validation and no published control design or sample representativeness.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：用 AI 對財務脆弱族群做外撥催收，涉及消費者保護與公平性的聲譽風險；<a href="https://hitconsultant.net/2026/08/13/cedar-launches-kora-platform-agentic-patient-financial-engagement/" target="_blank" rel="noopener">「外撥接通率達業界四倍」</a>這個數字，換個角度看就是接觸強度四倍。</span>
+          <span class="en">: using AI for outbound collections against financially vulnerable patients carries consumer-protection and equity reputational risk. <a href="https://hitconsultant.net/2026/08/13/cedar-launches-kora-platform-agentic-patient-financial-engagement/" target="_blank" rel="noopener">"Four times the industry average pickup rate"</a> is, read another way, four times the contact intensity.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPANY ============ -->
+<section id="company">
+  <h2>03 — Companies &amp; Competition</h2>
+  <div class="sec-title">
+    <span class="zh">誰有什麼數字、憑什麼收錢、跟誰競爭</span>
+    <span class="en">Who has which numbers, what they charge for, and who they face</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th><span class="zh-inline">公司</span><span class="en-inline">Company</span></th>
+        <th><span class="zh-inline">近況與數字</span><span class="en-inline">Latest numbers</span></th>
+        <th><span class="zh-inline">競爭定位</span><span class="en-inline">Position</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Abridge</strong><br><span class="zh-inline">環境病歷 + CDS</span><span class="en-inline">Ambient + CDS</span></td>
+          <td>
+            <span class="zh"><a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-expands-ai-decision-support-more-clinicians-bid-become-healthcares" target="_blank" rel="noopener">CDS 覆蓋 300+ 醫療體系、2.5 億病人、年 1 億場對話；逾半數符合資格醫師為月活，人均查詢量兩個月成長三倍</a>；客戶含 Kaiser、Sutter、UNC、CHRISTUS、UPMC。</span>
+            <span class="en"><a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-expands-ai-decision-support-more-clinicians-bid-become-healthcares" target="_blank" rel="noopener">CDS across 300+ health systems, 250M+ patients, 100M+ conversations a year; over half of eligible clinicians are monthly actives and per-clinician queries tripled in two months</a>. Customers include Kaiser, Sutter, UNC, CHRISTUS, UPMC.</span>
+          </td>
+          <td>
+            <span class="zh">以分銷通路反攻決策支援。護城河是企業合約與 EHR 整合深度；風險是內容來自<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-expands-ai-decision-support-more-clinicians-bid-become-healthcares" target="_blank" rel="noopener">外部授權（UpToDate）</a>。</span>
+            <span class="en">Attacking decision support from distribution. The moat is enterprise contracts and EHR integration depth; the risk is that content is <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-expands-ai-decision-support-more-clinicians-bid-become-healthcares" target="_blank" rel="noopener">externally licensed (UpToDate)</a>.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>OpenEvidence</strong><br><span class="zh-inline">臨床決策支援</span><span class="en-inline">Decision support</span></td>
+          <td>
+            <span class="zh"><a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openevidence-weighs-200m-funding-round-at-20b-valuation-report/" target="_blank" rel="noopener">年化營收約 3 億美元（月約 2,500 萬），七個月翻倍；86 萬名以上美國執業臨床醫師使用；2026/1 完成 2.5 億美元 D 輪、估值 120 億美元</a>。曾傳出考慮以 200 億美元估值募 2 億美元，但消息人士稱因稀釋問題不太可能成案。</span>
+            <span class="en"><a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openevidence-weighs-200m-funding-round-at-20b-valuation-report/" target="_blank" rel="noopener">Roughly $300M annualised revenue (~$25M/month), doubled over seven months; 860,000+ licensed US clinicians; a $250M Series D in Jan 2026 at a $12B valuation</a>. A reported $200M round at $20B was said by sources to be unlikely to proceed on dilution grounds.</span>
+          </td>
+          <td>
+            <span class="zh">醫師心占率與免費入口是護城河；弱點是不擁有病歷工作流入口，正被 Abridge 由上游夾擊。客戶含 Mount Sinai、Cedars-Sinai、Sutter Health。</span>
+            <span class="en">Clinician mindshare and a free front door are the moat; the weakness is not owning the documentation workflow, which is exactly where Abridge is squeezing from. Customers include Mount Sinai, Cedars-Sinai and Sutter Health.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Lunit</strong><br>KOSDAQ 328130</td>
+          <td>
+            <span class="zh"><a href="https://en.sedaily.com/finance/2026/08/11/lunit-posts-record-first-half-revenue-of-458-billion-won" target="_blank" rel="noopener">H1 2026 營收 457.7 億韓元（+23%），營業虧損 289.6 億（−31%），EBITDA 虧損 146.4 億（幾近腰斬）；海外占 95%，北美 +30%</a>；SCOPE 年增 114%。</span>
+            <span class="en"><a href="https://en.sedaily.com/finance/2026/08/11/lunit-posts-record-first-half-revenue-of-458-billion-won" target="_blank" rel="noopener">H1 2026 revenue 45.77bn won (+23%), operating loss 28.96bn (−31%), EBITDA loss 14.64bn (roughly halved); 95% overseas, North America +30%</a>; SCOPE up 114%.</span>
+          </td>
+          <td>
+            <span class="zh">亞洲唯一具全球通路的影像 AI 上市公司，護城河是取證數量與海外經銷；靠<a href="https://en.sedaily.com/finance/2026/08/04/korea-accelerates-medical-ai-commercialization-backing" target="_blank" rel="noopener">政府補助累積真實世界資料換健保給付</a>是關鍵下一步。</span>
+            <span class="en">Asia's only listed imaging-AI company with real global distribution; the moat is clearance count plus overseas channel. The key next step is <a href="https://en.sedaily.com/finance/2026/08/04/korea-accelerates-medical-ai-commercialization-backing" target="_blank" rel="noopener">converting government-funded real-world data into reimbursement</a>.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Tempus AI</strong><br>NASDAQ TEM</td>
+          <td>
+            <span class="zh"><a href="https://www.businesswire.com/news/home/20260730328545/en/Tempus-Reports-Second-Quarter-2026-Results" target="_blank" rel="noopener">Q2 2026 營收 3.825 億美元（+22%），轉盈為淨利 560 萬美元（去年同期虧 4,280 萬），調整後 EBITDA 800 萬；全年指引 15.95–16.05 億美元</a>；<a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/tempus-ai-to-acquire-cancer-genomics-firm-for-1-5b/" target="_blank" rel="noopener">7/20 宣布以約 15 億美元收購 Personalis</a>。</span>
+            <span class="en"><a href="https://www.businesswire.com/news/home/20260730328545/en/Tempus-Reports-Second-Quarter-2026-Results" target="_blank" rel="noopener">Q2 2026 revenue $382.5M (+22%), swinging to $5.6M net income from a $42.8M loss, adjusted EBITDA $8.0M; FY guidance $1.595-1.605B</a>; and <a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/tempus-ai-to-acquire-cancer-genomics-firm-for-1-5b/" target="_blank" rel="noopener">a ~$1.5B agreement to acquire Personalis announced Jul 20</a>.</span>
+          </td>
+          <td>
+            <span class="zh">診斷 + 資料授權的雙引擎；<a href="https://www.businesswire.com/news/home/20260730328545/en/Tempus-Reports-Second-Quarter-2026-Results" target="_blank" rel="noopener">Data &amp; Applications 部門 9,320 萬美元、年增 28%</a>，並向 AstraZeneca 交付首個腫瘤基礎模型——賣資料與模型給藥廠才是高毛利那一端。</span>
+            <span class="en">A two-engine model of diagnostics plus data licensing: <a href="https://www.businesswire.com/news/home/20260730328545/en/Tempus-Reports-Second-Quarter-2026-Results" target="_blank" rel="noopener">Data &amp; Applications hit $93.2M, up 28%</a>, and it delivered a first oncology foundation model to AstraZeneca. Selling data and models to pharma is the high-margin end.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>RadNet / DeepHealth</strong><br>NASDAQ RDNT</td>
+          <td>
+            <span class="zh"><a href="https://www.globenewswire.com/news-release/2026/08/09/3341500/10985/en/radnet-reports-second-quarter-financial-results-with-record-quarterly-revenue-and-adjusted-ebitda-1-and-revises-upwards-2026-financial-guidance-ranges.html" target="_blank" rel="noopener">Q2 營收 6.227 億美元（+25%）；數位健康部門 3,240 萬美元（+56.5%），ARR 1.055 億美元、年增 97.2%，外部客戶占 ARR 約 63%</a>。</span>
+            <span class="en"><a href="https://www.globenewswire.com/news-release/2026/08/09/3341500/10985/en/radnet-reports-second-quarter-financial-results-with-record-quarterly-revenue-and-adjusted-ebitda-1-and-revises-upwards-2026-financial-guidance-ranges.html" target="_blank" rel="noopener">Q2 revenue $622.7M (+25%); the Digital Health segment did $32.4M (+56.5%) with ARR of $105.5M, up 97.2%, and external customers now about 63% of that ARR</a>.</span>
+          </td>
+          <td>
+            <span class="zh">影像 AI 少見的「自帶通路」模式：先在自家 400 多個影像中心驗證，再外賣給同業。外部客戶已占 ARR 多數，是模式跑通的證據。</span>
+            <span class="en">A rare "own the channel" model in imaging AI: prove it inside RadNet's own imaging centres, then sell it to peers. External customers now being the majority of ARR is the evidence the model works.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Doximity</strong><br>NYSE DOCS</td>
+          <td>
+            <span class="zh"><a href="https://investors.doximity.com/news/news-details/2026/Doximity-Announces-Fiscal-2027-First-Quarter-Financial-Results/default.aspx" target="_blank" rel="noopener">FY2027 Q1 營收 1.566 億美元、僅增 7%；淨利自 5,330 萬降至 2,430 萬，調整後 EBITDA 減 6% 至 7,480 萬</a>；管理層稱 Doximity Ask 為 NOHARM 基準上表現最佳的美國模型。</span>
+            <span class="en"><a href="https://investors.doximity.com/news/news-details/2026/Doximity-Announces-Fiscal-2027-First-Quarter-Financial-Results/default.aspx" target="_blank" rel="noopener">Fiscal 2027 Q1 revenue of $156.6M, up just 7%; net income fell to $24.3M from $53.3M and adjusted EBITDA slipped 6% to $74.8M</a>. Management says Doximity Ask was the top-performing US-based model on the NOHARM benchmark.</span>
+          </td>
+          <td>
+            <span class="zh">醫師社群變現的既有模式（藥廠廣告）成長放緩，正把 AI 助理當第二成長曲線；<a href="https://www.fool.com/earnings/call-transcripts/2026/08/13/doximity-docs-q1-2027-earnings-call-transcript/" target="_blank" rel="noopener">法說會揭露 AI 搜尋查詢量季增逾 25%</a>，但尚未轉為營收動能。</span>
+            <span class="en">Its core monetisation of a physician network through pharma advertising is decelerating, and AI assistants are the intended second curve. <a href="https://www.fool.com/earnings/call-transcripts/2026/08/13/doximity-docs-q1-2027-earnings-call-transcript/" target="_blank" rel="noopener">The call disclosed AI search query growth above 25% QoQ</a>, which has not yet shown up in revenue.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Waystar</strong><br>NASDAQ WAY</td>
+          <td>
+            <span class="zh"><a href="https://www.fiercehealthcare.com/finance/waystar-boosts-2026-outlook-after-solid-q2-performance" target="_blank" rel="noopener">Q2 營收 3.197 億美元（+18%）優於市場預期，淨利 4,090 萬、調整後 EBITDA 1.367 億；全年指引上調至 12.8–12.9 億美元</a>；3 萬家客戶、逾百萬名醫師、年 75 億筆支付交易。</span>
+            <span class="en"><a href="https://www.fiercehealthcare.com/finance/waystar-boosts-2026-outlook-after-solid-q2-performance" target="_blank" rel="noopener">Q2 revenue $319.7M (+18%), ahead of consensus, with $40.9M net income and $136.7M adjusted EBITDA; FY guidance raised to $1.28-1.29B</a>. Scale: 30,000 clients, 1M+ providers, 7.5B payment transactions a year.</span>
+          </td>
+          <td>
+            <span class="zh">收付流程 AI 的規模玩家，與 Cedar 在病人付費體驗上部分重疊。執行長 Matt Hawkins：「目標不只是部署 AI，是在對的時刻調度對的 AI。」</span>
+            <span class="en">The scale player in revenue-cycle AI, partly overlapping Cedar on patient financial experience. CEO Matt Hawkins: "Our goal is not simply to deploy AI; it is to orchestrate the right AI at the right moment."</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============ TAIWAN ============ -->
+<section id="taiwan">
+  <h2>04 — Taiwan Angle</h2>
+  <div class="sec-title">
+    <span class="zh">台灣視角：規模、規則與出海的三道題</span>
+    <span class="en">Taiwan: scale, rules, and the export question</span>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="zh"><strong>(1) 規模落差已經是量級問題，不是努力問題。</strong>把今天的數字並排看：<a href="https://en.sedaily.com/finance/2026/08/11/lunit-posts-record-first-half-revenue-of-458-billion-won" target="_blank" rel="noopener">Lunit 上半年營收 457.7 億韓元（約 3,300 萬美元）</a>，而<a href="https://udn.com/news/story/7253/9524869" target="_blank" rel="noopener">宏碁智醫 2025 全年營收 6,005 萬元新台幣、稅後淨損 2,969 萬元、每股虧損 1.95 元</a>——差距在 15 倍以上，且宏碁智醫的成長主要靠「健康台灣深耕計畫」帶進新光醫院等場域。這也正是本月國內業界的集體焦慮：<a href="https://news.gbimonthly.com/tw/article/show.php?num=89417" target="_blank" rel="noopener">台灣生物產業發展協會榮譽理事長李鍾熙在 8/14 的 BTC 前哨論壇直指政府「投資台灣生醫產業行動方案」十年 100 億元的規模「應再提升」，並主張以併購擴大企業規模</a>；<a href="https://geneonline.news/btc-2026-biotech-industry-development-forum-034/" target="_blank" rel="noopener">數位健康產業協會副理事長莊曜宇則主張法規鬆綁優先，涵蓋醫療資料再利用，並提議以主權基金支持併購取得國際通路</a>。對照 <a href="https://hitconsultant.net/2026/07/30/cb-insights-q2-2026-state-of-digital-health-report/" target="_blank" rel="noopener">CB Insights 的後期輪中位數 5,000 萬美元</a>，台灣單一團隊要靠國內資本走到國際商化，數學上是不成立的。</span>
+      <span class="en"><strong>(1) The scale gap is an order-of-magnitude problem, not an effort problem.</strong> Put today's numbers side by side: <a href="https://en.sedaily.com/finance/2026/08/11/lunit-posts-record-first-half-revenue-of-458-billion-won" target="_blank" rel="noopener">Lunit did 45.77bn won (about $33M) in H1</a>, while <a href="https://udn.com/news/story/7253/9524869" target="_blank" rel="noopener">Acer Medical booked NT$60.05M of full-year 2025 revenue with a net loss of NT$29.69M and a loss per share of NT$1.95</a> — a gap of more than 15x, with Acer Medical's growth coming largely from the Healthy Taiwan Deep Cultivation Programme opening doors at hospitals such as Shin Kong. That is precisely the industry's collective anxiety this month: <a href="https://news.gbimonthly.com/tw/article/show.php?num=89417" target="_blank" rel="noopener">at an Aug 14 forum ahead of the cabinet's BTC meeting, Taiwan Bio Industry Organization honorary chairman Johnsee Lee said the government's ten-year, NT$10bn biomedical investment action plan "should be raised further," and argued for M&amp;A to build corporate scale</a>; <a href="https://geneonline.news/btc-2026-biotech-industry-development-forum-034/" target="_blank" rel="noopener">Digital Health Industry Association vice chairman Eric Y. Chuang put regulatory liberalisation first, including reuse of medical data, and proposed a sovereign fund to back acquisitions that buy international channel</a>. Against <a href="https://hitconsultant.net/2026/07/30/cb-insights-q2-2026-state-of-digital-health-report/" target="_blank" rel="noopener">CB Insights' $50M late-stage median</a>, a single Taiwanese team reaching global commercialisation on domestic capital alone does not add up arithmetically.</span>
+    </p>
+    <p>
+      <span class="zh"><strong>(2) 規則的時間表比補助的時間表更關鍵，而它剛好就在眼前。</strong><a href="https://www.cna.com.tw/news/ahel/202608060301.aspx" target="_blank" rel="noopener">8 月 6 日立法院厚生會成立智慧醫療委員會，衛福部資訊處長李建璋當場表示將在三個月內提出「人工智慧在醫療領域如何落實」的細則草案，並對接 AI 基本法的七大原則；同場揭露跨系統平台「FHIR Box」預計 2026 年底上線，3～5 年內覆蓋約 80% 醫療院所</a>。換句話說，台灣版醫療 AI 細則草案最晚會在 11 月前出現。對業者而言這是本季最該投入資源的窗口——參考 <a href="https://en.sedaily.com/finance/2026/08/04/korea-accelerates-medical-ai-commercialization-backing" target="_blank" rel="noopener">韓國保健福祉部把補助明確綁在「取證後進不了健保」的斷層上、要求累積真實世界資料換給付</a>，以及 <a href="https://www.healthcare.digital/single-post/this-week-in-european-healthtech-medtech-and-health-ai-14th-august-2026" target="_blank" rel="noopener">EIT Health 對成熟臨床 AI 平台的真實世界證據每案補助 65 萬歐元</a>，兩者都把公共資金指向「證據 → 給付」這條路徑，而不是模型開發本身。台灣若只補開發不補證據，落地缺口不會因為資料互通而自動消失。</span>
+      <span class="en"><strong>(2) The rulemaking calendar matters more than the subsidy calendar — and it is right in front of us.</strong> <a href="https://www.cna.com.tw/news/ahel/202608060301.aspx" target="_blank" rel="noopener">On Aug 6 the Legislative Yuan's Wellbeing Association set up a smart-healthcare committee, where MOHW information department head Li Chien-chang said the ministry would produce a draft set of implementing rules for AI in healthcare within three months, aligned to the seven principles of Taiwan's AI Basic Act; the same meeting disclosed that the cross-system "FHIR Box" platform is due to go live by the end of 2026 and to cover roughly 80% of healthcare institutions within three to five years</a>. In other words, Taiwan's medical-AI implementing rules will surface by November at the latest. For vendors, that is where this quarter's effort belongs. Compare <a href="https://en.sedaily.com/finance/2026/08/04/korea-accelerates-medical-ai-commercialization-backing" target="_blank" rel="noopener">Korea's MOHW tying subsidies explicitly to the approval-to-reimbursement gap and requiring real-world data accumulation in exchange for coverage</a>, and <a href="https://www.healthcare.digital/single-post/this-week-in-european-healthtech-medtech-and-health-ai-14th-august-2026" target="_blank" rel="noopener">EIT Health's €650k per-project grants for real-world evidence on mature clinical AI platforms</a>. Both point public money at the evidence-to-reimbursement path rather than at model development. If Taiwan funds only development and not evidence, interoperability alone will not close the deployment gap.</span>
+    </p>
+    <p>
+      <span class="zh"><strong>(3) 出海的通路已經備好，缺的是能撐起單價的產品組合。</strong>8 月 11 日<a href="https://www.ctee.com.tw/news/20260811701360-430504" target="_blank" rel="noopener">外貿協會「2026 AI醫療新局 台灣鏈結全球」論壇吸引 11 國、34 位國際採購代表與 113 家國內企業，安排約 200 場一對一洽談，董事長黃志芳點出台灣的三大優勢是世界級醫療體系、扎實健康資料基礎與科技生態系</a>；8 月 7 日<a href="https://technews.tw/2026/08/07/taipei-ai-medical-ecosystem-connects-japan-kansai-region-15-companies-showcase-taiwan-japan-innovative-collaboration-achievements/" target="_blank" rel="noopener">台北市則帶 15 家企業赴大阪 WHX 對接關西產官學，其中 DeepRad.AI 已部署逾 35 家醫院、累積逾 10 萬例臨床案例</a>。資本端也有具體案例：<a href="https://geneonline.news/syncellfundraise-026newsaugust/" target="_blank" rel="noopener">新析生技（Syncell）完成 2,000 萬美元 A+ 輪、由鑽石生技投資（6901）領投</a>，賣的是 AI 驅動的空間蛋白質體學顯微鏡系統——注意它的客戶是研究機構與藥廠，不是醫院，這正好呼應 <a href="https://www.businesswire.com/news/home/20260730328545/en/Tempus-Reports-Second-Quarter-2026-Results" target="_blank" rel="noopener">Tempus 的 Data &amp; Applications（年增 28%）</a>與 Lunit SCOPE（年增 114%）都在藥廠端跑得比醫院端快的規律。台灣的機會可能不在跟 Abridge 搶醫師的三分鐘，而在把製造與精密光學的既有優勢，包進賣給藥廠與研究機構的高單價工具。</span>
+      <span class="en"><strong>(3) The export channel is built; what is missing is a product mix that can carry the price.</strong> On Aug 11, <a href="https://www.ctee.com.tw/news/20260811701360-430504" target="_blank" rel="noopener">TAITRA's "2026 AI Healthcare, Taiwan Connects the World" forum drew 34 international buyers from 11 countries and 113 domestic companies into roughly 200 one-on-one meetings, with chairman James Huang naming Taiwan's three advantages as a world-class health system, a solid health data base and a strong tech ecosystem</a>. On Aug 7, <a href="https://technews.tw/2026/08/07/taipei-ai-medical-ecosystem-connects-japan-kansai-region-15-companies-showcase-taiwan-japan-innovative-collaboration-achievements/" target="_blank" rel="noopener">Taipei City took 15 companies to WHX Osaka to meet Kansai's industry, government and academia, among them DeepRad.AI, already deployed at 35+ hospitals with 100,000+ clinical cases</a>. There is a capital data point too: <a href="https://geneonline.news/syncellfundraise-026newsaugust/" target="_blank" rel="noopener">Syncell closed a $20M Series A+ led by Diamond Biofund (6901)</a> for an AI-driven spatial proteomics microscopy system — note its customers are research institutions and pharma, not hospitals, which mirrors the pattern that <a href="https://www.businesswire.com/news/home/20260730328545/en/Tempus-Reports-Second-Quarter-2026-Results" target="_blank" rel="noopener">Tempus' Data &amp; Applications segment (+28%)</a> and Lunit SCOPE (+114%) both grow faster on the pharma side than the hospital side. Taiwan's opening may not be fighting Abridge for three minutes of a physician's time, but wrapping its existing manufacturing and precision-optics strengths into high-ticket tools sold to pharma and research.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============ READING ============ -->
+<section id="reading">
+  <h2>05 — Further Reading</h2>
+  <div class="sec-title">
+    <span class="zh">值得再讀的五篇</span>
+    <span class="en">Five worth a second read</span>
+  </div>
+  <ol class="reading">
+    <li>
+      <a href="https://rockhealth.com/insights/h1-2026-funding-and-market-overview-durable-roots-shifting-routes/" target="_blank" rel="noopener">H1 2026 funding and market overview: durable roots, shifting routes — Rock Health</a>
+      <p class="why"><span class="zh">本期最值得完整讀完的一篇。原始報告比新聞轉述多了分階段與分主題的拆解，「誰擁有 AI 單獨給不了的東西」這句話是今年募資敘事的分水嶺。</span><span class="en">The one to read end-to-end. The primary report carries stage- and category-level breakdowns the news write-ups drop, and its line about "who has something AI alone can't provide" is the year's fundraising watershed.</span></p>
+    </li>
+    <li>
+      <a href="https://hitconsultant.net/2026/07/30/cb-insights-q2-2026-state-of-digital-health-report/" target="_blank" rel="noopener">CB Insights Q2 2026 State of Digital Health Report — HIT Consultant</a>
+      <p class="why"><span class="zh">和 Rock Health 對照讀最有價值：口徑不同（全球 vs 美國）、結論一致（件數崩、單價升）。中位數 500 萬 → 770 萬這一格是判斷募資難度的最實用指標。</span><span class="en">Best read against Rock Health: different scopes (global vs US), same conclusion (counts collapse, sizes rise). The $5.0M → $7.7M median is the single most practical gauge of how hard it is to raise right now.</span></p>
+    </li>
+    <li>
+      <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-expands-ai-decision-support-more-clinicians-bid-become-healthcares" target="_blank" rel="noopener">Abridge ramps up ambitions to become healthcare's AI copilot — Fierce Healthcare, 2026/8/17</a>
+      <p class="why"><span class="zh">今年最清楚的一次「垂直整合宣戰」。任何在做醫療 AI 產品策略的人，都該把它跟 OpenEvidence 的營收曲線放在同一張紙上推演。</span><span class="en">The clearest declaration of vertical integration this year. Anyone doing health-AI product strategy should game it out on the same page as OpenEvidence's revenue curve.</span></p>
+    </li>
+    <li>
+      <a href="https://en.sedaily.com/finance/2026/08/04/korea-accelerates-medical-ai-commercialization-backing" target="_blank" rel="noopener">Korea accelerates medical AI commercialization, backing Lunit, JLK — Seoul Economic Daily, 2026/8/4</a>
+      <p class="why"><span class="zh">政策設計的教科書案例：補助不補開發、只補「取證到給付」之間那一段，並要求累積真實世界資料。台灣三個月內要出的 AI 醫療細則草案，值得先看過這一套。</span><span class="en">A textbook case of policy design: the money funds not development but the stretch between clearance and reimbursement, and demands real-world data in return. Worth reading before Taiwan's draft implementing rules land within three months.</span></p>
+    </li>
+    <li>
+      <a href="https://www.cna.com.tw/news/ahel/202608060301.aspx" target="_blank" rel="noopener">厚生會成立智慧醫療委員會 衛福部擬提AI醫療細則草案 — 中央社，2026/8/6</a>
+      <p class="why"><span class="zh">台灣讀者本期最該存下來的一篇。三個月的細則時程與 FHIR Box 年底上線這兩個日期，會直接決定明年國內醫療 AI 的採購與合規節奏。</span><span class="en">The piece Taiwanese readers should bookmark. Two dates — implementing rules within three months, FHIR Box live by year-end — will set next year's domestic procurement and compliance rhythm.</span></p>
+    </li>
+  </ol>
+</section>
+
+<!-- ============ REFS ============ -->
+<section id="refs">
+  <h2>06 — References</h2>
+  <div class="sec-title">
+    <span class="zh">參考文獻</span>
+    <span class="en">References</span>
+  </div>
+  <div class="panel">
+    <ol class="refs">
+      <li>“Universal Health Services closes $835M Talkspace acquisition.” <em>Fierce Healthcare</em>, 2026-08-17. <a href="https://www.fiercehealthcare.com/finance/universal-health-services-closes-835m-talkspace-acquisition" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>“Abridge ramps up ambitions to become healthcare AI copilot.” <em>Fierce Healthcare</em>, 2026-08-17. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-expands-ai-decision-support-more-clinicians-bid-become-healthcares" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>“CB Insights Q2 2026 State of Digital Health Report.” <em>HIT Consultant</em>, 2026-07-30. <a href="https://hitconsultant.net/2026/07/30/cb-insights-q2-2026-state-of-digital-health-report/" target="_blank" rel="noopener">hitconsultant.net</a></li>
+      <li>“Digital health funding hits $7.4B in 2026 as AI investment reshapes the market.” <em>Fierce Healthcare</em> (reporting Rock Health), 2026-07-13. <a href="https://www.fiercehealthcare.com/digital-health/digital-health-brought-74b-vc-funding-ai-powered-rebound-fuels-market" target="_blank" rel="noopener">fiercehealthcare.com</a> · Rock Health primary write-up: <a href="https://rockhealth.com/insights/h1-2026-funding-and-market-overview-durable-roots-shifting-routes/" target="_blank" rel="noopener">rockhealth.com</a></li>
+      <li>“Databricks closes $5B strategic funding at $190B valuation.” <em>MobiHealthNews</em>, 2026-08-14. <a href="https://www.mobihealthnews.com/news/databricks-closes-5b-strategic-funding-190b-valuation" target="_blank" rel="noopener">mobihealthnews.com</a></li>
+      <li>“Lunit posts record first-half revenue of 45.8 billion won, cuts operating loss 31%.” <em>Seoul Economic Daily</em>, 2026-08-11. <a href="https://en.sedaily.com/finance/2026/08/11/lunit-posts-record-first-half-revenue-of-458-billion-won" target="_blank" rel="noopener">en.sedaily.com</a> · <em>Korea Biomedical Review</em>: <a href="https://www.koreabiomed.com/news/articleView.html?idxno=32755" target="_blank" rel="noopener">koreabiomed.com</a></li>
+      <li>“Korea accelerates medical AI commercialization, backing Lunit, JLK.” <em>Seoul Economic Daily</em>, 2026-08-04. <a href="https://en.sedaily.com/finance/2026/08/04/korea-accelerates-medical-ai-commercialization-backing" target="_blank" rel="noopener">en.sedaily.com</a></li>
+      <li>“Hippocratic AI rolls out agentic orchestrators to coordinate voice AI teams.” <em>Fierce Healthcare</em>, 2026-08-14. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/hippocratic-ai-rolls-out-agentic-orchestrators-coordinate-voice-ai-teams" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>“Cedar launches Kora Platform, agentic patient financial engagement.” <em>HIT Consultant</em>, 2026-08-13. <a href="https://hitconsultant.net/2026/08/13/cedar-launches-kora-platform-agentic-patient-financial-engagement/" target="_blank" rel="noopener">hitconsultant.net</a></li>
+      <li>“Flagler Health raises $50M Series B led by Bessemer for AI musculoskeletal care.” <em>HIT Consultant</em>, 2026-08-11. <a href="https://hitconsultant.net/2026/08/11/flagler-health-raises-50m-series-b-bessemer-ai-musculoskeletal-care/" target="_blank" rel="noopener">hitconsultant.net</a></li>
+      <li>“This Week in European HealthTech, MedTech and Health AI: 14th August 2026.” <em>Healthcare.Digital</em> (Nelson Advisors), 2026-08-14. <a href="https://www.healthcare.digital/single-post/this-week-in-european-healthtech-medtech-and-health-ai-14th-august-2026" target="_blank" rel="noopener">healthcare.digital</a></li>
+      <li>“Australian Vexev raises $6M to bring AI robotic vascular ultrasound to the US.” <em>MobiHealthNews</em>, 2026-08-11. <a href="https://www.mobihealthnews.com/news/australian-vexev-raises-6m-bring-ai-robotic-vascular-ultrasound-us" target="_blank" rel="noopener">mobihealthnews.com</a></li>
+      <li>“OpenAI Foundation's $100M healthcare push starts with hepatitis C.” <em>Becker's Hospital Review</em>, 2026-08-13. <a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openai-foundations-100m-healthcare-push-starts-with-hepatitis-c/" target="_blank" rel="noopener">beckershospitalreview.com</a></li>
+      <li>“PwC report claims women's oncology will grow from $65B-$75B today to $100B-$110B in 2030.” <em>Fierce Healthcare</em>, 2026-08-14. <a href="https://www.fiercehealthcare.com/finance/pwc-report-claims-womens-oncology-will-grow-65b-75b-today-100b-110b-2030-recommends" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>“Weekly Rundown: U.S. News debuts GLP-1 telehealth platform rankings” (includes athenahealth and Teladoc–Suki items). <em>Fierce Healthcare</em>, 2026-08-14. <a href="https://www.fiercehealthcare.com/health-tech/weekly-rundown-us-news-world-report-debuts-glp-1-telehealth-platform-rankings-chai" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>“Health IT Business News — August 13, 2026.” <em>Health IT Answers</em>, 2026-08-13. <a href="https://www.healthitanswers.net/health-it-business-news-august-13-2026/" target="_blank" rel="noopener">healthitanswers.net</a></li>
+      <li>“Solventum announces intent to separate its Health Information Systems business.” <em>Solventum Investor Relations</em>, 2026-08-05. <a href="https://investors.solventum.com/news-events/press-releases/detail/151/solventum-announces-intent-to-separate-its-health-information-systems-business" target="_blank" rel="noopener">investors.solventum.com</a> · scale summary: <a href="https://www.stocktitan.net/news/SOLV/solventum-announces-intent-to-separate-its-health-information-vzddn3hk0e2x.html" target="_blank" rel="noopener">stocktitan.net</a></li>
+      <li>“Tempus Reports Second Quarter 2026 Results.” <em>Business Wire</em> (Tempus AI), 2026-07-30. <a href="https://www.businesswire.com/news/home/20260730328545/en/Tempus-Reports-Second-Quarter-2026-Results" target="_blank" rel="noopener">businesswire.com</a> · “Tempus AI to acquire cancer genomics firm for $1.5B.” <em>Becker's</em>. <a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/tempus-ai-to-acquire-cancer-genomics-firm-for-1-5b/" target="_blank" rel="noopener">beckershospitalreview.com</a></li>
+      <li>“RadNet reports second quarter financial results with record quarterly revenue and adjusted EBITDA.” <em>GlobeNewswire</em> (RadNet), 2026-08-09. <a href="https://www.globenewswire.com/news-release/2026/08/09/3341500/10985/en/radnet-reports-second-quarter-financial-results-with-record-quarterly-revenue-and-adjusted-ebitda-1-and-revises-upwards-2026-financial-guidance-ranges.html" target="_blank" rel="noopener">globenewswire.com</a></li>
+      <li>“Doximity announces fiscal 2027 first quarter financial results.” <em>Doximity IR</em>, 2026-08-06. <a href="https://investors.doximity.com/news/news-details/2026/Doximity-Announces-Fiscal-2027-First-Quarter-Financial-Results/default.aspx" target="_blank" rel="noopener">investors.doximity.com</a> · earnings call transcript, 2026-08-13: <a href="https://www.fool.com/earnings/call-transcripts/2026/08/13/doximity-docs-q1-2027-earnings-call-transcript/" target="_blank" rel="noopener">fool.com</a></li>
+      <li>“Waystar boosts 2026 outlook after solid Q2 performance.” <em>Fierce Healthcare</em>, 2026-07-30. <a href="https://www.fiercehealthcare.com/finance/waystar-boosts-2026-outlook-after-solid-q2-performance" target="_blank" rel="noopener">fiercehealthcare.com</a> · “GE HealthCare reports second quarter 2026 financial results.” <em>GE HealthCare IR</em>, 2026-07-29. <a href="https://investor.gehealthcare.com/news-releases/news-release-details/ge-healthcare-reports-second-quarter-2026-financial-results" target="_blank" rel="noopener">investor.gehealthcare.com</a></li>
+      <li>“OpenEvidence weighs $200M funding round at $20B valuation: Report.” <em>Becker's Hospital Review</em>, 2026-07-20. <a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openevidence-weighs-200m-funding-round-at-20b-valuation-report/" target="_blank" rel="noopener">beckershospitalreview.com</a></li>
+      <li>“Health services M&amp;A: active deal volume down amid reimbursement uncertainty” (PwC data). <em>Healthcare Dive</em>, 2026-06-22. <a href="https://www.healthcaredive.com/news/health-services-ma-active-deal-volume-down-reimbusement-uncertainty-pwc/823338/" target="_blank" rel="noopener">healthcaredive.com</a></li>
+      <li>“South Korea hospital AI gets platform fix as KT and SNUH sign infrastructure MOU.” <em>Tech Times</em>, 2026-08-17. <a href="https://www.techtimes.com/articles/324677/20260817/south-korea-hospital-ai-gets-platform-fix-kt-snuh-sign-infrastructure-mou.htm" target="_blank" rel="noopener">techtimes.com</a></li>
+      <li>「厚生會成立智慧醫療委員會 衛福部擬提AI醫療細則草案」，<em>中央社 CNA</em>，2026-08-06。<a href="https://www.cna.com.tw/news/ahel/202608060301.aspx" target="_blank" rel="noopener">cna.com.tw</a></li>
+      <li>「貿協黃志芳：台灣AI醫療兼具三優勢 創新轉化落地鏈結全球」，<em>工商時報</em>，2026-08-11。<a href="https://www.ctee.com.tw/news/20260811701360-430504" target="_blank" rel="noopener">ctee.com.tw</a></li>
+      <li>「臺灣生技規模仍太小！業界籲擴大投資、落實國藥國用、加速法規健保改革」，<em>環球生技月刊</em>，2026-08-14。<a href="https://news.gbimonthly.com/tw/article/show.php?num=89417" target="_blank" rel="noopener">news.gbimonthly.com</a> ·「BTC 會議舉行在即，七大生技領袖齊籲擴大資本投資與在地市場」，<em>GeneOnline 基因線上</em>。<a href="https://geneonline.news/btc-2026-biotech-industry-development-forum-034/" target="_blank" rel="noopener">geneonline.news</a></li>
+      <li>「鑽石投資領投新析生技，2000萬美元 A+輪增資達陣」，<em>GeneOnline 基因線上</em>，2026-08-10。<a href="https://geneonline.news/syncellfundraise-026newsaugust/" target="_blank" rel="noopener">geneonline.news</a></li>
+      <li>「台北 AI 醫療生態系對接日本關西地區，15 家企業展示台日創新聯動成果」，<em>TechNews 科技新報</em>，2026-08-07。<a href="https://technews.tw/2026/08/07/taipei-ai-medical-ecosystem-connects-japan-kansai-region-15-companies-showcase-taiwan-japan-innovative-collaboration-achievements/" target="_blank" rel="noopener">technews.tw</a></li>
+      <li>「醫療 AI 評測敲響警鐘，OpenAI、Anthropic 等主流模型皆陷『資訊遺漏』盲點」（NOHARM 評測），<em>TechNews 科技新報</em>，2026-08-09。<a href="https://technews.tw/2026/08/09/medical-ai-hidden-fatal-flaw/" target="_blank" rel="noopener">technews.tw</a></li>
+      <li>「宏碁智醫產品 獲醫院導入」（2025 年財務數字），<em>經濟日報</em>，2026-05-25。<a href="https://udn.com/news/story/7253/9524869" target="_blank" rel="noopener">udn.com</a> ·「高醫大論壇揭示AI醫療新局！衛福部推『333政策』」，<em>聯合新聞網</em>，2026-06-27。<a href="https://udn.com/news/story/7266/9592218" target="_blank" rel="noopener">udn.com</a></li>
+      <li>「醫材公會攜工研院及醫材業者建 AI 醫療數據平台 促智慧醫療產業升級」，<em>經濟日報</em>，2026-06-26。<a href="https://money.udn.com/money/story/5612/9590837" target="_blank" rel="noopener">money.udn.com</a> · “India to integrate AI into Ayush and more briefs.” <em>Healthcare IT News (Asia)</em>, 2026-08-12. <a href="https://www.healthcareitnews.com/news/asia/india-integrate-ai-ayush-and-more-briefs" target="_blank" rel="noopener">healthcareitnews.com</a></li>
+    </ol>
+    <div class="note">
+      <span class="zh"><strong>編輯說明：</strong>(1) 8 月 11–18 日的產業新聞明顯偏薄，屬夏季淡季；本期因此把涵蓋範圍延伸至 8 月 4 日起，並在「公司與競爭」一節納入 7 月底至 8 月初的季報數字（Tempus 7/30、RadNet 8/9、Doximity 8/6、Waystar 7/30、GE HealthCare 7/29）作為必要對照，所有日期均已標示。(2) <em>Fierce Healthcare</em> 的募資追蹤頁（Fundraising Tracker '26）與 <em>Modern Healthcare</em> 的 AI 專區在查證期間回傳 403，本報告未引用其內容；Cedar Kora 一則改採 HIT Consultant 的同事件報導。(3) <em>經濟日報</em>「800億元生醫銀彈上膛」一文為訂戶專屬，本報告未引用。(4) 有單一來源提及 OpenAI 與 Anthropic 的私募估值數字（分別為 8,520 億與 9,650 億美元），因無法交叉驗證，本報告不予採用、亦不列入參考文獻。(5) OpenEvidence 傳出的 200 億美元估值輪次，來源明確指出「因稀釋問題不太可能成案」，本報告依此表述，未將其視為已完成交易。(6) 韓元對美元換算採原始報導所載之約當值（457.7 億韓元 ≈ 3,300 萬美元），非本報告自行換算。(7) Cedar 與 Hippocratic AI 的成效數據均為公司自行揭露、無獨立第三方驗證，文中已標明。</span>
+      <span class="en"><strong>Editor's note:</strong> (1) Industry news between Aug 11 and 18 was notably thin — a seasonal summer trough — so this edition widens coverage back to Aug 4 and, in the Companies section, includes late-July and early-August quarterly figures (Tempus Jul 30, RadNet Aug 9, Doximity Aug 6, Waystar Jul 30, GE HealthCare Jul 29) as necessary comparators; all dates are labelled. (2) <em>Fierce Healthcare</em>'s Fundraising Tracker '26 page and <em>Modern Healthcare</em>'s AI section both returned 403 during verification and are not cited here; the Cedar Kora item uses HIT Consultant's coverage of the same launch instead. (3) The <em>Economic Daily News</em> piece on NT$80bn of biomedical capital is subscriber-only and is not cited. (4) A single source mentioned private valuations for OpenAI and Anthropic ($852B and $965B); these could not be cross-verified and are neither used nor listed. (5) The reported $20B OpenEvidence round is explicitly described by its source as unlikely to proceed on dilution grounds, and is presented here on those terms rather than as a completed deal. (6) Won-to-dollar figures use the approximation carried in the original reporting (45.77bn won ≈ $33M) rather than a conversion of our own. (7) Cedar's and Hippocratic AI's performance figures are company-disclosed without independent validation, as noted in the text.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-row">
+    <div>
+      <span class="zh">AI／醫療AI 每日新知日報 · 由 Claude 於台北時間每日自動產出 · 本期主題：星期二／產業與商業動向<br>本報告內容經來源查證，但不構成投資或醫療建議。所有數據請以原始出處為準。</span>
+      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Tuesday / industry and business<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
+    </div>
+    <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com / 返回 peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg></a></div>
+  </div>
+</footer>
+
+</main>
+
+<div class="fabs">
+  <button class="up" id="up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+  <a class="home-fab" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg></a>
+</div>
+
+<script>
+function setLang(l){
+  document.body.classList.remove('lang-zh','lang-en');
+  document.body.classList.add('lang-'+l);
+  document.documentElement.lang = (l==='zh') ? 'zh-Hant' : 'en';
+  document.getElementById('b-zh').classList.toggle('on', l==='zh');
+  document.getElementById('b-en').classList.toggle('on', l==='en');
+  document.title = (l==='zh')
+    ? 'AI／醫療AI 每日新知日報 · 2026-08-18'
+    : 'AI & Medical AI Daily · 2026-08-18';
+}
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.getElementById('theme-ic').textContent =
+    document.body.classList.contains('dark') ? '◑' : '◐';
+}
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.body.classList.add('dark');
+  document.getElementById('theme-ic').textContent = '◑';
+}
+window.addEventListener('scroll', function(){
+  document.getElementById('up').classList.toggle('show', window.scrollY > 600);
+});
+
+/* GitHub 星星數：無需授權，失敗或被限流時靜默保留佔位符 */
+(function(){
+  var el = document.getElementById('ghs');
+  if (!el || typeof fetch !== 'function') return;
+  fetch('https://api.github.com/repos/tingwei161803/ai-medical-daily', {headers:{Accept:'application/vnd.github+json'}})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if (!d || typeof d.stargazers_count !== 'number') return;
+      var n = d.stargazers_count;
+      el.textContent = n >= 1000 ? (Math.round(n/100)/10) + 'k' : String(n);
+    })
+    .catch(function(){});
+})();
+</script>
+</body>
+</html>
