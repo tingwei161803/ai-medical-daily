@@ -121,6 +121,62 @@ def collect():
     return items
 
 
+SITE = "https://ai-medical-daily.peteraim.com"
+SITEMAP = os.path.join(ROOT, "sitemap.xml")
+
+
+def esc(t: str) -> str:
+    """與 index.html 內 JS 的 esc() 完全一致的跳脫規則。"""
+    return (t or "").replace("&", "&amp;").replace("<", "&lt;") \
+                    .replace(">", "&gt;").replace('"', "&quot;")
+
+
+def static_chips(items):
+    """產生與前端 chips() 相同的 HTML，供爬蟲第一波抓取。"""
+    used = [(k, v) for k, v in THEMES.items() if any(i["theme"] == k for i in items)]
+    out = ['<button class="chip on" onclick="pick(null)">全部</button>']
+    for k, (zh, _en, ci) in used:
+        out.append(
+            f'<button class="chip" onclick="pick(\'{k}\')">\n'
+            f'      <span class="dot" style="background:var(--c{ci})"></span>{esc(zh)}</button>')
+    return "".join(out)
+
+
+def static_items(items):
+    """產生與前端 list() 相同的 HTML，供爬蟲第一波抓取。"""
+    out = []
+    for d in items:
+        summary = f'<p>{esc(d["sumZh"])}</p>' if d["sumZh"] else ''
+        out.append(
+            f'<a class="item" href="{d["file"]}" style="--bar:var(--c{d["ci"]})">\n'
+            f'      <div class="meta">\n'
+            f'        <span class="d">{d["date"]} · 星期{d["wdZh"]}</span>\n'
+            f'        <span class="th">{esc(d["themeZh"])}</span>\n'
+            f'      </div>\n'
+            f'      <h3>{esc(d["titleZh"])}</h3>\n'
+            f'      {summary}\n'
+            f'    </a>')
+    return "".join(out)
+
+
+def write_sitemap(items):
+    """sitemap 由 reports/ 掃描結果產生，不會漏掉任何一天。
+       刻意不寫 <lastmod>：沒有可信的內容修改時間來源，給錯的比不給更糟。"""
+    urls = [f"{SITE}/"] + [f"{SITE}/{d['file']}" for d in items]
+    body = "\n".join(f"  <url>\n    <loc>{u}</loc>\n  </url>" for u in urls)
+    xml = ('<?xml version="1.0" encoding="UTF-8"?>\n'
+           '<!--\n'
+           '  本站自己的 sitemap，由 build_index.py 自動產生，請勿手動編輯。\n'
+           '  刻意不寫 <lastmod>：沒有可信的「內容最後修改時間」來源\n'
+           '  (git commit 時間不等於內容變動時間)，給錯的 lastmod 比不給更糟。\n'
+           '-->\n'
+           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+           + body + '\n</urlset>\n')
+    with open(SITEMAP, "w", encoding="utf-8") as f:
+        f.write(xml)
+    return len(urls)
+
+
 def render(items):
     data = json.dumps(items, ensure_ascii=False, separators=(",", ":"))
     themes = json.dumps(
@@ -132,7 +188,9 @@ def render(items):
     return TEMPLATE.replace("__DATA__", data) \
                    .replace("__THEMES__", themes) \
                    .replace("__TOTAL__", str(total)) \
-                   .replace("__LATEST__", latest)
+                   .replace("__LATEST__", latest) \
+                   .replace("__CHIPS__", static_chips(items)) \
+                   .replace("__ITEMS__", static_items(items))
 
 
 TEMPLATE = r"""<!DOCTYPE html>
@@ -143,6 +201,8 @@ TEMPLATE = r"""<!DOCTYPE html>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <title>AI／醫療AI 每日新知日報</title>
+<meta property="og:url" content="https://ai-medical-daily.peteraim.com/" />
+<link rel="canonical" href="https://ai-medical-daily.peteraim.com/" />
 <meta name="description" content="每日自動整理的 AI 與醫療 AI 新知、產業動向、法規與產品分析。">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
@@ -307,8 +367,8 @@ footer a{color:var(--accent);text-decoration:none}
     </div>
   </div>
 
-  <div class="chips" id="chips"></div>
-  <div id="out"></div>
+  <div class="chips" id="chips">__CHIPS__</div>
+  <div id="out">__ITEMS__</div>
 
   <footer>
   <div class="foot-row">
@@ -449,5 +509,7 @@ if __name__ == "__main__":
     items = collect()
     with open(OUT, "w", encoding="utf-8") as f:
         f.write(render(items))
+    n_urls = write_sitemap(items)
     print(f"✓ index.html 已重建：{len(items)} 份日報" + (f"（最新 {items[0]['date']}）" if items else "（目前沒有日報）"))
+    print(f"✓ sitemap.xml 已重建：{n_urls} 個網址")
     sys.exit(0)
