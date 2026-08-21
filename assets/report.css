@@ -1,0 +1,202 @@
+/* AI／醫療AI 每日新知日報 — 日報頁共用樣式
+   來源：reports/2026-08-21.html 的 inline <style>，六份日報原本逐位元組相同。
+   日報頁以 <link rel="stylesheet" href="/assets/report.css"> 引用。
+   改這裡會同時影響所有引用它的日報頁。 */
+:root{
+  --bg:#f7f8fa; --surface:#ffffff; --surface-2:#f0f2f5; --border:#e2e5ea;
+  --text:#16181d; --muted:#5c636e; --faint:#8a919c;
+  --accent:#0d7a6f; --accent-soft:#e3f2f0; --accent-text:#0a5c54;
+  --warn:#b45309; --warn-soft:#fdf3e3;
+  --shadow:0 1px 2px rgba(16,24,40,.04),0 4px 16px rgba(16,24,40,.05);
+}
+body.dark{
+  --bg:#0e1014; --surface:#171a20; --surface-2:#1e222a; --border:#2a2f39;
+  --text:#e8eaee; --muted:#a2a9b5; --faint:#6f7783;
+  --accent:#3fbfae; --accent-soft:#12332f; --accent-text:#6fd6c6;
+  --warn:#e0a34f; --warn-soft:#2e2415;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 20px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Helvetica Neue",Arial,sans-serif;
+  font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased;
+  transition:background .25s,color .25s;
+}
+body.lang-zh .en, body.lang-en .zh{display:none}
+body.lang-zh .en-inline, body.lang-en .zh-inline{display:none}
+.en-inline,.zh-inline{display:inline}
+
+/* ---------- top bar ---------- */
+header.bar{
+  position:sticky; top:0; z-index:50;
+  background:color-mix(in srgb,var(--surface) 88%,transparent);
+  backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+.bar-in{max-width:920px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px}
+.brand{font-weight:700;font-size:14px;letter-spacing:.02em;white-space:nowrap}
+.brand span{color:var(--accent)}
+.bar-sp{flex:1}
+.btn{
+  border:1px solid var(--border); background:var(--surface-2); color:var(--text);
+  border-radius:999px; padding:5px 12px; font-size:13px; font-weight:600;
+  cursor:pointer; font-family:inherit; transition:.15s; white-space:nowrap;
+}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.seg{display:flex;border:1px solid var(--border);border-radius:999px;overflow:hidden;background:var(--surface-2)}
+.seg button{
+  border:0;background:transparent;color:var(--muted);font-family:inherit;
+  padding:5px 13px;font-size:13px;font-weight:600;cursor:pointer;transition:.15s
+}
+.seg button.on{background:var(--accent);color:#fff}
+
+/* ---------- layout ---------- */
+main{max-width:920px;margin:0 auto;padding:0 20px 90px}
+.hero{padding:44px 0 28px;border-bottom:1px solid var(--border)}
+.kicker{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+h1{font-size:clamp(27px,5vw,40px);line-height:1.22;margin:0 0 8px;letter-spacing:-.02em;font-weight:750}
+.dateline{color:var(--faint);font-size:14px;margin-bottom:22px}
+.lede{
+  font-size:17px;line-height:1.7;color:var(--text);
+  background:var(--accent-soft);border-left:3px solid var(--accent);
+  padding:16px 18px;border-radius:0 10px 10px 0;margin:0;
+}
+nav.toc{
+  display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 0;
+}
+nav.toc a{
+  font-size:13px;font-weight:600;text-decoration:none;color:var(--muted);
+  border:1px solid var(--border);border-radius:999px;padding:5px 13px;background:var(--surface);
+  transition:.15s
+}
+nav.toc a:hover{color:var(--accent);border-color:var(--accent)}
+
+section{padding:44px 0 8px;scroll-margin-top:64px}
+h2{
+  font-size:13px;font-weight:750;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--accent);margin:0 0 6px;
+}
+.sec-title{font-size:clamp(21px,3.4vw,27px);margin:0 0 24px;letter-spacing:-.015em;font-weight:720;line-height:1.3}
+
+/* ---------- story cards ---------- */
+.card{
+  background:var(--surface);border:1px solid var(--border);border-radius:14px;
+  padding:22px 24px;margin-bottom:16px;box-shadow:var(--shadow);
+}
+.card h3{margin:0 0 10px;font-size:18px;line-height:1.45;letter-spacing:-.01em;font-weight:700}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.tag{
+  font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  padding:3px 9px;border-radius:5px;background:var(--surface-2);color:var(--muted);border:1px solid var(--border)
+}
+.tag.hot{background:var(--accent-soft);color:var(--accent-text);border-color:transparent}
+.tag.reg{background:var(--warn-soft);color:var(--warn);border-color:transparent}
+.row{display:flex;gap:12px;margin:11px 0;align-items:flex-start}
+.row .lab{
+  flex:0 0 84px;font-size:11px;font-weight:750;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--faint);padding-top:5px
+}
+.row .val{flex:1;margin:0;font-size:15px;line-height:1.7;color:var(--text)}
+.src{margin-top:14px;padding-top:12px;border-top:1px dashed var(--border);font-size:13px;color:var(--faint)}
+.src a{color:var(--accent);text-decoration:none;font-weight:600}
+.src a:hover{text-decoration:underline}
+
+/* ---------- misc blocks ---------- */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px 24px;box-shadow:var(--shadow)}
+.panel h3{margin:0 0 4px;font-size:18px;font-weight:700}
+.panel .sub{font-size:13px;color:var(--faint);margin:0 0 14px}
+.panel p{font-size:15px;line-height:1.72;margin:0 0 12px}
+.panel p:last-child{margin-bottom:0}
+ul.clean{margin:0;padding-left:19px}
+ul.clean li{font-size:15px;line-height:1.72;margin-bottom:9px}
+ul.clean li:last-child{margin-bottom:0}
+.pro{color:var(--accent-text);font-weight:700}
+body.dark .pro{color:var(--accent)}
+.con{color:var(--warn);font-weight:700}
+
+table{width:100%;border-collapse:collapse;font-size:14.5px;margin:0}
+.tbl-wrap{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow-x:auto;box-shadow:var(--shadow)}
+th{
+  text-align:left;padding:12px 16px;font-size:11px;font-weight:750;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--faint);border-bottom:1px solid var(--border);white-space:nowrap
+}
+td{padding:13px 16px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.6}
+tr:last-child td{border-bottom:0}
+td strong{font-weight:700}
+
+ol.reading{margin:0;padding-left:0;list-style:none;counter-reset:r}
+ol.reading li{
+  counter-increment:r;position:relative;padding:16px 0 16px 44px;border-bottom:1px solid var(--border)
+}
+ol.reading li:last-child{border-bottom:0;padding-bottom:0}
+ol.reading li::before{
+  content:counter(r);position:absolute;left:0;top:17px;
+  width:26px;height:26px;border-radius:50%;background:var(--accent-soft);color:var(--accent-text);
+  font-size:12px;font-weight:750;display:flex;align-items:center;justify-content:center
+}
+body.dark ol.reading li::before{color:var(--accent)}
+ol.reading a{color:var(--text);text-decoration:none;font-weight:700;font-size:15.5px;line-height:1.5}
+ol.reading a:hover{color:var(--accent)}
+ol.reading .why{margin:5px 0 0;font-size:14px;color:var(--muted);line-height:1.65}
+
+ol.refs{margin:0;padding-left:22px;font-size:13.5px;line-height:1.85;color:var(--muted)}
+ol.refs li{margin-bottom:9px}
+ol.refs a{color:var(--accent);text-decoration:none;word-break:break-word}
+ol.refs a:hover{text-decoration:underline}
+
+.note{
+  background:var(--warn-soft);border:1px solid transparent;border-left:3px solid var(--warn);
+  border-radius:0 10px 10px 0;padding:14px 18px;font-size:14px;color:var(--text);line-height:1.7;margin-top:18px
+}
+/* --- GitHub 星星徽章 + 頁尾社群連結 --- */
+.gh-star{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--border);
+  background:var(--surface-2);color:var(--muted);border-radius:999px;padding:5px 10px;
+  font-size:13px;font-weight:700;text-decoration:none;font-variant-numeric:tabular-nums;
+  transition:.15s;white-space:nowrap}
+.gh-star:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+.gh-star svg{width:15px;height:15px;fill:currentColor;flex:none;display:block}
+.gh-star .st{color:#e3a008}
+.gh-star b{font-weight:700;min-width:1ch;font-size:12.5px}
+.foot-row{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.foot-row>div:first-child{flex:1 1 320px;min-width:0}
+.social{display:flex;gap:9px;align-items:center;flex:none}
+.social a{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;
+  border:1px solid var(--border);background:var(--surface-2);color:var(--muted);
+  border-radius:999px;transition:.15s;text-decoration:none}
+.social a:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);
+  transform:translateY(-1px)}
+.social svg{width:16px;height:16px;fill:currentColor;display:block}
+@media(max-width:430px){.gh-star b{display:none}.gh-star{padding:5px 9px;gap:4px}}
+a.brand{color:inherit;text-decoration:none;transition:.15s;cursor:pointer}
+a.brand:hover{opacity:.72}
+a.brand:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:5px}
+
+.fabs{position:fixed;right:20px;bottom:20px;display:flex;flex-direction:column;gap:10px;z-index:40}
+.home-fab{display:flex;align-items:center;justify-content:center;width:42px;height:42px;
+  border-radius:50%;border:1px solid var(--border);background:var(--surface);color:var(--muted);
+  box-shadow:var(--shadow);text-decoration:none;transition:.15s}
+.home-fab:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+.home-fab:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.home-fab svg{width:18px;height:18px;fill:currentColor;display:block}
+footer{
+  margin-top:56px;padding-top:24px;border-top:1px solid var(--border);
+  font-size:13px;color:var(--faint);line-height:1.8
+}
+.up{
+  position:static;width:42px;height:42px;border-radius:50%;
+  border:1px solid var(--border);background:var(--surface);color:var(--muted);
+  cursor:pointer;font-size:17px;box-shadow:var(--shadow);display:none;z-index:40
+}
+.up.show{display:block}
+@media(max-width:700px){
+  .grid2{grid-template-columns:1fr}
+  .row{flex-direction:column;gap:2px}
+  .row .lab{flex:none;padding-top:0}
+  .bar-in{padding:9px 14px;gap:8px}
+  .brand{font-size:12.5px}
+  main{padding:0 15px 80px}
+  .card,.panel{padding:18px}
+}
