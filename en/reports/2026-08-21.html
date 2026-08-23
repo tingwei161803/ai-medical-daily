@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>AI &amp; Medical AI Daily · 2026-08-21</title>
+<meta property="og:url" content="https://ai-medical-daily.peteraim.com/en/reports/2026-08-21.html" />
+<link rel="canonical" href="https://ai-medical-daily.peteraim.com/en/reports/2026-08-21.html" />
+<link rel="alternate" hreflang="zh-Hant" href="https://ai-medical-daily.peteraim.com/reports/2026-08-21.html" />
+<link rel="alternate" hreflang="en" href="https://ai-medical-daily.peteraim.com/en/reports/2026-08-21.html" />
+<link rel="alternate" hreflang="x-default" href="https://ai-medical-daily.peteraim.com/reports/2026-08-21.html" />
+<meta name="description" content="At its Aug 17–20 UGM, Epic unveiled Ergo, Agent Factory and Cosmos Curiosity, saying 85%+ of its customers already use Epic AI and Cosmos now spans 320 million people; the same week Reuters revealed an FTC probe into Epic's non-competes and data access, while $7B-valued Commure terminated its referral-payment programmes after a STAT investigation.">
+<meta name="report-date" content="2026-08-21">
+<meta name="report-theme" content="product">
+<meta name="report-title-zh" content="Epic 週：EHR 巨頭把 AI 做成作業系統，同一週 FTC 走進了門">
+<meta name="report-title-en" content="Epic Week: the EHR giant turns AI into an operating system — and the FTC walks in">
+<meta name="report-summary-zh" content="Epic 在 8/17–20 的 UGM 一次端出 Ergo、Agent Factory 與 Cosmos Curiosity，宣稱逾 85% 客戶已在用 Epic AI、Cosmos 涵蓋 3.2 億人；同一週路透揭露 FTC 正調查 Epic 的競業條款與資料存取，估值 70 億美元的 Commure 則在 STAT 調查後終止推薦金方案。">
+<meta name="report-summary-en" content="At its Aug 17–20 UGM, Epic unveiled Ergo, Agent Factory and Cosmos Curiosity, saying 85%+ of its customers already use Epic AI and Cosmos now spans 320 million people; the same week Reuters revealed an FTC probe into Epic's non-competes and data access, while $7B-valued Commure terminated its referral-payment programmes after a STAT investigation.">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HJLDQZDK5V');
+</script>
+<style>
+:root{
+  --bg:#f7f8fa; --surface:#ffffff; --surface-2:#f0f2f5; --border:#e2e5ea;
+  --text:#16181d; --muted:#5c636e; --faint:#8a919c;
+  --accent:#0d7a6f; --accent-soft:#e3f2f0; --accent-text:#0a5c54;
+  --warn:#b45309; --warn-soft:#fdf3e3;
+  --shadow:0 1px 2px rgba(16,24,40,.04),0 4px 16px rgba(16,24,40,.05);
+}
+body.dark{
+  --bg:#0e1014; --surface:#171a20; --surface-2:#1e222a; --border:#2a2f39;
+  --text:#e8eaee; --muted:#a2a9b5; --faint:#6f7783;
+  --accent:#3fbfae; --accent-soft:#12332f; --accent-text:#6fd6c6;
+  --warn:#e0a34f; --warn-soft:#2e2415;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 20px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Helvetica Neue",Arial,sans-serif;
+  font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased;
+  transition:background .25s,color .25s;
+}
+.lang-alt-link{margin:0}
+.lang-alt-link a{color:var(--accent);text-decoration:none;font-weight:600}
+
+/* ---------- top bar ---------- */
+header.bar{
+  position:sticky; top:0; z-index:50;
+  background:color-mix(in srgb,var(--surface) 88%,transparent);
+  backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+.bar-in{max-width:920px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px}
+.brand{font-weight:700;font-size:14px;letter-spacing:.02em;white-space:nowrap}
+.brand span{color:var(--accent)}
+.bar-sp{flex:1}
+.btn{
+  border:1px solid var(--border); background:var(--surface-2); color:var(--text);
+  border-radius:999px; padding:5px 12px; font-size:13px; font-weight:600;
+  cursor:pointer; font-family:inherit; transition:.15s; white-space:nowrap;
+}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.seg{display:flex;border:1px solid var(--border);border-radius:999px;overflow:hidden;background:var(--surface-2)}
+.seg a{
+  border:0;background:transparent;color:var(--muted);font-family:inherit;
+  padding:5px 13px;font-size:13px;font-weight:600;cursor:pointer;transition:.15s;
+  display:flex;align-items:center;justify-content:center;
+  text-decoration:none;line-height:normal
+}
+.seg a.on{background:var(--accent);color:#fff}
+
+/* ---------- layout ---------- */
+main{max-width:920px;margin:0 auto;padding:0 20px 90px}
+.hero{padding:44px 0 28px;border-bottom:1px solid var(--border)}
+.kicker{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+h1{font-size:clamp(27px,5vw,40px);line-height:1.22;margin:0 0 8px;letter-spacing:-.02em;font-weight:750}
+.dateline{color:var(--faint);font-size:14px;margin-bottom:22px}
+.lede{
+  font-size:17px;line-height:1.7;color:var(--text);
+  background:var(--accent-soft);border-left:3px solid var(--accent);
+  padding:16px 18px;border-radius:0 10px 10px 0;margin:0;
+}
+nav.toc{
+  display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 0;
+}
+nav.toc a{
+  font-size:13px;font-weight:600;text-decoration:none;color:var(--muted);
+  border:1px solid var(--border);border-radius:999px;padding:5px 13px;background:var(--surface);
+  transition:.15s
+}
+nav.toc a:hover{color:var(--accent);border-color:var(--accent)}
+
+section{padding:44px 0 8px;scroll-margin-top:64px}
+h2{
+  font-size:13px;font-weight:750;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--accent);margin:0 0 6px;
+}
+.sec-title{font-size:clamp(21px,3.4vw,27px);margin:0 0 24px;letter-spacing:-.015em;font-weight:720;line-height:1.3}
+
+/* ---------- story cards ---------- */
+.card{
+  background:var(--surface);border:1px solid var(--border);border-radius:14px;
+  padding:22px 24px;margin-bottom:16px;box-shadow:var(--shadow);
+}
+.card h3{margin:0 0 10px;font-size:18px;line-height:1.45;letter-spacing:-.01em;font-weight:700}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.tag{
+  font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  padding:3px 9px;border-radius:5px;background:var(--surface-2);color:var(--muted);border:1px solid var(--border)
+}
+.tag.hot{background:var(--accent-soft);color:var(--accent-text);border-color:transparent}
+.tag.reg{background:var(--warn-soft);color:var(--warn);border-color:transparent}
+.row{display:flex;gap:12px;margin:11px 0;align-items:flex-start}
+.row .lab{
+  flex:0 0 84px;font-size:11px;font-weight:750;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--faint);padding-top:5px
+}
+.row .val{flex:1;margin:0;font-size:15px;line-height:1.7;color:var(--text)}
+.src{margin-top:14px;padding-top:12px;border-top:1px dashed var(--border);font-size:13px;color:var(--faint)}
+.src a{color:var(--accent);text-decoration:none;font-weight:600}
+.src a:hover{text-decoration:underline}
+
+/* ---------- misc blocks ---------- */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px 24px;box-shadow:var(--shadow)}
+.panel h3{margin:0 0 4px;font-size:18px;font-weight:700}
+.panel .sub{font-size:13px;color:var(--faint);margin:0 0 14px}
+.panel p{font-size:15px;line-height:1.72;margin:0 0 12px}
+.panel p:last-child{margin-bottom:0}
+ul.clean{margin:0;padding-left:19px}
+ul.clean li{font-size:15px;line-height:1.72;margin-bottom:9px}
+ul.clean li:last-child{margin-bottom:0}
+.pro{color:var(--accent-text);font-weight:700}
+body.dark .pro{color:var(--accent)}
+.con{color:var(--warn);font-weight:700}
+
+table{width:100%;border-collapse:collapse;font-size:14.5px;margin:0}
+.tbl-wrap{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow-x:auto;box-shadow:var(--shadow)}
+th{
+  text-align:left;padding:12px 16px;font-size:11px;font-weight:750;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--faint);border-bottom:1px solid var(--border);white-space:nowrap
+}
+td{padding:13px 16px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.6}
+tr:last-child td{border-bottom:0}
+td strong{font-weight:700}
+
+ol.reading{margin:0;padding-left:0;list-style:none;counter-reset:r}
+ol.reading li{
+  counter-increment:r;position:relative;padding:16px 0 16px 44px;border-bottom:1px solid var(--border)
+}
+ol.reading li:last-child{border-bottom:0;padding-bottom:0}
+ol.reading li::before{
+  content:counter(r);position:absolute;left:0;top:17px;
+  width:26px;height:26px;border-radius:50%;background:var(--accent-soft);color:var(--accent-text);
+  font-size:12px;font-weight:750;display:flex;align-items:center;justify-content:center
+}
+body.dark ol.reading li::before{color:var(--accent)}
+ol.reading a{color:var(--text);text-decoration:none;font-weight:700;font-size:15.5px;line-height:1.5}
+ol.reading a:hover{color:var(--accent)}
+ol.reading .why{margin:5px 0 0;font-size:14px;color:var(--muted);line-height:1.65}
+
+ol.refs{margin:0;padding-left:22px;font-size:13.5px;line-height:1.85;color:var(--muted)}
+ol.refs li{margin-bottom:9px}
+ol.refs a{color:var(--accent);text-decoration:none;word-break:break-word}
+ol.refs a:hover{text-decoration:underline}
+
+.note{
+  background:var(--warn-soft);border:1px solid transparent;border-left:3px solid var(--warn);
+  border-radius:0 10px 10px 0;padding:14px 18px;font-size:14px;color:var(--text);line-height:1.7;margin-top:18px
+}
+/* --- GitHub 星星徽章 + 頁尾社群連結 --- */
+.gh-star{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--border);
+  background:var(--surface-2);color:var(--muted);border-radius:999px;padding:5px 10px;
+  font-size:13px;font-weight:700;text-decoration:none;font-variant-numeric:tabular-nums;
+  transition:.15s;white-space:nowrap}
+.gh-star:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+.gh-star svg{width:15px;height:15px;fill:currentColor;flex:none;display:block}
+.gh-star .st{color:#e3a008}
+.gh-star b{font-weight:700;min-width:1ch;font-size:12.5px}
+.foot-row{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.foot-row>div:first-child{flex:1 1 320px;min-width:0}
+.social{display:flex;gap:9px;align-items:center;flex:none}
+.social a{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;
+  border:1px solid var(--border);background:var(--surface-2);color:var(--muted);
+  border-radius:999px;transition:.15s;text-decoration:none}
+.social a:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);
+  transform:translateY(-1px)}
+.social svg{width:16px;height:16px;fill:currentColor;display:block}
+@media(max-width:430px){.gh-star b{display:none}.gh-star{padding:5px 9px;gap:4px}}
+a.brand{color:inherit;text-decoration:none;transition:.15s;cursor:pointer}
+a.brand:hover{opacity:.72}
+a.brand:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:5px}
+
+.fabs{position:fixed;right:20px;bottom:20px;display:flex;flex-direction:column;gap:10px;z-index:40}
+.home-fab{display:flex;align-items:center;justify-content:center;width:42px;height:42px;
+  border-radius:50%;border:1px solid var(--border);background:var(--surface);color:var(--muted);
+  box-shadow:var(--shadow);text-decoration:none;transition:.15s}
+.home-fab:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+.home-fab:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.home-fab svg{width:18px;height:18px;fill:currentColor;display:block}
+footer{
+  margin-top:56px;padding-top:24px;border-top:1px solid var(--border);
+  font-size:13px;color:var(--faint);line-height:1.8
+}
+.up{
+  position:static;width:42px;height:42px;border-radius:50%;
+  border:1px solid var(--border);background:var(--surface);color:var(--muted);
+  cursor:pointer;font-size:17px;box-shadow:var(--shadow);display:none;z-index:40
+}
+.up.show{display:block}
+@media(max-width:700px){
+  .grid2{grid-template-columns:1fr}
+  .row{flex-direction:column;gap:2px}
+  .row .lab{flex:none;padding-top:0}
+  .bar-in{padding:9px 14px;gap:8px}
+  .brand{font-size:12.5px}
+  main{padding:0 15px 80px}
+  .card,.panel{padding:18px}
+}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><span>◆</span> <span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <div class="bar-sp"></div>
+    <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
+    <div class="seg">
+      <a href="/reports/2026-08-21.html" hreflang="zh-Hant" lang="zh-Hant" rel="alternate">中文</a>
+      <a class="on" href="/en/reports/2026-08-21.html" hreflang="en" lang="en" aria-current="page">EN</a>
+    </div>
+    <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="kicker">
+    <span class="en-inline">Friday · Product &amp; Company Deep Dive</span>
+  </div>
+  <h1>
+    <span class="en">Epic Week: the EHR giant turns AI into an operating system — and the FTC walks in</span>
+  </h1>
+  <div class="dateline">
+    <span class="en-inline">Friday, August 21, 2026 · Covering Aug 12–21 · Taipei time</span>
+  </div>
+  <p class="lede">
+    <span class="en">American health AI had one coordinate this week: Verona, Wisconsin. Epic's annual Users Group Meeting ran <a href="https://www.beckershospitalreview.com/healthcare-information-technology/ehrs/epics-ugm-2026-preview-ai-agents-cosmos-germany-debut/" target="_blank" rel="noopener">Aug 17–20 with more than 20,000 people on site</a>, and what it shipped was not a feature but an operating layer: <a href="https://www.techtarget.com/searchhealthit/news/366649337/Epic-unveils-AI-driven-Ergo-Visit-at-2026-UGM" target="_blank" rel="noopener">Ergo</a>, plus <a href="https://www.fiercehealthcare.com/health-tech/epic-expands-ai-ambitions-agent-platform-cosmos-powered-predictions-and-deeper-workflow" target="_blank" rel="noopener">Agent Factory and Cosmos Curiosity</a> — with the claim that <strong>more than 85% of Epic customers now use Epic AI</strong>. On the other side of the party, Reuters reported on Aug 14 that <a href="https://www.insurancejournal.com/news/national/2026/08/17/881655.htm" target="_blank" rel="noopener">the FTC is probing Epic over non-competes and data access</a>; the same week, $7-billion-valued Commure <a href="https://www.statnews.com/2026/08/13/commure-terminates-payments-under-customer-referral-programs/" target="_blank" rel="noopener">terminated its referral-payment programmes</a> after a <a href="https://www.statnews.com/2026/08/12/inside-commure-athelas-mad-dash-automate-health-care/" target="_blank" rel="noopener">STAT investigation</a>. Today's theme is blunt: <strong>once AI becomes a platform rather than a feature, the moat and the antitrust exposure are the same wall</strong>.</span>
+  </p>
+
+  <nav class="toc">
+    <a href="#top"><span class="en-inline">Top Stories</span></a>
+    <a href="#product"><span class="en-inline">Product Analysis</span></a>
+    <a href="#company"><span class="en-inline">Companies &amp; Competition</span></a>
+    <a href="#taiwan"><span class="en-inline">Taiwan Angle</span></a>
+    <a href="#reading"><span class="en-inline">Further Reading</span></a>
+    <a href="#refs"><span class="en-inline">References</span></a>
+  </nav>
+</div>
+
+<!-- ============ TOP STORIES ============ -->
+<section id="top">
+  <h2>01 — Top Stories</h2>
+  <div class="sec-title">
+    <span class="en">Eight things on the product and company side</span>
+  </div>
+
+  <!-- 1 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Launch</span></span>
+      <span class="tag">Epic Systems</span><span class="tag">Ergo</span><span class="tag">UGM 2026</span><span class="tag">8/18</span>
+    </div>
+    <h3>
+      <span class="en">Epic launches Ergo: not a feature, but an AI-assembled replacement for the EHR interface itself</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Epic founder Judy Faulkner used the <a href="https://www.beckershospitalreview.com/healthcare-information-technology/ehrs/epics-ugm-2026-preview-ai-agents-cosmos-germany-debut/" target="_blank" rel="noopener">Aug 18 UGM general session</a> to launch <strong>Ergo</strong> (Latin for "therefore"), a clinician interface that reassembles itself around the clinical context, due in <a href="https://www.healthcareittoday.com/2026/08/19/epic-ugm-2026-judy-faulkner-keynote-and-cool-stuff-ahead/" target="_blank" rel="noopener">November 2026</a>. Inside it, <strong>Ergo Visit</strong> stitches three things into one outpatient flow: ambient charting (<strong>Art</strong>), the patient-facing assistant (<strong>Emmie</strong>), and <strong>Best Care Choices for My Patient</strong>, which queries the Cosmos database for what worked in medically and demographically similar patients (<a href="https://www.techtarget.com/searchhealthit/news/366649337/Epic-unveils-AI-driven-Ergo-Visit-at-2026-UGM" target="_blank" rel="noopener">TechTarget</a>). It is live today at <strong>Ochsner Health</strong> and with five physicians in Epic's Garden Plot programme.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">For two years the commercial fight in health AI was "whose scribe is more accurate." Ergo lifts the fight a layer. When the evidence behind a treatment suggestion comes from Epic's own <a href="https://www.fiercehealthcare.com/health-tech/epic-expands-ai-ambitions-agent-platform-cosmos-powered-predictions-and-deeper-workflow" target="_blank" rel="noopener">Cosmos — 320 million people and 23 billion encounters</a> — a third-party vendor with a better model still cannot reach the same comparator set. It is a textbook case of a <strong>data moat converting directly into a product moat</strong>, which is precisely the line the FTC probe is drawn along.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Players</span></div>
+      <p class="val">
+        <span class="en">Epic Systems (Verona, Wisconsin; private; founded 1979); early adopter Ochsner Health; <a href="https://www.healthcareittoday.com/2026/08/19/epic-ugm-2026-judy-faulkner-keynote-and-cool-stuff-ahead/" target="_blank" rel="noopener">Chart with Art now spans 70+ specialties</a>, with its ambient voice layer powered by Microsoft's Dragon platform (<a href="https://www.onhealthcare.tech/p/why-epic-hitched-its-ambient-scribe" target="_blank" rel="noopener">On Healthcare Technology</a>).</span>
+      </p></div>
+    <div class="src">
+      <span class="en-inline">Sources: </span>
+      <a href="https://www.techtarget.com/searchhealthit/news/366649337/Epic-unveils-AI-driven-Ergo-Visit-at-2026-UGM" target="_blank" rel="noopener">TechTarget</a> ·
+      <a href="https://www.healthcareittoday.com/2026/08/19/epic-ugm-2026-judy-faulkner-keynote-and-cool-stuff-ahead/" target="_blank" rel="noopener">Healthcare IT Today</a> ·
+      <a href="https://www.distilledpost.com/post/inside-epic-ugm-2026-the-biggest-reveals-from-cool-stuff-ahead" target="_blank" rel="noopener">Distilled Post</a>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Platform</span></span>
+      <span class="tag">Agent Factory</span><span class="tag">Cosmos Curiosity</span><span class="tag">Penny</span><span class="tag">8/18</span>
+    </div>
+    <h3>
+      <span class="en">Agent Factory and Cosmos Curiosity: Epic turns agentic AI from a demo into something customers build themselves</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en"><strong>Agent Factory</strong> is Epic's platform for customers to build, deploy and monitor their own AI agents — previewed at HIMSS26, <a href="https://www.fiercehealthcare.com/health-tech/epic-expands-ai-ambitions-agent-platform-cosmos-powered-predictions-and-deeper-workflow" target="_blank" rel="noopener">generally available in 2027</a>. Early adopter ECU Health says its transfer-request summarisation agent saves roughly <strong>20 hours a week</strong>. <strong>Cosmos Curiosity</strong> is a generative model trained on Cosmos data that forecasts outcomes such as readmission and stroke, <a href="https://www.fiercehealthcare.com/health-tech/epic-expands-ai-ambitions-agent-platform-cosmos-powered-predictions-and-deeper-workflow" target="_blank" rel="noopener">shipping as an embedded EHR component in March 2027</a>. The autonomous coding agent <strong>Penny</strong> is already live in radiology and emergency medicine and <a href="https://www.healthcareittoday.com/2026/08/19/epic-ugm-2026-judy-faulkner-keynote-and-cool-stuff-ahead/" target="_blank" rel="noopener">expanding to surgery and pathology</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Revenue cycle is where Epic actually put numbers on the table — and it is exactly the market Commure, R1 and Abridge are chasing: <a href="https://www.healthcareittoday.com/2026/08/19/epic-ugm-2026-judy-faulkner-keynote-and-cool-stuff-ahead/" target="_blank" rel="noopener">Professional Coding Assistant at 360+ implementations with 40+ groups cutting denials by more than 20%; Denial Appeals Assistant live at 330+ sites, 23% faster appeal drafting; Medical Necessity Insights at 180+ sites, 12,500 hours saved on prior authorisation</a>. Once those are native EHR features, standalone RCM-AI vendors have to prove they are good enough to justify a separate contract.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Players</span></div>
+      <p class="val">
+        <span class="en">Epic (Agent Factory, Curiosity, Penny, Emmie, Art, EpicOps); ECU Health and Ochsner Health as early adopters. Epic also announced that Berlin's <strong>Charité</strong> becomes <a href="https://www.beckershospitalreview.com/healthcare-information-technology/ehrs/epics-ugm-2026-preview-ai-agents-cosmos-germany-debut/" target="_blank" rel="noopener">Germany's first Epic organisation</a>.</span>
+      </p></div>
+    <div class="src">
+      <span class="en-inline">Sources: </span>
+      <a href="https://www.fiercehealthcare.com/health-tech/epic-expands-ai-ambitions-agent-platform-cosmos-powered-predictions-and-deeper-workflow" target="_blank" rel="noopener">Fierce Healthcare</a> ·
+      <a href="https://www.healthcareittoday.com/2026/08/19/epic-ugm-2026-judy-faulkner-keynote-and-cool-stuff-ahead/" target="_blank" rel="noopener">Healthcare IT Today</a> ·
+      <a href="https://www.beckershospitalreview.com/healthcare-information-technology/ehrs/epics-ugm-2026-preview-ai-agents-cosmos-germany-debut/" target="_blank" rel="noopener">Becker's</a>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag reg"><span class="en-inline">Antitrust</span></span>
+      <span class="tag">FTC</span><span class="tag">Epic Systems</span><span class="tag">Reuters</span><span class="tag">8/14</span>
+    </div>
+    <h3>
+      <span class="en">The FTC is probing Epic on two fronts: non-competes, and whether it blocks rivals from data</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Reuters reported exclusively on Aug 14 that <a href="https://www.insurancejournal.com/news/national/2026/08/17/881655.htm" target="_blank" rel="noopener">the FTC has issued investigative demands to other health-tech firms seeking information on Epic's data-access practices</a>. <a href="https://www.statnews.com/2026/08/14/epic-systems-ftc-review-nda-use-possible-anticompetitive-practices/" target="_blank" rel="noopener">STAT reported the same day</a> that the probe is early, that at least four people have been contacted, and that it runs along two lines: (1) non-compete and confidentiality agreements restricting staff movement to rivals; (2) whether Epic uses its dominance to block competitors from patient data. An Epic spokesperson said: <a href="https://www.insurancejournal.com/news/national/2026/08/17/881655.htm" target="_blank" rel="noopener">"We're leaders in interoperability to support patient care, and we do not engage in anticompetitive behavior."</a></span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This is not isolated. Texas AG Ken Paxton <a href="https://www.insurancejournal.com/news/national/2026/08/17/881655.htm" target="_blank" rel="noopener">sued Epic in December over data barriers and fees said to restrict competitors</a>, and records platform <a href="https://www.particlehealth.com/blog/epic-systems-stranglehold-on-u-s-medical-records-harms-patient-care-lawsuit" target="_blank" rel="noopener">Particle Health has its own antitrust suit</a> (Epic is <a href="https://www.fiercehealthcare.com/health-tech/epic-hits-back-particle-health-counter-argument-it-pushes-get-antitrust-case-dismissed" target="_blank" rel="noopener">pushing to have it dismissed</a>). Against the UGM backdrop the irony is sharp: Epic is demonstrating the AI advantage Cosmos confers while arguing to regulators that the underlying data advantage was not obtained by excluding rivals. Epic's position is that <a href="https://www.insurancejournal.com/news/national/2026/08/17/881655.htm" target="_blank" rel="noopener">providers, not Epic, control access to records</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Scale</span></div>
+      <p class="val">
+        <span class="en">Epic's EHR and MyChart cover <a href="https://www.insurancejournal.com/news/national/2026/08/17/881655.htm" target="_blank" rel="noopener">more than 280 million U.S. patients</a>, and its research platform spans <a href="https://www.insurancejournal.com/news/national/2026/08/17/881655.htm" target="_blank" rel="noopener">310 million</a> (Epic put Cosmos at 320 million at UGM). The FTC declined to comment.</span>
+      </p></div>
+    <div class="src">
+      <span class="en-inline">Sources: </span>
+      <a href="https://www.insurancejournal.com/news/national/2026/08/17/881655.htm" target="_blank" rel="noopener">Reuters via Insurance Journal</a> ·
+      <a href="https://www.statnews.com/2026/08/14/epic-systems-ftc-review-nda-use-possible-anticompetitive-practices/" target="_blank" rel="noopener">STAT (STAT+)</a> ·
+      <a href="https://www.spokesman.com/stories/2026/aug/14/exclusive-ftc-probes-health-records-giant-epic-sys/" target="_blank" rel="noopener">Spokesman-Review</a>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag reg"><span class="en-inline">Compliance</span></span>
+      <span class="tag">Commure</span><span class="tag">STAT</span><span class="tag">$7B</span><span class="tag">8/12–13</span>
+    </div>
+    <h3>
+      <span class="en">$7B Commure kills its referral-payment programmes after a STAT investigation; ex-prosecutors flag anti-kickback risk</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">STAT published an <a href="https://www.statnews.com/2026/08/12/inside-commure-athelas-mad-dash-automate-health-care/" target="_blank" rel="noopener">investigation into Commure (formerly Athelas) on Aug 12</a>, drawing on interviews with more than three dozen former employees, partners and customers, and reporting that the company "offers thousands of dollars, in various forms, to medical clinics and other parties who refer its products." On Aug 13, STAT reported that <a href="https://www.statnews.com/2026/08/13/commure-terminates-payments-under-customer-referral-programs/" target="_blank" rel="noopener">Commure emailed notice on Aug 6 terminating the referral programmes with 30 days' notice</a>; chief legal officer Dan Brian said amounts owed as of termination would be paid in full. STAT first asked about the payments in June.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Details compiled by <a href="https://digitalhealthwire.com/commure-in-the-crosshairs/" target="_blank" rel="noopener">Digital Health Wire</a> include physical-therapy clinics facing a <strong>$66,000 "referral obligation fee"</strong> if they failed to generate $750,000 in annual referrals, and affiliate partners earning <strong>2% commissions</strong> on referred contracts. Former federal prosecutors told STAT that paying for referrals tied to Medicare/Medicaid products can implicate the Anti-Kickback Statute — NextGen Healthcare and athenahealth both settled similar allegations. The warning generalises to the whole "sell AI into clinics" channel model: <strong>growth velocity and compliance exposure often ride the same lever</strong>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Company</span></div>
+      <p class="val">
+        <span class="en">Founded by Tanay Tandon in 2020, Commure has <a href="https://digitalhealthwire.com/commure-in-the-crosshairs/" target="_blank" rel="noopener">raised $800 million at a $7 billion valuation and serves 130+ health systems</a>, including HCA Healthcare and Tenet Healthcare (<a href="https://www.statnews.com/2026/08/12/inside-commure-athelas-mad-dash-automate-health-care/" target="_blank" rel="noopener">STAT</a>). Customer outcomes are polarised: some report materially better collections, while a Wyoming rehab clinic lost $500k in collections and an Arizona FQHC saw $1 million in denied dental claims it was never told about. Commure calls the practices "industry standard" affecting "a small minority of customers."</span>
+      </p></div>
+    <div class="src">
+      <span class="en-inline">Sources: </span>
+      <a href="https://www.statnews.com/2026/08/12/inside-commure-athelas-mad-dash-automate-health-care/" target="_blank" rel="noopener">STAT (STAT+)</a> ·
+      <a href="https://www.statnews.com/2026/08/13/commure-terminates-payments-under-customer-referral-programs/" target="_blank" rel="noopener">STAT 8/13</a> ·
+      <a href="https://digitalhealthwire.com/commure-in-the-crosshairs/" target="_blank" rel="noopener">Digital Health Wire</a>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">M&amp;A</span></span>
+      <span class="tag">R1 RCM</span><span class="tag">Humata Health</span><span class="tag"><span class="en-inline">Prior Auth</span></span>
+    </div>
+    <h3>
+      <span class="en">R1 RCM buys Humata Health, folding prior-authorisation AI into its Phare OS</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Revenue-cycle giant R1 RCM signed a <a href="https://www.fiercehealthcare.com/finance/r1-agrees-acquire-humata-health-enhance-os-ai-powered-prior-auths" target="_blank" rel="noopener">definitive agreement to acquire prior-authorisation automation company Humata Health, expected to close at the end of Q3 2026, terms undisclosed</a>. R1 will fold Humata into its Phare Operating System and move the Humata team into its <strong>R37</strong> agentic-AI innovation lab.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Prior authorisation is the most quantifiable slice of U.S. administrative cost: a KFF analysis found insurers <a href="https://www.fiercehealthcare.com/finance/r1-agrees-acquire-humata-health-enhance-os-ai-powered-prior-auths" target="_blank" rel="noopener">denied 12–18% of standard prior-auth requests in 2025</a> depending on segment. Humata claims a <strong>96% first-pass approval rate</strong>, a <strong>30% reduction in write-offs</strong> and an <strong>83% drop in rescheduled appointments</strong>. Note the timing: the same week, Epic said at UGM that Medical Necessity Insights is live at 180+ sites and has saved 12,500 prior-auth hours — <strong>the best exit for an independent vendor is increasingly to be bought by a bigger platform</strong>.</span>
+      </p></div>
+    <div class="src">
+      <span class="en-inline">Source: </span>
+      <a href="https://www.fiercehealthcare.com/finance/r1-agrees-acquire-humata-health-enhance-os-ai-powered-prior-auths" target="_blank" rel="noopener">Fierce Healthcare</a>
+    </div>
+  </div>
+
+  <!-- 6 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">M&amp;A + Funding</span></span>
+      <span class="tag">Cityblock</span><span class="tag">Homeward Health</span><span class="tag">General Catalyst</span><span class="tag">8/20</span>
+    </div>
+    <h3>
+      <span class="en">Cityblock acquires Homeward Health in an all-stock deal and lands a $116M Series E</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On Aug 20, Cityblock Health — which serves urban Medicaid and dual-eligible populations — <a href="https://www.fiercehealthcare.com/health-tech/cityblock-acquires-homeward-health-move-rural-healthcare-lands-116m-funding-round" target="_blank" rel="noopener">acquired rural Medicare Advantage provider Homeward Health in an all-stock deal and raised a $116 million Series E led by General Catalyst</a>. The combined company serves nearly 250,000 people.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Numbers &amp; the AI angle</span></div>
+      <p class="val">
+        <span class="en"><a href="https://www.fiercehealthcare.com/health-tech/cityblock-acquires-homeward-health-move-rural-healthcare-lands-116m-funding-round" target="_blank" rel="noopener">Cityblock serves nearly 200,000 members on $2.2 billion of annualised revenue (up 77% year over year, and 323% since 2021), having raised more than $900 million; Homeward has served 50,000+ rural patients across 50 counties with 5,000 partner providers</a>. The AI angle: Cityblock's <strong>CORE</strong> platform uses predictive analytics to flag high-risk members at <a href="https://www.fiercehealthcare.com/health-tech/cityblock-acquires-homeward-health-move-rural-healthcare-lands-116m-funding-round" target="_blank" rel="noopener">62–87% accuracy</a>, and the round is earmarked partly for AI in routine outreach and admin. It is one of the week's few cases where AI is not the product but a cost lever inside value-based care.</span>
+      </p></div>
+    <div class="src">
+      <span class="en-inline">Source: </span>
+      <a href="https://www.fiercehealthcare.com/health-tech/cityblock-acquires-homeward-health-move-rural-healthcare-lands-116m-funding-round" target="_blank" rel="noopener">Fierce Healthcare</a>
+    </div>
+  </div>
+
+  <!-- 7 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Deployment</span></span>
+      <span class="tag">ChatEHR</span><span class="tag">Stanford</span><span class="tag">STAT</span><span class="tag">8/20</span>
+    </div>
+    <h3>
+      <span class="en">Health systems start querying the chart with an LLM: one diagnosis from Stanford's ChatEHR</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">STAT reported on Aug 20 that a growing number of health systems are deploying LLM-based tools to query and summarise the chart, Stanford's <strong>ChatEHR</strong> among them. The anchor case: after six colleagues and 70 stains failed to yield a diagnosis from a lymph node biopsy, a pathologist used ChatEHR to surface that <a href="https://www.statnews.com/2026/08/20/health-systems-embrace-ai-chatbots-query-patient-records-ehr/" target="_blank" rel="noopener">the patient carried a prior diagnosis of sarcomatoid squamous cell carcinoma at another health system, which "completely explained the findings."</a></span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This is precisely the capability Epic wants native via <strong>Ask Art</strong> and Care Everywhere. The contest between academic in-house builds (ChatEHR and its peers) and vendor-native features will decide whether "ask the chart" ends up an <strong>open academic capability</strong> or <strong>a feature locked inside one vendor</strong>. STAT also notes these tools require "persistent monitoring."</span>
+      </p></div>
+    <div class="src">
+      <span class="en-inline">Source: </span>
+      <a href="https://www.statnews.com/2026/08/20/health-systems-embrace-ai-chatbots-query-patient-records-ehr/" target="_blank" rel="noopener">STAT (STAT+)</a>
+    </div>
+  </div>
+
+  <!-- 8 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Funding</span></span>
+      <span class="tag">Happy Health</span><span class="tag">Hopscotch</span><span class="tag">Ours Privacy</span><span class="tag">8/18</span>
+    </div>
+    <h3>
+      <span class="en">This week's rounds: $75M for a sleep smart ring, $53M for rural primary care, $15M for HIPAA-safe marketing data</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Per the <a href="https://www.fiercehealthcare.com/health-tech/fierce-healthcare-fundraising-tracker-26" target="_blank" rel="noopener">Fierce Healthcare fundraising tracker (three deals on Aug 18)</a>: <strong>Happy Health</strong> raised a $75M Series A (ARCH Venture Partners, OpenLoop) for continuous home-based care built on an FDA-cleared clinical-grade smart ring, starting with sleep medicine; <strong>Hopscotch</strong> raised a $53M Series D (led by 8VC and Townhall Ventures) for tech-enabled rural primary care with ambient scribes and AI decision support built in; and <strong>Ours Privacy</strong> raised a $15M Series A (led by Lightbank and Health Velocity Capital) for HIPAA-compliant cleansing and transmission of marketing data.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">What the three share is that <strong>none of them position as an "AI company"</strong> — AI is an embedded capability, and what is sold is a care model or compliance infrastructure. That is a marked shift from the 2024–25 "AI as the product" narrative, and it comes as <a href="https://www.fiercehealthcare.com/digital-health/digital-health-brought-74b-vc-funding-ai-powered-rebound-fuels-market" target="_blank" rel="noopener">digital-health venture funding reached $7.4 billion this year on an AI-powered rebound</a>.</span>
+      </p></div>
+    <div class="src">
+      <span class="en-inline">Sources: </span>
+      <a href="https://www.fiercehealthcare.com/health-tech/fierce-healthcare-fundraising-tracker-26" target="_blank" rel="noopener">Fierce Healthcare Fundraising Tracker '26</a> ·
+      <a href="https://www.fiercehealthcare.com/digital-health/digital-health-brought-74b-vc-funding-ai-powered-rebound-fuels-market" target="_blank" rel="noopener">Fierce Healthcare</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRODUCT ============ -->
+<section id="product">
+  <h2>02 — Product Analysis</h2>
+  <div class="sec-title">
+    <span class="en">Two products, taken apart: platform-scale Ergo vs single-point Humata</span>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>Epic Ergo / Ergo Visit</h3>
+      <p class="sub"><span class="en-inline">Clinical interface layer · Art + Emmie + Cosmos · Epic Systems (US)</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> Ergo is not a tool but an interface layer that folds ambient charting, a patient-facing assistant and population-scale lookup into a single outpatient flow, <a href="https://www.healthcareittoday.com/2026/08/19/epic-ugm-2026-judy-faulkner-keynote-and-cool-stuff-ahead/" target="_blank" rel="noopener">shipping November 2026</a>; Ergo Visit is already live at <a href="https://www.techtarget.com/searchhealthit/news/366649337/Epic-unveils-AI-driven-Ergo-Visit-at-2026-UGM" target="_blank" rel="noopener">Ochsner Health and with five Garden Plot physicians</a>.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: unmatched distribution — <a href="https://www.fiercehealthcare.com/health-tech/epic-expands-ai-ambitions-agent-platform-cosmos-powered-predictions-and-deeper-workflow" target="_blank" rel="noopener">43.7% of the acute-care EHR market and 85%+ of Epic customers already using Epic AI</a>. A new feature reaches the physician's desk without a fresh procurement cycle.</span>
+        </li>
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: <a href="https://www.fiercehealthcare.com/health-tech/epic-expands-ai-ambitions-agent-platform-cosmos-powered-predictions-and-deeper-workflow" target="_blank" rel="noopener">Cosmos's 320 million people and 23 billion encounters</a> is a comparator set no third party can reproduce; Epic has also cut its release cycle <a href="https://www.distilledpost.com/post/inside-epic-ugm-2026-the-biggest-reveals-from-cool-stuff-ahead" target="_blank" rel="noopener">from 18 months to three</a>, eroding the classic "incumbents are slow" advantage challengers relied on.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: <strong>almost no public clinical-outcome evidence</strong>. The numbers on offer are hours saved (<a href="https://www.fiercehealthcare.com/health-tech/epic-expands-ai-ambitions-agent-platform-cosmos-powered-predictions-and-deeper-workflow" target="_blank" rel="noopener">20 hours a week at ECU Health; 1,000+ call-centre hours over ten months from Ask Emmie at Ochsner</a>) and denial rates — all vendor- or customer-reported, none peer-reviewed.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: the core ambient voice layer is <a href="https://www.onhealthcare.tech/p/why-epic-hitched-its-ambient-scribe" target="_blank" rel="noopener">powered by Microsoft Dragon</a> — an anomaly in four decades of building in-house, and a dependency at the most strategically sensitive layer. Add the <a href="https://www.insurancejournal.com/news/national/2026/08/17/881655.htm" target="_blank" rel="noopener">FTC probe</a> and the data moat is itself a legal exposure.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>Humata Health</h3>
+      <p class="sub"><span class="en-inline">Prior-authorisation automation · being folded into R1 RCM's Phare OS</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> Automates submission and tracking of provider-side prior authorisations — a single-pain-point play taken deep; <a href="https://www.fiercehealthcare.com/finance/r1-agrees-acquire-humata-health-enhance-os-ai-powered-prior-auths" target="_blank" rel="noopener">R1 RCM has a definitive agreement to acquire it, closing end of Q3 2026</a>.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: its endpoints convert straight into money — <a href="https://www.fiercehealthcare.com/finance/r1-agrees-acquire-humata-health-enhance-os-ai-powered-prior-auths" target="_blank" rel="noopener">96% first-pass approval, 30% fewer write-offs, 83% fewer rescheduled appointments</a>. Most clinical AI can only offer "time saved," which is far harder to price.</span>
+        </li>
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: demand is underwritten by the counterparty's own behaviour — KFF puts <a href="https://www.fiercehealthcare.com/finance/r1-agrees-acquire-humata-health-enhance-os-ai-powered-prior-auths" target="_blank" rel="noopener">2025 standard prior-auth denial rates at 12–18%</a>. As long as payers hold that bar, the market exists.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: every performance figure above is <strong>vendor-reported and independently unverified</strong>; the denominator behind "96% first-pass" (case mix, specialty) is not public, so generalisability across organisations is unknown.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: squeezed by platforms. The same week, Epic said <a href="https://www.healthcareittoday.com/2026/08/19/epic-ugm-2026-judy-faulkner-keynote-and-cool-stuff-ahead/" target="_blank" rel="noopener">Medical Necessity Insights is live at 180+ sites having saved 12,500 hours</a>, and that <a href="https://www.fiercehealthcare.com/health-tech/epic-expands-ai-ambitions-agent-platform-cosmos-powered-predictions-and-deeper-workflow" target="_blank" rel="noopener">real-time prior auth is live at four health systems with UnitedHealthcare, Network Health and Aetna</a>. Which is a good explanation of why selling to R1 beat standing alone.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPANY ============ -->
+<section id="company">
+  <h2>03 — Companies &amp; Competition</h2>
+  <div class="sec-title">
+    <span class="en">Who stands where, on what, against whom</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th><span class="en-inline">Company</span></th>
+        <th><span class="en-inline">Recent state &amp; numbers</span></th>
+        <th><span class="en-inline">Position &amp; moat</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Epic Systems</strong><br><span class="en-inline">EHR + AI platform</span></td>
+          <td>
+            <span class="en"><a href="https://www.fiercehealthcare.com/health-tech/epic-expands-ai-ambitions-agent-platform-cosmos-powered-predictions-and-deeper-workflow" target="_blank" rel="noopener">43.7% acute-care EHR share, 85%+ of customers on Epic AI, 9 billion records exchanged in 2025</a>; <a href="https://hitconsultant.net/2026/05/14/klas-2026-ehr-market-share-report/" target="_blank" rel="noopener">net +77 hospitals and +18,679 beds in 2025 (KLAS)</a>; <a href="https://www.insurancejournal.com/news/national/2026/08/17/881655.htm" target="_blank" rel="noopener">now facing an FTC probe and a Texas AG suit</a>.</span>
+          </td>
+          <td>
+            <span class="en">Moat = installed base × Cosmos data × native distribution. The risk shares a root: scale is itself the antitrust target, and the ambient voice layer is <a href="https://www.onhealthcare.tech/p/why-epic-hitched-its-ambient-scribe" target="_blank" rel="noopener">outsourced to Microsoft</a>.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Oracle Health</strong><br><span class="en-inline">(formerly Cerner)</span></td>
+          <td>
+            <span class="en"><a href="https://hitconsultant.net/2026/05/14/klas-2026-ehr-market-share-report/" target="_blank" rel="noopener">Net −56 hospitals and −14,676 beds in 2025, a third straight year of heavy losses</a>; <a href="https://www.fiercehealthcare.com/health-tech/oracle-health-debuts-ai-powered-ehr-designed-voice-first-solution-embedded-agentic-ai" target="_blank" rel="noopener">22.9% acute share in 2024 against Epic's 42.3%</a>.</span>
+          </td>
+          <td>
+            <span class="en">Betting on a rewrite — <a href="https://www.fiercehealthcare.com/health-tech/oracle-health-debuts-ai-powered-ehr-designed-voice-first-solution-embedded-agentic-ai" target="_blank" rel="noopener">voice-first, embedded agentic AI, built entirely on OCI rather than layered on Cerner</a>, the first major overhaul since the $28B 2022 acquisition. Differentiation is the open architecture (third-party agents welcome); the weakness is that customers are leaving while it builds.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Abridge</strong><br><span class="en-inline">Ambient documentation</span></td>
+          <td>
+            <span class="en"><a href="https://www.fiercehealthcare.com/ai-and-machine-learning/ambient-ai-startup-abridge-scores-300m-series-e-backed-a16z-and-khosla" target="_blank" rel="noopener">A $300M Series E at a $5.3B valuation (a16z, Khosla)</a>; per <a href="https://app.dealroom.co/news/feed/abridge-raises-1-1b-to-build-ai-platform-connecting-clinical-conversations-to-billing-and-drug-trials" target="_blank" rel="noopener">Dealroom, a further $316M Series E extension in April 2026 led by Eli Lilly with NVIDIA's venture arm</a>.</span>
+          </td>
+          <td>
+            <span class="en">Moving upstream from the note into coding, patient summaries and trials, co-developing a clinical-conversation foundation model with NVIDIA. The structural risk is that Epic natively occupies the same layer — sourced from Microsoft — so Abridge must find ground the EHR does not already own.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Microsoft</strong><br>Dragon Copilot</td>
+          <td>
+            <span class="en">Both the supplier of Epic's ambient voice layer (<a href="https://www.onhealthcare.tech/p/why-epic-hitched-its-ambient-scribe" target="_blank" rel="noopener">On Healthcare Technology</a>) and an expanding competitor in its own right: <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/athenahealth-integrates-dragon-copilot-ai-assistant-microsoft-moves-deeper" target="_blank" rel="noopener">athenahealth has integrated Dragon Copilot</a>, and <a href="https://medcitynews.com/2026/02/mount-sinai-microsoft-clinical-documentation/" target="_blank" rel="noopener">Mount Sinai chose Microsoft over Abridge and Suki</a>.</span>
+          </td>
+          <td>
+            <span class="en">The most comfortable seat in the room: whichever EHR wins, the voice layer still gets paid. The moat is Nuance's installed base plus cloud scale; the risk is that being everyone's supplier makes differentiated pricing hard.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Commure</strong><br><span class="en-inline">RCM + ambient AI</span></td>
+          <td>
+            <span class="en"><a href="https://digitalhealthwire.com/commure-in-the-crosshairs/" target="_blank" rel="noopener">$7B valuation, $800M raised, 130+ health systems</a>; this week it <a href="https://www.statnews.com/2026/08/13/commure-terminates-payments-under-customer-referral-programs/" target="_blank" rel="noopener">terminated its referral programmes</a> amid anti-kickback questions.</span>
+          </td>
+          <td>
+            <span class="en">Pitches itself as healthcare's AI operating system, colliding head-on with Epic's native RCM features and with R1. Its moat was channel velocity — and this week's reporting is precisely about that channel's compliance exposure.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>R1 RCM</strong><br>Phare OS / R37</td>
+          <td>
+            <span class="en">Filling in the agentic-RCM map by acquisition: <a href="https://www.fiercehealthcare.com/finance/r1-agrees-acquire-humata-health-enhance-os-ai-powered-prior-auths" target="_blank" rel="noopener">buying Humata Health (closing end of Q3 2026, terms undisclosed)</a>, with the team joining its R37 lab.</span>
+          </td>
+          <td>
+            <span class="en">Simultaneously Epic's rival and its complement: most hospitals R1 serves run Epic, so it has to deliver the slice Epic's native features cannot — on top of features Epic already ships.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>OpenEvidence</strong><br><span class="en-inline">Clinical answer engine</span></td>
+          <td>
+            <span class="en"><a href="https://www.cnbc.com/2026/01/21/openevidence-chatgpt-for-doctors-doubles-valuation-to-12-billion.html" target="_blank" rel="noopener">Doubled its valuation to $12B in January 2026</a> alongside a <a href="https://www.businesswire.com/news/home/20260121029132/en/OpenEvidence-Raises-$250-Million-to-Build-Medical-Superintelligence-for-Doctors" target="_blank" rel="noopener">$250M Series D</a>.</span>
+          </td>
+          <td>
+            <span class="en">Deliberately avoids EHR workflow, growing through bottom-up physician adoption and advertising, so Epic's bundling hits it less directly — though Epic's <a href="https://www.healthcareittoday.com/2026/08/19/epic-ugm-2026-judy-faulkner-keynote-and-cool-stuff-ahead/" target="_blank" rel="noopener">Evidence in Art</a> is moving onto the same ground.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>MEDITECH</strong></td>
+          <td>
+            <span class="en"><a href="https://hitconsultant.net/2026/05/14/klas-2026-ehr-market-share-report/" target="_blank" rel="noopener">84% customer retention migrating to Expanse, up from 63% in 2024</a>.</span>
+          </td>
+          <td>
+            <span class="en">Defending the community and mid-size hospital segment against Epic's downmarket <a href="https://www.distilledpost.com/post/inside-epic-ugm-2026-the-biggest-reveals-from-cool-stuff-ahead" target="_blank" rel="noopener">Sonnet / Orchard / Garden Plot / Flower Pot</a> lines.</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="note">
+    <span class="en"><strong>The table in one line:</strong> the 2026 competition in health AI is no longer at the model layer but over <strong>who owns the workflow, and who owns the data the workflow produces</strong>. Epic owns both — which is its strongest advantage this year and the reason the FTC came knocking.</span>
+  </div>
+</section>
+
+<!-- ============ TAIWAN ============ -->
+<section id="taiwan">
+  <h2>04 — Taiwan Angle</h2>
+  <div class="sec-title">
+    <span class="en">Taiwan has no Epic — which is both a weakness and an opening</span>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>Structure decides who plays the role.</strong> In the U.S., cross-institution interoperability runs through a private vendor's network — Epic's Care Everywhere handled <a href="https://www.beckershospitalreview.com/healthcare-information-technology/ehrs/epics-ugm-2026-preview-ai-agents-cosmos-germany-debut/" target="_blank" rel="noopener">914 million record exchanges in June alone</a>, which is exactly why the FTC is asking who gets to reach that data. Taiwan's hospitals mostly build or contract their own HIS, with no dominant vendor — so <strong>the state takes the role instead</strong>. The "FHIR Box" platform, jointly developed by the Ministry of Health and Welfare and the National Science and Technology Council, is targeted, <a href="https://www.cna.com.tw/news/afe/202607220101.aspx" target="_blank" rel="noopener">per NSTC chair and Executive Yuan minister Wu Cheng-wen, at cross-hospital record exchange across all medical centres by end-2026, regional and district hospitals in 2027, and clinics thereafter</a>.</span>
+    </p>
+    <p>
+      <span class="en"><strong>Three concrete implications of today's stories for Taiwan.</strong> (1) <strong>No Cosmos, no Ergo layer.</strong> Epic's "what worked in similar patients" rests on de-identified data covering 320 million people. Taiwan's genuinely comparable asset is the NHI research database — but its terms for research access and AI training are far tighter than Cosmos's. If FHIR Box delivers retrieval without addressing secondary use, Taiwan gets interoperability with no population-evidence layer to support decisions. (2) <strong>The governance window is closing.</strong> At the Legislative Yuan's Aug 6 launch of a Smart Medical Committee, MOHW information division head Li Jian-zhang <a href="https://www.cna.com.tw/news/ahel/202608060301.aspx" target="_blank" rel="noopener">said a draft set of AI-in-medicine implementing rules would come within three months, built on seven principles: transparency, privacy, accountability, safety, equity, sustainability and human autonomy</a> — which lands around November, the same month Epic ships Ergo. (3) <strong>Taiwan's attackable surface is the layer that is not EHR-bound.</strong> The only player in today's table not directly squeezed by Epic bundling is the <a href="https://www.cnbc.com/2026/01/21/openevidence-chatgpt-for-doctors-doubles-valuation-to-12-billion.html" target="_blank" rel="noopener">OpenEvidence model of bypassing workflow for bottom-up physician adoption</a> — plus imaging AI, where regulatory clearance and reimbursement, not EHR integration, are the gate.</span>
+    </p>
+    <p>
+      <span class="en"><strong>One signal worth tracking.</strong> Epic announced this week that Berlin's <a href="https://www.beckershospitalreview.com/healthcare-information-technology/ehrs/epics-ugm-2026-preview-ai-agents-cosmos-germany-debut/" target="_blank" rel="noopener">Charité is Germany's first Epic organisation</a>. As Epic moves systematically into European public health systems, the "every country builds its own HIS" model has to answer an uncomfortable question: how long would a home-built system need to catch a platform that ships every three months and carries a 320-million-patient comparator set inside it?</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============ READING ============ -->
+<section id="reading">
+  <h2>05 — Further Reading</h2>
+  <div class="sec-title">
+    <span class="en">Five for the weekend list</span>
+  </div>
+
+  <ol class="reading">
+    <li>
+      <a href="https://www.statnews.com/2026/08/12/inside-commure-athelas-mad-dash-automate-health-care/" target="_blank" rel="noopener">Inside a $7 billion startup's mad dash to automate the business of health care — STAT (2026-08-12)</a>
+      <p class="why"><span class="en">The week's most substantial piece of reporting, built on interviews with more than three dozen ex-employees and customers. If you read one thing on how the channel mechanics behind "fast-growing health AI" actually work, read this (STAT+ paywall).</span></p>
+    </li>
+    <li>
+      <a href="https://www.healthcareittoday.com/2026/08/19/epic-ugm-2026-judy-faulkner-keynote-and-cool-stuff-ahead/" target="_blank" rel="noopener">Epic UGM 2026 — Judy Faulkner Keynote and Cool Stuff Ahead — Healthcare IT Today (2026-08-19)</a>
+      <p class="why"><span class="en">The most complete public item-by-item record of the general session, including deployment counts and outcome figures for each RCM product — far denser than any press release.</span></p>
+    </li>
+    <li>
+      <a href="https://www.insurancejournal.com/news/national/2026/08/17/881655.htm" target="_blank" rel="noopener">FTC Probes Health Records Giant Epic Systems — Reuters / Insurance Journal (2026-08-17)</a>
+      <p class="why"><span class="en">A paywall-free version of the Reuters original. Read alongside the Particle Health filings to see whether U.S. "interoperability" is a technical problem or a market-structure one.</span></p>
+    </li>
+    <li>
+      <a href="https://hitconsultant.net/2026/05/14/klas-2026-ehr-market-share-report/" target="_blank" rel="noopener">KLAS 2026 EHR Market Share Report: Epic Gains as Oracle Health Faces Third Year of Losses — HIT Consultant (2026-05-14)</a>
+      <p class="why"><span class="en">The source for most of the share numbers in today's table. The striking datum is not that Epic won again but that <strong>overall EHR purchasing decisions fell 40% year over year</strong> — hospitals moved budget from replacing systems to AI and operating efficiency.</span></p>
+    </li>
+    <li>
+      <a href="https://www.fiercehealthcare.com/health-tech/oracle-health-debuts-ai-powered-ehr-designed-voice-first-solution-embedded-agentic-ai" target="_blank" rel="noopener">Oracle Health debuts AI-powered EHR designed as a 'voice-first' solution embedded with agentic AI — Fierce Healthcare</a>
+      <p class="why"><span class="en">Epic's control group. Both talk agentic AI, but Oracle chose a full rewrite with third-party agents welcome, while Epic chose native features on proprietary data. Which path wins will define the shape of clinical software for a decade.</span></p>
+    </li>
+  </ol>
+</section>
+
+<!-- ============ REFS ============ -->
+<section id="refs">
+  <h2>06 — References</h2>
+  <div class="sec-title">
+    <span class="en">References</span>
+  </div>
+
+  <div class="panel">
+    <ol class="refs">
+      <li>Bruce, G. “Epic's UGM 2026 preview: AI agents, Cosmos, Germany debut.” <em>Becker's Hospital Review</em>, 2026-08-18. <a href="https://www.beckershospitalreview.com/healthcare-information-technology/ehrs/epics-ugm-2026-preview-ai-agents-cosmos-germany-debut/" target="_blank" rel="noopener">beckershospitalreview.com</a></li>
+      <li>“Epic unveils AI-driven Ergo Visit at 2026 UGM.” <em>TechTarget / Healthtech Analytics</em>, 2026-08. <a href="https://www.techtarget.com/searchhealthit/news/366649337/Epic-unveils-AI-driven-Ergo-Visit-at-2026-UGM" target="_blank" rel="noopener">techtarget.com</a></li>
+      <li>“Epic UGM 2026 – Judy Faulkner Keynote and Cool Stuff Ahead.” <em>Healthcare IT Today</em>, 2026-08-19. <a href="https://www.healthcareittoday.com/2026/08/19/epic-ugm-2026-judy-faulkner-keynote-and-cool-stuff-ahead/" target="_blank" rel="noopener">healthcareittoday.com</a></li>
+      <li>“Epic expands AI ambitions with agent platform, Cosmos-powered predictions and deeper workflow automation.” <em>Fierce Healthcare</em>, 2026-08. <a href="https://www.fiercehealthcare.com/health-tech/epic-expands-ai-ambitions-agent-platform-cosmos-powered-predictions-and-deeper-workflow" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>“Inside Epic UGM 2026: The Biggest Reveals From ‘Cool Stuff Ahead’.” <em>Distilled Post</em>, 2026-08. <a href="https://www.distilledpost.com/post/inside-epic-ugm-2026-the-biggest-reveals-from-cool-stuff-ahead" target="_blank" rel="noopener">distilledpost.com</a></li>
+      <li>“Exclusive: FTC probes health records giant Epic Systems, sources say.” <em>Reuters</em>, republished by <em>Insurance Journal</em>, 2026-08-17 (original 2026-08-14). <a href="https://www.insurancejournal.com/news/national/2026/08/17/881655.htm" target="_blank" rel="noopener">insurancejournal.com</a> · <a href="https://www.spokesman.com/stories/2026/aug/14/exclusive-ftc-probes-health-records-giant-epic-sys/" target="_blank" rel="noopener">spokesman.com</a></li>
+      <li>Ross, C., et al. “Epic's alleged anticompetitive practices under scrutiny from federal, state investigators.” <em>STAT</em>, 2026-08-14 (STAT+ paywall). <a href="https://www.statnews.com/2026/08/14/epic-systems-ftc-review-nda-use-possible-anticompetitive-practices/" target="_blank" rel="noopener">statnews.com</a></li>
+      <li>“Epic Systems' stranglehold on U.S. medical records harms patient care” (lawsuit announcement). <em>Particle Health</em>. <a href="https://www.particlehealth.com/blog/epic-systems-stranglehold-on-u-s-medical-records-harms-patient-care-lawsuit" target="_blank" rel="noopener">particlehealth.com</a> · “Epic hits back at Particle Health counterargument as it pushes to get antitrust case dismissed.” <em>Fierce Healthcare</em>. <a href="https://www.fiercehealthcare.com/health-tech/epic-hits-back-particle-health-counter-argument-it-pushes-get-antitrust-case-dismissed" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>Bannow, T., Palmer, K. “Inside a $7 billion startup's mad dash to automate the business of health care.” <em>STAT</em>, 2026-08-12 (STAT+ paywall). <a href="https://www.statnews.com/2026/08/12/inside-commure-athelas-mad-dash-automate-health-care/" target="_blank" rel="noopener">statnews.com</a></li>
+      <li>“Commure terminates payments under its customer referral programs tied to AI products.” <em>STAT</em>, 2026-08-13 (STAT+ paywall). <a href="https://www.statnews.com/2026/08/13/commure-terminates-payments-under-customer-referral-programs/" target="_blank" rel="noopener">statnews.com</a></li>
+      <li>“Commure in the Crosshairs.” <em>Digital Health Wire</em>, 2026-08. <a href="https://digitalhealthwire.com/commure-in-the-crosshairs/" target="_blank" rel="noopener">digitalhealthwire.com</a></li>
+      <li>“R1 acquiring Humata Health to bolster AI-powered prior authorizations.” <em>Fierce Healthcare</em>, 2026-08. <a href="https://www.fiercehealthcare.com/finance/r1-agrees-acquire-humata-health-enhance-os-ai-powered-prior-auths" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>“Cityblock acquires Homeward Health in move to rural healthcare, lands $116M funding round.” <em>Fierce Healthcare</em>, 2026-08-20. <a href="https://www.fiercehealthcare.com/health-tech/cityblock-acquires-homeward-health-move-rural-healthcare-lands-116m-funding-round" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>Trang, B. “How health systems are embracing chatbots to query and summarize patient records.” <em>STAT</em>, 2026-08-20 (STAT+ paywall). <a href="https://www.statnews.com/2026/08/20/health-systems-embrace-ai-chatbots-query-patient-records-ehr/" target="_blank" rel="noopener">statnews.com</a> · “What Epic did — and didn't — say about AI at its annual meeting.” <em>STAT</em>, 2026-08-19. <a href="https://www.statnews.com/2026/08/19/ai-prognosis-what-epic-did-and-didnt-say-about-ai-at-its-annual-meeting/" target="_blank" rel="noopener">statnews.com</a></li>
+      <li>“Fierce Healthcare Fundraising Tracker '26.” <em>Fierce Healthcare</em> (entries dated 2026-08-18: Happy Health, Hopscotch, Ours Privacy). <a href="https://www.fiercehealthcare.com/health-tech/fierce-healthcare-fundraising-tracker-26" target="_blank" rel="noopener">fiercehealthcare.com</a> · “Digital health funding hits $7.4B in 2026 as AI investment reshapes the market.” <a href="https://www.fiercehealthcare.com/digital-health/digital-health-brought-74b-vc-funding-ai-powered-rebound-fuels-market" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>“KLAS 2026 EHR Market Share Report: Epic Gains as Oracle Health Faces Third Year of Losses.” <em>HIT Consultant</em>, 2026-05-14. <a href="https://hitconsultant.net/2026/05/14/klas-2026-ehr-market-share-report/" target="_blank" rel="noopener">hitconsultant.net</a></li>
+      <li>“Oracle Health debuts AI-powered EHR designed as a ‘voice-first’ solution embedded with agentic AI.” <em>Fierce Healthcare</em>. <a href="https://www.fiercehealthcare.com/health-tech/oracle-health-debuts-ai-powered-ehr-designed-voice-first-solution-embedded-agentic-ai" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>“Abridge scores $300M series E, boosting valuation to $5.3B.” <em>Fierce Healthcare</em>. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/ambient-ai-startup-abridge-scores-300m-series-e-backed-a16z-and-khosla" target="_blank" rel="noopener">fiercehealthcare.com</a> · “Abridge raises $1.1B to build AI platform connecting clinical conversations to billing and drug trials” (Series E extension, $316M, April 2026, led by Eli Lilly). <em>Dealroom</em>. <a href="https://app.dealroom.co/news/feed/abridge-raises-1-1b-to-build-ai-platform-connecting-clinical-conversations-to-billing-and-drug-trials" target="_blank" rel="noopener">app.dealroom.co</a></li>
+      <li>“Why Epic Hitched Its Ambient Scribe to Microsoft's Dragon.” <em>On Healthcare Technology</em> (partial paywall). <a href="https://www.onhealthcare.tech/p/why-epic-hitched-its-ambient-scribe" target="_blank" rel="noopener">onhealthcare.tech</a> · “Athenahealth integrates Dragon Copilot AI assistant as Microsoft moves deeper into ambulatory care.” <em>Fierce Healthcare</em>. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/athenahealth-integrates-dragon-copilot-ai-assistant-microsoft-moves-deeper" target="_blank" rel="noopener">fiercehealthcare.com</a> · “Why Mount Sinai Chose Microsoft Over Abridge and Suki.” <em>MedCity News</em>, 2026-02. <a href="https://medcitynews.com/2026/02/mount-sinai-microsoft-clinical-documentation/" target="_blank" rel="noopener">medcitynews.com</a></li>
+      <li>“OpenEvidence, the ‘ChatGPT for doctors,’ doubles valuation to $12 billion.” <em>CNBC</em>, 2026-01-21. <a href="https://www.cnbc.com/2026/01/21/openevidence-chatgpt-for-doctors-doubles-valuation-to-12-billion.html" target="_blank" rel="noopener">cnbc.com</a> · “OpenEvidence Raises $250 Million to Build Medical Superintelligence for Doctors.” <em>Business Wire</em>, 2026-01-21. <a href="https://www.businesswire.com/news/home/20260121029132/en/OpenEvidence-Raises-$250-Million-to-Build-Medical-Superintelligence-for-Doctors" target="_blank" rel="noopener">businesswire.com</a> · <em>Fierce Healthcare</em> coverage: <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/openevidence-clinches-250m-series-d-rapidly-growing-its-reach-doctors" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>「吳誠文：今年底全台醫學中心病歷互通 將逐步推至診所」，<em>中央社</em>，2026-07-22。<a href="https://www.cna.com.tw/news/afe/202607220101.aspx" target="_blank" rel="noopener">cna.com.tw</a> ·「開啟台灣智慧醫療新元年 衛福部秀『FHIR Box』跨院病歷互通」，<em>聯合新聞網</em>。<a href="https://udn.com/news/story/7266/9515166" target="_blank" rel="noopener">udn.com</a></li>
+      <li>「厚生會成立智慧醫療委員會 衛福部擬提AI醫療細則草案」，<em>中央社</em>，2026-08-06。<a href="https://www.cna.com.tw/news/ahel/202608060301.aspx" target="_blank" rel="noopener">cna.com.tw</a> · 臺灣智慧醫療三大中心（衛福部）<a href="https://aicenter.mohw.gov.tw/" target="_blank" rel="noopener">aicenter.mohw.gov.tw</a> · 智慧醫療器材資訊暨媒合平台（TFDA）<a href="https://aimd.fda.gov.tw/" target="_blank" rel="noopener">aimd.fda.gov.tw</a></li>
+    </ol>
+    <div class="note">
+      <span class="en"><strong>Editor's note:</strong> (1) Four of this edition's five lead stories originate behind a paywall (STAT+ on Aug 12 Commure, Aug 13 referral terminations, Aug 14 Epic antitrust, Aug 19 UGM analysis, Aug 20 chart chatbots). This report draws only on publicly visible headlines, standfirsts and summaries, substitutes paywall-free secondary sources where possible (the Reuters story via Insurance Journal; Commure details via Digital Health Wire), and cites no figure it could not verify. (2) Epic UGM is a vendor-run conference: every deployment count, hours-saved figure and denial-reduction percentage here is <strong>self-reported by Epic or its customers, not peer-reviewed or independently audited</strong> — the same caveat applies to Humata Health's 96%/30%/83%. (3) Epic's acute-care EHR share differs by source: Fierce's UGM coverage cites 43.7%, while Fierce's Oracle piece cites 42.3% for 2024 (Oracle 22.9%). Both are labelled with their year and source here rather than merged. (4) Abridge's $5.3B valuation comes from Fierce's Series E coverage; the $316M April 2026 extension led by Eli Lilly is sourced to the Dealroom venture database, with no company press release located, and is attributed as such in the text. (5) Taiwan's FHIR Box timeline and AI implementing-rules timeline are verbal commitments made by officials in public settings; no formal regulatory text has been published.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-row">
+    <div>
+      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Friday / product and company deep dive<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
+    </div>
+    <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
+  </div>
+</footer>
+</main>
+
+<div class="fabs">
+  <button class="up" id="up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+  <a class="home-fab" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg></a>
+</div>
+
+<script>
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.getElementById('theme-ic').textContent =
+    document.body.classList.contains('dark') ? '◑' : '◐';
+}
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.body.classList.add('dark');
+  document.getElementById('theme-ic').textContent = '◑';
+}
+window.addEventListener('scroll', function(){
+  document.getElementById('up').classList.toggle('show', window.scrollY > 600);
+});
+
+/* GitHub 星星數：無需授權，失敗或被限流時靜默保留佔位符 */
+(function(){
+  var el = document.getElementById('ghs');
+  if (!el || typeof fetch !== 'function') return;
+  fetch('https://api.github.com/repos/tingwei161803/ai-medical-daily', {headers:{Accept:'application/vnd.github+json'}})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if (!d || typeof d.stargazers_count !== 'number') return;
+      var n = d.stargazers_count;
+      el.textContent = n >= 1000 ? (Math.round(n/100)/10) + 'k' : String(n);
+    })
+    .catch(function(){});
+})();
+</script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/reports/2026-08-21.html" hreflang="zh-Hant" rel="alternate" lang="zh-Hant">中文版</a></p>
+</body>
+</html>

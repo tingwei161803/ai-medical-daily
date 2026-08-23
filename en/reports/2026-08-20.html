@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>AI &amp; Medical AI Daily · 2026-08-20</title>
+<meta property="og:url" content="https://ai-medical-daily.peteraim.com/en/reports/2026-08-20.html" />
+<link rel="canonical" href="https://ai-medical-daily.peteraim.com/en/reports/2026-08-20.html" />
+<link rel="alternate" hreflang="zh-Hant" href="https://ai-medical-daily.peteraim.com/reports/2026-08-20.html" />
+<link rel="alternate" hreflang="en" href="https://ai-medical-daily.peteraim.com/en/reports/2026-08-20.html" />
+<link rel="alternate" hreflang="x-default" href="https://ai-medical-daily.peteraim.com/reports/2026-08-20.html" />
+<meta name="description" content="On Aug 13 Hippocratic AI unveiled Polaris, an agentic orchestration layer pairing a 700B primary model with 30-plus supervising models, pushing medical AI from completing single tasks to coordinating whole episodes of care; the same week a Translational Psychiatry paper (Aug 15) showed 65% of schizophrenia EEG-AI studies inflate accuracy by up to 30 points through data leakage. Two poles of this week's technology story: agents that wield tools, and benchmarks that need re-examining.">
+<meta name="report-date" content="2026-08-20">
+<meta name="report-theme" content="technology">
+<meta name="report-title-zh" content="醫療 AI 的新戰場：不是更大的模型，而是會自己動手的模型">
+<meta name="report-title-en" content="Medical AI's new frontier: not bigger models, but ones that act">
+<meta name="report-summary-zh" content="Hippocratic AI 8/13 發表以 700B 主模型＋30 多個監督模型組成的 Polaris「代理協調層」，把醫療 AI 從『完成單一任務』推向『協調整段照護』；同一週一篇 Translational Psychiatry（8/15）指出 65% 的思覺失調症 EEG AI 論文因資料洩漏把準確率灌水最多 30 個百分點。本週技術主軸的兩端：更會調度工具的代理，與更該被重新檢驗的基準。">
+<meta name="report-summary-en" content="On Aug 13 Hippocratic AI unveiled Polaris, an agentic orchestration layer pairing a 700B primary model with 30-plus supervising models, pushing medical AI from completing single tasks to coordinating whole episodes of care; the same week a Translational Psychiatry paper (Aug 15) showed 65% of schizophrenia EEG-AI studies inflate accuracy by up to 30 points through data leakage. Two poles of this week's technology story: agents that wield tools, and benchmarks that need re-examining.">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HJLDQZDK5V');
+</script>
+<style>
+:root{
+  --bg:#f7f8fa; --surface:#ffffff; --surface-2:#f0f2f5; --border:#e2e5ea;
+  --text:#16181d; --muted:#5c636e; --faint:#8a919c;
+  --accent:#0d7a6f; --accent-soft:#e3f2f0; --accent-text:#0a5c54;
+  --warn:#b45309; --warn-soft:#fdf3e3;
+  --shadow:0 1px 2px rgba(16,24,40,.04),0 4px 16px rgba(16,24,40,.05);
+}
+body.dark{
+  --bg:#0e1014; --surface:#171a20; --surface-2:#1e222a; --border:#2a2f39;
+  --text:#e8eaee; --muted:#a2a9b5; --faint:#6f7783;
+  --accent:#3fbfae; --accent-soft:#12332f; --accent-text:#6fd6c6;
+  --warn:#e0a34f; --warn-soft:#2e2415;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 20px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Helvetica Neue",Arial,sans-serif;
+  font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased;
+  transition:background .25s,color .25s;
+}
+.lang-alt-link{margin:0}
+.lang-alt-link a{color:var(--accent);text-decoration:none;font-weight:600}
+
+/* ---------- top bar ---------- */
+header.bar{
+  position:sticky; top:0; z-index:50;
+  background:color-mix(in srgb,var(--surface) 88%,transparent);
+  backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+.bar-in{max-width:920px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px}
+.brand{font-weight:700;font-size:14px;letter-spacing:.02em;white-space:nowrap}
+.brand span{color:var(--accent)}
+.bar-sp{flex:1}
+.btn{
+  border:1px solid var(--border); background:var(--surface-2); color:var(--text);
+  border-radius:999px; padding:5px 12px; font-size:13px; font-weight:600;
+  cursor:pointer; font-family:inherit; transition:.15s; white-space:nowrap;
+}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.seg{display:flex;border:1px solid var(--border);border-radius:999px;overflow:hidden;background:var(--surface-2)}
+.seg a{
+  border:0;background:transparent;color:var(--muted);font-family:inherit;
+  padding:5px 13px;font-size:13px;font-weight:600;cursor:pointer;transition:.15s;
+  display:flex;align-items:center;justify-content:center;
+  text-decoration:none;line-height:normal
+}
+.seg a.on{background:var(--accent);color:#fff}
+
+/* ---------- layout ---------- */
+main{max-width:920px;margin:0 auto;padding:0 20px 90px}
+.hero{padding:44px 0 28px;border-bottom:1px solid var(--border)}
+.kicker{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+h1{font-size:clamp(27px,5vw,40px);line-height:1.22;margin:0 0 8px;letter-spacing:-.02em;font-weight:750}
+.dateline{color:var(--faint);font-size:14px;margin-bottom:22px}
+.lede{
+  font-size:17px;line-height:1.7;color:var(--text);
+  background:var(--accent-soft);border-left:3px solid var(--accent);
+  padding:16px 18px;border-radius:0 10px 10px 0;margin:0;
+}
+nav.toc{
+  display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 0;
+}
+nav.toc a{
+  font-size:13px;font-weight:600;text-decoration:none;color:var(--muted);
+  border:1px solid var(--border);border-radius:999px;padding:5px 13px;background:var(--surface);
+  transition:.15s
+}
+nav.toc a:hover{color:var(--accent);border-color:var(--accent)}
+
+section{padding:44px 0 8px;scroll-margin-top:64px}
+h2{
+  font-size:13px;font-weight:750;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--accent);margin:0 0 6px;
+}
+.sec-title{font-size:clamp(21px,3.4vw,27px);margin:0 0 24px;letter-spacing:-.015em;font-weight:720;line-height:1.3}
+
+/* ---------- story cards ---------- */
+.card{
+  background:var(--surface);border:1px solid var(--border);border-radius:14px;
+  padding:22px 24px;margin-bottom:16px;box-shadow:var(--shadow);
+}
+.card h3{margin:0 0 10px;font-size:18px;line-height:1.45;letter-spacing:-.01em;font-weight:700}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.tag{
+  font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  padding:3px 9px;border-radius:5px;background:var(--surface-2);color:var(--muted);border:1px solid var(--border)
+}
+.tag.hot{background:var(--accent-soft);color:var(--accent-text);border-color:transparent}
+.tag.reg{background:var(--warn-soft);color:var(--warn);border-color:transparent}
+.row{display:flex;gap:12px;margin:11px 0;align-items:flex-start}
+.row .lab{
+  flex:0 0 84px;font-size:11px;font-weight:750;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--faint);padding-top:5px
+}
+.row .val{flex:1;margin:0;font-size:15px;line-height:1.7;color:var(--text)}
+.src{margin-top:14px;padding-top:12px;border-top:1px dashed var(--border);font-size:13px;color:var(--faint)}
+.src a{color:var(--accent);text-decoration:none;font-weight:600}
+.src a:hover{text-decoration:underline}
+
+/* ---------- misc blocks ---------- */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px 24px;box-shadow:var(--shadow)}
+.panel h3{margin:0 0 4px;font-size:18px;font-weight:700}
+.panel .sub{font-size:13px;color:var(--faint);margin:0 0 14px}
+.panel p{font-size:15px;line-height:1.72;margin:0 0 12px}
+.panel p:last-child{margin-bottom:0}
+ul.clean{margin:0;padding-left:19px}
+ul.clean li{font-size:15px;line-height:1.72;margin-bottom:9px}
+ul.clean li:last-child{margin-bottom:0}
+.pro{color:var(--accent-text);font-weight:700}
+body.dark .pro{color:var(--accent)}
+.con{color:var(--warn);font-weight:700}
+
+table{width:100%;border-collapse:collapse;font-size:14.5px;margin:0}
+.tbl-wrap{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow-x:auto;box-shadow:var(--shadow)}
+th{
+  text-align:left;padding:12px 16px;font-size:11px;font-weight:750;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--faint);border-bottom:1px solid var(--border);white-space:nowrap
+}
+td{padding:13px 16px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.6}
+tr:last-child td{border-bottom:0}
+td strong{font-weight:700}
+
+ol.reading{margin:0;padding-left:0;list-style:none;counter-reset:r}
+ol.reading li{
+  counter-increment:r;position:relative;padding:16px 0 16px 44px;border-bottom:1px solid var(--border)
+}
+ol.reading li:last-child{border-bottom:0;padding-bottom:0}
+ol.reading li::before{
+  content:counter(r);position:absolute;left:0;top:17px;
+  width:26px;height:26px;border-radius:50%;background:var(--accent-soft);color:var(--accent-text);
+  font-size:12px;font-weight:750;display:flex;align-items:center;justify-content:center
+}
+body.dark ol.reading li::before{color:var(--accent)}
+ol.reading a{color:var(--text);text-decoration:none;font-weight:700;font-size:15.5px;line-height:1.5}
+ol.reading a:hover{color:var(--accent)}
+ol.reading .why{margin:5px 0 0;font-size:14px;color:var(--muted);line-height:1.65}
+
+ol.refs{margin:0;padding-left:22px;font-size:13.5px;line-height:1.85;color:var(--muted)}
+ol.refs li{margin-bottom:9px}
+ol.refs a{color:var(--accent);text-decoration:none;word-break:break-word}
+ol.refs a:hover{text-decoration:underline}
+
+.note{
+  background:var(--warn-soft);border:1px solid transparent;border-left:3px solid var(--warn);
+  border-radius:0 10px 10px 0;padding:14px 18px;font-size:14px;color:var(--text);line-height:1.7;margin-top:18px
+}
+/* --- GitHub 星星徽章 + 頁尾社群連結 --- */
+.gh-star{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--border);
+  background:var(--surface-2);color:var(--muted);border-radius:999px;padding:5px 10px;
+  font-size:13px;font-weight:700;text-decoration:none;font-variant-numeric:tabular-nums;
+  transition:.15s;white-space:nowrap}
+.gh-star:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+.gh-star svg{width:15px;height:15px;fill:currentColor;flex:none;display:block}
+.gh-star .st{color:#e3a008}
+.gh-star b{font-weight:700;min-width:1ch;font-size:12.5px}
+.foot-row{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.foot-row>div:first-child{flex:1 1 320px;min-width:0}
+.social{display:flex;gap:9px;align-items:center;flex:none}
+.social a{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;
+  border:1px solid var(--border);background:var(--surface-2);color:var(--muted);
+  border-radius:999px;transition:.15s;text-decoration:none}
+.social a:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);
+  transform:translateY(-1px)}
+.social svg{width:16px;height:16px;fill:currentColor;display:block}
+@media(max-width:430px){.gh-star b{display:none}.gh-star{padding:5px 9px;gap:4px}}
+a.brand{color:inherit;text-decoration:none;transition:.15s;cursor:pointer}
+a.brand:hover{opacity:.72}
+a.brand:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:5px}
+
+.fabs{position:fixed;right:20px;bottom:20px;display:flex;flex-direction:column;gap:10px;z-index:40}
+.home-fab{display:flex;align-items:center;justify-content:center;width:42px;height:42px;
+  border-radius:50%;border:1px solid var(--border);background:var(--surface);color:var(--muted);
+  box-shadow:var(--shadow);text-decoration:none;transition:.15s}
+.home-fab:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+.home-fab:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.home-fab svg{width:18px;height:18px;fill:currentColor;display:block}
+footer{
+  margin-top:56px;padding-top:24px;border-top:1px solid var(--border);
+  font-size:13px;color:var(--faint);line-height:1.8
+}
+.up{
+  position:static;width:42px;height:42px;border-radius:50%;
+  border:1px solid var(--border);background:var(--surface);color:var(--muted);
+  cursor:pointer;font-size:17px;box-shadow:var(--shadow);display:none;z-index:40
+}
+.up.show{display:block}
+@media(max-width:700px){
+  .grid2{grid-template-columns:1fr}
+  .row{flex-direction:column;gap:2px}
+  .row .lab{flex:none;padding-top:0}
+  .bar-in{padding:9px 14px;gap:8px}
+  .brand{font-size:12.5px}
+  main{padding:0 15px 80px}
+  .card,.panel{padding:18px}
+}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><span>◆</span> <span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <div class="bar-sp"></div>
+    <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
+    <div class="seg">
+      <a href="/reports/2026-08-20.html" hreflang="zh-Hant" lang="zh-Hant" rel="alternate">中文</a>
+      <a class="on" href="/en/reports/2026-08-20.html" hreflang="en" lang="en" aria-current="page">EN</a>
+    </div>
+    <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="kicker">
+    <span class="en-inline">Thursday · Technology</span>
+  </div>
+  <h1>
+    <span class="en">Medical AI's new frontier: not bigger models, but ones that act</span>
+  </h1>
+  <div class="dateline">
+    <span class="en-inline">Thursday, August 20, 2026 · Covering Aug 13–20 with essential technical background · Taipei time</span>
+  </div>
+  <p class="lede">
+    <span class="en">This week the technology story in medical AI is shifting away from "how big is the model, how high is the benchmark score" toward two harder questions: <strong>can the model orchestrate its own tools and workflows</strong>, and <strong>can we even trust the benchmarks we have?</strong> On Aug 13, <a href="https://www.prnewswire.com/news-releases/hippocratic-ai-announces-next-generation-of-healthcare-ai-orchestrators-focused-on-outcomes-not-tasks-302850620.html" target="_blank" rel="noopener">Hippocratic AI unveiled an agentic orchestration layer built on its Polaris constellation</a> — a 700B primary model paired with 30-plus supervising models, aimed at coordinating whole episodes of care rather than finishing single tasks. Two days later, a <a href="https://doi.org/10.1038/s41398-026-04315-9" target="_blank" rel="noopener"><em>Translational Psychiatry</em> paper (Aug 15)</a> punctured the other end: 65% of schizophrenia EEG-AI studies inflate accuracy by up to 30 points through data leakage. Half of this week's technical action is teaching models to act; the other half is a reminder not to be fooled by pretty numbers.</span>
+  </p>
+
+  <nav class="toc">
+    <a href="#top"><span class="en-inline">Top Stories</span></a>
+    <a href="#product"><span class="en-inline">Product Analysis</span></a>
+    <a href="#company"><span class="en-inline">Companies &amp; Competition</span></a>
+    <a href="#taiwan"><span class="en-inline">Taiwan Angle</span></a>
+    <a href="#reading"><span class="en-inline">Further Reading</span></a>
+    <a href="#refs"><span class="en-inline">References</span></a>
+  </nav>
+</div>
+
+<!-- ============ TOP STORIES ============ -->
+<section id="top">
+  <h2>01 — Top Stories</h2>
+  <div class="sec-title">
+    <span class="en">Seven things in medical-AI technology</span>
+  </div>
+
+  <!-- 1 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">AI Agents</span></span>
+      <span class="tag">Hippocratic AI</span><span class="tag">Polaris</span><span class="tag">700B</span><span class="tag">8/13</span>
+    </div>
+    <h3>
+      <span class="en">Hippocratic AI launches agentic orchestrators: a 700B primary model plus 30+ supervisors, moving from tasks to outcomes</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On <a href="https://www.prnewswire.com/news-releases/hippocratic-ai-announces-next-generation-of-healthcare-ai-orchestrators-focused-on-outcomes-not-tasks-302850620.html" target="_blank" rel="noopener">Aug 13 Hippocratic AI announced its next-generation "Agentic Orchestrators"</a>: instead of one voice AI finishing one task, a "supervising intelligence" decides which specialised agent engages each patient, when, and how. Underneath sits its patented <strong>Polaris constellation architecture</strong> — <a href="https://www.unite.ai/hippocratic-ai-launches-agentic-orchestrators-that-coordinate-voice-ai-teams-for-healthcare-outcomes/" target="_blank" rel="noopener">a 700-billion-parameter primary model with 30-plus supervising models handling escalation, medication recognition and adverse-event detection</a>. The first wave ships 30-plus orchestrators across payers (8), providers (8) and life sciences (18) (<a href="https://www.unite.ai/hippocratic-ai-launches-agentic-orchestrators-that-coordinate-voice-ai-teams-for-healthcare-outcomes/" target="_blank" rel="noopener">Unite.AI</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This is the flagship case of medical agents moving from single tasks to <strong>orchestration</strong>, and the item that best defines the week's technical direction. Most medical voice AI over the past year stopped at "place one reminder call"; stacking multiple agents under a supervising model bets on a business model priced on population outcomes — readmissions, STAR ratings, chronic-care management, trial enrolment. The company claims <a href="https://www.unite.ai/hippocratic-ai-launches-agentic-orchestrators-that-coordinate-voice-ai-teams-for-healthcare-outcomes/" target="_blank" rel="noopener">99.89% correct advice with zero severe harm across 775,000 calls reviewed by 7,700-plus U.S.-licensed clinicians</a>, atop 250M-plus patient interactions. <strong>These are vendor-reported figures, not independent evaluation</strong> — and in a clinical setting, where the residual 0.11% lands is exactly where the risk lives, which dovetails with story 3 below on trusting pretty numbers.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Players</span></div>
+      <p class="val">
+        <span class="en">Hippocratic AI (California), founded by Munjal Shah (CEO) and Meenesh Bhimani (CMO), has raised <strong>$444 million</strong> from Andreessen Horowitz, General Catalyst, Kleiner Perkins, and <a href="https://www.unite.ai/hippocratic-ai-launches-agentic-orchestrators-that-coordinate-voice-ai-teams-for-healthcare-outcomes/" target="_blank" rel="noopener">NVIDIA's NVentures and Google's CapitalG</a>. The product is patient-facing conversational voice agents, not a diagnostic or prescribing system.</span>
+      </p></div>
+    <div class="src">
+      <span class="en-inline">Sources: </span>
+      <a href="https://www.prnewswire.com/news-releases/hippocratic-ai-announces-next-generation-of-healthcare-ai-orchestrators-focused-on-outcomes-not-tasks-302850620.html" target="_blank" rel="noopener">PR Newswire · Aug 13</a> ·
+      <a href="https://www.unite.ai/hippocratic-ai-launches-agentic-orchestrators-that-coordinate-voice-ai-teams-for-healthcare-outcomes/" target="_blank" rel="noopener">Unite.AI</a> ·
+      <a href="https://itdigest.com/healthtech/hippocratic-ai-launches-agentic-orchestrators-to-own-end-to-end-healthcare-outcomes/" target="_blank" rel="noopener">IT Digest</a>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Multimodal Agent</span></span>
+      <span class="tag">Ophiuchus</span><span class="tag">MedScope</span><span class="tag">ICML 2026</span><span class="tag">7B</span>
+    </div>
+    <h3>
+      <span class="en">Teaching models "where and how to look": a 7B medical vision agent beats o3, Gemini 2.5 Pro and GPT-5 on eight VQA benchmarks</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">The LeapQuest team at Shanghai Institute for Advanced Study, with Zhejiang University, Shanghai Jiao Tong University and Fudan University, introduced <strong>Ophiuchus (images)</strong> and <strong>MedScope (video)</strong>, two medical AI agents; the work was <a href="https://36kr.com/p/3827353790059143" target="_blank" rel="noopener">accepted to ICML 2026 (public May 27, 2026)</a>. The core is a "Think with Images/Videos" paradigm: the model <strong>actively calls visual tools during reasoning</strong> — Ophiuchus uses SAM2 for fine segmentation, BiomedParse to localise medical structures, then zooms in on key regions; MedScope forms a global view first, then uses crop_video and get_frame to fold local observations back into the answer.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This is a clean demonstration that visual-evidence-driven reasoning beats scaling alone. <a href="https://36kr.com/p/3827353790059143" target="_blank" rel="noopener">Ophiuchus-7B averages 68.0 across eight medical VQA benchmarks with 97.9% tool-call accuracy</a>, beating OpenAI-o3 (62.2), Gemini 2.5 Pro (61.8) and GPT-5 (59.9) — a 7B specialised agent outperforming hundred-billion-parameter generalists by knowing how to look. That matters disproportionately for medical imaging, where diagnostic errors often come from not looking in the right place; letting a model zoom, segment and compare like a radiologist is closer to clinical reasoning than shoving the whole image in at once. For compute-constrained hospitals and countries, the small-model-plus-tools route is also far more affordable.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Players</span></div>
+      <p class="val">
+        <span class="en">Led by the LeapQuest team at the Shanghai Institute for Advanced Study, with Zhejiang, SJTU and Fudan (<a href="https://36kr.com/p/3827353790059143" target="_blank" rel="noopener">36Kr</a>). This is academic research; no public commercialisation or clinical-clearance information was found, and none is assumed here.</span>
+      </p></div>
+    <div class="src">
+      <span class="en-inline">Sources: </span>
+      <a href="https://36kr.com/p/3827353790059143" target="_blank" rel="noopener">36Kr · ICML 2026, May 27</a>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag reg"><span class="en-inline">Benchmark Integrity</span></span>
+      <span class="tag">Translational Psychiatry</span><span class="tag">EEG</span><span class="tag">Data Leakage</span><span class="tag">8/15</span>
+    </div>
+    <h3>
+      <span class="en">65% of schizophrenia EEG-AI papers inflate accuracy by up to 30 points: one paper calls out a subfield's "basic math"</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Frigyes Sámuel Rácz and Gábor Csukly, in <a href="https://doi.org/10.1038/s41398-026-04315-9" target="_blank" rel="noopener"><em>Translational Psychiatry</em> (Aug 15, 2026)</a>, systematically reviewed deep-learning studies diagnosing schizophrenia from EEG and found that most overstate accuracy through <strong>data leakage</strong>. The most common error is <strong>splitting train/test sets by "epoch" (a brain-activity segment) rather than by patient</strong> — so the model learns a personal EEG fingerprint, not a disease marker; another is running feature selection before partitioning, letting the model peek at test data. Models claiming 95%-plus accuracy collapse under correct methodology (<a href="https://yesilscience.com/ai-schizophrenia-tests-are-failing-basic-math/" target="_blank" rel="noopener">Yesil Science</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This is the other pole of the week and a necessary cold shower for the shiny scores in stories 1 and 2. With <a href="https://yesilscience.com/ai-schizophrenia-tests-are-failing-basic-math/" target="_blank" rel="noopener">as many as 65% of published papers carrying such pipeline errors and inflation of up to 30 points</a>, an entire subfield's "state of the art" may rest on quicksand. It is a concrete case of <em>Nature</em>'s July comment that medical AI has a measurement problem: when the benchmark itself is untrustworthy, ranking models is meaningless. The practical takeaway is blunt — when buying or deploying any medical AI, an "accuracy" figure that does not state <strong>whether the split was by patient and whether feature selection came after partitioning</strong> should essentially not be believed.</span>
+      </p></div>
+    <div class="src">
+      <span class="en-inline">Sources: </span>
+      <a href="https://doi.org/10.1038/s41398-026-04315-9" target="_blank" rel="noopener">Translational Psychiatry · Aug 15, 2026</a> ·
+      <a href="https://yesilscience.com/ai-schizophrenia-tests-are-failing-basic-math/" target="_blank" rel="noopener">Yesil Science</a>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Open Source</span></span>
+      <span class="tag">Pillar-0</span><span class="tag">UC Berkeley</span><span class="tag">UCSF</span><span class="tag">Atlas</span>
+    </div>
+    <h3>
+      <span class="en">Pillar-0: a fully open CT/MRI foundation model whose Atlas architecture is 150× faster than ViT and tops MedGemma, Microsoft MI2 and Alibaba Lingshu</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Researchers at UC Berkeley and UCSF released the <strong>Pillar-0</strong> medical-imaging foundation model (<a href="https://cdss.berkeley.edu/news/uc-berkeley-and-ucsf-researchers-release-top-performing-ai-model-medical-imaging" target="_blank" rel="noopener">Nov 20, 2025</a>). At its core is a new <strong>Atlas neural-network architecture</strong> that processes 3D volumes directly rather than slice by slice, making it <a href="https://cdss.berkeley.edu/news/uc-berkeley-and-ucsf-researchers-release-top-performing-ai-model-medical-imaging" target="_blank" rel="noopener">over 150× faster than a traditional vision transformer on an abdomen CT</a>. It recognises hundreds of findings from a single CT or MRI across chest CT, abdomen CT, brain CT and breast MRI. The full codebase, trained models, evaluation and data pipelines are <strong>released publicly</strong>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This is the strongest exemplar of the "open source plus efficient architecture" route and deserves a call-out in a technology week. <a href="https://cdss.berkeley.edu/news/uc-berkeley-and-ucsf-researchers-release-top-performing-ai-model-medical-imaging" target="_blank" rel="noopener">Pillar-0 beats Google's MedGemma (0.76), Microsoft's MI2 (0.75) and Alibaba's Lingshu (0.70) by more than 10 points at 0.87 AUC across 366 tasks and four modalities (350-plus findings)</a>, improves lung-cancer prediction 7% over Sybil-1, and reaches strong brain-hemorrhage detection using only 25% of the usual training data. Its significance is threefold: an architecture that ingests 3D volumes directly lifts both speed and data efficiency; full open-sourcing lets hospitals and researchers validate and fine-tune locally rather than depend on vendor APIs; and it puts several big vendors' imaging models on one comparison table, giving "who is actually best" a reproducible yardstick — a neat complement to story 3's benchmark-integrity theme.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Players</span></div>
+      <p class="val">
+        <span class="en">Developed by researchers at UC Berkeley's College of Computing, Data Science, and Society (CDSS) and UCSF (<a href="https://cdss.berkeley.edu/news/uc-berkeley-and-ucsf-researchers-release-top-performing-ai-model-medical-imaging" target="_blank" rel="noopener">Berkeley CDSS</a>). The compared systems are Google MedGemma, Microsoft MI2 and Alibaba Lingshu.</span>
+      </p></div>
+    <div class="src">
+      <span class="en-inline">Sources: </span>
+      <a href="https://cdss.berkeley.edu/news/uc-berkeley-and-ucsf-researchers-release-top-performing-ai-model-medical-imaging" target="_blank" rel="noopener">UC Berkeley CDSS · Nov 20, 2025</a>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Agent Toolkit</span></span>
+      <span class="tag">NVIDIA</span><span class="tag">BioNeMo</span><span class="tag">Drug Discovery</span>
+    </div>
+    <h3>
+      <span class="en">NVIDIA's BioNeMo Agent Toolkit hands AI agents a "PhD research assistant" toolbox, compressing virtual screening from days to minutes</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">NVIDIA announced the <a href="https://nvidianews.nvidia.com/news/nvidia-launches-bionemo-agent-toolkit-giving-ai-agents-the-tools-to-accelerate-scientific-discovery" target="_blank" rel="noopener">BioNeMo Agent Toolkit (June 23, 2026)</a>, packaging more than a decade of life-sciences libraries, tools and open models into a platform that AI agents can call directly. Components include BioNeMo models and frameworks, NIM microservices, Nemotron open models for reasoning, the NeMo RL library, and Parabricks for genomic acceleration. Agents can generate and screen compounds, run molecular docking, predict binding strength and filter for drug-likeness, <a href="https://nvidianews.nvidia.com/news/nvidia-launches-bionemo-agent-toolkit-giving-ai-agents-the-tools-to-accelerate-scientific-discovery" target="_blank" rel="noopener">compressing virtual-screening timelines from days to minutes</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">If story 1 is "agents for clinical care," this is "agents for scientific R&amp;D" — the same paradigm (an LLM orchestrating specialised tools) extended to drug discovery. Jensen Huang framed it cleanly: "<a href="https://nvidianews.nvidia.com/news/nvidia-launches-bionemo-agent-toolkit-giving-ai-agents-the-tools-to-accelerate-scientific-discovery" target="_blank" rel="noopener">Frontier models are the brains. BioNeMo is the scientific toolbox. Together they give AI agents the skills of a PhD research assistant.</a>" Adopters span frontier labs (Anthropic, OpenAI, Owkin, Edison Scientific), pharma (Eli Lilly, Natera), data platforms (Databricks, Snowflake, Benchling) and AI-native biotech (Boltz, Chai Discovery), with 50-plus companies deploying. It reinforces the week's through-line: <strong>the 2026 medical-AI contest turns not on the model alone but on how complete a toolchain that model can orchestrate.</strong></span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Players</span></div>
+      <p class="val">
+        <span class="en">NVIDIA Healthcare / BioNeMo; partners and adopters above (<a href="https://nvidianews.nvidia.com/news/nvidia-launches-bionemo-agent-toolkit-giving-ai-agents-the-tools-to-accelerate-scientific-discovery" target="_blank" rel="noopener">NVIDIA newsroom</a>). The toolkit is built on NVIDIA's own open models (Nemotron) and microservices (NIM), tying the business model to its compute platform.</span>
+      </p></div>
+    <div class="src">
+      <span class="en-inline">Sources: </span>
+      <a href="https://nvidianews.nvidia.com/news/nvidia-launches-bionemo-agent-toolkit-giving-ai-agents-the-tools-to-accelerate-scientific-discovery" target="_blank" rel="noopener">NVIDIA Newsroom · June 23, 2026</a>
+    </div>
+  </div>
+
+  <!-- 6 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Open Multimodal</span></span>
+      <span class="tag">Google</span><span class="tag">MedGemma 1.5</span><span class="tag">MedASR</span>
+    </div>
+    <h3>
+      <span class="en">MedGemma 1.5 and MedASR: an upgraded 4B open multimodal medical model, and speech-to-text with 58–82% fewer errors than Whisper</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Google Research released <a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">MedGemma 1.5 (4B) and the MedASR speech-to-text model (Jan 13, 2026)</a>, both free for research and commercial use on Hugging Face and Vertex AI. MedGemma 1.5 4B improves markedly over v1: <a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">MRI findings 51%→65%, lab-report extraction F1 60%→78%, MedQA reasoning 64%→69%, CT classification 58%→61%</a>. MedASR, for clinical dictation, cuts errors <a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">from 12.5% to 5.2% on chest X-ray dictation (58% fewer) and from 28.2% to 5.2% across specialties (82% fewer)</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">The MedGemma family is one of the most widely adopted open medical-model bases and the direct comparator to Pillar-0 in story 4 (Pillar-0 wins on imaging, but MedGemma offers a fine-tunable general multimodal base). MedASR is the piece to watch: speech-recognition errors are clinically expensive (mg heard as mcg, a negation heard as an affirmation), and driving cross-specialty error to 5.2% — far below Whisper large-v3 — matters for AI documentation and clinical dictation, the biggest deployment surface right now. In a technology week it demonstrates the other viable route: small, specialised, open and fine-tunable. <strong>Note:</strong> this shipped in January and is included as technical background, not this week's news; the date is labelled.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Players</span></div>
+      <p class="val">
+        <span class="en">Google Research / DeepMind, part of the Health AI Developer Foundations line; the 27B model remains available for complex text tasks (<a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">Google Research blog</a>).</span>
+      </p></div>
+    <div class="src">
+      <span class="en-inline">Sources: </span>
+      <a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">Google Research · Jan 13, 2026</a> ·
+      <a href="https://arxiv.org/html/2507.05201v4" target="_blank" rel="noopener">MedGemma Technical Report (arXiv)</a>
+    </div>
+  </div>
+
+  <!-- 7 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Agent Benchmark</span></span>
+      <span class="tag">AgentClinic</span><span class="tag">npj Digital Medicine</span><span class="tag">Multimodal</span>
+    </div>
+    <h3>
+      <span class="en">AgentClinic turns static exams into interactive clinics — MedQA accuracy drops to below a tenth in multi-turn dialogue</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en"><a href="https://www.nature.com/articles/s41746-026-02674-7" target="_blank" rel="noopener">AgentClinic (<em>npj Digital Medicine</em>, Apr 27, 2026)</a> is a multimodal agent benchmark that drops LLMs into a simulated clinic via a four-agent system (patient, doctor, measurement, moderator), testing <strong>sequential clinical decision-making under incomplete information</strong> — history-taking, calling test tools, multi-turn dialogue, across nine specialties and seven languages and 23 cognitive biases. Data comes from USMLE, MIMIC-IV records and NEJM case challenges, spanning 215 general, 120 multimodal, 260 specialist and 749 multilingual cases.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">It pinpoints the gap between exam scores and clinical competence: <a href="https://www.nature.com/articles/s41746-026-02674-7" target="_blank" rel="noopener">move the same MedQA items into a sequential interactive format and accuracy falls to below a tenth of the original</a>. A model that aces static multiple-choice may not know how to take a history or probe when information is missing. The study also shows tool benefits vary by model (Llama-3 gained up to 92% with a notebook tool while some models regressed) and that non-English cases are generally weaker. In this week's context: as medical AI pivots to agents, we need agent-grade benchmarks — designs like AgentClinic are the right yardstick for the agent systems in stories 1, 2 and 5, not legacy multiple-choice accuracy.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Players</span></div>
+      <p class="val">
+        <span class="en">An academic benchmark (<em>npj Digital Medicine</em>, vol. 9, art. 499). Tested models include closed systems (GPT-4/4o, Claude-3.5-Sonnet) and open ones (Llama, Mixtral, Meditron, OpenBioLLM), with three human physicians as a baseline (<a href="https://www.nature.com/articles/s41746-026-02674-7" target="_blank" rel="noopener">full text</a>, <a href="https://agentclinic.github.io/" target="_blank" rel="noopener">project page</a>).</span>
+      </p></div>
+    <div class="src">
+      <span class="en-inline">Sources: </span>
+      <a href="https://www.nature.com/articles/s41746-026-02674-7" target="_blank" rel="noopener">npj Digital Medicine · Apr 27, 2026</a> ·
+      <a href="https://agentclinic.github.io/" target="_blank" rel="noopener">AgentClinic project</a>
+    </div>
+  </div>
+
+</section>
+
+<!-- ============ PRODUCT ============ -->
+<section id="product">
+  <h2>02 — Product Analysis</h2>
+  <div class="sec-title">
+    <span class="en">Two products, taken apart: a big agent-orchestration stack vs a small, efficient open imaging model</span>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>Hippocratic AI Polaris Orchestrators</h3>
+      <p class="sub"><span class="en-inline">Patient-facing voice agents · constellation architecture · Hippocratic AI (US)</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> A supervising intelligence coordinates 30-plus specialised voice agents around population outcomes — chronic-care management, readmission prevention, STAR ratings, trial enrolment — as a non-diagnostic, non-prescribing patient-interaction layer (<a href="https://www.unite.ai/hippocratic-ai-launches-agentic-orchestrators-that-coordinate-voice-ai-teams-for-healthcare-outcomes/" target="_blank" rel="noopener">Unite.AI</a>).</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: safety is a separate layer by design — <a href="https://www.unite.ai/hippocratic-ai-launches-agentic-orchestrators-that-coordinate-voice-ai-teams-for-healthcare-outcomes/" target="_blank" rel="noopener">30-plus supervisors around a 700B primary model</a> handle escalation, medication and adverse events, which is more auditable than a single monolithic model.</span>
+        </li>
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: scale and capital are in place — <a href="https://www.prnewswire.com/news-releases/hippocratic-ai-announces-next-generation-of-healthcare-ai-orchestrators-focused-on-outcomes-not-tasks-302850620.html" target="_blank" rel="noopener">250M-plus interactions and $444M raised</a>, with an outcome-based model aligned to payer incentives.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: <a href="https://www.unite.ai/hippocratic-ai-launches-agentic-orchestrators-that-coordinate-voice-ai-teams-for-healthcare-outcomes/" target="_blank" rel="noopener">99.89% and zero severe harm are vendor-reported, not independently evaluated</a>; clinically, the distribution and severity of the residual 0.11% is what matters.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: the failure modes of orchestration (who contacts a patient, and when) are harder to attribute than single tasks, and no public prospective outcome trial yet backs the outcome claims.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>Pillar-0 (Atlas architecture)</h3>
+      <p class="sub"><span class="en-inline">3D imaging foundation model · fully open source · UC Berkeley × UCSF (academic)</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> Processes 3D CT/MRI volumes directly and recognises hundreds of findings from one scan; code, weights, evaluation and data pipelines are fully open for local deployment and fine-tuning (<a href="https://cdss.berkeley.edu/news/uc-berkeley-and-ucsf-researchers-release-top-performing-ai-model-medical-imaging" target="_blank" rel="noopener">Berkeley CDSS</a>).</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: the efficiency architecture is a genuine breakthrough — <a href="https://cdss.berkeley.edu/news/uc-berkeley-and-ucsf-researchers-release-top-performing-ai-model-medical-imaging" target="_blank" rel="noopener">Atlas is 150×-plus faster than ViT on abdomen CT</a> and reaches strong brain-hemorrhage detection with 25% of the data — very data-efficient.</span>
+        </li>
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: <a href="https://cdss.berkeley.edu/news/uc-berkeley-and-ucsf-researchers-release-top-performing-ai-model-medical-imaging" target="_blank" rel="noopener">leads MedGemma/MI2/Lingshu by 10-plus points at 0.87 AUC across 366 tasks</a>, and being fully open avoids API lock-in and data-egress issues.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: the AUC is retrospective internal evaluation, not a prospective clinical trial; "reads well" is still far from "changes outcomes" (see the benchmark cautions in stories 3 and 7).</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: deploying an open model still leaves each site responsible for regulatory clearance, validation and maintenance — the barrier is not licence cost but in-house validation capacity.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPANY ============ -->
+<section id="company">
+  <h2>03 — Companies &amp; Competition</h2>
+  <div class="sec-title">
+    <span class="en">Who is building which kind of "technology," on what evidence, against whom</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th><span class="en-inline">Company / system</span></th>
+        <th><span class="en-inline">Claim &amp; evidence</span></th>
+        <th><span class="en-inline">Position</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Hippocratic AI</strong><br><span class="en-inline">Polaris orchestrators</span></td>
+          <td>
+            <span class="en">700B primary plus 30+ supervisors; <a href="https://www.unite.ai/hippocratic-ai-launches-agentic-orchestrators-that-coordinate-voice-ai-teams-for-healthcare-outcomes/" target="_blank" rel="noopener">99.89% correct, zero severe harm (vendor-reported, 775K calls)</a>; no public prospective trial.</span>
+          </td>
+          <td>
+            <span class="en">Scale leader in patient-facing voice agents; the moat is deployment volume and outcome-based pricing. Competitors like Abridge and Ambience mostly focus on documentation.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Google DeepMind</strong><br>MedGemma 1.5 / MedASR</td>
+          <td>
+            <span class="en">Open multimodal base plus medical ASR; <a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">MRI 65%, MedQA 69%, ASR 58–82% fewer errors than Whisper</a>.</span>
+          </td>
+          <td>
+            <span class="en">Wins the developer ecosystem with a free, fine-tunable general base; outperformed by Pillar-0 on pure imaging but ahead on multimodal breadth and cloud integration.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>NVIDIA</strong><br>BioNeMo Agent Toolkit</td>
+          <td>
+            <span class="en"><a href="https://nvidianews.nvidia.com/news/nvidia-launches-bionemo-agent-toolkit-giving-ai-agents-the-tools-to-accelerate-scientific-discovery" target="_blank" rel="noopener">50+ pharma and labs adopting; virtual screening from days to minutes</a>; includes Nemotron open models and NIM microservices.</span>
+          </td>
+          <td>
+            <span class="en">Not an end-model vendor but an "agent toolchain plus compute platform"; the moat is the CUDA ecosystem and life-sciences library depth, tied to its hardware.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>UC Berkeley × UCSF</strong><br>Pillar-0 (Atlas)</td>
+          <td>
+            <span class="en">Fully open 3D imaging model; <a href="https://cdss.berkeley.edu/news/uc-berkeley-and-ucsf-researchers-release-top-performing-ai-model-medical-imaging" target="_blank" rel="noopener">0.87 AUC, +10 points over 366 tasks, 150× faster than ViT</a> (retrospective).</span>
+          </td>
+          <td>
+            <span class="en">Academic open-source play going straight at vendor imaging models; strong on efficiency and accessibility, weak on commercial support and prospective clinical evidence.</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note">
+    <span class="en"><strong>One cross-cutting observation.</strong> The four fall into three technical routes: <strong>large agent orchestration</strong> (Hippocratic), <strong>agent toolchains</strong> (NVIDIA) and <strong>efficient open models</strong> (Pillar-0, parts of MedGemma). All share one assumption — that future medical-AI value lies less in how clever a single model is than in whether it can orchestrate tools and be deployed and audited locally. But stories 3 and 7 supply the necessary counter-pressure: <a href="https://doi.org/10.1038/s41398-026-04315-9" target="_blank" rel="noopener">when benchmarks are untrustworthy through data leakage</a> and <a href="https://www.nature.com/articles/s41746-026-02674-7" target="_blank" rel="noopener">when multiple-choice accuracy fails to predict interactive-clinic performance</a>, which yardstick should test these technical claims remains the core open question.</span>
+  </div>
+</section>
+
+<!-- ============ TAIWAN ============ -->
+<section id="taiwan">
+  <h2>04 — Taiwan Angle</h2>
+  <div class="sec-title">
+    <span class="en">Taiwan: three technical places where this week lands</span>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>(1) The "small model plus tools" and open-source routes are more feasible for resource-limited Taiwanese hospitals.</strong> Stories 2 and 4 (Ophiuchus-7B, Pillar-0) both point to one thing: <a href="https://cdss.berkeley.edu/news/uc-berkeley-and-ucsf-researchers-release-top-performing-ai-model-medical-imaging" target="_blank" rel="noopener">a 7B specialised agent and a fully open imaging model can beat hundred-billion-parameter generalists on specific tasks</a>. That matters for Taiwan's academic medical centres, which lack large GPU clusters and worry about data egress — rather than paying for expensive APIs and sending patient images to the cloud, fine-tune, validate and deploy open models in-house. MOHW's <a href="https://aicenter.mohw.gov.tw/" target="_blank" rel="noopener">Clinical AI Validation Center</a> is well placed to be both gatekeeper and accelerator for this route.</span>
+    </p>
+    <p>
+      <span class="en"><strong>(2) Medical speech recognition and Traditional-Chinese clinical NLP are an underrated local opportunity.</strong> MedASR (story 6) drives English medical-dictation error to 5.2%, but <strong>clinical dictation mixing Traditional Chinese and Taiwanese</strong> has almost no comparable high-quality model or benchmark. Taiwanese records have long mixed Chinese and English (English structured fields, Chinese narrative), which is both a source of the gap when importing international models and <strong>a place to build a local moat</strong> — a good Traditional-Chinese medical ASR or clinical-NLP benchmark is worth no less than training yet another imaging model. This complements the "333 policy" push for <a href="https://udn.com/news/story/7266/9592218" target="_blank" rel="noopener">record standardisation and interoperability</a>: consistent data first, then the language models have something to learn from.</span>
+    </p>
+    <p>
+      <span class="en"><strong>(3) The "agent wave" needs data infrastructure first — and Taiwan's sequencing is actually right.</strong> The orchestration in stories 1 and 5 presupposes safely marshalling data and tools across systems; without an interoperable data layer, agents just spin inside a single silo. Health Minister Shih Chung-liang set out the "333 policy" and an NT$48.9 billion "Healthy Taiwan" budget at the <a href="https://udn.com/news/story/7266/9592218" target="_blank" rel="noopener">Kaohsiung Medical University forum (June 27, 2026)</a>, targeting record interoperability across academic medical centres by year-end and regional and district hospitals within two years; the same event named KMU's "first colorectal-cancer AI agent" built with Foxconn on NVIDIA. Putting interoperability before agent deployment is exactly the order this week's international technology news implies — Taiwan just still lacks a payment design to give these agents a sustainable business model.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============ READING ============ -->
+<section id="reading">
+  <h2>05 — Further Reading</h2>
+  <div class="sec-title">
+    <span class="en">Five worth a second read</span>
+  </div>
+  <ol class="reading">
+    <li>
+      <a href="https://arxiv.org/html/2507.05201v4" target="_blank" rel="noopener">MedGemma Technical Report — arXiv:2507.05201</a>
+      <p class="why"><span class="en">The single best entry point for how an open medical multimodal model is trained and evaluated — and necessary background for contrasting Pillar-0's architectural choices.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/articles/s41746-026-02674-7" target="_blank" rel="noopener">AgentClinic: a multimodal benchmark for tool-using clinical AI agents — <em>npj Digital Medicine</em>, 2026/4/27</a>
+      <p class="why"><span class="en">If you read only one paper on agent-grade evaluation, read this. It quantifies "exam score ≠ clinical competence" most clearly and is the right yardstick for every agent system in this issue.</span></p>
+    </li>
+    <li>
+      <a href="https://doi.org/10.1038/s41398-026-04315-9" target="_blank" rel="noopener">Data leakage inflates schizophrenia EEG-AI accuracy — <em>Translational Psychiatry</em>, 2026/8/15</a>
+      <p class="why"><span class="en">The week's essential methodological warning. Anyone validating or procuring medical AI will forever treat "accuracy" figures with more suspicion after reading it.</span></p>
+    </li>
+    <li>
+      <a href="https://nvidianews.nvidia.com/news/nvidia-launches-bionemo-agent-toolkit-giving-ai-agents-the-tools-to-accelerate-scientific-discovery" target="_blank" rel="noopener">NVIDIA launches BioNeMo Agent Toolkit — NVIDIA Newsroom, 2026/6/23</a>
+      <p class="why"><span class="en">The first-hand source for how agents extend into drug discovery — full component list and adopters — and a good feel for the "toolchain tied to compute platform" business logic.</span></p>
+    </li>
+    <li>
+      <a href="https://huggingface.co/blog/state-of-open-models-summer-2026" target="_blank" rel="noopener">State of Open Models: Summer 2026 — Hugging Face</a>
+      <p class="why"><span class="en">Places stories 4 and 6 in the bigger picture: the 2026 open-model landscape, licences and capability evolution — useful for thinking about which open-source route Taiwan should back.</span></p>
+    </li>
+  </ol>
+</section>
+
+<!-- ============ REFS ============ -->
+<section id="refs">
+  <h2>06 — References</h2>
+  <div class="sec-title">
+    <span class="en">References</span>
+  </div>
+  <div class="panel">
+    <ol class="refs">
+      <li>“Hippocratic AI Announces Next Generation of Healthcare AI: Orchestrators Focused on Outcomes, Not Tasks.” <em>PR Newswire</em> (Hippocratic AI press release), 2026-08-13. <a href="https://www.prnewswire.com/news-releases/hippocratic-ai-announces-next-generation-of-healthcare-ai-orchestrators-focused-on-outcomes-not-tasks-302850620.html" target="_blank" rel="noopener">prnewswire.com</a></li>
+      <li>“Hippocratic AI Launches Agentic Orchestrators That Coordinate Voice AI Teams for Healthcare Outcomes.” <em>Unite.AI</em>, 2026-08. <a href="https://www.unite.ai/hippocratic-ai-launches-agentic-orchestrators-that-coordinate-voice-ai-teams-for-healthcare-outcomes/" target="_blank" rel="noopener">unite.ai</a> · <em>IT Digest</em>. <a href="https://itdigest.com/healthtech/hippocratic-ai-launches-agentic-orchestrators-to-own-end-to-end-healthcare-outcomes/" target="_blank" rel="noopener">itdigest.com</a></li>
+      <li>「7B 打敗 o3、GPT-5，醫學 AI 智能體讓模型學會『看哪裡、怎麼看』」（Ophiuchus／MedScope, ICML 2026），<em>36 氪</em>，2026-05-27。<a href="https://36kr.com/p/3827353790059143" target="_blank" rel="noopener">36kr.com/p/3827353790059143</a></li>
+      <li>Rácz, F. S., Csukly, G. “Data leakage and inflated diagnostic performance in EEG-based deep learning for schizophrenia.” <em>Translational Psychiatry</em>, 2026-08-15. <a href="https://doi.org/10.1038/s41398-026-04315-9" target="_blank" rel="noopener">doi.org/10.1038/s41398-026-04315-9</a> · “AI schizophrenia tests are failing basic math.” <em>Yesil Science</em>. <a href="https://yesilscience.com/ai-schizophrenia-tests-are-failing-basic-math/" target="_blank" rel="noopener">yesilscience.com</a></li>
+      <li>“UC Berkeley and UCSF researchers release top-performing AI model for medical imaging” (Pillar-0 / Atlas). <em>UC Berkeley CDSS</em>, 2025-11-20. <a href="https://cdss.berkeley.edu/news/uc-berkeley-and-ucsf-researchers-release-top-performing-ai-model-medical-imaging" target="_blank" rel="noopener">cdss.berkeley.edu</a></li>
+      <li>“NVIDIA Announces BioNeMo Agent Toolkit — Tools for Agents to Accelerate Scientific Discovery.” <em>NVIDIA Newsroom</em>, 2026-06-23. <a href="https://nvidianews.nvidia.com/news/nvidia-launches-bionemo-agent-toolkit-giving-ai-agents-the-tools-to-accelerate-scientific-discovery" target="_blank" rel="noopener">nvidianews.nvidia.com</a></li>
+      <li>“Next generation medical image interpretation with MedGemma 1.5 and medical speech to text with MedASR.” <em>Google Research Blog</em>, 2026-01-13. <a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">research.google</a> · “MedGemma Technical Report.” <em>arXiv</em>:2507.05201. <a href="https://arxiv.org/html/2507.05201v4" target="_blank" rel="noopener">arxiv.org/html/2507.05201v4</a></li>
+      <li>“AgentClinic: a multimodal benchmark for tool-using clinical AI agents.” <em>npj Digital Medicine</em>, vol. 9, art. 499, 2026-04-27. <a href="https://www.nature.com/articles/s41746-026-02674-7" target="_blank" rel="noopener">nature.com/articles/s41746-026-02674-7</a> · project page <a href="https://agentclinic.github.io/" target="_blank" rel="noopener">agentclinic.github.io</a></li>
+      <li>“Medical AI has a measurement problem.” <em>Nature</em>, 2026-07-28. <a href="https://www.nature.com/articles/d41586-026-02125-z" target="_blank" rel="noopener">nature.com/articles/d41586-026-02125-z</a></li>
+      <li>“The Health AI Brief — Week of August 17, 2026.” <em>Yesil Science</em>. <a href="https://yesilscience.com/the-brief-2026-08-17/" target="_blank" rel="noopener">yesilscience.com/the-brief-2026-08-17</a></li>
+      <li>“State of Open Models: Summer 2026.” <em>Hugging Face</em>. <a href="https://huggingface.co/blog/state-of-open-models-summer-2026" target="_blank" rel="noopener">huggingface.co/blog/state-of-open-models-summer-2026</a></li>
+      <li>「高醫大論壇揭示 AI 醫療新局！衛福部推『333 政策』 國家 489 億預算力挺」，<em>聯合新聞網</em>，2026-06-27。<a href="https://udn.com/news/story/7266/9592218" target="_blank" rel="noopener">udn.com/news/story/7266/9592218</a> · 臺灣智慧醫療三大中心 <a href="https://aicenter.mohw.gov.tw/" target="_blank" rel="noopener">aicenter.mohw.gov.tw</a></li>
+    </ol>
+    <div class="note">
+      <span class="en"><strong>Editor's note:</strong> (1) Newly released medical-specific models were relatively scarce during Aug 13–20 (major model-release trackers show no medical-specific release in the first half of August). This edition therefore centres on what genuinely happened this week — Hippocratic AI's agent launch (Aug 13) and the <em>Translational Psychiatry</em> data-leakage study (Aug 15) — and adds representative 2026 work (and Pillar-0 from Nov 2025) that is necessary technical context: Ophiuchus/MedScope (ICML 2026, May 27), NVIDIA BioNeMo Agent Toolkit (June 23), MedGemma 1.5/MedASR (Jan 13) and AgentClinic (Apr 27). All dates are labelled in-text and nothing is passed off as this week's news. (2) Hippocratic AI's 99.89% correct-advice rate, zero-severe-harm claim and 775,000-call figure are <strong>vendor-reported, not independent third-party evaluation</strong>, as noted in the text. (3) Ophiuchus/MedScope scores are drawn from 36Kr's report of the ICML 2026 paper; Pillar-0's AUC and speed-up come from the UC Berkeley CDSS announcement — this report did not verify every figure against each full primary paper and cites the sources accordingly. (4) Taiwan's "333 policy" and NT$48.9 billion budget come from the June 27 United Daily News report; the English NT$48.9 billion is the same figure written 489 億元 in Chinese counting units. (5) This report is not investment or medical advice; verify all figures against the primary sources.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-row">
+    <div>
+      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Thursday / technology breakthroughs<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
+    </div>
+    <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
+  </div>
+</footer>
+</main>
+
+<div class="fabs">
+  <button class="up" id="up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+  <a class="home-fab" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg></a>
+</div>
+
+<script>
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.getElementById('theme-ic').textContent =
+    document.body.classList.contains('dark') ? '◑' : '◐';
+}
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.body.classList.add('dark');
+  document.getElementById('theme-ic').textContent = '◑';
+}
+window.addEventListener('scroll', function(){
+  document.getElementById('up').classList.toggle('show', window.scrollY > 600);
+});
+
+/* GitHub 星星數：無需授權，失敗或被限流時靜默保留佔位符 */
+(function(){
+  var el = document.getElementById('ghs');
+  if (!el || typeof fetch !== 'function') return;
+  fetch('https://api.github.com/repos/tingwei161803/ai-medical-daily', {headers:{Accept:'application/vnd.github+json'}})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if (!d || typeof d.stargazers_count !== 'number') return;
+      var n = d.stargazers_count;
+      el.textContent = n >= 1000 ? (Math.round(n/100)/10) + 'k' : String(n);
+    })
+    .catch(function(){});
+})();
+</script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/reports/2026-08-20.html" hreflang="zh-Hant" rel="alternate" lang="zh-Hant">中文版</a></p>
+</body>
+</html>

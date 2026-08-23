@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>AI &amp; Medical AI Daily · 2026-08-17</title>
+<meta property="og:url" content="https://ai-medical-daily.peteraim.com/en/reports/2026-08-17.html" />
+<link rel="canonical" href="https://ai-medical-daily.peteraim.com/en/reports/2026-08-17.html" />
+<link rel="alternate" hreflang="zh-Hant" href="https://ai-medical-daily.peteraim.com/reports/2026-08-17.html" />
+<link rel="alternate" hreflang="en" href="https://ai-medical-daily.peteraim.com/en/reports/2026-08-17.html" />
+<link rel="alternate" hreflang="x-default" href="https://ai-medical-daily.peteraim.com/reports/2026-08-17.html" />
+<meta name="description" content="A 1,096-participant randomised study in Nature Medicine shows the same dermatology AI helps clinicians and lay users in opposite ways — LLM explanations cost lay users 21.1% accuracy when the AI was wrong, yet improved physicians' calibration; the same week, Aidoc became the first healthcare-foundation-model AI software to win a Medicare NTAP add-on payment.">
+<meta name="report-date" content="2026-08-17">
+<meta name="report-theme" content="clinical">
+<meta name="report-title-zh" content="AI 幫得上忙的人，不一定是你以為的那個">
+<meta name="report-title-en" content="AI helps — but not always the person you expected">
+<meta name="report-summary-zh" content="Nature Medicine 一篇 1,096 人的隨機實驗顯示，同一套皮膚科 AI 對醫師與一般民眾產生相反效果：LLM 解釋讓外行人在 AI 答錯時準確率掉 21.1%，卻讓醫師的信心校準變好；同週 Aidoc 成為首個以醫療基礎模型取得 Medicare NTAP 加成給付的 AI 軟體。">
+<meta name="report-summary-en" content="A 1,096-participant randomised study in Nature Medicine shows the same dermatology AI helps clinicians and lay users in opposite ways — LLM explanations cost lay users 21.1% accuracy when the AI was wrong, yet improved physicians' calibration; the same week, Aidoc became the first healthcare-foundation-model AI software to win a Medicare NTAP add-on payment.">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HJLDQZDK5V');
+</script>
+<style>
+:root{
+  --bg:#f7f8fa; --surface:#ffffff; --surface-2:#f0f2f5; --border:#e2e5ea;
+  --text:#16181d; --muted:#5c636e; --faint:#8a919c;
+  --accent:#0d7a6f; --accent-soft:#e3f2f0; --accent-text:#0a5c54;
+  --warn:#b45309; --warn-soft:#fdf3e3;
+  --shadow:0 1px 2px rgba(16,24,40,.04),0 4px 16px rgba(16,24,40,.05);
+}
+body.dark{
+  --bg:#0e1014; --surface:#171a20; --surface-2:#1e222a; --border:#2a2f39;
+  --text:#e8eaee; --muted:#a2a9b5; --faint:#6f7783;
+  --accent:#3fbfae; --accent-soft:#12332f; --accent-text:#6fd6c6;
+  --warn:#e0a34f; --warn-soft:#2e2415;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 20px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Helvetica Neue",Arial,sans-serif;
+  font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased;
+  transition:background .25s,color .25s;
+}
+.lang-alt-link{margin:0}
+.lang-alt-link a{color:var(--accent);text-decoration:none;font-weight:600}
+
+/* ---------- top bar ---------- */
+header.bar{
+  position:sticky; top:0; z-index:50;
+  background:color-mix(in srgb,var(--surface) 88%,transparent);
+  backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+.bar-in{max-width:920px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px}
+.brand{font-weight:700;font-size:14px;letter-spacing:.02em;white-space:nowrap}
+.brand span{color:var(--accent)}
+.bar-sp{flex:1}
+.btn{
+  border:1px solid var(--border); background:var(--surface-2); color:var(--text);
+  border-radius:999px; padding:5px 12px; font-size:13px; font-weight:600;
+  cursor:pointer; font-family:inherit; transition:.15s; white-space:nowrap;
+}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.seg{display:flex;border:1px solid var(--border);border-radius:999px;overflow:hidden;background:var(--surface-2)}
+.seg a{
+  border:0;background:transparent;color:var(--muted);font-family:inherit;
+  padding:5px 13px;font-size:13px;font-weight:600;cursor:pointer;transition:.15s;
+  display:flex;align-items:center;justify-content:center;
+  text-decoration:none;line-height:normal
+}
+.seg a.on{background:var(--accent);color:#fff}
+
+/* ---------- layout ---------- */
+main{max-width:920px;margin:0 auto;padding:0 20px 90px}
+.hero{padding:44px 0 28px;border-bottom:1px solid var(--border)}
+.kicker{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+h1{font-size:clamp(27px,5vw,40px);line-height:1.22;margin:0 0 8px;letter-spacing:-.02em;font-weight:750}
+.dateline{color:var(--faint);font-size:14px;margin-bottom:22px}
+.lede{
+  font-size:17px;line-height:1.7;color:var(--text);
+  background:var(--accent-soft);border-left:3px solid var(--accent);
+  padding:16px 18px;border-radius:0 10px 10px 0;margin:0;
+}
+nav.toc{
+  display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 0;
+}
+nav.toc a{
+  font-size:13px;font-weight:600;text-decoration:none;color:var(--muted);
+  border:1px solid var(--border);border-radius:999px;padding:5px 13px;background:var(--surface);
+  transition:.15s
+}
+nav.toc a:hover{color:var(--accent);border-color:var(--accent)}
+
+section{padding:44px 0 8px;scroll-margin-top:64px}
+h2{
+  font-size:13px;font-weight:750;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--accent);margin:0 0 6px;
+}
+.sec-title{font-size:clamp(21px,3.4vw,27px);margin:0 0 24px;letter-spacing:-.015em;font-weight:720;line-height:1.3}
+
+/* ---------- story cards ---------- */
+.card{
+  background:var(--surface);border:1px solid var(--border);border-radius:14px;
+  padding:22px 24px;margin-bottom:16px;box-shadow:var(--shadow);
+}
+.card h3{margin:0 0 10px;font-size:18px;line-height:1.45;letter-spacing:-.01em;font-weight:700}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.tag{
+  font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  padding:3px 9px;border-radius:5px;background:var(--surface-2);color:var(--muted);border:1px solid var(--border)
+}
+.tag.hot{background:var(--accent-soft);color:var(--accent-text);border-color:transparent}
+.tag.reg{background:var(--warn-soft);color:var(--warn);border-color:transparent}
+.row{display:flex;gap:12px;margin:11px 0;align-items:flex-start}
+.row .lab{
+  flex:0 0 84px;font-size:11px;font-weight:750;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--faint);padding-top:5px
+}
+.row .val{flex:1;margin:0;font-size:15px;line-height:1.7;color:var(--text)}
+.src{margin-top:14px;padding-top:12px;border-top:1px dashed var(--border);font-size:13px;color:var(--faint)}
+.src a{color:var(--accent);text-decoration:none;font-weight:600}
+.src a:hover{text-decoration:underline}
+
+/* ---------- misc blocks ---------- */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px 24px;box-shadow:var(--shadow)}
+.panel h3{margin:0 0 4px;font-size:18px;font-weight:700}
+.panel .sub{font-size:13px;color:var(--faint);margin:0 0 14px}
+.panel p{font-size:15px;line-height:1.72;margin:0 0 12px}
+.panel p:last-child{margin-bottom:0}
+ul.clean{margin:0;padding-left:19px}
+ul.clean li{font-size:15px;line-height:1.72;margin-bottom:9px}
+ul.clean li:last-child{margin-bottom:0}
+.pro{color:var(--accent-text);font-weight:700}
+body.dark .pro{color:var(--accent)}
+.con{color:var(--warn);font-weight:700}
+
+table{width:100%;border-collapse:collapse;font-size:14.5px;margin:0}
+.tbl-wrap{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow-x:auto;box-shadow:var(--shadow)}
+th{
+  text-align:left;padding:12px 16px;font-size:11px;font-weight:750;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--faint);border-bottom:1px solid var(--border);white-space:nowrap
+}
+td{padding:13px 16px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.6}
+tr:last-child td{border-bottom:0}
+td strong{font-weight:700}
+
+ol.reading{margin:0;padding-left:0;list-style:none;counter-reset:r}
+ol.reading li{
+  counter-increment:r;position:relative;padding:16px 0 16px 44px;border-bottom:1px solid var(--border)
+}
+ol.reading li:last-child{border-bottom:0;padding-bottom:0}
+ol.reading li::before{
+  content:counter(r);position:absolute;left:0;top:17px;
+  width:26px;height:26px;border-radius:50%;background:var(--accent-soft);color:var(--accent-text);
+  font-size:12px;font-weight:750;display:flex;align-items:center;justify-content:center
+}
+body.dark ol.reading li::before{color:var(--accent)}
+ol.reading a{color:var(--text);text-decoration:none;font-weight:700;font-size:15.5px;line-height:1.5}
+ol.reading a:hover{color:var(--accent)}
+ol.reading .why{margin:5px 0 0;font-size:14px;color:var(--muted);line-height:1.65}
+
+ol.refs{margin:0;padding-left:22px;font-size:13.5px;line-height:1.85;color:var(--muted)}
+ol.refs li{margin-bottom:9px}
+ol.refs a{color:var(--accent);text-decoration:none;word-break:break-word}
+ol.refs a:hover{text-decoration:underline}
+
+.note{
+  background:var(--warn-soft);border:1px solid transparent;border-left:3px solid var(--warn);
+  border-radius:0 10px 10px 0;padding:14px 18px;font-size:14px;color:var(--text);line-height:1.7;margin-top:18px
+}
+/* --- GitHub 星星徽章 + 頁尾社群連結 --- */
+.gh-star{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--border);
+  background:var(--surface-2);color:var(--muted);border-radius:999px;padding:5px 10px;
+  font-size:13px;font-weight:700;text-decoration:none;font-variant-numeric:tabular-nums;
+  transition:.15s;white-space:nowrap}
+.gh-star:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+.gh-star svg{width:15px;height:15px;fill:currentColor;flex:none;display:block}
+.gh-star .st{color:#e3a008}
+.gh-star b{font-weight:700;min-width:1ch;font-size:12.5px}
+.foot-row{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.foot-row>div:first-child{flex:1 1 320px;min-width:0}
+.social{display:flex;gap:9px;align-items:center;flex:none}
+.social a{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;
+  border:1px solid var(--border);background:var(--surface-2);color:var(--muted);
+  border-radius:999px;transition:.15s;text-decoration:none}
+.social a:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);
+  transform:translateY(-1px)}
+.social svg{width:16px;height:16px;fill:currentColor;display:block}
+@media(max-width:430px){.gh-star b{display:none}.gh-star{padding:5px 9px;gap:4px}}
+a.brand{color:inherit;text-decoration:none;transition:.15s;cursor:pointer}
+a.brand:hover{opacity:.72}
+a.brand:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:5px}
+
+.fabs{position:fixed;right:20px;bottom:20px;display:flex;flex-direction:column;gap:10px;z-index:40}
+.home-fab{display:flex;align-items:center;justify-content:center;width:42px;height:42px;
+  border-radius:50%;border:1px solid var(--border);background:var(--surface);color:var(--muted);
+  box-shadow:var(--shadow);text-decoration:none;transition:.15s}
+.home-fab:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+.home-fab:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.home-fab svg{width:18px;height:18px;fill:currentColor;display:block}
+footer{
+  margin-top:56px;padding-top:24px;border-top:1px solid var(--border);
+  font-size:13px;color:var(--faint);line-height:1.8
+}
+.up{
+  position:static;width:42px;height:42px;border-radius:50%;
+  border:1px solid var(--border);background:var(--surface);color:var(--muted);
+  cursor:pointer;font-size:17px;box-shadow:var(--shadow);display:none;z-index:40
+}
+.up.show{display:block}
+@media(max-width:700px){
+  .grid2{grid-template-columns:1fr}
+  .row{flex-direction:column;gap:2px}
+  .row .lab{flex:none;padding-top:0}
+  .bar-in{padding:9px 14px;gap:8px}
+  .brand{font-size:12.5px}
+  main{padding:0 15px 80px}
+  .card,.panel{padding:18px}
+}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><span>◆</span> <span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <div class="bar-sp"></div>
+    <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
+    <div class="seg">
+      <a href="/reports/2026-08-17.html" hreflang="zh-Hant" lang="zh-Hant" rel="alternate">中文</a>
+      <a class="on" href="/en/reports/2026-08-17.html" hreflang="en" lang="en" aria-current="page">EN</a>
+    </div>
+    <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="kicker">
+    <span class="en-inline">Monday · Clinical Applications &amp; Research</span>
+  </div>
+  <h1>
+    <span class="en">AI helps — but not always the person you expected</span>
+  </h1>
+  <div class="dateline">
+    <span class="en-inline">Monday, August 17, 2026 · Covering Aug 3–17 · Taipei time</span>
+  </div>
+  <p class="lede">
+    <span class="en">The most interesting turn in clinical AI research this year is that the question has shifted from "is the AI accurate?" to "<strong>who does it actually help, and how must it be presented?</strong>" A 1,096-participant randomised study in <em>Nature Medicine</em> on Aug 4 gives the bluntest answer yet: the same dermatology AI moved <a href="https://www.nature.com/articles/s41591-026-04553-w" target="_blank" rel="noopener">lay people and primary care physicians in opposite directions</a> — LLM narrative explanations gained lay users 13.4% when the AI was right and cost them 21.1% when it was wrong, while for physicians they were the least useful explanation format yet the only one that improved confidence calibration. The same week, <a href="https://www.auntminnie.com/clinical-news/ct/news/15832414/aidoc-cms-approves-medicare-addon-payment-for-aidoc-ct-triage-ai" target="_blank" rel="noopener">Aidoc's CARE Body CT Multi-Triage became the first healthcare-foundation-model AI software to win a Medicare NTAP add-on payment</a>, effective Oct 1. Evidence and money are being pushed forward by two very different logics.</span>
+  </p>
+
+  <nav class="toc">
+    <a href="#top"><span class="en-inline">Top Stories</span></a>
+    <a href="#product"><span class="en-inline">Product Analysis</span></a>
+    <a href="#company"><span class="en-inline">Companies &amp; Competition</span></a>
+    <a href="#taiwan"><span class="en-inline">Taiwan Angle</span></a>
+    <a href="#reading"><span class="en-inline">Further Reading</span></a>
+    <a href="#refs"><span class="en-inline">References</span></a>
+  </nav>
+</div>
+
+<!-- ============ TOP STORIES ============ -->
+<section id="top">
+  <h2>01 — Top Stories</h2>
+  <div class="sec-title">
+    <span class="en">Seven things in clinical AI</span>
+  </div>
+
+  <!-- 1 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Research</span></span>
+      <span class="tag">Nature Medicine</span><span class="tag">MIT</span><span class="tag">Dermatology</span><span class="tag">8/4</span>
+    </div>
+    <h3>
+      <span class="en">One dermatology AI, two opposite outcomes: a 1,096-person randomised study takes apart explainable AI</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Marzyeh Ghassemi's group at MIT reports two large randomised experiments in <em>Nature Medicine</em> vol. 32 issue 8 (<a href="https://www.nature.com/articles/s41591-026-04553-w" target="_blank" rel="noopener">published online Aug 4, 2026, open access</a>), using a <strong>4×2 factorial design</strong>: four explanation formats (bare prediction, GradCAM heatmap, similar-case retrieval, LLM narrative) crossed with two decision orders (human-first vs AI-first). Participants were <strong>623 lay people</strong> on binary melanoma classification and <strong>153 primary care physicians</strong> on complex differential diagnosis, with <strong>320 medical students</strong> as a comparison group.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">The findings read like a purpose-built warning about the current trend of patients pointing AI at their own skin photos. <strong>For lay users</strong>: AI lifted accuracy from <a href="https://www.nature.com/articles/s41591-026-04553-w" target="_blank" rel="noopener">69.7% to 75.8%</a>, but LLM narratives cut both ways — <strong>+13.4%</strong> when the AI was correct, <strong>−21.1%</strong> when it was not, amplifying automation bias. <strong>For physicians</strong>: top-1 accuracy rose <strong>21.5%</strong> and the benefit persisted even under incorrect suggestions; LLM explanations helped least on accuracy (+17.7%) yet were the only format that improved confidence calibration. Both groups shared good news — <strong>diagnostic disparities across skin tones narrowed</strong> (46.9% relative reduction for lay users, 35.6% for physicians) — and bad news: <strong>showing the AI answer first significantly increased deference and anchoring</strong>. The ordering of a user interface, in other words, matters on the same order of magnitude as the model's accuracy.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Players</span></div>
+      <p class="val">
+        <span class="en">Corresponding author Marzyeh Ghassemi (MIT), co-first authors Xuhai "Orson" Xu and Haoyu Hu, with more than 20 co-authors (<a href="https://www.nature.com/articles/s41591-026-04553-w" target="_blank" rel="noopener">full text in Nature Medicine</a>). No commercial product is under test — the study evaluates four generic explainability techniques.</span>
+      </p></div>
+    <div class="src">
+      <span class="en-inline">Sources: </span>
+      <a href="https://www.nature.com/articles/s41591-026-04553-w" target="_blank" rel="noopener">Nature Medicine · Aug 4, 2026</a> ·
+      <a href="https://www.nature.com/subjects/machine-learning/nm" target="_blank" rel="noopener">Nature Medicine ML index</a>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">RCT</span></span>
+      <span class="tag">Retina4IRD</span><span class="tag">Nature Medicine</span><span class="tag">Ophthalmology</span>
+    </div>
+    <h3>
+      <span class="en">A multicentre RCT in inherited retinal disease: clinician genetic-diagnosis accuracy goes 67.3% → 88.5%</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">A multicentre randomised trial led by Xiaodong Sun's group at Shanghai General Hospital (Shanghai Jiao Tong University), spanning China, South Korea and Poland, <a href="https://www.nature.com/articles/s41591-026-04545-w" target="_blank" rel="noopener">published in <em>Nature Medicine</em> on July 24, 2026</a>. The development cohort comprised <strong>1,843 genetically confirmed patients (3,376 eyes)</strong>; the randomised cohort was <strong>300 people with suspected inherited retinal disease (IRD), allocated 1:1</strong>, with 295 analysed (median age 33, 38.6% female). Retina4IRD integrates multimodal retinal imaging and reached <strong>90.4%</strong> top-5 accuracy on internal validation and <strong>85.6%</strong> externally.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">IRD is the archetypal "rare but increasingly treatable" disease family — gene therapies and trial slots keep expanding, yet naming the causative gene demands scarce subspecialty experience. What matters here is not only accuracy: <a href="https://www.nature.com/articles/s41591-026-04545-w" target="_blank" rel="noopener">clinicians in the AI-assisted arm reached 88.5% genetic-diagnosis accuracy versus 67.3% in the control arm — a 21.2 percentage-point gap, p &lt; 0.001</a> — with top-1 accuracy of 37.8% vs 22.4%. More importantly, <strong>composite downstream management scores also improved significantly (37.7 vs 28.5, p &lt; 0.001)</strong>. Most medical-AI trials stop at read accuracy; this one measures what the clinician then did, which is methodologically unusual.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Players</span></div>
+      <p class="val">
+        <span class="en">The team spans Shanghai Jiao Tong University, Nanjing University of Aeronautics and Astronautics, Tsinghua University, Yonsei University and several Polish institutions (<a href="https://www.nature.com/articles/s41591-026-04545-w" target="_blank" rel="noopener">full text</a>). Retina4IRD is an academic system; no public commercialisation or regulatory filing was found, and none is assumed here.</span>
+      </p></div>
+    <div class="src">
+      <span class="en-inline">Sources: </span>
+      <a href="https://www.nature.com/articles/s41591-026-04545-w" target="_blank" rel="noopener">Nature Medicine · July 24, 2026</a> ·
+      <a href="https://www.nature.com/subjects/medical-imaging/nm" target="_blank" rel="noopener">Nature Medicine imaging index</a>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag reg"><span class="en-inline">Reimbursement</span></span>
+      <span class="tag">Aidoc</span><span class="tag">CMS</span><span class="tag">NTAP</span><span class="tag">8/13</span>
+    </div>
+    <h3>
+      <span class="en">Aidoc's CARE becomes the first healthcare-foundation-model AI software to win Medicare NTAP, effective Oct 1</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">CMS granted a New Technology Add-on Payment to Aidoc's <strong>CARE (Clinical AI Reasoning Engine) Body CT Multi-Triage</strong>, <a href="https://www.auntminnie.com/clinical-news/ct/news/15832414/aidoc-cms-approves-medicare-addon-payment-for-aidoc-ct-triage-ai" target="_blank" rel="noopener">reported by AuntMinnie on Aug 13</a>, <strong>effective Oct 1, 2026 for three years</strong>, covering qualifying Medicare fee-for-service inpatient cases. The device flags suspected urgent findings on chest, abdomen and pelvis CT (with and without contrast) for workflow triage; it received <strong>FDA Breakthrough Device Designation in September 2025 and FDA clearance in January 2026</strong> (<a href="https://www.prnewswire.com/news-releases/aidocs-care-body-ct-multi-triage-receives-eligibility-for-medicare-new-technology-add-on-payment-302850312.html" target="_blank" rel="noopener">Aidoc release</a>, <a href="https://radiologybusiness.com/topics/artificial-intelligence/medicare-approves-new-technology-add-on-payment-inpatient-radiology-ai-solution" target="_blank" rel="noopener">Radiology Business</a>, <a href="https://www.diagnosticimaging.com/view/ct-triage-software-ntap-reimbursement-cms-inpatient-medicare-beneficiaries" target="_blank" rel="noopener">Diagnostic Imaging</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">AuntMinnie frames it plainly as "<a href="https://www.auntminnie.com/clinical-news/ct/news/15832414/aidoc-cms-approves-medicare-addon-payment-for-aidoc-ct-triage-ai" target="_blank" rel="noopener">a novel reimbursement decision for AI software built on a healthcare foundation model</a>." NTAP has historically gone to narrow, single-indication algorithms; awarding it to a product that reads multiple urgent conditions off one scan means CMS has effectively recognised multi-task AI as a payable category. The practical clinical consequence: imaging AI shifts from a hospital-funded efficiency bet to a line item with cash flow behind it, sharply lowering the financial barrier to adoption. It also runs straight into the concern researchers raised in <a href="https://www.statnews.com/2026/08/13/how-medicare-cms-pays-ntap-for-new-ai-medical-devices/" target="_blank" rel="noopener">STAT's same-day piece</a>: a per-use top-up rewards volume, and when it expires in two to three years the product must justify itself on clinical benefit alone.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Players</span></div>
+      <p class="val">
+        <span class="en">Aidoc (Tel Aviv, Israel) is among the market leaders in imaging triage AI and in January 2026 <a href="https://www.diagnosticimaging.com/view/fda-clears-ct-based-ai-triage-platform-aidoc" target="_blank" rel="noopener">expanded its CT triage platform to 14 indications, 11 of them new</a>. CARE is its foundation-model line. CMS has not published the per-case add-on amount and none is inferred here (<a href="https://www.prnewswire.com/news-releases/aidocs-care-body-ct-multi-triage-receives-eligibility-for-medicare-new-technology-add-on-payment-302850312.html" target="_blank" rel="noopener">original release</a>).</span>
+      </p></div>
+    <div class="src">
+      <span class="en-inline">Sources: </span>
+      <a href="https://www.auntminnie.com/clinical-news/ct/news/15832414/aidoc-cms-approves-medicare-addon-payment-for-aidoc-ct-triage-ai" target="_blank" rel="noopener">AuntMinnie · Aug 13</a> ·
+      <a href="https://www.prnewswire.com/news-releases/aidocs-care-body-ct-multi-triage-receives-eligibility-for-medicare-new-technology-add-on-payment-302850312.html" target="_blank" rel="noopener">PR Newswire</a> ·
+      <a href="https://radiologybusiness.com/topics/artificial-intelligence/medicare-approves-new-technology-add-on-payment-inpatient-radiology-ai-solution" target="_blank" rel="noopener">Radiology Business</a> ·
+      <a href="https://www.statnews.com/2026/08/13/how-medicare-cms-pays-ntap-for-new-ai-medical-devices/" target="_blank" rel="noopener">STAT · Aug 13</a>
+      <span class="en-inline">(STAT+ paywall)</span>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Frontline</span></span>
+      <span class="tag">National Nurses United</span><span class="tag">Kaiser</span><span class="tag">Montefiore</span><span class="tag">8/11</span>
+    </div>
+    <h3>
+      <span class="en">Nurses want a seat at the clinical-AI table — from strikes to co-design</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en"><a href="https://www.statnews.com/2026/08/11/nurses-seek-involvement-clinical-ai-decisions/" target="_blank" rel="noopener">STAT reported on Aug 11</a> (by Katie Palmer) that US nursing's pushback on clinical AI is becoming institutional. Two flashpoints are named: laid-off nurses at <strong>Montefiore</strong> in the Bronx questioning administrative AI displacing staff, and nurses at <strong>Kaiser Permanente</strong> in California striking over AI surveillance of their work. National Nurses United, representing more than <strong>200,000 nurses</strong>, is the main actor.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Clinical AI increasingly fails not because the model is inaccurate but because nobody uses it as designed after deployment. Nurses are the frontline users of bedside alerts, deterioration detection and documentation AI — and among the least studied. Story 7 below makes the point concretely: in the UVA deterioration trial, <a href="https://www.nature.com/articles/s41598-026-39051-z" target="_blank" rel="noopener">clinicians moved 11% of patients between display and non-display beds</a>, letting clinical judgement override the randomisation outright. STAT's argument is to convert an adversarial relationship into co-design — which is why "who was involved in deployment" is becoming as consequential a variable as model performance.</span>
+      </p></div>
+    <div class="src">
+      <span class="en-inline">Sources: </span>
+      <a href="https://www.statnews.com/2026/08/11/nurses-seek-involvement-clinical-ai-decisions/" target="_blank" rel="noopener">STAT · Aug 11</a>
+      <span class="en-inline">(STAT+ paywall; this item is written only from the publicly visible headline and lede)</span>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Infrastructure</span></span>
+      <span class="tag">Nature Medicine</span><span class="tag">Nordic</span><span class="tag">8/14</span>
+    </div>
+    <h3>
+      <span class="en">Five Nordic countries plus Estonia build a shared AI-Health platform on population registries</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Ole A. Andreassen of the University of Oslo and 21 co-authors set out the technical foundations, data assets and deployment roadmap of the Nordic AI-Health Initiative in a <em>Nature Medicine</em> Comment (<a href="https://www.nature.com/articles/s41591-026-04575-4" target="_blank" rel="noopener">Aug 14, 2026</a>). Participating institutions span Norway, Denmark, Iceland, Sweden, Finland and Estonia, including Karolinska Institutet, the University of Helsinki and Amgen's deCODE genetics. The stated aim is to "<a href="https://www.nature.com/articles/s41591-026-04575-4" target="_blank" rel="noopener">enable secure, regulation-compliant access and to deliver generalizable models for responsible AI-driven discovery in medicine</a>."</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Nordic longitudinal population registries — cradle-to-grave, multi-generational, linkable — are a globally scarce asset that GDPR and cross-border governance have made hard to use jointly. The significance is not any single model but that <strong>this is among the first regional attempts, post-EU AI Act, to build compliance into the data infrastructure itself rather than bolt it on afterwards</strong>. The reference value for Taiwan is high: the NHI database has the same longitudinal advantage and the same cross-institutional governance bottleneck (see the Taiwan Angle below). Note this is a Comment, not primary research — no cohort sizes or dated milestones are published.</span>
+      </p></div>
+    <div class="src">
+      <span class="en-inline">Sources: </span>
+      <a href="https://www.nature.com/articles/s41591-026-04575-4" target="_blank" rel="noopener">Nature Medicine · Aug 14, 2026</a>
+    </div>
+  </div>
+
+  <!-- 6 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Benchmark</span></span>
+      <span class="tag">RSNA</span><span class="tag">Cleveland Clinic</span><span class="tag">Kaggle</span><span class="tag">8/5</span>
+    </div>
+    <h3>
+      <span class="en">RSNA opens a $77,000 knee-MRI AI challenge — the first to pair images with reports in 12 languages</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">RSNA <a href="https://www.rsna.org/news/2026/august/ai-challenge-knee-mri" target="_blank" rel="noopener">announced the 2026 Knee Abnormality Detection AI Challenge on Aug 5, 2026</a>. The dataset holds <strong>more than 5,000 knee MRI exams from 16 sites worldwide, with radiology reports in 12 languages</strong>. Total prize money is <strong>$77,000</strong>, including awards for the most efficient models; the challenge runs on <strong>Kaggle</strong> through <strong>Oct 22</strong>, winners announced in November and recognised at RSNA 2026 (Nov 29–Dec 3, Chicago). Co-leads are Po-Hao Chen, MD, MBA and Naveen Subhas, MD, MPH of Cleveland Clinic (<a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/news/15831808/rsna-launches-2026-knee-abnormality-detection-ai-challenge" target="_blank" rel="noopener">AuntMinnie</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">RSNA calls it "<a href="https://www.rsna.org/news/2026/august/ai-challenge-knee-mri" target="_blank" rel="noopener">the most real-world challenge yet</a>" precisely because <strong>it withholds clean structured labels and forces entrants to learn from messy, variably formatted, multilingual reports</strong>. That matters disproportionately for non-anglophone health systems, Taiwan included: most imaging-AI training corpora and benchmarks are English-report-based, and language mismatch is the most commonly underestimated source of performance drop at deployment. The second signal is the efficiency prize — academic benchmarks are finally treating inference cost as a first-class metric rather than optimising AUC alone.</span>
+      </p></div>
+    <div class="src">
+      <span class="en-inline">Sources: </span>
+      <a href="https://www.rsna.org/news/2026/august/ai-challenge-knee-mri" target="_blank" rel="noopener">RSNA · Aug 5</a> ·
+      <a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/news/15831808/rsna-launches-2026-knee-abnormality-detection-ai-challenge" target="_blank" rel="noopener">AuntMinnie</a> ·
+      <a href="https://www.rsna.org/artificial-intelligence/ai-image-challenge/knee-mri-ai-challenge" target="_blank" rel="noopener">RSNA challenge page</a>
+    </div>
+  </div>
+
+  <!-- 7 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Negative result</span></span>
+      <span class="tag">UVA</span><span class="tag">CoMET</span><span class="tag">Nihon Kohden</span>
+    </div>
+    <h3>
+      <span class="en">A 10,422-visit deterioration-detection cluster RCT: no difference in the primary outcome — and the randomisation broke</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Jessica Keim-Malpass, Jamieson M. Bourque and colleagues at the University of Virginia School of Medicine published a cluster-randomised controlled trial in <em>Scientific Reports</em> (<a href="https://www.nature.com/articles/s41598-026-39051-z" target="_blank" rel="noopener">Feb 5, 2026</a>) covering <strong>10,422 inpatient visits</strong> on an 85-bed cardiology and cardiac surgery ward. The intervention was <strong>CoMET</strong> (Continuous Monitoring of Event Trajectories) from Nihon Kohden Digital Health Solutions, which passively displays a risk trajectory refreshed every 15 minutes from machine-learning models over cardiorespiratory monitoring and vital signs. The primary outcome was hours free of clinical deterioration (death, emergent ICU transfer, emergent intubation, cardiac arrest, emergent surgery) within 21 days of admission.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">"<a href="https://www.nature.com/articles/s41598-026-39051-z" target="_blank" rel="noopener">There was no change in the primary outcome between groups</a>" — passively displaying a risk score did not change patient outcomes. Two methodological details deserve more attention than the headline. <strong>Only 5.3% of patients had a deterioration event</strong>, so power was structurally thin; and <strong>clinicians moved 11% of patients between display and non-display beds, preferentially shifting sicker patients into monitored beds</strong>, compromising the randomised design outright. This is exactly the bind flagged in <em>Nature</em>'s July 28 comment, "<a href="https://www.nature.com/articles/d41586-026-02125-z" target="_blank" rel="noopener">Medical AI has a measurement problem</a>" (Arjun K. Manrai, Harvard Medical School): evidence-based medicine assumes the yardstick is reliable, and in the AI setting that assumption is often shaky. Clinical AI that only displays and does not redesign the workflow and escalation path tends to produce precisely this result.</span>
+      </p></div>
+    <div class="src">
+      <span class="en-inline">Sources: </span>
+      <a href="https://www.nature.com/articles/s41598-026-39051-z" target="_blank" rel="noopener">Scientific Reports · Feb 5, 2026</a> ·
+      <a href="https://www.nature.com/articles/d41586-026-02125-z" target="_blank" rel="noopener">Nature · July 28, 2026</a>
+    </div>
+  </div>
+
+</section>
+
+<!-- ============ PRODUCT ============ -->
+<section id="product">
+  <h2>02 — Product Analysis</h2>
+  <div class="sec-title">
+    <span class="en">Two products, taken apart: multi-task triage vs rare-disease decision support</span>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>Aidoc CARE Body CT Multi-Triage</h3>
+      <p class="sub"><span class="en-inline">Imaging triage · healthcare foundation model · Aidoc (Israel)</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> Detects multiple suspected urgent conditions on chest/abdomen/pelvis CT, with and without contrast, and reorders the worklist — "look at the right scan first," not autonomous interpretation (<a href="https://www.auntminnie.com/clinical-news/ct/news/15832414/aidoc-cms-approves-medicare-addon-payment-for-aidoc-ct-triage-ai" target="_blank" rel="noopener">AuntMinnie</a>).</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: both the regulatory and payment tracks are complete — <a href="https://www.prnewswire.com/news-releases/aidocs-care-body-ct-multi-triage-receives-eligibility-for-medicare-new-technology-add-on-payment-302850312.html" target="_blank" rel="noopener">Breakthrough designation Sept 2025 → FDA clearance Jan 2026 → NTAP effective Oct 1, 2026</a>, and the three-year add-on window gives hospitals a predictable financial model.</span>
+        </li>
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: one foundation model spanning many indications dilutes the "one algorithm, one submission" cost structure; the platform now carries <a href="https://www.diagnosticimaging.com/view/fda-clears-ct-based-ai-triage-platform-aidoc" target="_blank" rel="noopener">14 CT triage indications</a>.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: triage endpoints are usually turnaround time, not mortality or readmission; <a href="https://www.statnews.com/2026/08/13/how-medicare-cms-pays-ntap-for-new-ai-medical-devices/" target="_blank" rel="noopener">researchers quoted by STAT</a> note a per-use top-up structurally rewards volume.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: CMS has not published the per-case amount or an expected spend ceiling (<a href="https://radiologybusiness.com/topics/artificial-intelligence/medicare-approves-new-technology-add-on-payment-inpatient-radiology-ai-solution" target="_blank" rel="noopener">Radiology Business</a>), so hospital ROI cannot be computed from public data.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>Retina4IRD</h3>
+      <p class="sub"><span class="en-inline">Rare eye disease · multimodal decision support · Shanghai Jiao Tong University (academic)</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> Integrates multimodal retinal imaging to rank candidate causative genes for suspected inherited retinal disease, guiding the clinician's subsequent genetic testing and management (<a href="https://www.nature.com/articles/s41591-026-04545-w" target="_blank" rel="noopener">Nature Medicine</a>).</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: one of very few medical-AI trials that measures management decisions, not just accuracy — <a href="https://www.nature.com/articles/s41591-026-04545-w" target="_blank" rel="noopener">composite downstream score 37.7 vs 28.5, p &lt; 0.001</a>.</span>
+        </li>
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: validated across China, South Korea and Poland, with <a href="https://www.nature.com/articles/s41591-026-04545-w" target="_blank" rel="noopener">85.6% external top-5 accuracy</a> against 90.4% internally — better generalisation evidence than most single-country studies.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: <a href="https://www.nature.com/articles/s41591-026-04545-w" target="_blank" rel="noopener">top-1 accuracy is only 37.8% (vs 22.4%)</a> — in practice it shortens the shortlist rather than delivering an answer, and expectations should be set accordingly.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: the randomised cohort is only <a href="https://www.nature.com/articles/s41591-026-04545-w" target="_blank" rel="noopener">300 people (295 analysed)</a>, with no public commercialisation or regulatory pathway — deployment remains distant.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPANY ============ -->
+<section id="company">
+  <h2>03 — Companies &amp; Competition</h2>
+  <div class="sec-title">
+    <span class="en">Who is selling what, on what evidence, against whom</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th><span class="en-inline">Company / system</span></th>
+        <th><span class="en-inline">Evidence</span></th>
+        <th><span class="en-inline">Position</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Aidoc</strong><br><span class="en-inline">CARE Body CT Multi-Triage</span></td>
+          <td>
+            <span class="en">Complete regulatory and payment path (<a href="https://www.prnewswire.com/news-releases/aidocs-care-body-ct-multi-triage-receives-eligibility-for-medicare-new-technology-add-on-payment-302850312.html" target="_blank" rel="noopener">breakthrough Sept 2025, clearance Jan 2026, NTAP Oct 1, 2026</a>); public prospective outcome data is limited.</span>
+          </td>
+          <td>
+            <span class="en">Platform play across indications — <a href="https://www.diagnosticimaging.com/view/fda-clears-ct-based-ai-triage-platform-aidoc" target="_blank" rel="noopener">14 CT triage indications</a>; the moat is deployment scale plus first-mover status on reimbursement.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>ScreenPoint Medical</strong><br>Transpara v1.7</td>
+          <td>
+            <span class="en">The strongest set: a <a href="https://www.nature.com/articles/s41591-026-04277-x" target="_blank" rel="noopener">31,301-woman prospective paired non-inferiority trial</a> (<em>Nature Medicine</em>, Mar 19, 2026) — 63.6% fewer radiologist readings, cancer detection +15.2% (6.3→7.3 per 1,000), recall +14.8% (4.8%→5.5%).</span>
+          </td>
+          <td>
+            <span class="en">Deep in a single indication (breast screening), winning on randomised evidence, with the <a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(25)02464-X/abstract" target="_blank" rel="noopener">Swedish MASAI trial</a>'s interval-cancer and sensitivity data behind it.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Nihon Kohden</strong><br>CoMET</td>
+          <td>
+            <span class="en">Has completed a large cluster RCT, but the result was negative — <a href="https://www.nature.com/articles/s41598-026-39051-z" target="_blank" rel="noopener">10,422 visits, no primary-outcome difference</a>, with 11% of patients moved across arms.</span>
+          </td>
+          <td>
+            <span class="en">A bedside-monitoring hardware vendor extending into predictive analytics: distribution through installed devices is the advantage, passive display is the design weakness.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Scanslated</strong><br><span class="en-inline">patient-friendly reports</span></td>
+          <td>
+            <span class="en">Large real-world usage data: <a href="https://www.auntminnie.com/practice-management/article/15831772/patientfriendly-radiology-reports-improve-family-comprehension" target="_blank" rel="noopener">391,713 exams at Stanford and Duke children's hospitals (Jan 2024–Nov 2025)</a> — 92.6% of families reported better comprehension, but only 9% opened the patient-friendly version versus 50.5% for the standard report.</span>
+          </td>
+          <td>
+            <span class="en">Attacks the neglected patient-comprehension layer; the hospital pitch is satisfaction and retention (91.8% of families more likely to return) rather than diagnostic performance.</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note">
+    <span class="en"><strong>One cross-cutting observation.</strong> Evidence strength across these four is strikingly uneven: the company with the best payment terms (Aidoc) is not the one with the strongest public clinical evidence (ScreenPoint), and the one that ran the most complete randomised trial (Nihon Kohden/UVA) got a null result. A <em>Nature Medicine</em> benchmark adds pressure from another direction: <a href="https://www.nature.com/articles/s41591-026-04431-5" target="_blank" rel="noopener">general-purpose LLMs outperform specialised clinical AI tools on medical benchmarks</a>, which is a real threat to the long-run moat of narrow, purpose-built models.</span>
+  </div>
+</section>
+
+<!-- ============ TAIWAN ============ -->
+<section id="taiwan">
+  <h2>04 — Taiwan Angle</h2>
+  <div class="sec-title">
+    <span class="en">Taiwan: three places where today's news lands</span>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>(1) The multilingual-report challenge is an opening for Taiwanese datasets.</strong> RSNA's knee-MRI challenge is the <a href="https://www.rsna.org/news/2026/august/ai-challenge-knee-mri" target="_blank" rel="noopener">first to include radiology reports in 12 languages from 16 institutions</a>, an implicit admission that non-English reporting is the real-world norm. Taiwan's mixed Chinese-English reports — English structured fields, Chinese narrative — are essentially absent from international benchmarks, and language mismatch is a common source of the performance drop seen when imported imaging AI is deployed locally. Entering the challenge, or building a local multilingual benchmark, is an actionable move either way.</span>
+    </p>
+    <p>
+      <span class="en"><strong>(2) The Nordic platform's governance design is more worth copying than its models.</strong> Taiwan's NHI database shares the Nordic registries' longitudinal scarcity value — and their bottleneck: cross-institutional governance and compliance. The <a href="https://www.nature.com/articles/s41591-026-04575-4" target="_blank" rel="noopener">Nordic AI-Health Initiative (Aug 14)</a> writes compliance into the infrastructure rather than bolting it on, which is a ready-made comparator for MOHW's <a href="https://www.leeandli.com/TW/Newsletters/7656.htm" target="_blank" rel="noopener">Guidelines on Generative AI Use in Healthcare Institutions</a> and the existing <a href="https://aicenter.mohw.gov.tw/" target="_blank" rel="noopener">three national smart-healthcare centres, including the Clinical AI Validation Center</a>.</span>
+    </p>
+    <p>
+      <span class="en"><strong>(3) Payment is the real adoption gate — and Taiwan's box is still empty.</strong> Aidoc's NTAP means US hospitals now have cash flow behind imaging-AI adoption. Taiwan's NHI still has no corresponding AI-software payment category, so deployment costs sit almost entirely with hospitals. Health Minister Shih Chung-liang set out a "333 policy" and an NT$48.9 billion budget at the <a href="https://udn.com/news/story/7266/9592218" target="_blank" rel="noopener">Kaohsiung Medical University forum (June 27, 2026)</a>, targeting record interoperability across academic medical centres by year-end and regional and district hospitals within two years; the same event highlighted KMU's NVIDIA-based colorectal cancer detection system built with Foxconn. Interoperability is necessary — but without a payment design behind it, the Aidoc pattern of "adequate evidence, viable finances" stays hard to replicate here.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============ READING ============ -->
+<section id="reading">
+  <h2>05 — Further Reading</h2>
+  <div class="sec-title">
+    <span class="en">Five worth a second read</span>
+  </div>
+  <ol class="reading">
+    <li>
+      <a href="https://www.nature.com/articles/s41591-026-04553-w" target="_blank" rel="noopener">Divergent impacts of explainable AI for dermatological diagnosis on clinicians versus lay people — <em>Nature Medicine</em>, 2026/8/4</a>
+      <p class="why"><span class="en">The one to read end-to-end. Open access, with the full 4×2 factorial design and every subgroup analysis; anyone designing a clinical AI interface should start with the methods and Figure 3.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/articles/d41586-026-02125-z" target="_blank" rel="noopener">Medical AI has a measurement problem — <em>Nature</em>, 2026/7/28</a>
+      <p class="why"><span class="en">Arjun K. Manrai's short comment states the core problem most clearly — evidence-based medicine assumes a reliable yardstick, and AI undermines that assumption. It is the frame for this year's run of null trials.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/articles/s41591-026-04277-x" target="_blank" rel="noopener">AI-based triage and decision support in mammography and digital tomosynthesis: a paired, noninferiority trial — <em>Nature Medicine</em>, 2026/3/19</a>
+      <p class="why"><span class="en">A 31,301-woman prospective trial and the hardest evidence yet that imaging AI cuts reading volume — but recall also rose 14.8%, which belongs in the same sentence as the benefit.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/articles/s41591-026-04431-5" target="_blank" rel="noopener">General-purpose large language models outperform specialized clinical AI tools on medical benchmarks — <em>Nature Medicine</em></a>
+      <p class="why"><span class="en">If general models keep winning on benchmarks, what exactly is the moat for narrow clinical AI? Required background for any medical-AI product strategy discussion.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/articles/s41591-026-04503-6" target="_blank" rel="noopener">Generative AI-enabled clinical decision support system in primary care: a pragmatic, cluster-randomized trial — <em>Nature Medicine</em></a>
+      <p class="why"><span class="en">Pragmatic cluster randomisation is the closest thing to a real-world test of clinical AI. Read alongside the UVA CoMET trial to see whether the bottleneck is intervention design or model performance.</span></p>
+    </li>
+  </ol>
+</section>
+
+<!-- ============ REFS ============ -->
+<section id="refs">
+  <h2>06 — References</h2>
+  <div class="sec-title">
+    <span class="en">References</span>
+  </div>
+  <div class="panel">
+    <ol class="refs">
+      <li>Xu, X., Hu, H., … Ghassemi, M. “Divergent impacts of explainable AI for dermatological diagnosis on clinicians versus lay people.” <em>Nature Medicine</em>, vol. 32 no. 8, 2026-08-04. <a href="https://www.nature.com/articles/s41591-026-04553-w" target="_blank" rel="noopener">nature.com/articles/s41591-026-04553-w</a></li>
+      <li>Jia, H., Qian, B., Sun, X. “AI-based clinician decision support system for diagnosis of inherited retinal diseases: a multicenter, randomized trial.” <em>Nature Medicine</em>, 2026-07-24. <a href="https://www.nature.com/articles/s41591-026-04545-w" target="_blank" rel="noopener">nature.com/articles/s41591-026-04545-w</a></li>
+      <li>“CMS approves Medicare add-on payment for Aidoc CT triage AI.” <em>AuntMinnie</em>, 2026-08-13. <a href="https://www.auntminnie.com/clinical-news/ct/news/15832414/aidoc-cms-approves-medicare-addon-payment-for-aidoc-ct-triage-ai" target="_blank" rel="noopener">auntminnie.com</a></li>
+      <li>“Aidoc's CARE Body CT Multi-Triage receives eligibility for Medicare New Technology Add-on Payment.” <em>PR Newswire</em> (Aidoc press release). <a href="https://www.prnewswire.com/news-releases/aidocs-care-body-ct-multi-triage-receives-eligibility-for-medicare-new-technology-add-on-payment-302850312.html" target="_blank" rel="noopener">prnewswire.com</a></li>
+      <li>“Medicare approves new technology add-on payment for inpatient radiology AI solution.” <em>Radiology Business</em>. <a href="https://radiologybusiness.com/topics/artificial-intelligence/medicare-approves-new-technology-add-on-payment-inpatient-radiology-ai-solution" target="_blank" rel="noopener">radiologybusiness.com</a> · “CT Triage Software Garners NTAP Reimbursement from CMS.” <em>Diagnostic Imaging</em>. <a href="https://www.diagnosticimaging.com/view/ct-triage-software-ntap-reimbursement-cms-inpatient-medicare-beneficiaries" target="_blank" rel="noopener">diagnosticimaging.com</a></li>
+      <li>Palmer, K. “Nurses seek a seat at the table as they fight expanding clinical AI.” <em>STAT</em>, 2026-08-11 (STAT+ paywall). <a href="https://www.statnews.com/2026/08/11/nurses-seek-involvement-clinical-ai-decisions/" target="_blank" rel="noopener">statnews.com</a></li>
+      <li>Palmer, K. “What Medicare incentives for AI-based devices mean for tech companies — and hospitals.” <em>STAT</em>, 2026-08-13 (STAT+ paywall). <a href="https://www.statnews.com/2026/08/13/how-medicare-cms-pays-ntap-for-new-ai-medical-devices/" target="_blank" rel="noopener">statnews.com</a></li>
+      <li>Andreassen, O. A., Heimer, H., Kallioniemi, O., et al. “An AI-Health infrastructure for the Nordic region: technical foundations, data assets, and a roadmap for deployment.” <em>Nature Medicine</em> (Comment), 2026-08-14. <a href="https://www.nature.com/articles/s41591-026-04575-4" target="_blank" rel="noopener">nature.com/articles/s41591-026-04575-4</a></li>
+      <li>“RSNA Launches Knee Abnormality Detection AI Challenge.” <em>RSNA News</em>, 2026-08-05. <a href="https://www.rsna.org/news/2026/august/ai-challenge-knee-mri" target="_blank" rel="noopener">rsna.org</a> · challenge page: <a href="https://www.rsna.org/artificial-intelligence/ai-image-challenge/knee-mri-ai-challenge" target="_blank" rel="noopener">rsna.org/artificial-intelligence</a> · <em>AuntMinnie</em> coverage: <a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/news/15831808/rsna-launches-2026-knee-abnormality-detection-ai-challenge" target="_blank" rel="noopener">auntminnie.com</a></li>
+      <li>Keim-Malpass, J., Bourque, J. M., et al. “A randomized controlled trial of artificial intelligence-based analytics for clinical deterioration.” <em>Scientific Reports</em>, 2026-02-05. <a href="https://www.nature.com/articles/s41598-026-39051-z" target="_blank" rel="noopener">nature.com/articles/s41598-026-39051-z</a></li>
+      <li>Manrai, A. K. “Medical AI has a measurement problem.” <em>Nature</em>, 2026-07-28. <a href="https://www.nature.com/articles/d41586-026-02125-z" target="_blank" rel="noopener">nature.com/articles/d41586-026-02125-z</a></li>
+      <li>Álvarez-Benito, M., et al. “AI-based triage and decision support in mammography and digital tomosynthesis for breast cancer screening: a paired, noninferiority trial.” <em>Nature Medicine</em>, 2026-03-19. <a href="https://www.nature.com/articles/s41591-026-04277-x" target="_blank" rel="noopener">nature.com/articles/s41591-026-04277-x</a></li>
+      <li>“Interval cancer, sensitivity, and specificity comparing AI-supported mammography screening with standard double reading (MASAI).” <em>The Lancet</em>. <a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(25)02464-X/abstract" target="_blank" rel="noopener">thelancet.com</a></li>
+      <li>“General-purpose large language models outperform specialized clinical AI tools on medical benchmarks.” <em>Nature Medicine</em>. <a href="https://www.nature.com/articles/s41591-026-04431-5" target="_blank" rel="noopener">nature.com/articles/s41591-026-04431-5</a> · “Generative AI-enabled clinical decision support system in primary care: a pragmatic, cluster-randomized trial.” <em>Nature Medicine</em>. <a href="https://www.nature.com/articles/s41591-026-04503-6" target="_blank" rel="noopener">nature.com/articles/s41591-026-04503-6</a></li>
+      <li>Johnston, A., et al. “Patient-friendly radiology reports improve family comprehension” (<em>Pediatric Radiology</em>, reported 2026-08-03). <em>AuntMinnie</em>. <a href="https://www.auntminnie.com/practice-management/article/15831772/patientfriendly-radiology-reports-improve-family-comprehension" target="_blank" rel="noopener">auntminnie.com</a></li>
+      <li>「高醫大論壇揭示AI醫療新局！衛福部推『333政策』」，<em>聯合新聞網</em>，2026-06-27。<a href="https://udn.com/news/story/7266/9592218" target="_blank" rel="noopener">udn.com</a> ·「衛生福利部頒布『醫療機構應用生成式人工智慧指引』」，<em>理律法律事務所</em>。<a href="https://www.leeandli.com/TW/Newsletters/7656.htm" target="_blank" rel="noopener">leeandli.com</a> · 臺灣智慧醫療三大中心 <a href="https://aicenter.mohw.gov.tw/" target="_blank" rel="noopener">aicenter.mohw.gov.tw</a></li>
+      <li>“FDA clears CT-based AI triage platform Aidoc.” <em>Diagnostic Imaging</em>, 2026-01-21. <a href="https://www.diagnosticimaging.com/view/fda-clears-ct-based-ai-triage-platform-aidoc" target="_blank" rel="noopener">diagnosticimaging.com</a></li>
+    </ol>
+    <div class="note">
+      <span class="en"><strong>Editor's note:</strong> (1) Aug 15–17 fell on a weekend with very little newly published primary clinical-AI research, so this edition widens coverage to the two weeks from Aug 3 and adds earlier 2026 trials that serve as necessary comparators (the breast-screening non-inferiority trial of Mar 19 and the UVA deterioration trial of Feb 5); all dates are labelled. (2) Both STAT pieces (Aug 11 on nurses, Aug 13 on NTAP) sit behind the STAT+ paywall; this report draws only on the publicly visible headline, standfirst and summary, and cites no figure it could not verify. (3) CMS has not published a per-case NTAP amount for Aidoc CARE, and none is inferred here. (4) Retina4IRD is an academic system; no public commercialisation or regulatory filing was found during verification. (5) Taiwan's "333 policy" and budget figure come from the June 27 United Daily News report; the original states NT$48.9 billion (written 489 億元 in Chinese counting units) — the two renderings are the same number.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-row">
+    <div>
+      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Monday / clinical applications and research<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
+    </div>
+    <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
+  </div>
+</footer>
+</main>
+
+<div class="fabs">
+  <button class="up" id="up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+  <a class="home-fab" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg></a>
+</div>
+
+<script>
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.getElementById('theme-ic').textContent =
+    document.body.classList.contains('dark') ? '◑' : '◐';
+}
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.body.classList.add('dark');
+  document.getElementById('theme-ic').textContent = '◑';
+}
+window.addEventListener('scroll', function(){
+  document.getElementById('up').classList.toggle('show', window.scrollY > 600);
+});
+
+/* GitHub 星星數：無需授權，失敗或被限流時靜默保留佔位符 */
+(function(){
+  var el = document.getElementById('ghs');
+  if (!el || typeof fetch !== 'function') return;
+  fetch('https://api.github.com/repos/tingwei161803/ai-medical-daily', {headers:{Accept:'application/vnd.github+json'}})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if (!d || typeof d.stargazers_count !== 'number') return;
+      var n = d.stargazers_count;
+      el.textContent = n >= 1000 ? (Math.round(n/100)/10) + 'k' : String(n);
+    })
+    .catch(function(){});
+})();
+</script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/reports/2026-08-17.html" hreflang="zh-Hant" rel="alternate" lang="zh-Hant">中文版</a></p>
+</body>
+</html>
