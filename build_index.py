@@ -191,10 +191,9 @@ NEW_SEG_CSS = """.seg a{
 }
 .seg a.on{background:var(--accent);color:#fff}"""
 
-SEG_BUTTONS = """    <div class="seg">
-      <button id="b-zh" class="on" onclick="setLang('zh')">中文</button>
-      <button id="b-en" onclick="setLang('en')">EN</button>
-    </div>"""
+# 整塊換掉語言切換，不管裡面現在是按鈕還是連結——日報可能沿用舊骨架（<button>
+# + setLang），也可能是從已經拆過的日報複製來的（<a href>，但網址是別天的）。
+SEG_BLOCK = re.compile(r'[ \t]*<div class="seg">.*?</div>', re.S)
 
 SPAN_OPEN = re.compile(r"<span\b[^>]*>", re.I)
 SPAN_CLOSE = re.compile(r"</span\s*>", re.I)
@@ -357,18 +356,16 @@ def is_bilingual(src):
 
 def transform_report(src, rel, lang, date_str, desc):
     """把一份中英並排的日報，變成只有一種語言的那一份。"""
+    # 舊骨架把「用 CSS 藏起另一種語言」的規則寫在頁內，一併換掉；新骨架（共用
+    # 樣式表，或從已拆過的日報複製來的）本來就沒有這些規則，跳過即可。
     if OLD_LANG_CSS in src:
         src = src.replace(OLD_LANG_CSS, NEW_LANG_CSS, 1)
-        if OLD_SEG_CSS not in src:
-            raise SystemExit(f"! {rel} 頁內的 .seg 樣式不是預期的樣子")
-        src = src.replace(OLD_SEG_CSS, NEW_SEG_CSS, 1)
-    elif "/assets/report.css" not in src:
-        raise SystemExit(f"! {rel} 找不到語言切換的 CSS，也沒有引用共用樣式表")
-    if SEG_BUTTONS not in src:
-        raise SystemExit(f"! {rel} 的語言切換鈕不是預期的樣子，無法改成連結")
+    src = src.replace(OLD_SEG_CSS, NEW_SEG_CSS, 1)
+    if len(SEG_BLOCK.findall(src)) != 1:
+        raise SystemExit(f"! {rel} 找不到剛好一組語言切換，無法改成連結")
     src = keep_only(src, lang)
-    src = src.replace('<body class="lang-zh">', "<body>", 1)
-    src = src.replace(SEG_BUTTONS, lang_switch(rel, lang), 1)
+    src = re.sub(r"<body\b[^>]*>", "<body>", src, count=1)
+    src = SEG_BLOCK.sub(lambda _: lang_switch(rel, lang), src, count=1)
     src = SETLANG.sub("", src, count=1)
     src = set_head(src, rel, lang, TITLE["report"][lang].format(d=date_str), desc)
     src = add_alt_link(src, rel, lang)

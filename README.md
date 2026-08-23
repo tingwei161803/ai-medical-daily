@@ -18,9 +18,24 @@
 | 六 | 廣義 AI 新知 | `general-ai` | 5 |
 | 日 | 本週回顧與精選延伸閱讀 | `weekly-review` | 6 |
 
-每份日報固定包含：重點新聞 5–8 則、產品分析、公司狀況與競爭關係、台灣視角、延伸閱讀、參考文獻，並支援繁中／English 全頁切換與深色模式。每一則具體資訊都在原地附上來源連結。
+每份日報固定包含：重點新聞 5–8 則、產品分析、公司狀況與競爭關係、台灣視角、延伸閱讀、參考文獻，並支援繁中／English 與深色模式。每一則具體資訊都在原地附上來源連結。
 
 ---
+
+## 一個語言一個網址
+
+繁中與 English **各有自己的網址**，不是同一頁切換：
+
+| | 中文 | English |
+|---|---|---|
+| 首頁 | `/` | `/en/` |
+| 日報 | `/reports/YYYY-MM-DD.html` | `/en/reports/YYYY-MM-DD.html` |
+
+每一頁**只有一種語言的節點**（另一種是真的刪掉，不是用 CSS 藏起來），`<html lang>`
+與內文一致，`<head>` 帶 canonical（指自己）、三行 hreflang（`zh-Hant` / `en` /
+`x-default` 指中文版）與 `og:url`，右上角的語言切換是真的 `<a href>`。
+
+這些都不必手動維護——**`build_index.py` 會在建置時產生**，見下方〈索引如何運作〉。
 
 ## 結構
 
@@ -28,13 +43,21 @@
 .
 ├── CNAME             ← 自訂網域設定，請勿刪除
 ├── index.html        ← 由 build_index.py 產生，請勿手動編輯
-├── build_index.py    ← 掃描 reports/ 重建首頁
+├── build_index.py    ← 掃描 reports/ 重建整個站台
 ├── reports/
-│   └── YYYY-MM-DD.html
+│   └── YYYY-MM-DD.html      ← 中文版
+├── en/               ← 英文版，整個目錄都由 build_index.py 產生
+│   ├── index.html
+│   └── reports/YYYY-MM-DD.html
+├── assets/report.css ← 日報共用樣式
+├── sitemap.xml       ← 由 build_index.py 產生，兩種語言的網址都列
 └── README.md
 ```
 
 ⚠️ `CNAME` 由 GitHub Pages 的自訂網域設定產生，內容為 `ai-medical-daily.peteraim.com`。刪掉它網站就會退回 `*.github.io` 網址。
+
+⚠️ `en/` 底下的檔案不要手動編輯，下次建置會被覆蓋。要改英文內容，改 `reports/` 裡
+那一份的英文節點，再跑一次 `build_index.py`。
 
 ## 索引如何運作
 
@@ -51,21 +74,31 @@
 
 缺少 meta 的檔案會退回用檔名 `YYYY-MM-DD.html` 判斷日期；完全無法解析的會被跳過並在執行時印出提示。
 
-首頁功能：依日期倒序列表、主題標籤、關鍵字搜尋、主題篩選、月曆視圖、繁中／English 切換、深色模式、響應式排版。
+首頁功能：依日期倒序列表、主題標籤、關鍵字搜尋、主題篩選、月曆視圖、繁中／English、深色模式、響應式排版。首頁清單在建置時就寫進 HTML，不必等 JavaScript 跑完才看得到。
 
-重建索引（無第三方相依，Python 3 即可）：
+重建整個站台（無第三方相依，Python 3 即可）：
 
 ```bash
 python3 build_index.py
 ```
 
+它會做三件事：把還是中英並排的日報拆成中文版與 `en/` 版、重建兩種語言的首頁、重寫 `sitemap.xml`。**已經拆過的日報不會再被動**，所以重複執行是安全的。
+
 ## 手動新增一份日報
+
+日報照舊寫成**一份中英並排的 HTML**——用 `<span class="zh">`／`<span class="en">`
+成對包住兩種語言（行內的短句用 `zh-inline`／`en-inline`），建置時會自動拆成兩個
+網址。**不需要自己準備 `en/` 那一份。**
 
 ```bash
 cp 你的報告.html reports/2026-08-17.html
 python3 build_index.py
 git add -A && git commit -m "日報：2026-08-17" && git push
 ```
+
+新日報要沿用現有日報的骨架（`<body>`、`assets/report.css`、右上角的語言切換與
+`report-*` meta）。骨架對不上時 `build_index.py` 會直接報錯停下來，不會產生半套
+的頁面。
 
 ## 免責聲明
 
