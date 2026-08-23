@@ -354,6 +354,40 @@ def is_bilingual(src):
     return '<span class="en">' in src or '<span class="en-inline">' in src
 
 
+def has_twin(rel):
+    return os.path.exists(os.path.join(ROOT, twin_of(rel)))
+
+
+def why_not_splittable(src):
+    """拆之前先確認這份日報符合假設。回傳不能拆的理由，沒問題就回 None。
+
+    寧可讓那一天的日報維持原樣等人看，也不要產出一份少了半邊內容、
+    或標題描述掛空的英文頁——那種錯誤在畫面上不明顯，卻會被搜尋引擎收錄。"""
+    n = {}
+    for _, _, cls in lang_spans(src):
+        n[cls] = n.get(cls, 0) + 1
+    if n.get("zh", 0) != n.get("en", 0) or \
+            n.get("zh-inline", 0) != n.get("en-inline", 0):
+        return (f"中英文節點沒有成對"
+                f"（zh {n.get('zh', 0)} / en {n.get('en', 0)}、"
+                f"zh-inline {n.get('zh-inline', 0)} / "
+                f"en-inline {n.get('en-inline', 0)}）")
+    for name in ("report-title-en", "report-summary-en"):
+        if not raw_meta(src, name):
+            return f'缺 <meta name="{name}">，英文版會少掉標題或描述'
+    if len(SEG_BLOCK.findall(src)) != 1:
+        return "找不到剛好一組語言切換，無法改成連結"
+    return None
+
+
+def why_bad_split(pages):
+    """拆完再自我檢查一次：任一邊還留著另一種語言，就是拆得不乾淨。"""
+    for lang, other in (("zh", "en"), ("en", "zh")):
+        if f'<span class="{other}"' in pages[lang]:
+            return f"{lang} 版拆完還留著 {other} 節點"
+    return None
+
+
 def transform_report(src, rel, lang, date_str, desc):
     """把一份中英並排的日報，變成只有一種語言的那一份。"""
     # 舊骨架把「用 CSS 藏起另一種語言」的規則寫在頁內，一併換掉；新骨架（共用
@@ -361,8 +395,6 @@ def transform_report(src, rel, lang, date_str, desc):
     if OLD_LANG_CSS in src:
         src = src.replace(OLD_LANG_CSS, NEW_LANG_CSS, 1)
     src = src.replace(OLD_SEG_CSS, NEW_SEG_CSS, 1)
-    if len(SEG_BLOCK.findall(src)) != 1:
-        raise SystemExit(f"! {rel} 找不到剛好一組語言切換，無法改成連結")
     src = keep_only(src, lang)
     src = re.sub(r"<body\b[^>]*>", "<body>", src, count=1)
     src = SEG_BLOCK.sub(lambda _: lang_switch(rel, lang), src, count=1)
@@ -376,8 +408,13 @@ def transform_report(src, rel, lang, date_str, desc):
 
 
 def split_reports(items):
-    """把還是中英並排的日報就地拆成兩份；已經拆過的一個字都不動。"""
-    done = []
+    """把還是中英並排的日報就地拆成兩份；已經拆過的一個字都不動。
+
+    不符合假設的那一份**跳過並在畫面上講清楚**，不會中斷整個建置，也不會硬拆：
+    那一天維持中英並排的原樣、不產生英文版，其餘日報照常處理。跳過的日報不會
+    進英文首頁，也不會進 sitemap（見 write_sitemap），所以不會留下連到 404 的
+    網址或指向不存在頁面的 hreflang。"""
+    split, skipped = [], []
     for d in items:
         rel, date_str = d["file"], d["date"]
         src_path = os.path.join(ROOT, rel)
@@ -385,25 +422,37 @@ def split_reports(items):
         with open(src_path, encoding="utf-8") as f:
             src = f.read()
         if not is_bilingual(src):
-            if not os.path.exists(twin_path):
-                print(f"  ! {rel} 已經沒有英文節點，卻也找不到 {twin_of(rel)}")
+            if not has_twin(rel):
+                skipped.append((rel, "沒有英文節點，也找不到英文版"))
             continue
-        pages = {lang: transform_report(src, rel, lang, date_str,
-                                        raw_meta(src, f"report-summary-{lang}"))
-                 for lang in ("zh", "en")}
+        why = why_not_splittable(src)
+        pages = None
+        if why is None:
+            pages = {lang: transform_report(src, rel, lang, date_str,
+                                            raw_meta(src, f"report-summary-{lang}"))
+                     for lang in ("zh", "en")}
+            why = why_bad_split(pages)
+        if why:
+            skipped.append((rel, why))
+            continue
         os.makedirs(os.path.dirname(twin_path), exist_ok=True)
         for path, text in ((src_path, pages["zh"]), (twin_path, pages["en"])):
             with open(path, "w", encoding="utf-8") as f:
                 f.write(text)
-        done.append(rel)
-    return done
+        split.append(rel)
+    for rel, why in skipped:
+        print(f"  ! 跳過 {rel}：{why}")
+        print("    這一份維持原樣、不產生英文版，也不會進英文首頁與 sitemap。")
+    return split
 
 
 def write_sitemap(items):
     """sitemap 由 reports/ 掃描結果產生，不會漏掉任何一天，兩種語言都列。
-       刻意不寫 <lastmod>：沒有可信的內容修改時間來源，給錯的比不給更糟。"""
+       只列**檔案真的存在**的網址——某一天沒能拆出英文版時，不會留一個 404 在
+       sitemap 裡。刻意不寫 <lastmod>：沒有可信的內容修改時間來源，給錯的比不給更糟。"""
     pages = ["index.html"] + [d["file"] for d in items]
-    urls = [url_of(p) for p in pages] + [url_of(twin_of(p)) for p in pages]
+    urls = [url_of(p) for p in pages if os.path.exists(os.path.join(ROOT, p))] \
+        + [url_of(twin_of(p)) for p in pages if has_twin(p)]
     body = "\n".join(f"  <url>\n    <loc>{u}</loc>\n  </url>" for u in urls)
     xml = ('<?xml version="1.0" encoding="UTF-8"?>\n'
            '<!--\n'
@@ -752,12 +801,15 @@ if __name__ == "__main__":
     if split:
         print(f"✓ 已拆成中英文兩個網址：{len(split)} 份日報 → {', '.join(split)}")
 
-    for lang, out in (("zh", OUT), ("en", os.path.join(ROOT, TWIN_DIR, "index.html"))):
+    # 英文首頁只列有英文版的日報，不然點進去是 404
+    en_items = [d for d in items if has_twin(d["file"])]
+    for lang, out, rows in (("zh", OUT, items),
+                            ("en", os.path.join(ROOT, TWIN_DIR, "index.html"), en_items)):
         os.makedirs(os.path.dirname(out), exist_ok=True)
         with open(out, "w", encoding="utf-8") as f:
-            f.write(render(items, lang))
+            f.write(render(rows, lang))
     n_urls = write_sitemap(items)
-    print(f"✓ index.html + {TWIN_DIR}/index.html 已重建：{len(items)} 份日報"
-          + (f"（最新 {items[0]['date']}）" if items else "（目前沒有日報）"))
+    print(f"✓ index.html（{len(items)} 份）+ {TWIN_DIR}/index.html（{len(en_items)} 份）已重建"
+          + (f"，最新 {items[0]['date']}" if items else "（目前沒有日報）"))
     print(f"✓ sitemap.xml 已重建：{n_urls} 個網址")
     sys.exit(0)
