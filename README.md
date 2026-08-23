@@ -96,9 +96,23 @@ python3 build_index.py
 git add -A && git commit -m "日報：2026-08-17" && git push
 ```
 
-新日報要沿用現有日報的骨架（`<body>`、`assets/report.css`、右上角的語言切換與
-`report-*` meta）。骨架對不上時 `build_index.py` 會直接報錯停下來，不會產生半套
-的頁面。
+### 一份日報要長什麼樣，才拆得開
+
+| 要求 | 為什麼 |
+|---|---|
+| 中英文節點**成對**：`<span class="zh">`／`<span class="en">`（行內短句用 `zh-inline`／`en-inline`） | 少一邊就會拆出一頁缺內容的頁面 |
+| `<head>` 有 `report-title-en` 與 `report-summary-en` | 英文版的標題與描述取自這兩個 |
+| 右上角有**一組**語言切換（`<div class="seg">…</div>`，裡面是按鈕或連結都可以） | 會整塊換成指向這一天另一個語言的連結 |
+
+**對不上就跳過那一份，不會中斷建置，也不會硬拆。** 例如：
+
+```
+  ! 跳過 reports/2026-08-18.html：缺 <meta name="report-summary-en">，英文版會少掉標題或描述
+    這一份維持原樣、不產生英文版，也不會進英文首頁與 sitemap。
+```
+
+被跳過的那一天維持中英並排的原樣等人處理，其餘日報照常拆。因為它不會進英文首頁
+也不會進 sitemap，所以不會留下連到 404 的網址。補好上表缺的東西再跑一次就會拆開。
 
 ## 免責聲明
 
