@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-build_index.py — 掃描 reports/*.html，重建 index.html（GitHub Pages 首頁）。
+build_index.py — 掃描 reports/*.html，重建整個站台（首頁 + 英文版 + sitemap）。
 
 用法：
     python3 build_index.py
@@ -16,6 +16,22 @@ build_index.py — 掃描 reports/*.html，重建 index.html（GitHub Pages 首�
 
 沒有這些標籤的檔案會被跳過並在 stdout 提示。腳本不依賴任何第三方套件。
 產生的 index.html 已內含 Google Analytics 標籤（G-HJLDQZDK5V）。
+
+一個語言一個網址
+----------------
+中文在原網址、英文在 /en/ 底下，兩邊是各自獨立的檔案：
+
+    index.html                     en/index.html
+    reports/YYYY-MM-DD.html        en/reports/YYYY-MM-DD.html
+
+**每一頁只留一種語言的節點**，不是用 CSS 把另一種藏起來——藏起來的話搜尋引擎
+兩種語言都讀得到，等於沒有分開。每一頁的 <head> 帶：canonical 指自己、三行
+hreflang（zh-Hant / en / x-default 指中文版）、og:url；語言切換是真的 <a href>，
+不是 JavaScript，這樣爬蟲才走得過去。
+
+新的日報寫進 reports/ 時仍然是中英文並排的單一檔案，本腳本會在建置時把它拆成
+上面兩份；已經拆過的檔案不會再被動。所以日報產生流程不需要改，照舊丟進
+reports/ 再跑一次本腳本即可。
 """
 
 import json
@@ -124,6 +140,171 @@ def collect():
 SITE = "https://ai-medical-daily.peteraim.com"
 SITEMAP = os.path.join(ROOT, "sitemap.xml")
 
+TWIN_DIR = "en"                                  # 英文版放這個子目錄
+LANG_CODE = {"zh": "zh-Hant", "en": "en"}        # hreflang / <html lang> 用的語言碼
+ALT_LABEL = {"zh": "中文版", "en": "English version"}
+
+# 頁面標題：中文版沿用原本的，英文版用站台自己的英文名稱（切換鈕本來就是這樣寫的）
+TITLE = {
+    "index": {"zh": "AI／醫療AI 每日新知日報", "en": "AI &amp; Medical AI Daily"},
+    "report": {"zh": "AI／醫療AI 每日新知日報 · {d}", "en": "AI &amp; Medical AI Daily · {d}"},
+}
+INDEX_DESC = {
+    "zh": "每日自動整理的 AI 與醫療 AI 新知、產業動向、法規與產品分析。",
+    "en": "Generated automatically at 08:00 Taipei time: the day's news in AI and "
+          "medical AI, with product analysis, company moves, competitive read, "
+          "further reading and full references.",
+}
+
+# 只有英文版要改的屬性：原文把兩種語言塞在同一個 title / aria-label 裡，
+# 拆開之後英文頁不該再出現中文。中文版一個字都不動。
+EN_ATTRS = [
+    ('title="回到日報首頁"', 'title="Back to all reports"'),
+    ('aria-label="回到日報首頁 / Back to all reports"',
+     'aria-label="Back to all reports"'),
+    ('aria-label="Star this project on GitHub / 在 GitHub 給這個專案一顆星"',
+     'aria-label="Star this project on GitHub"'),
+    ('aria-label="Back to peteraim.com / 返回 peteraim.com"',
+     'aria-label="Back to peteraim.com"'),
+    ('placeholder="搜尋標題、摘要或日期…"',
+     'placeholder="Search titles, summaries or dates…"'),
+]
+
+# 舊版日報把樣式寫在頁內，新版共用 assets/report.css（那一份已經改好）。頁內版
+# 要做兩件事：拿掉「用 CSS 藏起另一種語言」的規則，以及讓切換鈕從 <button> 變 <a>。
+OLD_LANG_CSS = ("body.lang-zh .en, body.lang-en .zh{display:none}\n"
+                "body.lang-zh .en-inline, body.lang-en .zh-inline{display:none}\n"
+                ".en-inline,.zh-inline{display:inline}\n")
+NEW_LANG_CSS = (".lang-alt-link{margin:0}\n"
+                ".lang-alt-link a{color:var(--accent);text-decoration:none;"
+                "font-weight:600}\n")
+OLD_SEG_CSS = """.seg button{
+  border:0;background:transparent;color:var(--muted);font-family:inherit;
+  padding:5px 13px;font-size:13px;font-weight:600;cursor:pointer;transition:.15s
+}
+.seg button.on{background:var(--accent);color:#fff}"""
+NEW_SEG_CSS = """.seg a{
+  border:0;background:transparent;color:var(--muted);font-family:inherit;
+  padding:5px 13px;font-size:13px;font-weight:600;cursor:pointer;transition:.15s;
+  display:flex;align-items:center;justify-content:center;
+  text-decoration:none;line-height:normal
+}
+.seg a.on{background:var(--accent);color:#fff}"""
+
+SEG_BUTTONS = """    <div class="seg">
+      <button id="b-zh" class="on" onclick="setLang('zh')">中文</button>
+      <button id="b-en" onclick="setLang('en')">EN</button>
+    </div>"""
+
+SPAN_OPEN = re.compile(r"<span\b[^>]*>", re.I)
+SPAN_CLOSE = re.compile(r"</span\s*>", re.I)
+LANG_SPAN = re.compile(r'<span class="(zh|en|zh-inline|en-inline)">')
+SETLANG = re.compile(r"function setLang\(l\)\{.*?\n\}\n", re.S)
+
+
+def path_of(rel: str) -> str:
+    """頁面的站內路徑。index.html 用目錄形式（結尾斜線），與既有 canonical 一致。"""
+    if os.path.basename(rel) == "index.html":
+        d = os.path.dirname(rel)
+        return f"/{d}/" if d else "/"
+    return "/" + rel
+
+
+def url_of(rel: str) -> str:
+    return SITE + path_of(rel)
+
+
+def twin_of(rel: str) -> str:
+    return f"{TWIN_DIR}/{rel}"
+
+
+def lang_spans(src: str):
+    """找出每一個語言節點的起訖位置。<span> 會巢狀（標籤裡還有標籤），
+       所以要數進出的層數，不能用最近的 </span>。"""
+    out = []
+    for m in LANG_SPAN.finditer(src):
+        depth, i = 1, m.end()
+        while depth:
+            o, c = SPAN_OPEN.search(src, i), SPAN_CLOSE.search(src, i)
+            if c is None:
+                raise SystemExit(f"! 找不到對應的 </span>（位置 {m.start()}）")
+            if o and o.start() < c.start():
+                depth, i = depth + 1, o.end()
+            else:
+                depth, i = depth - 1, c.end()
+        out.append((m.start(), i, m.group(1)))
+    return out
+
+
+def keep_only(src: str, lang: str) -> str:
+    """把另一種語言的節點整個刪掉。整行只有那個節點時連同該行一起刪，
+       免得留下一堆只有縮排的空行。"""
+    drop = {"zh": ("en", "en-inline"), "en": ("zh", "zh-inline")}[lang]
+    for start, end, cls in reversed(lang_spans(src)):
+        if cls not in drop:
+            continue
+        line_start = src.rfind("\n", 0, start) + 1
+        nl = src.find("\n", end)
+        rest = src[end:] if nl == -1 else src[end:nl]
+        if src[line_start:start].strip() == "" and rest.strip() == "":
+            src = src[:line_start] + ("" if nl == -1 else src[nl + 1:])
+        else:
+            src = src[:start] + src[end:]
+    return src
+
+
+def lang_switch(rel: str, lang: str) -> str:
+    """語言切換：兩個都是真的連結，各自指向這一頁的另一個語言版本。"""
+    def link(code, href, label):
+        cls = ' class="on"' if code == lang else ''
+        state = ' aria-current="page"' if code == lang else ' rel="alternate"'
+        return (f'<a{cls} href="{href}" hreflang="{LANG_CODE[code]}"'
+                f' lang="{LANG_CODE[code]}"{state}>{label}</a>')
+    return ('    <div class="seg">\n'
+            f'      {link("zh", path_of(rel), "中文")}\n'
+            f'      {link("en", path_of(twin_of(rel)), "EN")}\n'
+            '    </div>')
+
+
+def hreflang_trio(rel: str) -> str:
+    """兩個語言版本放的是完全相同的三行，缺一行或兩邊不一致就整組失效。
+       x-default 指中文版，因為那是這個站的主要語言。"""
+    zh_url, en_url = url_of(rel), url_of(twin_of(rel))
+    return "\n".join([
+        f'<link rel="alternate" hreflang="zh-Hant" href="{zh_url}" />',
+        f'<link rel="alternate" hreflang="en" href="{en_url}" />',
+        f'<link rel="alternate" hreflang="x-default" href="{zh_url}" />',
+    ])
+
+
+def set_head(src: str, rel: str, lang: str, title: str, desc: str) -> str:
+    """<head> 手術：語言碼、標題、canonical（指自己）、hreflang、og:url、描述。"""
+    page = twin_of(rel) if lang == "en" else rel
+    canonical = url_of(page)
+    src = re.sub(r'(<html lang=")[^"]*(")', lambda m: m.group(1) + LANG_CODE[lang]
+                 + m.group(2), src, count=1)
+    src = re.sub(r"(?s)(<title>).*?(</title>)",
+                 lambda m: m.group(1) + title + m.group(2), src, count=1)
+    src = re.sub(r'<meta property="og:url" content="[^"]*" />',
+                 lambda _: f'<meta property="og:url" content="{canonical}" />',
+                 src, count=1)
+    block = f'<link rel="canonical" href="{canonical}" />\n' + hreflang_trio(rel)
+    if desc:
+        block += f'\n<meta name="description" content="{desc}">'
+    src = re.sub(r'<meta name="description"[^>]*>\n?', "", src, count=1)
+    return re.sub(r'<link rel="canonical" href="[^"]*" />', lambda _: block,
+                  src, count=1)
+
+
+def add_alt_link(src: str, rel: str, lang: str) -> str:
+    """<body> 結尾放一個指向另一個語言的靜態連結——不跑 JavaScript 也走得過去。"""
+    other = "en" if lang == "zh" else "zh"
+    href = path_of(twin_of(rel)) if lang == "zh" else path_of(rel)
+    block = (f'<p class="lang-alt-link" style="text-align:center;padding:12px;">'
+             f'<a href="{href}" hreflang="{LANG_CODE[other]}" rel="alternate"'
+             f' lang="{LANG_CODE[other]}">{ALT_LABEL[other]}</a></p>\n')
+    return src.replace("</body>", block + "</body>", 1)
+
 
 def esc(t: str) -> str:
     """與 index.html 內 JS 的 esc() 完全一致的跳脫規則。"""
@@ -131,38 +312,101 @@ def esc(t: str) -> str:
                     .replace(">", "&gt;").replace('"', "&quot;")
 
 
-def static_chips(items):
+def static_chips(items, lang):
     """產生與前端 chips() 相同的 HTML，供爬蟲第一波抓取。"""
     used = [(k, v) for k, v in THEMES.items() if any(i["theme"] == k for i in items)]
-    out = ['<button class="chip on" onclick="pick(null)">全部</button>']
-    for k, (zh, _en, ci) in used:
+    out = [f'<button class="chip on" onclick="pick(null)">'
+           f'{"全部" if lang == "zh" else "All"}</button>']
+    for k, (zh, en, ci) in used:
         out.append(
             f'<button class="chip" onclick="pick(\'{k}\')">\n'
-            f'      <span class="dot" style="background:var(--c{ci})"></span>{esc(zh)}</button>')
+            f'      <span class="dot" style="background:var(--c{ci})"></span>'
+            f'{esc(zh if lang == "zh" else en)}</button>')
     return "".join(out)
 
 
-def static_items(items):
+def static_items(items, lang):
     """產生與前端 list() 相同的 HTML，供爬蟲第一波抓取。"""
+    zh = lang == "zh"
     out = []
     for d in items:
-        summary = f'<p>{esc(d["sumZh"])}</p>' if d["sumZh"] else ''
+        text = d["sumZh"] if zh else d["sumEn"]
+        summary = f'<p>{esc(text)}</p>' if text else ''
         out.append(
             f'<a class="item" href="{d["file"]}" style="--bar:var(--c{d["ci"]})">\n'
             f'      <div class="meta">\n'
-            f'        <span class="d">{d["date"]} · 星期{d["wdZh"]}</span>\n'
-            f'        <span class="th">{esc(d["themeZh"])}</span>\n'
+            f'        <span class="d">{d["date"]} · '
+            f'{"星期" + d["wdZh"] if zh else d["wdEn"]}</span>\n'
+            f'        <span class="th">{esc(d["themeZh"] if zh else d["themeEn"])}</span>\n'
             f'      </div>\n'
-            f'      <h3>{esc(d["titleZh"])}</h3>\n'
+            f'      <h3>{esc(d["titleZh"] if zh else d["titleEn"])}</h3>\n'
             f'      {summary}\n'
             f'    </a>')
     return "".join(out)
 
 
+def raw_meta(src, name):
+    """直接取出 meta 的原字串（已經是跳脫過的），不做解碼再編碼的來回。"""
+    m = re.search(r'<meta name="' + name + r'" content="([^"]*)"', src)
+    return m.group(1) if m else ""
+
+
+def is_bilingual(src):
+    return '<span class="en">' in src or '<span class="en-inline">' in src
+
+
+def transform_report(src, rel, lang, date_str, desc):
+    """把一份中英並排的日報，變成只有一種語言的那一份。"""
+    if OLD_LANG_CSS in src:
+        src = src.replace(OLD_LANG_CSS, NEW_LANG_CSS, 1)
+        if OLD_SEG_CSS not in src:
+            raise SystemExit(f"! {rel} 頁內的 .seg 樣式不是預期的樣子")
+        src = src.replace(OLD_SEG_CSS, NEW_SEG_CSS, 1)
+    elif "/assets/report.css" not in src:
+        raise SystemExit(f"! {rel} 找不到語言切換的 CSS，也沒有引用共用樣式表")
+    if SEG_BUTTONS not in src:
+        raise SystemExit(f"! {rel} 的語言切換鈕不是預期的樣子，無法改成連結")
+    src = keep_only(src, lang)
+    src = src.replace('<body class="lang-zh">', "<body>", 1)
+    src = src.replace(SEG_BUTTONS, lang_switch(rel, lang), 1)
+    src = SETLANG.sub("", src, count=1)
+    src = set_head(src, rel, lang, TITLE["report"][lang].format(d=date_str), desc)
+    src = add_alt_link(src, rel, lang)
+    if lang == "en":
+        for old, new in EN_ATTRS:
+            src = src.replace(old, new)
+    return src
+
+
+def split_reports(items):
+    """把還是中英並排的日報就地拆成兩份；已經拆過的一個字都不動。"""
+    done = []
+    for d in items:
+        rel, date_str = d["file"], d["date"]
+        src_path = os.path.join(ROOT, rel)
+        twin_path = os.path.join(ROOT, twin_of(rel))
+        with open(src_path, encoding="utf-8") as f:
+            src = f.read()
+        if not is_bilingual(src):
+            if not os.path.exists(twin_path):
+                print(f"  ! {rel} 已經沒有英文節點，卻也找不到 {twin_of(rel)}")
+            continue
+        pages = {lang: transform_report(src, rel, lang, date_str,
+                                        raw_meta(src, f"report-summary-{lang}"))
+                 for lang in ("zh", "en")}
+        os.makedirs(os.path.dirname(twin_path), exist_ok=True)
+        for path, text in ((src_path, pages["zh"]), (twin_path, pages["en"])):
+            with open(path, "w", encoding="utf-8") as f:
+                f.write(text)
+        done.append(rel)
+    return done
+
+
 def write_sitemap(items):
-    """sitemap 由 reports/ 掃描結果產生，不會漏掉任何一天。
+    """sitemap 由 reports/ 掃描結果產生，不會漏掉任何一天，兩種語言都列。
        刻意不寫 <lastmod>：沒有可信的內容修改時間來源，給錯的比不給更糟。"""
-    urls = [f"{SITE}/"] + [f"{SITE}/{d['file']}" for d in items]
+    pages = ["index.html"] + [d["file"] for d in items]
+    urls = [url_of(p) for p in pages] + [url_of(twin_of(p)) for p in pages]
     body = "\n".join(f"  <url>\n    <loc>{u}</loc>\n  </url>" for u in urls)
     xml = ('<?xml version="1.0" encoding="UTF-8"?>\n'
            '<!--\n'
@@ -177,7 +421,7 @@ def write_sitemap(items):
     return len(urls)
 
 
-def render(items):
+def render(items, lang):
     data = json.dumps(items, ensure_ascii=False, separators=(",", ":"))
     themes = json.dumps(
         [{"key": k, "zh": v[0], "en": v[1], "ci": v[2]} for k, v in THEMES.items()],
@@ -185,12 +429,20 @@ def render(items):
     total = len(items)
     latest = items[0]["date"] if items else "—"
 
-    return TEMPLATE.replace("__DATA__", data) \
-                   .replace("__THEMES__", themes) \
-                   .replace("__TOTAL__", str(total)) \
-                   .replace("__LATEST__", latest) \
-                   .replace("__CHIPS__", static_chips(items)) \
-                   .replace("__ITEMS__", static_items(items))
+    src = TEMPLATE.replace("__DATA__", data) \
+                  .replace("__THEMES__", themes) \
+                  .replace("__TOTAL__", str(total)) \
+                  .replace("__LATEST__", latest) \
+                  .replace("__CHIPS__", static_chips(items, lang)) \
+                  .replace("__ITEMS__", static_items(items, lang)) \
+                  .replace("__LANGSWITCH__", lang_switch("index.html", lang))
+    src = keep_only(src, lang)
+    src = set_head(src, "index.html", lang, TITLE["index"][lang], INDEX_DESC[lang])
+    src = add_alt_link(src, "index.html", lang)
+    if lang == "en":
+        for old, new in EN_ATTRS:
+            src = src.replace(old, new)
+    return src
 
 
 TEMPLATE = r"""<!DOCTYPE html>
@@ -234,8 +486,8 @@ html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--text);
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Helvetica Neue",Arial,sans-serif;
   font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;transition:background .25s,color .25s}
-body.lang-zh .en,body.lang-en .zh{display:none}
-.zh,.en{display:inline}
+.lang-alt-link{margin:0}
+.lang-alt-link a{color:var(--accent);text-decoration:none;font-weight:600}
 
 header.bar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--surface) 88%,transparent);
   backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
@@ -247,9 +499,10 @@ header.bar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--s
   padding:5px 12px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:.15s;white-space:nowrap}
 .btn:hover{border-color:var(--accent);color:var(--accent)}
 .seg{display:flex;border:1px solid var(--border);border-radius:999px;overflow:hidden;background:var(--surface-2)}
-.seg button{border:0;background:transparent;color:var(--muted);font-family:inherit;padding:5px 12px;
-  font-size:13px;font-weight:600;cursor:pointer;transition:.15s}
-.seg button.on{background:var(--accent);color:#fff}
+.seg a{border:0;background:transparent;color:var(--muted);font-family:inherit;padding:5px 12px;
+  font-size:13px;font-weight:600;cursor:pointer;transition:.15s;
+  display:flex;align-items:center;justify-content:center;text-decoration:none;line-height:normal}
+.seg a.on{background:var(--accent);color:#fff}
 
 main{max-width:1000px;margin:0 auto;padding:0 20px 90px}
 .hero{padding:46px 0 30px;border-bottom:1px solid var(--border)}
@@ -330,17 +583,14 @@ footer a{color:var(--accent);text-decoration:none}
 }
 </style>
 </head>
-<body class="lang-zh">
+<body>
 
 <header class="bar">
   <div class="bar-in">
     <a class="brand" href="index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><i>◆</i> <span class="zh">AI／醫療AI 日報</span><span class="en">AI &amp; Medical AI Daily</span></a>
     <div class="sp"></div>
     <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub / 在 GitHub 給這個專案一顆星"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
-    <div class="seg">
-      <button id="bzh" class="on" onclick="setLang('zh')">中文</button>
-      <button id="ben" onclick="setLang('en')">EN</button>
-    </div>
+__LANGSWITCH__
     <button class="btn" onclick="toggleTheme()"><span id="ti">◐</span></button>
   </div>
 </header>
@@ -388,17 +638,10 @@ let view = 'list', active = null;
 
 const cvar = i => `var(--c${i})`;
 const esc = s => (s||'').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const isZh = () => document.body.classList.contains('lang-zh');
+/* 語言由網址決定（中文在 /、英文在 /en/），不是由頁面上的狀態決定。
+   兩個版本是兩個檔案，切換是真的連結，所以這裡只要讀 <html lang> 就好。 */
+const isZh = () => (document.documentElement.lang || '').toLowerCase().startsWith('zh');
 
-function setLang(l){
-  document.body.classList.remove('lang-zh','lang-en');
-  document.body.classList.add('lang-'+l);
-  document.documentElement.lang = l==='zh' ? 'zh-Hant' : 'en';
-  bzh.classList.toggle('on', l==='zh');
-  ben.classList.toggle('on', l==='en');
-  q.placeholder = l==='zh' ? '搜尋標題、摘要或日期…' : 'Search titles, summaries or dates…';
-  chips(); render();
-}
 function toggleTheme(){
   document.body.classList.toggle('dark');
   ti.textContent = document.body.classList.contains('dark') ? '◑' : '◐';
@@ -507,9 +750,17 @@ chips(); render();
 
 if __name__ == "__main__":
     items = collect()
-    with open(OUT, "w", encoding="utf-8") as f:
-        f.write(render(items))
+
+    split = split_reports(items)
+    if split:
+        print(f"✓ 已拆成中英文兩個網址：{len(split)} 份日報 → {', '.join(split)}")
+
+    for lang, out in (("zh", OUT), ("en", os.path.join(ROOT, TWIN_DIR, "index.html"))):
+        os.makedirs(os.path.dirname(out), exist_ok=True)
+        with open(out, "w", encoding="utf-8") as f:
+            f.write(render(items, lang))
     n_urls = write_sitemap(items)
-    print(f"✓ index.html 已重建：{len(items)} 份日報" + (f"（最新 {items[0]['date']}）" if items else "（目前沒有日報）"))
+    print(f"✓ index.html + {TWIN_DIR}/index.html 已重建：{len(items)} 份日報"
+          + (f"（最新 {items[0]['date']}）" if items else "（目前沒有日報）"))
     print(f"✓ sitemap.xml 已重建：{n_urls} 個網址")
     sys.exit(0)
