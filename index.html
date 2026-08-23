@@ -8,6 +8,9 @@
 <title>AI／醫療AI 每日新知日報</title>
 <meta property="og:url" content="https://ai-medical-daily.peteraim.com/" />
 <link rel="canonical" href="https://ai-medical-daily.peteraim.com/" />
+<link rel="alternate" hreflang="zh-Hant" href="https://ai-medical-daily.peteraim.com/" />
+<link rel="alternate" hreflang="en" href="https://ai-medical-daily.peteraim.com/en/" />
+<link rel="alternate" hreflang="x-default" href="https://ai-medical-daily.peteraim.com/" />
 <meta name="description" content="每日自動整理的 AI 與醫療 AI 新知、產業動向、法規與產品分析。">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
@@ -39,8 +42,8 @@ html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--text);
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Helvetica Neue",Arial,sans-serif;
   font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;transition:background .25s,color .25s}
-body.lang-zh .en,body.lang-en .zh{display:none}
-.zh,.en{display:inline}
+.lang-alt-link{margin:0}
+.lang-alt-link a{color:var(--accent);text-decoration:none;font-weight:600}
 
 header.bar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--surface) 88%,transparent);
   backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
@@ -52,9 +55,10 @@ header.bar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--s
   padding:5px 12px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:.15s;white-space:nowrap}
 .btn:hover{border-color:var(--accent);color:var(--accent)}
 .seg{display:flex;border:1px solid var(--border);border-radius:999px;overflow:hidden;background:var(--surface-2)}
-.seg button{border:0;background:transparent;color:var(--muted);font-family:inherit;padding:5px 12px;
-  font-size:13px;font-weight:600;cursor:pointer;transition:.15s}
-.seg button.on{background:var(--accent);color:#fff}
+.seg a{border:0;background:transparent;color:var(--muted);font-family:inherit;padding:5px 12px;
+  font-size:13px;font-weight:600;cursor:pointer;transition:.15s;
+  display:flex;align-items:center;justify-content:center;text-decoration:none;line-height:normal}
+.seg a.on{background:var(--accent);color:#fff}
 
 main{max-width:1000px;margin:0 auto;padding:0 20px 90px}
 .hero{padding:46px 0 30px;border-bottom:1px solid var(--border)}
@@ -135,16 +139,16 @@ footer a{color:var(--accent);text-decoration:none}
 }
 </style>
 </head>
-<body class="lang-zh">
+<body>
 
 <header class="bar">
   <div class="bar-in">
-    <a class="brand" href="index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><i>◆</i> <span class="zh">AI／醫療AI 日報</span><span class="en">AI &amp; Medical AI Daily</span></a>
+    <a class="brand" href="index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><i>◆</i> <span class="zh">AI／醫療AI 日報</span></a>
     <div class="sp"></div>
     <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub / 在 GitHub 給這個專案一顆星"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
     <div class="seg">
-      <button id="bzh" class="on" onclick="setLang('zh')">中文</button>
-      <button id="ben" onclick="setLang('en')">EN</button>
+      <a class="on" href="/" hreflang="zh-Hant" lang="zh-Hant" aria-current="page">中文</a>
+      <a href="/en/" hreflang="en" lang="en" rel="alternate">EN</a>
     </div>
     <button class="btn" onclick="toggleTheme()"><span id="ti">◐</span></button>
   </div>
@@ -152,23 +156,22 @@ footer a{color:var(--accent);text-decoration:none}
 
 <main>
   <div class="hero">
-    <div class="kicker"><span class="zh">每日自動更新</span><span class="en">Updated daily</span></div>
-    <h1><span class="zh">AI／醫療AI 每日新知日報</span><span class="en">AI &amp; Medical AI Daily</span></h1>
+    <div class="kicker"><span class="zh">每日自動更新</span></div>
+    <h1><span class="zh">AI／醫療AI 每日新知日報</span></h1>
     <p class="tagline">
       <span class="zh">每天台北時間早上 8:00 自動產出：AI 與醫療 AI 的重點新聞、產品分析、公司動向與競爭關係，附延伸閱讀與參考文獻。每天輪值不同主題。</span>
-      <span class="en">Generated automatically at 08:00 Taipei time: the day's news in AI and medical AI, with product analysis, company moves, competitive read, further reading and full references. Each weekday rotates through a different theme.</span>
     </p>
     <div class="stats">
-      <div class="stat"><b>8</b><span class="zh">份日報</span><span class="en">Reports</span></div>
-      <div class="stat"><b>2026-08-23</b><span class="zh">最新一期</span><span class="en">Latest</span></div>
+      <div class="stat"><b>8</b><span class="zh">份日報</span></div>
+      <div class="stat"><b>2026-08-23</b><span class="zh">最新一期</span></div>
     </div>
   </div>
 
   <div class="controls">
     <input id="q" type="search" placeholder="搜尋標題、摘要或日期…" oninput="render()">
     <div class="views">
-      <button id="vl" class="on" onclick="setView('list')"><span class="zh">列表</span><span class="en">List</span></button>
-      <button id="vc" onclick="setView('cal')"><span class="zh">月曆</span><span class="en">Calendar</span></button>
+      <button id="vl" class="on" onclick="setView('list')"><span class="zh">列表</span></button>
+      <button id="vc" onclick="setView('cal')"><span class="zh">月曆</span></button>
     </div>
   </div>
 
@@ -242,7 +245,6 @@ footer a{color:var(--accent);text-decoration:none}
   <div class="foot-row">
     <div>
       <span class="zh">由 Claude 自動產出並推送至此 repo。內容經來源查證，但不構成投資或醫療建議。</span>
-    <span class="en">Generated and pushed automatically by Claude. Sourced and checked, but not investment or medical advice.</span>
     </div>
     <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com / 返回 peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg></a></div>
   </div>
@@ -256,17 +258,10 @@ let view = 'list', active = null;
 
 const cvar = i => `var(--c${i})`;
 const esc = s => (s||'').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const isZh = () => document.body.classList.contains('lang-zh');
+/* 語言由網址決定（中文在 /、英文在 /en/），不是由頁面上的狀態決定。
+   兩個版本是兩個檔案，切換是真的連結，所以這裡只要讀 <html lang> 就好。 */
+const isZh = () => (document.documentElement.lang || '').toLowerCase().startsWith('zh');
 
-function setLang(l){
-  document.body.classList.remove('lang-zh','lang-en');
-  document.body.classList.add('lang-'+l);
-  document.documentElement.lang = l==='zh' ? 'zh-Hant' : 'en';
-  bzh.classList.toggle('on', l==='zh');
-  ben.classList.toggle('on', l==='en');
-  q.placeholder = l==='zh' ? '搜尋標題、摘要或日期…' : 'Search titles, summaries or dates…';
-  chips(); render();
-}
 function toggleTheme(){
   document.body.classList.toggle('dark');
   ti.textContent = document.body.classList.contains('dark') ? '◑' : '◐';
@@ -368,5 +363,6 @@ chips(); render();
     .catch(function(){});
 })();
 </script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/en/" hreflang="en" rel="alternate" lang="en">English version</a></p>
 </body>
 </html>
