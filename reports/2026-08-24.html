@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>AI／醫療AI 每日新知日報 · 2026-08-24</title>
+<meta property="og:url" content="https://ai-medical-daily.peteraim.com/reports/2026-08-24.html" />
+<link rel="canonical" href="https://ai-medical-daily.peteraim.com/reports/2026-08-24.html" />
+<meta name="report-date" content="2026-08-24">
+<meta name="report-theme" content="clinical">
+<meta name="report-title-zh" content="同一天、同一本期刊、兩種結局：AI 讀 CT 撿回 51 個被漏掉的病灶，AI 讀病歷被醫師默默棄用">
+<meta name="report-title-en" content="Same day, same journal, two endings: AI reading CT recovered 51 missed lesions; AI reading charts was quietly abandoned">
+<meta name="report-summary-zh" content="8/19《Nature Medicine》同日刊出兩份前瞻研究：肝臟 AI「LiON」在 10,333 人前瞻試驗中 AUC 0.952、撿回 51 個原被漏掉的病灶（含 15 個惡性）、促成 37 份修正報告；以色列 Rambam 的 LLM 急診決策支援「SHAKED」在 1,138 名病人中零不良事件、99/100 輸出經專家認可，醫師使用率卻從 68% 一路掉到 30%，作者直言「現階段不足以支持臨床部署」。搭配 PLOS 的 1,357 比 3 與一份 NEJM AI 自動化偏誤試驗，今天拆解的問題只有一個：什麼樣的臨床 AI 真的改變了病人結果。">
+<meta name="report-summary-en" content="Two prospective studies landed in Nature Medicine on Aug 19. LiON, a contrast-CT liver AI, hit AUC 0.952 in a 10,333-patient prospective trial, surfaced 51 previously overlooked lesions including 15 malignancies, and triggered 37 amended reports. SHAKED, an LLM decision-support system in Rambam's emergency department, logged zero adverse events and 99 of 100 expert-approved outputs across 1,138 patients — yet clinician uptake fell from 68% to 30%, and the authors state the findings do not justify deployment. Read against PLOS's 1,357-to-3 audit and an NEJM AI automation-bias trial, today asks one question: which clinical AI actually changes patient outcomes.">
+<link rel="stylesheet" href="/assets/report.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HJLDQZDK5V');
+</script>
+</head>
+<body class="lang-zh">
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span><span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <div class="bar-sp"></div>
+    <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub / 在 GitHub 給這個專案一顆星"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
+    <div class="seg">
+      <button id="b-zh" class="on" onclick="setLang('zh')">中文</button>
+      <button id="b-en" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="kicker">
+    <span class="zh-inline">星期一 · 臨床應用與研究</span>
+    <span class="en-inline">Monday · Clinical Applications &amp; Research</span>
+  </div>
+  <h1>
+    <span class="zh">同一天、同一本期刊、兩種結局：AI 讀 CT 撿回 51 個被漏掉的病灶，AI 讀病歷被醫師默默棄用</span>
+    <span class="en">Same day, same journal, two endings: AI reading CT recovered 51 missed lesions; AI reading charts was quietly abandoned</span>
+  </h1>
+  <div class="dateline">
+    <span class="zh-inline">2026 年 8 月 24 日（一）· 涵蓋 8/18–8/24 · 台北時間</span>
+    <span class="en-inline">Monday, August 24, 2026 · Covering Aug 18–24 · Taipei time</span>
+  </div>
+  <p class="lede">
+    <span class="zh">8 月 19 日，《Nature Medicine》同一天刊出兩份前瞻性臨床評估，而它們的結論剛好相反。一份是中國醫科大學盛京醫院與阿里巴巴達摩院等單位的<a href="https://www.nature.com/articles/s41591-026-04589-y" target="_blank" rel="noopener">肝臟 AI「LiON」</a>：在 <strong>10,333 名病人的前瞻試驗</strong>中 AUC 0.952，並在真實流程裡<strong>撿回 51 個原本被漏判的病灶（其中 15 個為惡性）</strong>、促成 37 份修正報告。另一份是以色列 Rambam 醫學中心的<a href="https://www.nature.com/articles/s41591-026-04601-5" target="_blank" rel="noopener">急診 LLM 決策支援系統「SHAKED」</a>：1,138 名病人、零不良事件、專家審查 100 份輸出有 99 份「臨床適當」——但<strong>醫師的使用率從 68% 一路掉到 30%</strong>，急診滯留時間兩組都是 4.9 小時，作者自己下了結論：<strong>「現階段的發現不足以支持臨床部署。」</strong>把這兩篇擺在一起，再對照 <em>PLOS Digital Health</em> 上週那個 <a href="https://journals.plos.org/digitalhealth/article?id=10.1371%2Fjournal.pdig.0001597" target="_blank" rel="noopener">1,357 比 3</a> 的分母，今天要問的只有一個問題：<strong>臨床 AI 的成敗，到底是被準確率決定，還是被「有沒有人繼續用它」決定？</strong></span>
+    <span class="en">On August 19, <em>Nature Medicine</em> published two prospective clinical evaluations on the same day, and they point in opposite directions. One is <a href="https://www.nature.com/articles/s41591-026-04589-y" target="_blank" rel="noopener">LiON</a>, a contrast-CT liver AI from Shengjing Hospital of China Medical University with Alibaba's DAMO Academy and others: AUC 0.952 in a <strong>10,333-patient prospective trial</strong>, and in live workflow it <strong>recovered 51 previously overlooked lesions, 15 of them malignant</strong>, prompting 37 amended reports. The other is <a href="https://www.nature.com/articles/s41591-026-04601-5" target="_blank" rel="noopener">SHAKED</a>, an LLM decision-support system in the emergency department at Rambam Health Care Campus in Israel: 1,138 patients, zero adverse events, 99 of 100 sampled outputs judged clinically appropriate by expert review — and yet <strong>clinician uptake slid from 68% to 30%</strong>, length of stay was 4.9 hours in both wings, and the authors concluded plainly that <strong>the findings "do not justify clinical deployment at this stage."</strong> Read side by side, and against the <a href="https://journals.plos.org/digitalhealth/article?id=10.1371%2Fjournal.pdig.0001597" target="_blank" rel="noopener">1,357-to-3</a> denominator <em>PLOS Digital Health</em> published last week, today's question is singular: <strong>is clinical AI decided by accuracy, or by whether anyone keeps using it?</strong></span>
+  </p>
+
+  <nav class="toc">
+    <a href="#top"><span class="zh-inline">重點新聞</span><span class="en-inline">Top Stories</span></a>
+    <a href="#product"><span class="zh-inline">產品分析</span><span class="en-inline">Product Analysis</span></a>
+    <a href="#company"><span class="zh-inline">公司與競爭</span><span class="en-inline">Companies &amp; Competition</span></a>
+    <a href="#taiwan"><span class="zh-inline">台灣視角</span><span class="en-inline">Taiwan Angle</span></a>
+    <a href="#reading"><span class="zh-inline">延伸閱讀</span><span class="en-inline">Further Reading</span></a>
+    <a href="#refs"><span class="zh-inline">參考文獻</span><span class="en-inline">References</span></a>
+  </nav>
+</div>
+
+<!-- ============ TOP STORIES ============ -->
+<section id="top">
+  <h2>01 — Top Stories</h2>
+  <div class="sec-title">
+    <span class="zh">今天的七則：從兩篇 Nature Medicine 到一台在新加坡開機的內視鏡 AI</span>
+    <span class="en">Seven stories: from two Nature Medicine papers to an endoscopy AI switched on in Singapore</span>
+  </div>
+
+  <!-- 1 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">今日最重要</span><span class="en-inline">Story of the day</span></span>
+      <span class="tag">Nature Medicine</span><span class="tag">Rambam</span><span class="tag">DECIDE-AI</span><span class="tag">8/19</span>
+    </div>
+    <h3>
+      <span class="zh">急診 LLM 決策支援「SHAKED」：安全、準確、被醫師慢慢放棄</span>
+      <span class="en">SHAKED, an emergency-department LLM: safe, accurate, and gradually abandoned</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">8 月 19 日，以色列 Rambam 醫學中心（合作單位含以色列理工學院 Technion、Mayo Clinic、Beth Israel Deaconess）在《Nature Medicine》發表<a href="https://www.nature.com/articles/s41591-026-04601-5" target="_blank" rel="noopener">一項 DECIDE-AI 第一階段的前瞻性試辦評估</a>：把 LLM 臨床決策支援系統 <strong>SHAKED</strong> 部署在急診其中一翼，另一翼維持標準流程，為期四週、<strong>共分析 1,138 名病人（介入組 584 人）</strong>。結果分成三層：<strong>(1) 安全無虞</strong>——<a href="https://www.nature.com/articles/s41591-026-04601-5" target="_blank" rel="noopener">未偵測到不良事件，專家抽查 100 份輸出中有 99 份被評為臨床適當</a>；<strong>(2) 效益未顯現</strong>——<a href="https://www.nature.com/articles/s41591-026-04601-5" target="_blank" rel="noopener">兩翼急診滯留時間同為 4.9 小時（P = 0.99），會診週期時間縮短 9.4 分鐘但未達統計顯著（P = 0.077）</a>；<strong>(3) 使用率崩落</strong>——<a href="https://www.nature.com/articles/s41591-026-04601-5" target="_blank" rel="noopener">臨床採用率從 68% 一路降到 30%，且與工作負荷高度相關（每增加一小時班內時數，使用勝算比 OR = 0.72，95% CI 0.62–0.83）</a>。唯一逆勢上升的情境是放射科會診（<a href="https://www.nature.com/articles/s41591-026-04601-5" target="_blank" rel="noopener">OR = 2.98，95% CI 1.58–5.63</a>）。作者的結論罕見地直白：<strong>「維持臨床人員的持續使用，而非演算法準確度，可能才是真正的關鍵障礙」，且現有發現「不足以支持此階段的臨床部署」。</strong></span>
+        <span class="en">On August 19, Rambam Health Care Campus in Israel — with collaborators at the Technion, Mayo Clinic and Beth Israel Deaconess — published <a href="https://www.nature.com/articles/s41591-026-04601-5" target="_blank" rel="noopener">a DECIDE-AI stage-1 prospective pilot in <em>Nature Medicine</em></a>. The LLM clinical decision support system <strong>SHAKED</strong> ran in one emergency-department wing while a parallel wing kept standard operations, over four weeks, <strong>with 1,138 patients analysed (584 in the intervention wing)</strong>. The result splits three ways. <strong>(1) It was safe</strong>: <a href="https://www.nature.com/articles/s41591-026-04601-5" target="_blank" rel="noopener">no adverse events were detected and expert review rated 99 of 100 sampled outputs clinically appropriate</a>. <strong>(2) The benefit did not materialise</strong>: <a href="https://www.nature.com/articles/s41591-026-04601-5" target="_blank" rel="noopener">length of stay was 4.9 hours in both wings (P = 0.99) and the 9.4-minute reduction in consultation cycle time missed significance (P = 0.077)</a>. <strong>(3) Uptake collapsed</strong>: <a href="https://www.nature.com/articles/s41591-026-04601-5" target="_blank" rel="noopener">adoption fell from 68% to 30% across the study and tracked workload closely (OR = 0.72 per shift hour, 95% CI 0.62–0.83)</a>. The one setting that bucked the trend was radiology consultation (<a href="https://www.nature.com/articles/s41591-026-04601-5" target="_blank" rel="noopener">OR = 2.98, 95% CI 1.58–5.63</a>). The authors' conclusion is unusually blunt: <strong>"sustained clinician engagement, rather than algorithmic accuracy, may be the key barrier," and the findings "do not justify clinical deployment of AI clinical decision support at this stage."</strong></span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">過去三年幾乎所有醫療 LLM 研究都在回答同一個問題：<strong>模型夠不夠準？</strong>SHAKED 把這個問題整個換掉。它的模型夠準（99/100）、夠安全（0 不良事件），但在真實急診裡<strong>被使用的次數逐週減少，而且醫師越忙越不用</strong>——這正好和「AI 幫忙省時間」的商業敘事完全相反：<strong>如果 AI 只在你不忙的時候才有人用，那它就沒有在解決忙碌本身。</strong>OR = 0.72／每小時班內時數是本週最值得記下的一個係數，因為它把「採用」變成可以量測、可以當作終點指標的東西。這也給了 <em>PLOS Digital Health</em> 那個 <a href="https://journals.plos.org/digitalhealth/article?id=10.1371%2Fjournal.pdig.0001597" target="_blank" rel="noopener">1,357 台核可、3 台驗證過病人結果</a>的統計一個新的註腳：就算補上臨床試驗，也可能測不到效果——因為介入本身在試驗期間就被使用者稀釋掉了。DECIDE-AI 框架的設計初衷正是為了捕捉這一層，而 SHAKED 是少數老實照做、並且老實公布負面結果的研究。</span>
+        <span class="en">For three years nearly every clinical-LLM study has answered one question: <strong>is the model accurate enough?</strong> SHAKED replaces the question. The model was accurate (99/100) and safe (zero adverse events), yet in a live emergency department it was <strong>used less each week — and least by the clinicians who were busiest</strong>. That inverts the commercial story about AI saving time: <strong>if AI only gets used when you are not busy, it is not addressing busyness at all.</strong> OR = 0.72 per shift hour is the coefficient of the week, because it turns adoption into something measurable and usable as an endpoint. It also annotates the <em>PLOS Digital Health</em> finding that <a href="https://journals.plos.org/digitalhealth/article?id=10.1371%2Fjournal.pdig.0001597" target="_blank" rel="noopener">only 3 of 1,357 cleared devices were tested on patient outcomes</a>: even when you do run the trial, you may measure nothing — because the intervention was diluted by its own users mid-study. Catching exactly this is what the DECIDE-AI framework was designed for, and SHAKED is one of the few studies to follow it honestly and publish the negative result.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">公司與產品</span><span class="en-inline">Players</span></div>
+      <p class="val">
+        <span class="zh">SHAKED 為 Rambam 醫學中心（海法）內部開發的 LLM 決策支援系統，作者群 Leibovitch、Ahituv、Gorenshtein、Aran、Sorka、Miron、Shelly 分屬 Rambam、Technion、Mayo Clinic 與 Beth Israel Deaconess。試驗未揭露使用哪一家基礎模型；本研究屬 <a href="https://www.nature.com/articles/s41591-026-04601-5" target="_blank" rel="noopener">DECIDE-AI 第一階段（早期臨床評估）</a>，不是療效試驗。對照組為同院另一翼的標準作業。</span>
+        <span class="en">SHAKED is an in-house LLM decision-support system at Rambam (Haifa); authors Leibovitch, Ahituv, Gorenshtein, Aran, Sorka, Miron and Shelly are affiliated with Rambam, the Technion, Mayo Clinic and Beth Israel Deaconess. The underlying foundation model is not disclosed. The study is <a href="https://www.nature.com/articles/s41591-026-04601-5" target="_blank" rel="noopener">DECIDE-AI stage 1 (early live clinical evaluation)</a>, not an efficacy trial; the comparator is standard operations in a parallel wing of the same department.</span>
+      </p></div>
+    <div class="src">
+      <span class="zh-inline">來源：</span><span class="en-inline">Sources: </span>
+      <a href="https://www.nature.com/articles/s41591-026-04601-5" target="_blank" rel="noopener">Nature Medicine（原始論文）</a> ·
+      <a href="https://www.nature.com/nm/articles" target="_blank" rel="noopener">Nature Medicine 最新文章列表</a>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">影像</span><span class="en-inline">Imaging</span></span>
+      <span class="tag">Nature Medicine</span><span class="tag">DAMO Academy</span><span class="tag">盛京醫院</span><span class="tag">8/19</span>
+    </div>
+    <h3>
+      <span class="zh">LiON：33,000 人驗證的肝癌 CT AI，在真實流程裡撿回 51 個被漏掉的病灶</span>
+      <span class="en">LiON: a liver-cancer CT AI validated in 33,000 patients, catching 51 lesions the workflow had missed</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">同一天的《Nature Medicine》另一篇，由中國醫科大學附屬盛京醫院放射科施悅（Yu Shi）為通訊作者，聯合<strong>阿里巴巴達摩院（DAMO Academy）、倫敦國王學院、EURECOM</strong>等中、法、英機構發表<a href="https://www.nature.com/articles/s41591-026-04589-y" target="_blank" rel="noopener">「Liver DiagnOsis Network（LiON）」的多中心研究與單臂臨床試驗</a>。規模是這篇的重點：<strong>訓練 6,443 人、多中心回溯驗證 22,251 人、前瞻試驗 10,333 人</strong>。表現：<a href="https://www.nature.com/articles/s41591-026-04589-y" target="_blank" rel="noopener">回溯驗證惡性判別 AUC 0.975（95% CI 0.971–0.979），脂肪肝次族群 0.971、肝硬化次族群 0.924；前瞻試驗主要終點 AUC 0.952（95% CI 0.942–0.961）</a>。真正有份量的是次要臨床結果：在既有放射科流程中<strong>額外找出 51 個原本被忽略的病灶（含 15 個惡性）、觸發 37 份修正報告、22 次多專科團隊（MDT）升階討論</strong>。LiON 讀多期別對比增強 CT（可彈性使用非顯影、動脈期、靜脈期，延遲期選用），輸出病人層級惡性分數、分割八類肝臟病灶，並整合人口學、生物標記與病史等臨床資料。</span>
+        <span class="en">The second <em>Nature Medicine</em> paper of the same day comes from Yu Shi (corresponding author) in the radiology department of Shengjing Hospital, China Medical University, with <strong>Alibaba's DAMO Academy, King's College London and EURECOM</strong> among institutions across China, France and the UK: <a href="https://www.nature.com/articles/s41591-026-04589-y" target="_blank" rel="noopener">a multicentre study plus single-arm clinical trial of the Liver DiagnOsis Network (LiON)</a>. Scale is the story: <strong>6,443 patients for training, 22,251 for multicentre retrospective validation, 10,333 in the prospective trial</strong>. Performance: <a href="https://www.nature.com/articles/s41591-026-04589-y" target="_blank" rel="noopener">AUC 0.975 (95% CI 0.971–0.979) for malignancy in retrospective validation, 0.971 in the hepatic-steatosis subgroup and 0.924 in cirrhosis; the prospective primary endpoint was AUC 0.952 (95% CI 0.942–0.961)</a>. The weightier result is secondary: inside routine radiology workflow LiON <strong>surfaced 51 previously overlooked lesions including 15 malignancies, triggered 37 amended reports and led to 22 multidisciplinary-team escalations</strong>. It reads multiphase contrast-enhanced CT with flexible phase input (non-contrast, arterial, venous, optional delayed), outputs a patient-level malignancy score, segments eight lesion types, and folds in demographics, biomarkers and history.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">LiON 與 SHAKED 的對比，幾乎是一場天然實驗。<strong>兩者都在真實臨床流程裡跑，都沒有做隨機分派的療效試驗，但只有一個產生了可以指認的病人層級後果</strong>：51 個病灶、37 份修正報告、22 次 MDT。差別不在模型有多聰明，而在<strong>介入的形態</strong>——LiON 以「第二讀片者／安全網」的身分存在，工作發生在醫師的注意力之外，不需要醫師主動開啟；SHAKED 則需要醫師在最忙的時候多按一次。這是今天最實用的一條設計原則：<strong>臨床 AI 的採用率，與它需要醫師付出的主動注意力成反比。</strong>需要留意的限制也很明確：單臂試驗沒有對照組，因此無法回答「這 51 個病灶若無 AI 是否最終仍會被發現」，也無法把它換算成存活率；作者自己也表示需要跨醫療體系的前瞻比較研究。它仍然停在 <a href="https://journals.plos.org/digitalhealth/article?id=10.1371%2Fjournal.pdig.0001597" target="_blank" rel="noopener">PLOS 那 0.2% 之外</a>——只是離門檻最近的一批。</span>
+        <span class="en">LiON against SHAKED is close to a natural experiment. <strong>Both ran inside live clinical workflow, neither is a randomised efficacy trial, and only one produced identifiable patient-level consequences</strong>: 51 lesions, 37 amended reports, 22 MDT escalations. The difference is not model intelligence but <strong>the shape of the intervention</strong>. LiON exists as a second reader and safety net; its work happens outside the clinician's attention and requires no one to open anything. SHAKED asks a physician to take one more action at their busiest moment. That yields today's most usable design principle: <strong>adoption of clinical AI is inversely proportional to the active attention it demands from a clinician.</strong> The limits are equally clear: a single-arm trial has no comparator, so it cannot say whether those 51 lesions would eventually have been found without AI, nor convert them into survival; the authors themselves call for prospective comparative studies across health systems. LiON still sits outside <a href="https://journals.plos.org/digitalhealth/article?id=10.1371%2Fjournal.pdig.0001597" target="_blank" rel="noopener">that PLOS 0.2%</a> — just nearer the threshold than most.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">公司與產品</span><span class="en-inline">Players</span></div>
+      <p class="val">
+        <span class="zh">研究主導：<a href="https://www.nature.com/articles/s41591-026-04589-y" target="_blank" rel="noopener">中國醫科大學附屬盛京醫院（瀋陽）放射科</a>；技術合作方包含<strong>阿里巴巴達摩院</strong>——該單位先前以胰臟癌篩檢模型 DAMO PANDA 進入國際期刊，肝臟是其醫療影像布局的第二個器官級標的。學術合作方為倫敦國王學院與法國 EURECOM。競爭者面向：Aidoc（腹部 CT 分流）、United Imaging／聯影智能、推想醫療、Lunit 與 DeepHealth 主攻胸腔與乳房，肝臟多期別 CT 目前競爭密度相對低。</span>
+        <span class="en">Led by the <a href="https://www.nature.com/articles/s41591-026-04589-y" target="_blank" rel="noopener">radiology department at Shengjing Hospital, China Medical University (Shenyang)</a>, with <strong>Alibaba DAMO Academy</strong> as technical partner — the same group behind the DAMO PANDA pancreatic-cancer screening model, making liver its second organ-scale target. Academic partners: King's College London and EURECOM. Competitive frame: Aidoc (abdominal CT triage), United Imaging Intelligence, Infervision, and Lunit and DeepHealth concentrated in chest and breast — multiphase liver CT is comparatively uncrowded.</span>
+      </p></div>
+    <div class="src">
+      <span class="zh-inline">來源：</span><span class="en-inline">Sources: </span>
+      <a href="https://www.nature.com/articles/s41591-026-04589-y" target="_blank" rel="noopener">Nature Medicine（原始論文）</a> ·
+      <a href="https://www.nature.com/nm/articles" target="_blank" rel="noopener">Nature Medicine 最新文章列表</a>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">證據</span><span class="en-inline">Evidence</span></span>
+      <span class="tag">PLOS Digital Health</span><span class="tag">University of Toronto</span><span class="tag">MIT</span><span class="tag">8/19–20</span>
+    </div>
+    <h3>
+      <span class="zh">今天這兩篇論文的分母：1,357 台核可，只有 3 台測過病人結果</span>
+      <span class="en">The denominator behind today's two papers: 1,357 cleared, 3 ever tested on patient outcomes</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">多倫多大學 Rawan Abulibdeh 與 MIT 計算生理實驗室等合著者，8 月 19 日於 <em>PLOS Digital Health</em> 發表對<strong>截至 2025 年 12 月 5 日 FDA 核可的全部 1,357 台 AI 醫材</strong>的盤點：<a href="https://journals.plos.org/digitalhealth/article?id=10.1371%2Fjournal.pdig.0001597" target="_blank" rel="noopener">僅 34 台曾登錄臨床試驗、12 台公布試驗結果、12 台有同儕審查論文，<strong>只有 3 台針對死亡率、中風、住院或生活品質等以病人為中心的結果做過測試</strong></a>。<a href="https://www.news-medical.net/news/20260820/FDA-cleared-medical-AI-rarely-tested-for-real-world-benefits.aspx" target="_blank" rel="noopener">News-Medical 8/20 的整理</a>指出，研究幾乎全在資源充足的醫療體系執行，並系統性排除孕婦、75 歲以上長者與非英語使用者；作者警告此架構可能放大既有健康不平等，並讓中低所得國家在無意間成為「未被充分研究之 AI 裝置」的試驗場。<a href="https://www.healio.com/news/primary-care/20260821/most-ai-tools-cleared-by-fda-were-not-tested-on-clinical-outcomes" target="_blank" rel="noopener">Healio（8/21）</a>與 <a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/article/15832887/most-fdacleared-ai-medical-devices-not-tested-on-patient-outcomes" target="_blank" rel="noopener">AuntMinnie</a> 亦有專文。</span>
+        <span class="en">Rawan Abulibdeh (University of Toronto) with co-authors including MIT's Laboratory for Computational Physiology published on August 19 in <em>PLOS Digital Health</em> an audit of <strong>all 1,357 FDA-authorised AI medical devices through December 5, 2025</strong>: <a href="https://journals.plos.org/digitalhealth/article?id=10.1371%2Fjournal.pdig.0001597" target="_blank" rel="noopener">just 34 appeared in a registered clinical trial, 12 posted results, 12 reached peer review, and <strong>only 3 were tested against patient-centred outcomes such as mortality, stroke, hospitalisation or quality of life</strong></a>. As <a href="https://www.news-medical.net/news/20260820/FDA-cleared-medical-AI-rarely-tested-for-real-world-benefits.aspx" target="_blank" rel="noopener">News-Medical summarised on Aug 20</a>, the research was conducted almost entirely in well-resourced health systems and systematically excluded pregnant women, adults over 75 and non-English speakers; the authors warn the framework could amplify existing disparities and make low- and middle-income countries unwitting test populations for under-studied devices. <a href="https://www.healio.com/news/primary-care/20260821/most-ai-tools-cleared-by-fda-were-not-tested-on-clinical-outcomes" target="_blank" rel="noopener">Healio (Aug 21)</a> and <a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/article/15832887/most-fdacleared-ai-medical-devices-not-tested-on-patient-outcomes" target="_blank" rel="noopener">AuntMinnie</a> also covered it.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">本站在<a href="https://ai-medical-daily.peteraim.com/reports/2026-08-23.html" target="_blank" rel="noopener">昨日週回顧</a>已報導此研究，今天重提是因為它是理解前兩則的<strong>分母</strong>。把 LiON 與 SHAKED 放進這個框架，會發現一件容易被忽略的事：<strong>這兩篇論文都不會出現在那 3 台裡</strong>——LiON 是單臂設計、SHAKED 測的是採用率與流程指標，兩者都沒有以病人結果為主要終點。也就是說，即使是本週最紮實的兩份前瞻研究，離「證明病人活得更久或更好」仍有一段距離。這不是研究者的失職，而是<strong>臨床 AI 的評估基礎建設本身還沒長好</strong>：沒有標準終點、沒有跨機構的對照設計慣例、沒有把「採用率」正式納入終點的傳統。今天最該記住的是這個結構，而不是任何單一數字。</span>
+        <span class="en">We covered this study in <a href="https://ai-medical-daily.peteraim.com/reports/2026-08-23.html" target="_blank" rel="noopener">yesterday's weekly review</a>; it returns today because it is the <strong>denominator</strong> for the first two stories. Place LiON and SHAKED inside the framework and something easy to miss appears: <strong>neither paper would count among the 3</strong> — LiON is single-arm, SHAKED measured adoption and process metrics, and neither used a patient outcome as its primary endpoint. Even the two most rigorous prospective studies of the week remain some distance from proving patients live longer or better. That is not a failure of the investigators but of the <strong>evaluation infrastructure for clinical AI itself</strong>: no standard endpoints, no established convention for cross-institution comparators, no tradition of treating adoption as a formal endpoint. The structure is what to remember today, not any single number.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">公司與產品</span><span class="en-inline">Players</span></div>
+      <p class="val">
+        <span class="zh">分析對象為 <a href="https://www.fda.gov/medical-devices/software-medical-device-samd/artificial-intelligence-enabled-medical-devices" target="_blank" rel="noopener">FDA 公開的 AI／ML-Enabled Medical Device List</a> 全體，未點名個別廠商。台灣的對應清單為 <a href="https://aimd.fda.gov.tw/" target="_blank" rel="noopener">TFDA 智慧醫療器材資訊暨媒合平台</a>，目前尚無等價的驗證盤點研究。</span>
+        <span class="en">The unit of analysis is the whole <a href="https://www.fda.gov/medical-devices/software-medical-device-samd/artificial-intelligence-enabled-medical-devices" target="_blank" rel="noopener">FDA AI/ML-Enabled Medical Device List</a>; no vendor is named. Taiwan's counterpart is the <a href="https://aimd.fda.gov.tw/" target="_blank" rel="noopener">TFDA AI/ML medical device information and matchmaking platform</a>, for which no equivalent validation audit exists.</span>
+      </p></div>
+    <div class="src">
+      <span class="zh-inline">來源：</span><span class="en-inline">Sources: </span>
+      <a href="https://journals.plos.org/digitalhealth/article?id=10.1371%2Fjournal.pdig.0001597" target="_blank" rel="noopener">PLOS Digital Health</a> ·
+      <a href="https://www.news-medical.net/news/20260820/FDA-cleared-medical-AI-rarely-tested-for-real-world-benefits.aspx" target="_blank" rel="noopener">News-Medical</a> ·
+      <a href="https://www.healio.com/news/primary-care/20260821/most-ai-tools-cleared-by-fda-were-not-tested-on-clinical-outcomes" target="_blank" rel="noopener">Healio</a> ·
+      <a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/article/15832887/most-fdacleared-ai-medical-devices-not-tested-on-patient-outcomes" target="_blank" rel="noopener">AuntMinnie</a>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="zh-inline">背景研究</span><span class="en-inline">Background study</span></span>
+      <span class="tag">NEJM AI</span><span class="tag">RCT</span><span class="tag">NCT06963957</span>
+    </div>
+    <h3>
+      <span class="zh">為什麼「醫師會把關」不能當作安全設計：受過 AI 訓練的醫師，照樣被錯誤建議帶走 14 個百分點</span>
+      <span class="en">Why "the physician will catch it" is not a safety design: AI-trained doctors still lost 14 points to bad advice</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">要理解第 1 則裡「99/100 適當」為何仍不足以保證安全，需要一份稍早的隨機試驗。發表於 <em>NEJM AI</em>（2026 年 5 月號，試驗註冊 NCT06963957）的<a href="https://ai.nejm.org/doi/full/10.1056/AIoa2501001" target="_blank" rel="noopener">《Automation Bias in Large Language Model–Assisted Diagnostic Reasoning among Physicians Trained in AI Literacy》</a>，把 <strong>44 位受過 20 小時 AI 素養訓練的醫師</strong>隨機分派，分別接受「無誤」與「刻意植入錯誤」的 LLM 建議。結果：<a href="https://www.bjh.be/automation-bias-persists-in-ai-trained-physicians-erroneous-llm-advice-worsens-diagnostic-reasoning/" target="_blank" rel="noopener">診斷推理分數從 84.9% 降至 73.3%（校正後差異 −14.0 個百分點）；首選診斷正確率從 90.5% 降至 76.1%（校正後 −18.3 個百分點）</a>。預印本可見於 <a href="https://www.medrxiv.org/content/10.1101/2025.08.23.25334280v1" target="_blank" rel="noopener">medRxiv</a>。後續研究已開始測試以行為推力（behavioral nudges）緩解此效應，見 <a href="https://www.medrxiv.org/content/10.64898/2026.06.01.26354596v1.full" target="_blank" rel="noopener">2026 年 6 月的後續 RCT 預印本</a>。</span>
+        <span class="en">To see why "99 of 100 appropriate" in story 1 is not itself a safety guarantee, it helps to read an earlier randomised trial. <a href="https://ai.nejm.org/doi/full/10.1056/AIoa2501001" target="_blank" rel="noopener">"Automation Bias in Large Language Model–Assisted Diagnostic Reasoning among Physicians Trained in AI Literacy"</a> in <em>NEJM AI</em> (May 2026 issue; NCT06963957) randomised <strong>44 physicians who had each completed 20 hours of AI-literacy training</strong> to receive either error-free or deliberately flawed LLM recommendations. <a href="https://www.bjh.be/automation-bias-persists-in-ai-trained-physicians-erroneous-llm-advice-worsens-diagnostic-reasoning/" target="_blank" rel="noopener">Diagnostic reasoning scores fell from 84.9% to 73.3% (adjusted difference −14.0 percentage points), and top-choice diagnostic accuracy from 90.5% to 76.1% (adjusted −18.3 points)</a>. The preprint is on <a href="https://www.medrxiv.org/content/10.1101/2025.08.23.25334280v1" target="_blank" rel="noopener">medRxiv</a>, and a <a href="https://www.medrxiv.org/content/10.64898/2026.06.01.26354596v1.full" target="_blank" rel="noopener">follow-up RCT preprint from June 2026</a> tests behavioural nudges as mitigation.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">幾乎所有臨床 AI 的風險論述都建立在同一個假設上：<strong>「最終決策仍由醫師負責，所以 AI 出錯會被攔下來。」</strong>這份試驗指出這個假設在受過專門訓練的醫師身上都不成立——而且退步幅度（−14.0 與 −18.3 個百分點）大到足以抵銷多數 AI 工具宣稱的增益。把它接回第 1 則：SHAKED 的「99/100 適當」意味著<strong>每 100 次就有 1 次不適當</strong>，而這份 RCT 說明那 1 次不會被自動攔下。這也是為什麼第 2 則 LiON 的「安全網」形態在風險結構上更有利：<strong>AI 用來提示「你可能漏看了什麼」，錯誤代價是額外看一眼；AI 用來建議「你應該怎麼做」，錯誤代價是被說服。</strong>此研究樣本為 44 位單一國家（巴基斯坦）醫師，屬中型模擬情境試驗，外推需保守。</span>
+        <span class="en">Nearly every risk narrative for clinical AI rests on one assumption: <strong>a physician makes the final call, so AI errors get caught.</strong> This trial shows the assumption fails even among specifically trained physicians — and the degradation (−14.0 and −18.3 points) is large enough to cancel the gains most AI tools claim. Connect it back to story 1: SHAKED's "99 of 100 appropriate" means <strong>1 in 100 is not appropriate</strong>, and this RCT says that one will not be reliably intercepted. It is also why LiON's safety-net posture in story 2 is structurally safer: <strong>AI that says "you may have missed something" costs a second look when wrong; AI that says "here is what you should do" costs a persuaded clinician.</strong> Caveat: 44 physicians in a single country (Pakistan) in a simulated-case design — a mid-sized study whose generalisation should stay conservative.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">公司與產品</span><span class="en-inline">Players</span></div>
+      <p class="val">
+        <span class="zh">未涉及商業產品；試驗使用通用大型語言模型作為建議來源，並人為植入錯誤以測試醫師的獨立判斷。此類「錯誤建議壓力測試」目前尚未成為任何監管機關的上市前必要項目，是 FDA <a href="https://www.healthcareitnews.com/news/fda-weighs-regulatory-approach-genai-medical-devices" target="_blank" rel="noopener">正在評估的生成式 AI 醫材監管路徑</a>中的空白之一。</span>
+        <span class="en">No commercial product is involved; a general-purpose LLM supplied the recommendations, with errors deliberately injected to test independent clinical judgement. This kind of adversarial-advice stress test is not yet a pre-market requirement at any regulator — one of the gaps in the <a href="https://www.healthcareitnews.com/news/fda-weighs-regulatory-approach-genai-medical-devices" target="_blank" rel="noopener">generative-AI device pathway the FDA is currently weighing</a>.</span>
+      </p></div>
+    <div class="src">
+      <span class="zh-inline">來源：</span><span class="en-inline">Sources: </span>
+      <a href="https://ai.nejm.org/doi/full/10.1056/AIoa2501001" target="_blank" rel="noopener">NEJM AI</a> ·
+      <a href="https://www.bjh.be/automation-bias-persists-in-ai-trained-physicians-erroneous-llm-advice-worsens-diagnostic-reasoning/" target="_blank" rel="noopener">Belgian Journal of Hematology 摘要</a> ·
+      <a href="https://www.medrxiv.org/content/10.1101/2025.08.23.25334280v1" target="_blank" rel="noopener">medRxiv 預印本</a>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="zh-inline">部署</span><span class="en-inline">Deployment</span></span>
+      <span class="tag">Ainex</span><span class="tag">NUH Singapore</span><span class="tag">8/18</span>
+    </div>
+    <h3>
+      <span class="zh">內視鏡 AI 進新加坡國立大學醫院：韓國 ENAD 宣稱腺瘤偵測率提高 16%</span>
+      <span class="en">Endoscopy AI arrives at Singapore's NUH: Korea's ENAD claims a 16% lift in adenoma detection</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">8 月 18 日，<a href="https://www.healthcareitnews.com/news/asia/korean-ai-support-digestive-diagnosis-national-university-hospital" target="_blank" rel="noopener">Healthcare IT News 報導</a>南韓 Ainex 公司的即時內視鏡 AI「<strong>ENAD</strong>（Endoscopy as AI-powered Device）」導入<strong>新加坡國立大學醫院（NUH）</strong>，用於上下消化道內視鏡：即時偵測病灶並自動分類特徵以支援臨床決策。<a href="https://www.healthcareitnews.com/news/asia/korean-ai-support-digestive-diagnosis-national-university-hospital" target="_blank" rel="noopener">Ainex 表示，根據同儕審查研究，該軟體使腺瘤偵測率（ADR）提高 16%；ENAD 已部署於南韓逾 200 家醫療院所，並取得泰國、馬來西亞與哥倫比亞的核准</a>。</span>
+        <span class="en">On August 18, <a href="https://www.healthcareitnews.com/news/asia/korean-ai-support-digestive-diagnosis-national-university-hospital" target="_blank" rel="noopener">Healthcare IT News reported</a> that South Korean company Ainex has deployed its real-time endoscopy AI <strong>ENAD (Endoscopy as AI-powered Device)</strong> at <strong>National University Hospital (NUH) in Singapore</strong> for upper and lower gastrointestinal endoscopy, detecting lesions in real time and automatically characterising them to support clinical decisions. <a href="https://www.healthcareitnews.com/news/asia/korean-ai-support-digestive-diagnosis-national-university-hospital" target="_blank" rel="noopener">Ainex says peer-reviewed studies show a 16% increase in adenoma detection rate (ADR), and that ENAD runs in more than 200 health settings in South Korea with approvals in Thailand, Malaysia and Colombia</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">內視鏡 AI 是目前臨床 AI 中<strong>最接近「已被證實」的一類</strong>——ADR 是大腸鏡的公認品質指標，與後續大腸癌發生率有明確關聯，而電腦輔助偵測（CADe）已累積多篇隨機試驗。它同時也是「第 2 則設計原則」的教科書案例：<strong>AI 在螢幕上畫框，醫師不需要主動呼叫它</strong>，所以不會出現 SHAKED 那種使用率遞減。但要誠實標註兩件事：<strong>(1)</strong> 這 16% 是<strong>廠商自述的彙整數字</strong>，本則報導未附上對應論文；<strong>(2)</strong> 近年多篇研究指出 CADe 提高 ADR 的同時也提高了微小、低風險腺瘤的切除量，長期臨床效益仍在爭論。對亞洲市場的意義更直接：南韓與新加坡的臨床 AI 採購已進入<strong>跨境輸出階段</strong>，而台灣廠商面對的正是同一批競爭者。</span>
+        <span class="en">Endoscopy AI is the <strong>closest thing clinical AI has to a proven category</strong>: ADR is an accepted colonoscopy quality metric with a documented link to subsequent colorectal cancer incidence, and computer-aided detection (CADe) has accumulated multiple randomised trials. It is also a textbook case of story 2's design principle — <strong>the AI draws a box on the screen and no clinician has to summon it</strong>, so nothing resembling SHAKED's decay in usage occurs. Two honest annotations: <strong>(1)</strong> the 16% is a <strong>vendor-aggregated figure</strong> and the report does not link the underlying paper; <strong>(2)</strong> recent literature notes CADe raises ADR partly by removing more tiny, low-risk adenomas, leaving long-term benefit contested. The market signal is more direct: clinical-AI procurement in Korea and Singapore has entered its <strong>cross-border export phase</strong>, and Taiwanese vendors face exactly this cohort of competitors.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">公司與產品</span><span class="en-inline">Players</span></div>
+      <p class="val">
+        <span class="zh">Ainex（南韓）；客戶為新加坡國立大學醫院。同類競爭者：Medtronic GI Genius、Fujifilm CAD EYE、Olympus ENDO-AID、韓國 Wonjin／Coreline 系；台灣端有多家內視鏡 AI 團隊仍以院內合作研究為主，尚未見同等規模的跨境輸出。</span>
+        <span class="en">Ainex (South Korea); customer: National University Hospital, Singapore. Category competitors: Medtronic GI Genius, Fujifilm CAD EYE, Olympus ENDO-AID, and Korean peers. Taiwanese endoscopy-AI groups remain largely at the hospital-research-collaboration stage, with no cross-border rollout at comparable scale.</span>
+      </p></div>
+    <div class="src">
+      <span class="zh-inline">來源：</span><span class="en-inline">Sources: </span>
+      <a href="https://www.healthcareitnews.com/news/asia/korean-ai-support-digestive-diagnosis-national-university-hospital" target="_blank" rel="noopener">Healthcare IT News</a>
+    </div>
+  </div>
+
+  <!-- 6 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="zh-inline">爭論</span><span class="en-inline">Debate</span></span>
+      <span class="tag">JAMA</span><span class="tag">AMA</span><span class="tag">Khosla</span><span class="tag">8/21</span>
+    </div>
+    <h3>
+      <span class="zh">「2030 年 AI 可獨立執行醫療認知任務」：Emanuel 與 Khosla 對上美國醫學會</span>
+      <span class="en">"AI ready for real-world cognitive tasks by 2030": Emanuel and Khosla against the AMA</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">8 月 21 日 <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/ai-advances-debate-grows-over-future-role-physicians" target="_blank" rel="noopener">Fierce Healthcare 報導</a>一場正在升溫的論戰：生命倫理學者暨腫瘤科醫師 <strong>Ezekiel J. Emanuel</strong> 與 Curai Health 的 <strong>Neal Khosla</strong>、Khosla Ventures 的 <strong>Vinod Khosla</strong> 在 <em>JAMA</em> 共同發表觀點文，主張<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/ai-advances-debate-grows-over-future-role-physicians" target="_blank" rel="noopener">回顧 2024 年 1 月以來所有醫療 AI 文獻後，AI 在五項核心認知任務（蒐集病人資訊、診斷、選擇檢查、建議治療、慢病管理）上已達到或超越醫師水準，並預測「大約 2030 年」AI 即可在部分、甚至許多工作流程中獨立部署</a>；他們進一步主張，<strong>醫師的監督反而會引入錯誤、拉低 AI 的表現</strong>。美國醫學會執行長 <strong>John Whyte</strong> 反駁：醫學需要超越任務執行的人類判斷，並以「自動駕駛普及後飛行員仍不可或缺」為喻，強調同理、溝通與共享決策無法由演算法取代。</span>
+        <span class="en">On August 21 <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/ai-advances-debate-grows-over-future-role-physicians" target="_blank" rel="noopener">Fierce Healthcare reported</a> on an escalating argument: bioethicist and oncologist <strong>Ezekiel J. Emanuel</strong>, with <strong>Neal Khosla</strong> of Curai Health and <strong>Vinod Khosla</strong> of Khosla Ventures, co-authored a <em>JAMA</em> viewpoint arguing that <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/ai-advances-debate-grows-over-future-role-physicians" target="_blank" rel="noopener">after reviewing all published work on AI in medicine since January 1, 2024, AI now matches or outperforms physicians on five core cognitive tasks — gathering patient information, diagnosing, selecting tests, recommending treatment and managing chronic disease — and will be ready for autonomous deployment in some, perhaps many, workflows by around 2030</a>. They go further: <strong>physician oversight introduces errors and degrades otherwise superior AI performance</strong>. AMA CEO <strong>John Whyte</strong> counters that medicine requires human judgement beyond task execution, likening it to pilots remaining essential in the age of autopilot, and that empathy, communication and shared decision-making cannot be delegated to an algorithm.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這場辯論值得放在今天的第 1、4 則旁邊，因為<strong>雙方都可以引用今天的證據，而且都只引用一半</strong>。Emanuel／Khosla 一方能指著第 4 則說「醫師監督確實會出錯」——那份 RCT 的確顯示醫師被錯誤建議帶偏；但同一份 RCT 的前提是<strong>AI 先給了錯的答案</strong>，這恰恰證明無人監督的 AI 同樣會錯。AMA 一方能指著第 1 則說「醫師不買單」——但 SHAKED 的低採用率並不證明 AI 沒有價值，只證明它被設計成需要醫師出力。真正被兩邊略過的是第 2 則的答案：<strong>爭論「AI 要不要取代醫師」，可能問錯了層級；LiON 既沒有取代放射科醫師，也沒有等醫師來用它，它只是改變了病灶被看見的機率。</strong></span>
+        <span class="en">The debate belongs beside stories 1 and 4 because <strong>both camps can cite today's evidence, and each cites only half of it</strong>. Emanuel and Khosla can point at story 4 and say physician oversight does introduce error — the RCT does show clinicians pulled off course by bad advice. But that RCT's premise is that <strong>the AI gave the wrong answer first</strong>, which is precisely the case for not removing oversight. The AMA can point at story 1 and say clinicians do not buy it — but SHAKED's decaying uptake does not prove the AI was worthless, only that it was designed to require effort. What both sides skip is story 2's answer: <strong>arguing over whether AI should replace physicians may be the wrong level of the problem. LiON neither replaced the radiologist nor waited to be opened by one; it simply changed the probability that a lesion is seen.</strong></span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">公司與產品</span><span class="en-inline">Players</span></div>
+      <p class="val">
+        <span class="zh">Curai Health（AI 虛擬照護，Khosla Ventures 投資）；American Medical Association（AMA）；賓州大學（Emanuel）。此論戰的商業背景值得留意：主張自主 AI 的兩位作者中，一位是自主 AI 照護公司的經營者、一位是其投資人，<em>JAMA</em> 觀點文本身應視為<strong>有利益關係的立場論述</strong>而非中立文獻回顧。</span>
+        <span class="en">Curai Health (AI-first virtual care, backed by Khosla Ventures); the American Medical Association; the University of Pennsylvania (Emanuel). Note the commercial backdrop: of the authors arguing for autonomous AI, one runs an autonomous-care company and one is its investor, so the <em>JAMA</em> viewpoint should be read as <strong>an interested position paper</strong> rather than a neutral literature review.</span>
+      </p></div>
+    <div class="src">
+      <span class="zh-inline">來源：</span><span class="en-inline">Sources: </span>
+      <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/ai-advances-debate-grows-over-future-role-physicians" target="_blank" rel="noopener">Fierce Healthcare</a>
+    </div>
+  </div>
+
+  <!-- 7 -->
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="zh-inline">照護模式</span><span class="en-inline">Care model</span></span>
+      <span class="tag">HIMSS26 APAC</span><span class="tag">Singapore</span><span class="tag">8/22</span>
+    </div>
+    <h3>
+      <span class="zh">失智照護的真正瓶頸不是偵測：MCI 那 39% 的窗口，卡在三個不互通的系統裡</span>
+      <span class="en">In dementia care, detection is not the bottleneck: the 39% MCI window is stuck between three disconnected systems</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">8 月 22 日 <a href="https://www.healthcareitnews.com/news/asia/dementia-care-detection-not-bottleneck" target="_blank" rel="noopener">Healthcare IT News（亞太版）</a>刊出對 Youngand Inc. 商務長 Martin Seo 的訪談，直指亞太失智照護的結構問題：<a href="https://www.healthcareitnews.com/news/asia/dementia-care-detection-not-bottleneck" target="_blank" rel="noopener">輕度認知障礙（MCI）是介入的關鍵窗口——41 個初始世代研究的統合分析顯示約 <strong>39% 的 MCI 個案最終進展為失智，而一般族群樣本約為 22%</strong>；但「偵測在一個地方、服務量能在另一個地方，而兩邊都沒有紀錄回流」</a>。以新加坡為例，<a href="https://www.healthcareitnews.com/news/asia/dementia-care-detection-not-bottleneck" target="_blank" rel="noopener">約 2,800 家私人診所、27 家綜合診療所與 230 餘個樂齡活動中心彼此不協調；2030 年約每四位新加坡公民就有一位年滿 65 歲，失智預估在 2040 年成為全球第三大死因</a>。該公司的 Brain Health Playground 以動作辨識與場次級分析，把結構化認知訓練放進長者原本就會聚集的社區場域。</span>
+        <span class="en">On August 22, <a href="https://www.healthcareitnews.com/news/asia/dementia-care-detection-not-bottleneck" target="_blank" rel="noopener">Healthcare IT News (APAC)</a> published an interview with Martin Seo, chief business officer at Youngand Inc., framing the structural problem in Asia-Pacific dementia care: <a href="https://www.healthcareitnews.com/news/asia/dementia-care-detection-not-bottleneck" target="_blank" rel="noopener">mild cognitive impairment is the intervention window — a meta-analysis of 41 inception cohorts found roughly <strong>39% of people with MCI progressed to dementia versus about 22% in population samples</strong> — but "detection sits in one place, delivery capacity in another, and no record comes back from either."</a> In Singapore, <a href="https://www.healthcareitnews.com/news/asia/dementia-care-detection-not-bottleneck" target="_blank" rel="noopener">roughly 2,800 private GP clinics, 27 public polyclinics and 230-plus Active Ageing Centres operate without coordination; by 2030 about one in four Singaporean citizens will be 65 or older, and dementia is projected to become the world's third leading cause of death by 2040</a>. The company's Brain Health Playground uses motion recognition and session-level analytics to place structured cognitive training where seniors already gather.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">今天前六則都在問「AI 準不準、有沒有人用」，這一則把問題往上推了一層：<strong>就算 AI 篩檢做得完美，如果篩出來之後沒有可銜接的服務與回流紀錄，偵測本身不會改變任何結果。</strong>這對台灣特別有參考價值——台灣的失智症篩檢工具、認知功能量表數位化與影像生物標記研究都不算落後，但社區據點、基層診所與醫學中心之間同樣缺乏一條把「篩到了」變成「持續介入並被記錄」的路徑。用第 1 則的語彙來說，這是<strong>另一種形式的採用率崩落</strong>：不是醫師不用工具，而是被偵測出的病人流失在系統的縫隙裡。需註明的限制：本文為受訪企業觀點，Brain Health Playground 的成效未見同儕審查證據；39%／22% 為引用之統合分析數據，非該公司產品的成果指標。</span>
+        <span class="en">The first six stories ask whether AI is accurate and whether anyone uses it; this one moves up a level: <strong>even a perfect screening AI changes nothing if there is no service to hand the positive case to, and no record coming back.</strong> That maps onto Taiwan closely — Taiwan is not behind on dementia screening instruments, digitised cognitive scales or imaging biomarkers, yet the path from community centres through primary care to medical centres that turns "we found it" into "they are being treated, and it is recorded" is equally missing. In story 1's vocabulary this is <strong>adoption collapse in another form</strong>: not clinicians abandoning the tool, but detected patients falling through the gaps between systems. Caveats: this is an interview with an interested vendor; Brain Health Playground has no peer-reviewed outcome evidence cited, and the 39%/22% figures come from the referenced meta-analysis, not from the company's product.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">公司與產品</span><span class="en-inline">Players</span></div>
+      <p class="val">
+        <span class="zh">Youngand Inc.（南韓，Brain Health Playground）；場景為新加坡與亞太。相關政策背景可對照 <a href="https://www.healthcareitnews.com/news/rural-hospitals-face-high-stakes-allocating-ai-investments" target="_blank" rel="noopener">Healthcare IT News 8/21 談偏鄉醫院 AI 投資排序</a>——兩者的共同問題都是「AI 能力落在哪一層機構」。</span>
+        <span class="en">Youngand Inc. (South Korea; Brain Health Playground), operating in Singapore and across APAC. Read alongside <a href="https://www.healthcareitnews.com/news/rural-hospitals-face-high-stakes-allocating-ai-investments" target="_blank" rel="noopener">Healthcare IT News on Aug 21 on how rural hospitals prioritise AI investment</a> — both turn on which tier of institution the AI capability lands in.</span>
+      </p></div>
+    <div class="src">
+      <span class="zh-inline">來源：</span><span class="en-inline">Sources: </span>
+      <a href="https://www.healthcareitnews.com/news/asia/dementia-care-detection-not-bottleneck" target="_blank" rel="noopener">Healthcare IT News APAC</a> ·
+      <a href="https://www.healthcareitnews.com/news/rural-hospitals-face-high-stakes-allocating-ai-investments" target="_blank" rel="noopener">Healthcare IT News（偏鄉醫院 AI 投資）</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRODUCT ============ -->
+<section id="product">
+  <h2>02 — Product Analysis</h2>
+  <div class="sec-title">
+    <span class="zh">兩個同日發表的臨床 AI：一個站在醫師背後，一個站在醫師面前</span>
+    <span class="en">Two clinical AI systems published the same day: one stands behind the clinician, one stands in front</span>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>LiON（Liver DiagnOsis Network）</h3>
+      <p class="sub"><span class="zh-inline">對比增強 CT 肝臟惡性判別 · 學研＋達摩院 · 中國</span><span class="en-inline">Contrast-CT liver malignancy AI · academic + DAMO Academy · China</span></p>
+      <p>
+        <span class="zh"><strong>功能與定位。</strong>以多期別對比增強 CT 為輸入（非顯影／動脈期／靜脈期，延遲期選用），輸出病人層級惡性分數並分割八類肝臟病灶，同時整合人口學、生物標記與病史。定位<strong>不是取代放射科醫師，而是流程中的「額外一位讀片者」</strong>與診斷安全網（<a href="https://www.nature.com/articles/s41591-026-04589-y" target="_blank" rel="noopener">Nature Medicine，2026-08-19</a>）。</span>
+        <span class="en"><strong>Function and position.</strong> Takes multiphase contrast-enhanced CT (non-contrast, arterial, venous, optional delayed), outputs a patient-level malignancy score, segments eight liver lesion types and integrates demographics, biomarkers and history. It is positioned <strong>not as a replacement for the radiologist but as an additional reader</strong> and diagnostic safety net (<a href="https://www.nature.com/articles/s41591-026-04589-y" target="_blank" rel="noopener">Nature Medicine, 2026-08-19</a>).</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：<strong>規模與族群穩健度</strong>。<a href="https://www.nature.com/articles/s41591-026-04589-y" target="_blank" rel="noopener">回溯驗證 22,251 人 AUC 0.975、前瞻 10,333 人 AUC 0.952，且在脂肪肝（0.971）與肝硬化（0.924）等困難次族群仍維持水準</a>——次族群不掉，是影像 AI 最常失守的地方。</span>
+          <span class="en">: <strong>scale and subgroup robustness.</strong> <a href="https://www.nature.com/articles/s41591-026-04589-y" target="_blank" rel="noopener">AUC 0.975 across 22,251 retrospective patients and 0.952 in a 10,333-patient prospective trial, holding up in the hard subgroups — 0.971 in hepatic steatosis and 0.924 in cirrhosis</a>. Subgroup collapse is where imaging AI usually fails.</span>
+        </li>
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：<strong>有可指認的臨床後果，而不只是統計量。</strong><a href="https://www.nature.com/articles/s41591-026-04589-y" target="_blank" rel="noopener">51 個被漏掉的病灶（15 個惡性）、37 份修正報告、22 次 MDT 升階</a>——這是絕大多數 AUC 論文交不出來的東西，也是它比第 1 則更接近「病人結果」的原因。</span>
+          <span class="en">: <strong>identifiable clinical consequences, not just statistics.</strong> <a href="https://www.nature.com/articles/s41591-026-04589-y" target="_blank" rel="noopener">51 overlooked lesions (15 malignant), 37 amended reports, 22 MDT escalations</a> — something most AUC papers cannot produce, and the reason it sits closer to patient outcomes than story 1 does.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：<strong>單臂設計無法回答反事實。</strong>沒有對照組，就無法知道那 51 個病灶在沒有 AI 的情況下是否會在後續追蹤中被發現、以及延遲多久；也無法換算成存活或分期改善。作者自己指出需要跨醫療體系的前瞻比較研究。</span>
+          <span class="en">: <strong>a single-arm design cannot answer the counterfactual.</strong> Without a comparator there is no way to know whether those 51 lesions would have surfaced later anyway, or how much later, and no path to survival or stage-shift. The authors themselves call for prospective comparative studies across health systems.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：<strong>訓練與驗證的地理集中。</strong>資料主體來自中國醫療體系，而中國的 B 型肝炎相關肝細胞癌盛行率與歐美、甚至與台灣的病因結構都不同。台灣同樣以 B 肝為主要肝癌病因，理論上外推條件較歐美有利，但仍需本地驗證——這正是第 3 則所指「試驗 68% 只在單一國家執行」的同一個問題，只是換了國家。</span>
+          <span class="en">: <strong>geographic concentration of training and validation.</strong> The data is predominantly from Chinese health systems, where hepatitis-B-driven hepatocellular carcinoma prevalence differs from Western populations. Taiwan shares the hepatitis-B-dominant aetiology, so transfer is more plausible than to the US or EU — but local validation is still required. This is story 3's "68% of trials run in one country" problem, with a different country.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>SHAKED</h3>
+      <p class="sub"><span class="zh-inline">急診 LLM 臨床決策支援 · 醫學中心自建 · 以色列</span><span class="en-inline">Emergency-department LLM decision support · built in-house · Israel</span></p>
+      <p>
+        <span class="zh"><strong>功能與定位。</strong>在急診工作流程中提供以大型語言模型為基礎的臨床決策支援，涵蓋會診情境。定位是<strong>醫師主動查詢的輔助層</strong>——這個「主動」是它與 LiON 最根本的差異（<a href="https://www.nature.com/articles/s41591-026-04601-5" target="_blank" rel="noopener">Nature Medicine，2026-08-19</a>）。</span>
+        <span class="en"><strong>Function and position.</strong> LLM-based clinical decision support inside emergency-department workflow, including consultation scenarios. It is <strong>an assistive layer the clinician actively queries</strong> — and that word "actively" is its fundamental difference from LiON (<a href="https://www.nature.com/articles/s41591-026-04601-5" target="_blank" rel="noopener">Nature Medicine, 2026-08-19</a>).</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：<strong>研究誠實度本身就是最大優點。</strong>採 DECIDE-AI 第一階段設計、設平行對照翼、公布負面結果、並明說<a href="https://www.nature.com/articles/s41591-026-04601-5" target="_blank" rel="noopener">「不足以支持此階段的臨床部署」</a>。在一個充滿廠商自述數字的領域裡，這種自我否定的論文比多數正面結果更有價值。</span>
+          <span class="en">: <strong>the study's honesty is its greatest asset.</strong> DECIDE-AI stage 1, a parallel control wing, negative results published, and an explicit statement that the findings <a href="https://www.nature.com/articles/s41591-026-04601-5" target="_blank" rel="noopener">"do not justify clinical deployment at this stage."</a> In a field saturated with vendor-reported numbers, a paper willing to disconfirm itself is worth more than most positive ones.</span>
+        </li>
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：<strong>找到了真正有需求的次場景。</strong>整體採用率下滑，但放射科會診情境的使用勝算比達 <a href="https://www.nature.com/articles/s41591-026-04601-5" target="_blank" rel="noopener">OR = 2.98（95% CI 1.58–5.63）</a>。這是一條可行的產品路線：<strong>不要做「什麼都能問」的助手，去做那個醫師願意繞路去用的單一場景。</strong></span>
+          <span class="en">: <strong>it located a sub-scenario with genuine demand.</strong> Overall uptake fell, but radiology consultations ran at <a href="https://www.nature.com/articles/s41591-026-04601-5" target="_blank" rel="noopener">OR = 2.98 (95% CI 1.58–5.63)</a>. That is a viable product direction: <strong>stop building the assistant that answers anything, and build the one scenario a clinician will go out of their way to use.</strong></span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：<strong>採用率與工作負荷負相關，是產品設計的致命傷。</strong><a href="https://www.nature.com/articles/s41591-026-04601-5" target="_blank" rel="noopener">每增加一小時班內時數，使用勝算降至 0.72 倍</a>。一個宣稱能減輕負擔的工具，在負擔最重時最不被使用——這代表介入點擺錯了位置，應該移到不需要醫師動手的環節（自動預先產生、被動呈現）。</span>
+          <span class="en">: <strong>uptake correlating negatively with workload is a design-level flaw.</strong> <a href="https://www.nature.com/articles/s41591-026-04601-5" target="_blank" rel="noopener">Odds of use fall to 0.72 per additional shift hour</a>. A tool that claims to reduce burden goes unused precisely when burden peaks — meaning the intervention point is wrong and should move to where no clinician action is required (pre-generated, passively surfaced).</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：<strong>「99/100 適當」的殘餘風險沒有被處理。</strong>對照第 4 則的<a href="https://ai.nejm.org/doi/full/10.1056/AIoa2501001" target="_blank" rel="noopener">自動化偏誤 RCT（錯誤建議使診斷推理下降 14.0 個百分點）</a>，那 1% 不適當輸出不會被醫師穩定攔截。本研究四週、單院、未揭露基礎模型，也使得結果難以直接外推到其他醫療體系或其他模型版本。</span>
+          <span class="en">: <strong>the residual risk in "99 of 100" is unaddressed.</strong> Read against story 4's <a href="https://ai.nejm.org/doi/full/10.1056/AIoa2501001" target="_blank" rel="noopener">automation-bias RCT (flawed advice cut diagnostic reasoning by 14.0 points)</a>, that 1% will not be reliably intercepted. Four weeks, one hospital, and an undisclosed base model also make the result hard to transfer to other systems or model versions.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPANY ============ -->
+<section id="company">
+  <h2>03 — Companies &amp; Competition</h2>
+  <div class="sec-title">
+    <span class="zh">今天出現的六方，以及他們各自把 AI 擺在臨床流程的哪個位置</span>
+    <span class="en">Six players from today, and where each places AI inside the clinical workflow</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th><span class="zh-inline">機構／公司</span><span class="en-inline">Organisation</span></th>
+        <th><span class="zh-inline">近況與數字</span><span class="en-inline">Latest &amp; numbers</span></th>
+        <th><span class="zh-inline">在流程中的位置與護城河</span><span class="en-inline">Workflow position &amp; moat</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>阿里巴巴達摩院</strong><br><span class="zh-inline">DAMO Academy · 影像基礎模型</span><span class="en-inline">DAMO Academy · imaging models</span></td>
+          <td>
+            <span class="zh">與盛京醫院等共同發表 <a href="https://www.nature.com/articles/s41591-026-04589-y" target="_blank" rel="noopener">LiON：訓練 6,443／回溯 22,251／前瞻 10,333 人，AUC 0.975 與 0.952，撿回 51 個漏判病灶</a>；此前已有胰臟癌篩檢模型進入國際期刊。</span>
+            <span class="en">Co-published <a href="https://www.nature.com/articles/s41591-026-04589-y" target="_blank" rel="noopener">LiON with Shengjing Hospital: 6,443 training / 22,251 retrospective / 10,333 prospective, AUC 0.975 and 0.952, 51 overlooked lesions recovered</a>; previously published a pancreatic-cancer screening model.</span>
+          </td>
+          <td>
+            <span class="zh">位置：<strong>被動安全網</strong>（第二讀片者）。護城河＝中國多中心大型影像資料 × 器官級模型累積。弱點：資料地理集中、未見 FDA／CE 路徑資訊。</span>
+            <span class="en">Position: <strong>passive safety net</strong> (second reader). Moat = large multicentre Chinese imaging data × accumulated organ-scale models. Weakness: geographic concentration; no FDA/CE pathway disclosed.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Rambam Health Care Campus</strong><br><span class="zh-inline">以色列海法 · 自建 LLM CDS</span><span class="en-inline">Haifa, Israel · in-house LLM CDS</span></td>
+          <td>
+            <span class="zh"><a href="https://www.nature.com/articles/s41591-026-04601-5" target="_blank" rel="noopener">SHAKED 急診試辦：1,138 名病人、0 不良事件、99/100 輸出適當，採用率 68%→30%，LOS 4.9 小時無差異</a>；合作單位含 Technion、Mayo Clinic、Beth Israel Deaconess。</span>
+            <span class="en"><a href="https://www.nature.com/articles/s41591-026-04601-5" target="_blank" rel="noopener">SHAKED ED pilot: 1,138 patients, zero adverse events, 99/100 outputs appropriate, uptake 68%→30%, LOS 4.9h with no difference</a>; collaborators include the Technion, Mayo Clinic and Beth Israel Deaconess.</span>
+          </td>
+          <td>
+            <span class="zh">位置：<strong>主動查詢層</strong>。護城河＝院內資料與臨床試驗執行能力，而非產品。價值在方法論輸出：把「採用率」變成可測終點。</span>
+            <span class="en">Position: <strong>active query layer</strong>. Moat = in-house data and trial-execution capability, not a product. Its export is methodological: turning adoption into a measurable endpoint.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Ainex</strong><br><span class="zh-inline">南韓 · 內視鏡即時 AI</span><span class="en-inline">South Korea · real-time endoscopy AI</span></td>
+          <td>
+            <span class="zh"><a href="https://www.healthcareitnews.com/news/asia/korean-ai-support-digestive-diagnosis-national-university-hospital" target="_blank" rel="noopener">ENAD 導入新加坡國立大學醫院；宣稱 ADR 提高 16%；南韓逾 200 家院所部署，並取得泰、馬、哥倫比亞核准</a>（8/18）。</span>
+            <span class="en"><a href="https://www.healthcareitnews.com/news/asia/korean-ai-support-digestive-diagnosis-national-university-hospital" target="_blank" rel="noopener">ENAD deployed at NUH Singapore; claims a 16% ADR lift; 200+ Korean sites plus approvals in Thailand, Malaysia and Colombia</a> (Aug 18).</span>
+          </td>
+          <td>
+            <span class="zh">位置：<strong>即時被動提示</strong>（螢幕畫框）。護城河＝內視鏡設備商通路 × 多國核准堆疊。競爭者：Medtronic GI Genius、Fujifilm CAD EYE、Olympus ENDO-AID。</span>
+            <span class="en">Position: <strong>real-time passive prompting</strong> (on-screen boxes). Moat = endoscopy-vendor channels × stacked multi-country approvals. Competitors: Medtronic GI Genius, Fujifilm CAD EYE, Olympus ENDO-AID.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>長佳智能 EverFortune.AI</strong><br><span class="zh-inline">台灣 6841 · 影像 AI 醫材</span><span class="en-inline">Taiwan (6841) · imaging AI devices</span></td>
+          <td>
+            <span class="zh"><a href="https://www.biotech-edu.com/20260819-everfortuneai-tfda-license/" target="_blank" rel="noopener">闌尾炎 CT AI 取得 TFDA 許可（2026-08-18 公告），接續 4 月的美國 FDA 510(k)；累計 57 張海內外醫材證（美 FDA 15 張、TFDA 24 張），客戶逾 70 家</a>。</span>
+            <span class="en"><a href="https://www.biotech-edu.com/20260819-everfortuneai-tfda-license/" target="_blank" rel="noopener">Appendicitis CT AI cleared by Taiwan's TFDA (announced Aug 18, 2026), following a US FDA 510(k) in April; 57 device authorisations in total (15 US FDA, 24 TFDA) and 70+ customers</a>.</span>
+          </td>
+          <td>
+            <span class="zh">位置：<strong>急症分流提示</strong>。護城河＝台美雙軌法規證照堆疊 × 醫院渠道。弱點：與 LiON、Aidoc 同樣缺乏病人結果層級證據，競爭最終回到通路與價格。</span>
+            <span class="en">Position: <strong>acute triage prompting</strong>. Moat = stacked Taiwan-plus-US regulatory credentials × hospital channels. Weakness: like LiON and Aidoc, no patient-outcome-level evidence, so competition reverts to distribution and price.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>DeepHealth（RadNet）</strong><br><span class="zh-inline">美國 · 乳房攝影 AI 流程</span><span class="en-inline">US · mammography AI workflow</span></td>
+          <td>
+            <span class="zh"><a href="https://radiologybusiness.com/topics/artificial-intelligence/ai-backed-imaging-workflow-helps-generalist-radiologists-perform-breast-specialists" target="_blank" rel="noopener">7 月 23 日《Radiology》研究：95 位放射科醫師、109 家機構、約 578,000 次篩檢；一般放射科醫師癌症偵測率自每千例 3.76 升至 4.99，逼近專科醫師的 4.76；召回陽性預測值升 15.09%，召回率亦升 14.79%</a>。</span>
+            <span class="en"><a href="https://radiologybusiness.com/topics/artificial-intelligence/ai-backed-imaging-workflow-helps-generalist-radiologists-perform-breast-specialists" target="_blank" rel="noopener">A July 23 <em>Radiology</em> study: 95 radiologists, 109 facilities, ~578,000 screening mammograms; generalists' cancer detection rose from 3.76 to 4.99 per 1,000, approaching specialists' 4.76; PPV of recalls up 15.09%, recall rate also up 14.79%</a>.</span>
+          </td>
+          <td>
+            <span class="zh">位置：<strong>流程再設計</strong>（不只演算法）。護城河＝自有影像中心網路可同時控制流程與資料。價值主張是「補上專科人力缺口」，與今日主題直接呼應。</span>
+            <span class="en">Position: <strong>workflow redesign</strong>, not just an algorithm. Moat = owning the imaging-centre network, hence control of both workflow and data. Its pitch — closing the subspecialist gap — speaks directly to today's theme.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Curai Health / Khosla Ventures</strong><br><span class="zh-inline">美國 · 自主 AI 照護主張</span><span class="en-inline">US · autonomous-AI advocacy</span></td>
+          <td>
+            <span class="zh">與 Emanuel 共同於 <em>JAMA</em> 主張 <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/ai-advances-debate-grows-over-future-role-physicians" target="_blank" rel="noopener">AI 已在五項認知任務達到或超越醫師、2030 年可獨立部署，且醫師監督反而引入錯誤</a>；AMA 執行長 John Whyte 公開反駁（8/21）。</span>
+            <span class="en">With Emanuel in <em>JAMA</em>, argues <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/ai-advances-debate-grows-over-future-role-physicians" target="_blank" rel="noopener">AI already matches or beats physicians on five cognitive tasks, is deployable autonomously by 2030, and that physician oversight introduces error</a>; AMA CEO John Whyte publicly disagrees (Aug 21).</span>
+          </td>
+          <td>
+            <span class="zh">位置：<strong>取代層</strong>。護城河＝資本與敘事，而非臨床證據。應注意作者同時是該領域的經營者與投資人，論述屬<strong>有利益關係的立場文</strong>。</span>
+            <span class="en">Position: <strong>replacement layer</strong>. Moat = capital and narrative rather than clinical evidence. Note the authors are simultaneously operator and investor in the category: an <strong>interested position paper</strong>.</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============ TAIWAN ============ -->
+<section id="taiwan">
+  <h2>04 — Taiwan Angle</h2>
+  <div class="sec-title">
+    <span class="zh">台灣本週剛好收到第 57 張醫材證：接下來的問題不是「幾張證」，而是「證之後有沒有人用」</span>
+    <span class="en">Taiwan collected its 57th device authorisation this week: the next question is not how many, but whether anyone uses them</span>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="zh"><strong>今天台灣最值得記的一則。</strong>8 月 18 日，<strong>長佳智能（6841）</strong>宣布其闌尾炎 AI 醫材軟體「EFAI ERSUITE CT APPENDICITIS ASSESSMENT SYSTEM」取得<a href="https://www.biotech-edu.com/20260819-everfortuneai-tfda-license/" target="_blank" rel="noopener">台灣 TFDA 醫材許可，接續今年 4 月已取得的美國 FDA 510(k)，完成台美雙市場布局；公司累計 57 張海內外醫材證（其中美國 FDA 15 張、台灣 TFDA 24 張），客戶逾 70 家</a>。產品以深度學習自動分析腹部對比增強 CT，對疑似闌尾炎的成人病例提示醫療團隊。另一則值得並讀的是 8 月 21 日<strong>德國萊因（TÜV Rheinland）</strong>完成長聯科技衛教機器人「愛寶」的第三方測試：<a href="https://money.udn.com/money/story/123828/9706544" target="_blank" rel="noopener">在疾病、手術、檢查、藥物與照護流程五類資料檢索上命中率 100%，衛教回答正確性與忠實度 99.9%，資安威脅與高風險提問的分類準確率 100%</a>，測試方法參照 <a href="https://www.iso.org/standard/79799.html" target="_blank" rel="noopener">ISO/IEC TS 4213:2022</a>。</span>
+      <span class="en"><strong>Taiwan's item of the day.</strong> On August 18, <strong>EverFortune.AI (TWSE: 6841)</strong> announced that its appendicitis AI software, the EFAI ERSUITE CT Appendicitis Assessment System, had <a href="https://www.biotech-edu.com/20260819-everfortuneai-tfda-license/" target="_blank" rel="noopener">received Taiwan TFDA clearance, following its US FDA 510(k) in April and completing coverage of both markets; the company now holds 57 device authorisations worldwide (15 US FDA, 24 Taiwan TFDA) across 70-plus customers</a>. The product applies deep learning to contrast-enhanced abdominal CT and flags suspected adult appendicitis to the clinical team. Read alongside it: on August 21 <strong>TÜV Rheinland</strong> completed third-party testing of EverBot Technology's patient-education assistant "EirBot," reporting <a href="https://money.udn.com/money/story/123828/9706544" target="_blank" rel="noopener">a 100% retrieval hit rate across disease, surgery, examination, medication and care-process queries, 99.9% accuracy and faithfulness in its patient-education answers, and 100% classification accuracy on security threats and high-risk questions</a>, with methods referencing <a href="https://www.iso.org/standard/79799.html" target="_blank" rel="noopener">ISO/IEC TS 4213:2022</a>.</span>
+    </p>
+    <p>
+      <span class="zh"><strong>把今天的國際新聞換算成台灣的問題。</strong>台灣目前在 AI 醫材上真正跑得不慢——<a href="https://aimd.fda.gov.tw/" target="_blank" rel="noopener">TFDA 已建立智慧醫療器材資訊暨媒合平台</a>，長佳一家就有 24 張 TFDA 證；衛福部也已啟動<a href="https://aicenter.mohw.gov.tw/" target="_blank" rel="noopener">三大智慧醫療 AI 中心</a>。但第 1 則的 SHAKED 指出了一個台灣還沒有系統性回答的問題：<strong>那些已核准、已裝機的 AI，三個月後還有多少比例真的在被使用？</strong>台灣目前沒有公開的臨床 AI 使用率追蹤資料——不論是醫院自評、健保申報端，或是 TFDA 的上市後監督，都沒有把「採用率」納入必要回報項目。而 SHAKED 的核心發現正是：<strong>採用率會隨工作負荷而下降，且下降得比任何人預期的都快。</strong>台灣的醫護人力結構本就緊繃，這個係數在台灣只會更陡，不會更平。</span>
+      <span class="en"><strong>Converting today's international news into Taiwan's problem.</strong> Taiwan is not slow on AI devices: <a href="https://aimd.fda.gov.tw/" target="_blank" rel="noopener">the TFDA runs an AI/ML device information and matchmaking platform</a>, EverFortune alone holds 24 TFDA authorisations, and the MOHW has stood up <a href="https://aicenter.mohw.gov.tw/" target="_blank" rel="noopener">three national smart-healthcare AI centres</a>. But SHAKED in story 1 raises a question Taiwan has not systematically answered: <strong>of the AI already cleared and already installed, what share is still in use three months later?</strong> There is no public tracking of clinical-AI utilisation in Taiwan — not in hospital self-assessment, not on the NHI claims side, not in TFDA post-market surveillance, none of which treat adoption as a required reporting item. And SHAKED's central finding is exactly that <strong>adoption declines with workload, and faster than anyone expects.</strong> Taiwan's clinical staffing is already stretched thin, so that coefficient will be steeper here, not flatter.</span>
+    </p>
+    <p>
+      <span class="zh"><strong>三個具體的可行動方向。</strong><strong>(1) 把採用率變成上市後監督項目。</strong>第 3 則指出 FDA 那 1,357 台中只有 3 台驗過病人結果；台灣要在短期內補上療效證據不現實，但<strong>補上「使用率」這一層是低成本且立即可行的</strong>——它既是療效的前提，也是最容易造假不了的指標。<strong>(2) 優先採購被動型 AI。</strong>今天最清楚的一條經驗法則是：LiON 與 ENAD 這類「不需要醫師主動開啟」的 AI 維持得住使用率，SHAKED 這類「需要醫師多按一次」的則會衰退。台灣醫院在有限預算下排序時，這是比 AUC 更有預測力的指標。<strong>(3) 肝癌 AI 值得本地驗證。</strong>台灣與中國同為 B 型肝炎主導的肝細胞癌流行區，<a href="https://www.nature.com/articles/s41591-026-04589-y" target="_blank" rel="noopener">LiON 的病因結構與台灣相近</a>，比多數歐美影像 AI 更值得投入本地前瞻驗證；而台灣在肝病臨床研究上的既有基礎，本來就是少數具國際競爭力的領域。</span>
+      <span class="en"><strong>Three actionable directions.</strong> <strong>(1) Make utilisation a post-market surveillance item.</strong> Story 3 shows only 3 of the FDA's 1,357 devices were tested on patient outcomes; closing that evidence gap quickly is unrealistic for Taiwan, but <strong>adding the utilisation layer is cheap and immediately feasible</strong> — it is a precondition for efficacy and among the hardest metrics to fake. <strong>(2) Prioritise passive AI in procurement.</strong> Today's clearest rule of thumb: AI that requires no clinician to open it — LiON, ENAD — sustains its usage, while AI that asks for one more click decays. For hospitals ranking a limited budget, that predicts more than AUC does. <strong>(3) Liver AI deserves local validation.</strong> Taiwan shares China's hepatitis-B-dominant hepatocellular carcinoma profile, so <a href="https://www.nature.com/articles/s41591-026-04589-y" target="_blank" rel="noopener">LiON's aetiological base is closer to Taiwan's than most Western imaging AI</a>, making local prospective validation a better bet — and hepatology is already one of the few areas where Taiwan's clinical research base is internationally competitive.</span>
+    </p>
+    <p>
+      <span class="zh"><strong>需要保留的懷疑。</strong>愛寶的 100%／99.9% 來自單次委託測試，題庫組成、樣本量與難度分布均未公開，<strong>不能與臨床試驗等級的證據相提並論</strong>；長佳的 57 張證是<strong>法規准入數字，不是臨床效益數字</strong>——第 3 則整篇研究講的正是這兩者的落差。台灣在「拿證」這件事上表現不錯，但今天七則新聞加起來想說的是：<strong>拿證只是資格賽，真正的比賽在裝機之後的第 90 天。</strong></span>
+      <span class="en"><strong>The scepticism worth keeping.</strong> EirBot's 100%/99.9% come from a single commissioned test with an unpublished question bank, sample size and difficulty distribution, and <strong>cannot be equated with trial-grade evidence</strong>; EverFortune's 57 authorisations are a <strong>regulatory-access number, not a clinical-benefit number</strong> — the gap between those two is what story 3's entire paper is about. Taiwan performs well at obtaining clearances. What today's seven stories add up to is that <strong>clearance is the qualifying round; the real contest starts on day 90 after installation.</strong></span>
+    </p>
+  </div>
+</section>
+
+<!-- ============ READING ============ -->
+<section id="reading">
+  <h2>05 — Further Reading</h2>
+  <div class="sec-title">
+    <span class="zh">今天值得完整讀完的五篇</span>
+    <span class="en">Five worth reading end to end</span>
+  </div>
+
+  <ol class="reading">
+    <li>
+      <a href="https://www.nature.com/articles/s41591-026-04601-5" target="_blank" rel="noopener">Leibovitch, L., et al. “Prospective evaluation of a large language model clinical decision support system in the emergency department” — <em>Nature Medicine</em> (2026-08-19)</a>
+      <p class="why"><span class="zh">今天的第一必讀。請特別讀採用率隨時間下降那一段的分析方法——把「使用行為」當作結果變項來建模（含工作負荷交互作用），是目前臨床 AI 研究中最缺乏、也最容易被複製到其他院所的方法論。任何準備導入 LLM 工具的醫院，都應該先用這篇的設計寫自己的評估計畫。</span><span class="en">Today's essential read. Pay particular attention to how the paper models declining adoption over time — treating usage behaviour as an outcome variable with a workload interaction. That method is both the scarcest thing in clinical-AI research and the easiest to replicate elsewhere. Any hospital preparing to deploy an LLM tool should draft its evaluation plan from this design.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/articles/s41591-026-04589-y" target="_blank" rel="noopener">Shi, Y., et al. “Large-scale AI-guided liver malignancy diagnosis: multicenter study and a single-arm trial” — <em>Nature Medicine</em> (2026-08-19)</a>
+      <p class="why"><span class="zh">影像 AI 目前規模最大的前瞻研究之一。除了 AUC，更值得看的是它如何報告「AI 額外發現的病灶」與後續處置（修正報告、MDT 升階）——這是把統計指標翻譯成臨床行動的範例。台灣的肝病研究團隊若要做本地驗證，這篇是現成的協定藍本。</span><span class="en">One of the largest prospective imaging-AI studies to date. Beyond the AUC, the instructive part is how it reports lesions the AI surfaced and what happened next — amended reports, MDT escalations — a model for translating a statistic into clinical action. For any Taiwanese hepatology group planning local validation, this is a ready-made protocol template.</span></p>
+    </li>
+    <li>
+      <a href="https://ai.nejm.org/doi/full/10.1056/AIoa2501001" target="_blank" rel="noopener">“Automation Bias in Large Language Model–Assisted Diagnostic Reasoning among Physicians Trained in AI Literacy — A Randomized Clinical Trial” — <em>NEJM AI</em> (2026-05, NCT06963957)</a>
+      <p class="why"><span class="zh">不是本週新聞，但它是理解今天所有故事的必要背景。讀它是為了拆掉一個太常被當作前提的假設：「有醫師把關就安全」。若無法取得全文，<a href="https://www.medrxiv.org/content/10.1101/2025.08.23.25334280v1" target="_blank" rel="noopener">medRxiv 預印本</a>免費可讀，數字與結論一致。</span><span class="en">Not this week's news, but necessary background for every story above. Read it to dismantle an assumption too often treated as a premise: that a physician in the loop makes the system safe. If the full text is out of reach, the <a href="https://www.medrxiv.org/content/10.1101/2025.08.23.25334280v1" target="_blank" rel="noopener">medRxiv preprint</a> is free and carries the same figures and conclusions.</span></p>
+    </li>
+    <li>
+      <a href="https://link.springer.com/article/10.1186/s12913-026-14851-1" target="_blank" rel="noopener">Basu, S. &amp; Huynh, B. “Mitigating hallucinations in healthcare AI: a systematic review of evidence-based strategies” — <em>BMC Health Services Research</em> 26:1115 (2026-06-11)</a>
+      <p class="why"><span class="zh">開放取用、涵蓋 44 篇研究的系統性回顧，把七類緩解策略的效果量整理成可比較的表：<strong>RAG 降低幻覺 30–50%、知識圖譜 25–45%、人在迴路最高可達 95% 但難以規模化</strong>。對要導入 LLM 的醫院，這是目前最實用的一份技術選型依據。</span><span class="en">Open access, 44 studies, and it tabulates effect sizes across seven mitigation strategies in comparable form: <strong>RAG cuts hallucinations 30–50%, knowledge graphs 25–45%, human-in-the-loop up to 95% but does not scale</strong>. For a hospital selecting an LLM architecture, this is the most practical decision aid currently available.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/articles/s41467-026-73923-2" target="_blank" rel="noopener">Kömen, J., et al. “Towards robust foundation models for digital pathology” (PathoROB) — <em>Nature Communications</em> 17:5218 (2026-06-11)</a>
+      <p class="why"><span class="zh">與今天第 2 則對照著讀最有價值。這份基準測試對 20 個病理基礎模型施加掃描器與染色等非生物性變異，發現<strong>當訓練資料與醫學中心相關時，腫瘤偵測準確率可從 &gt;92% 掉到 53–87%</strong>——也就是模型學到的是機構特徵而非生物訊號。任何跨院採購 AI 的單位都該先問這一題。</span><span class="en">Best read against today's story 2. The benchmark subjects 20 pathology foundation models to non-biological variation such as scanner and staining differences, and finds that <strong>when training data correlates with medical centre, tumour detection accuracy falls from above 92% to 53–87%</strong> — the model learned the institution, not the biology. Anyone procuring AI across multiple hospitals should ask this question first.</span></p>
+    </li>
+  </ol>
+</section>
+
+<!-- ============ REFS ============ -->
+<section id="refs">
+  <h2>06 — References</h2>
+  <div class="sec-title">
+    <span class="zh">參考文獻</span>
+    <span class="en">References</span>
+  </div>
+
+  <div class="panel">
+    <ol class="refs">
+      <li>Leibovitch, L., Ahituv, A., Gorenshtein, A., Aran, D., Sorka, M., Miron, K., Shelly, S. “Prospective evaluation of a large language model clinical decision support system in the emergency department.” <em>Nature Medicine</em>, 2026-08-19. <a href="https://www.nature.com/articles/s41591-026-04601-5" target="_blank" rel="noopener">nature.com/articles/s41591-026-04601-5</a></li>
+      <li>Shi, Y., et al. “Large-scale AI-guided liver malignancy diagnosis: multicenter study and a single-arm trial.” <em>Nature Medicine</em>, 2026-08-19. <a href="https://www.nature.com/articles/s41591-026-04589-y" target="_blank" rel="noopener">nature.com/articles/s41591-026-04589-y</a> · <span class="zh-inline">期刊最新文章列表</span><span class="en-inline">journal listing</span> <a href="https://www.nature.com/nm/articles" target="_blank" rel="noopener">nature.com/nm/articles</a></li>
+      <li>Abulibdeh, R., et al. “1,357 AI medical devices cleared, 3 actually tested on patient outcomes.” <em>PLOS Digital Health</em>, 2026-08-19. DOI: 10.1371/journal.pdig.0001597. <a href="https://journals.plos.org/digitalhealth/article?id=10.1371%2Fjournal.pdig.0001597" target="_blank" rel="noopener">journals.plos.org</a></li>
+      <li>“FDA-cleared medical AI rarely tested for real-world benefits.” <em>News-Medical</em>, 2026-08-20. <a href="https://www.news-medical.net/news/20260820/FDA-cleared-medical-AI-rarely-tested-for-real-world-benefits.aspx" target="_blank" rel="noopener">news-medical.net</a> · “Most AI tools cleared by FDA were not tested on clinical outcomes.” <em>Healio</em>, 2026-08-21. <a href="https://www.healio.com/news/primary-care/20260821/most-ai-tools-cleared-by-fda-were-not-tested-on-clinical-outcomes" target="_blank" rel="noopener">healio.com</a> · “Most FDA-cleared AI medical devices not tested on patient outcomes.” <em>AuntMinnie</em>. <a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/article/15832887/most-fdacleared-ai-medical-devices-not-tested-on-patient-outcomes" target="_blank" rel="noopener">auntminnie.com</a></li>
+      <li>U.S. FDA. “Artificial Intelligence-Enabled Medical Devices” (<span class="zh-inline">官方清單</span><span class="en-inline">official device list</span>). <a href="https://www.fda.gov/medical-devices/software-medical-device-samd/artificial-intelligence-enabled-medical-devices" target="_blank" rel="noopener">fda.gov</a></li>
+      <li>“Automation Bias in Large Language Model–Assisted Diagnostic Reasoning among Physicians Trained in AI Literacy — A Randomized Clinical Trial.” <em>NEJM AI</em>, 2026-05 (Vol. 3, No. 5), NCT06963957. <a href="https://ai.nejm.org/doi/full/10.1056/AIoa2501001" target="_blank" rel="noopener">ai.nejm.org</a> · <span class="zh-inline">摘要報導</span><span class="en-inline">summary coverage</span>: <a href="https://www.bjh.be/automation-bias-persists-in-ai-trained-physicians-erroneous-llm-advice-worsens-diagnostic-reasoning/" target="_blank" rel="noopener">bjh.be</a> · <span class="zh-inline">預印本</span><span class="en-inline">preprint</span>: <a href="https://www.medrxiv.org/content/10.1101/2025.08.23.25334280v1" target="_blank" rel="noopener">medRxiv</a></li>
+      <li>“Mitigating Automation Bias in Physician-LLM Diagnostic Reasoning Using Behavioral Nudges: A Randomized Controlled Trial.” <em>medRxiv</em>, 2026-06. <a href="https://www.medrxiv.org/content/10.64898/2026.06.01.26354596v1.full" target="_blank" rel="noopener">medrxiv.org</a></li>
+      <li>“Korean AI to support digestive diagnosis at NUH.” <em>Healthcare IT News (Asia)</em>, 2026-08-18. <a href="https://www.healthcareitnews.com/news/asia/korean-ai-support-digestive-diagnosis-national-university-hospital" target="_blank" rel="noopener">healthcareitnews.com</a></li>
+      <li>“As AI advances, a debate grows over the future role of doctors.” <em>Fierce Healthcare</em>, 2026-08-21. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/ai-advances-debate-grows-over-future-role-physicians" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>“In dementia care, detection is not the bottleneck.” <em>Healthcare IT News (Asia)</em>, 2026-08-22. <a href="https://www.healthcareitnews.com/news/asia/dementia-care-detection-not-bottleneck" target="_blank" rel="noopener">healthcareitnews.com</a> · “Rural hospitals face high stakes in allocating AI investments.” <em>Healthcare IT News</em>, 2026-08-21. <a href="https://www.healthcareitnews.com/news/rural-hospitals-face-high-stakes-allocating-ai-investments" target="_blank" rel="noopener">healthcareitnews.com</a></li>
+      <li>“FDA weighs regulatory approach for genAI medical devices.” <em>Healthcare IT News</em>, 2026-08-21. <a href="https://www.healthcareitnews.com/news/fda-weighs-regulatory-approach-genai-medical-devices" target="_blank" rel="noopener">healthcareitnews.com</a></li>
+      <li>“AI-backed imaging workflow helps generalist radiologists perform like breast specialists.” <em>Radiology Business</em>, 2026-07-23（<span class="zh-inline">原始研究刊於 RSNA</span><span class="en-inline">underlying study in RSNA's</span> <em>Radiology</em>）. <a href="https://radiologybusiness.com/topics/artificial-intelligence/ai-backed-imaging-workflow-helps-generalist-radiologists-perform-breast-specialists" target="_blank" rel="noopener">radiologybusiness.com</a></li>
+      <li>Basu, S., Huynh, B. “Mitigating hallucinations in healthcare AI: a systematic review of evidence-based strategies.” <em>BMC Health Services Research</em> 26:1115, 2026-06-11. <a href="https://link.springer.com/article/10.1186/s12913-026-14851-1" target="_blank" rel="noopener">link.springer.com</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/42251377/" target="_blank" rel="noopener">PubMed</a></li>
+      <li>Kömen, J., Müller, K.-R., et al. “Towards robust foundation models for digital pathology” (PathoROB). <em>Nature Communications</em> 17:5218, 2026-06-11. <a href="https://www.nature.com/articles/s41467-026-73923-2" target="_blank" rel="noopener">nature.com/articles/s41467-026-73923-2</a></li>
+      <li>「長佳智能闌尾炎AI醫療器材軟體攻台美市場 累計有57張海內外醫材證」，<em>台灣光鹽生物科技學苑</em>，2026-08-19（<span class="zh-inline">公司公告日 8/18</span><span class="en-inline">company announcement Aug 18</span>）。<a href="https://www.biotech-edu.com/20260819-everfortuneai-tfda-license/" target="_blank" rel="noopener">biotech-edu.com</a></li>
+      <li>「醫療 AI 回答不能『無中生有』 德國萊因完成長聯科技『愛寶』AI 衛教測試」，<em>經濟日報</em>，2026-08-21。<a href="https://money.udn.com/money/story/123828/9706544" target="_blank" rel="noopener">money.udn.com</a> · <span class="zh-inline">測試參照標準</span><span class="en-inline">referenced standard</span> <a href="https://www.iso.org/standard/79799.html" target="_blank" rel="noopener">ISO/IEC TS 4213:2022</a></li>
+      <li><span class="zh-inline">台灣智慧醫材與政策背景：</span><span class="en-inline">Taiwan device and policy background: </span><a href="https://aimd.fda.gov.tw/" target="_blank" rel="noopener">TFDA 智慧醫療器材資訊暨媒合平台</a> · <a href="https://aicenter.mohw.gov.tw/" target="_blank" rel="noopener">衛福部臺灣智慧醫療三大中心</a></li>
+      <li><span class="zh-inline">近期日報（供對照）：</span><span class="en-inline">Recent editions (for cross-reference): </span><a href="https://ai-medical-daily.peteraim.com/reports/2026-08-20.html" target="_blank" rel="noopener">8/20 技術</a> · <a href="https://ai-medical-daily.peteraim.com/reports/2026-08-21.html" target="_blank" rel="noopener">8/21 產品</a> · <a href="https://ai-medical-daily.peteraim.com/reports/2026-08-22.html" target="_blank" rel="noopener">8/22 廣義 AI</a> · <a href="https://ai-medical-daily.peteraim.com/reports/2026-08-23.html" target="_blank" rel="noopener">8/23 本週回顧</a></li>
+    </ol>
+    <div class="note">
+      <span class="zh"><strong>編輯說明：</strong>(1) 第 1、2 則的數字均直接取自《Nature Medicine》兩篇論文的公開摘要與結果段落；兩篇論文全文位於付費牆後，本報告未引用摘要以外無法核實的內容。(2) 第 4 則的 <em>NEJM AI</em> 論文<strong>發表於 2026 年 5 月，並非本週新聞</strong>，列入是作為理解第 1 則安全性數字的必要背景；其全文需訂閱，本報告的數字取自公開摘要與免費 medRxiv 預印本，兩者一致。(3) 第 5 則 ENAD「腺瘤偵測率提高 16%」為<strong>廠商自述之彙整數字</strong>，原始報導未附對應論文連結，本報告未能獨立核實。(4) 第 6 則的 <em>JAMA</em> 觀點文本身位於付費牆後，本報告依 Fierce Healthcare 的公開報導撰寫；該文兩位作者分別為自主 AI 照護公司經營者與其投資人，屬<strong>有利益關係之立場論述</strong>。(5) 第 7 則為受訪企業觀點，Brain Health Playground 未見同儕審查成效證據；文中 39%／22% 係其引用之統合分析數據。(6) 台灣段落中「愛寶」的 100%／99.9% 來自單次委託測試，題庫組成、樣本量與難度分布未公開，不宜與臨床試驗等級證據相提並論；長佳智能的醫材證張數為公司自述並經媒體轉載，屬法規准入指標而非臨床效益指標。(7) 本報告所有連結均為研究階段實際造訪之網址，未做任何組合或推測。</span>
+      <span class="en"><strong>Editor's note:</strong> (1) All figures in stories 1 and 2 are taken directly from the public abstracts and results sections of the two <em>Nature Medicine</em> papers; both full texts are paywalled and nothing beyond the verifiable abstract material is cited here. (2) The <em>NEJM AI</em> paper in story 4 <strong>was published in May 2026 and is not this week's news</strong>; it is included as necessary background for reading story 1's safety figures. Its full text requires a subscription, so figures here come from the public abstract and the free medRxiv preprint, which agree. (3) ENAD's "16% increase in adenoma detection rate" in story 5 is a <strong>vendor-aggregated figure</strong>; the source report links no underlying paper and this report could not verify it independently. (4) The <em>JAMA</em> viewpoint in story 6 is paywalled and is reported here via Fierce Healthcare's public coverage; two of its authors are respectively the operator and the investor of an autonomous-AI care company, making it <strong>an interested position paper</strong>. (5) Story 7 is an interview with an interested vendor; Brain Health Playground has no peer-reviewed outcome evidence, and the 39%/22% figures come from the meta-analysis it cites. (6) In the Taiwan section, EirBot's 100%/99.9% come from a single commissioned test whose question bank, sample size and difficulty distribution are unpublished and should not be equated with trial-grade evidence; EverFortune's authorisation count is company-reported via media and is a regulatory-access metric, not a clinical-benefit one. (7) Every link in this report is a URL actually visited during research; none was constructed or inferred.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-row">
+    <div>
+      <span class="zh">AI／醫療AI 每日新知日報 · 由 Claude 於台北時間每日自動產出 · 本期主題：星期一／臨床應用與研究<br>本報告內容經來源查證，但不構成投資或醫療建議。所有數據請以原始出處為準。</span>
+      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Monday / clinical applications and research<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
+    </div>
+    <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com / 返回 peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
+  </div>
+</footer>
+</main>
+
+<div class="fabs">
+  <button class="up" id="up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+  <a class="home-fab" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg></a>
+</div>
+
+<script>
+function setLang(l){
+  document.body.classList.remove('lang-zh','lang-en');
+  document.body.classList.add('lang-'+l);
+  document.documentElement.lang = (l==='zh') ? 'zh-Hant' : 'en';
+  document.getElementById('b-zh').classList.toggle('on', l==='zh');
+  document.getElementById('b-en').classList.toggle('on', l==='en');
+  document.title = (l==='zh')
+    ? 'AI／醫療AI 每日新知日報 · 2026-08-24'
+    : 'AI & Medical AI Daily · 2026-08-24';
+}
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.getElementById('theme-ic').textContent =
+    document.body.classList.contains('dark') ? '◑' : '◐';
+}
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.body.classList.add('dark');
+  document.getElementById('theme-ic').textContent = '◑';
+}
+window.addEventListener('scroll', function(){
+  document.getElementById('up').classList.toggle('show', window.scrollY > 600);
+});
+
+/* GitHub 星星數：無需授權，失敗或被限流時靜默保留佔位符 */
+(function(){
+  var el = document.getElementById('ghs');
+  if (!el || typeof fetch !== 'function') return;
+  fetch('https://api.github.com/repos/tingwei161803/ai-medical-daily', {headers:{Accept:'application/vnd.github+json'}})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if (!d || typeof d.stargazers_count !== 'number') return;
+      var n = d.stargazers_count;
+      el.textContent = n >= 1000 ? (Math.round(n/100)/10) + 'k' : String(n);
+    })
+    .catch(function(){});
+})();
+</script>
+</body>
+</html>
