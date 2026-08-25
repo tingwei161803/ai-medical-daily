@@ -1,0 +1,91 @@
+name: 建置站台
+
+# 推一份「中英並排」的日報到 reports/ 就好，其餘四個檔（拆完的中英兩版、
+# 兩份首頁、sitemap）由這個 workflow 產生並 commit 回來。
+#
+# 用 GITHUB_TOKEN 推的 commit 不會再觸發 workflow，所以不會無限迴圈。
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'reports/**'
+      - 'build_index.py'
+      - 'assets/**'
+      - 'tools/**'
+      - '.github/workflows/build.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-site
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: 重建站台（拆中英、兩份首頁、sitemap）
+        run: python3 build_index.py | tee /tmp/build.log
+
+      - name: 找出最新一份日報的日期
+        id: latest
+        run: |
+          d=$(ls reports/*.html | sort | tail -1 | xargs basename | sed 's/\.html$//')
+          echo "date=$d" >> "$GITHUB_OUTPUT"
+          echo "最新一份：$d"
+
+      # 先 commit 再驗。若真的有問題，讓「拆好的兩份」上線都比讓「中英並排的
+      # 原稿」留在線上好——後者會中英文疊在一起顯示，而且沒有英文版網址。
+      - name: Commit 建置產物
+        run: |
+          git config user.name  'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          if git diff --cached --quiet; then
+            echo "沒有變更，不用 commit"
+          else
+            git commit -m "build: 重建英文版、兩份首頁與 sitemap（${{ steps.latest.outputs.date }}）"
+            git push
+          fi
+
+      - name: 檢查有沒有日報被跳過
+        run: |
+          if grep -q '! 跳過' /tmp/build.log; then
+            echo "::error::有日報沒被拆開，那一天只會有中文版、英文站會少一天。"
+            grep '! 跳過' -A1 /tmp/build.log
+            exit 1
+          fi
+          echo "沒有任何日報被跳過"
+
+      - name: 兩份首頁與 sitemap 的份數必須對得起來
+        run: |
+          # 只數靜態卡片（href="reports/…"），不要數到 JS 裡那段樣板字串
+          n=$(ls reports/*.html | wc -l)
+          zh=$(grep -c '<a class="item" href="reports/' index.html)
+          en=$(grep -c '<a class="item" href="reports/' en/index.html)
+          loc=$(grep -c '<loc>' sitemap.xml)
+          echo "日報 $n 份 / 中文首頁 $zh / 英文首頁 $en / sitemap $loc 個網址"
+          [ "$zh" = "$n" ] && [ "$en" = "$n" ] \
+            || { echo "::error::首頁卡片數對不上日報數（日報 $n、中文 $zh、英文 $en）"; exit 1; }
+          [ "$loc" = "$(( (n + 1) * 2 ))" ] \
+            || { echo "::error::sitemap 應有 $(( (n + 1) * 2 )) 個網址，實際 $loc"; exit 1; }
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 裝 Playwright
+        run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+
+      - name: 自檢最新一份日報（中英兩版 + 兩份首頁）
+        run: node tools/selfcheck.mjs "${{ steps.latest.outputs.date }}"
