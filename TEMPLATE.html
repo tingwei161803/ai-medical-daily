@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  日報的「中英並排原稿」骨架。這一份放在根目錄，build_index.py 只掃 reports/，
+  所以它不會被拆、不會進首頁、不會進 sitemap，可以安心當參照。
+
+  用法：複製成 reports/YYYY-MM-DD.html，換掉 <head> 的 meta、把 ★ 標的地方
+  換成當天內容，重複的區塊（card / tr / li）照樣式增生到需要的數量。
+
+  ── 拆得開的三個硬條件（不合就整份被跳過，英文站會少一天）──────────────
+  1. span.zh 的數量 == span.en 的數量，
+     span.zh-inline 的數量 == span.en-inline 的數量。
+     兩組各自要相等，不能互相抵銷。每寫一個 zh 就緊接著寫它的 en。
+     段落級用 zh / en，句中短詞用 zh-inline / en-inline。
+  2. head 內有 report-title-en 與 report-summary-en。
+  3. 全文剛好一組 div.seg。
+
+  ⚠️ 這四個 class 的開標籤只能出現在「真的要成對的內容」上。連註解裡都不要
+     寫出字面的開標籤 —— 建置時 lang_spans() 會逐個掃、找不到對應的 </span>
+     就直接 SystemExit，**整個建置停擺**，不是只跳過那一份。要在文字裡提到
+     它們，就像這段一樣寫成 span.zh 這種形式。
+
+  ── 另外兩件容易踩的事 ──────────────────────────────────
+  • report-date 是唯一真相來源。canonical、og:url、三行 hreflang、兩邊的
+    meta description 全部由 build_index.py 依它重寫，所以下面 canonical 寫錯
+    日期不會害到線上頁面，但 report-date 寫錯就整份錯。
+  • 這份原稿直接用瀏覽器開會看到中英文疊在一起、語言切換沒反應 —— 正常。
+    assets/report.css 已經沒有「藏起另一種語言」的規則了（線上每頁本來就只
+    剩一種語言）。不要為了修這個而加 inline CSS。版面對不對，等建置完再驗：
+        python3 build_index.py && node tools/selfcheck.mjs YYYY-MM-DD
+  ============================================================================
+-->
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>AI／醫療AI 每日新知日報 · YYYY-MM-DD</title>
+<meta property="og:url" content="https://ai-medical-daily.peteraim.com/reports/YYYY-MM-DD.html" />
+<link rel="canonical" href="https://ai-medical-daily.peteraim.com/reports/YYYY-MM-DD.html" />
+<meta name="report-date" content="YYYY-MM-DD">
+<meta name="report-theme" content="★ clinical | industry | regulation | technology | product | general-ai | weekly-review">
+<meta name="report-title-zh" content="★ 中文標題">
+<meta name="report-title-en" content="★ English headline">
+<meta name="report-summary-zh" content="★ 一句話中文摘要（會變成首頁卡片摘要與這頁的 meta description）">
+<meta name="report-summary-en" content="★ One-line English summary (becomes the index card blurb and this page's meta description)">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HJLDQZDK5V');
+</script>
+<link rel="stylesheet" href="/assets/report.css">
+</head>
+<body class="lang-zh">
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span><span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <div class="bar-sp"></div>
+    <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub / 在 GitHub 給這個專案一顆星"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
+    <!-- 剛好一組 .seg，建置時整塊會換成指向另一語言網址的真連結 -->
+    <div class="seg">
+      <button id="b-zh" class="on" onclick="setLang('zh')">中文</button>
+      <button id="b-en" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="kicker">
+    <span class="zh-inline">★ 星期X · 中文主題</span>
+    <span class="en-inline">★ Weekday · English theme</span>
+  </div>
+  <h1>
+    <span class="zh">★ 中文標題（跟 report-title-zh 一致）</span>
+    <span class="en">★ English headline (same as report-title-en)</span>
+  </h1>
+  <div class="dateline">
+    <span class="zh-inline">★ 2026 年 X 月 X 日（X）· 涵蓋 X/XX–X/XX · 台北時間</span>
+    <span class="en-inline">★ Weekday, Month DD, 2026 · Covering Mon DD–DD · Taipei time</span>
+  </div>
+  <p class="lede">
+    <span class="zh">★ 導言。每一個具體事實、數字、金額、日期都要就地附上出處：<a href="https://例如.com/實際造訪過的網址" target="_blank" rel="noopener">來源名稱</a>。不要只把連結留到頁尾的參考文獻。</span>
+    <span class="en">★ Standfirst. Every concrete fact, figure, sum or date carries its source inline: <a href="https://例如.com/實際造訪過的網址" target="_blank" rel="noopener">source name</a>. Do not save links for the reference list at the foot.</span>
+  </p>
+
+  <nav class="toc">
+    <a href="#top"><span class="zh-inline">重點新聞</span><span class="en-inline">Top Stories</span></a>
+    <a href="#product"><span class="zh-inline">產品分析</span><span class="en-inline">Product Analysis</span></a>
+    <a href="#company"><span class="zh-inline">公司與競爭</span><span class="en-inline">Companies &amp; Competition</span></a>
+    <a href="#taiwan"><span class="zh-inline">台灣視角</span><span class="en-inline">Taiwan Angle</span></a>
+    <a href="#reading"><span class="zh-inline">延伸閱讀</span><span class="en-inline">Further Reading</span></a>
+    <a href="#refs"><span class="zh-inline">參考文獻</span><span class="en-inline">References</span></a>
+  </nav>
+</div>
+
+<!-- ============ 01 重點新聞：這個 .card 整塊複製 5–8 次 ============ -->
+<section id="top">
+  <h2>01 — Top Stories</h2>
+  <div class="sec-title">
+    <span class="zh">★ 這一節的一句話定調</span>
+    <span class="en">★ One line framing this section</span>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">★ 分類</span><span class="en-inline">★ Category</span></span>
+      <span class="tag">★ 公司</span><span class="tag">★ 產品</span><span class="tag">★ M/DD</span>
+    </div>
+    <h3>
+      <span class="zh">★ 這則新聞的中文標題</span>
+      <span class="en">★ English headline for this story</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">★ 發生了什麼，含具體數字與<a href="https://例如.com/實際造訪過的網址" target="_blank" rel="noopener">就地連結</a>。</span>
+        <span class="en">★ What happened, with the concrete numbers and an <a href="https://例如.com/實際造訪過的網址" target="_blank" rel="noopener">inline source</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">★ 為什麼這件事值得注意，放進產業脈絡。</span>
+        <span class="en">★ Why it is worth noticing, placed in industry context.</span>
+      </p></div>
+    <!-- 選用：廠商自述、付費牆、樣本數太小之類，用這一列誠實標出來 -->
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">★ 這則消息裡哪些數字是廠商自述、未經第三方稽核。</span>
+        <span class="en">★ Which figures here are vendor-reported and not independently audited.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://例如.com/實際造訪過的網址" target="_blank" rel="noopener">★ 出處名稱, YYYY-MM-DD</a></p></div>
+  </div>
+</section>
+
+<!-- ============ 02 產品分析：.panel 放 1–2 個 ============ -->
+<section id="product">
+  <h2>02 — Product Analysis</h2>
+  <div class="sec-title">
+    <span class="zh">★ 這一節要拆的是哪兩個產品、對比在哪</span>
+    <span class="en">★ Which two products, and what the contrast is</span>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>★ 產品名（產品名不翻譯，中英版共用）</h3>
+      <p class="sub"><span class="zh-inline">★ 一行定位 · 公司（國別）</span><span class="en-inline">★ One-line positioning · Company (country)</span></p>
+      <p>
+        <span class="zh"><strong>功能與定位。</strong>★ 它做什麼、賣給誰、<a href="https://例如.com/實際造訪過的網址" target="_blank" rel="noopener">出處</a>。</span>
+        <span class="en"><strong>Function and position.</strong> ★ What it does, who buys it, <a href="https://例如.com/實際造訪過的網址" target="_blank" rel="noopener">source</a>.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：★ 一項優勢，附<a href="https://例如.com/實際造訪過的網址" target="_blank" rel="noopener">可查證的連結</a>。</span>
+          <span class="en">: ★ one strength, with a <a href="https://例如.com/實際造訪過的網址" target="_blank" rel="noopener">verifiable link</a>.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：★ 一項疑慮，缺什麼數據就直說缺。</span>
+          <span class="en">: ★ one concern — if a figure is missing, say it is missing.</span>
+        </li>
+      </ul>
+    </div>
+    <!-- 第二個 .panel 照上面整塊複製 -->
+  </div>
+</section>
+
+<!-- ============ 03 公司與競爭：<tr> 複製到需要的家數 ============ -->
+<section id="company">
+  <h2>03 — Companies &amp; Competition</h2>
+  <div class="sec-title">
+    <span class="zh">誰站在哪裡、憑什麼、跟誰打</span>
+    <span class="en">Who stands where, on what, against whom</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th><span class="zh-inline">公司</span><span class="en-inline">Company</span></th>
+        <th><span class="zh-inline">近況與數字</span><span class="en-inline">Recent state &amp; numbers</span></th>
+        <th><span class="zh-inline">競爭定位與護城河</span><span class="en-inline">Position &amp; moat</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>★ 公司名</strong><br><span class="zh-inline">★ 一句話定位</span><span class="en-inline">★ One-line positioning</span></td>
+          <td>
+            <span class="zh">★ 近況與具體數字，<strong>這一列本身就要有</strong><a href="https://例如.com/實際造訪過的網址" target="_blank" rel="noopener">來源連結</a>。</span>
+            <span class="en">★ Recent state with concrete numbers — <strong>this row itself carries</strong> its <a href="https://例如.com/實際造訪過的網址" target="_blank" rel="noopener">source link</a>.</span>
+          </td>
+          <td>
+            <span class="zh">★ 護城河是什麼、弱點在哪。</span>
+            <span class="en">★ What the moat is, and where it is thin.</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="zh"><strong>★ 把這一節收束成一句話。</strong>★ 今天的競爭結構是什麼形狀。</span>
+      <span class="en"><strong>★ Close the section in one sentence.</strong> ★ What shape today's competitive structure has.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============ 04 台灣視角：當天真的沒有合理關聯就整節刪掉，不要硬誎 ============ -->
+<section id="taiwan">
+  <h2>04 — Taiwan Angle</h2>
+  <div class="sec-title">
+    <span class="zh">★ 這一節的角度</span>
+    <span class="en">★ The angle taken here</span>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="zh"><strong>(1) ★ 第一個意義。</strong>★ 今天的國際消息換算成台灣尺度是什麼，附<a href="https://例如.com/實際造訪過的網址" target="_blank" rel="noopener">出處</a>。</span>
+      <span class="en"><strong>(1) ★ First implication.</strong> ★ What today's international news means at Taiwanese scale, with a <a href="https://例如.com/實際造訪過的網址" target="_blank" rel="noopener">source</a>.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============ 05 延伸閱讀：3–5 個 <li> ============ -->
+<section id="reading">
+  <h2>05 — Further Reading</h2>
+  <div class="sec-title">
+    <span class="zh">★ 這份清單的挑選標準</span>
+    <span class="en">★ How this list was chosen</span>
+  </div>
+
+  <ol class="reading">
+    <li>
+      <a href="https://例如.com/實際造訪過的網址" target="_blank" rel="noopener">★ 文章標題 — 出處 (YYYY-MM-DD)</a>
+      <p class="why"><span class="zh">★ 一句話說為什麼值得讀，不要複述摘要。</span><span class="en">★ One sentence on why it is worth reading — not a restatement of the abstract.</span></p>
+    </li>
+  </ol>
+</section>
+
+<!-- ============ 06 參考文獻：所有引用來源的完整清單 ============ -->
+<section id="refs">
+  <h2>06 — References</h2>
+  <div class="sec-title">
+    <span class="zh">參考文獻</span>
+    <span class="en">References</span>
+  </div>
+
+  <div class="panel">
+    <ol class="refs">
+      <li>★ 標題. <em>出處</em>, YYYY-MM-DD. <a href="https://例如.com/實際造訪過的網址" target="_blank" rel="noopener">網域</a></li>
+    </ol>
+    <div class="note">
+      <span class="zh"><strong>編輯說明：</strong>★ 付費牆來源、廠商自述未經稽核的數字、窗口不足而前推的日期、引自二手報導而非原始發表的資料 —— 全部在這裡誠實交代。</span>
+      <span class="en"><strong>Editor's note:</strong> ★ Paywalled sources, unaudited vendor-reported figures, a window extended back for want of news, anything cited from secondary coverage rather than the primary publication — account for all of it here.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-row">
+    <div>
+      <span class="zh">AI／醫療AI 每日新知日報 · 由 Claude 於台北時間每日自動產出 · 本期主題：★ 星期X／中文主題<br>本報告內容經來源查證，但不構成投資或醫療建議。所有數據請以原始出處為準。</span>
+      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: ★ Weekday / English theme<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
+    </div>
+    <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com / 返回 peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
+  </div>
+</footer>
+</main>
+
+<div class="fabs">
+  <button class="up" id="up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+  <a class="home-fab" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg></a>
+</div>
+
+<script>
+/* setLang 只有並排原稿用得到，建置時會自動拆掉，其餘保留。原樣帶上就好。 */
+function setLang(l){
+  document.body.classList.remove('lang-zh','lang-en');
+  document.body.classList.add('lang-'+l);
+  document.documentElement.lang = (l==='zh') ? 'zh-Hant' : 'en';
+  document.getElementById('b-zh').classList.toggle('on', l==='zh');
+  document.getElementById('b-en').classList.toggle('on', l==='en');
+  document.title = (l==='zh')
+    ? 'AI／醫療AI 每日新知日報 · YYYY-MM-DD'
+    : 'AI & Medical AI Daily · YYYY-MM-DD';
+}
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.getElementById('theme-ic').textContent =
+    document.body.classList.contains('dark') ? '◑' : '◐';
+}
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.body.classList.add('dark');
+  document.getElementById('theme-ic').textContent = '◑';
+}
+window.addEventListener('scroll', function(){
+  document.getElementById('up').classList.toggle('show', window.scrollY > 600);
+});
+
+/* GitHub 星星數：無需授權，失敗或被限流時靜默保留佔位符 */
+(function(){
+  var el = document.getElementById('ghs');
+  if (!el || typeof fetch !== 'function') return;
+  fetch('https://api.github.com/repos/tingwei161803/ai-medical-daily', {headers:{Accept:'application/vnd.github+json'}})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if (!d || typeof d.stargazers_count !== 'number') return;
+      var n = d.stargazers_count;
+      el.textContent = n >= 1000 ? (Math.round(n/100)/10) + 'k' : String(n);
+    })
+    .catch(function(){});
+})();
+</script>
+</body>
+</html>
