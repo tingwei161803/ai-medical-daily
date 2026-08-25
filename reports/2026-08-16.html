@@ -8,6 +8,10 @@
 <title>AI／醫療AI 每日新知日報 · 2026-08-16</title>
 <meta property="og:url" content="https://ai-medical-daily.peteraim.com/reports/2026-08-16.html" />
 <link rel="canonical" href="https://ai-medical-daily.peteraim.com/reports/2026-08-16.html" />
+<link rel="alternate" hreflang="zh-Hant" href="https://ai-medical-daily.peteraim.com/reports/2026-08-16.html" />
+<link rel="alternate" hreflang="en" href="https://ai-medical-daily.peteraim.com/en/reports/2026-08-16.html" />
+<link rel="alternate" hreflang="x-default" href="https://ai-medical-daily.peteraim.com/reports/2026-08-16.html" />
+<meta name="description" content="CMS 正式發布 RAPID 給付程序公告、Medicare 破紀錄為 AI 醫材加成給付、Novo Nordisk 與 AWS 簽下 AI 藥物發現聯盟——本週資金與制度全速前進，但同期的隨機試驗與基準研究顯示臨床效益仍未證實。">
 <meta name="report-date" content="2026-08-16">
 <meta name="report-theme" content="weekly-review">
 <meta name="report-title-zh" content="錢先到位，證據還在路上">
@@ -45,9 +49,8 @@ body{
   font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased;
   transition:background .25s,color .25s;
 }
-body.lang-zh .en, body.lang-en .zh{display:none}
-body.lang-zh .en-inline, body.lang-en .zh-inline{display:none}
-.en-inline,.zh-inline{display:inline}
+.lang-alt-link{margin:0}
+.lang-alt-link a{color:var(--accent);text-decoration:none;font-weight:600}
 
 /* ---------- top bar ---------- */
 header.bar{
@@ -67,11 +70,13 @@ header.bar{
 }
 .btn:hover{border-color:var(--accent);color:var(--accent)}
 .seg{display:flex;border:1px solid var(--border);border-radius:999px;overflow:hidden;background:var(--surface-2)}
-.seg button{
+.seg a{
   border:0;background:transparent;color:var(--muted);font-family:inherit;
-  padding:5px 13px;font-size:13px;font-weight:600;cursor:pointer;transition:.15s
+  padding:5px 13px;font-size:13px;font-weight:600;cursor:pointer;transition:.15s;
+  display:flex;align-items:center;justify-content:center;
+  text-decoration:none;line-height:normal
 }
-.seg button.on{background:var(--accent);color:#fff}
+.seg a.on{background:var(--accent);color:#fff}
 
 /* ---------- layout ---------- */
 main{max-width:920px;margin:0 auto;padding:0 20px 90px}
@@ -223,16 +228,16 @@ footer{
 }
 </style>
 </head>
-<body class="lang-zh">
+<body>
 
 <header class="bar">
   <div class="bar-in">
-    <a class="brand" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span><span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <a class="brand" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span></a>
     <div class="bar-sp"></div>
     <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub / 在 GitHub 給這個專案一顆星"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
     <div class="seg">
-      <button id="b-zh" class="on" onclick="setLang('zh')">中文</button>
-      <button id="b-en" onclick="setLang('en')">EN</button>
+      <a class="on" href="/reports/2026-08-16.html" hreflang="zh-Hant" lang="zh-Hant" aria-current="page">中文</a>
+      <a href="/en/reports/2026-08-16.html" hreflang="en" lang="en" rel="alternate">EN</a>
     </div>
     <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
   </div>
@@ -242,29 +247,25 @@ footer{
 <div class="hero">
   <div class="kicker">
     <span class="zh-inline">星期日 · 本週回顧與精選延伸閱讀</span>
-    <span class="en-inline">Sunday · Weekly Review &amp; Curated Reading</span>
   </div>
   <h1>
     <span class="zh">錢先到位，證據還在路上</span>
-    <span class="en">The money arrived before the evidence</span>
   </h1>
   <div class="dateline">
     <span class="zh-inline">2026 年 8 月 16 日（日）· 涵蓋 8/9–8/16 · 台北時間</span>
-    <span class="en-inline">Sunday, August 16, 2026 · Covering Aug 9–16 · Taipei time</span>
   </div>
   <p class="lede">
     <span class="zh">本週醫療 AI 的兩條線走在完全相反的速度上。<strong>制度與資金這一側全速前進</strong>：CMS 在 8/11 把 RAPID 給付通道正式寫成程序公告（<a href="https://www.onhealthcare.tech/p/cmss-rapid-coverage-pathway-for-breakthrough" target="_blank" rel="noopener">CMS-3487-NC</a>），突破性醫材有機會在 FDA 授權後 60–90 天拿到 Medicare 全國給付；<a href="https://www.statnews.com/2026/08/13/how-medicare-cms-pays-ntap-for-new-ai-medical-devices/" target="_blank" rel="noopener">STAT 報導</a>今年破紀錄數量的 AI 醫材取得 NTAP 加成給付；Novo Nordisk 在 8/10 <a href="https://www.fiercebiotech.com/biotech/novo-nordisk-and-aws-sign-ai-drug-discovery-pact-launch-london-innovation-hub" target="_blank" rel="noopener">與 AWS 簽下 AI 藥物發現策略聯盟</a>。<strong>但證據這一側幾乎沒有前進</strong>：<em>Nature Medicine</em> 的基準研究顯示<a href="https://www.nature.com/articles/s41591-026-04431-5" target="_blank" rel="noopener">通用大模型贏過已取得 FDA 認可的臨床 AI 工具</a>，而一項 9,691 人的<a href="https://www.nature.com/articles/s41591-026-04503-6" target="_blank" rel="noopener">務實叢集隨機試驗</a>直接得出「安全，但未降低治療失敗率」。同一週，美國護理工會開始把 AI 送上談判桌。</span>
-    <span class="en">Two clocks ran at very different speeds in medical AI this week. <strong>On the money-and-rules side, everything accelerated</strong>: on Aug 11 CMS turned the RAPID coverage pathway into an actual procedural notice (<a href="https://www.onhealthcare.tech/p/cmss-rapid-coverage-pathway-for-breakthrough" target="_blank" rel="noopener">CMS-3487-NC</a>), putting national Medicare coverage within 60–90 days of FDA authorisation; <a href="https://www.statnews.com/2026/08/13/how-medicare-cms-pays-ntap-for-new-ai-medical-devices/" target="_blank" rel="noopener">STAT reported</a> a record crop of AI devices winning NTAP add-on payments; and Novo Nordisk <a href="https://www.fiercebiotech.com/biotech/novo-nordisk-and-aws-sign-ai-drug-discovery-pact-launch-london-innovation-hub" target="_blank" rel="noopener">signed an AI drug-discovery pact with AWS</a> on Aug 10. <strong>On the evidence side, almost nothing moved</strong>: a <em>Nature Medicine</em> benchmark found <a href="https://www.nature.com/articles/s41591-026-04431-5" target="_blank" rel="noopener">general-purpose frontier models beating FDA-cleared clinical tools</a>, and a <a href="https://www.nature.com/articles/s41591-026-04503-6" target="_blank" rel="noopener">9,691-patient pragmatic cluster-randomised trial</a> concluded the assistance was safe but did not reduce treatment failure. In the same week, US nursing unions started bringing AI to the bargaining table.</span>
   </p>
 
   <nav class="toc">
-    <a href="#top"><span class="zh-inline">本週重點</span><span class="en-inline">Top Stories</span></a>
-    <a href="#product"><span class="zh-inline">產品分析</span><span class="en-inline">Product Analysis</span></a>
-    <a href="#company"><span class="zh-inline">公司與競爭</span><span class="en-inline">Companies &amp; Competition</span></a>
-    <a href="#funding"><span class="zh-inline">募資一覽</span><span class="en-inline">Funding</span></a>
-    <a href="#taiwan"><span class="zh-inline">台灣視角</span><span class="en-inline">Taiwan Angle</span></a>
-    <a href="#reading"><span class="zh-inline">延伸閱讀</span><span class="en-inline">Further Reading</span></a>
-    <a href="#refs"><span class="zh-inline">參考文獻</span><span class="en-inline">References</span></a>
+    <a href="#top"><span class="zh-inline">本週重點</span></a>
+    <a href="#product"><span class="zh-inline">產品分析</span></a>
+    <a href="#company"><span class="zh-inline">公司與競爭</span></a>
+    <a href="#funding"><span class="zh-inline">募資一覽</span></a>
+    <a href="#taiwan"><span class="zh-inline">台灣視角</span></a>
+    <a href="#reading"><span class="zh-inline">延伸閱讀</span></a>
+    <a href="#refs"><span class="zh-inline">參考文獻</span></a>
   </nav>
 </div>
 
@@ -273,36 +274,31 @@ footer{
   <h2>01 — Top Stories</h2>
   <div class="sec-title">
     <span class="zh">本週最重要的 8 件事</span>
-    <span class="en">The eight things that mattered</span>
   </div>
 
   <!-- 1 -->
   <div class="card">
     <div class="tags">
-      <span class="tag reg"><span class="zh-inline">法規給付</span><span class="en-inline">Regulation</span></span>
+      <span class="tag reg"><span class="zh-inline">法規給付</span></span>
       <span class="tag">CMS</span><span class="tag">FDA</span><span class="tag">RAPID</span><span class="tag">8/11</span>
     </div>
     <h3>
       <span class="zh">CMS 把 RAPID 給付通道寫成正式公告：突破性醫材有望在核准後 60–90 天取得 Medicare 全國給付</span>
-      <span class="en">CMS puts RAPID on paper: national Medicare coverage within 60–90 days of FDA authorisation</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">CMS 於 <strong>8 月 11 日</strong>發布程序公告 <strong>CMS-3487-NC</strong>，60 天意見徵詢期約於 10 月 10 日截止（<a href="https://www.onhealthcare.tech/p/cmss-rapid-coverage-pathway-for-breakthrough" target="_blank" rel="noopener">onhealthcare.tech 拆解</a>）。機制是：FDA 市場授權當日同步公布全國給付決定（NCD）草案、30 天意見期，Class II 約 60 天、Class III 約 90 天定案，相較現行 9–12 個月大幅壓縮。RAPID 通道本身是 CMS 與 FDA 在 <strong>2026 年 4 月 23 日</strong>共同宣布（<a href="https://www.cms.gov/newsroom/press-releases/cms-fda-announce-rapid-coverage-pathway-accelerate-patient-access-life-changing-medical-devices" target="_blank" rel="noopener">CMS 新聞稿</a>、<a href="https://www.fda.gov/news-events/press-announcements/cms-and-fda-announce-rapid-coverage-pathway-accelerate-patient-access-life-changing-medical-devices" target="_blank" rel="noopener">FDA 新聞稿</a>），8 月才落地成可執行文件（<a href="https://www.medtechdive.com/news/cms-fda-unveil-speedier-medicare-coverage-pathway-for-breakthrough-devices/818324/" target="_blank" rel="noopener">MedTech Dive</a>）。</span>
-        <span class="en">On <strong>Aug 11</strong> CMS issued procedural notice <strong>CMS-3487-NC</strong>, with a 60-day comment window closing around Oct 10 (<a href="https://www.onhealthcare.tech/p/cmss-rapid-coverage-pathway-for-breakthrough" target="_blank" rel="noopener">detailed breakdown at onhealthcare.tech</a>). The mechanism: a proposed national coverage determination posted the same day FDA grants market authorisation, a 30-day comment period, then a final NCD at roughly 60 days for Class II and 90 days for Class III — against today's 9–12 months. RAPID itself was announced jointly by CMS and FDA on <strong>Apr 23, 2026</strong> (<a href="https://www.cms.gov/newsroom/press-releases/cms-fda-announce-rapid-coverage-pathway-accelerate-patient-access-life-changing-medical-devices" target="_blank" rel="noopener">CMS release</a>, <a href="https://www.fda.gov/news-events/press-announcements/cms-and-fda-announce-rapid-coverage-pathway-accelerate-patient-access-life-changing-medical-devices" target="_blank" rel="noopener">FDA release</a>); August is when it became an operable document (<a href="https://www.medtechdive.com/news/cms-fda-unveil-speedier-medicare-coverage-pathway-for-breakthrough-devices/818324/" target="_blank" rel="noopener">MedTech Dive</a>).</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">真正決定成敗的是那些邊界條件，而不是那個漂亮的 60 天數字。<strong>(1) 資格閘門</strong>：只有還在 pre-submission 階段的 IDE 研究適用，進行中的研究被排除，除非 CMS 採納它明白徵詢意見的暫時性 on-ramp。<strong>(2) 體外診斷全面排除</strong>，IVD 仍留在承包商管理的給付制度裡——這對走 LDT／IVD 路線的 AI 診斷公司是直接的壞消息。<strong>(3) 給付不等於付多少</strong>：編碼與支付費率仍走各自的週期，NCD 再快也可能卡在後面。<strong>(4)</strong> 2024 年 8 月上路的 TCET 通道已<strong>暫停受理新案</strong>，只保留 Parallel Review。分析認為若沒有 on-ramp，第一件真正走完 RAPID 的案子可能落在 2031–2032（<a href="https://www.onhealthcare.tech/p/part-ii-cmss-rapid-coverage-pathway" target="_blank" rel="noopener">Part II 分析</a>）。</span>
-        <span class="en">The headline number is 60 days; the fate of the pathway sits in the fine print. <strong>(1) Eligibility gate</strong>: only IDE studies still at the pre-submission stage qualify — in-flight studies are excluded unless CMS adopts the temporary on-ramp it explicitly requested comment on. <strong>(2) IVDs are excluded outright</strong> and stay under contractor-managed coverage, which is bad news specifically for AI diagnostics travelling the LDT/IVD route. <strong>(3) Coverage is not payment</strong>: coding and rate-setting run on their own cycles, so a fast NCD can still stall behind them. <strong>(4)</strong> TCET, the August 2024 pathway, is <strong>paused for new candidates</strong>, with only Parallel Review preserved. Absent an on-ramp, the analysis puts the first real RAPID output around 2031–2032 (<a href="https://www.onhealthcare.tech/p/part-ii-cmss-rapid-coverage-pathway" target="_blank" rel="noopener">Part II</a>).</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">公司與產品</span><span class="en-inline">Players</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">公司與產品</span></div>
       <p class="val">
         <span class="zh">主導者為 CMS（署長 Mehmet Oz）與 FDA（局長 Marty Makary），兩人在<a href="https://www.cms.gov/newsroom/press-releases/cms-fda-announce-rapid-coverage-pathway-accelerate-patient-access-life-changing-medical-devices" target="_blank" rel="noopener">聯合新聞稿</a>中分別以「為創新者減少繁文縟節」與「FDA 與 CMS 像一個團隊在運作」定調。受惠對象是取得 FDA 突破性醫材認定的 Class II（須參加 FDA 的 TAP 全生命週期諮詢計畫）與 Class III（不須 TAP）產品。</span>
-        <span class="en">Driven by CMS (Administrator Dr. Mehmet Oz) and FDA (Commissioner Dr. Marty Makary), who framed it in the <a href="https://www.cms.gov/newsroom/press-releases/cms-fda-announce-rapid-coverage-pathway-accelerate-patient-access-life-changing-medical-devices" target="_blank" rel="noopener">joint release</a> as cutting red tape for innovators and the two agencies "functioning as a single team." Beneficiaries are FDA-designated Breakthrough Devices: Class II (must be in FDA's TAP programme) and Class III (TAP not required).</span>
       </p></div>
     <div class="src">
-      <span class="zh-inline">來源：</span><span class="en-inline">Sources: </span>
+      <span class="zh-inline">來源：</span>
       <a href="https://www.cms.gov/newsroom/press-releases/cms-fda-announce-rapid-coverage-pathway-accelerate-patient-access-life-changing-medical-devices" target="_blank" rel="noopener">CMS</a> ·
       <a href="https://www.fda.gov/news-events/press-announcements/cms-and-fda-announce-rapid-coverage-pathway-accelerate-patient-access-life-changing-medical-devices" target="_blank" rel="noopener">FDA</a> ·
       <a href="https://www.onhealthcare.tech/p/cmss-rapid-coverage-pathway-for-breakthrough" target="_blank" rel="noopener">onhealthcare.tech</a> ·
@@ -314,96 +310,84 @@ footer{
   <!-- 2 -->
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">給付政策</span><span class="en-inline">Reimbursement</span></span>
+      <span class="tag hot"><span class="zh-inline">給付政策</span></span>
       <span class="tag">Medicare</span><span class="tag">NTAP</span><span class="tag">8/13</span>
     </div>
     <h3>
       <span class="zh">Medicare 破紀錄地為 AI 醫材加碼給付，研究者同步警告「過度使用」</span>
-      <span class="en">A record number of AI devices win Medicare add-on payments — and researchers warn about overuse</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">STAT「Paying for AI」系列第四篇（<a href="https://www.statnews.com/2026/08/13/how-medicare-cms-pays-ntap-for-new-ai-medical-devices/" target="_blank" rel="noopener">8 月 13 日</a>）報導，2026 年有創紀錄數量的 AI 醫材取得 Medicare 的新技術加成給付（NTAP）。NTAP 是新技術上市後 2–3 年內，由稅金支付給醫院的額外加給，設計目的是讓昂貴的新科技更快到達病人手上。</span>
-        <span class="en">Part four of STAT's "Paying for AI" series (<a href="https://www.statnews.com/2026/08/13/how-medicare-cms-pays-ntap-for-new-ai-medical-devices/" target="_blank" rel="noopener">Aug 13</a>) reports that a record number of AI-enabled devices qualified for Medicare's New Technology Add-on Payment in 2026. NTAP is a taxpayer-funded top-up paid to hospitals for two to three years after market entry, designed to pull expensive innovation to patients faster.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">這是醫療 AI 商業模式的轉折點——過去要說服醫院「省下多少時間」，現在可以直接說服醫院「多出多少現金流」。但報導引述的研究者指出結構性問題：按次計價的加給本質上獎勵使用量，臨床必要性容易被推到第二順位；而加給退場後（2–3 年）產品能否靠自身經濟性站住，才是真正的檢驗。與同週的 RAPID 公告合看，美國等於同時放寬了 AI 醫材的「上市」與「收錢」兩道閘門（<a href="https://www.statnews.com/2026/08/11/cms-rapid-breakthrough-device-coverage-health-tech/" target="_blank" rel="noopener">STAT 8/11</a>）。</span>
-        <span class="en">This is the pivot in medical-AI business models: vendors used to sell hospitals saved minutes, now they can sell them cash flow. But researchers quoted in the piece flag the structural flaw — a per-use top-up rewards volume, pushing clinical necessity to second place, and the real test arrives in two to three years when the add-on expires and the product must stand on its own economics. Read alongside the RAPID notice the same week, the US has loosened both gates at once: getting to market, and getting paid (<a href="https://www.statnews.com/2026/08/11/cms-rapid-breakthrough-device-coverage-health-tech/" target="_blank" rel="noopener">STAT Aug 11</a>).</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">公司與產品</span><span class="en-inline">Players</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">公司與產品</span></div>
       <p class="val">
         <span class="zh">報導未公開列出具體公司名稱與金額，本報告不臆測。可對照的公開案例是影像分流類產品的擴張，例如 Aidoc 於 <a href="https://www.diagnosticimaging.com/view/fda-clears-ct-based-ai-triage-platform-aidoc" target="_blank" rel="noopener">2026 年 1 月 21 日取得腹部 CT 分流清關</a>，累計 14 項適應症、其中 11 項為新增。</span>
-        <span class="en">The story does not publicly name specific companies or dollar amounts, and this report does not speculate. A public comparator is the expansion of imaging-triage products — Aidoc, for instance, <a href="https://www.diagnosticimaging.com/view/fda-clears-ct-based-ai-triage-platform-aidoc" target="_blank" rel="noopener">cleared abdominal CT triage on Jan 21, 2026</a>, taking it to 14 indications, 11 of them new.</span>
       </p></div>
     <div class="src">
-      <span class="zh-inline">來源：</span><span class="en-inline">Sources: </span>
+      <span class="zh-inline">來源：</span>
       <a href="https://www.statnews.com/2026/08/13/how-medicare-cms-pays-ntap-for-new-ai-medical-devices/" target="_blank" rel="noopener">STAT · Aug 13</a> ·
       <a href="https://www.statnews.com/2026/08/11/cms-rapid-breakthrough-device-coverage-health-tech/" target="_blank" rel="noopener">STAT · Aug 11</a>
-      <span class="zh-inline">（STAT+ 付費牆）</span><span class="en-inline">(STAT+ paywall)</span>
+      <span class="zh-inline">（STAT+ 付費牆）</span>
     </div>
   </div>
 
   <!-- 3 -->
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">深度調查</span><span class="en-inline">Investigation</span></span>
+      <span class="tag hot"><span class="zh-inline">深度調查</span></span>
       <span class="tag">Commure</span><span class="tag">General Catalyst</span><span class="tag">8/12</span>
     </div>
     <h3>
       <span class="zh">STAT 深入調查估值 70 億美元的 Commure：用 AI 自動化醫療的「生意面」</span>
-      <span class="en">STAT goes inside $7B Commure and its dash to automate the business of health care</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">STAT 於 <a href="https://www.statnews.com/2026/08/12/inside-commure-athelas-mad-dash-automate-health-care/" target="_blank" rel="noopener">8 月 12 日</a>刊出對 Commure（與 Athelas 合併後的實體）的長篇調查，標題直指「一家 70 億美元新創自動化醫療事業的瘋狂衝刺」；隔日 <a href="https://www.statnews.com/2026/08/13/commure-investigation-medicare-tech-incentives-health-tech/" target="_blank" rel="noopener">8 月 13 日的 Health Tech 電子報</a>（記者 Katie Palmer）將其定調為「深入拆解這家公司為達成目標所拉動的各種槓桿」。該電子報同時宣布進入年度夏季休刊，8 月 25 日回歸。</span>
-        <span class="en">STAT published a long investigation into Commure (the merged Commure–Athelas entity) on <a href="https://www.statnews.com/2026/08/12/inside-commure-athelas-mad-dash-automate-health-care/" target="_blank" rel="noopener">Aug 12</a>, headlined as a "$7 billion startup's mad dash to automate the business of health care." The following day's <a href="https://www.statnews.com/2026/08/13/commure-investigation-medicare-tech-incentives-health-tech/" target="_blank" rel="noopener">Health Tech newsletter</a> (Katie Palmer) framed it as a deep dive into "all the levers it's pulling to make that happen." The newsletter also went on its annual summer hiatus, returning Aug 25.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">Commure 代表的是醫療 AI 的另一種路線：不做診斷、不進臨床決策，而是承包收費循環、排班、文書與營運自動化——避開了 FDA 監管，也避開了「臨床療效」的舉證責任。這條路的好處是規模化快，風險則是它的價值主張只能用財務指標驗證，而財務指標最容易被銷售包裝。在本週監管與給付同時放寬的背景下，這篇調查提供了必要的另一面（<a href="https://www.statnews.com/2026/08/12/inside-commure-athelas-mad-dash-automate-health-care/" target="_blank" rel="noopener">STAT 調查全文</a>）。</span>
-        <span class="en">Commure represents medical AI's other route: not diagnosis, not clinical decision support, but revenue cycle, scheduling, documentation and back-office automation — which sidesteps FDA regulation and, with it, any burden of proving clinical benefit. That scales fast, but its value proposition can only be validated in financial metrics, and financial metrics are the easiest thing for a sales motion to dress up. In a week when both regulation and reimbursement loosened, this investigation supplies the necessary counterweight (<a href="https://www.statnews.com/2026/08/12/inside-commure-athelas-mad-dash-automate-health-care/" target="_blank" rel="noopener">STAT's investigation</a>).</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">公司與產品</span><span class="en-inline">Players</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">公司與產品</span></div>
       <p class="val">
         <span class="zh">Commure（General Catalyst 支持，估值約 70 億美元）；直接競爭者包含 <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/ambient-ai-startup-abridge-scores-300m-series-e-backed-a16z-and-khosla" target="_blank" rel="noopener">Abridge</a>（環境式病歷）與 Oracle Health 這類把 AI 內建進 EHR 的既有廠商（<a href="https://www.fiercehealthcare.com/health-tech/oracle-health-debuts-ai-powered-ehr-designed-voice-first-solution-embedded-agentic-ai" target="_blank" rel="noopener">Fierce Healthcare</a>）。</span>
-        <span class="en">Commure (backed by General Catalyst, ~$7B valuation). Direct competition includes <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/ambient-ai-startup-abridge-scores-300m-series-e-backed-a16z-and-khosla" target="_blank" rel="noopener">Abridge</a> on ambient documentation and incumbents baking AI into the EHR itself, such as Oracle Health (<a href="https://www.fiercehealthcare.com/health-tech/oracle-health-debuts-ai-powered-ehr-designed-voice-first-solution-embedded-agentic-ai" target="_blank" rel="noopener">Fierce Healthcare</a>).</span>
       </p></div>
     <div class="src">
-      <span class="zh-inline">來源：</span><span class="en-inline">Sources: </span>
+      <span class="zh-inline">來源：</span>
       <a href="https://www.statnews.com/2026/08/12/inside-commure-athelas-mad-dash-automate-health-care/" target="_blank" rel="noopener">STAT · Aug 12</a> ·
       <a href="https://www.statnews.com/2026/08/13/commure-investigation-medicare-tech-incentives-health-tech/" target="_blank" rel="noopener">STAT Health Tech · Aug 13</a>
-      <span class="zh-inline">（STAT+ 付費牆，僅依公開標題與導言撰寫）</span><span class="en-inline">(STAT+ paywall; written from publicly visible headline and standfirst only)</span>
+      <span class="zh-inline">（STAT+ 付費牆，僅依公開標題與導言撰寫）</span>
     </div>
   </div>
 
   <!-- 4 -->
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">產業結盟</span><span class="en-inline">Industry</span></span>
+      <span class="tag hot"><span class="zh-inline">產業結盟</span></span>
       <span class="tag">Novo Nordisk</span><span class="tag">AWS</span><span class="tag">8/10</span>
     </div>
     <h3>
       <span class="zh">Novo Nordisk 與 AWS 簽下 AI 藥物發現策略聯盟，並在倫敦設共同創新中心</span>
-      <span class="en">Novo Nordisk and AWS sign an AI drug-discovery pact and open a London innovation hub</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh"><strong>8 月 10 日</strong>，AWS 成為 Novo Nordisk 的優先雲端與 AI 合作夥伴（<a href="https://www.fiercebiotech.com/biotech/novo-nordisk-and-aws-sign-ai-drug-discovery-pact-launch-london-innovation-hub" target="_blank" rel="noopener">Fierce Biotech</a>、<a href="https://www.biospace.com/press-releases/novo-nordisk-and-aws-enter-strategic-partnership-to-accelerate-drug-discovery-through-ai" target="_blank" rel="noopener">官方新聞稿</a>）。導入的服務包括 <strong>Amazon Bio Discovery</strong>（以生物資料訓練的 AI 模型）、<strong>Amazon Bedrock</strong> 與 <strong>Bedrock AgentCore</strong>（AI agent 的託管基礎設施），並在 Novo 既有的倫敦據點內設立共同創新中心。Novo 表示合作已縮短臨床文件作業時間，並提升 25,000 名員工的生產力。</span>
-        <span class="en">On <strong>Aug 10</strong>, AWS became Novo Nordisk's preferred cloud and AI partner (<a href="https://www.fiercebiotech.com/biotech/novo-nordisk-and-aws-sign-ai-drug-discovery-pact-launch-london-innovation-hub" target="_blank" rel="noopener">Fierce Biotech</a>, <a href="https://www.biospace.com/press-releases/novo-nordisk-and-aws-enter-strategic-partnership-to-accelerate-drug-discovery-through-ai" target="_blank" rel="noopener">press release</a>). The stack includes <strong>Amazon Bio Discovery</strong> (AI models trained on biological data), <strong>Amazon Bedrock</strong>, and <strong>Bedrock AgentCore</strong> (managed infrastructure for AI agents), plus a joint innovation hub inside Novo's existing London facility. Novo says the work has already cut clinical documentation time and lifted productivity for 25,000 employees.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">雲端巨頭切入藥廠的方式正在改變：從賣算力與儲存，變成賣「agent 執行環境」。AgentCore 出現在藥廠新聞稿裡，代表買方要的不再是模型 API，而是能長時間跑、可稽核、能接內部系統的自動化流程。這也讓資料主權問題變得更尖銳——藥廠最有價值的資產是專有實驗資料，而這正是 Bio Discovery 這類服務的燃料。Novo CEO Mike Doustdar 的說法是「加速發現、開發負責任的 AI 解方」，AWS CEO Matt Garman 則說一切回到「讓對的藥更快到病人手上」（<a href="https://www.fiercebiotech.com/biotech/novo-nordisk-and-aws-sign-ai-drug-discovery-pact-launch-london-innovation-hub" target="_blank" rel="noopener">引述出處：Fierce Biotech</a>）。</span>
-        <span class="en">How hyperscalers sell into pharma is shifting: from compute and storage to an <em>agent runtime</em>. AgentCore showing up in a pharma press release means the buyer no longer wants a model API — it wants long-running, auditable automation wired into internal systems. That also sharpens the data-sovereignty question, because a pharma company's most valuable asset is its proprietary experimental data, and that is precisely the fuel for services like Bio Discovery. Novo CEO Mike Doustdar framed it as "accelerating discovery and developing responsible AI solutions"; AWS CEO Matt Garman said it all comes back to "getting the right medicine to patients, faster" (<a href="https://www.fiercebiotech.com/biotech/novo-nordisk-and-aws-sign-ai-drug-discovery-pact-launch-london-innovation-hub" target="_blank" rel="noopener">quotes via Fierce Biotech</a>).</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">公司與產品</span><span class="en-inline">Players</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">公司與產品</span></div>
       <p class="val">
         <span class="zh">Novo Nordisk × AWS／Amazon（雙方既有關係還涵蓋 Amazon Pharmacy、Amazon Ads 與 Amazon One Medical，見 <a href="https://www.healthcare-brew.com/stories/amazon-novo-nordisk-partner-on-ai-driven-drug-discovery" target="_blank" rel="noopener">Healthcare Brew</a>）。同期可對照的競爭格局：Bristol Myers Squibb 擴大與 NVIDIA 的基礎設施合作、GSK 與 Relation 合作建立大規模人類細胞擾動資料集以訓練藥物發現基礎模型（<a href="https://www.lqventures.com/healthcare-ai-and-digital-health-strategic-roundup-july-3-august-2-2026/" target="_blank" rel="noopener">LucidQuest 7/3–8/2 彙整</a>）；本則消息也被收錄於 <a href="https://www.pharmexec.com/view/roundup-novo-nordisk-ai-drug-discovery-amazon-innate-sobi-innovent-commercialization-daiichi-sankyo" target="_blank" rel="noopener">PharmExec 的併購與合作彙整</a>。</span>
-        <span class="en">Novo Nordisk × AWS/Amazon (the wider relationship already spans Amazon Pharmacy, Amazon Ads and Amazon One Medical — see <a href="https://www.healthcare-brew.com/stories/amazon-novo-nordisk-partner-on-ai-driven-drug-discovery" target="_blank" rel="noopener">Healthcare Brew</a>). For competitive context in the same window: Bristol Myers Squibb expanded its infrastructure partnership with NVIDIA, and GSK partnered with Relation on large-scale human cellular perturbation datasets to train drug-discovery foundation models (<a href="https://www.lqventures.com/healthcare-ai-and-digital-health-strategic-roundup-july-3-august-2-2026/" target="_blank" rel="noopener">LucidQuest roundup, Jul 3–Aug 2</a>). The deal also appears in <a href="https://www.pharmexec.com/view/roundup-novo-nordisk-ai-drug-discovery-amazon-innate-sobi-innovent-commercialization-daiichi-sankyo" target="_blank" rel="noopener">PharmExec's M&amp;A roundup</a>.</span>
       </p></div>
     <div class="src">
-      <span class="zh-inline">來源：</span><span class="en-inline">Sources: </span>
+      <span class="zh-inline">來源：</span>
       <a href="https://www.fiercebiotech.com/biotech/novo-nordisk-and-aws-sign-ai-drug-discovery-pact-launch-london-innovation-hub" target="_blank" rel="noopener">Fierce Biotech</a> ·
       <a href="https://www.biospace.com/press-releases/novo-nordisk-and-aws-enter-strategic-partnership-to-accelerate-drug-discovery-through-ai" target="_blank" rel="noopener">BioSpace</a> ·
       <a href="https://www.healthcare-brew.com/stories/amazon-novo-nordisk-partner-on-ai-driven-drug-discovery" target="_blank" rel="noopener">Healthcare Brew</a>
@@ -413,30 +397,26 @@ footer{
   <!-- 5 -->
   <div class="card">
     <div class="tags">
-      <span class="tag reg"><span class="zh-inline">法規</span><span class="en-inline">Regulation</span></span>
+      <span class="tag reg"><span class="zh-inline">法規</span></span>
       <span class="tag">EU AI Act</span><span class="tag">MHRA</span><span class="tag">8/14</span>
     </div>
     <h3>
       <span class="zh">歐盟開始執行 AI Act 透明度義務、高風險醫材期限延至 2027–2028；英國同日推出「國際承認」快速通道</span>
-      <span class="en">Brussels starts enforcing AI Act transparency as device deadlines slip to 2027–2028 — and the UK opens an international reliance route</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">依據 <a href="https://www.healthcare.digital/single-post/this-week-in-european-healthtech-medtech-and-health-ai-14th-august-2026" target="_blank" rel="noopener">healthcare.digital 8 月 14 日的歐洲週報</a>：歐盟執委會的 AI Office 與各國主管機關已開始執行 AI Act 的核心透明度與治理規則，但依 Digital Omnibus 的整合安排，<strong>高風險醫療器材的合規期限延後至 2027 年 12 月與 2028 年 8 月</strong>。同一天，英國 MHRA 公布 <strong>International Reliance Pathway</strong> 法規草案：已取得 FDA、Health Canada 或澳洲 TGA 核准的醫材業者，可加速在英國（Great Britain）註冊。EMA 的突破性醫材試辦計畫則持續分階段導入，為危及生命疾病的新療法提供優先科學建議與加速審查。</span>
-        <span class="en">Per <a href="https://www.healthcare.digital/single-post/this-week-in-european-healthtech-medtech-and-health-ai-14th-august-2026" target="_blank" rel="noopener">healthcare.digital's Aug 14 European roundup</a>: the Commission's AI Office and national authorities have begun enforcing the AI Act's core transparency and governance rules — while, under the Digital Omnibus integration, <strong>high-risk medical device compliance deadlines move out to December 2027 and August 2028</strong>. The same day, the UK's MHRA published draft regulations for an <strong>International Reliance Pathway</strong>, letting medtech firms already approved by the FDA, Health Canada or Australia's TGA fast-track Great Britain registration. The EMA's breakthrough device pilot continues its phase-in, offering prioritised scientific advice and accelerated review for novel treatments in life-threatening conditions.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">歐盟正在做一件看似矛盾、實則務實的事：<strong>對通用 AI 收緊透明度，對醫材放寬時程</strong>。這反映的是 MDR 已經塞車、再疊上 AI Act 的高風險義務會讓歐洲醫材創新窒息的現實壓力。英國則選擇了完全不同的策略——不自己重審，直接承認美加澳的結果，把監管當成招商工具。對台灣與亞洲業者而言，這條「國際承認」路線值得密切追蹤：拿到 FDA 510(k) 之後，進英國的邊際成本可能大幅下降（草案內容見 <a href="https://www.healthcare.digital/single-post/this-week-in-european-healthtech-medtech-and-health-ai-14th-august-2026" target="_blank" rel="noopener">healthcare.digital 8/14</a>）。</span>
-        <span class="en">Brussels is doing something that looks contradictory and is actually pragmatic: <strong>tightening transparency on general-purpose AI while loosening timelines for devices</strong>. That reflects real pressure — MDR is already congested, and stacking AI Act high-risk obligations on top would choke European device innovation. The UK picked a different strategy entirely: don't re-review, recognise US/Canadian/Australian decisions, and treat regulation as an inward-investment tool. For Taiwanese and Asian manufacturers this reliance route is worth watching closely — after an FDA 510(k), the marginal cost of entering Great Britain could fall sharply (draft details via <a href="https://www.healthcare.digital/single-post/this-week-in-european-healthtech-medtech-and-health-ai-14th-august-2026" target="_blank" rel="noopener">healthcare.digital, Aug 14</a>).</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">相關動態</span><span class="en-inline">Related</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">相關動態</span></div>
       <p class="val">
         <span class="zh">同一個監管方向上，MHRA 先前已劃出另一條線：<strong>只做轉錄與摘要的 AI 助理（AI scribe）不算醫療器材</strong>，一旦開始提供診斷建議或治療推論才落入醫材管制（<a href="https://www.statnews.com/2026/08/04/ai-scribes-medical-devices-uk-regulator-view-health-tech/" target="_blank" rel="noopener">STAT 8/4</a>）。NHS 也正在多家醫院信託擴大部署環境式語音技術（ambient voice technology）以自動化臨床文件（<a href="https://www.healthcare.digital/single-post/this-week-in-european-healthtech-medtech-and-health-ai-14th-august-2026" target="_blank" rel="noopener">healthcare.digital</a>）。</span>
-        <span class="en">On the same regulatory arc, the MHRA had already drawn another line: <strong>an AI scribe that only transcribes and summarises is not a medical device</strong>; it becomes one once it offers diagnostic suggestions or treatment inferences (<a href="https://www.statnews.com/2026/08/04/ai-scribes-medical-devices-uk-regulator-view-health-tech/" target="_blank" rel="noopener">STAT, Aug 4</a>). The NHS is meanwhile scaling ambient voice technology for automated clinical documentation across hospital trusts (<a href="https://www.healthcare.digital/single-post/this-week-in-european-healthtech-medtech-and-health-ai-14th-august-2026" target="_blank" rel="noopener">healthcare.digital</a>).</span>
       </p></div>
     <div class="src">
-      <span class="zh-inline">來源：</span><span class="en-inline">Sources: </span>
+      <span class="zh-inline">來源：</span>
       <a href="https://www.healthcare.digital/single-post/this-week-in-european-healthtech-medtech-and-health-ai-14th-august-2026" target="_blank" rel="noopener">healthcare.digital · Aug 14</a> ·
       <a href="https://www.healthcare.digital/single-post/this-week-in-european-healthtech-medtech-and-health-ai-7th-august-2026" target="_blank" rel="noopener">healthcare.digital · Aug 7</a> ·
       <a href="https://www.statnews.com/2026/08/04/ai-scribes-medical-devices-uk-regulator-view-health-tech/" target="_blank" rel="noopener">STAT · Aug 4</a>
@@ -446,30 +426,26 @@ footer{
   <!-- 6 -->
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">臨床證據</span><span class="en-inline">Evidence</span></span>
+      <span class="tag hot"><span class="zh-inline">臨床證據</span></span>
       <span class="tag">Nature Medicine</span><span class="tag">RCT</span><span class="tag">Benchmark</span>
     </div>
     <h3>
       <span class="zh">兩篇 <em>Nature Medicine</em> 撐起本週的反命題：核准過的臨床 AI 輸給通用模型，而通用模型在真實試驗裡沒有改善結果</span>
-      <span class="en">Two <em>Nature Medicine</em> papers anchor the week's counter-argument: cleared clinical AI loses to general models, and general models didn't improve outcomes in a real trial</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh"><strong>(1) 基準研究</strong>（<a href="https://www.nature.com/articles/s41591-026-04431-5" target="_blank" rel="noopener"><em>Nature Medicine</em>，6 月 23 日</a>）：以真實醫師提問為題，比較 GPT-5.2、Gemini 3.1 Pro、Claude Opus 4.6 三個通用模型，與已取得 FDA 認可的臨床工具 <strong>OpenEvidence</strong> 及 Wolters Kluwer 的 <strong>UpToDate Expert AI</strong>；結果三個通用模型全面勝出（<a href="https://www.clinicaltrialvanguard.com/opinion/nature-medicines-june-2026-benchmark-study-reveals-general-purpose-llms-outperform-fda-cleared-clinical-ai-and-exposes-a-validation-gap-regulators-have-not-closed/" target="_blank" rel="noopener">Clinical Trial Vanguard 解讀</a>；<a href="https://www.statnews.com/2026/07/29/clinical-ai-vs-generalist-llm-benchmark-study-trust-accuracy-safety/" target="_blank" rel="noopener">STAT 7/29 的方法論討論</a>）。<strong>(2) 務實叢集隨機試驗</strong>（<a href="https://www.nature.com/articles/s41591-026-04503-6" target="_blank" rel="noopener"><em>Nature Medicine</em>，6 月 26 日</a>）：在肯亞 Nairobi 與 Kiambu 兩郡的 16 家基層院所，103 名 clinical officer（介入組 52／對照組 51）、共 9,691 名病人，介入為嵌入電子病歷的 GPT-4o 臨床決策支援系統「AI Consult 2.0」。主要結果——14 天內治療失敗：介入組 <strong>102/4,693（2.2%）</strong> vs 對照組 <strong>94/4,654（2.0%）</strong>，校正後 OR <strong>0.77（95% CI 0.55–1.08，P = 0.13）</strong>。作者結論：「LLM 輔助是安全的，但未降低 14 天內治療失敗率；若有效益，幅度可能不大。」</span>
-        <span class="en"><strong>(1) The benchmark</strong> (<a href="https://www.nature.com/articles/s41591-026-04431-5" target="_blank" rel="noopener"><em>Nature Medicine</em>, Jun 23</a>): on real physician queries, GPT-5.2, Gemini 3.1 Pro and Claude Opus 4.6 were compared against FDA-cleared clinical tools <strong>OpenEvidence</strong> and Wolters Kluwer's <strong>UpToDate Expert AI</strong> — and the general-purpose models outperformed both (<a href="https://www.clinicaltrialvanguard.com/opinion/nature-medicines-june-2026-benchmark-study-reveals-general-purpose-llms-outperform-fda-cleared-clinical-ai-and-exposes-a-validation-gap-regulators-have-not-closed/" target="_blank" rel="noopener">Clinical Trial Vanguard analysis</a>; <a href="https://www.statnews.com/2026/07/29/clinical-ai-vs-generalist-llm-benchmark-study-trust-accuracy-safety/" target="_blank" rel="noopener">STAT on the methodology, Jul 29</a>). <strong>(2) The trial</strong> (<a href="https://www.nature.com/articles/s41591-026-04503-6" target="_blank" rel="noopener"><em>Nature Medicine</em>, Jun 26</a>): a pragmatic cluster-randomised study across 16 primary care facilities in Kenya's Nairobi and Kiambu counties, 103 clinical officers (52 intervention / 51 control) and 9,691 patients, with a GPT-4o-based decision support system, "AI Consult 2.0," embedded in the EMR. Primary outcome — treatment failure within 14 days: <strong>102/4,693 (2.2%)</strong> intervention vs <strong>94/4,654 (2.0%)</strong> control, adjusted OR <strong>0.77 (95% CI 0.55–1.08, P = 0.13)</strong>. The authors conclude LLM assistance was safe but did not reduce treatment failure, and any benefit is probably modest.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">兩篇合起來擊中同一個制度漏洞：<strong>監管核准回答的是「有沒有符合廠商自己訂的規格」，不是「比現有替代方案好不好」</strong>。這代表一件很尷尬的事——醫院可能為了合規而採購已核准的工具，卻買到在同一題目上表現更差的產品，且沒有任何機制要求做比較性驗證。而肯亞試驗更進一步指出：即使模型在基準上很強，放進真實工作流程後，對病人結果的改善也可能小到測不出來。在本週給付閘門大開的背景下，這兩篇是必要的煞車（<a href="https://www.nature.com/articles/s41591-026-04431-5" target="_blank" rel="noopener">基準研究</a>、<a href="https://www.nature.com/articles/s41591-026-04503-6" target="_blank" rel="noopener">肯亞試驗</a>、<a href="https://www.clinicaltrialvanguard.com/opinion/nature-medicines-june-2026-benchmark-study-reveals-general-purpose-llms-outperform-fda-cleared-clinical-ai-and-exposes-a-validation-gap-regulators-have-not-closed/" target="_blank" rel="noopener">監管缺口分析</a>）。</span>
-        <span class="en">Together they hit the same institutional gap: <strong>clearance answers whether a tool meets its sponsor's own specification, not whether it beats the available alternative</strong>. The awkward implication is that a hospital buying a cleared tool for compliance reasons may end up with the worse performer on the same task — and nothing in the process requires comparative validation. The Kenya trial goes further: even a model that benchmarks well can produce an improvement in patient outcomes too small to measure once it is inside a real workflow. In a week when the payment gates swung open, these two papers are the necessary brake (<a href="https://www.nature.com/articles/s41591-026-04431-5" target="_blank" rel="noopener">benchmark</a>, <a href="https://www.nature.com/articles/s41591-026-04503-6" target="_blank" rel="noopener">Kenya trial</a>, <a href="https://www.clinicaltrialvanguard.com/opinion/nature-medicines-june-2026-benchmark-study-reveals-general-purpose-llms-outperform-fda-cleared-clinical-ai-and-exposes-a-validation-gap-regulators-have-not-closed/" target="_blank" rel="noopener">regulatory-gap analysis</a>).</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">公司與產品</span><span class="en-inline">Players</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">公司與產品</span></div>
       <p class="val">
         <span class="zh">受測的商業產品：OpenEvidence、Wolters Kluwer UpToDate Expert AI。受測模型：OpenAI GPT-5.2／GPT-4o、Google Gemini 3.1 Pro、Anthropic Claude Opus 4.6。肯亞試驗的通訊作者 Bilal A. Mateen 任職於 PATH 與伯明罕大學，第一作者 Ambrose Agweyu 隸屬 KEMRI-Wellcome Trust、PATH 與奈洛比大學。相關的評估方法論可另見 <a href="https://www.nature.com/articles/s41591-025-04151-2" target="_blank" rel="noopener">MedHELM 全面評估框架</a>。</span>
-        <span class="en">Commercial products tested: OpenEvidence and Wolters Kluwer's UpToDate Expert AI. Models tested: OpenAI GPT-5.2/GPT-4o, Google Gemini 3.1 Pro, Anthropic Claude Opus 4.6. On the Kenya trial, corresponding author Bilal A. Mateen is at PATH and the University of Birmingham; first author Ambrose Agweyu is with KEMRI-Wellcome Trust, PATH and the University of Nairobi. For evaluation methodology more broadly, see the <a href="https://www.nature.com/articles/s41591-025-04151-2" target="_blank" rel="noopener">MedHELM holistic evaluation framework</a>.</span>
       </p></div>
     <div class="src">
-      <span class="zh-inline">來源：</span><span class="en-inline">Sources: </span>
+      <span class="zh-inline">來源：</span>
       <a href="https://www.nature.com/articles/s41591-026-04431-5" target="_blank" rel="noopener">Nature Medicine · Jun 23</a> ·
       <a href="https://www.nature.com/articles/s41591-026-04503-6" target="_blank" rel="noopener">Nature Medicine · Jun 26</a> ·
       <a href="https://www.clinicaltrialvanguard.com/opinion/nature-medicines-june-2026-benchmark-study-reveals-general-purpose-llms-outperform-fda-cleared-clinical-ai-and-exposes-a-validation-gap-regulators-have-not-closed/" target="_blank" rel="noopener">Clinical Trial Vanguard</a> ·
@@ -480,65 +456,57 @@ footer{
   <!-- 7 -->
   <div class="card">
     <div class="tags">
-      <span class="tag"><span class="zh-inline">勞動關係</span><span class="en-inline">Labor</span></span>
+      <span class="tag"><span class="zh-inline">勞動關係</span></span>
       <span class="tag">NYSNA</span><span class="tag">HCA</span><span class="tag">Sutter</span><span class="tag">8/11</span>
     </div>
     <h3>
       <span class="zh">護理師把 AI 送上談判桌：從「準確率之爭」轉向「誰被取代」</span>
-      <span class="en">Nurses bring AI to the bargaining table — the fight moves from accuracy to displacement</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">紐約市護理師公開表示 AI 正在取代他們的工作（<a href="https://prismreports.org/2026/08/03/new-york-city-nurses-say-ai-is-replacing-them/" target="_blank" rel="noopener">Prism Reports，8 月 3 日</a>；<a href="https://www.radiofree.org/2026/08/07/new-york-city-nurses-say-ai-is-replacing-them/" target="_blank" rel="noopener">Radio Free 8 月 7 日轉載</a>）。<a href="https://www.modernhealthcare.com/providers/mh-nurses-unions-ai-hca-sutter/" target="_blank" rel="noopener">Modern Healthcare 報導</a>護理工會對 HCA、Sutter 等醫院系統的 AI 使用展開審視；<a href="https://news.bloomberglaw.com/daily-labor-report/ny-nursing-union-fights-ai-layoffs-citing-technology-pitfalls" target="_blank" rel="noopener">Bloomberg Law</a> 報導紐約護理工會以「技術缺陷」為由反對 AI 相關裁員；<a href="https://www.techpolicy.press/the-nurses-union-breaking-ranks-to-fight-ai-in-hospitals/" target="_blank" rel="noopener">TechPolicy.Press</a> 則分析了「打破陣線對抗醫院 AI 的護理工會」這個現象。STAT 8 月 11 日的 Health Tech 電子報也以護理師反彈為兩大主題之一（<a href="https://www.statnews.com/2026/08/11/cms-rapid-breakthrough-device-coverage-health-tech/" target="_blank" rel="noopener">連結</a>）。</span>
-        <span class="en">New York City nurses have gone public saying AI is replacing them (<a href="https://prismreports.org/2026/08/03/new-york-city-nurses-say-ai-is-replacing-them/" target="_blank" rel="noopener">Prism Reports, Aug 3</a>; <a href="https://www.radiofree.org/2026/08/07/new-york-city-nurses-say-ai-is-replacing-them/" target="_blank" rel="noopener">syndicated by Radio Free, Aug 7</a>). <a href="https://www.modernhealthcare.com/providers/mh-nurses-unions-ai-hca-sutter/" target="_blank" rel="noopener">Modern Healthcare</a> reports nursing unions scrutinising AI use at systems including HCA and Sutter; <a href="https://news.bloomberglaw.com/daily-labor-report/ny-nursing-union-fights-ai-layoffs-citing-technology-pitfalls" target="_blank" rel="noopener">Bloomberg Law</a> covers a New York nursing union fighting AI-linked layoffs on the grounds of technology shortcomings; and <a href="https://www.techpolicy.press/the-nurses-union-breaking-ranks-to-fight-ai-in-hospitals/" target="_blank" rel="noopener">TechPolicy.Press</a> analyses the union breaking ranks to fight hospital AI. STAT's Aug 11 Health Tech newsletter carried the pushback as one of its two lead items (<a href="https://www.statnews.com/2026/08/11/cms-rapid-breakthrough-device-coverage-health-tech/" target="_blank" rel="noopener">link</a>).</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">醫療 AI 的最大阻力正在換位置。過去三年的爭論主軸是「準不準」，接下來三年會是「誰的工作、誰的責任、誰的班表」。這件事對供應商的實際影響很具體：一旦 AI 條款進入集體協商合約，導入速度就不再只取決於 CIO 與採購，而是要通過工會這一關。值得注意的是，這一波反彈的論述基礎並不是反科技，而是「技術本身有缺陷」——這恰好與本週 <em>Nature Medicine</em> 的<a href="https://www.nature.com/articles/s41591-026-04431-5" target="_blank" rel="noopener">證據缺口</a>互相呼應，兩者會彼此增強（工會策略分析見 <a href="https://www.techpolicy.press/the-nurses-union-breaking-ranks-to-fight-ai-in-hospitals/" target="_blank" rel="noopener">TechPolicy.Press</a>）。</span>
-        <span class="en">The main source of friction in medical AI is relocating. The argument of the past three years was accuracy; the argument of the next three will be whose job, whose liability, whose shift. The practical consequence for vendors is concrete: once AI clauses enter collective bargaining agreements, deployment speed no longer depends only on the CIO and procurement — it has to clear the union too. Note that this pushback is not framed as anti-technology but as "the technology is flawed," which dovetails precisely with this week's <em>Nature Medicine</em> <a href="https://www.nature.com/articles/s41591-026-04431-5" target="_blank" rel="noopener">evidence gap</a>. The two arguments reinforce each other (union strategy analysed at <a href="https://www.techpolicy.press/the-nurses-union-breaking-ranks-to-fight-ai-in-hospitals/" target="_blank" rel="noopener">TechPolicy.Press</a>).</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">公司與產品</span><span class="en-inline">Players</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">公司與產品</span></div>
       <p class="val">
         <span class="zh">涉及的醫院系統包括 HCA Healthcare 與 Sutter Health（<a href="https://www.modernhealthcare.com/providers/mh-nurses-unions-ai-hca-sutter/" target="_blank" rel="noopener">Modern Healthcare</a>）；工會方以紐約州護理師協會（NYSNA）相關組織為主（<a href="https://news.bloomberglaw.com/daily-labor-report/ny-nursing-union-fights-ai-layoffs-citing-technology-pitfalls" target="_blank" rel="noopener">Bloomberg Law</a>）。爭議標的多為排班／人力配置演算法、急症惡化預警（如敗血症預測）與環境式文件工具，這類產品的共通點是：不受 FDA 管制，卻直接改變護理工作流程（<a href="https://www.statnews.com/2026/08/06/ai-health-care-skepticism-advances-nature-medicine-scribe-sepsis/" target="_blank" rel="noopener">STAT First Opinion 8/6</a>）。</span>
-        <span class="en">Health systems named include HCA Healthcare and Sutter Health (<a href="https://www.modernhealthcare.com/providers/mh-nurses-unions-ai-hca-sutter/" target="_blank" rel="noopener">Modern Healthcare</a>), with New York State Nurses Association-affiliated organising on the labour side (<a href="https://news.bloomberglaw.com/daily-labor-report/ny-nursing-union-fights-ai-layoffs-citing-technology-pitfalls" target="_blank" rel="noopener">Bloomberg Law</a>). The disputed tools are typically staffing/acuity algorithms, deterioration alerts such as sepsis prediction, and ambient documentation — products that share one trait: unregulated by the FDA, yet directly reshaping nursing workflow (<a href="https://www.statnews.com/2026/08/06/ai-health-care-skepticism-advances-nature-medicine-scribe-sepsis/" target="_blank" rel="noopener">STAT First Opinion, Aug 6</a>).</span>
       </p></div>
     <div class="src">
-      <span class="zh-inline">來源：</span><span class="en-inline">Sources: </span>
+      <span class="zh-inline">來源：</span>
       <a href="https://prismreports.org/2026/08/03/new-york-city-nurses-say-ai-is-replacing-them/" target="_blank" rel="noopener">Prism Reports</a> ·
       <a href="https://www.modernhealthcare.com/providers/mh-nurses-unions-ai-hca-sutter/" target="_blank" rel="noopener">Modern Healthcare</a> ·
       <a href="https://news.bloomberglaw.com/daily-labor-report/ny-nursing-union-fights-ai-layoffs-citing-technology-pitfalls" target="_blank" rel="noopener">Bloomberg Law</a> ·
       <a href="https://www.techpolicy.press/the-nurses-union-breaking-ranks-to-fight-ai-in-hospitals/" target="_blank" rel="noopener">TechPolicy.Press</a>
-      <span class="zh-inline">（部分為付費牆內容）</span><span class="en-inline">(some paywalled)</span>
+      <span class="zh-inline">（部分為付費牆內容）</span>
     </div>
   </div>
 
   <!-- 8 -->
   <div class="card">
     <div class="tags">
-      <span class="tag"><span class="zh-inline">模型發布</span><span class="en-inline">Models</span></span>
+      <span class="tag"><span class="zh-inline">模型發布</span></span>
       <span class="tag">OpenAI</span><span class="tag">Google</span><span class="tag">DeepSeek</span><span class="tag">8/10–8/14</span>
     </div>
     <h3>
       <span class="zh">八月上旬七款模型接連發布：真正對醫院有意義的是「小而快」那一批</span>
-      <span class="en">Seven model releases in five days — the ones that matter to hospitals are the small, fast ones</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">依 <a href="https://aireleasetracker.com/latest" target="_blank" rel="noopener">AI Release Tracker</a> 記錄：8/10 OpenAI <strong>GPT-5.6-Cyber</strong> 與 Meta <strong>Muse Glimmer</strong>；8/12 <strong>Grok 4.6</strong>；8/13 Google <strong>Gemini 3.7 Flash</strong> 與 DeepSeek <strong>V4-Pro-0813</strong>；8/14 <strong>Qwen3.8-27B</strong> 與 Z.ai <strong>GLM-5.3</strong>。另可對照 <a href="https://llmgateway.io/timeline" target="_blank" rel="noopener">LLM Gateway 的發布時間軸</a>。</span>
-        <span class="en">Per the <a href="https://aireleasetracker.com/latest" target="_blank" rel="noopener">AI Release Tracker</a>: Aug 10 brought OpenAI's <strong>GPT-5.6-Cyber</strong> and Meta's <strong>Muse Glimmer</strong>; Aug 12 <strong>Grok 4.6</strong>; Aug 13 Google's <strong>Gemini 3.7 Flash</strong> and DeepSeek <strong>V4-Pro-0813</strong>; Aug 14 <strong>Qwen3.8-27B</strong> and Z.ai's <strong>GLM-5.3</strong>. Cross-check against the <a href="https://llmgateway.io/timeline" target="_blank" rel="noopener">LLM Gateway release timeline</a>.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">對醫療機構而言，旗艦模型的分數不是最相關的指標。真正改變採用曲線的是 Gemini 3.7 Flash、Qwen3.8-27B 這類「小而快、可地端部署」的模型——它們貼合醫院的真實限制：受保護健康資訊不出院區、單位成本可預測、延遲夠低到能塞進門診流程。另一個更尖銳的推論來自本週的基準研究：通用模型每兩三個月就迭代一次，而<strong>「專用臨床 AI」的護城河正在以同樣的速度折舊</strong>。如果一個經過 18 個月審查取得核准的產品，在核准當下就輸給當週發布的通用模型，那麼「核准」作為競爭優勢的價值需要被重新定價（依據見 <a href="https://www.nature.com/articles/s41591-026-04431-5" target="_blank" rel="noopener">Nature Medicine 基準研究</a>）。</span>
-        <span class="en">For provider organisations, frontier scores are not the relevant metric. What actually bends the adoption curve are models like Gemini 3.7 Flash and Qwen3.8-27B — small, fast, deployable on-premises — because they fit real hospital constraints: PHI never leaves the estate, unit costs are predictable, and latency is low enough to sit inside a clinic workflow. The sharper inference comes from this week's benchmark result: general models iterate every two to three months, and <strong>the moat around "specialised clinical AI" is depreciating at the same rate</strong>. If a product that took 18 months to clear is already behind a general model released the same week it cleared, then clearance as a competitive advantage needs repricing (basis: the <a href="https://www.nature.com/articles/s41591-026-04431-5" target="_blank" rel="noopener">Nature Medicine benchmark</a>).</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">相關動態</span><span class="en-inline">Related</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">相關動態</span></div>
       <p class="val">
         <span class="zh">agentic 方向上，<em>Nature Medicine</em> 的研究亮點文章介紹了 <strong>AMIE</strong> 與 <strong>MIRA</strong> 兩個代理式模型，能在診斷、治療規劃與住院決策等多階段臨床問題上自主推進；文章同時明確指出「兩個模型都還沒有準備好進入真實臨床使用」（<a href="https://www.nature.com/articles/d41591-026-00034-2" target="_blank" rel="noopener">Nature Medicine，2026 年 6 月 30 日</a>）。</span>
-        <span class="en">On the agentic front, a <em>Nature Medicine</em> research highlight covers <strong>AMIE</strong> and <strong>MIRA</strong>, agent-based models that pursue multi-step clinical problems autonomously across diagnosis, treatment planning and admission decisions — while stating plainly that "neither model is ready yet for real-world clinical use" (<a href="https://www.nature.com/articles/d41591-026-00034-2" target="_blank" rel="noopener">Nature Medicine, Jun 30, 2026</a>).</span>
       </p></div>
     <div class="src">
-      <span class="zh-inline">來源：</span><span class="en-inline">Sources: </span>
+      <span class="zh-inline">來源：</span>
       <a href="https://aireleasetracker.com/latest" target="_blank" rel="noopener">AI Release Tracker</a> ·
       <a href="https://llmgateway.io/timeline" target="_blank" rel="noopener">LLM Gateway</a> ·
       <a href="https://www.nature.com/articles/d41591-026-00034-2" target="_blank" rel="noopener">Nature Medicine</a>
@@ -552,37 +520,34 @@ footer{
   <h2>02 — Product Analysis</h2>
   <div class="sec-title">
     <span class="zh">兩個產品，兩種押注：消費端入口 vs 藥廠後端</span>
-    <span class="en">Two products, two bets: the consumer front door vs the pharma back end</span>
   </div>
 
   <div class="grid2">
     <div class="panel">
       <h3>ChatGPT Health</h3>
-      <p class="sub">OpenAI · <span class="zh-inline">2026 年 1 月推出，7 月起開放全美使用者</span><span class="en-inline">Launched Jan 2026, opened to all US users in July</span></p>
+      <p class="sub">OpenAI · <span class="zh-inline">2026 年 1 月推出，7 月起開放全美使用者</span></p>
       <p>
         <span class="zh"><strong>功能：</strong>OpenAI 於 <a href="https://www.cnbc.com/2026/01/07/openai-chatgpt-health-medical-records.html" target="_blank" rel="noopener">2026 年 1 月 7 日</a>推出 ChatGPT Health，把病歷入口（patient portal）與健康 App 直接連進聊天介面，讓使用者以自然語言查詢自己的醫療紀錄（<a href="https://openai.com/index/introducing-chatgpt-health/" target="_blank" rel="noopener">官方說明</a>、<a href="https://www.medicaleconomics.com/view/openai-launches-chatgpt-health-directly-linking-patient-portals-to-the-ai-chatbot" target="_blank" rel="noopener">Medical Economics</a>）。<a href="https://techcrunch.com/2026/07/23/openai-makes-chatgpt-health-available-to-all-u-s-users/" target="_blank" rel="noopener">7 月 23 日起開放全美使用者</a>，並整合 Apple Health 等來源（<a href="https://openai.com/index/health-in-chatgpt/" target="_blank" rel="noopener">Health in ChatGPT</a>）。</span>
-        <span class="en"><strong>What it does:</strong> OpenAI launched ChatGPT Health on <a href="https://www.cnbc.com/2026/01/07/openai-chatgpt-health-medical-records.html" target="_blank" rel="noopener">Jan 7, 2026</a>, wiring patient portals and health apps directly into the chat interface so users can query their own records in natural language (<a href="https://openai.com/index/introducing-chatgpt-health/" target="_blank" rel="noopener">OpenAI</a>, <a href="https://www.medicaleconomics.com/view/openai-launches-chatgpt-health-directly-linking-patient-portals-to-the-ai-chatbot" target="_blank" rel="noopener">Medical Economics</a>). It <a href="https://techcrunch.com/2026/07/23/openai-makes-chatgpt-health-available-to-all-u-s-users/" target="_blank" rel="noopener">opened to all US users on Jul 23</a>, pulling in sources such as Apple Health (<a href="https://openai.com/index/health-in-chatgpt/" target="_blank" rel="noopener">Health in ChatGPT</a>).</span>
       </p>
       <ul class="clean">
-        <li><span class="zh"><span class="pro">優勢：</span>分發能力無可匹敵。任何醫院自建的病人入口，使用頻率都不可能接近 ChatGPT；而「查得懂自己的檢驗報告」是需求極明確、監管風險相對低的入口場景（全美開放時程見 <a href="https://techcrunch.com/2026/07/23/openai-makes-chatgpt-health-available-to-all-u-s-users/" target="_blank" rel="noopener">TechCrunch 7/23</a>）。</span><span class="en"><span class="pro">Strength:</span> distribution nobody can match. No hospital-built portal will ever approach ChatGPT's usage frequency, and "help me understand my lab report" is a well-defined, comparatively low-regulatory-risk entry point (US-wide availability per <a href="https://techcrunch.com/2026/07/23/openai-makes-chatgpt-health-available-to-all-u-s-users/" target="_blank" rel="noopener">TechCrunch, Jul 23</a>).</span></li>
-        <li><span class="zh"><span class="con">疑慮一：</span>資料治理。病歷資料一旦流入通用聊天服務，HIPAA 的適用邊界、二次利用與訓練資料界線都不是使用者能自行判斷的（<a href="https://www.foxnews.com/tech/chatgpt-health-promises-privacy-health-conversations" target="_blank" rel="noopener">相關報導</a>）。</span><span class="en"><span class="con">Risk 1:</span> data governance. Once record data flows into a general-purpose chat service, the boundaries of HIPAA applicability, secondary use and training data are not things a user can assess for themselves (<a href="https://www.foxnews.com/tech/chatgpt-health-promises-privacy-health-conversations" target="_blank" rel="noopener">coverage</a>).</span></li>
-        <li><span class="zh"><span class="con">疑慮二：</span>監管定位模糊。依英國 MHRA 本週的分類邏輯，只做整理與摘要不算醫材，一旦開始給建議就會落入管制（<a href="https://www.statnews.com/2026/08/04/ai-scribes-medical-devices-uk-regulator-view-health-tech/" target="_blank" rel="noopener">STAT 8/4</a>）——而消費者實際的提問方式很難停在「整理」那一側。</span><span class="en"><span class="con">Risk 2:</span> a blurred regulatory position. Under the MHRA classification logic in the news this week, organising and summarising is not a device but offering advice is (<a href="https://www.statnews.com/2026/08/04/ai-scribes-medical-devices-uk-regulator-view-health-tech/" target="_blank" rel="noopener">STAT, Aug 4</a>) — and the way consumers actually ask questions rarely stays on the "organising" side of that line.</span></li>
-        <li><span class="zh"><span class="con">疑慮三：</span>證據基礎。<em>Nature Medicine</em> 的一項預先註冊隨機研究專門檢驗「LLM 作為一般民眾的醫療助手」的可靠性（<a href="https://www.nature.com/articles/s41591-025-04074-y" target="_blank" rel="noopener">連結</a>），這類研究是評估消費端健康 AI 的正確標尺，而不是模型的醫師考試分數。</span><span class="en"><span class="con">Risk 3:</span> the evidence base. A preregistered randomised study in <em>Nature Medicine</em> examined the reliability of LLMs as medical assistants for the general public (<a href="https://www.nature.com/articles/s41591-025-04074-y" target="_blank" rel="noopener">link</a>). That, not exam scores, is the right yardstick for consumer health AI.</span></li>
+        <li><span class="zh"><span class="pro">優勢：</span>分發能力無可匹敵。任何醫院自建的病人入口，使用頻率都不可能接近 ChatGPT；而「查得懂自己的檢驗報告」是需求極明確、監管風險相對低的入口場景（全美開放時程見 <a href="https://techcrunch.com/2026/07/23/openai-makes-chatgpt-health-available-to-all-u-s-users/" target="_blank" rel="noopener">TechCrunch 7/23</a>）。</span></li>
+        <li><span class="zh"><span class="con">疑慮一：</span>資料治理。病歷資料一旦流入通用聊天服務，HIPAA 的適用邊界、二次利用與訓練資料界線都不是使用者能自行判斷的（<a href="https://www.foxnews.com/tech/chatgpt-health-promises-privacy-health-conversations" target="_blank" rel="noopener">相關報導</a>）。</span></li>
+        <li><span class="zh"><span class="con">疑慮二：</span>監管定位模糊。依英國 MHRA 本週的分類邏輯，只做整理與摘要不算醫材，一旦開始給建議就會落入管制（<a href="https://www.statnews.com/2026/08/04/ai-scribes-medical-devices-uk-regulator-view-health-tech/" target="_blank" rel="noopener">STAT 8/4</a>）——而消費者實際的提問方式很難停在「整理」那一側。</span></li>
+        <li><span class="zh"><span class="con">疑慮三：</span>證據基礎。<em>Nature Medicine</em> 的一項預先註冊隨機研究專門檢驗「LLM 作為一般民眾的醫療助手」的可靠性（<a href="https://www.nature.com/articles/s41591-025-04074-y" target="_blank" rel="noopener">連結</a>），這類研究是評估消費端健康 AI 的正確標尺，而不是模型的醫師考試分數。</span></li>
       </ul>
     </div>
 
     <div class="panel">
       <h3>Amazon Bio Discovery + Bedrock AgentCore</h3>
-      <p class="sub">AWS · <span class="zh-inline">經由 8/10 Novo Nordisk 合作案首次成為藥廠級招牌</span><span class="en-inline">Elevated to a pharma-scale showcase by the Aug 10 Novo Nordisk deal</span></p>
+      <p class="sub">AWS · <span class="zh-inline">經由 8/10 Novo Nordisk 合作案首次成為藥廠級招牌</span></p>
       <p>
         <span class="zh"><strong>功能：</strong>Bio Discovery 提供以生物資料訓練的 AI 模型，Bedrock 提供 AI 應用開發平台，AgentCore 則提供 AI agent 的託管執行環境；三者組成的堆疊在 <a href="https://www.fiercebiotech.com/biotech/novo-nordisk-and-aws-sign-ai-drug-discovery-pact-launch-london-innovation-hub" target="_blank" rel="noopener">Novo Nordisk 的合作案</a>中被整包採用，用於加速慢性病藥物的發現與開發（<a href="https://www.biospace.com/press-releases/novo-nordisk-and-aws-enter-strategic-partnership-to-accelerate-drug-discovery-through-ai" target="_blank" rel="noopener">官方新聞稿</a>）。</span>
-        <span class="en"><strong>What it does:</strong> Bio Discovery supplies AI models trained on biological data, Bedrock the app-development platform, and AgentCore the managed runtime for AI agents. The three were adopted as a bundle in the <a href="https://www.fiercebiotech.com/biotech/novo-nordisk-and-aws-sign-ai-drug-discovery-pact-launch-london-innovation-hub" target="_blank" rel="noopener">Novo Nordisk partnership</a> to accelerate discovery and development in chronic disease (<a href="https://www.biospace.com/press-releases/novo-nordisk-and-aws-enter-strategic-partnership-to-accelerate-drug-discovery-through-ai" target="_blank" rel="noopener">press release</a>).</span>
       </p>
       <ul class="clean">
-        <li><span class="zh"><span class="pro">優勢一：</span>綁定既有雲端合約。藥廠不需要新增供應商評鑑流程，法遵、資安、採購都走已經核可的路徑，這是純 AI 新創最難跨越的門檻（合作結構見 <a href="https://www.biospace.com/press-releases/novo-nordisk-and-aws-enter-strategic-partnership-to-accelerate-drug-discovery-through-ai" target="_blank" rel="noopener">官方新聞稿</a>）。</span><span class="en"><span class="pro">Strength 1:</span> it rides an existing cloud contract. Pharma doesn't need a new vendor assessment — compliance, security and procurement all travel an already-approved path, which is the hardest barrier for a pure-play AI startup to clear (deal structure in the <a href="https://www.biospace.com/press-releases/novo-nordisk-and-aws-enter-strategic-partnership-to-accelerate-drug-discovery-through-ai" target="_blank" rel="noopener">press release</a>).</span></li>
-        <li><span class="zh"><span class="pro">優勢二：</span>可量化的近端效益。Novo 已對外表示合作縮短了臨床文件作業時間、涵蓋 25,000 名員工——這類營運指標比「加速新藥發現」容易在董事會被驗收得多（<a href="https://www.fiercebiotech.com/biotech/novo-nordisk-and-aws-sign-ai-drug-discovery-pact-launch-london-innovation-hub" target="_blank" rel="noopener">25,000 名員工數據出處</a>）。</span><span class="en"><span class="pro">Strength 2:</span> near-term, quantifiable wins. Novo already says the work cut clinical documentation time across 25,000 employees — operational metrics of that kind survive a board review far better than "accelerating discovery" (<a href="https://www.fiercebiotech.com/biotech/novo-nordisk-and-aws-sign-ai-drug-discovery-pact-launch-london-innovation-hub" target="_blank" rel="noopener">source for the 25,000-employee figure</a>).</span></li>
-        <li><span class="zh"><span class="con">疑慮一：</span>資料主權。藥廠最有價值的資產是專有實驗資料，而它正是這類服務的燃料；合作條款中資料如何隔離、是否回流訓練，公開資訊並未揭露（可查資訊範圍見 <a href="https://www.biospace.com/press-releases/novo-nordisk-and-aws-enter-strategic-partnership-to-accelerate-drug-discovery-through-ai" target="_blank" rel="noopener">官方新聞稿</a>）。</span><span class="en"><span class="con">Risk 1:</span> data sovereignty. A pharma company's most valuable asset is its proprietary experimental data, and that is exactly what feeds these services. How data is isolated — and whether it flows back into training — is not disclosed publicly (scope of what is public: <a href="https://www.biospace.com/press-releases/novo-nordisk-and-aws-enter-strategic-partnership-to-accelerate-drug-discovery-through-ai" target="_blank" rel="noopener">press release</a>).</span></li>
-        <li><span class="zh"><span class="con">疑慮二：</span>驗證缺口。目前對外可查的成果全是效率指標，沒有任何關於候選分子品質或試驗成功率的公開數據。對照 <a href="https://www.lqventures.com/healthcare-ai-and-digital-health-strategic-roundup-july-3-august-2-2026/" target="_blank" rel="noopener">同期 Chai Discovery 募得 4 億美元</a>與 GSK×Relation 建置細胞擾動資料集的動作，可以看出整個賽道仍停在「先蓋基礎設施」的階段。</span><span class="en"><span class="con">Risk 2:</span> a verification gap. Every publicly checkable result so far is an efficiency metric; there is no public data on candidate quality or trial success rates. Set against <a href="https://www.lqventures.com/healthcare-ai-and-digital-health-strategic-roundup-july-3-august-2-2026/" target="_blank" rel="noopener">Chai Discovery's $400M raise</a> and GSK×Relation's cellular perturbation datasets in the same window, the whole category is still in its build-the-infrastructure phase.</span></li>
+        <li><span class="zh"><span class="pro">優勢一：</span>綁定既有雲端合約。藥廠不需要新增供應商評鑑流程，法遵、資安、採購都走已經核可的路徑，這是純 AI 新創最難跨越的門檻（合作結構見 <a href="https://www.biospace.com/press-releases/novo-nordisk-and-aws-enter-strategic-partnership-to-accelerate-drug-discovery-through-ai" target="_blank" rel="noopener">官方新聞稿</a>）。</span></li>
+        <li><span class="zh"><span class="pro">優勢二：</span>可量化的近端效益。Novo 已對外表示合作縮短了臨床文件作業時間、涵蓋 25,000 名員工——這類營運指標比「加速新藥發現」容易在董事會被驗收得多（<a href="https://www.fiercebiotech.com/biotech/novo-nordisk-and-aws-sign-ai-drug-discovery-pact-launch-london-innovation-hub" target="_blank" rel="noopener">25,000 名員工數據出處</a>）。</span></li>
+        <li><span class="zh"><span class="con">疑慮一：</span>資料主權。藥廠最有價值的資產是專有實驗資料，而它正是這類服務的燃料；合作條款中資料如何隔離、是否回流訓練，公開資訊並未揭露（可查資訊範圍見 <a href="https://www.biospace.com/press-releases/novo-nordisk-and-aws-enter-strategic-partnership-to-accelerate-drug-discovery-through-ai" target="_blank" rel="noopener">官方新聞稿</a>）。</span></li>
+        <li><span class="zh"><span class="con">疑慮二：</span>驗證缺口。目前對外可查的成果全是效率指標，沒有任何關於候選分子品質或試驗成功率的公開數據。對照 <a href="https://www.lqventures.com/healthcare-ai-and-digital-health-strategic-roundup-july-3-august-2-2026/" target="_blank" rel="noopener">同期 Chai Discovery 募得 4 億美元</a>與 GSK×Relation 建置細胞擾動資料集的動作，可以看出整個賽道仍停在「先蓋基礎設施」的階段。</span></li>
       </ul>
     </div>
   </div>
@@ -593,53 +558,51 @@ footer{
   <h2>03 — Companies &amp; Competition</h2>
   <div class="sec-title">
     <span class="zh">誰在跟誰打，差異化在哪</span>
-    <span class="en">Who is fighting whom, and on what</span>
   </div>
 
   <div class="tbl-wrap">
     <table>
       <thead><tr>
-        <th><span class="zh-inline">公司</span><span class="en-inline">Company</span></th>
-        <th><span class="zh-inline">近況（附來源）</span><span class="en-inline">Recent status (sourced)</span></th>
-        <th><span class="zh-inline">競爭定位與差異化</span><span class="en-inline">Position &amp; differentiation</span></th>
+        <th><span class="zh-inline">公司</span></th>
+        <th><span class="zh-inline">近況（附來源）</span></th>
+        <th><span class="zh-inline">競爭定位與差異化</span></th>
       </tr></thead>
       <tbody>
         <tr>
           <td><strong>Commure</strong></td>
-          <td><span class="zh-inline">估值約 70 億美元，General Catalyst 支持；本週遭 STAT 長篇調查 </span><span class="en-inline">~$7B valuation, General Catalyst-backed; subject of STAT's long investigation this week </span><a href="https://www.statnews.com/2026/08/12/inside-commure-athelas-mad-dash-automate-health-care/" target="_blank" rel="noopener">STAT 8/12</a></td>
-          <td><span class="zh-inline">走「醫療營運自動化」而非臨床 AI，繞開 FDA 監管；規模化快，但價值主張只能用財務指標驗證</span><span class="en-inline">Automates the business of care rather than clinical decisions, sidestepping FDA oversight; scales fast, but its value can only be proven in financial metrics</span></td>
+          <td><span class="zh-inline">估值約 70 億美元，General Catalyst 支持；本週遭 STAT 長篇調查 </span><a href="https://www.statnews.com/2026/08/12/inside-commure-athelas-mad-dash-automate-health-care/" target="_blank" rel="noopener">STAT 8/12</a></td>
+          <td><span class="zh-inline">走「醫療營運自動化」而非臨床 AI，繞開 FDA 監管；規模化快，但價值主張只能用財務指標驗證</span></td>
         </tr>
         <tr>
           <td><strong>Abridge</strong></td>
-          <td><span class="zh-inline">2025 年 6 月完成 3 億美元 Series E，估值 53 億美元（a16z、Khosla 領投），部署於 150+ 醫療系統、年支援 5,000 萬次以上醫療對話、涵蓋 55 個專科與 28 種語言，累計募資約 8 億美元 </span><span class="en-inline">Closed a $300M Series E in June 2025 at a $5.3B valuation (a16z, Khosla), deployed in 150+ health systems, supporting 50M+ medical conversations a year across 55 specialties and 28 languages; ~$800M raised to date </span><a href="https://www.fiercehealthcare.com/ai-and-machine-learning/ambient-ai-startup-abridge-scores-300m-series-e-backed-a16z-and-khosla" target="_blank" rel="noopener">Fierce</a> · <a href="https://www.mobihealthnews.com/news/abridge-secures-300m-boosts-valuation-53b" target="_blank" rel="noopener">MobiHealthNews</a></td>
-          <td><span class="zh-inline">環境式病歷的領先者，客戶含 Johns Hopkins、Mayo Clinic；正把收費循環智慧往臨床流程前端推，直接與 Commure 的地盤重疊</span><span class="en-inline">The ambient documentation leader (Johns Hopkins, Mayo Clinic among customers), now pushing revenue-cycle intelligence earlier into the clinical workflow — straight into Commure's territory</span></td>
+          <td><span class="zh-inline">2025 年 6 月完成 3 億美元 Series E，估值 53 億美元（a16z、Khosla 領投），部署於 150+ 醫療系統、年支援 5,000 萬次以上醫療對話、涵蓋 55 個專科與 28 種語言，累計募資約 8 億美元 </span><a href="https://www.fiercehealthcare.com/ai-and-machine-learning/ambient-ai-startup-abridge-scores-300m-series-e-backed-a16z-and-khosla" target="_blank" rel="noopener">Fierce</a> · <a href="https://www.mobihealthnews.com/news/abridge-secures-300m-boosts-valuation-53b" target="_blank" rel="noopener">MobiHealthNews</a></td>
+          <td><span class="zh-inline">環境式病歷的領先者，客戶含 Johns Hopkins、Mayo Clinic；正把收費循環智慧往臨床流程前端推，直接與 Commure 的地盤重疊</span></td>
         </tr>
         <tr>
           <td><strong>OpenEvidence</strong> / <strong>Wolters Kluwer</strong></td>
-          <td><span class="zh-inline">兩者的臨床工具在 6 月的 </span><span class="en-inline">Both had their clinical tools beaten by general-purpose frontier models in a June </span><em>Nature Medicine</em><span class="zh-inline"> 基準研究中輸給通用前沿模型 </span><span class="en-inline"> benchmark </span><a href="https://www.nature.com/articles/s41591-026-04431-5" target="_blank" rel="noopener">Nature Medicine</a></td>
-          <td><span class="zh-inline">以「有醫學文獻背書、可引用來源」為賣點；但基準結果顯示這個護城河正在被通用模型的迭代速度侵蝕</span><span class="en-inline">Sell on literature grounding and citable sources — but the benchmark suggests that moat is eroding at the pace of general-model iteration</span></td>
+          <td><span class="zh-inline">兩者的臨床工具在 6 月的 </span><em>Nature Medicine</em><span class="zh-inline"> 基準研究中輸給通用前沿模型 </span><a href="https://www.nature.com/articles/s41591-026-04431-5" target="_blank" rel="noopener">Nature Medicine</a></td>
+          <td><span class="zh-inline">以「有醫學文獻背書、可引用來源」為賣點；但基準結果顯示這個護城河正在被通用模型的迭代速度侵蝕</span></td>
         </tr>
         <tr>
           <td><strong>Oracle Health</strong></td>
-          <td><span class="zh-inline">推出 AI 原生、以語音優先並內建 agentic AI 的電子病歷系統 </span><span class="en-inline">Launched an AI-native, voice-first EHR with embedded agentic AI </span><a href="https://www.fiercehealthcare.com/health-tech/oracle-health-debuts-ai-powered-ehr-designed-voice-first-solution-embedded-agentic-ai" target="_blank" rel="noopener">Fierce Healthcare</a> · <a href="https://www.oracle.com/news/announcement/oracle-ushers-in-new-era-of-ai-driven-electronic-health-records-2025-08-13/" target="_blank" rel="noopener">Oracle</a></td>
-          <td><span class="zh-inline">既有 EHR 廠商的反擊路線：把 AI 內建進系統本身，讓第三方環境式工具變成可有可無的附加元件</span><span class="en-inline">The incumbent counterattack: bake AI into the record itself so third-party ambient tools become optional add-ons</span></td>
+          <td><span class="zh-inline">推出 AI 原生、以語音優先並內建 agentic AI 的電子病歷系統 </span><a href="https://www.fiercehealthcare.com/health-tech/oracle-health-debuts-ai-powered-ehr-designed-voice-first-solution-embedded-agentic-ai" target="_blank" rel="noopener">Fierce Healthcare</a> · <a href="https://www.oracle.com/news/announcement/oracle-ushers-in-new-era-of-ai-driven-electronic-health-records-2025-08-13/" target="_blank" rel="noopener">Oracle</a></td>
+          <td><span class="zh-inline">既有 EHR 廠商的反擊路線：把 AI 內建進系統本身，讓第三方環境式工具變成可有可無的附加元件</span></td>
         </tr>
         <tr>
           <td><strong>Aidoc</strong></td>
-          <td><span class="zh-inline">2026 年 1 月 21 日取得腹部 CT 分流清關，累計 14 項適應症（11 項為新增），研究顯示新適應症平均敏感度 97%、特異度 98% </span><span class="en-inline">Cleared abdominal CT triage on Jan 21, 2026 — 14 indications total, 11 new — with reported 97% mean sensitivity and 98% mean specificity across the new indications </span><a href="https://www.diagnosticimaging.com/view/fda-clears-ct-based-ai-triage-platform-aidoc" target="_blank" rel="noopener">Diagnostic Imaging</a></td>
-          <td><span class="zh-inline">以 aiOS 平台與 CARE 基礎模型做「多適應症單一工作流」，這正是 NTAP／RAPID 這類按次給付制度最能放大的產品型態</span><span class="en-inline">Bundles many indications into one workflow via its aiOS platform and CARE foundation model — precisely the product shape that per-use payment schemes like NTAP and RAPID amplify most</span></td>
+          <td><span class="zh-inline">2026 年 1 月 21 日取得腹部 CT 分流清關，累計 14 項適應症（11 項為新增），研究顯示新適應症平均敏感度 97%、特異度 98% </span><a href="https://www.diagnosticimaging.com/view/fda-clears-ct-based-ai-triage-platform-aidoc" target="_blank" rel="noopener">Diagnostic Imaging</a></td>
+          <td><span class="zh-inline">以 aiOS 平台與 CARE 基礎模型做「多適應症單一工作流」，這正是 NTAP／RAPID 這類按次給付制度最能放大的產品型態</span></td>
         </tr>
         <tr>
           <td><strong>Novo Nordisk</strong> × <strong>AWS</strong></td>
-          <td><span class="zh-inline">8 月 10 日簽署 AI 藥物發現策略聯盟並設倫敦創新中心 </span><span class="en-inline">Signed an AI drug-discovery pact and opened a London hub on Aug 10 </span><a href="https://www.fiercebiotech.com/biotech/novo-nordisk-and-aws-sign-ai-drug-discovery-pact-launch-london-innovation-hub" target="_blank" rel="noopener">Fierce Biotech</a></td>
-          <td><span class="zh-inline">對手是 BMS×NVIDIA 的算力路線與 GSK×Relation 的資料路線；AWS 的差異化在於賣 agent 執行環境而非模型 </span><span class="en-inline">Competing against BMS×NVIDIA's compute route and GSK×Relation's data route; AWS differentiates by selling an agent runtime rather than a model </span><a href="https://www.lqventures.com/healthcare-ai-and-digital-health-strategic-roundup-july-3-august-2-2026/" target="_blank" rel="noopener">LucidQuest</a></td>
+          <td><span class="zh-inline">8 月 10 日簽署 AI 藥物發現策略聯盟並設倫敦創新中心 </span><a href="https://www.fiercebiotech.com/biotech/novo-nordisk-and-aws-sign-ai-drug-discovery-pact-launch-london-innovation-hub" target="_blank" rel="noopener">Fierce Biotech</a></td>
+          <td><span class="zh-inline">對手是 BMS×NVIDIA 的算力路線與 GSK×Relation 的資料路線；AWS 的差異化在於賣 agent 執行環境而非模型 </span><a href="https://www.lqventures.com/healthcare-ai-and-digital-health-strategic-roundup-july-3-august-2-2026/" target="_blank" rel="noopener">LucidQuest</a></td>
         </tr>
       </tbody>
     </table>
   </div>
   <div class="note">
     <span class="zh"><strong>一句話總結競爭態勢：</strong>臨床 AI 的護城河（核准、文獻背書）正在被通用模型侵蝕，而營運 AI 的護城河（EHR 整合、收費循環）正在被 EHR 原廠收回。兩邊擠壓之下，2026 下半年最安全的位置反而是<strong>又難做又不性感的資料與整合層</strong>——這也正好是本週歐洲募資的錢流向的地方。</span>
-    <span class="en"><strong>The competitive picture in one line:</strong> clinical AI's moat (clearance, literature grounding) is being eroded by general models, while operational AI's moat (EHR integration, revenue cycle) is being reclaimed by the EHR vendors themselves. Squeezed from both sides, the safest position in H2 2026 is the unglamorous, hard-to-build <strong>data and integration layer</strong> — which is precisely where this week's European money went.</span>
   </div>
 </section>
 
@@ -648,32 +611,30 @@ footer{
   <h2>04 — Funding</h2>
   <div class="sec-title">
     <span class="zh">近期募資一覽（歐洲主導）</span>
-    <span class="en">Recent rounds — Europe leading</span>
   </div>
 
   <div class="tbl-wrap">
     <table>
       <thead><tr>
-        <th><span class="zh-inline">公司</span><span class="en-inline">Company</span></th>
-        <th><span class="zh-inline">地區</span><span class="en-inline">Region</span></th>
-        <th><span class="zh-inline">金額</span><span class="en-inline">Amount</span></th>
-        <th><span class="zh-inline">領域與來源</span><span class="en-inline">Focus &amp; source</span></th>
+        <th><span class="zh-inline">公司</span></th>
+        <th><span class="zh-inline">地區</span></th>
+        <th><span class="zh-inline">金額</span></th>
+        <th><span class="zh-inline">領域與來源</span></th>
       </tr></thead>
       <tbody>
-        <tr><td><strong>Chai Discovery</strong></td><td><span class="zh-inline">美國</span><span class="en-inline">US</span></td><td>$400M</td><td><span class="zh-inline">分子設計 AI 平台 </span><span class="en-inline">Molecular design AI platform </span><a href="https://www.lqventures.com/healthcare-ai-and-digital-health-strategic-roundup-july-3-august-2-2026/" target="_blank" rel="noopener">LucidQuest</a></td></tr>
-        <tr><td><strong>Xeltis</strong></td><td><span class="zh-inline">荷蘭</span><span class="en-inline">Netherlands</span></td><td>€20.5M</td><td><span class="zh-inline">血管植入技術 </span><span class="en-inline">Vascular implants </span><a href="https://www.healthcare.digital/single-post/this-week-in-european-healthtech-medtech-and-health-ai-14th-august-2026" target="_blank" rel="noopener">healthcare.digital</a></td></tr>
-        <tr><td><strong>Qureight</strong></td><td><span class="zh-inline">英國</span><span class="en-inline">UK</span></td><td>$20M (Series B)</td><td><span class="zh-inline">臨床試驗影像 AI 平台（肺與心臟），7 月底完成 </span><span class="en-inline">AI imaging platform for lung and heart clinical trials, closed late July </span><a href="https://tech.eu/2026/07/29/qureight-secures-20m-series-b-to-expand-ai-powered-imaging-platform-for-clinical-trials/" target="_blank" rel="noopener">Tech.eu</a> · <a href="https://www.qureight.com/news/qureight-closes-20-million-series-b-financing" target="_blank" rel="noopener">Qureight</a></td></tr>
-        <tr><td><strong>TidalSense</strong></td><td><span class="zh-inline">英國</span><span class="en-inline">UK</span></td><td>$19M</td><td><span class="zh-inline">AI 輔助 COPD 診斷，歐洲商業化與進軍美國 </span><span class="en-inline">AI-enabled COPD diagnostics, European commercialisation and US entry </span><a href="https://www.lqventures.com/healthcare-ai-and-digital-health-strategic-roundup-july-3-august-2-2026/" target="_blank" rel="noopener">LucidQuest</a></td></tr>
-        <tr><td><strong>Onalabs</strong></td><td><span class="zh-inline">西班牙</span><span class="en-inline">Spain</span></td><td>€9.3M (Series A)</td><td><span class="zh-inline">汗液生物標記監測 </span><span class="en-inline">Sweat biomarker monitoring </span><a href="https://www.healthcare.digital/single-post/this-week-in-european-healthtech-medtech-and-health-ai-14th-august-2026" target="_blank" rel="noopener">healthcare.digital</a></td></tr>
-        <tr><td><strong>Ahead Health</strong></td><td><span class="zh-inline">瑞士</span><span class="en-inline">Switzerland</span></td><td>€8.7M</td><td><span class="zh-inline">預防性 MRI + AI 診斷 </span><span class="en-inline">Preventative MRI + AI diagnostics </span><a href="https://www.healthcare.digital/single-post/this-week-in-european-healthtech-medtech-and-health-ai-14th-august-2026" target="_blank" rel="noopener">healthcare.digital</a></td></tr>
-        <tr><td><strong>Azalea Vision</strong></td><td><span class="zh-inline">比利時</span><span class="en-inline">Belgium</span></td><td>€7.5M (EIC)</td><td><span class="zh-inline">智慧隱形眼鏡生物感測 </span><span class="en-inline">Smart contact lens biosensors </span><a href="https://www.healthcare.digital/single-post/this-week-in-european-healthtech-medtech-and-health-ai-14th-august-2026" target="_blank" rel="noopener">healthcare.digital</a></td></tr>
-        <tr><td><strong>EVERSION</strong></td><td><span class="zh-inline">德國</span><span class="en-inline">Germany</span></td><td>€2.3M (Seed)</td><td><span class="zh-inline">步態分析鞋墊感測 </span><span class="en-inline">Gait-analysis insole sensors </span><a href="https://www.healthcare.digital/single-post/this-week-in-european-healthtech-medtech-and-health-ai-14th-august-2026" target="_blank" rel="noopener">healthcare.digital</a></td></tr>
+        <tr><td><strong>Chai Discovery</strong></td><td><span class="zh-inline">美國</span></td><td>$400M</td><td><span class="zh-inline">分子設計 AI 平台 </span><a href="https://www.lqventures.com/healthcare-ai-and-digital-health-strategic-roundup-july-3-august-2-2026/" target="_blank" rel="noopener">LucidQuest</a></td></tr>
+        <tr><td><strong>Xeltis</strong></td><td><span class="zh-inline">荷蘭</span></td><td>€20.5M</td><td><span class="zh-inline">血管植入技術 </span><a href="https://www.healthcare.digital/single-post/this-week-in-european-healthtech-medtech-and-health-ai-14th-august-2026" target="_blank" rel="noopener">healthcare.digital</a></td></tr>
+        <tr><td><strong>Qureight</strong></td><td><span class="zh-inline">英國</span></td><td>$20M (Series B)</td><td><span class="zh-inline">臨床試驗影像 AI 平台（肺與心臟），7 月底完成 </span><a href="https://tech.eu/2026/07/29/qureight-secures-20m-series-b-to-expand-ai-powered-imaging-platform-for-clinical-trials/" target="_blank" rel="noopener">Tech.eu</a> · <a href="https://www.qureight.com/news/qureight-closes-20-million-series-b-financing" target="_blank" rel="noopener">Qureight</a></td></tr>
+        <tr><td><strong>TidalSense</strong></td><td><span class="zh-inline">英國</span></td><td>$19M</td><td><span class="zh-inline">AI 輔助 COPD 診斷，歐洲商業化與進軍美國 </span><a href="https://www.lqventures.com/healthcare-ai-and-digital-health-strategic-roundup-july-3-august-2-2026/" target="_blank" rel="noopener">LucidQuest</a></td></tr>
+        <tr><td><strong>Onalabs</strong></td><td><span class="zh-inline">西班牙</span></td><td>€9.3M (Series A)</td><td><span class="zh-inline">汗液生物標記監測 </span><a href="https://www.healthcare.digital/single-post/this-week-in-european-healthtech-medtech-and-health-ai-14th-august-2026" target="_blank" rel="noopener">healthcare.digital</a></td></tr>
+        <tr><td><strong>Ahead Health</strong></td><td><span class="zh-inline">瑞士</span></td><td>€8.7M</td><td><span class="zh-inline">預防性 MRI + AI 診斷 </span><a href="https://www.healthcare.digital/single-post/this-week-in-european-healthtech-medtech-and-health-ai-14th-august-2026" target="_blank" rel="noopener">healthcare.digital</a></td></tr>
+        <tr><td><strong>Azalea Vision</strong></td><td><span class="zh-inline">比利時</span></td><td>€7.5M (EIC)</td><td><span class="zh-inline">智慧隱形眼鏡生物感測 </span><a href="https://www.healthcare.digital/single-post/this-week-in-european-healthtech-medtech-and-health-ai-14th-august-2026" target="_blank" rel="noopener">healthcare.digital</a></td></tr>
+        <tr><td><strong>EVERSION</strong></td><td><span class="zh-inline">德國</span></td><td>€2.3M (Seed)</td><td><span class="zh-inline">步態分析鞋墊感測 </span><a href="https://www.healthcare.digital/single-post/this-week-in-european-healthtech-medtech-and-health-ai-14th-august-2026" target="_blank" rel="noopener">healthcare.digital</a></td></tr>
       </tbody>
     </table>
   </div>
   <div class="note">
     <span class="zh"><strong>觀察：</strong>撇開 Chai Discovery 的 4 億美元不算，本週歐洲案件數明顯多於美國，且集中在「感測器 + 資料基礎設施」而非「診斷演算法」。這與 2026 年上半年<a href="https://www.fiercehealthcare.com/digital-health/digital-health-brought-74b-vc-funding-ai-powered-rebound-fuels-market" target="_blank" rel="noopener">數位健康 VC 募資 74 億美元</a>的整體結構一致——資本正從模型層往下移到資料層與硬體層。另可參考 <a href="https://www.emarketer.com/content/mega-rounds-power-q1-2026-health-tech-fundraising" target="_blank" rel="noopener">eMarketer 對 2026 Q1 大額輪次的分析</a>與 <a href="https://www.mobihealthnews.com/news/healthcare-ma-surges-2026-biopharma-medtech-drive-dealmaking" target="_blank" rel="noopener">MobiHealthNews 的 2026 併購觀察</a>。</span>
-    <span class="en"><strong>Read:</strong> setting aside Chai Discovery's $400M, Europe out-dealt the US this week, and the money clustered in sensors and data infrastructure rather than diagnostic algorithms — consistent with the <a href="https://www.fiercehealthcare.com/digital-health/digital-health-brought-74b-vc-funding-ai-powered-rebound-fuels-market" target="_blank" rel="noopener">$7.4B digital-health VC total for H1 2026</a>. Capital is moving down the stack, from the model layer to data and hardware. See also <a href="https://www.emarketer.com/content/mega-rounds-power-q1-2026-health-tech-fundraising" target="_blank" rel="noopener">eMarketer on Q1 2026 mega-rounds</a> and <a href="https://www.mobihealthnews.com/news/healthcare-ma-surges-2026-biopharma-medtech-drive-dealmaking" target="_blank" rel="noopener">MobiHealthNews on 2026 M&amp;A</a>.</span>
   </div>
 </section>
 
@@ -682,25 +643,20 @@ footer{
   <h2>05 — Taiwan</h2>
   <div class="sec-title">
     <span class="zh">台灣視角：當美國拉給付、英國認他國、台灣先鋪資料底層</span>
-    <span class="en">Taiwan angle: the US pulls with payment, the UK recognises others, Taiwan lays the data substrate first</span>
   </div>
 
   <div class="panel">
     <p>
       <span class="zh">衛福部長石崇良提出的「<strong>333 政策</strong>」核心是三件事：<strong>打破醫療資訊系統藩籬進行橫向整合</strong>、<strong>實現數據結構一致化與標準化</strong>、<strong>提升數據應用廣度</strong>。時程上，目標是年底前讓全台醫學中心病歷互通，隔年推展至區域與地區醫院（<a href="https://udn.com/news/story/7266/9592218" target="_blank" rel="noopener">聯合新聞網，高醫大論壇報導</a>）。石崇良另在公開場合把智慧醫療的挑戰歸納為<strong>資安、資料、AI 三大治理</strong>（<a href="https://www.rti.org.tw/news?uid=3&amp;pid=162643" target="_blank" rel="noopener">中央廣播電臺</a>）。</span>
-      <span class="en">Health Minister Shih Chung-liang's "<strong>333 policy</strong>" rests on three moves: <strong>breaking down silos between hospital information systems for horizontal integration</strong>, <strong>standardising data structures</strong>, and <strong>broadening data application</strong>. The timeline targets record interoperability across all medical centres by year end, extending to regional and district hospitals the following year (<a href="https://udn.com/news/story/7266/9592218" target="_blank" rel="noopener">UDN, from the KMU forum</a>). Shih has separately framed the challenge as three governance tracks — <strong>security, data and AI</strong> (<a href="https://www.rti.org.tw/news?uid=3&amp;pid=162643" target="_blank" rel="noopener">Radio Taiwan International</a>).</span>
     </p>
     <p>
       <span class="zh">財源方面，賴總統推動的「健康台灣深耕計畫」編列 <strong>489 億元</strong>，支持精準醫療與遠距醫療發展；行政院政務委員陳時中則強調要同時發展「精準醫療」與「精準公衛」，用 AI 算力讓篩檢等措施事半功倍。同一場合也揭露高醫附醫與鴻海合作開發全台首個大腸癌 AI 診斷系統（<a href="https://udn.com/news/story/7266/9592218" target="_blank" rel="noopener">聯合新聞網</a>；相關的肺健康與智慧長照場次見<a href="https://udn.com/news/story/7266/9592502" target="_blank" rel="noopener">另一則報導</a>）。執行面上，衛福部設有<a href="https://aicenter.mohw.gov.tw/" target="_blank" rel="noopener">智慧醫療三大 AI 中心</a>；規範面上，已頒布<a href="https://www.leeandli.com/TW/Newsletters/7656.htm" target="_blank" rel="noopener">「醫療機構應用生成式人工智慧指引」</a>。</span>
-      <span class="en">On funding, President Lai's "Healthy Taiwan Deep Cultivation Plan" allocates <strong>NT$48.9 billion</strong> to precision medicine and telemedicine. Minister without Portfolio Chen Shih-chung has argued for pursuing "precision public health" alongside precision medicine, using AI compute to make screening programmes go further. The same forum disclosed that Kaohsiung Medical University Hospital and Foxconn are developing Taiwan's first colorectal cancer AI diagnostic system (<a href="https://udn.com/news/story/7266/9592218" target="_blank" rel="noopener">UDN</a>; a companion session on lung health and smart long-term care is covered <a href="https://udn.com/news/story/7266/9592502" target="_blank" rel="noopener">here</a>). On delivery, the Ministry runs <a href="https://aicenter.mohw.gov.tw/" target="_blank" rel="noopener">three national smart-healthcare AI centres</a>; on rules, it has issued <a href="https://www.leeandli.com/TW/Newsletters/7656.htm" target="_blank" rel="noopener">guidelines for generative AI use in healthcare institutions</a>.</span>
     </p>
     <p>
       <span class="zh">產業側同樣往資料層集中：遠傳在 Medical Taiwan 2026（6 月 25–27 日，台北世貿一館）展出在宅遠距醫療照護與跨院專科遠距會診，並與晉弘科技（6796）、宇心生醫、商之器科技（8409）共推「AI 智慧醫療數據大平台計劃」，採 <strong>FHIR</strong> 標準架構整合醫療資料交換（<a href="https://udn.com/news/story/7240/9588291" target="_blank" rel="noopener">聯合新聞網</a>）。產業趨勢分析可另見 <a href="https://www.cio.com.tw/103979/" target="_blank" rel="noopener">CIO Taiwan 對 2026 智慧醫療制度化治理拐點的觀察</a>。</span>
-      <span class="en">Industry is converging on the same layer. At Medical Taiwan 2026 (Jun 25–27, TWTC Hall 1), Far EasTone showed home-based telecare and cross-hospital specialist teleconsultation, and joined Crystalvue (6796), QT Medical and EBM Technologies (8409) on an "AI smart healthcare data platform" built on the <strong>FHIR</strong> standard for health data exchange (<a href="https://udn.com/news/story/7240/9588291" target="_blank" rel="noopener">UDN</a>). For the broader trend picture, see <a href="https://www.cio.com.tw/103979/" target="_blank" rel="noopener">CIO Taiwan on 2026 as the institutionalisation inflection point</a>.</span>
     </p>
     <p>
       <span class="zh"><strong>對照本週國際新聞，三條路徑的差別很清楚：</strong>美國用給付碼（NTAP、RAPID）從需求端拉動導入；英國用「承認他國核准」降低供給端的進入成本；台灣選的是先鋪資料底層。台灣這條路見效最慢，但長期槓桿最大——沒有互通的病歷，任何醫療 AI 都只能在單一醫院裡打轉，也不可能累積出足以驗證療效的真實世界證據。而本週 <em>Nature Medicine</em> 的教訓正好指向這裡：<strong>缺的從來不是模型，是能證明模型有用的資料與試驗設計</strong>。<a href="https://udn.com/news/story/7266/9592218" target="_blank" rel="noopener">年底醫學中心互通</a>的落地程度，會是檢驗台灣這一步的第一個真實指標。另值得注意的是，英國 MHRA 的 International Reliance Pathway 若成案，台灣醫材業者取得 FDA 核准後進入英國市場的邊際成本可能顯著下降（<a href="https://www.healthcare.digital/single-post/this-week-in-european-healthtech-medtech-and-health-ai-14th-august-2026" target="_blank" rel="noopener">草案報導</a>）。</span>
-      <span class="en"><strong>Against this week's international news, the three routes are cleanly distinguished:</strong> the US pulls adoption from the demand side with billing codes (NTAP, RAPID); the UK cuts supply-side entry costs by recognising other regulators' approvals; Taiwan is laying the data substrate first. Taiwan's is the slowest to show results and the highest-leverage over time — without interoperable records, any medical AI stays trapped inside one hospital and can never accumulate the real-world evidence needed to prove it works. This week's <em>Nature Medicine</em> lesson points exactly here: <strong>the missing ingredient was never the model, it was the data and trial design that could show the model helps</strong>. How much of the <a href="https://udn.com/news/story/7266/9592218" target="_blank" rel="noopener">year-end medical-centre interoperability target</a> actually lands will be the first real test. Worth watching too: if the MHRA's International Reliance Pathway is adopted, the marginal cost for Taiwanese device makers to enter the UK after an FDA clearance could drop sharply (<a href="https://www.healthcare.digital/single-post/this-week-in-european-healthtech-medtech-and-health-ai-14th-august-2026" target="_blank" rel="noopener">draft coverage</a>).</span>
     </p>
   </div>
 </section>
@@ -710,30 +666,29 @@ footer{
   <h2>06 — Further Reading</h2>
   <div class="sec-title">
     <span class="zh">值得花時間深讀的五篇</span>
-    <span class="en">Five worth your time</span>
   </div>
 
   <div class="panel">
     <ol class="reading">
       <li>
         <a href="https://www.onhealthcare.tech/p/cmss-rapid-coverage-pathway-for-breakthrough" target="_blank" rel="noopener">CMS's RAPID Coverage Pathway for Breakthrough Devices — What the August 2026 Procedural Notice Actually Does</a>
-        <p class="why"><span class="zh">本週最有價值的一篇拆解。不是複述新聞稿，而是逐條指出資格閘門、IVD 排除、TCET 暫停與「給付≠支付」這些會真正決定成敗的細節，並附上第二篇延伸分析。</span><span class="en">The most valuable teardown of the week. Rather than restating the press release, it walks through the eligibility gate, the IVD exclusion, the TCET pause and the coverage-is-not-payment problem — the details that will actually decide whether RAPID works. A companion Part II goes deeper.</span></p>
+        <p class="why"><span class="zh">本週最有價值的一篇拆解。不是複述新聞稿，而是逐條指出資格閘門、IVD 排除、TCET 暫停與「給付≠支付」這些會真正決定成敗的細節，並附上第二篇延伸分析。</span></p>
       </li>
       <li>
         <a href="https://www.nature.com/articles/s41591-026-04503-6" target="_blank" rel="noopener">Generative AI-enabled clinical decision support system in primary care: a pragmatic, cluster-randomized trial</a>
-        <p class="why"><span class="zh">9,691 名病人、16 家基層院所、103 名臨床人員的務實隨機試驗，結論是「安全但沒有降低治療失敗率」。這是目前少數用正確方法回答「醫療 LLM 到底有沒有用」的研究，值得完整讀方法與討論段。</span><span class="en">A pragmatic randomised trial across 9,691 patients, 16 primary care facilities and 103 clinicians, concluding the assistance was safe but did not reduce treatment failure. One of the few studies answering "does medical LLM assistance actually help" with the right method — read the methods and discussion in full.</span></p>
+        <p class="why"><span class="zh">9,691 名病人、16 家基層院所、103 名臨床人員的務實隨機試驗，結論是「安全但沒有降低治療失敗率」。這是目前少數用正確方法回答「醫療 LLM 到底有沒有用」的研究，值得完整讀方法與討論段。</span></p>
       </li>
       <li>
         <a href="https://www.nature.com/articles/s41591-026-04431-5" target="_blank" rel="noopener">General-purpose large language models outperform specialized clinical AI tools on medical benchmarks</a>
-        <p class="why"><span class="zh">直接挑戰「FDA 認可 = 更好」這個採購直覺的研究。搭配 <a href="https://www.clinicaltrialvanguard.com/opinion/nature-medicines-june-2026-benchmark-study-reveals-general-purpose-llms-outperform-fda-cleared-clinical-ai-and-exposes-a-validation-gap-regulators-have-not-closed/" target="_blank" rel="noopener">Clinical Trial Vanguard 的監管缺口分析</a>一起讀，會更清楚它對採購決策的實際意涵。</span><span class="en">A study that directly challenges the procurement instinct that "cleared means better." Pair it with <a href="https://www.clinicaltrialvanguard.com/opinion/nature-medicines-june-2026-benchmark-study-reveals-general-purpose-llms-outperform-fda-cleared-clinical-ai-and-exposes-a-validation-gap-regulators-have-not-closed/" target="_blank" rel="noopener">Clinical Trial Vanguard's analysis of the regulatory gap</a> to see what it means for buying decisions.</span></p>
+        <p class="why"><span class="zh">直接挑戰「FDA 認可 = 更好」這個採購直覺的研究。搭配 <a href="https://www.clinicaltrialvanguard.com/opinion/nature-medicines-june-2026-benchmark-study-reveals-general-purpose-llms-outperform-fda-cleared-clinical-ai-and-exposes-a-validation-gap-regulators-have-not-closed/" target="_blank" rel="noopener">Clinical Trial Vanguard 的監管缺口分析</a>一起讀，會更清楚它對採購決策的實際意涵。</span></p>
       </li>
       <li>
         <a href="https://www.techpolicy.press/the-nurses-union-breaking-ranks-to-fight-ai-in-hospitals/" target="_blank" rel="noopener">The Nurses Union Breaking Ranks to Fight AI in Hospitals</a>
-        <p class="why"><span class="zh">如果你只關心技術與法規，會完全錯過這條線。這篇解釋了為什麼護理工會的立場會成為未來三年醫院導入速度的實質變數，而不只是公關議題。</span><span class="en">If you only follow technology and regulation, you will miss this axis entirely. It explains why union positions will be a real determinant of hospital deployment speed over the next three years, not just a PR concern.</span></p>
+        <p class="why"><span class="zh">如果你只關心技術與法規，會完全錯過這條線。這篇解釋了為什麼護理工會的立場會成為未來三年醫院導入速度的實質變數，而不只是公關議題。</span></p>
       </li>
       <li>
         <a href="https://www.healthcare.digital/single-post/this-week-in-european-healthtech-medtech-and-health-ai-14th-august-2026" target="_blank" rel="noopener">This Week in European HealthTech, MedTech and Health AI — 14th August 2026</a>
-        <p class="why"><span class="zh">歐洲面最紮實的週報。AI Act 執行、高風險醫材期限延後、MHRA 國際承認通道與六筆歐洲募資都在同一篇裡，是掌握歐洲監管節奏最省時的入口。</span><span class="en">The most substantive weekly on Europe. AI Act enforcement, the deferred high-risk device deadlines, the MHRA reliance pathway and six European rounds all in one place — the most time-efficient way to track the European regulatory tempo.</span></p>
+        <p class="why"><span class="zh">歐洲面最紮實的週報。AI Act 執行、高風險醫材期限延後、MHRA 國際承認通道與六筆歐洲募資都在同一篇裡，是掌握歐洲監管節奏最省時的入口。</span></p>
       </li>
     </ol>
   </div>
@@ -744,7 +699,6 @@ footer{
   <h2>07 — References</h2>
   <div class="sec-title">
     <span class="zh">參考文獻</span>
-    <span class="en">References</span>
   </div>
   <div class="panel">
     <ol class="refs">
@@ -793,7 +747,6 @@ footer{
     </ol>
     <div class="note">
       <span class="zh"><strong>編輯說明：</strong>(1) STAT 多篇報導、Modern Healthcare 與 Bloomberg Law 的相關報導位於付費牆後，本報告僅根據公開可見的標題、導言與摘要撰寫，未取得付費牆後的完整細節，並已避免引用無法核實的數字；8/13 的 NTAP 報導未公開具體公司名稱與金額，本文因此不列舉。(2) Fierce Healthcare 的募資追蹤頁面在本次查證時回傳 403、無法讀取，相關募資資料改以 healthcare.digital、Tech.eu、LucidQuest 等可讀來源交叉比對。(3) 部分研究（<em>Nature Medicine</em> 6/23 與 6/26 兩篇、AMIE/MIRA 亮點文）發表日期早於本週，列入是因為它們構成本週監管與給付新聞的必要對照，日期均已標示。(4) Abridge 的募資數據為 2025 年 6 月事件，非本週新聞，僅作競爭格局背景。</span>
-      <span class="en"><strong>Editor's note:</strong> (1) Several STAT pieces, plus the Modern Healthcare and Bloomberg Law stories, sit behind paywalls. This report draws only on publicly visible headlines, standfirsts and summaries, and avoids citing figures that could not be verified; the Aug 13 NTAP story does not publicly disclose company names or dollar amounts, so none are listed here. (2) Fierce Healthcare's fundraising tracker returned a 403 during verification, so funding data was cross-checked against readable sources including healthcare.digital, Tech.eu and LucidQuest. (3) Some research (the two June <em>Nature Medicine</em> papers and the AMIE/MIRA highlight) predates this week; it is included because it forms the necessary counterpoint to this week's regulatory and payment news, and all dates are labelled. (4) The Abridge funding figures are from June 2025, not this week, and appear only as competitive background.</span>
     </div>
   </div>
 </section>
@@ -802,7 +755,6 @@ footer{
   <div class="foot-row">
     <div>
       <span class="zh">AI／醫療AI 每日新知日報 · 由 Claude 於台北時間每日自動產出 · 本期主題：星期日／本週回顧與精選延伸閱讀<br>本報告內容經來源查證，但不構成投資或醫療建議。所有數據請以原始出處為準。</span>
-  <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Sunday / weekly review and curated reading<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
     </div>
     <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com / 返回 peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
   </div>
@@ -815,16 +767,6 @@ footer{
 </div>
 
 <script>
-function setLang(l){
-  document.body.classList.remove('lang-zh','lang-en');
-  document.body.classList.add('lang-'+l);
-  document.documentElement.lang = (l==='zh') ? 'zh-Hant' : 'en';
-  document.getElementById('b-zh').classList.toggle('on', l==='zh');
-  document.getElementById('b-en').classList.toggle('on', l==='en');
-  document.title = (l==='zh')
-    ? 'AI／醫療AI 每日新知日報 · 2026-08-16'
-    : 'AI & Medical AI Daily · 2026-08-16';
-}
 function toggleTheme(){
   document.body.classList.toggle('dark');
   document.getElementById('theme-ic').textContent =
@@ -852,5 +794,6 @@ window.addEventListener('scroll', function(){
     .catch(function(){});
 })();
 </script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/en/reports/2026-08-16.html" hreflang="en" rel="alternate" lang="en">English version</a></p>
 </body>
 </html>

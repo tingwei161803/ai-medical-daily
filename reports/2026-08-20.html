@@ -8,6 +8,10 @@
 <title>AI／醫療AI 每日新知日報 · 2026-08-20</title>
 <meta property="og:url" content="https://ai-medical-daily.peteraim.com/reports/2026-08-20.html" />
 <link rel="canonical" href="https://ai-medical-daily.peteraim.com/reports/2026-08-20.html" />
+<link rel="alternate" hreflang="zh-Hant" href="https://ai-medical-daily.peteraim.com/reports/2026-08-20.html" />
+<link rel="alternate" hreflang="en" href="https://ai-medical-daily.peteraim.com/en/reports/2026-08-20.html" />
+<link rel="alternate" hreflang="x-default" href="https://ai-medical-daily.peteraim.com/reports/2026-08-20.html" />
+<meta name="description" content="Hippocratic AI 8/13 發表以 700B 主模型＋30 多個監督模型組成的 Polaris「代理協調層」，把醫療 AI 從『完成單一任務』推向『協調整段照護』；同一週一篇 Translational Psychiatry（8/15）指出 65% 的思覺失調症 EEG AI 論文因資料洩漏把準確率灌水最多 30 個百分點。本週技術主軸的兩端：更會調度工具的代理，與更該被重新檢驗的基準。">
 <meta name="report-date" content="2026-08-20">
 <meta name="report-theme" content="technology">
 <meta name="report-title-zh" content="醫療 AI 的新戰場：不是更大的模型，而是會自己動手的模型">
@@ -45,9 +49,8 @@ body{
   font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased;
   transition:background .25s,color .25s;
 }
-body.lang-zh .en, body.lang-en .zh{display:none}
-body.lang-zh .en-inline, body.lang-en .zh-inline{display:none}
-.en-inline,.zh-inline{display:inline}
+.lang-alt-link{margin:0}
+.lang-alt-link a{color:var(--accent);text-decoration:none;font-weight:600}
 
 /* ---------- top bar ---------- */
 header.bar{
@@ -67,11 +70,13 @@ header.bar{
 }
 .btn:hover{border-color:var(--accent);color:var(--accent)}
 .seg{display:flex;border:1px solid var(--border);border-radius:999px;overflow:hidden;background:var(--surface-2)}
-.seg button{
+.seg a{
   border:0;background:transparent;color:var(--muted);font-family:inherit;
-  padding:5px 13px;font-size:13px;font-weight:600;cursor:pointer;transition:.15s
+  padding:5px 13px;font-size:13px;font-weight:600;cursor:pointer;transition:.15s;
+  display:flex;align-items:center;justify-content:center;
+  text-decoration:none;line-height:normal
 }
-.seg button.on{background:var(--accent);color:#fff}
+.seg a.on{background:var(--accent);color:#fff}
 
 /* ---------- layout ---------- */
 main{max-width:920px;margin:0 auto;padding:0 20px 90px}
@@ -223,16 +228,16 @@ footer{
 }
 </style>
 </head>
-<body class="lang-zh">
+<body>
 
 <header class="bar">
   <div class="bar-in">
-    <a class="brand" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span><span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <a class="brand" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span></a>
     <div class="bar-sp"></div>
     <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub / 在 GitHub 給這個專案一顆星"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
     <div class="seg">
-      <button id="b-zh" class="on" onclick="setLang('zh')">中文</button>
-      <button id="b-en" onclick="setLang('en')">EN</button>
+      <a class="on" href="/reports/2026-08-20.html" hreflang="zh-Hant" lang="zh-Hant" aria-current="page">中文</a>
+      <a href="/en/reports/2026-08-20.html" hreflang="en" lang="en" rel="alternate">EN</a>
     </div>
     <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
   </div>
@@ -242,28 +247,24 @@ footer{
 <div class="hero">
   <div class="kicker">
     <span class="zh-inline">星期四 · 技術突破</span>
-    <span class="en-inline">Thursday · Technology</span>
   </div>
   <h1>
     <span class="zh">醫療 AI 的新戰場：不是更大的模型，而是會自己動手的模型</span>
-    <span class="en">Medical AI's new frontier: not bigger models, but ones that act</span>
   </h1>
   <div class="dateline">
     <span class="zh-inline">2026 年 8 月 20 日（四）· 涵蓋 8/13–8/20，含必要技術背景 · 台北時間</span>
-    <span class="en-inline">Thursday, August 20, 2026 · Covering Aug 13–20 with essential technical background · Taipei time</span>
   </div>
   <p class="lede">
     <span class="zh">本週醫療 AI 的技術主軸，正從「模型有多大、基準分數多高」轉向兩個更難的問題：<strong>模型會不會自己調度工具、協調流程</strong>，以及<strong>我們手上的基準到底可不可信</strong>。8 月 13 日 <a href="https://www.prnewswire.com/news-releases/hippocratic-ai-announces-next-generation-of-healthcare-ai-orchestrators-focused-on-outcomes-not-tasks-302850620.html" target="_blank" rel="noopener">Hippocratic AI 發表 Polaris 星系架構的「代理協調層」</a>——700B 主模型搭配 30 多個監督模型，目標是「協調整段照護」而非完成單一任務。兩天後，一篇 <a href="https://doi.org/10.1038/s41398-026-04315-9" target="_blank" rel="noopener"><em>Translational Psychiatry</em>（8/15）</a>直接戳破另一端：65% 的思覺失調症 EEG AI 論文因資料洩漏把準確率灌水最多 30 個百分點。同一週的技術重點，一半在教模型「動手」，一半在提醒我們別被漂亮的數字騙了。</span>
-    <span class="en">This week the technology story in medical AI is shifting away from "how big is the model, how high is the benchmark score" toward two harder questions: <strong>can the model orchestrate its own tools and workflows</strong>, and <strong>can we even trust the benchmarks we have?</strong> On Aug 13, <a href="https://www.prnewswire.com/news-releases/hippocratic-ai-announces-next-generation-of-healthcare-ai-orchestrators-focused-on-outcomes-not-tasks-302850620.html" target="_blank" rel="noopener">Hippocratic AI unveiled an agentic orchestration layer built on its Polaris constellation</a> — a 700B primary model paired with 30-plus supervising models, aimed at coordinating whole episodes of care rather than finishing single tasks. Two days later, a <a href="https://doi.org/10.1038/s41398-026-04315-9" target="_blank" rel="noopener"><em>Translational Psychiatry</em> paper (Aug 15)</a> punctured the other end: 65% of schizophrenia EEG-AI studies inflate accuracy by up to 30 points through data leakage. Half of this week's technical action is teaching models to act; the other half is a reminder not to be fooled by pretty numbers.</span>
   </p>
 
   <nav class="toc">
-    <a href="#top"><span class="zh-inline">重點新聞</span><span class="en-inline">Top Stories</span></a>
-    <a href="#product"><span class="zh-inline">產品分析</span><span class="en-inline">Product Analysis</span></a>
-    <a href="#company"><span class="zh-inline">公司與競爭</span><span class="en-inline">Companies &amp; Competition</span></a>
-    <a href="#taiwan"><span class="zh-inline">台灣視角</span><span class="en-inline">Taiwan Angle</span></a>
-    <a href="#reading"><span class="zh-inline">延伸閱讀</span><span class="en-inline">Further Reading</span></a>
-    <a href="#refs"><span class="zh-inline">參考文獻</span><span class="en-inline">References</span></a>
+    <a href="#top"><span class="zh-inline">重點新聞</span></a>
+    <a href="#product"><span class="zh-inline">產品分析</span></a>
+    <a href="#company"><span class="zh-inline">公司與競爭</span></a>
+    <a href="#taiwan"><span class="zh-inline">台灣視角</span></a>
+    <a href="#reading"><span class="zh-inline">延伸閱讀</span></a>
+    <a href="#refs"><span class="zh-inline">參考文獻</span></a>
   </nav>
 </div>
 
@@ -272,36 +273,31 @@ footer{
   <h2>01 — Top Stories</h2>
   <div class="sec-title">
     <span class="zh">本週技術突破的 7 則重點</span>
-    <span class="en">Seven things in medical-AI technology</span>
   </div>
 
   <!-- 1 -->
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">AI 代理</span><span class="en-inline">AI Agents</span></span>
+      <span class="tag hot"><span class="zh-inline">AI 代理</span></span>
       <span class="tag">Hippocratic AI</span><span class="tag">Polaris</span><span class="tag">700B</span><span class="tag">8/13</span>
     </div>
     <h3>
       <span class="zh">Hippocratic AI 發表「代理協調層」：700B 主模型＋30 多個監督模型，把醫療 AI 從「做任務」推向「顧結果」</span>
-      <span class="en">Hippocratic AI launches agentic orchestrators: a 700B primary model plus 30+ supervisors, moving from tasks to outcomes</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">Hippocratic AI 於 <a href="https://www.prnewswire.com/news-releases/hippocratic-ai-announces-next-generation-of-healthcare-ai-orchestrators-focused-on-outcomes-not-tasks-302850620.html" target="_blank" rel="noopener">8 月 13 日發表新一代「Agentic Orchestrators」（代理協調器）</a>：不再是一支語音 AI 完成一件事，而是由一個「監督智能」決定「哪個專科代理、在什麼時機、用什麼方式」接觸每一位病人。底層是其專利的 <strong>Polaris 星系（constellation）架構</strong>——<a href="https://www.unite.ai/hippocratic-ai-launches-agentic-orchestrators-that-coordinate-voice-ai-teams-for-healthcare-outcomes/" target="_blank" rel="noopener">一個 700 億參數主模型，搭配 30 多個負責升級處理、用藥辨識與不良事件偵測的監督模型</a>。首波推出 30 多個協調器，分屬支付方（8 個）、醫療提供者（8 個）與生技藥廠（18 個）三大客群（<a href="https://www.unite.ai/hippocratic-ai-launches-agentic-orchestrators-that-coordinate-voice-ai-teams-for-healthcare-outcomes/" target="_blank" rel="noopener">Unite.AI</a>）。</span>
-        <span class="en">On <a href="https://www.prnewswire.com/news-releases/hippocratic-ai-announces-next-generation-of-healthcare-ai-orchestrators-focused-on-outcomes-not-tasks-302850620.html" target="_blank" rel="noopener">Aug 13 Hippocratic AI announced its next-generation "Agentic Orchestrators"</a>: instead of one voice AI finishing one task, a "supervising intelligence" decides which specialised agent engages each patient, when, and how. Underneath sits its patented <strong>Polaris constellation architecture</strong> — <a href="https://www.unite.ai/hippocratic-ai-launches-agentic-orchestrators-that-coordinate-voice-ai-teams-for-healthcare-outcomes/" target="_blank" rel="noopener">a 700-billion-parameter primary model with 30-plus supervising models handling escalation, medication recognition and adverse-event detection</a>. The first wave ships 30-plus orchestrators across payers (8), providers (8) and life sciences (18) (<a href="https://www.unite.ai/hippocratic-ai-launches-agentic-orchestrators-that-coordinate-voice-ai-teams-for-healthcare-outcomes/" target="_blank" rel="noopener">Unite.AI</a>).</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">這是「醫療 agent」從單點任務走向<strong>編排（orchestration）</strong>的代表案例，也是本週最能定義技術方向的一則。過去一年的醫療語音 AI 多半停在「打一通提醒電話」；把多個代理疊成一個由監督模型調度的系統，等於把賭注押在「以人群結果（再入院率、STAR 評分、慢病管理、臨床試驗招募）計價」的商業模式上。公司宣稱在 <a href="https://www.unite.ai/hippocratic-ai-launches-agentic-orchestrators-that-coordinate-voice-ai-teams-for-healthcare-outcomes/" target="_blank" rel="noopener">775,000 通電話、由 7,700 多名美國執照臨床人員審查中達到 99.89% 正確建議、零嚴重傷害</a>，累積逾 2.5 億次病人互動。<strong>但這些是廠商自陳、非獨立第三方評估的數字</strong>，且在醫療語境下「99.89%」的剩餘 0.11% 落在哪裡，才是真正的臨床風險所在——這也正好呼應本期第 3 則對「漂亮數字」的警告。</span>
-        <span class="en">This is the flagship case of medical agents moving from single tasks to <strong>orchestration</strong>, and the item that best defines the week's technical direction. Most medical voice AI over the past year stopped at "place one reminder call"; stacking multiple agents under a supervising model bets on a business model priced on population outcomes — readmissions, STAR ratings, chronic-care management, trial enrolment. The company claims <a href="https://www.unite.ai/hippocratic-ai-launches-agentic-orchestrators-that-coordinate-voice-ai-teams-for-healthcare-outcomes/" target="_blank" rel="noopener">99.89% correct advice with zero severe harm across 775,000 calls reviewed by 7,700-plus U.S.-licensed clinicians</a>, atop 250M-plus patient interactions. <strong>These are vendor-reported figures, not independent evaluation</strong> — and in a clinical setting, where the residual 0.11% lands is exactly where the risk lives, which dovetails with story 3 below on trusting pretty numbers.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">公司與產品</span><span class="en-inline">Players</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">公司與產品</span></div>
       <p class="val">
         <span class="zh">Hippocratic AI（加州）由 Munjal Shah（執行長）與 Meenesh Bhimani（醫療長）創辦，累計募資 <strong>4.44 億美元</strong>，投資者含 Andreessen Horowitz、General Catalyst、Kleiner Perkins，以及 <a href="https://www.unite.ai/hippocratic-ai-launches-agentic-orchestrators-that-coordinate-voice-ai-teams-for-healthcare-outcomes/" target="_blank" rel="noopener">NVIDIA 的 NVentures 與 Google 的 CapitalG</a>。產品為患者端對話式語音代理，非診斷或處方系統。</span>
-        <span class="en">Hippocratic AI (California), founded by Munjal Shah (CEO) and Meenesh Bhimani (CMO), has raised <strong>$444 million</strong> from Andreessen Horowitz, General Catalyst, Kleiner Perkins, and <a href="https://www.unite.ai/hippocratic-ai-launches-agentic-orchestrators-that-coordinate-voice-ai-teams-for-healthcare-outcomes/" target="_blank" rel="noopener">NVIDIA's NVentures and Google's CapitalG</a>. The product is patient-facing conversational voice agents, not a diagnostic or prescribing system.</span>
       </p></div>
     <div class="src">
-      <span class="zh-inline">來源：</span><span class="en-inline">Sources: </span>
+      <span class="zh-inline">來源：</span>
       <a href="https://www.prnewswire.com/news-releases/hippocratic-ai-announces-next-generation-of-healthcare-ai-orchestrators-focused-on-outcomes-not-tasks-302850620.html" target="_blank" rel="noopener">PR Newswire · Aug 13</a> ·
       <a href="https://www.unite.ai/hippocratic-ai-launches-agentic-orchestrators-that-coordinate-voice-ai-teams-for-healthcare-outcomes/" target="_blank" rel="noopener">Unite.AI</a> ·
       <a href="https://itdigest.com/healthtech/hippocratic-ai-launches-agentic-orchestrators-to-own-end-to-end-healthcare-outcomes/" target="_blank" rel="noopener">IT Digest</a>
@@ -311,30 +307,26 @@ footer{
   <!-- 2 -->
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">多模態代理</span><span class="en-inline">Multimodal Agent</span></span>
+      <span class="tag hot"><span class="zh-inline">多模態代理</span></span>
       <span class="tag">Ophiuchus</span><span class="tag">MedScope</span><span class="tag">ICML 2026</span><span class="tag">7B</span>
     </div>
     <h3>
       <span class="zh">教模型「看哪裡、怎麼看」：7B 醫學視覺代理在 8 項 VQA 基準平均勝過 o3、Gemini 2.5 Pro、GPT-5</span>
-      <span class="en">Teaching models "where and how to look": a 7B medical vision agent beats o3, Gemini 2.5 Pro and GPT-5 on eight VQA benchmarks</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">上海創智學院 LeapQuest 團隊與浙江大學、上海交通大學、復旦大學提出 <strong>Ophiuchus（影像）</strong>與 <strong>MedScope（影片）</strong>兩個醫學 AI 代理，論文獲 <a href="https://36kr.com/p/3827353790059143" target="_blank" rel="noopener">ICML 2026 接收（2026 年 5 月 27 日公開）</a>。核心是「Think with Images/Videos」範式：模型在推理過程中<strong>主動調用視覺工具</strong>——Ophiuchus 用 SAM2 做精細分割、BiomedParse 定位醫學結構、再 zoom-in 放大關鍵區域；MedScope 先建立全局理解，再用 crop_video 截片段、get_frame 抓關鍵影格，把局部觀察整合回答案。</span>
-        <span class="en">The LeapQuest team at Shanghai Institute for Advanced Study, with Zhejiang University, Shanghai Jiao Tong University and Fudan University, introduced <strong>Ophiuchus (images)</strong> and <strong>MedScope (video)</strong>, two medical AI agents; the work was <a href="https://36kr.com/p/3827353790059143" target="_blank" rel="noopener">accepted to ICML 2026 (public May 27, 2026)</a>. The core is a "Think with Images/Videos" paradigm: the model <strong>actively calls visual tools during reasoning</strong> — Ophiuchus uses SAM2 for fine segmentation, BiomedParse to localise medical structures, then zooms in on key regions; MedScope forms a global view first, then uses crop_video and get_frame to fold local observations back into the answer.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">這是「視覺證據驅動優於單純堆規模」的一個乾淨證明。<a href="https://36kr.com/p/3827353790059143" target="_blank" rel="noopener">Ophiuchus-7B 在 8 個醫學 VQA 基準平均 68.0 分、工具調用準確率 97.9%</a>，勝過 OpenAI-o3（62.2）、Gemini 2.5 Pro（61.8）與 GPT-5（59.9）——一個 70 億參數的專用代理，靠「會看片」贏過數千億參數的通用旗艦。對醫療影像特別關鍵：診斷錯誤常源於「沒看對地方」，而讓模型像放射科醫師一樣主動放大、分割、比對，比單純把整張圖丟進去更貼近臨床推理。對算力受限的醫院與國家，小模型＋工具的路線也更可負擔。</span>
-        <span class="en">This is a clean demonstration that visual-evidence-driven reasoning beats scaling alone. <a href="https://36kr.com/p/3827353790059143" target="_blank" rel="noopener">Ophiuchus-7B averages 68.0 across eight medical VQA benchmarks with 97.9% tool-call accuracy</a>, beating OpenAI-o3 (62.2), Gemini 2.5 Pro (61.8) and GPT-5 (59.9) — a 7B specialised agent outperforming hundred-billion-parameter generalists by knowing how to look. That matters disproportionately for medical imaging, where diagnostic errors often come from not looking in the right place; letting a model zoom, segment and compare like a radiologist is closer to clinical reasoning than shoving the whole image in at once. For compute-constrained hospitals and countries, the small-model-plus-tools route is also far more affordable.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">公司與產品</span><span class="en-inline">Players</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">公司與產品</span></div>
       <p class="val">
         <span class="zh">研究由上海創智學院（Shanghai Institute for Advanced Study）LeapQuest 團隊主導，跨浙大、上海交大、復旦（<a href="https://36kr.com/p/3827353790059143" target="_blank" rel="noopener">36 氪報導</a>）。屬學術研究成果，本報告未見商業化或臨床取證的公開資訊，不做推測。</span>
-        <span class="en">Led by the LeapQuest team at the Shanghai Institute for Advanced Study, with Zhejiang, SJTU and Fudan (<a href="https://36kr.com/p/3827353790059143" target="_blank" rel="noopener">36Kr</a>). This is academic research; no public commercialisation or clinical-clearance information was found, and none is assumed here.</span>
       </p></div>
     <div class="src">
-      <span class="zh-inline">來源：</span><span class="en-inline">Sources: </span>
+      <span class="zh-inline">來源：</span>
       <a href="https://36kr.com/p/3827353790059143" target="_blank" rel="noopener">36Kr · ICML 2026, May 27</a>
     </div>
   </div>
@@ -342,25 +334,22 @@ footer{
   <!-- 3 -->
   <div class="card">
     <div class="tags">
-      <span class="tag reg"><span class="zh-inline">基準可信度</span><span class="en-inline">Benchmark Integrity</span></span>
+      <span class="tag reg"><span class="zh-inline">基準可信度</span></span>
       <span class="tag">Translational Psychiatry</span><span class="tag">EEG</span><span class="tag">Data Leakage</span><span class="tag">8/15</span>
     </div>
     <h3>
       <span class="zh">65% 的思覺失調症 EEG AI 論文把準確率灌水最多 30 分：一篇論文戳破整個子領域的「基本算術」</span>
-      <span class="en">65% of schizophrenia EEG-AI papers inflate accuracy by up to 30 points: one paper calls out a subfield's "basic math"</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">Frigyes Sámuel Rácz 與 Gábor Csukly 於 <a href="https://doi.org/10.1038/s41398-026-04315-9" target="_blank" rel="noopener"><em>Translational Psychiatry</em>（2026 年 8 月 15 日）</a>系統檢視以 EEG（腦波）診斷思覺失調症的深度學習研究，指出多數研究因<strong>資料洩漏（data leakage）</strong>把準確率高估。最常見的錯誤是<strong>依「epoch（腦波片段）」而非「病人」切分訓練／測試集</strong>——結果模型學到的是「個人腦波指紋」而非「疾病標記」；另一種是在切分前就做特徵選擇，讓模型提前看到測試資料。號稱 95% 以上準確率的模型，在正確方法下大幅崩落（<a href="https://yesilscience.com/ai-schizophrenia-tests-are-failing-basic-math/" target="_blank" rel="noopener">Yesil Science 報導</a>）。</span>
-        <span class="en">Frigyes Sámuel Rácz and Gábor Csukly, in <a href="https://doi.org/10.1038/s41398-026-04315-9" target="_blank" rel="noopener"><em>Translational Psychiatry</em> (Aug 15, 2026)</a>, systematically reviewed deep-learning studies diagnosing schizophrenia from EEG and found that most overstate accuracy through <strong>data leakage</strong>. The most common error is <strong>splitting train/test sets by "epoch" (a brain-activity segment) rather than by patient</strong> — so the model learns a personal EEG fingerprint, not a disease marker; another is running feature selection before partitioning, letting the model peek at test data. Models claiming 95%-plus accuracy collapse under correct methodology (<a href="https://yesilscience.com/ai-schizophrenia-tests-are-failing-basic-math/" target="_blank" rel="noopener">Yesil Science</a>).</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">這則是本週技術主軸的另一端，也是對第 1、2 則所有「亮眼分數」的必要冷水。<a href="https://yesilscience.com/ai-schizophrenia-tests-are-failing-basic-math/" target="_blank" rel="noopener">高達 65% 的已發表論文含這類管線錯誤、灌水幅度可達 30 個百分點</a>，意味著一整個子領域的「SOTA」可能建在流沙上。這正是 <em>Nature</em> 7 月〈醫療 AI 有量測問題〉一文的具體個案：當基準本身不可信，比較模型高下就失去意義。實務含意很直接——採購或導入任何醫療 AI 時，「準確率數字」若沒有說清楚<strong>切分是否依病人、特徵選擇是否在切分之後</strong>，該數字基本上不能當真。</span>
-        <span class="en">This is the other pole of the week and a necessary cold shower for the shiny scores in stories 1 and 2. With <a href="https://yesilscience.com/ai-schizophrenia-tests-are-failing-basic-math/" target="_blank" rel="noopener">as many as 65% of published papers carrying such pipeline errors and inflation of up to 30 points</a>, an entire subfield's "state of the art" may rest on quicksand. It is a concrete case of <em>Nature</em>'s July comment that medical AI has a measurement problem: when the benchmark itself is untrustworthy, ranking models is meaningless. The practical takeaway is blunt — when buying or deploying any medical AI, an "accuracy" figure that does not state <strong>whether the split was by patient and whether feature selection came after partitioning</strong> should essentially not be believed.</span>
       </p></div>
     <div class="src">
-      <span class="zh-inline">來源：</span><span class="en-inline">Sources: </span>
+      <span class="zh-inline">來源：</span>
       <a href="https://doi.org/10.1038/s41398-026-04315-9" target="_blank" rel="noopener">Translational Psychiatry · Aug 15, 2026</a> ·
       <a href="https://yesilscience.com/ai-schizophrenia-tests-are-failing-basic-math/" target="_blank" rel="noopener">Yesil Science</a>
     </div>
@@ -369,30 +358,26 @@ footer{
   <!-- 4 -->
   <div class="card">
     <div class="tags">
-      <span class="tag"><span class="zh-inline">開源模型</span><span class="en-inline">Open Source</span></span>
+      <span class="tag"><span class="zh-inline">開源模型</span></span>
       <span class="tag">Pillar-0</span><span class="tag">UC Berkeley</span><span class="tag">UCSF</span><span class="tag">Atlas</span>
     </div>
     <h3>
       <span class="zh">Pillar-0：全開源 CT／MRI 基礎模型，新架構比 ViT 快 150 倍，全面勝過 MedGemma、微軟 MI2、阿里 Lingshu</span>
-      <span class="en">Pillar-0: a fully open CT/MRI foundation model whose Atlas architecture is 150× faster than ViT and tops MedGemma, Microsoft MI2 and Alibaba Lingshu</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">UC Berkeley 與 UCSF 研究團隊釋出 <strong>Pillar-0</strong> 醫學影像基礎模型（<a href="https://cdss.berkeley.edu/news/uc-berkeley-and-ucsf-researchers-release-top-performing-ai-model-medical-imaging" target="_blank" rel="noopener">2025 年 11 月 20 日</a>）。核心是新的 <strong>Atlas 神經網路架構</strong>，直接處理 3D 影像體積而非逐張 2D 切片，<a href="https://cdss.berkeley.edu/news/uc-berkeley-and-ucsf-researchers-release-top-performing-ai-model-medical-imaging" target="_blank" rel="noopener">處理一份腹部 CT 比傳統 vision transformer 快 150 倍以上</a>。模型可從單一 CT／MRI 辨識數百種病徵，涵蓋胸部 CT、腹部 CT、腦部 CT 與乳房 MRI。程式碼、訓練權重、評估與資料管線<strong>全部公開釋出</strong>。</span>
-        <span class="en">Researchers at UC Berkeley and UCSF released the <strong>Pillar-0</strong> medical-imaging foundation model (<a href="https://cdss.berkeley.edu/news/uc-berkeley-and-ucsf-researchers-release-top-performing-ai-model-medical-imaging" target="_blank" rel="noopener">Nov 20, 2025</a>). At its core is a new <strong>Atlas neural-network architecture</strong> that processes 3D volumes directly rather than slice by slice, making it <a href="https://cdss.berkeley.edu/news/uc-berkeley-and-ucsf-researchers-release-top-performing-ai-model-medical-imaging" target="_blank" rel="noopener">over 150× faster than a traditional vision transformer on an abdomen CT</a>. It recognises hundreds of findings from a single CT or MRI across chest CT, abdomen CT, brain CT and breast MRI. The full codebase, trained models, evaluation and data pipelines are <strong>released publicly</strong>.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">這是「開源 + 效率架構」路線最有力的一個代表，值得在技術週特別點名。<a href="https://cdss.berkeley.edu/news/uc-berkeley-and-ucsf-researchers-release-top-performing-ai-model-medical-imaging" target="_blank" rel="noopener">Pillar-0 在 366 項任務、四種模態上以 0.87 AUC（涵蓋 350 多種病徵）全面勝過 Google MedGemma（0.76）、微軟 MI2（0.75）與阿里 Lingshu（0.70）超過 10 個百分點</a>，肺癌預測較 Sybil-1 進步 7%，且用僅 25% 的訓練資料就達到優異的腦出血偵測。它的意義有三：一是「直接吃 3D 體積」的架構把速度與資料效率同時拉高；二是完全開源讓醫院與研究者可以在地驗證、微調，而不必受制於大廠 API；三是它直接把幾家大廠的醫療影像模型放上同一張對照表，讓「誰真的強」有了可複現的量尺——恰好與第 3 則的基準可信度主題互補。</span>
-        <span class="en">This is the strongest exemplar of the "open source plus efficient architecture" route and deserves a call-out in a technology week. <a href="https://cdss.berkeley.edu/news/uc-berkeley-and-ucsf-researchers-release-top-performing-ai-model-medical-imaging" target="_blank" rel="noopener">Pillar-0 beats Google's MedGemma (0.76), Microsoft's MI2 (0.75) and Alibaba's Lingshu (0.70) by more than 10 points at 0.87 AUC across 366 tasks and four modalities (350-plus findings)</a>, improves lung-cancer prediction 7% over Sybil-1, and reaches strong brain-hemorrhage detection using only 25% of the usual training data. Its significance is threefold: an architecture that ingests 3D volumes directly lifts both speed and data efficiency; full open-sourcing lets hospitals and researchers validate and fine-tune locally rather than depend on vendor APIs; and it puts several big vendors' imaging models on one comparison table, giving "who is actually best" a reproducible yardstick — a neat complement to story 3's benchmark-integrity theme.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">公司與產品</span><span class="en-inline">Players</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">公司與產品</span></div>
       <p class="val">
         <span class="zh">由 UC Berkeley 計算、資料科學與社會學院（CDSS）與 UCSF 研究者共同開發（<a href="https://cdss.berkeley.edu/news/uc-berkeley-and-ucsf-researchers-release-top-performing-ai-model-medical-imaging" target="_blank" rel="noopener">Berkeley CDSS 公告</a>）。被比較對象為 Google MedGemma、Microsoft MI2、Alibaba Lingshu 三個廠商模型。</span>
-        <span class="en">Developed by researchers at UC Berkeley's College of Computing, Data Science, and Society (CDSS) and UCSF (<a href="https://cdss.berkeley.edu/news/uc-berkeley-and-ucsf-researchers-release-top-performing-ai-model-medical-imaging" target="_blank" rel="noopener">Berkeley CDSS</a>). The compared systems are Google MedGemma, Microsoft MI2 and Alibaba Lingshu.</span>
       </p></div>
     <div class="src">
-      <span class="zh-inline">來源：</span><span class="en-inline">Sources: </span>
+      <span class="zh-inline">來源：</span>
       <a href="https://cdss.berkeley.edu/news/uc-berkeley-and-ucsf-researchers-release-top-performing-ai-model-medical-imaging" target="_blank" rel="noopener">UC Berkeley CDSS · Nov 20, 2025</a>
     </div>
   </div>
@@ -400,30 +385,26 @@ footer{
   <!-- 5 -->
   <div class="card">
     <div class="tags">
-      <span class="tag"><span class="zh-inline">代理工具鏈</span><span class="en-inline">Agent Toolkit</span></span>
+      <span class="tag"><span class="zh-inline">代理工具鏈</span></span>
       <span class="tag">NVIDIA</span><span class="tag">BioNeMo</span><span class="tag">Drug Discovery</span>
     </div>
     <h3>
       <span class="zh">NVIDIA 推 BioNeMo Agent Toolkit：把「博士級研究助理」的工具交給 AI 代理，虛擬篩藥從數天壓到數分鐘</span>
-      <span class="en">NVIDIA's BioNeMo Agent Toolkit hands AI agents a "PhD research assistant" toolbox, compressing virtual screening from days to minutes</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">NVIDIA 發表 <a href="https://nvidianews.nvidia.com/news/nvidia-launches-bionemo-agent-toolkit-giving-ai-agents-the-tools-to-accelerate-scientific-discovery" target="_blank" rel="noopener">BioNeMo Agent Toolkit（2026 年 6 月 23 日）</a>，把十餘年累積的生命科學函式庫、工具與開放模型整合成「AI 代理可直接呼叫」的平台。組件包含 BioNeMo 模型與框架、NIM 微服務、用於推理的 Nemotron 開源模型、NeMo RL 強化學習庫、以及 Parabricks 基因體加速。代理可以生成並篩選化合物、做分子對接、預測結合強度、過濾類藥性，<a href="https://nvidianews.nvidia.com/news/nvidia-launches-bionemo-agent-toolkit-giving-ai-agents-the-tools-to-accelerate-scientific-discovery" target="_blank" rel="noopener">把虛擬篩選的時程從數天壓縮到數分鐘</a>。</span>
-        <span class="en">NVIDIA announced the <a href="https://nvidianews.nvidia.com/news/nvidia-launches-bionemo-agent-toolkit-giving-ai-agents-the-tools-to-accelerate-scientific-discovery" target="_blank" rel="noopener">BioNeMo Agent Toolkit (June 23, 2026)</a>, packaging more than a decade of life-sciences libraries, tools and open models into a platform that AI agents can call directly. Components include BioNeMo models and frameworks, NIM microservices, Nemotron open models for reasoning, the NeMo RL library, and Parabricks for genomic acceleration. Agents can generate and screen compounds, run molecular docking, predict binding strength and filter for drug-likeness, <a href="https://nvidianews.nvidia.com/news/nvidia-launches-bionemo-agent-toolkit-giving-ai-agents-the-tools-to-accelerate-scientific-discovery" target="_blank" rel="noopener">compressing virtual-screening timelines from days to minutes</a>.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">如果第 1 則是「臨床照護的代理」，這則就是「科學研發的代理」——同一個技術範式（讓 LLM 調度專用工具）延伸到藥物發現。Jensen Huang 的定調很清楚：「<a href="https://nvidianews.nvidia.com/news/nvidia-launches-bionemo-agent-toolkit-giving-ai-agents-the-tools-to-accelerate-scientific-discovery" target="_blank" rel="noopener">前沿模型是大腦，BioNeMo 是科學工具箱，合起來給 AI 代理一個博士級研究助理的技能</a>」。採用名單橫跨前沿實驗室（Anthropic、OpenAI、Owkin、Edison Scientific）、藥廠（Eli Lilly、Natera）、資料平台（Databricks、Snowflake、Benchling）與 AI 原生生技（Boltz、Chai Discovery），逾 50 家公司部署。這強化了本週的共同主線：<strong>2026 年的醫療 AI 競爭，關鍵不只是模型，而是模型能調度多完整的工具鏈。</strong></span>
-        <span class="en">If story 1 is "agents for clinical care," this is "agents for scientific R&amp;D" — the same paradigm (an LLM orchestrating specialised tools) extended to drug discovery. Jensen Huang framed it cleanly: "<a href="https://nvidianews.nvidia.com/news/nvidia-launches-bionemo-agent-toolkit-giving-ai-agents-the-tools-to-accelerate-scientific-discovery" target="_blank" rel="noopener">Frontier models are the brains. BioNeMo is the scientific toolbox. Together they give AI agents the skills of a PhD research assistant.</a>" Adopters span frontier labs (Anthropic, OpenAI, Owkin, Edison Scientific), pharma (Eli Lilly, Natera), data platforms (Databricks, Snowflake, Benchling) and AI-native biotech (Boltz, Chai Discovery), with 50-plus companies deploying. It reinforces the week's through-line: <strong>the 2026 medical-AI contest turns not on the model alone but on how complete a toolchain that model can orchestrate.</strong></span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">公司與產品</span><span class="en-inline">Players</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">公司與產品</span></div>
       <p class="val">
         <span class="zh">NVIDIA Healthcare／BioNeMo；合作與採用方見上（<a href="https://nvidianews.nvidia.com/news/nvidia-launches-bionemo-agent-toolkit-giving-ai-agents-the-tools-to-accelerate-scientific-discovery" target="_blank" rel="noopener">NVIDIA 新聞稿</a>）。工具鏈以 NVIDIA 自家開源模型（Nemotron）與微服務（NIM）為底，商業模式綁定其運算平台。</span>
-        <span class="en">NVIDIA Healthcare / BioNeMo; partners and adopters above (<a href="https://nvidianews.nvidia.com/news/nvidia-launches-bionemo-agent-toolkit-giving-ai-agents-the-tools-to-accelerate-scientific-discovery" target="_blank" rel="noopener">NVIDIA newsroom</a>). The toolkit is built on NVIDIA's own open models (Nemotron) and microservices (NIM), tying the business model to its compute platform.</span>
       </p></div>
     <div class="src">
-      <span class="zh-inline">來源：</span><span class="en-inline">Sources: </span>
+      <span class="zh-inline">來源：</span>
       <a href="https://nvidianews.nvidia.com/news/nvidia-launches-bionemo-agent-toolkit-giving-ai-agents-the-tools-to-accelerate-scientific-discovery" target="_blank" rel="noopener">NVIDIA Newsroom · June 23, 2026</a>
     </div>
   </div>
@@ -431,30 +412,26 @@ footer{
   <!-- 6 -->
   <div class="card">
     <div class="tags">
-      <span class="tag"><span class="zh-inline">開放多模態</span><span class="en-inline">Open Multimodal</span></span>
+      <span class="tag"><span class="zh-inline">開放多模態</span></span>
       <span class="tag">Google</span><span class="tag">MedGemma 1.5</span><span class="tag">MedASR</span>
     </div>
     <h3>
       <span class="zh">MedGemma 1.5 與 MedASR：4B 開放多模態醫學模型升級，醫療語音辨識錯誤率較 Whisper 少 58–82%</span>
-      <span class="en">MedGemma 1.5 and MedASR: an upgraded 4B open multimodal medical model, and speech-to-text with 58–82% fewer errors than Whisper</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">Google Research 釋出 <a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">MedGemma 1.5（4B）與醫療語音辨識模型 MedASR（2026 年 1 月 13 日）</a>，皆可在 Hugging Face 與 Vertex AI 免費用於研究與商業。MedGemma 1.5 4B 在多項醫學任務較 v1 明顯進步：<a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">MRI 判讀 51%→65%、實驗室報告擷取 F1 60%→78%、MedQA 推理 64%→69%、CT 分類 58%→61%</a>。MedASR 針對臨床口述，<a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">在胸部 X 光口述上錯誤率 12.5%→5.2%（少 58%），跨科別口述 28.2%→5.2%（少 82%）</a>。</span>
-        <span class="en">Google Research released <a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">MedGemma 1.5 (4B) and the MedASR speech-to-text model (Jan 13, 2026)</a>, both free for research and commercial use on Hugging Face and Vertex AI. MedGemma 1.5 4B improves markedly over v1: <a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">MRI findings 51%→65%, lab-report extraction F1 60%→78%, MedQA reasoning 64%→69%, CT classification 58%→61%</a>. MedASR, for clinical dictation, cuts errors <a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">from 12.5% to 5.2% on chest X-ray dictation (58% fewer) and from 28.2% to 5.2% across specialties (82% fewer)</a>.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">MedGemma 系列是目前最被廣泛採用的開放醫學模型基底之一，也是本期第 4 則 Pillar-0 的直接對照組（Pillar-0 在影像上勝過 MedGemma，但 MedGemma 提供的是可微調的通用多模態底座）。值得關注的是 MedASR：醫療語音辨識的錯誤在臨床上代價極高（把 mg 聽成 mcg、把否定聽成肯定），而它把跨科別錯誤率壓到 5.2%、相對 Whisper large-v3 大減，對「AI 病歷書寫／臨床口述」這個當前最大落地場景很關鍵。放在技術週，它示範了「小而專、開放可微調」的另一條可行路線。<strong>提醒</strong>：此為 1 月釋出、屬本期技術背景，非本週新聞，日期已標示。</span>
-        <span class="en">The MedGemma family is one of the most widely adopted open medical-model bases and the direct comparator to Pillar-0 in story 4 (Pillar-0 wins on imaging, but MedGemma offers a fine-tunable general multimodal base). MedASR is the piece to watch: speech-recognition errors are clinically expensive (mg heard as mcg, a negation heard as an affirmation), and driving cross-specialty error to 5.2% — far below Whisper large-v3 — matters for AI documentation and clinical dictation, the biggest deployment surface right now. In a technology week it demonstrates the other viable route: small, specialised, open and fine-tunable. <strong>Note:</strong> this shipped in January and is included as technical background, not this week's news; the date is labelled.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">公司與產品</span><span class="en-inline">Players</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">公司與產品</span></div>
       <p class="val">
         <span class="zh">Google Research／DeepMind，Health AI Developer Foundations 系列；27B 版仍供複雜文字任務使用（<a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">Google Research 部落格</a>）。</span>
-        <span class="en">Google Research / DeepMind, part of the Health AI Developer Foundations line; the 27B model remains available for complex text tasks (<a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">Google Research blog</a>).</span>
       </p></div>
     <div class="src">
-      <span class="zh-inline">來源：</span><span class="en-inline">Sources: </span>
+      <span class="zh-inline">來源：</span>
       <a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">Google Research · Jan 13, 2026</a> ·
       <a href="https://arxiv.org/html/2507.05201v4" target="_blank" rel="noopener">MedGemma Technical Report (arXiv)</a>
     </div>
@@ -463,30 +440,26 @@ footer{
   <!-- 7 -->
   <div class="card">
     <div class="tags">
-      <span class="tag"><span class="zh-inline">代理基準</span><span class="en-inline">Agent Benchmark</span></span>
+      <span class="tag"><span class="zh-inline">代理基準</span></span>
       <span class="tag">AgentClinic</span><span class="tag">npj Digital Medicine</span><span class="tag">Multimodal</span>
     </div>
     <h3>
       <span class="zh">AgentClinic：把靜態考題變成互動診間，MedQA 準確率在多輪對話下掉到不到原本的十分之一</span>
-      <span class="en">AgentClinic turns static exams into interactive clinics — MedQA accuracy drops to below a tenth in multi-turn dialogue</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh"><a href="https://www.nature.com/articles/s41746-026-02674-7" target="_blank" rel="noopener">AgentClinic（<em>npj Digital Medicine</em>，2026 年 4 月 27 日）</a>是一套多模態代理基準，用「病人代理／醫師代理／檢驗代理／裁判代理」四方系統，把 LLM 放進模擬診間，測其在<strong>資訊不完整下的循序臨床決策</strong>——問診、調度檢查工具、多輪對話、跨九科七語、23 種認知偏誤。資料取自 USMLE、MIMIC-IV 病歷與 NEJM 案例挑戰，含 215 般案例、120 多模態、260 專科、749 多語言案例。</span>
-        <span class="en"><a href="https://www.nature.com/articles/s41746-026-02674-7" target="_blank" rel="noopener">AgentClinic (<em>npj Digital Medicine</em>, Apr 27, 2026)</a> is a multimodal agent benchmark that drops LLMs into a simulated clinic via a four-agent system (patient, doctor, measurement, moderator), testing <strong>sequential clinical decision-making under incomplete information</strong> — history-taking, calling test tools, multi-turn dialogue, across nine specialties and seven languages and 23 cognitive biases. Data comes from USMLE, MIMIC-IV records and NEJM case challenges, spanning 215 general, 120 multimodal, 260 specialist and 749 multilingual cases.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">它精準點出「考試分數」與「臨床能力」的鴻溝：<a href="https://www.nature.com/articles/s41746-026-02674-7" target="_blank" rel="noopener">同一批 MedQA 題目搬進循序互動格式後，準確率掉到原本的不到十分之一</a>。也就是說，一個在靜態選擇題拿高分的模型，未必會問診、會在資訊不足時追問。研究也顯示工具的效果因模型而異（Llama-3 用 notebook 工具相對進步達 92%，有些模型反而退步），且非英語案例表現普遍較弱。放在本週脈絡：當醫療 AI 全面轉向「代理」，我們也需要「代理級」的基準——而 AgentClinic 這類設計，正是評估第 1、2、5 則那些代理系統時該用的尺，而不是舊的選擇題準確率。</span>
-        <span class="en">It pinpoints the gap between exam scores and clinical competence: <a href="https://www.nature.com/articles/s41746-026-02674-7" target="_blank" rel="noopener">move the same MedQA items into a sequential interactive format and accuracy falls to below a tenth of the original</a>. A model that aces static multiple-choice may not know how to take a history or probe when information is missing. The study also shows tool benefits vary by model (Llama-3 gained up to 92% with a notebook tool while some models regressed) and that non-English cases are generally weaker. In this week's context: as medical AI pivots to agents, we need agent-grade benchmarks — designs like AgentClinic are the right yardstick for the agent systems in stories 1, 2 and 5, not legacy multiple-choice accuracy.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">公司與產品</span><span class="en-inline">Players</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">公司與產品</span></div>
       <p class="val">
         <span class="zh">學術基準（<em>npj Digital Medicine</em>, vol. 9, art. 499）。受測模型含 GPT-4／4o、Claude-3.5-Sonnet 等閉源，與 Llama、Mixtral、Meditron、OpenBioLLM 等開源，另有三名人類醫師作對照（<a href="https://www.nature.com/articles/s41746-026-02674-7" target="_blank" rel="noopener">全文</a>、<a href="https://agentclinic.github.io/" target="_blank" rel="noopener">專案頁</a>）。</span>
-        <span class="en">An academic benchmark (<em>npj Digital Medicine</em>, vol. 9, art. 499). Tested models include closed systems (GPT-4/4o, Claude-3.5-Sonnet) and open ones (Llama, Mixtral, Meditron, OpenBioLLM), with three human physicians as a baseline (<a href="https://www.nature.com/articles/s41746-026-02674-7" target="_blank" rel="noopener">full text</a>, <a href="https://agentclinic.github.io/" target="_blank" rel="noopener">project page</a>).</span>
       </p></div>
     <div class="src">
-      <span class="zh-inline">來源：</span><span class="en-inline">Sources: </span>
+      <span class="zh-inline">來源：</span>
       <a href="https://www.nature.com/articles/s41746-026-02674-7" target="_blank" rel="noopener">npj Digital Medicine · Apr 27, 2026</a> ·
       <a href="https://agentclinic.github.io/" target="_blank" rel="noopener">AgentClinic project</a>
     </div>
@@ -499,60 +472,49 @@ footer{
   <h2>02 — Product Analysis</h2>
   <div class="sec-title">
     <span class="zh">兩個產品拆解：大型代理協調層 vs. 小而高效的開源影像模型</span>
-    <span class="en">Two products, taken apart: a big agent-orchestration stack vs a small, efficient open imaging model</span>
   </div>
 
   <div class="grid2">
     <div class="panel">
       <h3>Hippocratic AI Polaris Orchestrators</h3>
-      <p class="sub"><span class="zh-inline">患者端語音代理 · 星系架構 · Hippocratic AI（美國）</span><span class="en-inline">Patient-facing voice agents · constellation architecture · Hippocratic AI (US)</span></p>
+      <p class="sub"><span class="zh-inline">患者端語音代理 · 星系架構 · Hippocratic AI（美國）</span></p>
       <p>
         <span class="zh"><strong>功能與定位。</strong>由監督智能調度 30 多個專科語音代理，針對慢病管理、再入院預防、STAR 評分、臨床試驗招募等「人群結果」運作，屬非診斷、非處方的患者互動層（<a href="https://www.unite.ai/hippocratic-ai-launches-agentic-orchestrators-that-coordinate-voice-ai-teams-for-healthcare-outcomes/" target="_blank" rel="noopener">Unite.AI</a>）。</span>
-        <span class="en"><strong>Function and position.</strong> A supervising intelligence coordinates 30-plus specialised voice agents around population outcomes — chronic-care management, readmission prevention, STAR ratings, trial enrolment — as a non-diagnostic, non-prescribing patient-interaction layer (<a href="https://www.unite.ai/hippocratic-ai-launches-agentic-orchestrators-that-coordinate-voice-ai-teams-for-healthcare-outcomes/" target="_blank" rel="noopener">Unite.AI</a>).</span>
       </p>
       <ul class="clean">
-        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+        <li><span class="pro"><span class="zh-inline">優勢</span></span>
           <span class="zh">：架構把安全檢查做成獨立層——<a href="https://www.unite.ai/hippocratic-ai-launches-agentic-orchestrators-that-coordinate-voice-ai-teams-for-healthcare-outcomes/" target="_blank" rel="noopener">700B 主模型外掛 30 多個監督模型</a>負責升級、用藥與不良事件偵測，比單一大模型更可稽核。</span>
-          <span class="en">: safety is a separate layer by design — <a href="https://www.unite.ai/hippocratic-ai-launches-agentic-orchestrators-that-coordinate-voice-ai-teams-for-healthcare-outcomes/" target="_blank" rel="noopener">30-plus supervisors around a 700B primary model</a> handle escalation, medication and adverse events, which is more auditable than a single monolithic model.</span>
         </li>
-        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+        <li><span class="pro"><span class="zh-inline">優勢</span></span>
           <span class="zh">：規模與資本到位——<a href="https://www.prnewswire.com/news-releases/hippocratic-ai-announces-next-generation-of-healthcare-ai-orchestrators-focused-on-outcomes-not-tasks-302850620.html" target="_blank" rel="noopener">逾 2.5 億次互動、4.44 億美元募資</a>，且以結果計價的商業模式與支付方誘因對齊。</span>
-          <span class="en">: scale and capital are in place — <a href="https://www.prnewswire.com/news-releases/hippocratic-ai-announces-next-generation-of-healthcare-ai-orchestrators-focused-on-outcomes-not-tasks-302850620.html" target="_blank" rel="noopener">250M-plus interactions and $444M raised</a>, with an outcome-based model aligned to payer incentives.</span>
         </li>
-        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+        <li><span class="con"><span class="zh-inline">疑慮</span></span>
           <span class="zh">：<a href="https://www.unite.ai/hippocratic-ai-launches-agentic-orchestrators-that-coordinate-voice-ai-teams-for-healthcare-outcomes/" target="_blank" rel="noopener">99.89%、零嚴重傷害皆為廠商自陳、非獨立評估</a>；在醫療語境下，剩餘 0.11% 的分佈與嚴重度才是關鍵。</span>
-          <span class="en">: <a href="https://www.unite.ai/hippocratic-ai-launches-agentic-orchestrators-that-coordinate-voice-ai-teams-for-healthcare-outcomes/" target="_blank" rel="noopener">99.89% and zero severe harm are vendor-reported, not independently evaluated</a>; clinically, the distribution and severity of the residual 0.11% is what matters.</span>
         </li>
-        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+        <li><span class="con"><span class="zh-inline">疑慮</span></span>
           <span class="zh">：代理編排的失敗模式（誰在什麼時候聯繫病人）比單一任務更難追責，且尚無公開的前瞻臨床終點試驗佐證結果宣稱。</span>
-          <span class="en">: the failure modes of orchestration (who contacts a patient, and when) are harder to attribute than single tasks, and no public prospective outcome trial yet backs the outcome claims.</span>
         </li>
       </ul>
     </div>
 
     <div class="panel">
       <h3>Pillar-0 (Atlas architecture)</h3>
-      <p class="sub"><span class="zh-inline">3D 影像基礎模型 · 全開源 · UC Berkeley × UCSF（學術）</span><span class="en-inline">3D imaging foundation model · fully open source · UC Berkeley × UCSF (academic)</span></p>
+      <p class="sub"><span class="zh-inline">3D 影像基礎模型 · 全開源 · UC Berkeley × UCSF（學術）</span></p>
       <p>
         <span class="zh"><strong>功能與定位。</strong>直接處理 3D CT／MRI 體積、從單次掃描辨識數百種病徵；程式碼、權重、評估與資料管線全開源，供醫院與研究者在地部署與微調（<a href="https://cdss.berkeley.edu/news/uc-berkeley-and-ucsf-researchers-release-top-performing-ai-model-medical-imaging" target="_blank" rel="noopener">Berkeley CDSS</a>）。</span>
-        <span class="en"><strong>Function and position.</strong> Processes 3D CT/MRI volumes directly and recognises hundreds of findings from one scan; code, weights, evaluation and data pipelines are fully open for local deployment and fine-tuning (<a href="https://cdss.berkeley.edu/news/uc-berkeley-and-ucsf-researchers-release-top-performing-ai-model-medical-imaging" target="_blank" rel="noopener">Berkeley CDSS</a>).</span>
       </p>
       <ul class="clean">
-        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+        <li><span class="pro"><span class="zh-inline">優勢</span></span>
           <span class="zh">：效率架構是真突破——<a href="https://cdss.berkeley.edu/news/uc-berkeley-and-ucsf-researchers-release-top-performing-ai-model-medical-imaging" target="_blank" rel="noopener">Atlas 處理腹部 CT 比 ViT 快 150 倍以上</a>，且用 25% 資料就達優異腦出血偵測，資料效率極高。</span>
-          <span class="en">: the efficiency architecture is a genuine breakthrough — <a href="https://cdss.berkeley.edu/news/uc-berkeley-and-ucsf-researchers-release-top-performing-ai-model-medical-imaging" target="_blank" rel="noopener">Atlas is 150×-plus faster than ViT on abdomen CT</a> and reaches strong brain-hemorrhage detection with 25% of the data — very data-efficient.</span>
         </li>
-        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+        <li><span class="pro"><span class="zh-inline">優勢</span></span>
           <span class="zh">：<a href="https://cdss.berkeley.edu/news/uc-berkeley-and-ucsf-researchers-release-top-performing-ai-model-medical-imaging" target="_blank" rel="noopener">在 366 項任務上以 0.87 AUC 領先 MedGemma／MI2／Lingshu 逾 10 分</a>，且完全開源，沒有 API 綁定與資料出境問題。</span>
-          <span class="en">: <a href="https://cdss.berkeley.edu/news/uc-berkeley-and-ucsf-researchers-release-top-performing-ai-model-medical-imaging" target="_blank" rel="noopener">leads MedGemma/MI2/Lingshu by 10-plus points at 0.87 AUC across 366 tasks</a>, and being fully open avoids API lock-in and data-egress issues.</span>
         </li>
-        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+        <li><span class="con"><span class="zh-inline">疑慮</span></span>
           <span class="zh">：AUC 是回顧性內部評估，非前瞻臨床試驗；「讀片準」離「改變病人結局」仍有距離（見第 3、7 則的基準警示）。</span>
-          <span class="en">: the AUC is retrospective internal evaluation, not a prospective clinical trial; "reads well" is still far from "changes outcomes" (see the benchmark cautions in stories 3 and 7).</span>
         </li>
-        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+        <li><span class="con"><span class="zh-inline">疑慮</span></span>
           <span class="zh">：開源模型的臨床落地仍需各院自行負責法規取證、驗證與維運，門檻不在授權費，而在院內的驗證能量。</span>
-          <span class="en">: deploying an open model still leaves each site responsible for regulatory clearance, validation and maintenance — the barrier is not licence cost but in-house validation capacity.</span>
         </li>
       </ul>
     </div>
@@ -564,59 +526,50 @@ footer{
   <h2>03 — Companies &amp; Competition</h2>
   <div class="sec-title">
     <span class="zh">誰在做哪種「技術」、憑什麼證據、跟誰競爭</span>
-    <span class="en">Who is building which kind of "technology," on what evidence, against whom</span>
   </div>
 
   <div class="tbl-wrap">
     <table>
       <thead><tr>
-        <th><span class="zh-inline">公司／系統</span><span class="en-inline">Company / system</span></th>
-        <th><span class="zh-inline">技術主張與證據</span><span class="en-inline">Claim &amp; evidence</span></th>
-        <th><span class="zh-inline">競爭定位</span><span class="en-inline">Position</span></th>
+        <th><span class="zh-inline">公司／系統</span></th>
+        <th><span class="zh-inline">技術主張與證據</span></th>
+        <th><span class="zh-inline">競爭定位</span></th>
       </tr></thead>
       <tbody>
         <tr>
-          <td><strong>Hippocratic AI</strong><br><span class="zh-inline">Polaris 代理協調層</span><span class="en-inline">Polaris orchestrators</span></td>
+          <td><strong>Hippocratic AI</strong><br><span class="zh-inline">Polaris 代理協調層</span></td>
           <td>
             <span class="zh">700B 主模型＋30 多監督模型；<a href="https://www.unite.ai/hippocratic-ai-launches-agentic-orchestrators-that-coordinate-voice-ai-teams-for-healthcare-outcomes/" target="_blank" rel="noopener">99.89% 正確、零嚴重傷害（廠商自陳，775K 通電話）</a>，無公開前瞻試驗。</span>
-            <span class="en">700B primary plus 30+ supervisors; <a href="https://www.unite.ai/hippocratic-ai-launches-agentic-orchestrators-that-coordinate-voice-ai-teams-for-healthcare-outcomes/" target="_blank" rel="noopener">99.89% correct, zero severe harm (vendor-reported, 775K calls)</a>; no public prospective trial.</span>
           </td>
           <td>
             <span class="zh">患者端語音代理的規模領先者，護城河在部署量與結果計價模式；競爭者為 Abridge、Ambience 等（多聚焦文書）。</span>
-            <span class="en">Scale leader in patient-facing voice agents; the moat is deployment volume and outcome-based pricing. Competitors like Abridge and Ambience mostly focus on documentation.</span>
           </td>
         </tr>
         <tr>
           <td><strong>Google DeepMind</strong><br>MedGemma 1.5 / MedASR</td>
           <td>
             <span class="zh">開放多模態底座＋醫療 ASR；<a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">MRI 65%、MedQA 69%、ASR 錯誤率較 Whisper 少 58–82%</a>。</span>
-            <span class="en">Open multimodal base plus medical ASR; <a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">MRI 65%, MedQA 69%, ASR 58–82% fewer errors than Whisper</a>.</span>
           </td>
           <td>
             <span class="zh">以「可免費微調的通用底座」搶開發者生態；被 Pillar-0 在純影像上超越，但勝在多模態廣度與雲端整合。</span>
-            <span class="en">Wins the developer ecosystem with a free, fine-tunable general base; outperformed by Pillar-0 on pure imaging but ahead on multimodal breadth and cloud integration.</span>
           </td>
         </tr>
         <tr>
           <td><strong>NVIDIA</strong><br>BioNeMo Agent Toolkit</td>
           <td>
             <span class="zh"><a href="https://nvidianews.nvidia.com/news/nvidia-launches-bionemo-agent-toolkit-giving-ai-agents-the-tools-to-accelerate-scientific-discovery" target="_blank" rel="noopener">50 多家藥廠與實驗室採用，虛擬篩藥從數天到數分鐘</a>；含 Nemotron 開源模型與 NIM 微服務。</span>
-            <span class="en"><a href="https://nvidianews.nvidia.com/news/nvidia-launches-bionemo-agent-toolkit-giving-ai-agents-the-tools-to-accelerate-scientific-discovery" target="_blank" rel="noopener">50+ pharma and labs adopting; virtual screening from days to minutes</a>; includes Nemotron open models and NIM microservices.</span>
           </td>
           <td>
             <span class="zh">不做終端模型，做「代理工具鏈＋運算平台」；護城河在 CUDA 生態與生命科學函式庫的深度，綁定其硬體。</span>
-            <span class="en">Not an end-model vendor but an "agent toolchain plus compute platform"; the moat is the CUDA ecosystem and life-sciences library depth, tied to its hardware.</span>
           </td>
         </tr>
         <tr>
           <td><strong>UC Berkeley × UCSF</strong><br>Pillar-0 (Atlas)</td>
           <td>
             <span class="zh">全開源 3D 影像模型；<a href="https://cdss.berkeley.edu/news/uc-berkeley-and-ucsf-researchers-release-top-performing-ai-model-medical-imaging" target="_blank" rel="noopener">0.87 AUC、366 任務領先逾 10 分，比 ViT 快 150 倍</a>（回顧性評估）。</span>
-            <span class="en">Fully open 3D imaging model; <a href="https://cdss.berkeley.edu/news/uc-berkeley-and-ucsf-researchers-release-top-performing-ai-model-medical-imaging" target="_blank" rel="noopener">0.87 AUC, +10 points over 366 tasks, 150× faster than ViT</a> (retrospective).</span>
           </td>
           <td>
             <span class="zh">學術開源路線，直接對打大廠影像模型；優勢在效率與可近性，劣勢在缺乏商業化支援與前瞻臨床證據。</span>
-            <span class="en">Academic open-source play going straight at vendor imaging models; strong on efficiency and accessibility, weak on commercial support and prospective clinical evidence.</span>
           </td>
         </tr>
       </tbody>
@@ -625,7 +578,6 @@ footer{
 
   <div class="note">
     <span class="zh"><strong>一個橫向觀察。</strong>本期四方分屬三種技術路線：<strong>大型代理協調</strong>（Hippocratic）、<strong>代理工具鏈</strong>（NVIDIA）與<strong>高效開源模型</strong>（Pillar-0、部分 MedGemma）。三者共用一個假設——未來的醫療 AI 價值不在「單一模型多聰明」，而在「能不能調度工具、能不能被在地部署與稽核」。但本期第 3、7 則也給了必要的反向壓力：<a href="https://doi.org/10.1038/s41398-026-04315-9" target="_blank" rel="noopener">當基準本身因資料洩漏而不可信</a>、<a href="https://www.nature.com/articles/s41746-026-02674-7" target="_blank" rel="noopener">當選擇題準確率無法預測互動診間表現</a>，這些技術主張到底該用什麼尺來檢驗，仍是未解的核心問題。</span>
-    <span class="en"><strong>One cross-cutting observation.</strong> The four fall into three technical routes: <strong>large agent orchestration</strong> (Hippocratic), <strong>agent toolchains</strong> (NVIDIA) and <strong>efficient open models</strong> (Pillar-0, parts of MedGemma). All share one assumption — that future medical-AI value lies less in how clever a single model is than in whether it can orchestrate tools and be deployed and audited locally. But stories 3 and 7 supply the necessary counter-pressure: <a href="https://doi.org/10.1038/s41398-026-04315-9" target="_blank" rel="noopener">when benchmarks are untrustworthy through data leakage</a> and <a href="https://www.nature.com/articles/s41746-026-02674-7" target="_blank" rel="noopener">when multiple-choice accuracy fails to predict interactive-clinic performance</a>, which yardstick should test these technical claims remains the core open question.</span>
   </div>
 </section>
 
@@ -634,21 +586,17 @@ footer{
   <h2>04 — Taiwan Angle</h2>
   <div class="sec-title">
     <span class="zh">台灣視角：三個可以直接對接的技術落點</span>
-    <span class="en">Taiwan: three technical places where this week lands</span>
   </div>
 
   <div class="panel">
     <p>
       <span class="zh"><strong>(1) 「小模型＋工具」與開源路線，對資源有限的台灣醫院更可行。</strong>本期第 2、4 則（Ophiuchus-7B、Pillar-0）共同指向一件事：<a href="https://cdss.berkeley.edu/news/uc-berkeley-and-ucsf-researchers-release-top-performing-ai-model-medical-imaging" target="_blank" rel="noopener">70 億參數的專用代理與全開源影像模型，能在特定任務上贏過數千億參數的通用旗艦</a>。這對沒有大型 GPU 叢集、又擔心資料出境的台灣醫學中心特別有意義——與其付昂貴 API、把病人影像送出雲端，不如在院內以開源模型微調、驗證、部署。衛福部「<a href="https://aicenter.mohw.gov.tw/" target="_blank" rel="noopener">臨床 AI 取證驗證中心</a>」的角色，正好可以是這條路線的把關者與加速器。</span>
-      <span class="en"><strong>(1) The "small model plus tools" and open-source routes are more feasible for resource-limited Taiwanese hospitals.</strong> Stories 2 and 4 (Ophiuchus-7B, Pillar-0) both point to one thing: <a href="https://cdss.berkeley.edu/news/uc-berkeley-and-ucsf-researchers-release-top-performing-ai-model-medical-imaging" target="_blank" rel="noopener">a 7B specialised agent and a fully open imaging model can beat hundred-billion-parameter generalists on specific tasks</a>. That matters for Taiwan's academic medical centres, which lack large GPU clusters and worry about data egress — rather than paying for expensive APIs and sending patient images to the cloud, fine-tune, validate and deploy open models in-house. MOHW's <a href="https://aicenter.mohw.gov.tw/" target="_blank" rel="noopener">Clinical AI Validation Center</a> is well placed to be both gatekeeper and accelerator for this route.</span>
     </p>
     <p>
       <span class="zh"><strong>(2) 醫療語音辨識與繁中臨床 NLP，是被低估的在地機會。</strong>MedASR（第 6 則）把英文醫療口述錯誤率壓到 5.2%，但<strong>繁體中文與台語混雜的臨床口述</strong>幾乎沒有對應的高品質模型與基準。台灣的病歷長期中英混寫（結構化欄位英文、描述中文），這既是導入國際模型的落差來源，也是<strong>本土可以建立護城河的地方</strong>——一個好的繁中醫療 ASR 或臨床 NLP 基準，價值不亞於再訓一個影像模型。這與「333 政策」推動的<a href="https://udn.com/news/story/7266/9592218" target="_blank" rel="noopener">病歷資料標準化與互通</a>目標天然互補：資料先一致，語言模型才有東西可學。</span>
-      <span class="en"><strong>(2) Medical speech recognition and Traditional-Chinese clinical NLP are an underrated local opportunity.</strong> MedASR (story 6) drives English medical-dictation error to 5.2%, but <strong>clinical dictation mixing Traditional Chinese and Taiwanese</strong> has almost no comparable high-quality model or benchmark. Taiwanese records have long mixed Chinese and English (English structured fields, Chinese narrative), which is both a source of the gap when importing international models and <strong>a place to build a local moat</strong> — a good Traditional-Chinese medical ASR or clinical-NLP benchmark is worth no less than training yet another imaging model. This complements the "333 policy" push for <a href="https://udn.com/news/story/7266/9592218" target="_blank" rel="noopener">record standardisation and interoperability</a>: consistent data first, then the language models have something to learn from.</span>
     </p>
     <p>
       <span class="zh"><strong>(3) 「代理熱潮」需要資料基礎建設先到位——台灣的順序其實走對了。</strong>第 1、5 則的代理協調，前提是能安全調度跨系統的資料與工具；沒有互通的資料底層，agent 只能在單一孤島裡打轉。衛福部部長石崇良在<a href="https://udn.com/news/story/7266/9592218" target="_blank" rel="noopener">高醫大論壇（2026/6/27）</a>提出「333 政策」與 489 億元「健康台灣深耕計畫」預算，目標年底前醫學中心病歷互通、兩年內擴及區域與地區醫院；同場也點名高醫附醫與鴻海合作、以 NVIDIA 為底開發「全台首例大腸癌 AI 代理」。把「資料互通」放在「代理落地」之前，其實正是本期國際技術新聞給出的正確順序——只是台灣還缺一塊給付設計，讓這些代理有可持續的商業模式。</span>
-      <span class="en"><strong>(3) The "agent wave" needs data infrastructure first — and Taiwan's sequencing is actually right.</strong> The orchestration in stories 1 and 5 presupposes safely marshalling data and tools across systems; without an interoperable data layer, agents just spin inside a single silo. Health Minister Shih Chung-liang set out the "333 policy" and an NT$48.9 billion "Healthy Taiwan" budget at the <a href="https://udn.com/news/story/7266/9592218" target="_blank" rel="noopener">Kaohsiung Medical University forum (June 27, 2026)</a>, targeting record interoperability across academic medical centres by year-end and regional and district hospitals within two years; the same event named KMU's "first colorectal-cancer AI agent" built with Foxconn on NVIDIA. Putting interoperability before agent deployment is exactly the order this week's international technology news implies — Taiwan just still lacks a payment design to give these agents a sustainable business model.</span>
     </p>
   </div>
 </section>
@@ -658,28 +606,27 @@ footer{
   <h2>05 — Further Reading</h2>
   <div class="sec-title">
     <span class="zh">值得再讀的五篇</span>
-    <span class="en">Five worth a second read</span>
   </div>
   <ol class="reading">
     <li>
       <a href="https://arxiv.org/html/2507.05201v4" target="_blank" rel="noopener">MedGemma Technical Report — arXiv:2507.05201</a>
-      <p class="why"><span class="zh">想理解一個開放醫學多模態模型如何訓練、如何評估的最佳單一入口，也是對照 Pillar-0 架構選擇的必要背景。</span><span class="en">The single best entry point for how an open medical multimodal model is trained and evaluated — and necessary background for contrasting Pillar-0's architectural choices.</span></p>
+      <p class="why"><span class="zh">想理解一個開放醫學多模態模型如何訓練、如何評估的最佳單一入口，也是對照 Pillar-0 架構選擇的必要背景。</span></p>
     </li>
     <li>
       <a href="https://www.nature.com/articles/s41746-026-02674-7" target="_blank" rel="noopener">AgentClinic: a multimodal benchmark for tool-using clinical AI agents — <em>npj Digital Medicine</em>, 2026/4/27</a>
-      <p class="why"><span class="zh">若你只讀一篇「代理級評估」的論文，就是這篇。它把「考試分數 ≠ 臨床能力」量化得最清楚，是評估本期所有代理系統的正確尺。</span><span class="en">If you read only one paper on agent-grade evaluation, read this. It quantifies "exam score ≠ clinical competence" most clearly and is the right yardstick for every agent system in this issue.</span></p>
+      <p class="why"><span class="zh">若你只讀一篇「代理級評估」的論文，就是這篇。它把「考試分數 ≠ 臨床能力」量化得最清楚，是評估本期所有代理系統的正確尺。</span></p>
     </li>
     <li>
       <a href="https://doi.org/10.1038/s41398-026-04315-9" target="_blank" rel="noopener">Data leakage inflates schizophrenia EEG-AI accuracy — <em>Translational Psychiatry</em>, 2026/8/15</a>
-      <p class="why"><span class="zh">本週最該讀的方法學警訊。任何在做醫療 AI 驗證或採購的人，讀完會對「準確率數字」永遠多一分警惕。</span><span class="en">The week's essential methodological warning. Anyone validating or procuring medical AI will forever treat "accuracy" figures with more suspicion after reading it.</span></p>
+      <p class="why"><span class="zh">本週最該讀的方法學警訊。任何在做醫療 AI 驗證或採購的人，讀完會對「準確率數字」永遠多一分警惕。</span></p>
     </li>
     <li>
       <a href="https://nvidianews.nvidia.com/news/nvidia-launches-bionemo-agent-toolkit-giving-ai-agents-the-tools-to-accelerate-scientific-discovery" target="_blank" rel="noopener">NVIDIA launches BioNeMo Agent Toolkit — NVIDIA Newsroom, 2026/6/23</a>
-      <p class="why"><span class="zh">要看「代理如何延伸到藥物發現」的完整組件清單與採用者名單，這是第一手來源；也能感受「工具鏈綁運算平台」的商業邏輯。</span><span class="en">The first-hand source for how agents extend into drug discovery — full component list and adopters — and a good feel for the "toolchain tied to compute platform" business logic.</span></p>
+      <p class="why"><span class="zh">要看「代理如何延伸到藥物發現」的完整組件清單與採用者名單，這是第一手來源；也能感受「工具鏈綁運算平台」的商業邏輯。</span></p>
     </li>
     <li>
       <a href="https://huggingface.co/blog/state-of-open-models-summer-2026" target="_blank" rel="noopener">State of Open Models: Summer 2026 — Hugging Face</a>
-      <p class="why"><span class="zh">把本期第 4、6 則放進更大脈絡：2026 年開源模型的整體版圖、授權與能力演進，對思考「台灣該押哪條開源路線」很有幫助。</span><span class="en">Places stories 4 and 6 in the bigger picture: the 2026 open-model landscape, licences and capability evolution — useful for thinking about which open-source route Taiwan should back.</span></p>
+      <p class="why"><span class="zh">把本期第 4、6 則放進更大脈絡：2026 年開源模型的整體版圖、授權與能力演進，對思考「台灣該押哪條開源路線」很有幫助。</span></p>
     </li>
   </ol>
 </section>
@@ -689,7 +636,6 @@ footer{
   <h2>06 — References</h2>
   <div class="sec-title">
     <span class="zh">參考文獻</span>
-    <span class="en">References</span>
   </div>
   <div class="panel">
     <ol class="refs">
@@ -708,7 +654,6 @@ footer{
     </ol>
     <div class="note">
       <span class="zh"><strong>編輯說明：</strong>(1) 8 月 13–20 日期間，「新發表的醫療專用模型」相對稀少（主要 AI 模型發布追蹤在 8 月上半月未見醫療專用釋出）；本期因此以本週確實發生的 Hippocratic AI 代理發表（8/13）與 <em>Translational Psychiatry</em> 資料洩漏研究（8/15）為主軸，並補入 2026 年（及 2025/11 的 Pillar-0）構成技術脈絡所必要、且各具代表性的重要成果——Ophiuchus／MedScope（ICML 2026, 5/27）、NVIDIA BioNeMo Agent Toolkit（6/23）、MedGemma 1.5／MedASR（1/13）、AgentClinic（4/27）——所有日期均已於文中標示，未偽裝為本週新聞。(2) Hippocratic AI 的 99.89% 正確率、零嚴重傷害、775,000 通電話等為<strong>廠商自陳、非獨立第三方評估</strong>之數字，文中已明確標註。(3) Ophiuchus／MedScope 的分數引自 36 氪對 ICML 2026 論文的報導；Pillar-0 的 AUC 與加速倍數引自 UC Berkeley CDSS 公告，二者本報告未能逐一核對原始論文全文的每一數字，採用時已標明來源。(4) 台灣「333 政策」與 489 億元預算引自聯合新聞網 6/27 報導；英文版以 NT$48.9 billion 表示，為同一數字（489 億元）之換算。(5) 本報告不構成投資或醫療建議，所有數據請以原始出處為準。</span>
-      <span class="en"><strong>Editor's note:</strong> (1) Newly released medical-specific models were relatively scarce during Aug 13–20 (major model-release trackers show no medical-specific release in the first half of August). This edition therefore centres on what genuinely happened this week — Hippocratic AI's agent launch (Aug 13) and the <em>Translational Psychiatry</em> data-leakage study (Aug 15) — and adds representative 2026 work (and Pillar-0 from Nov 2025) that is necessary technical context: Ophiuchus/MedScope (ICML 2026, May 27), NVIDIA BioNeMo Agent Toolkit (June 23), MedGemma 1.5/MedASR (Jan 13) and AgentClinic (Apr 27). All dates are labelled in-text and nothing is passed off as this week's news. (2) Hippocratic AI's 99.89% correct-advice rate, zero-severe-harm claim and 775,000-call figure are <strong>vendor-reported, not independent third-party evaluation</strong>, as noted in the text. (3) Ophiuchus/MedScope scores are drawn from 36Kr's report of the ICML 2026 paper; Pillar-0's AUC and speed-up come from the UC Berkeley CDSS announcement — this report did not verify every figure against each full primary paper and cites the sources accordingly. (4) Taiwan's "333 policy" and NT$48.9 billion budget come from the June 27 United Daily News report; the English NT$48.9 billion is the same figure written 489 億元 in Chinese counting units. (5) This report is not investment or medical advice; verify all figures against the primary sources.</span>
     </div>
   </div>
 </section>
@@ -717,7 +662,6 @@ footer{
   <div class="foot-row">
     <div>
       <span class="zh">AI／醫療AI 每日新知日報 · 由 Claude 於台北時間每日自動產出 · 本期主題：星期四／技術突破<br>本報告內容經來源查證，但不構成投資或醫療建議。所有數據請以原始出處為準。</span>
-      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Thursday / technology breakthroughs<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
     </div>
     <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com / 返回 peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
   </div>
@@ -730,16 +674,6 @@ footer{
 </div>
 
 <script>
-function setLang(l){
-  document.body.classList.remove('lang-zh','lang-en');
-  document.body.classList.add('lang-'+l);
-  document.documentElement.lang = (l==='zh') ? 'zh-Hant' : 'en';
-  document.getElementById('b-zh').classList.toggle('on', l==='zh');
-  document.getElementById('b-en').classList.toggle('on', l==='en');
-  document.title = (l==='zh')
-    ? 'AI／醫療AI 每日新知日報 · 2026-08-20'
-    : 'AI & Medical AI Daily · 2026-08-20';
-}
 function toggleTheme(){
   document.body.classList.toggle('dark');
   document.getElementById('theme-ic').textContent =
@@ -767,5 +701,6 @@ window.addEventListener('scroll', function(){
     .catch(function(){});
 })();
 </script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/en/reports/2026-08-20.html" hreflang="en" rel="alternate" lang="en">English version</a></p>
 </body>
 </html>
