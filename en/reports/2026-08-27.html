@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>AI &amp; Medical AI Daily · 2026-08-27</title>
+<meta property="og:url" content="https://ai-medical-daily.peteraim.com/en/reports/2026-08-27.html" />
+<link rel="canonical" href="https://ai-medical-daily.peteraim.com/en/reports/2026-08-27.html" />
+<link rel="alternate" hreflang="zh-Hant" href="https://ai-medical-daily.peteraim.com/reports/2026-08-27.html" />
+<link rel="alternate" hreflang="en" href="https://ai-medical-daily.peteraim.com/en/reports/2026-08-27.html" />
+<link rel="alternate" hreflang="x-default" href="https://ai-medical-daily.peteraim.com/reports/2026-08-27.html" />
+<meta name="description" content="CliniCARE-Bench ran 16 agentic systems over 750 patient cases: four-way accuracy of 65.3–76.1%, dropping another 4.8–14.8 points once shortcut answers are stripped out. The same week, ConceptCLIP baked interpretability into pretraining with 23M concept triplets and open weights — while Nature Medicine showed the same explanation helps clinicians and misleads laypeople.">
+<meta name="report-date" content="2026-08-27">
+<meta name="report-theme" content="technology">
+<meta name="report-title-zh" content="答對不等於做對：這一週三份醫療 AI 技術成績單，全部卡在「過程能不能查」">
+<meta name="report-title-en" content="Right Answer, Wrong Route: Three Medical-AI Scorecards This Week All Broke on the Same Question — Can You Audit the Path?">
+<meta name="report-summary-zh" content="CliniCARE-Bench 讓 16 個醫療 AI 代理跑 750 個病例，四分類準確率 65.3–76.1%，但扣掉抄捷徑的答案再掉 4.8–14.8 個百分點；同一週 ConceptCLIP 用 2,300 萬組概念三元組把可解釋性寫進預訓練並開源權重，Nature Medicine 卻證明同一份解釋對醫師有用、對外行有害。">
+<meta name="report-summary-en" content="CliniCARE-Bench ran 16 agentic systems over 750 patient cases: four-way accuracy of 65.3–76.1%, dropping another 4.8–14.8 points once shortcut answers are stripped out. The same week, ConceptCLIP baked interpretability into pretraining with 23M concept triplets and open weights — while Nature Medicine showed the same explanation helps clinicians and misleads laypeople.">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HJLDQZDK5V');
+</script>
+<link rel="stylesheet" href="/assets/report.css">
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><span>◆</span> <span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <div class="bar-sp"></div>
+    <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
+    <div class="seg">
+      <a href="/reports/2026-08-27.html" hreflang="zh-Hant" lang="zh-Hant" rel="alternate">中文</a>
+      <a class="on" href="/en/reports/2026-08-27.html" hreflang="en" lang="en" aria-current="page">EN</a>
+    </div>
+    <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="kicker">
+    <span class="en-inline">Thursday · Technology</span>
+  </div>
+  <h1>
+    <span class="en">Right Answer, Wrong Route: Three Medical-AI Scorecards This Week All Broke on the Same Question — Can You Audit the Path?</span>
+  </h1>
+  <div class="dateline">
+    <span class="en-inline">Thursday, August 27, 2026 · Covering Aug 4–27 · Taipei time</span>
+  </div>
+  <p class="lede">
+    <span class="en">A technology column usually reports how many points the score went up. Not this week. On August 7, <a href="https://arxiv.org/abs/2608.07796" target="_blank" rel="noopener">CliniCARE-Bench</a> put 16 agentic systems through 750 audit scenarios derived from real patient data. Four-way accuracy landed at 65.3–76.1% — respectable, until the authors computed a second number: defect-free accuracy, which credits a verdict only when it is both correct **and** free of prohibited shortcuts. That figure fell a further 4.8 to 14.8 points. The same month, <a href="https://arxiv.org/abs/2606.23301" target="_blank" rel="noopener">EHR-Complex</a> measured a best-in-class 62.3% exact match over 52K tasks, yet Pass^k consistency dropped below 50% for nearly every model at k=4. And on August 17 <a href="https://www.nature.com/articles/s41551-026-01764-x" target="_blank" rel="noopener">Nature Biomedical Engineering</a> published ConceptCLIP, which stops treating explanation as a post-hoc add-on and writes it into the pretraining objective — 23 million image–text–concept triplets bought in exchange for a model a clinician can check line by line. Three scorecards, one message: the frontier of medical AI has moved from *is it accurate* to *can you audit it*.</span>
+  </p>
+
+  <nav class="toc">
+    <a href="#top"><span class="en-inline">Top Stories</span></a>
+    <a href="#product"><span class="en-inline">Product Analysis</span></a>
+    <a href="#company"><span class="en-inline">Companies &amp; Competition</span></a>
+    <a href="#taiwan"><span class="en-inline">Taiwan Angle</span></a>
+    <a href="#reading"><span class="en-inline">Further Reading</span></a>
+    <a href="#refs"><span class="en-inline">References</span></a>
+  </nav>
+</div>
+
+<section id="top">
+  <h2>01 — Top Stories</h2>
+  <div class="sec-title">
+    <span class="en">Eight items, three technical threads: explanation moved into pretraining, auditing moved into benchmarks, agents moved into the chart</span>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Open foundation model</span></span>
+      <span class="tag">HKUST</span><span class="tag">ConceptCLIP</span><span class="tag">8/17</span>
+    </div>
+    <h3>
+      <span class="en">ConceptCLIP: 23 million image–text–concept triplets turn interpretability from a post-hoc patch into a pretraining objective</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On August 17, Hao Chen's group at the Hong Kong University of Science and Technology published ConceptCLIP in <a href="https://www.nature.com/articles/s41551-026-01764-x" target="_blank" rel="noopener">Nature Biomedical Engineering</a>, releasing alongside it MedConcept-23M — 23 million biomedical image–text–concept triplets. Where ordinary contrastive vision–language pretraining aligns an image with a block of text, ConceptCLIP adds region–concept alignment, so the model can point to the part of the image it relied on and name the medical concept that region maps to. Evaluation spans <strong>78 datasets across 10 imaging modalities</strong> — chest X-ray, CT, MRI, mammography, whole-slide histopathology, endoscopy, ultrasound, dermatology, retinal imaging and more — comprising 68 public datasets, 9 private ones, and a newly curated PMC-9K set of 9,222 image–text pairs. Weights are on Hugging Face, code on <a href="https://github.com/JerrryNie/ConceptCLIP" target="_blank" rel="noopener">GitHub</a>, and the dataset captions at <a href="https://huggingface.co/datasets/JerrryNie/MedConcept-23M" target="_blank" rel="noopener">Hugging Face Datasets</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">For two years, interpretability in medical imaging foundation models has been almost entirely post-hoc: Grad-CAM heat maps, attention visualisations, or asking an LLM to narrate its reasoning. All share one flaw — the explanation and the decision come from different places. How the model computed its answer is one thing; the story generated afterwards is another. ConceptCLIP puts concept alignment inside the loss function, making the explanation part of the representation itself. The paper's accompanying clinician user study, run across three imaging modalities, found that concept-based explanations helped clinicians verify predictions and spot potential errors — a more interesting result than any benchmark number, because it answers whether the explanation is *useful*, not merely whether one exists.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">Nine of the 78 datasets are private, so that portion of the results cannot be fully reproduced externally. The user study covers three modalities, not all ten. Parameter count and training compute are not disclosed in the accessible material, and what MedConcept-23M releases on Hugging Face is the captions rather than every source image — rebuilding the full corpus requires sourcing the images yourself.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.nature.com/articles/s41551-026-01764-x" target="_blank" rel="noopener">Nature Biomedical Engineering, 2026-08-17</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Benchmark</span></span>
+      <span class="tag">CliniCARE-Bench</span><span class="tag">MIMIC-IV</span><span class="tag">8/07</span>
+    </div>
+    <h3>
+      <span class="en">CliniCARE-Bench: 16 agentic systems get roughly seven in ten right — until shortcut answers are subtracted, costing up to 14.8 points</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">A multi-institution team including Stanford's Nigam H. Shah released <a href="https://arxiv.org/abs/2608.07796" target="_blank" rel="noopener">CliniCARE-Bench</a> (arXiv:2608.07796) on August 7. It takes 25 clinician-validated retrospective audit scenarios and instantiates them as 750 patient-specific cases derived from real MIMIC-IV data, asking each system for one of four verdicts: Yes, No, Indeterminate (Lack of Data), or Indeterminate (Medically Ambiguous). Across 16 agentic systems, four-way accuracy ranged from <strong>65.3% to 76.1%</strong>. The paper then defines defect-free accuracy — credit only when the verdict is correct *and* the reasoning avoided explicitly prohibited shortcuts — and that figure comes in <strong>4.8 to 14.8 points lower</strong>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Two design choices deserve to be copied. First, splitting "not enough data" from "medically ambiguous" into separate verdicts: most medical QA benchmarks offer only right or wrong, forcing a guess when information is missing and thereby rewarding confident error. Second, defect-free accuracy moves evaluation from *was the output correct* to *was the process acceptable*. That is precisely the difference between an audit and a quiz — an audit demands a reviewable chain of reasoning, not a conclusion that happens to be right. Read it against the Microsoft Research and Scripps finding published earlier this year in <a href="https://www.nature.com/articles/s41591-026-04501-8" target="_blank" rel="noopener">Nature Medicine</a>, where frontier models held their accuracy even after critical visual information was removed — meaning they were not looking at the image at all — and the two results are the same lesion in different contrast.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">This is an arXiv preprint and has not been peer reviewed. The abstract does not name the 16 systems or break out individual scores, so the public summary gives no way to tell which vendor lost the most. All 25 scenarios derive from MIMIC-IV — critical-care data from a single US academic centre — and transferability to Taiwanese or European health systems is untested.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://arxiv.org/abs/2608.07796" target="_blank" rel="noopener">arXiv:2608.07796, 2026-08-07</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Benchmark</span></span>
+      <span class="tag">EHR-Complex</span><span class="tag">Ant Group</span><span class="tag">Zhejiang Univ.</span>
+    </div>
+    <h3>
+      <span class="en">EHR-Complex: 52K tasks, 3,800 failure traces, a 62.3% ceiling — and consistency below 50% when you run it four times</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Yitong Qiao and colleagues built <a href="https://arxiv.org/abs/2606.23301" target="_blank" rel="noopener">EHR-Complex</a> (arXiv:2606.23301) on top of MIMIC-IV — 365,000 patients, 31 tables, over 500 million records — generating roughly <strong>52,000 tasks</strong> across six clinical intents, supporting both patient-level and population-level queries. Agents must actually execute SQL or Python in a sandbox to answer. Top exact-match performance is <strong>62.3%</strong>. More telling: <strong>Pass^k consistency drops below 50% for nearly all evaluated models at k=4</strong>. Analysis of more than 3,800 failed attempts sorts the errors into three buckets: SQL logic mistakes, medical-code lookup failures, and semantic misreadings.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Pass^k is the number worth citing. It asks not "does one run get it right" but "does the same question come out right every time across k runs". A 62.3% single-shot score looks usable in a demo video, but a system that answers inconsistently on two of four attempts cannot compute a hospital quality metric or audit a reimbursement claim — those jobs need reproducibility, not an expected value. It also explains why medical-code lookup earns its own failure category: the hierarchy relations in ICD-10 and SNOMED are not something a language model can infer from general knowledge, they must be looked up, and models are unusually good at papering over a missing lookup with fluent prose.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">Also an unreviewed arXiv preprint, submitted June 22. Tasks are programmatically generated, so their distribution may not match what clinical staff actually ask. The author list is weighted toward Ant Group and Zhejiang University; whether the evaluated model set includes their own systems requires reading the full paper.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://arxiv.org/abs/2606.23301" target="_blank" rel="noopener">arXiv:2606.23301, 2026-06-22</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Explainability</span></span>
+      <span class="tag">MIT</span><span class="tag">Columbia</span><span class="tag">Stanford</span><span class="tag">8/04</span>
+    </div>
+    <h3>
+      <span class="en">The same explanation helps the expert and fools the novice: Nature Medicine shows XAI has no universal setting</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Led by Orson Xu of Columbia's Department of Biomedical Informatics, with MIT's Marzyeh Ghassemi and Stanford's Roxana Daneshjou among the co-authors, this <a href="https://www.nature.com/articles/s41591-026-04553-w" target="_blank" rel="noopener">Nature Medicine</a> paper of August 4 tested explainable AI in dermatological diagnosis. Non-experts and primary care physicians diagnosed skin conditions from images, with and without various XAI aids — confidence scores, similar-image retrieval, heat maps, and LLM-written explanations. The two groups diverged sharply. <strong>Lay accuracy rose, but by deference</strong>: they trusted LLM explanations regardless of correctness, and found vaguer explanations more convincing. <strong>Clinicians did best with the bare prediction and no explanation at all</strong> — they caught the model's errors and were not led astray by incorrect assistance. <a href="https://news.mit.edu/2026/medical-ai-assistance-benefits-vary-based-on-user-expertise-0804" target="_blank" rel="noopener">MIT News</a> quotes the researchers' conclusion: "the same explanation can help an expert and mislead a beginner."</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This is a counterpunch to the two benchmarks above. CliniCARE-Bench and ConceptCLIP both assume better explanations mean safer systems; this paper shows the effect depends entirely on the receiver's ability to push back. For someone equipped to disagree, an explanation is an auditing tool. For someone who is not, it is a persuasion tool. The design implication is blunt: the clinician-facing and patient-facing renderings of the same model output have to be two different interfaces, not the same one in a different font. And with OpenAI having wired <a href="https://openai.com/index/introducing-chatgpt-health/" target="_blank" rel="noopener">ChatGPT Health</a> straight into patient portals, where the overwhelming majority of users are non-experts, "vaguer explanations were more convincing" is the sentence in this study that should keep product managers awake.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.nature.com/articles/s41591-026-04553-w" target="_blank" rel="noopener">Nature Medicine, 2026-08-04</a> · <a href="https://news.mit.edu/2026/medical-ai-assistance-benefits-vary-based-on-user-expertise-0804" target="_blank" rel="noopener">MIT News, 2026-08-04</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Agent architecture</span></span>
+      <span class="tag">Epic</span><span class="tag">Cosmos</span><span class="tag">Agent Factory</span><span class="tag">8/17–20</span>
+    </div>
+    <h3>
+      <span class="en">The engineering half of Epic UGM 2026: a generative model on 320 million patients, and an agent factory handed to people who cannot code</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Epic held its annual Users Group Meeting in Verona, Wisconsin on August 17–20 (<a href="https://healthtechhotspot.com/epic-ugm-2026-recap-cosmos-curiosity-epicops-and-an-expanding-ai-footprint/" target="_blank" rel="noopener">20,000-plus attendees across roughly 500 sessions</a>; <a href="https://www.fiercehealthcare.com/health-tech/epic-expands-ai-ambitions-agent-platform-cosmos-powered-predictions-and-deeper-workflow" target="_blank" rel="noopener">Fierce Healthcare counts 8,400 in person and around 70,000 including virtual</a>). Three engineering outputs: <strong>Curiosity</strong>, a generative model trained on Cosmos data to forecast outcomes such as readmission and stroke risk, available to data-contributing Cosmos members from March 2027, with Cosmos now covering 320 million patients and 23 billion encounters; <strong>Agent Factory</strong>, a no-code platform for building and orchestrating agents with 120-plus pre-built ones included, going broadly available in 2027, where early adopter ECU Health built a transfer-request summarisation agent estimated to save 20 hours a week; and <strong>Ergo / Ergo Visit</strong>, an AI-native clinical interface shipping November 2026, whose visit-prep function draws on 320 million de-identified records.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Set Curiosity beside the three items above and an awkward mismatch appears. Academia is pushing evaluation toward auditable process and run-to-run consistency; the industry's largest single bet is a generative risk-prediction model trained on a corpus too large to trace case by case. That is not to say Epic is wrong — longitudinal data on 320 million people is an asset perhaps three organisations on earth possess — but when Curiosity begins emitting readmission risk scores in March 2027, CliniCARE-Bench's defect-free framing lands squarely on it. Agent Factory's exposure is more concrete: 120 pre-built agents, no code required, each hospital customising its own, distributes the agent safety boundary from one vendor's responsibility across thousands of hospital configuration screens — and EHR-Complex's Pass^k result already tells us the same agent run four times need not give the same answer.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">ECU Health's "20 hours a week" and Ask Emmie's "1,000 call-centre hours saved" at Sutter Health are customer-reported and not independently audited. Neither Curiosity nor Agent Factory has shipped (March 2027 and 2027 respectively), so every description comes from vendor presentations with no independently verified performance figure attached. The two attendance counts conflict (20,000 versus 8,400 in person); both are listed here rather than reconciled.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.fiercehealthcare.com/health-tech/epic-expands-ai-ambitions-agent-platform-cosmos-powered-predictions-and-deeper-workflow" target="_blank" rel="noopener">Fierce Healthcare, 2026-08</a> · <a href="https://healthtechhotspot.com/epic-ugm-2026-recap-cosmos-curiosity-epicops-and-an-expanding-ai-footprint/" target="_blank" rel="noopener">HealthTech HotSpot, 2026-08</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Speech tech</span></span>
+      <span class="tag">Suki</span><span class="tag">Epic / Meditech</span><span class="tag">8/25</span>
+    </div>
+    <h3>
+      <span class="en">Suki goes the other way: in the age of ambient scribing, rebuilding plain dictation as an API</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">AI scribe company Suki launched <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/ai-scribe-suki-rolls-out-ai-driven-clinical-dictation-tool" target="_blank" rel="noopener">Suki Dictation</a> on August 25 — natively built inside Epic and Meditech, deployable standalone or alongside Suki for Clinicians, and offered via API and SDKs for third-party health tech products to embed. Unlike ambient documentation, which passively records the encounter, this lets clinicians actively edit by typing or voice command, placing text exactly where they want it in the chart. Pilot user Edward Mintz, a pulmonary and critical care physician at Witham Medical Group, reports saving at least one to two hours a day. Chief product officer Abhi Pathak framed it this way: "We are not trying to win by locking people into a bigger bundle. We are trying to give health system clinicians the freedom to choose exactly what they need." The company also previewed next-generation streaming speech recognition, conversational voice editing and AI-assisted procedure notes.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This is a technical fork worth noticing. The dominant narrative of the last three years has been that ambient AI would eat dictation: the clinician does nothing, the AI listens and drafts. Suki is betting the opposite way — that when a generated draft still needs heavy editing, the bottleneck is not generation but precise correction. Turning dictation into an API concedes that voice is an atomic operation inside the clinical workflow rather than a complete product. It also explains the refusal to bundle: with Epic shipping Ergo and Agent Factory, any third party competing head-on for the whole workflow is fighting uphill, and becoming the component everyone else has to license is a defensible place to stand.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">The "one to two hours a day" figure comes from a single pilot physician — sample size one, with no control arm or time-and-motion study. The coverage discloses no pricing, no word error rate, no supported languages, and no count of contracted organisations.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.fiercehealthcare.com/ai-and-machine-learning/ai-scribe-suki-rolls-out-ai-driven-clinical-dictation-tool" target="_blank" rel="noopener">Fierce Healthcare, 2026-08-25</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Tech governance</span></span>
+      <span class="tag">JAMA</span><span class="tag">UPenn</span><span class="tag">8/17–18</span>
+    </div>
+    <h3>
+      <span class="en">A JAMA viewpoint argues that once AI clearly beats physicians, mandating a human in the loop locks in worse care</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">A <a href="https://jamanetwork.com/journals/jama/article-abstract/2852952" target="_blank" rel="noopener">JAMA viewpoint</a> (DOI 10.1001/jama.2026.15380) with Ezekiel J. Emanuel of the University of Pennsylvania's Department of Medical Ethics and Health Policy as corresponding author appeared on August 17 under the title "Will Autonomous AI Exceed AI-Aided Physicians as the Best Medical Care?", with an <a href="https://www.eurekalert.org/news-releases/1140050" target="_blank" rel="noopener">EurekAlert release the same day</a>. <a href="https://the-decoder.com/as-ai-beats-doctors-regulators-shouldnt-force-a-human-into-the-loop-jama-piece-says/" target="_blank" rel="noopener">The Decoder's August 18 summary</a> lists the evidence cited: Google's AMIE outperformed primary care doctors in simulated consultations; ChatGPT o3 reached the correct diagnosis first in 60% of complex cases against 15.9% for internists; GPT-4 alone scored 92% on diagnostic reasoning while physicians with AI access scored 76%. The piece argues that rules requiring physician sign-off risk institutionalising inferior care by 2030. Co-authors include Curai Health CEO Neal Khosla, whose father invests in both OpenAI and Curai.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Read alongside today's dermatology XAI paper, an uncomfortable question surfaces. Emanuel and colleagues' "GPT-4 alone 92%, doctors with AI 76%" and Nature Medicine's finding that clinicians perform best with a bare prediction and worse once explanations are added may be two readings of the same phenomenon: the loss in human–AI collaboration need not come from humans dragging the model down, it may come from interfaces putting the human in the wrong place. The two attributions point to opposite policies — remove the human, or rebuild the interface. Given that nearly all the evidence comes from simulation rather than delivered care, the first is a far harder bet to unwind than the second.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">This is a viewpoint, not primary research. The authors themselves concede that nearly all the evidence comes from simulations rather than delivered patient care, and that invasive procedures still require physicians. Two authors hold direct financial interests in the spread of autonomous AI — a conflict to discount for while reading. The JAMA text sits behind a paywall; the figures in this item are taken from the EurekAlert release and The Decoder's secondary summary, not from the full article.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://jamanetwork.com/journals/jama/article-abstract/2852952" target="_blank" rel="noopener">JAMA, 2026-08-17</a> · <a href="https://www.eurekalert.org/news-releases/1140050" target="_blank" rel="noopener">EurekAlert, 2026-08-17</a> · <a href="https://the-decoder.com/as-ai-beats-doctors-regulators-shouldnt-force-a-human-into-the-loop-jama-piece-says/" target="_blank" rel="noopener">The Decoder, 2026-08-18</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Infrastructure</span></span>
+      <span class="tag">Nordic AI-Health</span><span class="tag">Nature Medicine</span><span class="tag">8/14</span>
+    </div>
+    <h3>
+      <span class="en">Six Nordic countries turn national longitudinal health data into a federated AI platform — and publish the blueprint in Nature Medicine</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">The <a href="https://www.nature.com/articles/s41591-026-04575-4" target="_blank" rel="noopener">Nordic AI-Health Initiative</a> paper, led by Ole A. Andreassen with 22 authors, appeared in Nature Medicine on August 14 under the subtitle "technical foundations, data assets, and a roadmap for deployment". Authors span Norway, Sweden, Denmark, Finland, Iceland and Estonia. The goal is a federated Nordic health ecosystem: rather than centralising data, models travel to where the data sits, under regulation-compliant access controls, to support development of generalisable medical AI.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">What matters here for a Taiwanese reader is not novelty — federated learning is not a new idea — but sequencing. The Nordics fixed cross-border data governance and standards first, then talked about models; that is very nearly the path Taiwan's Ministry of Health has taken by building FHIR Box before deploying AI applications (see the Taiwan section). Epic's Cosmos, by contrast, concentrates 320 million people's data with one vendor and wins on scale. The difference between the two architectures will show up concretely in two places over the next few years: who can build models that generalise across systems, and who is answerable when a model errs — centralised gives you one accountable party, federated distributes responsibility across each participating country's governance framework.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">The paper is a blueprint and roadmap; the publicly accessible portion does not state the exact record counts of each country's data assets, nor list dated milestones. No unverified scale figures are quoted here.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.nature.com/articles/s41591-026-04575-4" target="_blank" rel="noopener">Nature Medicine, 2026-08-14</a></p></div>
+  </div>
+</section>
+
+<section id="product">
+  <h2>02 — Product Analysis</h2>
+  <div class="sec-title">
+    <span class="en">Two open-weight multimodal medical models, two entirely different definitions of success</span>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>ConceptCLIP</h3>
+      <p class="sub"><span class="en-inline">Concept-aligned, interpretable biomedical vision–language model · HKUST (Hong Kong)</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> ConceptCLIP is a general-purpose biomedical image encoder built so that a clinician can check it, not so that it tops a leaderboard. It performs joint image–text and region–concept alignment over MedConcept-23M (23 million image–text–concept triplets), evaluated across <a href="https://www.nature.com/articles/s41551-026-01764-x" target="_blank" rel="noopener">78 datasets and 10 imaging modalities</a>. The buyer is a hospital IT department or a team deploying imaging AI in a regulated setting — anywhere you must explain to an auditor what the model relied on.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: explanation and decision share a source. Concept alignment lives in the training objective rather than being narrated afterwards, and a <a href="https://www.nature.com/articles/s41551-026-01764-x" target="_blank" rel="noopener">clinician user study across three modalities</a> found physicians could use it to catch the model's errors.</span>
+        </li>
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: weights and code are public (<a href="https://github.com/JerrryNie/ConceptCLIP" target="_blank" rel="noopener">GitHub</a>, Hugging Face), so it can be deployed inside a hospital's own environment with no data leaving the building.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: nine of the 78 evaluation datasets are private, so the results cannot be fully reproduced externally, and with no parameter count or training compute disclosed, an adopter cannot size the hardware. Today's <a href="https://www.nature.com/articles/s41591-026-04553-w" target="_blank" rel="noopener">Nature Medicine dermatology study</a> is also a caution: useful to a clinician does not imply useful to a patient.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>MedGemma 1.5</h3>
+      <p class="sub"><span class="en-inline">Google's open-weight medical multimodal model · Google (US)</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> MedGemma 1.5 sits on top of Gemma 3, updated January 13, 2026, currently shipping as a 4B multimodal variant covering 3D imaging (CT/MRI volume reading), whole-slide pathology, longitudinal image comparison, anatomical bounding boxes, and clinical document and EHR understanding. Figures from the <a href="https://developers.google.com/health-ai-developer-foundations/medgemma/model-card" target="_blank" rel="noopener">official model card</a>: 61.1% macro accuracy on CT (up from 58.2%), 64.7% on MRI (up from 51.3%), 89.5% macro F1 on MIMIC chest X-ray, and 89.6% on EHRQA. The buyer is a developer — this is the entry point to the <a href="https://research.google/blog/medgemma-our-most-capable-open-models-for-health-ai-development/" target="_blank" rel="noopener">Health AI Developer Foundations</a> ecosystem.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: 3D CT/MRI and whole-slide pathology at 4B parameters puts the deployment bar well below comparable models, and the <a href="https://developers.google.com/health-ai-developer-foundations/medgemma/model-card" target="_blank" rel="noopener">jump on MRI from 51.3% to 64.7%</a> is the most substantial gain in this generation.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: interpretability remains post-hoc, and the model card carries no user study on whether a clinician can actually check its work. Licensing is governed by the Health AI Developer Foundations terms rather than a standard open-source licence — read it clause by clause before commercial deployment.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: accuracy in the 61–65% band is a long way from unsupervised operation in a radiology department, and <a href="https://www.nature.com/articles/s41591-026-04501-8" target="_blank" rel="noopener">the Nature Medicine robustness study</a> argues that what this class of VQA benchmark actually measures is itself contested.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="company">
+  <h2>03 — Companies &amp; Competition</h2>
+  <div class="sec-title">
+    <span class="en">Who stands where, on what, against whom</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th><span class="en-inline">Company / group</span></th>
+        <th><span class="en-inline">Recent state &amp; numbers</span></th>
+        <th><span class="en-inline">Position &amp; moat</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Epic Systems</strong><br><span class="en-inline">Largest US EHR vendor</span></td>
+          <td>
+            <span class="en">UGM 2026 unveiled Curiosity (March 2027), Agent Factory (2027, 120+ pre-built agents) and Ergo (November 2026). Cosmos spans 320 million patients and 23 billion encounters; 43.7% acute-care EHR share, 3,700-plus hospitals, records for 325 million people (<a href="https://www.fiercehealthcare.com/health-tech/epic-expands-ai-ambitions-agent-platform-cosmos-powered-predictions-and-deeper-workflow" target="_blank" rel="noopener">Fierce Healthcare</a>). First German customer Charité signed at roughly €200 million (<a href="https://healthtechhotspot.com/epic-ugm-2026-recap-cosmos-curiosity-epicops-and-an-expanding-ai-footprint/" target="_blank" rel="noopener">HealthTech HotSpot</a>).</span>
+          </td>
+          <td>
+            <span class="en">The moat is data scale plus workflow lock-in; nobody else can assemble comparable longitudinal data. The thin spot is auditability: Cosmos is too large to trace training provenance case by case, exactly as academic evaluation standards move the other way.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Google</strong><br><span class="en-inline">Open-weight medical model supplier</span></td>
+          <td>
+            <span class="en">MedGemma 1.5 (updated January 13, 2026), 4B multimodal: 61.1% on CT, 64.7% on MRI, 89.5% macro F1 on MIMIC CXR, 89.6% on EHRQA (<a href="https://developers.google.com/health-ai-developer-foundations/medgemma/model-card" target="_blank" rel="noopener">official model card</a>). AMIE beat primary care physicians in simulated consultations and is cited in the JAMA viewpoint as evidence for autonomous AI (<a href="https://the-decoder.com/as-ai-beats-doctors-regulators-shouldnt-force-a-human-into-the-loop-jama-piece-says/" target="_blank" rel="noopener">The Decoder</a>).</span>
+          </td>
+          <td>
+            <span class="en">The play is free models in exchange for ecosystem position: get the world's health AI startups building on HAI-DEF, then collect on cloud and tooling. The weakness is a non-standard licence and no evidence base for clinician-checkable output.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>HKUST / ConceptCLIP</strong><br><span class="en-inline">Academic group, open weights</span></td>
+          <td>
+            <span class="en">MedConcept-23M (23 million triplets), 78 datasets, 10 modalities, PMC-9K (9,222 pairs), with weights and code released (<a href="https://www.nature.com/articles/s41551-026-01764-x" target="_blank" rel="noopener">Nature BME, 2026-08-17</a>).</span>
+          </td>
+          <td>
+            <span class="en">It does not compete on parameters but on checkability — a differentiator with real value under the EU AI Act and FDA's approach to generative devices. But an academic group has no operations, versioning or compliance support; real deployment will need a vendor to wrap it.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Suki</strong><br><span class="en-inline">AI scribe and voice components</span></td>
+          <td>
+            <span class="en">Launched Suki Dictation on August 25, native inside Epic and Meditech and exposed through API and SDKs for third-party integration; a pilot physician reports saving one to two hours a day (<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/ai-scribe-suki-rolls-out-ai-driven-clinical-dictation-tool" target="_blank" rel="noopener">Fierce Healthcare, 2026-08-25</a>).</span>
+          </td>
+          <td>
+            <span class="en">Deliberately declines to fight Epic for the workflow, positioning instead as the voice component everyone licenses. The moat is thin — speech recognition is commoditised — but the distribution position, native inside two major EHRs, is hard to replicate quickly.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>長佳智能（6841）／遠傳（4904）</strong><br><span class="en-inline">Taiwan medical AI and systems integration</span></td>
+          <td>
+            <span class="en">Long Chia Intelligence holds around 57 domestic and international medical device licences, with H1 2026 revenue of NT$167.1 million and gross margin rising from 57.8% to 73.1%; FarEasTone is the principal systems integration partner for the FHIR-based smart healthcare data platform (<a href="https://n.yam.com/Article/20260824143510" target="_blank" rel="noopener">Yam News, 2026-08-24</a>).</span>
+          </td>
+          <td>
+            <span class="en">The moat comes from a policy timetable rather than technology: FHIR Box's three phases — medical centres in 2026, regional and district hospitals in 2027, clinics and health stations in 2028 — determine who plugs into the pipe first. The risk is symmetric: if the timetable slips, valuations take the hit before deployments do.</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>Close the section in one sentence: today's competitive structure is two axes — data scale and checkability — pulling apart.</strong> Epic and Google each hold a position on the scale end, one on longitudinal data covering 320 million people, the other trading free weights for ecosystem position. Academic outputs like ConceptCLIP bet on the other end, wagering that regulation and clinical adoption will eventually demand a stated basis for every call. Taiwan's position is unusual: it has neither Cosmos-scale data nor a frontier model team, but by fixing data standards before applications, its health ministry has landed on the checkability side of the split.</span>
+    </p>
+  </div>
+</section>
+
+<section id="taiwan">
+  <h2>04 — Taiwan Angle</h2>
+  <div class="sec-title">
+    <span class="en">As the international frontier shifts toward auditability, Taiwan happens to have poured its foundations on that side</span>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>(1) What FHIR Box is for is precisely the gap today's three benchmarks expose.</strong> The Ministry of Health's FHIR Box is a universal operating layer for healthcare, letting hospitals exchange standardised records without altering their existing systems, so that AI models can work across institutions rather than being customised for each one. The rollout runs in three phases: record interoperability across medical centres by end-2026, regional and district hospitals by end-2027, clinics and health stations in 2028 (<a href="https://n.yam.com/Article/20260824143510" target="_blank" rel="noopener">Yam News, 2026-08-24</a>). The failure modes CliniCARE-Bench and EHR-Complex surface — medical-code lookup errors, unstable multi-table longitudinal reasoning — are at root problems of semantic inconsistency in the data, which is exactly the layer FHIR standardisation addresses. Taiwan's technical opening is not building a bigger model; it is becoming one of the few places able to offer a standardised, traceable, cross-institution evaluation environment.</span>
+    </p>
+    <p>
+      <span class="en"><strong>(2) On August 21, the health ministry signed an MOU with Roche Diagnostics, targeting chronic kidney disease first.</strong> The work centres on AI early warning to slow deterioration, against a backdrop of more than 90,000 dialysis patients in Taiwan. What stands out is the sequencing ministry officials emphasised: establish data standards and governance first, deploy AI tools second. Chang Gung, Mackay and Chung Shan medical centres already share records in real time through FHIR Box to support clinical AI applications (<a href="https://www.cna.com.tw/news/ahel/202608210280.aspx" target="_blank" rel="noopener">CNA, 2026-08-21</a>). That ordering matches the <a href="https://www.nature.com/articles/s41591-026-04575-4" target="_blank" rel="noopener">Nordic AI-Health Initiative</a> almost exactly and runs opposite to Epic's centralised Cosmos — for a system with complete national insurance data but limited scale at any single institution, federated is the pragmatic choice.</span>
+    </p>
+    <p>
+      <span class="en"><strong>(3) But today's XAI study is a warning for Taiwan's patient-facing plans.</strong> <a href="https://www.nature.com/articles/s41591-026-04553-w" target="_blank" rel="noopener">Nature Medicine</a> concluded that non-experts are persuaded by vague explanations. If the chronic disease AI early-warning work eventually reaches patients — pushing kidney-function risk through a health passbook or an app — the interface has to assume a recipient who cannot argue back, which makes it a different product from the nephrologist's view of the same model. Separately, Long Chia Intelligence's H1 2026 revenue of NT$167.1 million at 73.1% gross margin (<a href="https://n.yam.com/Article/20260824143510" target="_blank" rel="noopener">Yam News</a>) reflects a policy-dividend window; any investment read should discount for schedule risk, since a slip in any one of FHIR Box's three phases hits policy-timetable-priced names first.</span>
+    </p>
+  </div>
+</section>
+
+<section id="reading">
+  <h2>05 — Further Reading</h2>
+  <div class="sec-title">
+    <span class="en">Five pieces, all answering the same question: what exactly are we measuring</span>
+  </div>
+
+  <ol class="reading">
+    <li>
+      <a href="https://www.nature.com/articles/d41586-026-02125-z" target="_blank" rel="noopener">Medical AI has a measurement problem — Nature (2026-07-28)</a>
+      <p class="why"><span class="en">Harvard Medical School's Arjun K. Manrai distils the anxiety behind all three of today's benchmarks into one line: the technology is outrunning our ability to measure it. Read it first and the design motives behind defect-free-style metrics become much clearer.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/articles/s41591-026-04501-8" target="_blank" rel="noopener">Evaluating the robustness and readiness of large frontier models in health AI applications — Nature Medicine (2026-06-26)</a>
+      <p class="why"><span class="en">A 32-author Microsoft Research and Scripps team found that removing critical visual information barely dents frontier model accuracy. This is the empirical starting point for every "right answer, wrong route" argument in today's issue.</span></p>
+    </li>
+    <li>
+      <a href="https://news.mit.edu/2026/medical-ai-assistance-benefits-vary-based-on-user-expertise-0804" target="_blank" rel="noopener">The benefits of medical AI assistance vary based on user expertise — MIT News (2026-08-04)</a>
+      <p class="why"><span class="en">The plain-language version of the Nature Medicine dermatology study, clearer than the abstract on experimental design and the four XAI conditions. Anyone building patient-facing products should read this one directly.</span></p>
+    </li>
+    <li>
+      <a href="https://jamanetwork.com/journals/jama/article-abstract/2852952" target="_blank" rel="noopener">Will Autonomous AI Exceed AI-Aided Physicians as the Best Medical Care? — JAMA (2026-08-17)</a>
+      <p class="why"><span class="en">The most-cited piece of the year, and the one most in need of being read together with its conflict-of-interest statement. Agree or not, it puts "is a human in the loop a protection or a drag" formally on the table. Paywalled — start with the <a href="https://www.eurekalert.org/news-releases/1140050" target="_blank" rel="noopener">EurekAlert release</a>.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/articles/s41591-026-04575-4" target="_blank" rel="noopener">An AI-Health infrastructure for the Nordic region — Nature Medicine (2026-08-14)</a>
+      <p class="why"><span class="en">The most directly useful piece for Taiwan: cross-border health data governance written up as an engineering specification. To understand what FHIR Box will run into over the next three years, the fastest route is someone else's already-written roadmap.</span></p>
+    </li>
+  </ol>
+</section>
+
+<section id="refs">
+  <h2>06 — References</h2>
+  <div class="sec-title">
+    <span class="en">References</span>
+  </div>
+
+  <div class="panel">
+    <ol class="refs">
+      <li>An explainable biomedical foundation model via large-scale concept-enhanced vision–language pretraining. <em>Nature Biomedical Engineering</em>, 2026-08-17. <a href="https://www.nature.com/articles/s41551-026-01764-x" target="_blank" rel="noopener">nature.com</a></li>
+      <li>ConceptCLIP — code repository. <em>GitHub</em>. <a href="https://github.com/JerrryNie/ConceptCLIP" target="_blank" rel="noopener">github.com</a></li>
+      <li>MedConcept-23M dataset captions. <em>Hugging Face Datasets</em>. <a href="https://huggingface.co/datasets/JerrryNie/MedConcept-23M" target="_blank" rel="noopener">huggingface.co</a></li>
+      <li>CliniCARE-Bench: Clinical Calibrated Audit of Medical Reasoning in EHR. <em>arXiv:2608.07796</em>, 2026-08-07. <a href="https://arxiv.org/abs/2608.07796" target="_blank" rel="noopener">arxiv.org</a></li>
+      <li>EHR-Complex: Benchmarking Medical Agents for Complex Clinical Reasoning. <em>arXiv:2606.23301</em>, 2026-06-22. <a href="https://arxiv.org/abs/2606.23301" target="_blank" rel="noopener">arxiv.org</a></li>
+      <li>Divergent impacts of explainable AI for dermatological diagnosis on clinicians versus lay people. <em>Nature Medicine</em>, 2026-08-04. <a href="https://www.nature.com/articles/s41591-026-04553-w" target="_blank" rel="noopener">nature.com</a></li>
+      <li>The benefits of medical AI assistance vary based on user expertise. <em>MIT News</em>, 2026-08-04. <a href="https://news.mit.edu/2026/medical-ai-assistance-benefits-vary-based-on-user-expertise-0804" target="_blank" rel="noopener">news.mit.edu</a></li>
+      <li>Epic expands AI ambitions with agent platform, Cosmos-powered predictions and deeper workflow automation. <em>Fierce Healthcare</em>, 2026-08. <a href="https://www.fiercehealthcare.com/health-tech/epic-expands-ai-ambitions-agent-platform-cosmos-powered-predictions-and-deeper-workflow" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>Epic UGM 2026 Recap: Cosmos Curiosity, EpicOps and an Expanding AI Footprint. <em>HealthTech HotSpot</em>, 2026-08. <a href="https://healthtechhotspot.com/epic-ugm-2026-recap-cosmos-curiosity-epicops-and-an-expanding-ai-footprint/" target="_blank" rel="noopener">healthtechhotspot.com</a></li>
+      <li>AI scribe Suki rolls out AI-driven clinical dictation tool. <em>Fierce Healthcare</em>, 2026-08-25. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/ai-scribe-suki-rolls-out-ai-driven-clinical-dictation-tool" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>Will Autonomous AI Exceed AI-Aided Physicians as the Best Medical Care? <em>JAMA</em>, 2026-08-17. DOI 10.1001/jama.2026.15380. <a href="https://jamanetwork.com/journals/jama/article-abstract/2852952" target="_blank" rel="noopener">jamanetwork.com</a></li>
+      <li>Will autonomous AI exceed AI-aided physicians as the best medical care? <em>EurekAlert!</em>, 2026-08-17. <a href="https://www.eurekalert.org/news-releases/1140050" target="_blank" rel="noopener">eurekalert.org</a></li>
+      <li>As AI beats doctors, regulators shouldn't force a human into the loop, JAMA piece says. <em>The Decoder</em>, 2026-08-18. <a href="https://the-decoder.com/as-ai-beats-doctors-regulators-shouldnt-force-a-human-into-the-loop-jama-piece-says/" target="_blank" rel="noopener">the-decoder.com</a></li>
+      <li>An AI-Health infrastructure for the Nordic region: technical foundations, data assets, and a roadmap for deployment. <em>Nature Medicine</em>, 2026-08-14. <a href="https://www.nature.com/articles/s41591-026-04575-4" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Evaluating the robustness and readiness of large frontier models in health AI applications. <em>Nature Medicine</em>, 2026-06-26. <a href="https://www.nature.com/articles/s41591-026-04501-8" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Medical AI has a measurement problem. <em>Nature</em>, 2026-07-28. <a href="https://www.nature.com/articles/d41586-026-02125-z" target="_blank" rel="noopener">nature.com</a></li>
+      <li>MedGemma 1.5 model card. <em>Google Health AI Developer Foundations</em>, 2026-01-13. <a href="https://developers.google.com/health-ai-developer-foundations/medgemma/model-card" target="_blank" rel="noopener">developers.google.com</a></li>
+      <li>MedGemma: Our most capable open models for health AI development. <em>Google Research Blog</em>. <a href="https://research.google/blog/medgemma-our-most-capable-open-models-for-health-ai-development/" target="_blank" rel="noopener">research.google</a></li>
+      <li>Introducing ChatGPT Health. <em>OpenAI</em>. <a href="https://openai.com/index/introducing-chatgpt-health/" target="_blank" rel="noopener">openai.com</a></li>
+      <li>衛福部攜手羅氏推 AI 醫療 首波瞄準慢性腎臟病照護. <em>中央社 CNA</em>, 2026-08-21. <a href="https://www.cna.com.tw/news/ahel/202608210280.aspx" target="_blank" rel="noopener">cna.com.tw</a></li>
+      <li>台灣醫療 AI 掀全國基建！FHIR Box 串聯跨院 長佳智能、遠傳受惠. <em>蕃新聞 Yam News</em>, 2026-08-24. <a href="https://n.yam.com/Article/20260824143510" target="_blank" rel="noopener">n.yam.com</a></li>
+      <li>STAT Health Tech: FDA promises new AI guidance, and Epic UGM updates. <em>STAT News</em>, 2026-08-25. <a href="https://www.statnews.com/2026/08/25/fda-promises-new-ai-guidance-and-epic-ugm-updates/" target="_blank" rel="noopener">statnews.com</a></li>
+      <li>This Week in European HealthTech, MedTech and Health AI: 21st August 2026. <em>healthcare.digital</em>, 2026-08-21. <a href="https://www.healthcare.digital/single-post/this-week-in-european-healthtech-medtech-and-health-ai-21st-august-2026" target="_blank" rel="noopener">healthcare.digital</a></li>
+    </ol>
+    <div class="note">
+      <span class="en"><strong>Editor's note:</strong> This issue draws on technical publications from August 4–27. Two items — CliniCARE-Bench and EHR-Complex — are arXiv preprints that have not been peer reviewed, flagged as such in each card. The JAMA viewpoint and STAT News are paywalled; this report is written only from the publicly visible title and abstract, the EurekAlert release, and The Decoder's secondary summary, not from the full text. Two co-authors of that JAMA piece hold direct financial interests in the spread of autonomous AI, disclosed in the item. Every benefit figure from Epic UGM 2026 — ECU Health's 20 hours a week, Sutter Health's 1,000 call-centre hours, Ask Emmie's 73% reduction in billing messages — is reported by the adopting organisation or the vendor and is not independently audited; Curiosity and Agent Factory have not shipped and carry no independently verified performance data. Two conflicting attendance counts for UGM circulate (20,000-plus versus 8,400 in person) and both are listed rather than reconciled. Suki Dictation's "one to two hours a day" comes from a single pilot physician, sample size one. ConceptCLIP's GitHub and Hugging Face links are taken from the Nature paper's code and data availability statements. The Long Chia Intelligence financial figures in the Taiwan section are quoted from Yam News coverage rather than the company's own filings; verify against Taiwan's Market Observation Post System before acting on them. MedGemma 1.5 shipped in January 2026 and is not news this week — it appears in the product analysis solely as ConceptCLIP's comparison case.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-row">
+    <div>
+      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Thursday / Technology<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
+    </div>
+    <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
+  </div>
+</footer>
+</main>
+
+<div class="fabs">
+  <button class="up" id="up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+  <a class="home-fab" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg></a>
+</div>
+
+<script>
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.getElementById('theme-ic').textContent =
+    document.body.classList.contains('dark') ? '◑' : '◐';
+}
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.body.classList.add('dark');
+  document.getElementById('theme-ic').textContent = '◑';
+}
+window.addEventListener('scroll', function(){
+  document.getElementById('up').classList.toggle('show', window.scrollY > 600);
+});
+
+/* GitHub 星星數：無需授權，失敗或被限流時靜默保留佔位符 */
+(function(){
+  var el = document.getElementById('ghs');
+  if (!el || typeof fetch !== 'function') return;
+  fetch('https://api.github.com/repos/tingwei161803/ai-medical-daily', {headers:{Accept:'application/vnd.github+json'}})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if (!d || typeof d.stargazers_count !== 'number') return;
+      var n = d.stargazers_count;
+      el.textContent = n >= 1000 ? (Math.round(n/100)/10) + 'k' : String(n);
+    })
+    .catch(function(){});
+})();
+</script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/reports/2026-08-27.html" hreflang="zh-Hant" rel="alternate" lang="zh-Hant">中文版</a></p>
+</body>
+</html>

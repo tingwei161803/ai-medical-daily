@@ -8,6 +8,10 @@
 <title>AI／醫療AI 每日新知日報 · 2026-08-27</title>
 <meta property="og:url" content="https://ai-medical-daily.peteraim.com/reports/2026-08-27.html" />
 <link rel="canonical" href="https://ai-medical-daily.peteraim.com/reports/2026-08-27.html" />
+<link rel="alternate" hreflang="zh-Hant" href="https://ai-medical-daily.peteraim.com/reports/2026-08-27.html" />
+<link rel="alternate" hreflang="en" href="https://ai-medical-daily.peteraim.com/en/reports/2026-08-27.html" />
+<link rel="alternate" hreflang="x-default" href="https://ai-medical-daily.peteraim.com/reports/2026-08-27.html" />
+<meta name="description" content="CliniCARE-Bench 讓 16 個醫療 AI 代理跑 750 個病例，四分類準確率 65.3–76.1%，但扣掉抄捷徑的答案再掉 4.8–14.8 個百分點；同一週 ConceptCLIP 用 2,300 萬組概念三元組把可解釋性寫進預訓練並開源權重，Nature Medicine 卻證明同一份解釋對醫師有用、對外行有害。">
 <meta name="report-date" content="2026-08-27">
 <meta name="report-theme" content="technology">
 <meta name="report-title-zh" content="答對不等於做對：這一週三份醫療 AI 技術成績單，全部卡在「過程能不能查」">
@@ -24,16 +28,16 @@
 </script>
 <link rel="stylesheet" href="/assets/report.css">
 </head>
-<body class="lang-zh">
+<body>
 
 <header class="bar">
   <div class="bar-in">
-    <a class="brand" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span><span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <a class="brand" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span></a>
     <div class="bar-sp"></div>
     <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub / 在 GitHub 給這個專案一顆星"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
     <div class="seg">
-      <button id="b-zh" class="on" onclick="setLang('zh')">中文</button>
-      <button id="b-en" onclick="setLang('en')">EN</button>
+      <a class="on" href="/reports/2026-08-27.html" hreflang="zh-Hant" lang="zh-Hant" aria-current="page">中文</a>
+      <a href="/en/reports/2026-08-27.html" hreflang="en" lang="en" rel="alternate">EN</a>
     </div>
     <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
   </div>
@@ -43,28 +47,24 @@
 <div class="hero">
   <div class="kicker">
     <span class="zh-inline">星期四 · 技術突破</span>
-    <span class="en-inline">Thursday · Technology</span>
   </div>
   <h1>
     <span class="zh">答對不等於做對：這一週三份醫療 AI 技術成績單，全部卡在「過程能不能查」</span>
-    <span class="en">Right Answer, Wrong Route: Three Medical-AI Scorecards This Week All Broke on the Same Question — Can You Audit the Path?</span>
   </h1>
   <div class="dateline">
     <span class="zh-inline">2026 年 8 月 27 日（四）· 涵蓋 8/04–8/27 · 台北時間</span>
-    <span class="en-inline">Thursday, August 27, 2026 · Covering Aug 4–27 · Taipei time</span>
   </div>
   <p class="lede">
     <span class="zh">技術突破這一節通常在寫「又高了幾分」。這一週不是。<a href="https://arxiv.org/abs/2608.07796" target="_blank" rel="noopener">CliniCARE-Bench</a> 在 8 月 7 日把 16 個 agentic 系統丟進 750 個真實病歷衍生的稽核情境，四分類準確率落在 65.3–76.1%——聽起來還行，但作者另外算了一個「無瑕疵準確率」（只有答案正確**且**推理過程沒有使用被禁止的捷徑才算分），數字直接掉 4.8 到 14.8 個百分點。同一個月，<a href="https://arxiv.org/abs/2606.23301" target="_blank" rel="noopener">EHR-Complex</a> 用 5.2 萬題測出最佳模型 62.3% 的 exact-match，但 k=4 時幾乎所有模型的 Pass^k 一致性都跌破 50%；而 <a href="https://www.nature.com/articles/s41551-026-01764-x" target="_blank" rel="noopener">Nature Biomedical Engineering</a> 在 8 月 17 日刊出的 ConceptCLIP，索性把「解釋」直接寫進預訓練目標，用 2,300 萬組影像–文字–概念三元組換一個能被醫師逐項查核的模型。三份成績單指向同一件事：醫療 AI 的技術前緣，已經從「準不準」移到「查不查得動」。</span>
-    <span class="en">A technology column usually reports how many points the score went up. Not this week. On August 7, <a href="https://arxiv.org/abs/2608.07796" target="_blank" rel="noopener">CliniCARE-Bench</a> put 16 agentic systems through 750 audit scenarios derived from real patient data. Four-way accuracy landed at 65.3–76.1% — respectable, until the authors computed a second number: defect-free accuracy, which credits a verdict only when it is both correct **and** free of prohibited shortcuts. That figure fell a further 4.8 to 14.8 points. The same month, <a href="https://arxiv.org/abs/2606.23301" target="_blank" rel="noopener">EHR-Complex</a> measured a best-in-class 62.3% exact match over 52K tasks, yet Pass^k consistency dropped below 50% for nearly every model at k=4. And on August 17 <a href="https://www.nature.com/articles/s41551-026-01764-x" target="_blank" rel="noopener">Nature Biomedical Engineering</a> published ConceptCLIP, which stops treating explanation as a post-hoc add-on and writes it into the pretraining objective — 23 million image–text–concept triplets bought in exchange for a model a clinician can check line by line. Three scorecards, one message: the frontier of medical AI has moved from *is it accurate* to *can you audit it*.</span>
   </p>
 
   <nav class="toc">
-    <a href="#top"><span class="zh-inline">重點新聞</span><span class="en-inline">Top Stories</span></a>
-    <a href="#product"><span class="zh-inline">產品分析</span><span class="en-inline">Product Analysis</span></a>
-    <a href="#company"><span class="zh-inline">公司與競爭</span><span class="en-inline">Companies &amp; Competition</span></a>
-    <a href="#taiwan"><span class="zh-inline">台灣視角</span><span class="en-inline">Taiwan Angle</span></a>
-    <a href="#reading"><span class="zh-inline">延伸閱讀</span><span class="en-inline">Further Reading</span></a>
-    <a href="#refs"><span class="zh-inline">參考文獻</span><span class="en-inline">References</span></a>
+    <a href="#top"><span class="zh-inline">重點新聞</span></a>
+    <a href="#product"><span class="zh-inline">產品分析</span></a>
+    <a href="#company"><span class="zh-inline">公司與競爭</span></a>
+    <a href="#taiwan"><span class="zh-inline">台灣視角</span></a>
+    <a href="#reading"><span class="zh-inline">延伸閱讀</span></a>
+    <a href="#refs"><span class="zh-inline">參考文獻</span></a>
   </nav>
 </div>
 
@@ -72,225 +72,193 @@
   <h2>01 — Top Stories</h2>
   <div class="sec-title">
     <span class="zh">八則消息，三條技術線：把解釋寫進預訓練、把稽核寫進評測、把代理寫進病歷系統</span>
-    <span class="en">Eight items, three technical threads: explanation moved into pretraining, auditing moved into benchmarks, agents moved into the chart</span>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">開源基礎模型</span><span class="en-inline">Open foundation model</span></span>
+      <span class="tag hot"><span class="zh-inline">開源基礎模型</span></span>
       <span class="tag">HKUST</span><span class="tag">ConceptCLIP</span><span class="tag">8/17</span>
     </div>
     <h3>
       <span class="zh">ConceptCLIP：2,300 萬組「影像–文字–概念」三元組，把可解釋性從事後補丁變成預訓練目標</span>
-      <span class="en">ConceptCLIP: 23 million image–text–concept triplets turn interpretability from a post-hoc patch into a pretraining objective</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">香港科技大學陳浩（Hao Chen）團隊於 8 月 17 日在 <a href="https://www.nature.com/articles/s41551-026-01764-x" target="_blank" rel="noopener">Nature Biomedical Engineering</a> 發表 ConceptCLIP，並同步公開 MedConcept-23M——一組 2,300 萬筆生醫「影像–文字–概念」三元組。與一般對比式視覺語言預訓練只做影像與整段文字對齊不同，ConceptCLIP 額外做「區域–概念」對齊，讓模型在輸出診斷的同時指出它依據的是影像哪一塊、對應到哪一個醫學概念。評估橫跨 <strong>78 個資料集、10 種影像模態</strong>（胸部 X 光、CT、MRI、乳房攝影、病理全玻片、內視鏡、超音波、皮膚科、視網膜等），其中 68 個為公開資料集、9 個為私有資料集，另新整理 PMC-9K（9,222 組影像–文字配對）。模型權重上架 Hugging Face、程式碼放在 <a href="https://github.com/JerrryNie/ConceptCLIP" target="_blank" rel="noopener">GitHub</a>，資料集說明檔置於 <a href="https://huggingface.co/datasets/JerrryNie/MedConcept-23M" target="_blank" rel="noopener">Hugging Face Datasets</a>。</span>
-        <span class="en">On August 17, Hao Chen's group at the Hong Kong University of Science and Technology published ConceptCLIP in <a href="https://www.nature.com/articles/s41551-026-01764-x" target="_blank" rel="noopener">Nature Biomedical Engineering</a>, releasing alongside it MedConcept-23M — 23 million biomedical image–text–concept triplets. Where ordinary contrastive vision–language pretraining aligns an image with a block of text, ConceptCLIP adds region–concept alignment, so the model can point to the part of the image it relied on and name the medical concept that region maps to. Evaluation spans <strong>78 datasets across 10 imaging modalities</strong> — chest X-ray, CT, MRI, mammography, whole-slide histopathology, endoscopy, ultrasound, dermatology, retinal imaging and more — comprising 68 public datasets, 9 private ones, and a newly curated PMC-9K set of 9,222 image–text pairs. Weights are on Hugging Face, code on <a href="https://github.com/JerrryNie/ConceptCLIP" target="_blank" rel="noopener">GitHub</a>, and the dataset captions at <a href="https://huggingface.co/datasets/JerrryNie/MedConcept-23M" target="_blank" rel="noopener">Hugging Face Datasets</a>.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">過去兩年醫療影像基礎模型的可解釋性幾乎都靠事後方法：Grad-CAM 熱區圖、注意力視覺化、或叫大語言模型「解釋一下」。這些方法的共同問題是解釋與決策不同源——模型怎麼算是一回事，事後產生的說法是另一回事。ConceptCLIP 的作法是把概念對齊放進損失函數，讓解釋成為模型本身表徵的一部分。論文附帶的臨床醫師使用者研究（跨三種影像模態）顯示，這種概念式解釋確實幫助醫師驗證預測、找出潛在錯誤——這一點比 benchmark 分數更值得注意，因為它回答的是「解釋有沒有用」而不是「模型有沒有解釋」。</span>
-        <span class="en">For two years, interpretability in medical imaging foundation models has been almost entirely post-hoc: Grad-CAM heat maps, attention visualisations, or asking an LLM to narrate its reasoning. All share one flaw — the explanation and the decision come from different places. How the model computed its answer is one thing; the story generated afterwards is another. ConceptCLIP puts concept alignment inside the loss function, making the explanation part of the representation itself. The paper's accompanying clinician user study, run across three imaging modalities, found that concept-based explanations helped clinicians verify predictions and spot potential errors — a more interesting result than any benchmark number, because it answers whether the explanation is *useful*, not merely whether one exists.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">78 個資料集裡有 9 個是私有資料，外部團隊無法完整重現該部分結果。使用者研究只涵蓋三種模態，未涵蓋全部十種。論文未公布模型參數量與訓練算力細節；MedConcept-23M 在 Hugging Face 上釋出的是說明文字（captions）而非全部原始影像，實際重建需自行取得來源影像。</span>
-        <span class="en">Nine of the 78 datasets are private, so that portion of the results cannot be fully reproduced externally. The user study covers three modalities, not all ten. Parameter count and training compute are not disclosed in the accessible material, and what MedConcept-23M releases on Hugging Face is the captions rather than every source image — rebuilding the full corpus requires sourcing the images yourself.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://www.nature.com/articles/s41551-026-01764-x" target="_blank" rel="noopener">Nature Biomedical Engineering, 2026-08-17</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">評測基準</span><span class="en-inline">Benchmark</span></span>
+      <span class="tag hot"><span class="zh-inline">評測基準</span></span>
       <span class="tag">CliniCARE-Bench</span><span class="tag">MIMIC-IV</span><span class="tag">8/07</span>
     </div>
     <h3>
       <span class="zh">CliniCARE-Bench：16 個 agentic 系統答對七成，扣掉「抄捷徑」後最多再掉 14.8 個百分點</span>
-      <span class="en">CliniCARE-Bench: 16 agentic systems get roughly seven in ten right — until shortcut answers are subtracted, costing up to 14.8 points</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">一支橫跨多個機構、含史丹佛 Nigam H. Shah 在內的團隊於 8 月 7 日釋出 <a href="https://arxiv.org/abs/2608.07796" target="_blank" rel="noopener">CliniCARE-Bench</a>（arXiv:2608.07796）。它把 25 個經臨床醫師驗證的回溯稽核情境，實例化成 750 個以 MIMIC-IV 真實病人資料衍生的個案，要求系統輸出四種判決之一：Yes、No、Indeterminate（資料不足）、Indeterminate（醫學上本就模稜兩可）。16 個 agentic 系統的四分類準確率落在 <strong>65.3–76.1%</strong>；但論文另外定義「defect-free accuracy」——只有判決正確且推理過程未使用被明文禁止的捷徑才計分——這個數字比四分類準確率低 <strong>4.8 到 14.8 個百分點</strong>。</span>
-        <span class="en">A multi-institution team including Stanford's Nigam H. Shah released <a href="https://arxiv.org/abs/2608.07796" target="_blank" rel="noopener">CliniCARE-Bench</a> (arXiv:2608.07796) on August 7. It takes 25 clinician-validated retrospective audit scenarios and instantiates them as 750 patient-specific cases derived from real MIMIC-IV data, asking each system for one of four verdicts: Yes, No, Indeterminate (Lack of Data), or Indeterminate (Medically Ambiguous). Across 16 agentic systems, four-way accuracy ranged from <strong>65.3% to 76.1%</strong>. The paper then defines defect-free accuracy — credit only when the verdict is correct *and* the reasoning avoided explicitly prohibited shortcuts — and that figure comes in <strong>4.8 to 14.8 points lower</strong>.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">兩個設計值得學界抄走。第一，把「資料不足」與「醫學上模稜兩可」拆成兩個不同的判決選項——現行大多數醫療 QA benchmark 只有對錯二分，逼模型在資訊不足時硬猜，反而獎勵了自信的錯誤。第二，defect-free accuracy 這個指標把評測從「輸出對不對」推進到「過程可不可接受」。這正是稽核（audit）與問答（QA）的根本差別：稽核要求的是可被複核的推理鏈，不是一個剛好正確的結論。對照 8 月稍早 <a href="https://www.nature.com/articles/s41591-026-04501-8" target="_blank" rel="noopener">Nature Medicine</a> 上 Microsoft Research 與 Scripps 團隊的發現——前緣模型在關鍵視覺資訊被移除後仍能維持準確率，代表它們根本沒在看影像——會發現這是同一個病灶的兩種顯影。</span>
-        <span class="en">Two design choices deserve to be copied. First, splitting "not enough data" from "medically ambiguous" into separate verdicts: most medical QA benchmarks offer only right or wrong, forcing a guess when information is missing and thereby rewarding confident error. Second, defect-free accuracy moves evaluation from *was the output correct* to *was the process acceptable*. That is precisely the difference between an audit and a quiz — an audit demands a reviewable chain of reasoning, not a conclusion that happens to be right. Read it against the Microsoft Research and Scripps finding published earlier this year in <a href="https://www.nature.com/articles/s41591-026-04501-8" target="_blank" rel="noopener">Nature Medicine</a>, where frontier models held their accuracy even after critical visual information was removed — meaning they were not looking at the image at all — and the two results are the same lesion in different contrast.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">arXiv 預印本，尚未經同儕審查。論文摘要未逐一列出 16 個受測系統的名稱與各自分數，因此無法從公開摘要判斷哪一家模型掉最多。25 個情境全部來自 MIMIC-IV（美國單一醫學中心的加護資料），對台灣或歐洲醫療體系的可轉移性未經驗證。</span>
-        <span class="en">This is an arXiv preprint and has not been peer reviewed. The abstract does not name the 16 systems or break out individual scores, so the public summary gives no way to tell which vendor lost the most. All 25 scenarios derive from MIMIC-IV — critical-care data from a single US academic centre — and transferability to Taiwanese or European health systems is untested.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://arxiv.org/abs/2608.07796" target="_blank" rel="noopener">arXiv:2608.07796, 2026-08-07</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag"><span class="zh-inline">評測基準</span><span class="en-inline">Benchmark</span></span>
+      <span class="tag"><span class="zh-inline">評測基準</span></span>
       <span class="tag">EHR-Complex</span><span class="tag">Ant Group</span><span class="tag">Zhejiang Univ.</span>
     </div>
     <h3>
       <span class="zh">EHR-Complex：5.2 萬題、3,800 次失敗歸因，最佳模型 62.3%，重跑四次一致性跌破五成</span>
-      <span class="en">EHR-Complex: 52K tasks, 3,800 failure traces, a 62.3% ceiling — and consistency below 50% when you run it four times</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">Yitong Qiao 等人的 <a href="https://arxiv.org/abs/2606.23301" target="_blank" rel="noopener">EHR-Complex</a>（arXiv:2606.23301）建立在 MIMIC-IV 之上——36.5 萬名病人、31 張資料表、逾 5 億筆紀錄——生成約 <strong>5.2 萬個任務</strong>，涵蓋六類臨床意圖，同時支援病人層級與族群層級查詢。代理必須在沙箱中實際執行 SQL 或 Python 才能作答。最佳模型的 exact-match 為 <strong>62.3%</strong>；更關鍵的是 <strong>k=4 時幾乎所有受測模型的 Pass^k 一致性都低於 50%</strong>。作者分析逾 3,800 次失敗，歸納出三類主因：SQL 邏輯錯誤、醫療代碼查找失敗、語意理解偏差。</span>
-        <span class="en">Yitong Qiao and colleagues built <a href="https://arxiv.org/abs/2606.23301" target="_blank" rel="noopener">EHR-Complex</a> (arXiv:2606.23301) on top of MIMIC-IV — 365,000 patients, 31 tables, over 500 million records — generating roughly <strong>52,000 tasks</strong> across six clinical intents, supporting both patient-level and population-level queries. Agents must actually execute SQL or Python in a sandbox to answer. Top exact-match performance is <strong>62.3%</strong>. More telling: <strong>Pass^k consistency drops below 50% for nearly all evaluated models at k=4</strong>. Analysis of more than 3,800 failed attempts sorts the errors into three buckets: SQL logic mistakes, medical-code lookup failures, and semantic misreadings.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">Pass^k 是這篇論文最該被引用的部分。它問的不是「跑一次會不會對」，而是「同一題連跑 k 次會不會每次都對」。62.3% 的單次準確率在 demo 影片裡看起來可用，但一個在同一問題上四次有兩次以上答不一致的系統，不可能拿去做院內的品質指標計算或健保申報稽核——那些場景要的是可重現，不是期望值。這也解釋了為什麼「醫療代碼查找失敗」會單獨成為一個失敗類別：ICD-10 與 SNOMED 的層級關係不是靠語言模型的常識可以推的，是要查表的，而模型偏偏很擅長把查表的動作用語言蒙混過去。</span>
-        <span class="en">Pass^k is the number worth citing. It asks not "does one run get it right" but "does the same question come out right every time across k runs". A 62.3% single-shot score looks usable in a demo video, but a system that answers inconsistently on two of four attempts cannot compute a hospital quality metric or audit a reimbursement claim — those jobs need reproducibility, not an expected value. It also explains why medical-code lookup earns its own failure category: the hierarchy relations in ICD-10 and SNOMED are not something a language model can infer from general knowledge, they must be looked up, and models are unusually good at papering over a missing lookup with fluent prose.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">同樣是 arXiv 預印本（6 月 22 日投稿），未經同儕審查。任務由程式生成，與真實臨床人員實際會問的問題分佈可能不同。作者群多來自螞蟻集團與浙江大學，受測模型清單與是否包含自家模型，需查閱全文確認。</span>
-        <span class="en">Also an unreviewed arXiv preprint, submitted June 22. Tasks are programmatically generated, so their distribution may not match what clinical staff actually ask. The author list is weighted toward Ant Group and Zhejiang University; whether the evaluated model set includes their own systems requires reading the full paper.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://arxiv.org/abs/2606.23301" target="_blank" rel="noopener">arXiv:2606.23301, 2026-06-22</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">可解釋性</span><span class="en-inline">Explainability</span></span>
+      <span class="tag hot"><span class="zh-inline">可解釋性</span></span>
       <span class="tag">MIT</span><span class="tag">Columbia</span><span class="tag">Stanford</span><span class="tag">8/04</span>
     </div>
     <h3>
       <span class="zh">同一份解釋，醫師受益、外行被騙：Nature Medicine 證明 XAI 沒有「通用」這回事</span>
-      <span class="en">The same explanation helps the expert and fools the novice: Nature Medicine shows XAI has no universal setting</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">由哥倫比亞大學生物醫學資訊系 Orson Xu 領銜，合著者包括 MIT 的 Marzyeh Ghassemi 與史丹佛的 Roxana Daneshjou，8 月 4 日於 <a href="https://www.nature.com/articles/s41591-026-04553-w" target="_blank" rel="noopener">Nature Medicine</a> 發表皮膚疾病診斷的可解釋 AI 研究。受試者分為一般民眾與基層醫師兩組，在有／無各種 XAI 輔助（含信心分數、相似影像推薦、熱區圖、大語言模型文字解釋）的條件下進行診斷。結果呈現明顯分歧：<strong>一般民眾的準確率確實提升，但提升來自對 AI 的順從</strong>——他們不論解釋正確與否都相信 LLM 的說法，而且「愈含糊的解釋愈有說服力」；<strong>醫師則在只給預測、不給解釋時表現最好</strong>，他們能抓出 AI 的錯誤，也不會被錯誤輔助帶偏。<a href="https://news.mit.edu/2026/medical-ai-assistance-benefits-vary-based-on-user-expertise-0804" target="_blank" rel="noopener">MIT News</a> 引述研究者的結論：「同一份解釋可以幫助專家，也可以誤導初學者。」</span>
-        <span class="en">Led by Orson Xu of Columbia's Department of Biomedical Informatics, with MIT's Marzyeh Ghassemi and Stanford's Roxana Daneshjou among the co-authors, this <a href="https://www.nature.com/articles/s41591-026-04553-w" target="_blank" rel="noopener">Nature Medicine</a> paper of August 4 tested explainable AI in dermatological diagnosis. Non-experts and primary care physicians diagnosed skin conditions from images, with and without various XAI aids — confidence scores, similar-image retrieval, heat maps, and LLM-written explanations. The two groups diverged sharply. <strong>Lay accuracy rose, but by deference</strong>: they trusted LLM explanations regardless of correctness, and found vaguer explanations more convincing. <strong>Clinicians did best with the bare prediction and no explanation at all</strong> — they caught the model's errors and were not led astray by incorrect assistance. <a href="https://news.mit.edu/2026/medical-ai-assistance-benefits-vary-based-on-user-expertise-0804" target="_blank" rel="noopener">MIT News</a> quotes the researchers' conclusion: "the same explanation can help an expert and mislead a beginner."</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">這篇對前面兩則 benchmark 是一記反向刺拳。CliniCARE-Bench 與 ConceptCLIP 都假設「解釋愈好愈安全」，這篇則指出解釋的效果取決於接收端的鑑別力：對有能力反駁的人，解釋是查核工具；對沒能力反駁的人，解釋是說服工具。監理與產品設計的意涵很直接——同一個模型輸出，給醫師版與給病人版必須是兩套 UI，不是同一套換字體。而在 OpenAI 已把 <a href="https://openai.com/index/introducing-chatgpt-health/" target="_blank" rel="noopener">ChatGPT Health</a> 直接接上病患的病歷入口、消費端醫療 AI 使用者絕大多數是非專業人士的當下，「愈含糊的解釋愈有說服力」這個發現，是整份研究裡最該讓產品經理坐立不安的一句。</span>
-        <span class="en">This is a counterpunch to the two benchmarks above. CliniCARE-Bench and ConceptCLIP both assume better explanations mean safer systems; this paper shows the effect depends entirely on the receiver's ability to push back. For someone equipped to disagree, an explanation is an auditing tool. For someone who is not, it is a persuasion tool. The design implication is blunt: the clinician-facing and patient-facing renderings of the same model output have to be two different interfaces, not the same one in a different font. And with OpenAI having wired <a href="https://openai.com/index/introducing-chatgpt-health/" target="_blank" rel="noopener">ChatGPT Health</a> straight into patient portals, where the overwhelming majority of users are non-experts, "vaguer explanations were more convincing" is the sentence in this study that should keep product managers awake.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://www.nature.com/articles/s41591-026-04553-w" target="_blank" rel="noopener">Nature Medicine, 2026-08-04</a> · <a href="https://news.mit.edu/2026/medical-ai-assistance-benefits-vary-based-on-user-expertise-0804" target="_blank" rel="noopener">MIT News, 2026-08-04</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">代理架構</span><span class="en-inline">Agent architecture</span></span>
+      <span class="tag hot"><span class="zh-inline">代理架構</span></span>
       <span class="tag">Epic</span><span class="tag">Cosmos</span><span class="tag">Agent Factory</span><span class="tag">8/17–20</span>
     </div>
     <h3>
       <span class="zh">Epic UGM 2026 的技術面：把生成式模型架在 3.2 億人的資料上，把代理工廠交給不會寫程式的人</span>
-      <span class="en">The engineering half of Epic UGM 2026: a generative model on 320 million patients, and an agent factory handed to people who cannot code</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">Epic 於 8 月 17–20 日在威斯康辛州 Verona 舉行年度使用者大會（<a href="https://healthtechhotspot.com/epic-ugm-2026-recap-cosmos-curiosity-epicops-and-an-expanding-ai-footprint/" target="_blank" rel="noopener">逾 2 萬人到場、約 500 場議程</a>；<a href="https://www.fiercehealthcare.com/health-tech/epic-expands-ai-ambitions-agent-platform-cosmos-powered-predictions-and-deeper-workflow" target="_blank" rel="noopener">Fierce Healthcare 記錄 8,400 人實體出席、含線上約 7 萬人參與</a>）。三個技術產物：<strong>Curiosity</strong>，以 Cosmos 資料訓練的生成式模型，用於預測再入院、中風風險等結果，2027 年 3 月起開放給有貢獻資料的 Cosmos 成員機構，Cosmos 現有規模為 3.2 億病人、230 億次就診；<strong>Agent Factory</strong>，可不寫程式建置與編排代理的平台，內建 120 個以上預製代理，2027 年廣泛上線，早期採用者 ECU Health 用一個彙整轉院請求的代理，估計每週省下 20 小時；<strong>Ergo / Ergo Visit</strong>，AI 原生的臨床介面，2026 年 11 月上線，看診準備功能可調用 3.2 億筆去識別化病歷。</span>
-        <span class="en">Epic held its annual Users Group Meeting in Verona, Wisconsin on August 17–20 (<a href="https://healthtechhotspot.com/epic-ugm-2026-recap-cosmos-curiosity-epicops-and-an-expanding-ai-footprint/" target="_blank" rel="noopener">20,000-plus attendees across roughly 500 sessions</a>; <a href="https://www.fiercehealthcare.com/health-tech/epic-expands-ai-ambitions-agent-platform-cosmos-powered-predictions-and-deeper-workflow" target="_blank" rel="noopener">Fierce Healthcare counts 8,400 in person and around 70,000 including virtual</a>). Three engineering outputs: <strong>Curiosity</strong>, a generative model trained on Cosmos data to forecast outcomes such as readmission and stroke risk, available to data-contributing Cosmos members from March 2027, with Cosmos now covering 320 million patients and 23 billion encounters; <strong>Agent Factory</strong>, a no-code platform for building and orchestrating agents with 120-plus pre-built ones included, going broadly available in 2027, where early adopter ECU Health built a transfer-request summarisation agent estimated to save 20 hours a week; and <strong>Ergo / Ergo Visit</strong>, an AI-native clinical interface shipping November 2026, whose visit-prep function draws on 320 million de-identified records.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">把 Curiosity 跟今天前三則放在一起看，會看到一個尷尬的錯位：學界正在把評測標準推向「過程可稽核、重跑要一致」，而產業界最大的一次押注是一個以生成式架構做風險預測、且訓練資料規模大到無法逐案追溯的模型。這不是說 Epic 做錯——3.2 億人的縱貫資料是全世界少數幾家拿得到的資產——而是說，當 Curiosity 2027 年 3 月開始輸出再入院風險分數時，CliniCARE-Bench 那套「defect-free accuracy」的問法會直接落到它頭上。Agent Factory 的風險更具體：120 個預製代理 × 無需寫程式 × 各院自行客製，等於把代理的安全邊界從單一廠商的責任分散到數千家醫院的設定畫面上，而 EHR-Complex 的 Pass^k 結果已經告訴我們，同一個代理跑四次不一定給同一個答案。</span>
-        <span class="en">Set Curiosity beside the three items above and an awkward mismatch appears. Academia is pushing evaluation toward auditable process and run-to-run consistency; the industry's largest single bet is a generative risk-prediction model trained on a corpus too large to trace case by case. That is not to say Epic is wrong — longitudinal data on 320 million people is an asset perhaps three organisations on earth possess — but when Curiosity begins emitting readmission risk scores in March 2027, CliniCARE-Bench's defect-free framing lands squarely on it. Agent Factory's exposure is more concrete: 120 pre-built agents, no code required, each hospital customising its own, distributes the agent safety boundary from one vendor's responsibility across thousands of hospital configuration screens — and EHR-Complex's Pass^k result already tells us the same agent run four times need not give the same answer.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">ECU Health「每週省 20 小時」與 Ask Emmie 在 Sutter Health「省下 1,000 客服工時」皆為採用機構自述，未經第三方稽核。Curiosity 與 Agent Factory 都還沒上線（分別為 2027/3 與 2027 年），目前所有描述均來自廠商簡報，沒有任何獨立驗證的效能數字。兩個出席人數版本互相矛盾（2 萬 vs 8,400 實體），本報同時列出，未作取捨。</span>
-        <span class="en">ECU Health's "20 hours a week" and Ask Emmie's "1,000 call-centre hours saved" at Sutter Health are customer-reported and not independently audited. Neither Curiosity nor Agent Factory has shipped (March 2027 and 2027 respectively), so every description comes from vendor presentations with no independently verified performance figure attached. The two attendance counts conflict (20,000 versus 8,400 in person); both are listed here rather than reconciled.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://www.fiercehealthcare.com/health-tech/epic-expands-ai-ambitions-agent-platform-cosmos-powered-predictions-and-deeper-workflow" target="_blank" rel="noopener">Fierce Healthcare, 2026-08</a> · <a href="https://healthtechhotspot.com/epic-ugm-2026-recap-cosmos-curiosity-epicops-and-an-expanding-ai-footprint/" target="_blank" rel="noopener">HealthTech HotSpot, 2026-08</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag"><span class="zh-inline">語音技術</span><span class="en-inline">Speech tech</span></span>
+      <span class="tag"><span class="zh-inline">語音技術</span></span>
       <span class="tag">Suki</span><span class="tag">Epic / Meditech</span><span class="tag">8/25</span>
     </div>
     <h3>
       <span class="zh">Suki 反向操作：在環境式聽寫當紅的年頭，把「口述」重新做成 API</span>
-      <span class="en">Suki goes the other way: in the age of ambient scribing, rebuilding plain dictation as an API</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">AI 病歷代筆公司 Suki 於 8 月 25 日推出 <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/ai-scribe-suki-rolls-out-ai-driven-clinical-dictation-tool" target="_blank" rel="noopener">Suki Dictation</a>，原生內建於 Epic 與 Meditech，可單獨部署或與 Suki for Clinicians 併用，並以 API 與 SDK 形式提供給第三方健康科技產品整合。與被動錄音的環境式代筆不同，這個產品讓醫師以打字或語音指令主動編輯，把內容放到病歷的指定位置。試用者 Witham Medical Group 胸腔重症科醫師 Edward Mintz 表示每天至少省下 1–2 小時。產品長 Abhi Pathak 的說法是：「我們不是靠把人鎖進更大的套裝來取勝，而是要讓醫師自由選他真正需要的東西。」公司同時預告下一代串流語音辨識、對話式語音編輯、AI 輔助處置紀錄等功能。</span>
-        <span class="en">AI scribe company Suki launched <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/ai-scribe-suki-rolls-out-ai-driven-clinical-dictation-tool" target="_blank" rel="noopener">Suki Dictation</a> on August 25 — natively built inside Epic and Meditech, deployable standalone or alongside Suki for Clinicians, and offered via API and SDKs for third-party health tech products to embed. Unlike ambient documentation, which passively records the encounter, this lets clinicians actively edit by typing or voice command, placing text exactly where they want it in the chart. Pilot user Edward Mintz, a pulmonary and critical care physician at Witham Medical Group, reports saving at least one to two hours a day. Chief product officer Abhi Pathak framed it this way: "We are not trying to win by locking people into a bigger bundle. We are trying to give health system clinicians the freedom to choose exactly what they need." The company also previewed next-generation streaming speech recognition, conversational voice editing and AI-assisted procedure notes.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">這是一個值得注意的技術路線分歧。過去三年的主流敘事是「環境式 AI 會吃掉口述市場」——醫師什麼都不用做，AI 聽完自動成稿。Suki 反過來把口述做成可嵌入的元件，賭的是另一件事：當代筆的成稿仍需醫師大幅修改時，真正的瓶頸不是「能不能生成」，而是「能不能精準地改」。把 dictation 拆成 API，等於承認語音在臨床工作流裡是一個原子操作，而不是一個完整產品。這個判斷也解釋了為什麼 Suki 選擇不綁定套裝——在 Epic 自己推出 Ergo 與 Agent Factory 的當下，任何試圖與 Epic 正面競爭「完整工作流」的第三方廠商都在打一場輸面很大的仗，而做成別人都要用的元件是更安全的位置。</span>
-        <span class="en">This is a technical fork worth noticing. The dominant narrative of the last three years has been that ambient AI would eat dictation: the clinician does nothing, the AI listens and drafts. Suki is betting the opposite way — that when a generated draft still needs heavy editing, the bottleneck is not generation but precise correction. Turning dictation into an API concedes that voice is an atomic operation inside the clinical workflow rather than a complete product. It also explains the refusal to bundle: with Epic shipping Ergo and Agent Factory, any third party competing head-on for the whole workflow is fighting uphill, and becoming the component everyone else has to license is a defensible place to stand.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">「每天省 1–2 小時」是單一試用醫師的自述，樣本數為一，未經任何對照或時間動作研究。新聞未揭露定價、辨識字錯誤率（WER）、可用語言，也未說明有多少機構已簽約。</span>
-        <span class="en">The "one to two hours a day" figure comes from a single pilot physician — sample size one, with no control arm or time-and-motion study. The coverage discloses no pricing, no word error rate, no supported languages, and no count of contracted organisations.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://www.fiercehealthcare.com/ai-and-machine-learning/ai-scribe-suki-rolls-out-ai-driven-clinical-dictation-tool" target="_blank" rel="noopener">Fierce Healthcare, 2026-08-25</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">技術治理</span><span class="en-inline">Tech governance</span></span>
+      <span class="tag hot"><span class="zh-inline">技術治理</span></span>
       <span class="tag">JAMA</span><span class="tag">UPenn</span><span class="tag">8/17–18</span>
     </div>
     <h3>
       <span class="zh">JAMA 觀點文章主張：一旦 AI 明顯超越醫師，強制 human-in-the-loop 反而會鎖死較差的照護</span>
-      <span class="en">A JAMA viewpoint argues that once AI clearly beats physicians, mandating a human in the loop locks in worse care</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">賓州大學醫學倫理與衛生政策系 Ezekiel J. Emanuel 為通訊作者的 <a href="https://jamanetwork.com/journals/jama/article-abstract/2852952" target="_blank" rel="noopener">JAMA 觀點文章</a>（DOI 10.1001/jama.2026.15380）於 8 月 17 日刊出，題為「Will Autonomous AI Exceed AI-Aided Physicians as the Best Medical Care?」，<a href="https://www.eurekalert.org/news-releases/1140050" target="_blank" rel="noopener">EurekAlert 同日發布新聞稿</a>。<a href="https://the-decoder.com/as-ai-beats-doctors-regulators-shouldnt-force-a-human-into-the-loop-jama-piece-says/" target="_blank" rel="noopener">The Decoder 於 8 月 18 日的整理</a>列出文中援引的證據：Google 的 AMIE 在模擬對話中勝過基層醫師；ChatGPT o3 在複雜個案首次即給出正確診斷的比率為 60%，內科醫師為 15.9%；GPT-4 單獨作答的診斷推理得分 92%，而可使用 AI 的醫師為 76%。文章主張，要求醫師最終核可的法規，可能在 2030 年前把較差的照護模式制度化。共同作者包括 Curai Health 執行長 Neal Khosla，其父為 OpenAI 與 Curai 的投資人。</span>
-        <span class="en">A <a href="https://jamanetwork.com/journals/jama/article-abstract/2852952" target="_blank" rel="noopener">JAMA viewpoint</a> (DOI 10.1001/jama.2026.15380) with Ezekiel J. Emanuel of the University of Pennsylvania's Department of Medical Ethics and Health Policy as corresponding author appeared on August 17 under the title "Will Autonomous AI Exceed AI-Aided Physicians as the Best Medical Care?", with an <a href="https://www.eurekalert.org/news-releases/1140050" target="_blank" rel="noopener">EurekAlert release the same day</a>. <a href="https://the-decoder.com/as-ai-beats-doctors-regulators-shouldnt-force-a-human-into-the-loop-jama-piece-says/" target="_blank" rel="noopener">The Decoder's August 18 summary</a> lists the evidence cited: Google's AMIE outperformed primary care doctors in simulated consultations; ChatGPT o3 reached the correct diagnosis first in 60% of complex cases against 15.9% for internists; GPT-4 alone scored 92% on diagnostic reasoning while physicians with AI access scored 76%. The piece argues that rules requiring physician sign-off risk institutionalising inferior care by 2030. Co-authors include Curai Health CEO Neal Khosla, whose father invests in both OpenAI and Curai.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">把這篇跟今天的皮膚科 XAI 研究並排，會出現一個很難迴避的問題。Emanuel 等人引用的「GPT-4 單獨 92%、醫師加 AI 只有 76%」，與 Nature Medicine 觀察到的「醫師在只給預測時表現最好、給了解釋反而更差」，其實可能是同一個現象的兩種讀法：人機協作的損失不見得來自人類拖累模型，也可能來自介面設計把人放在錯的位置上。這兩種歸因會導向完全相反的政策——一種說「把人拿掉」，一種說「把介面重做」。在證據幾乎全來自模擬而非真實照護的前提下，前者是遠比後者更難撤回的賭注。</span>
-        <span class="en">Read alongside today's dermatology XAI paper, an uncomfortable question surfaces. Emanuel and colleagues' "GPT-4 alone 92%, doctors with AI 76%" and Nature Medicine's finding that clinicians perform best with a bare prediction and worse once explanations are added may be two readings of the same phenomenon: the loss in human–AI collaboration need not come from humans dragging the model down, it may come from interfaces putting the human in the wrong place. The two attributions point to opposite policies — remove the human, or rebuild the interface. Given that nearly all the evidence comes from simulation rather than delivered care, the first is a far harder bet to unwind than the second.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">這是觀點文章（viewpoint），不是原始研究。作者自己承認幾乎所有證據來自模擬情境而非實際病人照護，且侵入性處置仍需醫師執行。兩位作者對自主 AI 的普及具有直接財務利益，屬於必須在閱讀時折現的利益衝突。JAMA 原文位於付費牆後，本節數字引自 EurekAlert 新聞稿與 The Decoder 的二手整理，非取自原文全文。</span>
-        <span class="en">This is a viewpoint, not primary research. The authors themselves concede that nearly all the evidence comes from simulations rather than delivered patient care, and that invasive procedures still require physicians. Two authors hold direct financial interests in the spread of autonomous AI — a conflict to discount for while reading. The JAMA text sits behind a paywall; the figures in this item are taken from the EurekAlert release and The Decoder's secondary summary, not from the full article.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://jamanetwork.com/journals/jama/article-abstract/2852952" target="_blank" rel="noopener">JAMA, 2026-08-17</a> · <a href="https://www.eurekalert.org/news-releases/1140050" target="_blank" rel="noopener">EurekAlert, 2026-08-17</a> · <a href="https://the-decoder.com/as-ai-beats-doctors-regulators-shouldnt-force-a-human-into-the-loop-jama-piece-says/" target="_blank" rel="noopener">The Decoder, 2026-08-18</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag"><span class="zh-inline">基礎建設</span><span class="en-inline">Infrastructure</span></span>
+      <span class="tag"><span class="zh-inline">基礎建設</span></span>
       <span class="tag">Nordic AI-Health</span><span class="tag">Nature Medicine</span><span class="tag">8/14</span>
     </div>
     <h3>
       <span class="zh">北歐六國把國家級縱貫健康資料做成聯邦式 AI 平台，寫成一份技術白皮書投進 Nature Medicine</span>
-      <span class="en">Six Nordic countries turn national longitudinal health data into a federated AI platform — and publish the blueprint in Nature Medicine</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">由 Ole A. Andreassen 領銜、共 22 位作者的 <a href="https://www.nature.com/articles/s41591-026-04575-4" target="_blank" rel="noopener">Nordic AI-Health Initiative</a> 論文於 8 月 14 日刊登於 Nature Medicine，副標即為「技術基礎、資料資產、部署路線圖」。作者群橫跨挪威、瑞典、丹麥、芬蘭、冰島與愛沙尼亞，目標是建立一個聯邦式（federated）的北歐健康生態系：資料不集中搬移，在符合法規的前提下讓 AI 模型到資料所在處運算，用以支撐可泛化的醫學 AI 開發。</span>
-        <span class="en">The <a href="https://www.nature.com/articles/s41591-026-04575-4" target="_blank" rel="noopener">Nordic AI-Health Initiative</a> paper, led by Ole A. Andreassen with 22 authors, appeared in Nature Medicine on August 14 under the subtitle "technical foundations, data assets, and a roadmap for deployment". Authors span Norway, Sweden, Denmark, Finland, Iceland and Estonia. The goal is a federated Nordic health ecosystem: rather than centralising data, models travel to where the data sits, under regulation-compliant access controls, to support development of generalisable medical AI.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">值得台灣讀者注意的不是技術新穎度——聯邦式學習不是新概念——而是排序。北歐的作法是先把跨國資料治理與標準寫定，再談模型；這與台灣衛福部先建 FHIR Box、再談 AI 應用的路徑幾乎一致（見台灣視角一節）。相對地，Epic 的 Cosmos 是把 3.2 億人的資料集中在單一廠商手上，靠規模取勝。這兩種架構的差別會在未來幾年具體化為兩件事：誰能做出跨體系可泛化的模型，以及當模型出錯時誰負責——集中式有明確的問責對象，聯邦式則把責任分散在各參與國的治理框架裡。</span>
-        <span class="en">What matters here for a Taiwanese reader is not novelty — federated learning is not a new idea — but sequencing. The Nordics fixed cross-border data governance and standards first, then talked about models; that is very nearly the path Taiwan's Ministry of Health has taken by building FHIR Box before deploying AI applications (see the Taiwan section). Epic's Cosmos, by contrast, concentrates 320 million people's data with one vendor and wins on scale. The difference between the two architectures will show up concretely in two places over the next few years: who can build models that generalise across systems, and who is answerable when a model errs — centralised gives you one accountable party, federated distributes responsibility across each participating country's governance framework.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">論文屬於基礎建設藍圖與路線圖性質，可公開取用的部分未載明各國資料資產的確切筆數，也未列出具體里程碑日期。本節不引用未經證實的規模數字。</span>
-        <span class="en">The paper is a blueprint and roadmap; the publicly accessible portion does not state the exact record counts of each country's data assets, nor list dated milestones. No unverified scale figures are quoted here.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://www.nature.com/articles/s41591-026-04575-4" target="_blank" rel="noopener">Nature Medicine, 2026-08-14</a></p></div>
   </div>
 </section>
@@ -299,52 +267,43 @@
   <h2>02 — Product Analysis</h2>
   <div class="sec-title">
     <span class="zh">兩個開放權重的醫療多模態模型，兩種完全不同的成功定義</span>
-    <span class="en">Two open-weight multimodal medical models, two entirely different definitions of success</span>
   </div>
 
   <div class="grid2">
     <div class="panel">
       <h3>ConceptCLIP</h3>
-      <p class="sub"><span class="zh-inline">概念對齊的可解釋生醫視覺語言模型 · 香港科技大學（香港）</span><span class="en-inline">Concept-aligned, interpretable biomedical vision–language model · HKUST (Hong Kong)</span></p>
+      <p class="sub"><span class="zh-inline">概念對齊的可解釋生醫視覺語言模型 · 香港科技大學（香港）</span></p>
       <p>
         <span class="zh"><strong>功能與定位。</strong>ConceptCLIP 是為「醫師要能查核」而設計的通用生醫影像編碼器，不是為了刷榜。它以 MedConcept-23M（2,300 萬組影像–文字–概念三元組）做聯合的影像–文字與區域–概念對齊，在 <a href="https://www.nature.com/articles/s41551-026-01764-x" target="_blank" rel="noopener">78 個資料集、10 種影像模態</a>上評估。買家是醫院資訊部門與想在受監理環境部署影像 AI 的團隊——需要向稽核者說明模型依據的場景。</span>
-        <span class="en"><strong>Function and position.</strong> ConceptCLIP is a general-purpose biomedical image encoder built so that a clinician can check it, not so that it tops a leaderboard. It performs joint image–text and region–concept alignment over MedConcept-23M (23 million image–text–concept triplets), evaluated across <a href="https://www.nature.com/articles/s41551-026-01764-x" target="_blank" rel="noopener">78 datasets and 10 imaging modalities</a>. The buyer is a hospital IT department or a team deploying imaging AI in a regulated setting — anywhere you must explain to an auditor what the model relied on.</span>
       </p>
       <ul class="clean">
-        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+        <li><span class="pro"><span class="zh-inline">優勢</span></span>
           <span class="zh">：解釋與決策同源。概念對齊寫在訓練目標裡，不是事後生成的說法；<a href="https://www.nature.com/articles/s41551-026-01764-x" target="_blank" rel="noopener">跨三種模態的臨床醫師使用者研究</a>顯示醫師確實能靠它抓出模型錯誤。</span>
-          <span class="en">: explanation and decision share a source. Concept alignment lives in the training objective rather than being narrated afterwards, and a <a href="https://www.nature.com/articles/s41551-026-01764-x" target="_blank" rel="noopener">clinician user study across three modalities</a> found physicians could use it to catch the model's errors.</span>
         </li>
-        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+        <li><span class="pro"><span class="zh-inline">優勢</span></span>
           <span class="zh">：權重與程式碼公開（<a href="https://github.com/JerrryNie/ConceptCLIP" target="_blank" rel="noopener">GitHub</a>、Hugging Face），可在院內私有環境自行部署，資料不需外送。</span>
-          <span class="en">: weights and code are public (<a href="https://github.com/JerrryNie/ConceptCLIP" target="_blank" rel="noopener">GitHub</a>, Hugging Face), so it can be deployed inside a hospital's own environment with no data leaving the building.</span>
         </li>
-        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+        <li><span class="con"><span class="zh-inline">疑慮</span></span>
           <span class="zh">：78 個評估資料集中有 9 個私有，外界無法完整重現；論文未公布參數量與訓練算力，導入者難以估算硬體需求。今天的 <a href="https://www.nature.com/articles/s41591-026-04553-w" target="_blank" rel="noopener">Nature Medicine 皮膚科研究</a>也提醒：概念式解釋對醫師有用，不代表對病患端有用。</span>
-          <span class="en">: nine of the 78 evaluation datasets are private, so the results cannot be fully reproduced externally, and with no parameter count or training compute disclosed, an adopter cannot size the hardware. Today's <a href="https://www.nature.com/articles/s41591-026-04553-w" target="_blank" rel="noopener">Nature Medicine dermatology study</a> is also a caution: useful to a clinician does not imply useful to a patient.</span>
         </li>
       </ul>
     </div>
 
     <div class="panel">
       <h3>MedGemma 1.5</h3>
-      <p class="sub"><span class="zh-inline">Google 開放權重醫療多模態模型 · Google（美國）</span><span class="en-inline">Google's open-weight medical multimodal model · Google (US)</span></p>
+      <p class="sub"><span class="zh-inline">Google 開放權重醫療多模態模型 · Google（美國）</span></p>
       <p>
         <span class="zh"><strong>功能與定位。</strong>MedGemma 1.5 建立在 Gemma 3 之上，2026 年 1 月 13 日更新，目前提供 4B 多模態版本，涵蓋 3D 醫學影像（CT／MRI 立體判讀）、全玻片病理、縱貫影像比較、解剖定位框、以及病歷與醫療文件理解。<a href="https://developers.google.com/health-ai-developer-foundations/medgemma/model-card" target="_blank" rel="noopener">官方模型卡</a>公布的數字：CT 巨觀準確率 61.1%（前代 58.2%）、MRI 64.7%（前代 51.3%）、MIMIC 胸部 X 光 macro F1 89.5%、EHRQA 病歷理解 89.6%。買家是開發者——它是 <a href="https://research.google/blog/medgemma-our-most-capable-open-models-for-health-ai-development/" target="_blank" rel="noopener">Health AI Developer Foundations</a> 生態的起手式。</span>
-        <span class="en"><strong>Function and position.</strong> MedGemma 1.5 sits on top of Gemma 3, updated January 13, 2026, currently shipping as a 4B multimodal variant covering 3D imaging (CT/MRI volume reading), whole-slide pathology, longitudinal image comparison, anatomical bounding boxes, and clinical document and EHR understanding. Figures from the <a href="https://developers.google.com/health-ai-developer-foundations/medgemma/model-card" target="_blank" rel="noopener">official model card</a>: 61.1% macro accuracy on CT (up from 58.2%), 64.7% on MRI (up from 51.3%), 89.5% macro F1 on MIMIC chest X-ray, and 89.6% on EHRQA. The buyer is a developer — this is the entry point to the <a href="https://research.google/blog/medgemma-our-most-capable-open-models-for-health-ai-development/" target="_blank" rel="noopener">Health AI Developer Foundations</a> ecosystem.</span>
       </p>
       <ul class="clean">
-        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+        <li><span class="pro"><span class="zh-inline">優勢</span></span>
           <span class="zh">：4B 參數即可跑 3D CT／MRI 與病理全玻片，部署門檻遠低於同級模型；<a href="https://developers.google.com/health-ai-developer-foundations/medgemma/model-card" target="_blank" rel="noopener">MRI 從 51.3% 跳到 64.7%</a> 是這一代最實在的進步。</span>
-          <span class="en">: 3D CT/MRI and whole-slide pathology at 4B parameters puts the deployment bar well below comparable models, and the <a href="https://developers.google.com/health-ai-developer-foundations/medgemma/model-card" target="_blank" rel="noopener">jump on MRI from 51.3% to 64.7%</a> is the most substantial gain in this generation.</span>
         </li>
-        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+        <li><span class="con"><span class="zh-inline">疑慮</span></span>
           <span class="zh">：可解釋性仍是事後方法，模型卡上找不到「醫師能否據此查核」的使用者研究。此外授權受 Health AI Developer Foundations 條款約束，並非標準開源授權，商業部署前必須逐條看。</span>
-          <span class="en">: interpretability remains post-hoc, and the model card carries no user study on whether a clinician can actually check its work. Licensing is governed by the Health AI Developer Foundations terms rather than a standard open-source licence — read it clause by clause before commercial deployment.</span>
         </li>
-        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+        <li><span class="con"><span class="zh-inline">疑慮</span></span>
           <span class="zh">：61.1% 與 64.7% 這種量級的準確率，在放射科實務裡離「可獨立作業」還很遠。<a href="https://www.nature.com/articles/s41591-026-04501-8" target="_blank" rel="noopener">Nature Medicine 的前緣模型穩健性研究</a>更指出，這一類 VQA benchmark 本身在測什麼就眾說紛紜。</span>
-          <span class="en">: accuracy in the 61–65% band is a long way from unsupervised operation in a radiology department, and <a href="https://www.nature.com/articles/s41591-026-04501-8" target="_blank" rel="noopener">the Nature Medicine robustness study</a> argues that what this class of VQA benchmark actually measures is itself contested.</span>
         </li>
       </ul>
     </div>
@@ -355,70 +314,59 @@
   <h2>03 — Companies &amp; Competition</h2>
   <div class="sec-title">
     <span class="zh">誰站在哪裡、憑什麼、跟誰打</span>
-    <span class="en">Who stands where, on what, against whom</span>
   </div>
 
   <div class="tbl-wrap">
     <table>
       <thead><tr>
-        <th><span class="zh-inline">公司／團隊</span><span class="en-inline">Company / group</span></th>
-        <th><span class="zh-inline">近況與數字</span><span class="en-inline">Recent state &amp; numbers</span></th>
-        <th><span class="zh-inline">競爭定位與護城河</span><span class="en-inline">Position &amp; moat</span></th>
+        <th><span class="zh-inline">公司／團隊</span></th>
+        <th><span class="zh-inline">近況與數字</span></th>
+        <th><span class="zh-inline">競爭定位與護城河</span></th>
       </tr></thead>
       <tbody>
         <tr>
-          <td><strong>Epic Systems</strong><br><span class="zh-inline">美國最大 EHR 廠商</span><span class="en-inline">Largest US EHR vendor</span></td>
+          <td><strong>Epic Systems</strong><br><span class="zh-inline">美國最大 EHR 廠商</span></td>
           <td>
             <span class="zh">UGM 2026 發表 Curiosity（2027/3）、Agent Factory（2027，120+ 預製代理）、Ergo（2026/11）。Cosmos 規模 3.2 億病人、230 億次就診；急症照護 EHR 市佔 43.7%、逾 3,700 家醫院、3.25 億人病歷（<a href="https://www.fiercehealthcare.com/health-tech/epic-expands-ai-ambitions-agent-platform-cosmos-powered-predictions-and-deeper-workflow" target="_blank" rel="noopener">Fierce Healthcare</a>）。首個德國客戶 Charité 合約約 2 億歐元（<a href="https://healthtechhotspot.com/epic-ugm-2026-recap-cosmos-curiosity-epicops-and-an-expanding-ai-footprint/" target="_blank" rel="noopener">HealthTech HotSpot</a>）。</span>
-            <span class="en">UGM 2026 unveiled Curiosity (March 2027), Agent Factory (2027, 120+ pre-built agents) and Ergo (November 2026). Cosmos spans 320 million patients and 23 billion encounters; 43.7% acute-care EHR share, 3,700-plus hospitals, records for 325 million people (<a href="https://www.fiercehealthcare.com/health-tech/epic-expands-ai-ambitions-agent-platform-cosmos-powered-predictions-and-deeper-workflow" target="_blank" rel="noopener">Fierce Healthcare</a>). First German customer Charité signed at roughly €200 million (<a href="https://healthtechhotspot.com/epic-ugm-2026-recap-cosmos-curiosity-epicops-and-an-expanding-ai-footprint/" target="_blank" rel="noopener">HealthTech HotSpot</a>).</span>
           </td>
           <td>
             <span class="zh">護城河是資料規模加工作流鎖定，沒有第二家拿得到同等縱貫資料。薄弱處在稽核：Cosmos 太大，無法逐案追溯訓練來源，而學界的評測標準正朝反方向走。</span>
-            <span class="en">The moat is data scale plus workflow lock-in; nobody else can assemble comparable longitudinal data. The thin spot is auditability: Cosmos is too large to trace training provenance case by case, exactly as academic evaluation standards move the other way.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>Google</strong><br><span class="zh-inline">開放權重醫療模型供給者</span><span class="en-inline">Open-weight medical model supplier</span></td>
+          <td><strong>Google</strong><br><span class="zh-inline">開放權重醫療模型供給者</span></td>
           <td>
             <span class="zh">MedGemma 1.5（2026/1/13 更新）4B 多模態版，CT 61.1%、MRI 64.7%、MIMIC CXR macro F1 89.5%、EHRQA 89.6%（<a href="https://developers.google.com/health-ai-developer-foundations/medgemma/model-card" target="_blank" rel="noopener">官方模型卡</a>）。AMIE 在模擬對話中勝過基層醫師，被 JAMA 觀點文章列為自主 AI 的證據之一（<a href="https://the-decoder.com/as-ai-beats-doctors-regulators-shouldnt-force-a-human-into-the-loop-jama-piece-says/" target="_blank" rel="noopener">The Decoder</a>）。</span>
-            <span class="en">MedGemma 1.5 (updated January 13, 2026), 4B multimodal: 61.1% on CT, 64.7% on MRI, 89.5% macro F1 on MIMIC CXR, 89.6% on EHRQA (<a href="https://developers.google.com/health-ai-developer-foundations/medgemma/model-card" target="_blank" rel="noopener">official model card</a>). AMIE beat primary care physicians in simulated consultations and is cited in the JAMA viewpoint as evidence for autonomous AI (<a href="https://the-decoder.com/as-ai-beats-doctors-regulators-shouldnt-force-a-human-into-the-loop-jama-piece-says/" target="_blank" rel="noopener">The Decoder</a>).</span>
           </td>
           <td>
             <span class="zh">走的是「免費模型換生態位」：讓全世界的醫療 AI 新創建在 HAI-DEF 之上，再從雲端與工具鏈收租。弱點是授權非標準開源，且缺少醫師可查核性的實證。</span>
-            <span class="en">The play is free models in exchange for ecosystem position: get the world's health AI startups building on HAI-DEF, then collect on cloud and tooling. The weakness is a non-standard licence and no evidence base for clinician-checkable output.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>HKUST / ConceptCLIP</strong><br><span class="zh-inline">學術團隊，開放權重</span><span class="en-inline">Academic group, open weights</span></td>
+          <td><strong>HKUST / ConceptCLIP</strong><br><span class="zh-inline">學術團隊，開放權重</span></td>
           <td>
             <span class="zh">MedConcept-23M（2,300 萬三元組）、78 資料集、10 模態、PMC-9K（9,222 對），權重與程式碼公開（<a href="https://www.nature.com/articles/s41551-026-01764-x" target="_blank" rel="noopener">Nature BME, 2026-08-17</a>）。</span>
-            <span class="en">MedConcept-23M (23 million triplets), 78 datasets, 10 modalities, PMC-9K (9,222 pairs), with weights and code released (<a href="https://www.nature.com/articles/s41551-026-01764-x" target="_blank" rel="noopener">Nature BME, 2026-08-17</a>).</span>
           </td>
           <td>
             <span class="zh">不與大廠比參數，比「能不能被查核」。這在歐盟 AI Act 與 FDA 對生成式醫材的審查邏輯下是有價值的差異化，但學術團隊缺乏維運、版本管理與法遵支援，實際落地需靠廠商包裝。</span>
-            <span class="en">It does not compete on parameters but on checkability — a differentiator with real value under the EU AI Act and FDA's approach to generative devices. But an academic group has no operations, versioning or compliance support; real deployment will need a vendor to wrap it.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>Suki</strong><br><span class="zh-inline">AI 病歷代筆與語音元件</span><span class="en-inline">AI scribe and voice components</span></td>
+          <td><strong>Suki</strong><br><span class="zh-inline">AI 病歷代筆與語音元件</span></td>
           <td>
             <span class="zh">8/25 推出 Suki Dictation，原生內建 Epic 與 Meditech，並以 API／SDK 供第三方整合；試用醫師自述每日省 1–2 小時（<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/ai-scribe-suki-rolls-out-ai-driven-clinical-dictation-tool" target="_blank" rel="noopener">Fierce Healthcare, 2026-08-25</a>）。</span>
-            <span class="en">Launched Suki Dictation on August 25, native inside Epic and Meditech and exposed through API and SDKs for third-party integration; a pilot physician reports saving one to two hours a day (<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/ai-scribe-suki-rolls-out-ai-driven-clinical-dictation-tool" target="_blank" rel="noopener">Fierce Healthcare, 2026-08-25</a>).</span>
           </td>
           <td>
             <span class="zh">刻意不與 Epic 正面爭工作流，改當所有人都要用的語音元件。護城河薄——語音辨識本身已商品化——但通路位置（原生內建兩大 EHR）短期難被複製。</span>
-            <span class="en">Deliberately declines to fight Epic for the workflow, positioning instead as the voice component everyone licenses. The moat is thin — speech recognition is commoditised — but the distribution position, native inside two major EHRs, is hard to replicate quickly.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>長佳智能（6841）／遠傳（4904）</strong><br><span class="zh-inline">台灣醫療 AI 與系統整合</span><span class="en-inline">Taiwan medical AI and systems integration</span></td>
+          <td><strong>長佳智能（6841）／遠傳（4904）</strong><br><span class="zh-inline">台灣醫療 AI 與系統整合</span></td>
           <td>
             <span class="zh">長佳智能持有約 57 張國內外醫材許可證，2026 上半年營收 1 億 6,710 萬元，毛利率由 57.8% 拉升至 73.1%；遠傳為 FHIR 智慧醫療資料平台的主要系統整合夥伴（<a href="https://n.yam.com/Article/20260824143510" target="_blank" rel="noopener">蕃新聞, 2026-08-24</a>）。</span>
-            <span class="en">Long Chia Intelligence holds around 57 domestic and international medical device licences, with H1 2026 revenue of NT$167.1 million and gross margin rising from 57.8% to 73.1%; FarEasTone is the principal systems integration partner for the FHIR-based smart healthcare data platform (<a href="https://n.yam.com/Article/20260824143510" target="_blank" rel="noopener">Yam News, 2026-08-24</a>).</span>
           </td>
           <td>
             <span class="zh">護城河來自政策時程而非技術：FHIR Box 的三階段推進（2026 醫學中心／2027 區域與地區醫院／2028 診所與衛生所）決定了誰先接上管線。風險同樣來自政策——時程延後，估值先受傷。</span>
-            <span class="en">The moat comes from a policy timetable rather than technology: FHIR Box's three phases — medical centres in 2026, regional and district hospitals in 2027, clinics and health stations in 2028 — determine who plugs into the pipe first. The risk is symmetric: if the timetable slips, valuations take the hit before deployments do.</span>
           </td>
         </tr>
       </tbody>
@@ -428,7 +376,6 @@
   <div class="panel">
     <p>
       <span class="zh"><strong>把這一節收束成一句話：今天的競爭結構，是「資料規模」與「可查核性」兩條軸線正在分岔。</strong>Epic 與 Google 在規模那一端各自佔住位置——一個靠 3.2 億人的縱貫資料，一個靠免費權重換生態位；ConceptCLIP 這類學術產物則押在另一端，賭監理與臨床採用最終會要求「說得出依據」。台灣的位置比較特別：既沒有 Cosmos 等級的資料，也沒有頂尖模型團隊，但衛福部先做資料標準再談應用的順序，剛好站在可查核那一端。</span>
-      <span class="en"><strong>Close the section in one sentence: today's competitive structure is two axes — data scale and checkability — pulling apart.</strong> Epic and Google each hold a position on the scale end, one on longitudinal data covering 320 million people, the other trading free weights for ecosystem position. Academic outputs like ConceptCLIP bet on the other end, wagering that regulation and clinical adoption will eventually demand a stated basis for every call. Taiwan's position is unusual: it has neither Cosmos-scale data nor a frontier model team, but by fixing data standards before applications, its health ministry has landed on the checkability side of the split.</span>
     </p>
   </div>
 </section>
@@ -437,21 +384,17 @@
   <h2>04 — Taiwan Angle</h2>
   <div class="sec-title">
     <span class="zh">當國際技術前緣移向「可稽核」，台灣剛好把地基蓋在那一邊</span>
-    <span class="en">As the international frontier shifts toward auditability, Taiwan happens to have poured its foundations on that side</span>
   </div>
 
   <div class="panel">
     <p>
       <span class="zh"><strong>(1) FHIR Box 的價值，正好是今天三則 benchmark 指出的缺口。</strong>衛福部推動的 FHIR Box 是一層「醫療通用作業層」，讓醫院不必改動既有系統即可標準化交換病歷，目的是讓 AI 模型能跨院運作，而不必為每一家醫院客製。三階段時程為：2026 年底完成醫學中心之間的病歷互通、2027 年底擴及區域與地區醫院、2028 年延伸到診所與衛生所（<a href="https://n.yam.com/Article/20260824143510" target="_blank" rel="noopener">蕃新聞, 2026-08-24</a>）。CliniCARE-Bench 與 EHR-Complex 揭露的失敗類型——醫療代碼查找失敗、跨表縱貫推理不穩定——本質上是資料語意不一致造成的，而 FHIR 標準化正是在處理這一層。台灣的技術機會不在做出更大的模型，而在成為少數能提供「標準化、可追溯、跨院一致」評測環境的地方。</span>
-      <span class="en"><strong>(1) What FHIR Box is for is precisely the gap today's three benchmarks expose.</strong> The Ministry of Health's FHIR Box is a universal operating layer for healthcare, letting hospitals exchange standardised records without altering their existing systems, so that AI models can work across institutions rather than being customised for each one. The rollout runs in three phases: record interoperability across medical centres by end-2026, regional and district hospitals by end-2027, clinics and health stations in 2028 (<a href="https://n.yam.com/Article/20260824143510" target="_blank" rel="noopener">Yam News, 2026-08-24</a>). The failure modes CliniCARE-Bench and EHR-Complex surface — medical-code lookup errors, unstable multi-table longitudinal reasoning — are at root problems of semantic inconsistency in the data, which is exactly the layer FHIR standardisation addresses. Taiwan's technical opening is not building a bigger model; it is becoming one of the few places able to offer a standardised, traceable, cross-institution evaluation environment.</span>
     </p>
     <p>
       <span class="zh"><strong>(2) 8 月 21 日衛福部與羅氏診斷簽署合作備忘錄，第一波瞄準慢性腎臟病。</strong>合作內容為以 AI 預警延緩腎病惡化，背景是台灣逾 9 萬名透析病人。值得注意的是衛福部官員強調的順序：先建立資料標準與治理框架，再部署 AI 工具。目前長庚、馬偕、中山三家醫學中心已能透過 FHIR Box 即時共享病歷以支援 AI 臨床應用（<a href="https://www.cna.com.tw/news/ahel/202608210280.aspx" target="_blank" rel="noopener">中央社, 2026-08-21</a>）。這個順序與 <a href="https://www.nature.com/articles/s41591-026-04575-4" target="_blank" rel="noopener">Nordic AI-Health Initiative</a> 幾乎一致，也與 Epic 集中式 Cosmos 的路徑相反——對一個健保資料完整但單一機構規模有限的體系來說，聯邦式是比較務實的選擇。</span>
-      <span class="en"><strong>(2) On August 21, the health ministry signed an MOU with Roche Diagnostics, targeting chronic kidney disease first.</strong> The work centres on AI early warning to slow deterioration, against a backdrop of more than 90,000 dialysis patients in Taiwan. What stands out is the sequencing ministry officials emphasised: establish data standards and governance first, deploy AI tools second. Chang Gung, Mackay and Chung Shan medical centres already share records in real time through FHIR Box to support clinical AI applications (<a href="https://www.cna.com.tw/news/ahel/202608210280.aspx" target="_blank" rel="noopener">CNA, 2026-08-21</a>). That ordering matches the <a href="https://www.nature.com/articles/s41591-026-04575-4" target="_blank" rel="noopener">Nordic AI-Health Initiative</a> almost exactly and runs opposite to Epic's centralised Cosmos — for a system with complete national insurance data but limited scale at any single institution, federated is the pragmatic choice.</span>
     </p>
     <p>
       <span class="zh"><strong>(3) 但今天的 XAI 研究對台灣的病人端應用是一記警告。</strong><a href="https://www.nature.com/articles/s41591-026-04553-w" target="_blank" rel="noopener">Nature Medicine</a> 的結論是外行人會被含糊的解釋說服。台灣正在推的慢性病 AI 預警若最終要面向病人（例如透過健康存摺或 App 推播腎功能惡化風險），介面設計必須假設接收者無法反駁模型——這與給腎臟科醫師看的版本應該是兩套產品。此外，長佳智能（6841）2026 上半年營收 1 億 6,710 萬元、毛利率 73.1% 的數字（<a href="https://n.yam.com/Article/20260824143510" target="_blank" rel="noopener">蕃新聞</a>）反映的是政策紅利期，投資判斷應扣掉時程風險：FHIR Box 三階段任一階段延後，最先受影響的就是靠政策時程定價的標的。</span>
-      <span class="en"><strong>(3) But today's XAI study is a warning for Taiwan's patient-facing plans.</strong> <a href="https://www.nature.com/articles/s41591-026-04553-w" target="_blank" rel="noopener">Nature Medicine</a> concluded that non-experts are persuaded by vague explanations. If the chronic disease AI early-warning work eventually reaches patients — pushing kidney-function risk through a health passbook or an app — the interface has to assume a recipient who cannot argue back, which makes it a different product from the nephrologist's view of the same model. Separately, Long Chia Intelligence's H1 2026 revenue of NT$167.1 million at 73.1% gross margin (<a href="https://n.yam.com/Article/20260824143510" target="_blank" rel="noopener">Yam News</a>) reflects a policy-dividend window; any investment read should discount for schedule risk, since a slip in any one of FHIR Box's three phases hits policy-timetable-priced names first.</span>
     </p>
   </div>
 </section>
@@ -460,29 +403,28 @@
   <h2>05 — Further Reading</h2>
   <div class="sec-title">
     <span class="zh">五篇文章，都在回答同一個問題：我們到底在測什麼</span>
-    <span class="en">Five pieces, all answering the same question: what exactly are we measuring</span>
   </div>
 
   <ol class="reading">
     <li>
       <a href="https://www.nature.com/articles/d41586-026-02125-z" target="_blank" rel="noopener">Medical AI has a measurement problem — Nature (2026-07-28)</a>
-      <p class="why"><span class="zh">哈佛醫學院 Arjun K. Manrai 的評論，把今天三則 benchmark 的共同焦慮寫成一句話：技術跑得比我們衡量它的能力更快。讀完再回頭看 defect-free accuracy 這類指標的設計動機，會清楚很多。</span><span class="en">Harvard Medical School's Arjun K. Manrai distils the anxiety behind all three of today's benchmarks into one line: the technology is outrunning our ability to measure it. Read it first and the design motives behind defect-free-style metrics become much clearer.</span></p>
+      <p class="why"><span class="zh">哈佛醫學院 Arjun K. Manrai 的評論，把今天三則 benchmark 的共同焦慮寫成一句話：技術跑得比我們衡量它的能力更快。讀完再回頭看 defect-free accuracy 這類指標的設計動機，會清楚很多。</span></p>
     </li>
     <li>
       <a href="https://www.nature.com/articles/s41591-026-04501-8" target="_blank" rel="noopener">Evaluating the robustness and readiness of large frontier models in health AI applications — Nature Medicine (2026-06-26)</a>
-      <p class="why"><span class="zh">Microsoft Research 與 Scripps 的 32 人團隊發現：抽掉關鍵視覺資訊，前緣模型的準確率竟然不掉。這是今天所有「答對不等於做對」討論的實證起點。</span><span class="en">A 32-author Microsoft Research and Scripps team found that removing critical visual information barely dents frontier model accuracy. This is the empirical starting point for every "right answer, wrong route" argument in today's issue.</span></p>
+      <p class="why"><span class="zh">Microsoft Research 與 Scripps 的 32 人團隊發現：抽掉關鍵視覺資訊，前緣模型的準確率竟然不掉。這是今天所有「答對不等於做對」討論的實證起點。</span></p>
     </li>
     <li>
       <a href="https://news.mit.edu/2026/medical-ai-assistance-benefits-vary-based-on-user-expertise-0804" target="_blank" rel="noopener">The benefits of medical AI assistance vary based on user expertise — MIT News (2026-08-04)</a>
-      <p class="why"><span class="zh">Nature Medicine 皮膚科研究的白話版，比論文摘要更清楚地說明實驗設計與四種 XAI 條件的差異。做病人端產品的人應該直接讀這一篇。</span><span class="en">The plain-language version of the Nature Medicine dermatology study, clearer than the abstract on experimental design and the four XAI conditions. Anyone building patient-facing products should read this one directly.</span></p>
+      <p class="why"><span class="zh">Nature Medicine 皮膚科研究的白話版，比論文摘要更清楚地說明實驗設計與四種 XAI 條件的差異。做病人端產品的人應該直接讀這一篇。</span></p>
     </li>
     <li>
       <a href="https://jamanetwork.com/journals/jama/article-abstract/2852952" target="_blank" rel="noopener">Will Autonomous AI Exceed AI-Aided Physicians as the Best Medical Care? — JAMA (2026-08-17)</a>
-      <p class="why"><span class="zh">今年最會被引用、也最該連同利益衝突聲明一起讀的一篇。無論同不同意，它把「human-in-the-loop 是保護還是拖累」這個問題正式擺上檯面。付費牆後，可先看 <a href="https://www.eurekalert.org/news-releases/1140050" target="_blank" rel="noopener">EurekAlert 新聞稿</a>。</span><span class="en">The most-cited piece of the year, and the one most in need of being read together with its conflict-of-interest statement. Agree or not, it puts "is a human in the loop a protection or a drag" formally on the table. Paywalled — start with the <a href="https://www.eurekalert.org/news-releases/1140050" target="_blank" rel="noopener">EurekAlert release</a>.</span></p>
+      <p class="why"><span class="zh">今年最會被引用、也最該連同利益衝突聲明一起讀的一篇。無論同不同意，它把「human-in-the-loop 是保護還是拖累」這個問題正式擺上檯面。付費牆後，可先看 <a href="https://www.eurekalert.org/news-releases/1140050" target="_blank" rel="noopener">EurekAlert 新聞稿</a>。</span></p>
     </li>
     <li>
       <a href="https://www.nature.com/articles/s41591-026-04575-4" target="_blank" rel="noopener">An AI-Health infrastructure for the Nordic region — Nature Medicine (2026-08-14)</a>
-      <p class="why"><span class="zh">對台灣最有參考價值的一篇：一份把跨國健康資料治理寫成工程規格的文件。想理解 FHIR Box 未來三年會遇到什麼問題，看別人已經寫下來的路線圖最快。</span><span class="en">The most directly useful piece for Taiwan: cross-border health data governance written up as an engineering specification. To understand what FHIR Box will run into over the next three years, the fastest route is someone else's already-written roadmap.</span></p>
+      <p class="why"><span class="zh">對台灣最有參考價值的一篇：一份把跨國健康資料治理寫成工程規格的文件。想理解 FHIR Box 未來三年會遇到什麼問題，看別人已經寫下來的路線圖最快。</span></p>
     </li>
   </ol>
 </section>
@@ -491,7 +433,6 @@
   <h2>06 — References</h2>
   <div class="sec-title">
     <span class="zh">參考文獻</span>
-    <span class="en">References</span>
   </div>
 
   <div class="panel">
@@ -522,7 +463,6 @@
     </ol>
     <div class="note">
       <span class="zh"><strong>編輯說明：</strong>本期主線集中在 8/04–8/27 的技術性發表，其中兩則（CliniCARE-Bench、EHR-Complex）為 arXiv 預印本，尚未經同儕審查，已在各則中標註。JAMA 觀點文章與 STAT News 均位於付費牆後，本報僅根據公開可見的標題、摘要、EurekAlert 新聞稿及 The Decoder 的二手整理撰寫，未取得原文全文；該文兩位共同作者對自主 AI 普及具直接財務利益，已在文中揭露。Epic UGM 2026 的所有效益數字（ECU Health 每週 20 小時、Sutter Health 1,000 客服工時、Ask Emmie 帳單訊息減少 73%）皆為採用機構或廠商自述，未經第三方稽核；Curiosity 與 Agent Factory 尚未上線，無獨立驗證的效能數據。UGM 出席人數有兩個互相矛盾的版本（逾 2 萬人 vs 8,400 人實體），本報同時列出未作取捨。Suki Dictation 的「每日省 1–2 小時」為單一試用醫師自述，樣本數為一。ConceptCLIP 的 GitHub 與 Hugging Face 連結取自 Nature 論文的程式碼與資料可得性聲明。台灣段落的長佳智能財務數字引自蕃新聞報導，非取自公司財報原件，投資判斷請以公開資訊觀測站為準。MedGemma 1.5 為 2026 年 1 月釋出，非本週消息，列入產品分析僅作為 ConceptCLIP 的對照組。</span>
-      <span class="en"><strong>Editor's note:</strong> This issue draws on technical publications from August 4–27. Two items — CliniCARE-Bench and EHR-Complex — are arXiv preprints that have not been peer reviewed, flagged as such in each card. The JAMA viewpoint and STAT News are paywalled; this report is written only from the publicly visible title and abstract, the EurekAlert release, and The Decoder's secondary summary, not from the full text. Two co-authors of that JAMA piece hold direct financial interests in the spread of autonomous AI, disclosed in the item. Every benefit figure from Epic UGM 2026 — ECU Health's 20 hours a week, Sutter Health's 1,000 call-centre hours, Ask Emmie's 73% reduction in billing messages — is reported by the adopting organisation or the vendor and is not independently audited; Curiosity and Agent Factory have not shipped and carry no independently verified performance data. Two conflicting attendance counts for UGM circulate (20,000-plus versus 8,400 in person) and both are listed rather than reconciled. Suki Dictation's "one to two hours a day" comes from a single pilot physician, sample size one. ConceptCLIP's GitHub and Hugging Face links are taken from the Nature paper's code and data availability statements. The Long Chia Intelligence financial figures in the Taiwan section are quoted from Yam News coverage rather than the company's own filings; verify against Taiwan's Market Observation Post System before acting on them. MedGemma 1.5 shipped in January 2026 and is not news this week — it appears in the product analysis solely as ConceptCLIP's comparison case.</span>
     </div>
   </div>
 </section>
@@ -531,7 +471,6 @@
   <div class="foot-row">
     <div>
       <span class="zh">AI／醫療AI 每日新知日報 · 由 Claude 於台北時間每日自動產出 · 本期主題：星期四／技術突破<br>本報告內容經來源查證，但不構成投資或醫療建議。所有數據請以原始出處為準。</span>
-      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Thursday / Technology<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
     </div>
     <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com / 返回 peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
   </div>
@@ -544,16 +483,6 @@
 </div>
 
 <script>
-function setLang(l){
-  document.body.classList.remove('lang-zh','lang-en');
-  document.body.classList.add('lang-'+l);
-  document.documentElement.lang = (l==='zh') ? 'zh-Hant' : 'en';
-  document.getElementById('b-zh').classList.toggle('on', l==='zh');
-  document.getElementById('b-en').classList.toggle('on', l==='en');
-  document.title = (l==='zh')
-    ? 'AI／醫療AI 每日新知日報 · 2026-08-27'
-    : 'AI & Medical AI Daily · 2026-08-27';
-}
 function toggleTheme(){
   document.body.classList.toggle('dark');
   document.getElementById('theme-ic').textContent =
@@ -581,5 +510,6 @@ window.addEventListener('scroll', function(){
     .catch(function(){});
 })();
 </script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/en/reports/2026-08-27.html" hreflang="en" rel="alternate" lang="en">English version</a></p>
 </body>
 </html>
