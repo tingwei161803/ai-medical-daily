@@ -8,6 +8,10 @@
 <title>AI／醫療AI 每日新知日報 · 2026-09-03</title>
 <meta property="og:url" content="https://ai-medical-daily.peteraim.com/reports/2026-09-03.html" />
 <link rel="canonical" href="https://ai-medical-daily.peteraim.com/reports/2026-09-03.html" />
+<link rel="alternate" hreflang="zh-Hant" href="https://ai-medical-daily.peteraim.com/reports/2026-09-03.html" />
+<link rel="alternate" hreflang="en" href="https://ai-medical-daily.peteraim.com/en/reports/2026-09-03.html" />
+<link rel="alternate" hreflang="x-default" href="https://ai-medical-daily.peteraim.com/reports/2026-09-03.html" />
+<meta name="description" content="技術突破日：OpenAI Astra 傳以遞迴深度把部分推理搬進潛在空間、並首度跨過自家「關鍵網路安全門檻」；Google 同週推出 Gemini 3.8 Flash 與資安變體；兩篇 medRxiv 論文則分別量出 LLM 代寫病人訊息的語意漂移，與 agent 篩 20 萬篇文獻的真實成本。">
 <meta name="report-date" content="2026-09-03">
 <meta name="report-theme" content="technology">
 <meta name="report-title-zh" content="推理正在離開螢幕：Astra 把它折進潛在空間，Gemini 把它攤成便宜 token，而一篇 BCI 論文量出了代價——28.4% 的高信心輸出並不忠實">
@@ -29,16 +33,16 @@
 </script>
 <link rel="stylesheet" href="/assets/report.css">
 </head>
-<body class="lang-zh">
+<body>
 
 <header class="bar">
   <div class="bar-in">
-    <a class="brand" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span><span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <a class="brand" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span></a>
     <div class="bar-sp"></div>
     <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub / 在 GitHub 給這個專案一顆星"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
     <div class="seg">
-      <button id="b-zh" class="on" onclick="setLang('zh')">中文</button>
-      <button id="b-en" onclick="setLang('en')">EN</button>
+      <a class="on" href="/reports/2026-09-03.html" hreflang="zh-Hant" lang="zh-Hant" aria-current="page">中文</a>
+      <a href="/en/reports/2026-09-03.html" hreflang="en" lang="en" rel="alternate">EN</a>
     </div>
     <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
   </div>
@@ -48,28 +52,24 @@
 <div class="hero">
   <div class="kicker">
     <span class="zh-inline">星期四 · 技術突破</span>
-    <span class="en-inline">Thursday · Technology Breakthroughs</span>
   </div>
   <h1>
     <span class="zh">推理正在離開螢幕：Astra 把它折進潛在空間，Gemini 把它攤成便宜 token，而一篇 BCI 論文量出了代價——28.4% 的高信心輸出並不忠實</span>
-    <span class="en">Reasoning is leaving the screen: Astra folds it into latent space, Gemini spreads it over cheap tokens, and a BCI paper prices the cost — 28.4% of high-confidence outputs are unfaithful</span>
   </h1>
   <div class="dateline">
     <span class="zh-inline">2026 年 9 月 3 日（四）· 涵蓋 8/27–9/3 · 台北時間</span>
-    <span class="en-inline">Thursday, September 3, 2026 · Covering Aug 27–Sep 3 · Taipei time</span>
   </div>
   <p class="lede">
     <span class="zh">這一週三件技術事件指向同一個問題：模型的推理過程，人類還看不看得見。TechCrunch 於 9 月 1 日報導，OpenAI 的 Astra 是第一個跨過該公司自訂「關鍵網路安全門檻」的模型，在 ExploitBench 上拿到滿分，並在改版測試中自主找出並利用兩個 zero-day（<a href="https://techcrunch.com/2026/09/01/open-ais-astra-model-is-on-the-way-and-very-good-at-breaking-into-computer-systems/" target="_blank" rel="noopener">TechCrunch, 2026-09-01</a>）；社群同時流傳它採用「遞迴深度（recurrent depth）」，把一部分思考留在隱藏狀態而非寫成 chain-of-thought。隔天 Google 走了完全相反的路：Gemini 3.8 Flash 與資安變體 Flash Cyber 同日推出，把顯性推理的價格砍到每百萬 input token 0.75 美元（<a href="https://artificialanalysis.ai/articles/gemini-3-8-flash" target="_blank" rel="noopener">Artificial Analysis, 2026-09-02</a>）。而在醫療端，8 月 27 日上線的一篇 medRxiv 論文把「看不見的推理」換算成病人的代價：當 LLM 替腦機介面使用者「修正」打字錯誤時，解碼錯誤率 40% 下語意漂移達 60.3%，且 28.4% 的高信心輸出並不忠於原意（<a href="https://www.medrxiv.org/content/10.64898/2026.08.20.26360939v1" target="_blank" rel="noopener">medRxiv, 2026-08-27</a>）。</span>
-    <span class="en">Three technical developments this week converge on one question: can humans still see a model reason? On September 1, TechCrunch reported that OpenAI's Astra is the first model to cross the company's own "critical cybersecurity threshold," scoring a perfect result on ExploitBench and autonomously discovering and exploiting two previously unknown zero-days in a modified evaluation (<a href="https://techcrunch.com/2026/09/01/open-ais-astra-model-is-on-the-way-and-very-good-at-breaking-into-computer-systems/" target="_blank" rel="noopener">TechCrunch, 2026-09-01</a>); in parallel, the claim circulating among researchers is that it uses "recurrent depth," keeping part of its thinking in hidden state rather than writing it out as chain-of-thought. A day later Google took the opposite road: Gemini 3.8 Flash and a security-focused Flash Cyber variant shipped together, cutting the price of explicit reasoning to $0.75 per million input tokens (<a href="https://artificialanalysis.ai/articles/gemini-3-8-flash" target="_blank" rel="noopener">Artificial Analysis, 2026-09-02</a>). And on the clinical side, a medRxiv preprint posted August 27 converts invisible reasoning into a patient-level cost: when LLMs "correct" typing from brain–computer interface users, semantic drift reaches 60.3% at a 40% decoder error rate, and 28.4% of high-confidence outputs are unfaithful to the intended message (<a href="https://www.medrxiv.org/content/10.64898/2026.08.20.26360939v1" target="_blank" rel="noopener">medRxiv, 2026-08-27</a>).</span>
   </p>
 
   <nav class="toc">
-    <a href="#top"><span class="zh-inline">重點新聞</span><span class="en-inline">Top Stories</span></a>
-    <a href="#product"><span class="zh-inline">產品分析</span><span class="en-inline">Product Analysis</span></a>
-    <a href="#company"><span class="zh-inline">公司與競爭</span><span class="en-inline">Companies &amp; Competition</span></a>
-    <a href="#taiwan"><span class="zh-inline">台灣視角</span><span class="en-inline">Taiwan Angle</span></a>
-    <a href="#reading"><span class="zh-inline">延伸閱讀</span><span class="en-inline">Further Reading</span></a>
-    <a href="#refs"><span class="zh-inline">參考文獻</span><span class="en-inline">References</span></a>
+    <a href="#top"><span class="zh-inline">重點新聞</span></a>
+    <a href="#product"><span class="zh-inline">產品分析</span></a>
+    <a href="#company"><span class="zh-inline">公司與競爭</span></a>
+    <a href="#taiwan"><span class="zh-inline">台灣視角</span></a>
+    <a href="#reading"><span class="zh-inline">延伸閱讀</span></a>
+    <a href="#refs"><span class="zh-inline">參考文獻</span></a>
   </nav>
 </div>
 
@@ -77,202 +77,173 @@
   <h2>01 — Top Stories</h2>
   <div class="sec-title">
     <span class="zh">七則消息分成兩層：上面四則決定模型怎麼想，下面三則決定手術室裡放什麼硬體</span>
-    <span class="en">Seven items on two layers: the first four decide how models think, the last three decide what hardware stands in the operating room</span>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">模型架構</span><span class="en-inline">Model architecture</span></span>
+      <span class="tag hot"><span class="zh-inline">模型架構</span></span>
       <span class="tag">OpenAI</span><span class="tag">Astra</span><span class="tag">9/01</span>
     </div>
     <h3>
       <span class="zh">Astra 成為第一個跨過 OpenAI 自訂「關鍵網路安全門檻」的模型，ExploitBench 滿分、自主挖出兩個 zero-day</span>
-      <span class="en">Astra becomes the first model to cross OpenAI's own "critical cybersecurity threshold" — a perfect ExploitBench score and two self-found zero-days</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">OpenAI 表示 Astra 能在沒有人類指導的情況下，自行找出並利用電腦系統中未知的安全漏洞，在衡量 LLM 攻擊能力的 ExploitBench 上取得滿分，並在 OpenAI 自行改版的測試中挖出兩個先前未知的 zero-day 漏洞。公司說會「很快」開放 Astra，但最強的資安能力初期會限制存取，並搭配濫用偵測強化、越獄防護、依風險分級的帳號限制，以及 chain-of-thought 監控（<a href="https://techcrunch.com/2026/09/01/open-ais-astra-model-is-on-the-way-and-very-good-at-breaking-into-computer-systems/" target="_blank" rel="noopener">TechCrunch, 2026-09-01</a>）。Astra 系列本身在 8 月 1 日首度公布，8 月 6 日追加十道長年未解數學問題的解法，全部以 Lean 形式化、API token 成本約 2,000 美元（<a href="https://the-decoder.com/openai-announces-its-next-major-model-astra-by-dropping-ten-previously-unsolved-math-solutions/" target="_blank" rel="noopener">The Decoder, 2026-08</a>）。</span>
-        <span class="en">OpenAI says Astra can locate and exploit unknown vulnerabilities in computer systems without human guidance, scoring a perfect result on ExploitBench — an evaluation of LLM hacking ability — and surfacing two previously unknown zero-days in OpenAI's modified version of the test. The company says it plans to make Astra available "soon" while restricting its most advanced cybersecurity capabilities at first, paired with improved abuse detection, jailbreak prevention, risk-tiered account restrictions and chain-of-thought monitoring (<a href="https://techcrunch.com/2026/09/01/open-ais-astra-model-is-on-the-way-and-very-good-at-breaking-into-computer-systems/" target="_blank" rel="noopener">TechCrunch, 2026-09-01</a>). The Astra family was first announced on August 1 and updated on August 6 with solutions to ten long-unsolved mathematical problems, all formalised in Lean at roughly $2,000 of API tokens (<a href="https://the-decoder.com/openai-announces-its-next-major-model-astra-by-dropping-ten-previously-unsolved-math-solutions/" target="_blank" rel="noopener">The Decoder, 2026-08</a>).</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">醫院是網路防禦最薄弱的大型組織之一，而一個能自主找 zero-day 的模型同時是防禦者與攻擊者的工具。更值得注意的是 OpenAI 自己把「chain-of-thought 監控」列為安全機制之一——若遞迴深度的傳聞屬實，這項機制監控的對象正在變少。TechCrunch 也指出，這些安全宣稱目前缺乏獨立第三方驗證。</span>
-        <span class="en">Hospitals are among the most poorly defended large organisations on the network, and a model that finds zero-days on its own is a tool for defenders and attackers alike. More pointed: OpenAI itself lists chain-of-thought monitoring among its safeguards — and if the recurrent-depth reports are accurate, there is less chain of thought left to monitor. TechCrunch also notes the safety claims currently lack independent third-party verification.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">「遞迴深度」目前來自研究社群的解讀與二手報導，OpenAI 尚未發布可核對的技術報告；ExploitBench 滿分與兩個 zero-day 皆為廠商自述、未經第三方稽核。Sebastian Raschka 在 9 月的分析中反駁「循環層必然壓抑可見推理」的說法，認為重複使用層本身並不會直接抑制 chain-of-thought（<a href="https://sebastianraschka.com/blog/2026/openai-astra-looped-transformers.html" target="_blank" rel="noopener">Raschka, 2026</a>）。</span>
-        <span class="en">"Recurrent depth" so far rests on community readings and secondary coverage; OpenAI has published no checkable technical report. The perfect ExploitBench score and the two zero-days are vendor-reported and not independently audited. Sebastian Raschka's September analysis pushes back on the idea that looping necessarily suppresses visible reasoning, arguing that reusing layers does not by itself hide a chain of thought (<a href="https://sebastianraschka.com/blog/2026/openai-astra-looped-transformers.html" target="_blank" rel="noopener">Raschka, 2026</a>).</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://techcrunch.com/2026/09/01/open-ais-astra-model-is-on-the-way-and-very-good-at-breaking-into-computer-systems/" target="_blank" rel="noopener">TechCrunch, 2026-09-01</a> ／ <a href="https://the-decoder.com/openai-announces-its-next-major-model-astra-by-dropping-ten-previously-unsolved-math-solutions/" target="_blank" rel="noopener">The Decoder</a> ／ <a href="https://sebastianraschka.com/blog/2026/openai-astra-looped-transformers.html" target="_blank" rel="noopener">Sebastian Raschka</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">模型發布</span><span class="en-inline">Model release</span></span>
+      <span class="tag hot"><span class="zh-inline">模型發布</span></span>
       <span class="tag">Google DeepMind</span><span class="tag">Gemini 3.8 Flash</span><span class="tag">9/02</span>
     </div>
     <h3>
       <span class="zh">Google 同日推出 Gemini 3.8 Flash 與 Flash Cyber：智慧指數 59 追平前沿，價格砍到 0.75 美元／百萬 token</span>
-      <span class="en">Google ships Gemini 3.8 Flash and Flash Cyber on the same day: an intelligence index of 59 at the frontier, priced down to $0.75 per million tokens</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">Gemini 3.8 Flash 在 Artificial Analysis 智慧指數上取得 59 分（高推理模式），比 3.7 Flash 進步 3 分，追平 GPT-5.6 Sol 與 Grok 4.6；具 100 萬 token 脈絡窗、支援文字／影像／影片／語音輸入、平均約每秒 300 output token。定價 2026 年底前折扣為每百萬 input／output token 0.75／3.75 美元，標準價 1.50／7.50 美元，單一任務成本約 0.58 美元。這是 Google 四個月內第四款 Flash 模型（<a href="https://artificialanalysis.ai/articles/gemini-3-8-flash" target="_blank" rel="noopener">Artificial Analysis, 2026-09-02</a>）。同日推出的 Flash Cyber 專為資安研究者設計，用於找程式漏洞與寫修補，在 16 項測試中有 9 項勝過 Claude Opus 5 與 GPT-5.6 Sol，DeepSWE-1.1 得 73.7%、CyberGym 的 C/C++ 漏洞偵測得 86.2%（<a href="https://siliconangle.com/2026/09/02/google-launches-two-gemini-3-8-models-with-cutting-edge-reasoning-capabilities/" target="_blank" rel="noopener">SiliconANGLE, 2026-09-02</a>）。</span>
-        <span class="en">Gemini 3.8 Flash scores 59 on the Artificial Analysis Intelligence Index at high reasoning — three points above 3.7 Flash and level with GPT-5.6 Sol and Grok 4.6 — with a 1M-token context window, text/image/video/speech input and roughly 300 output tokens per second. Pricing is discounted to $0.75/$3.75 per million input/output tokens through the end of 2026, with a standard rate of $1.50/$7.50 and about $0.58 per task. It is Google's fourth Flash model in under four months (<a href="https://artificialanalysis.ai/articles/gemini-3-8-flash" target="_blank" rel="noopener">Artificial Analysis, 2026-09-02</a>). The Flash Cyber variant, launched the same day for security researchers finding vulnerabilities and writing patches, beat Claude Opus 5 and GPT-5.6 Sol on 9 of 16 tests, scoring 73.7% on DeepSWE-1.1 and 86.2% on CyberGym C/C++ vulnerability detection (<a href="https://siliconangle.com/2026/09/02/google-launches-two-gemini-3-8-models-with-cutting-edge-reasoning-capabilities/" target="_blank" rel="noopener">SiliconANGLE, 2026-09-02</a>).</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">對醫療系統而言，決定 AI 能不能鋪到全院的往往不是頂端能力而是單位成本：以折扣價計，掃過一份 20 萬 token 的完整住院病歷約 0.15 美元 input 成本。同時 Google 選擇把資安能力做成一個公開、可買到的獨立變體，而 OpenAI 選擇限制存取——同一種能力，兩種治理姿態。Google 主管 Tulsee Doshi 與 Raluca Ada Popa 表示，模型「在複雜任務上表現出更強的盡責度——執行額外的推理步驟、反覆呼叫工具」。</span>
-        <span class="en">For health systems, what decides whether AI reaches the whole hospital is usually unit cost rather than peak capability: at the discounted rate, sweeping a 200,000-token inpatient chart costs roughly $0.15 in input tokens. Note also the governance split — Google turned the security capability into a public, purchasable variant while OpenAI restricted access to its own. Google's Tulsee Doshi and Raluca Ada Popa say the model "exhibits greater diligence — executing extra reasoning steps, and calling tools iteratively" on complex tasks.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">benchmark 分數來自 Google 自述與第三方指數，沒有任何一項是醫療任務；MedQA、影像判讀等臨床指標在這次發布中未見公布。折扣價 2026 年底到期，長期成本應以標準價 1.50／7.50 美元估算。</span>
-        <span class="en">The benchmark figures come from Google's own reporting and a third-party index, and none of them are medical tasks; no clinical metrics such as MedQA or image interpretation accompany this release. The discount expires at the end of 2026, so long-run budgeting should assume the $1.50/$7.50 standard rate.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://artificialanalysis.ai/articles/gemini-3-8-flash" target="_blank" rel="noopener">Artificial Analysis, 2026-09-02</a> ／ <a href="https://siliconangle.com/2026/09/02/google-launches-two-gemini-3-8-models-with-cutting-edge-reasoning-capabilities/" target="_blank" rel="noopener">SiliconANGLE, 2026-09-02</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">臨床評估</span><span class="en-inline">Clinical evaluation</span></span>
+      <span class="tag hot"><span class="zh-inline">臨床評估</span></span>
       <span class="tag">medRxiv</span><span class="tag">BCI</span><span class="tag">8/27</span>
     </div>
     <h3>
       <span class="zh">當 LLM 替漸凍症病人「修句子」：解碼錯誤 40% 時語意漂移 60.3%，28.4% 的高信心輸出並不忠實</span>
-      <span class="en">When an LLM "fixes" an ALS patient's sentence: 60.3% semantic drift at a 40% decoder error rate, and 28.4% of high-confidence outputs are unfaithful</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">一組以放射與資訊醫學為主的團隊（Gorenshtein、Omar、Klang、Barash 等）在 medRxiv 發表〈Intent Drift in LLM-Assisted BCI Communication〉，用模擬 P300 拼字器解碼錯誤的方式，測試 20 個開放權重模型替腦機介面使用者更正文字時的忠實度。結果：漂移率隨解碼錯誤率從 2.2% 一路升到 60.3%；模型自評的高信心輸出中有 28.4% 不忠於原意；判別力尚可（AUROC 0.83）但校準極差（expected calibration error 0.32）；表現最好的修正策略仍有 18% 的訊息被改錯；臨床上關鍵的訊息漂移率反而略高；醫師人工複核與自動評分的一致性僅屬中等（kappa 0.41）（<a href="https://www.medrxiv.org/content/10.64898/2026.08.20.26360939v1" target="_blank" rel="noopener">medRxiv, 2026-08-27</a>）。</span>
-        <span class="en">A team drawn largely from radiology and informatics (Gorenshtein, Omar, Klang, Barash and colleagues) posted "Intent Drift in LLM-Assisted BCI Communication" on medRxiv, simulating P300-speller decoder corruption to test how faithfully 20 open-weight models repair text for brain–computer interface users. Drift climbed from 2.2% with no decoder error to 60.3% at high corruption; 28.4% of the models' own high-confidence outputs were unfaithful to the intended message; discrimination was moderate (AUROC 0.83) but calibration was poor (expected calibration error 0.32); the best correction policy still produced wrong messages in 18% of cases; clinically critical messages drifted slightly more, not less; and physician review agreed with automated scoring only moderately (kappa 0.41) (<a href="https://www.medrxiv.org/content/10.64898/2026.08.20.26360939v1" target="_blank" rel="noopener">medRxiv, 2026-08-27</a>).</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">這是把「模型幻覺」放到最不能出錯的場景測出來的數字：使用者是失去發聲能力的病人，輸出被當成他本人的意思。作者用的詞是「流暢而高度自信的謊言」——重點不在錯字沒修好，而在模型改變了病人想說的話，而且改得很有把握。ECE 0.32 意味著模型的信心分數幾乎不能拿來當閘門，這直接推翻「用信心值做自動篩選」這一整類部署設計。</span>
-        <span class="en">This puts a number on model confabulation in the one setting where it is least tolerable: the user is a patient who has lost the ability to speak, and the output is taken as their own words. The authors' phrase is "fluent, highly confident lies" — the failure is not an uncorrected typo but a changed intent, asserted with conviction. An ECE of 0.32 means the confidence score is close to useless as a gate, which invalidates an entire class of deployment designs built on confidence thresholds.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">這是 in-silico 基準測試，解碼錯誤為模擬而非真實 BCI 使用者資料，且為未經同儕審查的 preprint。20 個模型皆為開放權重，前沿封閉模型（Astra、Gemini 3.8、Claude Opus 5）未納入，因此不能直接外推到臨床實際部署的商用模型。</span>
-        <span class="en">This is an in-silico benchmark: decoder errors were simulated rather than drawn from real BCI users, and it is a preprint that has not been peer reviewed. All 20 models are open-weight, with frontier closed models (Astra, Gemini 3.8, Claude Opus 5) excluded, so the figures cannot be extrapolated directly to the commercial models actually deployed in clinics.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://www.medrxiv.org/content/10.64898/2026.08.20.26360939v1" target="_blank" rel="noopener">medRxiv 10.64898/2026.08.20.26360939, 2026-08-27</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">AI agent</span><span class="en-inline">AI agent</span></span>
+      <span class="tag hot"><span class="zh-inline">AI agent</span></span>
       <span class="tag">ScreenAgent</span><span class="tag">meta-analysis</span><span class="tag">8/30</span>
     </div>
     <h3>
       <span class="zh">20 萬篇文獻篩選只花 855.91 美元：agent 與人的一致性（kappa 0.75）已經高於人與人（0.64）</span>
-      <span class="en">Screening 200,000 papers for $855.91: agent–human agreement (kappa 0.75) now exceeds human–human agreement (0.64)</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">名為 ScreenAgent 的 LLM agent 被用來自動化統合分析的初篩階段。在報導的數字中，它處理了 201,064 筆醫學紀錄、總成本 855.91 美元（每筆約 0.43 美分），內部敏感度 97.7%（44 篇合格研究中找到 43 篇），為人類審閱者減少 99.4% 工作量；agent 與人類的一致性 kappa 0.75，高於人與人之間的 0.64；外部驗證敏感度分別為 95.9% 與 97.4%。作者採取由第二個 LLM 覆核、最終決定權仍在人類專家的混合設計（<a href="https://yesilscience.com/ai-screens-200000-medical-papers-for-pennies/" target="_blank" rel="noopener">Yesil Science, 2026-08-30</a>）。</span>
-        <span class="en">An LLM agent called ScreenAgent was built to automate the first-pass screening stage of medical meta-analyses. On the reported figures it processed 201,064 records for a total of $855.91 — about 0.43 cents each — with an internal sensitivity of 97.7% (43 of 44 eligible studies found) and a 99.4% workload reduction for human reviewers. Agent-to-human agreement reached a Cohen kappa of 0.75, above the 0.64 measured between human reviewers, with external validation sensitivities of 95.9% and 97.4%. The authors use a hybrid design in which a second LLM verifies results and human experts retain the final call (<a href="https://yesilscience.com/ai-screens-200000-medical-papers-for-pennies/" target="_blank" rel="noopener">Yesil Science, 2026-08-30</a>).</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">系統性回顧是實證醫學的成本瓶頸，一份大型統合分析的初篩通常要兩位研究者花數月。若 0.43 美分／篇的數字站得住，臨床指引的更新週期就不再受限於人力，而受限於原始研究的產出速度。與前一則對照也很有意思：同一類技術在「替病人代言」時信心校準極差，在「篩掉不相關論文」這種有明確召回率目標、且錯誤可被第二關攔下的任務上卻表現穩健——任務結構決定了 agent 能不能用，而不是模型強不強。</span>
-        <span class="en">Systematic review is the cost bottleneck of evidence-based medicine; first-pass screening for a large meta-analysis typically occupies two researchers for months. If the 0.43-cents-per-record figure holds, the refresh cycle for clinical guidelines stops being limited by labour and starts being limited by how fast primary research appears. The contrast with the previous item is instructive: the same class of technology is badly calibrated when speaking on a patient's behalf, yet robust on a task with an explicit recall target and a second pass to catch its errors. Task structure, not raw model strength, decides whether an agent is usable.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">這則我們只查到二手報導，未能取得 medRxiv 原文連結核對，所有數字以該報導為準。系統在測試中漏掉 1 篇合格研究——在統合分析裡，漏掉的那一篇有可能就是改變結論的那一篇。97.7% 敏感度聽起來高，但實證醫學的慣例門檻通常更嚴。</span>
-        <span class="en">We could only reach secondary coverage for this item and could not verify the numbers against the medRxiv original, so every figure above rests on that report. The system missed one eligible study in testing — and in a meta-analysis, the missed study can be the one that changes the conclusion. A 97.7% sensitivity sounds high, but evidence synthesis conventionally demands a stricter bar.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://yesilscience.com/ai-screens-200000-medical-papers-for-pennies/" target="_blank" rel="noopener">Yesil Science, 2026-08-30</a> ／ <a href="https://yesilscience.com/the-brief-2026-08-31/" target="_blank" rel="noopener">The Health AI Brief, week of 2026-08-31</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">影像硬體</span><span class="en-inline">Imaging hardware</span></span>
+      <span class="tag hot"><span class="zh-inline">影像硬體</span></span>
       <span class="tag">GE HealthCare</span><span class="tag">Photonova Spectra</span><span class="tag">8/31</span>
     </div>
     <h3>
       <span class="zh">GE HealthCare 光子計數 CT 取得 CE 標誌：Deep Silicon 偵測器直接量測單顆光子能量，跳過閃爍轉光那一層</span>
-      <span class="en">GE HealthCare's photon-counting CT clears CE marking: the Deep Silicon detector measures individual photon energies directly, skipping the scintillation step</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">GE HealthCare 的 Photonova Spectra 於 8 月 31 日取得 CE 標誌。與傳統 CT 偵測器先把 X 光轉成可見光再讀取不同，Deep Silicon 技術直接量測每一顆 X 光光子及其能量，因此每次掃描同時產生高解析影像與能譜資訊，可用於神經、腫瘤、肌肉骨骼、胸腔與心臟影像。該系統已於 2026 年 3 月取得 FDA 510(k) 與日本上市許可。GE HealthCare 全球 CT 執行總監 Chad Rowland 表示：「其核心是我們的 Deep Silicon 偵測器技術，使 Photonova Spectra 能在每一次掃描中擷取極為細緻的能譜資訊。」（<a href="https://www.mobihealthnews.com/news/ge-healthcare-secures-ce-mark-its-photonova-spectra-technology" target="_blank" rel="noopener">MobiHealthNews, 2026-08-31</a>）</span>
-        <span class="en">GE HealthCare's Photonova Spectra received CE marking on August 31. Where conventional CT detectors first convert X-rays into visible light, the Deep Silicon detector measures individual X-ray photons and their energies directly, so every scan yields high-definition images and spectral data at once, across neurology, oncology, musculoskeletal, thoracic and cardiac imaging. The system already held FDA 510(k) clearance and Japanese approval as of March 2026. Chad Rowland, executive director of global CT at GE HealthCare, said: "At its core is our Deep Silicon detector technology, which enables Photonova Spectra to capture remarkably detailed, spectral information in every scan." (<a href="https://www.mobihealthnews.com/news/ge-healthcare-secures-ce-mark-its-photonova-spectra-technology" target="_blank" rel="noopener">MobiHealthNews, 2026-08-31</a>)</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">在一週幾乎全是軟體的新聞裡，這是少數發生在物理層的技術突破，而且它決定了上層模型能拿到什麼。能譜 CT 每個體素帶的是材料組成資訊而非單一 HU 值，這等於把影像 AI 的輸入從灰階圖換成多通道量測——現有以傳統 CT 訓練的影像基礎模型並不能自動吃下這些新資料，重新訓練與重新驗證的成本會落在採用光子計數 CT 的醫院身上。</span>
-        <span class="en">In a week dominated by software, this is one of the few breakthroughs at the physics layer — and it determines what the models above it get to see. Spectral CT carries material composition in every voxel rather than a single HU value, which effectively swaps imaging AI's input from a greyscale picture to a multi-channel measurement. Imaging foundation models trained on conventional CT cannot simply ingest that data, and the cost of retraining and revalidation lands on the hospitals that buy photon-counting scanners.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">報導未提供解析度、劑量下降幅度或臨床結果的具體數字，也沒有與 Siemens Naeotom 等既有光子計數平台的頭對頭比較。CE 標誌是上市許可而非臨床效益證明。</span>
-        <span class="en">The coverage provides no figures for resolution, dose reduction or clinical outcomes, and no head-to-head comparison against existing photon-counting platforms such as Siemens' Naeotom. CE marking is a licence to sell, not evidence of clinical benefit.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://www.mobihealthnews.com/news/ge-healthcare-secures-ce-mark-its-photonova-spectra-technology" target="_blank" rel="noopener">MobiHealthNews, 2026-08-31</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">手術科技</span><span class="en-inline">Surgical tech</span></span>
+      <span class="tag hot"><span class="zh-inline">手術科技</span></span>
       <span class="tag">Stryker</span><span class="tag">Apple Vision Pro</span><span class="tag">9/01</span>
     </div>
     <h3>
       <span class="zh">第一個獲 FDA De Novo 授權的 Apple Vision Pro 術中應用：Stryker SportSuite Vision 在杜克完成首例髖關節鏡手術</span>
-      <span class="en">The first FDA De Novo-authorised intraoperative Apple Vision Pro application: Stryker's SportSuite Vision completes a first hip arthroscopy at Duke</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">Stryker 於 9 月 1 日宣布 SportSuite Vision 完成首例臨床使用。這是一套 video see-through 擴增實境頭戴顯示系統，把關節鏡影像、HipCheck 軟體、HipMap 的股髖撞擊（FAI）分析與 CT 影像整合進可自訂的空間運算環境，讓術者在直視視野內疊加數位臨床資訊。FDA 於 2026 年 7 月 17 日給予 De Novo 授權，是首個核准與 Apple Vision Pro 搭配於術中使用的應用；首例由杜克健康（Duke Health）骨科醫師 Chad Mather III 執行，適應症限於 FAI 與髖臼唇修補的髖關節鏡手術（<a href="https://www.stryker.com/us/en/about/news/2026/stryker-introduces-first-of-its-kind-fda-authorized-surgical-application-for-apple-vision-pro-with-hip-arthroscopy-case.html" target="_blank" rel="noopener">Stryker, 2026-09-01</a>；<a href="https://www.statnews.com/2026/09/01/fda-stryker-surgical-cockpit-apple-vr-headset-health-tech/" target="_blank" rel="noopener">STAT, 2026-09-01</a>）。</span>
-        <span class="en">Stryker announced the first clinical use of SportSuite Vision on September 1. It is a video see-through augmented reality head-mounted display that folds arthroscopic video, the HipCheck software, HipMap femoroacetabular impingement analysis and CT imaging into a customisable spatial computing environment, overlaying digital clinical information inside the surgeon's direct field of view. The FDA granted De Novo authorisation on July 17, 2026, the first approval for intraoperative use with Apple Vision Pro; the inaugural case was performed by Duke Health orthopaedic surgeon Chad Mather III, with the indication limited to hip arthroscopy for FAI and labral repair (<a href="https://www.stryker.com/us/en/about/news/2026/stryker-introduces-first-of-its-kind-fda-authorized-surgical-application-for-apple-vision-pro-with-hip-arthroscopy-case.html" target="_blank" rel="noopener">Stryker, 2026-09-01</a>; <a href="https://www.statnews.com/2026/09/01/fda-stryker-surgical-cockpit-apple-vr-headset-health-tech/" target="_blank" rel="noopener">STAT, 2026-09-01</a>).</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">De Novo 而非 510(k) 意味著 FDA 找不到可比對的既有裝置，因此為這一類「術中頭戴顯示」建立了新的分類與特別控制——之後跟進的產品可以走 510(k)。Mather 醫師的說法點出真正的賣點不是沉浸感而是人因：「空間運算讓我能依自己的工作流程自訂關鍵臨床資訊的擺放位置，並在無菌區內取用。」這是消費級硬體第一次以主要顯示介面的身分進入無菌區。</span>
-        <span class="en">De Novo rather than 510(k) means the FDA found no comparable predicate, so this creates a new classification and special controls for intraoperative head-mounted displays — later entrants can follow via 510(k). Dr Mather's account points to ergonomics rather than immersion as the real value: "spatial computing enabled me to customize the placement of key clinical information to fit my workflow and access it within the sterile field." This is the first time consumer hardware has entered the sterile field as the primary display.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">Stryker 的發布中沒有提到任何 AI 成分——這是一套顯示與整合系統，不是自動判讀。首例的執刀醫師同時是 Stryker 顧問，且目前僅有單一案例，沒有手術時間、併發症或學習曲線的對照數據。STAT 該篇多數內容位於付費牆後，本則以 Stryker 官方新聞稿為主要依據。</span>
-        <span class="en">Stryker's announcement mentions no AI component — this is a display and integration system, not automated interpretation. The surgeon on the first case is also a Stryker consultant, and with a single case there are no comparative data on operative time, complications or learning curve. Most of the STAT piece sits behind a paywall, so this item rests chiefly on Stryker's own press release.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://www.stryker.com/us/en/about/news/2026/stryker-introduces-first-of-its-kind-fda-authorized-surgical-application-for-apple-vision-pro-with-hip-arthroscopy-case.html" target="_blank" rel="noopener">Stryker Newsroom, 2026-09-01</a> ／ <a href="https://www.statnews.com/2026/09/01/fda-stryker-surgical-cockpit-apple-vr-headset-health-tech/" target="_blank" rel="noopener">STAT News, 2026-09-01</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">手術機器人</span><span class="en-inline">Surgical robotics</span></span>
+      <span class="tag hot"><span class="zh-inline">手術機器人</span></span>
       <span class="tag">Medtronic</span><span class="tag">Cornerstone Robotics</span><span class="tag">9/01</span>
     </div>
     <h3>
       <span class="zh">Medtronic 砸 7 億美元買 Sentire 的海外通路：同時養兩套機器人平台，賭的是「連結式手術生態系」而非單一機型</span>
-      <span class="en">Medtronic pays $700M for Sentire's ex-US distribution rights: running two robot platforms at once is a bet on the connected surgical ecosystem, not a single machine</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">Medtronic 於 9 月 1 日宣布投資約 7 億美元，取得香港 Cornerstone Robotics 的 Sentire 手術機器人系統在美國以外、已取得法規許可市場的通路權。Sentire 由該公司自行研發，具雙控制台與沉浸式操作台設計，2026 年 5 月取得 CE 標誌，涵蓋一般外科、婦科、胸腔與泌尿的微創手術，並已在中國與新加坡取得上市許可。Medtronic 自家的 Hugo RAS 已在六大洲逾 35 國使用，預計本會計年度結束前全球手術量將超過 50,000 例，其數位生態系包含即時 AI 與 Touch Surgery 平台（<a href="https://news.medtronic.com/2026-09-01-Medtronic-Announces-Strategic-Partnership-with-Cornerstone-Robotics-to-Further-Expand-Global-Access-to-Robotic-Assisted-Surgery" target="_blank" rel="noopener">Medtronic, 2026-09-01</a>）。</span>
-        <span class="en">Medtronic announced on September 1 an investment of roughly $700 million for distribution rights to Hong Kong-based Cornerstone Robotics' Sentire surgical system in select approved markets outside the United States. Sentire was developed entirely in-house, features dual-console capability and an immersive console design, received CE marking in May 2026 for minimally invasive general, gynaecologic, thoracic and urologic procedures, and holds market approval in China and Singapore. Medtronic's own Hugo RAS operates in more than 35 countries across six continents, with global procedures projected to exceed 50,000 by fiscal year end, and a digital ecosystem that includes real-time AI and the Touch Surgery platform (<a href="https://news.medtronic.com/2026-09-01-Medtronic-Announces-Strategic-Partnership-with-Cornerstone-Robotics-to-Further-Expand-Global-Access-to-Robotic-Assisted-Surgery" target="_blank" rel="noopener">Medtronic, 2026-09-01</a>).</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">手術機器人的價值正在從機械臂本身轉移到它產生的資料：每一台上線的機器都是連續的手術影片與器械軌跡來源，而這正是訓練手術 AI 唯一難以取代的語料。Medtronic 同時經營 Hugo 與 Sentire 兩條產品線，等於用通路換資料規模，對照 Intuitive Surgical 的單一平台策略——這是達文西體系之外，第二個具備跨機型資料匯流可能性的玩家。Medtronic 外科事業資深副總 Matt Anderson 表示，「外科醫師、健康系統與市場的需求與偏好各不相同」，需要跨臨床場景的彈性方案。</span>
-        <span class="en">Value in surgical robotics is migrating from the arm to the data it generates: every installed system is a continuous source of operative video and instrument kinematics, which is the one training corpus for surgical AI that cannot easily be substituted. By running Hugo and Sentire together, Medtronic trades distribution for data scale, in contrast to Intuitive Surgical's single-platform strategy — making it the second player outside the da Vinci franchise with a plausible path to pooling data across machine types. Matt Anderson, senior vice president of Medtronic's surgical division, said "surgeons, health systems and markets have varying needs and preferences," calling for flexibility across clinical settings.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">新聞稿沒有說明 Sentire 產生的手術資料是否納入 Medtronic 的數位生態系，也未揭露 7 億美元中股權與通路權的分配、Sentire 的裝機量或手術量。50,000 例是 Hugo 的預測值而非已實現數字。</span>
-        <span class="en">The release does not say whether data generated by Sentire feeds Medtronic's digital ecosystem, nor how the $700 million splits between equity and distribution rights, nor Sentire's installed base or procedure volume. The 50,000 figure is a Hugo projection, not a realised number.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://news.medtronic.com/2026-09-01-Medtronic-Announces-Strategic-Partnership-with-Cornerstone-Robotics-to-Further-Expand-Global-Access-to-Robotic-Assisted-Surgery" target="_blank" rel="noopener">Medtronic Newsroom, 2026-09-01</a> ／ <a href="https://www.mobihealthnews.com/news/medtronic-invests-700m-cornerstone-robotics" target="_blank" rel="noopener">MobiHealthNews, 2026-09-01</a></p></div>
   </div>
 </section>
@@ -281,52 +252,43 @@
   <h2>02 — Product Analysis</h2>
   <div class="sec-title">
     <span class="zh">同一週發表的兩個模型，代表了「推理該放在哪裡」的兩條相反路線——這個選擇會直接決定醫療能不能用</span>
-    <span class="en">Two models shipped in the same week embody opposite answers to where reasoning should live — and that choice decides whether medicine can use them</span>
   </div>
 
   <div class="grid2">
     <div class="panel">
       <h3>OpenAI Astra</h3>
-      <p class="sub"><span class="zh-inline">把推理折進潛在空間的前沿模型 · OpenAI（美國）</span><span class="en-inline">A frontier model that folds reasoning into latent space · OpenAI (US)</span></p>
+      <p class="sub"><span class="zh-inline">把推理折進潛在空間的前沿模型 · OpenAI（美國）</span></p>
       <p>
         <span class="zh"><strong>功能與定位。</strong>Astra 被定位為能處理長時程、複雜問題的模型家族，透過多個 agent 協同運作數小時到數天。8 月 6 日公布的十道未解數學問題解法全部以 Lean 形式化、API 成本約 2,000 美元，數學家 Thomas Bloom 稱其結果「比五月那個單位距離猜想的反例更重要」（<a href="https://the-decoder.com/openai-announces-its-next-major-model-astra-by-dropping-ten-previously-unsolved-math-solutions/" target="_blank" rel="noopener">The Decoder</a>）。目前尚未正式開放，究竟命名為 GPT-6 或 GPT-5 變體也未定案。</span>
-        <span class="en"><strong>Function and position.</strong> Astra is positioned as a model family for long-horizon, complex problems, coordinating multiple agents over hours or days. The ten previously unsolved mathematical results published on August 6 were all formalised in Lean at roughly $2,000 in API tokens, and mathematician Thomas Bloom called them "more significant than the counterexample to the unit distance conjecture published in May" (<a href="https://the-decoder.com/openai-announces-its-next-major-model-astra-by-dropping-ten-previously-unsolved-math-solutions/" target="_blank" rel="noopener">The Decoder</a>). It is not yet generally available, and whether it ships as GPT-6 or a GPT-5 variant remains undecided.</span>
       </p>
       <ul class="clean">
-        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+        <li><span class="pro"><span class="zh-inline">優勢</span></span>
           <span class="zh">：能力上限確實推進了——ExploitBench 滿分、自主挖出兩個 zero-day、十道長年未解數學問題（<a href="https://techcrunch.com/2026/09/01/open-ais-astra-model-is-on-the-way-and-very-good-at-breaking-into-computer-systems/" target="_blank" rel="noopener">TechCrunch</a>）。以遞迴深度重複使用同一層而非堆疊新層，理論上能在不增加參數量的前提下換取更深的有效計算。</span>
-          <span class="en">: the capability ceiling genuinely moved — a perfect ExploitBench score, two self-found zero-days, ten long-unsolved mathematical problems (<a href="https://techcrunch.com/2026/09/01/open-ais-astra-model-is-on-the-way-and-very-good-at-breaking-into-computer-systems/" target="_blank" rel="noopener">TechCrunch</a>). Reusing one layer stack via recurrent depth, rather than stacking new layers, buys deeper effective computation without adding parameters.</span>
         </li>
-        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+        <li><span class="con"><span class="zh-inline">疑慮</span></span>
           <span class="zh">：醫療部署要的是可稽核的推理軌跡——衛福部的生成式 AI 指引與 FDA 的透明度要求都預設模型能解釋自己。若推理有一部分只存在於隱藏狀態，「留下紀錄」這件事在技術上就變得困難。而且目前沒有官方技術報告可以核對這一點：連「Astra 到底是不是這樣運作」都還是社群推論。</span>
-          <span class="en">: clinical deployment needs an auditable reasoning trace — Taiwan's MOHW generative AI guidance and the FDA's transparency expectations both assume a model can account for itself. If part of the reasoning exists only in hidden state, keeping a record becomes technically hard. And there is no official technical report to check any of this against: even whether Astra works this way remains community inference.</span>
         </li>
-        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+        <li><span class="con"><span class="zh-inline">疑慮</span></span>
           <span class="zh">：資安研究者 Yona Shavit 質疑，Astra 拒絕突破容器限制究竟反映真實的安全對齊，還是刻意的欺瞞；OpenAI 的安全宣稱目前缺乏獨立第三方驗證，與政府的合作狀態也不明（<a href="https://techcrunch.com/2026/09/01/open-ais-astra-model-is-on-the-way-and-very-good-at-breaking-into-computer-systems/" target="_blank" rel="noopener">TechCrunch</a>）。</span>
-          <span class="en">: security researcher Yona Shavit questions whether Astra's refusal to break containment reflects genuine alignment or deliberate deception; OpenAI's safety claims lack independent third-party verification, and the status of any government collaboration is unclear (<a href="https://techcrunch.com/2026/09/01/open-ais-astra-model-is-on-the-way-and-very-good-at-breaking-into-computer-systems/" target="_blank" rel="noopener">TechCrunch</a>).</span>
         </li>
       </ul>
     </div>
 
     <div class="panel">
       <h3>Gemini 3.8 Flash / Flash Cyber</h3>
-      <p class="sub"><span class="zh-inline">把顯性推理做便宜的量產模型 · Google DeepMind（美國）</span><span class="en-inline">Volume models that make explicit reasoning cheap · Google DeepMind (US)</span></p>
+      <p class="sub"><span class="zh-inline">把顯性推理做便宜的量產模型 · Google DeepMind（美國）</span></p>
       <p>
         <span class="zh"><strong>功能與定位。</strong>Flash 系列走的是可負擔的前沿：智慧指數 59、100 萬 token 脈絡、三段推理強度（高／中／低），高推理下每任務 2.5 分鐘、低推理 0.8 分鐘，讓部署者自己在成本與品質之間調閥門（<a href="https://artificialanalysis.ai/articles/gemini-3-8-flash" target="_blank" rel="noopener">Artificial Analysis, 2026-09-02</a>）。Flash Cyber 則把資安能力做成獨立、公開販售的變體。</span>
-        <span class="en"><strong>Function and position.</strong> The Flash line pursues affordable frontier performance: an intelligence index of 59, a 1M-token context, and three reasoning levels (high/medium/low) at 2.5 minutes per task on high and 0.8 on low, letting the deployer set the dial between cost and quality (<a href="https://artificialanalysis.ai/articles/gemini-3-8-flash" target="_blank" rel="noopener">Artificial Analysis, 2026-09-02</a>). Flash Cyber packages the security capability as a separate, openly sold variant.</span>
       </p>
       <ul class="clean">
-        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+        <li><span class="pro"><span class="zh-inline">優勢</span></span>
           <span class="zh">：可調推理強度對醫療是被低估的功能——分診跑低推理、疑難個案跑高推理，同一套 API 就能做到成本分層。折扣價 0.75／3.75 美元讓全院級部署第一次進入預算可行區間（<a href="https://artificialanalysis.ai/articles/gemini-3-8-flash" target="_blank" rel="noopener">Artificial Analysis</a>）。</span>
-          <span class="en">: adjustable reasoning depth is an underrated feature for medicine — low for triage, high for hard cases, cost tiering through one API. At the discounted $0.75/$3.75, hospital-wide deployment enters budget range for the first time (<a href="https://artificialanalysis.ai/articles/gemini-3-8-flash" target="_blank" rel="noopener">Artificial Analysis</a>).</span>
         </li>
-        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+        <li><span class="pro"><span class="zh-inline">優勢</span></span>
           <span class="zh">：Flash Cyber 在 CyberGym 的 C/C++ 漏洞偵測得 86.2%、DeepSWE-1.1 得 73.7%，16 項測試中 9 項勝過 Claude Opus 5 與 GPT-5.6 Sol（<a href="https://siliconangle.com/2026/09/02/google-launches-two-gemini-3-8-models-with-cutting-edge-reasoning-capabilities/" target="_blank" rel="noopener">SiliconANGLE</a>）。醫療器材軟體大量是 C/C++ 遺留碼，這正好是能直接派上用場的能力。</span>
-          <span class="en">: Flash Cyber scores 86.2% on CyberGym C/C++ vulnerability detection and 73.7% on DeepSWE-1.1, beating Claude Opus 5 and GPT-5.6 Sol on 9 of 16 tests (<a href="https://siliconangle.com/2026/09/02/google-launches-two-gemini-3-8-models-with-cutting-edge-reasoning-capabilities/" target="_blank" rel="noopener">SiliconANGLE</a>). Medical device software is heavily legacy C/C++, which makes this immediately applicable.</span>
         </li>
-        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+        <li><span class="con"><span class="zh-inline">疑慮</span></span>
           <span class="zh">：這次發布完全沒有醫療 benchmark。四個月四款 Flash 模型的節奏對醫院是負擔而非優點——每次換版都需要重新驗證，而衛福部指引要求的臨床安全驗證與相容性測試並不能跟著三週一次的發布節奏跑。折扣價年底到期後成本翻倍，也應納入採購評估。</span>
-          <span class="en">: the release carries no medical benchmarks at all. Four Flash models in four months is a burden rather than a benefit for hospitals — every version change demands revalidation, and the clinical safety validation and compatibility testing Taiwan's MOHW guidance requires cannot run on a three-week release cadence. Procurement should also price in the doubling when the discount expires at year end.</span>
         </li>
       </ul>
     </div>
@@ -335,7 +297,6 @@
   <div class="panel">
     <p>
       <span class="zh"><strong>對比在哪。</strong>Astra 把算力藏進潛在空間換取能力上限，Gemini 把算力攤在便宜的 token 上換取可負擔與可觀察。醫療目前買得起、也審得動的是後者；而前者代表的方向，會讓「模型必須能解釋自己」這條監管前提在技術上愈來愈難成立。</span>
-      <span class="en"><strong>Where the contrast lies.</strong> Astra buys ceiling by hiding computation in latent space; Gemini buys affordability and observability by spreading computation over cheap tokens. What medicine can currently both afford and audit is the latter — while the direction the former represents makes the regulatory premise that a model must be able to explain itself progressively harder to satisfy in engineering terms.</span>
     </p>
   </div>
 </section>
@@ -344,92 +305,77 @@
   <h2>03 — Companies &amp; Competition</h2>
   <div class="sec-title">
     <span class="zh">誰站在哪裡、憑什麼、跟誰打</span>
-    <span class="en">Who stands where, on what, against whom</span>
   </div>
 
   <div class="tbl-wrap">
     <table>
       <thead><tr>
-        <th><span class="zh-inline">公司</span><span class="en-inline">Company</span></th>
-        <th><span class="zh-inline">近況與數字</span><span class="en-inline">Recent state &amp; numbers</span></th>
-        <th><span class="zh-inline">競爭定位與護城河</span><span class="en-inline">Position &amp; moat</span></th>
+        <th><span class="zh-inline">公司</span></th>
+        <th><span class="zh-inline">近況與數字</span></th>
+        <th><span class="zh-inline">競爭定位與護城河</span></th>
       </tr></thead>
       <tbody>
         <tr>
-          <td><strong>OpenAI</strong><br><span class="zh-inline">前沿能力的定義者</span><span class="en-inline">Definer of the capability frontier</span></td>
+          <td><strong>OpenAI</strong><br><span class="zh-inline">前沿能力的定義者</span></td>
           <td>
             <span class="zh">Astra 8/01 公布、8/06 補上十道未解數學題解法（Lean 形式化、約 2,000 美元 API 成本）；9/01 確認為首個跨過關鍵資安門檻的模型，ExploitBench 滿分（<a href="https://techcrunch.com/2026/09/01/open-ais-astra-model-is-on-the-way-and-very-good-at-breaking-into-computer-systems/" target="_blank" rel="noopener">TechCrunch, 2026-09-01</a>）。</span>
-            <span class="en">Astra announced 8/01, with ten unsolved mathematical results added 8/06 (formalised in Lean, ~$2,000 of API tokens); on 9/01 confirmed as the first model past the critical cybersecurity threshold with a perfect ExploitBench score (<a href="https://techcrunch.com/2026/09/01/open-ais-astra-model-is-on-the-way-and-very-good-at-breaking-into-computer-systems/" target="_blank" rel="noopener">TechCrunch, 2026-09-01</a>).</span>
           </td>
           <td>
             <span class="zh">護城河是能力領先與研究品牌。弱點在透明度：沒有技術報告、沒有第三方稽核、能力愈強愈需要限制存取，而限制存取本身壓縮了醫療這種需要完整審查的市場。</span>
-            <span class="en">The moat is capability lead and research brand. The weakness is transparency: no technical report, no third-party audit, and the stronger the capability the more access must be restricted — which squeezes out markets like medicine that require full inspection.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>Google DeepMind</strong><br><span class="zh-inline">價格與部署規模的施壓者</span><span class="en-inline">The one applying price and scale pressure</span></td>
+          <td><strong>Google DeepMind</strong><br><span class="zh-inline">價格與部署規模的施壓者</span></td>
           <td>
             <span class="zh">9/02 同日推出 Gemini 3.8 Flash（智慧指數 59、1M 脈絡、折扣價 0.75／3.75 美元）與 Flash Cyber（CyberGym 86.2%）；四個月內第四款 Flash（<a href="https://artificialanalysis.ai/articles/gemini-3-8-flash" target="_blank" rel="noopener">Artificial Analysis, 2026-09-02</a>）。醫療側另有 MedGemma 1.5 開放權重系列（2026-01-13，4B 多模態，MedQA 69.1%、EHR 理解 89.6%）（<a href="https://developers.google.com/health-ai-developer-foundations/medgemma/model-card" target="_blank" rel="noopener">Google HAI-DEF</a>）。</span>
-            <span class="en">Shipped Gemini 3.8 Flash (index 59, 1M context, discounted $0.75/$3.75) and Flash Cyber (86.2% on CyberGym) on 9/02 — its fourth Flash model in four months (<a href="https://artificialanalysis.ai/articles/gemini-3-8-flash" target="_blank" rel="noopener">Artificial Analysis, 2026-09-02</a>). On the clinical side it also holds the open-weight MedGemma 1.5 line (2026-01-13, 4B multimodal, 69.1% MedQA, 89.6% EHR understanding) (<a href="https://developers.google.com/health-ai-developer-foundations/medgemma/model-card" target="_blank" rel="noopener">Google HAI-DEF</a>).</span>
           </td>
           <td>
             <span class="zh">唯一同時握有前沿通用模型與開放權重醫療模型的玩家，可以讓醫院用 MedGemma 在院內做敏感資料、用 Flash 做規模化任務。弱點是發布節奏太快，與醫院的驗證週期嚴重錯拍。</span>
-            <span class="en">The only player holding both a frontier general model and open-weight medical models, letting hospitals run MedGemma on sensitive data in-house and Flash for volume work. The weakness is a release cadence badly out of phase with hospital validation cycles.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>GE HealthCare</strong><br><span class="zh-inline">影像硬體與 AI 軟體雙線</span><span class="en-inline">Imaging hardware plus AI software</span></td>
+          <td><strong>GE HealthCare</strong><br><span class="zh-inline">影像硬體與 AI 軟體雙線</span></td>
           <td>
             <span class="zh">Photonova Spectra 光子計數 CT 於 8/31 取得 CE 標誌，2026 年 3 月已有 FDA 510(k) 與日本許可（<a href="https://www.mobihealthnews.com/news/ge-healthcare-secures-ce-mark-its-photonova-spectra-technology" target="_blank" rel="noopener">MobiHealthNews, 2026-08-31</a>）。放療側的 MIM Contour ProtégéAI+ 2.0 已於 2026-06-08 取得含 PCCP 的 FDA 510(k)（<a href="https://www.appliedradiationoncology.com/articles/fda-clears-ge-healthcare-s-mim-contour-protegeai-2-0-for-advanced-cancer-treatment-planning" target="_blank" rel="noopener">Applied Radiation Oncology</a>）。</span>
-            <span class="en">Photonova Spectra photon-counting CT received CE marking on 8/31, having held FDA 510(k) clearance and Japanese approval since March 2026 (<a href="https://www.mobihealthnews.com/news/ge-healthcare-secures-ce-mark-its-photonova-spectra-technology" target="_blank" rel="noopener">MobiHealthNews, 2026-08-31</a>). On the radiotherapy side, MIM Contour ProtégéAI+ 2.0 gained FDA 510(k) clearance with a PCCP on 2026-06-08 (<a href="https://www.appliedradiationoncology.com/articles/fda-clears-ge-healthcare-s-mim-contour-protegeai-2-0-for-advanced-cancer-treatment-planning" target="_blank" rel="noopener">Applied Radiation Oncology</a>).</span>
           </td>
           <td>
             <span class="zh">護城河是掌握資料的產生端：偵測器決定影像 AI 的輸入格式，PCCP 則讓模型更新不必每次重送 510(k)。對手是 Siemens Healthineers 的 Naeotom 光子計數平台與 Philips。弱點是硬體換機週期以年計，軟體對手迭代以週計。</span>
-            <span class="en">The moat is owning where data is generated: the detector defines the input format for imaging AI, and a PCCP lets models update without a fresh 510(k) each time. Rivals are Siemens Healthineers' Naeotom photon-counting platform and Philips. The weakness is a hardware replacement cycle measured in years against software rivals iterating weekly.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>Stryker</strong><br><span class="zh-inline">把消費級硬體帶進無菌區</span><span class="en-inline">Bringing consumer hardware into the sterile field</span></td>
+          <td><strong>Stryker</strong><br><span class="zh-inline">把消費級硬體帶進無菌區</span></td>
           <td>
             <span class="zh">SportSuite Vision 於 2026-07-17 取得 FDA De Novo 授權，9/01 在杜克健康完成首例髖關節鏡手術，整合 HipCheck、HipMap FAI 分析與 CT（<a href="https://www.stryker.com/us/en/about/news/2026/stryker-introduces-first-of-its-kind-fda-authorized-surgical-application-for-apple-vision-pro-with-hip-arthroscopy-case.html" target="_blank" rel="noopener">Stryker, 2026-09-01</a>）。</span>
-            <span class="en">SportSuite Vision received FDA De Novo authorisation on 2026-07-17 and completed its first hip arthroscopy at Duke Health on 9/01, integrating HipCheck, HipMap FAI analysis and CT (<a href="https://www.stryker.com/us/en/about/news/2026/stryker-introduces-first-of-its-kind-fda-authorized-surgical-application-for-apple-vision-pro-with-hip-arthroscopy-case.html" target="_blank" rel="noopener">Stryker, 2026-09-01</a>).</span>
           </td>
           <td>
             <span class="zh">護城河是 De Novo 建立的新分類與先發者身分，加上既有骨科植入物與器械通路。弱點是把核心體驗綁在單一消費電子平台上，且目前完全沒有 AI 成分——這是顯示層創新，不是判讀層。</span>
-            <span class="en">The moat is the new classification its De Novo creates plus first-mover status, layered on an existing orthopaedic implant and instrument channel. The weakness is tying the core experience to a single consumer electronics platform — and the absence of any AI component: this is display-layer innovation, not interpretation.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>Medtronic</strong><br><span class="zh-inline">用通路換手術資料規模</span><span class="en-inline">Trading distribution for surgical data scale</span></td>
+          <td><strong>Medtronic</strong><br><span class="zh-inline">用通路換手術資料規模</span></td>
           <td>
             <span class="zh">9/01 宣布投入約 7 億美元取得 Cornerstone Robotics 的 Sentire 海外通路權；自有 Hugo RAS 已在 35 國以上使用，預計本會計年度全球手術量逾 50,000 例（<a href="https://news.medtronic.com/2026-09-01-Medtronic-Announces-Strategic-Partnership-with-Cornerstone-Robotics-to-Further-Expand-Global-Access-to-Robotic-Assisted-Surgery" target="_blank" rel="noopener">Medtronic, 2026-09-01</a>）。</span>
-            <span class="en">Announced roughly $700 million on 9/01 for ex-US distribution rights to Cornerstone Robotics' Sentire; its own Hugo RAS is in more than 35 countries, with global procedures projected to exceed 50,000 this fiscal year (<a href="https://news.medtronic.com/2026-09-01-Medtronic-Announces-Strategic-Partnership-with-Cornerstone-Robotics-to-Further-Expand-Global-Access-to-Robotic-Assisted-Surgery" target="_blank" rel="noopener">Medtronic, 2026-09-01</a>).</span>
           </td>
           <td>
             <span class="zh">雙平台策略讓它同時吃高階與價格敏感市場，Touch Surgery 生態系是資料匯流點。對手是 Intuitive Surgical 的達文西裝機基數。弱點是兩套平台的資料是否互通尚未說明，若不互通，通路優勢就換不到 AI 訓練優勢。</span>
-            <span class="en">A two-platform strategy covers both premium and price-sensitive markets, with the Touch Surgery ecosystem as the data confluence. The rival is Intuitive Surgical's installed da Vinci base. The weakness: whether the two platforms' data interoperate is unstated — and if they do not, the distribution advantage never converts into a training-data advantage.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>Cornerstone Robotics</strong><br><span class="zh-inline">香港自研手術機器人</span><span class="en-inline">Hong Kong's in-house surgical robot</span></td>
+          <td><strong>Cornerstone Robotics</strong><br><span class="zh-inline">香港自研手術機器人</span></td>
           <td>
             <span class="zh">Sentire 全部自行研發，雙控制台設計，2026 年 5 月取得 CE 標誌，已在中國與新加坡取得許可；公司設有三個全球研發中心與六個業務據點（<a href="https://news.medtronic.com/2026-09-01-Medtronic-Announces-Strategic-Partnership-with-Cornerstone-Robotics-to-Further-Expand-Global-Access-to-Robotic-Assisted-Surgery" target="_blank" rel="noopener">Medtronic, 2026-09-01</a>）。</span>
-            <span class="en">Sentire was developed entirely in-house with a dual-console design, received CE marking in May 2026 and holds approvals in China and Singapore; the company runs three global R&amp;D hubs and six business centres (<a href="https://news.medtronic.com/2026-09-01-Medtronic-Announces-Strategic-Partnership-with-Cornerstone-Robotics-to-Further-Expand-Global-Access-to-Robotic-Assisted-Surgery" target="_blank" rel="noopener">Medtronic, 2026-09-01</a>).</span>
           </td>
           <td>
             <span class="zh">護城河是亞洲市場的法規進度與成本結構，加上與 Medtronic 綁定後取得的全球通路。弱點是把海外通路交給一家同時賣自家競品的公司，長期議價能力受限。</span>
-            <span class="en">The moat is regulatory progress and cost structure in Asian markets, plus global distribution acquired through the Medtronic tie-up. The weakness is handing ex-US distribution to a company that simultaneously sells a competing platform of its own, which caps long-run bargaining power.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>Elucid</strong><br><span class="zh-inline">心血管斑塊 AI 分析</span><span class="en-inline">AI plaque characterisation in cardiovascular imaging</span></td>
+          <td><strong>Elucid</strong><br><span class="zh-inline">心血管斑塊 AI 分析</span></td>
           <td>
             <span class="zh">9/02 宣布完成 5,500 萬美元 D 輪、累計募資約 1.85 億美元，投資人包含一家未具名的大型上市醫材公司、IAG Capital Partners 與 Elevage Medical Technologies；Plaque-IQ 已取得 FDA 許可，FFR-CT 版本仍在審查中（<a href="https://www.mobihealthnews.com/news/elucid-raises-55m-ai-cardiovascular-imaging-software" target="_blank" rel="noopener">MobiHealthNews, 2026-09-02</a>）。</span>
-            <span class="en">Announced a $55M Series D on 9/02, taking total funding to about $185M, with investors including an unnamed large public medtech company, IAG Capital Partners and Elevage Medical Technologies; Plaque-IQ is FDA cleared while its FFR-CT version remains under review (<a href="https://www.mobihealthnews.com/news/elucid-raises-55m-ai-cardiovascular-imaging-software" target="_blank" rel="noopener">MobiHealthNews, 2026-09-02</a>).</span>
           </td>
           <td>
             <span class="zh">與本日主線的關聯在於：斑塊組成分析正是光子計數 CT 能譜資料最能發揮的應用之一。護城河是 FDA 許可與 CT 血管攝影的既有工作流嵌入，對手是 HeartFlow 與 Cleerly。未揭露臨床結果數據是明顯缺口。</span>
-            <span class="en">Its link to today's through-line: plaque composition analysis is one of the applications spectral photon-counting data most directly enables. The moat is FDA clearance and embedding in existing CT angiography workflows, against HeartFlow and Cleerly. The absence of disclosed outcome data is a conspicuous gap.</span>
           </td>
         </tr>
       </tbody>
@@ -439,7 +385,6 @@
   <div class="panel">
     <p>
       <span class="zh"><strong>今天的競爭結構是一個上下分層、而非左右對打的形狀。</strong>模型層（OpenAI、Google）在爭誰定義「推理」該長什麼樣子，硬體層（GE、Stryker、Medtronic、Cornerstone）在爭誰擁有資料的產生端。真正稀缺的既不是參數也不是機械臂，而是「能被監理機關檢查的推理紀錄」與「能拿去訓練的真實臨床資料流」——今天七則消息裡，沒有任何一家同時握有這兩者。</span>
-      <span class="en"><strong>Today's competitive structure is stacked, not head-to-head.</strong> The model layer (OpenAI, Google) is fighting over what "reasoning" should look like; the hardware layer (GE, Stryker, Medtronic, Cornerstone) is fighting over who owns the point where data is generated. What is genuinely scarce is neither parameters nor robotic arms but an auditable reasoning record on one side and a real clinical data stream fit for training on the other — and across today's seven items, no single company holds both.</span>
     </p>
   </div>
 </section>
@@ -448,21 +393,17 @@
   <h2>04 — Taiwan Angle</h2>
   <div class="sec-title">
     <span class="zh">衛福部五月訂的六大風險，這一週被國際消息逐條打中</span>
-    <span class="en">The six risks Taiwan's MOHW named in May were hit one by one this week</span>
   </div>
 
   <div class="panel">
     <p>
       <span class="zh"><strong>(1) 幻覺與提示詞注入不再是抽象條文。</strong>衛福部於 2026 年 5 月 29 日發布《醫療機構應用生成式人工智慧指引》，明列六大風險，其中「AI 幻覺產生錯誤資訊」與「提示詞注入攻擊威脅資安」兩項，這一週各自有了具體數字：BCI 論文量出 28.4% 的高信心輸出不忠實（幻覺），Astra 則證明模型已能自主找出並利用 zero-day（資安）。指引屬建議性質而非強制，九項要點涵蓋事前責任分派與資料可靠性評估、導入期與電子病歷及影像系統的相容性測試與臨床安全驗證，以及事後由醫事人員保留最終決策權、監控輸出品質、建立偏誤管理並告知病人 AI 參與診療（<a href="https://news.gbimonthly.com/tw/article/show.php?num=87116" target="_blank" rel="noopener">環球生技月刊</a>）。</span>
-      <span class="en"><strong>(1) Hallucination and prompt injection stopped being abstract clauses.</strong> On May 29, 2026, Taiwan's Ministry of Health and Welfare issued its guidance on generative AI in medical institutions, naming six risks — two of which, "AI hallucination producing false information" and "prompt injection attacks threatening cybersecurity," acquired concrete numbers this week: the BCI paper measured 28.4% of high-confidence outputs as unfaithful, and Astra demonstrated a model finding and exploiting zero-days on its own. The guidance is advisory rather than binding; its nine requirements span pre-deployment assignment of responsibility and data reliability assessment, integration-phase compatibility testing against EHR and imaging systems plus clinical safety validation, and post-deployment retention of final clinical authority by medical professionals, output quality monitoring, bias management and informing patients when AI participates in their care (<a href="https://news.gbimonthly.com/tw/article/show.php?num=87116" target="_blank" rel="noopener">GlobalBio Monthly</a>).</span>
     </p>
     <p>
       <span class="zh"><strong>(2) 三大 AI 中心的分工，正好對應今天三類消息缺的東西。</strong>衛福部設有負責任 AI 執行中心、臨床 AI 取證驗證中心（以 FHIR 串接跨院資料並建立聯邦學習平台）與 AI 影響性研究中心（做健康經濟分析與健保給付試算）（<a href="https://aicenter.mohw.gov.tw/" target="_blank" rel="noopener">臺灣智慧醫療三大中心</a>）。以今天的案例對照：ScreenAgent 這類 agent 缺的是取證驗證中心該做的外部驗證，Gemini 3.8 Flash 缺的是影響性研究中心該算的成本效益，而 Astra 缺的則是負責任 AI 執行中心那套「定期評估、走完資料科學循環」的可稽核性——三件事分屬三個中心，但目前沒有任何一個中心的流程是為「三週換一次模型版本」設計的。</span>
-      <span class="en"><strong>(2) The three MOHW AI centres map neatly onto what each of today's stories is missing.</strong> Taiwan operates a Center for Responsible AI in Healthcare, a Center for External AI Validation in Healthcare (linking cross-hospital data via FHIR and running a federated learning platform) and a Center for Clinical AI Impact Evaluation (health economics analysis and National Health Insurance pricing) (<a href="https://aicenter.mohw.gov.tw/" target="_blank" rel="noopener">Taiwan's three smart healthcare centres</a>). Line today's cases up against them: an agent like ScreenAgent lacks the external validation the second centre exists to perform; Gemini 3.8 Flash lacks the cost-effectiveness analysis the third would run; and Astra lacks exactly the auditability — regular evaluation, a completed data science cycle — that the first is built around. Three gaps, three centres, and not one of their processes was designed for a model version that changes every three weeks.</span>
     </p>
     <p>
       <span class="zh"><strong>(3) 光子計數 CT 是台灣醫院最快會遇到的採購決策。</strong>Photonova Spectra 已集齊 FDA、日本與 CE 三地許可，進入台灣市場只是時間問題。但這裡有一個容易被忽略的連帶成本：能譜資料的格式與傳統 CT 不同，醫院現有的、以傳統 CT 影像訓練與驗證的院內 AI 模型，並不能直接套用在新機器的輸出上。換句話說，買一台光子計數 CT 同時等於讓一批已通過驗證的院內模型需要重新驗證——這筆帳應該在採購評估階段就算進去，而不是等到臨床 AI 取證驗證中心的隊伍排起來才發現。</span>
-      <span class="en"><strong>(3) Photon-counting CT is the procurement decision Taiwanese hospitals will face soonest.</strong> With FDA, Japanese and CE approvals all in hand, Photonova Spectra reaching Taiwan is a matter of timing. But there is an easily overlooked knock-on cost: spectral data is not formatted like conventional CT, so the in-house AI models a hospital has already trained and validated on conventional CT images cannot simply be pointed at the new scanner's output. Buying a photon-counting CT therefore also means sending a batch of already-validated in-house models back for revalidation — a cost that belongs in the procurement assessment, not discovered once the queue at the external validation centre has formed.</span>
     </p>
   </div>
 </section>
@@ -471,29 +412,28 @@
   <h2>05 — Further Reading</h2>
   <div class="sec-title">
     <span class="zh">選的是能撐過本週新聞週期的東西：一篇原始論文、兩個大規模臨床基礎模型、一篇技術澄清</span>
-    <span class="en">Chosen to outlast this week's news cycle: one primary paper, two large-scale clinical foundation models, and one piece of technical clarification</span>
   </div>
 
   <ol class="reading">
     <li>
       <a href="https://www.medrxiv.org/content/10.64898/2026.08.20.26360939v1" target="_blank" rel="noopener">Intent Drift in LLM-Assisted BCI Communication: An In-Silico Benchmark Under Simulated Decoder Corruption — medRxiv (2026-08-27)</a>
-      <p class="why"><span class="zh">今天唯一一篇該讀原文的：它把「信心值不能當閘門」這件事測到可以放進部署規範的程度，方法本身也可直接移植到 ambient scribe 的忠實度評估。</span><span class="en">The one item today worth reading in full: it measures "confidence scores cannot serve as a gate" to a precision you could write into a deployment spec, and the method transfers directly to faithfulness evaluation for ambient scribes.</span></p>
+      <p class="why"><span class="zh">今天唯一一篇該讀原文的：它把「信心值不能當閘門」這件事測到可以放進部署規範的程度，方法本身也可直接移植到 ambient scribe 的忠實度評估。</span></p>
     </li>
     <li>
       <a href="https://arxiv.org/abs/2604.18570" target="_blank" rel="noopener">Apollo: A multimodal and temporal foundation model for virtual patient representations at healthcare system scale — arXiv (2026-04-20)</a>
-      <p class="why"><span class="zh">Faisal Mahmood 團隊以 720 萬名病人、250 億筆紀錄、28 種模態訓練，在 140 萬病人與 322 項預測任務上評估。想理解「病歷級基礎模型」規模長什麼樣，這是目前最完整的參照點。</span><span class="en">Faisal Mahmood's group trained on 25 billion records from 7.2 million patients across 28 modalities and evaluated on 1.4 million patients over 322 prediction tasks. The most complete reference point available for what a record-scale foundation model actually looks like.</span></p>
+      <p class="why"><span class="zh">Faisal Mahmood 團隊以 720 萬名病人、250 億筆紀錄、28 種模態訓練，在 140 萬病人與 322 項預測任務上評估。想理解「病歷級基礎模型」規模長什麼樣，這是目前最完整的參照點。</span></p>
     </li>
     <li>
       <a href="https://www.nature.com/articles/s41591-026-04567-4" target="_blank" rel="noopener">Learning from routine health system data builds better neuroimaging AI models — Nature Medicine (2026-07-31)</a>
-      <p class="why"><span class="zh">用 524 萬筆日常臨床 CT／MRI 影像序列訓練的視覺基礎模型，表現勝過以公開網路與醫學資料集訓練者。對「院內雜訊資料是不是負擔」這個常見疑問給了反方向的答案。</span><span class="en">A visual foundation model trained on 5.24 million routine clinical CT and MRI series outperformed models trained on public internet and medical datasets — an answer running against the common assumption that messy in-house data is a liability.</span></p>
+      <p class="why"><span class="zh">用 524 萬筆日常臨床 CT／MRI 影像序列訓練的視覺基礎模型，表現勝過以公開網路與醫學資料集訓練者。對「院內雜訊資料是不是負擔」這個常見疑問給了反方向的答案。</span></p>
     </li>
     <li>
       <a href="https://sebastianraschka.com/blog/2026/openai-astra-looped-transformers.html" target="_blank" rel="noopener">OpenAI Astra and Looped Transformers — Sebastian Raschka (2026-09)</a>
-      <p class="why"><span class="zh">在一片「Astra 藏起了推理」的解讀中，這篇把循環層的機制講清楚並提出反駁。要對本日主線持保留態度，先讀這篇。</span><span class="en">Amid a wave of "Astra is hiding its reasoning" takes, this explains what layer looping actually does and argues the opposite. Read it before accepting today's through-line at face value.</span></p>
+      <p class="why"><span class="zh">在一片「Astra 藏起了推理」的解讀中，這篇把循環層的機制講清楚並提出反駁。要對本日主線持保留態度，先讀這篇。</span></p>
     </li>
     <li>
       <a href="https://developers.google.com/health-ai-developer-foundations/medgemma/model-card" target="_blank" rel="noopener">MedGemma 1.5 model card — Google Health AI Developer Foundations (2026-01-13)</a>
-      <p class="why"><span class="zh">如果本日主線讓你擔心前沿模型的可稽核性，這是可以在院內自行部署、逐項核對 benchmark 的替代路徑；EHR 理解從 67.6% 跳到 89.6% 的那一格特別值得看使用條款。</span><span class="en">If today's through-line makes you uneasy about frontier model auditability, this is the alternative you can deploy in-house and check benchmark by benchmark; the jump in EHR understanding from 67.6% to 89.6% is worth reading alongside the terms of use.</span></p>
+      <p class="why"><span class="zh">如果本日主線讓你擔心前沿模型的可稽核性，這是可以在院內自行部署、逐項核對 benchmark 的替代路徑；EHR 理解從 67.6% 跳到 89.6% 的那一格特別值得看使用條款。</span></p>
     </li>
   </ol>
 </section>
@@ -502,7 +442,6 @@
   <h2>06 — References</h2>
   <div class="sec-title">
     <span class="zh">參考文獻</span>
-    <span class="en">References</span>
   </div>
 
   <div class="panel">
@@ -531,7 +470,6 @@
     </ol>
     <div class="note">
       <span class="zh"><strong>編輯說明：</strong>（1）STAT News 的 Stryker 報導多數內容位於付費牆後，該則主要依據 Stryker 官方新聞稿，付費牆後未見的內容未納入。（2）ScreenAgent 一則我們僅取得 Yesil Science 的二手報導，未能核對 medRxiv 原文，該則所有數字（201,064 筆、855.91 美元、敏感度 97.7%、kappa 0.75）皆以該報導為準，讀者引用前請自行查證原始論文。（3）Astra 的「遞迴深度」架構來自研究社群解讀與二手報導，OpenAI 尚未發布可核對的技術報告；ExploitBench 滿分與兩個 zero-day 為 OpenAI 自述、未經第三方稽核。（4）Gemini 3.8 Flash 的 benchmark 混用 Google 自述與 Artificial Analysis 第三方指數，且無任何醫療任務評測。（5）本期第 4 節引用的衛福部指引發布於 2026-05-29，非本週消息，係作為背景框架引用。（6）GE HealthCare MIM Contour ProtégéAI+ 2.0 的 FDA 許可日期為 2026-06-08，本週僅有二手報導重提，故未列為重點新聞。（7）本日主題為技術突破，Elucid 募資屬產業消息，僅列入公司表作為與光子計數 CT 的技術關聯，未單獨成則。</span>
-      <span class="en"><strong>Editor's note:</strong> (1) Most of the STAT News piece on Stryker sits behind a paywall; that item rests chiefly on Stryker's own release, and paywalled content was not used. (2) For ScreenAgent we obtained only secondary coverage from Yesil Science and could not verify against the medRxiv original — every figure in that item (201,064 records, $855.91, 97.7% sensitivity, kappa 0.75) rests on that report, and readers should check the primary paper before citing. (3) Astra's "recurrent depth" architecture comes from community readings and secondary coverage; OpenAI has published no checkable technical report, and the perfect ExploitBench score and two zero-days are vendor-reported and unaudited. (4) The Gemini 3.8 Flash benchmarks mix Google's own claims with the third-party Artificial Analysis index, and include no medical task evaluation. (5) The MOHW guidance cited in section 4 was issued on 2026-05-29 and is not this week's news; it is used as a background framework. (6) GE HealthCare's MIM Contour ProtégéAI+ 2.0 was cleared on 2026-06-08 and only resurfaced this week in secondary coverage, so it is not carried as a top story. (7) Today's rotation is technology, so Elucid's financing appears only in the company table for its technical link to photon-counting CT rather than as a standalone item.</span>
     </div>
   </div>
 </section>
@@ -540,7 +478,6 @@
   <div class="foot-row">
     <div>
       <span class="zh">AI／醫療AI 每日新知日報 · 由 Claude 於台北時間每日自動產出 · 本期主題：星期四／技術突破<br>本報告內容經來源查證，但不構成投資或醫療建議。所有數據請以原始出處為準。</span>
-      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Thursday / Technology Breakthroughs<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
     </div>
     <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com / 返回 peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
   </div>
@@ -553,16 +490,6 @@
 </div>
 
 <script>
-function setLang(l){
-  document.body.classList.remove('lang-zh','lang-en');
-  document.body.classList.add('lang-'+l);
-  document.documentElement.lang = (l==='zh') ? 'zh-Hant' : 'en';
-  document.getElementById('b-zh').classList.toggle('on', l==='zh');
-  document.getElementById('b-en').classList.toggle('on', l==='en');
-  document.title = (l==='zh')
-    ? 'AI／醫療AI 每日新知日報 · 2026-09-03'
-    : 'AI & Medical AI Daily · 2026-09-03';
-}
 function toggleTheme(){
   document.body.classList.toggle('dark');
   document.getElementById('theme-ic').textContent =
@@ -590,5 +517,6 @@ window.addEventListener('scroll', function(){
     .catch(function(){});
 })();
 </script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/en/reports/2026-09-03.html" hreflang="en" rel="alternate" lang="en">English version</a></p>
 </body>
 </html>
