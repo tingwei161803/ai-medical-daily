@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>AI &amp; Medical AI Daily · 2026-09-04</title>
+<meta property="og:url" content="https://ai-medical-daily.peteraim.com/en/reports/2026-09-04.html" />
+<link rel="canonical" href="https://ai-medical-daily.peteraim.com/en/reports/2026-09-04.html" />
+<link rel="alternate" hreflang="zh-Hant" href="https://ai-medical-daily.peteraim.com/reports/2026-09-04.html" />
+<link rel="alternate" hreflang="en" href="https://ai-medical-daily.peteraim.com/en/reports/2026-09-04.html" />
+<link rel="alternate" hreflang="x-default" href="https://ai-medical-daily.peteraim.com/reports/2026-09-04.html" />
+<meta name="description" content="On Sept 1 OpenAI gave ChatGPT Health read-only access to Epic charts; on Sept 3 OpenEvidence shipped its own clinical model family; on Sept 2 Scan.com raised $220M to automate imaging bookings. Read separately, three product stories. Stacked, a layer war over one chart — and the only layer reliably collecting cash sits outside it.">
+<meta name="report-date" content="2026-09-04">
+<meta name="report-theme" content="product">
+<meta name="report-title-zh" content="同一張病歷疊了三層 AI：OpenAI 把 ChatGPT 接進 Epic 的那一週，OpenEvidence 推出自家模型，而 2.2 億美元流向了沒人搶的預約層">
+<meta name="report-title-en" content="Three AI layers on one chart: the week OpenAI plugged ChatGPT into Epic, OpenEvidence shipped its own models, and $220M went to the layer nobody was fighting over">
+<meta name="report-summary-zh" content="9/1 OpenAI 讓 ChatGPT Health 唯讀接上 Epic 病歷、9/3 OpenEvidence 發表自家臨床模型家族、9/2 Scan.com 用 2.2 億美元把影像預約自動化。拆開看是三則產品新聞，疊起來是同一張病歷上的圖層戰爭——而唯一有錢穩定入帳的那層，不在病歷裡。">
+<meta name="report-summary-en" content="On Sept 1 OpenAI gave ChatGPT Health read-only access to Epic charts; on Sept 3 OpenEvidence shipped its own clinical model family; on Sept 2 Scan.com raised $220M to automate imaging bookings. Read separately, three product stories. Stacked, a layer war over one chart — and the only layer reliably collecting cash sits outside it.">
+<meta property="og:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HJLDQZDK5V');
+</script>
+<link rel="stylesheet" href="/assets/report.css">
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><span>◆</span> <span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <div class="bar-sp"></div>
+    <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
+    <div class="seg">
+      <a href="/reports/2026-09-04.html" hreflang="zh-Hant" lang="zh-Hant" rel="alternate">中文</a>
+      <a class="on" href="/en/reports/2026-09-04.html" hreflang="en" lang="en" aria-current="page">EN</a>
+    </div>
+    <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="kicker">
+    <span class="en-inline">Friday · Product &amp; Company Deep Dive</span>
+  </div>
+  <h1>
+    <span class="en">Three AI layers on one chart: the week OpenAI plugged ChatGPT into Epic, OpenEvidence shipped its own models, and $220M went to the layer nobody was fighting over</span>
+  </h1>
+  <div class="dateline">
+    <span class="en-inline">Friday, September 4, 2026 · Covering Aug 28–Sep 4 · Taipei time</span>
+  </div>
+  <p class="lede">
+    <span class="en">Three things happened this week in the same place: the chart a clinician opens before a visit. On September 1, OpenAI announced ChatGPT Health can pull read-only data from Epic — an EHR covering more than 325 million patients — with UCSF Health the only named pilot so far (<a href="https://techcrunch.com/2026/09/01/chatgpt-health-adds-epic-integration-for-clinicians-to-import-patient-data/" target="_blank" rel="noopener">TechCrunch, 2026-09-01</a>). On September 3, OpenEvidence — valued at $12B and claiming daily use by more than 40% of US physicians — shipped its own family of clinical models (<a href="https://www.statnews.com/2026/09/03/openevidence-launches-new-ai-models-clinicians-health-tech/" target="_blank" rel="noopener">STAT Health Tech, 2026-09-03</a>). And the biggest cheque of the week, on September 2, went to Scan.com for automating imaging <em>bookings</em>: $220M against a $165M annualised run rate that doubled year over year (<a href="https://www.fiercehealthcare.com/finance/scancom-raises-220m-build-largest-medical-imaging-network-us" target="_blank" rel="noopener">Fierce Healthcare, 2026-09-02</a>). Three AI layers land on one workflow, and the hospital paying for all of them buys the same job three times — while the one layer nobody is fighting over, and the one reliably collecting cash, sits outside the chart entirely.</span>
+  </p>
+
+  <nav class="toc">
+    <a href="#top"><span class="en-inline">Top Stories</span></a>
+    <a href="#product"><span class="en-inline">Product Analysis</span></a>
+    <a href="#company"><span class="en-inline">Companies &amp; Competition</span></a>
+    <a href="#taiwan"><span class="en-inline">Taiwan Angle</span></a>
+    <a href="#reading"><span class="en-inline">Further Reading</span></a>
+    <a href="#refs"><span class="en-inline">References</span></a>
+  </nav>
+</div>
+
+<section id="top">
+  <h2>01 — Top Stories</h2>
+  <div class="sec-title">
+    <span class="en">Seven items this week, ordered by how close each sits to the clinician's cursor</span>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Platform</span></span>
+      <span class="tag">OpenAI</span><span class="tag">Epic</span><span class="tag">9/01</span>
+    </div>
+    <h3>
+      <span class="en">OpenAI wires ChatGPT Health into Epic charts: read-only, no write-back, UCSF first</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On September 1 OpenAI announced an Epic connector for ChatGPT Health, letting clinicians import visit notes, lab results, medications and specialist documentation to summarise records, surface changes in history and prepare for appointments. The integration is <strong>read-only</strong>; the AI writes nothing back to the chart. Epic covers more than 325 million patients, and ChatGPT Health — opened to all US consumers only last month — already fields roughly 300 million health-related queries a week (<a href="https://techcrunch.com/2026/09/01/chatgpt-health-adds-epic-integration-for-clinicians-to-import-patient-data/" target="_blank" rel="noopener">TechCrunch, 2026-09-01</a>). UCSF Health is the only named clinical pilot (<a href="https://healthsystemcio.com/2026/09/01/chatgpt-epic-integration-ai-overlap/" target="_blank" rel="noopener">healthsystemCIO, 2026-09-01</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This is the one item this week that sends a hospital CIO straight to a spreadsheet. The same job — pre-visit chart review — is now sold by three vendors at once: Epic's native AI, the ambient documentation vendor deployed two years ago, and now ChatGPT. Three layers on one workflow means duplicate licensing, separate validation processes, and clinicians splitting by preference (<a href="https://healthsystemcio.com/2026/09/01/chatgpt-epic-integration-ai-overlap/" target="_blank" rel="noopener">healthsystemCIO</a>). The governance question is not whether the model is good; it is whether this connection counts as a sanctioned partnership or an ordinary third-party interface — the two clear entirely different approval gates.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">Every safety figure OpenAI cites is self-reported: 99.1% of responses rated safe across 4,363 physician ratings on 27 clinical use cases, with data-connector accuracy of 93.2%–98.6%, none independently audited (<a href="https://healthsystemcio.com/2026/09/01/chatgpt-epic-integration-ai-overlap/" target="_blank" rel="noopener">healthsystemCIO</a>). Meanwhile OpenAI still faces lawsuits alleging its consumer product gave harmful medical advice, including dosing errors (<a href="https://techcrunch.com/2026/09/01/chatgpt-health-adds-epic-integration-for-clinicians-to-import-patient-data/" target="_blank" rel="noopener">TechCrunch</a>). Whether the enterprise path requires a BAA, and how it is walled off from the consumer product, is a question each system must ask for itself.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://techcrunch.com/2026/09/01/chatgpt-health-adds-epic-integration-for-clinicians-to-import-patient-data/" target="_blank" rel="noopener">TechCrunch, 2026-09-01</a> ／ <a href="https://healthsystemcio.com/2026/09/01/chatgpt-epic-integration-ai-overlap/" target="_blank" rel="noopener">healthsystemCIO, 2026-09-01</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Models</span></span>
+      <span class="tag">OpenEvidence</span><span class="tag">9/03</span>
+    </div>
+    <h3>
+      <span class="en">OpenEvidence ships its own clinical model family: from interface-on-someone-else's-model to its own</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">STAT Health Tech reported on September 3 that OpenEvidence has released a new family of clinical AI models. The company closed a $250M Series D in January 2026 at a doubled $12B valuation (<a href="https://www.cnbc.com/2026/01/21/openevidence-chatgpt-for-doctors-doubles-valuation-to-12-billion.html" target="_blank" rel="noopener">CNBC, 2026-01-21</a>; <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/openevidence-clinches-250m-series-d-rapidly-growing-its-reach-doctors" target="_blank" rel="noopener">Fierce Healthcare</a>), and claims daily use by more than 40% of US physicians across 10,000-plus hospitals, with annualised revenue estimated at $300M as of July 2026 (<a href="https://sacra.com/c/openevidence/" target="_blank" rel="noopener">Sacra</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">The timing is not a coincidence. OpenEvidence's moat has always been <strong>content licensing</strong> — the NEJM, JAMA, Wiley, Cochrane, ACC, ADA and NCCN bundle (<a href="https://sacra.com/c/openevidence/" target="_blank" rel="noopener">Sacra</a>) — not the model. With OpenAI walking into the Epic chart carrying its own model, half of the "interface plus licensed corpus" bundle is suddenly exposed. Training your own is how you take the last outsourced piece back in-house, and how you take gross margin back off someone else's API bill.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">The STAT piece sits behind STAT+; this report is written from the publicly visible headline and deck only, and does not have model names, sizes, benchmarks or pricing. OpenEvidence's past capability claims — the perfect USMLE score, for instance — are company-published (<a href="https://www.openevidence.com/announcements/openevidence-creates-the-first-ai-in-history-to-score-a-perfect-100percent-on-the-united-states-medical-licensing-examination-usmle" target="_blank" rel="noopener">OpenEvidence announcement</a>), and no established mapping runs from exam scores to clinical outcomes.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.statnews.com/2026/09/03/openevidence-launches-new-ai-models-clinicians-health-tech/" target="_blank" rel="noopener">STAT Health Tech, 2026-09-03</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Funding</span></span>
+      <span class="tag">Scan.com</span><span class="tag">Noteus Partners</span><span class="tag">9/02</span>
+    </div>
+    <h3>
+      <span class="en">Scan.com raises $220M: 85% of imaging scans are still booked by fax or phone</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On September 2, medical imaging network Scan.com announced $220M: $90M of Series C equity plus $130M in debt. Noteus Partners led the equity, with Aviva, Concord Health Partners, YZR Capital and Oxford Capital participating; VerisFi Capital and Atempo Growth provided the debt. Founded in the UK in 2017 and in the US since 2023, the company has served over 900,000 patients globally, with revenue doubling year over year to a <strong>$165M annualised run rate</strong> (<a href="https://www.fiercehealthcare.com/finance/scancom-raises-220m-build-largest-medical-imaging-network-us" target="_blank" rel="noopener">Fierce Healthcare, 2026-09-02</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This is the most honest item of the week. Scan.com's AI does not read images, make diagnoses or write notes — it matches referrals against network availability and pricing, because <strong>85% of scans are still booked by fax or phone</strong>. Co-founder Charlie Bullock puts the position plainly: "Labs got that decades ago with Quest Diagnostics and Labcorp. Imaging never did, and that is what we have built." While everyone else races to be the physician's second opinion, someone went and became the switchboard — a business with a clear unit of billing, a clear payer, and revenue that doubled in a year.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">The $165M is a company-stated annualised run rate, not audited annual revenue, and $130M of the $220M is debt rather than equity. The report does not disclose a post-money valuation for the round.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.fiercehealthcare.com/finance/scancom-raises-220m-build-largest-medical-imaging-network-us" target="_blank" rel="noopener">Fierce Healthcare, 2026-09-02</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">M&amp;A</span></span>
+      <span class="tag">Cureety</span><span class="tag">Reimagine Care</span><span class="tag">9/02</span>
+    </div>
+    <h3>
+      <span class="en">Cureety acquires Reimagine Care: AI triage meets virtual oncology care across 250 cancer centres</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Announced September 2, terms undisclosed. Cureety builds therapy-specific symptom monitoring and triage; Reimagine Care runs a 24/7 virtual care centre with an AI assistant called Remi that resolves roughly 95% of patient needs virtually. Combined, they cover more than 250 cancer centres in five countries and over 100,000 patients. Recent implementation data showed 97% of patient interactions resolved without provider escalation and only 2.4% referred to the emergency department (<a href="https://www.fiercehealthcare.com/telehealth/cureety-acquires-reimagine-care-ai-driven-precision-oncology" target="_blank" rel="noopener">Fierce Healthcare, 2026-09-02</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Cureety COO Misha Kaur's line is worth copying down: "The test is not whether AI can have an impressive conversation… it is whether the right human enters the conversation at the right moment." It is the week's crispest product definition — in oncology the value of AI is not generation but <strong>routing</strong>. It also explains why these companies buy rather than build: you can write a triage algorithm yourself, but a 24/7 oncology-trained nursing bench is faster to acquire.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">The 95%, 97% and 2.4% are all company-stated implementation figures, with no peer review or third-party audit; "resolved without escalation" is a vendor-defined measure, and no false-negative rate is disclosed — in oncology that is the number that actually matters. With terms undisclosed, the valuation cannot be assessed.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.fiercehealthcare.com/telehealth/cureety-acquires-reimagine-care-ai-driven-precision-oncology" target="_blank" rel="noopener">Fierce Healthcare, 2026-09-02</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Evidence gap</span></span>
+      <span class="tag">PLOS Digital Health</span><span class="tag">FDA</span><span class="tag">8/19</span>
+    </div>
+    <h3>
+      <span class="en">1,357 AI devices cleared; three were tested on whether patients live</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">A systematic analysis published in PLOS Digital Health on August 19 found that of 1,357 AI/ML-enabled devices cleared by the FDA through December 5, 2025, only 34 (2.5%) had a registered prospective clinical trial, 12 (0.9%) posted results on ClinicalTrials.gov, and <strong>three (0.2%)</strong> evaluated patient-centred outcomes such as mortality or readmission. Of the trials that exist, nearly 74% enrolled fewer than 500 participants and 68% were US-only, with pregnant women, non-English speakers and paediatric patients systematically excluded (<a href="https://journals.plos.org/digitalhealth/article?id=10.1371%2Fjournal.pdig.0001597" target="_blank" rel="noopener">PLOS Digital Health, 2026-08-19</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Set this beside the four items above and the week takes shape: distribution is being solved (OpenAI into Epic), the model problem is being solved (OpenEvidence training its own), the money problem is being solved (Scan.com's $165M run rate) — <strong>and the proof problem is not being solved at all</strong>. The authors are blunt: readiness should no longer be defined by FDA clearance alone, and they propose a three-phase framework of retrospective validation, prospective safety studies and multi-centre outcome trials.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://journals.plos.org/digitalhealth/article?id=10.1371%2Fjournal.pdig.0001597" target="_blank" rel="noopener">PLOS Digital Health, 2026-08-19</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Awards</span></span>
+      <span class="tag">Fierce Life Sciences</span><span class="tag">9/02</span>
+    </div>
+    <h3>
+      <span class="en">First Fierce AI Innovation Awards names 18 winners — more drug-side than bedside</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Announced September 2, one winner in each of 18 categories: Recursion (drug discovery), Xaira Therapeutics (preclinical), Unlearn (trial design), Inato (trial operations), Innovaccer (data interoperability), Verantos (real-world evidence), Insight Health AI (healthcare delivery), Regard (point-of-care engagement), Implicity (digital health and diagnostics), Komodo Health (commercial strategy), Codoxo (regulatory and compliance), Vitea (data governance) and others (<a href="https://www.globenewswire.com/news-release/2026/09/02/3355376/0/en/forge-s-fierce-life-sciences-announces-the-winners-of-the-first-ever-fierce-ai-innovation-awards-honoring-the-real-world-impact-of-ai-across-life-sciences-and-healthcare.html" target="_blank" rel="noopener">GlobeNewswire, 2026-09-02</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">The list is itself an industry map: nine of the 18 categories sit on the pharma value chain (discovery, preclinical, trials, medical affairs, marketing, supply chain), and only three — Regard, Insight Health AI, Implicity — are anywhere near a bedside. Not one of the year's loudest names — OpenEvidence, Abridge, Ambience — appears. The awards were judged on "measurable, real-world impact", which is precisely what clinician-facing AI still lacks.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">The awards are judged by the organiser from submitted entries, so absence signals a company that did not enter, not one that is behind. The list reflects the submission pool, not market share.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.globenewswire.com/news-release/2026/09/02/3355376/0/en/forge-s-fierce-life-sciences-announces-the-winners-of-the-first-ever-fierce-ai-innovation-awards-honoring-the-real-world-impact-of-ai-across-life-sciences-and-healthcare.html" target="_blank" rel="noopener">GlobeNewswire, 2026-09-02</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Patient-facing</span></span>
+      <span class="tag">Nourish</span><span class="tag">9/02</span>
+    </div>
+    <h3>
+      <span class="en">Nourish puts a genAI assistant in the patient app: doctor visits up 2–3x, dietitian visits flat</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On September 2 nutrition care platform Nourish moved its 24/7 generative AI assistant from beta to wide rollout, covering meal planning, lab insights, appointment prep, prescriptions and insurance support. Company-stated figures: 50% of active patients use it daily; users saw 15% greater weight loss at 30 days and 30% at 60 days; weight tracking up 20% and daily meal logging up 15%; lab scheduling doubled; and about 50% of dietitian sessions use the AI "Assist" feature (<a href="https://www.fiercehealthcare.com/digital-health/nourish-embeds-generative-ai-assistant-patient-app-247-support" target="_blank" rel="noopener">Fierce Healthcare, 2026-09-02</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">The most interesting number is the one that did not move. Doctor visits rose 2–3x and lab scheduling doubled, <strong>while dietitian visit frequency stayed flat</strong>. That suggests the assistant is not substituting for the human dietitian but pushing patients toward more expensive parts of the system. Whether that is savings or new spend depends on whether those extra visits and labs were indicated in the first place — a question company-reported data cannot answer.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.fiercehealthcare.com/digital-health/nourish-embeds-generative-ai-assistant-patient-app-247-support" target="_blank" rel="noopener">Fierce Healthcare, 2026-09-02</a></p></div>
+  </div>
+</section>
+
+<section id="product">
+  <h2>02 — Product Analysis</h2>
+  <div class="sec-title">
+    <span class="en">Two products both want to be the first window a clinician opens — but one sells the reach of a general model, the other the scarcity of a licensed corpus</span>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>ChatGPT Health（Epic connector）</h3>
+      <p class="sub"><span class="en-inline">A general model reaching down into the chart · OpenAI (US)</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> Read-only import of Epic visit notes, labs, medications and specialist documentation for pre-visit synthesis and change detection; in some deployments it is embedded directly in the chart workflow so the clinician never leaves the patient record. The buyer is the health system, but the product's real weight sits in <strong>habits that already exist</strong> — ChatGPT Health opened to US consumers only last month and already handles roughly 300 million health queries a week (<a href="https://techcrunch.com/2026/09/01/chatgpt-health-adds-epic-integration-for-clinicians-to-import-patient-data/" target="_blank" rel="noopener">TechCrunch</a>).</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: distribution costs almost nothing. Epic covers more than 325 million patients, and clinicians already use ChatGPT — no market to educate, just a wire to connect (<a href="https://techcrunch.com/2026/09/01/chatgpt-health-adds-epic-integration-for-clinicians-to-import-patient-data/" target="_blank" rel="noopener">TechCrunch, 2026-09-01</a>).</span>
+        </li>
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: read-only is a smart self-limit. Writing nothing back to the chart draws the liability boundary outside the documented record and drops the compliance review a full notch (<a href="https://healthsystemcio.com/2026/09/01/chatgpt-epic-integration-ai-overlap/" target="_blank" rel="noopener">healthsystemCIO</a>).</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: every safety figure is self-evaluated with no health-system validation — 99.1% safe across 4,363 physician ratings on 27 use cases, connector accuracy 93.2%–98.6%, all vendor-supplied (<a href="https://healthsystemcio.com/2026/09/01/chatgpt-epic-integration-ai-overlap/" target="_blank" rel="noopener">healthsystemCIO</a>). The company also carries live lawsuits over harm from consumer-side medical advice (<a href="https://techcrunch.com/2026/09/01/chatgpt-health-adds-epic-integration-for-clinicians-to-import-patient-data/" target="_blank" rel="noopener">TechCrunch</a>).</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: the customer list has one name on it. UCSF Health is the only disclosed pilot — and in healthcare the gap between "available" and "one site is trying it" runs about two years (<a href="https://healthsystemcio.com/2026/09/01/chatgpt-epic-integration-ai-overlap/" target="_blank" rel="noopener">healthsystemCIO, 2026-09-01</a>).</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>OpenEvidence</h3>
+      <p class="sub"><span class="en-inline">A licensed-corpus answer layer monetised by advertising · OpenEvidence (US)</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> Free to verified US physicians, monetised through pharma and device advertising plus enterprise subscriptions — CPMs of $70 to $1,000-plus against social media's $5–15, working out to roughly $124 average revenue per user (<a href="https://sacra.com/c/openevidence/" target="_blank" rel="noopener">Sacra</a>). That model let it bypass healthcare's ~18-month sales cycle, and explains revenue going from $7.9M in 2024 to an estimated $300M by July 2026. Its own clinical model family shipped September 3 (<a href="https://www.statnews.com/2026/09/03/openevidence-launches-new-ai-models-clinicians-health-tech/" target="_blank" rel="noopener">STAT</a>).</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: the content licences are genuinely hard to copy. The NEJM, JAMA, Wiley, Cochrane, ACC, ADA and NCCN bundle is not simply purchasable — publishers are far readier to license a small company that will not become their competitor than a general-purpose model vendor (<a href="https://sacra.com/c/openevidence/" target="_blank" rel="noopener">Sacra</a>).</span>
+        </li>
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: it is already inside the chart. Epic deployments at Sutter Health (Feb 2026), Mount Sinai (March) and Cedars-Sinai (May) mean it walked the path OpenAI took in September six months ago (<a href="https://sacra.com/c/openevidence/" target="_blank" rel="noopener">Sacra</a>).</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: the tension between ad revenue and clinical neutrality has no third-party referee. When pharma pays $70–$1,000 CPMs for a physician's attention at the moment of decision, no public mechanism audits where the answer ends and the advertisement begins (<a href="https://sacra.com/c/openevidence/" target="_blank" rel="noopener">Sacra</a>).</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: a $12B valuation against roughly $300M annualised revenue is about a 40x multiple, at the moment half the moat — the model — is being commoditised by a general-purpose vendor (<a href="https://www.cnbc.com/2026/01/21/openevidence-chatgpt-for-doctors-doubles-valuation-to-12-billion.html" target="_blank" rel="noopener">CNBC</a>). The new family's size, benchmarks and pricing are not public, so this report cannot judge whether it actually closes that gap.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="company">
+  <h2>03 — Companies &amp; Competition</h2>
+  <div class="sec-title">
+    <span class="en">Who stands where, on what, against whom</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th><span class="en-inline">Company</span></th>
+        <th><span class="en-inline">Recent state &amp; numbers</span></th>
+        <th><span class="en-inline">Position &amp; moat</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>OpenAI</strong><br><span class="en-inline">General model moving into the clinic</span></td>
+          <td>
+            <span class="en">Epic read-only connector went live Sept 1, across an EHR covering 325M-plus patients; ChatGPT Health handles ~300M health queries a week; UCSF Health is the sole named pilot (<a href="https://techcrunch.com/2026/09/01/chatgpt-health-adds-epic-integration-for-clinicians-to-import-patient-data/" target="_blank" rel="noopener">TechCrunch, 2026-09-01</a>).</span>
+          </td>
+          <td>
+            <span class="en">The moat is installed habit plus raw model capability; the thin spots are zero clinical publications, zero third-party audit, negligible customer scale, and an unsettled compliance status.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>OpenEvidence</strong><br><span class="en-inline">The physician answer layer</span></td>
+          <td>
+            <span class="en">$12B valuation on roughly $700M raised (<a href="https://www.cnbc.com/2026/01/21/openevidence-chatgpt-for-doctors-doubles-valuation-to-12-billion.html" target="_blank" rel="noopener">CNBC, 2026-01-21</a>); daily use by 40%-plus of US physicians across 10,000-plus hospitals, 65k new clinician sign-ups a month, ~$300M annualised revenue as of July 2026 (<a href="https://sacra.com/c/openevidence/" target="_blank" rel="noopener">Sacra</a>); own model family shipped Sept 3 (<a href="https://www.statnews.com/2026/09/03/openevidence-launches-new-ai-models-clinicians-health-tech/" target="_blank" rel="noopener">STAT</a>).</span>
+          </td>
+          <td>
+            <span class="en">The moat is the journal licence bundle plus habit built on free access; the thin spots are an unaudited conflict of interest in ad monetisation and a model layer a general vendor just caught up on.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Epic</strong><br><span class="en-inline">The chart itself</span></td>
+          <td>
+            <span class="en">Its EHR covers 325M-plus patients while it also runs native AI summarisation and opens the chart to third parties — making it, this week, simultaneously OpenAI's channel and its competitor (<a href="https://healthsystemcio.com/2026/09/01/chatgpt-epic-integration-ai-overlap/" target="_blank" rel="noopener">healthsystemCIO, 2026-09-01</a>).</span>
+          </td>
+          <td>
+            <span class="en">The moat is being where the data lives — everyone who wants the patient goes through it; the thin spot is that if its native AI lags, it gets demoted to plumbing.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Abridge</strong><br><span class="en-inline">Ambient documentation</span></td>
+          <td>
+            <span class="en">$5.3B valuation on ~$830M raised, including a $316M Series E extension in April 2026; deployed at 250-plus health systems including Kaiser Permanente, Mayo Clinic, Duke Health and Johns Hopkins (<a href="https://valueaddvc.com/blog/abridge-valuation-2026-5-3b-100m-arr-and-how-the-ai-scribe-beat-nuance-and-ambience" target="_blank" rel="noopener">ValueAdd VC compilation, 2026</a>).</span>
+          </td>
+          <td>
+            <span class="en">The moat is contract inertia and depth of revenue-cycle integration; the thin spot is that pre-visit chart review is exactly the overlap OpenAI and Epic both aimed at this week.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Scan.com</strong><br><span class="en-inline">Imaging booking infrastructure</span></td>
+          <td>
+            <span class="en">Raised $220M on Sept 2 ($90M equity plus $130M debt), led by Noteus Partners; $165M annualised revenue, doubled year over year; over 900,000 patients served globally (<a href="https://www.fiercehealthcare.com/finance/scancom-raises-220m-build-largest-medical-imaging-network-us" target="_blank" rel="noopener">Fierce Healthcare, 2026-09-02</a>).</span>
+          </td>
+          <td>
+            <span class="en">The moat is network effects and supply-side coverage, not a model; the thin spot is that this is channel aggregation, and a large payer building its own matching engine routes straight around it.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Hippocratic AI</strong><br><span class="en-inline">Voice agent fleet</span></td>
+          <td>
+            <span class="en">Launched Agentic Orchestrators on Aug 13, described as a 700B-parameter primary model with 30-plus supervising models, validated by 7,700 US-licensed clinicians across 775,000 calls at 99.89% correct advice and zero severe harm; 250M cumulative clinical interactions on $444M raised (<a href="https://www.prnewswire.com/news-releases/hippocratic-ai-announces-next-generation-of-healthcare-ai-orchestrators-focused-on-outcomes-not-tasks-302850620.html" target="_blank" rel="noopener">PR Newswire, 2026-08-13</a>).</span>
+          </td>
+          <td>
+            <span class="en">The moat is voice labour substitution at scale priced against payer outcomes; the thin spot is that every safety figure is company-reported, with neither customers nor pricing disclosed.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Cureety ＋ Reimagine Care</strong><br><span class="en-inline">Oncology triage</span></td>
+          <td>
+            <span class="en">Acquisition closed Sept 2, terms undisclosed; combined footprint of 250-plus cancer centres in five countries and 100,000-plus patients, with implementation data showing 97% of interactions resolved without escalation and 2.4% referred to the ED (<a href="https://www.fiercehealthcare.com/telehealth/cureety-acquires-reimagine-care-ai-driven-precision-oncology" target="_blank" rel="noopener">Fierce Healthcare, 2026-09-02</a>).</span>
+          </td>
+          <td>
+            <span class="en">The moat is therapy-specific clinical logic plus a 24/7 oncology bench; the thin spots are small scale, undisclosed terms, and no published false-negative rate — the safety number that matters most.</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>Today's competitive structure is an inverted funnel.</strong> The layer closest to the clinician's cursor — answers and summaries inside the chart — holds three or more contenders with the highest valuations, the wildest revenue multiples and the thinnest evidence. The layers furthest from it — booking, oncology triage, outbound voice — have the fewest competitors, the clearest units of billing and the most real cash. <a href="https://journals.plos.org/digitalhealth/article?id=10.1371%2Fjournal.pdig.0001597" target="_blank" rel="noopener">That PLOS 0.2%</a> sits squarely at the crowded end: what is being fought over is attention, not outcomes.</span>
+    </p>
+  </div>
+</section>
+
+<section id="taiwan">
+  <h2>04 — Taiwan Angle</h2>
+  <div class="sec-title">
+    <span class="en">Taiwan is building the bottom layer, and its timetable lines up with this week's US news</span>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>(1) The interoperability timetable decides whether Taiwanese hospitals hit the same three-layers-on-one-workflow problem.</strong> Health Minister Stone Chung-liang's "333 policy" centres on unifying data structures across medical information systems, with a "FHIR Box" format standard; the plan is nationwide medical-centre record interoperability by end-2026, extending to regional and district hospitals plus a public system for clinics and health stations across 2027–2028 (<a href="https://udn.com/news/story/7266/9592218" target="_blank" rel="noopener">UDN</a>; <a href="https://www.ithome.com.tw/news/176511" target="_blank" rel="noopener">iThome</a>). This week's US argument only exists because Epic is already one enormous pool; Taiwan is still connecting the pools, which is a rare ordering advantage — governance rules can be written <em>before</em> the layers stack, rather than retrofitted the way US CIOs are doing now.</span>
+    </p>
+    <p>
+      <span class="en"><strong>(2) The order of magnitude means Taiwan cannot afford to buy the same job three times.</strong> The 2025–2029 Deepening Health Taiwan Plan allocates NT$48.9 billion (about US$1.5 billion) over five years across four pillars including precision and telemedicine (<a href="https://geneonline.news/2025-2029-deepening-health-taiwan-plan-nt48-9-billion-for-four-key-pillars-three-upgrades-and-five-supports-targeting-long-term-care-3-0/" target="_blank" rel="noopener">GeneOnline</a>; <a href="https://www.ey.gov.tw/Page/5A8A0CB5B41DA11E/f1618406-1ed7-4e72-bd4f-d1b6faaf8381" target="_blank" rel="noopener">Executive Yuan</a>). For scale: that is the national five-year figure, while Scan.com took $220M in a single round and OpenEvidence has raised roughly $700M. Taiwan cannot win a valuation race at the answer layer — and does not need to. Duplicate licensing is the waste Taiwanese hospitals can least afford, and nailing down interoperability standards first is the cheapest way to avoid it.</span>
+    </p>
+    <p>
+      <span class="en"><strong>(3) The draft AI-in-medicine rules should write the evidence bar into the text.</strong> The health ministry has signalled draft regulations for AI in medicine (<a href="https://www.cna.com.tw/news/ahel/202608060301.aspx" target="_blank" rel="noopener">CNA, 2026-08-06</a>) alongside three national smart-healthcare centres (<a href="https://aicenter.mohw.gov.tw/" target="_blank" rel="noopener">MOHW Smart Healthcare Center</a>). <a href="https://journals.plos.org/digitalhealth/article?id=10.1371%2Fjournal.pdig.0001597" target="_blank" rel="noopener">The PLOS paper</a> hands over a ready-made reference: 1,357 cleared, three measured against patient outcomes. Rules that merely copy "cleared means deployable" inherit that evidence gap intact. Demanding multi-centre trials with patient outcomes as the endpoint is slower, but it is the one differentiation a small market can actually build — the completeness of Taiwan's single-payer claims data is already a scarce international asset.</span>
+    </p>
+  </div>
+</section>
+
+<section id="reading">
+  <h2>05 — Further Reading</h2>
+  <div class="sec-title">
+    <span class="en">Chosen for whether they change your read on which layer is worth paying for — not for restating this week's news</span>
+  </div>
+
+  <ol class="reading">
+    <li>
+      <a href="https://journals.plos.org/digitalhealth/article?id=10.1371%2Fjournal.pdig.0001597" target="_blank" rel="noopener">Regulatory clearance without clinical validation of AI/ML-enabled medical devices — PLOS Digital Health (2026-08-19)</a>
+      <p class="why"><span class="en">The only primary research with a methods section this week. Read the three-phase evidence framework in full — it is the passage most worth copying into a procurement contract.</span></p>
+    </li>
+    <li>
+      <a href="https://healthsystemcio.com/2026/09/01/chatgpt-epic-integration-ai-overlap/" target="_blank" rel="noopener">ChatGPT's Epic Integration Stacks a Third AI Layer on the Chart, Leaving CIOs to Sort the Overlap — healthsystemCIO (2026-09-01)</a>
+      <p class="why"><span class="en">A rare piece written from the buyer's chair. Its clearest contribution is the governance fork — sanctioned partnership versus ordinary third-party interface — which matters more than any product write-up.</span></p>
+    </li>
+    <li>
+      <a href="https://sacra.com/c/openevidence/" target="_blank" rel="noopener">OpenEvidence revenue, valuation &amp; funding — Sacra</a>
+      <p class="why"><span class="en">The most complete public teardown of OpenEvidence's economics, including CPM ranges and an ARPU estimate. If you want to argue about the $12B, start with these numbers.</span></p>
+    </li>
+    <li>
+      <a href="https://medcitynews.com/2026/08/upmc-ai-testing-hospital-tech/" target="_blank" rel="noopener">Hospitals Are All In on AI, but Testing and Oversight Haven't Caught Up — MedCity News (2026-08)</a>
+      <p class="why"><span class="en">The complement to the PLOS paper: one covers the clearance-side gap, this one the hospital-side gap. Read both and this week's three product stories self-adjust downward.</span></p>
+    </li>
+    <li>
+      <a href="https://medcitynews.com/2026/02/ambient-scribe-ai-startups-epic/" target="_blank" rel="noopener">Do Ambient Scribe Startups Have a Future Now That Epic Launched Its Own Tool? — MedCity News (2026-02)</a>
+      <p class="why"><span class="en">A question asked six months ago that OpenAI asked again this week. Read it as a dress rehearsal: the argument structure is identical, only the challenger has more money.</span></p>
+    </li>
+  </ol>
+</section>
+
+<section id="refs">
+  <h2>06 — References</h2>
+  <div class="sec-title">
+    <span class="en">References</span>
+  </div>
+
+  <div class="panel">
+    <ol class="refs">
+      <li>ChatGPT Health adds Epic integration for clinicians to import patient data. <em>TechCrunch</em>, 2026-09-01. <a href="https://techcrunch.com/2026/09/01/chatgpt-health-adds-epic-integration-for-clinicians-to-import-patient-data/" target="_blank" rel="noopener">techcrunch.com</a></li>
+      <li>ChatGPT's Epic Integration Stacks a Third AI Layer on the Chart, Leaving CIOs to Sort the Overlap. <em>healthsystemCIO</em>, 2026-09-01. <a href="https://healthsystemcio.com/2026/09/01/chatgpt-epic-integration-ai-overlap/" target="_blank" rel="noopener">healthsystemcio.com</a></li>
+      <li>STAT Health Tech: OpenEvidence launches new family of AI models for clinicians. <em>STAT News</em>, 2026-09-03. <a href="https://www.statnews.com/2026/09/03/openevidence-launches-new-ai-models-clinicians-health-tech/" target="_blank" rel="noopener">statnews.com</a></li>
+      <li>Scan.com raises $220M to build largest medical imaging network in the US. <em>Fierce Healthcare</em>, 2026-09-02. <a href="https://www.fiercehealthcare.com/finance/scancom-raises-220m-build-largest-medical-imaging-network-us" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>Cureety acquires Reimagine Care for AI-driven precision oncology. <em>Fierce Healthcare</em>, 2026-09-02. <a href="https://www.fiercehealthcare.com/telehealth/cureety-acquires-reimagine-care-ai-driven-precision-oncology" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>Nourish embeds generative AI assistant in patient app for 24/7 support. <em>Fierce Healthcare</em>, 2026-09-02. <a href="https://www.fiercehealthcare.com/digital-health/nourish-embeds-generative-ai-assistant-patient-app-247-support" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>Forge's Fierce Life Sciences Announces the Winners of the First-Ever Fierce AI Innovation Awards. <em>GlobeNewswire</em>, 2026-09-02. <a href="https://www.globenewswire.com/news-release/2026/09/02/3355376/0/en/forge-s-fierce-life-sciences-announces-the-winners-of-the-first-ever-fierce-ai-innovation-awards-honoring-the-real-world-impact-of-ai-across-life-sciences-and-healthcare.html" target="_blank" rel="noopener">globenewswire.com</a></li>
+      <li>Abulibdeh R, Cajas Ordóñez SA, Celi LA, et al. Regulatory clearance without clinical validation of AI/ML-enabled medical devices. <em>PLOS Digital Health</em>, 2026-08-19. <a href="https://journals.plos.org/digitalhealth/article?id=10.1371%2Fjournal.pdig.0001597" target="_blank" rel="noopener">journals.plos.org</a></li>
+      <li>OpenEvidence revenue, valuation &amp; funding. <em>Sacra</em>, 2026. <a href="https://sacra.com/c/openevidence/" target="_blank" rel="noopener">sacra.com</a></li>
+      <li>OpenEvidence, the 'ChatGPT for doctors,' doubles valuation to $12 billion. <em>CNBC</em>, 2026-01-21. <a href="https://www.cnbc.com/2026/01/21/openevidence-chatgpt-for-doctors-doubles-valuation-to-12-billion.html" target="_blank" rel="noopener">cnbc.com</a></li>
+      <li>OpenEvidence clinches $250M Series D as AI platform sees explosive growth with doctors. <em>Fierce Healthcare</em>, 2026. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/openevidence-clinches-250m-series-d-rapidly-growing-its-reach-doctors" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>OpenEvidence Creates the First AI in History to Score a Perfect 100% on the USMLE. <em>OpenEvidence announcement</em>. <a href="https://www.openevidence.com/announcements/openevidence-creates-the-first-ai-in-history-to-score-a-perfect-100percent-on-the-united-states-medical-licensing-examination-usmle" target="_blank" rel="noopener">openevidence.com</a></li>
+      <li>Abridge Valuation 2026: $5.3B, $100M+ ARR, and How It Beat Nuance and Ambience. <em>ValueAdd VC</em>, 2026. <a href="https://valueaddvc.com/blog/abridge-valuation-2026-5-3b-100m-arr-and-how-the-ai-scribe-beat-nuance-and-ambience" target="_blank" rel="noopener">valueaddvc.com</a></li>
+      <li>Hippocratic AI Announces Next Generation of Healthcare AI: Orchestrators Focused on Outcomes, Not Tasks. <em>PR Newswire</em>, 2026-08-13. <a href="https://www.prnewswire.com/news-releases/hippocratic-ai-announces-next-generation-of-healthcare-ai-orchestrators-focused-on-outcomes-not-tasks-302850620.html" target="_blank" rel="noopener">prnewswire.com</a></li>
+      <li>高醫大論壇揭示AI醫療新局！衛福部推「333政策」. <em>聯合新聞網</em>, 2026. <a href="https://udn.com/news/story/7266/9592218" target="_blank" rel="noopener">udn.com</a></li>
+      <li>行政院BTC預備會議聚焦AI生技和智慧醫療，再提FHIR Box打造全臺病歷互通. <em>iThome</em>, 2026. <a href="https://www.ithome.com.tw/news/176511" target="_blank" rel="noopener">ithome.com.tw</a></li>
+      <li>健康臺灣深耕計畫（114–118 年）. <em>行政院全球資訊網</em>. <a href="https://www.ey.gov.tw/Page/5A8A0CB5B41DA11E/f1618406-1ed7-4e72-bd4f-d1b6faaf8381" target="_blank" rel="noopener">ey.gov.tw</a></li>
+      <li>衛福部「114-118 年健康臺灣深耕計畫」489 億元四大主軸. <em>GeneOnline News</em>. <a href="https://geneonline.news/2025-2029-deepening-health-taiwan-plan-nt48-9-billion-for-four-key-pillars-three-upgrades-and-five-supports-targeting-long-term-care-3-0/" target="_blank" rel="noopener">geneonline.news</a></li>
+      <li>厚生會成立智慧醫療委員會 衛福部擬提AI醫療細則草案. <em>中央社</em>, 2026-08-06. <a href="https://www.cna.com.tw/news/ahel/202608060301.aspx" target="_blank" rel="noopener">cna.com.tw</a></li>
+      <li>臺灣智慧醫療三大中心. <em>衛生福利部</em>. <a href="https://aicenter.mohw.gov.tw/" target="_blank" rel="noopener">aicenter.mohw.gov.tw</a></li>
+      <li>Hospitals Are All In on AI, but Testing and Oversight Haven't Caught Up. <em>MedCity News</em>, 2026-08. <a href="https://medcitynews.com/2026/08/upmc-ai-testing-hospital-tech/" target="_blank" rel="noopener">medcitynews.com</a></li>
+      <li>Do Ambient Scribe Startups Have a Future Now That Epic Launched Its Own Tool? <em>MedCity News</em>, 2026-02. <a href="https://medcitynews.com/2026/02/ambient-scribe-ai-startups-epic/" target="_blank" rel="noopener">medcitynews.com</a></li>
+    </ol>
+    <div class="note">
+      <span class="en"><strong>Editor's note:</strong> (1) The STAT report on OpenEvidence's new models sits behind STAT+; this report is written from the publicly visible headline and deck only, without model names, parameter counts, benchmarks or pricing, and the relevant passages say so. (2) OpenAI's safety figures (99.1%, 4,363 ratings, 93.2%–98.6% connector accuracy), Cureety/Reimagine Care's 95%/97%/2.4%, Hippocratic AI's 99.89% across 775,000 calls, all of Nourish's outcome numbers, and Scan.com's $165M annualised run rate are vendor-reported and not independently audited. (3) OpenEvidence and Abridge valuation, revenue and customer counts are drawn from secondary compilations by Sacra and ValueAdd VC rather than company filings. (4) Hippocratic AI (Aug 13) and the PLOS study (Aug 19) fall outside the 24–72 hour window and are included as background needed to read this week's product news. (5) Becker's ambient-scribe market-share data and Ambience's own Series C announcement appeared in search results but were not read in full, so no detailed figures from them are cited. (6) The NT$48.9 billion to US dollar conversion is approximate and offered only for order-of-magnitude comparison.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-row">
+    <div>
+      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Friday / Product &amp; Company Deep Dive<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
+    </div>
+    <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
+  </div>
+</footer>
+</main>
+
+<div class="fabs">
+  <button class="up" id="up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+  <a class="home-fab" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg></a>
+</div>
+
+<script>
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.getElementById('theme-ic').textContent =
+    document.body.classList.contains('dark') ? '◑' : '◐';
+}
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.body.classList.add('dark');
+  document.getElementById('theme-ic').textContent = '◑';
+}
+window.addEventListener('scroll', function(){
+  document.getElementById('up').classList.toggle('show', window.scrollY > 600);
+});
+
+/* GitHub 星星數：無需授權，失敗或被限流時靜默保留佔位符 */
+(function(){
+  var el = document.getElementById('ghs');
+  if (!el || typeof fetch !== 'function') return;
+  fetch('https://api.github.com/repos/tingwei161803/ai-medical-daily', {headers:{Accept:'application/vnd.github+json'}})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if (!d || typeof d.stargazers_count !== 'number') return;
+      var n = d.stargazers_count;
+      el.textContent = n >= 1000 ? (Math.round(n/100)/10) + 'k' : String(n);
+    })
+    .catch(function(){});
+})();
+</script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/reports/2026-09-04.html" hreflang="zh-Hant" rel="alternate" lang="zh-Hant">中文版</a></p>
+</body>
+</html>
