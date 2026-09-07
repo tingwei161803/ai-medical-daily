@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>AI &amp; Medical AI Daily · 2026-09-07</title>
+<meta property="og:url" content="https://ai-medical-daily.peteraim.com/en/reports/2026-09-07.html" />
+<link rel="canonical" href="https://ai-medical-daily.peteraim.com/en/reports/2026-09-07.html" />
+<link rel="alternate" hreflang="zh-Hant" href="https://ai-medical-daily.peteraim.com/reports/2026-09-07.html" />
+<link rel="alternate" hreflang="en" href="https://ai-medical-daily.peteraim.com/en/reports/2026-09-07.html" />
+<link rel="alternate" hreflang="x-default" href="https://ai-medical-daily.peteraim.com/reports/2026-09-07.html" />
+<meta name="description" content="Clinical Monday: two Sept 2 medRxiv preprints measure a 13-16 point text-to-multimodal drop across ten frontier models on 1,477 haematology questions, and frontier LLMs outscoring Australia's government symptom checker on self-triage; a Sept 3 Edinburgh review in BMJ Digital Health &amp; AI finds ambient scribes drop the patient's own account. Same week, Radiology: AI puts the best algorithm at AUC 0.78 against radiologists' 0.69 on 468 indeterminate lung nodules.">
+<meta name="report-date" content="2026-09-07">
+<meta name="report-theme" content="clinical">
+<meta name="report-title-zh" content="考文字拿 92.7%，換成看圖只剩 76.9%——而這週從愛丁堡送來的證據說，從病歷裡掉出去最快的是病人本人">
+<meta name="report-title-en" content="92.7% on text, 76.9% the moment there is a picture — and this week's hardest evidence says the fastest thing to fall out of the note is the patient">
+<meta name="report-summary-zh" content="臨床日：9/2 兩份 medRxiv 前印本分別量出十個前沿模型在 1,477 題血液學考題上的文字／多模態落差，以及前沿 LLM 在自助分流上勝過澳洲官方症狀檢查器；9/3 愛丁堡在 BMJ Digital Health &amp; AI 指出環境式抄寫員把病人的敘事整段丟掉。同週 Radiology: AI 九月號讓 AI 在 468 顆未定性肺結節上以 AUC 0.78 勝過放射科醫師的 0.69。">
+<meta name="report-summary-en" content="Clinical Monday: two Sept 2 medRxiv preprints measure a 13-16 point text-to-multimodal drop across ten frontier models on 1,477 haematology questions, and frontier LLMs outscoring Australia's government symptom checker on self-triage; a Sept 3 Edinburgh review in BMJ Digital Health &amp; AI finds ambient scribes drop the patient's own account. Same week, Radiology: AI puts the best algorithm at AUC 0.78 against radiologists' 0.69 on 468 indeterminate lung nodules.">
+<meta property="og:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HJLDQZDK5V');
+</script>
+<link rel="stylesheet" href="/assets/report.css">
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><span>◆</span> <span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <div class="bar-sp"></div>
+    <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
+    <div class="seg">
+      <a href="/reports/2026-09-07.html" hreflang="zh-Hant" lang="zh-Hant" rel="alternate">中文</a>
+      <a class="on" href="/en/reports/2026-09-07.html" hreflang="en" lang="en" aria-current="page">EN</a>
+    </div>
+    <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="kicker">
+    <span class="en-inline">Monday · Clinical Applications &amp; Research</span>
+  </div>
+  <h1>
+    <span class="en">92.7% on text, 76.9% the moment there is a picture — and this week's hardest evidence says the fastest thing to fall out of the note is the patient</span>
+  </h1>
+  <div class="dateline">
+    <span class="en-inline">Monday, September 7, 2026 · Covering Aug 31–Sep 7 · Taipei time</span>
+  </div>
+  <p class="lede">
+    <span class="en">This week's clinical evidence splits along one seam. A <a href="https://www.medrxiv.org/content/10.64898/2026.09.01.26361881v1" target="_blank" rel="noopener">1,477-question haematology benchmark</a> posted to medRxiv on September 2 by a Dresden team put Claude Opus 5 at 92.7% on text-only questions and 76.9% on the multimodal ones; Gemini-3.1 Pro scored 91.4% against 78.7%. <a href="https://www.medrxiv.org/content/10.64898/2026.09.01.26361908v1" target="_blank" rel="noopener">A second preprint</a> posted the same day found frontier LLMs triaging vignettes at 73.3–86.7% against 48.9% for Healthdirect, Australia's government-backed symptom checker. And on September 3 a University of Edinburgh review in <a href="https://bmjdigitalhealth.bmj.com/content/2/1/e000091" target="_blank" rel="noopener">BMJ Digital Health &amp; AI</a> changed the yardstick from minutes saved to what goes missing from the note: expression, gesture, affect, and whatever the patient stops saying once they know the room is being recorded.</span>
+  </p>
+
+  <nav class="toc">
+    <a href="#top"><span class="en-inline">Top Stories</span></a>
+    <a href="#product"><span class="en-inline">Product Analysis</span></a>
+    <a href="#company"><span class="en-inline">Companies &amp; Competition</span></a>
+    <a href="#taiwan"><span class="en-inline">Taiwan Angle</span></a>
+    <a href="#reading"><span class="en-inline">Further Reading</span></a>
+    <a href="#refs"><span class="en-inline">References</span></a>
+  </nav>
+</div>
+
+<section id="top">
+  <h2>01 — Top Stories</h2>
+  <div class="sec-title">
+    <span class="en">Seven measurements of the same thing from different angles: the scores go up, but where does the evidence go</span>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Clinical evidence</span></span>
+      <span class="tag">University of Edinburgh</span><span class="tag">BMJ Digital Health &amp; AI</span><span class="tag">9/03</span>
+    </div>
+    <h3>
+      <span class="en">Edinburgh review: ambient AI scribes drop the patient's own account — and 40% of UK GPs already use one</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On September 3, Lucas Seuren, Robin Williams and Kathrin Cresswell of the University of Edinburgh published a NASSS-framed review in <a href="https://bmjdigitalhealth.bmj.com/content/2/1/e000091" target="_blank" rel="noopener">BMJ Digital Health &amp; AI</a> (vol 2, no 1; DOI 10.1136/bmjdh-2026-000091), searching Embase, PubMed and Scopus to March 20, 2026 and including 27 articles, 13 of them empirical. The university's <a href="https://www.ed.ac.uk/news/ai-scribes-may-fail-to-capture-patients-experiences" target="_blank" rel="noopener">September 4 release</a> notes that roughly 40% of UK general practitioners now use an ambient scribe.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Nearly every scribe study to date has measured minutes saved. This review changes the instrument: a clinical note is co-produced in the encounter, and the model only hears the audio. Facial expression, gesture and affect never enter the text stream; patients pull back on substance use, domestic violence and mental health once they know a recorder is running; and writing is itself a cognitive act, so handing it over is cognitive offloading — clinicians in the reviewed literature reported not recognising their own notes and not remembering the patient at follow-up. The authors argue ambient scribes must be evaluated as <em>complex interventions</em>, not productivity tools, with contextual validation and longitudinal follow-up.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">This is a framework-driven review of 27 papers, not new prospective data, and it pools no effect sizes; the 13 empirical studies vary widely in setting and sample. The 40% figure comes from an external survey relayed in the press release, not from the review's own measurement.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://bmjdigitalhealth.bmj.com/content/2/1/e000091" target="_blank" rel="noopener">BMJ Digital Health &amp; AI, 2026-09-03</a> · <a href="https://www.ed.ac.uk/news/ai-scribes-may-fail-to-capture-patients-experiences" target="_blank" rel="noopener">University of Edinburgh, 2026-09-04</a> · <a href="https://www.news-medical.net/news/20260903/Ambient-AI-scribes-may-risk-missing-vital-patient-information.aspx" target="_blank" rel="noopener">News-Medical, 2026-09-03</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Benchmark</span></span>
+      <span class="tag">TUD Dresden</span><span class="tag">medRxiv</span><span class="tag">9/02</span>
+    </div>
+    <h3>
+      <span class="en">1,477 haematology questions: ten frontier models approach 93% on text and lose 13–16 points the moment an image is attached</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Radoynova, Benouis, Middeke, Eckardt and colleagues at University Hospital Carl Gustav Carus (TUD Dresden), the Else Kröner Fresenius Center for Digital Health and NCT/UCC Dresden posted a ten-model benchmark to <a href="https://www.medrxiv.org/content/10.64898/2026.09.01.26361881v1" target="_blank" rel="noopener">medRxiv</a> on September 2, covering 1,477 board-style multiple-choice questions drawn from five teaching banks run by the British Society for Haematology, the American Society of Hematology and EBMT, spanning nine disease areas and six clinical skill domains, in text-only and multimodal form. Claude Opus 5 scored 92.7% text and 76.9% multimodal; Gemini-3.1 Pro 91.4% and 78.7%; Gemini-3.6 Flash 91.0% and 74.8%; GPT-5.6 Sol 89.9% and 76.7%.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Half of haematology's diagnostic entities live in pictures — peripheral smears, marrow aspirates, flow plots. A model that reaches 93% on prose retains three-quarters of that on the images, which is where the specialty actually works. The authors log two further findings: accuracy correlates significantly with model size, but this generation's gains landed almost entirely on open-weight models while proprietary ones improved only marginally; and, more importantly, the top performers show highly concordant failure patterns — they share the same blind spots on hard cases. That undercuts the most common risk mitigation in clinical practice, which is asking a second model. The authors conclude that continuous expert-on-the-loop monitoring remains non-negotiable.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">A preprint, not peer reviewed. Multiple choice is not clinical decision-making: the options are supplied, the history is complete, nothing is time-pressured and no result is equivocal. These teaching banks have been public for years and plausibly sit inside the training data, so some of the text score may be recall rather than reasoning. Per-model figures are taken from the abstract page; we did not obtain the full supplementary tables.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.medrxiv.org/content/10.64898/2026.09.01.26361881v1" target="_blank" rel="noopener">medRxiv 2026.09.01.26361881, 2026-09-02</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Self-triage</span></span>
+      <span class="tag">Healthdirect</span><span class="tag">medRxiv</span><span class="tag">9/02</span>
+    </div>
+    <h3>
+      <span class="en">Frontier LLMs triage at 73–87%, Australia's government-backed symptom checker at 48.9% — and the critical-miss count is 0 to 2</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Azwad Raza Chowdhury (Victorian Institute of Technology, Melbourne) and Bushra Chowdhury (CQUniversity Australia) posted a standardised vignette evaluation to <a href="https://www.medrxiv.org/content/10.64898/2026.09.01.26361908v1" target="_blank" rel="noopener">medRxiv</a> on September 2: 45 Semigran vignettes (15 emergency, 15 non-emergent, 15 self-care) run against Australia's government-backed Healthdirect and six LLM configurations across ChatGPT, Claude and Gemini at free and paid tiers. Healthdirect triaged at 48.9% (95% CI 35.0–63.0) with Cohen's kappa 0.233, emergency sensitivity 46.7% and two critical misses. The LLMs ranged 73.3–86.7%, kappa 0.600–0.800, emergency sensitivity 80.0–86.7%, with zero critical misses across 270 evaluations (95% CI 0–1.4%). Paid subscriptions bought no measurable safety gain.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">The system being beaten here is not some app: it is the Australian government's own front door, treated as public health infrastructure and backed by a nurse phone line. The direction of the LLM errors matters too — when they undertriaged, they almost always pushed a self-care case toward a GP rather than keeping an emergency case at home, which is the expensive mistake rather than the dangerous one. The authors say plainly that this should feed regulatory discussion of whether LLMs are integrated with established symptom-checking services.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">45 vignettes and 270 evaluations; the confidence interval on Healthdirect's accuracy spans 28 points, so either end is live. The Semigran set has been public since 2015 and is almost certainly in the training data — the largest caveat on the LLM side. Vignettes are not patients: no vague presenting complaint, no mid-consultation revision, no one who cannot describe their own symptoms. One country, one government product, one evaluation, and a preprint that has not been peer reviewed.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.medrxiv.org/content/10.64898/2026.09.01.26361908v1" target="_blank" rel="noopener">medRxiv 2026.09.01.26361908, 2026-09-02</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Imaging</span></span>
+      <span class="tag">Radboudumc DIAG</span><span class="tag">Radiology: AI</span><span class="tag">9月號</span>
+    </div>
+    <h3>
+      <span class="en">LUNA25: on 468 indeterminate lung nodules read by 75 radiologists, the best AI wins 0.78 to 0.69</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en"><em>Radiology: Artificial Intelligence</em> vol 8 no 5 (September 2026) carries the results of the <a href="https://luna25.grand-challenge.org/" target="_blank" rel="noopener">LUNA25 challenge</a> run by Peeters, Obreja, Jacobs and colleagues at Radboudumc's Diagnostic Image Analysis Group (<a href="https://doi.org/10.1148/ryai.260179" target="_blank" rel="noopener">DOI 10.1148/ryai.260179</a>). Training used 4,069 NLST CT exams; the hidden test set was 468 indeterminate nodules (156 malignant, 312 benign) drawn from the DLCST, NELSON and MILD trials, with a separate reader study in which 75 radiologists assessed 300 nodules. Per the <a href="https://www.diagnijmegen.nl/publications/obre26/" target="_blank" rel="noopener">authors' public abstract</a>, the top system reached AUC 0.78 (95% CI 0.73–0.84, p&lt;0.001) against a radiologist average of 0.69, finding 12% more malignancies at matched specificity and producing 20% fewer false positives at matched sensitivity. An accompanying <a href="https://pubs.rsna.org/doi/10.1148/ryai.260657" target="_blank" rel="noopener">commentary</a> by Farina and Szarf ran on August 5.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Most "AI beats doctors" headlines come from retrospective sets and permissive comparisons. LUNA25 is not that: hidden test set, Docker submissions, the same nodules, the same humans, a pre-specified reader study. And it picked the expensive segment — indeterminate nodules. Neither obvious cancers nor obvious benign findings are the problem; sending 312 benign nodules into follow-up, biopsy or resection is where every lung screening programme actually bleeds. Twenty percent fewer false positives at matched sensitivity, at programme scale, is thousands of avoided workups and operations.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">The winning algorithm is not a marketed product and holds no clearance anywhere. The readers worked in an artificial setting — no history, no priors, no clinical context — which handicaps the human side, since a radiologist in a real reading room has all three. Training came entirely from NLST (a US heavy-smoker cohort) and testing entirely from European trials, so representation of never-smokers and Asian populations is unknown. The <em>Radiology: AI</em> full text and commentary sit behind a paywall; the figures here come from the authors' public abstract and the challenge site.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://doi.org/10.1148/ryai.260179" target="_blank" rel="noopener">Radiology: Artificial Intelligence 8(5), 2026-09</a> · <a href="https://www.diagnijmegen.nl/publications/obre26/" target="_blank" rel="noopener">Radboudumc DIAG</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Workflow</span></span>
+      <span class="tag">Stanford</span><span class="tag">Radiology: AI</span><span class="tag">9月號</span>
+    </div>
+    <h3>
+      <span class="en">Put the AI on the queue instead of the read: 43.4 minutes off the 90th-percentile wait for ED CT</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">The same issue carries a <a href="https://pubs.rsna.org/doi/10.1148/ryai.260110" target="_blank" rel="noopener">simulation study</a> from Stanford emergency medicine and radiology with Harvard's biomedical informatics department — Silva, Tang, Chiacchia, Zhang, Langlotz and Kim (published July 22; DOI 10.1148/ryai.260110). They trained a gradient boosting model on 313,966 ED visits (August 2020–August 2024) to predict, <em>at order time</em>, whether a CT would prove clinically actionable, then ran discrete-event simulations comparing first-in-first-out against AI prioritisation across 20,795 studies from March–August 2024. For the 7,637 actionable studies (36.73%), median wait fell 10.75 minutes (95% CI −12.40, −9.10) and the 90th-percentile wait fell 43.36 minutes (−50.58, −36.80); completion within 60 minutes rose from 48.33% to 57.30%. The model captured 80–87% of the theoretical maximum benefit.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This is the most governance-friendly class of clinical AI on offer, because it never touches interpretation. The model does not say what is on the scan, only who should be scanned first; interpretive responsibility, liability and device classification all stay where they were, and no new hardware is needed. Set against the other six items here it reads almost as a counter-thesis: while everyone argues about what standard should validate diagnostic accuracy, this shows that pointing the prediction at scheduling routes the benefit around the entire validation deadlock.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">This is a discrete-event simulation, not a prospective implementation; real ED scheduling is bound by staffing, scanner availability and patient flow that a simulation cannot capture. Wait time is also not a clinical outcome — nobody measured mortality, length of stay or changed management. And the benefit is not free: for non-actionable studies the median wait also fell 5.80 minutes, but the 90th percentile rose 14.46 minutes, meaning some patients were pushed further back. Single academic centre; generalisability untested.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://pubs.rsna.org/doi/10.1148/ryai.260110" target="_blank" rel="noopener">Radiology: Artificial Intelligence 8(5), 2026-07-22</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Validation gap</span></span>
+      <span class="tag">Osaka Metropolitan Univ.</span><span class="tag">European Radiology</span><span class="tag">9/02</span>
+    </div>
+    <h3>
+      <span class="en">252 marketed radiology AI products, 545 validation studies, and only 14% can say how they perform across subgroups</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Shannon Walston, Hirotaka Takita, Yasuhito Mitsuyama, Junya Sato and corresponding author Daiju Ueda of the Department of Artificial Intelligence at Osaka Metropolitan University Graduate School of Medicine published a scoping review in <em>European Radiology</em> (<a href="https://link.springer.com/article/10.1007/s00330-026-12652-y" target="_blank" rel="noopener">DOI 10.1007/s00330-026-12652-y</a>) covering 252 commercially available AI products from 142 manufacturers across 545 validation studies; it entered the news cycle this week via <a href="https://www.news-medical.net/news/20260902/Demographic-reporting-for-medical-AI-remains-inadequate-study-shows.aspx" target="_blank" rel="noopener">News-Medical</a> on September 2 and <a href="https://medicalxpress.com/news/2026-09-fragmented-bias-commercial-medical-ai.html" target="_blank" rel="noopener">Medical Xpress</a>. Only 14% (77/545) reported performance stratified by sex, age or race/ethnicity. Eighty-one percent recorded patient sex but just 16% gave sex-stratified performance; 14% split patients into age bands, of which only 51% (40/79) included counts per band; race/ethnicity was lowest at 8% (45 studies), of which merely 18% (8/45) reported both demographics and performance. Skeletal (23% of 88) and lung (22% of 139) imaging most often included stratified data, and roughly 67% of tuberculosis detection datasets may lack the power for sex-based subgroup meta-analysis. Temporal analysis showed no improvement over time, and company sponsorship made no difference.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">The first five items today answer the question of who the model beat. This one answers a different question: whether we are equipped to know who it fails. For 252 products already on sale, already cleared, already reading real patients' images, 86% of the validation literature cannot say. The finding that this has not improved over time is the ugliest part — it means several years of fairness guidance, reporting checklists and consensus statements have not changed what manufacturers actually put in the paper.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">Radiology only, marketed products only — nothing on pathology, ECG or clinical decision support. The authors note that data extraction was done by a single reviewer, admitting possible selection bias; the review also does not compare performance between products or measure clinical adoption. The paper went online on June 12, 2026, so what happened this week was coverage rather than publication — it is here because it is the shared premise underneath the other six items.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://link.springer.com/article/10.1007/s00330-026-12652-y" target="_blank" rel="noopener">European Radiology, 2026-06-12</a> · <a href="https://www.news-medical.net/news/20260902/Demographic-reporting-for-medical-AI-remains-inadequate-study-shows.aspx" target="_blank" rel="noopener">News-Medical, 2026-09-02</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Opportunistic screening</span></span>
+      <span class="tag">Sheba Medical Center</span><span class="tag">ESC Congress 2026</span><span class="tag">8/27</span>
+    </div>
+    <h3>
+      <span class="en">One mammogram, a second organ system read out of it: AUROC 0.86 for stroke, 0.79 for hypertension, 0.78 for ischaemic heart disease</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">An August 27 <a href="https://www.escardio.org/news/press/press-releases/ai-could-help-detect-common-cardiovascular-diseases-from-mammograms/" target="_blank" rel="noopener">press release</a> from the European Society of Cardiology previewed a study presented at ESC Congress 2026 (Munich, August 28–31): Viana Copeland's group at Sheba Medical Center and Tel Aviv University trained a deep learning model on 29,921 women and 97,364 mammography examinations (median age 54) to identify hypertension (16% prevalence, AUROC 0.79), ischaemic heart disease (2.5%, 0.78) and stroke (2.5%, 0.86) from the mammogram alone. The ESC separately reported this as its largest congress ever, with nearly 34,000 professionals from 170 countries and more than 180 studies published simultaneously across journals (<a href="https://www.escardio.org/news/press/press-releases/record-breaking-esc-congress-2026-puts-new-life-saving-cardiovascular-science-in-the-spotlight/" target="_blank" rel="noopener">ESC</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Opportunistic screening is the cheapest form of clinical AI going: the image is already taken, the dose already delivered, the appointment already made — the model only reads out signal nobody was looking at. Copeland's own framing is that "because mammography is already widely used, analysing the same images for cardiovascular information could potentially offer a scalable approach without requiring an additional imaging examination." The link between breast arterial calcification and cardiovascular risk has years of literature behind it, but this measures three defined disease endpoints in nearly 30,000 women.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">A congress abstract, with no peer-reviewed full text yet; every figure here comes from the ESC press release, and we did not obtain the original abstract tables. Single-centre retrospective data. And AUROC here measures identification of people who already carry the diagnosis, not prospective prediction of future events — clinically those are very different claims. At 2.5% prevalence, the positive predictive value behind an AUROC of 0.86 could be startlingly low, and the release does not report it.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.escardio.org/news/press/press-releases/ai-could-help-detect-common-cardiovascular-diseases-from-mammograms/" target="_blank" rel="noopener">European Society of Cardiology, 2026-08-27</a></p></div>
+  </div>
+</section>
+
+<section id="product">
+  <h2>02 — Product Analysis</h2>
+  <div class="sec-title">
+    <span class="en">Today's two products sit at opposite poles: one is not regulated as a device and scored best, the other carries a government's name and came last</span>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>Claude Opus 5 / Gemini 3.1 Pro</h3>
+      <p class="sub"><span class="en-inline">General-purpose frontier models as clinical knowledge engines · Anthropic (US) / Google DeepMind (US, UK)</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> Neither is a medical device and neither holds a clinical indication anywhere, yet they scored 92.7% and 91.4% on specialist haematology board questions. They are sold to developers and enterprises; medical use largely arrives one of two ways — wrapped inside someone else's product (decision support, literature search, scribing), or as a tab a clinician opens privately. Neither route sits inside a device regulatory framework (<a href="https://www.medrxiv.org/content/10.64898/2026.09.01.26361881v1" target="_blank" rel="noopener">medRxiv, 2026-09-02</a>).</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: consistently high scores across nine disease areas and six skill domains — a breadth no specialty AI product has — and, in a separate self-triage test, zero critical misses across 270 evaluations (<a href="https://www.medrxiv.org/content/10.64898/2026.09.01.26361908v1" target="_blank" rel="noopener">medRxiv, 2026-09-02</a>).</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: multimodal scores drop 13–16 points, and half of haematology's diagnoses live in images. Worse, the top models fail on the same questions, so the commonest safety net — asking a second model — does not hold. The authors also flag that these public teaching banks are almost certainly inside the training data, and nobody can currently separate how much of the text score is reasoning and how much is recall.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Missing</span></span>
+          <span class="en">: no public document reports how these models perform across patient sex, age or ethnicity — precisely the charge the <a href="https://link.springer.com/article/10.1007/s00330-026-12652-y" target="_blank" rel="noopener">European Radiology</a> review levels at the commercial AI industry. General-purpose models are not even eligible for the charge, because they fall outside the 545 validation studies it counted.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>Healthdirect Symptom Checker</h3>
+      <p class="sub"><span class="en-inline">Government-run online self-triage front door · Healthdirect Australia (federal and state funded)</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> Healthdirect is Australia's publicly funded national health information and triage front door; its symptom checker walks users through rule-based questions toward self-care, a GP or an emergency department, with a 24-hour nurse line behind it. In this week's 45-vignette evaluation it triaged at 48.9% (95% CI 35.0–63.0), with Cohen's kappa 0.233, emergency sensitivity 46.7% and two critical misses (<a href="https://www.medrxiv.org/content/10.64898/2026.09.01.26361908v1" target="_blank" rel="noopener">medRxiv, 2026-09-02</a>).</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: auditable, accountable, predictable. Every path through a rule-based system can be inspected and amended by a public health authority, and when it errs the failing rule can be traced. LLMs offer none of that today, and it is exactly why a government adopted this design.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: a kappa of 0.233 means agreement with correct triage is barely better than chance, and an emergency sensitivity of 46.7% means it misses more than half the cases that belong in an emergency department. For a front door carrying a government's name and read by the public as authoritative, that is a graver finding than anything charged against the LLMs in the same paper.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Discount this</span></span>
+          <span class="en">: 45 vignettes cannot carry a verdict that the product is unsafe, and the confidence interval spans 28 points; the evaluators also used a seven-rule interaction protocol that may not match how the public actually uses it. The preprint has neither been peer reviewed nor answered by Healthdirect.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="company">
+  <h2>03 — Companies &amp; Competition</h2>
+  <div class="sec-title">
+    <span class="en">Who stands where, on what, against whom</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th><span class="en-inline">Company</span></th>
+        <th><span class="en-inline">Recent state &amp; numbers</span></th>
+        <th><span class="en-inline">Position &amp; moat</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Qure.ai</strong><br><span class="en-inline">Chest X-ray and CT AI, India / US</span></td>
+          <td>
+            <span class="en">On February 26 it announced six further FDA 510(k) indications for qXR-Detect (lung, pleura, mediastinum/hila and heart, bone, hardware, other), taking it to 26 FDA clearances across nine products plus 65+ CE certifications, and making it the first chest X-ray CADe device cleared with a Predetermined Change Control Plan (<a href="https://www.qure.ai/us/news-press-coverages/qure.ai-nets-six-new-indications-cleared-by-the-fda-taking-the-chest-x-ray-crown-in-the-radiology-ai-race" target="_blank" rel="noopener">Qure.ai, 2026-02-26</a>).</span>
+          </td>
+          <td>
+            <span class="en">The moat is regulatory breadth plus the update freedom a PCCP buys — rivals resubmit on every algorithm change; it does not. The thin spot is today's sixth item: tuberculosis detection is its core market, and that review found roughly 67% of TB datasets underpowered for sex-based subgroup analysis.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>OpenEvidence</strong><br><span class="en-inline">Clinical decision support and medical search, US</span></td>
+          <td>
+            <span class="en">On September 3 it launched its own family of clinical models and deepened its oncology push (<a href="https://www.statnews.com/2026/09/03/openevidence-launches-new-ai-models-clinicians-health-tech/" target="_blank" rel="noopener">STAT</a>, <a href="https://www.fiercehealthcare.com/health-tech/openevidence-deepens-oncology-push-expands-ai-decision-support-cancer-care" target="_blank" rel="noopener">Fierce Healthcare</a>); it had already signed a multi-year licence with JAMA to feed journal content into its AI medical search engine (<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/jama-signs-multi-year-deal-openevidence-inform-ai-powered-medical-search" target="_blank" rel="noopener">Fierce Healthcare</a>).</span>
+          </td>
+          <td>
+            <span class="en">Its bet is content licensing plus clinician distribution rather than model capability: the haematology scores show knowledge itself is no longer scarce — citable provenance and an interface clinicians actually open are. The risk is that once general-purpose models secure equivalent licences, the moat reduces to habit.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Nihon Kohden Digital Health Solutions</strong><br><span class="en-inline">Continuous monitoring and deterioration prediction (CoMET), Japan / US</span></td>
+          <td>
+            <span class="en">Its cluster-randomised trial with the University of Virginia (an 85-bed cardiology medical-surgical ward, eleven clusters, 10,422 inpatient visits, January 2021–October 2022) published on February 5: the primary outcome, hours free of clinical deterioration within 21 days, showed no difference between arms, and the authors concluded that predictive analytics monitoring did not improve patient outcomes (<a href="https://www.nature.com/articles/s41598-026-39051-z" target="_blank" rel="noopener">Scientific Reports</a>).</span>
+          </td>
+          <td>
+            <span class="en">This row exists as a reminder: the only product in the table that ran a randomised trial got a null result. The moat is a data stream welded to monitoring hardware; the weakness is that it proved an accurate prediction is not the same as a patient who does better. Every AUC in today's report should be read against this line.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Anthropic / Google DeepMind / OpenAI</strong><br><span class="en-inline">General-purpose frontier models, no clinical indication</span></td>
+          <td>
+            <span class="en">On the 1,477-question haematology benchmark, Claude Opus 5 scored 92.7% on text, Gemini-3.1 Pro 91.4% and GPT-5.6 Sol 89.9%, while every model landed between 74.8% and 78.7% on multimodal items (<a href="https://www.medrxiv.org/content/10.64898/2026.09.01.26361881v1" target="_blank" rel="noopener">medRxiv, 2026-09-02</a>). A separate study the same week found paid tiers no safer than free ones on triage (<a href="https://www.medrxiv.org/content/10.64898/2026.09.01.26361908v1" target="_blank" rel="noopener">medRxiv, 2026-09-02</a>).</span>
+          </td>
+          <td>
+            <span class="en">They have no moat because they never entered the market — other people's products carried them in. The real contest is not general versus specialist, but that a specialist vendor's entire validation and regulatory cost base is being hollowed out from the flank by a higher-scoring substitute bound by none of the same rules. Open-weight models improved most this generation, so that flank is widening.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Healthdirect Australia</strong><br><span class="en-inline">Government-run triage front door</span></td>
+          <td>
+            <span class="en">In the 45-vignette evaluation it triaged at 48.9% with kappa 0.233, emergency sensitivity 46.7% and two critical misses, trailing all six LLM configurations (<a href="https://www.medrxiv.org/content/10.64898/2026.09.01.26361908v1" target="_blank" rel="noopener">medRxiv, 2026-09-02</a>).</span>
+          </td>
+          <td>
+            <span class="en">The moat is public trust and free universal access, not performance. Public trust is also the asset least able to survive this comparison: once people learn the free chat window triages better than the government's, the front door relocates itself — and there is no nurse line waiting on the other side.</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>Today's competitive structure is an inverted pyramid.</strong> The vendor with the most clearances and the largest validation spend (Qure.ai) defends the narrowest indications; the only vendor that ran a randomised trial (Nihon Kohden) got a null result; and the layer scoring highest across the widest ground — general-purpose frontier models — is neither a device nor counted in any validation tally. This week, regulatory weight and benchmark performance line up in opposite order on the same table.</span>
+    </p>
+  </div>
+</section>
+
+<section id="taiwan">
+  <h2>04 — Taiwan Angle</h2>
+  <div class="sec-title">
+    <span class="en">LUNA25 targets exactly Taiwan's sorest segment — just as Taiwan prepares to put AI into reimbursement review</span>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>(1) Taiwan was the first country to extend LDCT screening to high-risk never-smokers — and its problem is precisely the indeterminate nodule.</strong> In the first year of the national programme, 49,508 people were screened (56.3% men, 43.7% women), 531 lung cancers were confirmed at a 1.1% detection rate, and 85.1% of those were stage 0 or 1. Among the eligible, 57.8% qualified on family history and 38.3% as heavy smokers; 74.6% of confirmed cases had a family history. Yet only about one in ten of an estimated 500,000 eligible people came forward (<a href="https://www.commonhealth.com.tw/article/88402" target="_blank" rel="noopener">CommonHealth</a>).</span>
+    </p>
+    <p>
+      <span class="en"><strong>(2) Taiwan already has its own LDCT-AI, and it has been live for a while.</strong> The nodule-reading aid the Health Promotion Administration commissioned from National Taiwan University and engineering partners in 2021 received TFDA Class II device approval in February 2024 and is deployed at seven institutions: NTU Hospital, the NTU Cancer Center, National Cheng Kung University Hospital, Changhua Christian Hospital and the MOHW hospitals in Taipei, Nantou and Taitung. Official figures put detection accuracy at roughly 90% for nodules under 4 mm and over 6 mm with about two false positives, a 29% gain in report turnaround and a 31% gain in consistency of nodule characterisation (<a href="https://www.healthnews.com.tw/article/62811" target="_blank" rel="noopener">HealthNews</a>).</span>
+    </p>
+    <p>
+      <span class="en"><strong>(3) More consequentially, the National Health Insurance Administration is already moving AI toward reimbursement review.</strong> A March 2026 report describes an NHIA generative-AI recognition system being built as a pre-payment review platform for lung nodule surgery and as a self-management tool for hospitals. Division head Huang Yu-wen said the first-phase target is 95% agreement between the AI's assessment and the pathology report, that unnecessary operations on nodules judged benign would be denied, and that a central directive system would flag hospitals and physicians whose resection specimens come back malignant unusually rarely. The same report states that over 5.3 million LDCT examinations were performed in 2024 and nearly 30,000 people underwent nodule or tumour resection, with post-operative malignancy rates above 70% at NTU and three peer hospitals but below 50% — in places below 40% — elsewhere; clinical consensus is that nodules under 0.6 cm do not need surgery (<a href="https://health.udn.com/health/story/6024/9377935" target="_blank" rel="noopener">UDN Health</a>).</span>
+    </p>
+    <p>
+      <span class="en"><strong>(4) And today's sixth item lands exactly on that intersection.</strong> If Taiwan is to deny payment on an AI's say-so, it must be able to answer one question: does this model perform the same in women, in never-smokers, in the over-60s, on scanners from different manufacturers? Only 14% of 545 global validation studies for commercial radiology AI can answer it, and only 8% even mention race or ethnicity (<a href="https://link.springer.com/article/10.1007/s00330-026-12652-y" target="_blank" rel="noopener">European Radiology</a>). Taiwan's screened population is 43.7% women and enters mostly on family history rather than smoking — the very group NLST represented least, and NLST is where LUNA25's training data came from. Carrying an AUC of 0.78 from a model trained on American heavy smokers and validated on European trials over to Taiwan's screening population does not lack an algorithm. It lacks the subgroup validation nobody has done.</span>
+    </p>
+  </div>
+</section>
+
+<section id="reading">
+  <h2>05 — Further Reading</h2>
+  <div class="sec-title">
+    <span class="en">Five longer pieces that supply the background and the counterarguments to today's seven items</span>
+  </div>
+
+  <ol class="reading">
+    <li>
+      <a href="https://pubs.rsna.org/doi/10.1148/ryai.260657" target="_blank" rel="noopener">What LUNA25 Teaches Us about AI for Lung Cancer Screening — Radiology: Artificial Intelligence (2026-08-05)</a>
+      <p class="why"><span class="en">Farina and Szarf's accompanying commentary on LUNA25. After the headline AUC gap, this is the only peer-written document setting out what the challenge does and does not establish.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/articles/s41746-026-02382-2" target="_blank" rel="noopener">Human–large language model collaboration in clinical medicine: a systematic review and meta-analysis — npj Digital Medicine (2026-01-28)</a>
+      <p class="why"><span class="en">Pooling ten trials, it finds the counterintuitive result that clinician-plus-AI does not reliably beat AI alone: composite diagnostic and management scores gain just 4.88 points (95% CI 0.65–9.12) while factual error rates in documentation stay at 26–36%. Read it before assuming AI works as a second opinion.</span></p>
+    </li>
+    <li>
+      <a href="https://link.springer.com/article/10.1007/s00330-026-12652-y" target="_blank" rel="noopener">The current state of demographic subgroup reporting for commercially available AI for radiology: a scoping review — European Radiology (2026-06-12)</a>
+      <p class="why"><span class="en">The primary paper behind today's sixth item. If you need to judge whether any marketed imaging AI transfers to your own patients, this gives you the method, not just the verdict.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/articles/s41467-026-76004-6" target="_blank" rel="noopener">A benchmark study of vision and pathology foundation models for computational pathology — Nature Communications (2026-07-24)</a>
+      <p class="why"><span class="en">Gevaert's Stanford group compares 32 foundation models across 41 tasks, 53 datasets and over 17,500 whole-slide images. Its conclusion rhymes with today's haematology benchmark: pathology-specific models are not uniformly better than general vision models, and scale does not guarantee generalisation.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/articles/s41591-026-04574-5" target="_blank" rel="noopener">Lessons from deploying the ChatEHR system at Stanford Medicine — Nature Medicine (2026-08-10)</a>
+      <p class="why"><span class="en">A first-hand account of what actually happens once an LLM is wired into the record, centred on why benchmark scores are not a deployment case — precisely the question today's second and third items leave open.</span></p>
+    </li>
+  </ol>
+</section>
+
+<section id="refs">
+  <h2>06 — References</h2>
+  <div class="sec-title">
+    <span class="en">References</span>
+  </div>
+
+  <div class="panel">
+    <ol class="refs">
+      <li>Seuren LM, Williams R, Cresswell K, et al. Beyond productivity: a NASSS-informed review of implementation risks and research priorities for ambient AI scribes in healthcare. <em>BMJ Digital Health &amp; AI</em> 2(1):e000091, 2026-09-03. DOI 10.1136/bmjdh-2026-000091. <a href="https://bmjdigitalhealth.bmj.com/content/2/1/e000091" target="_blank" rel="noopener">bmjdigitalhealth.bmj.com</a></li>
+      <li>AI scribes may fail to capture patients' experiences. <em>University of Edinburgh News</em>, 2026-09-04. <a href="https://www.ed.ac.uk/news/ai-scribes-may-fail-to-capture-patients-experiences" target="_blank" rel="noopener">ed.ac.uk</a></li>
+      <li>Ambient AI scribes may risk missing vital patient information. <em>News-Medical</em>, 2026-09-03. <a href="https://www.news-medical.net/news/20260903/Ambient-AI-scribes-may-risk-missing-vital-patient-information.aspx" target="_blank" rel="noopener">news-medical.net</a></li>
+      <li>Radoynova M, Benouis M, Schulze F, Schneider MMK, Winter S, Bornhäuser M, Middeke JM, Eckardt JN. Benchmarking ten frontier large language models on 1,477 board-style multiple choice questions in hematology. <em>medRxiv</em> 2026.09.01.26361881, 2026-09-02. <a href="https://www.medrxiv.org/content/10.64898/2026.09.01.26361881v1" target="_blank" rel="noopener">medrxiv.org</a></li>
+      <li>Chowdhury AR, Chowdhury B. Are Frontier Large Language Models Safer Than Government-Backed Symptom Checkers for Clinical Self-Triage? A Standardised Vignette Evaluation. <em>medRxiv</em> 2026.09.01.26361908, 2026-09-02. <a href="https://www.medrxiv.org/content/10.64898/2026.09.01.26361908v1" target="_blank" rel="noopener">medrxiv.org</a></li>
+      <li>Peeters D, Obreja B, Antonissen N, Saghir Z, Pastorino U, De Bock G, Vliegenthart R, Prokop M, Jacobs C. Benchmarking of AI and Radiologists for Indeterminate Lung Nodule Malignancy Risk Estimation on Screening CT: The LUNA25 Challenge. <em>Radiology: Artificial Intelligence</em> 8(5), 2026-09. DOI 10.1148/ryai.260179. <a href="https://doi.org/10.1148/ryai.260179" target="_blank" rel="noopener">pubs.rsna.org</a></li>
+      <li>LUNA25 Challenge, 作者公開版摘要與挑戰賽官網. <em>Diagnostic Image Analysis Group, Radboudumc</em>. <a href="https://www.diagnijmegen.nl/publications/obre26/" target="_blank" rel="noopener">diagnijmegen.nl</a> · <a href="https://luna25.grand-challenge.org/" target="_blank" rel="noopener">luna25.grand-challenge.org</a></li>
+      <li>Farina EMJM, Szarf G. What LUNA25 Teaches Us about AI for Lung Cancer Screening. <em>Radiology: Artificial Intelligence</em> 8(5), 2026-08-05. DOI 10.1148/ryai.260657. <a href="https://pubs.rsna.org/doi/10.1148/ryai.260657" target="_blank" rel="noopener">pubs.rsna.org</a></li>
+      <li>Silva E, Tang K, Chiacchia S, Zhang X, Langlotz C, Kim D. Simulation of AI-driven CT Queue Prioritization in the Emergency Department. <em>Radiology: Artificial Intelligence</em> 8(5), 2026-07-22. DOI 10.1148/ryai.260110. <a href="https://pubs.rsna.org/doi/10.1148/ryai.260110" target="_blank" rel="noopener">pubs.rsna.org</a></li>
+      <li>Walston SL, Takita H, Mitsuyama Y, Sato J, Ueda D. The current state of demographic subgroup reporting for commercially available AI for radiology: a scoping review. <em>European Radiology</em>, 2026-06-12. DOI 10.1007/s00330-026-12652-y. <a href="https://link.springer.com/article/10.1007/s00330-026-12652-y" target="_blank" rel="noopener">link.springer.com</a></li>
+      <li>Demographic reporting for medical AI remains inadequate, study shows. <em>News-Medical</em>, 2026-09-02. <a href="https://www.news-medical.net/news/20260902/Demographic-reporting-for-medical-AI-remains-inadequate-study-shows.aspx" target="_blank" rel="noopener">news-medical.net</a> · <a href="https://medicalxpress.com/news/2026-09-fragmented-bias-commercial-medical-ai.html" target="_blank" rel="noopener">Medical Xpress</a></li>
+      <li>AI could help detect common cardiovascular diseases from mammograms. <em>European Society of Cardiology press release</em>, 2026-08-27. <a href="https://www.escardio.org/news/press/press-releases/ai-could-help-detect-common-cardiovascular-diseases-from-mammograms/" target="_blank" rel="noopener">escardio.org</a></li>
+      <li>Record-breaking ESC Congress 2026 puts new life-saving cardiovascular science in the spotlight. <em>European Society of Cardiology</em>, 2026. <a href="https://www.escardio.org/news/press/press-releases/record-breaking-esc-congress-2026-puts-new-life-saving-cardiovascular-science-in-the-spotlight/" target="_blank" rel="noopener">escardio.org</a></li>
+      <li>Qure.ai nets six new indications cleared by the FDA. <em>Qure.ai newsroom</em>, 2026-02-26. <a href="https://www.qure.ai/us/news-press-coverages/qure.ai-nets-six-new-indications-cleared-by-the-fda-taking-the-chest-x-ray-crown-in-the-radiology-ai-race" target="_blank" rel="noopener">qure.ai</a></li>
+      <li>Keim-Malpass J, Ratcliffe SJ, Clark MT, et al. A randomized controlled trial of artificial intelligence-based analytics for clinical deterioration. <em>Scientific Reports</em>, 2026-02-05. DOI 10.1038/s41598-026-39051-z. <a href="https://www.nature.com/articles/s41598-026-39051-z" target="_blank" rel="noopener">nature.com</a></li>
+      <li>OpenEvidence launches new family of AI models for clinicians. <em>STAT News</em>, 2026-09-03. <a href="https://www.statnews.com/2026/09/03/openevidence-launches-new-ai-models-clinicians-health-tech/" target="_blank" rel="noopener">statnews.com</a> · <a href="https://www.fiercehealthcare.com/health-tech/openevidence-deepens-oncology-push-expands-ai-decision-support-cancer-care" target="_blank" rel="noopener">Fierce Healthcare</a></li>
+      <li>JAMA signs multi-year deal with OpenEvidence to inform AI-powered medical search. <em>Fierce Healthcare</em>. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/jama-signs-multi-year-deal-openevidence-inform-ai-powered-medical-search" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>晚期存活率剩1成！公費肺癌篩檢首年僅1成篩檢率. <em>康健雜誌 CommonHealth</em>, 2023-07-03（2026-01-08 更新）. <a href="https://www.commonhealth.com.tw/article/88402" target="_blank" rel="noopener">commonhealth.com.tw</a></li>
+      <li>國健署LDCT肺癌篩檢AI輔助程式獲食藥署許可. <em>健康醫療網 HealthNews</em>, 2024-09-07. <a href="https://www.healthnews.com.tw/article/62811" target="_blank" rel="noopener">healthnews.com.tw</a></li>
+      <li>LDCT揪出一堆肺結節！健保署推AI把關，避免「不該切卻被切」. <em>聯合報元氣網 UDN Health</em>, 2026-03-17. <a href="https://health.udn.com/health/story/6024/9377935" target="_blank" rel="noopener">health.udn.com</a></li>
+      <li>Wang G, Zhang K, Jiang J, Yang X, et al. Human–large language model collaboration in clinical medicine: a systematic review and meta-analysis. <em>npj Digital Medicine</em>, 2026-01-28. DOI 10.1038/s41746-026-02382-2. <a href="https://www.nature.com/articles/s41746-026-02382-2" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Bareja R, Carrillo-Perez F, Zheng Y, Pizurica M, et al. A benchmark study of vision and pathology foundation models for computational pathology. <em>Nature Communications</em>, 2026-07-24. DOI 10.1038/s41467-026-76004-6. <a href="https://www.nature.com/articles/s41467-026-76004-6" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Lessons from deploying the ChatEHR system at Stanford Medicine. <em>Nature Medicine</em>, 2026-08-10. <a href="https://www.nature.com/articles/s41591-026-04574-5" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Lång K, et al. Interval cancer, sensitivity, and specificity comparing AI-supported mammography screening with standard double reading without AI in the MASAI study. <em>The Lancet</em>, 2026-01-29. DOI 10.1016/S0140-6736(25)02464-X. <a href="https://www.eurekalert.org/news-releases/1114399" target="_blank" rel="noopener">eurekalert.org</a></li>
+    </ol>
+    <div class="note">
+      <span class="en"><strong>Editor's note:</strong> (1) The <em>Radiology: Artificial Intelligence</em> full texts and commentary behind items 4 and 5 are paywalled; every LUNA25 figure here comes from the Radboudumc Diagnostic Image Analysis Group's public author abstract and the challenge site, and the ED CT prioritisation figures from RSNA's public abstract page. Neither paper's supplementary material was obtained. (2) Items 2 and 3 are medRxiv preprints, not peer reviewed; per-model scores and vignette figures are taken from the abstract pages. (3) Item 7 is an ESC Congress 2026 abstract with no peer-reviewed full text; all figures come from the ESC press release. (4) The primary paper behind item 6 went online on 2026-06-12, so what occurred this week was news coverage rather than publication, as flagged in the item itself. (5) The Taiwan first-year LDCT figures (49,508 screened, 531 cancers, 85.1% stage 0–1) come from a CommonHealth article first published 2023-07-03 and updated 2026-01-08; they describe the programme's first year, not the latest cumulative total. The "5.3 million-plus LDCT examinations in 2024 and nearly 30,000 resections" figure and the per-hospital malignancy rates come from UDN Health's 2026-03-17 relay of NHIA statements; we did not obtain the underlying tables. (6) The seven deploying hospitals and the ~90% accuracy, +29% and +31% figures for Taiwan's LDCT-AI come from a 2024-09-07 HealthNews report and are self-reported by the Health Promotion Administration and its development team, not independently audited. (7) MASAI published in January 2026 and is cited here only as background, not as this week's news.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-row">
+    <div>
+      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Monday / Clinical Applications &amp; Research<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
+    </div>
+    <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
+  </div>
+</footer>
+</main>
+
+<div class="fabs">
+  <button class="up" id="up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+  <a class="home-fab" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg></a>
+</div>
+
+<script>
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.getElementById('theme-ic').textContent =
+    document.body.classList.contains('dark') ? '◑' : '◐';
+}
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.body.classList.add('dark');
+  document.getElementById('theme-ic').textContent = '◑';
+}
+window.addEventListener('scroll', function(){
+  document.getElementById('up').classList.toggle('show', window.scrollY > 600);
+});
+
+/* GitHub 星星數：無需授權，失敗或被限流時靜默保留佔位符 */
+(function(){
+  var el = document.getElementById('ghs');
+  if (!el || typeof fetch !== 'function') return;
+  fetch('https://api.github.com/repos/tingwei161803/ai-medical-daily', {headers:{Accept:'application/vnd.github+json'}})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if (!d || typeof d.stargazers_count !== 'number') return;
+      var n = d.stargazers_count;
+      el.textContent = n >= 1000 ? (Math.round(n/100)/10) + 'k' : String(n);
+    })
+    .catch(function(){});
+})();
+</script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/reports/2026-09-07.html" hreflang="zh-Hant" rel="alternate" lang="zh-Hant">中文版</a></p>
+</body>
+</html>
