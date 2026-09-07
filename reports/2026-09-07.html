@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>AI／醫療AI 每日新知日報 · 2026-09-07</title>
+<meta property="og:url" content="https://ai-medical-daily.peteraim.com/reports/2026-09-07.html" />
+<link rel="canonical" href="https://ai-medical-daily.peteraim.com/reports/2026-09-07.html" />
+<meta name="report-date" content="2026-09-07">
+<meta name="report-theme" content="clinical">
+<meta name="report-title-zh" content="考文字拿 92.7%，換成看圖只剩 76.9%——而這週從愛丁堡送來的證據說，從病歷裡掉出去最快的是病人本人">
+<meta name="report-title-en" content="92.7% on text, 76.9% the moment there is a picture — and this week's hardest evidence says the fastest thing to fall out of the note is the patient">
+<meta name="report-summary-zh" content="臨床日：9/2 兩份 medRxiv 前印本分別量出十個前沿模型在 1,477 題血液學考題上的文字／多模態落差，以及前沿 LLM 在自助分流上勝過澳洲官方症狀檢查器；9/3 愛丁堡在 BMJ Digital Health &amp; AI 指出環境式抄寫員把病人的敘事整段丟掉。同週 Radiology: AI 九月號讓 AI 在 468 顆未定性肺結節上以 AUC 0.78 勝過放射科醫師的 0.69。">
+<meta name="report-summary-en" content="Clinical Monday: two Sept 2 medRxiv preprints measure a 13-16 point text-to-multimodal drop across ten frontier models on 1,477 haematology questions, and frontier LLMs outscoring Australia's government symptom checker on self-triage; a Sept 3 Edinburgh review in BMJ Digital Health &amp; AI finds ambient scribes drop the patient's own account. Same week, Radiology: AI puts the best algorithm at AUC 0.78 against radiologists' 0.69 on 468 indeterminate lung nodules.">
+<meta property="og:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HJLDQZDK5V');
+</script>
+<link rel="stylesheet" href="/assets/report.css">
+</head>
+<body class="lang-zh">
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span><span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <div class="bar-sp"></div>
+    <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub / 在 GitHub 給這個專案一顆星"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
+    <div class="seg">
+      <button id="b-zh" class="on" onclick="setLang('zh')">中文</button>
+      <button id="b-en" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="kicker">
+    <span class="zh-inline">星期一 · 臨床應用與研究</span>
+    <span class="en-inline">Monday · Clinical Applications &amp; Research</span>
+  </div>
+  <h1>
+    <span class="zh">考文字拿 92.7%，換成看圖只剩 76.9%——而這週從愛丁堡送來的證據說，從病歷裡掉出去最快的是病人本人</span>
+    <span class="en">92.7% on text, 76.9% the moment there is a picture — and this week's hardest evidence says the fastest thing to fall out of the note is the patient</span>
+  </h1>
+  <div class="dateline">
+    <span class="zh-inline">2026 年 9 月 7 日（一）· 涵蓋 8/31–9/7 · 台北時間</span>
+    <span class="en-inline">Monday, September 7, 2026 · Covering Aug 31–Sep 7 · Taipei time</span>
+  </div>
+  <p class="lede">
+    <span class="zh">這一週的臨床證據在同一個地方裂開。德勒斯登團隊 9 月 2 日貼上 medRxiv 的 <a href="https://www.medrxiv.org/content/10.64898/2026.09.01.26361881v1" target="_blank" rel="noopener">1,477 題血液學基準測試</a>顯示，Claude Opus 5 在純文字題上拿到 92.7%，但同一批題目一旦附上影像就掉到 76.9%；Gemini-3.1 Pro 是 91.4% 對 78.7%。同一天貼上的<a href="https://www.medrxiv.org/content/10.64898/2026.09.01.26361908v1" target="_blank" rel="noopener">另一份前印本</a>則量出前沿 LLM 在自助分流情境上以 73.3–86.7% 勝過澳洲政府的 Healthdirect（48.9%）。而 9 月 3 日愛丁堡大學在 <a href="https://bmjdigitalhealth.bmj.com/content/2/1/e000091" target="_blank" rel="noopener">BMJ Digital Health &amp; AI</a> 刊出的回顧，把量尺從「醫師省了幾分鐘」換成「病歷裡少了什麼」，答案是：表情、手勢、情緒，以及病人在知道被錄音之後不肯再講的那些事。</span>
+    <span class="en">This week's clinical evidence splits along one seam. A <a href="https://www.medrxiv.org/content/10.64898/2026.09.01.26361881v1" target="_blank" rel="noopener">1,477-question haematology benchmark</a> posted to medRxiv on September 2 by a Dresden team put Claude Opus 5 at 92.7% on text-only questions and 76.9% on the multimodal ones; Gemini-3.1 Pro scored 91.4% against 78.7%. <a href="https://www.medrxiv.org/content/10.64898/2026.09.01.26361908v1" target="_blank" rel="noopener">A second preprint</a> posted the same day found frontier LLMs triaging vignettes at 73.3–86.7% against 48.9% for Healthdirect, Australia's government-backed symptom checker. And on September 3 a University of Edinburgh review in <a href="https://bmjdigitalhealth.bmj.com/content/2/1/e000091" target="_blank" rel="noopener">BMJ Digital Health &amp; AI</a> changed the yardstick from minutes saved to what goes missing from the note: expression, gesture, affect, and whatever the patient stops saying once they know the room is being recorded.</span>
+  </p>
+
+  <nav class="toc">
+    <a href="#top"><span class="zh-inline">重點新聞</span><span class="en-inline">Top Stories</span></a>
+    <a href="#product"><span class="zh-inline">產品分析</span><span class="en-inline">Product Analysis</span></a>
+    <a href="#company"><span class="zh-inline">公司與競爭</span><span class="en-inline">Companies &amp; Competition</span></a>
+    <a href="#taiwan"><span class="zh-inline">台灣視角</span><span class="en-inline">Taiwan Angle</span></a>
+    <a href="#reading"><span class="zh-inline">延伸閱讀</span><span class="en-inline">Further Reading</span></a>
+    <a href="#refs"><span class="zh-inline">參考文獻</span><span class="en-inline">References</span></a>
+  </nav>
+</div>
+
+<section id="top">
+  <h2>01 — Top Stories</h2>
+  <div class="sec-title">
+    <span class="zh">七則從不同角度量同一件事：分數往上，證據往哪裡去</span>
+    <span class="en">Seven measurements of the same thing from different angles: the scores go up, but where does the evidence go</span>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">臨床實證</span><span class="en-inline">Clinical evidence</span></span>
+      <span class="tag">University of Edinburgh</span><span class="tag">BMJ Digital Health &amp; AI</span><span class="tag">9/03</span>
+    </div>
+    <h3>
+      <span class="zh">愛丁堡回顧：環境式 AI 抄寫員把病人的敘事整段丟掉，而全英國已有四成家醫在用</span>
+      <span class="en">Edinburgh review: ambient AI scribes drop the patient's own account — and 40% of UK GPs already use one</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">9 月 3 日，愛丁堡大學 Lucas Seuren、Robin Williams、Kathrin Cresswell 等人在 <a href="https://bmjdigitalhealth.bmj.com/content/2/1/e000091" target="_blank" rel="noopener">BMJ Digital Health &amp; AI</a>（2 卷 1 期，DOI 10.1136/bmjdh-2026-000091）發表以 NASSS 框架進行的回顧，檢索 Embase、PubMed、Scopus 至 2026 年 3 月 20 日，納入 27 篇文獻、其中 13 篇為實證研究。校方 9 月 4 日的<a href="https://www.ed.ac.uk/news/ai-scribes-may-fail-to-capture-patients-experiences" target="_blank" rel="noopener">新聞稿</a>指出，英國已有約 40% 的一般科醫師在使用環境式抄寫員。</span>
+        <span class="en">On September 3, Lucas Seuren, Robin Williams and Kathrin Cresswell of the University of Edinburgh published a NASSS-framed review in <a href="https://bmjdigitalhealth.bmj.com/content/2/1/e000091" target="_blank" rel="noopener">BMJ Digital Health &amp; AI</a> (vol 2, no 1; DOI 10.1136/bmjdh-2026-000091), searching Embase, PubMed and Scopus to March 20, 2026 and including 27 articles, 13 of them empirical. The university's <a href="https://www.ed.ac.uk/news/ai-scribes-may-fail-to-capture-patients-experiences" target="_blank" rel="noopener">September 4 release</a> notes that roughly 40% of UK general practitioners now use an ambient scribe.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">迄今幾乎所有抄寫員研究量的都是「醫師省了幾分鐘」。這篇把量尺換掉：病歷是醫病互動共同生產的東西，而模型只吃得到聲音。臉部表情、手勢、情緒狀態不進入文字流；病人在知道被錄音時，對物質使用、家暴、心理健康的揭露會退縮；手寫本身是一種處理資訊的認知動作，交出去等於認知卸載——回顧引述的臨床醫師說，他們回診時認不出自己的病歷、也想不起這個病人。作者的結論是：環境式抄寫員應該被當成<em>複雜介入</em>來評估，不是生產力工具，需要情境化驗證與長期追蹤。</span>
+        <span class="en">Nearly every scribe study to date has measured minutes saved. This review changes the instrument: a clinical note is co-produced in the encounter, and the model only hears the audio. Facial expression, gesture and affect never enter the text stream; patients pull back on substance use, domestic violence and mental health once they know a recorder is running; and writing is itself a cognitive act, so handing it over is cognitive offloading — clinicians in the reviewed literature reported not recognising their own notes and not remembering the patient at follow-up. The authors argue ambient scribes must be evaluated as <em>complex interventions</em>, not productivity tools, with contextual validation and longitudinal follow-up.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">這是 27 篇文獻的框架式回顧，不是新的前瞻資料，也沒有合併效果量；13 篇實證研究的場域與樣本高度異質。「四成英國家醫」出自新聞稿轉述的外部調查，不是本回顧自己量的數字。</span>
+        <span class="en">This is a framework-driven review of 27 papers, not new prospective data, and it pools no effect sizes; the 13 empirical studies vary widely in setting and sample. The 40% figure comes from an external survey relayed in the press release, not from the review's own measurement.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://bmjdigitalhealth.bmj.com/content/2/1/e000091" target="_blank" rel="noopener">BMJ Digital Health &amp; AI, 2026-09-03</a> · <a href="https://www.ed.ac.uk/news/ai-scribes-may-fail-to-capture-patients-experiences" target="_blank" rel="noopener">University of Edinburgh, 2026-09-04</a> · <a href="https://www.news-medical.net/news/20260903/Ambient-AI-scribes-may-risk-missing-vital-patient-information.aspx" target="_blank" rel="noopener">News-Medical, 2026-09-03</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">基準測試</span><span class="en-inline">Benchmark</span></span>
+      <span class="tag">TUD Dresden</span><span class="tag">medRxiv</span><span class="tag">9/02</span>
+    </div>
+    <h3>
+      <span class="zh">1,477 題血液學：十個前沿模型的文字分數逼近 93%，一附上影像就掉 13 到 16 個百分點</span>
+      <span class="en">1,477 haematology questions: ten frontier models approach 93% on text and lose 13–16 points the moment an image is attached</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">德勒斯登工業大學 Carl Gustav Carus 大學醫院、Else Kröner Fresenius 數位健康中心與 NCT／UCC Dresden 的 Radoynova、Benouis、Middeke、Eckardt 等人，9 月 2 日在 <a href="https://www.medrxiv.org/content/10.64898/2026.09.01.26361881v1" target="_blank" rel="noopener">medRxiv</a> 貼出十個前沿模型在 1,477 題 board-style 選擇題上的基準測試。題目取自英國血液學會、美國血液學會與 EBMT 的五個教育題庫，涵蓋九個疾病領域與六個臨床技能面向，兼有純文字與多模態病例。結果：Claude Opus 5 文字 92.7%／多模態 76.9%，Gemini-3.1 Pro 91.4%／78.7%，Gemini-3.6 Flash 91.0%／74.8%，GPT-5.6 Sol 89.9%／76.7%。</span>
+        <span class="en">Radoynova, Benouis, Middeke, Eckardt and colleagues at University Hospital Carl Gustav Carus (TUD Dresden), the Else Kröner Fresenius Center for Digital Health and NCT/UCC Dresden posted a ten-model benchmark to <a href="https://www.medrxiv.org/content/10.64898/2026.09.01.26361881v1" target="_blank" rel="noopener">medRxiv</a> on September 2, covering 1,477 board-style multiple-choice questions drawn from five teaching banks run by the British Society for Haematology, the American Society of Hematology and EBMT, spanning nine disease areas and six clinical skill domains, in text-only and multimodal form. Claude Opus 5 scored 92.7% text and 76.9% multimodal; Gemini-3.1 Pro 91.4% and 78.7%; Gemini-3.6 Flash 91.0% and 74.8%; GPT-5.6 Sol 89.9% and 76.7%.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">血液學的診斷實體有一大半住在影像裡——周邊血片、骨髓抹片、流式細胞圖。一個在文字題上接近 93% 的模型，換到這些東西上只剩四分之三，而那正是這個科真正在做的事。作者另外量到兩件事：準確度與模型規模顯著相關，但這一代的進步幾乎全部發生在開源權重模型身上，閉源模型只有邊際成長；更要緊的是，表現最好的幾個模型「錯題高度一致」——它們在困難題上共享同一批盲點。這直接否定了最常見的臨床風險緩解法：多問一個模型當第二意見。作者自己的結論是持續的 expert-on-the-loop 監控無可取代。</span>
+        <span class="en">Half of haematology's diagnostic entities live in pictures — peripheral smears, marrow aspirates, flow plots. A model that reaches 93% on prose retains three-quarters of that on the images, which is where the specialty actually works. The authors log two further findings: accuracy correlates significantly with model size, but this generation's gains landed almost entirely on open-weight models while proprietary ones improved only marginally; and, more importantly, the top performers show highly concordant failure patterns — they share the same blind spots on hard cases. That undercuts the most common risk mitigation in clinical practice, which is asking a second model. The authors conclude that continuous expert-on-the-loop monitoring remains non-negotiable.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">前印本，未經同儕審查。選擇題不是臨床決策：題目給了選項、沒有病史缺漏、沒有時間壓力、沒有不確定的檢驗結果。教育題庫長期公開，落進訓練資料的機率不低，文字題的高分可能有一部分是記憶而非推理。各模型分數取自摘要頁，本報未取得完整補充資料表。</span>
+        <span class="en">A preprint, not peer reviewed. Multiple choice is not clinical decision-making: the options are supplied, the history is complete, nothing is time-pressured and no result is equivocal. These teaching banks have been public for years and plausibly sit inside the training data, so some of the text score may be recall rather than reasoning. Per-model figures are taken from the abstract page; we did not obtain the full supplementary tables.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.medrxiv.org/content/10.64898/2026.09.01.26361881v1" target="_blank" rel="noopener">medRxiv 2026.09.01.26361881, 2026-09-02</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">自助分流</span><span class="en-inline">Self-triage</span></span>
+      <span class="tag">Healthdirect</span><span class="tag">medRxiv</span><span class="tag">9/02</span>
+    </div>
+    <h3>
+      <span class="zh">前沿 LLM 的分流準確率 73–87%，澳洲政府掛保證的症狀檢查器 48.9%——關鍵漏判 0 對 2</span>
+      <span class="en">Frontier LLMs triage at 73–87%, Australia's government-backed symptom checker at 48.9% — and the critical-miss count is 0 to 2</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">墨爾本 Victorian Institute of Technology 的 Azwad Raza Chowdhury 與 CQUniversity Australia 的 Bushra Chowdhury，9 月 2 日在 <a href="https://www.medrxiv.org/content/10.64898/2026.09.01.26361908v1" target="_blank" rel="noopener">medRxiv</a> 貼出一份標準化情境評估：45 個 Semigran 臨床情境（15 急診、15 非急症、15 自我照護），比對澳洲政府的 Healthdirect 與 ChatGPT、Claude、Gemini 的六種設定（免費與付費層各三）。Healthdirect 分流準確率 48.9%（95% CI 35.0–63.0）、Cohen's kappa 0.233、急症敏感度 46.7%、出現 2 次關鍵漏判；LLM 為 73.3–86.7%、kappa 0.600–0.800、急症敏感度 80.0–86.7%，270 次評估中關鍵漏判 0 次（95% CI 0–1.4%）。付費訂閱沒有帶來可辨識的安全性提升。</span>
+        <span class="en">Azwad Raza Chowdhury (Victorian Institute of Technology, Melbourne) and Bushra Chowdhury (CQUniversity Australia) posted a standardised vignette evaluation to <a href="https://www.medrxiv.org/content/10.64898/2026.09.01.26361908v1" target="_blank" rel="noopener">medRxiv</a> on September 2: 45 Semigran vignettes (15 emergency, 15 non-emergent, 15 self-care) run against Australia's government-backed Healthdirect and six LLM configurations across ChatGPT, Claude and Gemini at free and paid tiers. Healthdirect triaged at 48.9% (95% CI 35.0–63.0) with Cohen's kappa 0.233, emergency sensitivity 46.7% and two critical misses. The LLMs ranged 73.3–86.7%, kappa 0.600–0.800, emergency sensitivity 80.0–86.7%, with zero critical misses across 270 evaluations (95% CI 0–1.4%). Paid subscriptions bought no measurable safety gain.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">被比下去的那一方不是隨便一個 App，是澳洲政府經營、被當成公共衛生基礎設施、由護理師電話線在背後撐著的官方入口。而 LLM 犯錯時的方向也值得注意：它們的低估幾乎都是把該自我照護的人推去看家醫，而不是把該去急診的人留在家裡——錯得比較貴，但不比較危險。作者明說這些結果應該進入「LLM 是否該與既有症狀檢查服務整合」的法規討論。</span>
+        <span class="en">The system being beaten here is not some app: it is the Australian government's own front door, treated as public health infrastructure and backed by a nurse phone line. The direction of the LLM errors matters too — when they undertriaged, they almost always pushed a self-care case toward a GP rather than keeping an emergency case at home, which is the expensive mistake rather than the dangerous one. The authors say plainly that this should feed regulatory discussion of whether LLMs are integrated with established symptom-checking services.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">45 個情境、270 次評估，Healthdirect 準確率的信賴區間寬達 28 個百分點，兩端都可能。Semigran vignettes 是 2015 年公開的題庫，幾乎確定在訓練資料裡——這是 LLM 這一側最大的疑慮。情境不是病人：沒有含糊的主訴、沒有中途改口、沒有不會描述症狀的人。單一國家、單一官方產品、單一次評估，前印本未經同儕審查。</span>
+        <span class="en">45 vignettes and 270 evaluations; the confidence interval on Healthdirect's accuracy spans 28 points, so either end is live. The Semigran set has been public since 2015 and is almost certainly in the training data — the largest caveat on the LLM side. Vignettes are not patients: no vague presenting complaint, no mid-consultation revision, no one who cannot describe their own symptoms. One country, one government product, one evaluation, and a preprint that has not been peer reviewed.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.medrxiv.org/content/10.64898/2026.09.01.26361908v1" target="_blank" rel="noopener">medRxiv 2026.09.01.26361908, 2026-09-02</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">影像判讀</span><span class="en-inline">Imaging</span></span>
+      <span class="tag">Radboudumc DIAG</span><span class="tag">Radiology: AI</span><span class="tag">9月號</span>
+    </div>
+    <h3>
+      <span class="zh">LUNA25：468 顆未定性肺結節、75 位放射科醫師，最佳 AI 以 AUC 0.78 對 0.69 統計顯著勝出</span>
+      <span class="en">LUNA25: on 468 indeterminate lung nodules read by 75 radiologists, the best AI wins 0.78 to 0.69</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">《Radiology: Artificial Intelligence》八卷五期（2026 年 9 月號）刊出 Radboudumc 診斷影像分析組 Peeters、Obreja、Jacobs 等人主辦的 <a href="https://luna25.grand-challenge.org/" target="_blank" rel="noopener">LUNA25 挑戰賽</a>結果（<a href="https://doi.org/10.1148/ryai.260179" target="_blank" rel="noopener">DOI 10.1148/ryai.260179</a>）。訓練集為 NLST 的 4,069 次 CT，測試集是 DLCST、NELSON、MILD 三個歐洲篩檢試驗中的 468 顆未定性結節（156 惡性、312 良性），另有 75 位放射科醫師讀 300 顆結節的讀片研究。<a href="https://www.diagnijmegen.nl/publications/obre26/" target="_blank" rel="noopener">作者公開版摘要</a>載明，表現最好的 AI 系統 AUC 0.78（95% CI 0.73–0.84，p&lt;0.001），醫師平均 0.69；在相同特異度下多抓出 12% 的惡性病灶，在相同敏感度下少 20% 偽陽性。同期並刊出 Farina 與 Szarf 8 月 5 日的<a href="https://pubs.rsna.org/doi/10.1148/ryai.260657" target="_blank" rel="noopener">評論</a>。</span>
+        <span class="en"><em>Radiology: Artificial Intelligence</em> vol 8 no 5 (September 2026) carries the results of the <a href="https://luna25.grand-challenge.org/" target="_blank" rel="noopener">LUNA25 challenge</a> run by Peeters, Obreja, Jacobs and colleagues at Radboudumc's Diagnostic Image Analysis Group (<a href="https://doi.org/10.1148/ryai.260179" target="_blank" rel="noopener">DOI 10.1148/ryai.260179</a>). Training used 4,069 NLST CT exams; the hidden test set was 468 indeterminate nodules (156 malignant, 312 benign) drawn from the DLCST, NELSON and MILD trials, with a separate reader study in which 75 radiologists assessed 300 nodules. Per the <a href="https://www.diagnijmegen.nl/publications/obre26/" target="_blank" rel="noopener">authors' public abstract</a>, the top system reached AUC 0.78 (95% CI 0.73–0.84, p&lt;0.001) against a radiologist average of 0.69, finding 12% more malignancies at matched specificity and producing 20% fewer false positives at matched sensitivity. An accompanying <a href="https://pubs.rsna.org/doi/10.1148/ryai.260657" target="_blank" rel="noopener">commentary</a> by Farina and Szarf ran on August 5.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">大多數「AI 勝過醫師」的標題來自回溯性資料集與寬鬆的比較設計。LUNA25 不是：隱藏測試集、Docker 容器提交、同一批結節、同一群人類、預先註冊的讀片研究。而且它挑的是最貴的那一段——未定性結節。明顯的惡性與明顯的良性都不是問題，把 312 顆良性結節送去追蹤、切片甚至開刀才是所有肺癌篩檢計畫真正流血的地方。「同敏感度下少 20% 偽陽性」換算成計畫尺度，是幾千次不必要的追蹤與手術。</span>
+        <span class="en">Most "AI beats doctors" headlines come from retrospective sets and permissive comparisons. LUNA25 is not that: hidden test set, Docker submissions, the same nodules, the same humans, a pre-specified reader study. And it picked the expensive segment — indeterminate nodules. Neither obvious cancers nor obvious benign findings are the problem; sending 312 benign nodules into follow-up, biopsy or resection is where every lung screening programme actually bleeds. Twenty percent fewer false positives at matched sensitivity, at programme scale, is thousands of avoided workups and operations.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">挑戰賽的最佳演算法不是任何一件上市產品，沒有取得任何一國的醫材許可。讀片醫師是在人工情境下作答——沒有病史、沒有前片、沒有臨床脈絡，這對人類這一側不利，而真實診間裡放射科醫師手上有這些東西。訓練集全部來自 NLST（美國重度吸菸者世代），測試集全部來自歐洲試驗，非吸菸者與亞洲族群的代表性都不明。《Radiology: AI》正文與評論全文在付費牆後，本報數字取自作者公開版摘要與挑戰賽官網。</span>
+        <span class="en">The winning algorithm is not a marketed product and holds no clearance anywhere. The readers worked in an artificial setting — no history, no priors, no clinical context — which handicaps the human side, since a radiologist in a real reading room has all three. Training came entirely from NLST (a US heavy-smoker cohort) and testing entirely from European trials, so representation of never-smokers and Asian populations is unknown. The <em>Radiology: AI</em> full text and commentary sit behind a paywall; the figures here come from the authors' public abstract and the challenge site.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://doi.org/10.1148/ryai.260179" target="_blank" rel="noopener">Radiology: Artificial Intelligence 8(5), 2026-09</a> · <a href="https://www.diagnijmegen.nl/publications/obre26/" target="_blank" rel="noopener">Radboudumc DIAG</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">流程介入</span><span class="en-inline">Workflow</span></span>
+      <span class="tag">Stanford</span><span class="tag">Radiology: AI</span><span class="tag">9月號</span>
+    </div>
+    <h3>
+      <span class="zh">把 AI 放在排隊順序上而不是判讀上：急診 CT 第 90 百分位等待時間少 43.4 分鐘</span>
+      <span class="en">Put the AI on the queue instead of the read: 43.4 minutes off the 90th-percentile wait for ED CT</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">同一期還有史丹佛急診醫學與放射科、哈佛生醫資訊系 Silva、Tang、Chiacchia、Zhang、Langlotz、Kim 的<a href="https://pubs.rsna.org/doi/10.1148/ryai.260110" target="_blank" rel="noopener">模擬研究</a>（7 月 22 日上線，DOI 10.1148/ryai.260110）。他們用 313,966 次急診就診（2020 年 8 月–2024 年 8 月）訓練一個梯度提升模型，在<em>下單當下</em>預測這次 CT 是否具臨床可行動性，再以離散事件模擬比較先進先出與 AI 排序，樣本為 2024 年 3 至 8 月的 20,795 次檢查。7,637 次可行動檢查（36.73%）的中位等待時間減少 10.75 分鐘（95% CI −12.40, −9.10），第 90 百分位減少 43.36 分鐘（−50.58, −36.80），60 分鐘內完成的比率從 48.33% 升到 57.30%。模型取得理論最大效益的 80–87%。</span>
+        <span class="en">The same issue carries a <a href="https://pubs.rsna.org/doi/10.1148/ryai.260110" target="_blank" rel="noopener">simulation study</a> from Stanford emergency medicine and radiology with Harvard's biomedical informatics department — Silva, Tang, Chiacchia, Zhang, Langlotz and Kim (published July 22; DOI 10.1148/ryai.260110). They trained a gradient boosting model on 313,966 ED visits (August 2020–August 2024) to predict, <em>at order time</em>, whether a CT would prove clinically actionable, then ran discrete-event simulations comparing first-in-first-out against AI prioritisation across 20,795 studies from March–August 2024. For the 7,637 actionable studies (36.73%), median wait fell 10.75 minutes (95% CI −12.40, −9.10) and the 90th-percentile wait fell 43.36 minutes (−50.58, −36.80); completion within 60 minutes rose from 48.33% to 57.30%. The model captured 80–87% of the theoretical maximum benefit.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這是目前最容易通過院內治理的一類 AI 介入，因為它不碰判讀。模型不說這張片子有什麼，只說這張片子該排在誰前面；判讀責任、法律歸屬、醫材分類全部不動，也不需要新硬體。放在今天其他六則的脈絡裡看，這幾乎是一個反命題：當所有人都在爭論模型的診斷準確率該用什麼標準驗證時，這篇證明只要把預測用在調度上，效益就繞過了整個驗證僵局。</span>
+        <span class="en">This is the most governance-friendly class of clinical AI on offer, because it never touches interpretation. The model does not say what is on the scan, only who should be scanned first; interpretive responsibility, liability and device classification all stay where they were, and no new hardware is needed. Set against the other six items here it reads almost as a counter-thesis: while everyone argues about what standard should validate diagnostic accuracy, this shows that pointing the prediction at scheduling routes the benefit around the entire validation deadlock.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">這是離散事件模擬，不是前瞻實施；真實急診的排程受人力、機台、病人動線牽制，模擬取不到。等待時間也不是臨床結果，沒有人量到死亡率、住院天數或處置改變。而且效益不是憑空生出來的——非可行動檢查的中位等待雖然也少了 5.80 分鐘，第 90 百分位卻增加 14.46 分鐘，也就是有一群病人被排到更後面去了。單一學術醫學中心資料，外推性未驗證。</span>
+        <span class="en">This is a discrete-event simulation, not a prospective implementation; real ED scheduling is bound by staffing, scanner availability and patient flow that a simulation cannot capture. Wait time is also not a clinical outcome — nobody measured mortality, length of stay or changed management. And the benefit is not free: for non-actionable studies the median wait also fell 5.80 minutes, but the 90th percentile rose 14.46 minutes, meaning some patients were pushed further back. Single academic centre; generalisability untested.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://pubs.rsna.org/doi/10.1148/ryai.260110" target="_blank" rel="noopener">Radiology: Artificial Intelligence 8(5), 2026-07-22</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">驗證缺口</span><span class="en-inline">Validation gap</span></span>
+      <span class="tag">Osaka Metropolitan Univ.</span><span class="tag">European Radiology</span><span class="tag">9/02</span>
+    </div>
+    <h3>
+      <span class="zh">252 個上市放射 AI 產品、545 篇驗證研究，只有 14% 說得出它在不同族群身上的表現</span>
+      <span class="en">252 marketed radiology AI products, 545 validation studies, and only 14% can say how they perform across subgroups</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">大阪公立大學醫學研究科人工智慧學部門的 Shannon Walston、Hirotaka Takita、Yasuhito Mitsuyama、Junya Sato 與通訊作者 Daiju Ueda，在《European Radiology》發表掃描式回顧（<a href="https://link.springer.com/article/10.1007/s00330-026-12652-y" target="_blank" rel="noopener">DOI 10.1007/s00330-026-12652-y</a>），涵蓋 142 家廠商的 252 個商用 AI 產品與 545 篇驗證研究；本週經 <a href="https://www.news-medical.net/news/20260902/Demographic-reporting-for-medical-AI-remains-inadequate-study-shows.aspx" target="_blank" rel="noopener">News-Medical</a>（9/2）與 <a href="https://medicalxpress.com/news/2026-09-fragmented-bias-commercial-medical-ai.html" target="_blank" rel="noopener">Medical Xpress</a> 進入新聞循環。只有 14%（77/545）提供性別、年齡或種族／族裔的分層表現。81% 記錄了病人性別，卻只有 16% 給出分性別效能；14% 有分年齡層，其中僅 51%（40/79）附上各組人數；種族／族裔最低，只有 8%（45 篇）提及，其中僅 18%（8/45）同時給出人口學與效能指標。骨骼（88 篇中 23%）與肺部（139 篇中 22%）影像最常提供分層資料；約 67% 的結核偵測資料集在性別次族群統計上功效不足。時序分析顯示沒有隨時間改善，有無廠商資助也沒有差別。</span>
+        <span class="en">Shannon Walston, Hirotaka Takita, Yasuhito Mitsuyama, Junya Sato and corresponding author Daiju Ueda of the Department of Artificial Intelligence at Osaka Metropolitan University Graduate School of Medicine published a scoping review in <em>European Radiology</em> (<a href="https://link.springer.com/article/10.1007/s00330-026-12652-y" target="_blank" rel="noopener">DOI 10.1007/s00330-026-12652-y</a>) covering 252 commercially available AI products from 142 manufacturers across 545 validation studies; it entered the news cycle this week via <a href="https://www.news-medical.net/news/20260902/Demographic-reporting-for-medical-AI-remains-inadequate-study-shows.aspx" target="_blank" rel="noopener">News-Medical</a> on September 2 and <a href="https://medicalxpress.com/news/2026-09-fragmented-bias-commercial-medical-ai.html" target="_blank" rel="noopener">Medical Xpress</a>. Only 14% (77/545) reported performance stratified by sex, age or race/ethnicity. Eighty-one percent recorded patient sex but just 16% gave sex-stratified performance; 14% split patients into age bands, of which only 51% (40/79) included counts per band; race/ethnicity was lowest at 8% (45 studies), of which merely 18% (8/45) reported both demographics and performance. Skeletal (23% of 88) and lung (22% of 139) imaging most often included stratified data, and roughly 67% of tuberculosis detection datasets may lack the power for sex-based subgroup meta-analysis. Temporal analysis showed no improvement over time, and company sponsorship made no difference.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">今天前五則都在回答「模型贏了誰」。這一則回答的是另一個問題：我們有沒有能力知道它會在誰身上輸。答案是，對於已經在市場上賣、已經拿到許可、已經在讀真人片子的 252 個產品，八成六的驗證文獻答不出來。而「沒有隨時間改善」這一點特別難看——這代表過去幾年所有關於 AI 公平性的討論、指引與檢核表，沒有改變廠商實際寫進論文裡的東西。</span>
+        <span class="en">The first five items today answer the question of who the model beat. This one answers a different question: whether we are equipped to know who it fails. For 252 products already on sale, already cleared, already reading real patients' images, 86% of the validation literature cannot say. The finding that this has not improved over time is the ugliest part — it means several years of fairness guidance, reporting checklists and consensus statements have not changed what manufacturers actually put in the paper.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">僅限放射科、僅限已上市產品，不涵蓋病理、心電圖或臨床決策支援。作者自陳資料萃取由單一作者完成，可能引入選擇偏誤；研究也沒有比較各產品之間的效能差異，更沒有測量臨床採用率。文章線上發表日期是 2026 年 6 月 12 日，本週是新聞覆蓋而非新發表——列在這裡是因為它是今天其他六則的共同前提。</span>
+        <span class="en">Radiology only, marketed products only — nothing on pathology, ECG or clinical decision support. The authors note that data extraction was done by a single reviewer, admitting possible selection bias; the review also does not compare performance between products or measure clinical adoption. The paper went online on June 12, 2026, so what happened this week was coverage rather than publication — it is here because it is the shared premise underneath the other six items.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://link.springer.com/article/10.1007/s00330-026-12652-y" target="_blank" rel="noopener">European Radiology, 2026-06-12</a> · <a href="https://www.news-medical.net/news/20260902/Demographic-reporting-for-medical-AI-remains-inadequate-study-shows.aspx" target="_blank" rel="noopener">News-Medical, 2026-09-02</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">機會性篩檢</span><span class="en-inline">Opportunistic screening</span></span>
+      <span class="tag">Sheba Medical Center</span><span class="tag">ESC Congress 2026</span><span class="tag">8/27</span>
+    </div>
+    <h3>
+      <span class="zh">同一張乳房攝影，多讀出一個器官系統：中風 AUROC 0.86、高血壓 0.79、缺血性心臟病 0.78</span>
+      <span class="en">One mammogram, a second organ system read out of it: AUROC 0.86 for stroke, 0.79 for hypertension, 0.78 for ischaemic heart disease</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">歐洲心臟學會 8 月 27 日的<a href="https://www.escardio.org/news/press/press-releases/ai-could-help-detect-common-cardiovascular-diseases-from-mammograms/" target="_blank" rel="noopener">新聞稿</a>預告了 ESC Congress 2026（慕尼黑，8/28–31）上的一項研究：以色列 Sheba 醫學中心與特拉維夫大學的 Viana Copeland 團隊，用 29,921 名女性、97,364 次乳房攝影（中位年齡 54 歲）訓練深度學習模型，從乳攝影像辨識高血壓（盛行率 16%，AUROC 0.79）、缺血性心臟病（2.5%，0.78）與中風（2.5%，0.86）。ESC 另行公布本屆為史上最大，近 34,000 名專業人士、170 國參與，逾 180 篇研究同步在各期刊發表（<a href="https://www.escardio.org/news/press/press-releases/record-breaking-esc-congress-2026-puts-new-life-saving-cardiovascular-science-in-the-spotlight/" target="_blank" rel="noopener">ESC</a>）。</span>
+        <span class="en">An August 27 <a href="https://www.escardio.org/news/press/press-releases/ai-could-help-detect-common-cardiovascular-diseases-from-mammograms/" target="_blank" rel="noopener">press release</a> from the European Society of Cardiology previewed a study presented at ESC Congress 2026 (Munich, August 28–31): Viana Copeland's group at Sheba Medical Center and Tel Aviv University trained a deep learning model on 29,921 women and 97,364 mammography examinations (median age 54) to identify hypertension (16% prevalence, AUROC 0.79), ischaemic heart disease (2.5%, 0.78) and stroke (2.5%, 0.86) from the mammogram alone. The ESC separately reported this as its largest congress ever, with nearly 34,000 professionals from 170 countries and more than 180 studies published simultaneously across journals (<a href="https://www.escardio.org/news/press/press-releases/record-breaking-esc-congress-2026-puts-new-life-saving-cardiovascular-science-in-the-spotlight/" target="_blank" rel="noopener">ESC</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">機會性篩檢是目前最省錢的一種 AI 應用：影像已經拍了、輻射已經吃了、預約已經排了，模型只是把原本沒人看的訊息讀出來。Copeland 自己的說法是「因為乳攝已被廣泛使用，分析同一批影像取得心血管資訊，有機會在不增加額外檢查的情況下規模化」。乳房動脈鈣化與心血管風險的關聯已有多年文獻，但這次量的是三個明確的疾病終點、樣本近三萬人。</span>
+        <span class="en">Opportunistic screening is the cheapest form of clinical AI going: the image is already taken, the dose already delivered, the appointment already made — the model only reads out signal nobody was looking at. Copeland's own framing is that "because mammography is already widely used, analysing the same images for cardiovascular information could potentially offer a scalable approach without requiring an additional imaging examination." The link between breast arterial calcification and cardiovascular risk has years of literature behind it, but this measures three defined disease endpoints in nearly 30,000 women.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">會議摘要，尚未見同儕審查全文；本報數字全部取自 ESC 官方新聞稿，未取得原始摘要表。單一醫學中心的回溯資料。而且 AUROC 衡量的是「辨識出已有診斷的人」，不是前瞻預測未來事件——這兩件事在臨床意義上差很遠。在 2.5% 的盛行率下，AUROC 0.86 的陽性預測值可能低得驚人，而新聞稿沒有公布。</span>
+        <span class="en">A congress abstract, with no peer-reviewed full text yet; every figure here comes from the ESC press release, and we did not obtain the original abstract tables. Single-centre retrospective data. And AUROC here measures identification of people who already carry the diagnosis, not prospective prediction of future events — clinically those are very different claims. At 2.5% prevalence, the positive predictive value behind an AUROC of 0.86 could be startlingly low, and the release does not report it.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.escardio.org/news/press/press-releases/ai-could-help-detect-common-cardiovascular-diseases-from-mammograms/" target="_blank" rel="noopener">European Society of Cardiology, 2026-08-27</a></p></div>
+  </div>
+</section>
+
+<section id="product">
+  <h2>02 — Product Analysis</h2>
+  <div class="sec-title">
+    <span class="zh">今天出現的兩個「產品」剛好站在對立面：一個沒被當成醫材卻表現最好，一個是政府掛保證卻墊底</span>
+    <span class="en">Today's two products sit at opposite poles: one is not regulated as a device and scored best, the other carries a government's name and came last</span>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>Claude Opus 5 / Gemini 3.1 Pro</h3>
+      <p class="sub"><span class="zh-inline">通用前沿模型（作為臨床知識引擎）· Anthropic（美國）／Google DeepMind（美國、英國）</span><span class="en-inline">General-purpose frontier models as clinical knowledge engines · Anthropic (US) / Google DeepMind (US, UK)</span></p>
+      <p>
+        <span class="zh"><strong>功能與定位。</strong>兩者都不是醫材，沒有任何一國的臨床適應症許可，卻在血液學專科考題上拿到 92.7% 與 91.4%。它們實際上被賣給的是開發者與企業，而醫療端的使用大半發生在兩種形態：包在別人的產品裡（臨床決策支援、文獻檢索、抄寫），或醫師私下開一個分頁——兩者都不在任何醫材監理框架內（<a href="https://www.medrxiv.org/content/10.64898/2026.09.01.26361881v1" target="_blank" rel="noopener">medRxiv, 2026-09-02</a>）。</span>
+        <span class="en"><strong>Function and position.</strong> Neither is a medical device and neither holds a clinical indication anywhere, yet they scored 92.7% and 91.4% on specialist haematology board questions. They are sold to developers and enterprises; medical use largely arrives one of two ways — wrapped inside someone else's product (decision support, literature search, scribing), or as a tab a clinician opens privately. Neither route sits inside a device regulatory framework (<a href="https://www.medrxiv.org/content/10.64898/2026.09.01.26361881v1" target="_blank" rel="noopener">medRxiv, 2026-09-02</a>).</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：橫跨九個疾病領域與六個技能面向的一致高分，沒有任何專科 AI 產品具備這種廣度；而且在自助分流的獨立測試裡，270 次評估中關鍵漏判為零（<a href="https://www.medrxiv.org/content/10.64898/2026.09.01.26361908v1" target="_blank" rel="noopener">medRxiv, 2026-09-02</a>）。</span>
+          <span class="en">: consistently high scores across nine disease areas and six skill domains — a breadth no specialty AI product has — and, in a separate self-triage test, zero critical misses across 270 evaluations (<a href="https://www.medrxiv.org/content/10.64898/2026.09.01.26361908v1" target="_blank" rel="noopener">medRxiv, 2026-09-02</a>).</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：多模態分數掉 13–16 個百分點，而血液學一半的診斷在影像裡；更麻煩的是頂尖模型錯題高度重疊，「多問一個模型」這個最常見的安全網不成立。作者也提醒，公開教育題庫幾乎確定落在訓練資料內，文字題的高分有多少是推理、多少是記憶，目前沒有人量得出來。</span>
+          <span class="en">: multimodal scores drop 13–16 points, and half of haematology's diagnoses live in images. Worse, the top models fail on the same questions, so the commonest safety net — asking a second model — does not hold. The authors also flag that these public teaching banks are almost certainly inside the training data, and nobody can currently separate how much of the text score is reasoning and how much is recall.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">缺什麼</span><span class="en-inline">Missing</span></span>
+          <span class="zh">：沒有任何一份公開文件說明這些模型在不同性別、年齡或族裔病人身上的臨床表現差異——這正是 <a href="https://link.springer.com/article/10.1007/s00330-026-12652-y" target="_blank" rel="noopener">European Radiology</a> 那份回顧指控整個商用 AI 產業的地方，而通用模型連被指控的資格都還沒有，因為它們根本不在那 545 篇驗證研究的統計範圍內。</span>
+          <span class="en">: no public document reports how these models perform across patient sex, age or ethnicity — precisely the charge the <a href="https://link.springer.com/article/10.1007/s00330-026-12652-y" target="_blank" rel="noopener">European Radiology</a> review levels at the commercial AI industry. General-purpose models are not even eligible for the charge, because they fall outside the 545 validation studies it counted.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>Healthdirect Symptom Checker</h3>
+      <p class="sub"><span class="zh-inline">政府經營的線上自助分流入口 · Healthdirect Australia（澳洲，聯邦與各州共同出資）</span><span class="en-inline">Government-run online self-triage front door · Healthdirect Australia (federal and state funded)</span></p>
+      <p>
+        <span class="zh"><strong>功能與定位。</strong>Healthdirect 是澳洲全國性的公費健康資訊與分流入口，症狀檢查器以規則式問答引導民眾判斷該自我照護、看家醫或去急診，背後另有 24 小時護理師電話線。在本週的 45 情境評估中，它的分流準確率為 48.9%（95% CI 35.0–63.0）、Cohen's kappa 0.233、急症敏感度 46.7%，並出現 2 次關鍵漏判（<a href="https://www.medrxiv.org/content/10.64898/2026.09.01.26361908v1" target="_blank" rel="noopener">medRxiv, 2026-09-02</a>）。</span>
+        <span class="en"><strong>Function and position.</strong> Healthdirect is Australia's publicly funded national health information and triage front door; its symptom checker walks users through rule-based questions toward self-care, a GP or an emergency department, with a 24-hour nurse line behind it. In this week's 45-vignette evaluation it triaged at 48.9% (95% CI 35.0–63.0), with Cohen's kappa 0.233, emergency sensitivity 46.7% and two critical misses (<a href="https://www.medrxiv.org/content/10.64898/2026.09.01.26361908v1" target="_blank" rel="noopener">medRxiv, 2026-09-02</a>).</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：可稽核、可問責、行為可預測。規則式系統的每一條路徑都能被公共衛生單位檢視與修改，出錯時可以追溯到哪一條規則——這是 LLM 目前完全給不出的東西，也是它被政府採用的原因。</span>
+          <span class="en">: auditable, accountable, predictable. Every path through a rule-based system can be inspected and amended by a public health authority, and when it errs the failing rule can be traced. LLMs offer none of that today, and it is exactly why a government adopted this design.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：kappa 0.233 意味著它與正確分流之間的一致性只比隨機好一點；急症敏感度 46.7% 代表它漏掉超過一半該去急診的情境。對一個掛著政府名字、被民眾當成權威的入口來說，這個數字比同一份研究裡任何一個 LLM 的缺點都嚴重。</span>
+          <span class="en">: a kappa of 0.233 means agreement with correct triage is barely better than chance, and an emergency sensitivity of 46.7% means it misses more than half the cases that belong in an emergency department. For a front door carrying a government's name and read by the public as authoritative, that is a graver finding than anything charged against the LLMs in the same paper.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></span>
+          <span class="zh">：45 個情境撐不起「這個產品不安全」的結論，信賴區間寬達 28 個百分點；而且評估者用的是七步互動協定，未必等同真實民眾的使用方式。這份前印本也還沒有經過同儕審查或 Healthdirect 官方回應。</span>
+          <span class="en">: 45 vignettes cannot carry a verdict that the product is unsafe, and the confidence interval spans 28 points; the evaluators also used a seven-rule interaction protocol that may not match how the public actually uses it. The preprint has neither been peer reviewed nor answered by Healthdirect.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="company">
+  <h2>03 — Companies &amp; Competition</h2>
+  <div class="sec-title">
+    <span class="zh">誰站在哪裡、憑什麼、跟誰打</span>
+    <span class="en">Who stands where, on what, against whom</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th><span class="zh-inline">公司</span><span class="en-inline">Company</span></th>
+        <th><span class="zh-inline">近況與數字</span><span class="en-inline">Recent state &amp; numbers</span></th>
+        <th><span class="zh-inline">競爭定位與護城河</span><span class="en-inline">Position &amp; moat</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Qure.ai</strong><br><span class="zh-inline">胸部 X 光與 CT 的 AI 判讀，印度／美國</span><span class="en-inline">Chest X-ray and CT AI, India / US</span></td>
+          <td>
+            <span class="zh">2 月 26 日宣布 qXR-Detect 再獲六項 FDA 510(k) 適應症（肺、胸膜、縱膈與心臟、骨骼、置入物、其他），累計 9 個產品共 26 項 FDA 許可、65 項以上 CE 認證；為首件搭載預定變更控制計畫（PCCP）的胸部 X 光 CADe 裝置（<a href="https://www.qure.ai/us/news-press-coverages/qure.ai-nets-six-new-indications-cleared-by-the-fda-taking-the-chest-x-ray-crown-in-the-radiology-ai-race" target="_blank" rel="noopener">Qure.ai, 2026-02-26</a>）。</span>
+            <span class="en">On February 26 it announced six further FDA 510(k) indications for qXR-Detect (lung, pleura, mediastinum/hila and heart, bone, hardware, other), taking it to 26 FDA clearances across nine products plus 65+ CE certifications, and making it the first chest X-ray CADe device cleared with a Predetermined Change Control Plan (<a href="https://www.qure.ai/us/news-press-coverages/qure.ai-nets-six-new-indications-cleared-by-the-fda-taking-the-chest-x-ray-crown-in-the-radiology-ai-race" target="_blank" rel="noopener">Qure.ai, 2026-02-26</a>).</span>
+          </td>
+          <td>
+            <span class="zh">護城河是監理廣度與 PCCP 帶來的更新自由——別人每改一次演算法要重送，它不用。薄的地方正是今天第六則：結核偵測是它的主戰場，而那份回顧算出約 67% 的結核資料集在性別次族群上功效不足。</span>
+            <span class="en">The moat is regulatory breadth plus the update freedom a PCCP buys — rivals resubmit on every algorithm change; it does not. The thin spot is today's sixth item: tuberculosis detection is its core market, and that review found roughly 67% of TB datasets underpowered for sex-based subgroup analysis.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>OpenEvidence</strong><br><span class="zh-inline">臨床決策支援與醫學檢索，美國</span><span class="en-inline">Clinical decision support and medical search, US</span></td>
+          <td>
+            <span class="zh">9 月 3 日發表自家臨床模型家族並加深腫瘤科佈局（<a href="https://www.statnews.com/2026/09/03/openevidence-launches-new-ai-models-clinicians-health-tech/" target="_blank" rel="noopener">STAT</a>、<a href="https://www.fiercehealthcare.com/health-tech/openevidence-deepens-oncology-push-expands-ai-decision-support-cancer-care" target="_blank" rel="noopener">Fierce Healthcare</a>）；此前已與 JAMA 簽下多年授權協議，把期刊內容餵進其 AI 醫學搜尋引擎（<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/jama-signs-multi-year-deal-openevidence-inform-ai-powered-medical-search" target="_blank" rel="noopener">Fierce Healthcare</a>）。</span>
+            <span class="en">On September 3 it launched its own family of clinical models and deepened its oncology push (<a href="https://www.statnews.com/2026/09/03/openevidence-launches-new-ai-models-clinicians-health-tech/" target="_blank" rel="noopener">STAT</a>, <a href="https://www.fiercehealthcare.com/health-tech/openevidence-deepens-oncology-push-expands-ai-decision-support-cancer-care" target="_blank" rel="noopener">Fierce Healthcare</a>); it had already signed a multi-year licence with JAMA to feed journal content into its AI medical search engine (<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/jama-signs-multi-year-deal-openevidence-inform-ai-powered-medical-search" target="_blank" rel="noopener">Fierce Healthcare</a>).</span>
+          </td>
+          <td>
+            <span class="zh">它賭的是「內容授權＋醫師分發」而不是模型能力：通用模型的血液學分數證明知識本身不再稀缺，稀缺的是可引用的來源與醫師願意打開的那個介面。風險在於，一旦通用模型也拿到同等授權，這條護城河就只剩使用習慣。</span>
+            <span class="en">Its bet is content licensing plus clinician distribution rather than model capability: the haematology scores show knowledge itself is no longer scarce — citable provenance and an interface clinicians actually open are. The risk is that once general-purpose models secure equivalent licences, the moat reduces to habit.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Nihon Kohden Digital Health Solutions</strong><br><span class="zh-inline">連續生理監測與惡化預測（CoMET），日本／美國</span><span class="en-inline">Continuous monitoring and deterioration prediction (CoMET), Japan / US</span></td>
+          <td>
+            <span class="zh">與維吉尼亞大學合作的叢集隨機對照試驗（85 床心臟內外科病房、11 個叢集、10,422 次住院，2021 年 1 月至 2022 年 10 月）於 2 月 5 日發表：主要結果「21 天內無臨床惡化事件時數」兩組無差異，作者結論為「預測性分析監測未改善病人結果」（<a href="https://www.nature.com/articles/s41598-026-39051-z" target="_blank" rel="noopener">Scientific Reports</a>）。</span>
+            <span class="en">Its cluster-randomised trial with the University of Virginia (an 85-bed cardiology medical-surgical ward, eleven clusters, 10,422 inpatient visits, January 2021–October 2022) published on February 5: the primary outcome, hours free of clinical deterioration within 21 days, showed no difference between arms, and the authors concluded that predictive analytics monitoring did not improve patient outcomes (<a href="https://www.nature.com/articles/s41598-026-39051-z" target="_blank" rel="noopener">Scientific Reports</a>).</span>
+          </td>
+          <td>
+            <span class="zh">這一列存在的意義是提醒：整個表格裡唯一做了隨機對照試驗的產品，得到的是陰性結果。護城河是與監測儀硬體綁定的資料流，弱點是它證明了預測準不代表病人活得比較久——今天所有 AUC 數字都該對著這一列讀。</span>
+            <span class="en">This row exists as a reminder: the only product in the table that ran a randomised trial got a null result. The moat is a data stream welded to monitoring hardware; the weakness is that it proved an accurate prediction is not the same as a patient who does better. Every AUC in today's report should be read against this line.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Anthropic / Google DeepMind / OpenAI</strong><br><span class="zh-inline">通用前沿模型，未取得臨床適應症</span><span class="en-inline">General-purpose frontier models, no clinical indication</span></td>
+          <td>
+            <span class="zh">在 1,477 題血液學基準上，Claude Opus 5 文字 92.7%、Gemini-3.1 Pro 91.4%、GPT-5.6 Sol 89.9%；多模態則全部落在 74.8–78.7% 之間（<a href="https://www.medrxiv.org/content/10.64898/2026.09.01.26361881v1" target="_blank" rel="noopener">medRxiv, 2026-09-02</a>）。同週另一份研究顯示付費層在分流安全性上並未優於免費層（<a href="https://www.medrxiv.org/content/10.64898/2026.09.01.26361908v1" target="_blank" rel="noopener">medRxiv, 2026-09-02</a>）。</span>
+            <span class="en">On the 1,477-question haematology benchmark, Claude Opus 5 scored 92.7% on text, Gemini-3.1 Pro 91.4% and GPT-5.6 Sol 89.9%, while every model landed between 74.8% and 78.7% on multimodal items (<a href="https://www.medrxiv.org/content/10.64898/2026.09.01.26361881v1" target="_blank" rel="noopener">medRxiv, 2026-09-02</a>). A separate study the same week found paid tiers no safer than free ones on triage (<a href="https://www.medrxiv.org/content/10.64898/2026.09.01.26361908v1" target="_blank" rel="noopener">medRxiv, 2026-09-02</a>).</span>
+          </td>
+          <td>
+            <span class="zh">它們沒有護城河，因為它們沒有進場——是別人的產品把它們裝進去的。真正的競爭不是「通用對專科」，而是專科 AI 廠商的整條驗證與監理成本，正在被一個不受同一套規則約束、且分數更高的替代品從側面掏空。開源權重模型這一代的進步幅度最大，這條側翼還會更寬。</span>
+            <span class="en">They have no moat because they never entered the market — other people's products carried them in. The real contest is not general versus specialist, but that a specialist vendor's entire validation and regulatory cost base is being hollowed out from the flank by a higher-scoring substitute bound by none of the same rules. Open-weight models improved most this generation, so that flank is widening.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Healthdirect Australia</strong><br><span class="zh-inline">政府經營的分流入口</span><span class="en-inline">Government-run triage front door</span></td>
+          <td>
+            <span class="zh">45 情境評估中分流準確率 48.9%、kappa 0.233、急症敏感度 46.7%、2 次關鍵漏判，全面落後六種 LLM 設定（<a href="https://www.medrxiv.org/content/10.64898/2026.09.01.26361908v1" target="_blank" rel="noopener">medRxiv, 2026-09-02</a>）。</span>
+            <span class="en">In the 45-vignette evaluation it triaged at 48.9% with kappa 0.233, emergency sensitivity 46.7% and two critical misses, trailing all six LLM configurations (<a href="https://www.medrxiv.org/content/10.64898/2026.09.01.26361908v1" target="_blank" rel="noopener">medRxiv, 2026-09-02</a>).</span>
+          </td>
+          <td>
+            <span class="zh">護城河是公共信任與零成本的全民可及性，不是效能。但公共信任正是最禁不起這種比較的資產：一旦民眾知道那個免費聊天視窗分得比政府準，入口就會自己搬家，而搬過去的那一邊沒有護理師電話線接手。</span>
+            <span class="en">The moat is public trust and free universal access, not performance. Public trust is also the asset least able to survive this comparison: once people learn the free chat window triages better than the government's, the front door relocates itself — and there is no nurse line waiting on the other side.</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="zh"><strong>今天的競爭結構是一個倒置的金字塔。</strong>拿到最多許可、投入最多驗證成本的廠商（Qure.ai）守著最窄的適應症；做了唯一一次隨機對照試驗的廠商（Nihon Kohden）拿到陰性結果；而分數最高、覆蓋最廣的那一層（通用前沿模型）既不是醫材、也不在任何驗證統計裡。監理的重量與臨床的分數，這一週在同一張表上呈反向排列。</span>
+      <span class="en"><strong>Today's competitive structure is an inverted pyramid.</strong> The vendor with the most clearances and the largest validation spend (Qure.ai) defends the narrowest indications; the only vendor that ran a randomised trial (Nihon Kohden) got a null result; and the layer scoring highest across the widest ground — general-purpose frontier models — is neither a device nor counted in any validation tally. This week, regulatory weight and benchmark performance line up in opposite order on the same table.</span>
+    </p>
+  </div>
+</section>
+
+<section id="taiwan">
+  <h2>04 — Taiwan Angle</h2>
+  <div class="sec-title">
+    <span class="zh">LUNA25 打的正是台灣最痛的那一段，而台灣正準備把 AI 放進給付審查</span>
+    <span class="en">LUNA25 targets exactly Taiwan's sorest segment — just as Taiwan prepares to put AI into reimbursement review</span>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="zh"><strong>(1) 台灣是全球第一個把 LDCT 篩檢擴及非吸菸高風險族群的國家，而它的問題正是未定性結節。</strong>國健署公費肺癌篩檢首年共 49,508 人受檢（男性 56.3%、女性 43.7%），確診肺癌 531 人、偵測率 1.1%，其中第 0、1 期占 85.1%；符合資格者中 57.8% 是因家族史、38.3% 是重度吸菸者，確診個案裡 74.6% 具家族史。但估計 50 萬名符合資格者中只有約一成受檢（<a href="https://www.commonhealth.com.tw/article/88402" target="_blank" rel="noopener">康健雜誌</a>）。</span>
+      <span class="en"><strong>(1) Taiwan was the first country to extend LDCT screening to high-risk never-smokers — and its problem is precisely the indeterminate nodule.</strong> In the first year of the national programme, 49,508 people were screened (56.3% men, 43.7% women), 531 lung cancers were confirmed at a 1.1% detection rate, and 85.1% of those were stage 0 or 1. Among the eligible, 57.8% qualified on family history and 38.3% as heavy smokers; 74.6% of confirmed cases had a family history. Yet only about one in ten of an estimated 500,000 eligible people came forward (<a href="https://www.commonhealth.com.tw/article/88402" target="_blank" rel="noopener">CommonHealth</a>).</span>
+    </p>
+    <p>
+      <span class="zh"><strong>(2) 台灣已經有自己的 LDCT-AI，而且早就上線了。</strong>國健署 2021 年委託台大與工程團隊開發的肺結節輔助判讀程式，2024 年 2 月取得食藥署第二等級醫材許可，導入台大醫院、台大癌醫中心、成大醫院、彰化基督教醫院與部立台北、南投、台東等七家院所；官方公布的效能為小於 4 mm 與大於 6 mm 結節偵測準確度均約九成、偽陽性約 2 個，報告輸出速度提升 29%、結節特性判讀一致性提升 31%（<a href="https://www.healthnews.com.tw/article/62811" target="_blank" rel="noopener">健康醫療網</a>）。</span>
+      <span class="en"><strong>(2) Taiwan already has its own LDCT-AI, and it has been live for a while.</strong> The nodule-reading aid the Health Promotion Administration commissioned from National Taiwan University and engineering partners in 2021 received TFDA Class II device approval in February 2024 and is deployed at seven institutions: NTU Hospital, the NTU Cancer Center, National Cheng Kung University Hospital, Changhua Christian Hospital and the MOHW hospitals in Taipei, Nantou and Taitung. Official figures put detection accuracy at roughly 90% for nodules under 4 mm and over 6 mm with about two false positives, a 29% gain in report turnaround and a 31% gain in consistency of nodule characterisation (<a href="https://www.healthnews.com.tw/article/62811" target="_blank" rel="noopener">HealthNews</a>).</span>
+    </p>
+    <p>
+      <span class="zh"><strong>(3) 更關鍵的是，健保署已經在把 AI 往給付審查的位置放。</strong>2026 年 3 月的報導指出，健保署正發展生成式 AI 辨識系統，作為肺結節手術的給付前審查平台與醫院自主管理工具；健保署組長黃育文表示第一階段目標是 AI 辨識與病理報告一致性達 95%，對診斷為良性的不必要手術予以核刪，並透過中央指令系統找出切片惡性率偏低的醫院與醫師給予提醒。同一報導引述，2024 年有 530 多萬人次接受 LDCT，近 3 萬人接受肺結節或腫瘤切除手術，台大等四家醫院術後切片惡性率達七成以上，部分醫院低於五成甚至四成；醫界共識是小於 0.6 公分的結節不需手術（<a href="https://health.udn.com/health/story/6024/9377935" target="_blank" rel="noopener">元氣網</a>）。</span>
+      <span class="en"><strong>(3) More consequentially, the National Health Insurance Administration is already moving AI toward reimbursement review.</strong> A March 2026 report describes an NHIA generative-AI recognition system being built as a pre-payment review platform for lung nodule surgery and as a self-management tool for hospitals. Division head Huang Yu-wen said the first-phase target is 95% agreement between the AI's assessment and the pathology report, that unnecessary operations on nodules judged benign would be denied, and that a central directive system would flag hospitals and physicians whose resection specimens come back malignant unusually rarely. The same report states that over 5.3 million LDCT examinations were performed in 2024 and nearly 30,000 people underwent nodule or tumour resection, with post-operative malignancy rates above 70% at NTU and three peer hospitals but below 50% — in places below 40% — elsewhere; clinical consensus is that nodules under 0.6 cm do not need surgery (<a href="https://health.udn.com/health/story/6024/9377935" target="_blank" rel="noopener">UDN Health</a>).</span>
+    </p>
+    <p>
+      <span class="zh"><strong>(4) 而今天第六則的警告，正好落在這個交叉點上。</strong>如果台灣要拿 AI 當給付核刪的依據，就必須能回答一個問題：這個模型在女性、在非吸菸者、在 60 歲以上、在不同廠牌的 CT 上，表現一樣嗎？全球 545 篇商用放射 AI 驗證研究裡只有 14% 答得出來，種族／族裔更只有 8% 提及（<a href="https://link.springer.com/article/10.1007/s00330-026-12652-y" target="_blank" rel="noopener">European Radiology</a>）。而台灣篩檢族群有 43.7% 是女性、大半靠家族史而非吸菸史入場——這正是 NLST 世代最沒有代表到的一群人，也正是 LUNA25 的訓練資料來源。一個在美國重度吸菸者身上訓練、在歐洲試驗上驗證的模型，AUC 0.78 這個數字要搬到台灣的篩檢對象身上，中間缺的不是演算法，是那份沒有人做的次族群驗證。</span>
+      <span class="en"><strong>(4) And today's sixth item lands exactly on that intersection.</strong> If Taiwan is to deny payment on an AI's say-so, it must be able to answer one question: does this model perform the same in women, in never-smokers, in the over-60s, on scanners from different manufacturers? Only 14% of 545 global validation studies for commercial radiology AI can answer it, and only 8% even mention race or ethnicity (<a href="https://link.springer.com/article/10.1007/s00330-026-12652-y" target="_blank" rel="noopener">European Radiology</a>). Taiwan's screened population is 43.7% women and enters mostly on family history rather than smoking — the very group NLST represented least, and NLST is where LUNA25's training data came from. Carrying an AUC of 0.78 from a model trained on American heavy smokers and validated on European trials over to Taiwan's screening population does not lack an algorithm. It lacks the subgroup validation nobody has done.</span>
+    </p>
+  </div>
+</section>
+
+<section id="reading">
+  <h2>05 — Further Reading</h2>
+  <div class="sec-title">
+    <span class="zh">五篇替今天七則新聞補上背景與反面意見的長文</span>
+    <span class="en">Five longer pieces that supply the background and the counterarguments to today's seven items</span>
+  </div>
+
+  <ol class="reading">
+    <li>
+      <a href="https://pubs.rsna.org/doi/10.1148/ryai.260657" target="_blank" rel="noopener">What LUNA25 Teaches Us about AI for Lung Cancer Screening — Radiology: Artificial Intelligence (2026-08-05)</a>
+      <p class="why"><span class="zh">Farina 與 Szarf 為 LUNA25 撰寫的隨刊評論。看完主文的 AUC 差距後，這篇是唯一一份由同儕寫下、說明這個挑戰賽究竟證明了什麼、又沒有證明什麼的文件。</span><span class="en">Farina and Szarf's accompanying commentary on LUNA25. After the headline AUC gap, this is the only peer-written document setting out what the challenge does and does not establish.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/articles/s41746-026-02382-2" target="_blank" rel="noopener">Human–large language model collaboration in clinical medicine: a systematic review and meta-analysis — npj Digital Medicine (2026-01-28)</a>
+      <p class="why"><span class="zh">十篇試驗的合併結果指出一個違反直覺的現象：醫師加 AI 不必然勝過 AI 單獨作業，複合診斷與處置分數只多 4.88 個百分點（95% CI 0.65–9.12），而文件的事實錯誤率仍有 26–36%。今天所有「AI 當第二意見」的假設都應該先讀這一篇。</span><span class="en">Pooling ten trials, it finds the counterintuitive result that clinician-plus-AI does not reliably beat AI alone: composite diagnostic and management scores gain just 4.88 points (95% CI 0.65–9.12) while factual error rates in documentation stay at 26–36%. Read it before assuming AI works as a second opinion.</span></p>
+    </li>
+    <li>
+      <a href="https://link.springer.com/article/10.1007/s00330-026-12652-y" target="_blank" rel="noopener">The current state of demographic subgroup reporting for commercially available AI for radiology: a scoping review — European Radiology (2026-06-12)</a>
+      <p class="why"><span class="zh">今天第六則的原始論文。要判斷任何一個上市影像 AI 產品能不能搬到你的病人身上，這篇提供的是方法而不只是結論。</span><span class="en">The primary paper behind today's sixth item. If you need to judge whether any marketed imaging AI transfers to your own patients, this gives you the method, not just the verdict.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/articles/s41467-026-76004-6" target="_blank" rel="noopener">A benchmark study of vision and pathology foundation models for computational pathology — Nature Communications (2026-07-24)</a>
+      <p class="why"><span class="zh">史丹佛 Gevaert 團隊比較 32 個基礎模型、41 項任務、53 個資料集、逾 17,500 張全玻片。結論與今天的血液學基準呼應：病理專用模型並未一致優於通用視覺模型，規模也不保證泛化。</span><span class="en">Gevaert's Stanford group compares 32 foundation models across 41 tasks, 53 datasets and over 17,500 whole-slide images. Its conclusion rhymes with today's haematology benchmark: pathology-specific models are not uniformly better than general vision models, and scale does not guarantee generalisation.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/articles/s41591-026-04574-5" target="_blank" rel="noopener">Lessons from deploying the ChatEHR system at Stanford Medicine — Nature Medicine (2026-08-10)</a>
+      <p class="why"><span class="zh">把 LLM 真的接上病歷之後會發生什麼事的第一手紀錄，重點在為什麼基準分數不足以作為部署依據——正好是今天第二、三則留下的問題。</span><span class="en">A first-hand account of what actually happens once an LLM is wired into the record, centred on why benchmark scores are not a deployment case — precisely the question today's second and third items leave open.</span></p>
+    </li>
+  </ol>
+</section>
+
+<section id="refs">
+  <h2>06 — References</h2>
+  <div class="sec-title">
+    <span class="zh">參考文獻</span>
+    <span class="en">References</span>
+  </div>
+
+  <div class="panel">
+    <ol class="refs">
+      <li>Seuren LM, Williams R, Cresswell K, et al. Beyond productivity: a NASSS-informed review of implementation risks and research priorities for ambient AI scribes in healthcare. <em>BMJ Digital Health &amp; AI</em> 2(1):e000091, 2026-09-03. DOI 10.1136/bmjdh-2026-000091. <a href="https://bmjdigitalhealth.bmj.com/content/2/1/e000091" target="_blank" rel="noopener">bmjdigitalhealth.bmj.com</a></li>
+      <li>AI scribes may fail to capture patients' experiences. <em>University of Edinburgh News</em>, 2026-09-04. <a href="https://www.ed.ac.uk/news/ai-scribes-may-fail-to-capture-patients-experiences" target="_blank" rel="noopener">ed.ac.uk</a></li>
+      <li>Ambient AI scribes may risk missing vital patient information. <em>News-Medical</em>, 2026-09-03. <a href="https://www.news-medical.net/news/20260903/Ambient-AI-scribes-may-risk-missing-vital-patient-information.aspx" target="_blank" rel="noopener">news-medical.net</a></li>
+      <li>Radoynova M, Benouis M, Schulze F, Schneider MMK, Winter S, Bornhäuser M, Middeke JM, Eckardt JN. Benchmarking ten frontier large language models on 1,477 board-style multiple choice questions in hematology. <em>medRxiv</em> 2026.09.01.26361881, 2026-09-02. <a href="https://www.medrxiv.org/content/10.64898/2026.09.01.26361881v1" target="_blank" rel="noopener">medrxiv.org</a></li>
+      <li>Chowdhury AR, Chowdhury B. Are Frontier Large Language Models Safer Than Government-Backed Symptom Checkers for Clinical Self-Triage? A Standardised Vignette Evaluation. <em>medRxiv</em> 2026.09.01.26361908, 2026-09-02. <a href="https://www.medrxiv.org/content/10.64898/2026.09.01.26361908v1" target="_blank" rel="noopener">medrxiv.org</a></li>
+      <li>Peeters D, Obreja B, Antonissen N, Saghir Z, Pastorino U, De Bock G, Vliegenthart R, Prokop M, Jacobs C. Benchmarking of AI and Radiologists for Indeterminate Lung Nodule Malignancy Risk Estimation on Screening CT: The LUNA25 Challenge. <em>Radiology: Artificial Intelligence</em> 8(5), 2026-09. DOI 10.1148/ryai.260179. <a href="https://doi.org/10.1148/ryai.260179" target="_blank" rel="noopener">pubs.rsna.org</a></li>
+      <li>LUNA25 Challenge, 作者公開版摘要與挑戰賽官網. <em>Diagnostic Image Analysis Group, Radboudumc</em>. <a href="https://www.diagnijmegen.nl/publications/obre26/" target="_blank" rel="noopener">diagnijmegen.nl</a> · <a href="https://luna25.grand-challenge.org/" target="_blank" rel="noopener">luna25.grand-challenge.org</a></li>
+      <li>Farina EMJM, Szarf G. What LUNA25 Teaches Us about AI for Lung Cancer Screening. <em>Radiology: Artificial Intelligence</em> 8(5), 2026-08-05. DOI 10.1148/ryai.260657. <a href="https://pubs.rsna.org/doi/10.1148/ryai.260657" target="_blank" rel="noopener">pubs.rsna.org</a></li>
+      <li>Silva E, Tang K, Chiacchia S, Zhang X, Langlotz C, Kim D. Simulation of AI-driven CT Queue Prioritization in the Emergency Department. <em>Radiology: Artificial Intelligence</em> 8(5), 2026-07-22. DOI 10.1148/ryai.260110. <a href="https://pubs.rsna.org/doi/10.1148/ryai.260110" target="_blank" rel="noopener">pubs.rsna.org</a></li>
+      <li>Walston SL, Takita H, Mitsuyama Y, Sato J, Ueda D. The current state of demographic subgroup reporting for commercially available AI for radiology: a scoping review. <em>European Radiology</em>, 2026-06-12. DOI 10.1007/s00330-026-12652-y. <a href="https://link.springer.com/article/10.1007/s00330-026-12652-y" target="_blank" rel="noopener">link.springer.com</a></li>
+      <li>Demographic reporting for medical AI remains inadequate, study shows. <em>News-Medical</em>, 2026-09-02. <a href="https://www.news-medical.net/news/20260902/Demographic-reporting-for-medical-AI-remains-inadequate-study-shows.aspx" target="_blank" rel="noopener">news-medical.net</a> · <a href="https://medicalxpress.com/news/2026-09-fragmented-bias-commercial-medical-ai.html" target="_blank" rel="noopener">Medical Xpress</a></li>
+      <li>AI could help detect common cardiovascular diseases from mammograms. <em>European Society of Cardiology press release</em>, 2026-08-27. <a href="https://www.escardio.org/news/press/press-releases/ai-could-help-detect-common-cardiovascular-diseases-from-mammograms/" target="_blank" rel="noopener">escardio.org</a></li>
+      <li>Record-breaking ESC Congress 2026 puts new life-saving cardiovascular science in the spotlight. <em>European Society of Cardiology</em>, 2026. <a href="https://www.escardio.org/news/press/press-releases/record-breaking-esc-congress-2026-puts-new-life-saving-cardiovascular-science-in-the-spotlight/" target="_blank" rel="noopener">escardio.org</a></li>
+      <li>Qure.ai nets six new indications cleared by the FDA. <em>Qure.ai newsroom</em>, 2026-02-26. <a href="https://www.qure.ai/us/news-press-coverages/qure.ai-nets-six-new-indications-cleared-by-the-fda-taking-the-chest-x-ray-crown-in-the-radiology-ai-race" target="_blank" rel="noopener">qure.ai</a></li>
+      <li>Keim-Malpass J, Ratcliffe SJ, Clark MT, et al. A randomized controlled trial of artificial intelligence-based analytics for clinical deterioration. <em>Scientific Reports</em>, 2026-02-05. DOI 10.1038/s41598-026-39051-z. <a href="https://www.nature.com/articles/s41598-026-39051-z" target="_blank" rel="noopener">nature.com</a></li>
+      <li>OpenEvidence launches new family of AI models for clinicians. <em>STAT News</em>, 2026-09-03. <a href="https://www.statnews.com/2026/09/03/openevidence-launches-new-ai-models-clinicians-health-tech/" target="_blank" rel="noopener">statnews.com</a> · <a href="https://www.fiercehealthcare.com/health-tech/openevidence-deepens-oncology-push-expands-ai-decision-support-cancer-care" target="_blank" rel="noopener">Fierce Healthcare</a></li>
+      <li>JAMA signs multi-year deal with OpenEvidence to inform AI-powered medical search. <em>Fierce Healthcare</em>. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/jama-signs-multi-year-deal-openevidence-inform-ai-powered-medical-search" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>晚期存活率剩1成！公費肺癌篩檢首年僅1成篩檢率. <em>康健雜誌 CommonHealth</em>, 2023-07-03（2026-01-08 更新）. <a href="https://www.commonhealth.com.tw/article/88402" target="_blank" rel="noopener">commonhealth.com.tw</a></li>
+      <li>國健署LDCT肺癌篩檢AI輔助程式獲食藥署許可. <em>健康醫療網 HealthNews</em>, 2024-09-07. <a href="https://www.healthnews.com.tw/article/62811" target="_blank" rel="noopener">healthnews.com.tw</a></li>
+      <li>LDCT揪出一堆肺結節！健保署推AI把關，避免「不該切卻被切」. <em>聯合報元氣網 UDN Health</em>, 2026-03-17. <a href="https://health.udn.com/health/story/6024/9377935" target="_blank" rel="noopener">health.udn.com</a></li>
+      <li>Wang G, Zhang K, Jiang J, Yang X, et al. Human–large language model collaboration in clinical medicine: a systematic review and meta-analysis. <em>npj Digital Medicine</em>, 2026-01-28. DOI 10.1038/s41746-026-02382-2. <a href="https://www.nature.com/articles/s41746-026-02382-2" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Bareja R, Carrillo-Perez F, Zheng Y, Pizurica M, et al. A benchmark study of vision and pathology foundation models for computational pathology. <em>Nature Communications</em>, 2026-07-24. DOI 10.1038/s41467-026-76004-6. <a href="https://www.nature.com/articles/s41467-026-76004-6" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Lessons from deploying the ChatEHR system at Stanford Medicine. <em>Nature Medicine</em>, 2026-08-10. <a href="https://www.nature.com/articles/s41591-026-04574-5" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Lång K, et al. Interval cancer, sensitivity, and specificity comparing AI-supported mammography screening with standard double reading without AI in the MASAI study. <em>The Lancet</em>, 2026-01-29. DOI 10.1016/S0140-6736(25)02464-X. <a href="https://www.eurekalert.org/news-releases/1114399" target="_blank" rel="noopener">eurekalert.org</a></li>
+    </ol>
+    <div class="note">
+      <span class="zh"><strong>編輯說明：</strong>（一）第 4、5 則的《Radiology: Artificial Intelligence》正文與評論全文位於付費牆後，本報 LUNA25 的所有數字取自 Radboudumc 診斷影像分析組公開的作者版摘要與挑戰賽官網，急診 CT 排序的數字取自 RSNA 公開摘要頁；兩篇均未取得完整補充資料。（二）第 2、3 則為 medRxiv 前印本，未經同儕審查，各模型分數與情境評估數字取自摘要頁。（三）第 7 則為 ESC Congress 2026 會議摘要，尚無同儕審查全文，數字全部取自 ESC 官方新聞稿。（四）第 6 則原始論文線上發表於 2026-06-12，本週發生的是新聞覆蓋而非新發表，本報已在該則內文標明。（五）台灣段的 LDCT 首年數字（49,508 人／531 例／85.1%）出自康健雜誌 2023-07-03 原文、2026-01-08 更新，屬計畫開辦首年資料，非最新累計；「2024 年 530 多萬人次 LDCT、近 3 萬人接受切除手術」與各院術後惡性率出自聯合報元氣網 2026-03-17 轉述健保署說法，本報未取得原始統計表。（六）LDCT-AI 的七家導入院所與九成準確度、+29%、+31% 等效能數字出自健康醫療網 2024-09-07 報導，屬國健署與開發團隊自述，未經第三方稽核。（七）MASAI 為 2026 年 1 月已發表結果，本報僅作為背景引用，不是本週新聞。</span>
+      <span class="en"><strong>Editor's note:</strong> (1) The <em>Radiology: Artificial Intelligence</em> full texts and commentary behind items 4 and 5 are paywalled; every LUNA25 figure here comes from the Radboudumc Diagnostic Image Analysis Group's public author abstract and the challenge site, and the ED CT prioritisation figures from RSNA's public abstract page. Neither paper's supplementary material was obtained. (2) Items 2 and 3 are medRxiv preprints, not peer reviewed; per-model scores and vignette figures are taken from the abstract pages. (3) Item 7 is an ESC Congress 2026 abstract with no peer-reviewed full text; all figures come from the ESC press release. (4) The primary paper behind item 6 went online on 2026-06-12, so what occurred this week was news coverage rather than publication, as flagged in the item itself. (5) The Taiwan first-year LDCT figures (49,508 screened, 531 cancers, 85.1% stage 0–1) come from a CommonHealth article first published 2023-07-03 and updated 2026-01-08; they describe the programme's first year, not the latest cumulative total. The "5.3 million-plus LDCT examinations in 2024 and nearly 30,000 resections" figure and the per-hospital malignancy rates come from UDN Health's 2026-03-17 relay of NHIA statements; we did not obtain the underlying tables. (6) The seven deploying hospitals and the ~90% accuracy, +29% and +31% figures for Taiwan's LDCT-AI come from a 2024-09-07 HealthNews report and are self-reported by the Health Promotion Administration and its development team, not independently audited. (7) MASAI published in January 2026 and is cited here only as background, not as this week's news.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-row">
+    <div>
+      <span class="zh">AI／醫療AI 每日新知日報 · 由 Claude 於台北時間每日自動產出 · 本期主題：星期一／臨床應用與研究<br>本報告內容經來源查證，但不構成投資或醫療建議。所有數據請以原始出處為準。</span>
+      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Monday / Clinical Applications &amp; Research<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
+    </div>
+    <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com / 返回 peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
+  </div>
+</footer>
+</main>
+
+<div class="fabs">
+  <button class="up" id="up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+  <a class="home-fab" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg></a>
+</div>
+
+<script>
+function setLang(l){
+  document.body.classList.remove('lang-zh','lang-en');
+  document.body.classList.add('lang-'+l);
+  document.documentElement.lang = (l==='zh') ? 'zh-Hant' : 'en';
+  document.getElementById('b-zh').classList.toggle('on', l==='zh');
+  document.getElementById('b-en').classList.toggle('on', l==='en');
+  document.title = (l==='zh')
+    ? 'AI／醫療AI 每日新知日報 · 2026-09-07'
+    : 'AI & Medical AI Daily · 2026-09-07';
+}
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.getElementById('theme-ic').textContent =
+    document.body.classList.contains('dark') ? '◑' : '◐';
+}
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.body.classList.add('dark');
+  document.getElementById('theme-ic').textContent = '◑';
+}
+window.addEventListener('scroll', function(){
+  document.getElementById('up').classList.toggle('show', window.scrollY > 600);
+});
+
+/* GitHub 星星數：無需授權，失敗或被限流時靜默保留佔位符 */
+(function(){
+  var el = document.getElementById('ghs');
+  if (!el || typeof fetch !== 'function') return;
+  fetch('https://api.github.com/repos/tingwei161803/ai-medical-daily', {headers:{Accept:'application/vnd.github+json'}})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if (!d || typeof d.stargazers_count !== 'number') return;
+      var n = d.stargazers_count;
+      el.textContent = n >= 1000 ? (Math.round(n/100)/10) + 'k' : String(n);
+    })
+    .catch(function(){});
+})();
+</script>
+</body>
+</html>
