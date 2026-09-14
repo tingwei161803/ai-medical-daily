@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>AI／醫療AI 每日新知日報 · 2026-09-14</title>
+<meta property="og:url" content="https://ai-medical-daily.peteraim.com/reports/2026-09-14.html" />
+<link rel="canonical" href="https://ai-medical-daily.peteraim.com/reports/2026-09-14.html" />
+<meta name="report-date" content="2026-09-14">
+<meta name="report-theme" content="clinical">
+<meta name="report-title-zh" content="臨床 AI 這一週從診間搬進了手術室：CRISP 用十萬張冷凍切片、在 92.6% 的術中決策裡說得上話——而同一週唯一把醫師拉進來實測的那篇，準確率只從 57% 抬到 65%">
+<meta name="report-title-en" content="Clinical AI moved out of the clinic and into the operating room this week: CRISP spoke to 92.6% of intraoperative decisions off 100,000 frozen sections — while the one paper that actually put physicians in the loop moved their accuracy from 57% to 65%">
+<meta name="report-summary-zh" content="9/10–9/13 落地的臨床 AI 論文裡，術中病理基礎模型 CRISP、AI 原生眼科門診 AI-TEC、從 H&amp;E 切片預測淋巴瘤基因重排的 HE2FISH 全出自中國機構；唯一把二十位醫師拉進實驗的歐盟 I3LUNG，也是唯一誠實交代人機合作只加了八個百分點準確率的一篇。">
+<meta name="report-summary-en" content="Of the clinical-AI papers that landed 10–13 Sept, the intraoperative pathology model CRISP, the AI-native eye clinic AI-TEC and HE2FISH — reading lymphoma gene rearrangements off H&amp;E slides — all came out of Chinese institutions. The EU's I3LUNG, the only one to put twenty physicians in the loop, is also the only one to report that the collaboration added just eight percentage points of accuracy.">
+<meta property="og:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HJLDQZDK5V');
+</script>
+<link rel="stylesheet" href="/assets/report.css">
+</head>
+<body class="lang-zh">
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span><span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <div class="bar-sp"></div>
+    <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub / 在 GitHub 給這個專案一顆星"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
+    <div class="seg">
+      <button id="b-zh" class="on" onclick="setLang('zh')">中文</button>
+      <button id="b-en" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="kicker">
+    <span class="zh-inline">星期一 · 臨床應用與研究</span>
+    <span class="en-inline">Monday · Clinical Applications &amp; Research</span>
+  </div>
+  <h1>
+    <span class="zh">臨床 AI 這一週從診間搬進了手術室：CRISP 用十萬張冷凍切片、在 92.6% 的術中決策裡說得上話——而同一週唯一把醫師拉進來實測的那篇，準確率只從 57% 抬到 65%</span>
+    <span class="en">Clinical AI moved out of the clinic and into the operating room this week: CRISP spoke to 92.6% of intraoperative decisions off 100,000 frozen sections — while the one paper that actually put physicians in the loop moved their accuracy from 57% to 65%</span>
+  </h1>
+  <div class="dateline">
+    <span class="zh-inline">2026 年 9 月 14 日（一）· 涵蓋 9/08–9/14 · 台北時間</span>
+    <span class="en-inline">Monday, September 14, 2026 · Covering Sep 8–14 · Taipei time</span>
+  </div>
+  <p class="lede">
+    <span class="zh">上週四到週日，<em>Nature Medicine</em> 與 <em>npj Digital Medicine</em> 連著放出至少八篇臨床 AI 論文，主題從術中冷凍切片、免疫治療反應預測、AI 原生眼科門診，一路排到從電子病歷裡挖罕病。把它們攤開看，兩件事很難忽略。第一，通訊機構在中國的佔了大半——術中病理基礎模型 <a href="https://www.nature.com/articles/s41591-026-04703-0" target="_blank" rel="noopener">CRISP（中山大學腫瘤防治中心，9/10）</a>、<a href="https://www.nature.com/articles/s41591-026-04631-z" target="_blank" rel="noopener">AI 原生眼科門診 AI-TEC（北京清華長庚，9/10）</a>、<a href="https://www.nature.com/articles/s41746-026-03238-5" target="_blank" rel="noopener">從 H&amp;E 切片讀出淋巴瘤基因重排的 HE2FISH（中國醫學科學院腫瘤醫院，9/12）</a>、<a href="https://www.nature.com/articles/s41746-026-03203-2" target="_blank" rel="noopener">甲狀腺乳突癌淋巴結轉移模型 Thy-CLNM（杭州市中醫院，9/12）</a>，全出自同一地。第二，唯一真的把醫師請進實驗室、量「人加上 AI 之後到底多準」的那一篇，是歐盟出資的 <a href="https://www.nature.com/articles/s41591-026-04488-2" target="_blank" rel="noopener">I3LUNG（9/13）</a>——而它給出的數字是準確率從 57% 升到 65%。模型規模與醫師實測，這一週各自長在不同的地方。</span>
+    <span class="en">Between Thursday and Sunday, <em>Nature Medicine</em> and <em>npj Digital Medicine</em> put out at least eight clinical-AI papers, running from intraoperative frozen sections to immunotherapy response prediction, an AI-native eye clinic, and rare-disease mining inside electronic health records. Laid side by side, two things are hard to miss. First, most of the corresponding institutions are in China — the intraoperative pathology foundation model <a href="https://www.nature.com/articles/s41591-026-04703-0" target="_blank" rel="noopener">CRISP (Sun Yat-sen University Cancer Center, Sep 10)</a>, the <a href="https://www.nature.com/articles/s41591-026-04631-z" target="_blank" rel="noopener">AI-native eye clinic AI-TEC (Beijing Tsinghua Changgung, Sep 10)</a>, <a href="https://www.nature.com/articles/s41746-026-03238-5" target="_blank" rel="noopener">HE2FISH, reading lymphoma gene rearrangements off H&amp;E slides (CAMS Cancer Hospital, Sep 12)</a>, and the <a href="https://www.nature.com/articles/s41746-026-03203-2" target="_blank" rel="noopener">thyroid nodal-metastasis model Thy-CLNM (Hangzhou TCM Hospital, Sep 12)</a> all come from there. Second, the only paper that actually brought physicians into the room and measured what human-plus-AI is worth is the EU-funded <a href="https://www.nature.com/articles/s41591-026-04488-2" target="_blank" rel="noopener">I3LUNG (Sep 13)</a> — and its number is accuracy moving from 57% to 65%. Model scale and physician evidence grew in different places this week.</span>
+  </p>
+
+  <nav class="toc">
+    <a href="#top"><span class="zh-inline">重點新聞</span><span class="en-inline">Top Stories</span></a>
+    <a href="#product"><span class="zh-inline">產品分析</span><span class="en-inline">Product Analysis</span></a>
+    <a href="#company"><span class="zh-inline">公司與競爭</span><span class="en-inline">Companies &amp; Competition</span></a>
+    <a href="#taiwan"><span class="zh-inline">台灣視角</span><span class="en-inline">Taiwan Angle</span></a>
+    <a href="#reading"><span class="zh-inline">延伸閱讀</span><span class="en-inline">Further Reading</span></a>
+    <a href="#refs"><span class="zh-inline">參考文獻</span><span class="en-inline">References</span></a>
+  </nav>
+</div>
+
+<section id="top">
+  <h2>01 — Top Stories</h2>
+  <div class="sec-title">
+    <span class="zh">八篇論文，兩種證據：一邊在拼規模與工作流，一邊在量醫師到底有沒有變準</span>
+    <span class="en">Eight papers, two kinds of evidence: one side scaling models into workflows, the other measuring whether doctors actually got better</span>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">術中病理</span><span class="en-inline">Intraoperative pathology</span></span>
+      <span class="tag">Sun Yat-sen University Cancer Center</span><span class="tag">CRISP</span><span class="tag">9/10</span>
+    </div>
+    <h3>
+      <span class="zh">CRISP：十萬張冷凍切片訓出來的術中病理基礎模型，前瞻測試裡有 92.6% 的病例「直接影響了手術決策」</span>
+      <span class="en">CRISP: an intraoperative pathology foundation model trained on 100,000 frozen sections that directly informed the surgical decision in 92.6% of prospective cases</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">中山大學腫瘤防治中心團隊 9 月 10 日在 <em>Nature Medicine</em> 發表 <a href="https://www.nature.com/articles/s41591-026-04703-0" target="_blank" rel="noopener">CRISP</a>，一個專為術中冷凍切片設計的病理基礎模型。訓練資料來自十家醫學中心、逾 100,000 張冷凍切片；評估涵蓋 15,000 張以上術中玻片、近 100 項回溯性診斷任務，並跨 6 家機構、14 種腫瘤類型、24 個解剖部位驗證泛化能力。前瞻部分的數字是：92.6% 的病例中模型輸出直接進入手術決策、人機協作讓診斷工作量降低 35%、省下 105 次輔助檢查、微轉移偵測準確率 87.5%。</span>
+        <span class="en">On 10 September, a team at Sun Yat-sen University Cancer Center published <a href="https://www.nature.com/articles/s41591-026-04703-0" target="_blank" rel="noopener">CRISP</a> in <em>Nature Medicine</em> — a pathology foundation model built specifically for intraoperative frozen sections. It was trained on more than 100,000 frozen sections from ten medical centers and evaluated on over 15,000 intraoperative slides across nearly 100 retrospective diagnostic tasks, with generalization tested across 6 institutions, 14 tumor types and 24 anatomical sites. The prospective figures: the model's output directly informed the surgical decision in 92.6% of cases, human–AI collaboration cut diagnostic workload by 35%, 105 ancillary tests were avoided, and micrometastasis detection reached 87.5% accuracy.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">冷凍切片是整個醫院裡少數「AI 慢一秒就沒有價值」的場景：病人躺在台上，外科醫師等的是二十分鐘內的一個是或否——要不要再切一刀、要不要清淋巴結。過去幾年的病理 AI 幾乎都長在數位化石蠟切片上，影像品質好、時間壓力低；把模型搬到組織冰凍、染色不均、切面破碎的術中切片上是完全不同的難度。CRISP 把「前瞻部署 + 跨機構泛化 + 工作量下降」三件事寫進同一篇，這在病理基礎模型裡還不多見。</span>
+        <span class="en">Frozen sections are one of the few places in a hospital where an AI that is one second late is worth nothing: the patient is on the table and the surgeon needs a yes or no inside twenty minutes — cut wider, or clear the nodes. Most pathology AI of the past few years has grown on digitized formalin-fixed slides, where image quality is good and time pressure is low; moving a model onto frozen, unevenly stained, fragmented intraoperative tissue is a different order of difficulty. CRISP puts prospective deployment, cross-institution generalization and a measured workload drop into one paper, which is still uncommon for pathology foundation models.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">「92.6% 的病例直接影響手術決策」量的是模型輸出被納入決策的比例，不是模型讓決策變得更對；論文摘要層級沒有給出與個別病理醫師頭對頭的準確率對照，只說優於現有基礎模型。35% 工作量下降與 105 次輔助檢查省下，也都是在該中心自家流程裡量的。</span>
+        <span class="en">"Directly informed the surgical decision in 92.6% of cases" measures how often the model's output entered the decision, not how often it made the decision more correct; at abstract level there is no head-to-head accuracy comparison against individual pathologists, only a claim of superiority over existing foundation models. The 35% workload reduction and the 105 avoided ancillary tests were both measured inside that center's own workflow.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.nature.com/articles/s41591-026-04703-0" target="_blank" rel="noopener">A clinically-oriented foundation model for intraoperative pathology — Nature Medicine, 2026-09-10</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">可解釋 AI</span><span class="en-inline">Explainable AI</span></span>
+      <span class="tag">I3LUNG</span><span class="tag">NSCLC</span><span class="tag">9/13</span>
+    </div>
+    <h3>
+      <span class="zh">I3LUNG：二十位醫師實測，可解釋 AI 把免疫治療反應判斷的準確率從 57% 拉到 65%——這是本週唯一一個「人加 AI」的數字</span>
+      <span class="en">I3LUNG: with twenty physicians in the loop, explainable AI lifted immunotherapy-response accuracy from 57% to 65% — the week's only genuine human-plus-AI number</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">歐盟 Horizon Europe 資助的 <a href="https://cordis.europa.eu/project/id/101057695" target="_blank" rel="noopener">I3LUNG 計畫</a>（主導機構為米蘭 <a href="https://istitutotumori.mi.it/en/projects-research/i3lung-integrative-science-intelligent-data-platform-individualized-lung-cancer-care-immunotherapy" target="_blank" rel="noopener">IRCCS Istituto Nazionale dei Tumori</a>）9 月 13 日在 <em>Nature Medicine</em> 發表<a href="https://www.nature.com/articles/s41591-026-04488-2" target="_blank" rel="noopener">多模態可解釋 AI 決策支援工具的臨床可用性研究</a>。六家中心、2,396 名晚期非小細胞肺癌病人，其中 339 人具備完整多模態資料。模型預測 6 個月與 24 個月總存活、疾病控制率與客觀反應率：OS24 的 AUC 為 0.74，同一測試集裡 PD-L1 只有 0.53；與 LIPI 複合評分相比，C-index 0.65 對 0.55。接著做了關鍵的那一段——請 10 位專家與 10 位非專家共 20 位醫師實際使用：疾病控制率判斷的敏感度從 0.72 升到 0.87，準確率從 57% 升到 65%，醫師採納正確 XAI 建議的比例為 74.5%。</span>
+        <span class="en">The EU Horizon Europe–funded <a href="https://cordis.europa.eu/project/id/101057695" target="_blank" rel="noopener">I3LUNG project</a> (led by <a href="https://istitutotumori.mi.it/en/projects-research/i3lung-integrative-science-intelligent-data-platform-individualized-lung-cancer-care-immunotherapy" target="_blank" rel="noopener">IRCCS Istituto Nazionale dei Tumori</a> in Milan) published its <a href="https://www.nature.com/articles/s41591-026-04488-2" target="_blank" rel="noopener">clinical-usability study of a multimodal explainable AI decision-support tool</a> in <em>Nature Medicine</em> on 13 September. Six centers, 2,396 patients with advanced non-small-cell lung cancer, 339 of them with complete multimodal data. The models predict 6- and 24-month overall survival, disease control rate and overall response rate: AUC 0.74 for OS24 against 0.53 for PD-L1 in the same test set, and a C-index of 0.65 versus 0.55 for the composite LIPI score. Then comes the part that matters — 20 physicians, 10 experts and 10 non-experts, actually used it: sensitivity for disease control rose from 0.72 to 0.87, accuracy from 57% to 65%, and physicians adopted correct XAI suggestions 74.5% of the time.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">57% → 65% 這八個百分點，是這一週最誠實的一個數字。它同時說了兩件事：可解釋 AI 確實幫得上忙（而且專家與非專家獲益相近，代表它補的不是知識落差而是判斷的系統性偏誤），以及即使有一個 AUC 0.74 的模型在旁邊，醫師實際的判斷準確率還是只有 65%——模型的判別力與臨床決策品質之間，中間那一段損耗是真實存在的。同期 <em>Nature Medicine</em> 的評論文章 <a href="https://www.nature.com/articles/s41591-026-04587-0" target="_blank" rel="noopener">A multimodal murmuration for immunotherapy</a> 也把焦點放在多模態整合的價值上。</span>
+        <span class="en">Those eight percentage points, 57% to 65%, are the most honest number of the week. They say two things at once: explainable AI does help — and experts and non-experts benefited similarly, which suggests it is patching systematic judgment bias rather than a knowledge gap — and even with an AUC-0.74 model at their elbow, physicians still land at 65%. The loss between a model's discrimination and the quality of the clinical decision is real. <em>Nature Medicine</em>'s accompanying commentary, <a href="https://www.nature.com/articles/s41591-026-04587-0" target="_blank" rel="noopener">A multimodal murmuration for immunotherapy</a>, takes up the same multimodal-integration thread.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">回溯性設計、真實世界資料異質性高；完整多模態的只有 339 人，訓練階段看到的多模態增益在測試與驗證集裡沒有一致重現；外部驗證只有一個世代且基線特徵不同；基因體資料稀疏、影像組學特徵僅取原發病灶，約 15% 的 CT 並非在免疫治療起始時取得。20 位醫師的可用性測試樣本也小。</span>
+        <span class="en">Retrospective design on heterogeneous real-world data; only 339 patients had complete multimodal records, and the multimodal gains seen in training did not consistently replicate in test and validation sets; a single external validation cohort with different baseline characteristics; sparse genomic data, radiomic features limited to the primary lesion, and roughly 15% of CT scans not acquired at the start of immunotherapy. The 20-physician usability test is also a small sample.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.nature.com/articles/s41591-026-04488-2" target="_blank" rel="noopener">Clinical usability of an explainable AI decision support tool and evaluation of multimodal models in NSCLC — Nature Medicine, 2026-09-13</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">AI 原生照護</span><span class="en-inline">AI-native care</span></span>
+      <span class="tag">AI-TEC</span><span class="tag">Beijing Tsinghua Changgung</span><span class="tag">9/10</span>
+    </div>
+    <h3>
+      <span class="zh">AI-TEC：中國一間「AI 原生」眼科門診的落地檢討——從輔助工具走向照護模式本身</span>
+      <span class="en">AI-TEC: an early reckoning from an "AI-native" eye clinic in China — from assistive tool to the care model itself</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">9 月 10 日 <em>Nature Medicine</em> 刊出<a href="https://www.nature.com/articles/s41591-026-04631-z" target="_blank" rel="noopener">〈Initial lessons from real-world implementation of an AI-agent eye clinic in China〉</a>，作者來自清華大學北京清華長庚醫院的 Beijing Visual Science and Translational Eye Research Institute（BERI）。文章討論的不是某個模型的 AUC，而是把 AI 代理（agent）當成門診主幹來重組照護流程之後學到的事：成功與否取決於工作流整合、臨床人員的投入程度、以及能不能量得出臨床價值；並指出「經專家審核的高品質資料能提升 AI-TEC 的表現」。</span>
+        <span class="en">On 10 September <em>Nature Medicine</em> ran <a href="https://www.nature.com/articles/s41591-026-04631-z" target="_blank" rel="noopener">"Initial lessons from real-world implementation of an AI-agent eye clinic in China"</a>, from the Beijing Visual Science and Translational Eye Research Institute (BERI) at Beijing Tsinghua Changgung Hospital, Tsinghua University. The piece is not about one model's AUC but about what was learned from rebuilding a clinic around AI agents as the spine of care: success turns on workflow integration, clinician engagement and measurable clinical value, and the authors note that expert-reviewed, high-quality data improves AI-TEC's performance.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">「AI 輔助」與「AI 原生」是兩種完全不同的制度成本。前者把模型掛在既有流程旁邊，出錯時人還在迴路上；後者把流程本身圍著 agent 重蓋，責任歸屬、排程、轉診、異常升級全部要重寫一次。眼科是最早被推到這一步的科別——影像單一、判讀標準化、病人量大——所以它踩到的坑，其他科別大概率也會踩。這篇的價值在於它是實作後的回顧，不是部署前的願景。</span>
+        <span class="en">"AI-assisted" and "AI-native" carry completely different institutional costs. The first hangs a model beside an existing pathway and keeps a human in the loop when it errs; the second rebuilds the pathway around the agent, which means liability, scheduling, referral and escalation all have to be rewritten. Ophthalmology was pushed there first — single imaging modality, standardized reading, high patient volume — so the potholes it hits are likely the ones other specialties will hit. The value here is that it is a retrospective on an implementation, not a pre-deployment vision.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">這是一篇評論／實作檢討，不是對照試驗。全文在付費牆後，公開可讀的部分沒有病人數、與人類醫師的判讀一致率、或安全事件統計；本報只根據摘要與可見段落撰寫，不推測未公開的數字。</span>
+        <span class="en">This is a commentary and implementation review, not a controlled trial. The full text sits behind a paywall; the publicly visible portion carries no patient counts, no concordance rate against human clinicians and no safety-event statistics. This report is written from the abstract and visible sections only, and does not extrapolate figures that were not published.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.nature.com/articles/s41591-026-04631-z" target="_blank" rel="noopener">Initial lessons from real-world implementation of an AI-agent eye clinic in China — Nature Medicine, 2026-09-10</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">數位病理</span><span class="en-inline">Digital pathology</span></span>
+      <span class="tag">HE2FISH</span><span class="tag">CAMS</span><span class="tag">9/12</span>
+    </div>
+    <h3>
+      <span class="zh">HE2FISH：用最普通的 H&amp;E 切片預測 MYC／BCL2／BCL6 基因重排，外部 AUC 超過 0.81，存活分層與 FISH 相當</span>
+      <span class="en">HE2FISH: predicting MYC/BCL2/BCL6 rearrangements from ordinary H&amp;E slides, external AUC above 0.81, stratifying survival comparably to FISH</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">中國醫學科學院腫瘤醫院團隊 9 月 12 日在 <em>npj Digital Medicine</em> 發表 <a href="https://www.nature.com/articles/s41746-026-03238-5" target="_blank" rel="noopener">HE2FISH</a>：從常規 H&amp;E 組織切片直接預測瀰漫性大 B 細胞淋巴瘤的 <em>MYC</em>、<em>BCL2</em>、<em>BCL6</em> 基因重排狀態與共重排型態。資料來自五家醫院、1,377 名有 H&amp;E 與 FISH 配對資料的病人；單基因預測的外部 AUC 平均超過 0.81，而在存活分析中，HE2FISH 預測的重排狀態對總存活與無病存活的分層能力與 FISH 相當。</span>
+        <span class="en">On 12 September a team at the National Cancer Center / Cancer Hospital, Chinese Academy of Medical Sciences published <a href="https://www.nature.com/articles/s41746-026-03238-5" target="_blank" rel="noopener">HE2FISH</a> in <em>npj Digital Medicine</em>: predicting <em>MYC</em>, <em>BCL2</em> and <em>BCL6</em> rearrangement status — and co-rearrangement patterns — in diffuse large B-cell lymphoma straight from routine H&amp;E sections. The data covers 1,377 patients with paired H&amp;E and FISH across five hospitals; mean external AUC exceeds 0.81 for single-gene prediction, and in survival analysis HE2FISH-predicted rearrangement status stratified overall and disease-free survival comparably to FISH.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">FISH 貴、慢、耗組織，而「double-hit／triple-hit」淋巴瘤的分型直接決定第一線化療要不要加強。如果一張本來就要染的 H&amp;E 切片能先篩掉大部分不需要送 FISH 的病人，省下的不只是檢驗費，而是決策的時間。這是病理 AI 目前最務實的一條商業路線：不取代確診方法，而是當確診方法的前置分流。</span>
+        <span class="en">FISH is expensive, slow and tissue-hungry, and the double-hit / triple-hit classification directly decides whether first-line chemotherapy is intensified. If an H&amp;E slide that had to be stained anyway can screen out most patients who never needed FISH, the saving is not only the assay cost but the decision time. This is the most practical commercial line pathology AI currently has: not replacing the confirmatory test, but triaging in front of it.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">框架鎖定在呈瀰漫生長型態的 DLBCL 病例；作者自陳加上結構化臨床病理資料才能在特定應用上提升表現，代表純影像端的訊號有上限。1,377 人五院配對資料在淋巴瘤裡算大，但對三個基因各自的罕見重排組合而言，分層後的樣本數仍有限。</span>
+        <span class="en">The framework is scoped to DLBCL cases with diffuse growth patterns, and the authors note that adding structured clinicopathological data was needed to lift performance in specific applications — meaning the image-only signal has a ceiling. 1,377 paired cases across five hospitals is large for lymphoma, but once stratified by the rarer combinations across three genes the per-subgroup counts stay thin.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.nature.com/articles/s41746-026-03238-5" target="_blank" rel="noopener">Deep learning predicts gene rearrangements from histopathology in large B-cell lymphoma — npj Digital Medicine, 2026-09-12</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">罕見疾病</span><span class="en-inline">Rare disease</span></span>
+      <span class="tag">RDMA</span><span class="tag">UIUC</span><span class="tag">9/10</span>
+    </div>
+    <h3>
+      <span class="zh">RDMA：不做任務微調、用小型量化模型從病歷裡挖罕病，推論成本降到十分之一、硬體需求降到十七分之一</span>
+      <span class="en">RDMA: mining rare diseases out of clinical notes with no task-specific training and a small quantized model — 10× cheaper inference, 17× lighter hardware</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">伊利諾大學香檳分校資工系與伊利諾大學醫學院 Peoria 分部合作，9 月 10 日在 <em>npj Digital Medicine</em> 發表 <a href="https://www.nature.com/articles/s41746-026-03070-x" target="_blank" rel="noopener">RDMA</a>：一套 agent 架構，內建縮寫還原、隱含表型推理、以及對 Orphanet 與 HPO 的本體對齊工具，用來從非結構化病歷文字中辨識罕病提及。論文宣稱在不做任務專屬訓練的情況下勝過微調與 RAG 基線，推論成本最高降低 10 倍、本地硬體需求最高降低 17 倍，並附上可疑案例的不確定性標記機制以降低專家標註負擔。程式碼公開在 <a href="https://github.com/jhnwu3/RDMA" target="_blank" rel="noopener">GitHub</a>。</span>
+        <span class="en">On 10 September, computer scientists at the University of Illinois Urbana-Champaign, with collaborators at the University of Illinois College of Medicine Peoria, published <a href="https://www.nature.com/articles/s41746-026-03070-x" target="_blank" rel="noopener">RDMA</a> in <em>npj Digital Medicine</em>: an agent framework with built-in abbreviation resolution, implicit phenotype reasoning and ontology grounding against Orphanet and HPO, used to surface rare-disease mentions in unstructured clinical text. The paper claims it beats fine-tuned and RAG baselines without task-specific training, cuts inference cost by up to 10× and local hardware requirements by up to 17×, and adds uncertainty flagging to reduce expert annotation burden. Code is public on <a href="https://github.com/jhnwu3/RDMA" target="_blank" rel="noopener">GitHub</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">論文指出約每十位美國人就有一位罹患罕病，但超過一半的 Orphanet 代碼在 ICD 裡找不到對應——這表示以編碼為基礎的流病研究，結構上就看不見罕病。RDMA 有意思的地方不在準確率，而在它把「小型量化模型 + 本地部署」寫成主張：對醫院來說，病歷不出院區、跑在普通機器上，比多幾個百分點的 F1 值更能決定要不要導入。</span>
+        <span class="en">The paper notes that roughly one in ten Americans lives with a rare disease, yet over half of Orphanet codes have no direct ICD equivalent — meaning coding-based epidemiology is structurally blind to them. What is interesting about RDMA is not the accuracy but the claim it stakes on small quantized models running locally: for a hospital, keeping notes inside the building and running on ordinary hardware decides adoption far more than a few points of F1.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.nature.com/articles/s41746-026-03070-x" target="_blank" rel="noopener">RDMA: cost effective agent-driven rare disease mining from electronic health records — npj Digital Medicine, 2026-09-10</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">真實世界證據</span><span class="en-inline">Real-world evidence</span></span>
+      <span class="tag">RespondHealth</span><span class="tag">GLP-1</span><span class="tag">9/10</span>
+    </div>
+    <h3>
+      <span class="zh">把電子病歷變成「可計算的病程」：語言模型抽結構化實體、接上醫學本體，先拿 GLP-1 治療反應當示範</span>
+      <span class="en">Turning EHRs into computable patient journeys: language models extract entities, medical ontologies bind them, and GLP-1 response is the first demonstration</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">9 月 10 日 <em>Nature Medicine</em> 刊出<a href="https://www.nature.com/articles/s41591-026-04695-x" target="_blank" rel="noopener">一套從結構化與非結構化電子病歷建立縱貫性病程的方法</a>，第一作者機構為馬里蘭州 Bethesda 的 RespondHealth，合作者來自 Stanford、University of Miami、Drexel、Penn 與 Mount Sinai。作法是用大型預訓練語言模型從病歷自由文字中抽出臨床實體、以醫學本體組成知識圖譜、再與結構化資料整合成病人層級軌跡。論文指出經醫師裁決、對照盲化專家參考標準驗證，準確率高且專家之間一致性高；示範案例是 GLP-1 受體促效劑治療：辨識起始治療者、建模體重與 HbA1c 變化、描繪真實世界的治療反應。</span>
+        <span class="en">On 10 September <em>Nature Medicine</em> published <a href="https://www.nature.com/articles/s41591-026-04695-x" target="_blank" rel="noopener">a method for building longitudinal patient journeys out of structured and unstructured EHR data</a>, first-authored from RespondHealth in Bethesda, Maryland, with collaborators at Stanford, the University of Miami, Drexel, Penn and Mount Sinai. Large pre-trained language models extract clinical entities from free text, medical ontologies organize them into knowledge graphs, and the result is integrated with structured data into patient-level trajectories. The paper reports physician adjudication against a blinded expert reference standard showing high accuracy and high inter-reviewer agreement; the worked example is GLP-1 receptor agonist therapy — identifying treatment initiators, modeling weight and HbA1c change, and characterizing real-world response.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">真實世界證據這幾年卡的地方從來不是統計方法，而是「病歷裡八成的東西是散文」。如果語言模型能把自由文字穩定地變成可計算實體，那 RWE 研究的可用樣本會一次擴張——這對給付談判、上市後監測、以及本報週三那類法規題目的影響，會比多一個診斷模型大得多。作者也強調人類監督仍不可少，研究設計與詮釋仍在研究者手上，沒有主張全自動。</span>
+        <span class="en">What has held real-world evidence back is not statistical method but the fact that most of what is in a chart is prose. If language models can turn free text into computable entities reliably, the usable sample for RWE studies expands at a stroke — with more consequence for reimbursement negotiation, post-market surveillance and the kind of regulatory questions this daily covers on Wednesdays than any one more diagnostic model. The authors are careful to say human oversight remains essential and that design and interpretation stay with investigators; nothing here is claimed as fully automated.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">公開可讀的部分沒有給出病人數與病歷筆數，只說「大規模、跨所有臨床病況」；準確率以「高」描述而未見具體數值。第一作者機構是商業公司，示範主題又正好是 GLP-1 這個藥廠需求最旺的領域，讀的時候值得把利益結構放在心上。</span>
+        <span class="en">The publicly readable portion gives no patient or note counts, only "large-scale, across all clinical conditions"; accuracy is described as high without a stated figure. The first-author institution is a commercial company and the demonstration topic is GLP-1, precisely where pharma demand is heaviest — worth holding the incentive structure in mind while reading.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.nature.com/articles/s41591-026-04695-x" target="_blank" rel="noopener">Computable longitudinal patient journeys from structured and unstructured EHR data — Nature Medicine, 2026-09-10</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">數位孿生</span><span class="en-inline">Digital twins</span></span>
+      <span class="tag">ICDT-HM</span><span class="tag">9/11</span>
+    </div>
+    <h3>
+      <span class="zh">21 位作者、跨中英美法新五地，成立醫療數位孿生國際聯盟——目前是藍圖，沒有量化承諾</span>
+      <span class="en">21 authors across China, the UK, the US, France and Singapore launch an international consortium for medical digital twins — a blueprint, with no quantified commitments yet</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">9 月 11 日 <em>Nature Medicine</em> 發表<a href="https://www.nature.com/articles/s41591-026-04621-1" target="_blank" rel="noopener">〈A global digital navigator of human health for precision medicine〉</a>，宣布成立 International Consortium of Digital Twins in Healthcare and Medicine（ICDT-HM），21 位作者來自中國、英國、美國、法國與新加坡的大學與醫學中心。目標是把醫療數位孿生推成精準健康的新基礎建設，文中提出個體數位孿生的軌跡推論框架，以及一份「從藍圖到全球數位孿生生態系」的路線圖。</span>
+        <span class="en">On 11 September <em>Nature Medicine</em> published <a href="https://www.nature.com/articles/s41591-026-04621-1" target="_blank" rel="noopener">"A global digital navigator of human health for precision medicine"</a>, announcing the International Consortium of Digital Twins in Healthcare and Medicine (ICDT-HM) — 21 authors from universities and medical centers in China, the UK, the US, France and Singapore. The aim is to establish medical digital twins as new infrastructure for precision health; the paper sets out a trajectory-inference framework for an individual digital twin and a roadmap "from blueprint to a global digital twin ecosystem."</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">這是一份宣示性文件，不是研究成果。文中沒有具體數值目標、沒有具約束力的承諾、也沒有資金規模，只有分階段的路線圖。把它當成「誰打算跟誰結盟」的訊號讀，比當成技術進展讀合理。</span>
+        <span class="en">This is a declaratory document, not a research result. There are no numerical targets, no binding commitments and no funding figures — only a phased roadmap. It reads more usefully as a signal of who intends to align with whom than as a technical advance.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.nature.com/articles/s41591-026-04621-1" target="_blank" rel="noopener">A global digital navigator of human health for precision medicine — Nature Medicine, 2026-09-11</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">術前決策</span><span class="en-inline">Preoperative decision</span></span>
+      <span class="tag">Thy-CLNM Fusion</span><span class="tag">9/12</span>
+    </div>
+    <h3>
+      <span class="zh">Thy-CLNM：934 例甲狀腺乳突癌，超音波影像組學加深度學習預測中央淋巴結轉移，驗證組 AUC 0.862</span>
+      <span class="en">Thy-CLNM: 934 papillary thyroid carcinoma cases, ultrasound habitat radiomics plus deep learning for central lymph node metastasis, validation AUC 0.862</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">杭州市中醫院（浙江中醫藥大學附屬）團隊 9 月 12 日在 <em>npj Digital Medicine</em> 發表 <a href="https://www.nature.com/articles/s41746-026-03203-2" target="_blank" rel="noopener">Thy-CLNM Fusion 模型</a>，以 2023 年 1 月至 2024 年 12 月間 934 名接受頸部淋巴結手術的甲狀腺乳突癌病人為對象，用深度學習結合 habitat radiomics 預測中央淋巴結轉移。驗證組 AUC 0.862、敏感度 78.9%、特異度 79.3%。作者發現低風險病例的模型活化落在高回聲區、高風險落在與侵襲性病理特徵相關的低回聲區。研究為回溯性設計，已於 ClinicalTrials.gov 註冊（NCT06725628）。</span>
+        <span class="en">On 12 September a team at Hangzhou TCM Hospital, affiliated with Zhejiang Chinese Medical University, published the <a href="https://www.nature.com/articles/s41746-026-03203-2" target="_blank" rel="noopener">Thy-CLNM Fusion model</a> in <em>npj Digital Medicine</em>, predicting central lymph node metastasis in papillary thyroid carcinoma from ultrasound using deep learning combined with habitat radiomics, in 934 patients who underwent cervical nodal surgery between January 2023 and December 2024. Validation-cohort AUC was 0.862, sensitivity 78.9%, specificity 79.3%. Low-risk cases activated in hyperechoic regions while high-risk cases localized to hypoechoic areas associated with aggressive pathology. The study is retrospective and registered at ClinicalTrials.gov as NCT06725628.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">甲狀腺乳突癌要不要預防性清掃中央區淋巴結，是外科長年沒有共識的題目——清掃過度會傷及副甲狀腺與喉返神經，不清掃又可能漏掉轉移。0.862 的 AUC 還不足以取代術中判斷，但它把這個決策從「憑經驗」推向「有一個可量化的先驗」，而且用的是術前就有的超音波，不增加任何檢查。</span>
+        <span class="en">Whether to perform prophylactic central-compartment neck dissection in papillary thyroid carcinoma is a question surgery has argued over for years — over-dissect and you risk the parathyroids and recurrent laryngeal nerve, skip it and you may miss metastasis. An AUC of 0.862 is not enough to replace intraoperative judgment, but it moves the decision from experience alone toward a quantifiable prior, using ultrasound that already exists preoperatively and adding no new test.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">單中心、回溯性、兩年區間；敏感度與特異度都落在 79% 上下，代表每五個病人就有一個被分錯邊。超音波影像高度依賴操作者與機型，跨院泛化尚未驗證。</span>
+        <span class="en">Single center, retrospective, a two-year window; sensitivity and specificity both sit around 79%, meaning roughly one patient in five lands on the wrong side. Ultrasound is heavily operator- and machine-dependent, and cross-institution generalization has not been tested.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.nature.com/articles/s41746-026-03203-2" target="_blank" rel="noopener">Deep learning combined habitat radiomics analysis of central lymph node metastasis in papillary thyroid carcinoma — npj Digital Medicine, 2026-09-12</a></p></div>
+  </div>
+</section>
+
+<section id="product">
+  <h2>02 — Product Analysis</h2>
+  <div class="sec-title">
+    <span class="zh">CRISP 與 I3LUNG：一個賭工作流嵌入，一個賭醫師實測——這兩條路今天還沒有交會</span>
+    <span class="en">CRISP and I3LUNG: one bets on workflow embedding, the other on physician evidence — and the two have not met yet</span>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>CRISP</h3>
+      <p class="sub"><span class="zh-inline">術中冷凍切片病理基礎模型 · 中山大學腫瘤防治中心（中國）</span><span class="en-inline">Intraoperative frozen-section pathology foundation model · Sun Yat-sen University Cancer Center (China)</span></p>
+      <p>
+        <span class="zh"><strong>功能與定位。</strong>把病理基礎模型從石蠟切片搬進手術室，目標客戶是有術中病理需求但病理人力吃緊的大型外科中心。訓練資料十家中心、逾 10 萬張冷凍切片，評估涵蓋 6 家機構、14 種腫瘤、24 個解剖部位（<a href="https://www.nature.com/articles/s41591-026-04703-0" target="_blank" rel="noopener">Nature Medicine, 9/10</a>）。</span>
+        <span class="en"><strong>Function and position.</strong> It moves the pathology foundation model out of the formalin lab and into the operating room, aimed at high-volume surgical centers with intraoperative pathology demand and thin pathologist staffing. Trained on 100,000-plus frozen sections from ten centers; evaluated across 6 institutions, 14 tumor types and 24 anatomical sites (<a href="https://www.nature.com/articles/s41591-026-04703-0" target="_blank" rel="noopener">Nature Medicine, Sep 10</a>).</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：規模與泛化同時到位。前瞻測試中 92.6% 的病例模型輸出進入手術決策、工作量下降 35%、省下 105 次輔助檢查，是目前罕見同時交出部署數據的病理基礎模型（<a href="https://www.nature.com/articles/s41591-026-04703-0" target="_blank" rel="noopener">來源</a>）。</span>
+          <span class="en">: scale and generalization arrived together. In prospective testing the model's output entered the surgical decision in 92.6% of cases, workload fell 35% and 105 ancillary tests were avoided — rare for a pathology foundation model to report deployment numbers at all (<a href="https://www.nature.com/articles/s41591-026-04703-0" target="_blank" rel="noopener">source</a>).</span>
+        </li>
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：微轉移偵測 87.5% 準確率，正好打在冷凍切片最容易漏、又最影響清掃範圍的那一項上（<a href="https://www.nature.com/articles/s41591-026-04703-0" target="_blank" rel="noopener">來源</a>）。</span>
+          <span class="en">: 87.5% accuracy on micrometastasis detection lands precisely on what frozen sections most often miss and what most changes the extent of dissection (<a href="https://www.nature.com/articles/s41591-026-04703-0" target="_blank" rel="noopener">source</a>).</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：缺一組「有 CRISP 與沒有 CRISP，病人結果差多少」的對照。92.6% 是採用率不是正確率；摘要層級也沒有與病理醫師頭對頭的數字。這一項缺什麼就是缺什麼，論文沒給，本報不補。</span>
+          <span class="en">: there is no arm comparing patient outcomes with and without CRISP. 92.6% is an adoption rate, not a correctness rate, and no head-to-head figure against pathologists appears at abstract level. What is missing is missing; the paper does not supply it and neither will this report.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：冷凍切片的製備品質院際差異極大，十家中心的訓練資料是否涵蓋較小型醫院的切片品質區間，摘要沒有交代。</span>
+          <span class="en">: frozen-section preparation quality varies enormously between hospitals, and the abstract does not say whether the ten training centers span the quality range a smaller hospital would produce.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>I3LUNG</h3>
+      <p class="sub"><span class="zh-inline">多模態可解釋 AI 免疫治療決策支援 · IRCCS Istituto Nazionale dei Tumori 主導，歐盟 Horizon Europe 資助（義大利）</span><span class="en-inline">Multimodal explainable AI for immunotherapy decisions · led by IRCCS Istituto Nazionale dei Tumori, funded by EU Horizon Europe (Italy)</span></p>
+      <p>
+        <span class="zh"><strong>功能與定位。</strong>整合臨床、影像組學與基因體特徵，預測晚期 NSCLC 病人的免疫治療存活與反應，並用可解釋介面把理由攤給腫瘤科醫師看。六家中心 2,396 名病人（<a href="https://www.nature.com/articles/s41591-026-04488-2" target="_blank" rel="noopener">Nature Medicine, 9/13</a>）；計畫背景見 <a href="https://cordis.europa.eu/project/id/101057695" target="_blank" rel="noopener">CORDIS 專案頁</a>。</span>
+        <span class="en"><strong>Function and position.</strong> It fuses clinical, radiomic and genomic features to predict immunotherapy survival and response in advanced NSCLC, and exposes the reasoning to oncologists through an explainable interface. 2,396 patients across six centers (<a href="https://www.nature.com/articles/s41591-026-04488-2" target="_blank" rel="noopener">Nature Medicine, Sep 13</a>); project background at the <a href="https://cordis.europa.eu/project/id/101057695" target="_blank" rel="noopener">CORDIS project page</a>.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：把人放進實驗。20 位醫師（10 專家 10 非專家）實測，DCR 判斷敏感度 0.72→0.87、準確率 57%→65%、正確 XAI 建議採納率 74.5%，這在臨床 AI 論文裡仍屬少數（<a href="https://www.nature.com/articles/s41591-026-04488-2" target="_blank" rel="noopener">來源</a>）。</span>
+          <span class="en">: it puts humans in the experiment. Twenty physicians (10 experts, 10 non-experts) used it — DCR sensitivity 0.72→0.87, accuracy 57%→65%, correct XAI suggestions adopted 74.5% of the time. That remains uncommon in clinical AI papers (<a href="https://www.nature.com/articles/s41591-026-04488-2" target="_blank" rel="noopener">source</a>).</span>
+        </li>
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：對照組選得誠實。不是跟「什麼都沒有」比，而是跟 PD-L1（AUC 0.53）、ECOG PS、NLR、LDH、LIPI 這些臨床真的在用的指標比（<a href="https://www.nature.com/articles/s41591-026-04488-2" target="_blank" rel="noopener">來源</a>）。</span>
+          <span class="en">: the comparators are honest. Not measured against nothing, but against PD-L1 (AUC 0.53), ECOG PS, NLR, LDH and LIPI — the markers oncologists actually use (<a href="https://www.nature.com/articles/s41591-026-04488-2" target="_blank" rel="noopener">source</a>).</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：多模態這個賣點在測試集裡沒站穩——訓練階段的多模態增益未能一致重現，完整多模態資料只有 339 人。一個號稱多模態的系統，最強的結果卻來自臨床特徵模型，這是要解釋的。</span>
+          <span class="en">: the multimodal selling point did not hold in the test set — gains seen in training failed to replicate consistently, and only 339 patients had complete multimodal data. A system sold as multimodal whose strongest result comes from the clinical-feature model owes an explanation.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：65% 的準確率距離臨床可接受還很遠。若把它當成正式決策工具上線，三分之一的判斷仍是錯的；目前合理的定位是討論輔助，不是決策授權。</span>
+          <span class="en">: 65% accuracy is a long way from clinically acceptable. Deployed as a formal decision tool, a third of the judgments are still wrong; the defensible positioning today is discussion aid, not decision authority.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="company">
+  <h2>03 — Companies &amp; Competition</h2>
+  <div class="sec-title">
+    <span class="zh">誰站在哪裡、憑什麼、跟誰打</span>
+    <span class="en">Who stands where, on what, against whom</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th><span class="zh-inline">機構</span><span class="en-inline">Institution</span></th>
+        <th><span class="zh-inline">近況與數字</span><span class="en-inline">Recent state &amp; numbers</span></th>
+        <th><span class="zh-inline">競爭定位與護城河</span><span class="en-inline">Position &amp; moat</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Sun Yat-sen University Cancer Center</strong><br><span class="zh-inline">中山大學腫瘤防治中心 · CRISP</span><span class="en-inline">Guangzhou · CRISP</span></td>
+          <td>
+            <span class="zh">9/10 發表 CRISP：10 家中心逾 10 萬張冷凍切片訓練、15,000+ 術中玻片評估、前瞻 92.6% 進入手術決策、工作量降 35%（<a href="https://www.nature.com/articles/s41591-026-04703-0" target="_blank" rel="noopener">Nature Medicine</a>）。</span>
+            <span class="en">Published CRISP on Sep 10: trained on 100,000-plus frozen sections from ten centers, evaluated on 15,000+ intraoperative slides, 92.6% of prospective cases informing the surgical decision, workload down 35% (<a href="https://www.nature.com/articles/s41591-026-04703-0" target="_blank" rel="noopener">Nature Medicine</a>).</span>
+          </td>
+          <td>
+            <span class="zh">護城河是冷凍切片資料本身——這類資料只能靠手術量累積，買不到也生不出來。弱點是缺少結果導向的對照證據，一旦監管機關要求療效終點而非採用率，現有材料不夠用。</span>
+            <span class="en">The moat is the frozen-section corpus itself — it accrues only from surgical volume and cannot be bought or synthesized. The weakness is the absence of outcome-anchored comparative evidence; the moment a regulator asks for efficacy endpoints rather than adoption rates, what exists is not enough.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>IRCCS Istituto Nazionale dei Tumori / I3LUNG</strong><br><span class="zh-inline">米蘭 · 歐盟 Horizon Europe 計畫</span><span class="en-inline">Milan · EU Horizon Europe consortium</span></td>
+          <td>
+            <span class="zh">9/13 發表多模態 XAI 臨床可用性研究：2,396 名 NSCLC 病人、20 位醫師實測、準確率 57%→65%、OS24 AUC 0.74 對 PD-L1 0.53（<a href="https://www.nature.com/articles/s41591-026-04488-2" target="_blank" rel="noopener">Nature Medicine</a>；計畫資訊見 <a href="https://cordis.europa.eu/project/id/101057695" target="_blank" rel="noopener">CORDIS</a>）。</span>
+            <span class="en">Published its multimodal XAI usability study on Sep 13: 2,396 NSCLC patients, 20 physicians in the loop, accuracy 57%→65%, OS24 AUC 0.74 against PD-L1's 0.53 (<a href="https://www.nature.com/articles/s41591-026-04488-2" target="_blank" rel="noopener">Nature Medicine</a>; project details at <a href="https://cordis.europa.eu/project/id/101057695" target="_blank" rel="noopener">CORDIS</a>).</span>
+          </td>
+          <td>
+            <span class="zh">護城河是方法論信譽：歐盟資助的跨國聯盟，願意公布人機合作只加八個百分點這種不漂亮的數字，在監管與給付談判裡是資產。弱點是模型效能與規模都不領先。</span>
+            <span class="en">The moat is methodological credibility: an EU-funded multinational consortium willing to publish an unflattering eight-point human–AI gain, which is an asset in regulatory and reimbursement conversations. The weakness is that neither its model performance nor its scale leads.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Beijing Tsinghua Changgung / BERI</strong><br><span class="zh-inline">北京清華長庚 · AI-TEC 眼科門診</span><span class="en-inline">Beijing · AI-TEC eye clinic</span></td>
+          <td>
+            <span class="zh">9/10 發表 AI 原生眼科門診的實作檢討，強調工作流整合、臨床人員投入與可量測臨床價值三項條件（<a href="https://www.nature.com/articles/s41591-026-04631-z" target="_blank" rel="noopener">Nature Medicine</a>）。病人數與一致率未於公開段落揭露。</span>
+            <span class="en">Published an implementation review of its AI-native eye clinic on Sep 10, naming workflow integration, clinician engagement and measurable clinical value as the three conditions (<a href="https://www.nature.com/articles/s41591-026-04631-z" target="_blank" rel="noopener">Nature Medicine</a>). Patient counts and concordance rates are not in the publicly visible sections.</span>
+          </td>
+          <td>
+            <span class="zh">護城河是制度授權——能把門診整個圍著 agent 重蓋，這在多數醫療體系裡不是技術問題而是治理問題。弱點同樣在此：這種授權難以輸出到其他監管環境。</span>
+            <span class="en">The moat is institutional permission — being allowed to rebuild an entire clinic around agents is a governance question, not a technical one, in most health systems. The weakness is the same fact: that permission does not export to other regulatory environments.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Chinese Academy of Medical Sciences 腫瘤醫院</strong><br><span class="zh-inline">北京 · HE2FISH</span><span class="en-inline">Beijing · HE2FISH</span></td>
+          <td>
+            <span class="zh">9/12 發表 HE2FISH：五家醫院 1,377 名 DLBCL 病人 H&amp;E 與 FISH 配對資料，單基因外部 AUC 平均 &gt;0.81，存活分層與 FISH 相當（<a href="https://www.nature.com/articles/s41746-026-03238-5" target="_blank" rel="noopener">npj Digital Medicine</a>）。</span>
+            <span class="en">Published HE2FISH on Sep 12: 1,377 DLBCL patients with paired H&amp;E and FISH across five hospitals, mean external AUC above 0.81 for single genes, survival stratification comparable to FISH (<a href="https://www.nature.com/articles/s41746-026-03238-5" target="_blank" rel="noopener">npj Digital Medicine</a>).</span>
+          </td>
+          <td>
+            <span class="zh">護城河是配對資料：H&amp;E 與 FISH 同時存在的病例，只有分子檢驗普及度高的大型腫瘤中心累積得起來。競爭者是 Paige、PathAI 這類商業病理 AI 公司，差異在他們有法規路徑而學術團隊有資料。</span>
+            <span class="en">The moat is paired data: cases with both H&amp;E and FISH accumulate only at large cancer centers where molecular testing is routine. The competitors are commercial pathology-AI firms such as Paige and PathAI — they hold the regulatory pathway, the academic groups hold the data.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>RespondHealth</strong><br><span class="zh-inline">Bethesda, MD · 電子病歷可計算病程</span><span class="en-inline">Bethesda, MD · computable patient journeys</span></td>
+          <td>
+            <span class="zh">9/10 與 Stanford、Miami、Drexel、Penn、Mount Sinai 合作發表語言模型抽取電子病歷實體並建構縱貫病程的方法，以 GLP-1 治療反應為示範（<a href="https://www.nature.com/articles/s41591-026-04695-x" target="_blank" rel="noopener">Nature Medicine</a>）。</span>
+            <span class="en">On Sep 10, with Stanford, Miami, Drexel, Penn and Mount Sinai, published a method using language models to extract EHR entities and assemble longitudinal journeys, demonstrated on GLP-1 response (<a href="https://www.nature.com/articles/s41591-026-04695-x" target="_blank" rel="noopener">Nature Medicine</a>).</span>
+          </td>
+          <td>
+            <span class="zh">護城河是學術背書加藥廠需求的交集，目標客戶是需要真實世界證據的藥廠與給付方。競爭者是 Tempus、Flatiron 這類既有 RWE 供應商，差異在方法公開於頂刊而非白皮書。</span>
+            <span class="en">The moat sits where academic endorsement meets pharma demand; the buyers are drug makers and payers who need real-world evidence. The competitors are incumbent RWE suppliers such as Tempus and Flatiron — the difference being a method published in a top journal rather than a white paper.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>University of Illinois Urbana-Champaign</strong><br><span class="zh-inline">RDMA · 開源罕病挖掘 agent</span><span class="en-inline">RDMA · open-source rare-disease mining agent</span></td>
+          <td>
+            <span class="zh">9/10 發表 RDMA，宣稱不需任務微調即勝過微調與 RAG 基線，推論成本最高降 10 倍、本地硬體需求最高降 17 倍，程式碼公開於 <a href="https://github.com/jhnwu3/RDMA" target="_blank" rel="noopener">GitHub</a>（<a href="https://www.nature.com/articles/s41746-026-03070-x" target="_blank" rel="noopener">npj Digital Medicine</a>）。</span>
+            <span class="en">Published RDMA on Sep 10, claiming it beats fine-tuned and RAG baselines with no task-specific training, at up to 10× lower inference cost and 17× lighter hardware, with code on <a href="https://github.com/jhnwu3/RDMA" target="_blank" rel="noopener">GitHub</a> (<a href="https://www.nature.com/articles/s41746-026-03070-x" target="_blank" rel="noopener">npj Digital Medicine</a>).</span>
+          </td>
+          <td>
+            <span class="zh">護城河是開源加本地部署：病歷不出院區這一點，對醫院資安部門的說服力勝過任何準確率數字。弱點是沒有商業支援體系，導入後的維護成本落在醫院自己身上。</span>
+            <span class="en">The moat is open source plus local deployment: keeping notes inside the building persuades a hospital's security office more than any accuracy figure. The weakness is the absence of commercial support — maintenance lands on the hospital.</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="zh"><strong>今天的競爭結構是一個斷裂的兩層。</strong>資料與工作流那一層，優勢明顯往手術量與病人量最大的機構集中——冷凍切片、H&amp;E 與 FISH 配對、AI 原生門診，這些東西沒有捷徑，只能靠年復一年的臨床量堆出來，而這一週的四篇都落在同一個地區。方法論與證據那一層，優勢在願意公布不漂亮數字的歐美聯盟與學術團隊：I3LUNG 的 57%→65%、RDMA 的成本而非準確率主張，都是為了監管與採購那一關準備的。真正的問題是這兩層還沒有交會——規模最大的模型缺結果導向證據，證據最紮實的模型沒有規模。誰先把兩者疊在一起，誰就定義下一輪的門檻。</span>
+      <span class="en"><strong>Today's competitive structure is two layers that do not touch.</strong> On the data-and-workflow layer, advantage concentrates where surgical and patient volume are largest — frozen sections, paired H&amp;E and FISH, an AI-native clinic; none of this has a shortcut, it accrues from years of clinical throughput, and four of this week's papers landed in one region. On the methodology-and-evidence layer, advantage sits with the European and American consortia and academic groups willing to publish unflattering numbers: I3LUNG's 57%→65%, RDMA's cost-rather-than-accuracy claim — both written for the regulatory and procurement gate. The real problem is that the two layers have not met: the largest models lack outcome-anchored evidence, and the best-evidenced models lack scale. Whoever stacks them first sets the bar for the next round.</span>
+    </p>
+  </div>
+</section>
+
+<section id="taiwan">
+  <h2>04 — Taiwan Angle</h2>
+  <div class="sec-title">
+    <span class="zh">台灣的三個中心，恰好對應本週幾篇論文各自缺的那一塊</span>
+    <span class="en">Taiwan's three centers map onto exactly what this week's papers are missing</span>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="zh"><strong>(1) 「落地、取證、給付」這三個字，今天正好是 CRISP 的三個缺口。</strong>衛福部設立的三大智慧醫療中心——<a href="https://aicenter.mohw.gov.tw/" target="_blank" rel="noopener">負責任 AI 執行中心（北中南 8 家醫院）、外部驗證中心（4 家，以 FHIR 串接跨院資料並建立聯邦學習平台）、臨床效益評估中心（5 家，做跨院臨床效益與成本資料蒐集、醫療經濟估算與保險定價）</a>——明確把目標寫成解決「落地、取證、給付」三大問題。把本週的論文擺進這個框架看很清楚：CRISP 有落地（92.6% 進入手術決策）但沒有結果導向的取證材料，也還沒碰給付；I3LUNG 有取證方法（20 位醫師實測）但沒有規模。台灣要做的不是再訓一個更大的冷凍切片模型——手術量堆不過廣州——而是把第三個中心那件事做到能出口：一套跨院的臨床效益與成本量測方法，正是這一週幾篇論文共同缺的東西。</span>
+      <span class="en"><strong>(1) "Implementation, validation, reimbursement" is, today, precisely CRISP's three gaps.</strong> Taiwan's Ministry of Health and Welfare set up <a href="https://aicenter.mohw.gov.tw/" target="_blank" rel="noopener">three smart-healthcare centers — a Center for Responsible AI in Healthcare spanning 8 hospitals across northern, central and southern Taiwan; a Center for External AI Validation with 4 hospitals, linking cross-institution data over FHIR and building a federated-learning platform; and a Center for Clinical AI Impact Evaluation with 5 hospitals, collecting cross-hospital clinical benefit and cost data for health-economic estimation and insurance pricing</a> — explicitly framed around solving implementation, validation and reimbursement. Put this week's papers in that frame and it reads clearly: CRISP has implementation (92.6% of decisions) but no outcome-anchored validation material, and has not touched reimbursement; I3LUNG has the validation method (20 physicians in the loop) but no scale. Taiwan's move is not to train a bigger frozen-section model — it cannot out-volume Guangzhou — but to make the third center's work exportable: a cross-institution method for measuring clinical benefit and cost is exactly what this week's papers commonly lack.</span>
+    </p>
+    <p>
+      <span class="zh"><strong>(2) 電子病歷互通這條線，正好是本週 RespondHealth 那篇的前提。</strong>行政院政務委員陳時中與衛福部長石崇良 6 月底在高醫大論壇說明的「333 政策」，目標是打破各院資訊系統之間的隔閡、把資料結構標準化；同場提到賴清德總統的「深化台灣健康計畫」五年編列 489 億元，並預告<a href="https://udn.com/news/story/7266/9592218" target="_blank" rel="noopener">醫學中心電子病歷在 2026 年底前互通、隔年起擴及區域與地區醫院</a>。<em>Nature Medicine</em> 那篇「可計算病程」的方法之所以成立，靠的就是有大量跨院縱貫病歷可抽。台灣如果在今年底真的把醫學中心串起來，會同時擁有單一支付者的完整就醫軌跡與全民健保的成本資料——這組合美國的商業 RWE 供應商拿不到。剩下的問題不是技術，是治理：誰能用、用到什麼程度、病人怎麼同意。</span>
+      <span class="en"><strong>(2) The EHR interoperability track is the precondition for this week's RespondHealth paper.</strong> At a Kaohsiung Medical University forum in late June, Executive Yuan Political Commissar Chen Shih-chung and Health Minister Shih Chung-liang laid out the "333 policy" — breaking down the walls between hospital information systems and standardizing data structures — alongside President Lai's deepening-health plan, budgeted at NT$48.9 billion over five years, and the commitment that <a href="https://udn.com/news/story/7266/9592218" target="_blank" rel="noopener">medical centers' electronic health records will interoperate by the end of 2026, extending to regional and district hospitals thereafter</a>. The computable-patient-journey method in <em>Nature Medicine</em> works only because there are large volumes of cross-institution longitudinal records to extract from. If Taiwan genuinely links its medical centers by year-end, it will hold both a single-payer's complete care trajectories and National Health Insurance cost data — a combination no US commercial RWE supplier can assemble. What remains is not technical but governance: who may use it, how far, and how patients consent.</span>
+    </p>
+    <p>
+      <span class="zh"><strong>(3) 誠實的一句：台灣本週在臨床 AI 研究上沒有可對標的發表。</strong>我們掃過的範圍內沒有找到 9/8–9/14 期間台灣機構主導、發表於同級期刊的臨床 AI 論文。衛福部去年的<a href="https://www.mohw.gov.tw/cp-16-82236-1.html" target="_blank" rel="noopener">負責任 AI 執行中心成果發表會</a>是十家醫院共同打造可信賴治理機制的成果，方向對，但制度建設不會出現在 <em>Nature Medicine</em> 的每週清單上，這一點差距值得放在心上而不是繞過去。</span>
+      <span class="en"><strong>(3) One honest line: Taiwan had no comparable clinical-AI publication this week.</strong> Within the range we surveyed, we found no Taiwan-led clinical AI paper in a journal of this tier published between 8 and 14 September. Last year's <a href="https://www.mohw.gov.tw/cp-16-82236-1.html" target="_blank" rel="noopener">Responsible AI Center results showcase</a>, in which ten hospitals built a trustworthy governance mechanism together, points the right way — but institution-building does not appear on <em>Nature Medicine</em>'s weekly list, and that gap is worth sitting with rather than routing around.</span>
+    </p>
+  </div>
+</section>
+
+<section id="reading">
+  <h2>05 — Further Reading</h2>
+  <div class="sec-title">
+    <span class="zh">選的都是能把今天這八篇放回脈絡裡的東西：一篇談量測、一篇談證據、一篇談失敗的 RCT、一篇談現場</span>
+    <span class="en">Chosen to put today's eight papers back in context: one on measurement, one on evidence, one on an RCT that failed, one from the floor</span>
+  </div>
+
+  <ol class="reading">
+    <li>
+      <a href="https://www.nature.com/articles/d41586-026-02125-z" target="_blank" rel="noopener">Medical AI has a measurement problem — Nature (2026-07-28)</a>
+      <p class="why"><span class="zh">Arjun Manrai 的論點是：實證醫學仰賴可靠的尺，而醫療 AI 的複雜度讓那把尺本身出了問題。今天 CRISP 那個「92.6% 進入決策」正是這篇在講的現象——量了一個好量的東西，不是量了該量的東西。</span><span class="en">Arjun Manrai's argument is that evidence-based medicine rests on a reliable yardstick, and medical AI's complexity has broken the yardstick itself. CRISP's "92.6% of decisions" is exactly the phenomenon described: measuring what is easy to measure rather than what matters.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/articles/s41591-026-04389-4" target="_blank" rel="noopener">Show us the evidence for the value of medical AI — Nature Medicine (2026 年 4 月號)</a>
+      <p class="why"><span class="zh"><em>Nature Medicine</em> 自己的社論，四月就把話說完了：拿出價值的證據來。半年後這一週它與姊妹刊自己刊出的八篇裡，只有一篇真的把醫師拉進來量——對照著讀很有意思。</span><span class="en"><em>Nature Medicine</em>'s own editorial said it back in April: show the evidence for the value. Six months later, of the eight papers it and its sister journal ran this week, exactly one actually measured physicians. Reading them against each other is instructive.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/articles/s41591-026-04503-6" target="_blank" rel="noopener">Generative AI-enabled clinical decision support system in primary care: a pragmatic, cluster-randomized trial — Nature Medicine (2026-06-26)</a>
+      <p class="why"><span class="zh">今年最重要的一個陰性結果：肯亞 16 家基層診所、103 位臨床人員、9,691 名病人，GPT-4o 驅動的 AI Consult 2.0 嵌在病歷系統裡，14 天治療失敗率 2.2% 對 2.0%，校正後 OR 0.77（95% CI 0.55–1.08，P=0.13），沒有顯著差異。讀完今天這八篇再讀它，會對 AUC 這種數字客氣一點。</span><span class="en">The most important negative result of the year: 16 primary-care facilities in Kenya, 103 clinical officers, 9,691 patients, a GPT-4o-based AI Consult 2.0 embedded in the EMR — 14-day treatment failure 2.2% versus 2.0%, adjusted OR 0.77 (95% CI 0.55–1.08, P=0.13), no significant difference. Read it after today's eight and you will treat AUC figures more carefully.</span></p>
+    </li>
+    <li>
+      <a href="https://www.statnews.com/2026/09/09/ai-healthcare-limitations-emergency-room-study-medical-scribe-impact/" target="_blank" rel="noopener">Can AI fix health care? In the chaos of emergency rooms, the technology comes up short — STAT News (2026-09-09)</a>
+      <p class="why"><span class="zh">同一週的現場報導，跟今天所有論文都在相反方向：模型在期刊裡愈來愈強，急診的現實是省下的時間走不出那棟大樓。付費牆後，本報僅依公開可見的標題與導言引用。</span><span class="en">Field reporting from the same week, pointing the opposite way to every paper here: models keep getting stronger in journals, while in the emergency department the time saved never leaves the building. Paywalled; cited here only from the publicly visible headline and standfirst.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/articles/s41746-026-03199-9" target="_blank" rel="noopener">Safety, efficacy and acceptability of human-GenAI single-session exposure-based intervention for academic anxiety: randomized controlled trials — npj Digital Medicine (2026-09-12)</a>
+      <p class="why"><span class="zh">同週但常被漏掉的一篇：清華大學心理與認知科學系，425 名受試者、兩個 RCT，人機混合的單次暴露療法對學業焦慮的效果量 d=0.25–0.35（對主動對照組）。值得讀的是它的設計——這是本週唯一一組真的做了主動對照的隨機試驗。</span><span class="en">Same week, easily missed: Tsinghua's Department of Psychological and Cognitive Sciences, 425 participants across two RCTs, a hybrid human–GenAI single-session exposure program for academic anxiety with effect sizes of d=0.25–0.35 against an active control. Read it for the design — it is the week's only randomized trial with a genuine active comparator.</span></p>
+    </li>
+  </ol>
+</section>
+
+<section id="refs">
+  <h2>06 — References</h2>
+  <div class="sec-title">
+    <span class="zh">參考文獻</span>
+    <span class="en">References</span>
+  </div>
+
+  <div class="panel">
+    <ol class="refs">
+      <li>A clinically-oriented foundation model for intraoperative pathology. <em>Nature Medicine</em>, 2026-09-10. <a href="https://www.nature.com/articles/s41591-026-04703-0" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Clinical usability of an explainable AI decision support tool and evaluation of multimodal models in NSCLC. <em>Nature Medicine</em>, 2026-09-13. <a href="https://www.nature.com/articles/s41591-026-04488-2" target="_blank" rel="noopener">nature.com</a></li>
+      <li>A multimodal murmuration for immunotherapy. <em>Nature Medicine</em>, 2026-09-13. <a href="https://www.nature.com/articles/s41591-026-04587-0" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Initial lessons from real-world implementation of an AI-agent eye clinic in China. <em>Nature Medicine</em>, 2026-09-10. <a href="https://www.nature.com/articles/s41591-026-04631-z" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Computable longitudinal patient journeys from structured and unstructured EHR data. <em>Nature Medicine</em>, 2026-09-10. <a href="https://www.nature.com/articles/s41591-026-04695-x" target="_blank" rel="noopener">nature.com</a></li>
+      <li>A global digital navigator of human health for precision medicine. <em>Nature Medicine</em>, 2026-09-11. <a href="https://www.nature.com/articles/s41591-026-04621-1" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Deep learning predicts gene rearrangements from histopathology in large B-cell lymphoma. <em>npj Digital Medicine</em>, 2026-09-12. <a href="https://www.nature.com/articles/s41746-026-03238-5" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Deep learning combined habitat radiomics analysis of central lymph node metastasis in papillary thyroid carcinoma. <em>npj Digital Medicine</em>, 2026-09-12. <a href="https://www.nature.com/articles/s41746-026-03203-2" target="_blank" rel="noopener">nature.com</a></li>
+      <li>RDMA: cost effective agent-driven rare disease mining from electronic health records. <em>npj Digital Medicine</em>, 2026-09-10. <a href="https://www.nature.com/articles/s41746-026-03070-x" target="_blank" rel="noopener">nature.com</a></li>
+      <li>RDMA source code repository. <em>GitHub</em>. <a href="https://github.com/jhnwu3/RDMA" target="_blank" rel="noopener">github.com</a></li>
+      <li>Safety, efficacy and acceptability of human-GenAI single-session exposure-based intervention for academic anxiety: randomized controlled trials. <em>npj Digital Medicine</em>, 2026-09-12. <a href="https://www.nature.com/articles/s41746-026-03199-9" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Generative AI-enabled clinical decision support system in primary care: a pragmatic, cluster-randomized trial. <em>Nature Medicine</em>, 2026-06-26. <a href="https://www.nature.com/articles/s41591-026-04503-6" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Medical AI has a measurement problem. <em>Nature</em>, 2026-07-28. <a href="https://www.nature.com/articles/d41586-026-02125-z" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Show us the evidence for the value of medical AI. <em>Nature Medicine</em>, Volume 32, April 2026. <a href="https://www.nature.com/articles/s41591-026-04389-4" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Can AI fix health care? In the chaos of emergency rooms, the technology comes up short. <em>STAT News</em>, 2026-09-09. <a href="https://www.statnews.com/2026/09/09/ai-healthcare-limitations-emergency-room-study-medical-scribe-impact/" target="_blank" rel="noopener">statnews.com</a></li>
+      <li>U.K. unveils recommendations for regulating AI in medicine. <em>STAT News</em>, 2026-09-09. <a href="https://www.statnews.com/2026/09/09/uk-unveils-recommendations-ai-regulation-medicine/" target="_blank" rel="noopener">statnews.com</a></li>
+      <li>I3LUNG — Integrative science, Intelligent data platform for Individualized Lung cancer care with Immunotherapy. <em>IRCCS Istituto Nazionale dei Tumori</em>. <a href="https://istitutotumori.mi.it/en/projects-research/i3lung-integrative-science-intelligent-data-platform-individualized-lung-cancer-care-immunotherapy" target="_blank" rel="noopener">istitutotumori.mi.it</a></li>
+      <li>I3LUNG project record, grant agreement 101057695. <em>CORDIS, European Commission</em>. <a href="https://cordis.europa.eu/project/id/101057695" target="_blank" rel="noopener">cordis.europa.eu</a></li>
+      <li>臺灣智慧醫療三大中心. <em>衛生福利部</em>. <a href="https://aicenter.mohw.gov.tw/" target="_blank" rel="noopener">aicenter.mohw.gov.tw</a></li>
+      <li>高醫大論壇揭示AI醫療新局！衛福部推「333政策」 國家489億預算力挺. <em>聯合新聞網</em>, 2026-06-27. <a href="https://udn.com/news/story/7266/9592218" target="_blank" rel="noopener">udn.com</a></li>
+      <li>醫療AI要聰明，還要能負責！十家醫院打造可信賴的智慧醫療守門人：衛生福利部負責任AI執行中心成果發表會. <em>衛生福利部</em>. <a href="https://www.mohw.gov.tw/cp-16-82236-1.html" target="_blank" rel="noopener">mohw.gov.tw</a></li>
+    </ol>
+    <div class="note">
+      <span class="zh"><strong>編輯說明：</strong>（1）本期八則重點新聞全部以期刊論文的摘要與公開可見段落為依據；<em>Nature Medicine</em> 與 <em>npj Digital Medicine</em> 的多篇全文在付費牆後，凡摘要未揭露的數字（例如 AI-TEC 的病人數與人機一致率、RespondHealth 那篇的病歷筆數與具體準確率）本報一律標明未公開，不做推估。（2）STAT News 兩則同樣在付費牆後，僅依公開可見的標題與導言引用。（3）「本週臨床 AI 論文以中國機構為主」這個觀察，來自我們對 <em>Nature Medicine</em> 與 <em>npj Digital Medicine</em> 兩份期刊 9/8–9/14 上線清單的人工清點，不是對全球所有期刊的普查，讀者應視為樣本觀察而非統計結論。（4）CRISP 的「92.6% 直接影響手術決策」為論文所述之採用率指標，非診斷正確率；本報已在正文標明。（5）台灣段落引用的三大中心組成與 333 政策內容分別來自衛福部官網與 2026 年 6 月 27 日聯合新聞網報導，非本週新聞，作為制度背景使用。（6）今日主題為臨床應用與研究，因此 9/9 英國 AI 醫療監管建議、9/9 ARPA-H 心衰竭自駕 AI 投資等法規與資金題目未納入重點新聞，前者已列入參考文獻備查。</span>
+      <span class="en"><strong>Editor's note:</strong> (1) All eight top stories rest on journal abstracts and publicly visible sections; several <em>Nature Medicine</em> and <em>npj Digital Medicine</em> full texts sit behind a paywall, and any figure the abstract did not disclose — AI-TEC's patient counts and human concordance, the RespondHealth paper's note counts and stated accuracy — is marked as undisclosed rather than estimated. (2) Both STAT News items are paywalled and are cited only from the publicly visible headline and standfirst. (3) The observation that this week's clinical-AI papers skew toward Chinese institutions comes from our own manual count of the 8–14 September listings at <em>Nature Medicine</em> and <em>npj Digital Medicine</em>, not a census of all journals; treat it as a sample observation, not a statistical conclusion. (4) CRISP's "directly informed the surgical decision in 92.6% of cases" is an adoption metric as reported by the authors, not diagnostic accuracy, and is flagged as such in the text. (5) The three-center composition and the 333 policy in the Taiwan section come from the Ministry of Health and Welfare's site and a 27 June 2026 UDN report respectively — not this week's news, used as institutional background. (6) Today's rotation is clinical applications and research, so regulatory and funding items from the same week — the UK's AI-in-medicine regulatory recommendations of 9 September, ARPA-H's heart-failure autonomous-AI investment of 9 September — are not among the top stories; the former is listed in the references for the record.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-row">
+    <div>
+      <span class="zh">AI／醫療AI 每日新知日報 · 由 Claude 於台北時間每日自動產出 · 本期主題：星期一／臨床應用與研究<br>本報告內容經來源查證，但不構成投資或醫療建議。所有數據請以原始出處為準。</span>
+      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Monday / Clinical Applications &amp; Research<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
+    </div>
+    <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com / 返回 peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
+  </div>
+</footer>
+</main>
+
+<div class="fabs">
+  <button class="up" id="up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+  <a class="home-fab" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg></a>
+</div>
+
+<script>
+function setLang(l){
+  document.body.classList.remove('lang-zh','lang-en');
+  document.body.classList.add('lang-'+l);
+  document.documentElement.lang = (l==='zh') ? 'zh-Hant' : 'en';
+  document.getElementById('b-zh').classList.toggle('on', l==='zh');
+  document.getElementById('b-en').classList.toggle('on', l==='en');
+  document.title = (l==='zh')
+    ? 'AI／醫療AI 每日新知日報 · 2026-09-14'
+    : 'AI & Medical AI Daily · 2026-09-14';
+}
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.getElementById('theme-ic').textContent =
+    document.body.classList.contains('dark') ? '◑' : '◐';
+}
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.body.classList.add('dark');
+  document.getElementById('theme-ic').textContent = '◑';
+}
+window.addEventListener('scroll', function(){
+  document.getElementById('up').classList.toggle('show', window.scrollY > 600);
+});
+
+/* GitHub 星星數：無需授權，失敗或被限流時靜默保留佔位符 */
+(function(){
+  var el = document.getElementById('ghs');
+  if (!el || typeof fetch !== 'function') return;
+  fetch('https://api.github.com/repos/tingwei161803/ai-medical-daily', {headers:{Accept:'application/vnd.github+json'}})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if (!d || typeof d.stargazers_count !== 'number') return;
+      var n = d.stargazers_count;
+      el.textContent = n >= 1000 ? (Math.round(n/100)/10) + 'k' : String(n);
+    })
+    .catch(function(){});
+})();
+</script>
+</body>
+</html>
