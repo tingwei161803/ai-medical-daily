@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>AI &amp; Medical AI Daily · 2026-09-17</title>
+<meta property="og:url" content="https://ai-medical-daily.peteraim.com/en/reports/2026-09-17.html" />
+<link rel="canonical" href="https://ai-medical-daily.peteraim.com/en/reports/2026-09-17.html" />
+<link rel="alternate" hreflang="zh-Hant" href="https://ai-medical-daily.peteraim.com/reports/2026-09-17.html" />
+<link rel="alternate" hreflang="en" href="https://ai-medical-daily.peteraim.com/en/reports/2026-09-17.html" />
+<link rel="alternate" hreflang="x-default" href="https://ai-medical-daily.peteraim.com/reports/2026-09-17.html" />
+<meta name="description" content="Sep 14–17: Periodic Neon's 1T-parameter model jumped from 2.7% to 55.3% on FrontierXRD, TabPFN-3.5 claimed a 99% win rate on tabular data, Oracle Health shipped its clinical AI agent to US nurses, Abridge moved into pre-bill DRG review — and an Imprivata survey of 250 health-care leaders found 72% already run AI without IT approval.">
+<meta name="report-date" content="2026-09-17">
+<meta name="report-theme" content="technology">
+<meta name="report-title-zh" content="這一週的技術突破不在聊天視窗，在儀器旁邊：一個 1T 模型把 X 光繞射的解讀率從 2.7% 拉到 55.3%、一個表格模型在結構化資料上對古典機器學習拿下 99% 勝率——而醫院裡真正上線的 agent，是幫護理師口述交班的那一個，還有 72% 沒經過資訊室核准">
+<meta name="report-title-en" content="This week's breakthroughs happened next to the instruments, not in the chat window: a 1T model lifted X-ray-diffraction interpretation from 2.7% to 55.3%, a tabular model took a 99% win rate over classical ML on structured data — and the agents actually shipping in hospitals dictate nursing notes, 72% of them without IT sign-off">
+<meta name="report-summary-zh" content="9/14–9/17：Periodic Neon 以 1T 參數在 FrontierXRD 從 2.7% 躍升 55.3%、TabPFN-3.5 在表格資料上宣稱 99% 勝率、Oracle Health 把 AI agent 發給全美護理師、Abridge 進到帳前 DRG 審查，而 Imprivata 調查 250 位醫療高層發現 72% 的 AI 已在沒有資訊室核准的情況下跑起來。">
+<meta name="report-summary-en" content="Sep 14–17: Periodic Neon's 1T-parameter model jumped from 2.7% to 55.3% on FrontierXRD, TabPFN-3.5 claimed a 99% win rate on tabular data, Oracle Health shipped its clinical AI agent to US nurses, Abridge moved into pre-bill DRG review — and an Imprivata survey of 250 health-care leaders found 72% already run AI without IT approval.">
+<meta property="og:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HJLDQZDK5V');
+</script>
+<link rel="stylesheet" href="/assets/report.css">
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><span>◆</span> <span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <div class="bar-sp"></div>
+    <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
+    <div class="seg">
+      <a href="/reports/2026-09-17.html" hreflang="zh-Hant" lang="zh-Hant" rel="alternate">中文</a>
+      <a class="on" href="/en/reports/2026-09-17.html" hreflang="en" lang="en" aria-current="page">EN</a>
+    </div>
+    <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="kicker">
+    <span class="en-inline">Thursday · Technology Breakthroughs</span>
+  </div>
+  <h1>
+    <span class="en">This week's breakthroughs happened next to the instruments, not in the chat window: a 1T model lifted X-ray-diffraction interpretation from 2.7% to 55.3%, a tabular model took a 99% win rate over classical ML on structured data — and the agents actually shipping in hospitals dictate nursing notes, 72% of them without IT sign-off</span>
+  </h1>
+  <div class="dateline">
+    <span class="en-inline">Thursday, September 17, 2026 · Covering Sep 14–17 · Taipei time</span>
+  </div>
+  <p class="lede">
+    <span class="en">The three days worth writing down were not about a model changing places on a chat leaderboard. They were about models starting to read instruments. On September 15 <a href="https://periodic.com/news/building-labs-that-learn" target="_blank" rel="noopener">Periodic Labs introduced Periodic Neon</a>, a 1T-parameter model that on 134 genuinely hard in-house X-ray-diffraction samples took the success rate from Kimi K2.6's 2.7% up to <a href="https://periodic.com/news/nature-is-our-learning-environment" target="_blank" rel="noopener">55.3%</a> — a twenty-fold jump. The same week Prior Labs' <a href="https://priorlabs.ai/tabpfn-3-5" target="_blank" rel="noopener">TabPFN-3.5</a> claimed a 99% win rate over classical machine learning on TabArena and native handling of a million rows. Together they point at the least glamorous truth in medicine: clinical risk prediction was never a text task. It lives in flowsheets, lab values and diffraction patterns — data that is not language. On the hospital side, September 14 brought <a href="https://www.prnewswire.com/news-releases/oracle-health-clinical-ai-agent-helps-nurses-alleviate-documentation-burden-and-streamline-care-302876694.html" target="_blank" rel="noopener">Oracle Health's clinical AI agent to inpatient nurses across the US</a> and <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-expands-revenue-cycle-ai-powered-pre-bill-claim-review" target="_blank" rel="noopener">Abridge into pre-bill DRG review</a> — not new architectures, new positions. Governance is behind: on September 15 <a href="https://www.globenewswire.com/news-release/2026/09/15/3362174/0/en/new-imprivata-research-finds-72-of-healthcare-organizations-have-ai-tools-or-agents-deployed-without-formal-it-approval.html" target="_blank" rel="noopener">an Imprivata survey of 250 US health-care leaders</a> found 72% of organisations already running AI tools or agents with no formal IT approval, and only 17% who think today's identity controls suffice.</span>
+  </p>
+
+  <nav class="toc">
+    <a href="#top"><span class="en-inline">Top Stories</span></a>
+    <a href="#product"><span class="en-inline">Product Analysis</span></a>
+    <a href="#company"><span class="en-inline">Companies &amp; Competition</span></a>
+    <a href="#taiwan"><span class="en-inline">Taiwan Angle</span></a>
+    <a href="#reading"><span class="en-inline">Further Reading</span></a>
+    <a href="#refs"><span class="en-inline">References</span></a>
+  </nav>
+</div>
+
+<section id="top">
+  <h2>01 — Top Stories</h2>
+  <div class="sec-title">
+    <span class="en">Technique moved two ways: models learned to read experiments and tables, agents learned to stand inside workflows — and the two are validated to very different standards</span>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Science model</span></span>
+      <span class="tag">Periodic Labs</span><span class="tag">Periodic Neon</span><span class="tag">9/15</span>
+    </div>
+    <h3>
+      <span class="en">Periodic Neon: 1T parameters, reinforcement learning on lab data, X-ray diffraction reading from 2.7% to 55.3%</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On September 15 Periodic Labs introduced <a href="https://periodic.com/news/building-labs-that-learn" target="_blank" rel="noopener">Periodic Neon</a>, a 1T-parameter model produced by putting a base model through "scientific midtraining" and reinforcement learning on laboratory data. The evaluation is FrontierXRD: 134 X-ray-diffraction samples from the company's own labs that human experts need hours to resolve. Success went from Kimi K2.6's 2.7% to <a href="https://periodic.com/news/nature-is-our-learning-environment" target="_blank" rel="noopener">55.3%</a>, and the company claims cost-performance Pareto optimality on the task against GPT-6 Astra and Claude Fable 5.1.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Reading a diffraction pattern belongs to the same family as reading a pathology slide, a mass spectrum or a genomic variant call: the signal carries no language, and correctness rests on expert judgement — does this phase make chemical sense — with no automatic answer key. Periodic's answer is to treat the lab itself as the training environment: the model proposes a reading, the experiment answers back, the model updates. If that transfers, the first beneficiaries are not clinic conversations but laboratory medicine and molecular pathology, where the job is instrument output to expert interpretation.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">FrontierXRD is Periodic's own benchmark on its own samples, n=134, with no third-party replication. Grading is not fully human either: it uses an <a href="https://periodic.com/news/nature-is-our-learning-environment" target="_blank" rel="noopener">LLM-judge ensemble of Opus 5 and GPT-5.6-Sol</a> that agrees with a single expert 74.6% of the time and with expert consensus 84% — so the 55.3% headline carries ten to twenty points of grading noise of its own. No weights or licence terms for Neon have been published.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://periodic.com/news/building-labs-that-learn" target="_blank" rel="noopener">Periodic Labs, Building Labs that Learn, 2026-09-15</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Foundation model</span></span>
+      <span class="tag">Prior Labs</span><span class="tag">TabPFN-3.5</span><span class="tag">9/15</span>
+    </div>
+    <h3>
+      <span class="en">TabPFN-3.5: a tabular foundation model claiming a 99% win rate over classical ML on TabArena, a million rows natively</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Prior Labs released <a href="https://priorlabs.ai/tabpfn-3-5" target="_blank" rel="noopener">TabPFN-3.5</a>, with a TabPFN-3.5-Fast variant, claiming a 99% win rate over classical machine learning on TabArena with Thinking enabled, first place on the real-world BeyondArena benchmark, and native support for a million rows, hundreds of measurements per row and thousands of distinct IDs. A KV-cache makes inference 840× faster: 0.17 seconds per 1,000 rows for Fast, 0.5 for the standard model. The same month <a href="https://news.sap.com/2026/09/tabpfn-35-plus-now-available-sap-ai-core-instant-business-predictions/" target="_blank" rel="noopener">TabPFN-3.5-Plus arrived in SAP AI Core</a>, and it is listed on <a href="https://aws.amazon.com/marketplace/pp/prodview-sor7k6q2iz42q" target="_blank" rel="noopener">AWS Marketplace</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">The data that actually drives risk stratification in a hospital looks like a table: vital-sign flowsheets, lab values, medication records, encounter sequences. That territory belonged to XGBoost and LightGBM, and the norm was for every hospital to train its own. If a tabular foundation model really beats a tuned classical model without retraining on modest data, what it displaces is not just a model but the whole in-house-data-science-team-trains-one-per-question workflow. Prior Labs' own case studies already include <a href="https://priorlabs.ai/tabpfn-3-5" target="_blank" rel="noopener">liquid biopsy work at Oxford Cancer Analytics</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">The 99% win rate and the BeyondArena first place are vendor-reported; the product page states no open weights or licence terms, and nothing about clinical certification or a regulatory path. It is silent on what matters most in medicine: how a tabular model behaves under distribution shift — another hospital, another LOINC mapping — and whether it can produce the explainability and validation documentation a regulator asks for. Third parties have already drawn <a href="https://www.remio.ai/post/tabpfn-3-5-release-tops-two-benchmarks-but-real-world-validation-starts-now" target="_blank" rel="noopener">the line between topping a benchmark and being validated in the real world</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://priorlabs.ai/tabpfn-3-5" target="_blank" rel="noopener">Prior Labs, TabPFN 3.5, 2026-09</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Clinical agent</span></span>
+      <span class="tag">Oracle Health</span><span class="tag">Clinical AI Agent</span><span class="tag">9/14</span>
+    </div>
+    <h3>
+      <span class="en">Oracle Health ships its Clinical AI Agent to US inpatient nurses: voice charting, voice navigation, AI shift summaries</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On September 14 Oracle announced that <a href="https://www.prnewswire.com/news-releases/oracle-health-clinical-ai-agent-helps-nurses-alleviate-documentation-burden-and-streamline-care-302876694.html" target="_blank" rel="noopener">the nursing edition of its Clinical AI Agent is available in the US</a>, embedded in the Oracle Health Foundation EHR. It offers voice-driven chart navigation and search, AI-generated acute nursing summaries, and voice-enabled discrete charting into structured fields. Oracle says the agent has saved physicians more than 400,000 hours across US health organisations since launching roughly two years ago. BayCare Health System is the named early adopter, whose CIO Lynnette Clinton said the capabilities have "potential to reduce after-shift charting."</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Ambient dictation has spent years aimed at outpatient physicians' free-text notes, because that is the easiest shape. Nursing documentation is different: mostly structured fields, repeated many times a shift, and fed straight into staffing and quality metrics. Wiring voice into discrete charting means the model's output has to land in a specific field rather than a paragraph — which changes how it fails, from inelegant prose to a number in the wrong box. This is the dividing line where agents move from producing text to operating fields, and it is why Oracle quotes the 400,000 physician hours and has no nursing figure at all yet.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">The 400,000 hours are Oracle's own figure and cover the existing physician product, not the newly released nursing features; for nursing there is no time-saving, accuracy or error-rate number at all, and BayCare speaks of "potential" rather than measurement. Last week's <a href="https://www.statnews.com/2026/09/09/ai-healthcare-limitations-emergency-room-study-medical-scribe-impact/" target="_blank" rel="noopener">emergency-department scribe study covered by STAT</a> is the standing reminder that minutes saved per note do not necessarily become time away from the screen.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.prnewswire.com/news-releases/oracle-health-clinical-ai-agent-helps-nurses-alleviate-documentation-burden-and-streamline-care-302876694.html" target="_blank" rel="noopener">Oracle Health via PR Newswire, 2026-09-14</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Revenue cycle</span></span>
+      <span class="tag">Abridge</span><span class="tag">Pre-Bill Review</span><span class="tag">9/14</span>
+    </div>
+    <h3>
+      <span class="en">Abridge moves from the note into pre-bill review: checking DRGs and codes against the documentation, Reid Health first</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On September 14 Abridge <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-expands-revenue-cycle-ai-powered-pre-bill-claim-review" target="_blank" rel="noopener">launched pre-bill review</a> for clinical documentation integrity (CDI), coding and revenue-cycle teams: before an inpatient claim goes out, it compares coded diagnoses and DRGs against the clinical documentation, flags misalignments, surfaces supporting documentation into the existing CDI query workflow, and helps assess present-on-admission (POA) conditions. The company is explicit that it does not itself change documentation, codes or claim status — CDI teams keep the decision. Abridge says it works with 300 of the largest and most complex US health systems and will support more than 100 million patient-clinician conversations in 2026.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">The commercial problem with ambient dictation has always been that saved minutes are hard to turn into a line on the hospital's books. Pre-bill review is different: it sits directly between the DRG and the denial, a position a CFO understands. Technically it also asks for more — not transcribing a conversation but doing cross-passage evidence retrieval and rule-based reasoning inside one chart: is this code supported by documentation, does the POA determination hold. That puts Abridge head-on against revenue-cycle incumbents like <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-expands-revenue-cycle-ai-powered-pre-bill-claim-review" target="_blank" rel="noopener">Waystar, Solventum and CodaMetrix</a>, rather than only competing with Ambience or Nuance on note quality.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">No accuracy, recall or denial-reduction figures were published, and nothing on the extra CDI workload created by false flags — reasonable codes marked as misaligned. The 300 health systems and 100 million conversations are Abridge's own numbers, not independently audited. Reid Health is the only named user, with no outcome data yet.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-expands-revenue-cycle-ai-powered-pre-bill-claim-review" target="_blank" rel="noopener">Fierce Healthcare, 2026-09-14</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Governance</span></span>
+      <span class="tag">Imprivata</span><span class="tag">Vanson Bourne</span><span class="tag">9/15</span>
+    </div>
+    <h3>
+      <span class="en">How far technique is ahead of governance: 72% of health-care organisations run AI without IT approval, only 17% think today's identity controls suffice</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On September 15 Imprivata published <em>The Agentic AI Trust Gap: Why Healthcare Needs Identity-Led Governance</em>, based on Vanson Bourne interviews with 250 US leaders responsible for identity security or AI strategy at health systems, hospital networks, academic medical centres and specialty hospitals. <a href="https://www.globenewswire.com/news-release/2026/09/15/3362174/0/en/new-imprivata-research-finds-72-of-healthcare-organizations-have-ai-tools-or-agents-deployed-without-formal-it-approval.html" target="_blank" rel="noopener">The findings</a>: 72% say AI tools or agents have been deployed in their organisation without formal IT approval; 83% have already rolled AI out across multiple departments; 88% expect AI agents to operate autonomously in clinical and operational workflows; and only 17% believe existing identity approaches are sufficient without modification.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">The four stories above all point the same way: agents are starting to write into chart fields and touch coding judgements before a claim goes out. For an auditor the problem with such actions is not whether the model is accurate but who performed the action. Imprivata's chief medical officer Sean Kelly put it exactly there: when agents act on behalf of clinicians and staff, organisations need to know what those systems can access and what they are authorised to do. The 72% says that in most organisations the question has not yet been asked.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">This is a survey commissioned by an identity-and-access-management vendor, with questions pointed at that vendor's product category; n=250, US only, all self-reported. "Without formal IT approval" is defined loosely and differently across organisations — count an individual's use of a general-purpose chatbot and the rate naturally rises. The full report has to be requested from Imprivata.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.globenewswire.com/news-release/2026/09/15/3362174/0/en/new-imprivata-research-finds-72-of-healthcare-organizations-have-ai-tools-or-agents-deployed-without-formal-it-approval.html" target="_blank" rel="noopener">Imprivata via GlobeNewswire, 2026-09-15</a> · <a href="https://www.healthcareitnews.com/news/agentic-ai-access-pressing-governance-challenge-providers" target="_blank" rel="noopener">Healthcare IT News</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Global health</span></span>
+      <span class="tag">Gates Foundation</span><span class="tag">Goalkeepers 2026</span><span class="tag">9/14</span>
+    </div>
+    <h3>
+      <span class="en">The Gates Foundation puts at least $1bn over two years into "equitable AI", 40% of it into health, because over 90% of early LLM training data was English</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On September 14, alongside its 2026 Goalkeepers report, the Gates Foundation <a href="https://www.gatesfoundation.org/ideas/media-center/press-releases/2026/09/goalkeepers-report-equitable-ai" target="_blank" rel="noopener">committed at least $1 billion over two years</a> to equitable AI, split 40% education, 40% health (diagnostics, clinical decision support, maternal and newborn care, drug and vaccine discovery), 10% agriculture and 10% digital foundations such as datasets in under-represented languages. The report names three priorities: expanding multilingual AI tools, building context-specific tools with local expertise, and investing in people. The supporting figure: more than 90% of the data used to train early large language models came from English-language sources. <a href="https://qz.com/gates-foundation-billion-ai-global-health-education-agriculture-091526" target="_blank" rel="noopener">Press coverage followed on September 15</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This is the only money in today's technology round bet on the distribution of data rather than the capability of models. Periodic Neon and TabPFN-3.5 both push the ceiling where data is already plentiful; the Gates Foundation is betting on the other end — when nine-tenths of the training corpus is English, the performance gap in low-resource languages and low-resource health systems is not something a bigger model closes. A roughly $400m health allocation is, in substance, buying time for multilingual clinical corpora and local validation.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">The press release gives percentage allocations, "at least $1 billion" and "the next two years" — no year-by-year disbursement schedule, no named AI tools or grantees, and no outcome metrics. The four percentages are stated intent, not money already contracted.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.gatesfoundation.org/ideas/media-center/press-releases/2026/09/goalkeepers-report-equitable-ai" target="_blank" rel="noopener">Gates Foundation press release, 2026-09-14</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Physical AI</span></span>
+      <span class="tag">Inspiren</span><span class="tag">AUGi</span><span class="tag">9/14</span>
+    </div>
+    <h3>
+      <span class="en">The sensor route to "multimodal": Inspiren raises a $70m Series C to push ambient-sensing AI through senior living</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On September 14 Inspiren announced a <a href="https://theaiinsider.tech/2026/09/14/inspiren-raises-70m-series-c-to-scale-physical-ai-for-senior-living/" target="_blank" rel="noopener">$70 million Series C</a> led by NewView Capital, bringing total funding to $225 million at a valuation above $500 million. Its "physical AI" interprets residents' situations in real time from ambient sensing rather than camera footage, detecting falls, behavioural change and emergencies, with what the company calls a privacy-first design. Operator-reported outcomes include Aegis Living at 34% longer resident stays, a 22% lower fall rate and 24% fewer injuries; Clearwater Living at 63% fewer injury-causing falls and 73% fewer post-fall ER visits in the first three months; and Solera Senior Living's Lumina Las Vegas at 48% fewer falls, 54% fewer hospitalisations and 50% faster staff response.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">The first two stories are about models reading instruments; this one is about putting instruments where people live. Long-term care is the setting with no EHR to read but a continuous 24-hour signal, and it forces a different set of technical problems from a hospital: low-power continuous inference, inferring posture without capturing images, and the cost of false alarms — one phantom fall alert at 3am consumes real night-shift staffing. It is the mirror image of Verily's <a href="https://hitconsultant.net/2026/09/09/verily-health-secures-nvidia-investment-precision-health-ai-pre-platform/" target="_blank" rel="noopener">Forecast 1.0</a>: one infers long-term risk from genomes plus longitudinal records, the other infers the next hour from signals in a room.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">Every outcome figure is operator-supplied, with no control group, no peer review, and no statement of whether the comparison is before-and-after at the same site or across communities; "34% longer resident stays" is commercially favourable to the operator but ambiguous as a health outcome. No false-alarm rate, sensor coverage or detection sensitivity has been published.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://theaiinsider.tech/2026/09/14/inspiren-raises-70m-series-c-to-scale-physical-ai-for-senior-living/" target="_blank" rel="noopener">The AI Insider, 2026-09-14</a> · <a href="https://www.healthcareittoday.com/2026/09/14/verily-health-secures-new-investment-inspiren-raises-70m-series-c/" target="_blank" rel="noopener">Healthcare IT Today</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Open weights</span></span>
+      <span class="tag">DeepSeek</span><span class="tag">Moonshot AI</span><span class="tag">9/10–9/11</span>
+    </div>
+    <h3>
+      <span class="en">Vertical science models still start from open weights: DeepSeek-V4.1-Flash, Kimi K2.8 Preview and Shanghai AI Lab's Atria Dawn all landed the same week</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">According to the release tracker <a href="https://llm-stats.com/llm-updates" target="_blank" rel="noopener">llm-stats</a>, DeepSeek published the open-source DeepSeek-V4.1-Flash on September 10, and on September 11 Moonshot AI put out Kimi K2.8 Preview while the Shanghai AI Laboratory released the open-source Atria Dawn Preview. The connection worth noting: Periodic Neon's baseline on the XRD task <a href="https://periodic.com/news/nature-is-our-learning-environment" target="_blank" rel="noopener">is Kimi K2.6 at 2.7%</a> — which means the starting point for this wave of vertical science models is the previous generation of open-weight models.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">For a health-care organisation the implication is concrete: if taking an open-weight model and putting it through domain midtraining and reinforcement learning on your own data reliably beats general frontier models inside that domain, then an academic medical centre's pathology slides, lab histories and imaging reports are not merely data assets but trainable environments. The barrier is also falling — data governance and evaluation design will become the bottleneck before GPUs do.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">These three releases come from a third-party tracker; official specifications, parameter counts, licence terms and benchmark results are not listed there, and this report did not verify each against the vendors' own release pages. The "Preview" label also means these are not final versions. Periodic has likewise not stated which base weights Neon started from, or under what licence.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://llm-stats.com/llm-updates" target="_blank" rel="noopener">llm-stats, AI Updates (September 2026)</a></p></div>
+  </div>
+</section>
+
+<section id="product">
+  <h2>02 — Product Analysis</h2>
+  <div class="sec-title">
+    <span class="en">Two "foundation models" in one week, giving opposite answers to what a model for medicine should read: one reads experiments, the other reads tables</span>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>Periodic Neon</h3>
+      <p class="sub"><span class="en-inline">A 1T science model that treats the lab as its training environment · Periodic Labs (US)</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> Not a general assistant but a model post-trained for one class of task: expert interpretation of instrument output. The published capability centres on X-ray-diffraction phase identification — given a pattern, decide which crystalline phases are present and whether that reading is chemically defensible. It is aimed at R&amp;D teams with their own labs and at materials and chemistry companies, bundled with the company's autonomous-lab products, and <a href="https://periodic.com/news/building-labs-that-learn" target="_blank" rel="noopener">framed by Periodic as putting autonomous discovery into scientists' hands</a>.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: the in-domain gain is not percentage points but an order of magnitude — 2.7% to <a href="https://periodic.com/news/nature-is-our-learning-environment" target="_blank" rel="noopener">55.3%</a> on the same benchmark, on hard samples where general frontier models essentially fail; evidence that vertical post-training beats scaling a generalist on tasks with no language signal.</span>
+        </li>
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: the grading method is exposed to inspection, including figures that cut against the vendor — <a href="https://periodic.com/news/nature-is-our-learning-environment" target="_blank" rel="noopener">the LLM judge agrees with a single expert 74.6% of the time, with expert consensus 84%</a> — an unusual degree of transparency in a self-evaluated field.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: a 45% failure rate is tolerable in materials discovery, where a wrong call means running the experiment again; it is not tolerable in clinical diagnostics. Moving this path to pathology or laboratory medicine requires exactly what is missing — design for asymmetric cost of error — and the company says nothing about medicine at all.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: weights, licence, base-model version and training-data scale are all unpublished, and a self-owned n=134 benchmark leaves outsiders unable to tell general capability from a fit to the company's own sample distribution.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>TabPFN-3.5</h3>
+      <p class="sub"><span class="en-inline">A tabular foundation model that works without retraining · Prior Labs (Germany)</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> It turns "a table in, a prediction out" into a foundation model: instead of training a new model per dataset, the whole table goes in as context. <a href="https://priorlabs.ai/tabpfn-3-5" target="_blank" rel="noopener">Published specifications</a> are a million rows natively, hundreds of measurements per row, thousands of distinct IDs, with a Fast variant at 0.17 seconds per 1,000 rows. It sells through cloud marketplaces rather than directly to hospitals — already listed in <a href="https://news.sap.com/2026/09/tabpfn-35-plus-now-available-sap-ai-core-instant-business-predictions/" target="_blank" rel="noopener">SAP AI Core</a> and on <a href="https://aws.amazon.com/marketplace/pp/prodview-sor7k6q2iz42q" target="_blank" rel="noopener">AWS Marketplace</a>.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: the shape matches medicine. In-hospital risk prediction runs on flowsheets and lab values and has always meant each site training its own; if <a href="https://priorlabs.ai/tabpfn-3-5" target="_blank" rel="noopener">the claimed 99% win rate and BeyondArena first place</a> hold, a small hospital can build a risk model without maintaining a data-science team.</span>
+        </li>
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: latency is low enough to sit inside a workflow. <a href="https://priorlabs.ai/tabpfn-3-5" target="_blank" rel="noopener">At 0.17 seconds per 1,000 rows</a>, admission scoring or recomputing a whole ward at shift change is real-time rather than an overnight batch.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: the two things medicine most needs are absent — performance under cross-institution distribution shift, and validation and explainability documentation an auditor can take. The product page states no clinical certification, no regulatory path, and not even a clear licence or open-weights status.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: feeding the whole table in as context means sending raw records to the inference endpoint, which collides directly with de-identification and data-residency requirements when deployed through a cloud marketplace; Prior Labs describes no on-premise option.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>Read side by side.</strong> Both call themselves foundation models and bet on opposite things. Neon bets on depth — training one narrow task to a height generalists cannot reach, at the cost of transferability. TabPFN-3.5 bets on breadth — one model for every table, at the cost of leaving each domain's validation to the buyer. Medicine needs both, but regulators only accept the paperwork of the second.</span>
+    </p>
+  </div>
+</section>
+
+<section id="company">
+  <h2>03 — Companies &amp; Competition</h2>
+  <div class="sec-title">
+    <span class="en">Who stands where, on what, against whom</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th><span class="en-inline">Company</span></th>
+        <th><span class="en-inline">Recent state &amp; numbers</span></th>
+        <th><span class="en-inline">Position &amp; moat</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Periodic Labs</strong><br><span class="en-inline">Autonomous labs and science models</span></td>
+          <td>
+            <span class="en">Came out of the gate on September 30, 2025; on September 15, 2026 released <a href="https://periodic.com/news/building-labs-that-learn" target="_blank" rel="noopener">Periodic Neon at 1T parameters</a>, scoring <a href="https://periodic.com/news/nature-is-our-learning-environment" target="_blank" rel="noopener">55.3% on FrontierXRD against a 2.7% baseline, n=134</a>.</span>
+          </td>
+          <td>
+            <span class="en">The moat is feedback data from its own labs, which cannot be bought; the weakness is that benchmark and data both sit in-house with no external check, and transfer to other instrument types is unproven.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Prior Labs</strong><br><span class="en-inline">Tabular foundation models</span></td>
+          <td>
+            <span class="en">Released <a href="https://priorlabs.ai/tabpfn-3-5" target="_blank" rel="noopener">TabPFN-3.5 and a Fast variant</a> in September 2026, claiming a 99% TabArena win rate and first place on BeyondArena; the same month <a href="https://news.sap.com/2026/09/tabpfn-35-plus-now-available-sap-ai-core-instant-business-predictions/" target="_blank" rel="noopener">the Plus edition landed in SAP AI Core</a>.</span>
+          </td>
+          <td>
+            <span class="en">Its competitors are free tools like XGBoost and LightGBM plus an in-house data-science team, so what it sells is "no training required" rather than a few points of accuracy; the weakness is that neither distribution shift nor data residency has an answer.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Oracle Health</strong><br><span class="en-inline">Agents built into the EHR</span></td>
+          <td>
+            <span class="en">On September 14 <a href="https://www.prnewswire.com/news-releases/oracle-health-clinical-ai-agent-helps-nurses-alleviate-documentation-burden-and-streamline-care-302876694.html" target="_blank" rel="noopener">the nursing edition of its Clinical AI Agent went live across the US</a>, with a self-reported 400,000-plus physician hours saved to date and BayCare Health System as named early adopter.</span>
+          </td>
+          <td>
+            <span class="en">The moat is owning the EHR itself: the agent writes straight into discrete fields, which a third party can only reach through an integration layer. The weakness is that it only sells with Oracle's EHR, and an Epic hospital will not switch EHRs for an agent.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Abridge</strong><br><span class="en-inline">From ambient scribe to revenue cycle</span></td>
+          <td>
+            <span class="en">Launched <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-expands-revenue-cycle-ai-powered-pre-bill-claim-review" target="_blank" rel="noopener">pre-bill review on September 14</a>, claiming 300 of the largest US health systems and more than 100 million conversations supported in 2026, with Reid Health as first named customer.</span>
+          </td>
+          <td>
+            <span class="en">The moat is already sitting where the note is created, with access to the raw audio and documentation context coding needs; the new rivals are <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-expands-revenue-cycle-ai-powered-pre-bill-claim-review" target="_blank" rel="noopener">Waystar, Solventum and CodaMetrix, which serve organisations representing over $180 billion in net patient revenue</a> and understand denials better than it does.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Inspiren</strong><br><span class="en-inline">Ambient sensing AI for senior living</span></td>
+          <td>
+            <span class="en">Closed a <a href="https://theaiinsider.tech/2026/09/14/inspiren-raises-70m-series-c-to-scale-physical-ai-for-senior-living/" target="_blank" rel="noopener">$70 million Series C led by NewView Capital</a> on September 14, taking total funding to $225 million at a valuation above $500 million, and says it reaches more than 80% of the largest senior-housing investors.</span>
+          </td>
+          <td>
+            <span class="en">The moat is installed sensors and operator relationships — switching vendors means ripping out hardware; the weakness is that every outcome figure is operator-reported with no control group, which will not survive a payer demanding rigorous evidence.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Verily ＋ NVIDIA</strong><br><span class="en-inline">Risk prediction from genomes plus longitudinal records</span></td>
+          <td>
+            <span class="en">On September 9 <a href="https://hitconsultant.net/2026/09/09/verily-health-secures-nvidia-investment-precision-health-ai-pre-platform/" target="_blank" rel="noopener">Verily took investment from NVIDIA</a> (amount undisclosed, alongside CU Healthcare Innovation Fund II, Series X Capital, UCHealth and Alphabet); its Forecast 1.0 fuses genomic sequencing with longitudinal EHR flowsheets to predict chronic-disease risk and organ decompensation, running on B200 GPUs and NeMo.</span>
+          </td>
+          <td>
+            <span class="en">The moat is the Pre Platform that turns fragmented clinical assets into FHIR-native, AI-ready datasets; the weakness is that Forecast 1.0 has published no validation metric or dataset scale at all, leaving no way to compare it with a general tabular model like TabPFN.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Moonshot AI / DeepSeek / 上海人工智慧實驗室</strong><br><span class="en-inline">The open-weight supply side</span></td>
+          <td>
+            <span class="en">Per <a href="https://llm-stats.com/llm-updates" target="_blank" rel="noopener">the llm-stats tracker</a>, DeepSeek-V4.1-Flash (open source) landed on September 10, followed on September 11 by Kimi K2.8 Preview and the open-source Atria Dawn Preview; Neon's baseline is Kimi K2.6.</span>
+          </td>
+          <td>
+            <span class="en">They sell no medical product but supply the substrate for vertical models, and their real moat is release cadence; the weakness is that once downstream teams post-train on a domain, most of the value stays downstream.</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>Today's competitive structure splits into two layers.</strong> The upper layer is a race on model capability — Periodic, Prior Labs, the open-weight suppliers — measured on benchmarks they choose themselves. The lower layer is a race to get inside the workflow — Oracle, Abridge, Inspiren — measured by whether you can sit in an EHR field, a claims process, or a corridor ceiling. The upper layer carries no clinical validation burden at all; the lower layer has no capability breakthrough to boast about. And Imprivata's 72% says that the middle layer between them, the one that answers who is accountable for an action, is not being built by anyone.</span>
+    </p>
+  </div>
+</section>
+
+<section id="taiwan">
+  <h2>04 — Taiwan Angle</h2>
+  <div class="sec-title">
+    <span class="en">What Taiwan is building is precisely the layer a tabular model needs — but identity governance for agents has not started</span>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>(1) FHIR Box and a model like TabPFN are two halves of the same puzzle.</strong> Health minister Shih Chung-liang's "333 policy" for smart health care aims to break down silos between hospital information systems, standardise data structures and widen application, with a concrete push to give medical centres a common "FHIR Box" data format — <a href="https://udn.com/news/story/7266/9592218" target="_blank" rel="noopener">targeting record interoperability across all Taiwanese medical centres by year-end, extending to district and regional hospitals over the next two years</a>. TabPFN-3.5 is today's illustration of why that matters more than buying a model: a tabular foundation model's value depends entirely on whether field semantics line up, so how well the FHIR work is done determines whether Taiwanese hospitals get to skip training their own models.</span>
+    </p>
+    <p>
+      <span class="en"><strong>(2) The money is budgeted; what is missing is people to validate.</strong> The Executive Yuan's "Healthy Taiwan Deep Cultivation" programme allocates NT$48.9 billion over five years to help hospitals nationwide advance precision and remote medicine, <a href="https://udn.com/news/story/7266/9592218" target="_blank" rel="noopener">as minister without portfolio Chen Shih-chung set out at a Kaohsiung Medical University forum in June</a>. Set against what today's two models both lack — performance under cross-institution distribution shift, and validation documentation an auditor can take — the scarcest use for that budget is not procurement but building Taiwan's own clinical evaluation sets. The Ministry of Health and Welfare's <a href="https://www.mohw.gov.tw/cp-16-82236-1.html" target="_blank" rel="noopener">Responsible AI Execution Centre already has ten participating hospitals</a>, which is a ready-made skeleton for it.</span>
+    </p>
+    <p>
+      <span class="en"><strong>(3) The generative-AI guidance covers documents, not an agent's identity.</strong> On May 29, 2026 the Ministry of Health and Welfare issued its <a href="https://www.leeandli.com/TW/Newsletters/7656.htm" target="_blank" rel="noopener">Guidance on the Use of Generative AI in Medical Institutions</a> (ref. 1151663164), requiring a designated unit for risk management, security and data-protection assessment before deployment, and continuous monitoring afterwards, and stating plainly that medical personnel remain ultimately responsible for clinical judgement and patient safety; it is advisory rather than binding. The problem is that its implied subject is a tool that produces text. Oracle's voice-driven discrete charting and Abridge's pre-bill review both land their actions on fields and claims instead, and Imprivata's <a href="https://www.globenewswire.com/news-release/2026/09/15/3362174/0/en/new-imprivata-research-finds-72-of-healthcare-organizations-have-ai-tools-or-agents-deployed-without-formal-it-approval.html" target="_blank" rel="noopener">72% and 17%</a> name exactly that gap: when an agent presses the button on a clinician's behalf, no clause asks whose account it is or what it is authorised to do. If Taiwan wants to close this early, the cheapest place is to fold agents into the existing clinician account and access-audit regime rather than legislate a separate AI statute.</span>
+    </p>
+  </div>
+</section>
+
+<section id="reading">
+  <h2>05 — Further Reading</h2>
+  <div class="sec-title">
+    <span class="en">Chosen for method and counter-evidence rather than press releases: each one changes how you read today's numbers</span>
+  </div>
+
+  <ol class="reading">
+    <li>
+      <a href="https://periodic.com/news/nature-is-our-learning-environment" target="_blank" rel="noopener">Nature Is Our Learning Environment — Periodic Labs (2026-09-15)</a>
+      <p class="why"><span class="en">The only piece today that opens up its own grading: why XRD has no automatic answer key, why an LLM-judge ensemble was used, and that the ensemble itself agrees only 74.6% / 84% of the time. Required methodological reading for anyone evaluating a medical task with no ground truth.</span></p>
+    </li>
+    <li>
+      <a href="https://www.statnews.com/2026/09/09/ai-healthcare-limitations-emergency-room-study-medical-scribe-impact/" target="_blank" rel="noopener">In the chaos of emergency rooms, the technology comes up short — STAT (2026-09-09)</a>
+      <p class="why"><span class="en">Read this before Oracle's 400,000 hours. One of the few recent pieces that put clinicians into an actual test of ambient documentation, and its conclusion — the minutes saved per note never leave the building — is the question every agent announcement today still avoids.</span></p>
+    </li>
+    <li>
+      <a href="https://www.remio.ai/post/tabpfn-3-5-release-tops-two-benchmarks-but-real-world-validation-starts-now" target="_blank" rel="noopener">TabPFN-3.5 Release Tops Two Benchmarks, but Real-World Validation Starts Now — Remio (2026-09)</a>
+      <p class="why"><span class="en">The coolest-headed outside look at that 99% win rate, itemising the distance between winning on TabArena and working on your data — including distribution shift and leakage, the two places tabular models most often come apart.</span></p>
+    </li>
+    <li>
+      <a href="https://www.gatesfoundation.org/ideas/media-center/press-releases/2026/09/goalkeepers-report-equitable-ai" target="_blank" rel="noopener">Goalkeepers Report 2026: Equitable AI — Gates Foundation (2026-09-14)</a>
+      <p class="why"><span class="en">Worth reading not for the billion dollars but for its argument that multilingualism is a health problem: the fact that nine-tenths of the corpus is English sets how usable the same model is across different health systems — the international mirror of Taiwan's Chinese-language clinical corpus question.</span></p>
+    </li>
+    <li>
+      <a href="https://www.healthcareitnews.com/news/agentic-ai-access-pressing-governance-challenge-providers" target="_blank" rel="noopener">Agentic AI access a pressing governance challenge for providers — Healthcare IT News (2026-09-15)</a>
+      <p class="why"><span class="en">Puts Imprivata's numbers back inside the existing identity-and-access-management frame rather than treating them as one more alarm survey. More useful than the press release itself if you are drafting your hospital's AI governance policy.</span></p>
+    </li>
+  </ol>
+</section>
+
+<section id="refs">
+  <h2>06 — References</h2>
+  <div class="sec-title">
+    <span class="en">References</span>
+  </div>
+
+  <div class="panel">
+    <ol class="refs">
+      <li>Building Labs that Learn — Introducing Periodic Neon. <em>Periodic Labs</em>, 2026-09-15. <a href="https://periodic.com/news/building-labs-that-learn" target="_blank" rel="noopener">periodic.com</a></li>
+      <li>Nature Is Our Learning Environment. <em>Periodic Labs</em>, 2026-09-15. <a href="https://periodic.com/news/nature-is-our-learning-environment" target="_blank" rel="noopener">periodic.com</a></li>
+      <li>Periodic Labs news index. <em>Periodic Labs</em>, 2026-09-15. <a href="https://periodic.com/news" target="_blank" rel="noopener">periodic.com</a></li>
+      <li>TabPFN 3.5. <em>Prior Labs</em>, 2026-09. <a href="https://priorlabs.ai/tabpfn-3-5" target="_blank" rel="noopener">priorlabs.ai</a></li>
+      <li>TabPFN-3.5 Plus Now Available in SAP AI Core for Instant Business Predictions. <em>SAP News</em>, 2026-09. <a href="https://news.sap.com/2026/09/tabpfn-35-plus-now-available-sap-ai-core-instant-business-predictions/" target="_blank" rel="noopener">news.sap.com</a></li>
+      <li>TabPFN-3.5-Plus. <em>AWS Marketplace</em>, 2026. <a href="https://aws.amazon.com/marketplace/pp/prodview-sor7k6q2iz42q" target="_blank" rel="noopener">aws.amazon.com</a></li>
+      <li>TabPFN-3.5 Release Tops Two Benchmarks, but Real-World Validation Starts Now. <em>Remio</em>, 2026-09. <a href="https://www.remio.ai/post/tabpfn-3-5-release-tops-two-benchmarks-but-real-world-validation-starts-now" target="_blank" rel="noopener">remio.ai</a></li>
+      <li>Oracle Health Clinical AI Agent Helps Nurses Alleviate Documentation Burden and Streamline Care. <em>Oracle via PR Newswire</em>, 2026-09-14. <a href="https://www.prnewswire.com/news-releases/oracle-health-clinical-ai-agent-helps-nurses-alleviate-documentation-burden-and-streamline-care-302876694.html" target="_blank" rel="noopener">prnewswire.com</a></li>
+      <li>AI Roundup: Predictive models, access to advanced cryptography and more. <em>Healthcare IT News</em>, 2026-09-14. <a href="https://www.healthcareitnews.com/news/ai-roundup-predictive-models-access-advanced-cryptography-and-more" target="_blank" rel="noopener">healthcareitnews.com</a></li>
+      <li>Abridge expands into revenue cycle with AI-powered pre-bill claim review. <em>Fierce Healthcare</em>, 2026-09-14. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-expands-revenue-cycle-ai-powered-pre-bill-claim-review" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>New Imprivata Research Finds 72% of Healthcare Organizations Have AI Tools or Agents Deployed Without Formal IT Approval. <em>Imprivata via GlobeNewswire</em>, 2026-09-15. <a href="https://www.globenewswire.com/news-release/2026/09/15/3362174/0/en/new-imprivata-research-finds-72-of-healthcare-organizations-have-ai-tools-or-agents-deployed-without-formal-it-approval.html" target="_blank" rel="noopener">globenewswire.com</a></li>
+      <li>Agentic AI access a pressing governance challenge for providers. <em>Healthcare IT News</em>, 2026-09-15. <a href="https://www.healthcareitnews.com/news/agentic-ai-access-pressing-governance-challenge-providers" target="_blank" rel="noopener">healthcareitnews.com</a></li>
+      <li>Gates Foundation Commits US$1 Billion to Help Build and Deliver Equitable AI. <em>Gates Foundation</em>, 2026-09-14. <a href="https://www.gatesfoundation.org/ideas/media-center/press-releases/2026/09/goalkeepers-report-equitable-ai" target="_blank" rel="noopener">gatesfoundation.org</a></li>
+      <li>Gates Foundation pledges $1 billion for AI in global health and education. <em>Quartz</em>, 2026-09-15. <a href="https://qz.com/gates-foundation-billion-ai-global-health-education-agriculture-091526" target="_blank" rel="noopener">qz.com</a></li>
+      <li>Inspiren Raises $70M Series C to Scale Physical AI for Senior Living. <em>The AI Insider</em>, 2026-09-14. <a href="https://theaiinsider.tech/2026/09/14/inspiren-raises-70m-series-c-to-scale-physical-ai-for-senior-living/" target="_blank" rel="noopener">theaiinsider.tech</a></li>
+      <li>Verily Health Secures New Investment; Inspiren Raises $70M Series C. <em>Healthcare IT Today</em>, 2026-09-14. <a href="https://www.healthcareittoday.com/2026/09/14/verily-health-secures-new-investment-inspiren-raises-70m-series-c/" target="_blank" rel="noopener">healthcareittoday.com</a></li>
+      <li>Verily Secures Strategic Investment from NVIDIA to Accelerate Precision Health AI Platform. <em>HIT Consultant</em>, 2026-09-09. <a href="https://hitconsultant.net/2026/09/09/verily-health-secures-nvidia-investment-precision-health-ai-pre-platform/" target="_blank" rel="noopener">hitconsultant.net</a></li>
+      <li>AI Updates Today (September 2026) — Latest AI Model Releases. <em>llm-stats</em>, 2026-09. <a href="https://llm-stats.com/llm-updates" target="_blank" rel="noopener">llm-stats.com</a></li>
+      <li>Can AI fix health care? In the chaos of emergency rooms, the technology comes up short. <em>STAT News</em>, 2026-09-09. <a href="https://www.statnews.com/2026/09/09/ai-healthcare-limitations-emergency-room-study-medical-scribe-impact/" target="_blank" rel="noopener">statnews.com</a></li>
+      <li>高醫大論壇揭示AI醫療新局！衛福部推「333政策」 國家489億預算力挺. <em>聯合新聞網</em>, 2026-06-27. <a href="https://udn.com/news/story/7266/9592218" target="_blank" rel="noopener">udn.com</a></li>
+      <li>衛福部頒布「醫療機構應用生成式人工智慧指引」. <em>理律法律事務所</em>, 2026. <a href="https://www.leeandli.com/TW/Newsletters/7656.htm" target="_blank" rel="noopener">leeandli.com</a></li>
+      <li>醫療AI要聰明，還要能負責！十家醫院打造可信賴的智慧醫療守門人. <em>衛生福利部</em>, 2025. <a href="https://www.mohw.gov.tw/cp-16-82236-1.html" target="_blank" rel="noopener">mohw.gov.tw</a></li>
+      <li>AI in Healthcare News and Updates (2026-09-16). <em>Health IT Answers</em>, 2026-09-16. <a href="https://www.healthitanswers.net/ai-in-healthcare-news-and-updates-091626/" target="_blank" rel="noopener">healthitanswers.net</a></li>
+    </ol>
+    <div class="note">
+      <span class="en"><strong>Editor's note:</strong> Every "breakthrough" figure in this issue is self-reported by a vendor or publisher, none independently audited or peer-reviewed, and each is itemised in its story's "Discount this" row. Periodic Neon's 55.3% comes from an in-house benchmark (n=134) graded by an LLM-judge ensemble. TabPFN-3.5's 99% win rate and BeyondArena first place are claims on an undated product page; this report dates the release to September 2026 on the strength of the SAP listing and third-party coverage. Oracle's 400,000 hours cover the existing physician product, not the newly released nursing features. Abridge's 300 health systems and 100 million conversations, and Inspiren's fall and hospitalisation reductions, are all company- or operator-reported with no control group. The three open-weight releases (DeepSeek-V4.1-Flash, Kimi K2.8 Preview, Atria Dawn Preview) rest solely on the third-party llm-stats tracker; the vendors' own release pages were not individually checked and official specifications and licence terms were not obtained. Verily's Forecast 1.0 description is cited from HIT Consultant's secondary coverage, as Verily has published no validation metrics. In the Taiwan section, the "333 policy" and the NT$48.9 billion budget are cited from coverage of a June 27, 2026 forum — not this week's news, used as institutional background — and the ministry's generative-AI guidance is cited from a law firm's summary rather than the full original circular. Fierce Healthcare and some health-media pages could not be read directly while reporting this issue, so the accessible coverage pages were used instead. No paywalled exclusive content is cited in this issue.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-row">
+    <div>
+      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Thursday / Technology Breakthroughs<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
+    </div>
+    <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
+  </div>
+</footer>
+</main>
+
+<div class="fabs">
+  <button class="up" id="up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+  <a class="home-fab" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg></a>
+</div>
+
+<script>
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.getElementById('theme-ic').textContent =
+    document.body.classList.contains('dark') ? '◑' : '◐';
+}
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.body.classList.add('dark');
+  document.getElementById('theme-ic').textContent = '◑';
+}
+window.addEventListener('scroll', function(){
+  document.getElementById('up').classList.toggle('show', window.scrollY > 600);
+});
+
+/* GitHub 星星數：無需授權，失敗或被限流時靜默保留佔位符 */
+(function(){
+  var el = document.getElementById('ghs');
+  if (!el || typeof fetch !== 'function') return;
+  fetch('https://api.github.com/repos/tingwei161803/ai-medical-daily', {headers:{Accept:'application/vnd.github+json'}})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if (!d || typeof d.stargazers_count !== 'number') return;
+      var n = d.stargazers_count;
+      el.textContent = n >= 1000 ? (Math.round(n/100)/10) + 'k' : String(n);
+    })
+    .catch(function(){});
+})();
+</script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/reports/2026-09-17.html" hreflang="zh-Hant" rel="alternate" lang="zh-Hant">中文版</a></p>
+</body>
+</html>
