@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>AI／醫療AI 每日新知日報 · 2026-09-18</title>
+<meta property="og:url" content="https://ai-medical-daily.peteraim.com/reports/2026-09-18.html" />
+<link rel="canonical" href="https://ai-medical-daily.peteraim.com/reports/2026-09-18.html" />
+<meta name="report-date" content="2026-09-18">
+<meta name="report-theme" content="product">
+<meta name="report-title-zh" content="Epic 自己做了 AI 病歷之後，環境式 AI 的位子就不能再照原價賣：Ambience 把軟體費綁上 3 倍 ROI 與 45%→31% 的醫師燒竭率、Abridge 往收入循環與護理站鑽——而唯一一份跨五家醫學中心、8,500 名臨床人員的同儕審查研究算出來的收益，是每位醫師每月 167 美元，約為廠商案例的六分之一">
+<meta name="report-title-en" content="Once Epic shipped AI charting of its own, the ambient seat could no longer be sold at the old price: Ambience put its fees behind a 3x ROI and a burnout rate falling from 45% to 31%, Abridge dug down into the revenue cycle and the nursing station — while the one peer-reviewed study across five academic systems and 8,500 clinicians puts the gain at $167 per clinician per month, about a sixth of what the vendor case studies claim">
+<meta name="report-summary-zh" content="週五產品與公司深度分析：拆解 Ambience 與 Abridge 在 Epic 原生 AI Charting 上線後的兩條保命路線——一條把軟體費押在結果上，一條往收入循環與護理工作流鑽——並把廠商自述的 862–1,004 美元月收益，跟 JAMA 五院研究的 167 美元擺在一起看。">
+<meta name="report-summary-en" content="Friday product and company deep dive: how Ambience and Abridge each answered Epic's native AI Charting — one putting its software fee at risk against outcomes, the other digging into revenue cycle and nursing workflow — with the vendors' $862–$1,004 monthly gain set beside the $167 that a five-site JAMA study actually measured.">
+<meta property="og:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HJLDQZDK5V');
+</script>
+<link rel="stylesheet" href="/assets/report.css">
+</head>
+<body class="lang-zh">
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span><span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <div class="bar-sp"></div>
+    <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub / 在 GitHub 給這個專案一顆星"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
+    <div class="seg">
+      <button id="b-zh" class="on" onclick="setLang('zh')">中文</button>
+      <button id="b-en" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="kicker">
+    <span class="zh-inline">星期五 · 產品與公司深度分析</span>
+    <span class="en-inline">Friday · Product &amp; Company Deep Dive</span>
+  </div>
+  <h1>
+    <span class="zh">Epic 自己做了 AI 病歷之後，環境式 AI 的位子就不能再照原價賣：Ambience 把軟體費綁上 3 倍 ROI 與 45%→31% 的醫師燒竭率、Abridge 往收入循環與護理站鑽——而唯一一份跨五家醫學中心、8,500 名臨床人員的同儕審查研究算出來的收益，是每位醫師每月 167 美元，約為廠商案例的六分之一</span>
+    <span class="en">Once Epic shipped AI charting of its own, the ambient seat could no longer be sold at the old price: Ambience put its fees behind a 3x ROI and a burnout rate falling from 45% to 31%, Abridge dug down into the revenue cycle and the nursing station — while the one peer-reviewed study across five academic systems and 8,500 clinicians puts the gain at $167 per clinician per month, about a sixth of what the vendor case studies claim</span>
+  </h1>
+  <div class="dateline">
+    <span class="zh-inline">2026 年 9 月 18 日（五）· 涵蓋 9/11–9/18，並回溯本年度形成此局面的關鍵節點 · 台北時間</span>
+    <span class="en-inline">Friday, September 18, 2026 · Covering Sep 11–18, with the earlier turning points that produced this structure · Taipei time</span>
+  </div>
+  <p class="lede">
+    <span class="zh">環境式 AI（ambient AI）過去兩年賣的是同一樣東西：一個醫師一年約 2,500 美元的授權位子，換走一天一小時的打字。今年 2 月 5 日，<a href="https://www.healthcaredive.com/news/epic-rolls-out-ai-charting-art-notetaking-documentation-scribe/811462/" target="_blank" rel="noopener">Epic 把 AI Charting 直接放進自家的 Art 平台</a>——同一段對話、同一份病歷，不必再把病人的語音交給第三方。Epic 手上是全美超過 42% 的急症醫院市佔與近 55% 的急症病床，這一步被 <a href="https://hitconsultant.net/2026/02/05/epic-releases-ai-charting-ambient-ai-market-implications/" target="_blank" rel="noopener">HIT Consultant 形容成「Sherlocking」</a>：平台自己做了，外掛就沒有價錢。七個月後的今天回頭看，兩家頭部公司給了兩個完全不同的答案，而本週在醫院裡真正上線的東西（<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/oracle-health-extends-clinical-ai-agent-inpatient-nurses" target="_blank" rel="noopener">Oracle 的護理 agent</a>、<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/sentara-health-pilots-gw-rhythmxs-ai-platform-support-emerging-primary-care" target="_blank" rel="noopener">Sentara 的 30 人試點</a>）也正在把同一個問題往前推：這東西到底值多少錢，誰說了算。</span>
+    <span class="en">For two years ambient AI sold one thing: a licence seat at roughly $2,500 per clinician per year, in exchange for an hour a day of typing. On February 5 this year <a href="https://www.healthcaredive.com/news/epic-rolls-out-ai-charting-art-notetaking-documentation-scribe/811462/" target="_blank" rel="noopener">Epic put AI Charting straight into its own Art platform</a> — same conversation, same chart, and no need to hand patient audio to a third party. Epic holds over 42% of the U.S. acute-care hospital market and close to 55% of acute-care beds, which is why <a href="https://hitconsultant.net/2026/02/05/epic-releases-ai-charting-ambient-ai-market-implications/" target="_blank" rel="noopener">HIT Consultant called the move a "Sherlocking"</a>: once the platform builds it, the add-on has no price. Seven months on, the two leading companies have given two entirely different answers — and what actually went live in hospitals this week (<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/oracle-health-extends-clinical-ai-agent-inpatient-nurses" target="_blank" rel="noopener">Oracle's nursing agent</a>, <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/sentara-health-pilots-gw-rhythmxs-ai-platform-support-emerging-primary-care" target="_blank" rel="noopener">Sentara's 30-clinician pilot</a>) pushes the same question further: what is this worth, and who gets to say so.</span>
+  </p>
+
+  <nav class="toc">
+    <a href="#top"><span class="zh-inline">重點新聞</span><span class="en-inline">Top Stories</span></a>
+    <a href="#product"><span class="zh-inline">產品分析</span><span class="en-inline">Product Analysis</span></a>
+    <a href="#company"><span class="zh-inline">公司與競爭</span><span class="en-inline">Companies &amp; Competition</span></a>
+    <a href="#taiwan"><span class="zh-inline">台灣視角</span><span class="en-inline">Taiwan Angle</span></a>
+    <a href="#reading"><span class="zh-inline">延伸閱讀</span><span class="en-inline">Further Reading</span></a>
+    <a href="#refs"><span class="zh-inline">參考文獻</span><span class="en-inline">References</span></a>
+  </nav>
+</div>
+
+<section id="top">
+  <h2>01 — Top Stories</h2>
+  <div class="sec-title">
+    <span class="zh">八件事，串成同一條線：定價權正在從賣工具的人，移到能證明結果的人手上</span>
+    <span class="en">Eight items on one thread: pricing power is moving from whoever sells the tool to whoever can prove the outcome</span>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">平台擠壓</span><span class="en-inline">Platform squeeze</span></span>
+      <span class="tag">Epic</span><span class="tag">AI Charting / Art</span><span class="tag">2/05</span>
+    </div>
+    <h3>
+      <span class="zh">Epic 把環境式病歷變成 EHR 的內建功能，第三方 scribe 的訂價前提當天消失</span>
+      <span class="en">Epic turned ambient charting into a built-in EHR feature, and the third-party scribe's pricing premise vanished that day</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">2026 年 2 月 5 日，Epic 推出 AI Charting，屬於面向臨床端的 Art 平台；它在看診過程中聆聽、起草病歷、並依對話內容排隊開立醫囑，醫師可以用語音下「把現有病況改成條列」這類格式指令，<a href="https://www.healthcaredive.com/news/epic-rolls-out-ai-charting-art-notetaking-documentation-scribe/811462/" target="_blank" rel="noopener">3 月再加上把評估與計畫綁定特定診斷的 diagnosis-aware notes</a>。Art 裡的病歷摘要功能單月使用次數已超過 1,600 萬次，約為前一年 11 月的三倍。Epic 的三個 AI 代理人分別是給臨床端的 Art、給收入循環的 Penny、給病人的 Emmie，<a href="https://hitconsultant.net/2026/02/05/epic-releases-ai-charting-ambient-ai-market-implications/" target="_blank" rel="noopener">其中 Penny 已在 200 家以上機構使用、宣稱讓拒付減少 20%</a>。</span>
+        <span class="en">On February 5, 2026, Epic released AI Charting inside Art, its clinician-facing platform. It listens through the visit, drafts the note and queues orders from the conversation, and clinicians can reformat by voice — "make the current conditions a bulleted list" — with <a href="https://www.healthcaredive.com/news/epic-rolls-out-ai-charting-art-notetaking-documentation-scribe/811462/" target="_blank" rel="noopener">diagnosis-aware notes tying assessment and plan to specific diagnoses following in March</a>. The chart-summary feature inside Art already passes 16 million uses a month, roughly triple its level the previous November. Epic's three agents are Art for clinicians, Penny for revenue cycle and Emmie for patients; <a href="https://hitconsultant.net/2026/02/05/epic-releases-ai-charting-ambient-ai-market-implications/" target="_blank" rel="noopener">Penny is in use at more than 200 organisations and is credited with a 20% reduction in denials</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">Epic 掌握超過 42% 的美國急症醫院市場與近 55% 的急症病床（KLAS 2024 資料）。當「不必把病人語音送出院外」本身就是一項資安論點、而價格又更低時，獨立 scribe 廠商剩下的空間只有兩種：要嘛做 Epic 不做的深度（特定科別、收入循環、護理），要嘛把價錢跟結果綁在一起。今年下半年這兩條路都被走出來了。</span>
+        <span class="en">Epic holds more than 42% of the U.S. acute-care hospital market and close to 55% of acute-care beds, on KLAS's 2024 figures. When "patient audio never leaves the building" is itself a security argument and the price is lower too, an independent scribe vendor has only two moves left: go deeper than Epic will bother to go — specialty, revenue cycle, nursing — or tie the price to the outcome. Both routes have now been taken, in the second half of this year.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">Epic 未公布 AI Charting 的定價，也未公布採用機構家數；Penny 的「拒付減少 20%」出自 Epic 自述，無第三方稽核。1,600 萬次是「使用次數」而非「獨立使用者數」，不能直接換算成醫師採用率。</span>
+        <span class="en">Epic has published neither pricing nor an adoption count for AI Charting, and Penny's "20% reduction in denials" is Epic's own figure with no independent audit. The 16 million is a count of uses, not of distinct users, and cannot be converted into a clinician adoption rate.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.healthcaredive.com/news/epic-rolls-out-ai-charting-art-notetaking-documentation-scribe/811462/" target="_blank" rel="noopener">Healthcare Dive, 2026-02-05</a> · <a href="https://hitconsultant.net/2026/02/05/epic-releases-ai-charting-ambient-ai-market-implications/" target="_blank" rel="noopener">HIT Consultant, 2026-02-05</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">商業模式</span><span class="en-inline">Business model</span></span>
+      <span class="tag">Ambience Healthcare</span><span class="tag">The Ambience Standard</span><span class="tag">8/19</span>
+    </div>
+    <h3>
+      <span class="zh">Ambience 把軟體費從「用多少算多少」改成「做到才收」，並把五家醫院的數字攤在合約桌上</span>
+      <span class="en">Ambience moved its software fee from consumption to delivery, and put five health systems' numbers on the contract table</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">8 月 19 日 Ambience 發表「The Ambience Standard」，把平台費直接綁在經查核的臨床、營運與財務結果上，取代傳統的每席次或按 token 計費，等於把財務風險從醫院移回廠商身上。架構分三層：一是 value-at-risk 績效合約，費用取決於雙方議定的指標（病歷時間縮減、編碼正確率、利潤改善）；二是派駐醫院內部的 forward-deployed 團隊，由臨床、工程與轉型專員混編；三是名為 Chorus 的代理人調度平台，支援 200 個以上的內外科次專科。<a href="https://hitconsultant.net/2026/08/19/ambience-healthcare-introduces-the-ambience-standard-outcome-based-ai/" target="_blank" rel="noopener">公司同時公布五家客戶的查核數字</a>：Ardent Health 3 倍 ROI；Cleveland Clinic 4,000 名臨床人員維持 70% 使用率、NPS 60；Onvida Health 每位醫師年淨值 24,000 美元；MultiCare 採用率 92%、NPS 較競品高 63 分；St. Luke's 醫師燒竭率從 45% 降到 31%、離職意向從 31% 降到 18%。</span>
+        <span class="en">On August 19 Ambience published "The Ambience Standard," tying platform fees directly to verified clinical, operational and financial outcomes instead of per-seat or per-token billing — which moves the financial risk back from the health system to the vendor. It has three parts: value-at-risk performance contracts whose fees depend on jointly agreed metrics (documentation time, coding accuracy, margin improvement); forward-deployed teams of clinicians, engineers and transformation specialists embedded inside the health system; and Chorus, an agent-orchestration harness covering more than 200 medical and surgical subspecialties. <a href="https://hitconsultant.net/2026/08/19/ambience-healthcare-introduces-the-ambience-standard-outcome-based-ai/" target="_blank" rel="noopener">The company published verified numbers from five customers alongside it</a>: 3x ROI at Ardent Health; 70% sustained utilisation across 4,000 clinicians at Cleveland Clinic with an NPS of 60; $24,000 net annual value per physician at Onvida Health; 92% adoption at MultiCare with an NPS 63 points above competitors; and physician burnout falling from 45% to 31% at St. Luke's, with turnover intent down from 31% to 18%.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">共同創辦人 Mike Ng 的一句話把這件事講得最清楚：「從一個更好的模型到更好的照護之間，隔著一百萬英里。模型自己不會改善醫療。」這是第一次有頭部環境式 AI 廠商公開承認：模型能力已經不是差異化來源，交付能力才是。值得注意的是它跟付費方的方向完全同調——CMS 的 ACCESS 模式同樣以結果而非服務量計酬。</span>
+        <span class="en">Co-founder Mike Ng put it plainly: "There's a million miles between a better model and better care. Models don't improve healthcare on their own." This is the first time a leading ambient AI vendor has said out loud that model capability is no longer the differentiator and delivery capability is. It also runs exactly parallel to where the payer is going — CMS's ACCESS model likewise pays on outcomes rather than on services rendered.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">五家客戶的數字全部由 Ambience 自行揭露，「經查核」的查核方、方法與樣本數皆未公開；value-at-risk 的比例（是把 5% 還是 50% 的費用押上去）也沒有揭露，沒有這個比例，「把風險移回廠商」只是一句話。St. Luke's 的燒竭率變化未提供對照組。</span>
+        <span class="en">All five customer figures are disclosed by Ambience itself; who verified them, by what method and on what sample is not published. Nor is the share of fee actually at risk — 5% or 50% — and without that number, "the risk moves back to the vendor" is only a sentence. The St. Luke's burnout change comes with no control group.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://hitconsultant.net/2026/08/19/ambience-healthcare-introduces-the-ambience-standard-outcome-based-ai/" target="_blank" rel="noopener">HIT Consultant, 2026-08-19</a> · <a href="https://www.healthitanswers.net/ai-in-healthcare-news-and-updates-091626/" target="_blank" rel="noopener">Health IT Answers, 2026-09-16</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">產品縱深</span><span class="en-inline">Product depth</span></span>
+      <span class="tag">Abridge</span><span class="tag">Revenue Cycle / Nursing</span><span class="tag">5/06</span>
+    </div>
+    <h3>
+      <span class="zh">Abridge 的答案不是降價，是往 Epic 不會鑽的兩個方向鑽：帳單與護理站</span>
+      <span class="en">Abridge's answer was not a lower price but two directions Epic will not bother to dig into: the bill, and the nursing station</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">Abridge 的收入循環產品把診間對話直接轉成可稽核、可請款的文件，且在照護當下完成而非事後回溯，分成三塊：住院端 CDI（在照護過程中即時提示文件specificity，減少出院後的回溯審查）、門診端 Encounter Integrity（即時產生 ICD-10 與 HCC 碼、自動計算 E&amp;M 等級、在醫師簽名前更新病歷）、以及 Care Signals（看診前先標出風險缺口、追蹤診間實際談到的病況），<a href="https://www.abridge.com/platform/revenue-cycle" target="_blank" rel="noopener">官方頁面舉 Sutter Health 為例，稱 78% 的臨床人員感到工作滿意度提升</a>。護理端則是另一條線：5 月 6 日 Abridge 宣布與 Mayo Clinic 共同開發的護理 AI 平台在 <a href="https://www.newsweek.com/ai-nurses-health-care-abridge-access-health-11921461" target="_blank" rel="noopener">250 家以上健康系統夥伴普遍可用</a>，Mayo 的病人對環境錄音的同意率落在「百分之八十幾」，Corewell Health 採用率最高的護理師每班省下近 30 分鐘文書時間。</span>
+        <span class="en">Abridge's revenue-cycle product turns the encounter itself into audit-ready, billable documentation at the point of care rather than retrospectively, in three pieces: inpatient CDI, surfacing documentation specificity in-line during care instead of after discharge; Ambulatory Encounter Integrity, generating ICD-10 and HCC codes in real time, auto-calculating E&amp;M levels and updating the record before the note is signed; and Care Signals, flagging risk gaps before the visit and tracking which conditions were actually discussed. <a href="https://www.abridge.com/platform/revenue-cycle" target="_blank" rel="noopener">The product page cites Sutter Health, where 78% of clinicians report improved work satisfaction</a>. Nursing is the second line: on May 6 Abridge made the nursing AI platform it built with Mayo Clinic <a href="https://www.newsweek.com/ai-nurses-health-care-abridge-access-health-11921461" target="_blank" rel="noopener">generally available across 250-plus health system partners</a>. Mayo patients opt into ambient recording at rates in the high eighties, and the highest-adopting nurses at Corewell Health save close to 30 minutes of documentation a shift.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這兩條線都不是「更好的病歷」，而是「新的預算科目」。病歷時間省下來的錢很難在財務報表上找到對應欄位，但 CDI 與編碼正確率直接影響營收，護理離職率直接影響人力成本——這是把採購決策從 CMIO 手上，移到 CFO 與護理部主管手上。Abridge 團隊在 Newsweek 的說法點出了護理端的真正難處：「很多護理師已經對科技失去信任……信任是一滴一滴賺來的，一桶一桶失去的。」</span>
+        <span class="en">Neither line is about a better note; both are about a new budget line. Time saved on charting is hard to locate on a financial statement, whereas CDI and coding accuracy hit revenue directly and nurse turnover hits labour cost directly — which moves the buying decision off the CMIO's desk and onto the CFO's and the chief nursing officer's. Abridge's own framing in Newsweek names the real obstacle on the nursing side: "a lot of nurses have lost trust in tech… trust is earned in drops and lost in buckets."</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">Sutter 的 78% 與 Corewell 的 30 分鐘都是廠商或夥伴自述，非同儕審查。「250 家以上健康系統夥伴」指的是可用範圍而非實際部署量：同一篇報導裡，Mayo 只有 7 個單位完成部署、全院啟用 170 名護理師，Corewell 21 家醫院中僅 2 家在用。把「可用」讀成「已上線」會高估實況一個數量級。</span>
+        <span class="en">Sutter's 78% and Corewell's 30 minutes are vendor- or partner-reported, not peer-reviewed. "250-plus health system partners" describes availability, not deployment: in the same report Mayo has seven units fully deployed and 170 nurses activated enterprise-wide, and only two of Corewell's 21 hospitals are using it. Reading "available" as "live" overstates the reality by an order of magnitude.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.newsweek.com/ai-nurses-health-care-abridge-access-health-11921461" target="_blank" rel="noopener">Newsweek, 2026-05-06</a> · <a href="https://www.abridge.com/platform/revenue-cycle" target="_blank" rel="noopener">Abridge Platform — Revenue Cycle</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">實證落差</span><span class="en-inline">Evidence gap</span></span>
+      <span class="tag">JAMA</span><span class="tag">5 家醫學中心</span><span class="tag">4/2026</span>
+    </div>
+    <h3>
+      <span class="zh">同一個問題，廠商案例說每月 862–1,004 美元，同儕審查研究說 167 美元</span>
+      <span class="en">Same question: the vendor case studies say $862–$1,004 a month, the peer-reviewed study says $167</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">由 UCSF 的 Lisa Rotenstein 主持、發表於 JAMA 的五院研究，涵蓋 Mass General Brigham、Emory Healthcare、UCSF、UC Davis 與 Yale New Haven 共超過 8,500 名臨床人員，其中約 1,800 人實際採用 AI scribe。結果：<a href="https://healthexec.com/topics/artificial-intelligence/ai-ambient-scribes-boost-clinician-income" target="_blank" rel="noopener">每 8 小時班別減少 13 分鐘 EHR 時間、16 分鐘文書時間，每週看診量增加 1.7%，換算成 E&amp;M 請款約為每位臨床人員每月多 167 美元</a>；採用率超過 50% 的高頻使用者，EHR 時間減幅為兩倍、文書時間減幅為三倍。對照組是同一批廠商的案例研究：KLAS 在 1 月驗證的 Suki 資料顯示，<a href="https://hitconsultant.net/2026/01/21/klas-roi-validation-2026-ambient-ai-results/" target="_blank" rel="noopener">McLeod Health 每位提供者每月增加 1,004 美元、FMOL Health 每位使用者 862 美元</a>，McLeod 的 Level 3 編碼下降 18.2%、Level 4 與 5 分別上升 7.3% 與 5.0%，看診量增加 18.3%。</span>
+        <span class="en">The five-site study led by Lisa Rotenstein at UCSF and published in JAMA covers more than 8,500 clinicians at Mass General Brigham, Emory Healthcare, UCSF, UC Davis and Yale New Haven, roughly 1,800 of whom actually adopted an AI scribe. The result: <a href="https://healthexec.com/topics/artificial-intelligence/ai-ambient-scribes-boost-clinician-income" target="_blank" rel="noopener">13 fewer minutes of EHR time and 16 fewer minutes of documentation per eight-hour shift, weekly visit volume up 1.7%, and about $167 per clinician per month in additional evaluation-and-management billing</a>; high-frequency users above 50% adoption saw twice the EHR-time reduction and three times the documentation reduction. Set that against the vendor case studies: the Suki data KLAS validated in January shows <a href="https://hitconsultant.net/2026/01/21/klas-roi-validation-2026-ambient-ai-results/" target="_blank" rel="noopener">$1,004 per provider per month at McLeod Health and $862 per user at FMOL Health</a>, with McLeod's Level 3 codes down 18.2%, Level 4 and 5 up 7.3% and 5.0%, and encounters up 18.3%.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">六倍的落差不必然是誰在說謊，更可能是兩件事在量不同的東西：廠商案例通常來自導入最積極、且刻意調整排班以填滿省下時間的組織，而 JAMA 那五家都沒有要求醫師多看病人——作者自己說 167 美元是「保守下界」。但這正是 Ambience 那套 value-at-risk 合約真正的壓力測試：如果醫院照著簽，被押上的就不是模型好不好，而是省下的時間有沒有被組織換成錢。這也是編碼上移（Level 3 降、Level 4/5 升）必須被獨立稽核的理由——同樣的曲線，可以叫做「文件終於反映真實複雜度」，也可以叫做 upcoding。</span>
+        <span class="en">A sixfold gap need not mean anyone is lying; more likely two things are being measured. Vendor case studies tend to come from the most committed adopters, organisations that deliberately rebooked schedules to fill the time freed up, whereas none of the five JAMA sites asked clinicians to see more patients — the authors call $167 a conservative lower bound. But that is exactly the stress test for Ambience's value-at-risk contracts: sign one, and what is at risk is not whether the model is good but whether the organisation converts saved time into money. It is also why the coding shift — Level 3 down, Level 4 and 5 up — needs independent audit, because the same curve can be called documentation finally reflecting true complexity, or upcoding.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://healthexec.com/topics/artificial-intelligence/ai-ambient-scribes-boost-clinician-income" target="_blank" rel="noopener">Health Exec, 2026-04</a> · <a href="https://hitconsultant.net/2026/01/21/klas-roi-validation-2026-ambient-ai-results/" target="_blank" rel="noopener">HIT Consultant, 2026-01-21</a> · <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/rush-mcleod-health-and-fmol-health-report-revenue-gains-suki-ai-scribe" target="_blank" rel="noopener">Fierce Healthcare</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">本週上線</span><span class="en-inline">Shipped this week</span></span>
+      <span class="tag">Oracle Health</span><span class="tag">Clinical AI Agent</span><span class="tag">9/16</span>
+    </div>
+    <h3>
+      <span class="zh">Oracle 把護理端的臨床 AI agent 推進美國市場，成績單的單位仍然是「小時」</span>
+      <span class="en">Oracle pushed its nursing clinical AI agent into the U.S. market, still keeping score in hours</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">9 月 16 日，Oracle Health 在美國推出內嵌於 Oracle Health Foundation EHR 的護理臨床 AI agent，把語音導航、急症護理摘要與語音填表三件事合在一起：護理師可用自然語言搜尋病歷、取得病史與現況的 AI 摘要、並在照護現場近即時完成結構化文件。<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/oracle-health-extends-clinical-ai-agent-inpatient-nurses" target="_blank" rel="noopener">Oracle 表示其臨床病歷 AI 工具上線近兩年來，已為全美醫療機構的醫師節省超過 40 萬小時</a>。首波導入者為 BayCare Health System，其資訊長 Lynnette Clinton 說這有機會減少「下班後補病歷」。Oracle 於 2022 年 6 月以 280 億美元併購 Cerner 後改名 Oracle Health，下週將在奧蘭多的 Health and Life Sciences Summit 公布更多醫療 AI 產品。</span>
+        <span class="en">On September 16 Oracle Health launched, in the U.S., a nursing clinical AI agent embedded in the Oracle Health Foundation EHR, combining three things: voice-driven navigation, acute nursing summaries and voice-enabled charting. Nurses can search the record in natural language, pull an AI summary of history and current condition, and complete structured documentation in near real time at the bedside. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/oracle-health-extends-clinical-ai-agent-inpatient-nurses" target="_blank" rel="noopener">Oracle says its clinical note AI tools have saved physicians more than 400,000 hours across U.S. health organisations in the nearly two years since launch</a>. BayCare Health System is the early adopter; its CIO Lynnette Clinton says it has the potential to reduce after-shift charting. Oracle bought Cerner for $28 billion in June 2022 and rebranded it Oracle Health; more healthcare AI is due at its Health and Life Sciences Summit in Orlando next week.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這則新聞的重點不在功能，在計分單位。Epic 與 Oracle 兩家 EHR 都已經自己做了環境式 AI，而且都還在用「節省小時數」當績效指標——那正是 Ambience 宣稱要離開的那把尺。EHR 內建功能可以用小時計分，因為它本來就不是獨立收費品項；獨立廠商不行，因為 CFO 不會為小時數簽採購單。這條分界線，就是本週整份日報的骨架。</span>
+        <span class="en">The point here is not the feature set but the unit of account. Both major EHR vendors now build ambient AI themselves, and both still score it in hours saved — the very yardstick Ambience says it is walking away from. A built-in EHR feature can be scored in hours because it was never a separately priced line item; an independent vendor cannot, because no CFO signs a purchase order for hours. That dividing line is the spine of today's report.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">40 萬小時為 Oracle 自述，未說明分母（多少機構、多少醫師、多少份病歷），也未經第三方驗證；BayCare 目前是唯一具名的導入者，沒有已完成部署的規模數字。</span>
+        <span class="en">The 400,000 hours is Oracle's own figure, with no denominator given — how many organisations, how many physicians, how many notes — and no third-party verification. BayCare is the only named adopter so far, with no figure for how much of it is actually deployed.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.fiercehealthcare.com/ai-and-machine-learning/oracle-health-extends-clinical-ai-agent-inpatient-nurses" target="_blank" rel="noopener">Fierce Healthcare, 2026-09-16</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">付費方</span><span class="en-inline">Payer</span></span>
+      <span class="tag">CMS ACCESS</span><span class="tag">Oura / Counsel Health</span><span class="tag">9/16–9/17</span>
+    </div>
+    <h3>
+      <span class="zh">CMS 把 ACCESS 擴大到心衰竭與 COPD，而第一批以 AI 加穿戴切入的組合已經跑出 36,000 人的上線數字</span>
+      <span class="en">CMS widened ACCESS to heart failure and COPD, and the first AI-plus-wearable pairing already has 36,000 people onboarded</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">9 月 16 日，<a href="https://www.fiercehealthcare.com/regulatory/cms-extends-access-model-more-chronic-conditions-cms-officials-eye-expansion-medicaid" target="_blank" rel="noopener">CMS 宣布把 ACCESS 模式擴大到心衰竭、COPD 等更多慢性病，官員並表示正評估延伸至 Medicaid</a>。隔天，智慧戒指廠 Oura 與 AI 原生的初級照護公司 Counsel Health 宣布以早期心腎代謝（eCKM）軌道參與該模式，<a href="https://www.fiercehealthcare.com/health-tech/oura-counsel-health-cms-access-model" target="_blank" rel="noopener">頭九週已有 36,000 名 Oura 會員完成上線、上線體驗滿意度 70%、照護體驗評分 4.6 分（滿分 5）、收到症狀警示的會員有 15%（逾 10,000 人）實際接上照護服務</a>。ACCESS 是十年期的聯邦給付計畫，2027 年初上路，依病人結果而非服務量計酬；2026–2027 年要拿到全額給付，須有至少 50% 的歸屬受益人達成全部結果指標，而 3 月公布的給付費率低於業界預期。Oura 目前有 500 萬名付費會員。</span>
+        <span class="en">On September 16 <a href="https://www.fiercehealthcare.com/regulatory/cms-extends-access-model-more-chronic-conditions-cms-officials-eye-expansion-medicaid" target="_blank" rel="noopener">CMS extended its ACCESS model to heart failure, COPD and other chronic conditions, with officials saying they are weighing an extension into Medicaid</a>. A day later the smart-ring maker Oura and the AI-native primary care company Counsel Health said they would enter the model's early cardio-kidney-metabolic track, reporting that <a href="https://www.fiercehealthcare.com/health-tech/oura-counsel-health-cms-access-model" target="_blank" rel="noopener">36,000 Oura members completed onboarding in the first nine weeks, with 70% satisfaction on onboarding, a 4.6-out-of-5 care experience rating, and 15% of members receiving symptom alerts — over 10,000 people — connecting to care</a>. ACCESS is a ten-year federal payment initiative starting in early 2027 that pays on patient outcomes rather than services; for full payment in 2026–2027 at least 50% of aligned beneficiaries must hit every required outcome target, and the rates published in March came in below industry expectations. Oura has 5 million paid members.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">把這則跟 Ambience 那則並排讀，會看到同一個轉向在供應鏈的兩端同時發生：付費方要結果，廠商也開始賣結果。差別在 CMS 已經把「50% 受益人達標」寫成數字，而 Ambience 的 value-at-risk 比例還沒公開。誰先把數字寫死，誰就先取得談判基準。</span>
+        <span class="en">Read this beside the Ambience item and the same turn is visible at both ends of the supply chain: the payer wants outcomes, and the vendor has started selling outcomes. The difference is that CMS has written its threshold down — 50% of beneficiaries hitting every target — while Ambience's share-at-risk is still undisclosed. Whoever commits to a number first sets the negotiating baseline.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">36,000 人是「完成上線」而非「改善結果」；ACCESS 要到 2027 年初才正式上路，目前所有數字都是前導期的參與度指標，與最終給付掛鉤的健康結果尚未產生。Oura 與 Counsel Health 的數據為自行揭露。</span>
+        <span class="en">The 36,000 is people onboarded, not outcomes improved; ACCESS does not formally start until early 2027, so every figure so far is a pre-period engagement metric and none of the health outcomes that payment will hinge on yet exist. Oura and Counsel Health's numbers are self-reported.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.fiercehealthcare.com/health-tech/oura-counsel-health-cms-access-model" target="_blank" rel="noopener">Fierce Healthcare, 2026-09-17</a> · <a href="https://www.fiercehealthcare.com/regulatory/cms-extends-access-model-more-chronic-conditions-cms-officials-eye-expansion-medicaid" target="_blank" rel="noopener">Fierce Healthcare, 2026-09-16</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">從行政走進臨床</span><span class="en-inline">Admin to clinical</span></span>
+      <span class="tag">Sentara Health</span><span class="tag">GW RhythmX AI</span><span class="tag">9/17</span>
+    </div>
+    <h3>
+      <span class="zh">Sentara 用 30 個人、90 天，測試 AI 從「幫你打字」跨到「幫你決定」的那一步</span>
+      <span class="en">Sentara is testing the step from typing for you to deciding with you — 30 clinicians, 90 days</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">9 月 17 日，Sentara Health 宣布試點 GW RhythmX 的精準照護 AI 平台，把 AI 從行政自動化推進到診間當下的臨床決策支援：平台綜合病史、指引、照護缺口、社會決定因素與付費方要求，在看診時給出個人化建議。<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/sentara-health-pilots-gw-rhythmxs-ai-platform-support-emerging-primary-care" target="_blank" rel="noopener">第一階段 90 天，涵蓋家醫科與內科共 30 名醫師與進階執業人員、兩個市場</a>；Sentara 擁有 12 家醫院、400 多個照護據點，初級照護臨床人員約 473 名。對照案例是 Presbyterian Healthcare Services：六個月內對 1,100 名病人提供 17,000 次高度個人化的處置建議，經理賠核算驗證的病況擷取價值達 110 萬美元，試點後擴大至 200 名初級照護醫師。GW RhythmX 宣稱其平台橫跨 150 家以上健康系統、覆蓋 8,500 萬名病人。</span>
+        <span class="en">On September 17 Sentara Health said it would pilot GW RhythmX's precision care AI platform, pushing AI past administrative automation into decision support inside the visit itself: the platform combines history, guidelines, care gaps, social determinants and payer requirements into personalised recommendations at the point of care. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/sentara-health-pilots-gw-rhythmxs-ai-platform-support-emerging-primary-care" target="_blank" rel="noopener">Phase one runs 90 days across 30 physicians and advanced practice providers in family and internal medicine in two markets</a>. Sentara runs 12 hospitals and over 400 care sites with roughly 473 primary care clinicians. The reference case is Presbyterian Healthcare Services: 17,000 hyper-personalised treatment responses for 1,100 patients in six months, $1.1 million of condition capture validated through adjudicated claims, and expansion to 200 primary care physicians after the pilot. GW RhythmX says its platform spans more than 150 health systems and 85 million patients.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">注意 Presbyterian 那個數字的形狀：110 萬美元是「病況擷取」（condition capture），也就是風險校正編碼的價值，經理賠核算驗證。這跟 Abridge 的 Encounter Integrity、Epic 的 Penny 指向同一個口袋——臨床 AI 在 2026 年最容易被財務部門理解的價值，仍然是把已經發生的照護，正確地寫進帳單裡。這件事本身是對的（文件不足的病況本來就該記錄），但它同時也是整個產業目前最大的監管風險敞口。</span>
+        <span class="en">Note the shape of the Presbyterian number: $1.1 million of condition capture — that is, risk-adjustment coding value, validated through adjudicated claims. It points at the same pocket as Abridge's Encounter Integrity and Epic's Penny. In 2026 the value of clinical AI that a finance department most readily understands is still getting care that already happened correctly onto the bill. That is legitimate in itself — under-documented conditions should be recorded — but it is also the industry's largest open regulatory exposure right now.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">30 人、90 天、兩個市場的試點，尚無任何結果。Presbyterian 的 110 萬美元與 GW RhythmX 的 8,500 萬名病人覆蓋，皆為廠商自述。</span>
+        <span class="en">A 30-clinician, 90-day, two-market pilot has produced no results yet. Presbyterian's $1.1 million and GW RhythmX's 85-million-patient reach are both vendor-reported.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.fiercehealthcare.com/ai-and-machine-learning/sentara-health-pilots-gw-rhythmxs-ai-platform-support-emerging-primary-care" target="_blank" rel="noopener">Fierce Healthcare, 2026-09-17</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">另一種訂價</span><span class="en-inline">A different price</span></span>
+      <span class="tag">OpenEvidence</span><span class="tag">$12B</span><span class="tag">1/21</span>
+    </div>
+    <h3>
+      <span class="zh">同一批醫師，有人一年收 2,500 美元，有人一毛不收卻值 120 億</span>
+      <span class="en">The same physicians: one company charges $2,500 a year, another charges nothing and is worth $12 billion</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">1 月 21 日，<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/openevidence-clinches-250m-series-d-rapidly-growing-its-reach-doctors" target="_blank" rel="noopener">OpenEvidence 完成 2.5 億美元 D 輪、估值翻倍到 120 億美元</a>，一年內三輪合計募得約 7 億美元，年營收已突破 1 億美元。2025 年 12 月單月支援約 1,800 萬次臨床諮詢，一年前是每月 300 萬次；超過 40% 的美國醫師每日使用，橫跨一萬家以上醫院與醫學中心。它對醫師完全免費，收入來自廣告。執行長 Daniel Nadler 把差異化歸因於「對著作權友善的作法」與早期與 AMA、NEJM 的合作。調查顯示 OpenEvidence 是醫師採用率最高的 AI 工具，45% 的使用率超過其他九個平台的總和。</span>
+        <span class="en">On January 21 <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/openevidence-clinches-250m-series-d-rapidly-growing-its-reach-doctors" target="_blank" rel="noopener">OpenEvidence closed a $250 million Series D at a doubled $12 billion valuation</a>, bringing three rounds in a year to roughly $700 million, on annual revenue that has passed $100 million. In December 2025 alone it served about 18 million clinical consultations, against 3 million a month a year earlier; over 40% of U.S. physicians use it daily, across more than 10,000 hospitals and medical centres. It is free to doctors and funded by advertising. CEO Daniel Nadler credits a copyright-friendly approach and early partnerships with the AMA and NEJM. Surveys put OpenEvidence as the most-adopted AI tool among physicians at 45% — more than nine competing platforms combined.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這是本篇最該放在一起想的對照組。環境式 AI 賣給醫院的財務長，價格必須用 ROI 證明；OpenEvidence 直接繞過採購流程，賣給藥廠廣告主，醫師的注意力就是商品。兩種模式都在 2026 年證明可行，但護城河完全不同：一個靠交付與工作流嵌入，一個靠醫師心佔率與內容授權。微軟的 Dragon Copilot 已經把 OpenEvidence 納入第三方內容夥伴，這條界線只會更模糊。</span>
+        <span class="en">This is the comparison worth holding alongside everything above. Ambient AI sells to a hospital CFO and must justify its price with ROI; OpenEvidence skips procurement entirely and sells to pharmaceutical advertisers, with physician attention as the product. Both models proved viable in 2026, but the moats are nothing alike: one is built on delivery and workflow embedding, the other on physician mindshare and content licensing. Microsoft's Dragon Copilot already carries OpenEvidence as a third-party content partner, so the line will only blur further.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">「40% 美國醫師每日使用」與 45% 採用率皆源自公司提供或委託的調查，未見獨立稽核；1,800 萬次為諮詢次數而非獨立使用者數。廣告支撐的臨床決策工具存在結構性利益衝突，目前尚無監管框架處理。</span>
+        <span class="en">The "40% of U.S. physicians daily" and the 45% adoption figure come from company-supplied or company-commissioned surveys with no independent audit, and the 18 million is consultations, not distinct users. An advertising-funded clinical decision tool carries a structural conflict of interest for which no regulatory framework yet exists.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.fiercehealthcare.com/ai-and-machine-learning/openevidence-clinches-250m-series-d-rapidly-growing-its-reach-doctors" target="_blank" rel="noopener">Fierce Healthcare, 2026-01-21</a> · <a href="https://sacra.com/c/openevidence/" target="_blank" rel="noopener">Sacra — OpenEvidence</a></p></div>
+  </div>
+</section>
+
+<section id="product">
+  <h2>02 — Product Analysis</h2>
+  <div class="sec-title">
+    <span class="zh">兩家被同一記平台擠壓打到的公司，選了兩個相反的方向：一個改賣結果，一個改賣深度</span>
+    <span class="en">Two companies hit by the same platform squeeze, moving in opposite directions: one now sells the outcome, the other sells the depth</span>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>The Ambience Standard + Chorus</h3>
+      <p class="sub"><span class="zh-inline">把軟體費押在查核後的結果上 · Ambience Healthcare（美國）</span><span class="en-inline">Software fees staked on verified outcomes · Ambience Healthcare (USA)</span></p>
+      <p>
+        <span class="zh"><strong>功能與定位。</strong>核心產品仍是環境式文件生成：錄下診間對話、即時產出特定科別的病歷，內含 ICD-10 編碼協助與合規檢查，支援 200 個以上次專科，<a href="https://www.fiercehealthcare.com/health-tech/ambience-banks-243m-series-c-investors-continue-bet-big-ambient-ai" target="_blank" rel="noopener">宣稱減少 45% 的病歷時間，已部署於 40 家以上美國健康系統，包括 Cleveland Clinic、UCSF Health、Houston Methodist 與 Memorial Hermann</a>。真正改變的是外層：8 月起以 <a href="https://hitconsultant.net/2026/08/19/ambience-healthcare-introduces-the-ambience-standard-outcome-based-ai/" target="_blank" rel="noopener">value-at-risk 合約、派駐轉型團隊、Chorus 代理人調度平台三件一組</a>賣出去，買的不是席次，是達標。</span>
+        <span class="en"><strong>Function and position.</strong> The core product is still ambient documentation: record the encounter, produce a specialty-specific note in real time, with ICD-10 coding assistance and compliance checks across more than 200 subspecialties — <a href="https://www.fiercehealthcare.com/health-tech/ambience-banks-243m-series-c-investors-continue-bet-big-ambient-ai" target="_blank" rel="noopener">a claimed 45% cut in charting time, deployed at 40-plus U.S. health systems including Cleveland Clinic, UCSF Health, Houston Methodist and Memorial Hermann</a>. What changed is the wrapper: since August it is sold as <a href="https://hitconsultant.net/2026/08/19/ambience-healthcare-introduces-the-ambience-standard-outcome-based-ai/" target="_blank" rel="noopener">value-at-risk contracts, embedded transformation teams and the Chorus agent harness as one package</a> — the buyer is not purchasing seats, but delivery.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：它把對手最難複製的東西變成產品的一部分。Epic 不會派臨床與工程混編團隊駐點半年去改某家醫院的骨科工作流，Microsoft 也不會。Cleveland Clinic 在五家環境式廠商競標後給出<a href="https://www.fiercehealthcare.com/health-tech/ambience-banks-243m-series-c-investors-continue-bet-big-ambient-ai" target="_blank" rel="noopener">五年獨家合作</a>，這種決定通常買的不是準確率，是交付把握。</span>
+          <span class="en">: it productises the one thing rivals will not copy. Epic will not station a mixed clinical-engineering team inside a hospital for six months to rebuild one orthopaedics workflow, and neither will Microsoft. Cleveland Clinic awarded <a href="https://www.fiercehealthcare.com/health-tech/ambience-banks-243m-series-c-investors-continue-bet-big-ambient-ai" target="_blank" rel="noopener">an exclusive five-year partnership</a> after a competitive pilot against five ambient vendors, and decisions like that are rarely bought on accuracy — they are bought on confidence of delivery.</span>
+        </li>
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：定價論述跟付費方同向。當 CMS 的 ACCESS 要求<a href="https://www.fiercehealthcare.com/health-tech/oura-counsel-health-cms-access-model" target="_blank" rel="noopener">至少 50% 歸屬受益人達成全部結果指標才拿全額</a>，一個自己也按結果收費的供應商，在醫院董事會裡的說服成本低很多。</span>
+          <span class="en">: the pricing story runs with the payer. When CMS's ACCESS requires <a href="https://www.fiercehealthcare.com/health-tech/oura-counsel-health-cms-access-model" target="_blank" rel="noopener">at least 50% of aligned beneficiaries to hit every outcome target for full payment</a>, a supplier that also gets paid on outcomes is a far easier argument to carry into a board meeting.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：最關鍵的數字沒有公開——押上去的費用比例是多少？沒有這個數字，value-at-risk 與「未達標退部分服務費」在實質上無法區分。五家客戶的成果也全是公司自述，查核方未具名。</span>
+          <span class="en">: the number that matters is missing — what share of the fee is actually at risk? Without it, value-at-risk is indistinguishable from a partial service credit. The five customer outcomes are likewise company-disclosed, with no named verifier.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：派駐團隊是人力密集的，毛利結構跟純軟體完全不同。<a href="https://www.fiercehealthcare.com/health-tech/ambience-banks-243m-series-c-investors-continue-bet-big-ambient-ai" target="_blank" rel="noopener">2025 年 7 月 C 輪 2.43 億美元、估值 12.5 億美元、累計募資 3.45 億美元</a>——對一個要用顧問式交付擴張到數百家醫院的模式，這筆錢能燒多久，公司未給出單位經濟數字。</span>
+          <span class="en">: embedded teams are labour-intensive, and the gross-margin profile is nothing like pure software. <a href="https://www.fiercehealthcare.com/health-tech/ambience-banks-243m-series-c-investors-continue-bet-big-ambient-ai" target="_blank" rel="noopener">A $243 million Series C in July 2025 at a $1.25 billion valuation, $345 million raised in total</a> — for a model scaling consulting-style delivery to hundreds of hospitals, the company has published no unit economics to say how far that goes.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>Abridge — Revenue Cycle &amp; Nursing</h3>
+      <p class="sub"><span class="zh-inline">不改訂價，改換買單的部門 · Abridge（美國）</span><span class="en-inline">Same pricing, different budget holder · Abridge (USA)</span></p>
+      <p>
+        <span class="zh"><strong>功能與定位。</strong><a href="https://www.fiercehealthcare.com/ai-and-machine-learning/ambient-ai-startup-abridge-scores-300m-series-e-backed-a16z-and-khosla" target="_blank" rel="noopener">2025 年 6 月 E 輪 3 億美元、估值 53 億美元</a>，當時已部署 150 家以上健康系統、年支援 5,000 萬次以上醫療對話、涵蓋 55 個科別與 28 種語言；<a href="https://sacra.com/c/abridge/" target="_blank" rel="noopener">Sacra 記錄的 ARR 為 2025 年 5 月的 1 億美元（2024 年底為 6,000 萬），企業授權約每位臨床人員每年 2,500 美元，2026 年 4 月另有 3.16 億美元 E 輪增額</a>。今年的重心是兩個新戰場：把對話變成<a href="https://www.abridge.com/platform/revenue-cycle" target="_blank" rel="noopener">可稽核的帳單文件（住院 CDI、門診 Encounter Integrity、Care Signals）</a>，以及與 Mayo Clinic 共同開發、<a href="https://www.newsweek.com/ai-nurses-health-care-abridge-access-health-11921461" target="_blank" rel="noopener">5 月起對 250 家以上夥伴普遍可用的護理 AI</a>。</span>
+        <span class="en"><strong>Function and position.</strong> <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/ambient-ai-startup-abridge-scores-300m-series-e-backed-a16z-and-khosla" target="_blank" rel="noopener">A $300 million Series E at a $5.3 billion valuation in June 2025</a>, with 150-plus health systems deployed, over 50 million medical conversations a year, 55 specialties and 28 languages; <a href="https://sacra.com/c/abridge/" target="_blank" rel="noopener">Sacra records $100 million ARR as of May 2025, up from $60 million at the end of 2024, enterprise licences around $2,500 per clinician per year, and a further $316 million Series E extension in April 2026</a>. This year's weight is on two new fronts: turning the conversation into <a href="https://www.abridge.com/platform/revenue-cycle" target="_blank" rel="noopener">audit-ready billing documentation (inpatient CDI, ambulatory Encounter Integrity, Care Signals)</a>, and the nursing AI built with Mayo Clinic that has been <a href="https://www.newsweek.com/ai-nurses-health-care-abridge-access-health-11921461" target="_blank" rel="noopener">generally available across 250-plus partners since May</a>.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：與 Epic 的整合縱深仍是最硬的護城河。<a href="https://sacra.com/c/abridge/" target="_blank" rel="noopener">Sacra 估計 Abridge 在整合深度上領先 Nabla 約 3 到 6 個月</a>，而在 Epic 佔比超過四成的市場裡，這個時間差直接換算成預設選項。已公開的客戶包括 Kaiser Permanente（24,600 名醫師）、Mayo Clinic、Johns Hopkins、Duke Health、UPMC、Yale New Haven 等 90 家以上。</span>
+          <span class="en">: depth of Epic integration remains the hardest moat. <a href="https://sacra.com/c/abridge/" target="_blank" rel="noopener">Sacra puts Abridge three to six months ahead of Nabla on integration depth</a>, and in a market where Epic holds over 40% share that lead converts directly into default-choice status. Publicly disclosed customers run past 90 and include Kaiser Permanente with 24,600 physicians, Mayo Clinic, Johns Hopkins, Duke Health, UPMC and Yale New Haven.</span>
+        </li>
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：護理是一塊 Epic 與 Microsoft 都還在早期的市場，而 Abridge 拿到了信任門檻最高的入口。Mayo 病人對環境錄音的同意率落在<a href="https://www.newsweek.com/ai-nurses-health-care-abridge-access-health-11921461" target="_blank" rel="noopener">百分之八十幾</a>，這個數字比任何準確率指標都難複製。</span>
+          <span class="en">: nursing is a market where Epic and Microsoft are both still early, and Abridge got in through the door with the highest trust threshold. Mayo patients opt into ambient recording <a href="https://www.newsweek.com/ai-nurses-health-care-abridge-access-health-11921461" target="_blank" rel="noopener">in the high eighties by percentage</a> — a figure far harder to replicate than any accuracy benchmark.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：往收入循環走，等於把自己放進監管的射程內。即時產生 ICD-10/HCC 碼、自動算 E&amp;M 等級，跟 <a href="https://hitconsultant.net/2026/01/21/klas-roi-validation-2026-ambient-ai-results/" target="_blank" rel="noopener">KLAS 資料裡 Level 3 下降 18.2%、Level 4/5 上升的曲線</a>是同一件事的兩面。目前沒有任何獨立稽核機制能區分「文件終於完整」與 upcoding，而這是付費方遲早要查的。</span>
+          <span class="en">: moving into the revenue cycle puts the company inside the regulator's range. Generating ICD-10 and HCC codes in real time and auto-calculating E&amp;M levels is the same phenomenon as <a href="https://hitconsultant.net/2026/01/21/klas-roi-validation-2026-ambient-ai-results/" target="_blank" rel="noopener">the curve in the KLAS data where Level 3 falls 18.2% and Levels 4 and 5 rise</a>, seen from the other side. No independent audit mechanism currently distinguishes documentation finally being complete from upcoding, and payers will eventually look.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：估值對營收的倍數極高（53 億美元對 1 億美元 ARR），而它選擇不像 Ambience 那樣把費用綁上結果——在 <a href="https://healthexec.com/topics/artificial-intelligence/ai-ambient-scribes-boost-clinician-income" target="_blank" rel="noopener">JAMA 五院研究算出每月 167 美元收益</a>的背景下，每年 2,500 美元的席次價（約每月 208 美元）幾乎沒有安全邊際。護理端的實際部署量也遠低於「250 家夥伴」給人的印象。</span>
+          <span class="en">: the multiple is steep — $5.3 billion against $100 million ARR — and unlike Ambience it has chosen not to put fees behind outcomes. Against <a href="https://healthexec.com/topics/artificial-intelligence/ai-ambient-scribes-boost-clinician-income" target="_blank" rel="noopener">the $167 monthly gain the five-site JAMA study measured</a>, a $2,500 annual seat — about $208 a month — leaves almost no margin of safety. And actual nursing deployment is far below what "250 partners" implies.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="company">
+  <h2>03 — Companies &amp; Competition</h2>
+  <div class="sec-title">
+    <span class="zh">誰站在哪裡、憑什麼、跟誰打</span>
+    <span class="en">Who stands where, on what, against whom</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th><span class="zh-inline">公司</span><span class="en-inline">Company</span></th>
+        <th><span class="zh-inline">近況與數字</span><span class="en-inline">Recent state &amp; numbers</span></th>
+        <th><span class="zh-inline">競爭定位與護城河</span><span class="en-inline">Position &amp; moat</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Epic Systems</strong><br><span class="zh-inline">EHR 平台，現在自己做環境式 AI</span><span class="en-inline">The EHR platform, now building ambient AI itself</span></td>
+          <td>
+            <span class="zh">2 月 5 日推出 AI Charting，屬 Art 平台；Art 的病歷摘要單月使用超過 1,600 萬次；收入循環代理人 Penny 在 200 家以上機構、宣稱拒付減少 20%；急症醫院市佔逾 42%、急症病床近 55%（<a href="https://www.healthcaredive.com/news/epic-rolls-out-ai-charting-art-notetaking-documentation-scribe/811462/" target="_blank" rel="noopener">Healthcare Dive</a>、<a href="https://hitconsultant.net/2026/02/05/epic-releases-ai-charting-ambient-ai-market-implications/" target="_blank" rel="noopener">HIT Consultant</a>）。</span>
+            <span class="en">AI Charting shipped February 5 inside Art; chart summaries in Art exceed 16 million uses a month; the revenue-cycle agent Penny runs at 200-plus organisations with a claimed 20% drop in denials; over 42% of acute-care hospitals and close to 55% of acute-care beds (<a href="https://www.healthcaredive.com/news/epic-rolls-out-ai-charting-art-notetaking-documentation-scribe/811462/" target="_blank" rel="noopener">Healthcare Dive</a>, <a href="https://hitconsultant.net/2026/02/05/epic-releases-ai-charting-ambient-ai-market-implications/" target="_blank" rel="noopener">HIT Consultant</a>).</span>
+          </td>
+          <td>
+            <span class="zh">護城河是分發與資料所在地，不是模型。弱點是深度：200 個次專科的工作流客製、派駐轉型團隊這種事，平台廠商做不划算，也一向不做。</span>
+            <span class="en">The moat is distribution and where the data already sits, not the model. The weakness is depth: workflow customisation across 200 subspecialties, or stationing transformation teams on site, is uneconomic for a platform vendor and never has been its business.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Abridge</strong><br><span class="zh-inline">環境式文件領導者，正往帳單與護理擴張</span><span class="en-inline">Ambient documentation leader expanding into billing and nursing</span></td>
+          <td>
+            <span class="zh">估值 53 億美元、ARR 約 1 億美元、企業授權約每人每年 2,500 美元、2026 年 4 月 E 輪增額 3.16 億美元；150 家以上健康系統、年 5,000 萬次對話、55 科別、28 語言；<a href="https://sacra.com/c/abridge/" target="_blank" rel="noopener">2026 年 2 月獲 KLAS 環境式 AI 第一名、各項目全 A+</a>（<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/ambient-ai-startup-abridge-scores-300m-series-e-backed-a16z-and-khosla" target="_blank" rel="noopener">Fierce Healthcare</a>）。</span>
+            <span class="en">$5.3 billion valuation, roughly $100 million ARR, enterprise licences near $2,500 per clinician per year, plus a $316 million Series E extension in April 2026; 150-plus health systems, 50 million conversations a year, 55 specialties, 28 languages; <a href="https://sacra.com/c/abridge/" target="_blank" rel="noopener">ranked #1 Best in KLAS for ambient AI in February 2026 with A+ across categories</a> (<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/ambient-ai-startup-abridge-scores-300m-series-e-backed-a16z-and-khosla" target="_blank" rel="noopener">Fierce Healthcare</a>).</span>
+          </td>
+          <td>
+            <span class="zh">護城河是 Epic 整合縱深與旗艦客戶名單。弱點是它與 Epic 的關係同時是通路與競爭：Epic 自己做了同一件事之後，這個護城河的所有權不在 Abridge 手上。</span>
+            <span class="en">The moat is Epic integration depth and a flagship customer roster. The weakness is that its relationship with Epic is both channel and rivalry: now that Epic builds the same thing, Abridge does not own the moat it stands in.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Ambience Healthcare</strong><br><span class="zh-inline">押結果收費的挑戰者</span><span class="en-inline">The challenger that gets paid on outcomes</span></td>
+          <td>
+            <span class="zh">2025 年 7 月 C 輪 2.43 億美元、估值 12.5 億美元、累計 3.45 億美元，投資人含 Oak HC/FT、a16z、OpenAI Startup Fund、Kleiner Perkins、Optum Ventures；40 家以上健康系統、200 個以上次專科、宣稱減少 45% 病歷時間；8 月推出 The Ambience Standard（<a href="https://www.fiercehealthcare.com/health-tech/ambience-banks-243m-series-c-investors-continue-bet-big-ambient-ai" target="_blank" rel="noopener">Fierce Healthcare</a>、<a href="https://hitconsultant.net/2026/08/19/ambience-healthcare-introduces-the-ambience-standard-outcome-based-ai/" target="_blank" rel="noopener">HIT Consultant</a>）。</span>
+            <span class="en">A $243 million Series C in July 2025 at a $1.25 billion valuation, $345 million raised in all, backed by Oak HC/FT, a16z, the OpenAI Startup Fund, Kleiner Perkins and Optum Ventures; 40-plus health systems, 200-plus subspecialties, a claimed 45% cut in charting time; The Ambience Standard launched in August (<a href="https://www.fiercehealthcare.com/health-tech/ambience-banks-243m-series-c-investors-continue-bet-big-ambient-ai" target="_blank" rel="noopener">Fierce Healthcare</a>, <a href="https://hitconsultant.net/2026/08/19/ambience-healthcare-introduces-the-ambience-standard-outcome-based-ai/" target="_blank" rel="noopener">HIT Consultant</a>).</span>
+          </td>
+          <td>
+            <span class="zh">護城河是交付能力與願意承擔財務風險的意願，這兩樣平台廠商都學不來。弱點是規模與毛利：40 家對 150 家，而派駐模式的邊際成本不會隨客戶數下降。</span>
+            <span class="en">The moat is delivery capability and a willingness to carry financial risk, neither of which a platform vendor will imitate. The weakness is scale and margin: 40 systems against 150, with an embedded-team model whose marginal cost does not fall as customers are added.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Microsoft / Nuance</strong><br><span class="zh-inline">Dragon Copilot，靠生態系而非單點取勝</span><span class="en-inline">Dragon Copilot, competing on ecosystem rather than a single feature</span></td>
+          <td>
+            <span class="zh">已把 Dragon Copilot 擴及護理文件、透過 Epic Rover 提供，並開放第三方 app 與 agent 接入，夥伴含 Elsevier、OpenEvidence、UpToDate、Atropos Health、Ensemble、Cohere Health 等；十家健康系統參與早期開發，與 Mercy、Advocate 的護理主管共同設計（<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/microsoft-debuts-dragon-copilot-ai-clinical-assistant-nurses-expands-access" target="_blank" rel="noopener">Fierce Healthcare</a>）。</span>
+            <span class="en">Dragon Copilot now extends to nursing documentation, is delivered through Epic's Rover app, and is open to third-party apps and agents from partners including Elsevier, OpenEvidence, UpToDate, Atropos Health, Ensemble and Cohere Health; ten health systems took part in early development, co-designed with nursing leaders at Mercy and Advocate (<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/microsoft-debuts-dragon-copilot-ai-clinical-assistant-nurses-expands-access" target="_blank" rel="noopener">Fierce Healthcare</a>).</span>
+          </td>
+          <td>
+            <span class="zh">護城河是既有的 Nuance 裝機量加上 Azure 的企業採購關係，並用開放夥伴生態把自己變成中介層。弱點是它在別人的 EHR 裡當客人，而房東正在自己開餐廳。</span>
+            <span class="en">The moat is the installed Nuance base plus Azure's enterprise purchasing relationships, with an open partner ecosystem positioning it as the middle layer. The weakness is that it is a guest inside someone else's EHR, and the landlord has opened a restaurant.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Oracle Health</strong><br><span class="zh-inline">第二大 EHR，走的是同一條內建化路線</span><span class="en-inline">The second EHR, on the same build-it-in route</span></td>
+          <td>
+            <span class="zh">9 月 16 日在美推出護理臨床 AI agent，內嵌於 Oracle Health Foundation EHR；宣稱臨床病歷 AI 上線近兩年為醫師節省逾 40 萬小時；首波導入者 BayCare Health System；2022 年 6 月以 280 億美元併購 Cerner（<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/oracle-health-extends-clinical-ai-agent-inpatient-nurses" target="_blank" rel="noopener">Fierce Healthcare</a>）。</span>
+            <span class="en">Launched a nursing clinical AI agent in the U.S. on September 16, embedded in the Oracle Health Foundation EHR; claims more than 400,000 physician hours saved in the nearly two years since its clinical note AI launched; BayCare Health System is the early adopter; Cerner was acquired for $28 billion in June 2022 (<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/oracle-health-extends-clinical-ai-agent-inpatient-nurses" target="_blank" rel="noopener">Fierce Healthcare</a>).</span>
+          </td>
+          <td>
+            <span class="zh">護城河是自有 EHR 加雲端基礎設施的垂直整合。弱點是市佔遠不及 Epic，且仍以「小時數」自證價值——在買方已經開始問 ROI 的市場裡，這把尺正在失效。</span>
+            <span class="en">The moat is vertical integration of its own EHR with its own cloud. The weakness is a share far below Epic's, and a value case still argued in hours saved — a yardstick losing force in a market whose buyers have started asking about ROI.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>OpenEvidence</strong><br><span class="zh-inline">對醫師免費、靠廣告獲利的臨床答案引擎</span><span class="en-inline">A clinical answer engine, free to doctors and funded by ads</span></td>
+          <td>
+            <span class="zh">1 月 D 輪 2.5 億美元、估值 120 億美元，一年三輪約 7 億美元；年營收破 1 億美元；2025 年 12 月單月約 1,800 萬次臨床諮詢；逾 40% 美國醫師每日使用、覆蓋一萬家以上醫院（<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/openevidence-clinches-250m-series-d-rapidly-growing-its-reach-doctors" target="_blank" rel="noopener">Fierce Healthcare</a>）。</span>
+            <span class="en">A $250 million Series D in January at a $12 billion valuation, roughly $700 million across three rounds in a year; annual revenue past $100 million; about 18 million clinical consultations in December 2025 alone; over 40% of U.S. physicians using it daily across more than 10,000 hospitals (<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/openevidence-clinches-250m-series-d-rapidly-growing-its-reach-doctors" target="_blank" rel="noopener">Fierce Healthcare</a>).</span>
+          </td>
+          <td>
+            <span class="zh">護城河是醫師心佔率與 AMA、NEJM 的內容授權，完全繞開醫院採購。弱點是廣告支撐的臨床決策工具本身的利益衝突，目前無監管框架可依。</span>
+            <span class="en">The moat is physician mindshare plus content licensing from the AMA and NEJM, bypassing hospital procurement entirely. The weakness is the conflict of interest inherent in an ad-funded clinical decision tool, for which no regulatory framework exists.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Suki</strong><br><span class="zh-inline">以第三方驗證 ROI 為主打的中型挑戰者</span><span class="en-inline">A mid-sized challenger leading with third-party-validated ROI</span></td>
+          <td>
+            <span class="zh">KLAS 於 1 月驗證三家客戶成果：McLeod Health 文件時間減 26.8%、每位提供者每月增收 1,004 美元、看診量增 18.3%、擴至 249 名使用者；FMOL Health 減 21%、每位使用者 862 美元、有機成長 22%；Rush 當日結案率改善 5.5%、使用者逾 240 名（<a href="https://hitconsultant.net/2026/01/21/klas-roi-validation-2026-ambient-ai-results/" target="_blank" rel="noopener">HIT Consultant</a>）。</span>
+            <span class="en">KLAS validated results at three customers in January: McLeod Health cut documentation time 26.8%, added $1,004 per provider per month, raised encounters 18.3% and scaled to 249 users; FMOL Health cut 21%, added $862 per user and grew organically 22%; Rush improved same-day chart closure 5.5% across more than 240 users (<a href="https://hitconsultant.net/2026/01/21/klas-roi-validation-2026-ambient-ai-results/" target="_blank" rel="noopener">HIT Consultant</a>).</span>
+          </td>
+          <td>
+            <span class="zh">護城河是願意讓第三方揭露細顆粒度 ROI 的透明度，這在目前市場是稀缺品。弱點是規模：249 名與 240 名使用者的量級，跟 Kaiser 的 24,600 名醫師不在同一張表上。</span>
+            <span class="en">The moat is a willingness to let a third party publish granular ROI, which is scarce in this market. The weakness is scale: 249 and 240 users are not on the same page as Kaiser's 24,600 physicians.</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="zh"><strong>今天的競爭結構是一個夾心。</strong>上層是 Epic 與 Oracle，用分發權把環境式文件變成內建功能、用「小時數」自證；下層是 OpenEvidence，用免費與廣告繞開採購、把醫師注意力變成商品。被夾在中間的獨立廠商只剩兩種活法：Ambience 選擇把費用押在結果上，賭自己的交付能力；Abridge 選擇往 Epic 懶得去的縱深走，賭 CFO 與護理部的預算。兩種賭注在 2026 年都還沒開牌，而 <a href="https://healthexec.com/topics/artificial-intelligence/ai-ambient-scribes-boost-clinician-income" target="_blank" rel="noopener">JAMA 那份每月 167 美元</a>提醒的是：如果多數醫院最終落在同儕審查的那個數字附近，而不是廠商案例的六倍，那麼今天所有人的訂價都太高。</span>
+      <span class="en"><strong>Today's competitive structure is a sandwich.</strong> On top sit Epic and Oracle, using distribution to make ambient documentation a built-in feature and justifying it in hours saved. Underneath sits OpenEvidence, free and ad-funded, skipping procurement and turning physician attention into the product. The independent vendors caught in between have two ways to live: Ambience stakes its fee on outcomes and bets on its own delivery; Abridge digs into the depth Epic cannot be bothered with and bets on the CFO's and the nursing department's budget. Neither bet has been settled in 2026 — and <a href="https://healthexec.com/topics/artificial-intelligence/ai-ambient-scribes-boost-clinician-income" target="_blank" rel="noopener">the $167 a month in that JAMA paper</a> is the reminder that if most hospitals land near the peer-reviewed number rather than six times it, then everyone's price today is too high.</span>
+    </p>
+  </div>
+</section>
+
+<section id="taiwan">
+  <h2>04 — Taiwan Angle</h2>
+  <div class="sec-title">
+    <span class="zh">台灣其實已經把「結果決定給付」寫進制度，缺的是能被稽核的本土數字</span>
+    <span class="en">Taiwan has already written outcome-determines-payment into its institutions; what is missing is auditable local numbers</span>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="zh"><strong>(1) 我們比美國更早有了「結果換給付」的機構，但還沒有資料餵它。</strong>衛福部的三大 AI 中心裡，<a href="https://aicenter.mohw.gov.tw/" target="_blank" rel="noopener">AI 影響性研究中心的任務被寫成「跨院收集臨床成效與成本資料，進行健康經濟分析與保險定價，加速健保納入給付」</a>——這正是 Ambience 的 value-at-risk 合約在私部門要做的同一件事，只是台灣把它放在公部門。另外兩個中心分別處理落地（負責任 AI 執行中心）與取證驗證（臨床 AI 取證驗證中心），三者對應的是同一組問題：落地、驗證、給付。制度先行的好處是，本土廠商不必像美國同業那樣自己發明查核機制；但反過來說，只要沒有跨院的臨床成效與成本資料，這個中心就無法定價。</span>
+      <span class="en"><strong>(1) Taiwan built the outcome-for-payment institution earlier than the U.S. did, and still has to feed it data.</strong> Among the Ministry of Health and Welfare's three AI centres, <a href="https://aicenter.mohw.gov.tw/" target="_blank" rel="noopener">the Center for Clinical AI Impact Evaluation is chartered to collect clinical effectiveness and cost data across hospitals, run health-economics analysis and insurance pricing, and accelerate National Health Insurance coverage</a> — precisely what Ambience's value-at-risk contracts are trying to do in the private sector, except that Taiwan put it in the public one. The other two handle implementation (Responsible AI) and external validation (Clinical AI Validation), and together they address one set of problems: deployment, validation, reimbursement. The advantage of leading with institutions is that local vendors need not invent an audit mechanism the way their American counterparts must. The flip side is that without cross-hospital effectiveness and cost data, the centre cannot price anything.</span>
+    </p>
+    <p>
+      <span class="zh"><strong>(2) FHIR Box 是那份資料的前置工程，年底見真章。</strong>衛福部資訊處推動的 FHIR Box 預計今年底上線，目前三家醫學中心試辦，目標是全台醫學中心病歷互通，並在三到五年內推及約八成醫療院所。負責人李建璋的說法是，台灣選了第三條路——國家提供平台與轉換工具，而不是換掉所有電子病歷系統，也不跟隨歐盟的十年計畫；<a href="https://money.udn.com/money/story/7307/9675552" target="_blank" rel="noopener">他給的理由很直白：「數據是所有 AI 發展的石油。」</a>把這件事跟今天的主題接起來看：美國廠商能公開 3 倍 ROI、45%→31% 燒竭率這種數字，是因為 Epic 生態裡的資料已經對齊了；台灣的本土環境式 AI 廠商要拿出同等級的舉證，必須等 FHIR Box 把分母準備好。</span>
+      <span class="en"><strong>(2) FHIR Box is the groundwork for that data, and it is due by year-end.</strong> The Ministry's information department expects FHIR Box to go live at the end of this year, with three medical centres piloting, aiming for record interoperability across all of Taiwan's medical centres and roughly 80% of healthcare institutions within three to five years. Lee Chien-chang's framing is that Taiwan took a third road — the state supplies the platform and the conversion tools, rather than replacing every EHR or following the EU's ten-year plan; <a href="https://money.udn.com/money/story/7307/9675552" target="_blank" rel="noopener">his reason is blunt: "data is the oil of all AI development."</a> Connect that to today's theme: American vendors can publish 3x ROI and burnout falling from 45% to 31% because the data inside the Epic ecosystem is already aligned. A Taiwanese ambient AI vendor cannot produce evidence of that grade until FHIR Box has prepared the denominator.</span>
+    </p>
+    <p>
+      <span class="zh"><strong>(3) 給台灣醫院採購者的一句實話。</strong>本篇最值得帶走的數字不是任何一家廠商的成功案例，而是 <a href="https://healthexec.com/topics/artificial-intelligence/ai-ambient-scribes-boost-clinician-income" target="_blank" rel="noopener">JAMA 五院研究裡「沒有任何一家機構要求醫師多看病人」</a>這個設計細節。廠商案例的六倍收益，多半來自組織主動把省下的時間換成診次；台灣的健保支付結構與門診量壓力跟美國的 E&amp;M 分級制度不同，直接把 862 到 1,004 美元換算成新台幣去做投報估算，會嚴重高估。合理的做法是先問：省下來的時間，我們打算拿去做什麼？如果答案是「讓醫師早點下班」，那這筆錢的回收就不會出現在財報上——那仍然可能是對的決定，但要用留任率而不是 ROI 去核算。</span>
+      <span class="en"><strong>(3) One plain sentence for Taiwanese hospital buyers.</strong> The figure worth taking from this report is not any vendor's success story but a design detail inside the JAMA five-site study: <a href="https://healthexec.com/topics/artificial-intelligence/ai-ambient-scribes-boost-clinician-income" target="_blank" rel="noopener">none of the institutions required clinicians to book additional patients</a>. The sixfold gain in vendor case studies comes largely from organisations that actively converted saved time into extra encounters. Taiwan's reimbursement structure and outpatient volume pressures differ from the American E&amp;M levelling system, so converting $862 to $1,004 straight into New Taiwan dollars for a payback estimate will badly overstate the case. The right first question is what the saved time is for. If the answer is letting clinicians go home earlier, the return will not appear on a financial statement — which may still be the right decision, but it should be accounted for in retention, not ROI.</span>
+    </p>
+  </div>
+</section>
+
+<section id="reading">
+  <h2>05 — Further Reading</h2>
+  <div class="sec-title">
+    <span class="zh">五篇：兩篇拆商業模式、兩篇拆數字、一篇拆平台權力</span>
+    <span class="en">Five: two on business models, two on the numbers, one on platform power</span>
+  </div>
+
+  <ol class="reading">
+    <li>
+      <a href="https://hitconsultant.net/2026/02/05/epic-releases-ai-charting-ambient-ai-market-implications/" target="_blank" rel="noopener">The "Platform" Squeeze: Epic Releases Native AI Charting, Putting Venture-Backed Scribes on Notice — HIT Consultant (2026-02-05)</a>
+      <p class="why"><span class="zh">今年所有環境式 AI 策略轉向的起點。它把「Sherlocking」這個詞用在醫療 IT 上，並解釋為什麼安全論述（語音不出院）比價格更致命。</span><span class="en">The origin point of every ambient AI strategy shift this year. It applies the word "Sherlocking" to health IT and explains why the security argument — audio never leaves the building — cuts deeper than price.</span></p>
+    </li>
+    <li>
+      <a href="https://hitconsultant.net/2026/08/19/ambience-healthcare-introduces-the-ambience-standard-outcome-based-ai/" target="_blank" rel="noopener">Ambience Healthcare Launches The Ambience Standard — HIT Consultant (2026-08-19)</a>
+      <p class="why"><span class="zh">先不管數字可不可信，這篇值得讀的是合約結構本身：value-at-risk、派駐團隊、代理人調度三件事怎麼綁成一個可簽的東西。</span><span class="en">Set the numbers aside and read it for the contract structure: how value-at-risk, embedded teams and agent orchestration get bundled into something a health system can actually sign.</span></p>
+    </li>
+    <li>
+      <a href="https://healthexec.com/topics/artificial-intelligence/ai-ambient-scribes-boost-clinician-income" target="_blank" rel="noopener">AI scribes add at least $167 per month to clinician income: 5-site study — Health Exec (2026-04)</a>
+      <p class="why"><span class="zh">目前唯一一份跨五家學術醫學中心、8,500 人規模的同儕審查證據。讀它的方法是看研究設計限制，而不是看結論數字——作者自己說那是保守下界。</span><span class="en">The only peer-reviewed evidence at this scale — five academic centres, 8,500 clinicians. Read it for the design constraints rather than the headline figure; the authors themselves call it a conservative lower bound.</span></p>
+    </li>
+    <li>
+      <a href="https://hitconsultant.net/2026/01/21/klas-roi-validation-2026-ambient-ai-results/" target="_blank" rel="noopener">Beyond the Hype: New KLAS Data Validates the Financial and Clinical ROI of Ambient AI — HIT Consultant (2026-01-21)</a>
+      <p class="why"><span class="zh">跟上一篇對讀效果最好。同一個問題、相反的量級，差別藏在「誰被納入樣本」與「組織有沒有重新排診」這兩個變數裡。</span><span class="en">Best read directly against the previous item: same question, opposite order of magnitude, with the difference hiding in who got into the sample and whether the organisation rebooked its schedules.</span></p>
+    </li>
+    <li>
+      <a href="https://sacra.com/c/abridge/" target="_blank" rel="noopener">Abridge revenue, valuation &amp; funding — Sacra</a>
+      <p class="why"><span class="zh">少數把 ARR、席次價、以及對 Nabla／Nuance／低價競品的相對位置放在同一頁的分析。看訂價段落就好，敘事部分可略。</span><span class="en">One of the few write-ups putting ARR, seat pricing and relative position against Nabla, Nuance and the low-cost tier on one page. Read the pricing section; the narrative can be skipped.</span></p>
+    </li>
+  </ol>
+</section>
+
+<section id="refs">
+  <h2>06 — References</h2>
+  <div class="sec-title">
+    <span class="zh">參考文獻</span>
+    <span class="en">References</span>
+  </div>
+
+  <div class="panel">
+    <ol class="refs">
+      <li>Epic rolls out AI charting tool as scribe market heats up. <em>Healthcare Dive</em>, 2026-02-05. <a href="https://www.healthcaredive.com/news/epic-rolls-out-ai-charting-art-notetaking-documentation-scribe/811462/" target="_blank" rel="noopener">healthcaredive.com</a></li>
+      <li>The "Platform" Squeeze: Epic Releases Native AI Charting, Putting Venture-Backed Scribes on Notice. <em>HIT Consultant</em>, 2026-02-05. <a href="https://hitconsultant.net/2026/02/05/epic-releases-ai-charting-ambient-ai-market-implications/" target="_blank" rel="noopener">hitconsultant.net</a></li>
+      <li>Ambience Healthcare Launches The Ambience Standard, Linking AI Platform Fees Directly to Measurable Clinical and Financial Outcomes. <em>HIT Consultant</em>, 2026-08-19. <a href="https://hitconsultant.net/2026/08/19/ambience-healthcare-introduces-the-ambience-standard-outcome-based-ai/" target="_blank" rel="noopener">hitconsultant.net</a></li>
+      <li>AI in Healthcare News and Updates (09/16/26). <em>Health IT Answers</em>, 2026-09-16. <a href="https://www.healthitanswers.net/ai-in-healthcare-news-and-updates-091626/" target="_blank" rel="noopener">healthitanswers.net</a></li>
+      <li>Ambience Healthcare Sets a New Standard for AI Partnerships in Healthcare. <em>Business Wire</em>, 2026-08-19. <a href="https://www.businesswire.com/news/home/20260819538285/en/" target="_blank" rel="noopener">businesswire.com</a></li>
+      <li>Abridge Platform — Ambient AI for Revenue Cycle. <em>Abridge</em>, accessed 2026-09-18. <a href="https://www.abridge.com/platform/revenue-cycle" target="_blank" rel="noopener">abridge.com</a></li>
+      <li>Abridge Expands Nursing AI Platform to 250+ Health Systems. <em>Newsweek</em>, 2026-05-06. <a href="https://www.newsweek.com/ai-nurses-health-care-abridge-access-health-11921461" target="_blank" rel="noopener">newsweek.com</a></li>
+      <li>Generative AI company Abridge scores $300M Series E backed by a16z and Khosla Ventures. <em>Fierce Healthcare</em>, 2025-06-24. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/ambient-ai-startup-abridge-scores-300m-series-e-backed-a16z-and-khosla" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>Abridge Secures $300M Series E Led by a16z. <em>Abridge</em>, 2025-06-24. <a href="https://www.abridge.com/blog/series-e" target="_blank" rel="noopener">abridge.com</a></li>
+      <li>Abridge revenue, valuation &amp; funding. <em>Sacra</em>, accessed 2026-09-18. <a href="https://sacra.com/c/abridge/" target="_blank" rel="noopener">sacra.com</a></li>
+      <li>AI scribes add at least $167 per month to clinician income: 5-site study. <em>Health Exec</em>, 2026-04. <a href="https://healthexec.com/topics/artificial-intelligence/ai-ambient-scribes-boost-clinician-income" target="_blank" rel="noopener">healthexec.com</a></li>
+      <li>Beyond the Hype: New KLAS Data Validates the Financial and Clinical ROI of Ambient AI. <em>HIT Consultant</em>, 2026-01-21. <a href="https://hitconsultant.net/2026/01/21/klas-roi-validation-2026-ambient-ai-results/" target="_blank" rel="noopener">hitconsultant.net</a></li>
+      <li>Rush, McLeod Health and FMOL Health report revenue gains from Suki AI scribe. <em>Fierce Healthcare</em>, 2026-01. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/rush-mcleod-health-and-fmol-health-report-revenue-gains-suki-ai-scribe" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>Oracle Health extends clinical AI agent to inpatient nurses. <em>Fierce Healthcare</em>, 2026-09-16. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/oracle-health-extends-clinical-ai-agent-inpatient-nurses" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>Counsel Health taps Oura to join CMS ACCESS model. <em>Fierce Healthcare</em>, 2026-09-17. <a href="https://www.fiercehealthcare.com/health-tech/oura-counsel-health-cms-access-model" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>CMS extends ACCESS to heart failure, COPD, other conditions. <em>Fierce Healthcare</em>, 2026-09-16. <a href="https://www.fiercehealthcare.com/regulatory/cms-extends-access-model-more-chronic-conditions-cms-officials-eye-expansion-medicaid" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>Sentara Health pilots GW RhythmX's AI platform to support emerging primary care. <em>Fierce Healthcare</em>, 2026-09-17. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/sentara-health-pilots-gw-rhythmxs-ai-platform-support-emerging-primary-care" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>OpenEvidence clinches $250M Series D, rapidly growing its reach to doctors. <em>Fierce Healthcare</em>, 2026-01-21. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/openevidence-clinches-250m-series-d-rapidly-growing-its-reach-doctors" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>OpenEvidence revenue, valuation &amp; funding. <em>Sacra</em>, accessed 2026-09-18. <a href="https://sacra.com/c/openevidence/" target="_blank" rel="noopener">sacra.com</a></li>
+      <li>Ambience reels in $243M Series C as investors continue to bet big on ambient AI. <em>Fierce Healthcare</em>, 2025-07-29. <a href="https://www.fiercehealthcare.com/health-tech/ambience-banks-243m-series-c-investors-continue-bet-big-ambient-ai" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>Ambience Healthcare Announces $243 Million Series C. <em>Ambience Healthcare</em>, 2025-07-29. <a href="https://www.ambiencehealthcare.com/blog/ambience-healthcare-announces-243-million-series-c-to-scale-its-ai-platform-for-health-systems" target="_blank" rel="noopener">ambiencehealthcare.com</a></li>
+      <li>Microsoft debuts Dragon Copilot AI clinical assistant for nurses, expands access to 3rd-party apps, agents. <em>Fierce Healthcare</em>, 2025-10-19. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/microsoft-debuts-dragon-copilot-ai-clinical-assistant-nurses-expands-access" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>Ayble Health banks $16M Series A to expand AI-driven precision digestive and autoimmune healthcare. <em>Fierce Healthcare</em>, 2026-09-16. <a href="https://www.fiercehealthcare.com/finance/ayble-health-banks-16m-series-expand-ai-drive-precision-digestive-autoimmune-healthcare" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>智慧醫療再跨一步 衛福部推 FHIR Box 年底串聯全台醫學中心病歷. <em>經濟日報</em>, 2026. <a href="https://money.udn.com/money/story/7307/9675552" target="_blank" rel="noopener">money.udn.com</a></li>
+      <li>臺灣智慧醫療三大中心. <em>衛生福利部</em>, accessed 2026-09-18. <a href="https://aicenter.mohw.gov.tw/" target="_blank" rel="noopener">aicenter.mohw.gov.tw</a></li>
+    </ol>
+    <div class="note">
+      <span class="zh"><strong>編輯說明：</strong>本期為週五的產品與公司深度分析，因此刻意把時間窗口從「過去 24–72 小時」往前拉：本週實際發生的是 Oracle 護理 agent（9/16）、CMS ACCESS 擴大（9/16）、Oura × Counsel Health（9/17）、Sentara × GW RhythmX（9/17），而要解釋這些事為什麼此刻發生，必須回到 2 月的 Epic AI Charting 與 8 月的 The Ambience Standard。所有回溯的節點都在文中標明原始日期。財務與成效數字方面：Ambience 五家客戶成果、Abridge 的 Sutter 78% 與 Corewell 30 分鐘、Oracle 的 40 萬小時、Epic Penny 的拒付減少 20%、GW RhythmX 的 8,500 萬名病人與 Presbyterian 110 萬美元、OpenEvidence 的 40% 醫師日活，全部為廠商或其夥伴自述，未經獨立稽核，本文已在各則的「要打折的地方」逐一標示。KLAS 的 Suki ROI 數字雖經 KLAS 驗證，但該報導未揭露方法學、樣本數與統計顯著性門檻。Abridge 的 ARR 與席次價引自 Sacra 的第三方分析而非公司揭露，時間點為 2025 年 5 月，可能已過時。Microsoft Dragon Copilot 護理版一則的原始日期為 2025 年 10 月 19 日，係作為競爭格局背景而非本週新聞引用。Forbes 對 Epic UGM 2026 的報導在查證時回傳 403，未採用其內容。本文未使用任何付費牆後的內容。</span>
+      <span class="en"><strong>Editor's note:</strong> This is the Friday product and company deep dive, so the window was deliberately widened beyond the usual 24–72 hours. What actually happened this week is Oracle's nursing agent (Sep 16), the CMS ACCESS expansion (Sep 16), Oura with Counsel Health (Sep 17) and Sentara with GW RhythmX (Sep 17) — but explaining why they are happening now requires going back to Epic's AI Charting in February and The Ambience Standard in August. Every retrospective item carries its original date in the text. On figures: Ambience's five customer outcomes, Abridge's 78% at Sutter and 30 minutes at Corewell, Oracle's 400,000 hours, Epic Penny's 20% denial reduction, GW RhythmX's 85 million patients and Presbyterian's $1.1 million, and OpenEvidence's 40% daily physician use are all vendor- or partner-reported and not independently audited; each is flagged in that story's "Discount this" row. The Suki ROI figures were validated by KLAS, but the coverage discloses no methodology, sample size or significance threshold. Abridge's ARR and seat price come from Sacra's third-party analysis rather than company disclosure and date to May 2025, so they may be stale. The Microsoft Dragon Copilot nursing item is originally dated October 19, 2025, and is cited as competitive background rather than as this week's news. Forbes's account of Epic UGM 2026 returned a 403 on retrieval and none of its content was used. No paywalled material was used in this report.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-row">
+    <div>
+      <span class="zh">AI／醫療AI 每日新知日報 · 由 Claude 於台北時間每日自動產出 · 本期主題：星期五／產品與公司深度分析<br>本報告內容經來源查證，但不構成投資或醫療建議。所有數據請以原始出處為準。</span>
+      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Friday / Product &amp; Company Deep Dive<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
+    </div>
+    <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com / 返回 peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
+  </div>
+</footer>
+</main>
+
+<div class="fabs">
+  <button class="up" id="up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+  <a class="home-fab" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg></a>
+</div>
+
+<script>
+function setLang(l){
+  document.body.classList.remove('lang-zh','lang-en');
+  document.body.classList.add('lang-'+l);
+  document.documentElement.lang = (l==='zh') ? 'zh-Hant' : 'en';
+  document.getElementById('b-zh').classList.toggle('on', l==='zh');
+  document.getElementById('b-en').classList.toggle('on', l==='en');
+  document.title = (l==='zh')
+    ? 'AI／醫療AI 每日新知日報 · 2026-09-18'
+    : 'AI & Medical AI Daily · 2026-09-18';
+}
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.getElementById('theme-ic').textContent =
+    document.body.classList.contains('dark') ? '◑' : '◐';
+}
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.body.classList.add('dark');
+  document.getElementById('theme-ic').textContent = '◑';
+}
+window.addEventListener('scroll', function(){
+  document.getElementById('up').classList.toggle('show', window.scrollY > 600);
+});
+
+(function(){
+  var el = document.getElementById('ghs');
+  if (!el || typeof fetch !== 'function') return;
+  fetch('https://api.github.com/repos/tingwei161803/ai-medical-daily', {headers:{Accept:'application/vnd.github+json'}})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if (!d || typeof d.stargazers_count !== 'number') return;
+      var n = d.stargazers_count;
+      el.textContent = n >= 1000 ? (Math.round(n/100)/10) + 'k' : String(n);
+    })
+    .catch(function(){});
+})();
+</script>
+</body>
+</html>
