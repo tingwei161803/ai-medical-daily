@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>AI／醫療AI 每日新知日報 · 2026-09-19</title>
+<meta property="og:url" content="https://ai-medical-daily.peteraim.com/reports/2026-09-19.html" />
+<link rel="canonical" href="https://ai-medical-daily.peteraim.com/reports/2026-09-19.html" />
+<meta name="report-date" content="2026-09-19">
+<meta name="report-theme" content="general-ai">
+<meta name="report-title-zh" content="這一週決定 AI 該跑多快的人，沒有一個是監管機關：Amodei 9/12 喊「必須放慢」，三天後三家最大實驗室被證實在私下擬自己的標準機構，加州 9/18 簽下「緊急關閉鍵」行政命令——而同一週 Anthropic 自己公布的數字是，Claude 已經主導 26% 打造下一個 Claude 的工作">
+<meta name="report-title-en" content="Nobody setting AI's speed limit this week was a regulator: Amodei said on Sept 12 the industry must slow down, three days later the three largest labs were confirmed to be drafting their own standards body, and California signed a kill-switch order on Sept 18 — while Anthropic's own disclosure put Claude in the lead on 26% of the work that builds the next Claude">
+<meta name="report-summary-zh" content="Amodei 9/12 喊放慢、三大實驗室 9/15 被證實密談自建標準機構、加州 9/18 簽下 kill switch 行政命令，同一週 Anthropic 揭露 Claude 已主導 26% 的內部研發，Novo Nordisk 把 Claude Science 放進新藥研發。對醫療的意義是：決定醫療 AI 底層模型安全門檻的那張桌子，現在坐的不是 FDA。">
+<meta name="report-summary-en" content="Amodei called for a slowdown on Sept 12, the three largest labs were confirmed on Sept 15 to be drafting their own standards body, California signed a kill-switch order on Sept 18, Anthropic disclosed that Claude now leads 26% of its own R&D, and Novo Nordisk put Claude Science into drug discovery. For medicine the point is this: the table that sets the safety floor for the models under clinical AI is not the FDA's.">
+<meta property="og:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HJLDQZDK5V');
+</script>
+<link rel="stylesheet" href="/assets/report.css">
+</head>
+<body class="lang-zh">
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span><span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <div class="bar-sp"></div>
+    <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub / 在 GitHub 給這個專案一顆星"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
+    <div class="seg">
+      <button id="b-zh" class="on" onclick="setLang('zh')">中文</button>
+      <button id="b-en" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="kicker">
+    <span class="zh-inline">星期六 · 廣義 AI 新知</span>
+    <span class="en-inline">Saturday · General AI</span>
+  </div>
+  <h1>
+    <span class="zh">這一週決定 AI 該跑多快的人，沒有一個是監管機關：Amodei 9/12 喊「必須放慢」，三天後三家最大實驗室被證實在私下擬自己的標準機構，加州 9/18 簽下「緊急關閉鍵」行政命令——而同一週 Anthropic 自己公布的數字是，Claude 已經主導 26% 打造下一個 Claude 的工作</span>
+    <span class="en">Nobody setting AI's speed limit this week was a regulator: Amodei said on Sept 12 the industry must slow down, three days later the three largest labs were confirmed to be drafting their own standards body, and California signed a kill-switch order on Sept 18 — while Anthropic's own disclosure put Claude in the lead on 26% of the work that builds the next Claude</span>
+  </h1>
+  <div class="dateline">
+    <span class="zh-inline">2026 年 9 月 19 日（六）· 涵蓋 9/12–9/19 · 台北時間</span>
+    <span class="en-inline">Saturday, September 19, 2026 · Covering Sep 12–19 · Taipei time</span>
+  </div>
+  <p class="lede">
+    <span class="zh">今天是廣義 AI 日，但這一週的主線恰好全部指向醫療會踩到的地板。<a href="https://www.axios.com/2026/09/12/anthropic-ai-amodei-pacing" target="_blank" rel="noopener">Axios 9/12 報導</a>，Anthropic 執行長 Dario Amodei 發表〈We Must Pace the Frontier〉，公開主張「我們必須放慢改進 AI 模型能力的速度」；三天後 <a href="https://techcrunch.com/2026/09/15/openai-anthropic-google-have-been-in-talks-on-ai-safety-for-weeks/" target="_blank" rel="noopener">TechCrunch 證實</a>，OpenAI、Anthropic 與 Google DeepMind 已就 AI 安全談了數週，內容包含籌組一個產業自律標準機構。9/18 <a href="https://www.gov.ca.gov/2026/09/18/governor-newsom-issues-executive-order-to-accelerate-independent-oversight-and-advance-the-creation-of-an-ai-kill-switch/" target="_blank" rel="noopener">加州州長 Newsom 簽署行政命令</a>，要求兩個月內召集專家，研議把獨立驗證組織派駐進實驗室、並要求前沿模型具備「緊急關閉」機制。與此同時，<a href="https://qz.com/anthropic-claude-ai-research-development-automation-091826" target="_blank" rel="noopener">Anthropic 首度公布內部指標</a>：Claude 已主導自家超過四分之一的研發工作。把這四件事排在一起，醫療端要問的不是「FDA 什麼時候管 AI」，而是「在 FDA 看到那個裝置之前，模型的安全門檻是誰訂的」。</span>
+    <span class="en">Today is the general-AI slot, but this week's through-line lands squarely on the floor that clinical AI stands on. On Sept 12, <a href="https://www.axios.com/2026/09/12/anthropic-ai-amodei-pacing" target="_blank" rel="noopener">Axios reported</a> that Anthropic CEO Dario Amodei published "We Must Pace the Frontier," arguing openly that "we must slow the pace at which we improve the capabilities of AI models." Three days later <a href="https://techcrunch.com/2026/09/15/openai-anthropic-google-have-been-in-talks-on-ai-safety-for-weeks/" target="_blank" rel="noopener">TechCrunch confirmed</a> that OpenAI, Anthropic and Google DeepMind had been in safety talks for weeks, including a proposal for an industry-run standards body. On Sept 18 <a href="https://www.gov.ca.gov/2026/09/18/governor-newsom-issues-executive-order-to-accelerate-independent-oversight-and-advance-the-creation-of-an-ai-kill-switch/" target="_blank" rel="noopener">Governor Newsom signed an executive order</a> convening national experts within two months to consider embedding independent verification organizations onsite in labs and requiring an emergency shutoff for frontier models. In the same week <a href="https://qz.com/anthropic-claude-ai-research-development-automation-091826" target="_blank" rel="noopener">Anthropic published internal metrics for the first time</a>: Claude now leads more than a quarter of its own R&amp;D. Put those four together and the medical question is not when the FDA will regulate AI, but who sets the model's safety floor long before any device reaches the FDA.</span>
+  </p>
+
+  <nav class="toc">
+    <a href="#top"><span class="zh-inline">重點新聞</span><span class="en-inline">Top Stories</span></a>
+    <a href="#product"><span class="zh-inline">產品分析</span><span class="en-inline">Product Analysis</span></a>
+    <a href="#company"><span class="zh-inline">公司與競爭</span><span class="en-inline">Companies &amp; Competition</span></a>
+    <a href="#taiwan"><span class="zh-inline">台灣視角</span><span class="en-inline">Taiwan Angle</span></a>
+    <a href="#reading"><span class="zh-inline">延伸閱讀</span><span class="en-inline">Further Reading</span></a>
+    <a href="#refs"><span class="zh-inline">參考文獻</span><span class="en-inline">References</span></a>
+  </nav>
+</div>
+
+<section id="top">
+  <h2>01 — Top Stories</h2>
+  <div class="sec-title">
+    <span class="zh">治理由誰主筆、算力由誰供應、以及科學研究實際上被改寫了哪一段</span>
+    <span class="en">Who drafts the governance, who supplies the compute, and which part of science actually got rewritten</span>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">治理</span><span class="en-inline">Governance</span></span>
+      <span class="tag">Anthropic</span><span class="tag">OpenAI</span><span class="tag">9/12</span>
+    </div>
+    <h3>
+      <span class="zh">Amodei 公開主張放慢前沿：先讓外部評估者拿到「等同員工」的存取權，再要求同業跟上</span>
+      <span class="en">Amodei argues for pacing the frontier: give outside evaluators employee-level access first, then ask rivals to match it</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">9 月 12 日，Amodei 發表〈We Must Pace the Frontier〉，提出三步：Anthropic 單方面給外部評估者「員工層級」的存取權以監看安全流程並通報事件；呼籲業界採取同樣做法；再由民主國家政府協調安全標準。<a href="https://www.axios.com/2026/09/12/anthropic-ai-amodei-pacing" target="_blank" rel="noopener">Axios, 2026-09-12</a> 引述他警告，失控的 AI 群體可能「接管整個網際網路」，造成數千億美元損失。Sam Altman 表示同意業界應放慢前沿模型開發並承諾同樣開放外部評估者；Elon Musk 表態「Dario 是對的」。</span>
+        <span class="en">On September 12, Amodei published "We Must Pace the Frontier," laying out three steps: Anthropic will unilaterally grant external evaluators employee-level access to monitor its safety procedures and report incidents; it calls on the rest of the industry to do the same; and it asks democratic governments to coordinate on standards. <a href="https://www.axios.com/2026/09/12/anthropic-ai-amodei-pacing" target="_blank" rel="noopener">Axios, 2026-09-12</a> quotes his warning that rogue AI swarms could "take over the entire internet," causing hundreds of billions of dollars in damage. Sam Altman agreed the industry needs slower frontier development and committed to the same evaluator access; Elon Musk said simply that "Dario is right."</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這是第一次由最大的幾家實驗室主動提出「減速」，而且提案的核心不是禁止什麼，是<strong>讓第三方進到公司內部</strong>。對醫療而言，這正是上游版本的「上市後監測」：臨床 AI 產品的風險有很大一塊來自底層基礎模型的行為改變，而那一層目前沒有任何醫療監管機關看得到。</span>
+        <span class="en">This is the first time the largest labs have themselves proposed decelerating, and the core of the proposal is not a ban on anything but <strong>letting third parties inside the company</strong>. For medicine this is the upstream version of post-market surveillance: a large share of the risk in a clinical AI product comes from behavioral drift in the underlying foundation model, and no medical regulator currently has visibility into that layer.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">這是一封由最有動機定義規則的公司寫的倡議書。創投 Chamath Palihapitiya 直接質疑該文的目的是把權力集中到 Anthropic，而非單純處理安全問題；文章本身也未提及生物或醫療風險。</span>
+        <span class="en">This is a manifesto written by the company with the strongest incentive to define the rules. Investor Chamath Palihapitiya argued the essay aimed to consolidate power with Anthropic rather than purely address safety, and the essay coverage makes no mention of biological or medical risk at all.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.axios.com/2026/09/12/anthropic-ai-amodei-pacing" target="_blank" rel="noopener">Axios — Anthropic, OpenAI CEOs call for slowdown in AI development, 2026-09-12</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">治理</span><span class="en-inline">Governance</span></span>
+      <span class="tag">Google DeepMind</span><span class="tag">Cohere</span><span class="tag">9/15</span>
+    </div>
+    <h3>
+      <span class="zh">三家最大實驗室談了數週要組「FINRA 式」自律機構，第四家的執行長兩天前就先罵這是卡特爾</span>
+      <span class="en">The three largest labs spent weeks drafting a FINRA-style self-regulator; the fourth lab's CEO had already called it a cartel</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">9 月 15 日，OpenAI 全球政策長 Chris Lehane 證實該公司已與 Anthropic、Google DeepMind 就 AI 安全合作數週，三方討論建立產業標準機構，並支持 FRONTIER Act 中要求「獨立驗證組織」進入前沿實驗室的條款（<a href="https://techcrunch.com/2026/09/15/openai-anthropic-google-have-been-in-talks-on-ai-safety-for-weeks/" target="_blank" rel="noopener">TechCrunch, 2026-09-15</a>）。Lehane 稱這類協調「不需要」政府的反托拉斯豁免。但在那之前兩天，Cohere 共同創辦人暨執行長 Aidan Gomez 已於 9 月 13 日發文稱該提案「換個名字仍然是卡特爾」，理由是「由少數實驗室設計的安全機制，只會對它們自己已經建好防護的風險嚴格」（<a href="https://aiweekly.co/alerts/cohere-ceo-gomez-calls-rival-labs-standards-plan-a-cartel" target="_blank" rel="noopener">AI Weekly, 2026-09-13</a>）。</span>
+        <span class="en">On September 15, OpenAI global policy chief Chris Lehane confirmed the company had been working with Anthropic and Google DeepMind on AI safety for weeks, including discussion of an industry standards body, and said OpenAI supports the FRONTIER Act provision giving "independent verification organizations" access to frontier labs (<a href="https://techcrunch.com/2026/09/15/openai-anthropic-google-have-been-in-talks-on-ai-safety-for-weeks/" target="_blank" rel="noopener">TechCrunch, 2026-09-15</a>). Lehane said the firms "don't need" an antitrust waiver for such coordination. Two days earlier, on September 13, Cohere co-founder and CEO Aidan Gomez had published an essay calling the proposal "a cartel by any other name," on the grounds that "a safety regime designed by a few labs will only be rigorous about the risks they have already built their safety systems to assess" (<a href="https://aiweekly.co/alerts/cohere-ceo-gomez-calls-rival-labs-standards-plan-a-cartel" target="_blank" rel="noopener">AI Weekly, 2026-09-13</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">Gomez 的批評對醫療特別有殺傷力：如果標準由三家通用模型公司訂，被納入評測的風險會是它們的風險——越獄、網路攻擊、自主複製——而不是臨床端的風險，例如在少數族群上的效能落差、EHR 情境下的幻覺、或模型改版後診斷行為的漂移。醫療界如果不在這張桌子上，就會拿到一套跟自己問題無關的安全證明。</span>
+        <span class="en">Gomez's objection cuts hardest in medicine. If three general-purpose model companies write the standard, the risks that get tested are their risks — jailbreaks, cyber-offense, autonomous replication — not clinical ones: performance gaps across subpopulations, hallucination inside an EHR workflow, diagnostic drift after a model version bump. If healthcare is not at that table, it will be handed a safety certificate about somebody else's problem.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://techcrunch.com/2026/09/15/openai-anthropic-google-have-been-in-talks-on-ai-safety-for-weeks/" target="_blank" rel="noopener">TechCrunch, 2026-09-15</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">法規</span><span class="en-inline">Regulation</span></span>
+      <span class="tag">California</span><span class="tag">SB 813 / AB 1405</span><span class="tag">9/18</span>
+    </div>
+    <h3>
+      <span class="zh">加州行政命令要研議前沿模型的「緊急關閉鍵」，並把「失控事件」寫進重大安全事故定義</span>
+      <span class="en">California's executive order studies an emergency shutoff for frontier models and adds loss-of-control to the definition of a critical safety incident</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">9 月 18 日，Newsom 簽署行政命令，要求政府營運署加速 SB 813 與 AB 1405 的實施時程，並於兩個月內召集全國專家提出強化州級 AI 法的建議。研議中的措施包括：由獨立第三方撰寫前沿 AI 公司的安全計畫、要求業者開發前沿模型的緊急關閉機制、把指定的獨立驗證組織派駐到實驗室現場定期稽核，以及把「失控事件」納入重大安全事故的定義（<a href="https://www.gov.ca.gov/2026/09/18/governor-newsom-issues-executive-order-to-accelerate-independent-oversight-and-advance-the-creation-of-an-ai-kill-switch/" target="_blank" rel="noopener">加州州長辦公室, 2026-09-18</a>）。</span>
+        <span class="en">On September 18, Newsom signed an executive order directing the Government Operations Agency to accelerate implementation of SB 813 and AB 1405 and to convene national experts within two months on strengthening state AI law. The measures under consideration: independent third parties writing frontier companies' safety plans; a required emergency shutoff mechanism for frontier models; designated independent verification organizations embedded onsite in labs for regular audits; and an updated definition of critical safety incidents that includes loss-of-control events (<a href="https://www.gov.ca.gov/2026/09/18/governor-newsom-issues-executive-order-to-accelerate-independent-oversight-and-advance-the-creation-of-an-ai-kill-switch/" target="_blank" rel="noopener">Office of the Governor of California, 2026-09-18</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這是第一次有政府把實驗室自己提出的「派駐外部評估者」寫進行政文件——也就是說，9/12 的倡議與 9/18 的命令在機制上是同一件事，只是一邊是自願、一邊準備變成州法。醫療產業應該注意的是：<strong>這份命令通篇沒有提到醫療</strong>。既有的醫療 AI 治理討論仍然停在裝置層，而州政府正在模型層先動手。</span>
+        <span class="en">This is the first time a government has written the labs' own "embed external evaluators" idea into an executive document — meaning the Sept 12 manifesto and the Sept 18 order describe the same mechanism, one voluntary, one on its way to becoming state law. What healthcare should notice: <strong>the order does not mention healthcare anywhere</strong>. Medical AI governance is still arguing at the device layer while a state government moves first at the model layer.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">這是行政命令，不是法律：它要求的是「研議」與「召集專家」，沒有給出任何技術規格，「kill switch」目前只是一個沒有定義的名詞。落地與否取決於後續立法。</span>
+        <span class="en">This is an executive order, not a statute: it orders study and the convening of experts, provides no technical specification, and leaves "kill switch" an undefined term. Whether any of it lands depends on legislation that has not happened yet.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.gov.ca.gov/2026/09/18/governor-newsom-issues-executive-order-to-accelerate-independent-oversight-and-advance-the-creation-of-an-ai-kill-switch/" target="_blank" rel="noopener">Office of the Governor of California, 2026-09-18</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">能力指標</span><span class="en-inline">Capability</span></span>
+      <span class="tag">Anthropic</span><span class="tag">R&amp;D Automation Index</span><span class="tag">9/17</span>
+    </div>
+    <h3>
+      <span class="zh">Anthropic 首度公布內部自動化指標：Claude 主導 26% 的自家研發，但「完全自主」的比例是 0%</span>
+      <span class="en">Anthropic publishes an internal automation metric for the first time: Claude leads 26% of its own R&amp;D, and the fully autonomous share is 0%</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">9 月 17 日，Anthropic 公布「R&amp;D Automation Index」，指 Claude 已主導公司超過四分之一（26%）的研發工作，而這個比例在今年 2 月還低於 1%。<a href="https://qz.com/anthropic-claude-ai-research-development-automation-091826" target="_blank" rel="noopener">Quartz</a> 的說明是：Claude 能「從一個高層次提示把大部分任務端到端做完，同時保留人類督導在迴圈內」。彙整報導另指該指標涵蓋約 15,000 項任務、公司內部同時運行約 30,000 個代理，超過九成的工作落在「協作」層級以上，但<strong>完全自主的比例為 0%</strong>（<a href="https://blog.buildfastwithai.com/ai-news-today-september-18-2026" target="_blank" rel="noopener">buildfastwithai 彙整, 2026-09-18</a>）。</span>
+        <span class="en">On September 17, Anthropic published an "R&amp;D Automation Index" stating that Claude now leads more than a quarter — 26% — of the company's research and development work, up from under 1% in February. <a href="https://qz.com/anthropic-claude-ai-research-development-automation-091826" target="_blank" rel="noopener">Quartz</a> describes the bar as Claude being able to "complete most of a given task end-to-end from a high-level prompt while a human supervisor remains in the loop." Aggregated coverage adds that the index spans roughly 15,000 tasks with about 30,000 agents running concurrently inside the company, that over 90% of the work sits at the "collaborates" level or above, and that the <strong>fully autonomous share is 0%</strong> (<a href="https://blog.buildfastwithai.com/ai-news-today-september-18-2026" target="_blank" rel="noopener">buildfastwithai roundup, 2026-09-18</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這個指標的價值不在 26%，在那個 0%。它給了醫療端一個可以直接借用的量表形狀：把「AI 參與」拆成協助／協作／主導／完全自主四級，然後承認最高那一級現在是空的。醫院導入環境式 AI 或診斷輔助時最缺的就是這種分級語言——目前的討論常常在「有沒有用 AI」這個二元問題上打轉。</span>
+        <span class="en">The value of this index is not the 26% but the 0%. It hands healthcare a scale shape it can borrow directly: break "AI involvement" into assists / collaborates / leads / fully autonomous, then admit the top tier is currently empty. That graded vocabulary is exactly what hospitals lack when deploying ambient documentation or diagnostic support, where the debate still tends to collapse into a binary about whether AI was used at all.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">這是一份廠商自述、未經第三方稽核的內部指標，分級標準由公布方自訂，且評的是自家最熟悉模型的員工。「主導 26%」不等於「取代 26% 的人力」，兩者之間沒有給出換算。</span>
+        <span class="en">This is a vendor-reported internal metric with no independent audit, a taxonomy defined by the party publishing it, and raters who are employees working with the model they know best. "Leads 26%" is not "replaces 26% of the headcount," and no conversion between the two is offered.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://qz.com/anthropic-claude-ai-research-development-automation-091826" target="_blank" rel="noopener">Quartz — Anthropic says Claude leads 26% of its AI R&amp;D work, 2026-09-18</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">醫藥</span><span class="en-inline">Pharma</span></span>
+      <span class="tag">Novo Nordisk</span><span class="tag">Claude Science</span><span class="tag">9/16</span>
+    </div>
+    <h3>
+      <span class="zh">Novo Nordisk 選了通用模型而不是生技專用模型：Claude Science 進入新藥研發流程，但沒有公布任何數字</span>
+      <span class="en">Novo Nordisk picked a general-purpose model over a bio-specialist: Claude Science enters drug discovery, with no figures disclosed</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">9 月 16 日，Novo Nordisk 宣布與 Anthropic 合作，將 Claude 用於加速新藥探索與開發、推進 R&amp;D 工作流程的科學推理、支援生物推理與藥物機轉理解，並用於 AI 驅動的軟體開發與代理式工程；雙方也將測試 Claude Science 於特定研發流程。執行長 Mike Doustdar 稱此為公司「成為全球最 AI 驅動的醫療保健公司」企圖的又一佐證，並說 AI 可「壓縮從研究到上市產品的路徑」；Amodei 則重述他的老命題——AI 有潛力把「一個世紀的生物與醫學突破壓縮到十年」（<a href="https://www.biospace.com/press-releases/novo-and-anthropic-will-collaborate-to-advance-drug-discovery-with-claude" target="_blank" rel="noopener">BioSpace 新聞稿全文, 2026-09-16</a>）。Novo 全球員工超過 67,000 人。</span>
+        <span class="en">On September 16, Novo Nordisk announced a collaboration with Anthropic to use Claude for accelerating drug discovery and development, advancing scientific reasoning in R&amp;D workflows, supporting biological reasoning and understanding of drug mechanics, and for AI-driven software development and agentic engineering; the two will also test Claude Science on specific R&amp;D workflows. CEO Mike Doustdar called it "another testament to our ambition to become the world's most AI-driven healthcare company," saying AI can "compress the path from research to marketed product." Amodei restated his standing claim that AI could "compress a century's worth of biological and medical breakthroughs into a decade" (<a href="https://www.biospace.com/press-releases/novo-and-anthropic-will-collaborate-to-advance-drug-discovery-with-claude" target="_blank" rel="noopener">BioSpace, full press release, 2026-09-16</a>). Novo employs more than 67,000 people globally.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">歐洲最大藥廠在「專用生物模型」與「通用前沿模型」之間選了後者，這是一個結構性訊號：藥廠買的不是結構預測能力，是<strong>橫跨文獻、實驗紀錄、法規文件與內部程式碼的推理與代理能力</strong>。結構預測早已是紅海，而把整條研發流程接起來的那一層還沒有贏家。</span>
+        <span class="en">Europe's largest pharmaceutical company chose a general-purpose frontier model over a bio-specialist, which is a structural signal: what pharma is buying is not structure prediction but <strong>reasoning and agentic work spanning literature, lab records, regulatory documents and internal code</strong>. Structure prediction is already crowded; the layer that stitches the whole R&amp;D pipeline together has no winner yet.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">新聞稿<strong>沒有揭露任何金額、時程、節省工時或適用專案數</strong>，也沒有說明資料治理的具體做法（只寫「robust data governance and human oversight」）。在看到第一個可驗證的里程碑之前，這是一份意向書等級的消息。</span>
+        <span class="en">The press release <strong>discloses no deal value, timeline, hours saved or number of programs covered</strong>, and describes data governance only as "robust data governance and human oversight." Until a verifiable milestone appears, this is news at the level of a letter of intent.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.biospace.com/press-releases/novo-and-anthropic-will-collaborate-to-advance-drug-discovery-with-claude" target="_blank" rel="noopener">BioSpace — Novo and Anthropic will collaborate to advance drug discovery with Claude, 2026-09-16</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">研究</span><span class="en-inline">Research</span></span>
+      <span class="tag">OpenBind</span><span class="tag">AbbVie</span><span class="tag">9/14</span>
+    </div>
+    <h3>
+      <span class="zh">Nature：藥廠拿出 2 萬多個私有結構餵給蛋白質模型，配體交互作用預測從三分之一拉到一半以上</span>
+      <span class="en">Nature: 20,000-plus proprietary structures from drug firms lift protein–ligand prediction from a third of cases to more than half</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">9 月 14 日 <a href="https://www.nature.com/articles/d41586-026-02882-x" target="_blank" rel="noopener">Nature 新聞</a>報導，一個由 AbbVie、Astex Pharmaceuticals 等藥廠組成的聯盟，用超過 20,000 個私有蛋白質結構訓練蛋白質摺疊模型：在 1,056 個測試結構中，該聯盟模型對超過一半達到「高準確度」的蛋白質—配體交互作用預測，而公開版 OpenFold3 只有約三分之一、Boltz-2 約 40%。脈絡數字是：Protein Data Bank 有約 200,000 個實驗解析結構，但其中與類藥分子交互作用的只有約 10,000 個。英國政府對 OpenBind 專案提供最高 800 萬英鎊（約 1,080 萬美元）支持。哥倫比亞大學計算生物學家 Mohammed AlQuraishi 形容結果是「效能上相當大的一跳」。</span>
+        <span class="en">On September 14, <a href="https://www.nature.com/articles/d41586-026-02882-x" target="_blank" rel="noopener">Nature news</a> reported that a consortium including AbbVie and Astex Pharmaceuticals trained protein-folding models on more than 20,000 proprietary structures: across 1,056 test structures the consortium model reached high-accuracy protein–ligand interaction prediction on more than half, against roughly a third for the public OpenFold3 and about 40% for Boltz-2. For context, the Protein Data Bank holds some 200,000 experimentally determined structures but only about 10,000 involving drug-like molecules. The UK government is backing the OpenBind project with up to £8 million (US$10.8 million). Columbia computational biologist Mohammed AlQuraishi called the result "a pretty big bump in performance."</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這是本週最硬的一則，而且它反駁了一個流行說法：模型能力的瓶頸在架構。這裡的瓶頸在資料——公開資料庫裡類藥分子的結構只有 1 萬個，而藥廠抽屜裡的私有結構一口氣補了 2 萬個，效能差距立刻從三分之一變成一半以上。同樣的結構也適用於醫院：真正稀缺的不是模型，是被鎖在機構內部、有標註的臨床資料。</span>
+        <span class="en">This is the hardest result of the week, and it contradicts a popular story: that the bottleneck on model capability is architecture. Here the bottleneck is data. Public databases hold only ~10,000 drug-like-molecule structures; 20,000 more out of pharma's drawers moved the hit rate from a third to over half in one step. The same shape applies to hospitals: what is genuinely scarce is not models but labelled clinical data locked inside institutions.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">Nature 明確註記：這項研究目前<strong>只發表在部落格文章、尚未同儕審查，模型也未公開</strong>。測試集僅 1,056 個結構，「高準確度」的門檻由該聯盟自訂，且與公開模型的比較未經第三方重現。</span>
+        <span class="en">Nature flags it explicitly: the work so far exists <strong>only in a blog post, is not peer reviewed, and the model is not publicly available</strong>. The test set is 1,056 structures, the "high accuracy" threshold is the consortium's own, and the comparison against public models has not been independently reproduced.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.nature.com/articles/d41586-026-02882-x" target="_blank" rel="noopener">Nature — Drug firms' secret data supercharge AI protein models, 2026-09-14</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">算力</span><span class="en-inline">Compute</span></span>
+      <span class="tag">Z.ai / 智譜</span><span class="tag">GLM-5.3-FlashX</span><span class="tag">9/17</span>
+    </div>
+    <h3>
+      <span class="zh">GLM-5.3-FlashX 宣稱在約 10 萬顆國產加速器上跑到 ~200 tokens/s，而且推論堆疊是模型自己寫的</span>
+      <span class="en">GLM-5.3-FlashX claims ~200 tokens/s across roughly 100,000 domestic accelerators — with the inference stack written by the model itself</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">智譜／Z.ai 在 9 月 17–18 日公布 GLM-5.3-FlashX 的服務細節：3,200 億參數的 MoE 架構、每 token 啟用 180 億參數，在約 100,000 顆國產加速器上達到約 200 tokens/秒，且服務端最佳化由其所稱的「Infra Agent」完成（<a href="https://pandaily.com/zhipu-glm-5-3-flashx-domestic-accelerator-inference" target="_blank" rel="noopener">Pandaily</a>）。前代 GLM-5.3-Flash 於 8 月 26 日推出，支援 100 萬 token 脈絡，輸入每百萬 token 0.15 美元、輸出 0.50 美元，相對完整版 GLM-5.3 的 1.40／4.40 美元大幅壓低（<a href="https://www.implicator.ai/zai-glm-5-3-flash-chinese-chips-nvidia-cost/" target="_blank" rel="noopener">implicator.ai</a>）。</span>
+        <span class="en">On September 17–18, Zhipu/Z.ai detailed the serving stack behind GLM-5.3-FlashX: a 320-billion-parameter mixture-of-experts model activating 18 billion parameters per token, running at roughly 200 tokens per second across about 100,000 domestic accelerators, with serving optimization performed by what the company calls an "Infra Agent" (<a href="https://pandaily.com/zhipu-glm-5-3-flashx-domestic-accelerator-inference" target="_blank" rel="noopener">Pandaily</a>). The predecessor GLM-5.3-Flash launched August 26 with a one-million-token context at $0.15 per million input tokens and $0.50 output, against $1.40 and $4.40 for the full GLM-5.3 (<a href="https://www.implicator.ai/zai-glm-5-3-flash-chinese-chips-nvidia-cost/" target="_blank" rel="noopener">implicator.ai</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">對醫療 AI 的意義是價格帶。百萬 token 輸入 0.15 美元這個量級，會讓「把整份病歷、整批影像報告、整個科別的年度紀錄丟進模型」從奢侈變成日常預算。哪一個生態系先把長脈絡推論做到便宜，哪一個生態系的醫院導入曲線就先往上彎——而這一次便宜的是不依賴 Nvidia 的那一條路線。</span>
+        <span class="en">For medical AI the significance is the price band. At $0.15 per million input tokens, feeding an entire chart, a whole batch of imaging reports, or a department's year of notes into a model shifts from a luxury to a line item. Whichever ecosystem makes long-context inference cheap first bends its hospital adoption curve first — and this time the cheap path is the one that does not depend on Nvidia.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">implicator.ai 明白指出：Z.ai <strong>沒有公布晶片型號與廠商、沒有公布功耗、確切吞吐量、使用率，也沒有給出對 Nvidia 的正規化比較</strong>，而且「所有服務結果都未經獨立稽核」。更關鍵的是，它只示範了推論，<strong>沒有示範在國產硬體上訓練</strong>。</span>
+        <span class="en">implicator.ai is explicit: Z.ai <strong>named neither the chip model nor the vendor, and published no power consumption, exact throughput, utilization rate or normalized Nvidia comparison</strong>, and "none of the serving results has been independently audited." More to the point, it demonstrated inference only — <strong>not training on domestic hardware</strong>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.implicator.ai/zai-glm-5-3-flash-chinese-chips-nvidia-cost/" target="_blank" rel="noopener">implicator.ai — Z.ai served GLM-5.3-Flash entirely on Chinese AI chips</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">能源與資本</span><span class="en-inline">Power &amp; Capital</span></span>
+      <span class="tag">US House</span><span class="tag">Crusoe</span><span class="tag">9/16–9/17</span>
+    </div>
+    <h3>
+      <span class="zh">同一週：美國眾院以 417 比 3 要資料中心自付電網升級費，Crusoe 以 309 億美元估值募到 39 億美元蓋更多資料中心</span>
+      <span class="en">Same week: the US House votes 417–3 to make data centers pay for their own grid upgrades, and Crusoe raises $3.9B at a $30.9B valuation to build more of them</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">9 月 16 日，美國眾議院以 417 比 3 通過 Ratepayer Protection Act，要求各州「考慮」對超過 100 MW 的大型負載採用標準：發電、輸電與配電升級的全額成本回收、動工前的財務擔保、以及客戶提前解約時的成本回收保障。ClearView Energy Partners 認為此法主要是「強化」既有趨勢，因為目前僅 13 個州尚無針對資料中心等大型負載的費率（<a href="https://www.utilitydive.com/news/house-passes-ratepayer-protection-bill-data-centers/830658/" target="_blank" rel="noopener">Utility Dive, 2026-09-16</a>）。隔天 9 月 17 日，Crusoe 宣布 39 億美元 Series F、投後估值 309 億美元，由 Atreides Management、Mubadala Capital 與 Valor Equity Partners 領投，Nvidia、Founders Fund、GIC、QIA、TPG 等參與；其可卡車運送的模組化資料中心 Spark 是主打產品，客戶包含 OpenAI（德州 Abilene）、Meta、Microsoft、Oracle，並與 Jane Street 簽下五年 130 億美元的 GPU 與 AI 基礎設施合約（<a href="https://techcrunch.com/2026/09/17/crusoe-raises-3-9b-to-build-massive-data-centers-and-small-modular-ai-factories/" target="_blank" rel="noopener">TechCrunch, 2026-09-17</a>）。</span>
+        <span class="en">On September 16, the US House passed the Ratepayer Protection Act 417–3, requiring states to "consider" standards for loads above 100 MW: full cost recovery for generation, transmission and distribution upgrades, financial assurances before upgrades begin, and guaranteed recovery if customers exit contracts early. ClearView Energy Partners judged the bill would "largely reinforce" a transition already underway, since only 13 states currently lack large-load tariffs (<a href="https://www.utilitydive.com/news/house-passes-ratepayer-protection-bill-data-centers/830658/" target="_blank" rel="noopener">Utility Dive, 2026-09-16</a>). The next day, Crusoe announced a $3.9 billion Series F at a $30.9 billion post-money valuation led by Atreides Management, Mubadala Capital and Valor Equity Partners, with Nvidia, Founders Fund, GIC, QIA and TPG participating; its truck-transportable modular data centers, Spark, are the headline product, customers include OpenAI (Abilene, Texas), Meta, Microsoft and Oracle, and Jane Street recently signed a five-year, $13 billion contract for GPU and AI infrastructure (<a href="https://techcrunch.com/2026/09/17/crusoe-raises-3-9b-to-build-massive-data-centers-and-small-modular-ai-factories/" target="_blank" rel="noopener">TechCrunch, 2026-09-17</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">417 比 3 是這一週最乾淨的政治訊號：在美國，「AI 很好但不該由我的電費補貼」已經是兩黨共識。醫院是 24 小時不能斷電、且電價敏感的大用戶，在同一張電網上跟資料中心競爭容量與價格；成本歸屬規則怎麼寫，會直接寫進醫院的營運費用。</span>
+        <span class="en">417–3 is the cleanest political signal of the week: in the US, "AI is fine but should not be subsidized by my power bill" is now bipartisan consensus. Hospitals are large, price-sensitive loads that cannot go dark, competing on the same grid with data centers for capacity and for price; how the cost-allocation rules get written lands directly in hospital operating expense.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">法案只要求各州「考慮」採用標準，不是直接課予義務；Utility Dive 也指出期中選舉前參議院通過的可能性不高。Crusoe 方面，TechCrunch 未給出任何百萬瓦容量或營收數字。</span>
+        <span class="en">The bill requires states only to "consider" the standards, not to adopt them, and Utility Dive notes Senate passage before the midterms is unlikely. On Crusoe, TechCrunch provides no megawatt capacity or revenue figures at all.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.utilitydive.com/news/house-passes-ratepayer-protection-bill-data-centers/830658/" target="_blank" rel="noopener">Utility Dive, 2026-09-16</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">民意</span><span class="en-inline">Public Opinion</span></span>
+      <span class="tag">Pew Research</span><span class="tag">n=3,488</span><span class="tag">9/16</span>
+    </div>
+    <h3>
+      <span class="zh">Pew：美國人對 AI 的擔憂首次出現黨派翻轉，民主黨 56% 超過共和黨 49%，整體擔憂從 2021 年的 37% 升到約一半</span>
+      <span class="en">Pew: American worry about AI flips partisan for the first time — 56% of Democrats against 49% of Republicans, with overall concern up from 37% in 2021 to about half</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">9 月 16 日 <a href="https://www.pewresearch.org/short-reads/2026/09/16/democrats-are-now-more-worried-than-republicans-about-ai-and-its-impact-on-jobs/" target="_blank" rel="noopener">Pew Research Center</a> 公布調查（American Trends Panel，3,488 位美國成人，實地時間 2026 年 6 月 22–28 日）：對 AI 進入日常生活「擔憂多於興奮」者，民主黨 56%、共和黨 49%；認為 AI 會讓工作機會減少者，民主黨 75%、共和黨 68%。民主黨的擔憂自 2023 年的 46% 升至 56%，自 2021 年起累計上升 25 個百分點；共和黨則自 2023 年起下降 10 個百分點。自由派民主黨人從 2023 年的 45% 跳到 63%。全體美國人的擔憂比例從 2021 年的 37% 升到約一半。</span>
+        <span class="en">On September 16, the <a href="https://www.pewresearch.org/short-reads/2026/09/16/democrats-are-now-more-worried-than-republicans-about-ai-and-its-impact-on-jobs/" target="_blank" rel="noopener">Pew Research Center</a> published a survey of 3,488 US adults on the American Trends Panel, fielded June 22–28, 2026: 56% of Democrats and 49% of Republicans are more concerned than excited about AI's growing role in daily life, and 75% of Democrats against 68% of Republicans expect AI to reduce the number of jobs. Democratic concern rose from 46% in 2023 to 56%, a 25-point climb since 2021, while Republican concern fell 10 points since 2023. Among liberal Democrats it jumped from 45% in 2023 to 63%. Across all Americans, concern is up from 37% in 2021 to roughly half.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">醫療 AI 的採用率最終不是由準確率決定，是由病人願不願意被它處理決定。當「擔憂多於興奮」的比例來到全體的一半、且不分黨派都在上升時，醫院端的知情同意、AI 使用揭露與人類覆核流程就不是法遵成本，是採用的前提。</span>
+        <span class="en">Adoption of medical AI is ultimately settled not by accuracy but by whether patients accept being handled by it. With "more concerned than excited" now at about half of all Americans and rising on both sides of the aisle, disclosure of AI use, informed consent and documented human review stop being compliance overhead and become preconditions for deployment.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">實地時間是 6 月下旬，距發布已近三個月，且問的是「AI 進入日常生活」這個泛稱，<strong>不是醫療場景</strong>。把它直接外推到病人對臨床 AI 的態度會過度延伸。</span>
+        <span class="en">The field dates are late June, nearly three months before publication, and the question asks about AI in daily life in general, <strong>not in a medical setting</strong>. Extrapolating it straight onto patient attitudes toward clinical AI over-reaches.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.pewresearch.org/short-reads/2026/09/16/democrats-are-now-more-worried-than-republicans-about-ai-and-its-impact-on-jobs/" target="_blank" rel="noopener">Pew Research Center, 2026-09-16</a></p></div>
+  </div>
+</section>
+
+<section id="product">
+  <h2>02 — Product Analysis</h2>
+  <div class="sec-title">
+    <span class="zh">本週出現的兩個產品剛好站在對角線：一個把科學推理賣給藥廠，一個把長脈絡推論的價格打到地板</span>
+    <span class="en">The week's two products sit on opposite diagonals: one sells scientific reasoning to pharma, the other drops the floor price of long-context inference</span>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>Claude Science</h3>
+      <p class="sub"><span class="zh-inline">科學推理與代理式研發工作流 · Anthropic（美國）</span><span class="en-inline">Scientific reasoning and agentic R&amp;D workflows · Anthropic (US)</span></p>
+      <p>
+        <span class="zh"><strong>功能與定位。</strong>不是結構預測模型，而是把文獻、實驗紀錄、法規文件與內部程式碼串起來的推理層。本週的實證買家是 Novo Nordisk：雙方將測試 Claude Science 於特定 R&amp;D 工作流程，用途涵蓋生物推理、藥物機轉理解與代理式工程（<a href="https://www.biospace.com/press-releases/novo-and-anthropic-will-collaborate-to-advance-drug-discovery-with-claude" target="_blank" rel="noopener">新聞稿, 2026-09-16</a>）。</span>
+        <span class="en"><strong>Function and position.</strong> Not a structure-prediction model but a reasoning layer stitching together literature, lab records, regulatory documents and internal code. This week's proof-point buyer is Novo Nordisk: the two will test Claude Science on specific R&amp;D workflows covering biological reasoning, drug mechanics and agentic engineering (<a href="https://www.biospace.com/press-releases/novo-and-anthropic-will-collaborate-to-advance-drug-discovery-with-claude" target="_blank" rel="noopener">press release, 2026-09-16</a>).</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：同一個底座既做科學推理又做軟體工程，藥廠不必為研究與 IT 維護兩套供應商；而 Anthropic 自己的 <a href="https://qz.com/anthropic-claude-ai-research-development-automation-091826" target="_blank" rel="noopener">R&amp;D Automation Index（Claude 主導 26% 內部研發）</a>就是這套用法的內部壓力測試。</span>
+          <span class="en">: one substrate does both scientific reasoning and software engineering, so pharma need not maintain separate vendors for research and IT — and Anthropic's own <a href="https://qz.com/anthropic-claude-ai-research-development-automation-091826" target="_blank" rel="noopener">R&amp;D Automation Index, with Claude leading 26% of internal R&amp;D</a>, is the in-house stress test of exactly that pattern.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：<strong>完全沒有公開的效能基準</strong>。Novo 的新聞稿沒有任何節省工時、命中率或專案數字，Anthropic 也未公布 Claude Science 在任何生物或化學 benchmark 上對 OpenFold3、Boltz-2 這類專用模型的比較。目前能查證的只有「誰買了」，不是「有多好」。</span>
+          <span class="en">: <strong>no public performance benchmark exists</strong>. Novo's release gives no hours saved, hit rate or program count, and Anthropic has published no comparison of Claude Science against specialist models like OpenFold3 or Boltz-2 on any biology or chemistry benchmark. What is verifiable today is who bought it, not how good it is.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>GLM-5.3-FlashX</h3>
+      <p class="sub"><span class="zh-inline">長脈絡低價推論 · 智譜 Z.ai（中國）</span><span class="en-inline">Cheap long-context inference · Zhipu / Z.ai (China)</span></p>
+      <p>
+        <span class="zh"><strong>功能與定位。</strong>3,200 億參數 MoE、每 token 啟用 180 億，前代支援 100 萬 token 脈絡；賣點是價格與不依賴 Nvidia 的供應鏈。前代 Flash 定價為輸入每百萬 token 0.15 美元、輸出 0.50 美元，相對完整版 GLM-5.3 的 1.40／4.40 美元（<a href="https://www.implicator.ai/zai-glm-5-3-flash-chinese-chips-nvidia-cost/" target="_blank" rel="noopener">implicator.ai</a>）；FlashX 宣稱在約 10 萬顆國產加速器上達 ~200 tokens/s（<a href="https://pandaily.com/zhipu-glm-5-3-flashx-domestic-accelerator-inference" target="_blank" rel="noopener">Pandaily</a>）。</span>
+        <span class="en"><strong>Function and position.</strong> A 320B mixture-of-experts activating 18B per token, with a one-million-token context on the preceding release; the pitch is price plus a supply chain that does not depend on Nvidia. The prior Flash priced at $0.15 per million input tokens and $0.50 output against $1.40 and $4.40 for the full GLM-5.3 (<a href="https://www.implicator.ai/zai-glm-5-3-flash-chinese-chips-nvidia-cost/" target="_blank" rel="noopener">implicator.ai</a>); FlashX claims ~200 tokens/s across about 100,000 domestic accelerators (<a href="https://pandaily.com/zhipu-glm-5-3-flashx-domestic-accelerator-inference" target="_blank" rel="noopener">Pandaily</a>).</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：這個價格帶讓「整份病歷丟進去」成為可編列的成本，而不是示範專案；供應鏈上也不受美國出口管制節奏牽動。</span>
+          <span class="en">: this price band turns "put the whole chart in" into a budgetable line rather than a pilot, and the supply chain is not hostage to the cadence of US export controls.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：<strong>關鍵數字全部缺席</strong>——晶片型號、廠商、功耗、利用率、對 Nvidia 的正規化比較都沒公布，服務結果未經獨立稽核，且只示範推論、未示範訓練。醫療場景還要再疊一層：病歷屬於高敏感個資，跨境推論在台灣與歐盟的法遵條件遠比價格複雜。</span>
+          <span class="en">: <strong>every number that matters is missing</strong> — chip model, vendor, power draw, utilization and a normalized Nvidia comparison are all unpublished, the serving results are unaudited, and only inference was demonstrated, not training. Medicine adds another layer: records are high-sensitivity personal data, and the compliance conditions for cross-border inference in Taiwan and the EU are far harder than the price.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="company">
+  <h2>03 — Companies &amp; Competition</h2>
+  <div class="sec-title">
+    <span class="zh">誰站在哪裡、憑什麼、跟誰打</span>
+    <span class="en">Who stands where, on what, against whom</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th><span class="zh-inline">公司</span><span class="en-inline">Company</span></th>
+        <th><span class="zh-inline">近況與數字</span><span class="en-inline">Recent state &amp; numbers</span></th>
+        <th><span class="zh-inline">競爭定位與護城河</span><span class="en-inline">Position &amp; moat</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Anthropic</strong><br><span class="zh-inline">前沿模型＋安全議程主筆</span><span class="en-inline">Frontier models plus author of the safety agenda</span></td>
+          <td>
+            <span class="zh">9/12 Amodei 發表〈We Must Pace the Frontier〉（<a href="https://www.axios.com/2026/09/12/anthropic-ai-amodei-pacing" target="_blank" rel="noopener">Axios</a>）；9/16 與 Novo Nordisk 簽下新藥研發合作（<a href="https://www.biospace.com/press-releases/novo-and-anthropic-will-collaborate-to-advance-drug-discovery-with-claude" target="_blank" rel="noopener">BioSpace</a>）；9/17 公布 Claude 主導 26% 內部研發（<a href="https://qz.com/anthropic-claude-ai-research-development-automation-091826" target="_blank" rel="noopener">Quartz</a>）。</span>
+            <span class="en">Sept 12: Amodei publishes "We Must Pace the Frontier" (<a href="https://www.axios.com/2026/09/12/anthropic-ai-amodei-pacing" target="_blank" rel="noopener">Axios</a>). Sept 16: drug discovery deal with Novo Nordisk (<a href="https://www.biospace.com/press-releases/novo-and-anthropic-will-collaborate-to-advance-drug-discovery-with-claude" target="_blank" rel="noopener">BioSpace</a>). Sept 17: discloses Claude leading 26% of internal R&amp;D (<a href="https://qz.com/anthropic-claude-ai-research-development-automation-091826" target="_blank" rel="noopener">Quartz</a>).</span>
+          </td>
+          <td>
+            <span class="zh">護城河是「安全論述的主導權」——它同時定義了規則、示範了自律、也拿到了藥廠訂單。弱點也在這裡：外界很難分辨這是安全主張還是競爭主張。</span>
+            <span class="en">The moat is authorship of the safety narrative: it defines the rule, demonstrates the self-restraint and books the pharma contract at once. That is also the weakness — outsiders cannot easily separate the safety claim from the competitive one.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>OpenAI</strong><br><span class="zh-inline">規模最大、政策上跟進</span><span class="en-inline">Largest scale, following on policy</span></td>
+          <td>
+            <span class="zh">9/15 政策長 Lehane 證實與 Anthropic、Google DeepMind 談安全數週，支持 FRONTIER Act 的獨立驗證條款，並稱協調「不需要」反托拉斯豁免（<a href="https://techcrunch.com/2026/09/15/openai-anthropic-google-have-been-in-talks-on-ai-safety-for-weeks/" target="_blank" rel="noopener">TechCrunch</a>）。</span>
+            <span class="en">Sept 15: policy chief Lehane confirms weeks of safety talks with Anthropic and Google DeepMind, backs the FRONTIER Act's independent verification provision, and says the coordination "doesn't need" an antitrust waiver (<a href="https://techcrunch.com/2026/09/15/openai-anthropic-google-have-been-in-talks-on-ai-safety-for-weeks/" target="_blank" rel="noopener">TechCrunch</a>).</span>
+          </td>
+          <td>
+            <span class="zh">分發與使用者規模是護城河；在這一輪安全議題上是跟隨者而非主筆者，若標準機構成形，話語權會被 Anthropic 的框架先佔。</span>
+            <span class="en">Distribution and user scale are the moat; on this safety round it follows rather than drafts, so if the standards body forms, Anthropic's framing gets there first.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Cohere</strong><br><span class="zh-inline">企業級模型、局外人</span><span class="en-inline">Enterprise models, the outsider</span></td>
+          <td>
+            <span class="zh">9/13 執行長 Aidan Gomez 發文稱三方標準提案「換個名字仍是卡特爾」，並提出四支柱替代方案：公費支持的實證風險框架、強制透明、僅針對真正危險能力的獨立測試、以及參照金融與航空的無利益衝突保證機制（<a href="https://aiweekly.co/alerts/cohere-ceo-gomez-calls-rival-labs-standards-plan-a-cartel" target="_blank" rel="noopener">AI Weekly</a>）。</span>
+            <span class="en">Sept 13: CEO Aidan Gomez publishes an essay calling the three-lab standards plan "a cartel by any other name," offering four pillars instead: publicly funded evidence-based risk frameworks, mandatory transparency, independent testing confined to genuinely dangerous capabilities, and conflict-free assurance modeled on finance and aviation (<a href="https://aiweekly.co/alerts/cohere-ceo-gomez-calls-rival-labs-standards-plan-a-cartel" target="_blank" rel="noopener">AI Weekly</a>).</span>
+          </td>
+          <td>
+            <span class="zh">規模不如前三家，但「局外人」身分讓它的反托拉斯論點有信度。它提的航空／金融類比，正是醫療監管者最容易接上的語言。</span>
+            <span class="en">Smaller than the top three, but outsider status gives its antitrust argument credibility — and the aviation/finance analogy it offers is the language medical regulators can pick up most easily.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Novo Nordisk</strong><br><span class="zh-inline">歐洲最大藥廠、買方</span><span class="en-inline">Europe's largest pharma, the buyer</span></td>
+          <td>
+            <span class="zh">9/16 宣布與 Anthropic 合作，執行長 Doustdar 稱要成為「全球最 AI 驅動的醫療保健公司」；全球員工逾 67,000 人；<strong>未揭露任何金額或時程</strong>（<a href="https://www.biospace.com/press-releases/novo-and-anthropic-will-collaborate-to-advance-drug-discovery-with-claude" target="_blank" rel="noopener">BioSpace</a>）。</span>
+            <span class="en">Sept 16: announces the Anthropic collaboration, with CEO Doustdar aiming to become "the world's most AI-driven healthcare company"; over 67,000 employees globally; <strong>no deal value or timeline disclosed</strong> (<a href="https://www.biospace.com/press-releases/novo-and-anthropic-will-collaborate-to-advance-drug-discovery-with-claude" target="_blank" rel="noopener">BioSpace</a>).</span>
+          </td>
+          <td>
+            <span class="zh">買方的護城河是自有資料與臨床網絡。它選通用模型而非專用模型，等於押注「推理層可外包、資料層必自持」。</span>
+            <span class="en">A buyer's moat is its own data and clinical network. Choosing a general model over a specialist one is a bet that the reasoning layer can be outsourced while the data layer must be held.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>AbbVie / Astex / OpenBind</strong><br><span class="zh-inline">私有結構資料聯盟</span><span class="en-inline">Proprietary-structure consortium</span></td>
+          <td>
+            <span class="zh">用逾 20,000 個私有結構訓練，在 1,056 個測試結構上，高準確度比例超過一半，優於 OpenFold3 的約三分之一與 Boltz-2 的約 40%；英國政府對 OpenBind 支持最高 800 萬英鎊（<a href="https://www.nature.com/articles/d41586-026-02882-x" target="_blank" rel="noopener">Nature, 2026-09-14</a>）。</span>
+            <span class="en">Trained on 20,000-plus proprietary structures; on 1,056 test structures it reached high accuracy on more than half, against roughly a third for OpenFold3 and about 40% for Boltz-2; the UK government backs OpenBind with up to £8 million (<a href="https://www.nature.com/articles/d41586-026-02882-x" target="_blank" rel="noopener">Nature, 2026-09-14</a>).</span>
+          </td>
+          <td>
+            <span class="zh">護城河純粹是資料：公開庫只有約 1 萬個類藥分子結構。弱點是未同儕審查、模型不公開，外界無法重現。</span>
+            <span class="en">The moat is purely data: public databases hold only ~10,000 drug-like-molecule structures. The weakness is that the work is unreviewed and the model unreleased, so nobody outside can reproduce it.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Z.ai（智譜）</strong><br><span class="zh-inline">低價長脈絡、非 Nvidia 路線</span><span class="en-inline">Cheap long context, the non-Nvidia path</span></td>
+          <td>
+            <span class="zh">GLM-5.3-FlashX 宣稱在約 10 萬顆國產加速器上達 ~200 tokens/s（<a href="https://pandaily.com/zhipu-glm-5-3-flashx-domestic-accelerator-inference" target="_blank" rel="noopener">Pandaily</a>）；前代 Flash 輸入每百萬 token 0.15 美元、輸出 0.50 美元，<strong>服務結果未經獨立稽核</strong>（<a href="https://www.implicator.ai/zai-glm-5-3-flash-chinese-chips-nvidia-cost/" target="_blank" rel="noopener">implicator.ai</a>）。</span>
+            <span class="en">GLM-5.3-FlashX claims ~200 tokens/s across roughly 100,000 domestic accelerators (<a href="https://pandaily.com/zhipu-glm-5-3-flashx-domestic-accelerator-inference" target="_blank" rel="noopener">Pandaily</a>); the prior Flash prices at $0.15 per million input tokens and $0.50 output, with <strong>serving results unaudited</strong> (<a href="https://www.implicator.ai/zai-glm-5-3-flash-chinese-chips-nvidia-cost/" target="_blank" rel="noopener">implicator.ai</a>).</span>
+          </td>
+          <td>
+            <span class="zh">護城河是成本結構與國產供應鏈。弱點是可驗證性：不公布晶片與功耗，就無法被企業採購流程接受，醫療更不可能。</span>
+            <span class="en">The moat is cost structure and a domestic supply chain. The weakness is verifiability: without published chip and power figures it cannot clear an enterprise procurement review, let alone a medical one.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Crusoe</strong><br><span class="zh-inline">垂直整合 AI 基礎設施</span><span class="en-inline">Vertically integrated AI infrastructure</span></td>
+          <td>
+            <span class="zh">9/17 完成 39 億美元 Series F、投後估值 309 億美元，Nvidia 等參與；客戶含 OpenAI（Abilene）、Meta、Microsoft、Oracle，並與 Jane Street 簽五年 130 億美元合約（<a href="https://techcrunch.com/2026/09/17/crusoe-raises-3-9b-to-build-massive-data-centers-and-small-modular-ai-factories/" target="_blank" rel="noopener">TechCrunch</a>）。</span>
+            <span class="en">Sept 17: closes a $3.9B Series F at a $30.9B post-money valuation with Nvidia among the investors; customers include OpenAI (Abilene), Meta, Microsoft and Oracle, plus a five-year $13B contract with Jane Street (<a href="https://techcrunch.com/2026/09/17/crusoe-raises-3-9b-to-build-massive-data-centers-and-small-modular-ai-factories/" target="_blank" rel="noopener">TechCrunch</a>).</span>
+          </td>
+          <td>
+            <span class="zh">可卡車運送的 Spark 模組讓它繞過選址與社區反對，這在資料中心政治化的當下是真護城河。弱點是資本密集、且與電價政治正面相撞。</span>
+            <span class="en">Truck-transportable Spark modules let it route around siting fights and community opposition, a real moat now that data centers are political. The weakness is capital intensity and a head-on collision with ratepayer politics.</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="zh"><strong>今天的競爭結構是一個「誰先寫規則」的賽局，而不是模型排行榜。</strong>三家最大的實驗室在協調標準、第四家在喊卡特爾、一個州政府在同一週動手、而唯一有硬證據的效能躍升來自藥廠交出的私有資料——不是來自任何一家模型公司。能力的邊界正在往資料與治理兩端移動，中間那段「誰的 benchmark 高幾分」反而是本週最不重要的事。</span>
+      <span class="en"><strong>Today's competitive structure is a game about who writes the rules, not a model leaderboard.</strong> The three largest labs are coordinating a standard, the fourth is calling it a cartel, a state government moved in the same week, and the only performance jump with hard evidence behind it came from proprietary data handed over by drug companies rather than from any model vendor. The frontier is migrating toward data at one end and governance at the other; the middle stretch of whose benchmark scores a few points higher was the least important thing this week.</span>
+    </p>
+  </div>
+</section>
+
+<section id="taiwan">
+  <h2>04 — Taiwan Angle</h2>
+  <div class="sec-title">
+    <span class="zh">台灣的框架法已經先落地，但風險分類還沒寫到醫療那一格</span>
+    <span class="en">Taiwan's framework law landed first, but the risk classification has not yet reached the medical row</span>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="zh"><strong>(1) 台灣其實走在加州前面，只是停在原則層。</strong>立法院已於民國 114 年 12 月 23 日三讀通過《人工智慧基本法》，確立七大治理原則：永續發展與福祉、人類自主、隱私保護與資料治理、資安與安全、透明與可解釋、公平與不歧視、問責；數位發展部同步研議「人工智慧風險分類框架」，但該公告<strong>未公開具體內容，也未提及醫療應用或特定高風險領域</strong>（<a href="https://moda.gov.tw/press/press-releases/18316" target="_blank" rel="noopener">數位發展部新聞稿</a>）。對照 9/18 加州要求把「失控事件」寫進重大安全事故定義、並研議前沿模型緊急關閉機制的做法，台灣有原則、缺門檻。風險分類框架把醫療放在哪一級，是接下來一年最值得盯的一格。</span>
+      <span class="en"><strong>(1) Taiwan is actually ahead of California, but stopped at the level of principles.</strong> The Legislative Yuan passed the Artificial Intelligence Basic Act on its third reading on December 23, 2025, establishing seven governance principles — sustainable development and wellbeing, human autonomy, privacy and data governance, information security and safety, transparency and explainability, fairness and non-discrimination, and accountability. The Ministry of Digital Affairs is drafting an AI risk classification framework alongside it, but the announcement <strong>publishes no specifics and mentions neither medical applications nor any designated high-risk domain</strong> (<a href="https://moda.gov.tw/press/press-releases/18316" target="_blank" rel="noopener">MODA press release</a>). Set against California's Sept 18 move to write loss-of-control into the definition of a critical safety incident and to study an emergency shutoff for frontier models, Taiwan has principles and no thresholds. Which tier the risk framework assigns to healthcare is the single cell worth watching over the coming year.</span>
+    </p>
+    <p>
+      <span class="zh"><strong>(2) 「非 Nvidia 路線」的推論成本，對台灣是兩面刃。</strong>Z.ai 宣稱 GLM-5.3-FlashX 在約 10 萬顆國產加速器上跑到 ~200 tokens/s（<a href="https://pandaily.com/zhipu-glm-5-3-flashx-domestic-accelerator-inference" target="_blank" rel="noopener">Pandaily</a>），這對以先進製程與 AI 伺服器供應鏈為主的台灣產業，是一個必須認真對待的替代路徑訊號——即使目前它<strong>只證明了推論，沒有證明訓練，而且未經獨立稽核</strong>（<a href="https://www.implicator.ai/zai-glm-5-3-flash-chinese-chips-nvidia-cost/" target="_blank" rel="noopener">implicator.ai</a>）。另一面是：台灣醫院若要把整份病歷丟進長脈絡模型，價格帶確實正在被壓低，但跨境推論涉及高敏感個資，採購時要先問的不是每百萬 token 多少錢，是資料落在哪一部主機上。</span>
+      <span class="en"><strong>(2) The non-Nvidia inference path cuts both ways for Taiwan.</strong> Z.ai's claim that GLM-5.3-FlashX runs at ~200 tokens/s across roughly 100,000 domestic accelerators (<a href="https://pandaily.com/zhipu-glm-5-3-flashx-domestic-accelerator-inference" target="_blank" rel="noopener">Pandaily</a>) is a signal Taiwan's advanced-process and AI-server supply chain has to take seriously as an alternative route — even though so far it <strong>demonstrates inference only, not training, and has not been independently audited</strong> (<a href="https://www.implicator.ai/zai-glm-5-3-flash-chinese-chips-nvidia-cost/" target="_blank" rel="noopener">implicator.ai</a>). The other side: if Taiwanese hospitals want to push whole charts into a long-context model, the price band really is falling — but cross-border inference touches highly sensitive personal data, so the first procurement question is not the per-million-token rate, it is which machine the data lands on.</span>
+    </p>
+    <p>
+      <span class="zh"><strong>(3) 電價歸屬的政治，台灣遲早要面對同一題。</strong>美國眾院以 417 比 3 通過要求大型負載自付電網升級成本（<a href="https://www.utilitydive.com/news/house-passes-ratepayer-protection-bill-data-centers/830658/" target="_blank" rel="noopener">Utility Dive</a>），這個接近全票的比數說明成本歸屬已是跨黨派共識。台灣在同一張電網上要同時供應先進製程、AI 資料中心與 24 小時不能斷電的醫院，而醫院既是價格敏感用戶、又沒有議價能力。國際上開始把「誰付電網升級費」寫成明文規則時，台灣的大型用電審查若仍停留在個案協商，醫療體系會是最後才被算到的那一群。</span>
+      <span class="en"><strong>(3) The politics of who pays for the grid is a question Taiwan will face too.</strong> The US House voted 417–3 to make large loads cover their own grid upgrade costs (<a href="https://www.utilitydive.com/news/house-passes-ratepayer-protection-bill-data-centers/830658/" target="_blank" rel="noopener">Utility Dive</a>), and a margin that lopsided means cost allocation is now bipartisan consensus. Taiwan's single grid has to carry advanced-process fabs, AI data centers and hospitals that cannot go dark — and hospitals are both price-sensitive and without bargaining power. As other jurisdictions start writing "who pays for the upgrade" into explicit rules, a Taiwanese large-load review that still runs on case-by-case negotiation leaves the health system as the last constituency anyone counts.</span>
+    </p>
+  </div>
+</section>
+
+<section id="reading">
+  <h2>05 — Further Reading</h2>
+  <div class="sec-title">
+    <span class="zh">挑的是本週會改變你判斷、而不只是更新你資訊的五篇</span>
+    <span class="en">Five pieces chosen to change a judgement, not merely to update a fact</span>
+  </div>
+
+  <ol class="reading">
+    <li>
+      <a href="https://www.nature.com/articles/d41586-026-02882-x" target="_blank" rel="noopener">Drug firms' secret data supercharge AI protein models — Nature (2026-09-14)</a>
+      <p class="why"><span class="zh">本週唯一有對照組的結果，而且它把「瓶頸在架構」的說法換成「瓶頸在資料」——這個換位對醫院資料策略的影響大於任何一次模型改版。</span><span class="en">The only result this week with a control arm, and it swaps "the bottleneck is architecture" for "the bottleneck is data" — a reframing that matters more to a hospital's data strategy than any model version bump.</span></p>
+    </li>
+    <li>
+      <a href="https://www.axios.com/2026/09/12/anthropic-ai-amodei-pacing" target="_blank" rel="noopener">Anthropic, OpenAI CEOs call for slowdown in AI development — Axios (2026-09-12)</a>
+      <p class="why"><span class="zh">讀它是為了看清楚提案的機制細節（外部評估者的存取層級），而不是那句「必須放慢」的口號——機制才是後面所有立法會抄的東西。</span><span class="en">Read it for the mechanism — the access level granted to external evaluators — rather than the slogan about slowing down; the mechanism is what every subsequent bill will copy.</span></p>
+    </li>
+    <li>
+      <a href="https://aiweekly.co/alerts/cohere-ceo-gomez-calls-rival-labs-standards-plan-a-cartel" target="_blank" rel="noopener">Cohere CEO Gomez calls rival labs' standards plan a 'cartel' — AI Weekly (2026-09-13)</a>
+      <p class="why"><span class="zh">本週最有價值的反方意見。他那句「只會對它們已經建好防護的風險嚴格」，是醫療界評估任何產業自律方案時應該直接套用的檢驗題。</span><span class="en">The week's most useful dissent. His line about a regime being rigorous only about risks its authors already built for is the test question medicine should apply to any industry self-regulation proposal.</span></p>
+    </li>
+    <li>
+      <a href="https://www.pewresearch.org/short-reads/2026/09/16/democrats-are-now-more-worried-than-republicans-about-ai-and-its-impact-on-jobs/" target="_blank" rel="noopener">Democrats are now more worried than Republicans about AI and its impact on jobs — Pew Research Center (2026-09-16)</a>
+      <p class="why"><span class="zh">當導入端要說服的是病人而不是主管機關時，這份趨勢線比任何一份準確率報告更能預測採用速度。</span><span class="en">When the constituency to convince is patients rather than regulators, this trend line predicts adoption speed better than any accuracy report.</span></p>
+    </li>
+    <li>
+      <a href="https://www.implicator.ai/zai-glm-5-3-flash-chinese-chips-nvidia-cost/" target="_blank" rel="noopener">Z.ai served GLM-5.3-Flash entirely on Chinese AI chips — implicator.ai</a>
+      <p class="why"><span class="zh">示範了怎麼在報導一則重大宣稱的同時，把所有缺席的數字逐項列出來。無論你關心的是算力政治還是採購盡職調查，這篇的方法論本身就值得抄。</span><span class="en">A model of how to report a major claim while itemizing every figure the claimant withheld. Whether the interest is compute politics or procurement diligence, the methodology alone is worth copying.</span></p>
+    </li>
+  </ol>
+</section>
+
+<section id="refs">
+  <h2>06 — References</h2>
+  <div class="sec-title">
+    <span class="zh">參考文獻</span>
+    <span class="en">References</span>
+  </div>
+
+  <div class="panel">
+    <ol class="refs">
+      <li>Anthropic, OpenAI CEOs call for slowdown in AI development. <em>Axios</em>, 2026-09-12. <a href="https://www.axios.com/2026/09/12/anthropic-ai-amodei-pacing" target="_blank" rel="noopener">axios.com</a></li>
+      <li>Cohere CEO Gomez Calls Rival Labs' Standards Plan a 'Cartel'. <em>AI Weekly</em>, 2026-09-13. <a href="https://aiweekly.co/alerts/cohere-ceo-gomez-calls-rival-labs-standards-plan-a-cartel" target="_blank" rel="noopener">aiweekly.co</a></li>
+      <li>Drug firms' secret data supercharge AI protein models. <em>Nature</em>, 2026-09-14. <a href="https://www.nature.com/articles/d41586-026-02882-x" target="_blank" rel="noopener">nature.com</a></li>
+      <li>OpenAI, Anthropic, Google have been in talks on AI safety for weeks. <em>TechCrunch</em>, 2026-09-15. <a href="https://techcrunch.com/2026/09/15/openai-anthropic-google-have-been-in-talks-on-ai-safety-for-weeks/" target="_blank" rel="noopener">techcrunch.com</a></li>
+      <li>Novo and Anthropic will collaborate to advance drug discovery with Claude. <em>BioSpace（新聞稿全文 / full press release）</em>, 2026-09-16. <a href="https://www.biospace.com/press-releases/novo-and-anthropic-will-collaborate-to-advance-drug-discovery-with-claude" target="_blank" rel="noopener">biospace.com</a></li>
+      <li>Democrats are now more worried than Republicans about AI and its impact on jobs. <em>Pew Research Center</em>, 2026-09-16. <a href="https://www.pewresearch.org/short-reads/2026/09/16/democrats-are-now-more-worried-than-republicans-about-ai-and-its-impact-on-jobs/" target="_blank" rel="noopener">pewresearch.org</a></li>
+      <li>House passes ratepayer protection bill to limit data center cost shifts. <em>Utility Dive</em>, 2026-09-16. <a href="https://www.utilitydive.com/news/house-passes-ratepayer-protection-bill-data-centers/830658/" target="_blank" rel="noopener">utilitydive.com</a></li>
+      <li>Crusoe raises $3.9B to build massive data centers and small modular "AI factories". <em>TechCrunch</em>, 2026-09-17. <a href="https://techcrunch.com/2026/09/17/crusoe-raises-3-9b-to-build-massive-data-centers-and-small-modular-ai-factories/" target="_blank" rel="noopener">techcrunch.com</a></li>
+      <li>Zhipu Opens GLM-5.3-FlashX Near 200 Tokens/s on ~100k Domestic Accelerators. <em>Pandaily</em>, 2026-09. <a href="https://pandaily.com/zhipu-glm-5-3-flashx-domestic-accelerator-inference" target="_blank" rel="noopener">pandaily.com</a></li>
+      <li>Z.ai Served GLM-5.3-Flash Entirely on Chinese AI Chips. <em>implicator.ai</em>, 2026-09. <a href="https://www.implicator.ai/zai-glm-5-3-flash-chinese-chips-nvidia-cost/" target="_blank" rel="noopener">implicator.ai</a></li>
+      <li>Anthropic says Claude leads 26% of its AI R&amp;D work. <em>Quartz</em>, 2026-09-18. <a href="https://qz.com/anthropic-claude-ai-research-development-automation-091826" target="_blank" rel="noopener">qz.com</a></li>
+      <li>AI News Today September 18 2026: 14 Biggest Stories（彙整報導 / aggregated roundup）. <em>buildfastwithai</em>, 2026-09-18. <a href="https://blog.buildfastwithai.com/ai-news-today-september-18-2026" target="_blank" rel="noopener">blog.buildfastwithai.com</a></li>
+      <li>Governor Newsom issues executive order to accelerate independent oversight and advance the creation of an AI kill switch. <em>Office of the Governor of California</em>, 2026-09-18. <a href="https://www.gov.ca.gov/2026/09/18/governor-newsom-issues-executive-order-to-accelerate-independent-oversight-and-advance-the-creation-of-an-ai-kill-switch/" target="_blank" rel="noopener">gov.ca.gov</a></li>
+      <li>立法院三讀通過《人工智慧基本法》 構築我國 AI 創新與安全治理基石. <em>數位發展部 moda</em>, 民國 114 年 12 月. <a href="https://moda.gov.tw/press/press-releases/18316" target="_blank" rel="noopener">moda.gov.tw</a></li>
+      <li>Google, Anthropic, and OpenAI Unveil Cyber AI Models, Safeguards, and Access Programs（背景脈絡 / background context）. <em>The Hacker News</em>, 2026-09. <a href="https://thehackernews.com/2026/09/google-anthropic-and-openai-unveil.html" target="_blank" rel="noopener">thehackernews.com</a></li>
+    </ol>
+    <div class="note">
+      <span class="zh"><strong>編輯說明：</strong>本期需要交代四件事。其一，<strong>Bloomberg 相關報導為付費牆內容，本報未引用其內文</strong>，Newsom 行政命令與實驗室協調兩則均改採加州州長辦公室原始公告與 TechCrunch 報導。其二，Anthropic R&amp;D Automation Index 的細部數字（約 15,000 項任務、約 30,000 個同時運行代理、逾九成落在「協作」層級以上、完全自主 0%）<strong>引自 buildfastwithai 的彙整報導，而非 Anthropic 原始發布頁</strong>（該頁在本次產製時無法取得授權存取）；核心的 26% 與「2 月低於 1%」則以 Quartz 報導為準。其三，本期所有涉及 Anthropic 自身能力的數字<strong>皆為廠商自述、未經第三方稽核</strong>；Z.ai 的吞吐量與加速器數量同樣未經獨立稽核，且該公司未公布晶片型號、功耗與利用率。其四，Nature 報導的蛋白質模型結果<strong>尚未同儕審查、模型未公開</strong>，Nature 本身已明確標註此點，本報沿用其保留。Pew 調查實地時間為 2026 年 6 月 22–28 日，與發布日相距近三個月，且問項不涉醫療場景。</span>
+      <span class="en"><strong>Editor's note:</strong> Four disclosures this issue. First, <strong>the relevant Bloomberg coverage sits behind a paywall and none of its text is cited here</strong>; both the Newsom order and the lab-coordination story are sourced instead to the California Governor's own announcement and to TechCrunch. Second, the granular figures for Anthropic's R&amp;D Automation Index — roughly 15,000 tasks, about 30,000 concurrent agents, over 90% at "collaborates" or above, 0% fully autonomous — are <strong>taken from the buildfastwithai roundup rather than Anthropic's own publication page</strong>, which could not be accessed during production; the headline 26% and the "under 1% in February" baseline follow the Quartz report. Third, every figure here describing Anthropic's own capability is <strong>vendor-reported and not independently audited</strong>; Z.ai's throughput and accelerator count are likewise unaudited, and the company has published neither chip model nor power draw nor utilization. Fourth, the Nature protein-model result is <strong>not peer reviewed and the model is not public</strong> — Nature flags this explicitly and this report keeps the caveat. The Pew survey was fielded June 22–28, 2026, nearly three months before publication, and its questions do not concern medical settings.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-row">
+    <div>
+      <span class="zh">AI／醫療AI 每日新知日報 · 由 Claude 於台北時間每日自動產出 · 本期主題：星期六／廣義 AI 新知<br>本報告內容經來源查證，但不構成投資或醫療建議。所有數據請以原始出處為準。</span>
+      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Saturday / General AI<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
+    </div>
+    <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com / 返回 peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
+  </div>
+</footer>
+</main>
+
+<div class="fabs">
+  <button class="up" id="up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+  <a class="home-fab" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg></a>
+</div>
+
+<script>
+/* setLang 只有並排原稿用得到，建置時會自動拆掉，其餘保留。原樣帶上就好。 */
+function setLang(l){
+  document.body.classList.remove('lang-zh','lang-en');
+  document.body.classList.add('lang-'+l);
+  document.documentElement.lang = (l==='zh') ? 'zh-Hant' : 'en';
+  document.getElementById('b-zh').classList.toggle('on', l==='zh');
+  document.getElementById('b-en').classList.toggle('on', l==='en');
+  document.title = (l==='zh')
+    ? 'AI／醫療AI 每日新知日報 · 2026-09-19'
+    : 'AI & Medical AI Daily · 2026-09-19';
+}
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.getElementById('theme-ic').textContent =
+    document.body.classList.contains('dark') ? '◑' : '◐';
+}
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.body.classList.add('dark');
+  document.getElementById('theme-ic').textContent = '◑';
+}
+window.addEventListener('scroll', function(){
+  document.getElementById('up').classList.toggle('show', window.scrollY > 600);
+});
+
+/* GitHub 星星數：無需授權，失敗或被限流時靜默保留佔位符 */
+(function(){
+  var el = document.getElementById('ghs');
+  if (!el || typeof fetch !== 'function') return;
+  fetch('https://api.github.com/repos/tingwei161803/ai-medical-daily', {headers:{Accept:'application/vnd.github+json'}})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if (!d || typeof d.stargazers_count !== 'number') return;
+      var n = d.stargazers_count;
+      el.textContent = n >= 1000 ? (Math.round(n/100)/10) + 'k' : String(n);
+    })
+    .catch(function(){});
+})();
+</script>
+</body>
+</html>
