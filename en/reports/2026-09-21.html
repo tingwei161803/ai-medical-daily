@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>AI &amp; Medical AI Daily · 2026-09-21</title>
+<meta property="og:url" content="https://ai-medical-daily.peteraim.com/en/reports/2026-09-21.html" />
+<link rel="canonical" href="https://ai-medical-daily.peteraim.com/en/reports/2026-09-21.html" />
+<link rel="alternate" hreflang="zh-Hant" href="https://ai-medical-daily.peteraim.com/reports/2026-09-21.html" />
+<link rel="alternate" hreflang="en" href="https://ai-medical-daily.peteraim.com/en/reports/2026-09-21.html" />
+<link rel="alternate" hreflang="x-default" href="https://ai-medical-daily.peteraim.com/reports/2026-09-21.html" />
+<meta name="description" content="Monday clinical rotation, Sep 14–19: RADAR in Science hit AUC 0.913 across 146 abdominal CT findings on 424,911 studies and shipped open-source; a Korea University model lifted reader AUC for large-vessel occlusion on non-contrast CT from 0.718 to 0.852; a Dresden on-premise agent found answer consistency beats confidence scores at predicting correctness. The same week, three npj Digital Medicine papers exposed the trust-calibration gap, and on Sep 17 the FDA denied a petition to exempt radiology AI from 510(k).">
+<meta name="report-date" content="2026-09-21">
+<meta name="report-theme" content="clinical">
+<meta name="report-title-zh" content="這一週臨床 AI 交出兩份漂亮的成績單——146 種腹部 CT 發現 AUC 0.913、每 18 張腦部 CT 多救回一個大血管阻塞——同一週另外三份研究說，我們判斷它何時出錯的能力完全沒跟上：汙名字眼讓檢傷降級 9.4%、12 位判讀者只有 3 位察覺影像是合成的、229 個數位健康試驗裡 73% 由開發者自己做">
+<meta name="report-title-en" content="Clinical AI posted two clean wins this week — AUC 0.913 across 146 abdominal CT findings, one extra large-vessel occlusion caught per 18 head CTs — and three other papers said our ability to tell when it is wrong has not kept pace: stigmatizing wording downgraded triage in up to 9.4% of cases, only 3 of 12 readers questioned synthetic images, and 73% of 229 digital-health trials were run by their own developers">
+<meta name="report-summary-zh" content="週一臨床線 9/14–9/19：Science 的 RADAR 用 424,911 例檢查訓練、在 146 種腹部 CT 發現上達 AUC 0.913 並開源；高麗大學非顯影 CT 中風 AI 把判讀者 AUC 從 0.718 拉到 0.852；Dresden 院內 AI agent 指出「重複作答的一致性」比模型信心分數更能預測對錯。同一週三份 npj Digital Medicine 研究攤開信任校準的缺口，而 FDA 在 9/17 駁回放射 AI 免 510(k) 的請願。">
+<meta name="report-summary-en" content="Monday clinical rotation, Sep 14–19: RADAR in Science hit AUC 0.913 across 146 abdominal CT findings on 424,911 studies and shipped open-source; a Korea University model lifted reader AUC for large-vessel occlusion on non-contrast CT from 0.718 to 0.852; a Dresden on-premise agent found answer consistency beats confidence scores at predicting correctness. The same week, three npj Digital Medicine papers exposed the trust-calibration gap, and on Sep 17 the FDA denied a petition to exempt radiology AI from 510(k).">
+<meta property="og:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HJLDQZDK5V');
+</script>
+<link rel="stylesheet" href="/assets/report.css">
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><span>◆</span> <span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <div class="bar-sp"></div>
+    <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
+    <div class="seg">
+      <a href="/reports/2026-09-21.html" hreflang="zh-Hant" lang="zh-Hant" rel="alternate">中文</a>
+      <a class="on" href="/en/reports/2026-09-21.html" hreflang="en" lang="en" aria-current="page">EN</a>
+    </div>
+    <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="kicker">
+    <span class="en-inline">Monday · Clinical Applications &amp; Research</span>
+  </div>
+  <h1>
+    <span class="en">Clinical AI posted two clean wins this week — AUC 0.913 across 146 abdominal CT findings, one extra large-vessel occlusion caught per 18 head CTs — and three other papers said our ability to tell when it is wrong has not kept pace: stigmatizing wording downgraded triage in up to 9.4% of cases, only 3 of 12 readers questioned synthetic images, and 73% of 229 digital-health trials were run by their own developers</span>
+  </h1>
+  <div class="dateline">
+    <span class="en-inline">Monday, September 21, 2026 · Covering Sep 14–19 · Taipei time</span>
+  </div>
+  <p class="lede">
+    <span class="en">The clinical rotation this week has an unusual shape: hard numbers landed on both the capability side and the calibration side, pointing in opposite directions. On capability, RADAR — from the First Affiliated Hospital of Zhejiang University School of Medicine and Alibaba DAMO Academy, published in <a href="https://www.science.org/doi/10.1126/science.aec6129" target="_blank" rel="noopener">Science</a> — trained a single generalist model on 424,911 examinations and reached a mean AUC of 0.913 across 146 abdominal CT findings, 0.895 on external validation at eight centres, with the <a href="https://github.com/alibaba-damo-academy/damo-radar" target="_blank" rel="noopener">code released open-source</a>. A Korea University model for large-vessel occlusion on non-contrast CT lifted human reader AUC from 0.718 to 0.852 — <a href="https://www.eurekalert.org/news-releases/1143226" target="_blank" rel="noopener">roughly one additional occlusion caught for every 18 scans read</a>. On calibration, three npj Digital Medicine papers landed in the same week, each arguing the same thing from a different direction: we cannot tell, in the moment, when the model is wrong. Across 221,556 triage comparisons, <a href="https://www.nature.com/articles/s41746-026-03270-5" target="_blank" rel="noopener">stigmatizing wording alone produced harmful downgrades in up to 9.4% of cases</a>. Of twelve readers, <a href="https://www.nature.com/articles/s41746-026-03209-w" target="_blank" rel="noopener">only three spontaneously questioned whether images were synthetic — and the synthetic ones were rated 0.44 higher on perceived quality than the real ones</a>. Of 229 digital-health RCTs, <a href="https://www.nature.com/articles/s41746-026-03234-9" target="_blank" rel="noopener">73% were run with direct developer involvement, with 23% higher odds of reporting a statistically significant result</a>. Binding the two sides together is the FDA's September 17 final order <a href="https://www.federalregister.gov/documents/2026/09/17/2026-19074/medical-devices-exemption-from-premarket-notification-radiology-computer-aided-detection-andor" target="_blank" rel="noopener">denying a petition to exempt radiology AI from 510(k)</a>: capability can be open-sourced and spread overnight, but the premarket evidence gate is not moving.</span>
+  </p>
+
+  <nav class="toc">
+    <a href="#top"><span class="en-inline">Top Stories</span></a>
+    <a href="#product"><span class="en-inline">Product Analysis</span></a>
+    <a href="#company"><span class="en-inline">Companies &amp; Competition</span></a>
+    <a href="#taiwan"><span class="en-inline">Taiwan Angle</span></a>
+    <a href="#reading"><span class="en-inline">Further Reading</span></a>
+    <a href="#refs"><span class="en-inline">References</span></a>
+  </nav>
+</div>
+
+<!-- ============ 01 重點新聞 ============ -->
+<section id="top">
+  <h2>01 — Top Stories</h2>
+  <div class="sec-title">
+    <span class="en">The first three are about capability, the last five about calibration — the point is that they happened in the same week</span>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Imaging AI</span></span>
+      <span class="tag">Science</span><span class="tag">Alibaba DAMO</span><span class="tag">9/17</span>
+    </div>
+    <h3>
+      <span class="en">RADAR: one model, 146 abdominal CT findings, mean AUC 0.913 — and open-sourced</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On September 17 the First Affiliated Hospital of Zhejiang University School of Medicine, Alibaba DAMO Academy and Hupan Laboratory published RADAR in <a href="https://www.science.org/doi/10.1126/science.aec6129" target="_blank" rel="noopener">Science</a> — a vision-language model that decomposes CT volumes into individual anatomical structures and aligns them, via contrastive learning, with the corresponding text in radiology reports. It was trained on 424,911 examinations, 1.5 million image-text pairs and more than 15 million anatomy-specific pairs. Mean AUC across 146 abdominal CT findings is 0.913, against 0.776 for the best competing model; external validation across eight centres gives 0.895; and on an emergency cohort of more than 27,000 cases — a setting it was never trained for — it still reaches 0.904. Code and weights are on <a href="https://github.com/alibaba-damo-academy/damo-radar" target="_blank" rel="noopener">GitHub</a>; the institutional release is on <a href="https://www.eurekalert.org/news-releases/1143748" target="_blank" rel="noopener">EurekAlert</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">A decade of radiology AI commerce has been built on one algorithm doing one thing, each cleared separately. If a 146-finding generalist holds up, the unit economics of that model change: the product stops being a detector and becomes a layer of infrastructure. More consequential is the decision to open-source it — capability now spreads at a rate no single company's commercial calendar controls, while the burden of knowing whether a given version was ever validated shifts onto the clinical side. The emergency figure deserves particular attention: 0.904 on a setting the model was never trained for is exactly the kind of zero-shot generalisation claim regulators have the least machinery to assess.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">Every figure here is retrospective reader-independent performance: no prospective trial, no patient-outcome endpoint, and no reader study showing what happens when a radiologist works with RADAR rather than against its benchmark. High AUC is not clinical utility. All eight external centres are in China, so generalisation across populations, scanner vendors and contrast protocols remains unproven. Open-sourcing also means no regulator stands behind whichever version ends up deployed.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.science.org/doi/10.1126/science.aec6129" target="_blank" rel="noopener">Science, 2026-09-17</a> · <a href="https://www.eurekalert.org/news-releases/1143748" target="_blank" rel="noopener">EurekAlert, 2026-09-17</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/42752131/" target="_blank" rel="noopener">PubMed 42752131</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Acute care</span></span>
+      <span class="tag">JNIS</span><span class="tag">Korea University</span><span class="tag">9/14</span>
+    </div>
+    <h3>
+      <span class="en">Large-vessel occlusion on plain CT: reader AUC 0.718 → 0.852, one extra catch per 18 scans</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Korea University College of Medicine released a Korea–US validation on September 14, published in the <em>Journal of NeuroInterventional Surgery</em> (DOI 10.1136/jnis-2026-025339). The model detects large-vessel occlusion (LVO) from standard non-contrast head CT alone, with no contrast agent. Across 963 patients (723 Korean, 240 US), the model scored AUC 0.963 in the Korean cohort and 0.899 in the US cohort. Eight clinical readers scored AUC 0.718 unaided and 0.852 with the model; sensitivity rose from 46.6% to 63.7% and specificity from 91.9% to 94.9%. The team frames this as one additional otherwise-missed LVO for every 18 non-contrast CTs read, and reports <a href="https://www.eurekalert.org/news-releases/1143226" target="_blank" rel="noopener">no significant automation bias</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This is the week's only piece of evidence that is AI-assisting-humans, in an emergency setting, with external validation across two countries — and it targets a genuine bottleneck. Non-contrast CT is the first image in most emergency stroke pathways, and unaided human sensitivity for LVO on that image sits in the forties. Lifting sensitivity into the sixties while specificity also rises makes this a rare assistance pattern that reduces misses and false alarms at once, rather than trading one for the other. Notably, the team measured automation bias directly — precisely the thing the papers below say is usually missing.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">Eight readers is the study's weakest link, and the reader study is a laboratory exercise rather than the time-pressured reality of an emergency department. The "one per 18 scans" figure is derived from the sensitivity gap at this cohort's prevalence; in a setting with different LVO prevalence the number moves, so it should not be carried over to Taiwanese emergency volumes unchanged.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.eurekalert.org/news-releases/1143226" target="_blank" rel="noopener">Korea University College of Medicine / EurekAlert, 2026-09-14</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">LLM evaluation</span></span>
+      <span class="tag">Nature Medicine</span><span class="tag">TU Dresden</span><span class="tag">9/15</span>
+    </div>
+    <h3>
+      <span class="en">Dresden's on-premise clinical agent: answer consistency predicts correctness better than the model's own confidence</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On September 15, TU Dresden and Dresden University Hospital published in <em>Nature Medicine</em> (DOI 10.1038/s41591-026-04609-x) a medical AI agent running entirely on local institutional infrastructure, tested through simulated physician-patient interactions on standardised cases. The best local model reached roughly 90% correct diagnoses on one benchmark and 84% on another; across 181 randomly selected cases, physician review agreed with the automated scoring more than 90% of the time. The central finding: <a href="https://www.eurekalert.org/news-releases/1144039" target="_blank" rel="noopener">whether the model gives the same answer on repeated passes predicts correctness better than its own internal probability scores</a> — and this held under stress tests where information was deliberately removed. The study also found markedly lower accuracy on simulated cases involving older patients. Prof. Jakob Kather: "Our goal is an AI agent with selective autonomy — support clinicians in decision-making, but never take over completely."</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This is the week's most immediately actionable result. The hard problem when a hospital deploys an LLM is not headline accuracy but whether to trust any particular answer — and self-reported confidence scores have a long record of poor calibration. Asking the same question three times and checking whether the answers agree is a rule any hospital can wire into a workflow the same day, with no model swap and no access to weights. Running the whole stack on-premise, with data never leaving the institution, answers the trust and the privacy procurement questions at once. The lower accuracy on older patients, meanwhile, puts a specific safety risk on the map.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">Everything rests on standardised simulated cases, not real patients in a real clinic; the gap between a scripted consultation and an actual history-taking is the standing external-validity risk for this genre. The authors themselves note the cause of the age gap is unresolved — it could be data distribution, atypical presentation in older patients, or model bias, and the study cannot yet say which.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.eurekalert.org/news-releases/1144039" target="_blank" rel="noopener">TU Dresden / EurekAlert, 2026-09-15</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Patient safety</span></span>
+      <span class="tag">npj Digital Medicine</span><span class="tag">UT Southwestern</span><span class="tag">9/19</span>
+    </div>
+    <h3>
+      <span class="en">221,556 triage comparisons: adding stigmatizing wording alone pushes LLMs to downgrade patients, in up to 9.4% of cases</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On September 19, the Department of Emergency Medicine and the Department of Bioinformatics at UT Southwestern Medical Center published an outcome-grounded controlled experiment in <a href="https://www.nature.com/articles/s41746-026-03270-5" target="_blank" rel="noopener">npj Digital Medicine</a>: demographic, social and stigma-related attributes were inserted into real case presentations from two academic emergency departments, and the resulting shifts in LLM triage priority measured. The design covers 221,556 ESI-matched comparisons across eighteen neutral/stigmatizing formulation pairs, testing three open-weight models — Gemma, Qwen and DeepSeek. Framing a patient as a frequent ED user produced harmful reprioritisation in up to 9.4% of cases, running 1.4 to 7.1 points above the neutral phrasing in all six model × dataset combinations; psychiatric history produced shifts of up to 9.5%. Race, language and insurance status, by contrast, showed no consistent harmful shifts.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Most LLM bias work stops at showing that outputs differ across groups. This study anchors its endpoint in a clinical outcome — harmful downgrades after ESI matching — at two orders of magnitude greater scale, which makes the conclusion actionable in a way the genre usually is not: the risk is not abstract fairness but patient safety at the moment of triage. The counterintuitive part matters most to hospitals. Race and insurance showed no consistent effect; what actually harmed patients was wording clinicians themselves put in the chart ("frequent flyer", "history of psychiatric illness"). De-identification alone will not protect against this; the narrative itself has to be governed.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">Only three open-weight models were tested, so the findings do not transfer directly to the closed commercial models most hospitals actually run; the 9.5% psychiatric-history shift reached statistical significance in only one model. And this is simulated triage ordering, not outcome tracking after real deployment — it establishes that the risk exists, not that harm has occurred.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.nature.com/articles/s41746-026-03270-5" target="_blank" rel="noopener">npj Digital Medicine, 2026-09-19</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Evidence base</span></span>
+      <span class="tag">npj Digital Medicine</span><span class="tag">9/17</span>
+    </div>
+    <h3>
+      <span class="en">73% of 229 digital-health RCTs were run by their own developers, with 23% higher odds of a significant result</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On September 17, <a href="https://www.nature.com/articles/s41746-026-03234-9" target="_blank" rel="noopener">npj Digital Medicine</a> published "Clinical trials for digital health interventions: a rapid review of study independence and the developer effect", extracting 229 RCTs from 29 systematic reviews spanning 2013–2025 across nutrition, maternal health, mental health and sleep. 73% of trials involved the developer directly; only 27% were independent. Developer-involved trials were markedly more likely to be preregistered (OR 2.47, p=0.004) — procedurally, they were the tidier ones. But weighted by sample size, they also had higher odds of reporting a statistically significant result: OR 1.23 (95% CI 1.16–1.31, p&lt;0.001).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This gives a discount factor that can be applied directly to any clinical AI result. The theme this site has worked through for two weeks — vendor-stated benefit running three to six times higher than peer-reviewed benefit — gets a mechanism here: the problem is not fabrication but that trials designed, run and analysed by the developer are systematically more likely to produce significant findings. That developer-involved trials were the more likely to be preregistered is the sharpest detail: procedural compliance is not a proxy for independence. The first question to ask of any clinical AI paper is therefore whether anyone on the author list sells the thing.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">The sample is digital-health interventions, behavioural apps included, not purely clinical AI device trials, so extrapolating to imaging AI or clinical decision support needs care. An OR of 1.23 is a statistically robust but modest shift — enough to adjust a prior when reading the literature, not enough to overturn any single study.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.nature.com/articles/s41746-026-03234-9" target="_blank" rel="noopener">npj Digital Medicine, 2026-09-17</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Data integrity</span></span>
+      <span class="tag">npj Digital Medicine</span><span class="tag">9/19</span>
+    </div>
+    <h3>
+      <span class="en">Only 3 of 12 readers questioned the images — and the synthetic breast ultrasounds looked better than the real ones</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On September 19, <a href="https://www.nature.com/articles/s41746-026-03209-w" target="_blank" rel="noopener">npj Digital Medicine</a> published a three-phase staged evaluation. In a purpose-blinded first phase, twelve readers each assessed 60 breast ultrasound images per source without being told any were synthetic. Reader-perceived quality came out <em>higher</em> for the synthetic images, by 0.44 (95% CI 0.33–0.55); model-estimated sufficiency for basic assessment was 95.9% for synthetic versus 86.7% for authentic. Only three of the twelve readers spontaneously raised a question about provenance. Told explicitly that synthetic images were present, readers detected them with 70.8% accuracy; given identification cues, 79.5%. Ultimately, in 94.9% of synthetic-image evaluations readers chose to review, verify or not use the image.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Synthetic medical imagery has been pitched as a data-augmentation fix — not enough rare lesions, so generate some. This study reframes it as a risk. When generated images are perceived as better quality than real ones, the provenance chain running through training sets, teaching files, teleradiology pipelines and research databases becomes a clinical safety concern, and no hospital process currently checks it. The number that stings is 3 of 12: readers are not incapable of spotting synthetic images — told to look, they hit 70%. They simply never think to ask. That pairs directly with the Dresden result: the calibration failure is not in the model, it is that nobody gave the human a moment to ask the question.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">Twelve readers, a single modality: a very small sample. The authors state explicitly that the work does not establish clinical fidelity, diagnostic equivalence or causal intervention efficacy for synthetic images. What it demonstrates is that humans do not spontaneously question provenance — not that synthetic images cause misdiagnosis.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.nature.com/articles/s41746-026-03209-w" target="_blank" rel="noopener">npj Digital Medicine, 2026-09-19</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Cancer screening</span></span>
+      <span class="tag">npj Digital Medicine</span><span class="tag">WHO dataset</span><span class="tag">9/19</span>
+    </div>
+    <h3>
+      <span class="en">AI-assisted colposcopy, externally validated: +6.5 points of sensitivity for junior clinicians, biopsies down from 2.48 to 2.02 per case</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On September 19, <a href="https://www.nature.com/articles/s41746-026-02961-3" target="_blank" rel="noopener">npj Digital Medicine</a> published an independent external validation on the WHO open-source dataset: 187 patients, 855 colposcopic images, read by 45 colposcopists of varying experience across 12 regions of China. AI alone reached 84.2% sensitivity for CIN2+ (95% CI 74.4–90.7); clinicians unaided scored 84.8% (95% CI 82.7–86.9) and 90.6% with AI (95% CI 88.7–92.1). For low-experience readers, AUC rose from 0.72 to 0.76 (p=0.043), a 6.5-point sensitivity gain. Mean biopsies per case fell from 2.48 to 2.02.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Two things. First, this is external validation on somebody else's public dataset rather than a vendor's own held-out split — which, in the light of the developer-effect paper above, carries a different evidential weight entirely. Second, it improved two metrics that usually trade against each other: sensitivity up, biopsies down. The standard cost of assistive diagnostic AI is overtesting; here invasive procedures fell instead, which matters most in settings where cervical screening capacity is scarce. And the gain concentrates in junior readers — exactly the workforce profile of those settings.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">187 patients is a small validation set and the CIN2+ confidence interval is wide (74.4–90.7 for AI alone); an AUC move from 0.72 to 0.76 is clinically marginal and p=0.043 sits close to the threshold. All readers were in China, where colposcopy training differs from Taiwan's. Fewer biopsies is welcome, but the study did not track whether any lesions were missed as a result.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.nature.com/articles/s41746-026-02961-3" target="_blank" rel="noopener">npj Digital Medicine, 2026-09-19</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Regulation</span></span>
+      <span class="tag">Federal Register</span><span class="tag">Harrison.ai</span><span class="tag">9/17</span>
+    </div>
+    <h3>
+      <span class="en">FDA denies the radiology-AI 510(k) exemption petition: every clinically meaningful change still needs a new submission</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On September 17 the FDA published a final order in the Federal Register (Docket FDA-2025-P-5560) denying a petition filed on October 22, 2025 by Nancy Stade of Rubrum Advising on behalf of Harrison.ai. The petition sought partial exemption from 510(k) for radiology computer-aided detection/diagnosis (CADe/CADx) and computer-aided triage and notification (CADt) software, conditional on the manufacturer holding prior clearances and operating robust post-market surveillance. Applying its four exemption factors — device history, performance characteristics, detectability of changes and classification stability — the agency found none satisfied, stating that "the information presented in the petition does not demonstrate that premarket notification is not necessary," while reaffirming a commitment to "innovative and least burdensome" digital health pathways. <a href="https://www.federalregister.gov/documents/2026/09/17/2026-19074/medical-devices-exemption-from-premarket-notification-radiology-computer-aided-detection-andor" target="_blank" rel="noopener">Full order in the Federal Register</a>; industry read-through at <a href="https://www.pymnts.com/news/artificial-intelligence/2026/fda-keeps-radiology-ai-revenue-tied-to-premarket-clearance/" target="_blank" rel="noopener">PYMNTS</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Set beside the week's other seven items, this one gains weight. In the same week that RADAR open-sourced a 146-finding generalist, the FDA told Harrison.ai — a company with multiple clearances deployed across more than 1,000 facilities — that its next version still has to queue. The agency is answering a narrow, concrete question: can post-market surveillance detect the performance change introduced by a model update? Its answer is no. That is precisely what the two September 19 papers support empirically — humans do not spontaneously question, confidence scores are not trustworthy — so the gate has to stay upstream. The commercial consequence is that revenue is pinned to versions: which build carries clearance has to be traceable.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">This denies one petition; it is not a new policy statement, and it does not disturb the existing predetermined change control plan (PCCP) pathway, through which manufacturers can still obtain advance authorisation for a defined envelope of updates. Reading it as a general FDA tightening overstates it. The Federal Register body text could not be retrieved directly in this environment; document identifiers and the quoted language were cross-checked between the register's own page and the PYMNTS report.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.federalregister.gov/documents/2026/09/17/2026-19074/medical-devices-exemption-from-premarket-notification-radiology-computer-aided-detection-andor" target="_blank" rel="noopener">Federal Register 91 FR 58817, 2026-09-17</a> · <a href="https://www.pymnts.com/news/artificial-intelligence/2026/fda-keeps-radiology-ai-revenue-tied-to-premarket-clearance/" target="_blank" rel="noopener">PYMNTS, 2026-09-17</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Hospital deployment</span></span>
+      <span class="tag">CHOP</span><span class="tag">MONAI</span><span class="tag">9/15</span>
+    </div>
+    <h3>
+      <span class="en">CHOP builds its own cardiac modelling on open-source MONAI: four hours down to seconds, about 200 cases this year</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On September 15, <a href="https://blogs.nvidia.com/blog/childrens-hospital-open-source-ai-cardiac-care/" target="_blank" rel="noopener">NVIDIA's blog</a> described the Children's Hospital of Philadelphia's cardiac modelling service: using MONAI, MONAI Label, NVIDIA Auto3DSeg, 3D Slicer and the SlicerHeart extension, it generates anatomically precise heart models from existing CT, MRI and 3D ultrasound for congenital heart surgery planning. Per-case modelling time falls from four hours to seconds. CHOP expects to model roughly 200 cases this year; more than 20 US children's hospitals run modelling programmes, and Boston Children's supports about 500 surgeries a year this way. Congenital heart defects affect roughly 1% of live births. CHOP cardiologist Matthew Jolley: "You've got a one-of-a-kind kid and an off-the-shelf device. Our job is to find what fits."</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This is the week's only case of a hospital building its own tool, running it in its own workflow, with a quantified improvement — and the architecture matches RADAR and Dresden: open-source components, deployed on-premise. Four hours to seconds is not merely time saved; it changes whether modelling can enter routine pre-operative practice at all. At four hours it is worth doing only for the most complex cases; at seconds it can be done for every operation. Note too that this route sidesteps the commercial device clearance cycle entirely, because it is surgical planning support rather than a diagnostic claim.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">This is NVIDIA's own blog, not a peer-reviewed study, and nothing here is independently audited. "Four hours to seconds" is process time, not a clinical outcome — there are no surgical success, complication or mortality figures in the piece. The ~200 cases and ~500 surgeries are institution-reported.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://blogs.nvidia.com/blog/childrens-hospital-open-source-ai-cardiac-care/" target="_blank" rel="noopener">NVIDIA Blog, 2026-09-15</a></p></div>
+  </div>
+</section>
+
+<!-- ============ 02 產品分析 ============ -->
+<section id="product">
+  <h2>02 — Product Analysis</h2>
+  <div class="sec-title">
+    <span class="en">Two systems that both chose open weights and on-premise deployment — and bet on opposite things: one on scale, one on verifiability</span>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>RADAR（damo-radar）</h3>
+      <p class="sub"><span class="en-inline">Generalist abdominal CT vision-language model · Zhejiang University First Affiliated Hospital + Alibaba DAMO Academy (China)</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> It decomposes contrast-enhanced abdominal CT volumes into individual anatomical structures, then aligns them with radiology report text through contrastive learning, yielding a single model that reads out 146 findings. The positioning is not a detector for one specialty but an interpretation layer any downstream application can call, with the <a href="https://www.science.org/doi/10.1126/science.aec6129" target="_blank" rel="noopener">paper</a> and <a href="https://github.com/alibaba-damo-academy/damo-radar" target="_blank" rel="noopener">code</a> released together.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: breadth and generalisation hold at once — mean <a href="https://www.eurekalert.org/news-releases/1143748" target="_blank" rel="noopener">AUC 0.913 across 146 findings against 0.776 for the best competing model</a>, 0.895 on eight-centre external validation, and 0.904 on an untrained-for emergency cohort of 27,000-plus cases. Zero-shot transfer to an unseen setting is the hardest capability claim for a generalist model to fake.</span>
+        </li>
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: open weights change the adoption curve directly. Any hospital or startup can rerun the evaluation on its own data and deploy locally, without waiting for a vendor licence and without sending images off-premise — the same architecture Dresden and CHOP independently chose this week.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: the one number that matters most is absent — there is no reader study. Every figure measures the model working alone, while the deployed form is always radiologist-plus-model. This is exactly why the Korea University result is closer to usable: it measured the human-plus-AI delta, 0.718 → 0.852.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: no regulatory path and no version governance. <a href="https://www.federalregister.gov/documents/2026/09/17/2026-19074/medical-devices-exemption-from-premarket-notification-radiology-computer-aided-detection-andor" target="_blank" rel="noopener">The FDA restated in the same week that every clinically meaningful change requires resubmission</a>. Once an open model is forked, fine-tuned and updated inside a hospital, nothing tracks which build is live or whether that build was ever validated. All eight external centres are in China, so cross-population and cross-vendor generalisation is unproven.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>TU Dresden on-premise clinical AI agent</h3>
+      <p class="sub"><span class="en-inline">On-premise diagnostic conversational agent · TU Dresden + Dresden University Hospital (Germany)</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> Two agents that work standardised cases through simulated physician-patient dialogue, running entirely on the hospital's own infrastructure with data never leaving the institution. <a href="https://www.eurekalert.org/news-releases/1144039" target="_blank" rel="noopener">The best local model reached roughly 90% correct diagnoses on one benchmark and 84% on another</a> — but the team's claim is not about the score. It is about the criterion for when the thing can be trusted. Prof. Jakob Kather calls the target "selective autonomy".</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: it delivers a trust rule that can be implemented the same day — <a href="https://www.eurekalert.org/news-releases/1144039" target="_blank" rel="noopener">repeated-answer consistency predicts correctness better than the model's self-reported confidence</a>, and holds under stress tests with information deliberately removed. It needs no weights and no retraining, so a hospital on a closed API can apply it too: ask three times, escalate to a human when the answers disagree.</span>
+        </li>
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: it publishes its own failure mode. The study reports <a href="https://www.eurekalert.org/news-releases/1144039" target="_blank" rel="noopener">markedly lower accuracy on older patients</a> — the kind of disclosure that almost never appears in vendor-led work. Against this week's finding that <a href="https://www.nature.com/articles/s41746-026-03234-9" target="_blank" rel="noopener">73% of trials are developer-run with 23% higher odds of a significant result</a>, that difference in evidential weight is the whole point.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: everything rests on standardised simulated cases — no real patients, none of the time pressure or incomplete information of an actual clinic. The gap between scripted consultation and real history-taking is the standing external-validity risk of this genre, and the study offers no prospective deployment data at all.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: consistency as a trust signal has a structural weakness — a model can be reliably, consistently wrong. The study shows consistency predicts correctness <em>better</em> than confidence, but does not report the residual rate of consistent-and-wrong answers, and that figure is what determines whether it can serve as a safety threshold. The authors also state plainly that the cause of the age gap is unresolved.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 公司與競爭 ============ -->
+<section id="company">
+  <h2>03 — Companies &amp; Competition</h2>
+  <div class="sec-title">
+    <span class="en">Who stands where, on what, against whom</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th><span class="en-inline">Company</span></th>
+        <th><span class="en-inline">Recent state &amp; numbers</span></th>
+        <th><span class="en-inline">Position &amp; moat</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Alibaba DAMO Academy</strong><br><span class="en-inline">Alibaba's research arm, with Zhejiang University's First Affiliated Hospital</span></td>
+          <td>
+            <span class="en">Published RADAR in <a href="https://www.science.org/doi/10.1126/science.aec6129" target="_blank" rel="noopener">Science</a> on 9/17: 424,911 training examinations, mean AUC 0.913 across 146 abdominal CT findings, 0.895 on eight-centre external validation, 0.904 on a 27,000-plus emergency cohort — and <a href="https://github.com/alibaba-damo-academy/damo-radar" target="_blank" rel="noopener">open-sourced</a>.</span>
+          </td>
+          <td>
+            <span class="en">The moat is data scale and a top-journal imprimatur, not a product. Open-sourcing forfeits licensing revenue in exchange for ecosystem position — letting other people's products grow on its model. The weakness is no regulatory path, no reader study and no commercial channel: a hospital adopting it owns the validation and version governance itself.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Harrison.ai / Annalise.ai</strong><br><span class="en-inline">Australian radiology AI · flagship Annalise Enterprise CXR</span></td>
+          <td>
+            <span class="en">Closed a <a href="https://radiologybusiness.com/topics/artificial-intelligence/radiology-artificial-intelligence-firm-harrisonai-raises-112m-opens-us-office" target="_blank" rel="noopener">US$112M Series C led by Aware Super in February 2025, US$240M raised to date</a>; 12 FDA clearances, deployed at over 1,000 facilities, used by half of Australia's radiologists, touching 6 million patients a year. On 9/17 its <a href="https://www.federalregister.gov/documents/2026/09/17/2026-19074/medical-devices-exemption-from-premarket-notification-radiology-computer-aided-detection-andor" target="_blank" rel="noopener">510(k) exemption petition was denied by the FDA</a>.</span>
+          </td>
+          <td>
+            <span class="en">Its moat is exactly the layer RADAR lacks: clearances, reimbursement (one brain CT algorithm carries an NTAP) and an installed base. But Annalise CXR's claim of up to 124 chest X-ray findings, set against a free 146-finding abdominal CT model, shows breadth of coverage shifting from a differentiator to table stakes. Losing the petition is an admission that its cost structure stays pinned to per-version review.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>NVIDIA（MONAI 生態）</strong><br><span class="en-inline">Supplier of the substrate layer for medical imaging AI</span></td>
+          <td>
+            <span class="en">On 9/15 it showcased CHOP building its own cardiac modelling on MONAI, Auto3DSeg and 3D Slicer: <a href="https://blogs.nvidia.com/blog/childrens-hospital-open-source-ai-cardiac-care/" target="_blank" rel="noopener">four hours per case down to seconds, ~200 CHOP cases this year, 20-plus US children's hospitals running modelling programmes, ~500 surgeries a year supported at Boston Children's</a>.</span>
+          </td>
+          <td>
+            <span class="en">It sells no device and files nothing with the FDA; it sells the layer everyone building their own thing has to use. The more hospitals self-build, the safer its position — and RADAR, Dresden and CHOP all independently chose open-source self-build this week, all landing inside its moat. The weakness is that this layer's value cannot be demonstrated in clinical outcomes; the numbers are institution-reported process times.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>TU Dresden / Dresden University Hospital</strong><br><span class="en-inline">An academic institution defining a product category</span></td>
+          <td>
+            <span class="en">Published its on-premise diagnostic agent in <em>Nature Medicine</em> on 9/15 (DOI 10.1038/s41591-026-04609-x): <a href="https://www.eurekalert.org/news-releases/1144039" target="_blank" rel="noopener">~90% and 84% accuracy on two benchmarks, over 90% physician-review agreement across 181 cases, consistency beating confidence scores, and lower accuracy on older patients</a>.</span>
+          </td>
+          <td>
+            <span class="en">No business model, yet arguably the week's biggest threat to vendors: if on-premise self-build with open weights and a consistency threshold works, one of the necessary justifications for clinical decision support licence fees disappears. Its moat is methodology rather than code — the "when to trust it" criterion can be copied by anyone, vendors included.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Google Health</strong><br><span class="en-inline">One of the main forces behind conversational medical AI</span></td>
+          <td>
+            <span class="en">Published a comment in <a href="https://www.nature.com/articles/s41591-026-04639-5" target="_blank" rel="noopener">Nature Medicine</a> on 9/14, co-authored with Beth Israel and others, arguing that trust in conversational medical AI cannot be built on benchmarks and requires prospective real-world studies. It is a comment piece with no quantitative results.</span>
+          </td>
+          <td>
+            <span class="en">The party that has led on benchmarks longest is arguing benchmarks are insufficient — which moves the bar toward what it can afford, since only large players can fund prospective trials. That squeezes smaller vendors and helps hospitals: it points to the same conclusion as the Dresden paper and the developer-effect review this week, from a different motive.</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>Today's competitive structure has the shape of free capability and commodified trust.</strong> RADAR turns coverage breadth into a public good, while the denial of Harrison.ai's petition confirms that clearance and reimbursement remain the scarce resources — so the moat is migrating from how accurate the model is to who can prove it is accurate on your patients. Dresden's consistency criterion, Korea University's reader-study delta and the colposcopy team's external validation on a WHO public dataset are all the same asset: a validation method a third party can reproduce. The fact that <a href="https://www.nature.com/articles/s41746-026-03234-9" target="_blank" rel="noopener">73% of trials are still run by the developers themselves</a> shows how scarce that asset currently is.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============ 04 台灣視角 ============ -->
+<section id="taiwan">
+  <h2>04 — Taiwan Angle</h2>
+  <div class="sec-title">
+    <span class="en">Taiwan's move this week lands squarely on the gap the international news identified — but the direction has to be chosen carefully</span>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>(1) The health ministry is betting on data standards, and the timing is right.</strong> According to <a href="https://www.biotech-edu.com/20260915-mohwa-ai-regenerative-medicine/" target="_blank" rel="noopener">a September 15 report in United Daily News</a>, Minister of Health and Welfare Shih Chung-liang argued that the first task in making medical AI land is "establishing data standards, a governance regime and a trustworthy usage environment", with FHIR Box deployments at medical centres handling standardised conversion, key clinical data connected across all national medical centres by year end and all hospitals by the end of next year. The attached resources include NT$48.9bn over five years for the Healthy Taiwan deepening programme, NT$24bn over four years for national pharmaceutical resilience, and NT$10bn in strategic investment. Read against this week's RADAR release, the sequencing makes sense: once world-class models are free, Taiwan's bottleneck is not whether it can buy a model but whether it has usable, linkable, consistently labelled local data to validate one.</span>
+    </p>
+    <p>
+      <span class="en"><strong>(2) But what Taiwan should copy this week is the validation method, not the model.</strong> All eight of RADAR's external validation centres are in China and there is no reader study; adopting it directly means accepting a performance claim never tested on a local population. The three genuinely reproducible methods this week are Korea University's reader-AUC delta with and without AI (0.718 → 0.852), Dresden's use of repeated-answer consistency as a trust threshold, and the colposcopy team's external validation on somebody else's public dataset. None requires building a model or buying compute at scale — only a group of clinicians willing to run a reader study, and clean local data. The latter is precisely what FHIR Box is meant to deliver.</span>
+    </p>
+    <p>
+      <span class="en"><strong>(3) Taiwanese emergency departments should read the stigma paper now.</strong> <a href="https://www.nature.com/articles/s41746-026-03270-5" target="_blank" rel="noopener">UT Southwestern's 221,556 comparisons</a> show that harmful downgrades came not from race or insurance status but from wording clinicians put in the chart themselves — "frequent flyer", "history of psychiatric illness". Taiwan has the same populations of high-frequency attenders and patients with psychiatric comorbidity, and the shorthand and idiom of Chinese-language charting — 老病人 ("old regular"), 情緒個案 ("emotional case") — has never been tested by any bias study. Before an LLM is wired into triage, this is the local pre-check to run, and it is cheap: it needs only matched cases and a consistent severity baseline.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============ 05 延伸閱讀 ============ -->
+<section id="reading">
+  <h2>05 — Further Reading</h2>
+  <div class="sec-title">
+    <span class="en">Chosen on one criterion: the five items this week worth thirty minutes with the primary text, excluding anything that exists only as a press release</span>
+  </div>
+
+  <ol class="reading">
+    <li>
+      <a href="https://www.science.org/doi/10.1126/science.aec6129" target="_blank" rel="noopener">RADAR: an expert-level generalist AI for abdominal CT diagnosis — Science (2026-09-17)</a>
+      <p class="why"><span class="en">Read the methods section alone: how it decomposes CT volumes into anatomical structures and aligns them with report text is the one architectural idea this week that repays close reading. The accompanying <a href="https://github.com/alibaba-damo-academy/damo-radar" target="_blank" rel="noopener">GitHub repo</a> lets you rerun the evaluation on your own data.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/articles/s41746-026-03234-9" target="_blank" rel="noopener">Clinical trials for digital health interventions: study independence and the developer effect — npj Digital Medicine (2026-09-17)</a>
+      <p class="why"><span class="en">The most practical correction table published this year. Afterwards, the first thing you do with any clinical AI paper is turn to the conflict-of-interest statement rather than the primary endpoint.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/articles/s41746-026-03270-5" target="_blank" rel="noopener">Outcome-grounded effect of clinically stigmatizing information on LLM emergency triage prioritization — npj Digital Medicine (2026-09-19)</a>
+      <p class="why"><span class="en">Read it for the experimental design rather than the finding: anchoring the bias endpoint in harmful downgrades after ESI matching is the cleanest reproducible protocol available, and any hospital can run it against its own charting corpus.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/articles/s41746-026-03209-w" target="_blank" rel="noopener">Provenance risk of synthetic breast ultrasound images: a three-phase staged evaluation — npj Digital Medicine (2026-09-19)</a>
+      <p class="why"><span class="en">A small sample, but it asks a question nobody else is asking yet: when synthetic images are perceived as better than real ones, who is checking provenance in your teaching files, research databases and teleradiology pipelines?</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/articles/s41591-026-04639-5" target="_blank" rel="noopener">Prospective evidence for conversational medical AI is non-negotiable — Nature Medicine Comment (2026-09-14)</a>
+      <p class="why"><span class="en">No data, but worth reading for who is saying it: a Google Health and Beth Israel team arguing that benchmarks cannot build trust. The identity of the author list is as informative as the argument.</span></p>
+    </li>
+  </ol>
+</section>
+
+<!-- ============ 06 參考文獻 ============ -->
+<section id="refs">
+  <h2>06 — References</h2>
+  <div class="sec-title">
+    <span class="en">References</span>
+  </div>
+
+  <div class="panel">
+    <ol class="refs">
+      <li>RADAR: an expert-level generalist AI for abdominal CT diagnosis. <em>Science</em>, 2026-09-17. <a href="https://www.science.org/doi/10.1126/science.aec6129" target="_blank" rel="noopener">science.org</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/42752131/" target="_blank" rel="noopener">PubMed 42752131</a></li>
+      <li>Introducing RADAR (press release). <em>EurekAlert / AAAS</em>, 2026-09-17. <a href="https://www.eurekalert.org/news-releases/1143748" target="_blank" rel="noopener">eurekalert.org</a></li>
+      <li>damo-radar (source code and weights). <em>GitHub — Alibaba DAMO Academy</em>, 2026-09. <a href="https://github.com/alibaba-damo-academy/damo-radar" target="_blank" rel="noopener">github.com</a></li>
+      <li>AI detects large vessel occlusion on non-contrast CT: Korea–US validation. <em>Korea University College of Medicine / Journal of NeuroInterventional Surgery</em>, 2026-09-14. DOI 10.1136/jnis-2026-025339. <a href="https://www.eurekalert.org/news-releases/1143226" target="_blank" rel="noopener">eurekalert.org</a></li>
+      <li>On-premise medical AI agents with selective autonomy. <em>TU Dresden / Nature Medicine</em>, 2026-09-15. DOI 10.1038/s41591-026-04609-x. <a href="https://www.eurekalert.org/news-releases/1144039" target="_blank" rel="noopener">eurekalert.org</a></li>
+      <li>Outcome-grounded effect of clinically stigmatizing information on large language model emergency triage prioritization. <em>npj Digital Medicine</em>, 2026-09-19. <a href="https://www.nature.com/articles/s41746-026-03270-5" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Clinical trials for digital health interventions: a rapid review of study independence and the developer effect. <em>npj Digital Medicine</em>, 2026-09-17. <a href="https://www.nature.com/articles/s41746-026-03234-9" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Provenance risk of synthetic breast ultrasound images: a three-phase staged evaluation. <em>npj Digital Medicine</em>, 2026-09-19. <a href="https://www.nature.com/articles/s41746-026-03209-w" target="_blank" rel="noopener">nature.com</a></li>
+      <li>External validation of AI assisted colposcopy using WHO dataset for cervical precancer and cancer detection. <em>npj Digital Medicine</em>, 2026-09-19. <a href="https://www.nature.com/articles/s41746-026-02961-3" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Medical Devices; Exemption From Premarket Notification: Radiology Computer-Aided Detection and/or Diagnosis Devices (final order, Docket FDA-2025-P-5560). <em>Federal Register</em> 91 FR 58817, 2026-09-17. <a href="https://www.federalregister.gov/documents/2026/09/17/2026-19074/medical-devices-exemption-from-premarket-notification-radiology-computer-aided-detection-andor" target="_blank" rel="noopener">federalregister.gov</a></li>
+      <li>FDA keeps radiology AI revenue tied to premarket clearance. <em>PYMNTS</em>, 2026-09-17. <a href="https://www.pymnts.com/news/artificial-intelligence/2026/fda-keeps-radiology-ai-revenue-tied-to-premarket-clearance/" target="_blank" rel="noopener">pymnts.com</a></li>
+      <li>Children's hospital turns to open-source AI for cardiac care. <em>NVIDIA Blog</em>, 2026-09-15. <a href="https://blogs.nvidia.com/blog/childrens-hospital-open-source-ai-cardiac-care/" target="_blank" rel="noopener">blogs.nvidia.com</a></li>
+      <li>Prospective evidence for conversational medical AI is non-negotiable (Comment). <em>Nature Medicine</em>, 2026-09-14. DOI 10.1038/s41591-026-04639-5. <a href="https://www.nature.com/articles/s41591-026-04639-5" target="_blank" rel="noopener">nature.com</a></li>
+      <li>石崇良：醫療 AI 落地首重資料標準與治理制度. <em>聯合新聞網（經光鹽生物科技學苑轉載）</em>, 2026-09-15. <a href="https://www.biotech-edu.com/20260915-mohwa-ai-regenerative-medicine/" target="_blank" rel="noopener">biotech-edu.com</a></li>
+      <li>Radiology AI firm Harrison.ai raises $112M, opens US office. <em>Radiology Business</em>, 2025-02-11. <a href="https://radiologybusiness.com/topics/artificial-intelligence/radiology-artificial-intelligence-firm-harrisonai-raises-112m-opens-us-office" target="_blank" rel="noopener">radiologybusiness.com</a></li>
+    </ol>
+    <div class="note">
+      <span class="en"><strong>Editor's note:</strong> Of the eight lead items, the figures for RADAR, the Korea University stroke model, the Dresden agent and the CHOP cardiac modelling come from institutional releases (EurekAlert, NVIDIA Blog) rather than journal full text, since <em>Science</em> and <em>Nature Medicine</em> are paywalled in this environment; the three npj Digital Medicine papers are open access and their figures come from the papers themselves. The Federal Register body text could not be retrieved directly here, so the document number (2026-19074), 91 FR 58817, Docket FDA-2025-P-5560 and the quoted language were cross-checked between the register's own page and the PYMNTS report. The NVIDIA blog's "four hours to seconds", "~200 cases" and "~500 surgeries" are institution-reported and unaudited, as flagged in that item. The health ministry remarks in the Taiwan section come from a syndicated copy of United Daily News coverage, not an official ministry release. Harrison.ai's funding, clearance count and deployment scale are as of February 2025 and may have moved. Several studies dated before September 14 but recirculated this week were deliberately excluded — the MASAI mammography trial, the original colonoscopy deskilling study and the three-country LLM physician RCT — to avoid both repetition of earlier editions and misdated recency. Finally, new articles in <em>NEJM AI</em> and <em>Lancet Digital Health</em> could not be verified in this environment (403 and access restrictions), so neither journal is represented this week — that is a verification gap, not an absence.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-row">
+    <div>
+      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Monday / Clinical Applications &amp; Research<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
+    </div>
+    <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
+  </div>
+</footer>
+</main>
+
+<div class="fabs">
+  <button class="up" id="up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+  <a class="home-fab" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg></a>
+</div>
+
+<script>
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.getElementById('theme-ic').textContent =
+    document.body.classList.contains('dark') ? '◑' : '◐';
+}
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.body.classList.add('dark');
+  document.getElementById('theme-ic').textContent = '◑';
+}
+window.addEventListener('scroll', function(){
+  document.getElementById('up').classList.toggle('show', window.scrollY > 600);
+});
+
+/* GitHub 星星數：無需授權，失敗或被限流時靜默保留佔位符 */
+(function(){
+  var el = document.getElementById('ghs');
+  if (!el || typeof fetch !== 'function') return;
+  fetch('https://api.github.com/repos/tingwei161803/ai-medical-daily', {headers:{Accept:'application/vnd.github+json'}})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if (!d || typeof d.stargazers_count !== 'number') return;
+      var n = d.stargazers_count;
+      el.textContent = n >= 1000 ? (Math.round(n/100)/10) + 'k' : String(n);
+    })
+    .catch(function(){});
+})();
+</script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/reports/2026-09-21.html" hreflang="zh-Hant" rel="alternate" lang="zh-Hant">中文版</a></p>
+</body>
+</html>

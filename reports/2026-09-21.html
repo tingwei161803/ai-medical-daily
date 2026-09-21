@@ -8,6 +8,10 @@
 <title>AI／醫療AI 每日新知日報 · 2026-09-21</title>
 <meta property="og:url" content="https://ai-medical-daily.peteraim.com/reports/2026-09-21.html" />
 <link rel="canonical" href="https://ai-medical-daily.peteraim.com/reports/2026-09-21.html" />
+<link rel="alternate" hreflang="zh-Hant" href="https://ai-medical-daily.peteraim.com/reports/2026-09-21.html" />
+<link rel="alternate" hreflang="en" href="https://ai-medical-daily.peteraim.com/en/reports/2026-09-21.html" />
+<link rel="alternate" hreflang="x-default" href="https://ai-medical-daily.peteraim.com/reports/2026-09-21.html" />
+<meta name="description" content="週一臨床線 9/14–9/19：Science 的 RADAR 用 424,911 例檢查訓練、在 146 種腹部 CT 發現上達 AUC 0.913 並開源；高麗大學非顯影 CT 中風 AI 把判讀者 AUC 從 0.718 拉到 0.852；Dresden 院內 AI agent 指出「重複作答的一致性」比模型信心分數更能預測對錯。同一週三份 npj Digital Medicine 研究攤開信任校準的缺口，而 FDA 在 9/17 駁回放射 AI 免 510(k) 的請願。">
 <meta name="report-date" content="2026-09-21">
 <meta name="report-theme" content="clinical">
 <meta name="report-title-zh" content="這一週臨床 AI 交出兩份漂亮的成績單——146 種腹部 CT 發現 AUC 0.913、每 18 張腦部 CT 多救回一個大血管阻塞——同一週另外三份研究說，我們判斷它何時出錯的能力完全沒跟上：汙名字眼讓檢傷降級 9.4%、12 位判讀者只有 3 位察覺影像是合成的、229 個數位健康試驗裡 73% 由開發者自己做">
@@ -29,16 +33,16 @@
 </script>
 <link rel="stylesheet" href="/assets/report.css">
 </head>
-<body class="lang-zh">
+<body>
 
 <header class="bar">
   <div class="bar-in">
-    <a class="brand" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span><span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <a class="brand" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span></a>
     <div class="bar-sp"></div>
     <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub / 在 GitHub 給這個專案一顆星"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
     <div class="seg">
-      <button id="b-zh" class="on" onclick="setLang('zh')">中文</button>
-      <button id="b-en" onclick="setLang('en')">EN</button>
+      <a class="on" href="/reports/2026-09-21.html" hreflang="zh-Hant" lang="zh-Hant" aria-current="page">中文</a>
+      <a href="/en/reports/2026-09-21.html" hreflang="en" lang="en" rel="alternate">EN</a>
     </div>
     <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
   </div>
@@ -48,28 +52,24 @@
 <div class="hero">
   <div class="kicker">
     <span class="zh-inline">星期一 · 臨床應用與研究</span>
-    <span class="en-inline">Monday · Clinical Applications &amp; Research</span>
   </div>
   <h1>
     <span class="zh">這一週臨床 AI 交出兩份漂亮的成績單——146 種腹部 CT 發現 AUC 0.913、每 18 張腦部 CT 多救回一個大血管阻塞——同一週另外三份研究說，我們判斷它何時出錯的能力完全沒跟上：汙名字眼讓檢傷降級 9.4%、12 位判讀者只有 3 位察覺影像是合成的、229 個數位健康試驗裡 73% 由開發者自己做</span>
-    <span class="en">Clinical AI posted two clean wins this week — AUC 0.913 across 146 abdominal CT findings, one extra large-vessel occlusion caught per 18 head CTs — and three other papers said our ability to tell when it is wrong has not kept pace: stigmatizing wording downgraded triage in up to 9.4% of cases, only 3 of 12 readers questioned synthetic images, and 73% of 229 digital-health trials were run by their own developers</span>
   </h1>
   <div class="dateline">
     <span class="zh-inline">2026 年 9 月 21 日（一）· 涵蓋 9/14–9/19 · 台北時間</span>
-    <span class="en-inline">Monday, September 21, 2026 · Covering Sep 14–19 · Taipei time</span>
   </div>
   <p class="lede">
     <span class="zh">本週臨床線有一個少見的結構：能力面與校準面同時出現硬數據，而且方向相反。能力面，浙江大學醫學院附屬第一醫院與阿里巴巴達摩院在 <a href="https://www.science.org/doi/10.1126/science.aec6129" target="_blank" rel="noopener">Science</a> 發表的 RADAR，用 424,911 例檢查訓練出單一通用模型，在 146 種腹部 CT 發現上平均 AUC 0.913，八家中心外部驗證 0.895，而且<a href="https://github.com/alibaba-damo-academy/damo-radar" target="_blank" rel="noopener">程式碼直接開源</a>；高麗大學的非顯影 CT 中風模型則把人類判讀者的 AUC 從 0.718 推到 0.852，<a href="https://www.eurekalert.org/news-releases/1143226" target="_blank" rel="noopener">相當於每 18 張 CT 多抓出 1 例原本會漏掉的大血管阻塞</a>。校準面，同一週有三份 npj Digital Medicine 研究各自從不同角度說同一件事：我們沒有能力在當下知道模型什麼時候在騙人——221,556 組檢傷比較顯示<a href="https://www.nature.com/articles/s41746-026-03270-5" target="_blank" rel="noopener">汙名化措辭本身就會造成最高 9.4% 的有害降級</a>；12 位判讀者裡<a href="https://www.nature.com/articles/s41746-026-03209-w" target="_blank" rel="noopener">只有 3 位主動懷疑影像是合成的，而且合成影像的「感知品質」還比真的高 0.44</a>；229 個數位健康 RCT 裡 <a href="https://www.nature.com/articles/s41746-026-03234-9" target="_blank" rel="noopener">73% 由開發者自己執行，且回報統計顯著結果的勝算比高出 23%</a>。而把這兩面綁在一起的，是 9 月 17 日 FDA 那一紙<a href="https://www.federalregister.gov/documents/2026/09/17/2026-19074/medical-devices-exemption-from-premarket-notification-radiology-computer-aided-detection-andor" target="_blank" rel="noopener">駁回放射 AI 免 510(k) 請願的最終命令</a>：能力可以開源、可以一夜擴散，但上市前的證據關卡沒有要放鬆。</span>
-    <span class="en">The clinical rotation this week has an unusual shape: hard numbers landed on both the capability side and the calibration side, pointing in opposite directions. On capability, RADAR — from the First Affiliated Hospital of Zhejiang University School of Medicine and Alibaba DAMO Academy, published in <a href="https://www.science.org/doi/10.1126/science.aec6129" target="_blank" rel="noopener">Science</a> — trained a single generalist model on 424,911 examinations and reached a mean AUC of 0.913 across 146 abdominal CT findings, 0.895 on external validation at eight centres, with the <a href="https://github.com/alibaba-damo-academy/damo-radar" target="_blank" rel="noopener">code released open-source</a>. A Korea University model for large-vessel occlusion on non-contrast CT lifted human reader AUC from 0.718 to 0.852 — <a href="https://www.eurekalert.org/news-releases/1143226" target="_blank" rel="noopener">roughly one additional occlusion caught for every 18 scans read</a>. On calibration, three npj Digital Medicine papers landed in the same week, each arguing the same thing from a different direction: we cannot tell, in the moment, when the model is wrong. Across 221,556 triage comparisons, <a href="https://www.nature.com/articles/s41746-026-03270-5" target="_blank" rel="noopener">stigmatizing wording alone produced harmful downgrades in up to 9.4% of cases</a>. Of twelve readers, <a href="https://www.nature.com/articles/s41746-026-03209-w" target="_blank" rel="noopener">only three spontaneously questioned whether images were synthetic — and the synthetic ones were rated 0.44 higher on perceived quality than the real ones</a>. Of 229 digital-health RCTs, <a href="https://www.nature.com/articles/s41746-026-03234-9" target="_blank" rel="noopener">73% were run with direct developer involvement, with 23% higher odds of reporting a statistically significant result</a>. Binding the two sides together is the FDA's September 17 final order <a href="https://www.federalregister.gov/documents/2026/09/17/2026-19074/medical-devices-exemption-from-premarket-notification-radiology-computer-aided-detection-andor" target="_blank" rel="noopener">denying a petition to exempt radiology AI from 510(k)</a>: capability can be open-sourced and spread overnight, but the premarket evidence gate is not moving.</span>
   </p>
 
   <nav class="toc">
-    <a href="#top"><span class="zh-inline">重點新聞</span><span class="en-inline">Top Stories</span></a>
-    <a href="#product"><span class="zh-inline">產品分析</span><span class="en-inline">Product Analysis</span></a>
-    <a href="#company"><span class="zh-inline">公司與競爭</span><span class="en-inline">Companies &amp; Competition</span></a>
-    <a href="#taiwan"><span class="zh-inline">台灣視角</span><span class="en-inline">Taiwan Angle</span></a>
-    <a href="#reading"><span class="zh-inline">延伸閱讀</span><span class="en-inline">Further Reading</span></a>
-    <a href="#refs"><span class="zh-inline">參考文獻</span><span class="en-inline">References</span></a>
+    <a href="#top"><span class="zh-inline">重點新聞</span></a>
+    <a href="#product"><span class="zh-inline">產品分析</span></a>
+    <a href="#company"><span class="zh-inline">公司與競爭</span></a>
+    <a href="#taiwan"><span class="zh-inline">台灣視角</span></a>
+    <a href="#reading"><span class="zh-inline">延伸閱讀</span></a>
+    <a href="#refs"><span class="zh-inline">參考文獻</span></a>
   </nav>
 </div>
 
@@ -78,258 +78,221 @@
   <h2>01 — Top Stories</h2>
   <div class="sec-title">
     <span class="zh">前三則是能力，後五則是校準——本週的重點在於它們同時發生</span>
-    <span class="en">The first three are about capability, the last five about calibration — the point is that they happened in the same week</span>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">影像 AI</span><span class="en-inline">Imaging AI</span></span>
+      <span class="tag hot"><span class="zh-inline">影像 AI</span></span>
       <span class="tag">Science</span><span class="tag">Alibaba DAMO</span><span class="tag">9/17</span>
     </div>
     <h3>
       <span class="zh">RADAR：單一模型涵蓋 146 種腹部 CT 發現，平均 AUC 0.913，而且開源</span>
-      <span class="en">RADAR: one model, 146 abdominal CT findings, mean AUC 0.913 — and open-sourced</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">浙江大學醫學院附屬第一醫院、阿里巴巴達摩院與湖畔實驗室 9 月 17 日在 <a href="https://www.science.org/doi/10.1126/science.aec6129" target="_blank" rel="noopener">Science</a> 發表 RADAR，一個以對比式學習把 CT 體積拆成解剖結構、再與報告文字對齊的視覺—語言模型。訓練資料為 424,911 例檢查、150 萬組影像—文字配對與逾 1,500 萬組解剖特異性配對。在 146 種腹部 CT 發現上平均 AUC 達 0.913，對照的最佳競爭模型為 0.776；八家中心外部驗證 AUC 0.895；在完全未針對急診訓練的情況下，27,000 例以上的急診情境仍有 AUC 0.904。程式碼與權重已放上 <a href="https://github.com/alibaba-damo-academy/damo-radar" target="_blank" rel="noopener">GitHub</a>，機構新聞稿見 <a href="https://www.eurekalert.org/news-releases/1143748" target="_blank" rel="noopener">EurekAlert</a>。</span>
-        <span class="en">On September 17 the First Affiliated Hospital of Zhejiang University School of Medicine, Alibaba DAMO Academy and Hupan Laboratory published RADAR in <a href="https://www.science.org/doi/10.1126/science.aec6129" target="_blank" rel="noopener">Science</a> — a vision-language model that decomposes CT volumes into individual anatomical structures and aligns them, via contrastive learning, with the corresponding text in radiology reports. It was trained on 424,911 examinations, 1.5 million image-text pairs and more than 15 million anatomy-specific pairs. Mean AUC across 146 abdominal CT findings is 0.913, against 0.776 for the best competing model; external validation across eight centres gives 0.895; and on an emergency cohort of more than 27,000 cases — a setting it was never trained for — it still reaches 0.904. Code and weights are on <a href="https://github.com/alibaba-damo-academy/damo-radar" target="_blank" rel="noopener">GitHub</a>; the institutional release is on <a href="https://www.eurekalert.org/news-releases/1143748" target="_blank" rel="noopener">EurekAlert</a>.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">過去十年的放射 AI 商業模式建立在「一個演算法做一件事、每一件事各自送審」之上。146 種發現的通用模型如果站得住，這個模式的單位經濟就變了：產品不再是偵測器，而是一層基礎設施。更關鍵的是它選擇開源——這意味著能力的擴散速度不再受任何一家公司的商業節奏限制，卻也意味著臨床端從此要自己承擔「這一版有沒有被驗證過」的判斷。急診那個未訓練卻拿到 0.904 的數字尤其值得注意：零樣本泛化到高風險情境，正是監管最難處理的一類主張。</span>
-        <span class="en">A decade of radiology AI commerce has been built on one algorithm doing one thing, each cleared separately. If a 146-finding generalist holds up, the unit economics of that model change: the product stops being a detector and becomes a layer of infrastructure. More consequential is the decision to open-source it — capability now spreads at a rate no single company's commercial calendar controls, while the burden of knowing whether a given version was ever validated shifts onto the clinical side. The emergency figure deserves particular attention: 0.904 on a setting the model was never trained for is exactly the kind of zero-shot generalisation claim regulators have the least machinery to assess.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">全部數據為回溯性判讀表現，沒有前瞻性試驗、沒有病人結果指標，也沒有「醫師搭配 RADAR 後表現如何」的讀者研究——AUC 高不等於臨床可用。八家外部中心全在中國，跨人種、跨機型、跨顯影劑流程的泛化尚未驗證。開源也代表沒有任何監管機關為線上部署的那一版背書。</span>
-        <span class="en">Every figure here is retrospective reader-independent performance: no prospective trial, no patient-outcome endpoint, and no reader study showing what happens when a radiologist works with RADAR rather than against its benchmark. High AUC is not clinical utility. All eight external centres are in China, so generalisation across populations, scanner vendors and contrast protocols remains unproven. Open-sourcing also means no regulator stands behind whichever version ends up deployed.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://www.science.org/doi/10.1126/science.aec6129" target="_blank" rel="noopener">Science, 2026-09-17</a> · <a href="https://www.eurekalert.org/news-releases/1143748" target="_blank" rel="noopener">EurekAlert, 2026-09-17</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/42752131/" target="_blank" rel="noopener">PubMed 42752131</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">急重症</span><span class="en-inline">Acute care</span></span>
+      <span class="tag hot"><span class="zh-inline">急重症</span></span>
       <span class="tag">JNIS</span><span class="tag">Korea University</span><span class="tag">9/14</span>
     </div>
     <h3>
       <span class="zh">非顯影 CT 抓大血管阻塞：判讀者 AUC 0.718 → 0.852，每 18 張多救回 1 例</span>
-      <span class="en">Large-vessel occlusion on plain CT: reader AUC 0.718 → 0.852, one extra catch per 18 scans</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">高麗大學醫學院 9 月 14 日發布跨韓美驗證結果，論文刊於 <em>Journal of NeuroInterventional Surgery</em>（DOI 10.1136/jnis-2026-025339）。模型只用標準非顯影腦部 CT 判斷是否存在大血管阻塞（LVO），不需顯影劑。963 位病人（韓國 723、美國 240）中，模型本身 AUC 韓國 0.963、美國 0.899；8 位醫療人員在無 AI 時判讀 AUC 0.718，有 AI 時升至 0.852，敏感度由 46.6% 提高到 63.7%、特異度由 91.9% 到 94.9%。研究團隊換算為「每判讀 18 張非顯影 CT，多抓出 1 例原本會漏掉的 LVO」，並指出<a href="https://www.eurekalert.org/news-releases/1143226" target="_blank" rel="noopener">未觀察到顯著的自動化偏誤</a>。</span>
-        <span class="en">Korea University College of Medicine released a Korea–US validation on September 14, published in the <em>Journal of NeuroInterventional Surgery</em> (DOI 10.1136/jnis-2026-025339). The model detects large-vessel occlusion (LVO) from standard non-contrast head CT alone, with no contrast agent. Across 963 patients (723 Korean, 240 US), the model scored AUC 0.963 in the Korean cohort and 0.899 in the US cohort. Eight clinical readers scored AUC 0.718 unaided and 0.852 with the model; sensitivity rose from 46.6% to 63.7% and specificity from 91.9% to 94.9%. The team frames this as one additional otherwise-missed LVO for every 18 non-contrast CTs read, and reports <a href="https://www.eurekalert.org/news-releases/1143226" target="_blank" rel="noopener">no significant automation bias</a>.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">這是本週唯一一則「AI 輔助人類、在急診情境、且有跨國外部驗證」的證據，而且它針對的是真實的照護瓶頸：非顯影 CT 是絕大多數急診中風流程的第一張片，但人眼在這張片上找 LVO 的敏感度本來就只有四成多。把敏感度拉到六成多、特異度不但沒掉還上升，意味著這是一個罕見的「同時減少漏診與誤診」的輔助模式，而不是用假陽性換敏感度。更值得注意的是研究主動測了自動化偏誤——這正是下面幾則研究指出最缺的那一塊。</span>
-        <span class="en">This is the week's only piece of evidence that is AI-assisting-humans, in an emergency setting, with external validation across two countries — and it targets a genuine bottleneck. Non-contrast CT is the first image in most emergency stroke pathways, and unaided human sensitivity for LVO on that image sits in the forties. Lifting sensitivity into the sixties while specificity also rises makes this a rare assistance pattern that reduces misses and false alarms at once, rather than trading one for the other. Notably, the team measured automation bias directly — precisely the thing the papers below say is usually missing.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">判讀者只有 8 位，是本研究最脆弱的一環；讀者研究屬實驗室情境，不是真實急診的時間壓力下。此外「每 18 張多 1 例」是由敏感度差值與該世代盛行率換算而得的衍生數字，換一個 LVO 盛行率不同的場域就會變動，不宜直接外推到台灣的急診量能。</span>
-        <span class="en">Eight readers is the study's weakest link, and the reader study is a laboratory exercise rather than the time-pressured reality of an emergency department. The "one per 18 scans" figure is derived from the sensitivity gap at this cohort's prevalence; in a setting with different LVO prevalence the number moves, so it should not be carried over to Taiwanese emergency volumes unchanged.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://www.eurekalert.org/news-releases/1143226" target="_blank" rel="noopener">Korea University College of Medicine / EurekAlert, 2026-09-14</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">LLM 臨床評測</span><span class="en-inline">LLM evaluation</span></span>
+      <span class="tag hot"><span class="zh-inline">LLM 臨床評測</span></span>
       <span class="tag">Nature Medicine</span><span class="tag">TU Dresden</span><span class="tag">9/15</span>
     </div>
     <h3>
       <span class="zh">Dresden 院內自建 AI agent：判斷該不該信它，看「重複作答是否一致」比看信心分數準</span>
-      <span class="en">Dresden's on-premise clinical agent: answer consistency predicts correctness better than the model's own confidence</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">德勒斯登工業大學與德勒斯登大學醫院 9 月 15 日在 <em>Nature Medicine</em>（DOI 10.1038/s41591-026-04609-x）發表完全在院內基礎設施上運行的醫療 AI agent，以模擬醫病問診方式處理標準化病例。最佳本地模型在一個 benchmark 上約 90% 診斷正確、另一個 84%；在 181 個隨機抽選的病例上，醫師覆核與自動評分的一致率超過 90%。核心發現是：<a href="https://www.eurekalert.org/news-releases/1144039" target="_blank" rel="noopener">模型對同一病例重複作答的一致性，比模型自報的內部機率更能預測答案正不正確</a>，即使在刻意刪減資訊的壓力測試下也成立。研究同時發現高齡病例的診斷準確率明顯較低。主持人 Jakob Kather 的說法是：「我們的目標是具備選擇性自主權的 AI agent——支援臨床決策，但絕不完全接手。」</span>
-        <span class="en">On September 15, TU Dresden and Dresden University Hospital published in <em>Nature Medicine</em> (DOI 10.1038/s41591-026-04609-x) a medical AI agent running entirely on local institutional infrastructure, tested through simulated physician-patient interactions on standardised cases. The best local model reached roughly 90% correct diagnoses on one benchmark and 84% on another; across 181 randomly selected cases, physician review agreed with the automated scoring more than 90% of the time. The central finding: <a href="https://www.eurekalert.org/news-releases/1144039" target="_blank" rel="noopener">whether the model gives the same answer on repeated passes predicts correctness better than its own internal probability scores</a> — and this held under stress tests where information was deliberately removed. The study also found markedly lower accuracy on simulated cases involving older patients. Prof. Jakob Kather: "Our goal is an AI agent with selective autonomy — support clinicians in decision-making, but never take over completely."</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">這是本週最有實作價值的一則。醫院導入 LLM 時最棘手的問題不是準確率，而是「這一次該不該信」——而模型自報的信心分數長期被證明校準不良。用「同一問題問三次、看答案是否一致」當信任訊號，是任何醫院當天就能在工作流裡加上去的一條規則，不需要換模型、不需要拿到權重。加上整套跑在院內、資料不出院區，等於同時回答了信任與隱私兩個採購問題。至於高齡準確率偏低，則是把一個具體的病人安全風險標在地圖上。</span>
-        <span class="en">This is the week's most immediately actionable result. The hard problem when a hospital deploys an LLM is not headline accuracy but whether to trust any particular answer — and self-reported confidence scores have a long record of poor calibration. Asking the same question three times and checking whether the answers agree is a rule any hospital can wire into a workflow the same day, with no model swap and no access to weights. Running the whole stack on-premise, with data never leaving the institution, answers the trust and the privacy procurement questions at once. The lower accuracy on older patients, meanwhile, puts a specific safety risk on the map.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">全部基於標準化模擬病例，不是真實病人、不是真實門診；模擬問診與真實病史詢問之間的落差向來是這類研究最大的外推風險。作者本身也指出高齡準確率偏低的成因尚待釐清，尚不能斷言是資料分布、症狀非典型性或模型偏誤。</span>
-        <span class="en">Everything rests on standardised simulated cases, not real patients in a real clinic; the gap between a scripted consultation and an actual history-taking is the standing external-validity risk for this genre. The authors themselves note the cause of the age gap is unresolved — it could be data distribution, atypical presentation in older patients, or model bias, and the study cannot yet say which.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://www.eurekalert.org/news-releases/1144039" target="_blank" rel="noopener">TU Dresden / EurekAlert, 2026-09-15</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">病人安全</span><span class="en-inline">Patient safety</span></span>
+      <span class="tag hot"><span class="zh-inline">病人安全</span></span>
       <span class="tag">npj Digital Medicine</span><span class="tag">UT Southwestern</span><span class="tag">9/19</span>
     </div>
     <h3>
       <span class="zh">221,556 組檢傷比較：只要在病歷敘述裡加上汙名字眼，LLM 就會把病人往下排，最高 9.4%</span>
-      <span class="en">221,556 triage comparisons: adding stigmatizing wording alone pushes LLMs to downgrade patients, in up to 9.4% of cases</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">德州大學西南醫學中心急診醫學部與生物資訊學系 9 月 19 日在 <a href="https://www.nature.com/articles/s41746-026-03270-5" target="_blank" rel="noopener">npj Digital Medicine</a> 發表「結果導向」的對照實驗：在兩家學術醫學中心急診的真實病例敘述中插入人口學、社會或汙名相關屬性，比較 LLM 的檢傷優先順序變化，共 221,556 組以 ESI 配對的比較、18 種中性與汙名化敘述配對，測試 Gemma、Qwen、DeepSeek 三個開放權重模型。結果：「頻繁急診就醫」的汙名化敘述造成最高 9.4% 的有害降級，且在全部六個「模型 × 資料集」組合中都比中性敘述高出 1.4 到 7.1 個百分點；精神科病史造成最高 9.5% 的位移。相對地，種族、語言、保險別未見一致的有害位移。</span>
-        <span class="en">On September 19, the Department of Emergency Medicine and the Department of Bioinformatics at UT Southwestern Medical Center published an outcome-grounded controlled experiment in <a href="https://www.nature.com/articles/s41746-026-03270-5" target="_blank" rel="noopener">npj Digital Medicine</a>: demographic, social and stigma-related attributes were inserted into real case presentations from two academic emergency departments, and the resulting shifts in LLM triage priority measured. The design covers 221,556 ESI-matched comparisons across eighteen neutral/stigmatizing formulation pairs, testing three open-weight models — Gemma, Qwen and DeepSeek. Framing a patient as a frequent ED user produced harmful reprioritisation in up to 9.4% of cases, running 1.4 to 7.1 points above the neutral phrasing in all six model × dataset combinations; psychiatric history produced shifts of up to 9.5%. Race, language and insurance status, by contrast, showed no consistent harmful shifts.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">既有的 LLM 偏誤研究大多停在「模型對不同族群的輸出有差異」，這一份把終點綁在臨床結果（ESI 配對後的有害降級），規模又大了兩個數量級，因此結論的可操作性完全不同：風險不是抽象的公平性，而是急診分流當下的病人安全。更值得醫院注意的是它的反直覺處——種族與保險別沒有一致效應，真正會傷人的是臨床端自己寫進病歷的措辭（「常跑急診」「有精神科病史」）。這意味著防護不能只靠去識別化，還得管到敘述本身。</span>
-        <span class="en">Most LLM bias work stops at showing that outputs differ across groups. This study anchors its endpoint in a clinical outcome — harmful downgrades after ESI matching — at two orders of magnitude greater scale, which makes the conclusion actionable in a way the genre usually is not: the risk is not abstract fairness but patient safety at the moment of triage. The counterintuitive part matters most to hospitals. Race and insurance showed no consistent effect; what actually harmed patients was wording clinicians themselves put in the chart ("frequent flyer", "history of psychiatric illness"). De-identification alone will not protect against this; the narrative itself has to be governed.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">只測了三個開放權重模型，不能外推到醫院實際在用的商用閉源模型；精神科病史那條 9.5% 只有一個模型達到統計顯著。此外這是模擬檢傷排序，不是真實部署後的病人結果追蹤——它證明的是風險存在，不是傷害已經發生。</span>
-        <span class="en">Only three open-weight models were tested, so the findings do not transfer directly to the closed commercial models most hospitals actually run; the 9.5% psychiatric-history shift reached statistical significance in only one model. And this is simulated triage ordering, not outcome tracking after real deployment — it establishes that the risk exists, not that harm has occurred.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://www.nature.com/articles/s41746-026-03270-5" target="_blank" rel="noopener">npj Digital Medicine, 2026-09-19</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">證據基礎</span><span class="en-inline">Evidence base</span></span>
+      <span class="tag hot"><span class="zh-inline">證據基礎</span></span>
       <span class="tag">npj Digital Medicine</span><span class="tag">9/17</span>
     </div>
     <h3>
       <span class="zh">229 個數位健康 RCT 裡 73% 由開發者自己執行，回報顯著結果的勝算比高 23%</span>
-      <span class="en">73% of 229 digital-health RCTs were run by their own developers, with 23% higher odds of a significant result</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">9 月 17 日 <a href="https://www.nature.com/articles/s41746-026-03234-9" target="_blank" rel="noopener">npj Digital Medicine</a> 刊出「數位健康介入臨床試驗：研究獨立性與開發者效應的快速回顧」，從 29 篇系統性回顧中抽出 229 個 RCT（2013–2025，涵蓋營養、孕產、心理健康、睡眠四個領域）。73% 的試驗有開發者直接參與，只有 27% 獨立執行。開發者參與的試驗預註冊的勝算比為 2.47（p=0.004）——也就是說流程反而更規範；但以樣本數加權後，回報統計顯著結果的勝算比為 1.23（95% CI 1.16–1.31，p&lt;0.001）。</span>
-        <span class="en">On September 17, <a href="https://www.nature.com/articles/s41746-026-03234-9" target="_blank" rel="noopener">npj Digital Medicine</a> published "Clinical trials for digital health interventions: a rapid review of study independence and the developer effect", extracting 229 RCTs from 29 systematic reviews spanning 2013–2025 across nutrition, maternal health, mental health and sleep. 73% of trials involved the developer directly; only 27% were independent. Developer-involved trials were markedly more likely to be preregistered (OR 2.47, p=0.004) — procedurally, they were the tidier ones. But weighted by sample size, they also had higher odds of reporting a statistically significant result: OR 1.23 (95% CI 1.16–1.31, p&lt;0.001).</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">這份研究提供了一個可以直接套用到任何臨床 AI 數據的折扣係數。本站過去兩週反覆處理的主題——廠商自述效益與同儕審查效益之間相差三到六倍——在這裡拿到了機制層的解釋：問題不是造假，而是由開發者設計、執行、分析的試驗，系統性地更容易產出顯著結果。預註冊率反而較高這一點尤其值得玩味，它說明「流程合規」不能當成獨立性的代理指標。讀任何一份臨床 AI 研究的第一個問題因此應該是：作者名單裡有沒有賣這個東西的人。</span>
-        <span class="en">This gives a discount factor that can be applied directly to any clinical AI result. The theme this site has worked through for two weeks — vendor-stated benefit running three to six times higher than peer-reviewed benefit — gets a mechanism here: the problem is not fabrication but that trials designed, run and analysed by the developer are systematically more likely to produce significant findings. That developer-involved trials were the more likely to be preregistered is the sharpest detail: procedural compliance is not a proxy for independence. The first question to ask of any clinical AI paper is therefore whether anyone on the author list sells the thing.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">樣本是數位健康介入（含行為 app），不是純粹的臨床 AI 裝置試驗，外推到影像 AI 或臨床決策支援時要保留空間。OR 1.23 是統計上顯著但效果量不大的偏移，不足以用來推翻任何單一研究——它是讀文獻時的先驗校正，不是判決。</span>
-        <span class="en">The sample is digital-health interventions, behavioural apps included, not purely clinical AI device trials, so extrapolating to imaging AI or clinical decision support needs care. An OR of 1.23 is a statistically robust but modest shift — enough to adjust a prior when reading the literature, not enough to overturn any single study.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://www.nature.com/articles/s41746-026-03234-9" target="_blank" rel="noopener">npj Digital Medicine, 2026-09-17</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">資料完整性</span><span class="en-inline">Data integrity</span></span>
+      <span class="tag hot"><span class="zh-inline">資料完整性</span></span>
       <span class="tag">npj Digital Medicine</span><span class="tag">9/19</span>
     </div>
     <h3>
       <span class="zh">12 位判讀者只有 3 位懷疑影像是合成的，而合成的乳房超音波「看起來比真的還好」</span>
-      <span class="en">Only 3 of 12 readers questioned the images — and the synthetic breast ultrasounds looked better than the real ones</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">9 月 19 日 <a href="https://www.nature.com/articles/s41746-026-03209-w" target="_blank" rel="noopener">npj Digital Medicine</a> 發表三階段盲測：第一階段目的盲化，12 位判讀者各看每個來源 60 張乳房超音波影像，不知道其中有合成影像。結果合成影像的判讀者感知品質反而較高，差值 0.44（95% CI 0.33–0.55）；模型估計的「影像足以進行基本評估」比率，合成為 95.9%、真實為 86.7%。12 位判讀者中只有 3 位主動質疑影像來源。第二階段明確告知有合成影像後，偵測準確率為 70.8%；第三階段提供辨識線索後升至 79.5%。最終在 94.9% 的合成影像評估中，判讀者選擇覆核、查證或不採用。</span>
-        <span class="en">On September 19, <a href="https://www.nature.com/articles/s41746-026-03209-w" target="_blank" rel="noopener">npj Digital Medicine</a> published a three-phase staged evaluation. In a purpose-blinded first phase, twelve readers each assessed 60 breast ultrasound images per source without being told any were synthetic. Reader-perceived quality came out <em>higher</em> for the synthetic images, by 0.44 (95% CI 0.33–0.55); model-estimated sufficiency for basic assessment was 95.9% for synthetic versus 86.7% for authentic. Only three of the twelve readers spontaneously raised a question about provenance. Told explicitly that synthetic images were present, readers detected them with 70.8% accuracy; given identification cues, 79.5%. Ultimately, in 94.9% of synthetic-image evaluations readers chose to review, verify or not use the image.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">合成醫學影像原本被當成資料擴增的解方——罕見病灶不夠就生一些。這份研究把它翻成風險題：當生成影像的感知品質高於真實影像，訓練集、教學檔案、遠距判讀流程與研究資料庫的「來源鏈」就成了臨床安全的一環，而現行沒有任何醫院流程在查這件事。真正刺眼的數字是 3/12：不是判讀者辨不出來（告知後有七成），而是在沒被提醒時根本不會想到要問。這正好和前面 Dresden 那則構成一組：信任校準的失敗不在模型端，在人沒有被給予提問的時機。</span>
-        <span class="en">Synthetic medical imagery has been pitched as a data-augmentation fix — not enough rare lesions, so generate some. This study reframes it as a risk. When generated images are perceived as better quality than real ones, the provenance chain running through training sets, teaching files, teleradiology pipelines and research databases becomes a clinical safety concern, and no hospital process currently checks it. The number that stings is 3 of 12: readers are not incapable of spotting synthetic images — told to look, they hit 70%. They simply never think to ask. That pairs directly with the Dresden result: the calibration failure is not in the model, it is that nobody gave the human a moment to ask the question.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">12 位判讀者、單一模態（乳房超音波），樣本極小；作者明確表示本研究並未建立合成影像的臨床保真度、診斷等價性或因果介入效果。也就是說它證明的是「人不會主動懷疑」，不是「合成影像會導致誤診」。</span>
-        <span class="en">Twelve readers, a single modality: a very small sample. The authors state explicitly that the work does not establish clinical fidelity, diagnostic equivalence or causal intervention efficacy for synthetic images. What it demonstrates is that humans do not spontaneously question provenance — not that synthetic images cause misdiagnosis.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://www.nature.com/articles/s41746-026-03209-w" target="_blank" rel="noopener">npj Digital Medicine, 2026-09-19</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">癌症篩檢</span><span class="en-inline">Cancer screening</span></span>
+      <span class="tag hot"><span class="zh-inline">癌症篩檢</span></span>
       <span class="tag">npj Digital Medicine</span><span class="tag">WHO dataset</span><span class="tag">9/19</span>
     </div>
     <h3>
       <span class="zh">AI 輔助陰道鏡外部驗證：低年資醫師敏感度 +6.5 個百分點，每案切片從 2.48 降到 2.02</span>
-      <span class="en">AI-assisted colposcopy, externally validated: +6.5 points of sensitivity for junior clinicians, biopsies down from 2.48 to 2.02 per case</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">9 月 19 日 <a href="https://www.nature.com/articles/s41746-026-02961-3" target="_blank" rel="noopener">npj Digital Medicine</a> 發表以 WHO 開源資料集進行的獨立外部驗證：187 位病人、855 張陰道鏡影像，由中國 12 個地區、45 位不同資歷的陰道鏡醫師判讀。AI 單獨對 CIN2+ 的敏感度 84.2%（95% CI 74.4–90.7）；醫師無 AI 時 84.8%（95% CI 82.7–86.9），搭配 AI 後升至 90.6%（95% CI 88.7–92.1）。低經驗判讀者的 AUC 由 0.72 升至 0.76（p=0.043），敏感度提升 6.5 個百分點。同時每案平均切片數由 2.48 降至 2.02。</span>
-        <span class="en">On September 19, <a href="https://www.nature.com/articles/s41746-026-02961-3" target="_blank" rel="noopener">npj Digital Medicine</a> published an independent external validation on the WHO open-source dataset: 187 patients, 855 colposcopic images, read by 45 colposcopists of varying experience across 12 regions of China. AI alone reached 84.2% sensitivity for CIN2+ (95% CI 74.4–90.7); clinicians unaided scored 84.8% (95% CI 82.7–86.9) and 90.6% with AI (95% CI 88.7–92.1). For low-experience readers, AUC rose from 0.72 to 0.76 (p=0.043), a 6.5-point sensitivity gain. Mean biopsies per case fell from 2.48 to 2.02.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">兩點。第一，這是用「別人的公開資料集」做的外部驗證，不是廠商自己的留出測試集——在上面那則「開發者效應」的脈絡下，這種驗證的證據權重明顯不同。第二，它同時改善了兩個通常互斥的指標：敏感度上升而切片數下降。多數輔助診斷 AI 的代價是過度檢查，這裡反而減少了侵入性處置，對子宮頸癌篩檢資源有限的地區特別有意義——而 AI 的增益集中在低年資判讀者身上，正是這些地區的人力結構。</span>
-        <span class="en">Two things. First, this is external validation on somebody else's public dataset rather than a vendor's own held-out split — which, in the light of the developer-effect paper above, carries a different evidential weight entirely. Second, it improved two metrics that usually trade against each other: sensitivity up, biopsies down. The standard cost of assistive diagnostic AI is overtesting; here invasive procedures fell instead, which matters most in settings where cervical screening capacity is scarce. And the gain concentrates in junior readers — exactly the workforce profile of those settings.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">187 位病人是很小的驗證集，CIN2+ 的信賴區間相當寬（AI 單獨 74.4–90.7）；AUC 0.72→0.76 的增幅在臨床上屬於邊際，p=0.043 也貼近顯著門檻。判讀者全在中國，陰道鏡訓練體系與台灣不同。切片數下降是好事，但研究並未追蹤是否因此漏掉任何病灶。</span>
-        <span class="en">187 patients is a small validation set and the CIN2+ confidence interval is wide (74.4–90.7 for AI alone); an AUC move from 0.72 to 0.76 is clinically marginal and p=0.043 sits close to the threshold. All readers were in China, where colposcopy training differs from Taiwan's. Fewer biopsies is welcome, but the study did not track whether any lesions were missed as a result.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://www.nature.com/articles/s41746-026-02961-3" target="_blank" rel="noopener">npj Digital Medicine, 2026-09-19</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">法規</span><span class="en-inline">Regulation</span></span>
+      <span class="tag hot"><span class="zh-inline">法規</span></span>
       <span class="tag">Federal Register</span><span class="tag">Harrison.ai</span><span class="tag">9/17</span>
     </div>
     <h3>
       <span class="zh">FDA 駁回放射 AI 免 510(k) 請願：每一次「臨床上有意義的變更」還是要重新送審</span>
-      <span class="en">FDA denies the radiology-AI 510(k) exemption petition: every clinically meaningful change still needs a new submission</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">FDA 於 9 月 17 日在聯邦公報發布最終命令（Docket FDA-2025-P-5560），駁回由 Rubrum Advising 的 Nancy Stade 代表 Harrison.ai 於 2025 年 10 月 22 日提出的請願。該請願要求對放射科電腦輔助偵測／診斷（CADe／CADx）與電腦輔助分診通知（CADt）軟體給予部分 510(k) 豁免，條件是製造商已有先前 clearance 並落實上市後監測。FDA 套用裝置歷史、效能特性、變更可偵測性與分類穩定性四項標準後認定全部未滿足，明言「請願所提資訊未能證明上市前通報為非必要」，並同時表示仍會持續推動「創新且負擔最小」的數位健康監管途徑。<a href="https://www.federalregister.gov/documents/2026/09/17/2026-19074/medical-devices-exemption-from-premarket-notification-radiology-computer-aided-detection-andor" target="_blank" rel="noopener">最終命令全文見聯邦公報</a>；產業端解讀見 <a href="https://www.pymnts.com/news/artificial-intelligence/2026/fda-keeps-radiology-ai-revenue-tied-to-premarket-clearance/" target="_blank" rel="noopener">PYMNTS</a>。</span>
-        <span class="en">On September 17 the FDA published a final order in the Federal Register (Docket FDA-2025-P-5560) denying a petition filed on October 22, 2025 by Nancy Stade of Rubrum Advising on behalf of Harrison.ai. The petition sought partial exemption from 510(k) for radiology computer-aided detection/diagnosis (CADe/CADx) and computer-aided triage and notification (CADt) software, conditional on the manufacturer holding prior clearances and operating robust post-market surveillance. Applying its four exemption factors — device history, performance characteristics, detectability of changes and classification stability — the agency found none satisfied, stating that "the information presented in the petition does not demonstrate that premarket notification is not necessary," while reaffirming a commitment to "innovative and least burdensome" digital health pathways. <a href="https://www.federalregister.gov/documents/2026/09/17/2026-19074/medical-devices-exemption-from-premarket-notification-radiology-computer-aided-detection-andor" target="_blank" rel="noopener">Full order in the Federal Register</a>; industry read-through at <a href="https://www.pymnts.com/news/artificial-intelligence/2026/fda-keeps-radiology-ai-revenue-tied-to-premarket-clearance/" target="_blank" rel="noopener">PYMNTS</a>.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">放在本週其他七則旁邊，這一則才顯出份量。同一週 RADAR 把 146 種發現的通用模型直接開源，而 FDA 對已有多項 clearance、部署在 1,000 家以上機構的 Harrison.ai 說：你的下一版還是得回來排隊。監管機關實際上在回答一個很具體的問題——「模型更新後的效能變化，靠上市後監測偵測得到嗎？」——而它的答案是偵測不到。這正是 9/19 那兩份研究的實證支持：人類不會主動懷疑，信心分數不可信，那麼放行的關卡就只能留在上市前。對廠商的現實影響是營收綁在版本上：每一版有沒有 clearance 都要能追溯。</span>
-        <span class="en">Set beside the week's other seven items, this one gains weight. In the same week that RADAR open-sourced a 146-finding generalist, the FDA told Harrison.ai — a company with multiple clearances deployed across more than 1,000 facilities — that its next version still has to queue. The agency is answering a narrow, concrete question: can post-market surveillance detect the performance change introduced by a model update? Its answer is no. That is precisely what the two September 19 papers support empirically — humans do not spontaneously question, confidence scores are not trustworthy — so the gate has to stay upstream. The commercial consequence is that revenue is pinned to versions: which build carries clearance has to be traceable.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">這是對「單一請願」的駁回，不是新的政策宣示，也不改變 FDA 既有的預定變更管制計畫（PCCP）途徑——業者仍可透過 PCCP 預先取得特定更新範圍的核准。把它讀成「FDA 全面收緊」是過度詮釋。聯邦公報正文在本環境無法直接抓取，文件識別資訊與引述經由公報官網頁面與 PYMNTS 報導交叉比對。</span>
-        <span class="en">This denies one petition; it is not a new policy statement, and it does not disturb the existing predetermined change control plan (PCCP) pathway, through which manufacturers can still obtain advance authorisation for a defined envelope of updates. Reading it as a general FDA tightening overstates it. The Federal Register body text could not be retrieved directly in this environment; document identifiers and the quoted language were cross-checked between the register's own page and the PYMNTS report.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://www.federalregister.gov/documents/2026/09/17/2026-19074/medical-devices-exemption-from-premarket-notification-radiology-computer-aided-detection-andor" target="_blank" rel="noopener">Federal Register 91 FR 58817, 2026-09-17</a> · <a href="https://www.pymnts.com/news/artificial-intelligence/2026/fda-keeps-radiology-ai-revenue-tied-to-premarket-clearance/" target="_blank" rel="noopener">PYMNTS, 2026-09-17</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag"><span class="zh-inline">醫院導入</span><span class="en-inline">Hospital deployment</span></span>
+      <span class="tag"><span class="zh-inline">醫院導入</span></span>
       <span class="tag">CHOP</span><span class="tag">MONAI</span><span class="tag">9/15</span>
     </div>
     <h3>
       <span class="zh">費城兒童醫院用開源 MONAI 自建心臟建模：4 小時縮到數秒，今年約 200 例</span>
-      <span class="en">CHOP builds its own cardiac modelling on open-source MONAI: four hours down to seconds, about 200 cases this year</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">9 月 15 日 <a href="https://blogs.nvidia.com/blog/childrens-hospital-open-source-ai-cardiac-care/" target="_blank" rel="noopener">NVIDIA 部落格</a> 揭露費城兒童醫院（CHOP）的心臟建模服務：以 MONAI、MONAI Label、NVIDIA Auto3DSeg、3D Slicer 與 SlicerHeart 等開源工具，從既有 CT、MRI 與 3D 超音波直接生成解剖精確的心臟模型，供先天性心臟病手術規劃使用。單例建模時間從 4 小時縮短到數秒；CHOP 今年預計建模約 200 例；全美 20 家以上兒童醫院有心臟建模計畫，波士頓兒童醫院每年用於約 500 台手術。先天性心臟缺陷約占活產的 1%。主持的心臟科醫師 Matthew Jolley 說：「你面對的是獨一無二的孩子，和一個現成規格的器材。我們的工作是找出哪一個裝得上。」</span>
-        <span class="en">On September 15, <a href="https://blogs.nvidia.com/blog/childrens-hospital-open-source-ai-cardiac-care/" target="_blank" rel="noopener">NVIDIA's blog</a> described the Children's Hospital of Philadelphia's cardiac modelling service: using MONAI, MONAI Label, NVIDIA Auto3DSeg, 3D Slicer and the SlicerHeart extension, it generates anatomically precise heart models from existing CT, MRI and 3D ultrasound for congenital heart surgery planning. Per-case modelling time falls from four hours to seconds. CHOP expects to model roughly 200 cases this year; more than 20 US children's hospitals run modelling programmes, and Boston Children's supports about 500 surgeries a year this way. Congenital heart defects affect roughly 1% of live births. CHOP cardiologist Matthew Jolley: "You've got a one-of-a-kind kid and an off-the-shelf device. Our job is to find what fits."</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">這是本週唯一一則「醫院自己建、跑在自己流程裡、有量化工作流改善」的案例，而且路線與 RADAR、Dresden 一致：開源工具 + 院內部署。四小時到數秒不只是省時間，它改變了建模能不能進入術前常規的門檻——4 小時意味著只有複雜個案才值得做，數秒意味著可以每台刀都做。值得注意的是這條路徑完全繞過了商業醫材的送審週期，因為它是手術規劃輔助而非診斷宣稱。</span>
-        <span class="en">This is the week's only case of a hospital building its own tool, running it in its own workflow, with a quantified improvement — and the architecture matches RADAR and Dresden: open-source components, deployed on-premise. Four hours to seconds is not merely time saved; it changes whether modelling can enter routine pre-operative practice at all. At four hours it is worth doing only for the most complex cases; at seconds it can be done for every operation. Note too that this route sidesteps the commercial device clearance cycle entirely, because it is surgical planning support rather than a diagnostic claim.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">這是 NVIDIA 官方部落格的自述內容，不是同儕審查研究，也沒有第三方稽核；「4 小時縮到數秒」是流程時間，不是臨床結果——文中沒有任何手術成效、併發症率或死亡率數據。約 200 例、500 台刀等數字均為機構自報。</span>
-        <span class="en">This is NVIDIA's own blog, not a peer-reviewed study, and nothing here is independently audited. "Four hours to seconds" is process time, not a clinical outcome — there are no surgical success, complication or mortality figures in the piece. The ~200 cases and ~500 surgeries are institution-reported.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://blogs.nvidia.com/blog/childrens-hospital-open-source-ai-cardiac-care/" target="_blank" rel="noopener">NVIDIA Blog, 2026-09-15</a></p></div>
   </div>
 </section>
@@ -339,60 +302,49 @@
   <h2>02 — Product Analysis</h2>
   <div class="sec-title">
     <span class="zh">本週兩個都選擇「開源／院內自建」的系統，押在完全相反的地方：一個押規模，一個押可驗證性</span>
-    <span class="en">Two systems that both chose open weights and on-premise deployment — and bet on opposite things: one on scale, one on verifiability</span>
   </div>
 
   <div class="grid2">
     <div class="panel">
       <h3>RADAR（damo-radar）</h3>
-      <p class="sub"><span class="zh-inline">通用型腹部 CT 視覺—語言模型 · 浙大一院 + 阿里巴巴達摩院（中國）</span><span class="en-inline">Generalist abdominal CT vision-language model · Zhejiang University First Affiliated Hospital + Alibaba DAMO Academy (China)</span></p>
+      <p class="sub"><span class="zh-inline">通用型腹部 CT 視覺—語言模型 · 浙大一院 + 阿里巴巴達摩院（中國）</span></p>
       <p>
         <span class="zh"><strong>功能與定位。</strong>把顯影腹部 CT 的體積資料拆成個別解剖結構，再以對比式學習對齊放射報告文字，用單一模型輸出 146 種發現的判讀。定位不是某一科的偵測器，而是一層可被任何下游應用調用的判讀基礎設施，<a href="https://www.science.org/doi/10.1126/science.aec6129" target="_blank" rel="noopener">論文</a>與<a href="https://github.com/alibaba-damo-academy/damo-radar" target="_blank" rel="noopener">程式碼</a>同步公開。</span>
-        <span class="en"><strong>Function and position.</strong> It decomposes contrast-enhanced abdominal CT volumes into individual anatomical structures, then aligns them with radiology report text through contrastive learning, yielding a single model that reads out 146 findings. The positioning is not a detector for one specialty but an interpretation layer any downstream application can call, with the <a href="https://www.science.org/doi/10.1126/science.aec6129" target="_blank" rel="noopener">paper</a> and <a href="https://github.com/alibaba-damo-academy/damo-radar" target="_blank" rel="noopener">code</a> released together.</span>
       </p>
       <ul class="clean">
-        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+        <li><span class="pro"><span class="zh-inline">優勢</span></span>
           <span class="zh">：覆蓋廣度與泛化能力同時成立——146 種發現平均 <a href="https://www.eurekalert.org/news-releases/1143748" target="_blank" rel="noopener">AUC 0.913（對照最佳模型 0.776）</a>，八家中心外部驗證仍有 0.895，在未針對急診訓練的 27,000 例以上急診情境維持 0.904。零樣本泛化到未見情境是通用模型最難偽造的能力指標。</span>
-          <span class="en">: breadth and generalisation hold at once — mean <a href="https://www.eurekalert.org/news-releases/1143748" target="_blank" rel="noopener">AUC 0.913 across 146 findings against 0.776 for the best competing model</a>, 0.895 on eight-centre external validation, and 0.904 on an untrained-for emergency cohort of 27,000-plus cases. Zero-shot transfer to an unseen setting is the hardest capability claim for a generalist model to fake.</span>
         </li>
-        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+        <li><span class="pro"><span class="zh-inline">優勢</span></span>
           <span class="zh">：開源直接改變採用曲線。任何醫院或新創都能在自己的資料上重跑評估、在院內部署，不必等廠商授權，也不必把影像送出院區——這正是本週 Dresden 與 CHOP 兩案不約而同選擇的架構。</span>
-          <span class="en">: open weights change the adoption curve directly. Any hospital or startup can rerun the evaluation on its own data and deploy locally, without waiting for a vendor licence and without sending images off-premise — the same architecture Dresden and CHOP independently chose this week.</span>
         </li>
-        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+        <li><span class="con"><span class="zh-inline">疑慮</span></span>
           <span class="zh">：缺的正是最關鍵的那一份數據——沒有讀者研究。全部數據衡量的是模型獨自表現，而臨床部署的實際形態是「放射科醫師 + RADAR」。相較之下本週高麗大學那則之所以更接近可用，正因為它量到了 0.718 → 0.852 這個人機協作的差值。</span>
-          <span class="en">: the one number that matters most is absent — there is no reader study. Every figure measures the model working alone, while the deployed form is always radiologist-plus-model. This is exactly why the Korea University result is closer to usable: it measured the human-plus-AI delta, 0.718 → 0.852.</span>
         </li>
-        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+        <li><span class="con"><span class="zh-inline">疑慮</span></span>
           <span class="zh">：沒有監管路徑，也沒有版本治理。<a href="https://www.federalregister.gov/documents/2026/09/17/2026-19074/medical-devices-exemption-from-premarket-notification-radiology-computer-aided-detection-andor" target="_blank" rel="noopener">FDA 同一週才重申每一次臨床上有意義的變更都要重新送審</a>；開源模型在醫院端 fork、微調、更新之後，沒有任何機制知道線上跑的是哪一版、那一版有沒有被驗證過。八家外部中心全在中國，跨人種與跨機型泛化亦未驗證。</span>
-          <span class="en">: no regulatory path and no version governance. <a href="https://www.federalregister.gov/documents/2026/09/17/2026-19074/medical-devices-exemption-from-premarket-notification-radiology-computer-aided-detection-andor" target="_blank" rel="noopener">The FDA restated in the same week that every clinically meaningful change requires resubmission</a>. Once an open model is forked, fine-tuned and updated inside a hospital, nothing tracks which build is live or whether that build was ever validated. All eight external centres are in China, so cross-population and cross-vendor generalisation is unproven.</span>
         </li>
       </ul>
     </div>
 
     <div class="panel">
       <h3>TU Dresden on-premise clinical AI agent</h3>
-      <p class="sub"><span class="zh-inline">院內部署的診斷對話 agent · 德勒斯登工業大學 + 德勒斯登大學醫院（德國）</span><span class="en-inline">On-premise diagnostic conversational agent · TU Dresden + Dresden University Hospital (Germany)</span></p>
+      <p class="sub"><span class="zh-inline">院內部署的診斷對話 agent · 德勒斯登工業大學 + 德勒斯登大學醫院（德國）</span></p>
       <p>
         <span class="zh"><strong>功能與定位。</strong>兩個以模擬醫病問診方式處理標準化病例的 agent，完全運行在醫院自有基礎設施上，資料不出院區。<a href="https://www.eurekalert.org/news-releases/1144039" target="_blank" rel="noopener">最佳本地模型在一個 benchmark 達約 90% 診斷正確、另一個 84%</a>，但團隊的主張不在分數，而在「何時可以信任它」這個判準本身。主持人 Jakob Kather 稱之為「選擇性自主權」。</span>
-        <span class="en"><strong>Function and position.</strong> Two agents that work standardised cases through simulated physician-patient dialogue, running entirely on the hospital's own infrastructure with data never leaving the institution. <a href="https://www.eurekalert.org/news-releases/1144039" target="_blank" rel="noopener">The best local model reached roughly 90% correct diagnoses on one benchmark and 84% on another</a> — but the team's claim is not about the score. It is about the criterion for when the thing can be trusted. Prof. Jakob Kather calls the target "selective autonomy".</span>
       </p>
       <ul class="clean">
-        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+        <li><span class="pro"><span class="zh-inline">優勢</span></span>
           <span class="zh">：交付了一個可以當天實作的信任規則——<a href="https://www.eurekalert.org/news-releases/1144039" target="_blank" rel="noopener">重複作答的一致性比模型自報信心更能預測正確與否</a>，且在刻意刪減資訊的壓力測試下仍成立。這不需要模型權重、不需要重新訓練，任何用閉源 API 的醫院也照樣能套用：同一題問三次，答案不一致就升級給人。</span>
-          <span class="en">: it delivers a trust rule that can be implemented the same day — <a href="https://www.eurekalert.org/news-releases/1144039" target="_blank" rel="noopener">repeated-answer consistency predicts correctness better than the model's self-reported confidence</a>, and holds under stress tests with information deliberately removed. It needs no weights and no retraining, so a hospital on a closed API can apply it too: ask three times, escalate to a human when the answers disagree.</span>
         </li>
-        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+        <li><span class="pro"><span class="zh-inline">優勢</span></span>
           <span class="zh">：主動揭露自己的失效模式。研究指出<a href="https://www.eurekalert.org/news-releases/1144039" target="_blank" rel="noopener">高齡病例的診斷準確率明顯較低</a>，這種自曝短處在廠商主導的研究裡幾乎看不到——對照本週 <a href="https://www.nature.com/articles/s41746-026-03234-9" target="_blank" rel="noopener">73% 試驗由開發者執行、顯著結果勝算比高 23%</a> 的發現，這份研究的證據權重明顯不同。</span>
-          <span class="en">: it publishes its own failure mode. The study reports <a href="https://www.eurekalert.org/news-releases/1144039" target="_blank" rel="noopener">markedly lower accuracy on older patients</a> — the kind of disclosure that almost never appears in vendor-led work. Against this week's finding that <a href="https://www.nature.com/articles/s41746-026-03234-9" target="_blank" rel="noopener">73% of trials are developer-run with 23% higher odds of a significant result</a>, that difference in evidential weight is the whole point.</span>
         </li>
-        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+        <li><span class="con"><span class="zh-inline">疑慮</span></span>
           <span class="zh">：全部建立在標準化模擬病例上，沒有真實病人、沒有真實門診的時間壓力與資訊不完整。模擬問診與真實病史詢問之間的落差，是這一類研究最大的外推風險，而這份研究並未提供任何前瞻性部署數據。</span>
-          <span class="en">: everything rests on standardised simulated cases — no real patients, none of the time pressure or incomplete information of an actual clinic. The gap between scripted consultation and real history-taking is the standing external-validity risk of this genre, and the study offers no prospective deployment data at all.</span>
         </li>
-        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+        <li><span class="con"><span class="zh-inline">疑慮</span></span>
           <span class="zh">：一致性當信任訊號有一個結構性弱點——模型可以穩定地一致錯誤。研究只證明一致性比信心分數「更能」預測正確，沒有給出一致但錯誤的殘餘比例，而這個數字才決定它能不能當成安全門檻使用。高齡準確率偏低的成因，作者也明言尚待釐清。</span>
-          <span class="en">: consistency as a trust signal has a structural weakness — a model can be reliably, consistently wrong. The study shows consistency predicts correctness <em>better</em> than confidence, but does not report the residual rate of consistent-and-wrong answers, and that figure is what determines whether it can serve as a safety threshold. The authors also state plainly that the cause of the age gap is unresolved.</span>
         </li>
       </ul>
     </div>
@@ -404,70 +356,59 @@
   <h2>03 — Companies &amp; Competition</h2>
   <div class="sec-title">
     <span class="zh">誰站在哪裡、憑什麼、跟誰打</span>
-    <span class="en">Who stands where, on what, against whom</span>
   </div>
 
   <div class="tbl-wrap">
     <table>
       <thead><tr>
-        <th><span class="zh-inline">公司</span><span class="en-inline">Company</span></th>
-        <th><span class="zh-inline">近況與數字</span><span class="en-inline">Recent state &amp; numbers</span></th>
-        <th><span class="zh-inline">競爭定位與護城河</span><span class="en-inline">Position &amp; moat</span></th>
+        <th><span class="zh-inline">公司</span></th>
+        <th><span class="zh-inline">近況與數字</span></th>
+        <th><span class="zh-inline">競爭定位與護城河</span></th>
       </tr></thead>
       <tbody>
         <tr>
-          <td><strong>Alibaba DAMO Academy</strong><br><span class="zh-inline">阿里巴巴研究院 · 與浙大一院合作</span><span class="en-inline">Alibaba's research arm, with Zhejiang University's First Affiliated Hospital</span></td>
+          <td><strong>Alibaba DAMO Academy</strong><br><span class="zh-inline">阿里巴巴研究院 · 與浙大一院合作</span></td>
           <td>
             <span class="zh">9/17 於 <a href="https://www.science.org/doi/10.1126/science.aec6129" target="_blank" rel="noopener">Science</a> 發表 RADAR：424,911 例檢查訓練、146 種腹部 CT 發現平均 AUC 0.913、八中心外部驗證 0.895、急診 27,000 例以上 0.904，並<a href="https://github.com/alibaba-damo-academy/damo-radar" target="_blank" rel="noopener">開源</a>。</span>
-            <span class="en">Published RADAR in <a href="https://www.science.org/doi/10.1126/science.aec6129" target="_blank" rel="noopener">Science</a> on 9/17: 424,911 training examinations, mean AUC 0.913 across 146 abdominal CT findings, 0.895 on eight-centre external validation, 0.904 on a 27,000-plus emergency cohort — and <a href="https://github.com/alibaba-damo-academy/damo-radar" target="_blank" rel="noopener">open-sourced</a>.</span>
           </td>
           <td>
             <span class="zh">護城河是資料規模與頂刊背書，不是產品。開源放棄授權收入，換的是生態位——讓別人的產品長在它的模型上。弱點是沒有監管路徑、沒有讀者研究、沒有商業化通路，醫院要用它得自己承擔驗證與版本治理。</span>
-            <span class="en">The moat is data scale and a top-journal imprimatur, not a product. Open-sourcing forfeits licensing revenue in exchange for ecosystem position — letting other people's products grow on its model. The weakness is no regulatory path, no reader study and no commercial channel: a hospital adopting it owns the validation and version governance itself.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>Harrison.ai / Annalise.ai</strong><br><span class="zh-inline">澳洲放射 AI · 旗艦產品 Annalise Enterprise CXR</span><span class="en-inline">Australian radiology AI · flagship Annalise Enterprise CXR</span></td>
+          <td><strong>Harrison.ai / Annalise.ai</strong><br><span class="zh-inline">澳洲放射 AI · 旗艦產品 Annalise Enterprise CXR</span></td>
           <td>
             <span class="zh">2025 年 2 月完成 <a href="https://radiologybusiness.com/topics/artificial-intelligence/radiology-artificial-intelligence-firm-harrisonai-raises-112m-opens-us-office" target="_blank" rel="noopener">1.12 億美元 C 輪（Aware Super 領投），累計募資 2.4 億美元</a>；12 項 FDA clearance、部署於 1,000 家以上醫療機構、澳洲一半放射科醫師使用、年影響 600 萬病人。9/17 其<a href="https://www.federalregister.gov/documents/2026/09/17/2026-19074/medical-devices-exemption-from-premarket-notification-radiology-computer-aided-detection-andor" target="_blank" rel="noopener">免 510(k) 請願遭 FDA 駁回</a>。</span>
-            <span class="en">Closed a <a href="https://radiologybusiness.com/topics/artificial-intelligence/radiology-artificial-intelligence-firm-harrisonai-raises-112m-opens-us-office" target="_blank" rel="noopener">US$112M Series C led by Aware Super in February 2025, US$240M raised to date</a>; 12 FDA clearances, deployed at over 1,000 facilities, used by half of Australia's radiologists, touching 6 million patients a year. On 9/17 its <a href="https://www.federalregister.gov/documents/2026/09/17/2026-19074/medical-devices-exemption-from-premarket-notification-radiology-computer-aided-detection-andor" target="_blank" rel="noopener">510(k) exemption petition was denied by the FDA</a>.</span>
           </td>
           <td>
             <span class="zh">護城河正是 RADAR 沒有的那一層：clearance、給付（一項腦 CT 演算法取得 NTAP）與既有部署基礎。但 Annalise CXR 宣稱涵蓋 124 種胸部 X 光發現，對比 RADAR 的 146 種腹部 CT 發現免費開源，說明「覆蓋廣度」正在從差異化特徵變成基本盤。它的請願被駁回，等於承認自己的成本結構被綁在逐版送審上。</span>
-            <span class="en">Its moat is exactly the layer RADAR lacks: clearances, reimbursement (one brain CT algorithm carries an NTAP) and an installed base. But Annalise CXR's claim of up to 124 chest X-ray findings, set against a free 146-finding abdominal CT model, shows breadth of coverage shifting from a differentiator to table stakes. Losing the petition is an admission that its cost structure stays pinned to per-version review.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>NVIDIA（MONAI 生態）</strong><br><span class="zh-inline">醫療影像 AI 的基礎層供應商</span><span class="en-inline">Supplier of the substrate layer for medical imaging AI</span></td>
+          <td><strong>NVIDIA（MONAI 生態）</strong><br><span class="zh-inline">醫療影像 AI 的基礎層供應商</span></td>
           <td>
             <span class="zh">9/15 揭露費城兒童醫院以 MONAI、Auto3DSeg、3D Slicer 自建心臟建模：<a href="https://blogs.nvidia.com/blog/childrens-hospital-open-source-ai-cardiac-care/" target="_blank" rel="noopener">單例 4 小時縮至數秒、CHOP 今年約 200 例、全美 20 家以上兒童醫院有建模計畫、波士頓兒童醫院年支援約 500 台手術</a>。</span>
-            <span class="en">On 9/15 it showcased CHOP building its own cardiac modelling on MONAI, Auto3DSeg and 3D Slicer: <a href="https://blogs.nvidia.com/blog/childrens-hospital-open-source-ai-cardiac-care/" target="_blank" rel="noopener">four hours per case down to seconds, ~200 CHOP cases this year, 20-plus US children's hospitals running modelling programmes, ~500 surgeries a year supported at Boston Children's</a>.</span>
           </td>
           <td>
             <span class="zh">不賣醫材、不送 FDA，賣的是所有人自建時都會用到的那一層。醫院自建的比例越高，它的位置越穩——本週 RADAR、Dresden、CHOP 三案不約而同走開源自建，全都落在它的護城河裡。弱點是這層價值無法用臨床結果證明，數字全是機構自報的流程時間。</span>
-            <span class="en">It sells no device and files nothing with the FDA; it sells the layer everyone building their own thing has to use. The more hospitals self-build, the safer its position — and RADAR, Dresden and CHOP all independently chose open-source self-build this week, all landing inside its moat. The weakness is that this layer's value cannot be demonstrated in clinical outcomes; the numbers are institution-reported process times.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>TU Dresden / Dresden University Hospital</strong><br><span class="zh-inline">學術機構，但正在定義一個產品類別</span><span class="en-inline">An academic institution defining a product category</span></td>
+          <td><strong>TU Dresden / Dresden University Hospital</strong><br><span class="zh-inline">學術機構，但正在定義一個產品類別</span></td>
           <td>
             <span class="zh">9/15 於 <em>Nature Medicine</em>（DOI 10.1038/s41591-026-04609-x）發表院內自建診斷 agent：<a href="https://www.eurekalert.org/news-releases/1144039" target="_blank" rel="noopener">最佳本地模型約 90%／84% 正確率、181 例醫師覆核一致率逾 90%、一致性優於信心分數、高齡準確率偏低</a>。</span>
-            <span class="en">Published its on-premise diagnostic agent in <em>Nature Medicine</em> on 9/15 (DOI 10.1038/s41591-026-04609-x): <a href="https://www.eurekalert.org/news-releases/1144039" target="_blank" rel="noopener">~90% and 84% accuracy on two benchmarks, over 90% physician-review agreement across 181 cases, consistency beating confidence scores, and lower accuracy on older patients</a>.</span>
           </td>
           <td>
             <span class="zh">沒有商業模式，卻可能是本週對廠商威脅最大的一則：如果「院內自建 + 開放權重 + 一致性門檻」這條路可行，環境式 AI 與臨床決策支援的軟體授權費就少了一個必要理由。它的護城河是方法論而非程式碼——「何時該信任」這個判準可以被任何人複製，包括廠商。</span>
-            <span class="en">No business model, yet arguably the week's biggest threat to vendors: if on-premise self-build with open weights and a consistency threshold works, one of the necessary justifications for clinical decision support licence fees disappears. Its moat is methodology rather than code — the "when to trust it" criterion can be copied by anyone, vendors included.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>Google Health</strong><br><span class="zh-inline">對話式醫療 AI 的主要推動者之一</span><span class="en-inline">One of the main forces behind conversational medical AI</span></td>
+          <td><strong>Google Health</strong><br><span class="zh-inline">對話式醫療 AI 的主要推動者之一</span></td>
           <td>
             <span class="zh">9/14 於 <a href="https://www.nature.com/articles/s41591-026-04639-5" target="_blank" rel="noopener">Nature Medicine</a> 發表評論（與 Beth Israel 等機構合著），主張對話式醫療 AI 的信任無法靠 benchmark 建立，必須靠真實場域的前瞻性研究。此為觀點文章，無量化結果。</span>
-            <span class="en">Published a comment in <a href="https://www.nature.com/articles/s41591-026-04639-5" target="_blank" rel="noopener">Nature Medicine</a> on 9/14, co-authored with Beth Israel and others, arguing that trust in conversational medical AI cannot be built on benchmarks and requires prospective real-world studies. It is a comment piece with no quantitative results.</span>
           </td>
           <td>
             <span class="zh">在 benchmark 上長期領先的一方主動說 benchmark 不夠，這是把競爭門檻往自己擅長的方向移——前瞻性試驗的成本只有大廠付得起。對小廠是壓力，對醫院是好消息：它與本週 Dresden、開發者效應兩則指向同一個結論，只是動機不同。</span>
-            <span class="en">The party that has led on benchmarks longest is arguing benchmarks are insufficient — which moves the bar toward what it can afford, since only large players can fund prospective trials. That squeezes smaller vendors and helps hospitals: it points to the same conclusion as the Dresden paper and the developer-effect review this week, from a different motive.</span>
           </td>
         </tr>
       </tbody>
@@ -477,7 +418,6 @@
   <div class="panel">
     <p>
       <span class="zh"><strong>今天的競爭結構是一個「能力免費化、信任商品化」的形狀。</strong>RADAR 把覆蓋廣度變成公共財，Harrison.ai 的請願被駁回則確認了 clearance 與給付仍是稀缺資源——所以護城河正在從「模型多準」移動到「誰能證明它在你的病人身上也準」。Dresden 的一致性判準、高麗大學的讀者研究差值、陰道鏡那份用 WHO 公開資料集做的外部驗證，全都是同一種資產：可被第三方複製的驗證方法。而 <a href="https://www.nature.com/articles/s41746-026-03234-9" target="_blank" rel="noopener">73% 由開發者自己做試驗</a>的現況，正說明這種資產目前有多稀缺。</span>
-      <span class="en"><strong>Today's competitive structure has the shape of free capability and commodified trust.</strong> RADAR turns coverage breadth into a public good, while the denial of Harrison.ai's petition confirms that clearance and reimbursement remain the scarce resources — so the moat is migrating from how accurate the model is to who can prove it is accurate on your patients. Dresden's consistency criterion, Korea University's reader-study delta and the colposcopy team's external validation on a WHO public dataset are all the same asset: a validation method a third party can reproduce. The fact that <a href="https://www.nature.com/articles/s41746-026-03234-9" target="_blank" rel="noopener">73% of trials are still run by the developers themselves</a> shows how scarce that asset currently is.</span>
     </p>
   </div>
 </section>
@@ -487,21 +427,17 @@
   <h2>04 — Taiwan Angle</h2>
   <div class="sec-title">
     <span class="zh">台灣這一週的動作剛好落在本週國際新聞指出的那個缺口上——但方向要選對</span>
-    <span class="en">Taiwan's move this week lands squarely on the gap the international news identified — but the direction has to be chosen carefully</span>
   </div>
 
   <div class="panel">
     <p>
       <span class="zh"><strong>(1) 衛福部把賭注押在資料標準，時機是對的。</strong>據 <a href="https://www.biotech-edu.com/20260915-mohwa-ai-regenerative-medicine/" target="_blank" rel="noopener">聯合新聞網 9 月 15 日報導</a>，衛福部長石崇良強調醫療 AI 落地的首要工作是「建立資料標準、治理制度及可信賴的使用環境」，規劃在醫學中心部署 FHIR Box 做標準化轉換，年底前完成全國醫學中心重要醫療資料對接、明年底前擴及全國醫院；搭配的資源包括健康台灣深耕計畫五年 489 億元、國家藥物韌性整備計畫四年 240 億元，以及 100 億元策略性投資。把這段話對照本週的 RADAR 開源事件，時序意義就出來了：當世界級的模型變成免費的，台灣的瓶頸就不在買不買得到模型，而在有沒有可用、可串接、標註一致的本地資料來驗證它。</span>
-      <span class="en"><strong>(1) The health ministry is betting on data standards, and the timing is right.</strong> According to <a href="https://www.biotech-edu.com/20260915-mohwa-ai-regenerative-medicine/" target="_blank" rel="noopener">a September 15 report in United Daily News</a>, Minister of Health and Welfare Shih Chung-liang argued that the first task in making medical AI land is "establishing data standards, a governance regime and a trustworthy usage environment", with FHIR Box deployments at medical centres handling standardised conversion, key clinical data connected across all national medical centres by year end and all hospitals by the end of next year. The attached resources include NT$48.9bn over five years for the Healthy Taiwan deepening programme, NT$24bn over four years for national pharmaceutical resilience, and NT$10bn in strategic investment. Read against this week's RADAR release, the sequencing makes sense: once world-class models are free, Taiwan's bottleneck is not whether it can buy a model but whether it has usable, linkable, consistently labelled local data to validate one.</span>
     </p>
     <p>
       <span class="zh"><strong>(2) 但本週真正該抄的不是模型，是驗證方法。</strong>RADAR 的八家外部驗證中心全在中國，沒有讀者研究；直接拿來用等於接受一組未經本地人口驗證的效能宣稱。本週最值得台灣醫學中心複製的其實是三個方法：高麗大學那種「有／無 AI 的判讀者 AUC 差值」（0.718 → 0.852）、Dresden 那種「重複作答一致性當信任門檻」，以及陰道鏡那份「用別人的公開資料集做外部驗證」。這三種都不需要自建模型、不需要巨額算力，只需要一組願意做讀者研究的臨床醫師與一份乾淨的本地資料——後者正是 FHIR Box 要解決的東西。</span>
-      <span class="en"><strong>(2) But what Taiwan should copy this week is the validation method, not the model.</strong> All eight of RADAR's external validation centres are in China and there is no reader study; adopting it directly means accepting a performance claim never tested on a local population. The three genuinely reproducible methods this week are Korea University's reader-AUC delta with and without AI (0.718 → 0.852), Dresden's use of repeated-answer consistency as a trust threshold, and the colposcopy team's external validation on somebody else's public dataset. None requires building a model or buying compute at scale — only a group of clinicians willing to run a reader study, and clean local data. The latter is precisely what FHIR Box is meant to deliver.</span>
     </p>
     <p>
       <span class="zh"><strong>(3) 汙名化措辭那一則，台灣的急診現在就該看。</strong><a href="https://www.nature.com/articles/s41746-026-03270-5" target="_blank" rel="noopener">UT Southwestern 的 221,556 組比較</a>顯示，真正造成有害降級的不是種族或保險別，而是臨床端自己寫進病歷的敘述（「常跑急診」「有精神科病史」）。台灣急診同樣存在高頻就診者與精神科共病的族群，而中文病歷的簡寫與慣用語（例如「老病人」「情緒個案」）從未被任何偏誤研究測過。在把 LLM 接進檢傷或分流之前，這是一個應該先做的本土前置測試，而且做起來不貴——需要的只是配對病例與一致的嚴重度分級基準。</span>
-      <span class="en"><strong>(3) Taiwanese emergency departments should read the stigma paper now.</strong> <a href="https://www.nature.com/articles/s41746-026-03270-5" target="_blank" rel="noopener">UT Southwestern's 221,556 comparisons</a> show that harmful downgrades came not from race or insurance status but from wording clinicians put in the chart themselves — "frequent flyer", "history of psychiatric illness". Taiwan has the same populations of high-frequency attenders and patients with psychiatric comorbidity, and the shorthand and idiom of Chinese-language charting — 老病人 ("old regular"), 情緒個案 ("emotional case") — has never been tested by any bias study. Before an LLM is wired into triage, this is the local pre-check to run, and it is cheap: it needs only matched cases and a consistent severity baseline.</span>
     </p>
   </div>
 </section>
@@ -511,29 +447,28 @@
   <h2>05 — Further Reading</h2>
   <div class="sec-title">
     <span class="zh">挑選標準：這一週真正值得花 30 分鐘讀原文的五篇，不含只有新聞稿的項目</span>
-    <span class="en">Chosen on one criterion: the five items this week worth thirty minutes with the primary text, excluding anything that exists only as a press release</span>
   </div>
 
   <ol class="reading">
     <li>
       <a href="https://www.science.org/doi/10.1126/science.aec6129" target="_blank" rel="noopener">RADAR: an expert-level generalist AI for abdominal CT diagnosis — Science (2026-09-17)</a>
-      <p class="why"><span class="zh">讀方法論那一段就好：它怎麼把 CT 體積拆成解剖結構再對齊報告文字，是本週唯一一個值得逐字看的架構設計。附帶的 <a href="https://github.com/alibaba-damo-academy/damo-radar" target="_blank" rel="noopener">GitHub repo</a> 可以直接在自家資料上重跑評估。</span><span class="en">Read the methods section alone: how it decomposes CT volumes into anatomical structures and aligns them with report text is the one architectural idea this week that repays close reading. The accompanying <a href="https://github.com/alibaba-damo-academy/damo-radar" target="_blank" rel="noopener">GitHub repo</a> lets you rerun the evaluation on your own data.</span></p>
+      <p class="why"><span class="zh">讀方法論那一段就好：它怎麼把 CT 體積拆成解剖結構再對齊報告文字，是本週唯一一個值得逐字看的架構設計。附帶的 <a href="https://github.com/alibaba-damo-academy/damo-radar" target="_blank" rel="noopener">GitHub repo</a> 可以直接在自家資料上重跑評估。</span></p>
     </li>
     <li>
       <a href="https://www.nature.com/articles/s41746-026-03234-9" target="_blank" rel="noopener">Clinical trials for digital health interventions: study independence and the developer effect — npj Digital Medicine (2026-09-17)</a>
-      <p class="why"><span class="zh">今年最實用的一份「讀論文用的校正表」。讀完之後，你看任何一份臨床 AI 研究的第一個動作會變成翻作者利益揭露，而不是看主要指標。</span><span class="en">The most practical correction table published this year. Afterwards, the first thing you do with any clinical AI paper is turn to the conflict-of-interest statement rather than the primary endpoint.</span></p>
+      <p class="why"><span class="zh">今年最實用的一份「讀論文用的校正表」。讀完之後，你看任何一份臨床 AI 研究的第一個動作會變成翻作者利益揭露，而不是看主要指標。</span></p>
     </li>
     <li>
       <a href="https://www.nature.com/articles/s41746-026-03270-5" target="_blank" rel="noopener">Outcome-grounded effect of clinically stigmatizing information on LLM emergency triage prioritization — npj Digital Medicine (2026-09-19)</a>
-      <p class="why"><span class="zh">值得讀的是它的實驗設計而非結論：把偏誤終點綁在 ESI 配對後的有害降級，是目前最乾淨的一套可複製方法，任何醫院都能照著在自己的病歷語料上跑一次。</span><span class="en">Read it for the experimental design rather than the finding: anchoring the bias endpoint in harmful downgrades after ESI matching is the cleanest reproducible protocol available, and any hospital can run it against its own charting corpus.</span></p>
+      <p class="why"><span class="zh">值得讀的是它的實驗設計而非結論：把偏誤終點綁在 ESI 配對後的有害降級，是目前最乾淨的一套可複製方法，任何醫院都能照著在自己的病歷語料上跑一次。</span></p>
     </li>
     <li>
       <a href="https://www.nature.com/articles/s41746-026-03209-w" target="_blank" rel="noopener">Provenance risk of synthetic breast ultrasound images: a three-phase staged evaluation — npj Digital Medicine (2026-09-19)</a>
-      <p class="why"><span class="zh">樣本很小，但它提出的問題在其他地方還沒有人問：當合成影像的感知品質高於真實影像，你的教學檔案、研究資料庫與遠距判讀流程裡，誰在查來源？</span><span class="en">A small sample, but it asks a question nobody else is asking yet: when synthetic images are perceived as better than real ones, who is checking provenance in your teaching files, research databases and teleradiology pipelines?</span></p>
+      <p class="why"><span class="zh">樣本很小，但它提出的問題在其他地方還沒有人問：當合成影像的感知品質高於真實影像，你的教學檔案、研究資料庫與遠距判讀流程裡，誰在查來源？</span></p>
     </li>
     <li>
       <a href="https://www.nature.com/articles/s41591-026-04639-5" target="_blank" rel="noopener">Prospective evidence for conversational medical AI is non-negotiable — Nature Medicine Comment (2026-09-14)</a>
-      <p class="why"><span class="zh">沒有數據，但值得讀它的來源：Google Health 與 Beth Israel 的團隊自己說 benchmark 建立不了信任。誰在說這句話，跟這句話本身一樣值得琢磨。</span><span class="en">No data, but worth reading for who is saying it: a Google Health and Beth Israel team arguing that benchmarks cannot build trust. The identity of the author list is as informative as the argument.</span></p>
+      <p class="why"><span class="zh">沒有數據，但值得讀它的來源：Google Health 與 Beth Israel 的團隊自己說 benchmark 建立不了信任。誰在說這句話，跟這句話本身一樣值得琢磨。</span></p>
     </li>
   </ol>
 </section>
@@ -543,7 +478,6 @@
   <h2>06 — References</h2>
   <div class="sec-title">
     <span class="zh">參考文獻</span>
-    <span class="en">References</span>
   </div>
 
   <div class="panel">
@@ -566,7 +500,6 @@
     </ol>
     <div class="note">
       <span class="zh"><strong>編輯說明：</strong>本期八則主線中，RADAR、高麗大學中風模型、Dresden agent、CHOP 心臟建模四則的數字取自機構新聞稿（EurekAlert、NVIDIA Blog）而非期刊全文，因 <em>Science</em> 與 <em>Nature Medicine</em> 全文在本環境需訂閱；三則 npj Digital Medicine 研究為開放取用，數字取自論文本身。Federal Register 正文在本環境無法直接抓取，文件號（2026-19074）、91 FR 58817、Docket FDA-2025-P-5560 與引述語句經公報官網頁面與 PYMNTS 報導交叉比對。NVIDIA 部落格的「4 小時→數秒」「約 200 例」「約 500 台刀」全為機構自報、未經第三方稽核，已在該則標註。台灣視角的衛福部發言取自聯合新聞網報導之轉載頁面，非衛福部官方新聞稿。Harrison.ai 的募資、clearance 數與部署規模為 2025 年 2 月資料，可能已有變動。本期主動排除了數則日期落在 9/14 之前但本週被轉載的研究（包括 MASAI 乳攝試驗、大腸鏡 deskilling 原始研究、三國 LLM 醫師 RCT），以免與前幾日重複或誤植時效。此外，<em>NEJM AI</em> 與 <em>Lancet Digital Health</em> 本週新文章在本環境無法驗證（403 與權限限制），因此本期未收錄這兩本期刊的項目——是無法確認，不是不存在。</span>
-      <span class="en"><strong>Editor's note:</strong> Of the eight lead items, the figures for RADAR, the Korea University stroke model, the Dresden agent and the CHOP cardiac modelling come from institutional releases (EurekAlert, NVIDIA Blog) rather than journal full text, since <em>Science</em> and <em>Nature Medicine</em> are paywalled in this environment; the three npj Digital Medicine papers are open access and their figures come from the papers themselves. The Federal Register body text could not be retrieved directly here, so the document number (2026-19074), 91 FR 58817, Docket FDA-2025-P-5560 and the quoted language were cross-checked between the register's own page and the PYMNTS report. The NVIDIA blog's "four hours to seconds", "~200 cases" and "~500 surgeries" are institution-reported and unaudited, as flagged in that item. The health ministry remarks in the Taiwan section come from a syndicated copy of United Daily News coverage, not an official ministry release. Harrison.ai's funding, clearance count and deployment scale are as of February 2025 and may have moved. Several studies dated before September 14 but recirculated this week were deliberately excluded — the MASAI mammography trial, the original colonoscopy deskilling study and the three-country LLM physician RCT — to avoid both repetition of earlier editions and misdated recency. Finally, new articles in <em>NEJM AI</em> and <em>Lancet Digital Health</em> could not be verified in this environment (403 and access restrictions), so neither journal is represented this week — that is a verification gap, not an absence.</span>
     </div>
   </div>
 </section>
@@ -575,7 +508,6 @@
   <div class="foot-row">
     <div>
       <span class="zh">AI／醫療AI 每日新知日報 · 由 Claude 於台北時間每日自動產出 · 本期主題：星期一／臨床應用與研究<br>本報告內容經來源查證，但不構成投資或醫療建議。所有數據請以原始出處為準。</span>
-      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Monday / Clinical Applications &amp; Research<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
     </div>
     <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com / 返回 peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
   </div>
@@ -588,16 +520,6 @@
 </div>
 
 <script>
-function setLang(l){
-  document.body.classList.remove('lang-zh','lang-en');
-  document.body.classList.add('lang-'+l);
-  document.documentElement.lang = (l==='zh') ? 'zh-Hant' : 'en';
-  document.getElementById('b-zh').classList.toggle('on', l==='zh');
-  document.getElementById('b-en').classList.toggle('on', l==='en');
-  document.title = (l==='zh')
-    ? 'AI／醫療AI 每日新知日報 · 2026-09-21'
-    : 'AI & Medical AI Daily · 2026-09-21';
-}
 function toggleTheme(){
   document.body.classList.toggle('dark');
   document.getElementById('theme-ic').textContent =
@@ -625,5 +547,6 @@ window.addEventListener('scroll', function(){
     .catch(function(){});
 })();
 </script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/en/reports/2026-09-21.html" hreflang="en" rel="alternate" lang="en">English version</a></p>
 </body>
 </html>
