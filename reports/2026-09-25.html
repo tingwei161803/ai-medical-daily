@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>AI／醫療AI 每日新知日報 · 2026-09-25</title>
+<meta property="og:url" content="https://ai-medical-daily.peteraim.com/reports/2026-09-25.html" />
+<link rel="canonical" href="https://ai-medical-daily.peteraim.com/reports/2026-09-25.html" />
+<meta name="report-date" content="2026-09-25">
+<meta name="report-theme" content="product">
+<meta name="report-title-zh" content="OpenEvidence 這個月把自己從「醫師版 ChatGPT」改寫成藥廠：250 億美元估值的 2.5 億美元募資藏在一篇 Forbes 文章的更新註記裡、Memorial Sloan Kettering 交出 14 年的 OncoKB、Anthropic 把它送進 100 個國家——而創辦人說年底前要送第一個癌症藥進臨床試驗">
+<meta name="report-title-en" content="This month OpenEvidence rewrote itself from 'ChatGPT for doctors' into a drug company: a $250M round at $15B disclosed in a footnote update to a Forbes piece, Memorial Sloan Kettering handing over 14 years of OncoKB, Anthropic carrying it into 100 countries — and a founder who says the first cancer drug enters trials before year-end">
+<meta name="report-summary-zh" content="週五深度拆解 OpenEvidence：全美 65% 醫師在用、年化營收 3 億美元、廣告填充率只有 5%、估值 150 億美元的免費臨床搜尋引擎，為什麼要在這個月同時拿下 MSK 的 OncoKB、Anthropic 的 100 國通路，然後宣布自己要做罕見癌症新藥。對照組是 Doximity 的 165 家醫療體系企業合約與 4.8% 錯誤率。">
+<meta name="report-summary-en" content="A Friday teardown of OpenEvidence: a free clinical search engine used by 65% of US physicians, at $300M annualised revenue, selling only 5% of its ad inventory, valued at $15B — and why this month it took MSK's OncoKB, Anthropic's 100-country distribution, and then announced it will develop its own rare-cancer drugs. The control group is Doximity's 165 enterprise health-system contracts and 4.8% error rate.">
+<meta property="og:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HJLDQZDK5V');
+</script>
+<link rel="stylesheet" href="/assets/report.css">
+</head>
+<body class="lang-zh">
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span><span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <div class="bar-sp"></div>
+    <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub / 在 GitHub 給這個專案一顆星"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
+    <div class="seg">
+      <button id="b-zh" class="on" onclick="setLang('zh')">中文</button>
+      <button id="b-en" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="kicker">
+    <span class="zh-inline">星期五 · 產品與公司深度分析</span>
+    <span class="en-inline">Friday · Product &amp; Company Deep Dive</span>
+  </div>
+  <h1>
+    <span class="zh">OpenEvidence 這個月把自己從「醫師版 ChatGPT」改寫成藥廠：150 億美元估值的 2.5 億美元募資藏在一篇 Forbes 文章的更新註記裡、Memorial Sloan Kettering 交出 14 年的 OncoKB、Anthropic 把它送進 100 個國家——而創辦人說年底前要送第一個癌症藥進臨床試驗</span>
+    <span class="en">This month OpenEvidence rewrote itself from "ChatGPT for doctors" into a drug company: a $250M round at $15B disclosed in a footnote update to a Forbes piece, Memorial Sloan Kettering handing over 14 years of OncoKB, Anthropic carrying it into 100 countries — and a founder who says the first cancer drug enters trials before year-end</span>
+  </h1>
+  <div class="dateline">
+    <span class="zh-inline">2026 年 9 月 25 日（五）· 涵蓋 9/16–9/24 · 台北時間</span>
+    <span class="en-inline">Friday, September 25, 2026 · Covering Sep 16–24 · Taipei time</span>
+  </div>
+  <p class="lede">
+    <span class="zh">一家不向醫師收費的公司，現在值 150 億美元。<a href="https://sacra.com/c/openevidence/" target="_blank" rel="noopener">Sacra 的股權研究</a>估計 OpenEvidence 2026 年 7 月的年化營收為 3 億美元、毛利率約 90%，而它只賣掉約 5% 的廣告存貨——收入全部來自藥廠與醫材廣告，CPM 可達 1,000 美元以上。九月它做了三件事把這個位置往上推：9/16 <a href="https://www.forbes.com/sites/innovationrx/2026/09/16/a-premier-cancer-hospital-makes-its-data-available-to-doctors-nationwide-through-openevidence/" target="_blank" rel="noopener">Forbes</a> 在一篇談 Memorial Sloan Kettering 合作的報導裡，用一段「先前未經報導」的更新揭露了 a16z 與 Byers Capital 領投的 2.5 億美元募資、估值 150 億美元；同一天 MSK <a href="https://www.newswise.com/articles/memorial-sloan-kettering-cancer-center-and-openevidence-partner-to-advance-precision-oncology-at-the-point-of-care" target="_blank" rel="noopener">宣布</a>把經 FDA 認可的 OncoKB 精準腫瘤知識庫整個接進 OpenEvidence；9/23 <a href="https://www.pymnts.com/news/artificial-intelligence/2026/anthropic-and-openevidence-team-to-expand-reach-of-medical-ai/" target="_blank" rel="noopener">Anthropic 與 OpenEvidence 宣布</a>把服務免費送進約 100 個中低收入國家。真正的轉折在 Forbes 那篇的最後：創辦人 Daniel Nadler 說公司要用 MSK 與 NCCN 的資料自己開發癌症療法，「年底前」啟動第一個臨床試驗。今天這份日報拆的就是這件事——一個廣告支撐的免費臨床搜尋引擎，憑什麼、以及該不該，變成新藥公司。</span>
+    <span class="en">A company that charges physicians nothing is now worth $15 billion. <a href="https://sacra.com/c/openevidence/" target="_blank" rel="noopener">Sacra's equity research</a> puts OpenEvidence at roughly $300M annualised revenue as of July 2026 at about 90% gross margin — while selling only about 5% of its available ad inventory, all of it pharmaceutical and device advertising at CPMs reaching $1,000 and above. In September it did three things to press that position further. On 9/16 <a href="https://www.forbes.com/sites/innovationrx/2026/09/16/a-premier-cancer-hospital-makes-its-data-available-to-doctors-nationwide-through-openevidence/" target="_blank" rel="noopener">Forbes</a>, in a story about the Memorial Sloan Kettering deal, disclosed in a "previously unreported" update a $250M round led by a16z and Byers Capital at a $15B valuation. The same day MSK <a href="https://www.newswise.com/articles/memorial-sloan-kettering-cancer-center-and-openevidence-partner-to-advance-precision-oncology-at-the-point-of-care" target="_blank" rel="noopener">announced</a> it was piping its FDA-recognised OncoKB precision-oncology knowledge base straight into OpenEvidence. On 9/23 <a href="https://www.pymnts.com/news/artificial-intelligence/2026/anthropic-and-openevidence-team-to-expand-reach-of-medical-ai/" target="_blank" rel="noopener">Anthropic and OpenEvidence announced</a> free access across roughly 100 low- and middle-income countries. The real turn is buried at the end of the Forbes piece: founder Daniel Nadler says the company will use the MSK and NCCN data to develop its own cancer therapies, with a first clinical trial "before yearend." Today's report takes that apart — on what basis, and whether it should, an ad-funded free clinical search engine becomes a drug developer.</span>
+  </p>
+
+  <nav class="toc">
+    <a href="#top"><span class="zh-inline">重點新聞</span><span class="en-inline">Top Stories</span></a>
+    <a href="#product"><span class="zh-inline">產品分析</span><span class="en-inline">Product Analysis</span></a>
+    <a href="#company"><span class="zh-inline">公司與競爭</span><span class="en-inline">Companies &amp; Competition</span></a>
+    <a href="#taiwan"><span class="zh-inline">台灣視角</span><span class="en-inline">Taiwan Angle</span></a>
+    <a href="#reading"><span class="zh-inline">延伸閱讀</span><span class="en-inline">Further Reading</span></a>
+    <a href="#refs"><span class="zh-inline">參考文獻</span><span class="en-inline">References</span></a>
+  </nav>
+</div>
+
+<section id="top">
+  <h2>01 — Top Stories</h2>
+  <div class="sec-title">
+    <span class="zh">同一家公司，九天內拿到資本、資料、通路，然後宣布要換一個行業</span>
+    <span class="en">One company: capital, data and distribution inside nine days — then an announcement that it is changing industries</span>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">募資</span><span class="en-inline">Funding</span></span>
+      <span class="tag">OpenEvidence</span><span class="tag">a16z / Byers Capital</span><span class="tag">9/16</span>
+    </div>
+    <h3>
+      <span class="zh">2.5 億美元、150 億美元估值，揭露方式是一篇別人文章的「更新」</span>
+      <span class="en">$250M at $15B, disclosed as an update appended to somebody else's article</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">9 月 16 日 <a href="https://www.forbes.com/sites/innovationrx/2026/09/16/a-premier-cancer-hospital-makes-its-data-available-to-doctors-nationwide-through-openevidence/" target="_blank" rel="noopener">Forbes InnovationRx</a> 揭露 OpenEvidence 完成一筆「先前未經報導」的 2.5 億美元募資，由 Byers Capital 與 Andreessen Horowitz 領投，投後估值 150 億美元。距離今年 1 月那輪同樣是 2.5 億美元、估值 120 億美元的 Series D（<a href="https://www.cnbc.com/2026/01/21/openevidence-chatgpt-for-doctors-doubles-valuation-to-12-billion.html" target="_blank" rel="noopener">CNBC, 2026-01-21</a>）只隔了八個月，估值再加 30 億美元。<a href="https://digitalhealthwire.com/openevidences-quiet-raise-and-loud-pivot/" target="_blank" rel="noopener">Digital Health Wire</a> 指出，這家過去每輪募資都發新聞稿、跑媒體巡迴的公司，這次選擇「以文章刊出後的更新註記」形式揭露。</span>
+        <span class="en">On September 16 <a href="https://www.forbes.com/sites/innovationrx/2026/09/16/a-premier-cancer-hospital-makes-its-data-available-to-doctors-nationwide-through-openevidence/" target="_blank" rel="noopener">Forbes InnovationRx</a> revealed that OpenEvidence had closed a "previously unreported" $250M round led by Byers Capital and Andreessen Horowitz at a $15B post-money valuation. That is eight months after January's Series D — also $250M, at $12B (<a href="https://www.cnbc.com/2026/01/21/openevidence-chatgpt-for-doctors-doubles-valuation-to-12-billion.html" target="_blank" rel="noopener">CNBC, 2026-01-21</a>) — for another $3B of paper value. <a href="https://digitalhealthwire.com/openevidences-quiet-raise-and-loud-pivot/" target="_blank" rel="noopener">Digital Health Wire</a> notes that a company which had issued a press release and run a media tour for every prior round chose this time to disclose it as a post-publication update.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">募資方式本身就是訊號。一家靠「全美最多醫師在用」建立聲量的公司突然不想談估值，通常有兩種讀法：一是倍數已經高到說出來對招募與客戶關係沒好處（150 億對 3 億美元年化營收約 50 倍營收）；二是它正在準備一個比「又募了一輪」更大的敘事，而那個敘事在同一篇文章的下半段——做新藥。</span>
+        <span class="en">How a round is disclosed is itself a signal. A company that built its profile on "the most-used tool among US physicians" suddenly declining to talk valuation usually reads one of two ways: the multiple is now high enough that saying it out loud helps neither recruiting nor customer relationships ($15B against roughly $300M annualised revenue is about 50x), or it is holding the stage for a bigger story than another round — and that story sits in the second half of the same article.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">3 億美元年化營收與 90% 毛利率來自 <a href="https://sacra.com/c/openevidence/" target="_blank" rel="noopener">Sacra</a> 的第三方估算，不是公司公告的稽核數字；「約 5% 廣告存貨售出」同屬估算。OpenEvidence 是未上市公司，沒有揭露義務。</span>
+        <span class="en">The $300M annualised revenue and ~90% gross margin come from <a href="https://sacra.com/c/openevidence/" target="_blank" rel="noopener">Sacra's</a> third-party estimate, not audited company disclosure; the "~5% of inventory sold" figure is likewise an estimate. OpenEvidence is private and under no obligation to publish.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.forbes.com/sites/innovationrx/2026/09/16/a-premier-cancer-hospital-makes-its-data-available-to-doctors-nationwide-through-openevidence/" target="_blank" rel="noopener">Forbes InnovationRx, 2026-09-16</a> ／ <a href="https://digitalhealthwire.com/openevidences-quiet-raise-and-loud-pivot/" target="_blank" rel="noopener">Digital Health Wire, 2026-09</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">資料合作</span><span class="en-inline">Data deal</span></span>
+      <span class="tag">Memorial Sloan Kettering</span><span class="tag">OncoKB</span><span class="tag">9/16</span>
+    </div>
+    <h3>
+      <span class="zh">MSK 把 14 年份的 OncoKB 交出去，並且反過來把 OpenEvidence 裝進自己的 Epic</span>
+      <span class="en">MSK hands over 14 years of OncoKB — and installs OpenEvidence inside its own Epic in return</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">Memorial Sloan Kettering 與 OpenEvidence <a href="https://www.newswise.com/articles/memorial-sloan-kettering-cancer-center-and-openevidence-partner-to-advance-precision-oncology-at-the-point-of-care" target="_blank" rel="noopener">於 9 月 16 日宣布</a>，把 MSK 經 FDA 認可的精準腫瘤知識庫 OncoKB 整合進 OpenEvidence 平台，供全美臨床端查詢；同時 MSK 把 OpenEvidence 嵌進自己的 Epic 電子病歷做臨床決策支援。OncoKB 提供專家策展的基因變異註解，附帶依證據等級分級的癌別專屬臨床可用性判讀。新聞稿指出，全美超過半數的血液腫瘤科醫師已在使用 OpenEvidence。MSK 策略長 Anaeze Offodile 的說法是：「這擴張了 MSK 的專業能力，讓它走出 MSK……我們把它想成一個配送機制。」</span>
+        <span class="en">Memorial Sloan Kettering and OpenEvidence <a href="https://www.newswise.com/articles/memorial-sloan-kettering-cancer-center-and-openevidence-partner-to-advance-precision-oncology-at-the-point-of-care" target="_blank" rel="noopener">announced on September 16</a> that MSK's FDA-recognised precision oncology knowledge base, OncoKB, is being integrated into the OpenEvidence platform for clinicians nationwide — while MSK simultaneously embeds OpenEvidence into its own Epic EHR for decision support. OncoKB supplies expert-curated genetic alteration annotations with cancer-type-specific actionability graded by evidence level. The release states that more than half of US hematologist-oncologists already use OpenEvidence. MSK chief strategy officer Anaeze Offodile framed it this way: "It expands MSK's expertise beyond MSK … We think of this as a distribution mechanism."</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這是今年少見的「雙向」資料合作。單向授權（NEJM、JAMA、NCCN 之於 OpenEvidence）買的是內容；雙向的意思是 MSK 也承認自己的醫師需要這個介面。對 OpenEvidence 來說，OncoKB 是少數難以用爬蟲或授權取代的資產——它是十四年人工策展的產物，不是文獻全文。護城河從「我買得到最多期刊」往「我有別人買不到的策展」移動了一格。</span>
+        <span class="en">This is a rare two-way data deal. One-way licensing (NEJM, JAMA, NCCN into OpenEvidence) buys content; two-way means MSK is also conceding that its own physicians want this interface. For OpenEvidence, OncoKB is one of the few assets that cannot be substituted by crawling or licensing — it is fourteen years of human curation, not full-text literature. The moat shifts one notch, from "I have licensed the most journals" toward "I have curation nobody else can buy."</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">「超過半數血液腫瘤科醫師在用」出自合作雙方的新聞稿，沒有第三方稽核；「在用」的定義（註冊過？每月查一次？）未說明。交易金額與資料授權條款均未揭露。</span>
+        <span class="en">"More than half of hematologist-oncologists use it" comes from the partners' own release with no independent audit, and "use" is undefined (registered once? one query a month?). Neither deal value nor licensing terms were disclosed.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.newswise.com/articles/memorial-sloan-kettering-cancer-center-and-openevidence-partner-to-advance-precision-oncology-at-the-point-of-care" target="_blank" rel="noopener">Newswise／MSK press release, 2026-09-16</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">轉型</span><span class="en-inline">Pivot</span></span>
+      <span class="tag">Daniel Nadler</span><span class="tag">NCCN</span><span class="tag">9/16</span>
+    </div>
+    <h3>
+      <span class="zh">「年底前進臨床試驗」：一家搜尋引擎宣布要做罕見癌症新藥</span>
+      <span class="en">"Before yearend": a search engine announces it will develop rare-cancer drugs</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">在同一篇 <a href="https://www.forbes.com/sites/innovationrx/2026/09/16/a-premier-cancer-hospital-makes-its-data-available-to-doctors-nationwide-through-openevidence/" target="_blank" rel="noopener">Forbes 報導</a>中，執行長 Daniel Nadler 表示公司將結合 MSK 資料與稍早的 NCCN（美國國家癌症資訊網）協議自行開發療法，預期「年底前」啟動第一個臨床試驗，隔年再推三到五個候選藥物，先從罕見癌症切入。<a href="https://digitalhealthwire.com/openevidences-quiet-raise-and-loud-pivot/" target="_blank" rel="noopener">Digital Health Wire</a> 把這組動作稱為「安靜的募資與大聲的轉向」。</span>
+        <span class="en">In the same <a href="https://www.forbes.com/sites/innovationrx/2026/09/16/a-premier-cancer-hospital-makes-its-data-available-to-doctors-nationwide-through-openevidence/" target="_blank" rel="noopener">Forbes piece</a>, CEO Daniel Nadler said the company will develop its own therapies by combining the MSK data with an earlier NCCN agreement, expecting to start a first clinical trial "before yearend" and three to five further candidates the following year, beginning with rare cancers. <a href="https://digitalhealthwire.com/openevidences-quiet-raise-and-loud-pivot/" target="_blank" rel="noopener">Digital Health Wire</a> labelled the combination "a quiet raise and a loud pivot."</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這在商業模式上不是延伸，是換跑道。廣告模式的前提是中立：醫師信任它，因為它讀的是文獻而不是誰出錢。一旦公司自己擁有在研藥物，「這個平台在腫瘤問題上的回答」與「這家公司的藥物管線」就開始有結構性利害關係——即使實際上完全沒有影響，舉證責任也已經翻轉到公司這邊。<a href="https://www.medscape.com/viewarticle/when-ai-recommends-treatment-should-drug-ads-appear-2026a1000qyd" target="_blank" rel="noopener">Medscape 今年就在問</a>「AI 建議治療方案時，該不該出現藥廠廣告」；現在的問題升級成「AI 建議治療方案時，該不該由一家自己有藥的公司回答」。</span>
+        <span class="en">This is not an extension of the business model; it is a change of lane. The advertising model rests on neutrality: physicians trust it because it reads the literature rather than whoever is paying. Once the company owns drugs in development, "what this platform says about an oncology question" and "this company's pipeline" acquire a structural interest in each other — and even if the answers never change at all, the burden of proof has flipped onto the company. <a href="https://www.medscape.com/viewarticle/when-ai-recommends-treatment-should-drug-ads-appear-2026a1000qyd" target="_blank" rel="noopener">Medscape was already asking this year</a> whether drug ads belong beside AI treatment recommendations; the question now escalates to whether a company with its own pipeline should be answering the treatment question at all.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">這一段全部是創辦人對一家媒體的口頭表述，沒有 IND 申請編號、沒有藥物名稱、沒有適應症、沒有合作 CRO 或試驗場域的公開紀錄。「年底前啟動臨床試驗」在寫稿當下（9/25）是一個尚未兌現的承諾，距離年底剩三個多月。本報未能找到任何獨立佐證。</span>
+        <span class="en">All of this is a founder's verbal account to one outlet: no IND number, no compound name, no indication, no public record of a CRO or trial site. "A clinical trial before yearend" is, as of this writing on 9/25, an unfulfilled promise with a little over three months left. We found no independent corroboration.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.forbes.com/sites/innovationrx/2026/09/16/a-premier-cancer-hospital-makes-its-data-available-to-doctors-nationwide-through-openevidence/" target="_blank" rel="noopener">Forbes InnovationRx, 2026-09-16</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">通路</span><span class="en-inline">Distribution</span></span>
+      <span class="tag">Anthropic</span><span class="tag">OpenEvidence</span><span class="tag">9/23</span>
+    </div>
+    <h3>
+      <span class="zh">Anthropic 與 OpenEvidence 把服務免費送進約 100 個中低收入國家</span>
+      <span class="en">Anthropic and OpenEvidence take the service free into roughly 100 low- and middle-income countries</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">9 月 23 日，Anthropic 與 OpenEvidence <a href="https://www.pymnts.com/news/artificial-intelligence/2026/anthropic-and-openevidence-team-to-expand-reach-of-medical-ai/" target="_blank" rel="noopener">宣布合作</a>，在約 100 個國家（包含安哥拉、海地、蒙古、蘇丹、烏干達）向醫療人員免費提供專用版本的臨床決策支援。OpenEvidence 目前在美國與歐洲對臨床人員本來就是免費的。Nadler 的說法：「取得醫學知識的機會不該取決於地理位置。」雙方未揭露任何價金或成本分攤條款。</span>
+        <span class="en">On September 23, Anthropic and OpenEvidence <a href="https://www.pymnts.com/news/artificial-intelligence/2026/anthropic-and-openevidence-team-to-expand-reach-of-medical-ai/" target="_blank" rel="noopener">announced a partnership</a> offering a dedicated version of the clinical decision support tool free to healthcare providers across roughly 100 countries, including Angola, Haiti, Mongolia, Sudan and Uganda. OpenEvidence is already free to clinicians in the US and Europe. Nadler's line: "Access to medical knowledge shouldn't depend on geography." Neither side disclosed pricing or any cost-sharing terms.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">從商業角度，這是把一個沒有廣告買主的市場拿來換規模與正當性——這些國家沒有 1,000 美元 CPM 的藥廠廣告可賣，但有醫師、有使用資料、有政策影響力。從模型供應角度，這也標示 OpenEvidence 在自建模型之外仍深度依賴外部前沿模型。PYMNTS 同時點出一個該被放進判斷的風險：主要以富裕國家資料訓練的系統，未必符合當地的臨床條件與可得治療。</span>
+        <span class="en">Commercially this trades a market with no ad buyers for scale and legitimacy — these countries offer no $1,000-CPM pharma inventory, but they do offer physicians, usage data and policy standing. On the model-supply side it also marks how much OpenEvidence still leans on external frontier models alongside its own. PYMNTS flags a risk that belongs in the assessment: systems trained mostly on wealthy-country data may not match local clinical conditions or locally available treatments.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">「約 100 個國家」是雙方說法，未見完整國別清單；沒有承諾期限、沒有服務水準、沒有在地化語言或臨床指引調整的具體規格。本報未找到第三方對這項合作的獨立查證。</span>
+        <span class="en">"Roughly 100 countries" is the partners' own framing with no published country list; there is no stated duration, service level, or specification for localisation of language or clinical guidance. We found no independent verification of the partnership's scope.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.pymnts.com/news/artificial-intelligence/2026/anthropic-and-openevidence-team-to-expand-reach-of-medical-ai/" target="_blank" rel="noopener">PYMNTS, 2026-09-23</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">競爭</span><span class="en-inline">Competition</span></span>
+      <span class="tag">Doximity</span><span class="tag">Doximity Ask</span><span class="tag">8/10</span>
+    </div>
+    <h3>
+      <span class="zh">對照組：Doximity 走企業合約與錯誤率，165 家醫療體系、4.8%</span>
+      <span class="en">The control group: Doximity runs on enterprise contracts and error rates — 165 health systems, 4.8%</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">根據 <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/doximity-bets-big-hospital-enterprise-ai-platforms-it-ramps-tech-investment" target="_blank" rel="noopener">Fierce Healthcare（2026-08-10）</a>，Doximity 2027 財年第一季營收 1.566 億美元、年增 7%，全年營收指引上調到 6.71–6.81 億美元，調整後 EBITDA 指引 3.09–3.29 億美元；已簽下 165 家醫療體系為 AI 客戶，包含 Northwestern、Penn Medicine、University of Michigan。AI 抄寫使用者一年成長 10 倍，近 50% 處方醫師在該季使用 AI 工具。執行長 Jeff Tangney 的框架是：「隨著這個市場從 AI 的『蠻荒西部』走向隱私與風險管理，我們的位置會像當年在遠距醫療一樣贏。」</span>
+        <span class="en">Per <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/doximity-bets-big-hospital-enterprise-ai-platforms-it-ramps-tech-investment" target="_blank" rel="noopener">Fierce Healthcare (2026-08-10)</a>, Doximity posted Q1 FY2027 revenue of $156.6M, up 7% year over year, raised full-year revenue guidance to $671–681M and adjusted EBITDA guidance to $309–329M, and has signed 165 health systems as AI clients including Northwestern, Penn Medicine and the University of Michigan. AI scribe users grew tenfold year over year and nearly 50% of prescribers used an AI tool in the quarter. CEO Jeff Tangney's framing: "As this market migrates from AI 'Wild West' to privacy and risk management, we're well-positioned to win as we did in telehealth."</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這是同一個市場的兩種完全不同的賭注。OpenEvidence 繞過醫院採購、直接觸及個別醫師，用廣告變現；Doximity 走進採購流程、賣給資安與風險部門，用訂閱與企業合約變現。七月發表的 NOHARM 獨立基準（史丹佛、哈佛與 ARISE 網絡，1,100 個真實臨床情境、約 13,000 筆醫師註記）中，Doximity Ask 以 4.8% 錯誤率居首，OpenEvidence、GPT-5.6 Sol 與 Claude Fable 5 同列受測（<a href="https://fortune.com/2026/07/29/new-medical-ai-study-same-flaw-openevidence-openai-anthropic-doximity/" target="_blank" rel="noopener">Fortune, 2026-07-29</a>）。當監管與醫院風險單位開始要求可比較的錯誤率，「誰的分數可以被引用」本身就變成通路。</span>
+        <span class="en">These are two incompatible bets on one market. OpenEvidence bypasses hospital procurement to reach individual physicians and monetises with advertising; Doximity walks into procurement, sells to security and risk functions, and monetises with subscriptions and enterprise contracts. In the independent NOHARM benchmark published in July (Stanford, Harvard and the ARISE network; 1,100 real clinical cases, roughly 13,000 physician annotations), Doximity Ask ranked first at a 4.8% error rate, with OpenEvidence, GPT-5.6 Sol and Claude Fable 5 also tested (<a href="https://fortune.com/2026/07/29/new-medical-ai-study-same-flaw-openevidence-openai-anthropic-doximity/" target="_blank" rel="noopener">Fortune, 2026-07-29</a>). Once regulators and hospital risk committees demand comparable error rates, "whose score can be cited" becomes a distribution channel in itself.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">NOHARM 最該被記住的不是排名，而是 <strong>76.6% 的有害錯誤屬於「遺漏」</strong>——系統沒講該講的，而不是講錯。Eric Topol 的評論是「遺漏型錯誤必須盡可能壓到零」。用一個名次去背書任何一家產品，恰好會漏掉這篇研究真正的結論。另外，Doximity 的營收與客戶數是上市公司財報數字，OpenEvidence 的對應數字是第三方估算，兩者不可直接並列比較。</span>
+        <span class="en">The thing worth remembering from NOHARM is not the ranking but that <strong>76.6% of harmful errors were omissions</strong> — the systems left things out rather than got them wrong. Eric Topol's comment was that "errors of omission need to be brought as close to zero as possible." Using the ranking to endorse any one product misses precisely what the study found. Note too that Doximity's revenue and client counts are audited public-company figures while OpenEvidence's equivalents are third-party estimates; the two are not directly comparable.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.fiercehealthcare.com/ai-and-machine-learning/doximity-bets-big-hospital-enterprise-ai-platforms-it-ramps-tech-investment" target="_blank" rel="noopener">Fierce Healthcare, 2026-08-10</a> ／ <a href="https://fortune.com/2026/07/29/new-medical-ai-study-same-flaw-openevidence-openai-anthropic-doximity/" target="_blank" rel="noopener">Fortune, 2026-07-29</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">併購</span><span class="en-inline">M&amp;A</span></span>
+      <span class="tag">DexCare</span><span class="tag">Mila Health</span><span class="tag">9/21</span>
+    </div>
+    <h3>
+      <span class="zh">DexCare 買下 Mila Health：病人接觸端的 AI 代理開始整併</span>
+      <span class="en">DexCare buys Mila Health: consolidation begins at the patient-access layer</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">9 月 21 日，西雅圖的 DexCare <a href="https://hitconsultant.net/2026/09/21/dexcare-acquires-mila-health-ai-care-coordination-autonomous-patient-access/" target="_blank" rel="noopener">宣布收購</a>同樣位於西雅圖的 Mila Health，金額未揭露。DexCare 做的是病人就醫管道與導航平台，把各醫療體系的排程規則、EHR 資料與臨床樣板標準化，服務涵蓋全美 50 州、5,700 萬名保險覆蓋人口，客戶包含 Kaiser Permanente、Piedmont、Texas Health Resources、Tampa General。Mila 做的是語音、簡訊與聊天的對話式 AI 代理，處理排程、就診前準備與出院後追蹤。DexCare 累計募資 1.46 億美元，2023 年由 ICONIQ Growth 領投 7,500 萬美元 Series C。這是 DexCare 的第二樁收購。</span>
+        <span class="en">On September 21, Seattle-based DexCare <a href="https://hitconsultant.net/2026/09/21/dexcare-acquires-mila-health-ai-care-coordination-autonomous-patient-access/" target="_blank" rel="noopener">announced its acquisition</a> of fellow Seattle company Mila Health for undisclosed terms. DexCare runs a patient access and navigation platform that standardises scheduling rules, EHR data and clinical templates across health systems, reaching 57 million covered patients in all 50 states, with customers including Kaiser Permanente, Piedmont, Texas Health Resources and Tampa General. Mila builds conversational AI agents over voice, SMS and chat for scheduling, pre-visit preparation and post-discharge follow-up. DexCare has raised $146M in total, including a $75M Series C led by ICONIQ Growth in 2023. This is its second acquisition.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">執行長 Matt Blosl 的一句話說清楚了這個市場的分工：「Mila 給了我們的資料一個聲音，我們的資料給了 Mila 方向。大多數代理缺的是情境認知。」2026 年有大量公司在做「會講話的醫療代理」，但能講話不等於知道這家醫院週三下午哪一診有空、這個病人的保險涵不涵蓋。護城河在規則庫與整合，不在對話能力——而對話能力正在快速商品化。這是本週最值得放進判斷的結構性訊號：純代理層公司會被有資料層的公司收掉。</span>
+        <span class="en">CEO Matt Blosl's line captures the division of labour: "Mila gives our data a voice, and our data gives Mila direction. Most agents lack contextual awareness." Plenty of 2026 companies build talking healthcare agents, but talking is not knowing which clinic has a Wednesday-afternoon slot or whether this patient's plan covers it. The moat is in the rules engine and the integrations, not the conversation — and conversation is commoditising fast. That is the structural signal of the week: pure agent-layer companies get absorbed by the ones holding the data layer.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">交易金額未揭露，因此無從判斷這是強勢收購還是軟著陸。5,700 萬「保險覆蓋人口」是可觸及範圍而非實際使用者數，屬廠商自述。</span>
+        <span class="en">Terms were not disclosed, so there is no way to tell a position of strength from a soft landing. The 57 million "covered patients" is addressable reach rather than actual users, and is vendor-reported.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://hitconsultant.net/2026/09/21/dexcare-acquires-mila-health-ai-care-coordination-autonomous-patient-access/" target="_blank" rel="noopener">HIT Consultant, 2026-09-21</a> ／ <a href="https://www.geekwire.com/2026/seattle-startups-dexcare-and-mila-health-combine-to-expand-ai-patient-scheduling/" target="_blank" rel="noopener">GeekWire, 2026-09-21</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">IPO</span><span class="en-inline">IPO</span></span>
+      <span class="tag">Oura</span><span class="tag">URA</span><span class="tag">9/21</span>
+    </div>
+    <h3>
+      <span class="zh">Oura 啟動 22 億美元 IPO，但三分之二的股票是老股東在賣</span>
+      <span class="en">Oura launches a $2.2B IPO — two-thirds of it existing shareholders cashing out</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">9 月 21 日，智慧戒指公司 Oura <a href="https://techcrunch.com/2026/09/21/ouras-2-2b-ipo-is-mostly-a-payday-for-existing-shareholders/" target="_blank" rel="noopener">公開 IPO 條件</a>：發行 5,000 萬股、每股 40–44 美元、目標募集 22 億美元，代號 URA，價格區間上緣對應約 141 億美元估值（2025 年 10 月上一輪為 110 億美元）。其中僅 1,350 萬股為新股，公司實得約 5.67 億美元；3,650 萬股為老股東出售，套現約 15.3 億美元，Forerunner Ventures 出清全部 9.3% 持股（約 12 億美元）。財務面：硬體營收 9.74 億美元，訂閱營收 2.405 億美元、毛利率 89%、年增一倍；預估 2026 年 9 月 30 日付費會員 570 萬人，較前一年接近翻倍。公司實得款項中約 5.264 億美元要用於員工股票既得的稅務負擔，一般營運用途僅剩約 620 萬美元。</span>
+        <span class="en">On September 21 smart-ring maker Oura <a href="https://techcrunch.com/2026/09/21/ouras-2-2b-ipo-is-mostly-a-payday-for-existing-shareholders/" target="_blank" rel="noopener">set IPO terms</a>: 50 million shares at $40–44, targeting $2.2B, under the ticker URA, implying roughly $14.1B at the top of the range (against $11B in its October 2025 round). Only 13.5 million shares are primary, giving the company about $567M gross; 36.5 million are secondary, worth roughly $1.53B to selling holders, with Forerunner Ventures exiting its entire 9.3% stake for about $1.20B. On the numbers: hardware revenue $974M, subscription revenue $240.5M at 89% gross margin and double the prior year, with an estimated 5.7 million paying members at September 30, 2026, nearly twice the year before. Of the company's own proceeds, about $526.4M is earmarked for tax obligations on employee share vesting, leaving roughly $6.2M for general corporate purposes.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">把這一則放進一份談 OpenEvidence 的日報，是因為它們在同一個問題上給出相反的答案：訂閱毛利率 89%、一年翻倍的訂閱營收，是消費健康端目前唯一被公開市場驗證過的變現路徑。Oura 賣硬體、收訂閱、不賣廣告；OpenEvidence 不賣硬體、不收訂閱、只賣廣告。九月這兩家同時走到里程碑，正好把「醫療 AI 到底跟誰收錢」這個 2026 年的核心問題攤開來。</span>
+        <span class="en">This belongs in a report about OpenEvidence because the two answer the same question in opposite ways: 89% subscription gross margin on subscription revenue that doubled in a year is currently the only consumer-health monetisation path validated in public markets. Oura sells hardware, charges subscriptions and runs no ads; OpenEvidence sells no hardware, charges nothing and runs only ads. Both hitting milestones in the same month lays open the central 2026 question — who exactly does medical AI bill?</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">IPO 定價區間不等於最終定價，掛牌後可能上修或下修。硬體與訂閱營收的期間基準以公開申報文件為準；本報引自 TechCrunch 的整理而非直接閱讀 S-1，數字請以 SEC 申報文件核對。另有報導將估值寫為 156.2 億美元（<a href="https://www.cp24.com/news/money/2026/09/21/oura-targets-us1562-billion-valuation-in-us-ipo-setting-stage-for-fall-listings/" target="_blank" rel="noopener">CP24／路透</a>），與 TechCrunch 的 141 億美元存在口徑差異（稀釋前後），本報同時列出。</span>
+        <span class="en">A price range is not a final price; it can move up or down at pricing. The period basis for the hardware and subscription figures is whatever the public filing states — we took these from TechCrunch's summary rather than reading the S-1 directly, so check them against the SEC filing. Other coverage puts the valuation at $15.62B (<a href="https://www.cp24.com/news/money/2026/09/21/oura-targets-us1562-billion-valuation-in-us-ipo-setting-stage-for-fall-listings/" target="_blank" rel="noopener">CP24/Reuters</a>) against TechCrunch's $14.1B — a diluted-versus-undiluted difference, and we list both.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://techcrunch.com/2026/09/21/ouras-2-2b-ipo-is-mostly-a-payday-for-existing-shareholders/" target="_blank" rel="noopener">TechCrunch, 2026-09-21</a> ／ <a href="https://www.cp24.com/news/money/2026/09/21/oura-targets-us1562-billion-valuation-in-us-ipo-setting-stage-for-fall-listings/" target="_blank" rel="noopener">CP24／Reuters, 2026-09-21</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">政府採購</span><span class="en-inline">Public procurement</span></span>
+      <span class="tag">Abridge</span><span class="tag">VA</span><span class="tag">9/22</span>
+    </div>
+    <h3>
+      <span class="zh">Abridge 拿下 7.757 億美元的 VA 企業合約——從產品角度看，這是通路而不是技術勝利</span>
+      <span class="en">Abridge takes a seat on a $775.7M VA enterprise contract — read as product strategy, this is distribution, not a technology win</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">9 月 22 日，退伍軍人事務部（VA）<a href="https://hitconsultant.net/2026/09/22/abridge-awarded-va-enterprise-contract-ambient-ai-veterans-health-administration/" target="_blank" rel="noopener">選定 Abridge</a> 進入一份上限 7.757 億美元、為期五年的環境式臨床 AI 企業合約，涵蓋退伍軍人健康管理局全國體系。<a href="https://www.nextgov.com/artificial-intelligence/2026/09/va-selects-abridge-ambient-scribe-under-new-enterprise-contract/416140/" target="_blank" rel="noopener">Nextgov/FCW</a> 的報導指出這是在新的企業合約架構下進行，而非單一機構採購。</span>
+        <span class="en">On September 22 the Department of Veterans Affairs <a href="https://hitconsultant.net/2026/09/22/abridge-awarded-va-enterprise-contract-ambient-ai-veterans-health-administration/" target="_blank" rel="noopener">selected Abridge</a> for a five-year ambient clinical AI enterprise contract with a $775.7M ceiling, covering the Veterans Health Administration nationally. <a href="https://www.nextgov.com/artificial-intelligence/2026/09/va-selects-abridge-ambient-scribe-under-new-enterprise-contract/416140/" target="_blank" rel="noopener">Nextgov/FCW</a> reports this runs under a new enterprise contract vehicle rather than facility-by-facility purchasing.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">環境式抄寫在 2026 年已經高度同質化——<a href="https://endpoints.news/the-great-ambient-scribe-convergence/" target="_blank" rel="noopener">Endpoints News 八月的分析</a>直接把 Abridge、Nabla、Ambience 與 OpenEvidence 放在一起，說這些公司「正在把重心從差異化轉向市占率」。當產品差異收斂，勝負就回到誰能通過聯邦採購、資安評鑑與五年期合約這種非技術門檻。這一則跟 DexCare 買 Mila 是同一個故事的兩面：能力商品化之後，通路與整合變成唯一的資產。</span>
+        <span class="en">Ambient scribing has converged hard in 2026 — <a href="https://endpoints.news/the-great-ambient-scribe-convergence/" target="_blank" rel="noopener">Endpoints News's August analysis</a> groups Abridge, Nabla, Ambience and OpenEvidence together and says these companies are "shifting focus to market share over differentiation." Once the products converge, the contest returns to non-technical gates: federal procurement, security accreditation, five-year vehicles. This is the same story as DexCare buying Mila from the other side — when capability commoditises, distribution and integration become the only assets.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">7.757 億美元是合約上限而非已授予金額，實際支出取決於任務訂單。Endpoints 該篇分析在付費牆後，本報僅根據公開可見的標題與導言引用其「從差異化轉向市占率」的判斷，未取得全文。本站 9/24 的技術主題日報已從自主性角度處理過這則消息，今天只從產品與通路角度補充。</span>
+        <span class="en">$775.7M is a ceiling, not an awarded amount; actual spend depends on task orders. The Endpoints analysis sits behind a paywall — we cite its "market share over differentiation" framing from the publicly visible headline and lede only, having not read the full text. This site's 9/24 technology edition already covered the award from an autonomy angle; today adds only the product-and-distribution reading.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://hitconsultant.net/2026/09/22/abridge-awarded-va-enterprise-contract-ambient-ai-veterans-health-administration/" target="_blank" rel="noopener">HIT Consultant, 2026-09-22</a> ／ <a href="https://www.nextgov.com/artificial-intelligence/2026/09/va-selects-abridge-ambient-scribe-under-new-enterprise-contract/416140/" target="_blank" rel="noopener">Nextgov/FCW, 2026-09</a></p></div>
+  </div>
+</section>
+
+<section id="product">
+  <h2>02 — Product Analysis</h2>
+  <div class="sec-title">
+    <span class="zh">同一個問題（醫師在診間查證據）的兩種產品設計：免費＋廣告，對上企業合約＋錯誤率</span>
+    <span class="en">Two product designs for one job (a physician checking evidence at the point of care): free plus ads, versus enterprise contracts plus an error rate</span>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>OpenEvidence</h3>
+      <p class="sub"><span class="zh-inline">醫師專用的免費臨床搜尋與決策支援 · OpenEvidence（美國，邁阿密）</span><span class="en-inline">Free clinical search and decision support for verified physicians · OpenEvidence (Miami, USA)</span></p>
+      <p>
+        <span class="zh"><strong>功能與定位。</strong>醫師以 NPI 編號驗證身分後免費使用，平台針對臨床問題以同儕審查文獻與治療指引作答，內容授權來源包含 NEJM Group、JAMA Network 與其十一本專科期刊、NCCN、AMA、AAFP、ACEP，本月再加上 MSK 的 OncoKB（<a href="https://research.contrary.com/company/openevidence" target="_blank" rel="noopener">Contrary Research</a>／<a href="https://www.newswise.com/articles/memorial-sloan-kettering-cancer-center-and-openevidence-partner-to-advance-precision-oncology-at-the-point-of-care" target="_blank" rel="noopener">MSK 新聞稿</a>）。變現完全來自藥廠與醫材廣告，定價邏輯是搶食美國每年約 200 億美元的藥廠對醫事人員行銷預算。</span>
+        <span class="en"><strong>Function and position.</strong> Free to physicians who verify with an NPI, answering clinical questions from peer-reviewed literature and treatment guidelines, with licensed content from NEJM Group, the JAMA Network and its eleven specialty journals, NCCN, the AMA, AAFP and ACEP — and, as of this month, MSK's OncoKB (<a href="https://research.contrary.com/company/openevidence" target="_blank" rel="noopener">Contrary Research</a>/<a href="https://www.newswise.com/articles/memorial-sloan-kettering-cancer-center-and-openevidence-partner-to-advance-precision-oncology-at-the-point-of-care" target="_blank" rel="noopener">MSK release</a>). Monetisation is entirely pharmaceutical and device advertising, aimed at the roughly $20B a year US pharma spends marketing to health professionals.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：分發成本近乎為零。繞過醫院採購直接觸及個別醫師，<a href="https://sacra.com/c/openevidence/" target="_blank" rel="noopener">Sacra</a> 估計超過 65% 的美國醫師每月使用、逾五成每日使用，2026 年 1 月月查詢量 2,000 萬次，3 月 10 日單日突破 100 萬次臨床查詢。</span>
+          <span class="en">: distribution costs approach zero. Bypassing hospital procurement to reach individual physicians, <a href="https://sacra.com/c/openevidence/" target="_blank" rel="noopener">Sacra</a> estimates over 65% of US doctors use it monthly and more than half daily, with 20 million monthly consultations in January 2026 and over 1 million clinical consultations in the single day of March 10.</span>
+        </li>
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：定價權還沒用掉。<a href="https://sacra.com/c/openevidence/" target="_blank" rel="noopener">Sacra</a> 估計目前只售出約 5% 的廣告存貨，CPM 可達 1,000 美元以上、毛利率約 90%——即使使用量完全不再成長，單靠提高填充率仍有相當大的營收空間。</span>
+          <span class="en">: the pricing power is still unspent. <a href="https://sacra.com/c/openevidence/" target="_blank" rel="noopener">Sacra</a> estimates only about 5% of ad inventory is currently sold at CPMs reaching $1,000+ and ~90% gross margin — meaning substantial revenue headroom from fill rate alone, even with zero further usage growth.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：新藥管線與廣告模式都建立在「中立」這個前提上，而這兩件事現在同時在同一家公司裡。<a href="https://www.medscape.com/viewarticle/when-ai-recommends-treatment-should-drug-ads-appear-2026a1000qyd" target="_blank" rel="noopener">Medscape</a> 今年已就「AI 建議治療時出現藥廠廣告」提出質疑；<a href="https://medcitynews.com/2026/02/openevidence-healthcare-valuation/" target="_blank" rel="noopener">MedCity News</a> 則把它與同樣靠廣告變現、最後因造假崩潰的 Outcome Health 並列為警訊——該文並未提出針對估值本身的量化反駁，是類比而非分析。</span>
+          <span class="en">: both the pipeline and the ad model rest on neutrality, and they now sit inside the same company. <a href="https://www.medscape.com/viewarticle/when-ai-recommends-treatment-should-drug-ads-appear-2026a1000qyd" target="_blank" rel="noopener">Medscape</a> has already raised the question of drug ads appearing beside AI treatment recommendations; <a href="https://medcitynews.com/2026/02/openevidence-healthcare-valuation/" target="_blank" rel="noopener">MedCity News</a> sets it beside Outcome Health, another ad-funded business that collapsed in fraud — though that piece offers an analogy rather than any quantitative case against the valuation.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：沒有公開的錯誤率。<a href="https://fortune.com/2026/07/29/new-medical-ai-study-same-flaw-openevidence-openai-anthropic-doximity/" target="_blank" rel="noopener">NOHARM</a> 把它納入受測但排名在 Doximity Ask 之後；該研究更重要的發現是受測系統 76.6% 的有害錯誤屬於遺漏。對一個「醫師拿來確認自己有沒有漏掉什麼」的工具，遺漏型錯誤正是最糟的失效模式。</span>
+          <span class="en">: there is no published error rate of its own. <a href="https://fortune.com/2026/07/29/new-medical-ai-study-same-flaw-openevidence-openai-anthropic-doximity/" target="_blank" rel="noopener">NOHARM</a> included it and ranked it behind Doximity Ask; the study's larger finding was that 76.6% of harmful errors across the tested systems were omissions. For a tool physicians use to check whether they have missed something, omission is precisely the worst failure mode.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>Doximity Ask</h3>
+      <p class="sub"><span class="zh-inline">醫師社群網絡內建的臨床 AI 助理 · Doximity（美國，NYSE: DOCS）</span><span class="en-inline">A clinical AI assistant inside a physician social network · Doximity (NYSE: DOCS, USA)</span></p>
+      <p>
+        <span class="zh"><strong>功能與定位。</strong>建立在既有醫師社群、遠距醫療與處方工作流之上的 AI 問答與抄寫套件，賣點不是單點功能而是「已經在醫師每天用的東西裡面」，並以醫療體系為單位簽企業合約——目前 165 家，包含 Northwestern、Penn Medicine、University of Michigan（<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/doximity-bets-big-hospital-enterprise-ai-platforms-it-ramps-tech-investment" target="_blank" rel="noopener">Fierce Healthcare, 2026-08-10</a>）。</span>
+        <span class="en"><strong>Function and position.</strong> An AI question-answering and scribing suite built on top of an existing physician network, telehealth and prescribing workflow. The pitch is not a feature but presence — it already sits inside what physicians open daily — sold as enterprise contracts at health-system level: 165 of them so far, including Northwestern, Penn Medicine and the University of Michigan (<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/doximity-bets-big-hospital-enterprise-ai-platforms-it-ramps-tech-investment" target="_blank" rel="noopener">Fierce Healthcare, 2026-08-10</a>).</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：目前唯一拿得出第三方錯誤率的一線產品。<a href="https://fortune.com/2026/07/29/new-medical-ai-study-same-flaw-openevidence-openai-anthropic-doximity/" target="_blank" rel="noopener">NOHARM</a> 在 1,100 個真實臨床情境、約 13,000 筆醫師註記下給出 4.8% 錯誤率並列第一。在醫院風險委員會與法遵單位開始要求可比較數字的階段，這是能直接放進採購文件的東西。</span>
+          <span class="en">: currently the only front-line product with a third-party error rate to show. <a href="https://fortune.com/2026/07/29/new-medical-ai-study-same-flaw-openevidence-openai-anthropic-doximity/" target="_blank" rel="noopener">NOHARM</a> put it first at 4.8% across 1,100 real clinical cases and ~13,000 physician annotations. At the stage where hospital risk committees and compliance functions start demanding comparable numbers, that is something you can drop straight into a procurement file.</span>
+        </li>
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：營收是查得到的。2027 財年第一季 1.566 億美元、年增 7%，全年指引 6.71–6.81 億美元，調整後 EBITDA 指引 3.09–3.29 億美元；AI 抄寫使用者一年成長 10 倍（<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/doximity-bets-big-hospital-enterprise-ai-platforms-it-ramps-tech-investment" target="_blank" rel="noopener">Fierce Healthcare</a>）。上市公司的揭露義務本身就是一種可信度資產。</span>
+          <span class="en">: the revenue is checkable. Q1 FY2027 at $156.6M, up 7%; full-year guidance $671–681M; adjusted EBITDA guidance $309–329M; AI scribe users up tenfold year over year (<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/doximity-bets-big-hospital-enterprise-ai-platforms-it-ramps-tech-investment" target="_blank" rel="noopener">Fierce Healthcare</a>). The disclosure obligations of a listed company are themselves a credibility asset.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：7% 的年增率放在一個宣稱正在爆發的市場裡偏低，而同一期調整後每股盈餘 0.29 美元低於市場預期的 0.30 美元。企業合約的取得速度受制於採購週期，這正是 OpenEvidence 用免費模式繞過的那道牆。</span>
+          <span class="en">: 7% growth is modest for a market described as exploding, and adjusted EPS of $0.29 that quarter missed the $0.30 consensus. Enterprise contracts move at procurement speed — which is exactly the wall the free model is designed to go around.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：與 OpenEvidence 互告中。雙方在聯邦法院互提訴訟，OpenEvidence 指控對方以提示詞注入竊取商業機密（<a href="https://healthexec.com/topics/healthcare-management/legal-news/doximity-and-openevidence-sue-each-other-spat-over-medical-ai-trade-secrets" target="_blank" rel="noopener">Health Exec</a>／<a href="https://www.courtlistener.com/docket/70596804/openevidence-inc-v-doximity-inc/" target="_blank" rel="noopener">CourtListener 案號 1:25-cv-11802</a>）。訴訟結果未定，本報不對任何一方的指控作事實認定。</span>
+          <span class="en">: it is in litigation with OpenEvidence. The two have filed duelling federal suits, with OpenEvidence alleging trade-secret theft via prompt injection (<a href="https://healthexec.com/topics/healthcare-management/legal-news/doximity-and-openevidence-sue-each-other-spat-over-medical-ai-trade-secrets" target="_blank" rel="noopener">Health Exec</a>/<a href="https://www.courtlistener.com/docket/70596804/openevidence-inc-v-doximity-inc/" target="_blank" rel="noopener">CourtListener docket 1:25-cv-11802</a>). The cases are unresolved and we make no finding on either side's allegations.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="company">
+  <h2>03 — Companies &amp; Competition</h2>
+  <div class="sec-title">
+    <span class="zh">誰站在哪裡、憑什麼、跟誰打</span>
+    <span class="en">Who stands where, on what, against whom</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th><span class="zh-inline">公司</span><span class="en-inline">Company</span></th>
+        <th><span class="zh-inline">近況與數字</span><span class="en-inline">Recent state &amp; numbers</span></th>
+        <th><span class="zh-inline">競爭定位與護城河</span><span class="en-inline">Position &amp; moat</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>OpenEvidence</strong><br><span class="zh-inline">廣告支撐的免費臨床搜尋</span><span class="en-inline">Ad-funded free clinical search</span></td>
+          <td>
+            <span class="zh">9/16 揭露 2.5 億美元募資、估值 150 億美元（<a href="https://www.forbes.com/sites/innovationrx/2026/09/16/a-premier-cancer-hospital-makes-its-data-available-to-doctors-nationwide-through-openevidence/" target="_blank" rel="noopener">Forbes</a>）；2026 年 7 月年化營收約 3 億美元、毛利率約 90%、約 65% 美國醫師每月使用（<a href="https://sacra.com/c/openevidence/" target="_blank" rel="noopener">Sacra 估算</a>）。</span>
+            <span class="en">$250M round at a $15B valuation disclosed 9/16 (<a href="https://www.forbes.com/sites/innovationrx/2026/09/16/a-premier-cancer-hospital-makes-its-data-available-to-doctors-nationwide-through-openevidence/" target="_blank" rel="noopener">Forbes</a>); ~$300M annualised revenue at ~90% gross margin as of July 2026, with ~65% of US physicians using it monthly (<a href="https://sacra.com/c/openevidence/" target="_blank" rel="noopener">Sacra estimate</a>).</span>
+          </td>
+          <td>
+            <span class="zh">護城河是醫師端的預設習慣與獨家策展資料（OncoKB、NCCN）。弱點：自研藥物與廣告變現同時挑戰中立性，而中立性正是這個護城河的地基。</span>
+            <span class="en">The moat is default habit on the physician side plus exclusive curated data (OncoKB, NCCN). The weakness: an in-house pipeline and ad monetisation both press on neutrality — which is the ground the moat stands on.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Doximity</strong><br><span class="zh-inline">醫師網絡＋企業 AI 合約</span><span class="en-inline">Physician network plus enterprise AI</span></td>
+          <td>
+            <span class="zh">2027 財年第一季營收 1.566 億美元（年增 7%），全年指引上調至 6.71–6.81 億美元；165 家醫療體系 AI 客戶；NOHARM 錯誤率 4.8% 居首（<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/doximity-bets-big-hospital-enterprise-ai-platforms-it-ramps-tech-investment" target="_blank" rel="noopener">Fierce Healthcare</a>）。</span>
+            <span class="en">Q1 FY2027 revenue $156.6M (up 7%), full-year guidance raised to $671–681M; 165 health systems as AI clients; first in NOHARM at a 4.8% error rate (<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/doximity-bets-big-hospital-enterprise-ai-platforms-it-ramps-tech-investment" target="_blank" rel="noopener">Fierce Healthcare</a>).</span>
+          </td>
+          <td>
+            <span class="zh">護城河是既有工作流與上市公司等級的可稽核性。弱點：成長率個位數，採購週期拖慢擴張速度。</span>
+            <span class="en">The moat is incumbent workflow plus public-company auditability. The weakness: single-digit growth, with procurement cycles throttling expansion.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Wolters Kluwer（UpToDate）</strong><br><span class="zh-inline">訂閱制的臨床參考在位者</span><span class="en-inline">The subscription reference incumbent</span></td>
+          <td>
+            <span class="zh">推出生成式 AI 版本 UpToDate Expert AI 應戰（<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/wolters-kluwer-rolls-out-gen-ai-version-uptodate-clinical-decision-support" target="_blank" rel="noopener">Fierce Healthcare</a>）；傳統定價約每年 499 美元（<a href="https://research.contrary.com/company/openevidence" target="_blank" rel="noopener">Contrary Research</a>）。另與 Abridge 合作把 UpToDate 內容接進臨床決策支援（<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-expands-clinical-decision-support-capabilities-uptodate-partnership" target="_blank" rel="noopener">Fierce Healthcare</a>）。</span>
+            <span class="en">Has shipped a generative AI edition, UpToDate Expert AI (<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/wolters-kluwer-rolls-out-gen-ai-version-uptodate-clinical-decision-support" target="_blank" rel="noopener">Fierce Healthcare</a>), against a traditional list price of about $499 a year (<a href="https://research.contrary.com/company/openevidence" target="_blank" rel="noopener">Contrary Research</a>). It has also partnered with Abridge to pipe UpToDate content into decision support (<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-expands-clinical-decision-support-capabilities-uptodate-partnership" target="_blank" rel="noopener">Fierce Healthcare</a>).</span>
+          </td>
+          <td>
+            <span class="zh">護城河是機構授權合約與數十年編輯信譽。弱點：一個免費且更快的替代品，正在把它的每年 499 美元變成需要解釋的支出。</span>
+            <span class="en">The moat is institutional licensing and decades of editorial credibility. The weakness: a free, faster substitute is turning its $499 a year into a line item somebody has to justify.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>OpenAI</strong><br><span class="zh-inline">通用模型直接進 EHR</span><span class="en-inline">A general model reaching straight into the EHR</span></td>
+          <td>
+            <span class="zh">9/1 宣布 ChatGPT 可唯讀接取 Epic 病歷（Epic 系統涵蓋逾 3.25 億名病人），另加入 ClinicalTrials.gov、CMS Coverage、RxNorm、DailyMed、PubMed 的公開資料工具；自述在 27 個臨床情境、4,300 筆醫師評分中 99.1% 回應為安全（<a href="https://techcrunch.com/2026/09/01/chatgpt-health-adds-epic-integration-for-clinicians-to-import-patient-data/" target="_blank" rel="noopener">TechCrunch</a>／<a href="https://openai.com/index/chatgpt-connects-health-records-and-healthcare-sources/" target="_blank" rel="noopener">OpenAI</a>）。</span>
+            <span class="en">On 9/1 announced read-only ChatGPT access to Epic records (Epic holds data on over 325 million patients), plus a public-data tool spanning ClinicalTrials.gov, CMS Coverage, RxNorm, DailyMed and PubMed; it self-reports 99.1% of responses safe across 27 clinical scenarios and 4,300 physician ratings (<a href="https://techcrunch.com/2026/09/01/chatgpt-health-adds-epic-integration-for-clinicians-to-import-patient-data/" target="_blank" rel="noopener">TechCrunch</a>/<a href="https://openai.com/index/chatgpt-connects-health-records-and-healthcare-sources/" target="_blank" rel="noopener">OpenAI</a>).</span>
+          </td>
+          <td>
+            <span class="zh">護城河是模型能力與消費端的既有安裝基礎。弱點：99.1% 的安全率是廠商自述、未經第三方稽核，而在臨床場景裡 0.9% 是一個很大的數字。</span>
+            <span class="en">The moat is model capability plus an enormous consumer install base. The weakness: 99.1% safe is vendor-reported and unaudited — and in a clinical setting 0.9% is a large number.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Abridge</strong><br><span class="zh-inline">環境式抄寫，押聯邦通路</span><span class="en-inline">Ambient scribing, betting on federal distribution</span></td>
+          <td>
+            <span class="zh">9/22 進入 VA 上限 7.757 億美元、五年期的環境式 AI 企業合約（<a href="https://hitconsultant.net/2026/09/22/abridge-awarded-va-enterprise-contract-ambient-ai-veterans-health-administration/" target="_blank" rel="noopener">HIT Consultant</a>）；另與 Wolters Kluwer、NEJM、JAMA 建立內容合作。</span>
+            <span class="en">Took a seat on the VA's five-year, $775.7M-ceiling ambient AI enterprise contract on 9/22 (<a href="https://hitconsultant.net/2026/09/22/abridge-awarded-va-enterprise-contract-ambient-ai-veterans-health-administration/" target="_blank" rel="noopener">HIT Consultant</a>), alongside content tie-ups with Wolters Kluwer, NEJM and JAMA.</span>
+          </td>
+          <td>
+            <span class="zh">護城河是聯邦與大型體系的採購資格。弱點：產品本身與 Nabla、Ambience 高度趨同，差異化正在消失。</span>
+            <span class="en">The moat is qualification for federal and large-system procurement. The weakness: the product itself is converging hard with Nabla and Ambience, and the differentiation is evaporating.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>DexCare</strong><br><span class="zh-inline">病人就醫管道的資料層</span><span class="en-inline">The data layer under patient access</span></td>
+          <td>
+            <span class="zh">9/21 收購 Mila Health（金額未揭露），累計募資 1.46 億美元，觸及全美 5,700 萬保險覆蓋人口（<a href="https://hitconsultant.net/2026/09/21/dexcare-acquires-mila-health-ai-care-coordination-autonomous-patient-access/" target="_blank" rel="noopener">HIT Consultant</a>）。</span>
+            <span class="en">Acquired Mila Health on 9/21 for undisclosed terms; $146M raised to date; reach across 57 million covered patients nationally (<a href="https://hitconsultant.net/2026/09/21/dexcare-acquires-mila-health-ai-care-coordination-autonomous-patient-access/" target="_blank" rel="noopener">HIT Consultant</a>).</span>
+          </td>
+          <td>
+            <span class="zh">護城河是排程規則庫與 EHR 整合這種難看但難複製的東西。弱點：規模仍遠小於 Epic 這類在位者，且對話能力本身已商品化。</span>
+            <span class="en">The moat is the unglamorous, hard-to-copy stuff: scheduling rules engines and EHR integration. The weakness: it remains far smaller than incumbents like Epic, and the conversational layer is already commoditised.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Tempus AI</strong><br><span class="zh-inline">上市的精準腫瘤資料平台</span><span class="en-inline">The listed precision-oncology data platform</span></td>
+          <td>
+            <span class="zh">2026 年 7 月 20 日宣布以每股 16.25 美元、約 15 億美元企業價值收購 Personalis，整合分子殘存疾病（MRD）檢測（<a href="https://www.tempus.com/news/pr/tempus-to-acquire-personalis-integrating-mrd/" target="_blank" rel="noopener">Tempus 新聞稿</a>）；第二季營收 3.825 億美元、年增 22%，首度轉為淨利為正（<a href="https://stockstotrade.com/news/tempus-ai-inc-tem-news-2026_09_17/" target="_blank" rel="noopener">StocksToTrade, 2026-09-17</a>）。</span>
+            <span class="en">Announced on July 20, 2026 an acquisition of Personalis at $16.25 a share, roughly $1.5B enterprise value, to fold in molecular residual disease testing (<a href="https://www.tempus.com/news/pr/tempus-to-acquire-personalis-integrating-mrd/" target="_blank" rel="noopener">Tempus release</a>); Q2 revenue $382.5M, up 22%, with net income turning positive for the first time (<a href="https://stockstotrade.com/news/tempus-ai-inc-tem-news-2026_09_17/" target="_blank" rel="noopener">StocksToTrade, 2026-09-17</a>).</span>
+          </td>
+          <td>
+            <span class="zh">護城河是定序檢體與臨床結果配對的縱向資料。弱點：這正是 OpenEvidence 想用 OncoKB 與 NCCN 抄近路達成的目標，而 Tempus 花了十年與數億美元。</span>
+            <span class="en">The moat is longitudinal data pairing sequenced specimens with clinical outcomes. The weakness: that is exactly what OpenEvidence hopes to shortcut with OncoKB and NCCN — and it took Tempus a decade and hundreds of millions.</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="zh"><strong>今天的競爭結構是一個「誰先失去中立性」的賽局。</strong>五家公司從五個方向擠向同一個位置——醫師在診間下決定前最後看的那一個畫面。OpenAI 從通用模型往下接 Epic，Wolters Kluwer 從權威內容往上加生成式介面，Abridge 從抄寫往旁邊長決策支援，Doximity 從既有工作流往內塞 AI，OpenEvidence 從免費使用量往上收廣告。差異不在技術，在誰付錢：付錢的人決定了這個畫面對誰負責。OpenEvidence 這個月做的事，是把付錢的人從「藥廠買廣告」擴大成「藥廠買廣告，而且我自己也是藥廠」——這在商業上是往上整合，在信任上是把自己的地基挖開一角。</span>
+      <span class="en"><strong>Today's competitive structure is a game of who loses neutrality first.</strong> Five companies converge from five directions on one position: the last screen a physician looks at before deciding. OpenAI reaches down from a general model into Epic; Wolters Kluwer builds a generative interface up from authoritative content; Abridge grows sideways from scribing into decision support; Doximity pushes AI into workflow it already owns; OpenEvidence monetises free usage upward into advertising. The difference is not technical, it is who pays — and whoever pays determines who that screen answers to. What OpenEvidence did this month widens the payer from "pharma buys the ads" to "pharma buys the ads, and I am also pharma." Commercially that is vertical integration. On trust, it is digging out a corner of its own foundation.</span>
+    </p>
+  </div>
+</section>
+
+<section id="taiwan">
+  <h2>04 — Taiwan Angle</h2>
+  <div class="sec-title">
+    <span class="zh">台灣已經有指引了，但指引管不到「醫師自己在手機上查」這一塊</span>
+    <span class="en">Taiwan already has guidance — but the guidance does not reach the doctor checking something on a phone</span>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="zh"><strong>(1) 台灣的生成式 AI 指引正好落在這個模式的盲區。</strong>衛福部於 2026 年 5 月 29 日以衛部醫字第 1151663164 號函頒布〈醫療機構應用生成式人工智慧指引〉，適用於病歷撰寫輔助、臨床決策支援、行政文書與病人溝通四類情境，要求機構指派主責單位、完成資安評估、建立培訓與導入後監控，並分導入前、導入與整合、導入後三階段列出九項應注意事項（<a href="https://www.leeandli.com/TW/Newsletters/7656.htm" target="_blank" rel="noopener">理律法律事務所</a>／<a href="https://www.mohw.gov.tw/cp-18-86695-1.html" target="_blank" rel="noopener">衛福部</a>）。關鍵在於它的規範對象是「醫療機構」。OpenEvidence 這類產品的分發路徑恰恰繞過機構——醫師用 NPI（在台灣則是個人身分）自己註冊、在自己的手機上查、醫院的資安評估與監控機制完全碰不到。這不是台灣特有的漏洞，而是「免費直達醫師」這個商業模式在全球製造的同一個治理空缺。</span>
+      <span class="en"><strong>(1) Taiwan's generative AI guidance lands precisely in this model's blind spot.</strong> On May 29, 2026 the Ministry of Health and Welfare issued the Guidelines on the Use of Generative AI in Healthcare Institutions (ref. 1151663164), covering four scenarios — documentation support, clinical decision support, administrative drafting and patient communication — and requiring institutions to name an accountable unit, complete a security assessment, establish training and post-deployment monitoring, with nine points of attention across pre-adoption, integration and post-adoption phases (<a href="https://www.leeandli.com/TW/Newsletters/7656.htm" target="_blank" rel="noopener">Lee and Li</a>/<a href="https://www.mohw.gov.tw/cp-18-86695-1.html" target="_blank" rel="noopener">MOHW</a>). The crux is that its subject is the institution. Products like OpenEvidence route around institutions entirely: the physician registers personally, queries on a personal phone, and the hospital's security assessment and monitoring never touch it. This is not a Taiwan-specific gap — it is the same governance vacuum the free-direct-to-physician model creates everywhere.</span>
+    </p>
+    <p>
+      <span class="zh"><strong>(2) 指引已經點名了「使用者過度依賴導致臨床判斷退化」，而 NOHARM 給了它一個數字。</strong>該指引列出的六類風險中，包含基礎模型偏差、輸出幻覺與使用者過度依賴。把它跟七月 NOHARM 的發現放在一起看會更具體：受測系統 76.6% 的有害錯誤是遺漏而非錯答（<a href="https://fortune.com/2026/07/29/new-medical-ai-study-same-flaw-openevidence-openai-anthropic-doximity/" target="_blank" rel="noopener">Fortune</a>）。遺漏型錯誤在使用者端幾乎不可偵測——沒有紅字、沒有明顯錯誤可以抓，只有一個看起來完整的答案。台灣醫院若要落實「導入後監控」，監控答錯比監控答漏容易太多，而後者才是主要傷害來源。</span>
+      <span class="en"><strong>(2) The guidance already names "user over-reliance degrading clinical judgement" — and NOHARM put a number on it.</strong> Among the six risk categories it lists are foundation-model bias, hallucinated output and user over-reliance. Set that beside July's NOHARM finding and it gets concrete: 76.6% of harmful errors across the tested systems were omissions rather than wrong answers (<a href="https://fortune.com/2026/07/29/new-medical-ai-study-same-flaw-openevidence-openai-anthropic-doximity/" target="_blank" rel="noopener">Fortune</a>). Omissions are close to undetectable at the point of use — no red flag, no visible error to catch, just an answer that looks complete. If Taiwanese hospitals are to make "post-deployment monitoring" real, monitoring for wrong answers is far easier than monitoring for missing ones — and the missing ones are where the harm mostly lives.</span>
+    </p>
+    <p>
+      <span class="zh"><strong>(3) 台灣廠商走的是相反的路，而那條路現在看起來比較穩。</strong>長佳智能（6841）8 月 18 日宣布其闌尾炎 AI 判讀軟體取得 TFDA 許可，該產品 2026 年 4 月已先取得美國 FDA 510(k)；公司累計 57 張國內外醫材許可證（美國 15 張、台灣 24 張，另有泰國、馬來西亞、越南、新加坡），服務逾 70 個客戶（<a href="https://www.biotech-edu.com/20260819-everfortuneai-tfda-license/" target="_blank" rel="noopener">台灣光鹽生技學苑</a>）。這是「取證、進機構、走採購」的傳統路徑，速度慢、天花板低，但每一步都有監管紀錄可查、責任歸屬清楚。OpenEvidence 的模式在估值上遠勝，但它至今沒有任何一個產品是以醫療器材身分送審的——這不是它做錯了什麼，而是「臨床參考資訊」與「醫療器材」的界線，正在被一個 150 億美元的公司從外側推擠。台灣的監管者遲早要回答同一個問題。</span>
+      <span class="en"><strong>(3) Taiwanese vendors are walking the opposite road, and right now it looks like the steadier one.</strong> Ever Fortune.AI (TWSE: 6841) announced on August 18 that its appendicitis CT interpretation software had received TFDA approval, having cleared US FDA 510(k) in April 2026; the company now holds 57 device licences worldwide (15 US, 24 Taiwan, plus Thailand, Malaysia, Vietnam and Singapore) across more than 70 customers (<a href="https://www.biotech-edu.com/20260819-everfortuneai-tfda-license/" target="_blank" rel="noopener">Biotech-Edu Taiwan</a>). That is the classical path — clear the regulator, enter the institution, go through procurement — slow, with a low ceiling, but every step leaves a regulatory record and liability sits somewhere specific. OpenEvidence's model wins overwhelmingly on valuation, yet to date not one of its products has been submitted as a medical device. That is not a failing on its part; it is that the boundary between "clinical reference information" and "medical device" is being pushed from the outside by a $15B company. Taiwan's regulators will have to answer the same question sooner or later.</span>
+    </p>
+  </div>
+</section>
+
+<section id="reading">
+  <h2>05 — Further Reading</h2>
+  <div class="sec-title">
+    <span class="zh">挑選標準：能改變你對這家公司判斷的東西，而不是複述新聞的東西</span>
+    <span class="en">Chosen for things that change your assessment of this company, not things that restate the news</span>
+  </div>
+
+  <ol class="reading">
+    <li>
+      <a href="https://sacra.com/c/openevidence/" target="_blank" rel="noopener">OpenEvidence revenue, valuation &amp; funding — Sacra (2026)</a>
+      <p class="why"><span class="zh">今天這份日報裡幾乎所有 OpenEvidence 的財務數字都來自這裡。值得自己讀一遍的理由是：它把「5% 廣告存貨售出」這個關鍵變數攤開來算，而整個 150 億美元的估值故事幾乎全押在這個數字能不能拉高。</span><span class="en">Nearly every OpenEvidence financial figure in today's report traces back here. Worth reading yourself because it exposes the "5% of inventory sold" variable directly — and the entire $15B story rides on whether that number can be raised.</span></p>
+    </li>
+    <li>
+      <a href="https://fortune.com/2026/07/29/new-medical-ai-study-same-flaw-openevidence-openai-anthropic-doximity/" target="_blank" rel="noopener">A new medical AI study found the same flaw in OpenEvidence, OpenAI, Anthropic, and Doximity — Fortune (2026-07-29)</a>
+      <p class="why"><span class="zh">今年關於臨床 AI 最重要的一個發現，而且不是排名：76.6% 的有害錯誤是遺漏。讀完會改變你評估任何一個臨床 AI 產品的方式——你會開始問「它漏了什麼」而不是「它對不對」。</span><span class="en">The most important clinical-AI finding of the year, and it is not the ranking: 76.6% of harmful errors were omissions. It changes how you evaluate any clinical AI product — you start asking what it left out rather than whether it was right.</span></p>
+    </li>
+    <li>
+      <a href="https://digitalhealthwire.com/openevidences-quiet-raise-and-loud-pivot/" target="_blank" rel="noopener">OpenEvidence's Quiet Raise and Loud Pivot — Digital Health Wire (2026-09)</a>
+      <p class="why"><span class="zh">目前唯一把「安靜募資」與「高調轉型」這兩件事放在一起解讀的分析。篇幅短，但它注意到了一個大多數報導漏掉的細節：揭露方式本身就是策略。</span><span class="en">The only analysis so far that reads the quiet raise and the loud pivot as one move. Short, but it catches what most coverage missed: the manner of disclosure was itself the strategy.</span></p>
+    </li>
+    <li>
+      <a href="https://www.medscape.com/viewarticle/when-ai-recommends-treatment-should-drug-ads-appear-2026a1000qyd" target="_blank" rel="noopener">When AI Recommends Treatment, Should Drug Ads Appear? — Medscape (2026)</a>
+      <p class="why"><span class="zh">在 OpenEvidence 宣布做新藥之前，這個問題就已經夠難了。現在讀它的價值在於，它幫你把「廣告」與「自有管線」這兩種利益衝突的差別想清楚——後者嚴重得多。（本報未能通過付費牆取得全文，僅據公開可見部分引用。）</span><span class="en">This question was hard enough before OpenEvidence announced a pipeline. Reading it now helps separate two kinds of conflict — advertising versus owning the drug — and the second is far more serious. (We could not get past the paywall and cite only the publicly visible portion.)</span></p>
+    </li>
+    <li>
+      <a href="https://www.leeandli.com/TW/Newsletters/7656.htm" target="_blank" rel="noopener">衛福部頒布「醫療機構應用生成式人工智慧指引」 — 理律法律事務所 (2026)</a>
+      <p class="why"><span class="zh">台灣現行規範的最清楚整理，六類風險、五項原則、三階段九事項一次看完。讀的時候請特別注意它的適用對象是「醫療機構」——然後想一下今天這份日報談的產品是怎麼繞過機構的。</span><span class="en">The clearest summary of Taiwan's current framework: six risk categories, five principles, nine points across three phases. Read it noticing that its subject is the institution — then consider how the products in today's report route around institutions entirely.</span></p>
+    </li>
+  </ol>
+</section>
+
+<section id="refs">
+  <h2>06 — References</h2>
+  <div class="sec-title">
+    <span class="zh">參考文獻</span>
+    <span class="en">References</span>
+  </div>
+
+  <div class="panel">
+    <ol class="refs">
+      <li>A Premier Cancer Hospital Makes Its Data Available To Doctors Nationwide Through OpenEvidence. <em>Forbes InnovationRx</em>, 2026-09-16. <a href="https://www.forbes.com/sites/innovationrx/2026/09/16/a-premier-cancer-hospital-makes-its-data-available-to-doctors-nationwide-through-openevidence/" target="_blank" rel="noopener">forbes.com</a></li>
+      <li>Memorial Sloan Kettering Cancer Center and OpenEvidence Partner to Advance Precision Oncology at the Point of Care. <em>Newswise / MSK press release</em>, 2026-09-16. <a href="https://www.newswise.com/articles/memorial-sloan-kettering-cancer-center-and-openevidence-partner-to-advance-precision-oncology-at-the-point-of-care" target="_blank" rel="noopener">newswise.com</a></li>
+      <li>OpenEvidence's Quiet Raise and Loud Pivot. <em>Digital Health Wire</em>, 2026-09. <a href="https://digitalhealthwire.com/openevidences-quiet-raise-and-loud-pivot/" target="_blank" rel="noopener">digitalhealthwire.com</a></li>
+      <li>Anthropic and OpenEvidence Team to Expand Reach of Medical AI. <em>PYMNTS</em>, 2026-09-23. <a href="https://www.pymnts.com/news/artificial-intelligence/2026/anthropic-and-openevidence-team-to-expand-reach-of-medical-ai/" target="_blank" rel="noopener">pymnts.com</a></li>
+      <li>OpenEvidence revenue, valuation &amp; funding. <em>Sacra</em>, 2026. <a href="https://sacra.com/c/openevidence/" target="_blank" rel="noopener">sacra.com</a></li>
+      <li>OpenEvidence, the 'ChatGPT for doctors,' doubles valuation to $12 billion. <em>CNBC</em>, 2026-01-21. <a href="https://www.cnbc.com/2026/01/21/openevidence-chatgpt-for-doctors-doubles-valuation-to-12-billion.html" target="_blank" rel="noopener">cnbc.com</a></li>
+      <li>Report: OpenEvidence Business Breakdown &amp; Founding Story. <em>Contrary Research</em>, 2026. <a href="https://research.contrary.com/company/openevidence" target="_blank" rel="noopener">research.contrary.com</a></li>
+      <li>OpenEvidence. <em>Wikipedia</em>, retrieved 2026-09-25. <a href="https://en.wikipedia.org/wiki/OpenEvidence" target="_blank" rel="noopener">en.wikipedia.org</a></li>
+      <li>A new medical AI study found the same flaw in OpenEvidence, OpenAI, Anthropic, and Doximity. <em>Fortune</em>, 2026-07-29. <a href="https://fortune.com/2026/07/29/new-medical-ai-study-same-flaw-openevidence-openai-anthropic-doximity/" target="_blank" rel="noopener">fortune.com</a></li>
+      <li>Doximity bets big on hospital adoption of enterprise AI as it ramps up tech spending. <em>Fierce Healthcare</em>, 2026-08-10. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/doximity-bets-big-hospital-enterprise-ai-platforms-it-ramps-tech-investment" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>Doximity and OpenEvidence sue each other in spat over medical AI trade secrets. <em>Health Exec</em>, 2026. <a href="https://healthexec.com/topics/healthcare-management/legal-news/doximity-and-openevidence-sue-each-other-spat-over-medical-ai-trade-secrets" target="_blank" rel="noopener">healthexec.com</a></li>
+      <li>OpenEvidence Inc. v. Doximity, Inc., docket 1:25-cv-11802. <em>CourtListener</em>, retrieved 2026-09-25. <a href="https://www.courtlistener.com/docket/70596804/openevidence-inc-v-doximity-inc/" target="_blank" rel="noopener">courtlistener.com</a></li>
+      <li>M&amp;A: DexCare Acquires AI Care Coordination Platform Mila Health. <em>HIT Consultant</em>, 2026-09-21. <a href="https://hitconsultant.net/2026/09/21/dexcare-acquires-mila-health-ai-care-coordination-autonomous-patient-access/" target="_blank" rel="noopener">hitconsultant.net</a></li>
+      <li>Seattle startups DexCare and Mila Health combine to expand AI patient scheduling. <em>GeekWire</em>, 2026-09-21. <a href="https://www.geekwire.com/2026/seattle-startups-dexcare-and-mila-health-combine-to-expand-ai-patient-scheduling/" target="_blank" rel="noopener">geekwire.com</a></li>
+      <li>Oura's $2.2B IPO is mostly a payday for existing shareholders. <em>TechCrunch</em>, 2026-09-21. <a href="https://techcrunch.com/2026/09/21/ouras-2-2b-ipo-is-mostly-a-payday-for-existing-shareholders/" target="_blank" rel="noopener">techcrunch.com</a></li>
+      <li>Oura targets US$15.62 billion valuation in U.S. IPO. <em>CP24 / Reuters</em>, 2026-09-21. <a href="https://www.cp24.com/news/money/2026/09/21/oura-targets-us1562-billion-valuation-in-us-ipo-setting-stage-for-fall-listings/" target="_blank" rel="noopener">cp24.com</a></li>
+      <li>Abridge Wins Seat on $775.7M VA Enterprise Contract to Power Ambient Clinical AI. <em>HIT Consultant</em>, 2026-09-22. <a href="https://hitconsultant.net/2026/09/22/abridge-awarded-va-enterprise-contract-ambient-ai-veterans-health-administration/" target="_blank" rel="noopener">hitconsultant.net</a></li>
+      <li>VA selects Abridge ambient scribe under new enterprise contract. <em>Nextgov/FCW</em>, 2026-09. <a href="https://www.nextgov.com/artificial-intelligence/2026/09/va-selects-abridge-ambient-scribe-under-new-enterprise-contract/416140/" target="_blank" rel="noopener">nextgov.com</a></li>
+      <li>The great ambient scribe convergence. <em>Endpoints News</em>, 2026-08-04 (updated 2026-08-06). <a href="https://endpoints.news/the-great-ambient-scribe-convergence/" target="_blank" rel="noopener">endpoints.news</a></li>
+      <li>ChatGPT Health adds Epic integration for clinicians to import patient data. <em>TechCrunch</em>, 2026-09-01. <a href="https://techcrunch.com/2026/09/01/chatgpt-health-adds-epic-integration-for-clinicians-to-import-patient-data/" target="_blank" rel="noopener">techcrunch.com</a></li>
+      <li>Healthcare organizations can now connect EHR and additional industry data to ChatGPT. <em>OpenAI</em>, 2026-09. <a href="https://openai.com/index/chatgpt-connects-health-records-and-healthcare-sources/" target="_blank" rel="noopener">openai.com</a></li>
+      <li>Wolters Kluwer jumps into the AI market, rolls out gen AI version of UpToDate. <em>Fierce Healthcare</em>, 2026. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/wolters-kluwer-rolls-out-gen-ai-version-uptodate-clinical-decision-support" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>Abridge expands clinical decision support solution with UpToDate partnership, new NEJM, JAMA content tie-ups. <em>Fierce Healthcare</em>, 2026. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-expands-clinical-decision-support-capabilities-uptodate-partnership" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>Tempus to Acquire Personalis, More Tightly Integrating Molecular Residual Disease (MRD) into Its AI-Enabled Precision Oncology Platform. <em>Tempus AI</em>, 2026-07-20. <a href="https://www.tempus.com/news/pr/tempus-to-acquire-personalis-integrating-mrd/" target="_blank" rel="noopener">tempus.com</a></li>
+      <li>Tempus AI (TEM) Extends Rally After Earnings Beat And $1.5B Deal. <em>StocksToTrade</em>, 2026-09-17. <a href="https://stockstotrade.com/news/tempus-ai-inc-tem-news-2026_09_17/" target="_blank" rel="noopener">stockstotrade.com</a></li>
+      <li>When AI Recommends Treatment, Should Drug Ads Appear? <em>Medscape</em>, 2026. <a href="https://www.medscape.com/viewarticle/when-ai-recommends-treatment-should-drug-ads-appear-2026a1000qyd" target="_blank" rel="noopener">medscape.com</a></li>
+      <li>Thunderstruck By OpenEvidence's $12B Valuation? Don't Be. <em>MedCity News</em>, 2026-02. <a href="https://medcitynews.com/2026/02/openevidence-healthcare-valuation/" target="_blank" rel="noopener">medcitynews.com</a></li>
+      <li>衛福部頒布「醫療機構應用生成式人工智慧指引」. <em>理律法律事務所</em>, 2026. <a href="https://www.leeandli.com/TW/Newsletters/7656.htm" target="_blank" rel="noopener">leeandli.com</a></li>
+      <li>醫療機構應用生成式人工智慧指引（115 年 5 月 29 日衛部醫字第 1151663164 號函頒）. <em>衛生福利部</em>, 2026-05-29. <a href="https://www.mohw.gov.tw/cp-18-86695-1.html" target="_blank" rel="noopener">mohw.gov.tw</a></li>
+      <li>長佳智能闌尾炎AI醫療器材軟體攻台美市場 累計有57張海內外醫材證. <em>台灣光鹽生物科技學苑</em>, 2026-08-19. <a href="https://www.biotech-edu.com/20260819-everfortuneai-tfda-license/" target="_blank" rel="noopener">biotech-edu.com</a></li>
+      <li>News 9/23/26. <em>HIStalk</em>, 2026-09-22. <a href="https://histalk2.com/2026/09/22/news-9-23-26/" target="_blank" rel="noopener">histalk2.com</a></li>
+      <li>Digital health funding hits $7.4B in 2026 as AI investment reshapes the market. <em>Fierce Healthcare</em>, 2026. <a href="https://www.fiercehealthcare.com/digital-health/digital-health-brought-74b-vc-funding-ai-powered-rebound-fuels-market" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+    </ol>
+    <div class="note">
+      <span class="zh"><strong>編輯說明：</strong>（1）付費牆：Endpoints News〈The great ambient scribe convergence〉與 Medscape〈When AI Recommends Treatment, Should Drug Ads Appear?〉本報僅取得公開可見的標題與導言，內文引用僅限該範圍；STAT News 9/3 關於 OpenEvidence 新模型系列的報導同樣在付費牆後，本報因無法查證內容而未採用。（2）廠商自述未經稽核：OpenEvidence 的營收、毛利率、使用率與廣告填充率均為 Sacra 的第三方估算而非公司稽核數字；MSK 新聞稿中「逾半數血液腫瘤科醫師使用」、OpenAI 自述「99.1% 回應安全」、DexCare「5,700 萬保險覆蓋人口」皆屬廠商或合作方自述。（3）尚未兌現的承諾：Nadler 所稱「年底前啟動第一個臨床試驗」目前無 IND 編號、藥物名稱或試驗登錄可供查證，本報以承諾而非事實處理。（4）二手引用：Oura IPO 條件引自 TechCrunch 與路透整理而非直接閱讀 S-1，兩家對估值的口徑（141 億／156.2 億美元）不同，已於文中並列；NOHARM 研究細節引自 Fortune 報導而非原始論文。（5）窗口說明：本期主要涵蓋 9/16–9/24，Doximity 財報（8/10）、NOHARM 研究（7 月）、Tempus 收購案（7/20）、OpenAI–Epic 整合（9/1）、衛福部指引（5/29）與長佳智能取證（8/18）為建立競爭脈絡所需的較早材料，均已於文中標註原始日期。（6）重複避免：Abridge 的 VA 合約已於本站 9/24 技術主題日報從自主性角度報導，今日僅從產品趨同與通路角度補述，未重複該日內容。</span>
+      <span class="en"><strong>Editor's note:</strong> (1) Paywalls: for Endpoints News's "The great ambient scribe convergence" and Medscape's "When AI Recommends Treatment, Should Drug Ads Appear?" we obtained only the publicly visible headline and lede, and our citations are confined to that. STAT News's 9/3 piece on OpenEvidence's new model family is likewise paywalled and, being unverifiable to us, is not used. (2) Unaudited vendor figures: OpenEvidence's revenue, gross margin, usage and ad fill rate are Sacra's third-party estimates rather than audited disclosure; MSK's "more than half of hematologist-oncologists," OpenAI's self-reported "99.1% safe," and DexCare's "57 million covered patients" are all vendor or partner claims. (3) Unfulfilled promise: Nadler's "first clinical trial before yearend" has no IND number, compound name or trial registration we could verify, and we treat it as a stated intention, not a fact. (4) Secondary sourcing: Oura's IPO terms are taken from TechCrunch and Reuters summaries rather than the S-1 itself, and the two differ on valuation ($14.1B vs $15.62B) — both are given above. NOHARM's details are cited from Fortune's coverage rather than the original paper. (5) Window: this edition principally covers Sep 16–24; Doximity's results (8/10), the NOHARM study (July), the Tempus acquisition (7/20), the OpenAI–Epic integration (9/1), Taiwan's MOHW guidance (5/29) and Ever Fortune.AI's approval (8/18) are earlier material needed to establish competitive context, each dated in place. (6) Avoiding repetition: Abridge's VA contract was covered in this site's 9/24 technology edition from an autonomy angle; today adds only the convergence-and-distribution reading and does not repeat that day's content.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-row">
+    <div>
+      <span class="zh">AI／醫療AI 每日新知日報 · 由 Claude 於台北時間每日自動產出 · 本期主題：星期五／產品與公司深度分析<br>本報告內容經來源查證，但不構成投資或醫療建議。所有數據請以原始出處為準。</span>
+      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Friday / Product &amp; Company Deep Dive<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
+    </div>
+    <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com / 返回 peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
+  </div>
+</footer>
+</main>
+
+<div class="fabs">
+  <button class="up" id="up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+  <a class="home-fab" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg></a>
+</div>
+
+<script>
+function setLang(l){
+  document.body.classList.remove('lang-zh','lang-en');
+  document.body.classList.add('lang-'+l);
+  document.documentElement.lang = (l==='zh') ? 'zh-Hant' : 'en';
+  document.getElementById('b-zh').classList.toggle('on', l==='zh');
+  document.getElementById('b-en').classList.toggle('on', l==='en');
+  document.title = (l==='zh')
+    ? 'AI／醫療AI 每日新知日報 · 2026-09-25'
+    : 'AI & Medical AI Daily · 2026-09-25';
+}
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.getElementById('theme-ic').textContent =
+    document.body.classList.contains('dark') ? '◑' : '◐';
+}
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.body.classList.add('dark');
+  document.getElementById('theme-ic').textContent = '◑';
+}
+window.addEventListener('scroll', function(){
+  document.getElementById('up').classList.toggle('show', window.scrollY > 600);
+});
+
+/* GitHub 星星數：無需授權，失敗或被限流時靜默保留佔位符 */
+(function(){
+  var el = document.getElementById('ghs');
+  if (!el || typeof fetch !== 'function') return;
+  fetch('https://api.github.com/repos/tingwei161803/ai-medical-daily', {headers:{Accept:'application/vnd.github+json'}})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if (!d || typeof d.stargazers_count !== 'number') return;
+      var n = d.stargazers_count;
+      el.textContent = n >= 1000 ? (Math.round(n/100)/10) + 'k' : String(n);
+    })
+    .catch(function(){});
+})();
+</script>
+</body>
+</html>
