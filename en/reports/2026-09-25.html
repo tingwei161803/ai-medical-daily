@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>AI &amp; Medical AI Daily · 2026-09-25</title>
+<meta property="og:url" content="https://ai-medical-daily.peteraim.com/en/reports/2026-09-25.html" />
+<link rel="canonical" href="https://ai-medical-daily.peteraim.com/en/reports/2026-09-25.html" />
+<link rel="alternate" hreflang="zh-Hant" href="https://ai-medical-daily.peteraim.com/reports/2026-09-25.html" />
+<link rel="alternate" hreflang="en" href="https://ai-medical-daily.peteraim.com/en/reports/2026-09-25.html" />
+<link rel="alternate" hreflang="x-default" href="https://ai-medical-daily.peteraim.com/reports/2026-09-25.html" />
+<meta name="description" content="A Friday teardown of OpenEvidence: a free clinical search engine used by 65% of US physicians, at $300M annualised revenue, selling only 5% of its ad inventory, valued at $15B — and why this month it took MSK's OncoKB, Anthropic's 100-country distribution, and then announced it will develop its own rare-cancer drugs. The control group is Doximity's 165 enterprise health-system contracts and 4.8% error rate.">
+<meta name="report-date" content="2026-09-25">
+<meta name="report-theme" content="product">
+<meta name="report-title-zh" content="OpenEvidence 這個月把自己從「醫師版 ChatGPT」改寫成藥廠：250 億美元估值的 2.5 億美元募資藏在一篇 Forbes 文章的更新註記裡、Memorial Sloan Kettering 交出 14 年的 OncoKB、Anthropic 把它送進 100 個國家——而創辦人說年底前要送第一個癌症藥進臨床試驗">
+<meta name="report-title-en" content="This month OpenEvidence rewrote itself from 'ChatGPT for doctors' into a drug company: a $250M round at $15B disclosed in a footnote update to a Forbes piece, Memorial Sloan Kettering handing over 14 years of OncoKB, Anthropic carrying it into 100 countries — and a founder who says the first cancer drug enters trials before year-end">
+<meta name="report-summary-zh" content="週五深度拆解 OpenEvidence：全美 65% 醫師在用、年化營收 3 億美元、廣告填充率只有 5%、估值 150 億美元的免費臨床搜尋引擎，為什麼要在這個月同時拿下 MSK 的 OncoKB、Anthropic 的 100 國通路，然後宣布自己要做罕見癌症新藥。對照組是 Doximity 的 165 家醫療體系企業合約與 4.8% 錯誤率。">
+<meta name="report-summary-en" content="A Friday teardown of OpenEvidence: a free clinical search engine used by 65% of US physicians, at $300M annualised revenue, selling only 5% of its ad inventory, valued at $15B — and why this month it took MSK's OncoKB, Anthropic's 100-country distribution, and then announced it will develop its own rare-cancer drugs. The control group is Doximity's 165 enterprise health-system contracts and 4.8% error rate.">
+<meta property="og:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HJLDQZDK5V');
+</script>
+<link rel="stylesheet" href="/assets/report.css">
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><span>◆</span> <span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <div class="bar-sp"></div>
+    <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
+    <div class="seg">
+      <a href="/reports/2026-09-25.html" hreflang="zh-Hant" lang="zh-Hant" rel="alternate">中文</a>
+      <a class="on" href="/en/reports/2026-09-25.html" hreflang="en" lang="en" aria-current="page">EN</a>
+    </div>
+    <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="kicker">
+    <span class="en-inline">Friday · Product &amp; Company Deep Dive</span>
+  </div>
+  <h1>
+    <span class="en">This month OpenEvidence rewrote itself from "ChatGPT for doctors" into a drug company: a $250M round at $15B disclosed in a footnote update to a Forbes piece, Memorial Sloan Kettering handing over 14 years of OncoKB, Anthropic carrying it into 100 countries — and a founder who says the first cancer drug enters trials before year-end</span>
+  </h1>
+  <div class="dateline">
+    <span class="en-inline">Friday, September 25, 2026 · Covering Sep 16–24 · Taipei time</span>
+  </div>
+  <p class="lede">
+    <span class="en">A company that charges physicians nothing is now worth $15 billion. <a href="https://sacra.com/c/openevidence/" target="_blank" rel="noopener">Sacra's equity research</a> puts OpenEvidence at roughly $300M annualised revenue as of July 2026 at about 90% gross margin — while selling only about 5% of its available ad inventory, all of it pharmaceutical and device advertising at CPMs reaching $1,000 and above. In September it did three things to press that position further. On 9/16 <a href="https://www.forbes.com/sites/innovationrx/2026/09/16/a-premier-cancer-hospital-makes-its-data-available-to-doctors-nationwide-through-openevidence/" target="_blank" rel="noopener">Forbes</a>, in a story about the Memorial Sloan Kettering deal, disclosed in a "previously unreported" update a $250M round led by a16z and Byers Capital at a $15B valuation. The same day MSK <a href="https://www.newswise.com/articles/memorial-sloan-kettering-cancer-center-and-openevidence-partner-to-advance-precision-oncology-at-the-point-of-care" target="_blank" rel="noopener">announced</a> it was piping its FDA-recognised OncoKB precision-oncology knowledge base straight into OpenEvidence. On 9/23 <a href="https://www.pymnts.com/news/artificial-intelligence/2026/anthropic-and-openevidence-team-to-expand-reach-of-medical-ai/" target="_blank" rel="noopener">Anthropic and OpenEvidence announced</a> free access across roughly 100 low- and middle-income countries. The real turn is buried at the end of the Forbes piece: founder Daniel Nadler says the company will use the MSK and NCCN data to develop its own cancer therapies, with a first clinical trial "before yearend." Today's report takes that apart — on what basis, and whether it should, an ad-funded free clinical search engine becomes a drug developer.</span>
+  </p>
+
+  <nav class="toc">
+    <a href="#top"><span class="en-inline">Top Stories</span></a>
+    <a href="#product"><span class="en-inline">Product Analysis</span></a>
+    <a href="#company"><span class="en-inline">Companies &amp; Competition</span></a>
+    <a href="#taiwan"><span class="en-inline">Taiwan Angle</span></a>
+    <a href="#reading"><span class="en-inline">Further Reading</span></a>
+    <a href="#refs"><span class="en-inline">References</span></a>
+  </nav>
+</div>
+
+<section id="top">
+  <h2>01 — Top Stories</h2>
+  <div class="sec-title">
+    <span class="en">One company: capital, data and distribution inside nine days — then an announcement that it is changing industries</span>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Funding</span></span>
+      <span class="tag">OpenEvidence</span><span class="tag">a16z / Byers Capital</span><span class="tag">9/16</span>
+    </div>
+    <h3>
+      <span class="en">$250M at $15B, disclosed as an update appended to somebody else's article</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On September 16 <a href="https://www.forbes.com/sites/innovationrx/2026/09/16/a-premier-cancer-hospital-makes-its-data-available-to-doctors-nationwide-through-openevidence/" target="_blank" rel="noopener">Forbes InnovationRx</a> revealed that OpenEvidence had closed a "previously unreported" $250M round led by Byers Capital and Andreessen Horowitz at a $15B post-money valuation. That is eight months after January's Series D — also $250M, at $12B (<a href="https://www.cnbc.com/2026/01/21/openevidence-chatgpt-for-doctors-doubles-valuation-to-12-billion.html" target="_blank" rel="noopener">CNBC, 2026-01-21</a>) — for another $3B of paper value. <a href="https://digitalhealthwire.com/openevidences-quiet-raise-and-loud-pivot/" target="_blank" rel="noopener">Digital Health Wire</a> notes that a company which had issued a press release and run a media tour for every prior round chose this time to disclose it as a post-publication update.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">How a round is disclosed is itself a signal. A company that built its profile on "the most-used tool among US physicians" suddenly declining to talk valuation usually reads one of two ways: the multiple is now high enough that saying it out loud helps neither recruiting nor customer relationships ($15B against roughly $300M annualised revenue is about 50x), or it is holding the stage for a bigger story than another round — and that story sits in the second half of the same article.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">The $300M annualised revenue and ~90% gross margin come from <a href="https://sacra.com/c/openevidence/" target="_blank" rel="noopener">Sacra's</a> third-party estimate, not audited company disclosure; the "~5% of inventory sold" figure is likewise an estimate. OpenEvidence is private and under no obligation to publish.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.forbes.com/sites/innovationrx/2026/09/16/a-premier-cancer-hospital-makes-its-data-available-to-doctors-nationwide-through-openevidence/" target="_blank" rel="noopener">Forbes InnovationRx, 2026-09-16</a> ／ <a href="https://digitalhealthwire.com/openevidences-quiet-raise-and-loud-pivot/" target="_blank" rel="noopener">Digital Health Wire, 2026-09</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Data deal</span></span>
+      <span class="tag">Memorial Sloan Kettering</span><span class="tag">OncoKB</span><span class="tag">9/16</span>
+    </div>
+    <h3>
+      <span class="en">MSK hands over 14 years of OncoKB — and installs OpenEvidence inside its own Epic in return</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Memorial Sloan Kettering and OpenEvidence <a href="https://www.newswise.com/articles/memorial-sloan-kettering-cancer-center-and-openevidence-partner-to-advance-precision-oncology-at-the-point-of-care" target="_blank" rel="noopener">announced on September 16</a> that MSK's FDA-recognised precision oncology knowledge base, OncoKB, is being integrated into the OpenEvidence platform for clinicians nationwide — while MSK simultaneously embeds OpenEvidence into its own Epic EHR for decision support. OncoKB supplies expert-curated genetic alteration annotations with cancer-type-specific actionability graded by evidence level. The release states that more than half of US hematologist-oncologists already use OpenEvidence. MSK chief strategy officer Anaeze Offodile framed it this way: "It expands MSK's expertise beyond MSK … We think of this as a distribution mechanism."</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This is a rare two-way data deal. One-way licensing (NEJM, JAMA, NCCN into OpenEvidence) buys content; two-way means MSK is also conceding that its own physicians want this interface. For OpenEvidence, OncoKB is one of the few assets that cannot be substituted by crawling or licensing — it is fourteen years of human curation, not full-text literature. The moat shifts one notch, from "I have licensed the most journals" toward "I have curation nobody else can buy."</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">"More than half of hematologist-oncologists use it" comes from the partners' own release with no independent audit, and "use" is undefined (registered once? one query a month?). Neither deal value nor licensing terms were disclosed.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.newswise.com/articles/memorial-sloan-kettering-cancer-center-and-openevidence-partner-to-advance-precision-oncology-at-the-point-of-care" target="_blank" rel="noopener">Newswise／MSK press release, 2026-09-16</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Pivot</span></span>
+      <span class="tag">Daniel Nadler</span><span class="tag">NCCN</span><span class="tag">9/16</span>
+    </div>
+    <h3>
+      <span class="en">"Before yearend": a search engine announces it will develop rare-cancer drugs</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">In the same <a href="https://www.forbes.com/sites/innovationrx/2026/09/16/a-premier-cancer-hospital-makes-its-data-available-to-doctors-nationwide-through-openevidence/" target="_blank" rel="noopener">Forbes piece</a>, CEO Daniel Nadler said the company will develop its own therapies by combining the MSK data with an earlier NCCN agreement, expecting to start a first clinical trial "before yearend" and three to five further candidates the following year, beginning with rare cancers. <a href="https://digitalhealthwire.com/openevidences-quiet-raise-and-loud-pivot/" target="_blank" rel="noopener">Digital Health Wire</a> labelled the combination "a quiet raise and a loud pivot."</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This is not an extension of the business model; it is a change of lane. The advertising model rests on neutrality: physicians trust it because it reads the literature rather than whoever is paying. Once the company owns drugs in development, "what this platform says about an oncology question" and "this company's pipeline" acquire a structural interest in each other — and even if the answers never change at all, the burden of proof has flipped onto the company. <a href="https://www.medscape.com/viewarticle/when-ai-recommends-treatment-should-drug-ads-appear-2026a1000qyd" target="_blank" rel="noopener">Medscape was already asking this year</a> whether drug ads belong beside AI treatment recommendations; the question now escalates to whether a company with its own pipeline should be answering the treatment question at all.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">All of this is a founder's verbal account to one outlet: no IND number, no compound name, no indication, no public record of a CRO or trial site. "A clinical trial before yearend" is, as of this writing on 9/25, an unfulfilled promise with a little over three months left. We found no independent corroboration.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.forbes.com/sites/innovationrx/2026/09/16/a-premier-cancer-hospital-makes-its-data-available-to-doctors-nationwide-through-openevidence/" target="_blank" rel="noopener">Forbes InnovationRx, 2026-09-16</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Distribution</span></span>
+      <span class="tag">Anthropic</span><span class="tag">OpenEvidence</span><span class="tag">9/23</span>
+    </div>
+    <h3>
+      <span class="en">Anthropic and OpenEvidence take the service free into roughly 100 low- and middle-income countries</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On September 23, Anthropic and OpenEvidence <a href="https://www.pymnts.com/news/artificial-intelligence/2026/anthropic-and-openevidence-team-to-expand-reach-of-medical-ai/" target="_blank" rel="noopener">announced a partnership</a> offering a dedicated version of the clinical decision support tool free to healthcare providers across roughly 100 countries, including Angola, Haiti, Mongolia, Sudan and Uganda. OpenEvidence is already free to clinicians in the US and Europe. Nadler's line: "Access to medical knowledge shouldn't depend on geography." Neither side disclosed pricing or any cost-sharing terms.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Commercially this trades a market with no ad buyers for scale and legitimacy — these countries offer no $1,000-CPM pharma inventory, but they do offer physicians, usage data and policy standing. On the model-supply side it also marks how much OpenEvidence still leans on external frontier models alongside its own. PYMNTS flags a risk that belongs in the assessment: systems trained mostly on wealthy-country data may not match local clinical conditions or locally available treatments.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">"Roughly 100 countries" is the partners' own framing with no published country list; there is no stated duration, service level, or specification for localisation of language or clinical guidance. We found no independent verification of the partnership's scope.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.pymnts.com/news/artificial-intelligence/2026/anthropic-and-openevidence-team-to-expand-reach-of-medical-ai/" target="_blank" rel="noopener">PYMNTS, 2026-09-23</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Competition</span></span>
+      <span class="tag">Doximity</span><span class="tag">Doximity Ask</span><span class="tag">8/10</span>
+    </div>
+    <h3>
+      <span class="en">The control group: Doximity runs on enterprise contracts and error rates — 165 health systems, 4.8%</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Per <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/doximity-bets-big-hospital-enterprise-ai-platforms-it-ramps-tech-investment" target="_blank" rel="noopener">Fierce Healthcare (2026-08-10)</a>, Doximity posted Q1 FY2027 revenue of $156.6M, up 7% year over year, raised full-year revenue guidance to $671–681M and adjusted EBITDA guidance to $309–329M, and has signed 165 health systems as AI clients including Northwestern, Penn Medicine and the University of Michigan. AI scribe users grew tenfold year over year and nearly 50% of prescribers used an AI tool in the quarter. CEO Jeff Tangney's framing: "As this market migrates from AI 'Wild West' to privacy and risk management, we're well-positioned to win as we did in telehealth."</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">These are two incompatible bets on one market. OpenEvidence bypasses hospital procurement to reach individual physicians and monetises with advertising; Doximity walks into procurement, sells to security and risk functions, and monetises with subscriptions and enterprise contracts. In the independent NOHARM benchmark published in July (Stanford, Harvard and the ARISE network; 1,100 real clinical cases, roughly 13,000 physician annotations), Doximity Ask ranked first at a 4.8% error rate, with OpenEvidence, GPT-5.6 Sol and Claude Fable 5 also tested (<a href="https://fortune.com/2026/07/29/new-medical-ai-study-same-flaw-openevidence-openai-anthropic-doximity/" target="_blank" rel="noopener">Fortune, 2026-07-29</a>). Once regulators and hospital risk committees demand comparable error rates, "whose score can be cited" becomes a distribution channel in itself.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">The thing worth remembering from NOHARM is not the ranking but that <strong>76.6% of harmful errors were omissions</strong> — the systems left things out rather than got them wrong. Eric Topol's comment was that "errors of omission need to be brought as close to zero as possible." Using the ranking to endorse any one product misses precisely what the study found. Note too that Doximity's revenue and client counts are audited public-company figures while OpenEvidence's equivalents are third-party estimates; the two are not directly comparable.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.fiercehealthcare.com/ai-and-machine-learning/doximity-bets-big-hospital-enterprise-ai-platforms-it-ramps-tech-investment" target="_blank" rel="noopener">Fierce Healthcare, 2026-08-10</a> ／ <a href="https://fortune.com/2026/07/29/new-medical-ai-study-same-flaw-openevidence-openai-anthropic-doximity/" target="_blank" rel="noopener">Fortune, 2026-07-29</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">M&amp;A</span></span>
+      <span class="tag">DexCare</span><span class="tag">Mila Health</span><span class="tag">9/21</span>
+    </div>
+    <h3>
+      <span class="en">DexCare buys Mila Health: consolidation begins at the patient-access layer</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On September 21, Seattle-based DexCare <a href="https://hitconsultant.net/2026/09/21/dexcare-acquires-mila-health-ai-care-coordination-autonomous-patient-access/" target="_blank" rel="noopener">announced its acquisition</a> of fellow Seattle company Mila Health for undisclosed terms. DexCare runs a patient access and navigation platform that standardises scheduling rules, EHR data and clinical templates across health systems, reaching 57 million covered patients in all 50 states, with customers including Kaiser Permanente, Piedmont, Texas Health Resources and Tampa General. Mila builds conversational AI agents over voice, SMS and chat for scheduling, pre-visit preparation and post-discharge follow-up. DexCare has raised $146M in total, including a $75M Series C led by ICONIQ Growth in 2023. This is its second acquisition.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">CEO Matt Blosl's line captures the division of labour: "Mila gives our data a voice, and our data gives Mila direction. Most agents lack contextual awareness." Plenty of 2026 companies build talking healthcare agents, but talking is not knowing which clinic has a Wednesday-afternoon slot or whether this patient's plan covers it. The moat is in the rules engine and the integrations, not the conversation — and conversation is commoditising fast. That is the structural signal of the week: pure agent-layer companies get absorbed by the ones holding the data layer.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">Terms were not disclosed, so there is no way to tell a position of strength from a soft landing. The 57 million "covered patients" is addressable reach rather than actual users, and is vendor-reported.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://hitconsultant.net/2026/09/21/dexcare-acquires-mila-health-ai-care-coordination-autonomous-patient-access/" target="_blank" rel="noopener">HIT Consultant, 2026-09-21</a> ／ <a href="https://www.geekwire.com/2026/seattle-startups-dexcare-and-mila-health-combine-to-expand-ai-patient-scheduling/" target="_blank" rel="noopener">GeekWire, 2026-09-21</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">IPO</span></span>
+      <span class="tag">Oura</span><span class="tag">URA</span><span class="tag">9/21</span>
+    </div>
+    <h3>
+      <span class="en">Oura launches a $2.2B IPO — two-thirds of it existing shareholders cashing out</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On September 21 smart-ring maker Oura <a href="https://techcrunch.com/2026/09/21/ouras-2-2b-ipo-is-mostly-a-payday-for-existing-shareholders/" target="_blank" rel="noopener">set IPO terms</a>: 50 million shares at $40–44, targeting $2.2B, under the ticker URA, implying roughly $14.1B at the top of the range (against $11B in its October 2025 round). Only 13.5 million shares are primary, giving the company about $567M gross; 36.5 million are secondary, worth roughly $1.53B to selling holders, with Forerunner Ventures exiting its entire 9.3% stake for about $1.20B. On the numbers: hardware revenue $974M, subscription revenue $240.5M at 89% gross margin and double the prior year, with an estimated 5.7 million paying members at September 30, 2026, nearly twice the year before. Of the company's own proceeds, about $526.4M is earmarked for tax obligations on employee share vesting, leaving roughly $6.2M for general corporate purposes.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This belongs in a report about OpenEvidence because the two answer the same question in opposite ways: 89% subscription gross margin on subscription revenue that doubled in a year is currently the only consumer-health monetisation path validated in public markets. Oura sells hardware, charges subscriptions and runs no ads; OpenEvidence sells no hardware, charges nothing and runs only ads. Both hitting milestones in the same month lays open the central 2026 question — who exactly does medical AI bill?</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">A price range is not a final price; it can move up or down at pricing. The period basis for the hardware and subscription figures is whatever the public filing states — we took these from TechCrunch's summary rather than reading the S-1 directly, so check them against the SEC filing. Other coverage puts the valuation at $15.62B (<a href="https://www.cp24.com/news/money/2026/09/21/oura-targets-us1562-billion-valuation-in-us-ipo-setting-stage-for-fall-listings/" target="_blank" rel="noopener">CP24/Reuters</a>) against TechCrunch's $14.1B — a diluted-versus-undiluted difference, and we list both.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://techcrunch.com/2026/09/21/ouras-2-2b-ipo-is-mostly-a-payday-for-existing-shareholders/" target="_blank" rel="noopener">TechCrunch, 2026-09-21</a> ／ <a href="https://www.cp24.com/news/money/2026/09/21/oura-targets-us1562-billion-valuation-in-us-ipo-setting-stage-for-fall-listings/" target="_blank" rel="noopener">CP24／Reuters, 2026-09-21</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Public procurement</span></span>
+      <span class="tag">Abridge</span><span class="tag">VA</span><span class="tag">9/22</span>
+    </div>
+    <h3>
+      <span class="en">Abridge takes a seat on a $775.7M VA enterprise contract — read as product strategy, this is distribution, not a technology win</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On September 22 the Department of Veterans Affairs <a href="https://hitconsultant.net/2026/09/22/abridge-awarded-va-enterprise-contract-ambient-ai-veterans-health-administration/" target="_blank" rel="noopener">selected Abridge</a> for a five-year ambient clinical AI enterprise contract with a $775.7M ceiling, covering the Veterans Health Administration nationally. <a href="https://www.nextgov.com/artificial-intelligence/2026/09/va-selects-abridge-ambient-scribe-under-new-enterprise-contract/416140/" target="_blank" rel="noopener">Nextgov/FCW</a> reports this runs under a new enterprise contract vehicle rather than facility-by-facility purchasing.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Ambient scribing has converged hard in 2026 — <a href="https://endpoints.news/the-great-ambient-scribe-convergence/" target="_blank" rel="noopener">Endpoints News's August analysis</a> groups Abridge, Nabla, Ambience and OpenEvidence together and says these companies are "shifting focus to market share over differentiation." Once the products converge, the contest returns to non-technical gates: federal procurement, security accreditation, five-year vehicles. This is the same story as DexCare buying Mila from the other side — when capability commoditises, distribution and integration become the only assets.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">$775.7M is a ceiling, not an awarded amount; actual spend depends on task orders. The Endpoints analysis sits behind a paywall — we cite its "market share over differentiation" framing from the publicly visible headline and lede only, having not read the full text. This site's 9/24 technology edition already covered the award from an autonomy angle; today adds only the product-and-distribution reading.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://hitconsultant.net/2026/09/22/abridge-awarded-va-enterprise-contract-ambient-ai-veterans-health-administration/" target="_blank" rel="noopener">HIT Consultant, 2026-09-22</a> ／ <a href="https://www.nextgov.com/artificial-intelligence/2026/09/va-selects-abridge-ambient-scribe-under-new-enterprise-contract/416140/" target="_blank" rel="noopener">Nextgov/FCW, 2026-09</a></p></div>
+  </div>
+</section>
+
+<section id="product">
+  <h2>02 — Product Analysis</h2>
+  <div class="sec-title">
+    <span class="en">Two product designs for one job (a physician checking evidence at the point of care): free plus ads, versus enterprise contracts plus an error rate</span>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>OpenEvidence</h3>
+      <p class="sub"><span class="en-inline">Free clinical search and decision support for verified physicians · OpenEvidence (Miami, USA)</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> Free to physicians who verify with an NPI, answering clinical questions from peer-reviewed literature and treatment guidelines, with licensed content from NEJM Group, the JAMA Network and its eleven specialty journals, NCCN, the AMA, AAFP and ACEP — and, as of this month, MSK's OncoKB (<a href="https://research.contrary.com/company/openevidence" target="_blank" rel="noopener">Contrary Research</a>/<a href="https://www.newswise.com/articles/memorial-sloan-kettering-cancer-center-and-openevidence-partner-to-advance-precision-oncology-at-the-point-of-care" target="_blank" rel="noopener">MSK release</a>). Monetisation is entirely pharmaceutical and device advertising, aimed at the roughly $20B a year US pharma spends marketing to health professionals.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: distribution costs approach zero. Bypassing hospital procurement to reach individual physicians, <a href="https://sacra.com/c/openevidence/" target="_blank" rel="noopener">Sacra</a> estimates over 65% of US doctors use it monthly and more than half daily, with 20 million monthly consultations in January 2026 and over 1 million clinical consultations in the single day of March 10.</span>
+        </li>
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: the pricing power is still unspent. <a href="https://sacra.com/c/openevidence/" target="_blank" rel="noopener">Sacra</a> estimates only about 5% of ad inventory is currently sold at CPMs reaching $1,000+ and ~90% gross margin — meaning substantial revenue headroom from fill rate alone, even with zero further usage growth.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: both the pipeline and the ad model rest on neutrality, and they now sit inside the same company. <a href="https://www.medscape.com/viewarticle/when-ai-recommends-treatment-should-drug-ads-appear-2026a1000qyd" target="_blank" rel="noopener">Medscape</a> has already raised the question of drug ads appearing beside AI treatment recommendations; <a href="https://medcitynews.com/2026/02/openevidence-healthcare-valuation/" target="_blank" rel="noopener">MedCity News</a> sets it beside Outcome Health, another ad-funded business that collapsed in fraud — though that piece offers an analogy rather than any quantitative case against the valuation.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: there is no published error rate of its own. <a href="https://fortune.com/2026/07/29/new-medical-ai-study-same-flaw-openevidence-openai-anthropic-doximity/" target="_blank" rel="noopener">NOHARM</a> included it and ranked it behind Doximity Ask; the study's larger finding was that 76.6% of harmful errors across the tested systems were omissions. For a tool physicians use to check whether they have missed something, omission is precisely the worst failure mode.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>Doximity Ask</h3>
+      <p class="sub"><span class="en-inline">A clinical AI assistant inside a physician social network · Doximity (NYSE: DOCS, USA)</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> An AI question-answering and scribing suite built on top of an existing physician network, telehealth and prescribing workflow. The pitch is not a feature but presence — it already sits inside what physicians open daily — sold as enterprise contracts at health-system level: 165 of them so far, including Northwestern, Penn Medicine and the University of Michigan (<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/doximity-bets-big-hospital-enterprise-ai-platforms-it-ramps-tech-investment" target="_blank" rel="noopener">Fierce Healthcare, 2026-08-10</a>).</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: currently the only front-line product with a third-party error rate to show. <a href="https://fortune.com/2026/07/29/new-medical-ai-study-same-flaw-openevidence-openai-anthropic-doximity/" target="_blank" rel="noopener">NOHARM</a> put it first at 4.8% across 1,100 real clinical cases and ~13,000 physician annotations. At the stage where hospital risk committees and compliance functions start demanding comparable numbers, that is something you can drop straight into a procurement file.</span>
+        </li>
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: the revenue is checkable. Q1 FY2027 at $156.6M, up 7%; full-year guidance $671–681M; adjusted EBITDA guidance $309–329M; AI scribe users up tenfold year over year (<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/doximity-bets-big-hospital-enterprise-ai-platforms-it-ramps-tech-investment" target="_blank" rel="noopener">Fierce Healthcare</a>). The disclosure obligations of a listed company are themselves a credibility asset.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: 7% growth is modest for a market described as exploding, and adjusted EPS of $0.29 that quarter missed the $0.30 consensus. Enterprise contracts move at procurement speed — which is exactly the wall the free model is designed to go around.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: it is in litigation with OpenEvidence. The two have filed duelling federal suits, with OpenEvidence alleging trade-secret theft via prompt injection (<a href="https://healthexec.com/topics/healthcare-management/legal-news/doximity-and-openevidence-sue-each-other-spat-over-medical-ai-trade-secrets" target="_blank" rel="noopener">Health Exec</a>/<a href="https://www.courtlistener.com/docket/70596804/openevidence-inc-v-doximity-inc/" target="_blank" rel="noopener">CourtListener docket 1:25-cv-11802</a>). The cases are unresolved and we make no finding on either side's allegations.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="company">
+  <h2>03 — Companies &amp; Competition</h2>
+  <div class="sec-title">
+    <span class="en">Who stands where, on what, against whom</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th><span class="en-inline">Company</span></th>
+        <th><span class="en-inline">Recent state &amp; numbers</span></th>
+        <th><span class="en-inline">Position &amp; moat</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>OpenEvidence</strong><br><span class="en-inline">Ad-funded free clinical search</span></td>
+          <td>
+            <span class="en">$250M round at a $15B valuation disclosed 9/16 (<a href="https://www.forbes.com/sites/innovationrx/2026/09/16/a-premier-cancer-hospital-makes-its-data-available-to-doctors-nationwide-through-openevidence/" target="_blank" rel="noopener">Forbes</a>); ~$300M annualised revenue at ~90% gross margin as of July 2026, with ~65% of US physicians using it monthly (<a href="https://sacra.com/c/openevidence/" target="_blank" rel="noopener">Sacra estimate</a>).</span>
+          </td>
+          <td>
+            <span class="en">The moat is default habit on the physician side plus exclusive curated data (OncoKB, NCCN). The weakness: an in-house pipeline and ad monetisation both press on neutrality — which is the ground the moat stands on.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Doximity</strong><br><span class="en-inline">Physician network plus enterprise AI</span></td>
+          <td>
+            <span class="en">Q1 FY2027 revenue $156.6M (up 7%), full-year guidance raised to $671–681M; 165 health systems as AI clients; first in NOHARM at a 4.8% error rate (<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/doximity-bets-big-hospital-enterprise-ai-platforms-it-ramps-tech-investment" target="_blank" rel="noopener">Fierce Healthcare</a>).</span>
+          </td>
+          <td>
+            <span class="en">The moat is incumbent workflow plus public-company auditability. The weakness: single-digit growth, with procurement cycles throttling expansion.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Wolters Kluwer（UpToDate）</strong><br><span class="en-inline">The subscription reference incumbent</span></td>
+          <td>
+            <span class="en">Has shipped a generative AI edition, UpToDate Expert AI (<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/wolters-kluwer-rolls-out-gen-ai-version-uptodate-clinical-decision-support" target="_blank" rel="noopener">Fierce Healthcare</a>), against a traditional list price of about $499 a year (<a href="https://research.contrary.com/company/openevidence" target="_blank" rel="noopener">Contrary Research</a>). It has also partnered with Abridge to pipe UpToDate content into decision support (<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-expands-clinical-decision-support-capabilities-uptodate-partnership" target="_blank" rel="noopener">Fierce Healthcare</a>).</span>
+          </td>
+          <td>
+            <span class="en">The moat is institutional licensing and decades of editorial credibility. The weakness: a free, faster substitute is turning its $499 a year into a line item somebody has to justify.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>OpenAI</strong><br><span class="en-inline">A general model reaching straight into the EHR</span></td>
+          <td>
+            <span class="en">On 9/1 announced read-only ChatGPT access to Epic records (Epic holds data on over 325 million patients), plus a public-data tool spanning ClinicalTrials.gov, CMS Coverage, RxNorm, DailyMed and PubMed; it self-reports 99.1% of responses safe across 27 clinical scenarios and 4,300 physician ratings (<a href="https://techcrunch.com/2026/09/01/chatgpt-health-adds-epic-integration-for-clinicians-to-import-patient-data/" target="_blank" rel="noopener">TechCrunch</a>/<a href="https://openai.com/index/chatgpt-connects-health-records-and-healthcare-sources/" target="_blank" rel="noopener">OpenAI</a>).</span>
+          </td>
+          <td>
+            <span class="en">The moat is model capability plus an enormous consumer install base. The weakness: 99.1% safe is vendor-reported and unaudited — and in a clinical setting 0.9% is a large number.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Abridge</strong><br><span class="en-inline">Ambient scribing, betting on federal distribution</span></td>
+          <td>
+            <span class="en">Took a seat on the VA's five-year, $775.7M-ceiling ambient AI enterprise contract on 9/22 (<a href="https://hitconsultant.net/2026/09/22/abridge-awarded-va-enterprise-contract-ambient-ai-veterans-health-administration/" target="_blank" rel="noopener">HIT Consultant</a>), alongside content tie-ups with Wolters Kluwer, NEJM and JAMA.</span>
+          </td>
+          <td>
+            <span class="en">The moat is qualification for federal and large-system procurement. The weakness: the product itself is converging hard with Nabla and Ambience, and the differentiation is evaporating.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>DexCare</strong><br><span class="en-inline">The data layer under patient access</span></td>
+          <td>
+            <span class="en">Acquired Mila Health on 9/21 for undisclosed terms; $146M raised to date; reach across 57 million covered patients nationally (<a href="https://hitconsultant.net/2026/09/21/dexcare-acquires-mila-health-ai-care-coordination-autonomous-patient-access/" target="_blank" rel="noopener">HIT Consultant</a>).</span>
+          </td>
+          <td>
+            <span class="en">The moat is the unglamorous, hard-to-copy stuff: scheduling rules engines and EHR integration. The weakness: it remains far smaller than incumbents like Epic, and the conversational layer is already commoditised.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Tempus AI</strong><br><span class="en-inline">The listed precision-oncology data platform</span></td>
+          <td>
+            <span class="en">Announced on July 20, 2026 an acquisition of Personalis at $16.25 a share, roughly $1.5B enterprise value, to fold in molecular residual disease testing (<a href="https://www.tempus.com/news/pr/tempus-to-acquire-personalis-integrating-mrd/" target="_blank" rel="noopener">Tempus release</a>); Q2 revenue $382.5M, up 22%, with net income turning positive for the first time (<a href="https://stockstotrade.com/news/tempus-ai-inc-tem-news-2026_09_17/" target="_blank" rel="noopener">StocksToTrade, 2026-09-17</a>).</span>
+          </td>
+          <td>
+            <span class="en">The moat is longitudinal data pairing sequenced specimens with clinical outcomes. The weakness: that is exactly what OpenEvidence hopes to shortcut with OncoKB and NCCN — and it took Tempus a decade and hundreds of millions.</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>Today's competitive structure is a game of who loses neutrality first.</strong> Five companies converge from five directions on one position: the last screen a physician looks at before deciding. OpenAI reaches down from a general model into Epic; Wolters Kluwer builds a generative interface up from authoritative content; Abridge grows sideways from scribing into decision support; Doximity pushes AI into workflow it already owns; OpenEvidence monetises free usage upward into advertising. The difference is not technical, it is who pays — and whoever pays determines who that screen answers to. What OpenEvidence did this month widens the payer from "pharma buys the ads" to "pharma buys the ads, and I am also pharma." Commercially that is vertical integration. On trust, it is digging out a corner of its own foundation.</span>
+    </p>
+  </div>
+</section>
+
+<section id="taiwan">
+  <h2>04 — Taiwan Angle</h2>
+  <div class="sec-title">
+    <span class="en">Taiwan already has guidance — but the guidance does not reach the doctor checking something on a phone</span>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>(1) Taiwan's generative AI guidance lands precisely in this model's blind spot.</strong> On May 29, 2026 the Ministry of Health and Welfare issued the Guidelines on the Use of Generative AI in Healthcare Institutions (ref. 1151663164), covering four scenarios — documentation support, clinical decision support, administrative drafting and patient communication — and requiring institutions to name an accountable unit, complete a security assessment, establish training and post-deployment monitoring, with nine points of attention across pre-adoption, integration and post-adoption phases (<a href="https://www.leeandli.com/TW/Newsletters/7656.htm" target="_blank" rel="noopener">Lee and Li</a>/<a href="https://www.mohw.gov.tw/cp-18-86695-1.html" target="_blank" rel="noopener">MOHW</a>). The crux is that its subject is the institution. Products like OpenEvidence route around institutions entirely: the physician registers personally, queries on a personal phone, and the hospital's security assessment and monitoring never touch it. This is not a Taiwan-specific gap — it is the same governance vacuum the free-direct-to-physician model creates everywhere.</span>
+    </p>
+    <p>
+      <span class="en"><strong>(2) The guidance already names "user over-reliance degrading clinical judgement" — and NOHARM put a number on it.</strong> Among the six risk categories it lists are foundation-model bias, hallucinated output and user over-reliance. Set that beside July's NOHARM finding and it gets concrete: 76.6% of harmful errors across the tested systems were omissions rather than wrong answers (<a href="https://fortune.com/2026/07/29/new-medical-ai-study-same-flaw-openevidence-openai-anthropic-doximity/" target="_blank" rel="noopener">Fortune</a>). Omissions are close to undetectable at the point of use — no red flag, no visible error to catch, just an answer that looks complete. If Taiwanese hospitals are to make "post-deployment monitoring" real, monitoring for wrong answers is far easier than monitoring for missing ones — and the missing ones are where the harm mostly lives.</span>
+    </p>
+    <p>
+      <span class="en"><strong>(3) Taiwanese vendors are walking the opposite road, and right now it looks like the steadier one.</strong> Ever Fortune.AI (TWSE: 6841) announced on August 18 that its appendicitis CT interpretation software had received TFDA approval, having cleared US FDA 510(k) in April 2026; the company now holds 57 device licences worldwide (15 US, 24 Taiwan, plus Thailand, Malaysia, Vietnam and Singapore) across more than 70 customers (<a href="https://www.biotech-edu.com/20260819-everfortuneai-tfda-license/" target="_blank" rel="noopener">Biotech-Edu Taiwan</a>). That is the classical path — clear the regulator, enter the institution, go through procurement — slow, with a low ceiling, but every step leaves a regulatory record and liability sits somewhere specific. OpenEvidence's model wins overwhelmingly on valuation, yet to date not one of its products has been submitted as a medical device. That is not a failing on its part; it is that the boundary between "clinical reference information" and "medical device" is being pushed from the outside by a $15B company. Taiwan's regulators will have to answer the same question sooner or later.</span>
+    </p>
+  </div>
+</section>
+
+<section id="reading">
+  <h2>05 — Further Reading</h2>
+  <div class="sec-title">
+    <span class="en">Chosen for things that change your assessment of this company, not things that restate the news</span>
+  </div>
+
+  <ol class="reading">
+    <li>
+      <a href="https://sacra.com/c/openevidence/" target="_blank" rel="noopener">OpenEvidence revenue, valuation &amp; funding — Sacra (2026)</a>
+      <p class="why"><span class="en">Nearly every OpenEvidence financial figure in today's report traces back here. Worth reading yourself because it exposes the "5% of inventory sold" variable directly — and the entire $15B story rides on whether that number can be raised.</span></p>
+    </li>
+    <li>
+      <a href="https://fortune.com/2026/07/29/new-medical-ai-study-same-flaw-openevidence-openai-anthropic-doximity/" target="_blank" rel="noopener">A new medical AI study found the same flaw in OpenEvidence, OpenAI, Anthropic, and Doximity — Fortune (2026-07-29)</a>
+      <p class="why"><span class="en">The most important clinical-AI finding of the year, and it is not the ranking: 76.6% of harmful errors were omissions. It changes how you evaluate any clinical AI product — you start asking what it left out rather than whether it was right.</span></p>
+    </li>
+    <li>
+      <a href="https://digitalhealthwire.com/openevidences-quiet-raise-and-loud-pivot/" target="_blank" rel="noopener">OpenEvidence's Quiet Raise and Loud Pivot — Digital Health Wire (2026-09)</a>
+      <p class="why"><span class="en">The only analysis so far that reads the quiet raise and the loud pivot as one move. Short, but it catches what most coverage missed: the manner of disclosure was itself the strategy.</span></p>
+    </li>
+    <li>
+      <a href="https://www.medscape.com/viewarticle/when-ai-recommends-treatment-should-drug-ads-appear-2026a1000qyd" target="_blank" rel="noopener">When AI Recommends Treatment, Should Drug Ads Appear? — Medscape (2026)</a>
+      <p class="why"><span class="en">This question was hard enough before OpenEvidence announced a pipeline. Reading it now helps separate two kinds of conflict — advertising versus owning the drug — and the second is far more serious. (We could not get past the paywall and cite only the publicly visible portion.)</span></p>
+    </li>
+    <li>
+      <a href="https://www.leeandli.com/TW/Newsletters/7656.htm" target="_blank" rel="noopener">衛福部頒布「醫療機構應用生成式人工智慧指引」 — 理律法律事務所 (2026)</a>
+      <p class="why"><span class="en">The clearest summary of Taiwan's current framework: six risk categories, five principles, nine points across three phases. Read it noticing that its subject is the institution — then consider how the products in today's report route around institutions entirely.</span></p>
+    </li>
+  </ol>
+</section>
+
+<section id="refs">
+  <h2>06 — References</h2>
+  <div class="sec-title">
+    <span class="en">References</span>
+  </div>
+
+  <div class="panel">
+    <ol class="refs">
+      <li>A Premier Cancer Hospital Makes Its Data Available To Doctors Nationwide Through OpenEvidence. <em>Forbes InnovationRx</em>, 2026-09-16. <a href="https://www.forbes.com/sites/innovationrx/2026/09/16/a-premier-cancer-hospital-makes-its-data-available-to-doctors-nationwide-through-openevidence/" target="_blank" rel="noopener">forbes.com</a></li>
+      <li>Memorial Sloan Kettering Cancer Center and OpenEvidence Partner to Advance Precision Oncology at the Point of Care. <em>Newswise / MSK press release</em>, 2026-09-16. <a href="https://www.newswise.com/articles/memorial-sloan-kettering-cancer-center-and-openevidence-partner-to-advance-precision-oncology-at-the-point-of-care" target="_blank" rel="noopener">newswise.com</a></li>
+      <li>OpenEvidence's Quiet Raise and Loud Pivot. <em>Digital Health Wire</em>, 2026-09. <a href="https://digitalhealthwire.com/openevidences-quiet-raise-and-loud-pivot/" target="_blank" rel="noopener">digitalhealthwire.com</a></li>
+      <li>Anthropic and OpenEvidence Team to Expand Reach of Medical AI. <em>PYMNTS</em>, 2026-09-23. <a href="https://www.pymnts.com/news/artificial-intelligence/2026/anthropic-and-openevidence-team-to-expand-reach-of-medical-ai/" target="_blank" rel="noopener">pymnts.com</a></li>
+      <li>OpenEvidence revenue, valuation &amp; funding. <em>Sacra</em>, 2026. <a href="https://sacra.com/c/openevidence/" target="_blank" rel="noopener">sacra.com</a></li>
+      <li>OpenEvidence, the 'ChatGPT for doctors,' doubles valuation to $12 billion. <em>CNBC</em>, 2026-01-21. <a href="https://www.cnbc.com/2026/01/21/openevidence-chatgpt-for-doctors-doubles-valuation-to-12-billion.html" target="_blank" rel="noopener">cnbc.com</a></li>
+      <li>Report: OpenEvidence Business Breakdown &amp; Founding Story. <em>Contrary Research</em>, 2026. <a href="https://research.contrary.com/company/openevidence" target="_blank" rel="noopener">research.contrary.com</a></li>
+      <li>OpenEvidence. <em>Wikipedia</em>, retrieved 2026-09-25. <a href="https://en.wikipedia.org/wiki/OpenEvidence" target="_blank" rel="noopener">en.wikipedia.org</a></li>
+      <li>A new medical AI study found the same flaw in OpenEvidence, OpenAI, Anthropic, and Doximity. <em>Fortune</em>, 2026-07-29. <a href="https://fortune.com/2026/07/29/new-medical-ai-study-same-flaw-openevidence-openai-anthropic-doximity/" target="_blank" rel="noopener">fortune.com</a></li>
+      <li>Doximity bets big on hospital adoption of enterprise AI as it ramps up tech spending. <em>Fierce Healthcare</em>, 2026-08-10. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/doximity-bets-big-hospital-enterprise-ai-platforms-it-ramps-tech-investment" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>Doximity and OpenEvidence sue each other in spat over medical AI trade secrets. <em>Health Exec</em>, 2026. <a href="https://healthexec.com/topics/healthcare-management/legal-news/doximity-and-openevidence-sue-each-other-spat-over-medical-ai-trade-secrets" target="_blank" rel="noopener">healthexec.com</a></li>
+      <li>OpenEvidence Inc. v. Doximity, Inc., docket 1:25-cv-11802. <em>CourtListener</em>, retrieved 2026-09-25. <a href="https://www.courtlistener.com/docket/70596804/openevidence-inc-v-doximity-inc/" target="_blank" rel="noopener">courtlistener.com</a></li>
+      <li>M&amp;A: DexCare Acquires AI Care Coordination Platform Mila Health. <em>HIT Consultant</em>, 2026-09-21. <a href="https://hitconsultant.net/2026/09/21/dexcare-acquires-mila-health-ai-care-coordination-autonomous-patient-access/" target="_blank" rel="noopener">hitconsultant.net</a></li>
+      <li>Seattle startups DexCare and Mila Health combine to expand AI patient scheduling. <em>GeekWire</em>, 2026-09-21. <a href="https://www.geekwire.com/2026/seattle-startups-dexcare-and-mila-health-combine-to-expand-ai-patient-scheduling/" target="_blank" rel="noopener">geekwire.com</a></li>
+      <li>Oura's $2.2B IPO is mostly a payday for existing shareholders. <em>TechCrunch</em>, 2026-09-21. <a href="https://techcrunch.com/2026/09/21/ouras-2-2b-ipo-is-mostly-a-payday-for-existing-shareholders/" target="_blank" rel="noopener">techcrunch.com</a></li>
+      <li>Oura targets US$15.62 billion valuation in U.S. IPO. <em>CP24 / Reuters</em>, 2026-09-21. <a href="https://www.cp24.com/news/money/2026/09/21/oura-targets-us1562-billion-valuation-in-us-ipo-setting-stage-for-fall-listings/" target="_blank" rel="noopener">cp24.com</a></li>
+      <li>Abridge Wins Seat on $775.7M VA Enterprise Contract to Power Ambient Clinical AI. <em>HIT Consultant</em>, 2026-09-22. <a href="https://hitconsultant.net/2026/09/22/abridge-awarded-va-enterprise-contract-ambient-ai-veterans-health-administration/" target="_blank" rel="noopener">hitconsultant.net</a></li>
+      <li>VA selects Abridge ambient scribe under new enterprise contract. <em>Nextgov/FCW</em>, 2026-09. <a href="https://www.nextgov.com/artificial-intelligence/2026/09/va-selects-abridge-ambient-scribe-under-new-enterprise-contract/416140/" target="_blank" rel="noopener">nextgov.com</a></li>
+      <li>The great ambient scribe convergence. <em>Endpoints News</em>, 2026-08-04 (updated 2026-08-06). <a href="https://endpoints.news/the-great-ambient-scribe-convergence/" target="_blank" rel="noopener">endpoints.news</a></li>
+      <li>ChatGPT Health adds Epic integration for clinicians to import patient data. <em>TechCrunch</em>, 2026-09-01. <a href="https://techcrunch.com/2026/09/01/chatgpt-health-adds-epic-integration-for-clinicians-to-import-patient-data/" target="_blank" rel="noopener">techcrunch.com</a></li>
+      <li>Healthcare organizations can now connect EHR and additional industry data to ChatGPT. <em>OpenAI</em>, 2026-09. <a href="https://openai.com/index/chatgpt-connects-health-records-and-healthcare-sources/" target="_blank" rel="noopener">openai.com</a></li>
+      <li>Wolters Kluwer jumps into the AI market, rolls out gen AI version of UpToDate. <em>Fierce Healthcare</em>, 2026. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/wolters-kluwer-rolls-out-gen-ai-version-uptodate-clinical-decision-support" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>Abridge expands clinical decision support solution with UpToDate partnership, new NEJM, JAMA content tie-ups. <em>Fierce Healthcare</em>, 2026. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-expands-clinical-decision-support-capabilities-uptodate-partnership" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>Tempus to Acquire Personalis, More Tightly Integrating Molecular Residual Disease (MRD) into Its AI-Enabled Precision Oncology Platform. <em>Tempus AI</em>, 2026-07-20. <a href="https://www.tempus.com/news/pr/tempus-to-acquire-personalis-integrating-mrd/" target="_blank" rel="noopener">tempus.com</a></li>
+      <li>Tempus AI (TEM) Extends Rally After Earnings Beat And $1.5B Deal. <em>StocksToTrade</em>, 2026-09-17. <a href="https://stockstotrade.com/news/tempus-ai-inc-tem-news-2026_09_17/" target="_blank" rel="noopener">stockstotrade.com</a></li>
+      <li>When AI Recommends Treatment, Should Drug Ads Appear? <em>Medscape</em>, 2026. <a href="https://www.medscape.com/viewarticle/when-ai-recommends-treatment-should-drug-ads-appear-2026a1000qyd" target="_blank" rel="noopener">medscape.com</a></li>
+      <li>Thunderstruck By OpenEvidence's $12B Valuation? Don't Be. <em>MedCity News</em>, 2026-02. <a href="https://medcitynews.com/2026/02/openevidence-healthcare-valuation/" target="_blank" rel="noopener">medcitynews.com</a></li>
+      <li>衛福部頒布「醫療機構應用生成式人工智慧指引」. <em>理律法律事務所</em>, 2026. <a href="https://www.leeandli.com/TW/Newsletters/7656.htm" target="_blank" rel="noopener">leeandli.com</a></li>
+      <li>醫療機構應用生成式人工智慧指引（115 年 5 月 29 日衛部醫字第 1151663164 號函頒）. <em>衛生福利部</em>, 2026-05-29. <a href="https://www.mohw.gov.tw/cp-18-86695-1.html" target="_blank" rel="noopener">mohw.gov.tw</a></li>
+      <li>長佳智能闌尾炎AI醫療器材軟體攻台美市場 累計有57張海內外醫材證. <em>台灣光鹽生物科技學苑</em>, 2026-08-19. <a href="https://www.biotech-edu.com/20260819-everfortuneai-tfda-license/" target="_blank" rel="noopener">biotech-edu.com</a></li>
+      <li>News 9/23/26. <em>HIStalk</em>, 2026-09-22. <a href="https://histalk2.com/2026/09/22/news-9-23-26/" target="_blank" rel="noopener">histalk2.com</a></li>
+      <li>Digital health funding hits $7.4B in 2026 as AI investment reshapes the market. <em>Fierce Healthcare</em>, 2026. <a href="https://www.fiercehealthcare.com/digital-health/digital-health-brought-74b-vc-funding-ai-powered-rebound-fuels-market" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+    </ol>
+    <div class="note">
+      <span class="en"><strong>Editor's note:</strong> (1) Paywalls: for Endpoints News's "The great ambient scribe convergence" and Medscape's "When AI Recommends Treatment, Should Drug Ads Appear?" we obtained only the publicly visible headline and lede, and our citations are confined to that. STAT News's 9/3 piece on OpenEvidence's new model family is likewise paywalled and, being unverifiable to us, is not used. (2) Unaudited vendor figures: OpenEvidence's revenue, gross margin, usage and ad fill rate are Sacra's third-party estimates rather than audited disclosure; MSK's "more than half of hematologist-oncologists," OpenAI's self-reported "99.1% safe," and DexCare's "57 million covered patients" are all vendor or partner claims. (3) Unfulfilled promise: Nadler's "first clinical trial before yearend" has no IND number, compound name or trial registration we could verify, and we treat it as a stated intention, not a fact. (4) Secondary sourcing: Oura's IPO terms are taken from TechCrunch and Reuters summaries rather than the S-1 itself, and the two differ on valuation ($14.1B vs $15.62B) — both are given above. NOHARM's details are cited from Fortune's coverage rather than the original paper. (5) Window: this edition principally covers Sep 16–24; Doximity's results (8/10), the NOHARM study (July), the Tempus acquisition (7/20), the OpenAI–Epic integration (9/1), Taiwan's MOHW guidance (5/29) and Ever Fortune.AI's approval (8/18) are earlier material needed to establish competitive context, each dated in place. (6) Avoiding repetition: Abridge's VA contract was covered in this site's 9/24 technology edition from an autonomy angle; today adds only the convergence-and-distribution reading and does not repeat that day's content.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-row">
+    <div>
+      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Friday / Product &amp; Company Deep Dive<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
+    </div>
+    <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
+  </div>
+</footer>
+</main>
+
+<div class="fabs">
+  <button class="up" id="up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+  <a class="home-fab" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg></a>
+</div>
+
+<script>
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.getElementById('theme-ic').textContent =
+    document.body.classList.contains('dark') ? '◑' : '◐';
+}
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.body.classList.add('dark');
+  document.getElementById('theme-ic').textContent = '◑';
+}
+window.addEventListener('scroll', function(){
+  document.getElementById('up').classList.toggle('show', window.scrollY > 600);
+});
+
+/* GitHub 星星數：無需授權，失敗或被限流時靜默保留佔位符 */
+(function(){
+  var el = document.getElementById('ghs');
+  if (!el || typeof fetch !== 'function') return;
+  fetch('https://api.github.com/repos/tingwei161803/ai-medical-daily', {headers:{Accept:'application/vnd.github+json'}})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if (!d || typeof d.stargazers_count !== 'number') return;
+      var n = d.stargazers_count;
+      el.textContent = n >= 1000 ? (Math.round(n/100)/10) + 'k' : String(n);
+    })
+    .catch(function(){});
+})();
+</script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/reports/2026-09-25.html" hreflang="zh-Hant" rel="alternate" lang="zh-Hant">中文版</a></p>
+</body>
+</html>
