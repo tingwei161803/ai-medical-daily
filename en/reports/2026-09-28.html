@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>AI &amp; Medical AI Daily · 2026-09-28</title>
+<meta property="og:url" content="https://ai-medical-daily.peteraim.com/en/reports/2026-09-28.html" />
+<link rel="canonical" href="https://ai-medical-daily.peteraim.com/en/reports/2026-09-28.html" />
+<link rel="alternate" hreflang="zh-Hant" href="https://ai-medical-daily.peteraim.com/reports/2026-09-28.html" />
+<link rel="alternate" hreflang="en" href="https://ai-medical-daily.peteraim.com/en/reports/2026-09-28.html" />
+<link rel="alternate" hreflang="x-default" href="https://ai-medical-daily.peteraim.com/reports/2026-09-28.html" />
+<meta name="description" content="An emergency-department LLM had nearly all its outputs judged clinically appropriate, yet physician uptake collapsed from 68% to 30% in four weeks; AI led at predicting discharge dates only when the prediction was least actionable; a lung-cancer ADC designed by 37,000 AI agents was independently arrived at by Merck. Eight clinical-evidence items, including a red-team report that lifted 1,000 patient conversations with nothing but browser developer tools.">
+<meta name="report-date" content="2026-09-28">
+<meta name="report-theme" content="clinical">
+<meta name="report-title-zh" content="醫療 AI 的臨床證據這一週全部指向同一件事——模型準不準已經不是瓶頸：Rambam 的急診 LLM 有 99／100 份輸出被評為臨床合適，醫師使用率卻在四週內從 68% 掉到 30%；AI 預測出院日在入院當天贏過個管師、在出院前 24 小時輸掉兩倍；而史丹佛用 37,000 個 AI 代理設計出的 CD276 抗體藥物複合體，被 Merck 獨立做出同一個設計並拿到 FDA 突破性療法認定">
+<meta name="report-title-en" content="This week's clinical evidence on medical AI all points one way — accuracy is no longer the bottleneck: Rambam's emergency-department LLM had 99 of 100 outputs judged clinically appropriate while physician uptake fell from 68% to 30% in four weeks; AI beat case managers at predicting discharge dates on the day of admission and lost by 2x in the final 24 hours; and a CD276 antibody-drug conjugate designed by 37,000 AI agents at Stanford was independently arrived at by Merck and granted FDA breakthrough designation">
+<meta name="report-summary-zh" content="急診 LLM 的輸出幾乎全部被評為合格，醫師卻在四週內從 68% 用到 30%；AI 預測出院日只在離出院最遠、最沒用的時候領先；37,000 個 AI 代理設計的肺癌 ADC 被 Merck 獨立做出同一個設計。本期整理八則臨床證據，含一份用瀏覽器開發者工具就抓走 1,000 筆病人對話的紅隊報告。">
+<meta name="report-summary-en" content="An emergency-department LLM had nearly all its outputs judged clinically appropriate, yet physician uptake collapsed from 68% to 30% in four weeks; AI led at predicting discharge dates only when the prediction was least actionable; a lung-cancer ADC designed by 37,000 AI agents was independently arrived at by Merck. Eight clinical-evidence items, including a red-team report that lifted 1,000 patient conversations with nothing but browser developer tools.">
+<meta property="og:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HJLDQZDK5V');
+</script>
+<link rel="stylesheet" href="/assets/report.css">
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><span>◆</span> <span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <div class="bar-sp"></div>
+    <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
+    <div class="seg">
+      <a href="/reports/2026-09-28.html" hreflang="zh-Hant" lang="zh-Hant" rel="alternate">中文</a>
+      <a class="on" href="/en/reports/2026-09-28.html" hreflang="en" lang="en" aria-current="page">EN</a>
+    </div>
+    <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="kicker">
+    <span class="en-inline">Monday · Clinical Applications &amp; Research</span>
+  </div>
+  <h1>
+    <span class="en">This week's clinical evidence on medical AI all points one way — accuracy is no longer the bottleneck: Rambam's emergency-department LLM had 99 of 100 outputs judged clinically appropriate while physician uptake fell from 68% to 30% in four weeks; AI beat case managers at predicting discharge dates on the day of admission and lost by 2x in the final 24 hours; and a CD276 antibody-drug conjugate designed by 37,000 AI agents at Stanford was independently arrived at by Merck and granted FDA breakthrough designation</span>
+  </h1>
+  <div class="dateline">
+    <span class="en-inline">Monday, September 28, 2026 · Covering Sep 22–28 · Taipei time</span>
+  </div>
+  <p class="lede">
+    <span class="en">Line up the studies that entered clinical circulation this week and they turn out to be facets of a single finding. In <a href="https://www.nature.com/articles/s41591-026-04601-5" target="_blank" rel="noopener">Nature Medicine</a>, a prospective trial of an LLM decision-support system at Israel's Rambam Health Care Campus split 1,138 emergency-department patients across two parallel wings; expert review rated 99 of 100 sampled outputs clinically appropriate, with no adverse events — and then physician uptake fell from 68% to 30% over four weeks, the odds of use dropping to 0.72 for each additional hour of shift workload. Length of stay was 4.9 hours in both wings, P = 0.99. The authors' own conclusion: the barrier is sustained clinician engagement, not algorithmic accuracy, and the evidence does not yet support deployment. <a href="https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2853623" target="_blank" rel="noopener">JAMA Network Open</a> supplies the other half, across 22,349 inpatient encounters: AI edged out case managers at predicting the discharge date on the day of admission (mean absolute error 4.20 days versus 4.27), then lost 1.93 to 0.98 days in the final 24 hours — it wins precisely when the prediction is least useful. <a href="https://ai.nejm.org/doi/full/10.1056/AIp2600583" target="_blank" rel="noopener">NEJM AI</a>, meanwhile, points out that the premise of all this is not yet secure: a patient-facing RAG chatbot gave up its system prompt, retrieval configuration, backend endpoints and 1,000 most recent patient conversations to nothing more than browser developer tools, with no authentication required at any point (<a href="https://arxiv.org/abs/2605.00796" target="_blank" rel="noopener">arXiv:2605.00796</a>). The one large story running the other way is the 37,000-agent "Virtual Biotech" from James Zou's lab at Stanford: it designed an antibody-drug conjugate against CD276 for lung cancer, and months later Merck independently arrived at the same therapeutic design and won FDA breakthrough designation for it (<a href="https://med.stanford.edu/news/all-news/2026/09/virtual-biotech-company.html" target="_blank" rel="noopener">Stanford Medicine, 2026-09-17</a>).</span>
+  </p>
+
+  <nav class="toc">
+    <a href="#top"><span class="en-inline">Top Stories</span></a>
+    <a href="#product"><span class="en-inline">Product Analysis</span></a>
+    <a href="#company"><span class="en-inline">Companies &amp; Competition</span></a>
+    <a href="#taiwan"><span class="en-inline">Taiwan Angle</span></a>
+    <a href="#reading"><span class="en-inline">Further Reading</span></a>
+    <a href="#refs"><span class="en-inline">References</span></a>
+  </nav>
+</div>
+
+<section id="top">
+  <h2>01 — Top Stories</h2>
+  <div class="sec-title">
+    <span class="en">Eight studies that entered clinical circulation this week, ordered by how close they get to the bedside</span>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Prospective trial</span></span>
+      <span class="tag">Rambam · Technion · Mayo</span><span class="tag">SHAKED</span><span class="tag">8/19</span>
+    </div>
+    <h3>
+      <span class="en">The first prospective controlled evaluation of an emergency-department LLM: nearly every output passed, and physicians stopped using it within four weeks</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Rambam Health Care Campus in Haifa, with collaborators at the Technion and Mayo Clinic, put an LLM-based clinical decision support system called SHAKED into one of two parallel-running emergency wings while the other kept standard practice, over four weeks, analysing <strong>1,138 patients</strong> (584 allocated to the intervention wing) and reporting to <strong>DECIDE-AI stage 1</strong> specification. Result: expert review rated <strong>99 of 100 sampled outputs clinically appropriate</strong>, with no adverse events detected; but clinical adoption fell from <strong>68% to 30%</strong>, driven mainly by workload-related disengagement (<strong>OR = 0.72</strong> per shift hour), and the one use physicians clearly preferred was radiology consultation (<strong>OR = 2.98</strong>). Length of stay was <strong>4.9 hours in both wings (P = 0.99)</strong>, and the consultation cycle shortened by 9.4 minutes without reaching significance (<strong>P = 0.077</strong>). <a href="https://www.nature.com/articles/s41591-026-04601-5" target="_blank" rel="noopener">Nature Medicine, 2026-08-19</a> / <a href="https://pubmed.ncbi.nlm.nih.gov/42618632/" target="_blank" rel="noopener">PubMed 42618632</a></span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This is a rare case in medical AI where almost everything went right and the system still cannot be deployed — and the reason is not the model. For two years the standard argument has run from benchmark score to clinical value; this trial unpacks the middle of that inference. Even with output quality close to perfect, uptake collapses as soon as clinical workload rises, and once uptake collapses any downstream endpoint — length of stay, consultation efficiency — is diluted past the point of measurement. The authors put it plainly: the barrier is sustained clinician engagement, not algorithmic accuracy. For buyers the implication is that no demo accuracy figure substitutes for the number of people still using it in week three.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">Single centre, four weeks, and DECIDE-AI stage 1 is by definition an early-stage design, not a randomised efficacy trial. Length of stay and consultation cycle are secondary endpoints and the study is not powered to detect small effects, so "P = 0.99" does not mean "confirmed no effect". The 99-of-100 appropriateness rate comes from sampled expert review, not a full audit.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.nature.com/articles/s41591-026-04601-5" target="_blank" rel="noopener">Nature Medicine, 2026-08-19</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Drug discovery</span></span>
+      <span class="tag">Stanford · James Zou</span><span class="tag">Virtual Biotech · CD276 ADC</span><span class="tag">9/17</span>
+    </div>
+    <h3>
+      <span class="en">A lung-cancer ADC designed by 37,000 AI agents was independently arrived at by Merck — and granted FDA breakthrough designation</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">The team of James Zou, associate professor of biomedical data science at Stanford, transplanted the org chart of a pharmaceutical company into a multi-agent system: separate divisions for target discovery, molecule design and clinical trials, orchestrated by an "AI chief scientific officer" agent, with the trials division alone running <strong>roughly 37,000 agents</strong> on top of an AI-native data platform called Paperclip (which the team says cuts time and cost by "over an order of magnitude"). One output was an <strong>antibody-drug conjugate (ADC)</strong> against <strong>CD276</strong> for lung cancer; months later <strong>Merck independently developed and validated the same therapeutic design</strong>, which went on to receive <strong>FDA breakthrough designation</strong>. The team separately reports that targets selected on single-cell features were "about 50% more likely to reach market". <a href="https://med.stanford.edu/news/all-news/2026/09/virtual-biotech-company.html" target="_blank" rel="noopener">Stanford Medicine, 2026-09-17</a> / <a href="https://venturebeat.com/orchestration/stanford-is-running-37-000-ai-agents-as-a-virtual-biotech-and-one-of-its-drug-designs-got-independently-confirmed-by-merck" target="_blank" rel="noopener">VentureBeat</a> / <a href="https://www.nature.com/articles/d41586-026-02954-y" target="_blank" rel="noopener">Nature news feature</a></span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">The hard part of AI drug discovery is not generating hypotheses but showing that a hypothesis is not a hallucination. Everything that makes this story worth reporting rests on one clause: Merck converged independently on the same design. That is external validation produced by a human team, through an entirely different process, unaware that a comparison case existed — and subsequently endorsed by a regulator through breakthrough designation. The figure 37,000, by contrast, is not evidence; it is a description of compute and orchestration scale. Keeping the two apart is what stops a single convergence being read as the general validity of a method.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">The large majority of the system's predictions have <strong>no</strong> experimental validation; the Merck convergence is retrospective and n = 1, and cannot be read as a hit rate. "About 50% more likely to reach market" is a retrospective association over historical targets, not a prospective result. The primary write-up circulated as a <a href="https://www.biorxiv.org/content/10.64898/2026.02.23.707551v1" target="_blank" rel="noopener">bioRxiv preprint</a>; we could not retrieve the full text of the <a href="https://www.science.org/doi/10.1126/science.aeg6779" target="_blank" rel="noopener">Science</a> version, so the figures here follow Stanford's own announcement and secondary coverage.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://singularityhub.com/2026/09/18/virtual-biotech-company-puts-37000-ai-agents-to-work-on-drug-discovery/" target="_blank" rel="noopener">Singularity Hub, 2026-09-18</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Safety &amp; red-teaming</span></span>
+      <span class="tag">NEJM AI</span><span class="tag">RAG chatbot</span><span class="tag">9/25</span>
+    </div>
+    <h3>
+      <span class="en">A patient-facing RAG chatbot handed over its backend configuration and 1,000 most recent patient conversations to browser developer tools</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Alfredo Madrid-García and Miguel Rujas ran a two-stage test against a live (anonymised) patient-facing medical chatbot: first <strong>Claude Opus 4.6</strong> for initial probing, then manual verification with <strong>Chrome developer tools</strong>, inspecting network traffic and stored data. What came out included the system prompt, the model and embedding configuration, retrieval parameters, backend endpoints, the API schema, knowledge-base content, and <strong>the 1,000 most recent complete patient–chatbot conversations</strong> — <strong>with no authentication required at any point</strong>, contradicting the service's own privacy claims. The root cause was sensitive configuration exposed through client-server communication rather than kept server-side. The case study reached the clinical community this week through <a href="https://ai.nejm.org/doi/full/10.1056/AIp2600583" target="_blank" rel="noopener">NEJM AI's perspective piece "When the Chatbot Leaks"</a>, with the underlying report at <a href="https://arxiv.org/abs/2605.00796" target="_blank" rel="noopener">arXiv:2605.00796 (2026-05-01)</a> and circulation via the <a href="https://aihealth.duke.edu/ai-health-roundup-september-25-2026/" target="_blank" rel="noopener">Duke AI Health roundup of 2026-09-25</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This is not an attack that needed a security specialist; the authors deliberately stress that no specialist skills were required. What an auditor can do with a browser, anyone can do. For any provider putting a RAG assistant on its website, its messaging account or a patient app, the report doubles as a checklist that can be run the same afternoon: is the system prompt or retrieval configuration visible client-side, and does the conversation endpoint require authentication? It also punctures a common ordering error in medical AI debate — we argue about diagnostic accuracy while plenty of deployments have not yet secured the far more basic property that patient conversations cannot be read by strangers.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">A single anonymised deployment, with the vendor unnamed, so outsiders cannot verify whether it has been patched, nor extrapolate a failure rate across comparable products. The NEJM AI piece is a perspective rather than original research, and we could not retrieve that page's full text, so the technical detail here follows the arXiv report.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://arxiv.org/abs/2605.00796" target="_blank" rel="noopener">arXiv:2605.00796, 2026-05-01</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Decision support</span></span>
+      <span class="tag">I3LUNG</span><span class="tag">NSCLC · immunotherapy</span><span class="tag">9/13</span>
+    </div>
+    <h3>
+      <span class="en">I3LUNG: explainable AI lifted physicians' disease-control prediction from 57% to 65% — then weakened in external validation, and adding imaging and pathology did not help</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Nature Medicine published the clinical-usability study from the I3LUNG consortium, covering <strong>2,396 patients</strong> with advanced non-small cell lung cancer on immunotherapy across <strong>six international centres</strong>. <strong>Twenty physicians</strong>, across <strong>200 assessments</strong>, used an explainable decision-support tool built on clinical and blood variables, and their disease-control prediction accuracy rose from <strong>57% to 65%</strong>. The paper reports two negative findings alongside it: the model <strong>weakened in external validation</strong>, and the <strong>multimodal versions adding imaging or pathology data did not consistently reproduce the gains</strong>. <a href="https://www.nature.com/articles/s41591-026-04488-2" target="_blank" rel="noopener">Nature Medicine, 2026-09-13</a></span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">An eight-percentage-point absolute gain, on a question that genuinely changes management — whether to continue immunotherapy — is a rare instance of clinically meaningful human-AI collaboration. But what makes the paper worth reading is that it puts two negative results in the same publication: multimodal is not automatically better, and external validation degrades. The dominant narrative of the past two years has been that more modalities mean more performance; I3LUNG uses the same patient cohort to say that on this task cheap clinical and blood variables already absorb most of the signal, and the expensive imaging and pathology modalities did not reliably add to it. For hospitals budgeting multimodal foundation-model programmes that is a very practical cost signal.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">The physician arm is a usability study with 20 clinicians and 200 assessments, not an outcomes trial — nobody has shown that eight points of prediction accuracy translate into survival or quality-of-life differences for patients. A 57% baseline is close to a coin flip, and a low starting point makes gains look larger. We could not retrieve the full text directly; the figures are cited from the <a href="https://www.veroscribe.com/blog/healthcare-ai-news-september-2026" target="_blank" rel="noopener">September evidence briefing</a> and <a href="https://completeaitraining.com/news/september-2026-healthcare-ai-briefing-separates-evidence/" target="_blank" rel="noopener">its restatement</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.nature.com/articles/s41591-026-04488-2" target="_blank" rel="noopener">Nature Medicine, 2026-09-13</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Operational prediction</span></span>
+      <span class="tag">JAMA Network Open</span><span class="tag">discharge date</span><span class="tag">9/3</span>
+    </div>
+    <h3>
+      <span class="en">AI predicting the discharge date: a narrow win on admission day, and a widening loss as discharge approaches</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">A single-centre quality-improvement study compared an AI tool against case managers on discharge-date prediction across <strong>22,349 inpatient encounters and 17,173 patients</strong>. Mean absolute error: <strong>4.20 days for AI versus 4.27 for case managers at admission</strong> (a narrow AI win); <strong>1.59 versus 1.29 at 48 hours before discharge</strong> (AI behind); <strong>1.93 versus 0.98 at 24 hours</strong> (AI error close to double). <a href="https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2853623" target="_blank" rel="noopener">JAMA Network Open, 2026-09-03</a></span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Discharge-date prediction is the backbone of bed management, throughput and discharge planning, and the shape of this result is instructive: AI wins at the point with least information and least actionable value, humans win at the point where information is sufficient and the prediction is actually used to schedule beds. The reason is not hard to guess — case managers hold exactly what the model cannot see: when family can collect, whether a long-term-care bed is free, how a given attending behaves. It also explains why so many "AI improves operational efficiency" projects fail to show benefit after go-live: the segment of error they improve was never the decision bottleneck. Used well, a tool like this belongs as a day-one rough estimate and resource flag, not as the basis for pre-discharge scheduling.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">Single centre, quality-improvement design, so it does not extrapolate across different case mixes and care processes; and the case managers' predictions may be partly self-fulfilling, since the same people also arrange the discharge. We could not retrieve the full text directly; the figures are cited from the <a href="https://completeaitraining.com/news/september-2026-healthcare-ai-briefing-separates-evidence/" target="_blank" rel="noopener">September evidence briefing's restatement</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2853623" target="_blank" rel="noopener">JAMA Network Open, 2026-09-03</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Imaging research</span></span>
+      <span class="tag">Johns Hopkins · MESA</span><span class="tag">Radiology</span><span class="tag">9/23</span>
+    </div>
+    <h3>
+      <span class="en">Opportunistic AI bone density on chest CT predicted later white-matter disease and cognitive decline — most clearly in people with diabetes</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">A <em>Radiology</em> study led from Johns Hopkins' radiology department ran a secondary analysis of the prospective <strong>MESA</strong> cohort (Multi-Ethnic Study of Atherosclerosis), using deep learning to measure vertebral bone mineral density (vBMD) opportunistically on <strong>non-contrast chest CT</strong> and matching it to later cognitive testing and brain MRI. Sample: <strong>715 participants</strong> (CT plus cognitive testing) and <strong>405</strong> (brain MRI), median age <strong>69</strong>. Findings: each <strong>0.1 g/cm³</strong> lower baseline vBMD corresponded to <strong>0.025 standard deviations</strong> faster annual cognitive decline; white-matter hyperintensity in the corpus callosum grew <strong>12.8% per year</strong>; fractional anisotropy in the anterior limb of the internal capsule fell <strong>0.0048 SD per year</strong>; and participants with <strong>diabetes</strong> accumulated total white-matter hyperintensity roughly <strong>5% faster</strong>. <a href="https://www.diagnosticimaging.com/view/study-ai-bmd-assessment-chest-ct-faster-cognitive-decline-white-matter-changes-brain-mri" target="_blank" rel="noopener">Diagnostic Imaging, 2026-09-23</a> (author interview: <a href="https://www.diagnosticimaging.com/view/new-ct-mri-research-may-reveal-bone-loss-diabetes-cognitive-decline" target="_blank" rel="noopener">same outlet, 9/25</a>)</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Opportunistic screening is the cleanest business model in medical AI: the scan is already done, the radiation already taken, the fee already paid, and the marginal cost of AI is one model run for one extra risk-stratification variable. This study extends that logic across organ systems — a bone signal in the chest pointing at the brain's ageing trajectory — and if it holds, it means every chest CT already on file is an unread brain-health risk record. It is also one of the rare AI applications that creates value without persuading a clinician to change behaviour, which is a pointed contrast with the earlier items where nothing happens if physicians stop using the tool.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">This is association, not causation, and it is a secondary analysis of a cohort not designed for the question; the absolute effect sizes are small (0.025 SD per year) and the threshold for clinical use still needs prospective validation. The brain MRI subsample is only 405 people and the diabetes subgroup smaller still, and the confidence interval around that 5% difference is not given in the secondary coverage we cite. We could not retrieve the <em>Radiology</em> paper directly; the figures come from Diagnostic Imaging's report.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.diagnosticimaging.com/view/advances-in-ai-september-2026" target="_blank" rel="noopener">Diagnostic Imaging, Advances in AI — September 2026</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Evaluation methodology</span></span>
+      <span class="tag">Microsoft Research</span><span class="tag">GPT-5 · MedGemma · Claude</span><span class="tag">6/26</span>
+    </div>
+    <h3>
+      <span class="en">Frontier models' health benchmark scores do not survive the simplest adversarial test — remove the critical image and they still answer correctly</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Microsoft Research Health &amp; Life Sciences (Yu Gu, Jingjing Fu, Xiaodong Liu and 29 further authors) published systematic adversarial stress tests in Nature Medicine against <strong>GPT-5, Gemini, Claude 3.5 Sonnet, GPT-4o, DeepSeek-VL2, Qwen3-VL, LLaVA-Med and MedGemma</strong>, across VQA-RAD, OmniMedVQA, MIMIC-CXR-VQA, PathVQA, SLAKE and MMMU. The core findings: models <strong>still guessed the right answer with critical visual information removed</strong>, <strong>minor prompt modifications degraded performance</strong>, and they produced <strong>convincing but flawed reasoning traces</strong>. The study also shows that popular health benchmarks vary widely in what they actually measure. <a href="https://www.nature.com/articles/s41591-026-04501-8" target="_blank" rel="noopener">Nature Medicine, 2026-06-26</a></span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">"Still correct with the image removed" is unusually hard to argue with: it directly demonstrates that part of the score comes from statistical cues in the question rather than from reading the image. Regulatorily this lands at a pointed moment — the FDA has no settled AI benchmarking guidance while the market already carries many products whose principal clinical argument is a benchmark score. The conclusion is unflattering and useful: the gap between benchmark success and the evidence deployment requires is too wide for one to substitute for the other. The right test for a medical multimodal model is an ablation — remove what it is supposed to look at and see whether it still answers — not another pass at the leaderboard.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">This is benchmark-level work with no real clinical workflow involved, so it cannot be read as a safety verdict on any marketed device; and Microsoft is a commercial partner to some of the models tested, which belongs in the reading. The Claude version tested is 3.5 Sonnet, no longer the newest in that line, so cross-generation comparisons need care.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.nature.com/articles/s41591-026-04501-8" target="_blank" rel="noopener">Nature Medicine, 2026-06-26</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Evidence infrastructure</span></span>
+      <span class="tag">UNC Health · Duke Health</span><span class="tag">Joint Commission · Hackensack</span><span class="tag">9/22</span>
+    </div>
+    <h3>
+      <span class="en">The capacity to validate AI is itself becoming infrastructure: a statewide rural AI evaluation network in North Carolina, and the first Joint Commission AI certification in the US</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">UNC Health, Duke Health and North Carolina partners launched a statewide network to help <strong>rural and critical-access providers</strong> evaluate and implement AI tools, funded by The Duke Endowment at <strong>$4.4 million over three years</strong> (<a href="https://www.unc.edu/posts/2026/09/22/statewide-network-launches-to-help-rural-and-critical-access-providers-harness-ai-for-better-patient-care/" target="_blank" rel="noopener">UNC, 2026-09-22</a>). The same week, <strong>Hackensack Meridian Health</strong> received the <strong>first Joint Commission AI certification</strong> in the country, a review covering AI inventory, risk assessment, post-deployment monitoring and patient-data protections (<a href="https://www.techtarget.com/healthtechanalytics/feature/Inside-Hackensack-Meridians-first-in-nation-Joint-Commission-AI-certification" target="_blank" rel="noopener">TechTarget</a>, collated by <a href="https://histalk2.com/2026/09/23/healthcare-ai-news-9-23-26/" target="_blank" rel="noopener">HIStalk, 2026-09-23</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">The six studies above converge on one point: the value of medical AI depends heavily on local deployment conditions — workload, workflow, staff habits — and therefore cannot be delivered once and for all by a vendor's multicentre trial. That creates a structural problem: an academic medical centre can run its own DECIDE-AI-style prospective evaluation, a rural hospital cannot, and rural hospitals are exactly the buyers most exposed to vendor claims. The North Carolina network and the Joint Commission certification are two patches on the same gap: one supplies who does the validating, the other what counts as validated. Note that neither is the FDA — the governance layer is growing ahead of the written regulation.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">The Joint Commission's AI certification examines process and governance, <strong>not product efficacy</strong>; holding it does not mean any AI tool the organisation uses has evidence of clinical benefit. And $4.4 million over three years across a whole state's rural providers is small relative to the need, with no outcome metrics published so far.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://histalk2.com/2026/09/23/healthcare-ai-news-9-23-26/" target="_blank" rel="noopener">HIStalk, Healthcare AI News 9/23/26</a></p></div>
+  </div>
+</section>
+
+<section id="product">
+  <h2>02 — Product Analysis</h2>
+  <div class="sec-title">
+    <span class="en">One has prospective controlled evidence and no commercial path; the other has a beautiful AUC and no prospective evidence. Today's two ends are each missing the other's half</span>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>SHAKED</h3>
+      <p class="sub"><span class="en-inline">LLM clinical decision support for the emergency department · built in-house at Rambam Health Care Campus (Israel), with the Technion and Mayo Clinic</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> In the emergency department, it proposes workup and consultation actions from the patient's current data. It is not a commercial product but a system built in-house in order to be evaluated rigorously. Its distinction is the evaluation design: two parallel emergency wings, one using it and one not, reported on 1,138 patients to <a href="https://www.nature.com/articles/s41591-026-04601-5" target="_blank" rel="noopener">DECIDE-AI stage 1</a> specification — a controlled condition almost no commercial vendor can obtain, because no hospital will cut its own emergency department in half to validate someone's software.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: the safety numbers are solid — expert review rated <strong>99 of 100 sampled outputs</strong> clinically appropriate with <strong>zero adverse events</strong>, obtained on real patients under real shift conditions rather than a retrospective dataset (<a href="https://www.nature.com/articles/s41591-026-04601-5" target="_blank" rel="noopener">Nature Medicine</a>).</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: uptake falling <strong>68% → 30%</strong> in four weeks (<strong>OR = 0.72</strong> per shift hour) means any downstream benefit is diluted past detection — length of stay was <strong>4.9 hours in both wings (P = 0.99)</strong> and the consultation cycle's −9.4 minutes did not reach significance (<strong>P = 0.077</strong>). <strong>State the missing data plainly: there is no comparison at all on diagnostic accuracy, readmission or mortality</strong>, and the authors themselves write that the evidence does not support deployment.</span>
+        </li>
+        <li><span class="pro"><span class="en-inline">Transferable</span></span>
+          <span class="en">: the adoption curve is itself a deliverable. Any organisation deploying clinical AI should collect the regression of usage against shift workload as a required metric — it tells you whether the tool survives its first quarter earlier than any accuracy figure does.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>PRISM2</h3>
+      <p class="sub"><span class="en-inline">Slide-level multimodal pathology foundation model · Tempus (US), data from Memorial Sloan Kettering and other institutions</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> Trained on <strong>2.3 million whole-slide images</strong> and <strong>14 million question-answer pairs</strong> derived from <strong>700,000 pathology reports</strong>, covering <strong>685,507 specimens from 200,692 patients</strong>; <strong>4.6 billion parameters</strong>, a Perceiver slide encoder feeding a Phi-3 Mini language model, with a deliberate split between base embeddings (for transfer learning) and diagnostic embeddings (for clinical tasks). <a href="https://www.nature.com/articles/s41591-026-04521-4" target="_blank" rel="noopener">Nature Medicine, 2026-07-31 (vol 32, 3203–3213)</a></span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: pan-cancer detection at <strong>AUC 0.967</strong> with diagnostic embeddings, against <strong>0.947</strong> for the previous PRISM and <strong>0.931</strong> for TITAN; prompt-based inference <strong>matched or exceeded clinical-grade products (P &lt; 0.05)</strong> in prostate, breast and breast lymph node detection; and colorectal recurrence-free survival at <strong>C-index 0.809</strong> beat a dedicated survival model's 0.773. Prompt-based inference means new tasks need no per-task labelling (<a href="https://www.nature.com/articles/s41591-026-04521-4" target="_blank" rel="noopener">Nature Medicine</a>).</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: there is <strong>no prospective clinical trial at all</strong> — every "matched or exceeded clinical-grade products" comparison is retrospective, and item seven above, the <a href="https://www.nature.com/articles/s41591-026-04501-8" target="_blank" rel="noopener">Microsoft adversarial study</a>, is precisely a warning against that reading: models answer correctly with critical information removed, so an AUC is not a deployment argument. A second concern is data concentration: the core training data comes from the MSK system, and distribution shift at external institutions is not quantified in the summary available to us.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Ask the vendor</span></span>
+          <span class="en">: the dual-track design of diagnostic and base embeddings is in practice an admission that one model cannot share a representation across tasks. Which track post-deployment monitoring watches, and how drift is declared, currently has no public answer.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="company">
+  <h2>03 — Companies &amp; Competition</h2>
+  <div class="sec-title">
+    <span class="en">Who stands where, on what, against whom</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th><span class="en-inline">Company / institution</span></th>
+        <th><span class="en-inline">Recent state &amp; numbers</span></th>
+        <th><span class="en-inline">Position &amp; moat</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Tempus</strong><br><span class="en-inline">Precision-medicine data and pathology foundation models</span></td>
+          <td>
+            <span class="en">PRISM2 published in Nature Medicine on <strong>2.3M WSIs</strong>, <strong>14M QA pairs</strong> and <strong>4.6B parameters</strong>, with pan-cancer <strong>AUC 0.967</strong> and colorectal RFS <strong>C-index 0.809</strong>; co-authors span Tempus and <strong>Memorial Sloan Kettering</strong> (<a href="https://www.nature.com/articles/s41591-026-04521-4" target="_blank" rel="noopener">Nature Medicine, 2026-07-31</a>).</span>
+          </td>
+          <td>
+            <span class="en">The moat is the scale at which slides, reports and clinical outcomes are paired, which academia can barely reproduce. The thin part is the absence of a prospective trial, plus a data lineage very close to that of Paige and PathAI — once MSK-grade data stops being exclusive, the advantage reverts to distribution.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Artera</strong><br><span class="en-inline">FDA-cleared digital pathology risk stratification</span></td>
+          <td>
+            <span class="en">ArteraAI Breast received FDA clearance as the <strong>first</strong> digital-pathology risk-stratification tool in breast cancer, for early-stage HR+/HER2− patients, outputting a distant-metastasis risk score with <strong>same-day results inside standard pathology workflow and no additional tissue</strong>; supporting data from the 2025 San Antonio Breast Cancer Symposium (<a href="https://www.itnonline.com/content/fda-clears-ai-digital-pathology-tool-breast-cancer" target="_blank" rel="noopener">ITN, 2026-05-06</a>).</span>
+          </td>
+          <td>
+            <span class="en">The moat is an actual clearance embedded in existing workflow, requiring no change to tissue handling — which is exactly what item one implies: the tools that survive are the ones that do not ask clinicians to behave differently. The thin part is that prognostic is not predictive of treatment benefit, and guideline-level adoption still needs randomised evidence.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Stanford／James Zou 實驗室</strong><br><span class="en-inline">Multi-agent drug discovery (academic, not a company)</span></td>
+          <td>
+            <span class="en">The Virtual Biotech runs on <strong>roughly 37,000 agents</strong>, and its CD276 lung-cancer ADC design was <strong>independently arrived at by Merck and granted FDA breakthrough designation</strong>; the underlying Paperclip platform is said to cut time and cost by <strong>over an order of magnitude</strong> (<a href="https://med.stanford.edu/news/all-news/2026/09/virtual-biotech-company.html" target="_blank" rel="noopener">Stanford Medicine, 2026-09-17</a>).</span>
+          </td>
+          <td>
+            <span class="en">The moat is the orchestration method and AI-native data infrastructure rather than any single model — which also means large pharma can reproduce it internally. The thin part is that the vast majority of outputs have no wet-lab validation, and the only hard evidence so far is a single n = 1 external convergence.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Microsoft Research Health &amp; Life Sciences</strong><br><span class="en-inline">Evaluation methodology — in effect, the referee's chair</span></td>
+          <td>
+            <span class="en">Adversarially stress-tested eight models including <strong>GPT-5, Gemini, Claude 3.5 Sonnet and MedGemma</strong> in Nature Medicine, showing that models still answer correctly with critical images removed and lose points on minor prompt changes (<a href="https://www.nature.com/articles/s41591-026-04501-8" target="_blank" rel="noopener">Nature Medicine, 2026-06-26</a>).</span>
+          </td>
+          <td>
+            <span class="en">The moat is agenda-setting: before the FDA's AI benchmarking guidance settles, whoever defines valid evaluation indirectly defines who passes. The thin part is an obvious conflict of interest — it is also a commercial partner to some of the models tested.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Rambam · Technion · Mayo Clinic</strong><br><span class="en-inline">In-house CDS and prospective evaluation capability</span></td>
+          <td>
+            <span class="en">SHAKED completed a four-week DECIDE-AI stage 1 evaluation across <strong>1,138 patients</strong> and two parallel emergency wings, and published the negative uptake result of <strong>68% → 30%</strong> itself (<a href="https://www.nature.com/articles/s41591-026-04601-5" target="_blank" rel="noopener">Nature Medicine, 2026-08-19</a>).</span>
+          </td>
+          <td>
+            <span class="en">The moat is something vendors cannot buy: the authority to split its own emergency department into a controlled comparison, and the freedom to publish a negative result without hurting a share price. The thin part is the absence of any commercial path — good evaluation methodology does not become a product by itself.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>The Joint Commission</strong><br><span class="en-inline">Healthcare accreditor, now issuing AI certification</span></td>
+          <td>
+            <span class="en">Issued the first AI certification in the US to <strong>Hackensack Meridian Health</strong>, reviewing AI inventory, risk assessment, monitoring and patient-data protections (<a href="https://www.techtarget.com/healthtechanalytics/feature/Inside-Hackensack-Meridians-first-in-nation-Joint-Commission-AI-certification" target="_blank" rel="noopener">TechTarget</a> / <a href="https://histalk2.com/2026/09/23/healthcare-ai-news-9-23-26/" target="_blank" rel="noopener">HIStalk, 2026-09-23</a>).</span>
+          </td>
+          <td>
+            <span class="en">The moat is an existing accreditation channel: hospitals are already surveyed by it, AI is one more chapter, and adoption cost is far below that of new regulation. The thin part is the same fact — it reviews process, not efficacy, and is easily misread as an endorsement of quality.</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>Close it in one sentence: today's competition is not model against model but whoever can produce deployment-grade evidence against whoever can only produce an AUC.</strong> The right-hand column is crowded and capital-rich; the left-hand column currently holds little more than academic medical centres willing to split their own emergency departments in two, and they have no commercial incentive to turn the method into a product. That mismatch is the most structural gap in medical AI right now, and it is precisely why third-party validation infrastructure of the Joint Commission and North Carolina variety is starting to grow.</span>
+    </p>
+  </div>
+</section>
+
+<section id="taiwan">
+  <h2>04 — Taiwan Angle</h2>
+  <div class="sec-title">
+    <span class="en">No local Taiwanese clinical-research news today, so this section works through what three international results mean once translated into Taiwan's institutions</span>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>(1) Taiwan's AI-SaMD registration pathway can demonstrate accuracy; it cannot demonstrate how many people are still using the tool in week three.</strong> The TFDA has stood up a <a href="https://www.mohw.gov.tw/cp-5016-59558-1.html" target="_blank" rel="noopener">dedicated smart medical device project office</a> and runs an <a href="https://aimd.fda.gov.tw/" target="_blank" rel="noopener">AI/ML medical device information and matchmaking platform</a>, and Taipei Veterans General Hospital offers <a href="https://wd.vghtpe.gov.tw/aip/Fpage.action?fid=17967" target="_blank" rel="noopener">AI-SaMD clinical trial services</a>, so the registration route is comparatively complete. But the decisive variable the Rambam trial identified — uptake collapsing with shift workload (<strong>OR = 0.72 per hour</strong>) — appears in no mandatory field of any registration dossier. For Taiwanese hospitals that means one more item in the deployment evaluation design: measure not only accuracy but actual usage at weeks 1, 4 and 12, and its regression against how busy the shift was. That number is cheap, collectable in-house, and predicts whether a purchase becomes a dormant licence better than any vendor's multicentre dataset.</span>
+    </p>
+    <p>
+      <span class="en"><strong>(2) The chatbot leak report applies immediately to the messaging-account assistants Taiwanese hospitals run.</strong> What the researchers obtained was backend configuration plus the <strong>1,000 most recent complete patient conversations</strong>, using nothing but browser developer tools and a commercial LLM, <strong>with no authentication at any point</strong> (<a href="https://arxiv.org/abs/2605.00796" target="_blank" rel="noopener">arXiv:2605.00796</a>). Many Taiwanese providers build patient-education and waiting-room Q&amp;A on messaging platforms or a web front end, and what patients disclose in those conversations is history and symptoms — which under Taiwan's Personal Data Protection Act falls in the special category covering medical records and health examinations, with materially tighter handling limits than ordinary personal data. Two things can be done today: open your own assistant's network requests in developer tools and confirm the system prompt and retrieval configuration are not visible client-side; and confirm the conversation-history endpoint requires authentication and does not accept a guessable sequential parameter. This needs no security team, only someone willing to press F12.</span>
+    </p>
+    <p>
+      <span class="en"><strong>(3) Opportunistic screening is the class of medical AI whose reimbursement value is easiest to argue in Taiwan, because the scan has already happened.</strong> The economics of the Johns Hopkins study hold unusually well here: the national health insurance system already generates large volumes of non-contrast chest CT each year, including low-dose lung cancer screening, and the Executive Yuan's <a href="https://www.ey.gov.tw/Page/448DE008087A1971/4bcdf605-a37f-4110-95df-ced05f0551e8" target="_blank" rel="noopener">policy statement on AI in medical imaging</a> already treats imaging as a priority. The point is that the <strong>marginal cost is one model run</strong> — no extra scan, no extra radiation, no extra visit. It is one of the few settings where cost-effectiveness can be argued as a second clinical variable extracted from the same examination, and that is the easiest story to tell in a reimbursement negotiation. The limits are equally clear: the MESA cohort's composition differs from Taiwan's (715 participants, median age 69), effect sizes are small, and carrying the thresholds over directly would not be safe — rerunning the association locally is a precondition.</span>
+    </p>
+  </div>
+</section>
+
+<section id="reading">
+  <h2>05 — Further Reading</h2>
+  <div class="sec-title">
+    <span class="en">Five pieces, chosen on one criterion: reading them changes what data you ask a vendor for</span>
+  </div>
+
+  <ol class="reading">
+    <li>
+      <a href="https://www.nature.com/articles/s41591-026-04601-5" target="_blank" rel="noopener">Prospective evaluation of a large language model clinical decision support system in the emergency department — Nature Medicine (2026-08-19)</a>
+      <p class="why"><span class="en">The one to read in full today. The point is not the accuracy figures but the adoption curve from 68% to 30%, and how the authors write "physicians stopped using it" as the principal finding rather than a limitation.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/articles/d41586-026-02954-y" target="_blank" rel="noopener">How a team of AIs discovered a promising lung-cancer drug — Nature (2026-09)</a>
+      <p class="why"><span class="en">A news feature, but it makes clear why Merck's independent convergence is the only part of the story that counts as evidence — a useful correction to the attention the number 37,000 absorbs.</span></p>
+    </li>
+    <li>
+      <a href="https://arxiv.org/abs/2605.00796" target="_blank" rel="noopener">When RAG Chatbots Expose Their Backend: An Anonymized Case Study of Privacy and Security Risks in Patient-Facing Medical AI — arXiv:2605.00796 (2026-05-01)</a>
+      <p class="why"><span class="en">Read it as a checklist, not a paper. Every exposure it lists maps to a check you can run against your own system this afternoon.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/articles/s41591-026-04501-8" target="_blank" rel="noopener">Evaluating the robustness and readiness of large frontier models in health AI applications — Nature Medicine (2026-06-26)</a>
+      <p class="why"><span class="en">Until the FDA's benchmarking guidance lands, this is the most complete account of why a benchmark score is not a deployment argument. The ablation section can be lifted straight into a procurement specification.</span></p>
+    </li>
+    <li>
+      <a href="https://www.thelancet.com/journals/langas/article/PIIS2468-1253(25)00133-5/abstract" target="_blank" rel="noopener">Endoscopist deskilling risk after exposure to artificial intelligence in colonoscopy: a multicentre, observational study — The Lancet Gastroenterology &amp; Hepatology</a>
+      <p class="why"><span class="en">This issue keeps returning to "nothing happens if physicians stop using it"; this paper is the other face of the same problem — whether continuous use erodes the skill exercised without AI. The trade-off is only visible with both.</span></p>
+    </li>
+  </ol>
+</section>
+
+<section id="refs">
+  <h2>06 — References</h2>
+  <div class="sec-title">
+    <span class="en">References</span>
+  </div>
+
+  <div class="panel">
+    <ol class="refs">
+      <li>Prospective evaluation of a large language model clinical decision support system in the emergency department. <em>Nature Medicine</em>, 2026-08-19. <a href="https://www.nature.com/articles/s41591-026-04601-5" target="_blank" rel="noopener">nature.com</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/42618632/" target="_blank" rel="noopener">PubMed 42618632</a></li>
+      <li>Virtual biotech company puts thousands of AI scientist agents to work on drug discovery. <em>Stanford Medicine News</em>, 2026-09-17. <a href="https://med.stanford.edu/news/all-news/2026/09/virtual-biotech-company.html" target="_blank" rel="noopener">med.stanford.edu</a></li>
+      <li>How a team of AIs discovered a promising lung-cancer drug. <em>Nature</em> (news feature), 2026-09. <a href="https://www.nature.com/articles/d41586-026-02954-y" target="_blank" rel="noopener">nature.com</a></li>
+      <li>The Virtual Biotech: A multi-agent AI framework for therapeutic discovery and development. <em>Science</em>, 2026. <a href="https://www.science.org/doi/10.1126/science.aeg6779" target="_blank" rel="noopener">science.org</a> · preprint: <a href="https://www.biorxiv.org/content/10.64898/2026.02.23.707551v1" target="_blank" rel="noopener">bioRxiv</a></li>
+      <li>Stanford is running 37,000 AI agents as a virtual biotech — and one of its drug designs got independently confirmed by Merck. <em>VentureBeat</em>, 2026. <a href="https://venturebeat.com/orchestration/stanford-is-running-37-000-ai-agents-as-a-virtual-biotech-and-one-of-its-drug-designs-got-independently-confirmed-by-merck" target="_blank" rel="noopener">venturebeat.com</a></li>
+      <li>Virtual Biotech Company Puts 37,000 AI Agents to Work on Drug Discovery. <em>Singularity Hub</em>, 2026-09-18. <a href="https://singularityhub.com/2026/09/18/virtual-biotech-company-puts-37000-ai-agents-to-work-on-drug-discovery/" target="_blank" rel="noopener">singularityhub.com</a></li>
+      <li>When the Chatbot Leaks: Securing Patient-Facing Medical AI in the Age of Dual-Use Large Language Models. <em>NEJM AI</em>, 2026. <a href="https://ai.nejm.org/doi/full/10.1056/AIp2600583" target="_blank" rel="noopener">ai.nejm.org</a></li>
+      <li>Madrid-García A, Rujas M. When RAG Chatbots Expose Their Backend: An Anonymized Case Study of Privacy and Security Risks in Patient-Facing Medical AI. <em>arXiv:2605.00796</em>, 2026-05-01. <a href="https://arxiv.org/abs/2605.00796" target="_blank" rel="noopener">arxiv.org</a></li>
+      <li>AI Health Roundup — September 25, 2026. <em>Duke AI Health</em>, 2026-09-25. <a href="https://aihealth.duke.edu/ai-health-roundup-september-25-2026/" target="_blank" rel="noopener">aihealth.duke.edu</a></li>
+      <li>Clinical usability of an explainable AI decision support tool and evaluation of multimodal models in NSCLC (I3LUNG). <em>Nature Medicine</em>, 2026-09-13. <a href="https://www.nature.com/articles/s41591-026-04488-2" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Comparison of an AI tool and case managers for inpatient discharge-date prediction. <em>JAMA Network Open</em>, 2026-09-03. <a href="https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2853623" target="_blank" rel="noopener">jamanetwork.com</a></li>
+      <li>Healthcare AI News and Regulation: September 2026 Evidence Briefing. <em>Veroscribe</em>, 2026-09. <a href="https://www.veroscribe.com/blog/healthcare-ai-news-september-2026" target="_blank" rel="noopener">veroscribe.com</a></li>
+      <li>September 2026 healthcare AI briefing separates evidence from vendor announcements. <em>Complete AI Training</em>, 2026-09. <a href="https://completeaitraining.com/news/september-2026-healthcare-ai-briefing-separates-evidence/" target="_blank" rel="noopener">completeaitraining.com</a></li>
+      <li>Study: AI BMD assessment on chest CT linked to faster cognitive decline and white matter changes on brain MRI (<em>Radiology</em>). <em>Diagnostic Imaging</em>, 2026-09-23. <a href="https://www.diagnosticimaging.com/view/study-ai-bmd-assessment-chest-ct-faster-cognitive-decline-white-matter-changes-brain-mri" target="_blank" rel="noopener">diagnosticimaging.com</a></li>
+      <li>New CT/MRI research may reveal links between bone loss, diabetes and cognitive decline (interview with Dr. Shadpour Demehri). <em>Diagnostic Imaging</em>, 2026-09-25. <a href="https://www.diagnosticimaging.com/view/new-ct-mri-research-may-reveal-bone-loss-diabetes-cognitive-decline" target="_blank" rel="noopener">diagnosticimaging.com</a></li>
+      <li>Advances in AI — September 2026. <em>Diagnostic Imaging</em>, 2026-09. <a href="https://www.diagnosticimaging.com/view/advances-in-ai-september-2026" target="_blank" rel="noopener">diagnosticimaging.com</a></li>
+      <li>Gu Y, Fu J, Liu X, et al. Evaluating the robustness and readiness of large frontier models in health AI applications. <em>Nature Medicine</em>, 2026-06-26. <a href="https://www.nature.com/articles/s41591-026-04501-8" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Vorontsov E, Shaikovski G, Liu S, et al. End-to-end multimodal pathology foundation model with clinical dialogue (PRISM2). <em>Nature Medicine</em> 32:3203–3213, 2026-07-31. <a href="https://www.nature.com/articles/s41591-026-04521-4" target="_blank" rel="noopener">nature.com</a></li>
+      <li>FDA Clears AI Digital Pathology Tool in Breast Cancer (ArteraAI Breast). <em>Imaging Technology News</em>, 2026-05-06. <a href="https://www.itnonline.com/content/fda-clears-ai-digital-pathology-tool-breast-cancer" target="_blank" rel="noopener">itnonline.com</a></li>
+      <li>Statewide network launches to help rural and critical access providers harness AI for better patient care. <em>UNC</em>, 2026-09-22. <a href="https://www.unc.edu/posts/2026/09/22/statewide-network-launches-to-help-rural-and-critical-access-providers-harness-ai-for-better-patient-care/" target="_blank" rel="noopener">unc.edu</a></li>
+      <li>Inside Hackensack Meridian's first-in-nation Joint Commission AI certification. <em>TechTarget</em>, 2026-09. <a href="https://www.techtarget.com/healthtechanalytics/feature/Inside-Hackensack-Meridians-first-in-nation-Joint-Commission-AI-certification" target="_blank" rel="noopener">techtarget.com</a></li>
+      <li>Healthcare AI News 9/23/26. <em>HIStalk</em>, 2026-09-23. <a href="https://histalk2.com/2026/09/23/healthcare-ai-news-9-23-26/" target="_blank" rel="noopener">histalk2.com</a></li>
+      <li>Endoscopist deskilling risk after exposure to artificial intelligence in colonoscopy: a multicentre, observational study. <em>The Lancet Gastroenterology &amp; Hepatology</em>. <a href="https://www.thelancet.com/journals/langas/article/PIIS2468-1253(25)00133-5/abstract" target="_blank" rel="noopener">thelancet.com</a></li>
+      <li>食品藥物管理署智慧醫療器材專案辦公室成立. <em>衛生福利部</em>. <a href="https://www.mohw.gov.tw/cp-5016-59558-1.html" target="_blank" rel="noopener">mohw.gov.tw</a></li>
+      <li>智慧醫療器材資訊暨媒合平台. <em>衛生福利部食品藥物管理署</em>. <a href="https://aimd.fda.gov.tw/" target="_blank" rel="noopener">aimd.fda.gov.tw</a></li>
+      <li>AI-SaMD 產品臨床試驗服務. <em>臺北榮民總醫院人工智慧中心</em>. <a href="https://wd.vghtpe.gov.tw/aip/Fpage.action?fid=17967" target="_blank" rel="noopener">vghtpe.gov.tw</a></li>
+      <li>AI 在醫療影像之應用（院會議案）. <em>行政院</em>. <a href="https://www.ey.gov.tw/Page/448DE008087A1971/4bcdf605-a37f-4110-95df-ced05f0551e8" target="_blank" rel="noopener">ey.gov.tw</a></li>
+    </ol>
+    <div class="note">
+      <span class="en"><strong>Editor's note:</strong> (1) <strong>Secondary citation</strong>: we could not retrieve the primary pages for I3LUNG (Nature Medicine, 9/13) or the discharge-prediction study (JAMA Network Open, 9/3), so all figures come from the September evidence briefings listed as references 12 and 13; the <em>Radiology</em> bone-density and brain study is likewise cited from Diagnostic Imaging's coverage rather than the paper. (2) <strong>Access limits</strong>: the NEJM AI perspective "When the Chatbot Leaks" and the <em>Science</em> Virtual Biotech paper could not be retrieved in full in this production environment; technical detail follows the arXiv:2605.00796 report and Stanford's own announcement plus secondary coverage respectively, with links listed as found for verification. (3) <strong>Window</strong>: several primary papers here carry publication dates before this week (8/19, 7/31, 6/26) because they entered clinical discussion during 22–28 September via the Duke AI Health roundup of 9/25 and the September evidence briefings; dates are given as published and have not been shifted forward. (4) <strong>Thin local news</strong>: there was no Taiwanese clinical-research news of sufficient weight in the 22–28 September window, so section 04 is written as three institutional inferences rather than local reporting, and says so in its subhead. (5) <strong>Unaudited self-reported figures</strong>: Paperclip's "over an order of magnitude" cost reduction, PRISM2's comparisons against clinical-grade products, and ArteraAI Breast's SABCS supporting data are all reported by the research team or vendor and not independently audited. (6) This report is not investment or medical advice.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-row">
+    <div>
+      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Monday / Clinical Applications &amp; Research<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
+    </div>
+    <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
+  </div>
+</footer>
+</main>
+
+<div class="fabs">
+  <button class="up" id="up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+  <a class="home-fab" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg></a>
+</div>
+
+<script>
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.getElementById('theme-ic').textContent =
+    document.body.classList.contains('dark') ? '◑' : '◐';
+}
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.body.classList.add('dark');
+  document.getElementById('theme-ic').textContent = '◑';
+}
+window.addEventListener('scroll', function(){
+  document.getElementById('up').classList.toggle('show', window.scrollY > 600);
+});
+
+/* GitHub 星星數：無需授權，失敗或被限流時靜默保留佔位符 */
+(function(){
+  var el = document.getElementById('ghs');
+  if (!el || typeof fetch !== 'function') return;
+  fetch('https://api.github.com/repos/tingwei161803/ai-medical-daily', {headers:{Accept:'application/vnd.github+json'}})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if (!d || typeof d.stargazers_count !== 'number') return;
+      var n = d.stargazers_count;
+      el.textContent = n >= 1000 ? (Math.round(n/100)/10) + 'k' : String(n);
+    })
+    .catch(function(){});
+})();
+</script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/reports/2026-09-28.html" hreflang="zh-Hant" rel="alternate" lang="zh-Hant">中文版</a></p>
+</body>
+</html>
