@@ -8,6 +8,10 @@
 <title>AI／醫療AI 每日新知日報 · 2026-10-01</title>
 <meta property="og:url" content="https://ai-medical-daily.peteraim.com/reports/2026-10-01.html" />
 <link rel="canonical" href="https://ai-medical-daily.peteraim.com/reports/2026-10-01.html" />
+<link rel="alternate" hreflang="zh-Hant" href="https://ai-medical-daily.peteraim.com/reports/2026-10-01.html" />
+<link rel="alternate" hreflang="en" href="https://ai-medical-daily.peteraim.com/en/reports/2026-10-01.html" />
+<link rel="alternate" hreflang="x-default" href="https://ai-medical-daily.peteraim.com/reports/2026-10-01.html" />
+<meta name="description" content="本週醫療 AI 的技術面沒有新的大廠發布，卻有一個更要緊的問題浮上來：分數還在漲，獨立驗分的人卻不存在。Nature Medicine 讓通用模型贏過專用臨床工具、微軟 HealthAgentBench 的代理任務最強只過 42%、Sophont 用 30 個 benchmark × 61 個模型指出開源大模型要花 5 倍 token 才追平，而唯一不必吵分數的進展落在效率——GigaPath-Flash 用 1/50 算力留住 97% 的病理表現，Apache-2.0 開權重。">
 <meta name="report-date" content="2026-10-01">
 <meta name="report-theme" content="technology">
 <meta name="report-title-zh" content="醫療 AI 的技術突破全部撞在同一道牆上——評分的人就是賣模型的人：OpenEvidence 9/30 以 150 億美元估值再募 2.5 億，而它家 Darwin 那個 MedQA 史上第一個 100% 是自測自評；Nature Medicine 的頭對頭研究發現三個通用前沿模型在 MedQA、HealthBench 與醫師真實問題上全面贏過兩款專用臨床 AI 工具，後者「表現沒比 Google AI 摘要好」；而微軟自家的 HealthAgentBench 把 54 個代理任務丟出去，最強的 Codex GPT-5.5 只過 42%">
@@ -29,16 +33,16 @@
 </script>
 <link rel="stylesheet" href="/assets/report.css">
 </head>
-<body class="lang-zh">
+<body>
 
 <header class="bar">
   <div class="bar-in">
-    <a class="brand" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span><span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <a class="brand" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span></a>
     <div class="bar-sp"></div>
     <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub / 在 GitHub 給這個專案一顆星"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
     <div class="seg">
-      <button id="b-zh" class="on" onclick="setLang('zh')">中文</button>
-      <button id="b-en" onclick="setLang('en')">EN</button>
+      <a class="on" href="/reports/2026-10-01.html" hreflang="zh-Hant" lang="zh-Hant" aria-current="page">中文</a>
+      <a href="/en/reports/2026-10-01.html" hreflang="en" lang="en" rel="alternate">EN</a>
     </div>
     <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
   </div>
@@ -48,28 +52,24 @@
 <div class="hero">
   <div class="kicker">
     <span class="zh-inline">星期四 · 技術突破</span>
-    <span class="en-inline">Thursday · Technology Breakthroughs</span>
   </div>
   <h1>
     <span class="zh">醫療 AI 的技術突破全部撞在同一道牆上——評分的人就是賣模型的人：OpenEvidence 9/30 以 150 億美元估值再募 2.5 億，而它家 Darwin 那個 MedQA 史上第一個 100% 是自測自評；Nature Medicine 的頭對頭研究發現三個通用前沿模型在 MedQA、HealthBench 與醫師真實問題上全面贏過兩款專用臨床 AI 工具，後者「表現沒比 Google AI 摘要好」；而微軟自家的 HealthAgentBench 把 54 個代理任務丟出去，最強的 Codex GPT-5.5 只過 42%</span>
-    <span class="en">Every technical breakthrough in medical AI this week ran into the same wall — the scorer is the vendor: OpenEvidence raised another $250M at a $15B valuation on 9/30, and the first-ever 100% on MedQA that its Darwin model posted was graded by OpenEvidence itself; a Nature Medicine head-to-head found three general-purpose frontier LLMs beating two leading specialized clinical AI tools on MedQA, HealthBench and real physician questions, with the specialized tools doing no better than a Google AI overview; and Microsoft's own HealthAgentBench put 54 agentic tasks to frontier models, where the best — Codex GPT-5.5 — cleared just 42%</span>
   </h1>
   <div class="dateline">
     <span class="zh-inline">2026 年 10 月 1 日（四）· 涵蓋 9/22–10/1 · 台北時間</span>
-    <span class="en-inline">Thursday, October 1, 2026 · Covering Sep 22 – Oct 1 · Taipei time</span>
   </div>
   <p class="lede">
     <span class="zh">星期四是技術突破日，而今天要先承認一件事：<strong>9/28–10/1 這個窗口裡，醫療 AI 沒有大廠級的模型發布。</strong>真正落地的新東西是 arXiv 預印本與 Hugging Face 上的權重上架——<a href="https://github.com/nayutayuki/agents-radar/issues/343" target="_blank" rel="noopener">9/30 的醫療 AI 行業日報</a>掃出來的五個「新模型」，下載數最高的 <code>Fastino-Nemotron-3.5-Lightning-Healthcare</code> 是 6,707 次、22 個 like，其餘四個合計不到 2,000 次下載，而且全部沒有臨床準確度的獨立評測。於是今天的技術主線不是「誰的模型更強」，而是一個更難回答的問題：<strong>當分數繼續往上漲，誰在獨立驗分？</strong>這個問題在 9/30 變得具體——<a href="https://histalk2.com/2026/09/29/news-9-30-26/" target="_blank" rel="noopener">OpenEvidence 以 150 億美元估值再募 2.5 億美元</a>，而支撐它「全世界每一個主流 benchmark 分數最高的醫療 AI 模型家族」這句話的四個數字，是自己測、自己評、自己發表的。</span>
-    <span class="en">Thursday is the technology slot, and today opens with an admission: <strong>between 9/28 and 10/1 no flagship medical model shipped.</strong> What actually landed were arXiv preprints and weights appearing on Hugging Face — of the five "new models" swept up by <a href="https://github.com/nayutayuki/agents-radar/issues/343" target="_blank" rel="noopener">the 9/30 medical AI industry digest</a>, the most downloaded, <code>Fastino-Nemotron-3.5-Lightning-Healthcare</code>, sits at 6,707 downloads and 22 likes; the other four together clear fewer than 2,000, and none carries an independent clinical-accuracy evaluation. So today's technical thread is not whose model is stronger. It is a harder question: <strong>as the scores keep climbing, who grades them independently?</strong> On 9/30 that question acquired a price tag — <a href="https://histalk2.com/2026/09/29/news-9-30-26/" target="_blank" rel="noopener">OpenEvidence raised another $250 million at a $15 billion valuation</a>, and the four numbers behind its claim to the world's highest-scoring medical AI model family on every mainstream benchmark were measured, graded and published by OpenEvidence.</span>
   </p>
 
   <nav class="toc">
-    <a href="#top"><span class="zh-inline">重點新聞</span><span class="en-inline">Top Stories</span></a>
-    <a href="#product"><span class="zh-inline">產品分析</span><span class="en-inline">Product Analysis</span></a>
-    <a href="#company"><span class="zh-inline">公司與競爭</span><span class="en-inline">Companies &amp; Competition</span></a>
-    <a href="#taiwan"><span class="zh-inline">台灣視角</span><span class="en-inline">Taiwan Angle</span></a>
-    <a href="#reading"><span class="zh-inline">延伸閱讀</span><span class="en-inline">Further Reading</span></a>
-    <a href="#refs"><span class="zh-inline">參考文獻</span><span class="en-inline">References</span></a>
+    <a href="#top"><span class="zh-inline">重點新聞</span></a>
+    <a href="#product"><span class="zh-inline">產品分析</span></a>
+    <a href="#company"><span class="zh-inline">公司與競爭</span></a>
+    <a href="#taiwan"><span class="zh-inline">台灣視角</span></a>
+    <a href="#reading"><span class="zh-inline">延伸閱讀</span></a>
+    <a href="#refs"><span class="zh-inline">參考文獻</span></a>
   </nav>
 </div>
 
@@ -77,202 +77,173 @@
   <h2>01 — Top Stories</h2>
   <div class="sec-title">
     <span class="zh">七則消息排成一條線：分數、估值、代理任務的真實通過率，以及唯一不需要吵分數的那種進步</span>
-    <span class="en">Seven items in one line: the scores, the valuation, the real pass rate on agentic tasks — and the one kind of progress that needs no scoreboard argument</span>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">募資／評測</span><span class="en-inline">Funding / Benchmarks</span></span>
+      <span class="tag hot"><span class="zh-inline">募資／評測</span></span>
       <span class="tag">OpenEvidence</span><span class="tag">Darwin</span><span class="tag">9/30</span>
     </div>
     <h3>
       <span class="zh">OpenEvidence 在 9/30 以 150 億美元估值募得 2.5 億美元——而它家 Darwin 的 MedQA 100% 是自己打的分數</span>
-      <span class="en">OpenEvidence raised $250M at a $15B valuation on 9/30 — and the 100% on MedQA that its Darwin model posted was a score it gave itself</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">9 月 30 日，被稱為「醫師版 ChatGPT」的 OpenEvidence <a href="https://histalk2.com/2026/09/29/news-9-30-26/" target="_blank" rel="noopener">完成 2.5 億美元募資、估值 150 億美元</a>，投資方包含多家醫療系統與 Andreessen Horowitz；這使它在過去 12 個月內累計募得約 10 億美元。而這一輪的技術底氣來自 <a href="https://www.businesswire.com/news/home/20260903878517/en/Introducing-the-OpenEvidence-Model-Family" target="_blank" rel="noopener">9 月 3 日發表的 OpenEvidence Model Family</a>：<code>Darwin</code> 成為<a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openevidences-new-model-achieves-1st-perfect-score-on-medical-ai-benchmark/" target="_blank" rel="noopener">史上第一個在 MedQA 拿到 100% 的 AI 系統</a>，另外 MedXpertQA 72.8%、HealthBench Professional 82.7%、NOHARM 87.2%，公司表示 Darwin 贏過 Claude 與 Gemini 的對應模型，但因為病毒學、免疫學與遺傳學的雙重用途風險而仍停留在 research preview。另外三個模型 <code>Osler</code>（5 秒回答）、<code>Sackett</code>（30 秒、證據導向）、<code>Snow</code>（5 分鐘文獻回顧）則<a href="https://www.mobihealthnews.com/news/openevidence-launches-4-medical-ai-models-clinicians" target="_blank" rel="noopener">對全美臨床人員免費開放</a>。</span>
-        <span class="en">On September 30, OpenEvidence — widely described as ChatGPT for doctors — <a href="https://histalk2.com/2026/09/29/news-9-30-26/" target="_blank" rel="noopener">closed a $250 million round at a $15 billion valuation</a> from investors including health systems and Andreessen Horowitz, bringing its total to roughly $1 billion over twelve months. The technical case behind the round came from <a href="https://www.businesswire.com/news/home/20260903878517/en/Introducing-the-OpenEvidence-Model-Family" target="_blank" rel="noopener">the OpenEvidence Model Family announced on September 3</a>: <code>Darwin</code> became <a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openevidences-new-model-achieves-1st-perfect-score-on-medical-ai-benchmark/" target="_blank" rel="noopener">the first AI system in history to score 100% on MedQA</a>, alongside 72.8% on MedXpertQA, 82.7% on HealthBench Professional and 87.2% on NOHARM. The company says Darwin beat the equivalent Claude and Gemini models, but it remains in research preview over dual-use risk in virology, immunology and genetics. The other three — <code>Osler</code> (5-second answers), <code>Sackett</code> (30 seconds, evidence-led) and <code>Snow</code> (5-minute literature review) — are <a href="https://www.mobihealthnews.com/news/openevidence-launches-4-medical-ai-models-clinicians" target="_blank" rel="noopener">free to US clinicians</a>.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">因為沒有人獨立驗過這四個數字。9 月 22 日 Grid Health 的分析把這件事講得很直白：<a href="https://www.gridhealth.io/charge-insights/openevidence-tempo-no-ones-watching" target="_blank" rel="noopener">「這些是 OpenEvidence 自己的測驗，由 OpenEvidence 評分，由 OpenEvidence 發表。」</a>更尖的一刀是命名——<code>Sackett</code> 取自證據醫學之父 David Sackett，而它提供的證據全部出自自己；同一份分析也指出，OpenEvidence 曾批評 NYU 的研究者使用 OpenAI 的 benchmark，如今自己用來宣稱世界第一的 HealthBench Professional 正是 OpenAI 的 benchmark。這不是對模型能力的質疑，而是對「臨床準確度」與「臨床效用」之間那條縫的質疑：MedQA 100% 不等於在診間裡會做對事。</span>
-        <span class="en">Because nobody independently verified those four numbers. A September 22 analysis by Grid Health put it plainly: <a href="https://www.gridhealth.io/charge-insights/openevidence-tempo-no-ones-watching" target="_blank" rel="noopener">"these are OpenEvidence's own tests, scored by OpenEvidence, published by OpenEvidence."</a> The sharper cut is the naming — <code>Sackett</code> honours David Sackett, the father of evidence-based medicine, while supplying only self-generated evidence; the same piece notes that OpenEvidence had criticized NYU researchers for using OpenAI benchmarks, yet HealthBench Professional, the benchmark now anchoring its world-first claim, is an OpenAI benchmark. This is not a doubt about capability. It is a doubt about the gap between clinical accuracy and clinical utility: 100% on MedQA is not the same as doing the right thing in a consultation room.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">四個 benchmark 分數全部為廠商自述、未經第三方稽核。「使用 OpenEvidence 的美國醫師比所有競品加總還多」這句公司說法<a href="https://www.gridhealth.io/charge-insights/openevidence-tempo-no-ones-watching" target="_blank" rel="noopener">沒有附任何引證</a>。募資金額與估值引自 HISTalk 的二手報導，且該報導自己指出早先版本的消息是「尋求 2 億美元、估值 200 億美元」，與定案數字不符。</span>
-        <span class="en">All four benchmark figures are vendor-reported and not independently audited. The company's claim that more American physicians use its platform than every competing AI tool combined comes <a href="https://www.gridhealth.io/charge-insights/openevidence-tempo-no-ones-watching" target="_blank" rel="noopener">with no citation</a>. The round size and valuation are from secondary coverage at HISTalk, which itself flags that earlier reporting had the company seeking $200 million at $20 billion — numbers that do not match the close.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://histalk2.com/2026/09/29/news-9-30-26/" target="_blank" rel="noopener">HISTalk, News 9/30/26, 2026-09-30</a> · <a href="https://www.gridhealth.io/charge-insights/openevidence-tempo-no-ones-watching" target="_blank" rel="noopener">Grid Health, 2026-09-22</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">論文／對照研究</span><span class="en-inline">Paper / Head-to-head</span></span>
+      <span class="tag hot"><span class="zh-inline">論文／對照研究</span></span>
       <span class="tag">Nature Medicine</span><span class="tag">NYU</span><span class="tag">MedQA · HealthBench</span>
     </div>
     <h3>
       <span class="zh">Nature Medicine 的裁判結果：通用前沿模型贏過專用臨床 AI 工具，而專用工具「表現沒比 Google AI 摘要好」</span>
-      <span class="en">The Nature Medicine verdict: general-purpose frontier models beat specialized clinical AI tools — and the specialized tools did no better than a Google AI overview</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">Krithik Vishwanath、Anton Alyakin 與 Eric Karl Oermann 的研究做了一件這個產業很少有人做的事：把三個通用前沿大模型與兩款領先的專用臨床 AI 工具放在同一張桌子上，用<a href="https://www.nature.com/articles/s41591-026-04457-9" target="_blank" rel="noopener">兩個公開 benchmark（MedQA 與 HealthBench）加上醫師真實提交的問題</a>做頭對頭比較。結論是三個通用模型全面勝出，而兩款專用臨床工具「表現沒比 Google 搜尋的 AI 摘要更好」。研究的 briefing 刊於 <em>Nature Medicine</em> 第 32 卷第 7 期第 2364–2365 頁（<a href="https://www.nature.com/articles/s41591-026-04457-9" target="_blank" rel="noopener">DOI 10.1038/s41591-026-04457-9</a>，2026-06-17），主文〈General-purpose large language models outperform specialized clinical AI tools on medical benchmarks〉收錄於 <a href="https://pubmed.ncbi.nlm.nih.gov/42286322/" target="_blank" rel="noopener">PubMed 42286322</a>／<a href="https://www.nature.com/articles/s41591-026-04431-5" target="_blank" rel="noopener">s41591-026-04431-5</a>。</span>
-        <span class="en">Krithik Vishwanath, Anton Alyakin and Eric Karl Oermann did something this industry rarely does: they sat three general-purpose frontier LLMs at the same table as two leading specialized clinical AI tools and compared them head to head across <a href="https://www.nature.com/articles/s41591-026-04457-9" target="_blank" rel="noopener">two public benchmarks — MedQA and HealthBench — plus questions actually submitted by physicians</a>. All three general-purpose models won, and the two specialized clinical tools performed no better than Google search's AI overview. The research briefing ran in <em>Nature Medicine</em> vol. 32, no. 7, pp. 2364–2365 (<a href="https://www.nature.com/articles/s41591-026-04457-9" target="_blank" rel="noopener">DOI 10.1038/s41591-026-04457-9</a>, 2026-06-17); the full paper, "General-purpose large language models outperform specialized clinical AI tools on medical benchmarks," is indexed at <a href="https://pubmed.ncbi.nlm.nih.gov/42286322/" target="_blank" rel="noopener">PubMed 42286322</a> / <a href="https://www.nature.com/articles/s41591-026-04431-5" target="_blank" rel="noopener">s41591-026-04431-5</a>.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">這份研究明確指出的風險，正是 9/30 那場募資的風險：<a href="https://www.nature.com/articles/s41591-026-04457-9" target="_blank" rel="noopener">專用臨床 AI 工具正在「幾乎沒有獨立測試」的狀態下進入醫療實務</a>。把兩件事疊起來看，今天的技術地景是這樣的——通用模型的通識醫學能力已經高到讓「做一個醫療專用模型」這件事的附加價值變得需要證明，而要證明就得有人在廠商之外評分，但那個人目前不存在。Harvard 醫學院生醫資訊系的 Arjun K. Manrai 在 7 月 28 日的 <em>Nature</em> 評論裡把這件事抽象成一句話：<a href="https://www.nature.com/articles/d41586-026-02125-z" target="_blank" rel="noopener">證據醫學建立在「量尺可信」這個假設上，而醫療 AI 的能力「越來越難被正確評估與理解」</a>。</span>
-        <span class="en">The risk the study names is exactly the risk in the 9/30 round: <a href="https://www.nature.com/articles/s41591-026-04457-9" target="_blank" rel="noopener">specialized clinical AI tools are entering medical practice with little independent testing</a>. Stack the two together and the landscape looks like this — general-purpose models are now good enough at general medicine that building a medical-specific model is a proposition requiring proof, and proof requires someone outside the vendor to do the grading, and that someone does not currently exist. Arjun K. Manrai of Harvard Medical School's Department of Biomedical Informatics compressed it in a July 28 <em>Nature</em> commentary: <a href="https://www.nature.com/articles/d41586-026-02125-z" target="_blank" rel="noopener">evidence-based medicine rests on the assumption that the yardstick is reliable, yet medical AI capability is "increasingly difficult to assess and understand properly."</a></span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">這不是本週新聞——主文發表於 2026 年 6 月，今天把它拉回來是因為它是本週募資與自評分數爭議的唯一獨立裁判基準。另外，<em>Nature Medicine</em> 主文頁面在撰稿時回傳 503，本則內容依其 research briefing 與 PubMed 書目資料撰寫，未取得全文；briefing 本身沒有具名那三個通用模型與兩款專用工具是哪些，也沒有公布各自的分數。</span>
-        <span class="en">This is not this week's news — the paper published in June 2026. It is pulled back in today because it is the only independent yardstick against which this week's funding round and self-graded scores can be read. Also, the <em>Nature Medicine</em> full-text page returned a 503 at the time of writing; this item is built from the research briefing and the PubMed record, not the full text. The briefing itself does not name which three general-purpose models or which two specialized tools were tested, and publishes no per-model scores.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://www.nature.com/articles/s41591-026-04457-9" target="_blank" rel="noopener">Nature Medicine research briefing, 2026-06-17</a> · <a href="https://www.nature.com/articles/d41586-026-02125-z" target="_blank" rel="noopener">Nature, Medical AI has a measurement problem, 2026-07-28</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">Benchmark／AI 代理</span><span class="en-inline">Benchmark / AI agents</span></span>
+      <span class="tag hot"><span class="zh-inline">Benchmark／AI 代理</span></span>
       <span class="tag">Microsoft Research</span><span class="tag">HealthAgentBench</span><span class="tag">Codex GPT-5.5</span>
     </div>
     <h3>
       <span class="zh">微軟把 54 個真實醫療代理任務丟給前沿模型，最強的 Codex GPT-5.5 只過 42%——而醫療影像是它們最吃力的那一類</span>
-      <span class="en">Microsoft put 54 real healthcare agent tasks to frontier models; the best, Codex GPT-5.5, cleared 42% — and medical imaging was where they struggled most</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">由 Qianchu Liu、Sheng Zhang 等人進行、Hoifung Poon 為通訊作者的 <a href="https://arxiv.org/abs/2606.31179" target="_blank" rel="noopener">HealthAgentBench</a>（arXiv 2606.31179，2026-06-30 投稿）建了一套 54 個代理式醫療任務、分成 7 大類，每個任務都複製真實臨床工作流：代理必須自己去探索原始醫療資料、在複雜環境裡操作、執行多步驟的解法，而不是回答一個 prompt。結果：<strong>Codex GPT-5.5 以約 42% 的成功率居首，同時也是成本效益最好的</strong>；Claude Code 系列的模型在醫療影像任務上特別吃力；所有前沿代理在「搜尋空間大 + 需要組合式推理」的任務上都明顯失手。基準已公開釋出於 GitHub 的 <code>microsoft/HealthAgentBench</code>。</span>
-        <span class="en"><a href="https://arxiv.org/abs/2606.31179" target="_blank" rel="noopener">HealthAgentBench</a> (arXiv 2606.31179, submitted 2026-06-30), led by Qianchu Liu and Sheng Zhang with Hoifung Poon as corresponding author, assembles 54 agentic healthcare tasks across 7 categories, each replicating a real clinical workflow: the agent must explore raw healthcare data itself, operate in a complex environment and execute a multi-step solution rather than answer a prompt. The result: <strong>Codex GPT-5.5 leads at roughly 42% success, and is also the most cost-effective</strong>; the Claude Code models struggled notably on medical imaging; and every frontier agent faltered on tasks combining a large search space with compositional reasoning. The benchmark is publicly released as <code>microsoft/HealthAgentBench</code> on GitHub.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">42% 這個數字和 MedQA 的 100% 放在一起，就是今天整份日報的核心落差。<strong>選擇題的天花板已經被打穿，工作流的地板還沒鋪好。</strong>MedQA 是一題一答、可驗證、沒有副作用；HealthAgentBench 的任務是「去這堆原始資料裡找出該找的東西，然後做對接下來的五件事」——後者才是醫院真正要買的東西。而同樣值得注意的是，微軟自己做的基準把微軟自己的合作夥伴模型也一起打了：這才是獨立評測該有的樣子，不管做的人是誰。代理在 EHR 研究管線上展現了潛力，但在醫療影像上集體失手，也解釋了為什麼影像 AI 至今仍是「單點模型 + 放射科醫師簽名」而不是「代理自己跑完」。</span>
-        <span class="en">Put 42% next to 100% on MedQA and you have the central gap in today's report. <strong>The ceiling on multiple choice has been broken through; the floor under workflow has not been laid.</strong> MedQA is one question, one answer, verifiable, no side effects. A HealthAgentBench task is "go into this pile of raw data, find what needs finding, then get the next five things right" — and the latter is what hospitals actually buy. Worth noting too: Microsoft's own benchmark marks down models from Microsoft's own partners. That is what independent evaluation looks like, whoever builds it. Agents showed promise on EHR-based research pipelines but failed collectively on imaging, which is also why imaging AI remains single-purpose models plus a radiologist's signature rather than an agent running the whole thing.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">同樣不是本週新聞（6 月 30 日投稿）。42% 是「約」值，原文未在摘要層級給出完整排行榜；「Claude Code 系列」與「其他前沿代理」的具體分數本則未取得。54 個任務對一套要代表整個醫療工作流的基準而言偏少，作者自己也把低通過率描述為「基準很難」而非「模型很差」——這兩種解讀在數據上目前無法分離。</span>
-        <span class="en">Also not this week's news (submitted June 30). The 42% is approximate; the paper does not give a full leaderboard at abstract level, and per-model scores for the Claude Code family and the other frontier agents were not obtained for this item. Fifty-four tasks is a thin basis for a benchmark meant to represent an entire clinical workflow, and the authors themselves frame the low pass rates as the benchmark being hard rather than the models being bad — two readings the data cannot currently separate.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://arxiv.org/abs/2606.31179" target="_blank" rel="noopener">arXiv:2606.31179, HealthAgentBench, 2026-06-30</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">開源評測</span><span class="en-inline">Open evaluation</span></span>
+      <span class="tag hot"><span class="zh-inline">開源評測</span></span>
       <span class="tag">Sophont</span><span class="tag">Medmarks v1.0</span><span class="tag">30 benchmarks</span>
     </div>
     <h3>
       <span class="zh">Sophont 的 Medmarks v1.0：30 個 benchmark × 61 個模型全部攤開，結論是醫學微調真的有用、開源大模型要燒 5 倍 token、而給模型一台計算器反而讓它算錯</span>
-      <span class="en">Sophont's Medmarks v1.0 lays out 30 benchmarks across 61 models: medical fine-tuning genuinely helps, large open models burn 5x the tokens to keep up — and handing a model a calculator made it worse</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">Sophont 把它的醫療 LLM 評測套件<a href="https://sophont.med/blog/medmarks/" target="_blank" rel="noopener">擴充到 30 個 benchmark（原 20 個）、61 個模型／71 種配置（原 46 個模型）</a>，同時釋出技術報告（<a href="https://arxiv.org/html/2605.01417v1" target="_blank" rel="noopener">arXiv 2605.01417</a>）、互動排行榜與訓練環境 <code>Medmarks-T</code>，全部開源。可驗證題型的 <code>Medmarks-V</code> 由 Gemini 3 Pro Preview 領先，開放式臨床推理的 <code>Medmarks-OE</code> 由 GPT-5.2 居首。三個結論值得抄下來：(1) <strong>醫學微調確實有效</strong>——各家族的醫學微調版本相對基礎模型達到「近乎 Pareto 改善」；(2) <strong>開源的優勢只在選擇題上成立</strong>——GLM 4.7 在多選題逼近前沿，但到開放式任務優勢消失，而且需要「超過 5 倍的 token 數」才能達到與 GPT-5.2 相當的結果，對講求速度的臨床部署來說是硬傷；(3) <strong>工具整合會反咬</strong>——給模型計算器之後，許多模型不是直接忽略工具，就是有工具仍算錯，或在拿到外部工具後發生格式崩潰。</span>
-        <span class="en">Sophont expanded its medical LLM evaluation suite <a href="https://sophont.med/blog/medmarks/" target="_blank" rel="noopener">to 30 benchmarks (from 20) and 61 models across 71 configurations (from 46)</a>, releasing a technical report (<a href="https://arxiv.org/html/2605.01417v1" target="_blank" rel="noopener">arXiv 2605.01417</a>), an interactive leaderboard and the <code>Medmarks-T</code> training environment — all open source. On the verifiable split, <code>Medmarks-V</code>, Gemini 3 Pro Preview leads; on open-ended clinical reasoning, <code>Medmarks-OE</code>, GPT-5.2 ranks highest. Three findings are worth copying down: (1) <strong>medical fine-tuning genuinely works</strong> — fine-tuned variants achieve near-Pareto improvements over their base models across families; (2) <strong>the open-weights advantage holds only on multiple choice</strong> — GLM 4.7 approaches frontier performance on MCQs, loses that edge on harder open-ended tasks, and needs "over 5x the number of tokens" for results comparable to GPT-5.2, a real problem for clinical deployment where speed matters; (3) <strong>tool integration backfires</strong> — given a calculator, many models ignored it, produced wrong answers despite having it, or suffered formatting failures once an external tool was in play.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">Medmarks 做的正是 OpenEvidence 沒做的那件事：<strong>把廠商之外的評分交出去。</strong>而它的第二個結論直接打在一個很多人忽略的成本上——「開源模型分數追上了」不等於「開源模型可以用」，當它需要 5 倍 token 才追平，在一間每天跑數萬次查詢的醫院裡，那個 5 倍是推論成本、延遲與 GPU 採購量。第三個結論則對整個「醫療 AI agent」的敘事潑了冷水：代理最基本的能力是正確使用工具，而目前連「給它計算器讓它算對」這件事都不穩定。</span>
-        <span class="en">Medmarks does the thing OpenEvidence did not: <strong>it hands the grading to someone other than the vendor.</strong> Its second finding lands on a cost most people skip — "open models caught up on the scoreboard" is not "open models are deployable." When a model needs 5x the tokens to draw level, in a hospital running tens of thousands of queries a day that 5x is inference spend, latency and GPU procurement. The third finding is cold water on the whole medical-AI-agent narrative: the most basic agentic competence is using a tool correctly, and right now even handing a model a calculator and getting the arithmetic right is unreliable.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">v1.0 的部落格發表日為 2026-05-12，不是本週。Sophont 本身是醫療 AI 公司，自己做評測套件同樣存在利益關係——差別只在它把題庫、程式碼與排行榜全部開源，使第三方可以複製與反駁，這一點 OpenEvidence 沒有做到。另外，排行榜上的模型版本（Gemini 3 Pro Preview、GPT-5.2、GLM 4.7）在發表後數月間已有更新，當前名次未必成立。</span>
-        <span class="en">The v1.0 blog post is dated 2026-05-12, not this week. Sophont is itself a medical AI company, so building its own evaluation suite carries the same conflict of interest — the difference is that it open-sourced the items, the code and the leaderboard so third parties can reproduce and rebut it, which OpenEvidence did not. And the model versions on the board (Gemini 3 Pro Preview, GPT-5.2, GLM 4.7) have been superseded in the months since, so the current ordering may no longer hold.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://sophont.med/blog/medmarks/" target="_blank" rel="noopener">Sophont Blog, Release of Medmarks v1.0, 2026-05-12</a> · <a href="https://arxiv.org/html/2605.01417v1" target="_blank" rel="noopener">arXiv:2605.01417</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">模型效率</span><span class="en-inline">Model efficiency</span></span>
+      <span class="tag hot"><span class="zh-inline">模型效率</span></span>
       <span class="tag">Microsoft Research</span><span class="tag">GigaPath-Flash</span><span class="tag">Apache-2.0</span>
     </div>
     <h3>
       <span class="zh">今天唯一不需要吵分數的技術進步：GigaPath-Flash 用 1/50 算力留住 97% 的病理表現，22M + 21M 參數、Apache-2.0 開權重</span>
-      <span class="en">The one advance today that needs no scoreboard argument: GigaPath-Flash keeps 97% of pathology performance at 1/50th the compute — 22M + 21M parameters, Apache-2.0 weights</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">微軟研究院釋出兩個計算病理學的高效基礎模型（<a href="https://arxiv.org/html/2607.18218v2" target="_blank" rel="noopener">arXiv 2607.18218v2</a>）。<code>GigaPath-Flash</code> 把一個 22M 參數的 ViT-S tile encoder 接上 21M 參數的 LongNet slide encoder，從十億參數級的 GigaPath 教師模型蒸餾而來，<strong>在 slide-level 平均表現上留住 GigaPath 的 97%，而算力少 50 倍</strong>；在 PANDA 與 EBRAINS 的 slide-level 分類上平均 0.826，優於只用 tile-level 的基線，同時 FLOPs 比原版 GigaPath 少 49.5 倍。<code>GigaTIME-Flash</code> 把原 GigaTIME 的 CNN backbone 換成 ViT-S，從 H&amp;E 影像預測 21 通道的多重免疫螢光圖譜，<strong>速度快 6 倍、GPU 記憶體少 8 倍</strong>：每張 256×256 tile 從 69.1 GFLOPs 降到 14.9（4.6 倍），batch 128 時峰值 GPU 記憶體從 16.68 GB 降到 2.16 GB，吞吐量從原版約 390 tiles/秒的天花板拉到 1,679 tiles/秒，而且在分布內與分布外世代的平均 Pearson 相關係數都高於原版。兩個模型的權重<strong>全部以 Apache-2.0 釋出</strong>。</span>
-        <span class="en">Microsoft Research released two efficient foundation models for computational pathology (<a href="https://arxiv.org/html/2607.18218v2" target="_blank" rel="noopener">arXiv 2607.18218v2</a>). <code>GigaPath-Flash</code> pairs a 22M-parameter ViT-S tile encoder with a 21M-parameter LongNet slide encoder, distilled from the billion-parameter GigaPath teacher, and <strong>retains 97% of GigaPath's average slide-level performance using 50x less compute</strong>; it averages 0.826 on PANDA and EBRAINS slide-level classification, beating tile-level-only baselines at 49.5x fewer FLOPs than the original. <code>GigaTIME-Flash</code> swaps the original GigaTIME CNN backbone for a ViT-S encoder, predicting 21-channel multiplex immunofluorescence maps from H&amp;E images <strong>6x faster with 8x less GPU memory</strong>: 14.9 GFLOPs per 256×256 tile against 69.1 (a 4.6x reduction), peak GPU memory of 2.16 GB at batch 128 against 16.68 GB, and throughput scaling to 1,679 tiles/second against the original's plateau near 390 — with higher mean Pearson correlation than the CNN original across both in-distribution and out-of-distribution cohorts. Both models' weights ship <strong>under Apache-2.0</strong>.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">因為效率的進步不需要人家相信你的分數——它直接把門檻降下來。病理基礎模型長期的問題不是不夠準，而是一張 whole-slide image 動輒數 GB、一台能跑的機器就是一筆資本支出，結果只有大型醫學中心玩得起。16.68 GB 降到 2.16 GB 的意義很具體：前者需要一張資料中心級顯卡，後者一張消費級顯卡就能跑。這是今天唯一一則「不管誰來評分，結論都一樣」的進展，也是最可能在未來 12 個月內真的改變誰能用上病理 AI 的那一則。</span>
-        <span class="en">Because an efficiency gain does not need you to believe its scores — it lowers the barrier directly. The standing problem with pathology foundation models was never accuracy; it was that a whole-slide image runs to gigabytes and a machine that can process one is a capital expense, so only large academic centres played. Going from 16.68 GB to 2.16 GB is concrete: the first needs a data-centre GPU, the second runs on a consumer card. This is the only item today whose conclusion holds regardless of who grades it, and the one most likely to change who can actually run pathology AI over the next twelve months.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">所有數字出自作者自己的論文（v2 版），未經第三方重現；PANDA 與 EBRAINS 是公開的研究資料集，不是前瞻臨床驗證——0.826 的平均分數不等於診斷等級的表現。「97%」是 slide-level 平均表現的保留比例，不保證在每一個下游任務上都成立。本則內容依 arXiv 的 HTML 全文撰寫，未另行核對權重頁面上的實際檔案與授權文字。</span>
-        <span class="en">All figures come from the authors' own paper (v2) and have not been independently reproduced; PANDA and EBRAINS are public research datasets, not prospective clinical validation — an average of 0.826 is not diagnostic-grade performance. The "97%" is a retention ratio on average slide-level performance and does not guarantee parity on every downstream task. This item is written from the arXiv HTML full text; the actual files and licence text on the weights pages were not separately verified.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://arxiv.org/html/2607.18218v2" target="_blank" rel="noopener">arXiv:2607.18218v2, GigaPath-Flash and GigaTIME-Flash</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag"><span class="zh-inline">評測基礎設施</span><span class="en-inline">Eval infrastructure</span></span>
+      <span class="tag"><span class="zh-inline">評測基礎設施</span></span>
       <span class="tag">MedAgentBench</span><span class="tag">Stanford</span><span class="tag">NEJM AI</span>
     </div>
     <h3>
       <span class="zh">另一個不該出現的畫面：醫療代理最常被引用的 benchmark，榜首到現在還是 Claude 3.5 Sonnet v2 的 69.67%，榜單最後更新是 5 月</span>
-      <span class="en">A picture that should not exist: on the most-cited medical agent benchmark, the top score is still Claude 3.5 Sonnet v2's 69.67% — and the board was last updated in May</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">MedAgentBench 由史丹佛團隊建立，做法是搭一個虛擬 EHR 環境，放進 100 份擬真病歷、共 <strong>785,000 筆記錄</strong>，要模型完成 <strong>300 項臨床任務</strong>，包含開檢驗、開藥與調閱病人資訊（<a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/stanford-benchmarks-ai-agents-in-healthcare/" target="_blank" rel="noopener">Becker's 報導</a>；研究全文刊於 <a href="https://ai.nejm.org/doi/full/10.1056/AIdbp2500144" target="_blank" rel="noopener">NEJM AI</a>）。問題是它的<a href="https://benchmarklist.com/benchmarks/medagentbench/" target="_blank" rel="noopener">公開排行榜最後更新於 2026-05-27</a>，榜首仍是 Claude 3.5 Sonnet v2 的 69.67%（Query SR 85.33%、Action SR 54%）。注意那個 54%——同一個模型查資料查得很準，真的要「動手做」的時候只對一半。</span>
-        <span class="en">MedAgentBench, built by a Stanford team, stands up a virtual EHR environment with 100 realistic patient charts holding <strong>785,000 records</strong> and asks models to complete <strong>300 clinical tasks</strong>, including ordering tests, prescribing and retrieving patient information (<a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/stanford-benchmarks-ai-agents-in-healthcare/" target="_blank" rel="noopener">Becker's coverage</a>; full study in <a href="https://ai.nejm.org/doi/full/10.1056/AIdbp2500144" target="_blank" rel="noopener">NEJM AI</a>). The trouble is that its <a href="https://benchmarklist.com/benchmarks/medagentbench/" target="_blank" rel="noopener">public leaderboard was last updated on 2026-05-27</a>, where the top entry remains Claude 3.5 Sonnet v2 at 69.67% (Query SR 85.33%, Action SR 54%). Note that 54% — the same model retrieves accurately, then gets it right half the time when it actually has to act.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">這是「醫療 AI 的量尺問題」最具體的一個切片：模型每幾週換一代，而獨立的評測基礎設施以月為單位落後。當一個被 NEJM AI 收錄、被產業廣泛引用的榜單，榜首還停在一個 2024 年發表的模型，任何人想問「現在最強的醫療代理有多強」都只能回去相信廠商的新聞稿。Query SR 85.33% 對 Action SR 54% 的落差也值得單獨記一筆——它跟 HealthAgentBench 的 42% 指向同一件事：<strong>讀取資料與執行動作之間有一道很深的能力斷層，而醫院買的是後者。</strong></span>
-        <span class="en">This is the sharpest slice of medical AI's measurement problem: models turn over every few weeks while independent evaluation infrastructure lags by months. When a leaderboard indexed in NEJM AI and widely cited across the industry still has a model published in 2024 on top, anyone asking how strong the best medical agent is today has no option but to trust a vendor press release. The 85.33% Query SR against 54% Action SR deserves its own note — it points at the same thing as HealthAgentBench's 42%: <strong>there is a deep capability fault line between reading data and taking action, and it is the latter that hospitals buy.</strong></span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">「榜首仍是 Claude 3.5 Sonnet v2」只代表該第三方榜單沒有更新，不代表沒有更強的模型存在——它只是沒有被獨立測過並公布，而這正是本則要說的事。原始研究的 Becker's 報導日期為 2025-09-16，是舊的報導；排行榜數字引自第三方彙整站 benchmarklist.com，未與 MedAgentBench 官方倉庫逐項核對。</span>
-        <span class="en">"Claude 3.5 Sonnet v2 still leads" means only that this third-party board has not been updated, not that no stronger model exists — it simply has not been independently tested and published, which is the point of the item. The Becker's coverage of the original study is dated 2025-09-16 and is old reporting; the leaderboard figures come from the third-party aggregator benchmarklist.com and were not reconciled line by line against the official MedAgentBench repository.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://benchmarklist.com/benchmarks/medagentbench/" target="_blank" rel="noopener">benchmarklist.com, MedAgentBench leaderboard, last updated 2026-05-27</a> · <a href="https://ai.nejm.org/doi/full/10.1056/AIdbp2500144" target="_blank" rel="noopener">NEJM AI, MedAgentBench</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag"><span class="zh-inline">本週預印本</span><span class="en-inline">This week's preprints</span></span>
+      <span class="tag"><span class="zh-inline">本週預印本</span></span>
       <span class="tag">arXiv 2609.*</span><span class="tag">9/29–9/30</span><span class="tag">Harvard · BIDMC</span>
     </div>
     <h3>
       <span class="zh">9/29–9/30 真正新的東西：19,930 段年輕人與 ChatGPT 的對話被臨床人員逐段判讀，問題不在說錯話，而在「說對的話、說錯的時機」</span>
-      <span class="en">What was actually new on 9/29–9/30: clinicians read through 19,930 conversations between young people and ChatGPT — the failure was not the wrong words but the right words at the wrong moment</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">本週窗口內最值得讀的新發表都在 arXiv。<a href="https://arxiv.org/abs/2609.35953" target="_blank" rel="noopener">〈Right Words, Wrong Moment〉（2609.35953）</a>把 <strong>19,930 段年輕人與 ChatGPT 的對話</strong>交給臨床人員逐段判讀，結論指向的不是內容錯誤，而是流程失誤——最典型的一種是「過早跳到解決方案」。<a href="https://arxiv.org/abs/2609.36392" target="_blank" rel="noopener">ARCagent（2609.36392）</a>處理的是臨床問答裡一個很現實的難題：當醫療指引彼此矛盾時，檢索要如何校準，論文以 ME/CFS 為案例探討「知識完整性」與「衝突感知的動態綜合」。<a href="https://arxiv.org/abs/2609.36238" target="_blank" rel="noopener">MERID（2609.36238）</a>則用遞迴自我改善的多模態代理整合訪談與感測資料做重度憂鬱分析。同一批日報也掃出 <a href="https://arxiv.org/abs/2609.28610" target="_blank" rel="noopener">UltraBench 2（2609.28610，超音波視覺基礎模型的穩健評測）</a>與 <a href="https://arxiv.org/abs/2609.26924v1" target="_blank" rel="noopener">nnFoundation（2609.26924，放射學 3D 基礎模型）</a>。工程面則有<a href="https://aws.amazon.com/blogs/industries/from-cloud-to-clinic-how-aws-powers-digital-psychiatry-at-scale/" target="_blank" rel="noopener">哈佛／BIDMC 的開源數位精神醫學平台 mindLAMP</a>，已在 17 個國家、65 個站點以 AWS serverless 架構部署。</span>
-        <span class="en">The reading worth doing inside this week's window is all on arXiv. <a href="https://arxiv.org/abs/2609.35953" target="_blank" rel="noopener">"Right Words, Wrong Moment" (2609.35953)</a> had clinicians work through <strong>19,930 conversations between young people and ChatGPT</strong>, and what they identified was not wrong content but process failure — most characteristically, prematurely jumping to solutions. <a href="https://arxiv.org/abs/2609.36392" target="_blank" rel="noopener">ARCagent (2609.36392)</a> tackles a very practical problem in clinical QA: how retrieval should calibrate when medical guidelines contradict each other, using ME/CFS as its case for "knowledge completeness and dynamic conflict-aware synthesis." <a href="https://arxiv.org/abs/2609.36238" target="_blank" rel="noopener">MERID (2609.36238)</a> uses recursively self-improving multimodal agents to combine interview and sensor data for major depression analysis. The same digests swept up <a href="https://arxiv.org/abs/2609.28610" target="_blank" rel="noopener">UltraBench 2 (2609.28610, robust evaluation of vision foundation models on ultrasound)</a> and <a href="https://arxiv.org/abs/2609.26924v1" target="_blank" rel="noopener">nnFoundation (2609.26924, 3D foundation models for radiology)</a>. On the engineering side, <a href="https://aws.amazon.com/blogs/industries/from-cloud-to-clinic-how-aws-powers-digital-psychiatry-at-scale/" target="_blank" rel="noopener">Harvard/BIDMC's open-source digital psychiatry platform mindLAMP</a> is now deployed across 17 countries and 65 sites on AWS serverless infrastructure.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">〈Right Words, Wrong Moment〉這個標題本身就是對今天整個主題的一句話註解：<strong>benchmark 衡量的是「說得對不對」，臨床價值卻取決於「什麼時候說、順序對不對」。</strong>一個在 MedQA 拿 100% 的模型完全可以在真實對話裡犯下「過早跳到解方」這種流程錯誤，而目前沒有任何主流 benchmark 會扣它的分。ARCagent 指出的指引互相矛盾也是同一件事的另一面——真實臨床的困難往往不是知識不足，而是知識互相打架時要怎麼選。至於 UltraBench 2 與 nnFoundation：當兩個獨立團隊在同一週分別針對超音波與 3D 放射學提出新的評測與基礎模型，說明影像這條線正在補的是地基，不是天花板。</span>
-        <span class="en">The title "Right Words, Wrong Moment" is itself a one-line gloss on today's whole theme: <strong>benchmarks measure whether the content is right; clinical value turns on when it is said and in what order.</strong> A model scoring 100% on MedQA can still commit the process error of jumping to a solution too early in a real conversation, and no mainstream benchmark currently docks it for that. ARCagent's contradictory guidelines are the same issue from another side — real clinical difficulty is less often missing knowledge than choosing between pieces of knowledge that fight each other. As for UltraBench 2 and nnFoundation: when two independent groups propose new evaluation and new foundation models for ultrasound and 3D radiology in the same week, the imaging track is laying foundations, not raising ceilings.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">全部是未經同儕審查的預印本。arXiv 2609.35953、2609.36392、2609.36238 三篇的作者、機構與完整數據在撰稿時無法直接取得（抓取被拒），本則依 arXiv 新稿清單與摘要層級的描述撰寫，分數與樣本細節未逐項核對；2609.28610 與 2609.26924 的 PDF 回傳無可讀文字，僅依標題與檢索摘要列入。mindLAMP 的「17 個國家、65 個站點」出自 AWS 自家的產業部落格，屬廠商自述。</span>
-        <span class="en">All of these are preprints without peer review. The authors, institutions and full data for arXiv 2609.35953, 2609.36392 and 2609.36238 could not be retrieved directly at the time of writing (fetches were refused); this item is written from the arXiv new-submissions listings and abstract-level descriptions, with scores and sample details not individually reconciled. The PDFs for 2609.28610 and 2609.26924 returned no machine-readable text and are listed on title and search-snippet only. The "17 countries, 65 sites" figure for mindLAMP comes from AWS's own industry blog and is vendor-reported.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://arxiv.org/abs/2609.35953" target="_blank" rel="noopener">arXiv:2609.35953</a> · <a href="https://arxiv.org/abs/2609.36392" target="_blank" rel="noopener">arXiv:2609.36392</a> · <a href="https://github.com/nayutayuki/agents-radar/issues/334" target="_blank" rel="noopener">agents-radar medical AI daily digest, 2026-09-29</a></p></div>
   </div>
 </section>
@@ -281,52 +252,43 @@
   <h2>02 — Product Analysis</h2>
   <div class="sec-title">
     <span class="zh">兩種不同的技術說服方式：一個靠自己宣布的分數，一個靠任何人都能重跑的算力帳</span>
-    <span class="en">Two ways of making a technical case: one rests on scores you announce yourself, the other on a compute bill anyone can re-run</span>
   </div>
 
   <div class="grid2">
     <div class="panel">
       <h3>OpenEvidence Model Family — Osler · Sackett · Snow · Darwin</h3>
-      <p class="sub"><span class="zh-inline">分層推理深度的臨床問答模型族 · OpenEvidence（美國）</span><span class="en-inline">A clinical QA model family tiered by reasoning depth · OpenEvidence (US)</span></p>
+      <p class="sub"><span class="zh-inline">分層推理深度的臨床問答模型族 · OpenEvidence（美國）</span></p>
       <p>
         <span class="zh"><strong>功能與定位。</strong>這一族的設計邏輯是「按問題難度配推理深度」：<code>Osler</code> 走廊上 5 秒給答案、<code>Sackett</code> 30 秒做會診級的證據彙整、<code>Snow</code> 5 分鐘做腫瘤會議級的文獻回顧，三者<a href="https://www.mobihealthnews.com/news/openevidence-launches-4-medical-ai-models-clinicians" target="_blank" rel="noopener">對全美臨床人員免費</a>；<code>Darwin</code> 是研究預覽版的天花板模型，因雙重用途風險未開放（<a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openevidences-new-model-achieves-1st-perfect-score-on-medical-ai-benchmark/" target="_blank" rel="noopener">Becker's, 2026-09-08</a>）。商業模式是「免費給醫師、靠流量變現」，而 9/30 的<a href="https://histalk2.com/2026/09/29/news-9-30-26/" target="_blank" rel="noopener">150 億美元估值</a>買的是這個分發面。</span>
-        <span class="en"><strong>Function and position.</strong> The design logic is reasoning depth matched to question difficulty: <code>Osler</code> answers in 5 seconds in the hallway, <code>Sackett</code> assembles consult-grade evidence in 30 seconds, <code>Snow</code> does a tumour-board-grade literature review in 5 minutes, all three <a href="https://www.mobihealthnews.com/news/openevidence-launches-4-medical-ai-models-clinicians" target="_blank" rel="noopener">free to US clinicians</a>; <code>Darwin</code> is the research-preview ceiling model, withheld over dual-use risk (<a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openevidences-new-model-achieves-1st-perfect-score-on-medical-ai-benchmark/" target="_blank" rel="noopener">Becker's, 2026-09-08</a>). The business model is free to physicians, monetized through the traffic — and what the <a href="https://histalk2.com/2026/09/29/news-9-30-26/" target="_blank" rel="noopener">$15 billion valuation</a> on 9/30 bought is that distribution surface.</span>
       </p>
       <ul class="clean">
-        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+        <li><span class="pro"><span class="zh-inline">優勢</span></span>
           <span class="zh">：分層架構解掉一個真實的臨床痛點——走廊上問問題的人沒有 5 分鐘。四個分數在帳面上也確實是目前最高的一組：<a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openevidences-new-model-achieves-1st-perfect-score-on-medical-ai-benchmark/" target="_blank" rel="noopener">MedQA 100%、MedXpertQA 72.8%、HealthBench Professional 82.7%、NOHARM 87.2%</a>。</span>
-          <span class="en">: the tiering solves a real clinical pain point — someone asking a question in a corridor does not have five minutes. And on paper the four scores are the highest set currently claimed: <a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openevidences-new-model-achieves-1st-perfect-score-on-medical-ai-benchmark/" target="_blank" rel="noopener">100% MedQA, 72.8% MedXpertQA, 82.7% HealthBench Professional, 87.2% NOHARM</a>.</span>
         </li>
-        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+        <li><span class="con"><span class="zh-inline">疑慮</span></span>
           <span class="zh">：這四個分數全部<a href="https://www.gridhealth.io/charge-insights/openevidence-tempo-no-ones-watching" target="_blank" rel="noopener">自測、自評、自發</a>，沒有任何第三方重現。而 <em>Nature Medicine</em> 的頭對頭研究正好指出，專用臨床 AI 工具在醫師真實問題上<a href="https://www.nature.com/articles/s41591-026-04457-9" target="_blank" rel="noopener">表現沒比 Google AI 摘要好</a>——那份研究沒具名測了誰，但它測的就是這個產品類別。</span>
-          <span class="en">: all four were <a href="https://www.gridhealth.io/charge-insights/openevidence-tempo-no-ones-watching" target="_blank" rel="noopener">measured, graded and published in-house</a>, with no third-party reproduction. And the <em>Nature Medicine</em> head-to-head found that specialized clinical AI tools did <a href="https://www.nature.com/articles/s41591-026-04457-9" target="_blank" rel="noopener">no better than a Google AI overview</a> on real physician questions — it does not name who it tested, but this is the product category it tested.</span>
         </li>
-        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+        <li><span class="con"><span class="zh-inline">疑慮</span></span>
           <span class="zh">：缺的那個數字是「臨床效用」。沒有任何公開資料顯示使用 Osler 或 Sackett 之後，診斷正確率、處置改變率或病人結果有什麼變化——<a href="https://www.gridhealth.io/charge-insights/openevidence-tempo-no-ones-watching" target="_blank" rel="noopener">分析者直接點出臨床準確度不等於臨床效用</a>。缺就是缺。</span>
-          <span class="en">: the missing number is clinical utility. No public data shows what using Osler or Sackett does to diagnostic accuracy, management change rates or patient outcomes — <a href="https://www.gridhealth.io/charge-insights/openevidence-tempo-no-ones-watching" target="_blank" rel="noopener">the analysis says plainly that clinical accuracy is not clinical utility</a>. Missing is missing.</span>
         </li>
       </ul>
     </div>
 
     <div class="panel">
       <h3>GigaPath-Flash / GigaTIME-Flash</h3>
-      <p class="sub"><span class="zh-inline">蒸餾式計算病理學基礎模型 · Microsoft Research（美國）· Apache-2.0</span><span class="en-inline">Distilled computational pathology foundation models · Microsoft Research (US) · Apache-2.0</span></p>
+      <p class="sub"><span class="zh-inline">蒸餾式計算病理學基礎模型 · Microsoft Research（美國）· Apache-2.0</span></p>
       <p>
         <span class="zh"><strong>功能與定位。</strong>它不賣臨床判讀，它賣「讓病理 AI 跑得起來」。<code>GigaPath-Flash</code>（22M ViT-S tile encoder + 21M LongNet slide encoder）從十億參數的 GigaPath 蒸餾，做 whole-slide image 的 slide-level 表徵；<code>GigaTIME-Flash</code> 從 H&amp;E 影像預測 21 通道的腫瘤微環境多重免疫螢光圖譜，<a href="https://arxiv.org/html/2607.18218v2" target="_blank" rel="noopener">兩者權重皆以 Apache-2.0 釋出、在大規模真實臨床資料上預訓練</a>。客戶不是醫院的採購部門，是下游所有要在病理影像上做研究或建產品的人。</span>
-        <span class="en"><strong>Function and position.</strong> It does not sell clinical interpretation; it sells making pathology AI runnable. <code>GigaPath-Flash</code> (a 22M ViT-S tile encoder plus a 21M LongNet slide encoder) distils the billion-parameter GigaPath into slide-level representations of whole-slide images; <code>GigaTIME-Flash</code> predicts 21-channel multiplex immunofluorescence maps of the tumour microenvironment from H&amp;E. <a href="https://arxiv.org/html/2607.18218v2" target="_blank" rel="noopener">Both ship Apache-2.0 and are pretrained on large-scale real-world clinical data</a>. The customer is not a hospital procurement office; it is everyone downstream building research or products on pathology images.</span>
       </p>
       <ul class="clean">
-        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+        <li><span class="pro"><span class="zh-inline">優勢</span></span>
           <span class="zh">：效率數字可以被任何人重跑驗證，不需要相信廠商——<a href="https://arxiv.org/html/2607.18218v2" target="_blank" rel="noopener">50 倍更少算力留住 97% 表現、FLOPs 少 49.5 倍、PANDA 與 EBRAINS 平均 0.826</a>，而 GigaTIME-Flash 的峰值 GPU 記憶體從 16.68 GB 降到 2.16 GB、吞吐量從約 390 拉到 1,679 tiles/秒。</span>
-          <span class="en">: the efficiency figures can be re-run by anyone and need no trust in the vendor — <a href="https://arxiv.org/html/2607.18218v2" target="_blank" rel="noopener">97% of performance at 50x less compute, 49.5x fewer FLOPs, 0.826 average on PANDA and EBRAINS</a>, with GigaTIME-Flash cutting peak GPU memory from 16.68 GB to 2.16 GB and lifting throughput from about 390 to 1,679 tiles/second.</span>
         </li>
-        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+        <li><span class="pro"><span class="zh-inline">優勢</span></span>
           <span class="zh">：<a href="https://arxiv.org/html/2607.18218v2" target="_blank" rel="noopener">Apache-2.0</a> 是商用可改可重散布的授權，不是「研究用途」這種半開放。這決定了它能不能真的被塞進別人的產品。</span>
-          <span class="en">: <a href="https://arxiv.org/html/2607.18218v2" target="_blank" rel="noopener">Apache-2.0</a> permits commercial use, modification and redistribution — not the half-open "research use only" posture. That decides whether it can actually be embedded in someone else's product.</span>
         </li>
-        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+        <li><span class="con"><span class="zh-inline">疑慮</span></span>
           <span class="zh">：PANDA 與 EBRAINS 是研究資料集，不是前瞻臨床驗證；0.826 的平均分數離診斷等級還有距離，而「97%」是平均保留率，不保證每個下游任務都成立。所有數字來自作者自己的論文，尚無第三方重現。</span>
-          <span class="en">: PANDA and EBRAINS are research datasets, not prospective clinical validation; an average of 0.826 is some distance from diagnostic grade, and the "97%" is an average retention rate that does not guarantee parity on every downstream task. All figures come from the authors' own paper with no independent reproduction yet.</span>
         </li>
       </ul>
     </div>
@@ -335,7 +297,6 @@
   <div class="panel">
     <p>
       <span class="zh"><strong>兩者的對照就是今天的結論。</strong>OpenEvidence 的說服方式需要你相信一組它自己打的分數，而且那組分數衡量的是選擇題；GigaPath-Flash 的說服方式是給你一張算力帳單，而算力帳單沒有辦法作假——你跑一次就知道 2.16 GB 是真的還是假的。在一個<a href="https://www.nature.com/articles/d41586-026-02125-z" target="_blank" rel="noopener">量尺本身不可信的領域</a>，後者這種「可被獨立重現的進步」的相對價值被嚴重低估了。</span>
-      <span class="en"><strong>The contrast between the two is today's conclusion.</strong> OpenEvidence's case asks you to believe a set of scores it awarded itself, measuring multiple choice. GigaPath-Flash's case hands you a compute bill, and a compute bill cannot be faked — run it once and you know whether 2.16 GB is real. In a field where <a href="https://www.nature.com/articles/d41586-026-02125-z" target="_blank" rel="noopener">the yardstick itself is unreliable</a>, the relative value of that second kind of progress — independently reproducible — is badly underrated.</span>
     </p>
   </div>
 </section>
@@ -344,70 +305,59 @@
   <h2>03 — Companies &amp; Competition</h2>
   <div class="sec-title">
     <span class="zh">誰站在哪裡、憑什麼、跟誰打</span>
-    <span class="en">Who stands where, on what, against whom</span>
   </div>
 
   <div class="tbl-wrap">
     <table>
       <thead><tr>
-        <th><span class="zh-inline">公司</span><span class="en-inline">Company</span></th>
-        <th><span class="zh-inline">近況與數字</span><span class="en-inline">Recent state &amp; numbers</span></th>
-        <th><span class="zh-inline">競爭定位與護城河</span><span class="en-inline">Position &amp; moat</span></th>
+        <th><span class="zh-inline">公司</span></th>
+        <th><span class="zh-inline">近況與數字</span></th>
+        <th><span class="zh-inline">競爭定位與護城河</span></th>
       </tr></thead>
       <tbody>
         <tr>
-          <td><strong>OpenEvidence</strong><br><span class="zh-inline">醫師版 ChatGPT，想當臨床 OS</span><span class="en-inline">ChatGPT for doctors, aiming to be the clinical OS</span></td>
+          <td><strong>OpenEvidence</strong><br><span class="zh-inline">醫師版 ChatGPT，想當臨床 OS</span></td>
           <td>
             <span class="zh">9/30 <a href="https://histalk2.com/2026/09/29/news-9-30-26/" target="_blank" rel="noopener">募 2.5 億美元、估值 150 億美元</a>，12 個月累計約 10 億美元；9/3 發表四模型家族，Darwin <a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openevidences-new-model-achieves-1st-perfect-score-on-medical-ai-benchmark/" target="_blank" rel="noopener">MedQA 100%</a>。</span>
-            <span class="en">On 9/30 it <a href="https://histalk2.com/2026/09/29/news-9-30-26/" target="_blank" rel="noopener">raised $250M at a $15B valuation</a>, about $1B over twelve months; on 9/3 it launched the four-model family, with Darwin at <a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openevidences-new-model-achieves-1st-perfect-score-on-medical-ai-benchmark/" target="_blank" rel="noopener">100% on MedQA</a>.</span>
           </td>
           <td>
             <span class="zh">護城河是醫師端的分發與習慣，不是模型——而模型這一側正被 <em>Nature Medicine</em> 的<a href="https://www.nature.com/articles/s41591-026-04457-9" target="_blank" rel="noopener">通用模型勝出結論</a>與<a href="https://www.gridhealth.io/charge-insights/openevidence-tempo-no-ones-watching" target="_blank" rel="noopener">自評分數的質疑</a>同時夾擊。</span>
-            <span class="en">The moat is physician-side distribution and habit, not the model — and the model side is squeezed from both directions by <em>Nature Medicine</em>'s <a href="https://www.nature.com/articles/s41591-026-04457-9" target="_blank" rel="noopener">finding that general-purpose models win</a> and by <a href="https://www.gridhealth.io/charge-insights/openevidence-tempo-no-ones-watching" target="_blank" rel="noopener">doubt over self-graded scores</a>.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>Microsoft Research (HLS)</strong><br><span class="zh-inline">兩手都下：開權重模型 + 獨立基準</span><span class="en-inline">Playing both hands: open weights plus independent benchmarks</span></td>
+          <td><strong>Microsoft Research (HLS)</strong><br><span class="zh-inline">兩手都下：開權重模型 + 獨立基準</span></td>
           <td>
             <span class="zh"><a href="https://arxiv.org/html/2607.18218v2" target="_blank" rel="noopener">GigaPath-Flash／GigaTIME-Flash 以 Apache-2.0 釋出</a>（97% 表現、1/50 算力）；同時以 <a href="https://arxiv.org/abs/2606.31179" target="_blank" rel="noopener">HealthAgentBench 的 54 個任務把前沿代理壓在 42%</a>。</span>
-            <span class="en"><a href="https://arxiv.org/html/2607.18218v2" target="_blank" rel="noopener">GigaPath-Flash and GigaTIME-Flash shipped Apache-2.0</a> (97% of performance at 1/50th the compute), while <a href="https://arxiv.org/abs/2606.31179" target="_blank" rel="noopener">HealthAgentBench's 54 tasks hold frontier agents to 42%</a>.</span>
           </td>
           <td>
             <span class="zh">護城河是「同時擁有基礎設施與評分權」：把高效模型開源可以收割生態，把基準開源則讓它定義什麼算進步。弱點是這兩件事都不直接帶來營收，依賴 Azure 轉化。</span>
-            <span class="en">The moat is holding both the infrastructure and the scorecard: open-sourcing efficient models harvests an ecosystem, open-sourcing the benchmark lets it define what counts as progress. The weakness is that neither monetizes directly — both lean on Azure conversion.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>Google / DeepMind</strong><br><span class="zh-inline">開權重醫療模型的另一極</span><span class="en-inline">The other pole of open-weight medical models</span></td>
+          <td><strong>Google / DeepMind</strong><br><span class="zh-inline">開權重醫療模型的另一極</span></td>
           <td>
             <span class="zh"><a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">MedGemma 1.5（4B／27B）與 MedASR</a>：MRI 判讀 65%（前版 51%）、CXR 解剖定位 IoU 從 3% 升到 38%、EHRQA 90%（前版 68%）；MedASR 在胸部 X 光口述上詞錯誤率 5.2%，比 Whisper large-v3 的 12.5% 少 58%。研究與商用皆免費，上 <a href="https://huggingface.co/google/medgemma-1.5-4b-it" target="_blank" rel="noopener">Hugging Face</a> 與 Vertex AI。</span>
-            <span class="en"><a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">MedGemma 1.5 (4B/27B) and MedASR</a>: MRI findings classification at 65% (from 51%), chest X-ray anatomy localization IoU from 3% to 38%, EHRQA at 90% (from 68%); MedASR hits a 5.2% word error rate on chest X-ray dictations against Whisper large-v3's 12.5%, 58% fewer errors. Free for research and commercial use on <a href="https://huggingface.co/google/medgemma-1.5-4b-it" target="_blank" rel="noopener">Hugging Face</a> and Vertex AI.</span>
           </td>
           <td>
             <span class="zh">護城河是「免費 + 可商用 + 小尺寸」的組合，直接壓縮專用醫療模型新創的生存空間：當 4B 的開權重模型就能做 CT／MRI／病理與文件理解，向醫院賣一個封閉的影像判讀模型要多解釋很多事。</span>
-            <span class="en">The moat is the combination of free, commercially usable and small, which compresses the space for specialized medical model startups: when a 4B open-weight model handles CT, MRI, pathology and document understanding, selling a hospital a closed imaging model takes a lot more explaining.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>Sophont</strong><br><span class="zh-inline">把評測開源的醫療 AI 新創</span><span class="en-inline">The medical AI startup that open-sourced its evaluation</span></td>
+          <td><strong>Sophont</strong><br><span class="zh-inline">把評測開源的醫療 AI 新創</span></td>
           <td>
             <span class="zh"><a href="https://sophont.med/blog/medmarks/" target="_blank" rel="noopener">Medmarks v1.0：30 個 benchmark、61 個模型／71 配置、含訓練環境 Medmarks-T</a>；指出 GLM 4.7 需 5 倍以上 token 才追平 GPT-5.2，且給模型計算器反而造成忽略工具、算錯或格式崩潰。</span>
-            <span class="en"><a href="https://sophont.med/blog/medmarks/" target="_blank" rel="noopener">Medmarks v1.0: 30 benchmarks, 61 models across 71 configurations, plus the Medmarks-T training environment</a>; it finds GLM 4.7 needs over 5x the tokens to match GPT-5.2, and that giving models a calculator produced ignored tools, wrong answers and formatting failures.</span>
           </td>
           <td>
             <span class="zh">護城河是信譽而非技術：在一個廠商自評成常態的市場裡，「我的題庫與程式碼你全部拿去跑」本身就是差異化。弱點是它也是賣模型的公司，中立性終究有上限，而且維護一個 30×61 的榜單需要持續投入——MedAgentBench 停更在 5 月就是前車之鑑。</span>
-            <span class="en">The moat is credibility rather than technology: in a market where vendor self-grading is the norm, "take my items and my code and run them yourself" is itself the differentiation. The weakness is that it also sells models, so its neutrality has a ceiling — and maintaining a 30-by-61 board takes sustained investment, with MedAgentBench frozen since May as the cautionary case.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>Epic</strong><br><span class="zh-inline">掌握資料端的那一方</span><span class="en-inline">The party that holds the data side</span></td>
+          <td><strong>Epic</strong><br><span class="zh-inline">掌握資料端的那一方</span></td>
           <td>
             <span class="zh">Comet 這組預測性 AI 模型訓練於 <a href="https://hitconsultant.net/2025/09/03/epic-launches-comet-a-new-ai-platform-to-predict-patient-health-journeys/" target="_blank" rel="noopener">Cosmos 去識別化病歷的 1,000 億筆以上資料點</a>，用來預測病人健康軌跡；<a href="https://histalk2.com/2026/09/29/news-9-30-26/" target="_blank" rel="noopener">本週 UGM 另宣布多項資安計畫</a>。</span>
-            <span class="en">Its Comet predictive models are trained on <a href="https://hitconsultant.net/2025/09/03/epic-launches-comet-a-new-ai-platform-to-predict-patient-health-journeys/" target="_blank" rel="noopener">over 100 billion data points from Cosmos de-identified records</a> to forecast patient trajectories; <a href="https://histalk2.com/2026/09/29/news-9-30-26/" target="_blank" rel="noopener">it also announced several security programmes at this week's UGM</a>.</span>
           </td>
           <td>
             <span class="zh">護城河是資料與工作流的入口，不是模型品質——這也是為什麼 HealthAgentBench 的 42% 對它比對模型廠更重要：代理要能在 EHR 裡真的動手做事，才輪得到誰的模型更強這個問題。</span>
-            <span class="en">The moat is the data and the entry point to the workflow, not model quality — which is why HealthAgentBench's 42% matters more to Epic than to the model vendors: agents have to actually act inside the EHR before whose model is stronger becomes the relevant question.</span>
           </td>
         </tr>
       </tbody>
@@ -417,7 +367,6 @@
   <div class="panel">
     <p>
       <span class="zh"><strong>今天的競爭結構是一個夾擠。</strong>上面被通用前沿模型壓住——<em>Nature Medicine</em> 說通用模型贏，<a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">Google 的 4B 開權重醫療模型免費可商用</a>；下面被開源高效模型抬起來——Apache-2.0 的病理基礎模型用 1/50 算力就能跑。被夾在中間的，正是「封閉、專用、靠自己宣布分數」這個位置，而這恰好是本週募到 2.5 億美元的那個位置。這個矛盾不會立刻引爆，因為估值買的是醫師端的分發，不是模型；但它解釋了為什麼<a href="https://www.gridhealth.io/charge-insights/openevidence-tempo-no-ones-watching" target="_blank" rel="noopener">「沒人在獨立驗分」</a>這件事會在這個時間點被提出來。</span>
-      <span class="en"><strong>Today's competitive structure is a squeeze.</strong> From above, general-purpose frontier models press down — <em>Nature Medicine</em> says they win, and <a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">Google's 4B open-weight medical model is free for commercial use</a>. From below, efficient open models push up — an Apache-2.0 pathology foundation model runs at a fiftieth of the compute. Caught in between is exactly the closed, specialized, self-graded position — which is exactly the position that raised $250 million this week. The contradiction will not detonate immediately, because the valuation buys physician-side distribution rather than the model. But it explains why <a href="https://www.gridhealth.io/charge-insights/openevidence-tempo-no-ones-watching" target="_blank" rel="noopener">"nobody is grading this independently"</a> is the objection being raised right now.</span>
     </p>
   </div>
 </section>
@@ -426,21 +375,17 @@
   <h2>04 — Taiwan Angle</h2>
   <div class="sec-title">
     <span class="zh">台灣兩年前就蓋了國際上現在最缺的那個東西——第三方驗證中心</span>
-    <span class="en">Taiwan built, two years ago, the thing the field is now missing most: a third-party validation centre</span>
   </div>
 
   <div class="panel">
     <p>
       <span class="zh"><strong>(1) 國際上缺的獨立驗分機制，台灣已經有制度雛形。</strong>衛福部<a href="https://www.mohw.gov.tw/cp-16-80155-1.html" target="_blank" rel="noopener">在 2024 年 10 月 7 日啟動三大 AI 中心</a>，其中「臨床 AI 取證驗證中心」與 TFDA 合作、預先組成醫院聯盟串接電子病歷資料，專門解決驗證數據蒐集困難；「負責任 AI 執行中心」要求公開 AI 模型、資料與效能等重要資訊；「AI 影響性研究中心」則與中央健保署合作建立臨床試驗機制評估效益，並據此建立「科學性的定價基礎」。啟動時共 30 家醫院提交 48 案，16 家醫院的 19 案通過決選，含臺大、中榮、北榮、成大等。把這套制度對照本週的爭議看——<strong>OpenEvidence 缺的不是技術，是這種「廠商以外的人來打分」的機構</strong>，而台灣的架構裡第二個中心的任務就是「公開模型、資料與效能」。制度存在不等於執行到位，但這是一個台灣難得領先於國際討論的位置。</span>
-      <span class="en"><strong>(1) The independent grading mechanism the field lacks already exists in Taiwan as institutional scaffolding.</strong> The Ministry of Health and Welfare <a href="https://www.mohw.gov.tw/cp-16-80155-1.html" target="_blank" rel="noopener">launched three AI centres on October 7, 2024</a>. The Clinical AI Evidence and Validation Centre works with the TFDA and pre-assembles a hospital consortium linked to electronic medical records, specifically to solve the difficulty of gathering validation data. The Responsible AI Implementation Centre requires public disclosure of models, data and performance. The AI Impact Research Centre works with the National Health Insurance Administration to build clinical trial mechanisms for assessing benefit, and from that a "scientific basis for pricing." At launch, 30 hospitals submitted 48 applications and 19 applications from 16 hospitals were selected, including NTUH, Taichung Veterans, Taipei Veterans and NCKU. Read against this week's dispute: <strong>what OpenEvidence lacks is not technology but precisely this kind of institution — someone outside the vendor doing the grading</strong> — and disclosing models, data and performance is the second centre's stated job. Having the institution is not the same as executing it, but this is a rare position where Taiwan leads the international conversation.</span>
     </p>
     <p>
       <span class="zh"><strong>(2) GigaPath-Flash 的算力帳單對台灣中小型醫院的意義比對醫學中心大得多。</strong>峰值 GPU 記憶體從 16.68 GB 降到 2.16 GB（<a href="https://arxiv.org/html/2607.18218v2" target="_blank" rel="noopener">arXiv 2607.18218v2</a>）換算成採購，是「資料中心級顯卡」與「一張消費級顯卡」的差別。台灣的病理 AI 落地長期卡在區域醫院與地區醫院沒有算力也沒有 MLOps 人力，而 Apache-2.0 的授權允許商用、修改與再散布，意味著本土廠商可以直接拿去做成院內可部署的產品，而不是再談一次授權。配合<a href="https://aimd.fda.gov.tw/" target="_blank" rel="noopener">TFDA 的智慧醫療器材資訊暨媒合平台</a>，這條路徑比等一個封閉模型降價現實得多。</span>
-      <span class="en"><strong>(2) GigaPath-Flash's compute bill means far more to Taiwan's mid-sized hospitals than to its medical centres.</strong> Peak GPU memory falling from 16.68 GB to 2.16 GB (<a href="https://arxiv.org/html/2607.18218v2" target="_blank" rel="noopener">arXiv 2607.18218v2</a>) translates, in procurement terms, into the difference between a data-centre GPU and a single consumer card. Pathology AI deployment in Taiwan has long been stuck because regional and district hospitals have neither the compute nor the MLOps staffing, and an Apache-2.0 licence permits commercial use, modification and redistribution — meaning local vendors can build an on-premise deployable product from it rather than negotiating another licence. Paired with <a href="https://aimd.fda.gov.tw/" target="_blank" rel="noopener">the TFDA's AI/ML medical device information and matchmaking platform</a>, that route is considerably more realistic than waiting for a closed model to cut its price.</span>
     </p>
     <p>
       <span class="zh"><strong>(3) 衛福部的生成式 AI 指引正好擊中本週的那個縫。</strong>衛福部已發布醫療機構應用生成式 AI 指引，<a href="https://news.gbimonthly.com/tw/article/show.php?num=87116" target="_blank" rel="noopener">以六大風險、九項要點建立治理框架</a>，另有<a href="https://www.cna.com.tw/news/ahel/202608060301.aspx" target="_blank" rel="noopener">AI 醫療細則草案在研擬中</a>。對照〈Right Words, Wrong Moment〉的發現——<a href="https://arxiv.org/abs/2609.35953" target="_blank" rel="noopener">19,930 段對話裡的問題是「過早跳到解方」這類流程失誤，不是內容錯誤</a>——台灣要訂的細則若只管「輸出內容對不對」，就會漏掉真正會傷到病人的那一類錯誤。治理文件應該要求的是互動流程的紀錄與可稽核，而不只是答案的正確率。</span>
-      <span class="en"><strong>(3) The Ministry's generative AI guidance lands on exactly this week's gap.</strong> Taiwan has issued guidance for generative AI use by medical institutions, <a href="https://news.gbimonthly.com/tw/article/show.php?num=87116" target="_blank" rel="noopener">framing governance around six risk categories and nine key points</a>, with <a href="https://www.cna.com.tw/news/ahel/202608060301.aspx" target="_blank" rel="noopener">detailed AI medical rules still being drafted</a>. Set that against the finding in "Right Words, Wrong Moment" — <a href="https://arxiv.org/abs/2609.35953" target="_blank" rel="noopener">that across 19,930 conversations the failures were process errors such as jumping to solutions too early, not wrong content</a>. If the rules Taiwan writes govern only whether the output is correct, they will miss the category of error that actually harms patients. Governance documents should require that the interaction process be logged and auditable, not just that answers be accurate.</span>
     </p>
   </div>
 </section>
@@ -449,29 +394,28 @@
   <h2>05 — Further Reading</h2>
   <div class="sec-title">
     <span class="zh">這五篇是今天這條主線的完整證據鏈，按「先看結論、再看方法、最後看反方」排序</span>
-    <span class="en">These five form the full evidence chain for today's thread, ordered conclusion first, then method, then the rebuttal</span>
   </div>
 
   <ol class="reading">
     <li>
       <a href="https://www.nature.com/articles/s41591-026-04457-9" target="_blank" rel="noopener">General-purpose chatbots outperform clinical AI tools on physicians' real-world questions — Nature Medicine research briefing (2026-06-17)</a>
-      <p class="why"><span class="zh">兩頁的 briefing 比主文好讀，而「專用工具表現沒比 Google AI 摘要好」這一句是今天所有爭論的錨點。</span><span class="en">The two-page briefing reads better than the paper, and the line about specialized tools doing no better than a Google AI overview is the anchor for every argument today.</span></p>
+      <p class="why"><span class="zh">兩頁的 briefing 比主文好讀，而「專用工具表現沒比 Google AI 摘要好」這一句是今天所有爭論的錨點。</span></p>
     </li>
     <li>
       <a href="https://www.nature.com/articles/d41586-026-02125-z" target="_blank" rel="noopener">Medical AI has a measurement problem — Nature, Arjun K. Manrai, Harvard Medical School (2026-07-28)</a>
-      <p class="why"><span class="zh">把「量尺不可信」這件事講成一個可以推理的問題，而不是一句抱怨；讀完會知道為什麼自評分數的爭議不是公關問題而是方法論問題。</span><span class="en">It turns the unreliable-yardstick problem into something you can reason about rather than complain about; after it you see why the self-grading dispute is methodological, not a PR matter.</span></p>
+      <p class="why"><span class="zh">把「量尺不可信」這件事講成一個可以推理的問題，而不是一句抱怨；讀完會知道為什麼自評分數的爭議不是公關問題而是方法論問題。</span></p>
     </li>
     <li>
       <a href="https://arxiv.org/abs/2606.31179" target="_blank" rel="noopener">HealthAgentBench: A Unified Benchmark Suite of Realistic Agentic Healthcare Environments — arXiv:2606.31179 (2026-06-30)</a>
-      <p class="why"><span class="zh">想知道「醫療 AI agent」目前真實的能力上限，看這 54 個任務怎麼設計的比看任何一個分數都有用。</span><span class="en">If you want the real ceiling on medical AI agents right now, how these 54 tasks are constructed tells you more than any single score.</span></p>
+      <p class="why"><span class="zh">想知道「醫療 AI agent」目前真實的能力上限，看這 54 個任務怎麼設計的比看任何一個分數都有用。</span></p>
     </li>
     <li>
       <a href="https://sophont.med/blog/medmarks/" target="_blank" rel="noopener">Release of Medmarks v1.0, technical report, and updated leaderboard — Sophont Blog (2026-05-12)</a>
-      <p class="why"><span class="zh">唯一一份把「開源模型要燒 5 倍 token」這種部署成本明確寫進評測結論的報告，對要選模型的人比排行榜名次有用。</span><span class="en">The only report that writes a deployment cost like "open models burn 5x the tokens" into its evaluation conclusions — more useful than the ranking if you are the one choosing a model.</span></p>
+      <p class="why"><span class="zh">唯一一份把「開源模型要燒 5 倍 token」這種部署成本明確寫進評測結論的報告，對要選模型的人比排行榜名次有用。</span></p>
     </li>
     <li>
       <a href="https://www.gridhealth.io/charge-insights/openevidence-tempo-no-ones-watching" target="_blank" rel="noopener">OpenEvidence, TEMPO &amp; No One's Watching — Grid Health (2026-09-22)</a>
-      <p class="why"><span class="zh">反方意見寫得最乾淨的一篇，而且它把 FDA 的 TEMPO 試點（從 4 家擴到 40 家）跟廠商自評放在同一個框架下看——兩者都在用「真實部署」取代「上市前獨立驗證」。</span><span class="en">The cleanest statement of the other side, and it frames the FDA's TEMPO pilot (expanding from four participants to forty) alongside vendor self-grading — both substituting real-world deployment for independent pre-market verification.</span></p>
+      <p class="why"><span class="zh">反方意見寫得最乾淨的一篇，而且它把 FDA 的 TEMPO 試點（從 4 家擴到 40 家）跟廠商自評放在同一個框架下看——兩者都在用「真實部署」取代「上市前獨立驗證」。</span></p>
     </li>
   </ol>
 </section>
@@ -480,7 +424,6 @@
   <h2>06 — References</h2>
   <div class="sec-title">
     <span class="zh">參考文獻</span>
-    <span class="en">References</span>
   </div>
 
   <div class="panel">
@@ -519,7 +462,6 @@
     </ol>
     <div class="note">
       <span class="zh"><strong>編輯說明：</strong>（1）<strong>今日該主題的新發表偏少。</strong>9/28–10/1 的窗口內，醫療 AI 技術面沒有大廠級模型發布，實際上架的是 arXiv 預印本與 Hugging Face 權重。因此本期以「本週的募資與自評分數爭議」為切入，把 2026 年 5–7 月的關鍵評測研究（<em>Nature Medicine</em> research briefing 6/17、<em>Nature</em> 評論 7/28、HealthAgentBench 6/30、Medmarks v1.0 5/12、GigaPath-Flash v2 7 月）拉回來當裁判基準，並在每一則的「要打折的地方」逐一標明原始發表日期，不以舊發表冒充新聞。（2）<em>Nature Medicine</em> 主文 s41591-026-04431-5 在撰稿時回傳 503，內容依其 research briefing（DOI 10.1038/s41591-026-04457-9）與 PubMed 42286322 書目資料撰寫，<strong>未取得全文</strong>；briefing 未具名受測的三個通用模型與兩款專用工具，亦未公布各自分數。（3）arXiv 2609.35953、2609.36392、2609.36238 的抓取被拒，2609.28610 與 2609.26924 的 PDF 回傳無可讀文字，<strong>五篇皆依 arXiv 新稿清單與檢索摘要層級的描述撰寫</strong>，作者、機構與完整數據未逐項核對。（4）OpenEvidence 的四個 benchmark 分數、mindLAMP 的「17 國 65 站點」、Epic Comet 的「1,000 億筆以上資料點」均為<strong>廠商自述，未經第三方稽核</strong>。（5）Becker's 與 HISTalk 部分內容在付費牆或電子報之後，僅依公開可見段落撰寫；募資金額與估值為 HISTalk 的二手報導，該報導自己指出與早先消息不符。（6）<code>Fastino-Nemotron-3.5-Lightning-Healthcare</code> 的下載數在 9/29 為 6,825、9/30 為 6,707，兩者皆引自 agents-radar 日報，未與 Hugging Face 原站核對，本文採 9/30 的數字。（7）Medmarks 排行榜上的模型版本與 MedAgentBench 的榜首在發表後數月間可能已被超越，名次僅代表該榜單最後更新時的狀態。</span>
-      <span class="en"><strong>Editor's note:</strong> (1) <strong>New publications in this theme were thin today.</strong> Within the 9/28–10/1 window no flagship medical model shipped; what actually landed were arXiv preprints and Hugging Face weights. This issue therefore enters through this week's funding round and self-grading dispute, and pulls the key evaluation studies from May–July 2026 back in as the yardstick (<em>Nature Medicine</em> research briefing 6/17, <em>Nature</em> commentary 7/28, HealthAgentBench 6/30, Medmarks v1.0 5/12, GigaPath-Flash v2 in July), flagging each original publication date in that item's "Discount this" row rather than passing older work off as news. (2) The <em>Nature Medicine</em> full text at s41591-026-04431-5 returned a 503 at the time of writing; that item is built from the research briefing (DOI 10.1038/s41591-026-04457-9) and the PubMed 42286322 record, <strong>not the full text</strong>. The briefing names neither the three general-purpose models nor the two specialized tools, and publishes no per-model scores. (3) Fetches for arXiv 2609.35953, 2609.36392 and 2609.36238 were refused, and the PDFs for 2609.28610 and 2609.26924 returned no machine-readable text; <strong>all five are written from arXiv new-submission listings and abstract-level descriptions</strong>, with authors, institutions and full data not individually reconciled. (4) OpenEvidence's four benchmark scores, mindLAMP's "17 countries, 65 sites" and Epic Comet's "100 billion-plus data points" are all <strong>vendor-reported and not independently audited</strong>. (5) Parts of Becker's and HISTalk sit behind a paywall or newsletter; only publicly visible passages were used. The round size and valuation come from HISTalk's secondary coverage, which itself notes a discrepancy with earlier reporting. (6) Downloads for <code>Fastino-Nemotron-3.5-Lightning-Healthcare</code> were reported as 6,825 on 9/29 and 6,707 on 9/30, both from the agents-radar digest and unverified against Hugging Face; the 9/30 figure is used above. (7) Model versions on the Medmarks leaderboard and the top entry on MedAgentBench may have been superseded in the months since publication; the rankings reflect only the state at each board's last update.</span>
     </div>
   </div>
 </section>
@@ -528,7 +470,6 @@
   <div class="foot-row">
     <div>
       <span class="zh">AI／醫療AI 每日新知日報 · 由 Claude 於台北時間每日自動產出 · 本期主題：星期四／技術突破<br>本報告內容經來源查證，但不構成投資或醫療建議。所有數據請以原始出處為準。</span>
-      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Thursday / Technology Breakthroughs<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
     </div>
     <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com / 返回 peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
   </div>
@@ -541,16 +482,6 @@
 </div>
 
 <script>
-function setLang(l){
-  document.body.classList.remove('lang-zh','lang-en');
-  document.body.classList.add('lang-'+l);
-  document.documentElement.lang = (l==='zh') ? 'zh-Hant' : 'en';
-  document.getElementById('b-zh').classList.toggle('on', l==='zh');
-  document.getElementById('b-en').classList.toggle('on', l==='en');
-  document.title = (l==='zh')
-    ? 'AI／醫療AI 每日新知日報 · 2026-10-01'
-    : 'AI & Medical AI Daily · 2026-10-01';
-}
 function toggleTheme(){
   document.body.classList.toggle('dark');
   document.getElementById('theme-ic').textContent =
@@ -578,5 +509,6 @@ window.addEventListener('scroll', function(){
     .catch(function(){});
 })();
 </script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/en/reports/2026-10-01.html" hreflang="en" rel="alternate" lang="en">English version</a></p>
 </body>
 </html>
