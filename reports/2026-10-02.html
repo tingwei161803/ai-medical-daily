@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>AI／醫療AI 每日新知日報 · 2026-10-02</title>
+<meta property="og:url" content="https://ai-medical-daily.peteraim.com/reports/2026-10-02.html" />
+<link rel="canonical" href="https://ai-medical-daily.peteraim.com/reports/2026-10-02.html" />
+<meta name="report-date" content="2026-10-02">
+<meta name="report-theme" content="product">
+<meta name="report-title-zh" content="這一週醫療 AI 最大的一張支票不是給模型的——Matt Holt 的 Thoreau 用四個月、三筆交易把「誰決定帳單付不付」整條鏈買齊：6/18 以 120 億美元估值投進 Ensemble（200+ 醫院、550 億美元淨病人收入）、9/18 用 1 億美元買下 Penelope Health 手上 2 億美國人的給付規則、9/29 再掏 5 億美元請 attention 機制共同發明人 Kyunghyun Cho 開 Ortet 這個前沿模型實驗室——而同一週 ARPA-H 用 SURPASS 把臨床試驗改成「沒有分期」的設計，史丹佛兩個計畫先拿到 5,630 萬美元">
+<meta name="report-title-en" content="The biggest cheque in medical AI this week was not written for a model: in four months and three deals, Matt Holt's Thoreau assembled the entire chain that decides whether a bill gets paid — Ensemble at a $12B valuation on 18 June (200+ hospitals, $55B in net patient revenue), $100M on 18 September for Penelope Health's coverage rules covering 200 million insured lives, and $500M on 29 September for attention-mechanism co-inventor Kyunghyun Cho to build the Ortet frontier lab — while in the same week ARPA-H redesigned the clinical trial to have no phases at all, and two Stanford teams took the first $56.3M">
+<meta name="report-summary-zh" content="星期五產品與公司深度分析：Thoreau 四個月內疊起營收循環（Ensemble，120 億美元估值）、給付規則（Penelope，2 億人）與前沿模型（Ortet，5 億美元）三層，拆解這套垂直整合押注為何瞄準帳單而非醫師注意力，並對照 ARPA-H SURPASS 的無分期試驗、Grindr 2.5 億美元買 PurposeMed、Included Health 2028 自保雇主計畫與台灣 FHIR Box 年底上線。">
+<meta name="report-summary-en" content="Friday deep dive: in four months Thoreau stacked revenue cycle (Ensemble, $12B valuation), coverage rules (Penelope, 200 million lives) and a frontier model lab (Ortet, $500M) — why this vertically integrated bet targets the bill rather than the clinician's attention, set against ARPA-H's phaseless SURPASS trials, Grindr's $250M PurposeMed deal, Included Health's 2028 employer plans and Taiwan's FHIR Box go-live.">
+<meta property="og:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HJLDQZDK5V');
+</script>
+<link rel="stylesheet" href="/assets/report.css">
+</head>
+<body class="lang-zh">
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span><span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <div class="bar-sp"></div>
+    <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub / 在 GitHub 給這個專案一顆星"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
+    <!-- 剛好一組 .seg，建置時整塊會換成指向另一語言網址的真連結 -->
+    <div class="seg">
+      <button id="b-zh" class="on" onclick="setLang('zh')">中文</button>
+      <button id="b-en" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="kicker">
+    <span class="zh-inline">星期五 · 產品與公司深度分析</span><span class="en-inline">Friday · Product &amp; company deep dive</span>
+  </div>
+  <h1>
+    <span class="zh">這一週醫療 AI 最大的一張支票不是給模型的——Matt Holt 的 Thoreau 用四個月、三筆交易把「誰決定帳單付不付」整條鏈買齊：6/18 以 120 億美元估值投進 Ensemble（200+ 醫院、550 億美元淨病人收入）、9/18 用 1 億美元買下 Penelope Health 手上 2 億美國人的給付規則、9/29 再掏 5 億美元請 attention 機制共同發明人 Kyunghyun Cho 開 Ortet 這個前沿模型實驗室——而同一週 ARPA-H 用 SURPASS 把臨床試驗改成「沒有分期」的設計，史丹佛兩個計畫先拿到 5,630 萬美元</span>
+        <span class="en">The biggest cheque in medical AI this week was not written for a model: in four months and three deals, Matt Holt's Thoreau assembled the entire chain that decides whether a bill gets paid — Ensemble at a $12B valuation on 18 June (200+ hospitals, $55B in net patient revenue), $100M on 18 September for Penelope Health's coverage rules covering 200 million insured lives, and $500M on 29 September for attention-mechanism co-inventor Kyunghyun Cho to build the Ortet frontier lab — while in the same week ARPA-H redesigned the clinical trial to have no phases at all, and two Stanford teams took the first $56.3M</span>
+  </h1>
+  <div class="dateline">
+    <span class="zh-inline">2026 年 10 月 2 日（五）· 涵蓋 9/29–10/2（併購脈絡回溯至 6/18）· 台北時間</span><span class="en-inline">Friday, October 2, 2026 · Covering Sep 29–Oct 2, with deal context back to Jun 18 · Taipei time</span>
+  </div>
+  <p class="lede">
+    <span class="zh">今天值得花時間的不是哪個模型又刷新了 benchmark，而是一張金流圖。9 月 29 日，Ortet 帶著 <a href="https://www.businesswire.com/news/home/20260929127274/en/Ortet-Launches-as-Frontier-AI-Lab-for-Health-With-%24500-Million-Commitment-from-Thoreau" target="_blank" rel="noopener">Thoreau 承諾的 5 億美元</a>成立，執行長是 attention 機制與 GRU 的共同發明人 Kyunghyun Cho。但把這筆錢單獨看會錯過全部重點——它是同一個投資平台四個月內的第三步。第一步在 6 月 18 日，Thoreau 以約 <a href="https://hitconsultant.net/2026/06/18/thoreau-makes-strategic-investment-in-ensemble-health/" target="_blank" rel="noopener">120 億美元估值</a>投進 Ensemble Health Partners，那是 200 多家醫院、550 億美元年淨病人收入的營收循環作業。第二步在 9 月 18 日，1 億美元領投 <a href="https://www.eu-startups.com/2026/09/with-200-million-patients-covered-penelope-health-secures-e87-million-in-funding/" target="_blank" rel="noopener">Penelope Health</a>，買下 2 億名美國被保險人、15,000 個 CPT／J-code 的機器可讀給付規則。第三步前六天，9 月 24 日，兩者<a href="https://hitconsultant.net/2026/09/24/ensemble-health-partners-penelope-health-real-time-payer-policy-intelligence-rcm/" target="_blank" rel="noopener">宣佈整合</a>，把給付條件從事後申訴前移到照護之前。也就是說：當整個產業在搶醫師在診間裡的注意力，Thoreau 在搶另一樣東西——帳單從誰手上送出去、由誰判定合不合格。同一週，出錢的另一方給了相反的訊號：ARPA-H 的 <a href="https://www.hhs.gov/press-room/hhs-arpa-h-launch-surpass-modernize-clinical-trials.html" target="_blank" rel="noopener">SURPASS</a> 要把臨床試驗的分期整個拆掉，而史丹佛拿到的 <a href="https://med.stanford.edu/news/all-news/2026/09/arpa-h-awards.html" target="_blank" rel="noopener">1,490 萬美元</a>不是用來做更強的臨床 AI，是用來做一個看著臨床 AI 的監控系統。</span>
+        <span class="en">What deserves attention today is not a benchmark but a flow-of-funds diagram. On 29 September, Ortet launched with <a href="https://www.businesswire.com/news/home/20260929127274/en/Ortet-Launches-as-Frontier-AI-Lab-for-Health-With-%24500-Million-Commitment-from-Thoreau" target="_blank" rel="noopener">a $500M commitment from Thoreau</a>, with attention-mechanism and GRU co-inventor Kyunghyun Cho as CEO. Read that cheque alone and you miss the point entirely — it is the third step by the same investment platform in four months. Step one, 18 June: Thoreau invested in Ensemble Health Partners at roughly <a href="https://hitconsultant.net/2026/06/18/thoreau-makes-strategic-investment-in-ensemble-health/" target="_blank" rel="noopener">a $12B valuation</a> — the revenue cycle operations of 200-plus hospitals and $55B in annual net patient revenue. Step two, 18 September: $100M leading a round into <a href="https://www.eu-startups.com/2026/09/with-200-million-patients-covered-penelope-health-secures-e87-million-in-funding/" target="_blank" rel="noopener">Penelope Health</a>, buying machine-readable coverage rules over 200 million insured Americans and 15,000 CPT and J-codes. Step three minus six days, 24 September: the two <a href="https://hitconsultant.net/2026/09/24/ensemble-health-partners-penelope-health-real-time-payer-policy-intelligence-rcm/" target="_blank" rel="noopener">announced an integration</a> moving coverage criteria upstream of care itself, out of post-hoc appeals. So while the industry fights over the clinician's attention inside the room, Thoreau is fighting over something else: whose hands the bill leaves, and who judges whether it qualifies. In the same week the party actually paying sent the opposite signal: ARPA-H's <a href="https://www.hhs.gov/press-room/hhs-arpa-h-launch-surpass-modernize-clinical-trials.html" target="_blank" rel="noopener">SURPASS</a> wants to take the phases out of the clinical trial altogether, and the <a href="https://med.stanford.edu/news/all-news/2026/09/arpa-h-awards.html" target="_blank" rel="noopener">$14.9M</a> Stanford received is not for a better clinical AI but for a system that watches clinical AI.</span>
+  </p>
+
+  <nav class="toc">
+    <a href="#top"><span class="zh-inline">重點新聞</span><span class="en-inline">Top Stories</span></a>
+    <a href="#product"><span class="zh-inline">產品分析</span><span class="en-inline">Product Analysis</span></a>
+    <a href="#company"><span class="zh-inline">公司與競爭</span><span class="en-inline">Companies &amp; Competition</span></a>
+    <a href="#taiwan"><span class="zh-inline">台灣視角</span><span class="en-inline">Taiwan Angle</span></a>
+    <a href="#reading"><span class="zh-inline">延伸閱讀</span><span class="en-inline">Further Reading</span></a>
+    <a href="#refs"><span class="zh-inline">參考文獻</span><span class="en-inline">References</span></a>
+  </nav>
+</div>
+
+<section id="top">
+  <h2>01 — Top Stories</h2>
+  <div class="sec-title">
+    <span class="zh">七則消息，一條主線：今年的競爭不在模型品質，在誰擁有結構</span>
+        <span class="en">Seven stories, one line: this year's contest is not model quality but who owns the structure</span>
+  </div>
+
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">主線 · 公司結構</span><span class="en-inline">Lead · Corporate structure</span></span>
+      <span class="tag">Thoreau</span>
+      <span class="tag">Ortet</span>
+      <span class="tag">Kyunghyun Cho</span>
+      <span class="tag">9/29</span>
+    </div>
+    <h3>
+      <span class="zh">Ortet 帶著 5 億美元開張：一個把生物、臨床、營運、財務寫進同一個病人模型的「前沿 AI 實驗室」</span>
+        <span class="en">Ortet opens with $500M: a "frontier AI lab" that wants biology, clinical care, operations and finance inside one model of the same patient</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">9 月 29 日，總部在紐約的 Ortet 宣佈成立，拿到投資平台 Thoreau 承諾的 5 億美元，用於 GPU 與資料基礎設施、模型訓練與部署、研究與人才，交易由 Goldman Sachs 擔任財務顧問（<a href="https://www.businesswire.com/news/home/20260929127274/en/Ortet-Launches-as-Frontier-AI-Lab-for-Health-With-%24500-Million-Commitment-from-Thoreau" target="_blank" rel="noopener">Business Wire 新聞稿</a>）。創辦團隊幾乎是一份 Genentech 前沿研究團隊的名冊：執行長 Kyunghyun Cho 是 attention 機制與 GRU 的共同發明人、紐約大學 Glen de Vries 健康統計講座教授，在 Prescient Design 待過五年並建立 Genentech 的前沿研究團隊；AI 長 Keunwoo Choi 來自 Upstage、Spotify、ByteDance 與 Genentech；技術長 Henri Dwyer 建過 Genentech 生命科學最大的 GPU 叢集，先前在 Instagram 與 Lyft；董事長 Jeff Hammerbacher 是 Cloudera 共同創辦人與 Facebook 數據團隊的第一任主管；科學長 Elman Mansimov 來自 AWS，是神經網路文字生成圖像的早期作者之一；Claudia Shi 從 Meta Superintelligence Labs 加入前沿研究（<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/ex-genentech-meta-aws-ai-leaders-launch-health-ai-lab-500m-backing" target="_blank" rel="noopener">Fierce Healthcare</a>）。公司表示已取得首批 GPU 容量（<a href="https://hitconsultant.net/2026/09/30/ortet-launches-frontier-health-ai-lab-500m-commitment-thoreau-kyunghyun-cho/" target="_blank" rel="noopener">HIT Consultant</a>）。</span>
+        <span class="en">On 29 September, New York–based Ortet launched with a $500M commitment from the investment platform Thoreau, earmarked for GPU and data infrastructure, model training and deployment, and research and talent, with Goldman Sachs advising on the transaction (<a href="https://www.businesswire.com/news/home/20260929127274/en/Ortet-Launches-as-Frontier-AI-Lab-for-Health-With-%24500-Million-Commitment-from-Thoreau" target="_blank" rel="noopener">Business Wire release</a>). The founding roster reads like a roll call of Genentech's frontier research group: CEO Kyunghyun Cho co-developed the attention mechanism and the GRU and is Glen de Vries Professor of Health Statistics at NYU, after five years at Prescient Design and building Genentech's frontier research team; Chief AI Officer Keunwoo Choi came via Upstage, Spotify, ByteDance and Genentech; CTO Henri Dwyer built Genentech's largest GPU cluster for life sciences after engineering roles at Instagram and Lyft; Chairman Jeff Hammerbacher co-founded Cloudera and ran Facebook's first data team; Chief Science Officer Elman Mansimov comes from AWS and was an early author on neural text-to-image generation; and Claudia Shi joins frontier research from Meta Superintelligence Labs (<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/ex-genentech-meta-aws-ai-leaders-launch-health-ai-lab-500m-backing" target="_blank" rel="noopener">Fierce Healthcare</a>). The company says it has secured its first GPU capacity (<a href="https://hitconsultant.net/2026/09/30/ortet-launches-frontier-health-ai-lab-500m-commitment-thoreau-kyunghyun-cho/" target="_blank" rel="noopener">HIT Consultant</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">2026 年醫療 AI 的錢幾乎都流向「單一工作流」——ambient scribe、理賠編碼、文獻問答。Ortet 明說要走反方向：建一個「同時模擬單一病人照護旅程中生物、臨床、營運與財務四個維度」的統一智能層，而不是用窄資料集做單一任務的工具（<a href="https://hitconsultant.net/2026/09/30/ortet-launches-frontier-health-ai-lab-500m-commitment-thoreau-kyunghyun-cho/" target="_blank" rel="noopener">HIT Consultant</a>）。這個命題的重量不在技術新穎度，而在它需要什麼才能成立：一個同時看得到基因體、病歷、排程與帳單的模型，前提是有人把這四種資料擺在同一張桌上——而這正好是 Thoreau 另外兩個平台在做的事。</span>
+        <span class="en">Almost all of 2026's medical-AI money has gone into single workflows — ambient scribing, claims coding, literature Q&A. Ortet says it is going the other way: a unified intelligence layer that "simultaneously models the biological, clinical, operational, and financial dimensions of an individual patient's care journey" rather than narrow single-task tools (<a href="https://hitconsultant.net/2026/09/30/ortet-launches-frontier-health-ai-lab-500m-commitment-thoreau-kyunghyun-cho/" target="_blank" rel="noopener">HIT Consultant</a>). The weight of that claim is not technical novelty but what it presupposes: a model that can see genomics, charts, scheduling and billing at once requires someone to put all four on the same table — which is precisely what Thoreau's other two platforms do.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">新聞稿裡沒有任何第一個產品、上線時程、員工人數或訓練資料來源；也沒有具名任何醫療系統或研究機構作為資料與驗證夥伴，只說「從成立起就會與生態系夥伴合作」。5 億美元是 Thoreau 的「承諾」而非已到帳的募資輪，拆分與里程碑條件未公開。Endpoints News 的報導在付費牆後，本報只用公開可見的標題與導言（<a href="https://endpoints.news/ai-health-startup-ortet-launches-with-500m-and-ex-genentech-co-founders/" target="_blank" rel="noopener">Endpoints News</a>）。</span>
+        <span class="en">The announcement names no first product, no shipping timeline, no headcount and no training-data source; no health system or research institution is named as a data or validation partner, only a promise to "work with ecosystem partners from launch." The $500M is a Thoreau commitment rather than a closed round, and its tranching and milestones are undisclosed. The Endpoints News story sits behind a paywall; this report uses only its publicly visible headline and dek (<a href="https://endpoints.news/ai-health-startup-ortet-launches-with-500m-and-ex-genentech-co-founders/" target="_blank" rel="noopener">Endpoints News</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.businesswire.com/news/home/20260929127274/en/Ortet-Launches-as-Frontier-AI-Lab-for-Health-With-%24500-Million-Commitment-from-Thoreau" target="_blank" rel="noopener">Business Wire, 2026-09-29</a> ／ <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/ex-genentech-meta-aws-ai-leaders-launch-health-ai-lab-500m-backing" target="_blank" rel="noopener">Fierce Healthcare, 2026-09-29</a> ／ <a href="https://hitconsultant.net/2026/09/30/ortet-launches-frontier-health-ai-lab-500m-commitment-thoreau-kyunghyun-cho/" target="_blank" rel="noopener">HIT Consultant, 2026-09-30</a></p></div>
+  </div>
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">主線 · 併購脈絡</span><span class="en-inline">Lead · Deal sequence</span></span>
+      <span class="tag">Ensemble</span>
+      <span class="tag">Penelope Health</span>
+      <span class="tag">Apollo</span>
+      <span class="tag">6/18→9/29</span>
+    </div>
+    <h3>
+      <span class="zh">把四個月的三筆交易排在一起看：Thoreau 買的不是模型，是帳單從產生到被付掉的整條路</span>
+        <span class="en">Line up three deals in four months and Thoreau is not buying a model — it is buying the whole path a bill travels before it is paid</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">Thoreau 由 Matt Holt 在 2025 年創立，他在 600 億美元規模的 New Mountain Capital 待了 24 年、最後職位是私募股權總裁，Thoreau 背後的資金來自管理規模約 9,380 億美元的 Apollo Global Management（<a href="https://www.caproasia.com/2026/06/18/united-states-new-healthcare-investment-platform-thoreau-group-to-make-strategic-investment-in-united-states-health-systems-revenue-cycle-management-company-ensemble-health-partners-at-12-billion-val/" target="_blank" rel="noopener">Caproasia</a>）。三筆交易的順序是：<strong>6 月 18 日</strong>，以約 120 億美元估值對 Ensemble Health Partners 進行策略性成長投資——Ensemble 由 Judson Ivy 於 2014 年創立，為全美 200 多家醫院管理端到端營收循環，年淨病人收入 550 億美元，原股東 Berkshire Partners、Warburg Pincus 與 Bon Secours Mercy Health 留在股東名冊上（<a href="https://hitconsultant.net/2026/06/18/thoreau-makes-strategic-investment-in-ensemble-health/" target="_blank" rel="noopener">HIT Consultant</a>、<a href="https://www.bloomberg.com/news/articles/2026-06-12/matt-holt-said-to-near-12-billion-deal-for-ensemble-health" target="_blank" rel="noopener">Bloomberg</a>）。<strong>9 月 18 日</strong>，領投 Penelope Health 1 億美元（8,700 萬歐元），這家公司把給付方的醫療、處置與藥品政策結構化成機器可讀格式，覆蓋逾 2 億名美國被保險人、超過 15,000 個 CPT／HCPCS 與 J-code／NDC 項目（<a href="https://www.eu-startups.com/2026/09/with-200-million-patients-covered-penelope-health-secures-e87-million-in-funding/" target="_blank" rel="noopener">EU-Startups</a>、<a href="https://www.axios.com/pro/health-tech-deals/2026/09/18/penelope-health-100m-thoreau" target="_blank" rel="noopener">Axios Pro</a>）。<strong>9 月 24 日</strong>，Ensemble 與 Penelope 宣佈策略合作，把 Penelope 的臨床政策引擎嵌進 Ensemble 的營收循環智能層，讓給付條件在「照護發生之前」就被核對（<a href="https://hitconsultant.net/2026/09/24/ensemble-health-partners-penelope-health-real-time-payer-policy-intelligence-rcm/" target="_blank" rel="noopener">HIT Consultant</a>、<a href="https://www.globenewswire.com/news-release/2026/09/24/3368454/0/en/ensemble-and-penelope-health-announce-strategic-partnership.html" target="_blank" rel="noopener">GlobeNewswire</a>）。<strong>9 月 29 日</strong>，Ortet 的 5 億美元。</span>
+        <span class="en">Thoreau was founded in 2025 by Matt Holt, who spent 24 years at the $60B New Mountain Capital, latterly as President of Private Equity; Thoreau itself is backed by Apollo Global Management, which manages roughly $938B (<a href="https://www.caproasia.com/2026/06/18/united-states-new-healthcare-investment-platform-thoreau-group-to-make-strategic-investment-in-united-states-health-systems-revenue-cycle-management-company-ensemble-health-partners-at-12-billion-val/" target="_blank" rel="noopener">Caproasia</a>). The sequence runs: <strong>18 June</strong> — a strategic growth investment in Ensemble Health Partners at roughly a $12B valuation. Founded by Judson Ivy in 2014, Ensemble runs end-to-end revenue cycle operations for 200-plus US hospitals and $55B in annual net patient revenue; legacy holders Berkshire Partners, Warburg Pincus and Bon Secours Mercy Health stayed on the register (<a href="https://hitconsultant.net/2026/06/18/thoreau-makes-strategic-investment-in-ensemble-health/" target="_blank" rel="noopener">HIT Consultant</a>, <a href="https://www.bloomberg.com/news/articles/2026-06-12/matt-holt-said-to-near-12-billion-deal-for-ensemble-health" target="_blank" rel="noopener">Bloomberg</a>). <strong>18 September</strong> — leading a $100M (€87M) round into Penelope Health, which turns payer medical, procedural and pharmacy policy into machine-readable structure across more than 200 million insured Americans and more than 15,000 CPT/HCPCS and J-code/NDC entries (<a href="https://www.eu-startups.com/2026/09/with-200-million-patients-covered-penelope-health-secures-e87-million-in-funding/" target="_blank" rel="noopener">EU-Startups</a>, <a href="https://www.axios.com/pro/health-tech-deals/2026/09/18/penelope-health-100m-thoreau" target="_blank" rel="noopener">Axios Pro</a>). <strong>24 September</strong> — Ensemble and Penelope announce a partnership embedding Penelope's clinical policy engine into Ensemble's revenue cycle intelligence layer, so coverage criteria are checked before care is delivered (<a href="https://hitconsultant.net/2026/09/24/ensemble-health-partners-penelope-health-real-time-payer-policy-intelligence-rcm/" target="_blank" rel="noopener">HIT Consultant</a>, <a href="https://www.globenewswire.com/news-release/2026/09/24/3368454/0/en/ensemble-and-penelope-health-announce-strategic-partnership.html" target="_blank" rel="noopener">GlobeNewswire</a>). <strong>29 September</strong> — Ortet's $500M.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">Abridge、Ambience、Nabla、OpenEvidence 這一批公司爭的是同一個稀缺資源：醫師在診間裡的注意力。Thoreau 爭的是另一個——帳單的所有權。一邊握著 200 家醫院的營收循環作業（誰送出帳單），一邊握著 2 億人的給付規則（誰決定這筆帳單合不合格），中間用 9/24 的合作把規則前移到照護之前，最後再拿 5 億美元蓋一個理論上能吃下這兩端資料的模型。這是今年為止唯一一個把「資料、分發通路、模型」三件事同時收進同一個資產負債表的醫療 AI 結構。</span>
+        <span class="en">Abridge, Ambience, Nabla and OpenEvidence are all competing for the same scarce resource: the clinician's attention inside the room. Thoreau is competing for a different one — ownership of the bill. On one side, the revenue cycle operations of 200 hospitals (who submits the claim); on the other, the coverage rules for 200 million lives (who decides whether that claim qualifies); the 24 September partnership moves the rules upstream of care itself; and then $500M to build a model that could, in principle, consume both ends. It is the only structure in medical AI this year that puts data, distribution and the model on one balance sheet.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">三件事都還沒有被驗證。第一，Ensemble 與 Penelope 的 9/24 合作新聞稿沒有任何高階主管具名引述、沒有拒付率改善數字、也沒有財務影響數字（<a href="https://hitconsultant.net/2026/09/24/ensemble-health-partners-penelope-health-real-time-payer-policy-intelligence-rcm/" target="_blank" rel="noopener">HIT Consultant</a>）。第二，Ortet 與 Ensemble／Penelope 之間並沒有宣佈任何資料共用安排，把三者講成一條管線目前是本報的結構推論，不是任何一方的公開承諾。第三，大型 roll-up 的風險眾所周知——規模是否轉成客戶價值取決於執行，而醫療營收循環的資料使用同時牽動 HIPAA、州法與醫院合約，把病人帳務資料導入訓練管線不是商業決定就能解決的事。</span>
+        <span class="en">None of three things is yet demonstrated. First, the 24 September Ensemble–Penelope release carries no named executive quote, no denial-rate improvement and no financial impact figure (<a href="https://hitconsultant.net/2026/09/24/ensemble-health-partners-penelope-health-real-time-payer-policy-intelligence-rcm/" target="_blank" rel="noopener">HIT Consultant</a>). Second, no data-sharing arrangement between Ortet and Ensemble/Penelope has been announced; treating the three as one pipeline is this report's structural inference, not a public commitment by any party. Third, the risks of large roll-ups are well known — whether scale converts into customer value depends on execution — and data use in hospital revenue cycle touches HIPAA, state law and hospital contracts at once, so routing patient financial data into a training pipeline is not a decision commerce alone can make.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://hitconsultant.net/2026/06/18/thoreau-makes-strategic-investment-in-ensemble-health/" target="_blank" rel="noopener">HIT Consultant, 2026-06-18</a> ／ <a href="https://www.eu-startups.com/2026/09/with-200-million-patients-covered-penelope-health-secures-e87-million-in-funding/" target="_blank" rel="noopener">EU-Startups, 2026-09-18</a> ／ <a href="https://hitconsultant.net/2026/09/24/ensemble-health-partners-penelope-health-real-time-payer-policy-intelligence-rcm/" target="_blank" rel="noopener">HIT Consultant, 2026-09-24</a> ／ <a href="https://www.caproasia.com/2026/06/18/united-states-new-healthcare-investment-platform-thoreau-group-to-make-strategic-investment-in-united-states-health-systems-revenue-cycle-management-company-ensemble-health-partners-at-12-billion-val/" target="_blank" rel="noopener">Caproasia, 2026-06-18</a></p></div>
+  </div>
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">政策 · 研究基建</span><span class="en-inline">Policy · Research infrastructure</span></span>
+      <span class="tag">ARPA-H</span>
+      <span class="tag">SURPASS</span>
+      <span class="tag">Stanford</span>
+      <span class="tag">9/30</span>
+    </div>
+    <h3>
+      <span class="zh">ARPA-H 把臨床試驗的「分期」整個拆掉：SURPASS 要用數位孿生先模擬、再即時改試驗，史丹佛兩案先拿 5,630 萬美元</span>
+        <span class="en">ARPA-H takes the phases out of the clinical trial: SURPASS wants digital twins to simulate first and adapt in real time, and two Stanford projects take the first $56.3M</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">9 月 30 日，HHS 與 ARPA-H 發表 SURPASS（Simulation-augmented, Real-time Platform Adaptive Seamless Trials），目標對準臨床試驗目前超過 10 年的週期與平均約 20 億美元的開發成本，三個技術軸分別是：用數位孿生與預測模型在試驗啟動前先模擬結果的「無分期設計引擎」、能即時分析並中途調整試驗的「連續推論引擎」、以及把啟動、收案與資料管理自動化的「代理式作業層」；同時發表的還有擴充試驗場域量能的 STACK、建立全國隱私優先資料基礎設施的 COMMONS，以及讓病人貢獻真實世界資料並找到試驗的 CINCH（<a href="https://www.hhs.gov/press-room/hhs-arpa-h-launch-surpass-modernize-clinical-trials.html" target="_blank" rel="noopener">HHS 新聞稿</a>、<a href="https://arpa-h.gov/explore-funding/programs/surpass" target="_blank" rel="noopener">ARPA-H 計畫頁</a>）。SURPASS 將於 2026 年秋季後段啟動，為期五年（<a href="https://www.statnews.com/2026/09/30/hhs-arpa-h-clinical-trials-artificial-intelligence-surpass-program/" target="_blank" rel="noopener">STAT News</a>）。同日史丹佛醫學院公布兩個獲獎計畫：Roxana Daneshjou、Euan Ashley 與 Akshay Chaudhari 主持的 STEWARD 最高 1,490 萬美元，做的是監看自主 AI 代理在臨床（先用心血管照護）是否可靠的監控系統；Purvesh Khatri 主持的 IMPRINT 最高 4,140 萬美元，建重症免疫反應的多模態機制性數位孿生（<a href="https://med.stanford.edu/news/all-news/2026/09/arpa-h-awards.html" target="_blank" rel="noopener">Stanford Medicine</a>）。</span>
+        <span class="en">On 30 September, HHS and ARPA-H announced SURPASS — Simulation-augmented, Real-time Platform Adaptive Seamless Trials — aimed at trial timelines now exceeding 10 years and average development costs of roughly $2B. Its three technical areas are a phaseless design engine that uses digital twins and predictive models to simulate outcomes before launch, a continuous inference engine for real-time analysis and mid-trial adaptation, and an agentic operations layer automating startup, enrollment and data management. Announced alongside it: STACK for trial-site capacity, COMMONS for privacy-by-design national data infrastructure, and CINCH for patient-contributed real-world data (<a href="https://www.hhs.gov/press-room/hhs-arpa-h-launch-surpass-modernize-clinical-trials.html" target="_blank" rel="noopener">HHS release</a>, <a href="https://arpa-h.gov/explore-funding/programs/surpass" target="_blank" rel="noopener">ARPA-H programme page</a>). SURPASS launches later in autumn 2026 as a five-year programme (<a href="https://www.statnews.com/2026/09/30/hhs-arpa-h-clinical-trials-artificial-intelligence-surpass-program/" target="_blank" rel="noopener">STAT News</a>). The same day Stanford Medicine disclosed two awards: STEWARD, up to $14.9M, led by Roxana Daneshjou, Euan Ashley and Akshay Chaudhari, building a monitoring system for whether autonomous clinical AI agents are reliable — starting in cardiovascular care; and IMPRINT, up to $41.4M, led by Purvesh Khatri, building a multimodal mechanistic digital twin of immune response in critical illness (<a href="https://med.stanford.edu/news/all-news/2026/09/arpa-h-awards.html" target="_blank" rel="noopener">Stanford Medicine</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">STEWARD 這個計畫的存在本身是今天最誠實的一句話：聯邦願意出 1,490 萬美元，不是為了做一個更強的臨床 AI，而是為了做一個「看著臨床 AI 的東西」。在產業端大家搶著把代理放進工作流的同一週，出錢的一方把預算投在監看層——這和昨天本報寫到的「評分的人就是賣模型的人」是同一個問題的兩面。而 COMMONS 與台灣的 FHIR Box 在做同一件事：沒有可互通的資料層，無分期試驗與 Ortet 那種跨維度模型都只是投影片。</span>
+        <span class="en">The existence of STEWARD is the most candid line of the day: the federal government is putting up $14.9M not to build a better clinical AI but to build something that watches clinical AI. In the same week industry is racing to put agents into workflows, the party paying for it is spending on the monitoring layer — the other face of the problem this report raised yesterday, that the people scoring the models are the ones selling them. And COMMONS is doing what Taiwan's FHIR Box is doing: without an interoperable data layer, both phaseless trials and Ortet-style cross-dimensional models remain slideware.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">HHS 新聞稿與 STAT 的報導都沒有揭露 SURPASS 的總經費，也沒有具名任何企業夥伴（<a href="https://www.hhs.gov/press-room/hhs-arpa-h-launch-surpass-modernize-clinical-trials.html" target="_blank" rel="noopener">HHS</a>、<a href="https://www.statnews.com/2026/09/30/hhs-arpa-h-clinical-trials-artificial-intelligence-surpass-program/" target="_blank" rel="noopener">STAT</a>）。史丹佛兩案的金額都是「最高」（up to）而非已撥款。另外，STAT 在 9 月 29 日報導 Anthropic 加入 ARPA-H 的臨床 AI moonshot 並將舉辦閉門醫療活動，但該文為 STAT+ 專屬內容，本報僅依公開可見的標題與導言記錄此事，未取得計畫名稱、金額或其他參與者（<a href="https://www.statnews.com/2026/09/29/anthropic-joins-arpa-h-clinical-ai-moonshot-health-tech/" target="_blank" rel="noopener">STAT News, STAT+</a>）。</span>
+        <span class="en">Neither the HHS release nor STAT's coverage discloses SURPASS's total budget, and no corporate partners are named (<a href="https://www.hhs.gov/press-room/hhs-arpa-h-launch-surpass-modernize-clinical-trials.html" target="_blank" rel="noopener">HHS</a>, <a href="https://www.statnews.com/2026/09/30/hhs-arpa-h-clinical-trials-artificial-intelligence-surpass-program/" target="_blank" rel="noopener">STAT</a>). Both Stanford figures are "up to" ceilings, not obligated funds. Separately, STAT reported on 29 September that Anthropic has joined an ARPA-H clinical AI moonshot and will hold a closed-door healthcare event, but that piece is STAT+ exclusive; this report records only its publicly visible headline and dek, without the programme name, amount or other participants (<a href="https://www.statnews.com/2026/09/29/anthropic-joins-arpa-h-clinical-ai-moonshot-health-tech/" target="_blank" rel="noopener">STAT News, STAT+</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.hhs.gov/press-room/hhs-arpa-h-launch-surpass-modernize-clinical-trials.html" target="_blank" rel="noopener">HHS, 2026-09-30</a> ／ <a href="https://www.statnews.com/2026/09/30/hhs-arpa-h-clinical-trials-artificial-intelligence-surpass-program/" target="_blank" rel="noopener">STAT News, 2026-09-30</a> ／ <a href="https://med.stanford.edu/news/all-news/2026/09/arpa-h-awards.html" target="_blank" rel="noopener">Stanford Medicine, 2026-09-30</a></p></div>
+  </div>
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">併購 · 通路</span><span class="en-inline">M&A · Distribution</span></span>
+      <span class="tag">Grindr</span>
+      <span class="tag">PurposeMed</span>
+      <span class="tag">Freddie</span>
+      <span class="tag">9/30</span>
+    </div>
+    <h3>
+      <span class="zh">一個交友 App 用 2.5 億美元買下 HIV 預防遠距醫療：Grindr 吃下 PurposeMed，通路比診所先到位</span>
+        <span class="en">A dating app pays $250M for HIV-prevention telehealth: Grindr buys PurposeMed, and distribution arrives before the clinic does</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">9 月 30 日，Grindr（NYSE: GRND）宣佈以 2.5 億美元現金加上最高 7,000 萬美元、綁定 2027 年業績目標的 earnout，收購加拿大 PurposeMed——旗下的 Freddie 是 HIV 暴露前預防（PrEP）的遠距醫療平台（<a href="https://www.cnbc.com/2026/09/30/grindr-purposemed-freddie-telehealth-acquisition.html" target="_blank" rel="noopener">CNBC</a>、<a href="https://www.stocktitan.net/sec-filings/GRND/8-k-grindr-inc-reports-material-event-69bcc68712c1.html" target="_blank" rel="noopener">Grindr 8-K 揭露</a>、<a href="https://betakit.com/telehealth-company-freddie-acquired-by-grindr-for-250-million-usd/" target="_blank" rel="noopener">BetaKit</a>）。</span>
+        <span class="en">On 30 September, Grindr (NYSE: GRND) announced the acquisition of Canada's PurposeMed — whose Freddie brand is an HIV pre-exposure prophylaxis (PrEP) telehealth platform — for $250M in cash plus up to $70M in earnout tied to 2027 targets (<a href="https://www.cnbc.com/2026/09/30/grindr-purposemed-freddie-telehealth-acquisition.html" target="_blank" rel="noopener">CNBC</a>, <a href="https://www.stocktitan.net/sec-filings/GRND/8-k-grindr-inc-reports-material-event-69bcc68712c1.html" target="_blank" rel="noopener">Grindr's 8-K</a>, <a href="https://betakit.com/telehealth-company-freddie-acquired-by-grindr-for-250-million-usd/" target="_blank" rel="noopener">BetaKit</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這筆交易和今天的主線是同一個邏輯的另一種解法：Thoreau 從帳單端往上買，Grindr 從使用者端往下買。臨床 AI 新創最常見的死因不是模型不準，是找不到病人；Grindr 手上就是一個高度自我選擇、與 PrEP 適應症高度重疊的使用者池。當通路本身就是資產，模型的品質排在第二位——這一點對任何想賣 AI 給醫療體系的團隊都該是一記警鐘。</span>
+        <span class="en">The deal is the same logic solved from the other end: Thoreau is buying upward from the bill, Grindr is buying downward from the user. The usual cause of death for a clinical AI startup is not an inaccurate model but an inability to find patients; Grindr already holds a highly self-selected user pool that overlaps closely with the PrEP indication. When distribution is itself the asset, model quality ranks second — a point worth sitting with for anyone selling AI into health systems.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">這筆交易本身沒有 AI 成分，本報把它放進來是作為「通路優先」結構的對照，不是醫療 AI 新聞。earnout 的 2027 門檻細節僅見於 8-K 摘要，營收貢獻與監管審查時程尚未公開。</span>
+        <span class="en">The deal has no AI component; it appears here as a counterpoint on distribution-first structure, not as medical-AI news. The 2027 earnout thresholds are visible only in 8-K summary form, and revenue contribution and regulatory review timing are not public.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.cnbc.com/2026/09/30/grindr-purposemed-freddie-telehealth-acquisition.html" target="_blank" rel="noopener">CNBC, 2026-09-30</a> ／ <a href="https://www.stocktitan.net/sec-filings/GRND/8-k-grindr-inc-reports-material-event-69bcc68712c1.html" target="_blank" rel="noopener">StockTitan（Grindr 8-K）, 2026-09-30</a></p></div>
+  </div>
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">支付方 · 產品</span><span class="en-inline">Payers · Product</span></span>
+      <span class="tag">Included Health</span>
+      <span class="tag">Firefly Health</span>
+      <span class="tag">10/1</span>
+    </div>
+    <h3>
+      <span class="zh">Included Health 把 Firefly 併完後直接變成保險公司：Included Health Plans 瞄準 2028/1/1，宣稱總照護成本省 6–15%</span>
+        <span class="en">Having absorbed Firefly, Included Health becomes the plan itself: Included Health Plans targets 1 Jan 2028 and claims 6–15% off total cost of care</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">10 月 1 日，Included Health 宣佈在完成 Firefly Health 收購後推出 Included Health Plans，目標 2028 年 1 月 1 日的保險年度上線，服務自保（self-insured）雇主。它同時是計畫管理者與照護提供者，而非傳統的 ASO 模式，宣稱總照護成本（TCOC）可降 6% 至 15% 且不把成本轉嫁給員工——這個數字的基礎是 Firefly 過去超過 15% 的 TCOC 降幅與 90% 的會員滿意度；交付端有全美逾 1,000 名虛擬臨床人員與 2,000 多個「Firefly Nearby」實體合作點，並整合 Carrum Health、Oshi Health、Pomelo Care 與 Hinge Health 等數位專科平台。執行長 Owen Tripp 的說法是：「醫療成本已經從可容忍的負擔，變成足以擊沉企業的威脅。」（<a href="https://hitconsultant.net/2026/10/01/included-health-launches-included-health-plans-2028-self-insured-employers/" target="_blank" rel="noopener">HIT Consultant</a>、<a href="https://www.businesswire.com/news/home/20261001744796/en/Included-Health-Launches-Included-Health-Plans-Following-Firefly-Health-Acquisition" target="_blank" rel="noopener">Business Wire</a>）</span>
+        <span class="en">On 1 October, having completed its Firefly Health acquisition, Included Health launched Included Health Plans for self-insured employers, targeting the 1 January 2028 plan year. It acts as both plan administrator and care provider rather than a traditional ASO, claiming total cost of care savings of 6% to 15% without shifting cost to employees — a claim grounded in Firefly's record of 15%-plus TCOC reductions and 90% member satisfaction. Delivery runs through more than 1,000 virtual clinicians nationwide and 2,000-plus "Firefly Nearby" in-person partners, integrated with digital specialty platforms including Carrum Health, Oshi Health, Pomelo Care and Hinge Health. CEO Owen Tripp: "Healthcare costs have moved from being a tolerable burden to becoming a threat that will sink businesses." (<a href="https://hitconsultant.net/2026/10/01/included-health-launches-included-health-plans-2028-self-insured-employers/" target="_blank" rel="noopener">HIT Consultant</a>, <a href="https://www.businesswire.com/news/home/20261001744796/en/Included-Health-Launches-Included-Health-Plans-Following-Firefly-Health-Acquisition" target="_blank" rel="noopener">Business Wire</a>)</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這是今天第三個把「規則」當資產的例子。Penelope 賣的是別人的給付規則，Included Health 則是乾脆自己當規則制定者——當你同時是計畫與提供者，給付條件就不再是要去查的外部變數。對 AI 而言，這種結構才是真正好做的場域：資料、決策與結果都在同一個主體內，不需要跨機構協商就能閉環。</span>
+        <span class="en">This is the day's third example of treating rules as an asset. Penelope sells someone else's coverage rules; Included Health simply becomes the rule-maker — when you are both plan and provider, coverage criteria stop being an external variable to look up. For AI, that structure is the genuinely tractable field: data, decision and outcome sit inside one entity, and the loop closes without inter-organisational negotiation.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">6–15% 的省錢區間與 Firefly 的 15%+ TCOC、90% 滿意度全部是廠商自述，未經第三方稽核；上線時間在 2028 年初，意即目前沒有任何這個產品本身的成效資料。HIT Consultant 的報導亦指出該發表未提及 AI 扮演的角色（<a href="https://hitconsultant.net/2026/10/01/included-health-launches-included-health-plans-2028-self-insured-employers/" target="_blank" rel="noopener">HIT Consultant</a>）。</span>
+        <span class="en">The 6–15% range and Firefly's 15%-plus TCOC and 90% satisfaction are all vendor-reported and not independently audited; with a go-live in early 2028, there is as yet no outcome data on this product itself. HIT Consultant also notes the launch makes no mention of AI's role (<a href="https://hitconsultant.net/2026/10/01/included-health-launches-included-health-plans-2028-self-insured-employers/" target="_blank" rel="noopener">HIT Consultant</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://hitconsultant.net/2026/10/01/included-health-launches-included-health-plans-2028-self-insured-employers/" target="_blank" rel="noopener">HIT Consultant, 2026-10-01</a> ／ <a href="https://www.businesswire.com/news/home/20261001744796/en/Included-Health-Launches-Included-Health-Plans-Following-Firefly-Health-Acquisition" target="_blank" rel="noopener">Business Wire, 2026-10-01</a></p></div>
+  </div>
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">募資 · 語音代理</span><span class="en-inline">Funding · Voice agents</span></span>
+      <span class="tag">Parakeet Health</span>
+      <span class="tag">Canvas Ventures</span>
+      <span class="tag">10/1</span>
+    </div>
+    <h3>
+      <span class="zh">Parakeet Health 用 1,000 萬美元 A 輪證明一件事：病人進不來，臨床量能就是空的</span>
+        <span class="en">Parakeet Health's $10M Series A makes one point: if the patient cannot get in, clinical capacity is empty</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">10 月 1 日，Parakeet Health 宣佈完成 1,000 萬美元 A 輪，由 Canvas Ventures 領投，Blank Space Ventures、StoryHouse Ventures 與 HMC INQ 參與，累計募資 1,300 萬美元。產品是把來電語音、外撥、數位傳真、簡訊與網路預約統一到單一作業介面的全通道對話式 AI，並與 EHR／PM 系統連線。公司自述服務逾 2,800 位醫師、1,100 多個院所，ARR 年成長 10 倍；相較舊世代語音 AI 廠商，詢問解決率高 2.3 倍，重新預約未到診病人高 4.9 倍、取消病人高 4.2 倍。客戶包含全美十大皮膚科集團中的六家，以及橫跨 17 州、160 個診所的 Qualderm Partners 與 Schweiger Dermatology Group。創辦人兼執行長是 Jung Park（<a href="https://hitconsultant.net/2026/10/01/parakeet-health-raises-10m-series-a-canvas-ventures-ai-patient-access/" target="_blank" rel="noopener">HIT Consultant</a>、<a href="https://parakeethealth.com/blog/parakeet-health-raises-10-million-series-a-following-10x-growth-and-rapid-enterprise-adoption" target="_blank" rel="noopener">公司新聞稿</a>）。</span>
+        <span class="en">On 1 October, Parakeet Health closed a $10M Series A led by Canvas Ventures with Blank Space Ventures, StoryHouse Ventures and HMC INQ participating, taking total funding to $13M. The product unifies inbound voice, outbound outreach, digital fax, SMS and web scheduling into a single operational interface wired to EHR and practice-management systems. The company reports serving 2,800-plus providers across 1,100-plus clinical locations with 10x year-over-year ARR growth, and claims 2.3x higher inquiry resolution than legacy voice AI vendors, rebooking no-shows at 4.9x and cancellations at 4.2x. Customers include six of the ten largest US dermatology groups, plus Qualderm Partners (160 practices across 17 states) and Schweiger Dermatology Group. Founder and CEO: Jung Park (<a href="https://hitconsultant.net/2026/10/01/parakeet-health-raises-10m-series-a-canvas-ventures-ai-patient-access/" target="_blank" rel="noopener">HIT Consultant</a>, <a href="https://parakeethealth.com/blog/parakeet-health-raises-10-million-series-a-following-10x-growth-and-rapid-enterprise-adoption" target="_blank" rel="noopener">company release</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">1,000 萬美元在今天這份日報裡是最小的一筆數字，但 Park 的那句話值得抄下來：「病人互動決定了需求是否變成照護、臨床量能是否被用到、以及一家醫療組織是否成長。」這正好補上 Thoreau 那條鏈最前面缺的一節——帳單要產生，病人得先走進門。選皮膚科這種高流量、高取消率的科別作為楔子，也比直接攻大型醫學中心務實得多。</span>
+        <span class="en">Ten million dollars is the smallest number in today's report, but Park's line is worth copying down: "Patient engagement determines whether demand becomes care, whether clinical capacity is used and whether a healthcare organization grows." It supplies the segment missing at the front of Thoreau's chain — before a bill exists, a patient has to walk in. Choosing dermatology, a high-volume, high-cancellation specialty, as the wedge is also far more practical than attacking large academic centres head-on.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">2.3 倍、4.9 倍、4.2 倍與 10 倍 ARR 全部是公司自述，沒有說明對照組是哪家廠商、樣本期間多長，也沒有第三方稽核；「2,800 位醫師」是覆蓋數而非活躍使用數。皮膚科的高度集中也意味客戶流失的集中風險。</span>
+        <span class="en">The 2.3x, 4.9x, 4.2x and 10x ARR figures are all self-reported, with no named comparison vendor, no stated sample window and no third-party audit; "2,800 providers" is a coverage count, not active usage. The concentration in dermatology also concentrates churn risk.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://hitconsultant.net/2026/10/01/parakeet-health-raises-10m-series-a-canvas-ventures-ai-patient-access/" target="_blank" rel="noopener">HIT Consultant, 2026-10-01</a> ／ <a href="https://parakeethealth.com/blog/parakeet-health-raises-10-million-series-a-following-10x-growth-and-rapid-enterprise-adoption" target="_blank" rel="noopener">Parakeet Health, 2026-10-01</a></p></div>
+  </div>
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">資本市場</span><span class="en-inline">Capital markets</span></span>
+      <span class="tag">Oura</span>
+      <span class="tag">ElevenLabs</span>
+      <span class="tag">9/29–9/30</span>
+    </div>
+    <h3>
+      <span class="zh">同一個 48 小時裡，健康硬體的 IPO 窗口關上、語音 AI 的估值翻倍：Oura 擱置 22 億美元上市，ElevenLabs 來到 220 億美元</span>
+        <span class="en">In the same 48 hours the IPO window shut on health hardware and doubled the price of voice AI: Oura shelves a $2.2B listing, ElevenLabs reaches $22B</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">9 月 29 日，智慧戒指廠 Oura 以市場「不確定性」為由擱置原定在 Nasdaq 的上市計畫，該案估值約 22 億美元（<a href="https://techcrunch.com/2026/09/29/oura-shelves-its-2-2b-ipo-citing-uncertainty-in-the-market/" target="_blank" rel="noopener">TechCrunch</a>、<a href="https://www.cnbc.com/2026/09/29/smart-ring-maker-oura-postpones-ipo-due-to-market-uncertainty.html" target="_blank" rel="noopener">CNBC</a>）。隔天 9 月 30 日，語音 AI 公司 ElevenLabs 完成約 3 億美元的員工 tender offer，估值翻倍至 220 億美元（<a href="https://techcrunch.com/2026/09/30/ai-voice-startup-elevenlabs-doubles-valuation-to-22b/" target="_blank" rel="noopener">TechCrunch</a>、<a href="https://www.mobihealthnews.com/news/elevenlabs-hits-22b-valuation-employee-tender" target="_blank" rel="noopener">MobiHealthNews</a>）。</span>
+        <span class="en">On 29 September, smart-ring maker Oura shelved its planned Nasdaq listing, valued at roughly $2.2B, citing market "uncertainty" (<a href="https://techcrunch.com/2026/09/29/oura-shelves-its-2-2b-ipo-citing-uncertainty-in-the-market/" target="_blank" rel="noopener">TechCrunch</a>, <a href="https://www.cnbc.com/2026/09/29/smart-ring-maker-oura-postpones-ipo-due-to-market-uncertainty.html" target="_blank" rel="noopener">CNBC</a>). The next day, 30 September, voice-AI company ElevenLabs closed a roughly $300M employee tender offer at a doubled $22B valuation (<a href="https://techcrunch.com/2026/09/30/ai-voice-startup-elevenlabs-doubles-valuation-to-22b/" target="_blank" rel="noopener">TechCrunch</a>, <a href="https://www.mobihealthnews.com/news/elevenlabs-hits-22b-valuation-employee-tender" target="_blank" rel="noopener">MobiHealthNews</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這兩件事放在一起說明了今年資本的偏好：公開市場不想為有存貨、有毛利天花板、有監管面的健康硬體定價，私募市場卻願意為基礎設施層的軟體付兩倍。這也解釋了 Thoreau 為什麼走私募 roll-up 而非 IPO 路線——以及為什麼 Ortet 的 5 億美元是一筆「承諾」而不是一輪公開募資。</span>
+        <span class="en">Together they describe this year's capital preference: public markets do not want to price health hardware with inventory, a gross-margin ceiling and a regulatory surface, while private markets will pay double for infrastructure-layer software. It also explains why Thoreau is running a private roll-up rather than an IPO path — and why Ortet's $500M is a commitment rather than a priced round.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">tender offer 的估值是二級交易價格，不等於新資金進入公司的 primary round 定價；Oura 僅稱「擱置」而非撤回，未給新時程。</span>
+        <span class="en">A tender offer price is a secondary-market mark, not a primary round bringing new money into the company; Oura says "postponed" rather than withdrawn and has given no new timetable.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://techcrunch.com/2026/09/29/oura-shelves-its-2-2b-ipo-citing-uncertainty-in-the-market/" target="_blank" rel="noopener">TechCrunch, 2026-09-29</a> ／ <a href="https://techcrunch.com/2026/09/30/ai-voice-startup-elevenlabs-doubles-valuation-to-22b/" target="_blank" rel="noopener">TechCrunch, 2026-09-30</a> ／ <a href="https://www.mobihealthnews.com/news/elevenlabs-hits-22b-valuation-employee-tender" target="_blank" rel="noopener">MobiHealthNews, 2026-09-30</a></p></div>
+  </div>
+
+</section>
+
+<section id="product">
+  <h2>02 — Product Analysis</h2>
+  <div class="sec-title">
+    <span class="zh">同一個母公司的兩端：Ortet 是還沒有任何成果的模型層，Penelope 是已經可以數出規模的規則層</span>
+        <span class="en">Two ends of the same parent: Ortet is a model layer with no output yet, Penelope a rules layer whose scale can already be counted</span>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>Ortet</h3>
+      <p class="sub"><span class="zh-inline">病人中心的跨維度基礎模型 · Ortet（美國，2026 年 9 月成立）</span><span class="en-inline">A patient-centred cross-dimensional foundation model · Ortet (US, founded September 2026)</span></p>
+      <p>
+        <span class="zh"><strong>功能與定位。</strong>Ortet 要做的不是一個工具，而是一個「共享智能基礎」，宣稱可在科學發現、臨床照護、醫療營運與財務行政之間持續改進與調適，核心主張是同時建模單一病人的生物、臨床、營運與財務四個維度，而非針對 ambient scribe 或理賠處理這類孤立工作流（<a href="https://www.businesswire.com/news/home/20260929127274/en/Ortet-Launches-as-Frontier-AI-Lab-for-Health-With-%24500-Million-Commitment-from-Thoreau" target="_blank" rel="noopener">Business Wire</a>、<a href="https://hitconsultant.net/2026/09/30/ortet-launches-frontier-health-ai-lab-500m-commitment-thoreau-kyunghyun-cho/" target="_blank" rel="noopener">HIT Consultant</a>）。買家尚未定義——沒有公布任何客戶、試點或定價。</span>
+        <span class="en"><strong>Function and position.</strong> Ortet is not pitching a tool but a "shared intelligence foundation" it says can be continuously improved and adapted across scientific discovery, clinical care, health operations and financial administration — modelling the biological, clinical, operational and financial dimensions of one patient at once rather than isolated workflows like ambient scribing or claims processing (<a href="https://www.businesswire.com/news/home/20260929127274/en/Ortet-Launches-as-Frontier-AI-Lab-for-Health-With-%24500-Million-Commitment-from-Thoreau" target="_blank" rel="noopener">Business Wire</a>, <a href="https://hitconsultant.net/2026/09/30/ortet-launches-frontier-health-ai-lab-500m-commitment-thoreau-kyunghyun-cho/" target="_blank" rel="noopener">HIT Consultant</a>). The buyer is undefined: no customer, pilot or pricing has been published.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：團隊深度在醫療 AI 裡幾乎沒有對手。Cho 共同發明 attention 機制與 GRU、曾建立 Genentech 前沿研究團隊；Dwyer 建過 Genentech 生命科學最大的 GPU 叢集；Hammerbacher 是 Cloudera 共同創辦人（<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/ex-genentech-meta-aws-ai-leaders-launch-health-ai-lab-500m-backing" target="_blank" rel="noopener">Fierce Healthcare</a>）。這組人過去是在藥廠內部做前沿研究，現在拿到 5 億美元在外面做。</span>
+          <span class="en">: the depth of the team has few peers in medical AI. Cho co-invented the attention mechanism and the GRU and built Genentech's frontier research team; Dwyer built Genentech's largest life-sciences GPU cluster; Hammerbacher co-founded Cloudera (<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/ex-genentech-meta-aws-ai-leaders-launch-health-ai-lab-500m-backing" target="_blank" rel="noopener">Fierce Healthcare</a>). This group used to do frontier research inside a pharma company; now it has $500M to do it outside one.</span>
+        </li>
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：資金來源同時是通路。Thoreau 旗下 Ensemble 覆蓋 200 多家醫院、550 億美元淨病人收入（<a href="https://hitconsultant.net/2026/06/18/thoreau-makes-strategic-investment-in-ensemble-health/" target="_blank" rel="noopener">HIT Consultant</a>），Penelope 覆蓋 2 億名被保險人的給付規則（<a href="https://www.eu-startups.com/2026/09/with-200-million-patients-covered-penelope-health-secures-e87-million-in-funding/" target="_blank" rel="noopener">EU-Startups</a>）。對一個主張要跨生物、臨床、營運、財務四個維度的模型，這是極少見的起跑位置。</span>
+          <span class="en">: the capital source is also the channel. Thoreau's Ensemble covers 200-plus hospitals and $55B in net patient revenue (<a href="https://hitconsultant.net/2026/06/18/thoreau-makes-strategic-investment-in-ensemble-health/" target="_blank" rel="noopener">HIT Consultant</a>), and Penelope covers coverage rules for 200 million insured lives (<a href="https://www.eu-startups.com/2026/09/with-200-million-patients-covered-penelope-health-secures-e87-million-in-funding/" target="_blank" rel="noopener">EU-Startups</a>). For a model claiming to span biology, clinical care, operations and finance, that is an unusually good starting position.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：目前沒有任何可驗證的東西。沒有模型、沒有 benchmark、沒有論文、沒有產品、沒有時程、沒有具名資料夥伴，連員工人數都沒公布——本報能查到的全部是一份新聞稿與三篇依該新聞稿改寫的報導。這一節的「優勢」全部是履歷與結構，不是成果。</span>
+          <span class="en">: there is nothing verifiable yet. No model, no benchmark, no paper, no product, no timeline, no named data partner, not even a headcount — everything available is one press release and three write-ups derived from it. The strengths above are résumé and structure, not results.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：垂直整合在醫療是雙面刃。模型的訓練資料若來自同一個母公司旗下的營收循環業務，第三方對「這個模型是在優化照護還是優化收款」的質疑會非常難回答，而這正好是 9 月 27 日本報寫到的 Blue Cross 把 9.42 億美元住院加帳歸因於 AI 編碼那條爭議的核心。目前 Ortet 與 Ensemble 之間沒有宣佈任何資料安排，這個疑慮也因此無法排除。</span>
+          <span class="en">: vertical integration cuts both ways in healthcare. If training data comes from revenue cycle operations owned by the same parent, the question of whether the model optimises care or collections becomes very hard to answer — and that is the core of the dispute, covered in this report on 27 September, over Blue Cross attributing $942M in inpatient upcoding to AI. No data arrangement between Ortet and Ensemble has been announced, so the concern cannot be dismissed either.</span>
+        </li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>Penelope Health</h3>
+      <p class="sub"><span class="zh-inline">給付規則的機器可讀層 · Penelope Health（歐洲／美國市場）</span><span class="en-inline">A machine-readable layer for coverage rules · Penelope Health (Europe, selling into the US)</span></p>
+      <p>
+        <span class="zh"><strong>功能與定位。</strong>Penelope 把給付方那些不透明、零碎、持續變動的醫療、處置與藥品覆蓋政策，轉成單一的基礎設施層，讓醫療組織可以即時查詢覆蓋條件、跨給付方比對政策。覆蓋逾 2 億名美國被保險人、超過 15,000 個 CPT／HCPCS 與 J-code／NDC 項目；共同創辦人為執行長 Sohum Patel 與技術長 Mattijs De Paepe，9 月 18 日完成 Thoreau 領投的 1 億美元（8,700 萬歐元），Bertelsmann Healthcare Investments、Twine Ventures 與 Seedcamp 參與（<a href="https://www.eu-startups.com/2026/09/with-200-million-patients-covered-penelope-health-secures-e87-million-in-funding/" target="_blank" rel="noopener">EU-Startups</a>、<a href="https://www.axios.com/pro/health-tech-deals/2026/09/18/penelope-health-100m-thoreau" target="_blank" rel="noopener">Axios Pro</a>）。</span>
+        <span class="en"><strong>Function and position.</strong> Penelope converts the opaque, fragmented, constantly changing medical, procedural and pharmacy coverage policies of payers into a single infrastructure layer, so organisations can check coverage criteria in real time and compare policies across payers. It covers more than 200 million insured Americans and more than 15,000 CPT/HCPCS and J-code/NDC entries. Co-founded by CEO Sohum Patel and CTO Mattijs De Paepe, it closed $100M (€87M) led by Thoreau on 18 September, with Bertelsmann Healthcare Investments, Twine Ventures and Seedcamp participating (<a href="https://www.eu-startups.com/2026/09/with-200-million-patients-covered-penelope-health-secures-e87-million-in-funding/" target="_blank" rel="noopener">EU-Startups</a>, <a href="https://www.axios.com/pro/health-tech-deals/2026/09/18/penelope-health-100m-thoreau" target="_blank" rel="noopener">Axios Pro</a>).</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：這是今天四個產品裡唯一有明確、可量化、可稽核標的的——政策文件是公開的，覆蓋了多少條 CPT 與 J-code 是可以數的。Patel 的問題意識也精準：「決定照護是否被保險給付的規則是整個醫療系統的基礎，卻依然不透明、零碎、難以解讀，而且一直在變。」</span>
+          <span class="en">: of the four products here, it is the only one with a clear, countable, auditable object — policy documents are public, and how many CPT and J-codes are structured can be counted. Patel's framing is precise: "The rules that determine whether care is covered by insurance are foundational to the healthcare system, yet they remain opaque, fragmented, difficult to interpret, and are constantly changing."</span>
+        </li>
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：9 月 24 日與 Ensemble 的整合把價值點從「事後申訴」往前移到「照護前核對」：事前授權綁即時給付條件、診間與 CDI 的文件指引、用已驗證政策引文自動填申訴、以及比對公告政策與實際拒付型態的回饋迴路（<a href="https://hitconsultant.net/2026/09/24/ensemble-health-partners-penelope-health-real-time-payer-policy-intelligence-rcm/" target="_blank" rel="noopener">HIT Consultant</a>）。這是規則層少見的、具體到可以排進工作流的落點。</span>
+          <span class="en">: the 24 September Ensemble integration moves the value point from post-hoc appeals to pre-care verification: prior authorisation tied to live criteria, documentation guidance for clinicians and CDI staff, appeals auto-populated with verified policy citations, and feedback loops comparing published policy against actual denial patterns (<a href="https://hitconsultant.net/2026/09/24/ensemble-health-partners-penelope-health-real-time-payer-policy-intelligence-rcm/" target="_blank" rel="noopener">HIT Consultant</a>). For a rules layer, that is an unusually concrete landing point in the workflow.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：缺的正是最關鍵那個數字。9/24 的合作新聞稿沒有任何拒付率改善、現金流週期縮短或財務影響數據，也沒有具名主管引述（<a href="https://hitconsultant.net/2026/09/24/ensemble-health-partners-penelope-health-real-time-payer-policy-intelligence-rcm/" target="_blank" rel="noopener">HIT Consultant</a>）。規則結構化的難點從來不是解析政策 PDF，而是政策與實際核付行為的落差——而這個落差有多大，目前沒有公開數字。</span>
+          <span class="en">: what is missing is the number that matters. The 24 September release contains no denial-rate improvement, no days-in-AR reduction and no financial impact figure, and no named executive quote (<a href="https://hitconsultant.net/2026/09/24/ensemble-health-partners-penelope-health-real-time-payer-policy-intelligence-rcm/" target="_blank" rel="noopener">HIT Consultant</a>). The hard part of structuring rules was never parsing policy PDFs but the gap between published policy and actual adjudication behaviour — and the size of that gap is not public.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：客戶集中度是結構性風險。領投方同時是最大通路夥伴（Thoreau 旗下 Ensemble），短期是加速器，長期則讓 Penelope 很難賣給 Ensemble 的競爭對手——而營收循環外包本身是個約 340 億美元、競爭激烈的市場（<a href="https://hitconsultant.net/2026/06/18/thoreau-makes-strategic-investment-in-ensemble-health/" target="_blank" rel="noopener">HIT Consultant</a>）。</span>
+          <span class="en">: customer concentration is a structural risk. The lead investor is also the largest channel partner (Thoreau's Ensemble) — an accelerant short-term, but it makes Penelope hard to sell to Ensemble's rivals, in an RCM outsourcing market worth roughly $34B and fiercely contested (<a href="https://hitconsultant.net/2026/06/18/thoreau-makes-strategic-investment-in-ensemble-health/" target="_blank" rel="noopener">HIT Consultant</a>).</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="company">
+  <h2>03 — Companies &amp; Competition</h2>
+  <div class="sec-title">
+    <span class="zh">誰站在哪裡、憑什麼、跟誰打</span>
+        <span class="en">Who stands where, on what, against whom</span>
+  </div>
+
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th><span class="zh-inline">公司</span><span class="en-inline">Company</span></th>
+        <th><span class="zh-inline">近況與數字</span><span class="en-inline">Recent state &amp; numbers</span></th>
+        <th><span class="zh-inline">競爭定位與護城河</span><span class="en-inline">Position &amp; moat</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Thoreau</strong><br><span class="zh-inline">醫療投資平台（Apollo 支持）</span><span class="en-inline">Healthcare investment platform (Apollo-backed)</span></td>
+          <td>
+            <span class="zh">Matt Holt 於 2025 年離開待了 24 年的 New Mountain Capital（規模 600 億美元，最後職位私募股權總裁）後創立，背後資金來自管理規模約 9,380 億美元的 Apollo Global Management；四個月內完成 Ensemble（120 億美元估值）、Penelope（1 億美元）與 Ortet（5 億美元）三筆佈局（<a href="https://www.caproasia.com/2026/06/18/united-states-new-healthcare-investment-platform-thoreau-group-to-make-strategic-investment-in-united-states-health-systems-revenue-cycle-management-company-ensemble-health-partners-at-12-billion-val/" target="_blank" rel="noopener">Caproasia</a>、<a href="https://hitconsultant.net/2026/06/18/thoreau-makes-strategic-investment-in-ensemble-health/" target="_blank" rel="noopener">HIT Consultant</a>）。</span>
+        <span class="en">Founded in 2025 by Matt Holt after 24 years at the $60B New Mountain Capital, latterly as President of Private Equity, and backed by Apollo Global Management (~$938B AUM); in four months it has placed Ensemble (at a $12B valuation), Penelope ($100M) and Ortet ($500M) (<a href="https://www.caproasia.com/2026/06/18/united-states-new-healthcare-investment-platform-thoreau-group-to-make-strategic-investment-in-united-states-health-systems-revenue-cycle-management-company-ensemble-health-partners-at-12-billion-val/" target="_blank" rel="noopener">Caproasia</a>, <a href="https://hitconsultant.net/2026/06/18/thoreau-makes-strategic-investment-in-ensemble-health/" target="_blank" rel="noopener">HIT Consultant</a>).</span>
+          </td>
+          <td>
+            <span class="zh">護城河是結構而非技術：同時持有作業通路、規則資料與模型產能。弱點是這三者之間目前沒有任何已公開的資料共用安排，整合全部還在紙上，而大型 roll-up 的歷史告訴我們規模不會自動變成客戶價值。</span>
+        <span class="en">The moat is structural, not technical: it holds the operational channel, the rules data and the model capacity at once. The weakness is that no data-sharing arrangement between the three has been disclosed — the integration exists only on paper — and the history of large roll-ups says scale does not convert into customer value by itself.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Ortet</strong><br><span class="zh-inline">前沿模型實驗室（紐約）</span><span class="en-inline">Frontier model lab (New York)</span></td>
+          <td>
+            <span class="zh">2026/9/29 成立，Thoreau 承諾 5 億美元，Goldman Sachs 任財務顧問，已取得首批 GPU 容量；六位共同創辦人多來自 Genentech、Meta、AWS（<a href="https://www.businesswire.com/news/home/20260929127274/en/Ortet-Launches-as-Frontier-AI-Lab-for-Health-With-%24500-Million-Commitment-from-Thoreau" target="_blank" rel="noopener">Business Wire</a>）。</span>
+        <span class="en">Launched 29 September 2026 with a $500M Thoreau commitment, Goldman Sachs advising, and first GPU capacity secured; its six co-founders come largely from Genentech, Meta and AWS (<a href="https://www.businesswire.com/news/home/20260929127274/en/Ortet-Launches-as-Frontier-AI-Lab-for-Health-With-%24500-Million-Commitment-from-Thoreau" target="_blank" rel="noopener">Business Wire</a>).</span>
+          </td>
+          <td>
+            <span class="zh">護城河是人與（潛在的）關聯方資料存取。弱點是零成果：沒有模型、benchmark、論文、客戶或時程，且要與 Google、Microsoft、OpenAI、Anthropic 以及 OpenEvidence 這類已有分發的對手搶同一批臨床使用者。</span>
+        <span class="en">The moat is people and (potential) affiliate data access. The weakness is a complete absence of output — no model, benchmark, paper, customer or timeline — while competing for the same clinical users as Google, Microsoft, OpenAI, Anthropic and distribution-holders like OpenEvidence.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Ensemble Health Partners</strong><br><span class="zh-inline">營收循環外包（2014 年創立）</span><span class="en-inline">Revenue cycle outsourcing (founded 2014)</span></td>
+          <td>
+            <span class="zh">為全美 200 多家醫院管理端到端營收循環，年淨病人收入 550 億美元；2026/6/18 獲 Thoreau 以約 120 億美元估值投資，Berkshire Partners、Warburg Pincus、Bon Secours Mercy Health 留任股東；所處 RCM 外包市場約 340 億美元（<a href="https://hitconsultant.net/2026/06/18/thoreau-makes-strategic-investment-in-ensemble-health/" target="_blank" rel="noopener">HIT Consultant</a>、<a href="https://www.bloomberg.com/news/articles/2026-06-12/matt-holt-said-to-near-12-billion-deal-for-ensemble-health" target="_blank" rel="noopener">Bloomberg</a>）。</span>
+        <span class="en">Runs end-to-end revenue cycle for 200-plus US hospitals and $55B in annual net patient revenue; on 18 June 2026 took a Thoreau investment at roughly a $12B valuation, with Berkshire Partners, Warburg Pincus and Bon Secours Mercy Health remaining; the RCM outsourcing market is around $34B (<a href="https://hitconsultant.net/2026/06/18/thoreau-makes-strategic-investment-in-ensemble-health/" target="_blank" rel="noopener">HIT Consultant</a>, <a href="https://www.bloomberg.com/news/articles/2026-06-12/matt-holt-said-to-near-12-billion-deal-for-ensemble-health" target="_blank" rel="noopener">Bloomberg</a>).</span>
+          </td>
+          <td>
+            <span class="zh">護城河是切換成本：營收循環一旦外包，換廠商等於停掉現金流。弱點是這門生意的毛利對勞力成本敏感，且「AI 幫醫院多收錢」這個賣點正好是支付方與監管最緊盯的地方。</span>
+        <span class="en">The moat is switching cost: once revenue cycle is outsourced, changing vendor means interrupting cash flow. The weakness is margin sensitivity to labour cost, and that "AI helps hospitals collect more" is exactly the pitch payers and regulators are watching hardest.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Penelope Health</strong><br><span class="zh-inline">給付政策情報層</span><span class="en-inline">Payer policy intelligence layer</span></td>
+          <td>
+            <span class="zh">覆蓋逾 2 億名美國被保險人、超過 15,000 個 CPT／HCPCS 與 J-code／NDC；2026/9/18 完成 Thoreau 領投 1 億美元（8,700 萬歐元）；9/24 與 Ensemble 整合（<a href="https://www.eu-startups.com/2026/09/with-200-million-patients-covered-penelope-health-secures-e87-million-in-funding/" target="_blank" rel="noopener">EU-Startups</a>、<a href="https://hitconsultant.net/2026/09/24/ensemble-health-partners-penelope-health-real-time-payer-policy-intelligence-rcm/" target="_blank" rel="noopener">HIT Consultant</a>）。</span>
+        <span class="en">Covers 200 million-plus insured Americans and 15,000-plus CPT/HCPCS and J-code/NDC entries; closed $100M (€87M) led by Thoreau on 18 September 2026; integrated with Ensemble on 24 September (<a href="https://www.eu-startups.com/2026/09/with-200-million-patients-covered-penelope-health-secures-e87-million-in-funding/" target="_blank" rel="noopener">EU-Startups</a>, <a href="https://hitconsultant.net/2026/09/24/ensemble-health-partners-penelope-health-real-time-payer-policy-intelligence-rcm/" target="_blank" rel="noopener">HIT Consultant</a>).</span>
+          </td>
+          <td>
+            <span class="zh">護城河是政策語料的廣度與更新頻率——這是一個靠持續維護才有價值的資產，單次爬取無法複製。弱點是對 Ensemble 的通路依賴，以及尚未公開任何拒付率或財務成效數字。</span>
+        <span class="en">The moat is the breadth and refresh rate of the policy corpus — an asset that only has value if continuously maintained, so a one-off scrape does not replicate it. The weakness is channel dependence on Ensemble, and the absence of any published denial-rate or financial outcome figure.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Abridge</strong><br><span class="zh-inline">Ambient AI 臨床文件</span><span class="en-inline">Ambient AI clinical documentation</span></td>
+          <td>
+            <span class="zh">2026 年完成 3 億美元 E 輪（a16z 與 Khosla 參與），估值 53 億美元（<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/ambient-ai-startup-abridge-scores-300m-series-e-backed-a16z-and-khosla" target="_blank" rel="noopener">Fierce Healthcare</a>）；本報 9 月 27 日記錄其拿下美國退伍軍人事務部五年企業合約，該案所有合格廠商合計上限為 7.757 億美元。</span>
+        <span class="en">Closed a $300M Series E in 2026 with a16z and Khosla participating, at a $5.3B valuation (<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/ambient-ai-startup-abridge-scores-300m-series-e-backed-a16z-and-khosla" target="_blank" rel="noopener">Fierce Healthcare</a>); as this report recorded on 27 September, it won a five-year VA enterprise contract with a $775.72M ceiling across all eligible vendors.</span>
+          </td>
+          <td>
+            <span class="zh">護城河是醫師端的實際採用與大型體系的導入經驗。弱點是 Epic 在 2026 年 2 月推出原生 AI Charting，把它的功能面壓成 EHR 的一個內建選項（<a href="https://www.statnews.com/2026/02/04/epic-ai-charting-ambient-scribe-abridge-microsoft/" target="_blank" rel="noopener">STAT News</a>）——這正是「爭奪醫師注意力」路線的結構性天花板。</span>
+        <span class="en">The moat is real clinician adoption and large-system deployment experience. The weakness is Epic's native AI Charting, launched in February 2026, which compresses its feature set into a built-in EHR option (<a href="https://www.statnews.com/2026/02/04/epic-ai-charting-ambient-scribe-abridge-microsoft/" target="_blank" rel="noopener">STAT News</a>) — the structural ceiling of competing for the clinician's attention.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Qualified Health</strong><br><span class="zh-inline">醫療體系的企業級 AI 治理平台</span><span class="en-inline">Enterprise AI governance platform for health systems</span></td>
+          <td>
+            <span class="zh">2026 年 3 月完成 NEA 領投的 1.25 億美元 B 輪（Anthropic 與 Menlo Ventures 的 Anthology 基金等參與），累計 1.55 億美元；客戶包含 Emory Healthcare、Jefferson Health、Mercy 與德州大學系統八個機構，自述 40 萬名使用者、涵蓋約 5% 的美國醫院營收，UTMB 稱六個月內有 1,500 萬美元可量測的 run-rate 影響（<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/qualified-health-locks-125m-fresh-funding-scale-ai-health-systems" target="_blank" rel="noopener">Fierce Healthcare</a>）。</span>
+        <span class="en">Closed a $125M Series B led by NEA in March 2026 (with Anthropic and Menlo Ventures' Anthology fund among participants), $155M to date; customers include Emory Healthcare, Jefferson Health, Mercy and eight University of Texas System institutions, with 400,000 reported users across roughly 5% of US hospital revenue, and UTMB citing $15M in measurable run-rate impact within six months (<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/qualified-health-locks-125m-fresh-funding-scale-ai-health-systems" target="_blank" rel="noopener">Fierce Healthcare</a>).</span>
+          </td>
+          <td>
+            <span class="zh">它是 Thoreau 路線最直接的對照組：同樣主張「要當基礎設施」，但用中立第三方的身份賣給醫院，而非把醫院的營收循環買下來。弱點是治理層本身不產生臨床價值，續約得靠它上面跑的應用；1,500 萬美元的 run-rate 影響亦為客戶與廠商自述。</span>
+        <span class="en">It is the most direct control group for the Thoreau route: the same claim to be infrastructure, but sold to hospitals as a neutral third party rather than by buying their revenue cycle. The weakness is that a governance layer creates no clinical value by itself — renewals depend on the applications running on top — and the $15M run-rate figure is customer- and vendor-reported.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Included Health</strong><br><span class="zh-inline">自保雇主的整合型健保計畫</span><span class="en-inline">Integrated health plans for self-insured employers</span></td>
+          <td>
+            <span class="zh">2026 年中完成 Firefly Health 收購，2026/10/1 推出 Included Health Plans，瞄準 2028/1/1 保險年度；逾 1,000 名虛擬臨床人員、2,000 多個實體合作點，宣稱 TCOC 省 6–15%（<a href="https://hitconsultant.net/2026/10/01/included-health-launches-included-health-plans-2028-self-insured-employers/" target="_blank" rel="noopener">HIT Consultant</a>）。</span>
+        <span class="en">Completed its Firefly Health acquisition in mid-2026 and launched Included Health Plans on 1 October 2026 for the 1 January 2028 plan year; 1,000-plus virtual clinicians, 2,000-plus in-person partners, claiming 6–15% off total cost of care (<a href="https://hitconsultant.net/2026/10/01/included-health-launches-included-health-plans-2028-self-insured-employers/" target="_blank" rel="noopener">HIT Consultant</a>).</span>
+          </td>
+          <td>
+            <span class="zh">護城河是同時當計畫與提供者，給付規則變成內生變數而非外部查詢。弱點是 2028 年才上線、所有數字都是從 Firefly 歷史外推，且承保風險與科技公司的體質不一定相容。</span>
+        <span class="en">The moat is being plan and provider at once, so coverage rules become endogenous rather than something to look up. The weakness is a 2028 go-live, numbers extrapolated entirely from Firefly's history, and underwriting risk that does not sit naturally on a technology company's balance sheet.</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <div class="panel">
+    <p>
+      <span class="zh"><strong>今天的競爭結構是兩個方向在搶同一條河。</strong>一邊是上游：Abridge、Ambience、Nabla、OpenEvidence 從醫師的注意力進場，但 Epic 2026 年 2 月的原生 AI Charting 已經證明這條路的天花板是 EHR 的產品路線圖。另一邊是下游：Thoreau 從帳單進場——買下誰送出帳單（Ensemble）、誰決定帳單合不合格（Penelope），再蓋一個模型（Ortet）；Included Health 乾脆兩邊都當。下游這條路的門票貴得多（120 億 + 1 億 + 5 億美元），但不會被任何人的產品路線圖壓死。真正要盯的不是 Ortet 什麼時候發第一個模型，而是它和 Ensemble 之間會不會出現一份資料共用協議——那份協議在不在，決定這是一個垂直整合的賭注，還是只是一家有錢的實驗室。</span>
+        <span class="en"><strong>Today's competitive structure is two directions fighting over the same river.</strong> Upstream: Abridge, Ambience, Nabla and OpenEvidence enter through the clinician's attention — but Epic's native AI Charting in February 2026 already showed that this path's ceiling is someone else's product roadmap. Downstream: Thoreau enters through the bill, buying who submits it (Ensemble) and who decides whether it qualifies (Penelope), then building a model (Ortet); Included Health simply becomes both sides. The downstream ticket costs far more ($12B + $100M + $500M) but cannot be crushed by anyone's roadmap. The thing to watch is not when Ortet ships its first model but whether a data-sharing agreement appears between Ortet and Ensemble — whether that document exists decides whether this is a vertically integrated bet or merely a well-funded lab.</span>
+    </p>
+  </div>
+</section>
+
+<section id="taiwan">
+  <h2>04 — Taiwan Angle</h2>
+  <div class="sec-title">
+    <span class="zh">台灣正在公共化的那一層，美國正在私有化</span>
+        <span class="en">The layer Taiwan is making public, the US is making private</span>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="zh"><strong>(1) 台灣已經在做的，正好是 Thoreau 和 ARPA-H 都在買的那一層。</strong>衛福部資訊處長李建璋說明，國家提供 FHIR Box 作業系統平台，「直接訂出標準並給予轉換工具」，讓各院所把電子病歷轉成統一格式；2025 年已有三家醫學中心試辦，預計 2026 年底正式上線，3 到 5 年內推至全台約 80% 醫療院所（<a href="https://money.udn.com/money/story/7307/9675552" target="_blank" rel="noopener">經濟日報，2026-08-06</a>）。這和 ARPA-H 的 COMMONS（全國隱私優先資料基礎設施）是同一個命題，也是 Ortet 那種跨生物／臨床／營運／財務模型的前提條件。差別在於：美國這一層正在被私人資本買下來（Ensemble 的 200 家醫院、Penelope 的 2 億人規則），台灣這一層是公共財。這是台灣少見的結構優勢——但也意味如果 FHIR Box 的進度落後，國內業者不會有任何替代路徑可走。</span>
+        <span class="en"><strong>(1) What Taiwan is already building is exactly the layer both Thoreau and ARPA-H are buying.</strong> Lee Chien-chang, head of the MOHW's information department, has described FHIR Box as a state-provided operating platform that "sets the standard directly and supplies the conversion tools" so hospitals can render electronic records into one format; three medical centres piloted it in 2025, formal go-live is expected by the end of 2026, and the goal is roughly 80% of Taiwanese facilities within three to five years (<a href="https://money.udn.com/money/story/7307/9675552" target="_blank" rel="noopener">Economic Daily News, 2026-08-06</a>). That is the same proposition as ARPA-H's COMMONS, and the precondition for any Ortet-style model spanning biology, clinical care, operations and finance. The difference: in the US this layer is being bought by private capital (Ensemble's 200 hospitals, Penelope's rules for 200 million lives), while in Taiwan it is a public good. That is a rare structural advantage — and it also means that if FHIR Box slips, domestic vendors have no alternative route.</span>
+    </p>
+  </div>
+  <div class="panel">
+    <p>
+      <span class="zh"><strong>(2) 「國家整合型臨床試驗網絡」和 SURPASS／STACK 的時間窗幾乎重疊。</strong>衛福部長石崇良表示，醫療 AI 要落地，「首要工作是建立資料標準、治理制度及可信賴的使用環境」，並規劃推動國家整合型臨床試驗網絡；配套的財政投入包括五年 489 億元的「健康台灣深耕計畫」、四年 240 億元的「國家藥物韌性整備計畫」，以及規劃 100 億元策略性投資支持創新技術與醫藥品研發；他將於 10 月 7 日經濟日報「2026 生技論壇－AI 時代 生醫產業新契機」致詞（<a href="https://udn.com/news/story/7240/9754542" target="_blank" rel="noopener">聯合新聞網，2026-09-15</a>）。對照 ARPA-H 同週啟動的 STACK（擴充試驗場域量能）與五年期 SURPASS，台灣若要讓國內試驗能被納入國際平台試驗，FHIR 標準化與試驗網絡這兩件事必須同步完成——只做資料不做網絡，等於把資料整理好送給別人的平台用。</span>
+        <span class="en"><strong>(2) The "national integrated clinical trial network" overlaps almost exactly with SURPASS and STACK.</strong> Health Minister Shih Chung-liang has said that for medical AI to land, "the first task is to establish data standards, governance, and a trustworthy environment for use," and that a national integrated clinical trial network is planned. The fiscal package around it includes NT$48.9B over five years for the Healthy Taiwan Deep Cultivation Programme, NT$24B over four years for national pharmaceutical resilience, and a planned NT$10B in strategic investment for innovative technology and drug development; he is due to speak on 7 October at the Economic Daily News forum on biomedicine in the AI era (<a href="https://udn.com/news/story/7240/9754542" target="_blank" rel="noopener">UDN, 2026-09-15</a>). Set against ARPA-H's STACK, launched the same week to expand trial-site capacity, and the five-year SURPASS, Taiwan has to finish FHIR standardisation and the trial network together if local trials are to be admitted to international platform studies — doing the data without the network means tidying up data for somebody else's platform.</span>
+    </p>
+  </div>
+  <div class="panel">
+    <p>
+      <span class="zh"><strong>(3) 給台灣業者的實際讀法：不要去搶模型層。</strong>今天的三筆錢（5 億、1 億、120 億美元估值）說明了一件事——模型層的入場費已經是國家級預算的量級，而規則層與通路層的價值反而被重新定價。Penelope 的資產是 15,000 個 CPT／J-code 的結構化政策語料，Parakeet 的資產是 1,100 個院所的進件通道（<a href="https://hitconsultant.net/2026/10/01/parakeet-health-raises-10m-series-a-canvas-ventures-ai-patient-access/" target="_blank" rel="noopener">HIT Consultant，2026-10-01</a>）——兩者都不需要前沿模型，但都需要對當地給付與作業規則的深度理解。台灣的健保給付規則、醫院作業流程與 FHIR Box 標準，正好是跨國大廠最難複製、而本地團隊最有機會的那一層。</span>
+        <span class="en"><strong>(3) The practical reading for Taiwanese vendors: do not fight for the model layer.</strong> Today's three cheques ($500M, $100M, a $12B valuation) say one thing — the entry fee at the model layer is now the size of a national budget, while the rules layer and the access layer are being repriced upward. Penelope's asset is a structured policy corpus over 15,000 CPT and J-codes; Parakeet's asset is the intake channel into 1,100 clinical locations (<a href="https://hitconsultant.net/2026/10/01/parakeet-health-raises-10m-series-a-canvas-ventures-ai-patient-access/" target="_blank" rel="noopener">HIT Consultant, 2026-10-01</a>). Neither needs a frontier model, and both need deep knowledge of local coverage and operating rules. Taiwan's NHI reimbursement rules, hospital workflows and the FHIR Box standard are precisely the layer multinationals find hardest to replicate and local teams have the best shot at.</span>
+    </p>
+  </div>
+</section>
+
+<section id="reading">
+  <h2>05 — Further Reading</h2>
+  <div class="sec-title">
+    <span class="zh">挑的是一手文件與能改變你對「誰在賺什麼」判斷的那幾篇，不是最熱門的那幾篇</span>
+        <span class="en">Chosen for primary documents and pieces that change your read on who is earning what — not for what trended</span>
+  </div>
+
+  <ol class="reading">
+    <li>
+      <a href="https://www.businesswire.com/news/home/20260929127274/en/Ortet-Launches-as-Frontier-AI-Lab-for-Health-With-%24500-Million-Commitment-from-Thoreau" target="_blank" rel="noopener">Ortet Launches as Frontier AI Lab for Health With $500 Million Commitment from Thoreau — Business Wire (2026-09-29)</a>
+      <p class="why"><span class="zh">一手新聞稿。值得讀的是它刻意不說的部分：沒有產品、沒有時程、沒有資料夥伴，只有一份創辦人名單與一段關於「統一智能層」的敘事。</span>
+        <span class="en">The primary release. What makes it worth reading is what it deliberately omits: no product, no timeline, no data partner — only a founder roster and a narrative about a unified intelligence layer.</span></p>
+    </li>
+    <li>
+      <a href="https://hitconsultant.net/2026/09/24/ensemble-health-partners-penelope-health-real-time-payer-policy-intelligence-rcm/" target="_blank" rel="noopener">Ensemble Health Partners with Penelope to Shift Real-Time Policy Intelligence Upstream — HIT Consultant (2026-09-24)</a>
+      <p class="why"><span class="zh">這篇是理解 Thoreau 整個結構的鑰匙。把它和 9/29 的 Ortet 新聞稿並讀，就能看出模型只是最後一塊，前面兩塊已經先搭好。</span>
+        <span class="en">The key to Thoreau's whole structure. Read alongside the 29 September Ortet release and it becomes clear the model is the last piece — the first two were already in place.</span></p>
+    </li>
+    <li>
+      <a href="https://www.hhs.gov/press-room/hhs-arpa-h-launch-surpass-modernize-clinical-trials.html" target="_blank" rel="noopener">HHS Launches SURPASS and New Efforts to Accelerate Faster, Smarter Clinical Trials — HHS (2026-09-30)</a>
+      <p class="why"><span class="zh">官方一手文件。三個技術軸（無分期設計引擎、連續推論引擎、代理式作業層）加上 STACK／COMMONS／CINCH，是未來五年美國臨床試驗基建的規格書。</span>
+        <span class="en">The official primary document. Its three technical areas — phaseless design engine, continuous inference engine, agentic operations layer — plus STACK, COMMONS and CINCH, read as the spec sheet for US trial infrastructure over the next five years.</span></p>
+    </li>
+    <li>
+      <a href="https://med.stanford.edu/news/all-news/2026/09/arpa-h-awards.html" target="_blank" rel="noopener">Stanford Medicine researchers awarded ARPA-H funding for AI projects — Stanford Medicine (2026-09-30)</a>
+      <p class="why"><span class="zh">讀 STEWARD 那一段。聯邦出最高 1,490 萬美元做的是「監看自主臨床 AI 代理是否可靠」的系統，這比任何一篇模型論文更能說明現在的瓶頸在哪。</span>
+        <span class="en">Read the STEWARD passage. The federal government is putting up to $14.9M into a system that monitors whether autonomous clinical AI agents are reliable — more revealing about where the bottleneck now sits than any model paper.</span></p>
+    </li>
+    <li>
+      <a href="https://www.eu-startups.com/2026/09/with-200-million-patients-covered-penelope-health-secures-e87-million-in-funding/" target="_blank" rel="noopener">With 200 million patients covered, Penelope Health secures a €87 million funding commitment — EU-Startups (2026-09-18)</a>
+      <p class="why"><span class="zh">Patel 與 De Paepe 的兩段引述把「規則層」這個論點講得比多數投資備忘錄清楚，而且給了可核對的規模數字（2 億人、15,000 個代碼）。</span>
+        <span class="en">Two quotes from Patel and De Paepe make the case for a rules layer more clearly than most investment memos, and give checkable scale figures (200 million lives, 15,000 codes).</span></p>
+    </li>
+    <li>
+      <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/qualified-health-locks-125m-fresh-funding-scale-ai-health-systems" target="_blank" rel="noopener">Qualified Health locks in $125M in fresh funding to scale enterprise AI at health systems — Fierce Healthcare (2026-03)</a>
+      <p class="why"><span class="zh">今天主線最好的對照組：同樣要當基礎設施，但走中立第三方路線。讀它的客戶名單與 UTMB 的 1,500 萬美元說法，再回頭看 Thoreau 為什麼選擇買下通路而不是賣給通路。</span>
+        <span class="en">The best control group for today's lead: the same ambition to be infrastructure, pursued as a neutral third party. Read its customer list and UTMB's $15M claim, then reconsider why Thoreau chose to buy the channel rather than sell to it.</span></p>
+    </li>
+  </ol>
+</section>
+
+<section id="refs">
+  <h2>06 — References</h2>
+  <div class="sec-title">
+    <span class="zh">參考文獻</span>
+        <span class="en">References</span>
+  </div>
+
+  <div class="panel">
+    <ol class="refs">
+      <li>Ortet Launches as Frontier AI Lab for Health With $500 Million Commitment from Thoreau. <em>Business Wire</em>, 2026-09-29. <a href="https://www.businesswire.com/news/home/20260929127274/en/Ortet-Launches-as-Frontier-AI-Lab-for-Health-With-%24500-Million-Commitment-from-Thoreau" target="_blank" rel="noopener">businesswire.com</a></li>
+      <li>Ex-Genentech, Meta, AWS AI leaders launch health AI lab with $500M backing. <em>Fierce Healthcare</em>, 2026-09-29. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/ex-genentech-meta-aws-ai-leaders-launch-health-ai-lab-500m-backing" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>Ortet Launches with $500M from Thoreau to Build Frontier AI Lab for Healthcare. <em>HIT Consultant</em>, 2026-09-30. <a href="https://hitconsultant.net/2026/09/30/ortet-launches-frontier-health-ai-lab-500m-commitment-thoreau-kyunghyun-cho/" target="_blank" rel="noopener">hitconsultant.net</a></li>
+      <li>AI health startup Ortet launches with $500M and ex-Genentech co-founders（付費牆／paywalled）. <em>Endpoints News</em>, 2026-09-29. <a href="https://endpoints.news/ai-health-startup-ortet-launches-with-500m-and-ex-genentech-co-founders/" target="_blank" rel="noopener">endpoints.news</a></li>
+      <li>Thoreau Enters Definitive Agreement for Strategic Growth Investment in Ensemble Health Partners. <em>HIT Consultant</em>, 2026-06-18. <a href="https://hitconsultant.net/2026/06/18/thoreau-makes-strategic-investment-in-ensemble-health/" target="_blank" rel="noopener">hitconsultant.net</a></li>
+      <li>Matt Holt Said to Near $12 Billion Deal for Ensemble Health. <em>Bloomberg</em>, 2026-06-12. <a href="https://www.bloomberg.com/news/articles/2026-06-12/matt-holt-said-to-near-12-billion-deal-for-ensemble-health" target="_blank" rel="noopener">bloomberg.com</a></li>
+      <li>Thoreau Group to Make Strategic Investment in Ensemble Health Partners at $12 Billion Valuation. <em>Caproasia</em>, 2026-06-18. <a href="https://www.caproasia.com/2026/06/18/united-states-new-healthcare-investment-platform-thoreau-group-to-make-strategic-investment-in-united-states-health-systems-revenue-cycle-management-company-ensemble-health-partners-at-12-billion-val/" target="_blank" rel="noopener">caproasia.com</a></li>
+      <li>With 200 million patients covered, Penelope Health secures a €87 million funding commitment. <em>EU-Startups</em>, 2026-09-18. <a href="https://www.eu-startups.com/2026/09/with-200-million-patients-covered-penelope-health-secures-e87-million-in-funding/" target="_blank" rel="noopener">eu-startups.com</a></li>
+      <li>Penelope Health raises $100M from Matt Holt's Thoreau, others. <em>Axios Pro</em>, 2026-09-18. <a href="https://www.axios.com/pro/health-tech-deals/2026/09/18/penelope-health-100m-thoreau" target="_blank" rel="noopener">axios.com</a></li>
+      <li>Ensemble Health Partners with Penelope to Shift Real-Time Policy Intelligence Upstream. <em>HIT Consultant</em>, 2026-09-24. <a href="https://hitconsultant.net/2026/09/24/ensemble-health-partners-penelope-health-real-time-payer-policy-intelligence-rcm/" target="_blank" rel="noopener">hitconsultant.net</a></li>
+      <li>Ensemble and Penelope Health Announce Strategic Partnership. <em>GlobeNewswire</em>, 2026-09-24. <a href="https://www.globenewswire.com/news-release/2026/09/24/3368454/0/en/ensemble-and-penelope-health-announce-strategic-partnership.html" target="_blank" rel="noopener">globenewswire.com</a></li>
+      <li>Ensemble and Penelope Health Announce Strategic Partnership. <em>Penelope Health</em>, 2026-09-24. <a href="https://penelope.health/news/ensemble-and-penelope-health-announce-strategic-partnership" target="_blank" rel="noopener">penelope.health</a></li>
+      <li>HHS Launches SURPASS and New Efforts to Accelerate Faster, Smarter Clinical Trials. <em>U.S. Department of Health and Human Services</em>, 2026-09-30. <a href="https://www.hhs.gov/press-room/hhs-arpa-h-launch-surpass-modernize-clinical-trials.html" target="_blank" rel="noopener">hhs.gov</a></li>
+      <li>SURPASS — Simulation-augmented, Real-time Platform Adaptive Seamless Trials. <em>ARPA-H</em>, 2026-09-30. <a href="https://arpa-h.gov/explore-funding/programs/surpass" target="_blank" rel="noopener">arpa-h.gov</a></li>
+      <li>HHS announces efforts to speed clinical trials with AI. <em>STAT News</em>, 2026-09-30. <a href="https://www.statnews.com/2026/09/30/hhs-arpa-h-clinical-trials-artificial-intelligence-surpass-program/" target="_blank" rel="noopener">statnews.com</a></li>
+      <li>Stanford Medicine researchers awarded ARPA-H funding for AI projects. <em>Stanford Medicine</em>, 2026-09-30. <a href="https://med.stanford.edu/news/all-news/2026/09/arpa-h-awards.html" target="_blank" rel="noopener">med.stanford.edu</a></li>
+      <li>Anthropic joins ARPA-H clinical AI moonshot, will hold closed-door health care event（STAT+ 付費牆／paywalled）. <em>STAT News</em>, 2026-09-29. <a href="https://www.statnews.com/2026/09/29/anthropic-joins-arpa-h-clinical-ai-moonshot-health-tech/" target="_blank" rel="noopener">statnews.com</a></li>
+      <li>Grindr expands beyond dating with $250 million telehealth acquisition of PurposeMed. <em>CNBC</em>, 2026-09-30. <a href="https://www.cnbc.com/2026/09/30/grindr-purposemed-freddie-telehealth-acquisition.html" target="_blank" rel="noopener">cnbc.com</a></li>
+      <li>Grindr Inc. 8-K: up to $70M hinges on 2027 targets in deal to buy Freddie's parent. <em>StockTitan（SEC filing）</em>, 2026-09-30. <a href="https://www.stocktitan.net/sec-filings/GRND/8-k-grindr-inc-reports-material-event-69bcc68712c1.html" target="_blank" rel="noopener">stocktitan.net</a></li>
+      <li>Telehealth company Freddie acquired by Grindr for $250 million USD. <em>BetaKit</em>, 2026-09-30. <a href="https://betakit.com/telehealth-company-freddie-acquired-by-grindr-for-250-million-usd/" target="_blank" rel="noopener">betakit.com</a></li>
+      <li>Included Health Launches Alternative Health Plans for Self-Insured Employers Targeting 2028 Go-Live. <em>HIT Consultant</em>, 2026-10-01. <a href="https://hitconsultant.net/2026/10/01/included-health-launches-included-health-plans-2028-self-insured-employers/" target="_blank" rel="noopener">hitconsultant.net</a></li>
+      <li>Included Health Launches Included Health Plans Following Firefly Health Acquisition. <em>Business Wire</em>, 2026-10-01. <a href="https://www.businesswire.com/news/home/20261001744796/en/Included-Health-Launches-Included-Health-Plans-Following-Firefly-Health-Acquisition" target="_blank" rel="noopener">businesswire.com</a></li>
+      <li>Parakeet Health Raises $10M to Scale Agentic Patient Engagement Across 2,800 Providers. <em>HIT Consultant</em>, 2026-10-01. <a href="https://hitconsultant.net/2026/10/01/parakeet-health-raises-10m-series-a-canvas-ventures-ai-patient-access/" target="_blank" rel="noopener">hitconsultant.net</a></li>
+      <li>Parakeet Health Raises $10 Million Series A Following 10x Growth and Rapid Enterprise Adoption. <em>Parakeet Health</em>, 2026-10-01. <a href="https://parakeethealth.com/blog/parakeet-health-raises-10-million-series-a-following-10x-growth-and-rapid-enterprise-adoption" target="_blank" rel="noopener">parakeethealth.com</a></li>
+      <li>Oura shelves its $2.2B IPO, citing 'uncertainty' in the market. <em>TechCrunch</em>, 2026-09-29. <a href="https://techcrunch.com/2026/09/29/oura-shelves-its-2-2b-ipo-citing-uncertainty-in-the-market/" target="_blank" rel="noopener">techcrunch.com</a></li>
+      <li>Smart ring maker Oura postpones IPO due to market 'uncertainty'. <em>CNBC</em>, 2026-09-29. <a href="https://www.cnbc.com/2026/09/29/smart-ring-maker-oura-postpones-ipo-due-to-market-uncertainty.html" target="_blank" rel="noopener">cnbc.com</a></li>
+      <li>AI voice startup ElevenLabs doubles valuation to $22B. <em>TechCrunch</em>, 2026-09-30. <a href="https://techcrunch.com/2026/09/30/ai-voice-startup-elevenlabs-doubles-valuation-to-22b/" target="_blank" rel="noopener">techcrunch.com</a></li>
+      <li>ElevenLabs hits $22B valuation with employee tender. <em>MobiHealthNews</em>, 2026-09-30. <a href="https://www.mobihealthnews.com/news/elevenlabs-hits-22b-valuation-employee-tender" target="_blank" rel="noopener">mobihealthnews.com</a></li>
+      <li>Qualified Health locks in $125M in fresh funding to scale enterprise AI at health systems. <em>Fierce Healthcare</em>, 2026-03. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/qualified-health-locks-125m-fresh-funding-scale-ai-health-systems" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>Abridge scores $300M series E, boosting valuation to $5.3B. <em>Fierce Healthcare</em>, 2026. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/ambient-ai-startup-abridge-scores-300m-series-e-backed-a16z-and-khosla" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>Epic launches AI Charting, potentially scrambling the ambient scribe market. <em>STAT News</em>, 2026-02-04. <a href="https://www.statnews.com/2026/02/04/epic-ai-charting-ambient-scribe-abridge-microsoft/" target="_blank" rel="noopener">statnews.com</a></li>
+      <li>生技論壇10月7日登場 衛福部長石崇良：積極建構AI醫療基建. <em>聯合新聞網 UDN</em>, 2026-09-15. <a href="https://udn.com/news/story/7240/9754542" target="_blank" rel="noopener">udn.com</a></li>
+      <li>智慧醫療再跨一步 衛福部推FHIR Box 年底串聯全台醫學中心病歷. <em>經濟日報 Economic Daily News</em>, 2026-08-06. <a href="https://money.udn.com/money/story/7307/9675552" target="_blank" rel="noopener">money.udn.com</a></li>
+      <li>Morning Headlines 10/2/26. <em>HIStalk</em>, 2026-10-01. <a href="https://histalk2.com/2026/10/01/morning-headlines-10-2-26/" target="_blank" rel="noopener">histalk2.com</a></li>
+      <li>Health IT Business News, Financial Edition — October 1, 2026. <em>Health IT Answers</em>, 2026-10-01. <a href="https://www.healthitanswers.net/health-it-business-news-financial-edition-october-1-2026/" target="_blank" rel="noopener">healthitanswers.net</a></li>
+      <li>Claude analyzed my genome in 30 minutes. Now we need standards for the results. <em>STAT News</em>, 2026-10-01. <a href="https://www.statnews.com/2026/10/01/claude-ai-genome-analysis-standards-ethics/" target="_blank" rel="noopener">statnews.com</a></li>
+    </ol>
+    <div class="note">
+      <span class="zh"><strong>編輯說明：</strong>本期涵蓋台北時間 9 月 29 日至 10 月 2 日的消息，Thoreau 的三筆交易為理解主線所必需，故回溯至 6 月 18 日。付費牆來源兩則：Endpoints News 關於 Ortet 的報導與 STAT+ 關於 Anthropic 加入 ARPA-H 的報導，兩者本報皆只依公開可見的標題與導言記錄，未引用內文細節；Bloomberg 與 Axios Pro 的連結亦可能需要訂閱，相關數字已由非付費牆來源（HIT Consultant、Caproasia、EU-Startups）交叉確認。廠商自述未經第三方稽核的數字包括：Included Health 的 6–15% TCOC 區間與 Firefly 的 15%+、90% 滿意度；Parakeet Health 的 2.3 倍／4.9 倍／4.2 倍與 10 倍 ARR；Qualified Health 的 40 萬使用者與 UTMB 的 1,500 萬美元 run-rate。Ensemble 的 120 億美元為交易估值而非公開市價；Ortet 的 5 億美元為承諾額度，拆分條件未公開；ElevenLabs 的 220 億美元來自員工 tender offer（二級交易價）而非 primary round。本報把 Ensemble、Penelope、Ortet 描述為一條管線，屬編輯部的結構推論——三方之間並未宣佈任何資料共用安排，此點已在對應段落標明。Qualified Health 的 1.25 億美元 B 輪完成於 2026 年 3 月，列入本期僅作為競爭對照，非當期新聞。</span>
+        <span class="en"><strong>Editor's note:</strong> This issue covers 29 September to 2 October, Taipei time; Thoreau's three deals are necessary to understand the lead story, so the window reaches back to 18 June. Two paywalled sources: Endpoints News on Ortet and STAT+ on Anthropic joining ARPA-H — for both, this report records only the publicly visible headline and dek and cites no body detail. The Bloomberg and Axios Pro links may also require subscriptions; the figures drawn from them are cross-confirmed against non-paywalled sources (HIT Consultant, Caproasia, EU-Startups). Vendor-reported figures not independently audited include: Included Health's 6–15% TCOC range and Firefly's 15%-plus and 90% satisfaction; Parakeet Health's 2.3x, 4.9x, 4.2x and 10x ARR; and Qualified Health's 400,000 users and UTMB's $15M run-rate. Ensemble's $12B is a transaction valuation, not a public market price; Ortet's $500M is a commitment whose tranching is undisclosed; and ElevenLabs' $22B comes from an employee tender offer, a secondary mark rather than a priced primary round. This report's description of Ensemble, Penelope and Ortet as one pipeline is an editorial structural inference — no data-sharing arrangement between the three has been announced, as noted in the relevant passages. Qualified Health's $125M Series B closed in March 2026 and appears here only as a competitive comparison, not as news of the period.</span>
+    </div>
+  </div>
+</section>
+
+
+<footer>
+  <div class="foot-row">
+    <div>
+      <span class="zh">AI／醫療AI 每日新知日報 · 由 Claude 於台北時間每日自動產出 · 本期主題：星期五／產品與公司深度分析<br>本報告內容經來源查證，但不構成投資或醫療建議。所有數據請以原始出處為準。</span>
+        <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Friday / product &amp; company deep dive<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
+    </div>
+    <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com / 返回 peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
+  </div>
+</footer>
+</main>
+
+<div class="fabs">
+  <button class="up" id="up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+  <a class="home-fab" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg></a>
+</div>
+
+<script>
+/* setLang 只有並排原稿用得到，建置時會自動拆掉，其餘保留。原樣帶上就好。 */
+function setLang(l){
+  document.body.classList.remove('lang-zh','lang-en');
+  document.body.classList.add('lang-'+l);
+  document.documentElement.lang = (l==='zh') ? 'zh-Hant' : 'en';
+  document.getElementById('b-zh').classList.toggle('on', l==='zh');
+  document.getElementById('b-en').classList.toggle('on', l==='en');
+  document.title = (l==='zh')
+    ? 'AI／醫療AI 每日新知日報 · 2026-10-02'
+    : 'AI & Medical AI Daily · 2026-10-02';
+}
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.getElementById('theme-ic').textContent =
+    document.body.classList.contains('dark') ? '◑' : '◐';
+}
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.body.classList.add('dark');
+  document.getElementById('theme-ic').textContent = '◑';
+}
+window.addEventListener('scroll', function(){
+  document.getElementById('up').classList.toggle('show', window.scrollY > 600);
+});
+
+/* GitHub 星星數：無需授權，失敗或被限流時靜默保留佔位符 */
+(function(){
+  var el = document.getElementById('ghs');
+  if (!el || typeof fetch !== 'function') return;
+  fetch('https://api.github.com/repos/tingwei161803/ai-medical-daily', {headers:{Accept:'application/vnd.github+json'}})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if (!d || typeof d.stargazers_count !== 'number') return;
+      var n = d.stargazers_count;
+      el.textContent = n >= 1000 ? (Math.round(n/100)/10) + 'k' : String(n);
+    })
+    .catch(function(){});
+})();
+</script>
+</body>
+</html>
