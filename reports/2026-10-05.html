@@ -8,6 +8,10 @@
 <title>AI／醫療AI 每日新知日報 · 2026-10-05</title>
 <meta property="og:url" content="https://ai-medical-daily.peteraim.com/reports/2026-10-05.html" />
 <link rel="canonical" href="https://ai-medical-daily.peteraim.com/reports/2026-10-05.html" />
+<link rel="alternate" hreflang="zh-Hant" href="https://ai-medical-daily.peteraim.com/reports/2026-10-05.html" />
+<link rel="alternate" hreflang="en" href="https://ai-medical-daily.peteraim.com/en/reports/2026-10-05.html" />
+<link rel="alternate" hreflang="x-default" href="https://ai-medical-daily.peteraim.com/reports/2026-10-05.html" />
+<meta name="description" content="真正把住院死亡率往下壓的那套系統不是 LLM，而是一個接進 rapid response team 流程的舊式惡化分數；同一週的 GPT-4o 隨機試驗則在主要指標上落空 —— 臨床 AI 的分水嶺已經從模型搬到流程。">
 <meta name="report-date" content="2026-10-05">
 <meta name="report-theme" content="clinical">
 <meta name="report-title-zh" content="臨床 AI 這一週交出的不是新試驗，而是三份總帳：10/2 被重新點出來的那份 NEJM AI 研究，用 11 家醫院、23,132 人次把高風險住院病人死亡率從 23.1% 壓到 18.6%（校正後 aOR 0.82，95% CI 0.74–0.91），但它靠的是 Epic 一個不含 LLM 的惡化指數、而且只有 46.6% 的住院真的跳出通知；同一天的 Q3 季度總結把一季的試驗逐條算完，結論是「workflow 才是模型」；而 Nature Medicine 那份肯亞 16 家診所、9,691 名病人、103 位 clinical officer 的 GPT-4o 隨機試驗，主要指標是 2.2% 對 2.0%、aOR 0.77、p=0.13 —— 安全，但沒有效">
@@ -29,16 +33,16 @@
 </script>
 <link rel="stylesheet" href="/assets/report.css">
 </head>
-<body class="lang-zh">
+<body>
 
 <header class="bar">
   <div class="bar-in">
-    <a class="brand" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span><span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <a class="brand" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span></a>
     <div class="bar-sp"></div>
     <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub / 在 GitHub 給這個專案一顆星"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
     <div class="seg">
-      <button id="b-zh" class="on" onclick="setLang('zh')">中文</button>
-      <button id="b-en" onclick="setLang('en')">EN</button>
+      <a class="on" href="/reports/2026-10-05.html" hreflang="zh-Hant" lang="zh-Hant" aria-current="page">中文</a>
+      <a href="/en/reports/2026-10-05.html" hreflang="en" lang="en" rel="alternate">EN</a>
     </div>
     <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
   </div>
@@ -48,28 +52,24 @@
 <div class="hero">
   <div class="kicker">
     <span class="zh-inline">星期一 · 臨床應用與研究</span>
-    <span class="en-inline">Monday · Clinical Applications &amp; Research</span>
   </div>
   <h1>
     <span class="zh">臨床 AI 這一週交出的不是新試驗，而是三份總帳 —— 真正把住院死亡率從 23.1% 壓到 18.6% 的，是一個不含 LLM 的惡化分數；而 GPT-4o 的隨機試驗停在 aOR 0.77、p=0.13</span>
-    <span class="en">Clinical AI's week produced no new trial — it produced three sets of accounts. What actually took in-hospital mortality from 23.1% to 18.6% was a deterioration score with no LLM in it; the GPT-4o randomized trial stopped at aOR 0.77, P = 0.13</span>
   </h1>
   <div class="dateline">
     <span class="zh-inline">2026 年 10 月 5 日（一）· 涵蓋 9/28–10/5 · 台北時間</span>
-    <span class="en-inline">Monday, October 5, 2026 · Covering Sep 28 – Oct 5 · Taipei time</span>
   </div>
   <p class="lede">
     <span class="zh">今天這一期必須先說一句不好看的話：過去 72 小時，臨床 AI <strong>沒有</strong>任何一份新的大型前瞻試驗落地。本期最新的兩份文件都是回頭算總帳 —— 10 月 2 日被重新提出來討論的那份 <a href="https://www.2minutemedicine.com/artificial-intelligence-ai-triggered-rapid-response-notifications-were-associated-with-lower-mortality-among-inpatients/" target="_blank" rel="noopener">NEJM AI 研究</a>，在 11 家急症醫院、23,132 人次上把高風險住院病人的院內死亡率由 23.1% 降到 18.6%（校正後 aOR 0.82，95% CI 0.74–0.91）；以及同一天發布的 <a href="https://www.micheledpierri.com/2026/10/02/ai-digital-health-quarterly-review-2026q3/" target="_blank" rel="noopener">2026 Q3 季度回顧</a>，把一整季的試驗逐條算完後只留下一句話 ——「the workflow is now the model」。把這兩份擺在 <a href="https://www.nature.com/articles/s41591-026-04503-6" target="_blank" rel="noopener">Nature Medicine</a> 那份肯亞 GPT-4o 隨機試驗（9,691 名病人，主要指標 2.2% 對 2.0%，<a href="https://pubmed.ncbi.nlm.nih.gov/42362867/" target="_blank" rel="noopener">aOR 0.77、95% CI 0.55–1.08、P = 0.13</a>）旁邊，今天的結論就很難繞過去：動到病人結果的是流程，不是模型大小。</span>
-    <span class="en">This issue has to open with an unflattering sentence: in the past 72 hours, <strong>no</strong> new large prospective trial of clinical AI landed. The two freshest documents here are both retrospective accounting — the <a href="https://www.2minutemedicine.com/artificial-intelligence-ai-triggered-rapid-response-notifications-were-associated-with-lower-mortality-among-inpatients/" target="_blank" rel="noopener">NEJM AI study</a> brought back into discussion on October 2, which cut in-hospital mortality among high-risk inpatients from 23.1% to 18.6% across 11 acute care hospitals and 23,132 encounters (adjusted aOR 0.82, 95% CI 0.74–0.91), and the <a href="https://www.micheledpierri.com/2026/10/02/ai-digital-health-quarterly-review-2026q3/" target="_blank" rel="noopener">2026 Q3 quarterly review</a> published the same day, which tallies a full quarter of trials and leaves one line standing: the workflow is now the model. Set those beside <a href="https://www.nature.com/articles/s41591-026-04503-6" target="_blank" rel="noopener">Nature Medicine</a>'s GPT-4o cluster-randomized trial in Kenya (9,691 patients; primary endpoint 2.2% versus 2.0%, <a href="https://pubmed.ncbi.nlm.nih.gov/42362867/" target="_blank" rel="noopener">aOR 0.77, 95% CI 0.55–1.08, P = 0.13</a>) and today's conclusion is hard to walk around: what moves patient outcomes is the workflow, not the size of the model.</span>
   </p>
 
   <nav class="toc">
-    <a href="#top"><span class="zh-inline">重點新聞</span><span class="en-inline">Top Stories</span></a>
-    <a href="#product"><span class="zh-inline">產品分析</span><span class="en-inline">Product Analysis</span></a>
-    <a href="#company"><span class="zh-inline">公司與競爭</span><span class="en-inline">Companies &amp; Competition</span></a>
-    <a href="#taiwan"><span class="zh-inline">台灣視角</span><span class="en-inline">Taiwan Angle</span></a>
-    <a href="#reading"><span class="zh-inline">延伸閱讀</span><span class="en-inline">Further Reading</span></a>
-    <a href="#refs"><span class="zh-inline">參考文獻</span><span class="en-inline">References</span></a>
+    <a href="#top"><span class="zh-inline">重點新聞</span></a>
+    <a href="#product"><span class="zh-inline">產品分析</span></a>
+    <a href="#company"><span class="zh-inline">公司與競爭</span></a>
+    <a href="#taiwan"><span class="zh-inline">台灣視角</span></a>
+    <a href="#reading"><span class="zh-inline">延伸閱讀</span></a>
+    <a href="#refs"><span class="zh-inline">參考文獻</span></a>
   </nav>
 </div>
 
@@ -78,230 +78,197 @@
   <h2>01 — Top Stories</h2>
   <div class="sec-title">
     <span class="zh">今天的八則排法刻意把「有病人結果的」放前面、把「只有分數的」放後面 —— 因為這一週的差別就在這裡</span>
-    <span class="en">Today's eight are deliberately ordered with patient outcomes first and scores last — because that is exactly where this week's difference lies</span>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">住院死亡率</span><span class="en-inline">Inpatient mortality</span></span>
+      <span class="tag hot"><span class="zh-inline">住院死亡率</span></span>
       <span class="tag">RWJBarnabas Health</span><span class="tag">Epic Deterioration Index</span><span class="tag">NEJM AI</span><span class="tag">10/02</span>
     </div>
     <h3>
       <span class="zh">把 Epic 惡化指數直接接到快速反應小組，11 家醫院的高風險住院死亡率從 23.1% 掉到 18.6%</span>
-      <span class="en">Wire Epic's deterioration index straight to the rapid response team, and high-risk inpatient mortality across 11 hospitals falls from 23.1% to 18.6%</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">RWJBarnabas Health 與 Rutgers Robert Wood Johnson 醫學院在 11 家急症醫院把 Epic Deterioration Index（EDI）的即時警示直接送進 rapid response team，而不是只貼在護理站的儀表板上。研究發表於 <em>NEJM AI</em>（DOI <a href="https://hitconsultant.net/2026/07/29/rwjbarnabas-rutgers-nejm-ai-epic-deterioration-index-mortality-reduc/" target="_blank" rel="noopener">10.1056/AIoa2500973</a>），由該院健康資訊副總裁 Thomas Nahass 主持；導入前 10,803 人次、導入後 12,329 人次，共 <a href="https://www.news-medical.net/news/20260729/AI-enabled-tool-helps-identify-hospitalized-patients-at-risk-of-rapid-clinical-decline.aspx" target="_blank" rel="noopener">23,132 人次</a>。10 月 2 日 <a href="https://www.2minutemedicine.com/artificial-intelligence-ai-triggered-rapid-response-notifications-were-associated-with-lower-mortality-among-inpatients/" target="_blank" rel="noopener">2 Minute Medicine 的評析</a>把它重新拉回檯面，並補上完整統計：未校正死亡率 23.1% → 18.6%（絕對差 −4.5 個百分點，95% CI −5.6 到 −3.5），校正後 aOR 0.82（95% CI 0.74–0.91）；RRT 啟動 OR 1.74（95% CI 1.61–1.88），RRT 評估比例從 <a href="https://www.hcinnovationgroup.com/analytics-ai/artifical-intelligence-machine-learning/news/55394336/rwjbarnabas-health-sees-improvements-using-epic-deterioration-index" target="_blank" rel="noopener">25.3% 升到 37.5%</a>，而 ICU 轉床並未同比例上升。</span>
-        <span class="en">RWJBarnabas Health and Rutgers Robert Wood Johnson Medical School routed real-time alerts from the Epic Deterioration Index (EDI) directly to the rapid response team across 11 acute care hospitals, instead of parking them on a nursing-station dashboard. The study appeared in <em>NEJM AI</em> (DOI <a href="https://hitconsultant.net/2026/07/29/rwjbarnabas-rutgers-nejm-ai-epic-deterioration-index-mortality-reduc/" target="_blank" rel="noopener">10.1056/AIoa2500973</a>), led by Thomas Nahass, the system's VP of health informatics: 10,803 encounters pre-implementation and 12,329 post, <a href="https://www.news-medical.net/news/20260729/AI-enabled-tool-helps-identify-hospitalized-patients-at-risk-of-rapid-clinical-decline.aspx" target="_blank" rel="noopener">23,132 in total</a>. On October 2 a <a href="https://www.2minutemedicine.com/artificial-intelligence-ai-triggered-rapid-response-notifications-were-associated-with-lower-mortality-among-inpatients/" target="_blank" rel="noopener">2 Minute Medicine appraisal</a> pulled it back into view with the full statistics: unadjusted mortality 23.1% → 18.6% (absolute difference −4.5 percentage points, 95% CI −5.6 to −3.5); adjusted aOR 0.82 (95% CI 0.74–0.91); RRT activation OR 1.74 (95% CI 1.61–1.88), with RRT evaluations rising from <a href="https://www.hcinnovationgroup.com/analytics-ai/artifical-intelligence-machine-learning/news/55394336/rwjbarnabas-health-sees-improvements-using-epic-deterioration-index" target="_blank" rel="noopener">25.3% to 37.5%</a> while ICU transfers did not rise proportionally.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">這是今年少數「動到死亡率」而不是「動到準確率」的臨床 AI 研究，而它用的東西一點都不新 —— EDI 是 Epic 內建、以結構化生理數值為主的梯度提升分數，裡面沒有任何 LLM。真正改掉的是流程：警示不再等人看到，而是直接呼叫一支會去床邊的隊伍。Nahass 自己把因果講得很保守：「我們的目標是更早找出病人，在介入變得困難之前。惡化指數給了我們一個更早的時間點。」</span>
-        <span class="en">This is one of the year's few clinical-AI studies that moved mortality rather than accuracy — and nothing in it is new. The EDI is a gradient-boosted score built into Epic, driven mostly by structured physiological values, with no LLM anywhere in it. What changed was the workflow: the alert no longer waits for someone to notice it, it summons a team that goes to the bedside. Nahass himself keeps the causal claim modest: "Our goal was to identify patients earlier, before they reached a point where intervention becomes much more difficult. The deterioration index gives us an earlier point in time."</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">這是前後對照（before-and-after）的前瞻世代研究，<strong>不是隨機試驗</strong>，前後兩段期間的季節分布不均、其中兩家醫院導入不完整，外推性作者自己標為不確定。更該注意兩個數字：導入後只有 <strong>46.6%</strong> 的住院真的產生了通知；而在剛好跨過門檻的 EDI 55–59 這一段，校正後 aOR 是 0.86（95% CI 0.63–1.17）—— 信賴區間跨過 1，也就是這份研究最接近「準實驗」的那一刀並沒有顯著性。</span>
-        <span class="en">This is a prospective before-and-after cohort, <strong>not a randomized trial</strong>: the pre- and post-periods have unequal seasonal distributions, two of the hospitals implemented incompletely, and the authors flag generalizability as uncertain. Two figures deserve more weight still. Only <strong>46.6%</strong> of post-implementation encounters actually generated a notification; and in the EDI 55–59 band that sits just across the threshold, the adjusted aOR is 0.86 (95% CI 0.63–1.17) — the interval crosses 1, meaning the closest thing this study has to a quasi-experimental cut is not significant.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://www.2minutemedicine.com/artificial-intelligence-ai-triggered-rapid-response-notifications-were-associated-with-lower-mortality-among-inpatients/" target="_blank" rel="noopener">2 Minute Medicine, 2026-10-02</a> · <a href="https://hitconsultant.net/2026/07/29/rwjbarnabas-rutgers-nejm-ai-epic-deterioration-index-mortality-reduc/" target="_blank" rel="noopener">HIT Consultant, 2026-07-29</a> · <a href="https://medicalxpress.com/news/2026-07-ai-tool-patient-deterioration-earlier.html" target="_blank" rel="noopener">Medical Xpress, 2026-07</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">隨機試驗落空</span><span class="en-inline">RCT misses</span></span>
+      <span class="tag hot"><span class="zh-inline">隨機試驗落空</span></span>
       <span class="tag">Penda Health</span><span class="tag">AI Consult / GPT-4o</span><span class="tag">Nature Medicine</span><span class="tag">08/01</span>
     </div>
     <h3>
       <span class="zh">肯亞 16 家診所、103 位 clinical officer、9,691 名病人：GPT-4o 當臨床安全網「安全但沒有效」</span>
-      <span class="en">16 Kenyan clinics, 103 clinical officers, 9,691 patients: GPT-4o as a clinical safety net is "safe but not effective"</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">KEMRI-Wellcome Trust、University of Birmingham、Penda Health 與 LSHTM 合作，在奈洛比與 Kiambu 兩縣 16 家基層診所做務實型群集隨機試驗，把 clinical officer 隨機分到「有 LLM 輔助的電子病歷」或「關掉 LLM 的同一套電子病歷」。工具是 <strong>AI Consult 2.0</strong>，底層 GPT-4o。2025 年 4 月 22 日至 7 月 16 日收案，<a href="https://pubmed.ncbi.nlm.nih.gov/42362867/" target="_blank" rel="noopener">9,691 名病人、103 位 clinical officer（介入組 52、對照組 51）</a>。主要指標是 14 天內經專家判定的治療失敗複合事件：介入組 102/4,693（2.2%）、對照組 94/4,654（2.0%），aOR 0.77（95% CI 0.55–1.08，P = 0.13），<strong>無顯著差異</strong>。<a href="https://www.nature.com/articles/s41591-026-04503-6" target="_blank" rel="noopener">Nature Medicine</a> 線上刊於 6 月 26 日、紙本 8 月號。</span>
-        <span class="en">KEMRI-Wellcome Trust, the University of Birmingham, Penda Health and LSHTM ran a pragmatic cluster-randomized trial across 16 primary care facilities in Nairobi and Kiambu counties, randomizing clinical officers to an electronic medical record with LLM assistance or the same record with the LLM switched off. The tool was <strong>AI Consult 2.0</strong>, built on GPT-4o. Enrollment ran April 22 – July 16, 2025: <a href="https://pubmed.ncbi.nlm.nih.gov/42362867/" target="_blank" rel="noopener">9,691 patients overseen by 103 clinical officers (52 in the LLM-assisted arm, 51 in control)</a>. The primary endpoint was an expert-adjudicated composite of treatment failure within 14 days: 102/4,693 (2.2%) in the intervention arm versus 94/4,654 (2.0%) in control, aOR 0.77 (95% CI 0.55–1.08, P = 0.13) — <strong>no significant difference</strong>. <a href="https://www.nature.com/articles/s41591-026-04503-6" target="_blank" rel="noopener">Nature Medicine</a> published it online on June 26 and in the August print issue.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">這是目前規模最大、設計最乾淨的「前沿 LLM 直接進基層診間」隨機試驗，而它的答案是：不會害人，也沒救到人。作者原話是「LLM assistance was safe but did not reduce treatment failure within 14 days and any benefit, if present, is probably modest」。但次要指標全面變好：病歷記載品質顯著提升（診斷 aOR 1.74、完整病程記錄 aOR 1.68、治療計畫 aOR 1.71），抗生素成本平均每人降 <a href="https://trial.medpath.com/news/generative-ai-clinical-decision-support-shows-safety-and-documentation-gains-but-no-significant-reduction-in-treatment-failure-in-kenyan-primary-care-trial" target="_blank" rel="noopener">0.15 美元</a>，病人滿意度兩組一樣。換句話說，LLM 現在證明得出來的價值是「文件與用藥紀律」，不是「臨床結果」。</span>
-        <span class="en">This is the largest and cleanest randomized test to date of putting a frontier LLM straight into a primary care consulting room, and the answer is: it does not hurt anyone, and it does not save anyone either. The authors' own wording: "LLM assistance was safe but did not reduce treatment failure within 14 days and any benefit, if present, is probably modest." Yet every secondary endpoint improved — documentation quality rose significantly (diagnosis aOR 1.74, comprehensive notes aOR 1.68, treatment plans aOR 1.71), mean antibiotic cost fell by <a href="https://trial.medpath.com/news/generative-ai-clinical-decision-support-shows-safety-and-documentation-gains-but-no-significant-reduction-in-treatment-failure-in-kenyan-primary-care-trial" target="_blank" rel="noopener">US$0.15</a> per patient, and patient satisfaction was identical. Put plainly: what an LLM can currently prove is documentation and prescribing discipline, not clinical outcomes.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">事件率比設計時預期的低得多，所以這份試驗其實是 power 不足：二手整理指出，要偵測更小幅的差異需要 <strong>10 萬名以上</strong>病人。因此「沒有顯著差異」不等於「證明無效」。另外樣本全來自單一都會區私立診所網路（Penda Health），對鄉村與公立體系的外推性有限；14 天的追蹤窗口也可能太短。安全面上，被標記的輸出只有 49.4% 被評為「definitely safe」，另有 1.1% 被判為不安全 —— 這個 1.1% 的分母與嚴重度細節需回看原文。</span>
-        <span class="en">Event rates came in far below the design assumption, so the trial is effectively underpowered: secondary write-ups note that detecting a more modest difference would need <strong>100,000-plus</strong> patients. "No significant difference" therefore does not mean "proven ineffective." The sample also comes entirely from a single urban private clinic network (Penda Health), limiting generalizability to rural and public systems, and the 14-day follow-up window may be too short. On safety, only 49.4% of flagged outputs were rated "definitely safe" and 1.1% were judged unsafe — the denominator and severity behind that 1.1% need checking against the paper itself.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://www.nature.com/articles/s41591-026-04503-6" target="_blank" rel="noopener">Nature Medicine, 2026-06-26 (print 2026-08)</a> · <a href="https://www.birmingham.ac.uk/news/2026/ai-clinical-support-tool-improved-clinician-decisions-in-real-world-primary-care-trial" target="_blank" rel="noopener">University of Birmingham</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/42362867/" target="_blank" rel="noopener">PubMed 42362867</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">季度總帳</span><span class="en-inline">Quarterly tally</span></span>
+      <span class="tag hot"><span class="zh-inline">季度總帳</span></span>
       <span class="tag">2026 Q3</span><span class="tag">ESTOP-AKI</span><span class="tag">Prof. Valmed</span><span class="tag">10/02</span>
     </div>
     <h3>
       <span class="zh">一份 10/2 發布的季度總結把 Q3 的試驗逐條算完，結論是五個字：workflow 才是模型</span>
-      <span class="en">A quarterly review published on 10/2 tallies Q3 trial by trial and lands on five words: the workflow is now the model</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">10 月 2 日發布的 <a href="https://www.micheledpierri.com/2026/10/02/ai-digital-health-quarterly-review-2026q3/" target="_blank" rel="noopener">AI &amp; Digital Health 2026 Q3 回顧</a>把這一季的臨床證據排在一起看，結果很一致：<strong>ESTOP-AKI</strong>（JAMA Network Open，7 月）180 名住院病人，機器學習成功標出急性腎損傷風險，但提早的腎臟科照會並未改善結果（peak creatinine 變化 0.04 對 −0.03 mg/dL，無統計意義），且非飲食／非電解質建議只有 41% 被完整採納。<strong>ALLIANCE</strong>（9 月，82 位醫師判讀風濕科病例）顯示 LLM 輔助讓速度大增但準確率沒動；<a href="https://acdis.org/articles/news-ai-tool-quicker-not-more-accurate-humans-when-diagnosing-rheum-disease-study-finds" target="_blank" rel="noopener">ACDIS 的報導</a>補上數字 —— 用 Prof. Valmed 的介入組首選診斷正確率 33.3%、對照組 35.0%，但判讀時間 94 秒對 206 秒。同一份回顧還列了一項 9 月的幻覺偵測研究：資淺臨床人員只找出 <strong>15.8%</strong> 的 GPT-4o 幻覺，13.1% 的人一個都沒找到。</span>
-        <span class="en">The <a href="https://www.micheledpierri.com/2026/10/02/ai-digital-health-quarterly-review-2026q3/" target="_blank" rel="noopener">AI &amp; Digital Health 2026 Q3 review</a>, published October 2, lines up the quarter's clinical evidence, and it reads consistently. <strong>ESTOP-AKI</strong> (JAMA Network Open, July): in 180 hospitalized patients, machine learning flagged acute kidney injury risk successfully, but earlier nephrology consultation did not improve outcomes (peak creatinine change 0.04 versus −0.03 mg/dL, not significant), and only 41% of non-diet, non-electrolyte recommendations were fully followed. <strong>ALLIANCE</strong> (September, 82 physicians assessing rheumatology cases) found LLM assistance made clinicians much faster without moving accuracy; <a href="https://acdis.org/articles/news-ai-tool-quicker-not-more-accurate-humans-when-diagnosing-rheum-disease-study-finds" target="_blank" rel="noopener">ACDIS's coverage</a> supplies the numbers — top-diagnosis accuracy 33.3% with Prof. Valmed versus 35.0% in control, but 94 seconds versus 206 seconds to reach a diagnosis. The same review lists a September hallucination study: junior clinicians caught only <strong>15.8%</strong> of GPT-4o hallucinations, and 13.1% of them caught none at all.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">把這些放在一起，Q3 的形狀就出來了：<strong>模型抓得到風險，但人與流程沒有把風險變成行動</strong>。ESTOP-AKI 的 41% 採納率、EDI 研究的 46.6% 通知率，講的是同一件事。回顧自己下的判語最狠：「A better model does not necessarily produce better medicine.」這也解釋了為什麼同一季的基礎模型規模一路往上（NeuroVFM 吃 524 萬份 MRI/CT volume、PRISM2 吃 230 萬張全切片影像與 70 萬份病理報告），卻沒有一條對應的結果曲線。</span>
-        <span class="en">Taken together, Q3's shape is clear: <strong>models find the risk, but people and processes fail to convert it into action</strong>. ESTOP-AKI's 41% adherence and the EDI study's 46.6% notification rate are the same finding wearing different clothes. The review's own verdict is the blunt one: "A better model does not necessarily produce better medicine." That also explains why the quarter's foundation models kept scaling (NeuroVFM on 5.24 million MRI and CT volumes, PRISM2 on 2.3 million whole-slide images and 700,000 pathology reports) with no matching outcome curve beside them.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">這是個人署名的整理型回顧，不是同儕審查的系統性回顧，也沒有宣告搜尋策略或納入排除標準，因此有選樣偏誤的空間。文中每一項原始研究都應回查原文；本日報只採用其中能另外找到二手或一手出處佐證的數字，無法佐證的（如幻覺偵測研究的完整書目）在編輯說明中標出。</span>
-        <span class="en">This is a bylined curated review, not a peer-reviewed systematic one: it declares no search strategy and no inclusion or exclusion criteria, so selection bias is possible. Every primary study in it should be checked against its own paper; this issue uses only figures for which a separate secondary or primary source could be found, and flags those that could not be corroborated (such as the full citation for the hallucination study) in the editor's note.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://www.micheledpierri.com/2026/10/02/ai-digital-health-quarterly-review-2026q3/" target="_blank" rel="noopener">AI &amp; Digital Health Quarterly Review 2026Q3, 2026-10-02</a> · <a href="https://acdis.org/articles/news-ai-tool-quicker-not-more-accurate-humans-when-diagnosing-rheum-disease-study-finds" target="_blank" rel="noopener">ACDIS, 2026-09-10</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag"><span class="zh-inline">證據品質</span><span class="en-inline">Evidence quality</span></span>
+      <span class="tag"><span class="zh-inline">證據品質</span></span>
       <span class="tag">ARISE</span><span class="tag">Stanford / Harvard</span><span class="tag">01/15</span>
     </div>
     <h3>
       <span class="zh">史丹佛─哈佛那份報告的那個數字還沒被反駁：500 多份醫療 AI 研究裡，只有 5% 用了真實病人資料</span>
-      <span class="en">The number in the Stanford–Harvard report still stands unrefuted: of 500-plus medical AI studies, only 5% used real patient data</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">ARISE（AI Research and Science Evaluation，史丹佛─哈佛研究網絡）的首份年度 <a href="https://www.arise-ai.org/report" target="_blank" rel="noopener">State of Clinical AI Report 2026</a>，由 Peter Brodeur、Ethan Goh、Adam Rodman、Jonathan H. Chen 主筆，背後掛著 Stanford Computational Medicine、Harvard Medical School Shapiro Institute 與 Beth Israel Deaconess。<a href="https://medicine.stanford.edu/news/current-news/standard-news/clinical-ai-has-boomed.html" target="_blank" rel="noopener">史丹佛醫學院的說明</a>給了關鍵數字：FDA 已放行超過 1,200 項 AI 醫材；而他們回顧的 500 多份醫療 AI 研究中，<strong>近 50% 用的是考試型題目</strong>，<strong>只有 5% 用了真實病人資料</strong>。報告也記下 AI 可在標準院內警示前 8–24 小時預測病人惡化。</span>
-        <span class="en">ARISE (AI Research and Science Evaluation, a Stanford–Harvard research network) published its first annual <a href="https://www.arise-ai.org/report" target="_blank" rel="noopener">State of Clinical AI Report 2026</a>, authored by Peter Brodeur, Ethan Goh, Adam Rodman and Jonathan H. Chen, backed by Stanford Computational Medicine, Harvard Medical School's Shapiro Institute and Beth Israel Deaconess. <a href="https://medicine.stanford.edu/news/current-news/standard-news/clinical-ai-has-boomed.html" target="_blank" rel="noopener">Stanford Medicine's write-up</a> carries the load-bearing figures: the FDA has cleared more than 1,200 AI-enabled medical tools; and of the 500-plus medical AI studies reviewed, <strong>nearly 50% used exam-style questions</strong> and <strong>only 5% used real patient data</strong>. The report also records AI predicting patient deterioration 8–24 hours ahead of standard hospital alerts.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">這 5% 是今天整期日報的分母。當九成五的文獻跑在題庫上，所謂「模型在醫學上的進步」有多少能換成病床邊的改變，本來就無從得知；而本期前三則剛好把那 5% 的樣子攤開給你看 —— 一則有死亡率、兩則沒有。報告自己的話是：「AI is already embedded in health care, and that is unlikely to change. What this report makes clear is that the next phase will not be driven by newer models alone.」它同時點出一個「jagged frontier」：模型在受控任務上很強，碰到真實世界的變異與不確定性就脆。</span>
-        <span class="en">That 5% is the denominator for this entire issue. When ninety-five percent of the literature runs on question banks, there is no way to know how much of "progress in medical AI" converts into change at the bedside — and this issue's first three stories happen to show you what that 5% looks like: one with a mortality signal, two without. The report's own line: "AI is already embedded in health care, and that is unlikely to change. What this report makes clear is that the next phase will not be driven by newer models alone." It also names a "jagged frontier": strong on controlled tasks, brittle the moment real-world variability and uncertainty arrive.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">報告本身發布於 1 月 15 日，不是本週新聞，放進今天是因為它是解讀前三則的必要尺規。ARISE 官網的公開頁面只給概念性結論，沒有列出完整方法學與那 500 多份研究的清單，所以「近 50%／只有 5%」這兩個比例目前只能由史丹佛醫學院的新聞稿佐證，無法從公開頁面逐篇覆核。</span>
-        <span class="en">The report itself was published on January 15 and is not this week's news; it appears here because it is the ruler needed to read the first three stories. ARISE's public page offers only conceptual conclusions, with no full methodology and no list of the 500-plus studies, so the "nearly 50%" and "only 5%" figures can currently be corroborated only through Stanford Medicine's release, not re-checked study by study from the public page.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://www.arise-ai.org/report" target="_blank" rel="noopener">ARISE, State of Clinical AI Report 2026</a> · <a href="https://medicine.stanford.edu/news/current-news/standard-news/clinical-ai-has-boomed.html" target="_blank" rel="noopener">Stanford Medicine, 2026-01-15</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag"><span class="zh-inline">心臟超音波</span><span class="en-inline">Cardiac ultrasound</span></span>
+      <span class="tag"><span class="zh-inline">心臟超音波</span></span>
       <span class="tag">Mayo Clinic</span><span class="tag">UltraSight</span><span class="tag">Philips Lumify</span><span class="tag">06/09</span>
     </div>
     <h3>
       <span class="zh">九個完全沒受過訓的人拿手持超音波掃 995 人：敏感度 90.1%、特異度 99.1%，但兩段式篩檢把敏感度砍到 77.0%</span>
-      <span class="en">Nine complete novices scanned 995 adults with handheld ultrasound: 90.1% sensitivity, 99.1% specificity — but the two-step pathway cut sensitivity to 77.0%</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">梅約診所（Rochester）的 Méabh M. Killalea、Jordan Borgeson、Jared G. Bird 等人在 <a href="https://www.nature.com/articles/s41746-026-02856-3" target="_blank" rel="noopener"><em>npj Digital Medicine</em>（2026-06-09，卷 9、文章 712）</a>發表前瞻研究：995 名成人同時接受 AI 強化心電圖（AI-ECG）與 AI 導引聚焦式心臟超音波（AI-FoCUS），並以完整心臟超音波為對照。執行者是 9 名<strong>完全沒有超音波經驗</strong>的新手，使用 Philips Lumify 手持探頭搭配 UltraSight 的即時導引，影像由盲化專家判讀。結果：AI-FoCUS 偵測結構性心臟病（SHD）敏感度 90.1%、特異度 99.1%、PPV 95.4%、NPV 98.0%；AI-ECG 單獨使用敏感度 87.0%、特異度 60.7%、PPV 僅 30.6%。</span>
-        <span class="en">Méabh M. Killalea, Jordan Borgeson, Jared G. Bird and colleagues at Mayo Clinic Rochester published a prospective study in <a href="https://www.nature.com/articles/s41746-026-02856-3" target="_blank" rel="noopener"><em>npj Digital Medicine</em> (June 9, 2026; vol 9, article 712)</a>: 995 adults underwent both AI-enhanced ECG (AI-ECG) and AI-guided focused cardiac ultrasound (AI-FoCUS), against comprehensive echocardiography as reference. The scans were performed by 9 operators with <strong>no prior ultrasound experience</strong>, using a Philips Lumify handheld probe with real-time guidance from UltraSight, with blinded expert interpretation. Results: AI-FoCUS detected structural heart disease (SHD) with 90.1% sensitivity, 99.1% specificity, 95.4% PPV and 98.0% NPV; AI-ECG alone reached 87.0% sensitivity but only 60.7% specificity and 30.6% PPV.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">這是本期唯一一則「AI 真的把技能下放給非專業人員」的證據，而且下放得很乾淨 —— 導引負責取像、專家負責判讀，責任切面清楚。但真正值得抄下來的是那個取捨：先用 AI-ECG 篩、再用 AI-FoCUS 確認的兩段式策略，把影像使用量壓到 <strong>47%</strong>、特異度拉到 99.4%、PPV 96.1%，代價是敏感度從 90.1% 掉到 <strong>77.0%</strong>。也就是省一半的檢查，要漏掉約四分之一的病人。這種「省多少換漏多少」的換算，才是給付單位真正會問的問題。</span>
-        <span class="en">This is the issue's only evidence of AI genuinely devolving a skill to non-specialists — and devolving it cleanly, with guidance handling acquisition and experts handling interpretation, so the line of responsibility stays legible. But the figure worth copying down is the trade-off: screening first with AI-ECG and confirming with AI-FoCUS cut imaging utilization to <strong>47%</strong> and raised specificity to 99.4% with 96.1% PPV, at the cost of sensitivity falling from 90.1% to <strong>77.0%</strong>. Halve the studies, miss roughly a quarter of the patients. That exchange rate — how much saving buys how much missing — is the question payers actually ask.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">這是轉診族群（referral cohort），疾病盛行率遠高於社區篩檢，所以 PPV 95.4% 這個數字<strong>不能</strong>直接搬到一般人口；作者自己也只說「feasible and accurate for detecting selected SHD phenotypes」—— selected 這個字限定了可偵測的病型範圍。另外，取像是新手做的，但判讀是盲化專家做的，所以這份研究並沒有測試「沒有專家的場景」。</span>
-        <span class="en">This is a referral cohort with disease prevalence far above community screening, so the 95.4% PPV <strong>cannot</strong> be carried over to a general population; the authors themselves claim only that it is "feasible and accurate for detecting selected SHD phenotypes" — and "selected" bounds which phenotypes. Note too that novices acquired the images but blinded experts read them, so the study never tests the setting where no expert is available.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://www.nature.com/articles/s41746-026-02856-3" target="_blank" rel="noopener">npj Digital Medicine, 2026-06-09</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag"><span class="zh-inline">心導管室</span><span class="en-inline">Cath lab</span></span>
+      <span class="tag"><span class="zh-inline">心導管室</span></span>
       <span class="tag">Powerful Medical</span><span class="tag">PMcardio / Queen of Hearts</span><span class="tag">JACC: CV Interventions</span>
     </div>
     <h3>
       <span class="zh">同一份 AI 心電圖把假警報從 41.8% 降到 7.9%：1,032 次 STEMI 啟動的三院登錄資料</span>
-      <span class="en">One AI-ECG took false cath lab activations from 41.8% to 7.9%: a three-network registry of 1,032 STEMI activations</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">Queen of Hearts US Registry 收錄 UC Davis（Sacramento）、UT Health Houston、Beth Israel Deaconess（Boston）三個 primary PCI 網絡，2020 年 1 月至 2024 年 5 月共 <strong>1,032 次 STEMI 啟動</strong>。<a href="https://www.tctmd.com/news/ai-ecg-finds-stemi-faster-cuts-false-positive-cath-lab-activations" target="_blank" rel="noopener">TCTMD 的報導</a>（研究同步刊於 <em>JACC: Cardiovascular Interventions</em>）給出：AI 敏感度 92% 對標準判讀 71%、特異度 81% 對 29%、AUC 0.94；在生物標記陰性病人中的假陽性心導管啟動由 41.8% 降到 7.9%。該模型是 <a href="https://www.powerfulmedical.com/pmcardio-stemi/" target="_blank" rel="noopener">Powerful Medical 的 PMcardio「Queen of Hearts」</a>，訓練目標是冠狀動脈阻塞型心肌梗塞（OMI）而非傳統 STEMI 判準。Timothy Henry 的話：「AI-EKG analysis has the potential to reduce false activation by up to fourfold.」</span>
-        <span class="en">The Queen of Hearts US Registry covers three primary PCI networks — UC Davis Sacramento, UT Health Houston and Beth Israel Deaconess Boston — with <strong>1,032 STEMI activations</strong> from January 2020 to May 2024. <a href="https://www.tctmd.com/news/ai-ecg-finds-stemi-faster-cuts-false-positive-cath-lab-activations" target="_blank" rel="noopener">TCTMD's report</a> (the study appeared concurrently in <em>JACC: Cardiovascular Interventions</em>) gives: 92% sensitivity for the AI versus 71% for standard interpretation, 81% specificity versus 29%, AUC 0.94; false-positive cath lab activations among biomarker-negative patients fell from 41.8% to 7.9%. The model is <a href="https://www.powerfulmedical.com/pmcardio-stemi/" target="_blank" rel="noopener">Powerful Medical's PMcardio "Queen of Hearts"</a>, trained on occlusion myocardial infarction (OMI) rather than conventional STEMI criteria. Timothy Henry's line: "AI-EKG analysis has the potential to reduce false activation by up to fourfold."</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">特異度 29% → 81% 這個跳幅在臨床 AI 文獻裡非常罕見，而且它指向一個被低估的事實：很多 AI 的價值不在抓出更多病人，而在<strong>停掉不必要的動作</strong>。假陽性心導管啟動每一次都是一組人半夜被叫起來、一間導管室被佔用、一個病人被推進侵入性流程 —— 這種成本從來不會出現在 AUC 裡。另一位研究者 Ivan Rokos 的話也值得記下來：「We as physicians are still ultimately responsible for the patient, but AI can certainly turbocharge and augment our abilities.」</span>
-        <span class="en">A jump from 29% to 81% specificity is rare in the clinical AI literature, and it points at an underrated fact: much of AI's value lies not in catching more patients but in <strong>stopping unnecessary actions</strong>. Every false-positive cath lab activation means a team woken at night, a lab tied up, and a patient pushed into an invasive pathway — costs that never appear inside an AUC. Co-investigator Ivan Rokos's line is worth keeping too: "We as physicians are still ultimately responsible for the patient, but AI can certainly turbocharge and augment our abilities."</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">這是<strong>回溯性登錄研究</strong>，不是前瞻比較，AI 是在已經被啟動的 1,032 個案例上回頭判讀，所以它沒有測到「AI 當第一線守門人會漏掉什麼」。報導與原始發表的時點是 2025 年 10 月（TCT 2025 大會），不是本週新聞；放進今天是為了對比上一則 AI-ECG 單獨使用 PPV 只有 30.6% 的結果 —— 同一個模態，用在不同決策點，數字可以差這麼多。此外 Powerful Medical 是該模型的商業開發者，登錄研究的資料來源與資助關係需回查原文。</span>
-        <span class="en">This is a <strong>retrospective registry</strong>, not a prospective comparison: the AI re-read 1,032 cases that had already been activated, so it never tests what the AI would miss as a first-line gatekeeper. Both the coverage and the original presentation date to October 2025 (TCT 2025), not this week; it appears here to contrast with the previous story, where AI-ECG used alone returned a PPV of just 30.6% — same modality, different decision point, numbers that far apart. Powerful Medical is also the model's commercial developer, so the registry's data provenance and funding relationships need checking against the paper.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://www.tctmd.com/news/ai-ecg-finds-stemi-faster-cuts-false-positive-cath-lab-activations" target="_blank" rel="noopener">TCTMD, 2025-10-31</a> · <a href="https://www.powerfulmedical.com/pmcardio-stemi/" target="_blank" rel="noopener">Powerful Medical</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag"><span class="zh-inline">核准結構</span><span class="en-inline">Clearance mix</span></span>
+      <span class="tag"><span class="zh-inline">核准結構</span></span>
       <span class="tag">FDA</span><span class="tag">Cureus</span><span class="tag">Kaiser Permanente</span><span class="tag">07/13</span>
     </div>
     <h3>
       <span class="zh">三十年 1,430 件 AI 醫材核准裡，放射科拿走 1,094 件（76.5%），病理科 9 件，精神科 0 件</span>
-      <span class="en">Of 1,430 FDA AI device clearances over thirty years, radiology took 1,094 (76.5%); pathology got 9, psychiatry zero</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">Kaiser Permanente 洛杉磯醫學中心的 Pouyan Golshani 等人在 <em>Cureus</em>（2026-07-13）盤點 1995–2025 年 FDA 的 AI／ML 醫材核准，<a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/article/15830219/radiology-dominates-thirty-years-of-fda-ai-device-approvals" target="_blank" rel="noopener">AuntMinnie 的整理</a>給出：總計 <strong>1,430 件</strong>，放射科 1,094 件（76.5%），加上心血管與神經科共佔 90.6%。而病理科只有 9 件、微生物 6 件、婦產科 4 件、<strong>精神與行為健康 0 件</strong>。速度也很懸殊：1995–2014 年平均每年 1.8 件，2023–2025 年平均每年 264 件，光 2025 一年就 331 件。廠商集中度上，740 家公司中有 502 家（67.8%）只拿到一件核准，而 13 家公司（1.8%）拿下 247 件（17.3%）。</span>
-        <span class="en">Pouyan Golshani and colleagues at Kaiser Permanente Los Angeles Medical Center audited FDA AI/ML device clearances from 1995 to 2025 in <em>Cureus</em> (July 13, 2026); <a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/article/15830219/radiology-dominates-thirty-years-of-fda-ai-device-approvals" target="_blank" rel="noopener">AuntMinnie's summary</a> gives the counts: <strong>1,430 devices</strong> in total, 1,094 of them radiology (76.5%), with cardiovascular and neurology bringing the top three to 90.6%. Pathology has 9, microbiology 6, obstetrics and gynecology 4, and <strong>psychiatry and behavioral health zero</strong>. The pace is just as lopsided: a mean of 1.8 clearances a year in 1995–2014 against 264 a year in 2023–2025, with 331 in 2025 alone. Among manufacturers, 502 of 740 companies (67.8%) hold exactly one clearance, while 13 companies (1.8%) hold 247 of them (17.3%).</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">這張分布圖解釋了為什麼本期的證據全長在影像與心臟上：法規通道三十年來只在「有像素、有訊號、有金標準」的科別鋪好了路。精神科 0 件不是因為沒人做，而是因為精神科缺一個能被 510(k) 接受的參照標準 —— 這也是為什麼心理健康 AI 大多以「非醫材」的消費品形式上市、繞過前市場審查。放射科 76.5% 同時意味著一件事：如果你是一家做非影像臨床 AI 的公司，你面對的不只是技術問題，而是一條還沒被走出來的路。</span>
-        <span class="en">This distribution explains why all of today's evidence grows on imaging and the heart: in thirty years the regulatory pathway has only been paved for specialties with pixels, signals and a gold standard. Psychiatry's zero is not for want of effort but for want of a reference standard a 510(k) can accept — which is also why most mental health AI ships as a consumer product outside device regulation, bypassing premarket review altogether. Radiology's 76.5% carries a second implication: if you build non-imaging clinical AI, your problem is not only technical, it is that the road has not been walked yet.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">這是 7 月 13 日發表的文獻計量研究，不是本週新聞；而且「核准數」不是「臨床價值」的代理指標 —— 1,430 件裡絕大多數是 510(k) 實質等同，不需要前瞻臨床試驗。本日報只讀到 AuntMinnie 的二手整理，心血管與神經科各自的件數在該報導中未列出，故未引用。另有一份 Q3 季度回顧稱 FDA 已授權「超過 1,600 項」AI 醫材，與本則的 1,430 件統計窗口不同（後者僅計至 2025 年底），兩個數字不可混用。</span>
-        <span class="en">This is a bibliometric study published July 13, not this week's news — and clearance counts are no proxy for clinical value: the overwhelming majority of the 1,430 are 510(k) substantial-equivalence findings requiring no prospective trial. This issue read only AuntMinnie's secondary summary, which does not break out the cardiovascular and neurology counts, so those are not cited. Separately, the Q3 quarterly review states the FDA has now authorized "more than 1,600" AI-enabled devices; that window differs from the 1,430 here (which stops at end-2025), and the two figures should not be mixed.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/article/15830219/radiology-dominates-thirty-years-of-fda-ai-device-approvals" target="_blank" rel="noopener">AuntMinnie, 2026-07-16</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag"><span class="zh-inline">醫師態度</span><span class="en-inline">Physician attitudes</span></span>
+      <span class="tag"><span class="zh-inline">醫師態度</span></span>
       <span class="tag">AMA</span><span class="tag">2026 Physician Survey</span><span class="tag">03/12</span>
     </div>
     <h3>
       <span class="zh">81% 的醫師自己在用 AI，但 46% 不希望病人拿 AI 去解讀自己的放射報告、88% 擔心技能退化</span>
-      <span class="en">81% of physicians now use AI themselves, yet 46% do not want patients using AI to read their own radiology results, and 88% fear skill loss</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">美國醫學會（AMA）Center for Digital Health and AI 的 2026 Physician Survey on Augmented Intelligence，經 <a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/news/15819441/physicians-mixed-on-patient-use-of-ai-to-interpret-radiology-results" target="_blank" rel="noopener">AuntMinnie（2026-03-12）</a>整理：<strong>81%</strong> 的醫師已在執業中使用 AI（2023 年為 38%），超過 75% 認為 AI 改善了他們照顧病人的能力（2023 年 65%）。但問到病人端就翻轉：<strong>46%</strong> 表示「從不或很少」希望病人用 AI 解讀放射檢查結果，<strong>49%</strong> 對病理結果持同樣立場。另有 88% 擔心技能流失，86% 認為資料隱私是擴大採用的關鍵，88% 認為安全性與效能驗證是關鍵。</span>
-        <span class="en">The American Medical Association's Center for Digital Health and AI ran its 2026 Physician Survey on Augmented Intelligence, summarized by <a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/news/15819441/physicians-mixed-on-patient-use-of-ai-to-interpret-radiology-results" target="_blank" rel="noopener">AuntMinnie (March 12, 2026)</a>: <strong>81%</strong> of physicians now use AI in practice, up from 38% in 2023, and more than 75% say AI improves their ability to care for patients, up from 65%. Ask about the patient side and it inverts: <strong>46%</strong> would "never or rarely" want patients using AI to interpret radiology results, and <strong>49%</strong> say the same about pathology results. Separately, 88% worry about skill loss, 86% call data privacy critical to broader adoption, and 88% say the same of safety and efficacy validation.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">把 81% 和 46% 擺在一起，就看得到臨床 AI 下一階段的真正戰場不在模型，而在<strong>誰有權拿 AI 讀自己的片子</strong>。醫師接受 AI 當自己的副駕駛，但不接受 AI 當病人的副駕駛 —— 而病人端的 AI 判讀工具正在以消費品形式快速普及（前一則的精神科 0 件核准就是同一條路徑）。這個落差會在未來一兩年內變成門診裡的具體衝突，而不是學術爭論。88% 擔心技能退化這一項，則和今天 Prof. Valmed 那個「94 秒對 206 秒、準確率不變」的結果對得上：加速不等於增能。</span>
-        <span class="en">Set 81% beside 46% and the next phase's real battleground appears: not the model, but <strong>who is allowed to point an AI at their own scan</strong>. Physicians accept AI as their own copilot and decline it as the patient's — while patient-facing interpretation tools spread fast as consumer products (the same pathway as the previous story's zero psychiatry clearances). That gap will become a concrete clinic-room conflict within a year or two, not an academic argument. And the 88% who fear skill loss line up with today's Prof. Valmed result — 94 seconds versus 206, with accuracy unchanged: faster is not the same as more capable.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">這是 3 月 12 日的調查報導，不是本週新聞。更要緊的是：AuntMinnie 的報導<strong>未揭露樣本數與抽樣方法</strong>，AMA 的會員調查亦有自我選擇偏誤，因此「81%」這類數字應視為受訪醫師的自述比例，不是全美執業醫師的母體估計。「使用 AI」的定義範圍（是否含語音病歷、排程、計費）在該報導中也未界定。</span>
-        <span class="en">This is survey coverage from March 12, not this week's news. More importantly, AuntMinnie's report <strong>does not disclose the sample size or sampling method</strong>, and an AMA membership survey carries self-selection bias, so a figure like "81%" should be read as a self-reported share among respondents, not a population estimate for US physicians. The report also never defines the scope of "using AI" — whether ambient documentation, scheduling and billing count.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/news/15819441/physicians-mixed-on-patient-use-of-ai-to-interpret-radiology-results" target="_blank" rel="noopener">AuntMinnie, 2026-03-12</a></p></div>
   </div>
 </section>
@@ -311,60 +278,49 @@
   <h2>02 — Product Analysis</h2>
   <div class="sec-title">
     <span class="zh">今天刻意拆最不像對手的兩個東西：一個 2018 年就存在的梯度提升分數，和一個 2025 年的前沿 LLM —— 因為有病人結果的是前者</span>
-    <span class="en">Today deliberately dissects two things that look nothing like rivals: a gradient-boosted score that has existed since 2018, and a 2025 frontier LLM — because the one with a patient outcome is the former</span>
   </div>
 
   <div class="grid2">
     <div class="panel">
       <h3>Epic Deterioration Index (EDI)</h3>
-      <p class="sub"><span class="zh-inline">內建於電子病歷的住院惡化風險分數 · Epic Systems（美國）</span><span class="en-inline">In-EHR inpatient deterioration risk score · Epic Systems (USA)</span></p>
+      <p class="sub"><span class="zh-inline">內建於電子病歷的住院惡化風險分數 · Epic Systems（美國）</span></p>
       <p>
         <span class="zh"><strong>功能與定位。</strong>EDI 是直接長在 Epic 電子病歷裡的住院惡化風險分數，吃的是結構化生理數值、檢驗與護理評估，輸出 0–100 的分數，不是生成式模型、裡面沒有 LLM。它賣給誰？它不「賣」—— 它是 Epic 客戶已經有的東西，所以 RWJBarnabas 這次的介入成本幾乎只在流程改造，而不在採購。真正的產品創新是把分數的消費者從「護理站儀表板」換成「<a href="https://www.2minutemedicine.com/artificial-intelligence-ai-triggered-rapid-response-notifications-were-associated-with-lower-mortality-among-inpatients/" target="_blank" rel="noopener">rapid response team 的呼叫器</a>」。</span>
-        <span class="en"><strong>Function and position.</strong> The EDI is an inpatient deterioration risk score that lives inside the Epic EHR, fed by structured vitals, labs and nursing assessments, emitting a 0–100 score. It is not generative and contains no LLM. Who buys it? Nobody — it is something Epic customers already have, which is why RWJBarnabas's intervention cost sat almost entirely in process redesign rather than procurement. The actual product innovation was changing the score's consumer from a nursing-station dashboard to the <a href="https://www.2minutemedicine.com/artificial-intelligence-ai-triggered-rapid-response-notifications-were-associated-with-lower-mortality-among-inpatients/" target="_blank" rel="noopener">rapid response team's pager</a>.</span>
       </p>
       <ul class="clean">
-        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+        <li><span class="pro"><span class="zh-inline">優勢</span></span>
           <span class="zh">：這是今年極少數掛得上死亡率的臨床 AI —— 11 家醫院、23,132 人次，高風險住院死亡率 23.1% → 18.6%，校正後 <a href="https://hitconsultant.net/2026/07/29/rwjbarnabas-rutgers-nejm-ai-epic-deterioration-index-mortality-reduc/" target="_blank" rel="noopener">aOR 0.82（95% CI 0.74–0.91）</a>；而且 ICU 轉床沒有同比例增加，說明不是靠「把人都送進加護病房」換來的。</span>
-          <span class="en">: one of the year's very few clinical AI results attached to mortality — 11 hospitals, 23,132 encounters, high-risk inpatient mortality 23.1% → 18.6%, adjusted <a href="https://hitconsultant.net/2026/07/29/rwjbarnabas-rutgers-nejm-ai-epic-deterioration-index-mortality-reduc/" target="_blank" rel="noopener">aOR 0.82 (95% CI 0.74–0.91)</a> — and ICU transfers did not rise proportionally, so it was not bought by shipping everyone to intensive care.</span>
         </li>
-        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+        <li><span class="pro"><span class="zh-inline">優勢</span></span>
           <span class="zh">：零採購摩擦。它已經在數千家 Epic 客戶的系統裡，可複製性遠高於任何需要簽約、整合、驗證的新模型 —— 本期 ARISE 報告點出的「<a href="https://www.arise-ai.org/report" target="_blank" rel="noopener">下一階段不會由更新的模型驅動</a>」，講的就是這種東西。</span>
-          <span class="en">: zero procurement friction. It already sits inside thousands of Epic customers' systems, making it far more replicable than any new model requiring contracting, integration and validation — exactly the kind of thing the ARISE report means when it says <a href="https://www.arise-ai.org/report" target="_blank" rel="noopener">the next phase will not be driven by newer models alone</a>.</span>
         </li>
-        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+        <li><span class="con"><span class="zh-inline">疑慮</span></span>
           <span class="zh">：導入後只有 <strong>46.6%</strong> 的住院真的跳出通知，所以我們其實不知道這套系統在「全量覆蓋」下會不會變成警報疲乏災難；而剛跨門檻那一段（EDI 55–59）aOR 0.86、95% CI 0.63–1.17，<strong>不顯著</strong>。</span>
-          <span class="en">: only <strong>46.6%</strong> of post-implementation encounters actually fired a notification, so we do not know whether this system becomes an alarm-fatigue disaster at full coverage; and in the band just across the threshold (EDI 55–59) the aOR is 0.86 with a 95% CI of 0.63–1.17 — <strong>not significant</strong>.</span>
         </li>
-        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+        <li><span class="con"><span class="zh-inline">疑慮</span></span>
           <span class="zh">：前後對照設計無法排除同期其他品質改善措施的貢獻，兩家醫院導入不完整、季節分布不均，作者自己把外推性標為不確定。缺的那個數據很明確：<strong>沒有隨機試驗</strong>。</span>
-          <span class="en">: a before-and-after design cannot exclude contributions from concurrent quality-improvement work; two hospitals implemented incompletely, seasons were unevenly distributed, and the authors flag generalizability as uncertain. The missing datum is unambiguous: <strong>there is no randomized trial</strong>.</span>
         </li>
       </ul>
     </div>
 
     <div class="panel">
       <h3>AI Consult 2.0 (Penda Health, on GPT-4o)</h3>
-      <p class="sub"><span class="zh-inline">嵌在電子病歷裡的基層臨床安全網 · Penda Health（肯亞）／OpenAI GPT-4o</span><span class="en-inline">In-EHR clinical safety net for primary care · Penda Health (Kenya) / OpenAI GPT-4o</span></p>
+      <p class="sub"><span class="zh-inline">嵌在電子病歷裡的基層臨床安全網 · Penda Health（肯亞）／OpenAI GPT-4o</span></p>
       <p>
         <span class="zh"><strong>功能與定位。</strong>AI Consult 不是 chatbot，而是接在 clinical officer 下診斷與開處方的動作上、對可能的錯誤即時提示的「安全網」層。它的使用者是基層的 clinical officer（在肯亞體系中非醫師的臨床執業人員），底層是 GPT-4o。它被設計成不打斷工作流、只在偵測到問題時出聲 —— 這個設計決策後來同時解釋了它的成功與失敗，詳見 <a href="https://www.nature.com/articles/s41591-026-04503-6" target="_blank" rel="noopener">Nature Medicine 的試驗報告</a>。</span>
-        <span class="en"><strong>Function and position.</strong> AI Consult is not a chatbot but a safety-net layer that hooks onto the moment a clinical officer records a diagnosis or writes a prescription and flags likely errors in real time. Its users are primary care clinical officers — non-physician clinicians in Kenya's system — and it runs on GPT-4o. It was designed not to interrupt the workflow, speaking only when it detects a problem; that single design decision ends up explaining both its success and its failure, per the <a href="https://www.nature.com/articles/s41591-026-04503-6" target="_blank" rel="noopener">Nature Medicine trial report</a>.</span>
       </p>
       <ul class="clean">
-        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+        <li><span class="pro"><span class="zh-inline">優勢</span></span>
           <span class="zh">：這是極少數敢做群集隨機試驗並把結果如實發表（含落空的主要指標）的 LLM 臨床產品，光這一點的可信度就高於絕大多數自評自測的醫療模型 —— 對照本站 10/01 那期談到的 MedQA 自測 100% 問題。</span>
-          <span class="en">: one of very few LLM clinical products willing to run a cluster-randomized trial and publish the result honestly, missed primary endpoint included. That alone makes it more credible than the great majority of medical models that grade their own homework — compare the self-tested, self-scored 100% MedQA problem covered in this site's October 1 issue.</span>
         </li>
-        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+        <li><span class="pro"><span class="zh-inline">優勢</span></span>
           <span class="zh">：次要指標是真的動了：診斷記載 aOR 1.74、完整病程記錄 aOR 1.68、治療計畫 aOR 1.71，抗生素成本每人降 <a href="https://trial.medpath.com/news/generative-ai-clinical-decision-support-shows-safety-and-documentation-gains-but-no-significant-reduction-in-treatment-failure-in-kenyan-primary-care-trial" target="_blank" rel="noopener">0.15 美元</a>，且病人滿意度未下降。在抗生素抗藥性是全球議題的脈絡下，用藥紀律本身就是可給付的價值。</span>
-          <span class="en">: the secondary endpoints genuinely moved — diagnosis documentation aOR 1.74, comprehensive notes aOR 1.68, treatment plans aOR 1.71, antibiotic cost down <a href="https://trial.medpath.com/news/generative-ai-clinical-decision-support-shows-safety-and-documentation-gains-but-no-significant-reduction-in-treatment-failure-in-kenyan-primary-care-trial" target="_blank" rel="noopener">US$0.15</a> per patient, with no drop in patient satisfaction. With antimicrobial resistance a global problem, prescribing discipline is itself a reimbursable value.</span>
         </li>
-        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+        <li><span class="con"><span class="zh-inline">疑慮</span></span>
           <span class="zh">：主要指標落空，而且作者的措辭已經先把天花板封住了 —— 「any benefit, if present, is probably modest」。更麻煩的是 power 不足：二手整理指出要偵測更小的差異需要 <strong>10 萬名以上</strong>病人，意思是這類產品短期內拿不出「治療失敗下降」的證據，不是因為做不到，而是因為做不出來給你看。</span>
-          <span class="en">: the primary endpoint missed, and the authors' phrasing caps the ceiling in advance — "any benefit, if present, is probably modest." Worse, it is underpowered: secondary write-ups note that detecting a smaller difference would need <strong>100,000-plus</strong> patients, which means products like this cannot produce evidence of reduced treatment failure any time soon — not because the effect is absent, but because it is unshowable at feasible scale.</span>
         </li>
-        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+        <li><span class="con"><span class="zh-inline">疑慮</span></span>
           <span class="zh">：被標記的輸出只有 49.4% 被評為「definitely safe」，1.1% 被判為不安全。把這個數字乘上今天另一則的發現 —— 資淺臨床人員只找出 <a href="https://www.micheledpierri.com/2026/10/02/ai-digital-health-quarterly-review-2026q3/" target="_blank" rel="noopener">15.8% 的 GPT-4o 幻覺</a> —— 「人會把錯的擋掉」這個假設在基層場景並不成立。</span>
-          <span class="en">: only 49.4% of flagged outputs were rated "definitely safe" and 1.1% were judged unsafe. Multiply that by another of today's findings — junior clinicians detected only <a href="https://www.micheledpierri.com/2026/10/02/ai-digital-health-quarterly-review-2026q3/" target="_blank" rel="noopener">15.8% of GPT-4o hallucinations</a> — and the assumption that a human will catch the wrong ones does not hold in a primary care setting.</span>
         </li>
       </ul>
     </div>
@@ -373,7 +329,6 @@
   <div class="panel">
     <p>
       <span class="zh"><strong>兩者的對比就是本期的論點。</strong>EDI 模型能力遠遜於 GPT-4o，卻掛得上死亡率，因為它的輸出被接到一支會移動的隊伍；AI Consult 模型能力遠勝，卻只動得了文件，因為它的輸出終點是一個正在忙的人的眼睛。臨床 AI 的瓶頸現在不在模型的上限，而在<strong>輸出之後那段路有沒有人走</strong>。</span>
-      <span class="en"><strong>The contrast between the two is this issue's argument.</strong> The EDI is far weaker than GPT-4o as a model, yet it attaches to mortality, because its output is wired to a team that physically moves. AI Consult is far stronger, yet it only moved documentation, because its output terminates at the eyes of a busy human being. Clinical AI's bottleneck is no longer the model's ceiling but <strong>whether anyone walks the stretch of road after the output</strong>.</span>
     </p>
   </div>
 </section>
@@ -383,70 +338,59 @@
   <h2>03 — Companies &amp; Competition</h2>
   <div class="sec-title">
     <span class="zh">誰站在哪裡、憑什麼、跟誰打</span>
-    <span class="en">Who stands where, on what, against whom</span>
   </div>
 
   <div class="tbl-wrap">
     <table>
       <thead><tr>
-        <th><span class="zh-inline">公司</span><span class="en-inline">Company</span></th>
-        <th><span class="zh-inline">近況與數字</span><span class="en-inline">Recent state &amp; numbers</span></th>
-        <th><span class="zh-inline">競爭定位與護城河</span><span class="en-inline">Position &amp; moat</span></th>
+        <th><span class="zh-inline">公司</span></th>
+        <th><span class="zh-inline">近況與數字</span></th>
+        <th><span class="zh-inline">競爭定位與護城河</span></th>
       </tr></thead>
       <tbody>
         <tr>
-          <td><strong>Epic Systems</strong><br><span class="zh-inline">美國醫院電子病歷的事實標準</span><span class="en-inline">The de facto EHR standard in US hospitals</span></td>
+          <td><strong>Epic Systems</strong><br><span class="zh-inline">美國醫院電子病歷的事實標準</span></td>
           <td>
             <span class="zh">內建 EDI 在 RWJBarnabas 11 家醫院、23,132 人次的研究中對應到高風險住院死亡率 23.1% → 18.6%，<a href="https://hitconsultant.net/2026/07/29/rwjbarnabas-rutgers-nejm-ai-epic-deterioration-index-mortality-reduc/" target="_blank" rel="noopener">校正後 aOR 0.82，NEJM AI DOI 10.1056/AIoa2500973</a>；RRT 評估率 25.3% → 37.5%。</span>
-            <span class="en">Its built-in EDI is associated, across RWJBarnabas's 11 hospitals and 23,132 encounters, with high-risk inpatient mortality falling 23.1% → 18.6%, <a href="https://hitconsultant.net/2026/07/29/rwjbarnabas-rutgers-nejm-ai-epic-deterioration-index-mortality-reduc/" target="_blank" rel="noopener">adjusted aOR 0.82, NEJM AI DOI 10.1056/AIoa2500973</a>; RRT evaluation rate 25.3% → 37.5%.</span>
           </td>
           <td>
             <span class="zh">護城河是「已經在裡面」：不需採購、不需整合，臨床 AI 的分發權握在它手上。弱點是模型本身並不先進，一旦證據標準從「關聯」升到「隨機」，它沒有做試驗的習慣與誘因。</span>
-            <span class="en">Its moat is already being inside: no procurement, no integration, and the distribution rights for clinical AI in its hands. Its weakness is that the model itself is unremarkable — and once the evidence bar rises from association to randomization, Epic has neither the habit nor the incentive to run trials.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>Penda Health + OpenAI</strong><br><span class="zh-inline">肯亞基層診所網路 × 前沿模型</span><span class="en-inline">Kenyan primary care network × frontier model</span></td>
+          <td><strong>Penda Health + OpenAI</strong><br><span class="zh-inline">肯亞基層診所網路 × 前沿模型</span></td>
           <td>
             <span class="zh">16 家診所、103 位 clinical officer、<a href="https://pubmed.ncbi.nlm.nih.gov/42362867/" target="_blank" rel="noopener">9,691 名病人</a>的群集隨機試驗，主要指標 2.2% 對 2.0%、aOR 0.77、P = 0.13；文件品質 aOR 1.68–1.74，抗生素成本每人降 0.15 美元。</span>
-            <span class="en">A cluster-randomized trial across 16 clinics, 103 clinical officers and <a href="https://pubmed.ncbi.nlm.nih.gov/42362867/" target="_blank" rel="noopener">9,691 patients</a>: primary endpoint 2.2% versus 2.0%, aOR 0.77, P = 0.13; documentation quality aOR 1.68–1.74; antibiotic cost down US$0.15 per patient.</span>
           </td>
           <td>
             <span class="zh">護城河是證據的誠實度與低資源場域的真實部署經驗 —— 這是 OpenAI 在醫療端最難被複製的資產。弱點是商業模式：文件品質與抗生素成本的改善很難在肯亞基層換成足以支撐 GPT-4o 推論成本的付費意願。</span>
-            <span class="en">Its moat is the honesty of its evidence plus real deployment experience in a low-resource setting — OpenAI's hardest-to-copy asset on the clinical side. Its weakness is the business model: gains in documentation quality and antibiotic cost are hard to convert, in Kenyan primary care, into willingness to pay enough to cover GPT-4o inference.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>UltraSight</strong><br><span class="zh-inline">即時 AI 導引心臟超音波取像</span><span class="en-inline">Real-time AI guidance for cardiac ultrasound acquisition</span></td>
+          <td><strong>UltraSight</strong><br><span class="zh-inline">即時 AI 導引心臟超音波取像</span></td>
           <td>
             <span class="zh">梅約 995 人前瞻研究中，9 名零經驗新手搭配 Philips Lumify 取像，AI-FoCUS 偵測 SHD <a href="https://www.nature.com/articles/s41746-026-02856-3" target="_blank" rel="noopener">敏感度 90.1%、特異度 99.1%、PPV 95.4%</a>（判讀由盲化專家執行）。</span>
-            <span class="en">In Mayo's prospective study of 995 adults, 9 operators with zero experience acquired images on a Philips Lumify, and AI-FoCUS detected SHD with <a href="https://www.nature.com/articles/s41746-026-02856-3" target="_blank" rel="noopener">90.1% sensitivity, 99.1% specificity and 95.4% PPV</a> (interpretation by blinded experts).</span>
           </td>
           <td>
             <span class="zh">護城河是把超音波取像這項最依賴手感的技能商品化，並綁上 Philips 的手持硬體通路。弱點是它只解了取像、沒解判讀，所以賣的仍是「專家的前處理器」而非替代品 —— 在缺乏心臟專科的地區（包含台灣部分偏鄉），這個限制就是它的天花板。</span>
-            <span class="en">Its moat is commoditizing the most hand-skill-dependent step in echocardiography, bundled into Philips's handheld hardware channel. Its weakness is that it solves acquisition and not interpretation, so what it sells is a preprocessor for experts rather than a substitute — and in regions short of cardiologists, including parts of rural Taiwan, that limit is its ceiling.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>Powerful Medical</strong><br><span class="zh-inline">PMcardio／Queen of Hearts，OMI 導向 AI 心電圖</span><span class="en-inline">PMcardio / Queen of Hearts, OMI-oriented AI-ECG</span></td>
+          <td><strong>Powerful Medical</strong><br><span class="zh-inline">PMcardio／Queen of Hearts，OMI 導向 AI 心電圖</span></td>
           <td>
             <span class="zh">三院 1,032 次 STEMI 啟動的回溯登錄：<a href="https://www.tctmd.com/news/ai-ecg-finds-stemi-faster-cuts-false-positive-cath-lab-activations" target="_blank" rel="noopener">敏感度 92% 對 71%、特異度 81% 對 29%、AUC 0.94</a>，生物標記陰性病人的假陽性心導管啟動 41.8% → 7.9%。</span>
-            <span class="en">A retrospective registry of 1,032 STEMI activations across three networks: <a href="https://www.tctmd.com/news/ai-ecg-finds-stemi-faster-cuts-false-positive-cath-lab-activations" target="_blank" rel="noopener">92% sensitivity versus 71%, 81% specificity versus 29%, AUC 0.94</a>, with false-positive cath lab activations among biomarker-negative patients falling 41.8% → 7.9%.</span>
           </td>
           <td>
             <span class="zh">護城河是訓練標的選得不一樣：直接對準 OMI 而非傳統 STEMI 判準，因此抓到的是教科書判準會漏掉的那一群。弱點是回溯設計，以及它改善的主要是「省掉不必要的啟動」—— 這種價值在以處置量計酬的體系裡反而難賣。</span>
-            <span class="en">Its moat is choosing a different training target — occlusion MI rather than conventional STEMI criteria — so it catches the group textbook criteria miss. Its weakness is the retrospective design, plus the fact that what it mainly improves is avoiding unnecessary activations: a value that is harder to sell in systems paid by procedure volume.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>ARISE（Stanford × Harvard）</strong><br><span class="zh-inline">不賣產品，賣評估標準的那一方</span><span class="en-inline">Not selling a product — selling the evaluation standard</span></td>
+          <td><strong>ARISE（Stanford × Harvard）</strong><br><span class="zh-inline">不賣產品，賣評估標準的那一方</span></td>
           <td>
             <span class="zh">首份年度報告指出 FDA 已放行超過 1,200 項 AI 醫材，而回顧的 500 多份研究中<a href="https://medicine.stanford.edu/news/current-news/standard-news/clinical-ai-has-boomed.html" target="_blank" rel="noopener">近 50% 用考試題、僅 5% 用真實病人資料</a>；主張證據標準應轉向多輪非結構化資料與真實後果。</span>
-            <span class="en">Its first annual report notes the FDA has cleared more than 1,200 AI-enabled devices while, among the 500-plus studies reviewed, <a href="https://medicine.stanford.edu/news/current-news/standard-news/clinical-ai-has-boomed.html" target="_blank" rel="noopener">nearly 50% used exam questions and only 5% used real patient data</a>; it argues the evidence bar must move to multi-turn unstructured data and real-world consequences.</span>
           </td>
           <td>
             <span class="zh">護城河是學術中立性與 Stanford／Harvard／BIDMC 的聯合背書 —— 在廠商自評自測成常態的市場裡，「誰定義什麼叫有效」本身就是一種權力。弱點是沒有強制力，也沒有公開完整方法學供逐篇覆核。</span>
-            <span class="en">Its moat is academic neutrality and joint endorsement from Stanford, Harvard and BIDMC — in a market where vendors routinely grade themselves, defining what counts as effective is itself a form of power. Its weakness is that it has no enforcement, and no published full methodology to re-check study by study.</span>
           </td>
         </tr>
       </tbody>
@@ -456,7 +400,6 @@
   <div class="panel">
     <p>
       <span class="zh"><strong>今天的競爭結構是一個「分發 vs. 證據」的交叉。</strong>握有分發權的（Epic）不需要證據就能部署，而拿得出最誠實證據的（Penda／OpenAI）沒有分發權；中間那一層（UltraSight、Powerful Medical）則都選擇只解一小段流程、把責任留給專家 —— 這在法規上安全，但也把天花板一起焊死了。</span>
-      <span class="en"><strong>Today's competitive structure is a crossing of distribution against evidence.</strong> Whoever holds distribution (Epic) can deploy without evidence, while whoever produces the most honest evidence (Penda and OpenAI) holds no distribution. The layer in between — UltraSight, Powerful Medical — has each chosen to solve one short stretch of workflow and leave responsibility with the expert: regulatorily safe, and a ceiling welded on at the same time.</span>
     </p>
   </div>
 </section>
@@ -466,21 +409,17 @@
   <h2>04 — Taiwan Angle</h2>
   <div class="sec-title">
     <span class="zh">台灣正在蓋的是資料基建，而今天的證據說：基建蓋完之後真正缺的是流程</span>
-    <span class="en">Taiwan is building data infrastructure — and today's evidence says what will be missing once it is built is workflow</span>
   </div>
 
   <div class="panel">
     <p>
       <span class="zh"><strong>(1) 時程已經壓到年底，但這是「資料」的時程，不是「結果」的時程。</strong>衛福部長石崇良在 9 月 15 日為 10 月 7 日登場的生技論壇預告時指出，醫療 AI 的「首要工作是建立資料標準、治理制度及可信賴的使用環境」，並給出明確時間表：<strong>醫學中心的 FHIR 資料整備目標在 2026 年底，全國醫院串接在 2027 年底</strong>；政策工具包括五年 <strong>4,890 億元</strong>的「健康台灣深耕計畫」、四年 <strong>2,400 億元</strong>的「國家藥物韌性整備計畫」，以及規劃中 <strong>1,000 億元</strong>的創新醫材與新藥研發投資（<a href="https://udn.com/news/story/7240/9754542" target="_blank" rel="noopener">經濟日報／聯合新聞網，2026-09-15</a>）。對照今天 RWJBarnabas 的結果：他們沒有新資料、沒有新模型，只是把既有分數接到 rapid response team，就拿到 aOR 0.82。FHIR 串接是必要條件，但不是充分條件。</span>
-      <span class="en"><strong>(1) The timeline is now pinned to year-end — but it is a data timeline, not an outcomes timeline.</strong> Health Minister Shih Chung-liang, previewing the Biotech Forum held on October 7, said on September 15 that medical AI's "first task is establishing data standards, governance systems and a trustworthy operating environment," and gave firm dates: <strong>FHIR data readiness at medical centers by the end of 2026, and nationwide hospital interconnection by the end of 2027</strong>. The policy instruments include the five-year, <strong>NT$489 billion</strong> Deepening Health Taiwan Plan, the four-year, <strong>NT$240 billion</strong> National Drug Resilience Preparedness Plan, and a planned <strong>NT$100 billion</strong> investment in innovative medical devices and drug R&amp;D (<a href="https://udn.com/news/story/7240/9754542" target="_blank" rel="noopener">Economic Daily News / UDN, 2026-09-15</a>). Set that against today's RWJBarnabas result: they had no new data and no new model — they wired an existing score to the rapid response team and got aOR 0.82. FHIR interconnection is a necessary condition, not a sufficient one.</span>
     </p>
     <p>
       <span class="zh"><strong>(2) 台灣已經有「負責任 AI 中心」這個制度骨架，但缺的是 RRT 那條線。</strong>衛福部在 2025 年已與十家醫院合作建立負責任 AI 執行中心，定位是「可信賴的智慧醫療守門人」（<a href="https://www.mohw.gov.tw/cp-16-82236-1.html" target="_blank" rel="noopener">衛生福利部</a>）。守門人這個隱喻恰好說明了問題：守門是「審核模型能不能進來」，而今天的證據全指向「模型進來之後，警示送給誰、誰會動」。ESTOP-AKI 的建議只有 41% 被完整採納、EDI 只有 46.6% 的住院跳通知 —— 台灣的醫學中心若把 AI 導入當成資訊室專案而非品質改善專案（QI），同一組落差會原封不動複製過來。</span>
-      <span class="en"><strong>(2) Taiwan already has the institutional skeleton of "responsible AI centers" — what it lacks is the RRT wire.</strong> In 2025 the Ministry of Health and Welfare established responsible-AI implementation centers with ten hospitals, framed as "trustworthy gatekeepers for smart healthcare" (<a href="https://www.mohw.gov.tw/cp-16-82236-1.html" target="_blank" rel="noopener">MOHW</a>). The gatekeeper metaphor is itself the problem: gatekeeping asks whether a model may enter, while today's evidence points entirely at what happens afterwards — who receives the alert, and who moves. Only 41% of ESTOP-AKI's recommendations were fully followed; the EDI fired in only 46.6% of encounters. If Taiwan's medical centers treat AI adoption as an IT department project rather than a quality-improvement project, that same gap copies over unchanged.</span>
     </p>
     <p>
       <span class="zh"><strong>(3) 給付這一端，今天最可抄的其實是「省下來的檢查」而不是「抓出來的病人」。</strong>梅約那份研究的兩段式策略把影像使用量壓到 <strong>47%</strong>、代價是敏感度從 90.1% 掉到 77.0%（<a href="https://www.nature.com/articles/s41746-026-02856-3" target="_blank" rel="noopener">npj Digital Medicine</a>）；Powerful Medical 把假陽性心導管啟動從 41.8% 壓到 7.9%（<a href="https://www.tctmd.com/news/ai-ecg-finds-stemi-faster-cuts-false-positive-cath-lab-activations" target="_blank" rel="noopener">TCTMD</a>）。在健保總額制下，這種「減少不必要處置」的價值比「提高偵測率」更容易換算成給付論述 —— 但同時也更容易被誤用成壓縮檢查量的理由。那個從 90.1% 掉到 77.0% 的敏感度，就是這筆帳要先講清楚的代價。</span>
-      <span class="en"><strong>(3) On the payment side, what is most worth copying today is the studies avoided, not the patients caught.</strong> Mayo's two-step pathway cut imaging utilization to <strong>47%</strong> at the cost of sensitivity falling from 90.1% to 77.0% (<a href="https://www.nature.com/articles/s41746-026-02856-3" target="_blank" rel="noopener">npj Digital Medicine</a>); Powerful Medical cut false-positive cath lab activations from 41.8% to 7.9% (<a href="https://www.tctmd.com/news/ai-ecg-finds-stemi-faster-cuts-false-positive-cath-lab-activations" target="_blank" rel="noopener">TCTMD</a>). Under Taiwan's global-budget NHI, "fewer unnecessary procedures" converts into a reimbursement argument more easily than "higher detection rate" — and is also more easily misused as a pretext for squeezing test volumes. The sensitivity that fell from 90.1% to 77.0% is precisely the cost that has to be stated out loud before that ledger is opened.</span>
     </p>
   </div>
 </section>
@@ -490,29 +429,28 @@
   <h2>05 — Further Reading</h2>
   <div class="sec-title">
     <span class="zh">挑選標準：能改變你讀下一篇 AI 論文時的問法，而不是多給你一個數字</span>
-    <span class="en">Chosen on one criterion: it changes the question you ask of the next AI paper, rather than handing you one more number</span>
   </div>
 
   <ol class="reading">
     <li>
       <a href="https://www.nature.com/articles/s41591-026-04503-6" target="_blank" rel="noopener">Generative AI-enabled clinical decision support system in primary care: a pragmatic, cluster-randomized trial — Nature Medicine (2026-06-26)</a>
-      <p class="why"><span class="zh">把摘要最後一句抄下來當尺：「LLM assistance was safe but did not reduce treatment failure within 14 days」。這是目前最乾淨的一次「前沿模型在真實診間」的隨機證據，值得整篇讀完方法學，特別是事件率低於預期導致 power 不足那一段。</span><span class="en">Copy the abstract's closing line and use it as a ruler: "LLM assistance was safe but did not reduce treatment failure within 14 days." This is the cleanest randomized evidence yet for a frontier model in a real consulting room, and the methods deserve a full read — above all the passage on event rates coming in below expectation and leaving the trial underpowered.</span></p>
+      <p class="why"><span class="zh">把摘要最後一句抄下來當尺：「LLM assistance was safe but did not reduce treatment failure within 14 days」。這是目前最乾淨的一次「前沿模型在真實診間」的隨機證據，值得整篇讀完方法學，特別是事件率低於預期導致 power 不足那一段。</span></p>
     </li>
     <li>
       <a href="https://www.arise-ai.org/report" target="_blank" rel="noopener">State of Clinical AI Report 2026 — ARISE, Stanford–Harvard Research Network</a>
-      <p class="why"><span class="zh">讀它不是為了那 5%，而是為了「jagged frontier」這個框架：同一個模型在受控任務與真實變異之間的落差不是平滑的，是鋸齒狀的。這個框架會改變你怎麼看 benchmark。</span><span class="en">Read it not for the 5% but for the "jagged frontier" frame: a single model's gap between controlled tasks and real-world variability is not a smooth slope but a sawtooth. That frame changes how you read any benchmark.</span></p>
+      <p class="why"><span class="zh">讀它不是為了那 5%，而是為了「jagged frontier」這個框架：同一個模型在受控任務與真實變異之間的落差不是平滑的，是鋸齒狀的。這個框架會改變你怎麼看 benchmark。</span></p>
     </li>
     <li>
       <a href="https://www.micheledpierri.com/2026/10/02/ai-digital-health-quarterly-review-2026q3/" target="_blank" rel="noopener">AI &amp; Digital Health: Quarterly Review 2026Q3 — micheledpierri.com (2026-10-02)</a>
-      <p class="why"><span class="zh">本期最新的一份文件，也是唯一把 Q3 的試驗、基礎模型與法規動作並排算完的整理。注意它把 ESTOP-AKI 的 41% 採納率與 ALLIANCE 的「快但沒更準」放在同一節 —— 這個編排本身就是論點。</span><span class="en">The freshest document in this issue, and the only one that tallies Q3's trials, foundation models and regulatory moves side by side. Note that it files ESTOP-AKI's 41% adherence and ALLIANCE's faster-but-no-more-accurate result in the same section — that arrangement is itself the argument.</span></p>
+      <p class="why"><span class="zh">本期最新的一份文件，也是唯一把 Q3 的試驗、基礎模型與法規動作並排算完的整理。注意它把 ESTOP-AKI 的 41% 採納率與 ALLIANCE 的「快但沒更準」放在同一節 —— 這個編排本身就是論點。</span></p>
     </li>
     <li>
       <a href="https://www.nature.com/articles/s41591-026-04371-0" target="_blank" rel="noopener">Advancing conversational diagnostic AI with multimodal reasoning — Nature Medicine (2026-05-14)</a>
-      <p class="why"><span class="zh">多模態 AMIE 在 105 次模擬遠距門診中於 32 項評分軸的 29 項勝過基層醫師 —— 然後作者自己標明這不是臨床試驗、聊天介面沒有理學檢查、且可能有預訓練資料洩漏。把這篇和本期第二則對讀，就能看懂「OSCE 贏」與「隨機試驗沒贏」之間那道鴻溝。</span><span class="en">Multimodal AMIE beat primary care physicians on 29 of 32 evaluation axes across 105 simulated telehealth consultations — and then the authors themselves note it is not a clinical trial, that a chat interface has no physical examination, and that pretraining data leakage is possible. Read it against this issue's second story and the chasm between winning an OSCE and not winning an RCT comes into focus.</span></p>
+      <p class="why"><span class="zh">多模態 AMIE 在 105 次模擬遠距門診中於 32 項評分軸的 29 項勝過基層醫師 —— 然後作者自己標明這不是臨床試驗、聊天介面沒有理學檢查、且可能有預訓練資料洩漏。把這篇和本期第二則對讀，就能看懂「OSCE 贏」與「隨機試驗沒贏」之間那道鴻溝。</span></p>
     </li>
     <li>
       <a href="https://www.nature.com/articles/s41586-025-10097-9" target="_blank" rel="noopener">An agentic system for rare disease diagnosis with traceable reasoning (DeepRare) — Nature, vol 651, 775–784 (2026)</a>
-      <p class="why"><span class="zh">罕病診斷是「AI 應該真的有優勢」的少數場景：盛行率低於 1/2,000、臨床醫師本來就連不起來那些模式、而且診斷延遲動輒五年以上。重點讀它的 traceable reasoning 設計 —— 把推論鏈綁回醫學證據，是本期唯一正面處理「人要怎麼查 AI」的做法。</span><span class="en">Rare disease is one of the few settings where AI should genuinely hold an advantage: prevalence under 1 in 2,000, patterns clinicians were never going to connect, and diagnostic odysseys routinely running five years or more. Read it for the traceable-reasoning design — tying the inference chain back to medical evidence is the only approach in this issue that confronts head-on how a human is supposed to check an AI.</span></p>
+      <p class="why"><span class="zh">罕病診斷是「AI 應該真的有優勢」的少數場景：盛行率低於 1/2,000、臨床醫師本來就連不起來那些模式、而且診斷延遲動輒五年以上。重點讀它的 traceable reasoning 設計 —— 把推論鏈綁回醫學證據，是本期唯一正面處理「人要怎麼查 AI」的做法。</span></p>
     </li>
   </ol>
 </section>
@@ -522,7 +460,6 @@
   <h2>06 — References</h2>
   <div class="sec-title">
     <span class="zh">參考文獻</span>
-    <span class="en">References</span>
   </div>
 
   <div class="panel">
@@ -555,7 +492,6 @@
     </ol>
     <div class="note">
       <span class="zh"><strong>編輯說明：</strong>（1）<strong>今日該主題新聞較少</strong> —— 過去 72 小時沒有新的大型前瞻臨床 AI 試驗發表，因此本期把窗口前推至 9/28，並以兩份 10 月 2 日發布的回顧型文件（2 Minute Medicine 的 NEJM AI 評析、Q3 季度回顧）作為主線，其餘各則的原始發表日期已逐一標在卡片標籤與來源列上，最舊者為 2025 年 10 月的 TCTMD 報導，刻意保留以對比同一模態在不同決策點的表現差異。（2）<strong>未能讀取的頁面</strong>：<em>Nature Medicine</em> 原文頁（s41591-026-04503-6）與 Europe PMC 的 Academic Radiology 書目查詢在本次執行中被代理伺服器以 HTTP 429 限流拒絕，PubMed 與 academicradiology.org 則回傳 reCAPTCHA／403；肯亞試驗的完整摘要與統計數字係經 Europe PMC 的 PubMed 42362867 紀錄取得（逐字摘要），次要指標（aOR 1.68–1.74、0.15 美元、49.4%／1.1%）引自 MedPath 的二手整理而非原文，請以原文為準。Academic Radiology 那篇僅取得標題，未引用任何數字。<em>The Lancet Digital Health</em> 的社論（PIIS2589-7500(26)00053-1）同樣回傳 403，故未納入延伸閱讀。（3）<strong>廠商自述與設計限制</strong>：Powerful Medical 是 Queen of Hearts 的商業開發者，該登錄研究為回溯設計；UltraSight 與 Philips 為 AI-FoCUS 研究的器材提供方。EDI 研究為前後對照世代研究、非隨機試驗。（4）<strong>無法逐篇覆核的比例</strong>：ARISE 報告的「近 50% 用考試題／僅 5% 用真實病人資料」僅由史丹佛醫學院新聞稿佐證，官網公開頁未列方法學；Q3 季度回顧為個人署名整理、非同儕審查，其中 9 月幻覺偵測研究（15.8%／13.1%）與 ESTOP-AKI、ALLIANCE 的部分細節未能取得原始書目，ALLIANCE 的準確率與秒數已另由 ACDIS 報導佐證。（5）AMA 調查的樣本數與抽樣方法在二手報導中未揭露。（6）本報告不構成投資或醫療建議。</span>
-      <span class="en"><strong>Editor's note:</strong> (1) <strong>News on this rotation was thin today</strong> — no new large prospective clinical AI trial was published in the past 72 hours, so this issue extends the window back to September 28 and builds its spine from two documents published on October 2 (2 Minute Medicine's appraisal of the NEJM AI study, and the Q3 quarterly review). Every other story carries its original publication date in its tags and source row; the oldest is TCTMD's October 2025 report, kept deliberately to contrast one modality's performance at two different decision points. (2) <strong>Pages that could not be read</strong>: the <em>Nature Medicine</em> article page (s41591-026-04503-6) and a Europe PMC bibliographic query for the Academic Radiology paper were refused by the proxy with HTTP 429 during this run, while PubMed and academicradiology.org returned reCAPTCHA and 403 respectively. The Kenyan trial's full abstract and statistics come from the Europe PMC record for PubMed 42362867 (verbatim abstract); its secondary endpoints (aOR 1.68–1.74, US$0.15, 49.4% / 1.1%) are cited from MedPath's secondary summary rather than the paper, so defer to the original. For the Academic Radiology paper only the title was obtained and no figures are cited. <em>The Lancet Digital Health</em>'s editorial (PIIS2589-7500(26)00053-1) also returned 403 and was therefore left out of Further Reading. (3) <strong>Vendor-reported figures and design limits</strong>: Powerful Medical is Queen of Hearts' commercial developer and that registry is retrospective; UltraSight and Philips supplied the equipment in the AI-FoCUS study. The EDI study is a before-and-after cohort, not a randomized trial. (4) <strong>Proportions that could not be re-checked study by study</strong>: ARISE's "nearly 50% exam questions / only 5% real patient data" is corroborated only by Stanford Medicine's release, as the public page lists no methodology; the Q3 review is a bylined curation rather than peer-reviewed, and original citations could not be obtained for its September hallucination study (15.8% / 13.1%) or for some ESTOP-AKI and ALLIANCE details — ALLIANCE's accuracy and timing figures are separately corroborated by ACDIS. (5) The AMA survey's sample size and sampling method are not disclosed in the secondary coverage. (6) This report is not investment or medical advice.</span>
     </div>
   </div>
 </section>
@@ -564,7 +500,6 @@
   <div class="foot-row">
     <div>
       <span class="zh">AI／醫療AI 每日新知日報 · 由 Claude 於台北時間每日自動產出 · 本期主題：星期一／臨床應用與研究<br>本報告內容經來源查證，但不構成投資或醫療建議。所有數據請以原始出處為準。</span>
-      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Monday / Clinical Applications &amp; Research<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
     </div>
     <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com / 返回 peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
   </div>
@@ -577,16 +512,6 @@
 </div>
 
 <script>
-function setLang(l){
-  document.body.classList.remove('lang-zh','lang-en');
-  document.body.classList.add('lang-'+l);
-  document.documentElement.lang = (l==='zh') ? 'zh-Hant' : 'en';
-  document.getElementById('b-zh').classList.toggle('on', l==='zh');
-  document.getElementById('b-en').classList.toggle('on', l==='en');
-  document.title = (l==='zh')
-    ? 'AI／醫療AI 每日新知日報 · 2026-10-05'
-    : 'AI & Medical AI Daily · 2026-10-05';
-}
 function toggleTheme(){
   document.body.classList.toggle('dark');
   document.getElementById('theme-ic').textContent =
@@ -614,5 +539,6 @@ window.addEventListener('scroll', function(){
     .catch(function(){});
 })();
 </script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/en/reports/2026-10-05.html" hreflang="en" rel="alternate" lang="en">English version</a></p>
 </body>
 </html>

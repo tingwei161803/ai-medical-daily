@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>AI &amp; Medical AI Daily · 2026-10-05</title>
+<meta property="og:url" content="https://ai-medical-daily.peteraim.com/en/reports/2026-10-05.html" />
+<link rel="canonical" href="https://ai-medical-daily.peteraim.com/en/reports/2026-10-05.html" />
+<link rel="alternate" hreflang="zh-Hant" href="https://ai-medical-daily.peteraim.com/reports/2026-10-05.html" />
+<link rel="alternate" hreflang="en" href="https://ai-medical-daily.peteraim.com/en/reports/2026-10-05.html" />
+<link rel="alternate" hreflang="x-default" href="https://ai-medical-daily.peteraim.com/reports/2026-10-05.html" />
+<meta name="description" content="The system that actually moved inpatient mortality is not an LLM but an old-style deterioration score wired into the rapid response team's workflow; the same week's GPT-4o randomized trial missed its primary endpoint — clinical AI's dividing line has moved from the model to the workflow.">
+<meta name="report-date" content="2026-10-05">
+<meta name="report-theme" content="clinical">
+<meta name="report-title-zh" content="臨床 AI 這一週交出的不是新試驗，而是三份總帳：10/2 被重新點出來的那份 NEJM AI 研究，用 11 家醫院、23,132 人次把高風險住院病人死亡率從 23.1% 壓到 18.6%（校正後 aOR 0.82，95% CI 0.74–0.91），但它靠的是 Epic 一個不含 LLM 的惡化指數、而且只有 46.6% 的住院真的跳出通知；同一天的 Q3 季度總結把一季的試驗逐條算完，結論是「workflow 才是模型」；而 Nature Medicine 那份肯亞 16 家診所、9,691 名病人、103 位 clinical officer 的 GPT-4o 隨機試驗，主要指標是 2.2% 對 2.0%、aOR 0.77、p=0.13 —— 安全，但沒有效">
+<meta name="report-title-en" content="Clinical AI's week produced no new trial — it produced three sets of accounts: the NEJM AI study resurfaced on 10/2 cut in-hospital mortality among high-risk inpatients from 23.1% to 18.6% across 11 hospitals and 23,132 encounters (adjusted aOR 0.82, 95% CI 0.74–0.91), yet it runs on an Epic deterioration index with no LLM in it and fired a notification in only 46.6% of encounters; the same day's Q3 review tallied the quarter trial by trial and concluded the workflow is now the model; and Nature Medicine's GPT-4o cluster-randomized trial across 16 Kenyan clinics, 9,691 patients and 103 clinical officers landed at 2.2% versus 2.0%, aOR 0.77, P = 0.13 — safe, but not effective">
+<meta name="report-summary-zh" content="真正把住院死亡率往下壓的那套系統不是 LLM，而是一個接進 rapid response team 流程的舊式惡化分數；同一週的 GPT-4o 隨機試驗則在主要指標上落空 —— 臨床 AI 的分水嶺已經從模型搬到流程。">
+<meta name="report-summary-en" content="The system that actually moved inpatient mortality is not an LLM but an old-style deterioration score wired into the rapid response team's workflow; the same week's GPT-4o randomized trial missed its primary endpoint — clinical AI's dividing line has moved from the model to the workflow.">
+<meta property="og:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HJLDQZDK5V');
+</script>
+<link rel="stylesheet" href="/assets/report.css">
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><span>◆</span> <span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <div class="bar-sp"></div>
+    <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
+    <div class="seg">
+      <a href="/reports/2026-10-05.html" hreflang="zh-Hant" lang="zh-Hant" rel="alternate">中文</a>
+      <a class="on" href="/en/reports/2026-10-05.html" hreflang="en" lang="en" aria-current="page">EN</a>
+    </div>
+    <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="kicker">
+    <span class="en-inline">Monday · Clinical Applications &amp; Research</span>
+  </div>
+  <h1>
+    <span class="en">Clinical AI's week produced no new trial — it produced three sets of accounts. What actually took in-hospital mortality from 23.1% to 18.6% was a deterioration score with no LLM in it; the GPT-4o randomized trial stopped at aOR 0.77, P = 0.13</span>
+  </h1>
+  <div class="dateline">
+    <span class="en-inline">Monday, October 5, 2026 · Covering Sep 28 – Oct 5 · Taipei time</span>
+  </div>
+  <p class="lede">
+    <span class="en">This issue has to open with an unflattering sentence: in the past 72 hours, <strong>no</strong> new large prospective trial of clinical AI landed. The two freshest documents here are both retrospective accounting — the <a href="https://www.2minutemedicine.com/artificial-intelligence-ai-triggered-rapid-response-notifications-were-associated-with-lower-mortality-among-inpatients/" target="_blank" rel="noopener">NEJM AI study</a> brought back into discussion on October 2, which cut in-hospital mortality among high-risk inpatients from 23.1% to 18.6% across 11 acute care hospitals and 23,132 encounters (adjusted aOR 0.82, 95% CI 0.74–0.91), and the <a href="https://www.micheledpierri.com/2026/10/02/ai-digital-health-quarterly-review-2026q3/" target="_blank" rel="noopener">2026 Q3 quarterly review</a> published the same day, which tallies a full quarter of trials and leaves one line standing: the workflow is now the model. Set those beside <a href="https://www.nature.com/articles/s41591-026-04503-6" target="_blank" rel="noopener">Nature Medicine</a>'s GPT-4o cluster-randomized trial in Kenya (9,691 patients; primary endpoint 2.2% versus 2.0%, <a href="https://pubmed.ncbi.nlm.nih.gov/42362867/" target="_blank" rel="noopener">aOR 0.77, 95% CI 0.55–1.08, P = 0.13</a>) and today's conclusion is hard to walk around: what moves patient outcomes is the workflow, not the size of the model.</span>
+  </p>
+
+  <nav class="toc">
+    <a href="#top"><span class="en-inline">Top Stories</span></a>
+    <a href="#product"><span class="en-inline">Product Analysis</span></a>
+    <a href="#company"><span class="en-inline">Companies &amp; Competition</span></a>
+    <a href="#taiwan"><span class="en-inline">Taiwan Angle</span></a>
+    <a href="#reading"><span class="en-inline">Further Reading</span></a>
+    <a href="#refs"><span class="en-inline">References</span></a>
+  </nav>
+</div>
+
+<!-- ============ 01 重點新聞 ============ -->
+<section id="top">
+  <h2>01 — Top Stories</h2>
+  <div class="sec-title">
+    <span class="en">Today's eight are deliberately ordered with patient outcomes first and scores last — because that is exactly where this week's difference lies</span>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Inpatient mortality</span></span>
+      <span class="tag">RWJBarnabas Health</span><span class="tag">Epic Deterioration Index</span><span class="tag">NEJM AI</span><span class="tag">10/02</span>
+    </div>
+    <h3>
+      <span class="en">Wire Epic's deterioration index straight to the rapid response team, and high-risk inpatient mortality across 11 hospitals falls from 23.1% to 18.6%</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">RWJBarnabas Health and Rutgers Robert Wood Johnson Medical School routed real-time alerts from the Epic Deterioration Index (EDI) directly to the rapid response team across 11 acute care hospitals, instead of parking them on a nursing-station dashboard. The study appeared in <em>NEJM AI</em> (DOI <a href="https://hitconsultant.net/2026/07/29/rwjbarnabas-rutgers-nejm-ai-epic-deterioration-index-mortality-reduc/" target="_blank" rel="noopener">10.1056/AIoa2500973</a>), led by Thomas Nahass, the system's VP of health informatics: 10,803 encounters pre-implementation and 12,329 post, <a href="https://www.news-medical.net/news/20260729/AI-enabled-tool-helps-identify-hospitalized-patients-at-risk-of-rapid-clinical-decline.aspx" target="_blank" rel="noopener">23,132 in total</a>. On October 2 a <a href="https://www.2minutemedicine.com/artificial-intelligence-ai-triggered-rapid-response-notifications-were-associated-with-lower-mortality-among-inpatients/" target="_blank" rel="noopener">2 Minute Medicine appraisal</a> pulled it back into view with the full statistics: unadjusted mortality 23.1% → 18.6% (absolute difference −4.5 percentage points, 95% CI −5.6 to −3.5); adjusted aOR 0.82 (95% CI 0.74–0.91); RRT activation OR 1.74 (95% CI 1.61–1.88), with RRT evaluations rising from <a href="https://www.hcinnovationgroup.com/analytics-ai/artifical-intelligence-machine-learning/news/55394336/rwjbarnabas-health-sees-improvements-using-epic-deterioration-index" target="_blank" rel="noopener">25.3% to 37.5%</a> while ICU transfers did not rise proportionally.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This is one of the year's few clinical-AI studies that moved mortality rather than accuracy — and nothing in it is new. The EDI is a gradient-boosted score built into Epic, driven mostly by structured physiological values, with no LLM anywhere in it. What changed was the workflow: the alert no longer waits for someone to notice it, it summons a team that goes to the bedside. Nahass himself keeps the causal claim modest: "Our goal was to identify patients earlier, before they reached a point where intervention becomes much more difficult. The deterioration index gives us an earlier point in time."</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">This is a prospective before-and-after cohort, <strong>not a randomized trial</strong>: the pre- and post-periods have unequal seasonal distributions, two of the hospitals implemented incompletely, and the authors flag generalizability as uncertain. Two figures deserve more weight still. Only <strong>46.6%</strong> of post-implementation encounters actually generated a notification; and in the EDI 55–59 band that sits just across the threshold, the adjusted aOR is 0.86 (95% CI 0.63–1.17) — the interval crosses 1, meaning the closest thing this study has to a quasi-experimental cut is not significant.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.2minutemedicine.com/artificial-intelligence-ai-triggered-rapid-response-notifications-were-associated-with-lower-mortality-among-inpatients/" target="_blank" rel="noopener">2 Minute Medicine, 2026-10-02</a> · <a href="https://hitconsultant.net/2026/07/29/rwjbarnabas-rutgers-nejm-ai-epic-deterioration-index-mortality-reduc/" target="_blank" rel="noopener">HIT Consultant, 2026-07-29</a> · <a href="https://medicalxpress.com/news/2026-07-ai-tool-patient-deterioration-earlier.html" target="_blank" rel="noopener">Medical Xpress, 2026-07</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">RCT misses</span></span>
+      <span class="tag">Penda Health</span><span class="tag">AI Consult / GPT-4o</span><span class="tag">Nature Medicine</span><span class="tag">08/01</span>
+    </div>
+    <h3>
+      <span class="en">16 Kenyan clinics, 103 clinical officers, 9,691 patients: GPT-4o as a clinical safety net is "safe but not effective"</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">KEMRI-Wellcome Trust, the University of Birmingham, Penda Health and LSHTM ran a pragmatic cluster-randomized trial across 16 primary care facilities in Nairobi and Kiambu counties, randomizing clinical officers to an electronic medical record with LLM assistance or the same record with the LLM switched off. The tool was <strong>AI Consult 2.0</strong>, built on GPT-4o. Enrollment ran April 22 – July 16, 2025: <a href="https://pubmed.ncbi.nlm.nih.gov/42362867/" target="_blank" rel="noopener">9,691 patients overseen by 103 clinical officers (52 in the LLM-assisted arm, 51 in control)</a>. The primary endpoint was an expert-adjudicated composite of treatment failure within 14 days: 102/4,693 (2.2%) in the intervention arm versus 94/4,654 (2.0%) in control, aOR 0.77 (95% CI 0.55–1.08, P = 0.13) — <strong>no significant difference</strong>. <a href="https://www.nature.com/articles/s41591-026-04503-6" target="_blank" rel="noopener">Nature Medicine</a> published it online on June 26 and in the August print issue.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This is the largest and cleanest randomized test to date of putting a frontier LLM straight into a primary care consulting room, and the answer is: it does not hurt anyone, and it does not save anyone either. The authors' own wording: "LLM assistance was safe but did not reduce treatment failure within 14 days and any benefit, if present, is probably modest." Yet every secondary endpoint improved — documentation quality rose significantly (diagnosis aOR 1.74, comprehensive notes aOR 1.68, treatment plans aOR 1.71), mean antibiotic cost fell by <a href="https://trial.medpath.com/news/generative-ai-clinical-decision-support-shows-safety-and-documentation-gains-but-no-significant-reduction-in-treatment-failure-in-kenyan-primary-care-trial" target="_blank" rel="noopener">US$0.15</a> per patient, and patient satisfaction was identical. Put plainly: what an LLM can currently prove is documentation and prescribing discipline, not clinical outcomes.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">Event rates came in far below the design assumption, so the trial is effectively underpowered: secondary write-ups note that detecting a more modest difference would need <strong>100,000-plus</strong> patients. "No significant difference" therefore does not mean "proven ineffective." The sample also comes entirely from a single urban private clinic network (Penda Health), limiting generalizability to rural and public systems, and the 14-day follow-up window may be too short. On safety, only 49.4% of flagged outputs were rated "definitely safe" and 1.1% were judged unsafe — the denominator and severity behind that 1.1% need checking against the paper itself.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.nature.com/articles/s41591-026-04503-6" target="_blank" rel="noopener">Nature Medicine, 2026-06-26 (print 2026-08)</a> · <a href="https://www.birmingham.ac.uk/news/2026/ai-clinical-support-tool-improved-clinician-decisions-in-real-world-primary-care-trial" target="_blank" rel="noopener">University of Birmingham</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/42362867/" target="_blank" rel="noopener">PubMed 42362867</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Quarterly tally</span></span>
+      <span class="tag">2026 Q3</span><span class="tag">ESTOP-AKI</span><span class="tag">Prof. Valmed</span><span class="tag">10/02</span>
+    </div>
+    <h3>
+      <span class="en">A quarterly review published on 10/2 tallies Q3 trial by trial and lands on five words: the workflow is now the model</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">The <a href="https://www.micheledpierri.com/2026/10/02/ai-digital-health-quarterly-review-2026q3/" target="_blank" rel="noopener">AI &amp; Digital Health 2026 Q3 review</a>, published October 2, lines up the quarter's clinical evidence, and it reads consistently. <strong>ESTOP-AKI</strong> (JAMA Network Open, July): in 180 hospitalized patients, machine learning flagged acute kidney injury risk successfully, but earlier nephrology consultation did not improve outcomes (peak creatinine change 0.04 versus −0.03 mg/dL, not significant), and only 41% of non-diet, non-electrolyte recommendations were fully followed. <strong>ALLIANCE</strong> (September, 82 physicians assessing rheumatology cases) found LLM assistance made clinicians much faster without moving accuracy; <a href="https://acdis.org/articles/news-ai-tool-quicker-not-more-accurate-humans-when-diagnosing-rheum-disease-study-finds" target="_blank" rel="noopener">ACDIS's coverage</a> supplies the numbers — top-diagnosis accuracy 33.3% with Prof. Valmed versus 35.0% in control, but 94 seconds versus 206 seconds to reach a diagnosis. The same review lists a September hallucination study: junior clinicians caught only <strong>15.8%</strong> of GPT-4o hallucinations, and 13.1% of them caught none at all.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Taken together, Q3's shape is clear: <strong>models find the risk, but people and processes fail to convert it into action</strong>. ESTOP-AKI's 41% adherence and the EDI study's 46.6% notification rate are the same finding wearing different clothes. The review's own verdict is the blunt one: "A better model does not necessarily produce better medicine." That also explains why the quarter's foundation models kept scaling (NeuroVFM on 5.24 million MRI and CT volumes, PRISM2 on 2.3 million whole-slide images and 700,000 pathology reports) with no matching outcome curve beside them.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">This is a bylined curated review, not a peer-reviewed systematic one: it declares no search strategy and no inclusion or exclusion criteria, so selection bias is possible. Every primary study in it should be checked against its own paper; this issue uses only figures for which a separate secondary or primary source could be found, and flags those that could not be corroborated (such as the full citation for the hallucination study) in the editor's note.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.micheledpierri.com/2026/10/02/ai-digital-health-quarterly-review-2026q3/" target="_blank" rel="noopener">AI &amp; Digital Health Quarterly Review 2026Q3, 2026-10-02</a> · <a href="https://acdis.org/articles/news-ai-tool-quicker-not-more-accurate-humans-when-diagnosing-rheum-disease-study-finds" target="_blank" rel="noopener">ACDIS, 2026-09-10</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Evidence quality</span></span>
+      <span class="tag">ARISE</span><span class="tag">Stanford / Harvard</span><span class="tag">01/15</span>
+    </div>
+    <h3>
+      <span class="en">The number in the Stanford–Harvard report still stands unrefuted: of 500-plus medical AI studies, only 5% used real patient data</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">ARISE (AI Research and Science Evaluation, a Stanford–Harvard research network) published its first annual <a href="https://www.arise-ai.org/report" target="_blank" rel="noopener">State of Clinical AI Report 2026</a>, authored by Peter Brodeur, Ethan Goh, Adam Rodman and Jonathan H. Chen, backed by Stanford Computational Medicine, Harvard Medical School's Shapiro Institute and Beth Israel Deaconess. <a href="https://medicine.stanford.edu/news/current-news/standard-news/clinical-ai-has-boomed.html" target="_blank" rel="noopener">Stanford Medicine's write-up</a> carries the load-bearing figures: the FDA has cleared more than 1,200 AI-enabled medical tools; and of the 500-plus medical AI studies reviewed, <strong>nearly 50% used exam-style questions</strong> and <strong>only 5% used real patient data</strong>. The report also records AI predicting patient deterioration 8–24 hours ahead of standard hospital alerts.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">That 5% is the denominator for this entire issue. When ninety-five percent of the literature runs on question banks, there is no way to know how much of "progress in medical AI" converts into change at the bedside — and this issue's first three stories happen to show you what that 5% looks like: one with a mortality signal, two without. The report's own line: "AI is already embedded in health care, and that is unlikely to change. What this report makes clear is that the next phase will not be driven by newer models alone." It also names a "jagged frontier": strong on controlled tasks, brittle the moment real-world variability and uncertainty arrive.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">The report itself was published on January 15 and is not this week's news; it appears here because it is the ruler needed to read the first three stories. ARISE's public page offers only conceptual conclusions, with no full methodology and no list of the 500-plus studies, so the "nearly 50%" and "only 5%" figures can currently be corroborated only through Stanford Medicine's release, not re-checked study by study from the public page.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.arise-ai.org/report" target="_blank" rel="noopener">ARISE, State of Clinical AI Report 2026</a> · <a href="https://medicine.stanford.edu/news/current-news/standard-news/clinical-ai-has-boomed.html" target="_blank" rel="noopener">Stanford Medicine, 2026-01-15</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Cardiac ultrasound</span></span>
+      <span class="tag">Mayo Clinic</span><span class="tag">UltraSight</span><span class="tag">Philips Lumify</span><span class="tag">06/09</span>
+    </div>
+    <h3>
+      <span class="en">Nine complete novices scanned 995 adults with handheld ultrasound: 90.1% sensitivity, 99.1% specificity — but the two-step pathway cut sensitivity to 77.0%</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Méabh M. Killalea, Jordan Borgeson, Jared G. Bird and colleagues at Mayo Clinic Rochester published a prospective study in <a href="https://www.nature.com/articles/s41746-026-02856-3" target="_blank" rel="noopener"><em>npj Digital Medicine</em> (June 9, 2026; vol 9, article 712)</a>: 995 adults underwent both AI-enhanced ECG (AI-ECG) and AI-guided focused cardiac ultrasound (AI-FoCUS), against comprehensive echocardiography as reference. The scans were performed by 9 operators with <strong>no prior ultrasound experience</strong>, using a Philips Lumify handheld probe with real-time guidance from UltraSight, with blinded expert interpretation. Results: AI-FoCUS detected structural heart disease (SHD) with 90.1% sensitivity, 99.1% specificity, 95.4% PPV and 98.0% NPV; AI-ECG alone reached 87.0% sensitivity but only 60.7% specificity and 30.6% PPV.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This is the issue's only evidence of AI genuinely devolving a skill to non-specialists — and devolving it cleanly, with guidance handling acquisition and experts handling interpretation, so the line of responsibility stays legible. But the figure worth copying down is the trade-off: screening first with AI-ECG and confirming with AI-FoCUS cut imaging utilization to <strong>47%</strong> and raised specificity to 99.4% with 96.1% PPV, at the cost of sensitivity falling from 90.1% to <strong>77.0%</strong>. Halve the studies, miss roughly a quarter of the patients. That exchange rate — how much saving buys how much missing — is the question payers actually ask.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">This is a referral cohort with disease prevalence far above community screening, so the 95.4% PPV <strong>cannot</strong> be carried over to a general population; the authors themselves claim only that it is "feasible and accurate for detecting selected SHD phenotypes" — and "selected" bounds which phenotypes. Note too that novices acquired the images but blinded experts read them, so the study never tests the setting where no expert is available.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.nature.com/articles/s41746-026-02856-3" target="_blank" rel="noopener">npj Digital Medicine, 2026-06-09</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Cath lab</span></span>
+      <span class="tag">Powerful Medical</span><span class="tag">PMcardio / Queen of Hearts</span><span class="tag">JACC: CV Interventions</span>
+    </div>
+    <h3>
+      <span class="en">One AI-ECG took false cath lab activations from 41.8% to 7.9%: a three-network registry of 1,032 STEMI activations</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">The Queen of Hearts US Registry covers three primary PCI networks — UC Davis Sacramento, UT Health Houston and Beth Israel Deaconess Boston — with <strong>1,032 STEMI activations</strong> from January 2020 to May 2024. <a href="https://www.tctmd.com/news/ai-ecg-finds-stemi-faster-cuts-false-positive-cath-lab-activations" target="_blank" rel="noopener">TCTMD's report</a> (the study appeared concurrently in <em>JACC: Cardiovascular Interventions</em>) gives: 92% sensitivity for the AI versus 71% for standard interpretation, 81% specificity versus 29%, AUC 0.94; false-positive cath lab activations among biomarker-negative patients fell from 41.8% to 7.9%. The model is <a href="https://www.powerfulmedical.com/pmcardio-stemi/" target="_blank" rel="noopener">Powerful Medical's PMcardio "Queen of Hearts"</a>, trained on occlusion myocardial infarction (OMI) rather than conventional STEMI criteria. Timothy Henry's line: "AI-EKG analysis has the potential to reduce false activation by up to fourfold."</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">A jump from 29% to 81% specificity is rare in the clinical AI literature, and it points at an underrated fact: much of AI's value lies not in catching more patients but in <strong>stopping unnecessary actions</strong>. Every false-positive cath lab activation means a team woken at night, a lab tied up, and a patient pushed into an invasive pathway — costs that never appear inside an AUC. Co-investigator Ivan Rokos's line is worth keeping too: "We as physicians are still ultimately responsible for the patient, but AI can certainly turbocharge and augment our abilities."</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">This is a <strong>retrospective registry</strong>, not a prospective comparison: the AI re-read 1,032 cases that had already been activated, so it never tests what the AI would miss as a first-line gatekeeper. Both the coverage and the original presentation date to October 2025 (TCT 2025), not this week; it appears here to contrast with the previous story, where AI-ECG used alone returned a PPV of just 30.6% — same modality, different decision point, numbers that far apart. Powerful Medical is also the model's commercial developer, so the registry's data provenance and funding relationships need checking against the paper.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.tctmd.com/news/ai-ecg-finds-stemi-faster-cuts-false-positive-cath-lab-activations" target="_blank" rel="noopener">TCTMD, 2025-10-31</a> · <a href="https://www.powerfulmedical.com/pmcardio-stemi/" target="_blank" rel="noopener">Powerful Medical</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Clearance mix</span></span>
+      <span class="tag">FDA</span><span class="tag">Cureus</span><span class="tag">Kaiser Permanente</span><span class="tag">07/13</span>
+    </div>
+    <h3>
+      <span class="en">Of 1,430 FDA AI device clearances over thirty years, radiology took 1,094 (76.5%); pathology got 9, psychiatry zero</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Pouyan Golshani and colleagues at Kaiser Permanente Los Angeles Medical Center audited FDA AI/ML device clearances from 1995 to 2025 in <em>Cureus</em> (July 13, 2026); <a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/article/15830219/radiology-dominates-thirty-years-of-fda-ai-device-approvals" target="_blank" rel="noopener">AuntMinnie's summary</a> gives the counts: <strong>1,430 devices</strong> in total, 1,094 of them radiology (76.5%), with cardiovascular and neurology bringing the top three to 90.6%. Pathology has 9, microbiology 6, obstetrics and gynecology 4, and <strong>psychiatry and behavioral health zero</strong>. The pace is just as lopsided: a mean of 1.8 clearances a year in 1995–2014 against 264 a year in 2023–2025, with 331 in 2025 alone. Among manufacturers, 502 of 740 companies (67.8%) hold exactly one clearance, while 13 companies (1.8%) hold 247 of them (17.3%).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This distribution explains why all of today's evidence grows on imaging and the heart: in thirty years the regulatory pathway has only been paved for specialties with pixels, signals and a gold standard. Psychiatry's zero is not for want of effort but for want of a reference standard a 510(k) can accept — which is also why most mental health AI ships as a consumer product outside device regulation, bypassing premarket review altogether. Radiology's 76.5% carries a second implication: if you build non-imaging clinical AI, your problem is not only technical, it is that the road has not been walked yet.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">This is a bibliometric study published July 13, not this week's news — and clearance counts are no proxy for clinical value: the overwhelming majority of the 1,430 are 510(k) substantial-equivalence findings requiring no prospective trial. This issue read only AuntMinnie's secondary summary, which does not break out the cardiovascular and neurology counts, so those are not cited. Separately, the Q3 quarterly review states the FDA has now authorized "more than 1,600" AI-enabled devices; that window differs from the 1,430 here (which stops at end-2025), and the two figures should not be mixed.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/article/15830219/radiology-dominates-thirty-years-of-fda-ai-device-approvals" target="_blank" rel="noopener">AuntMinnie, 2026-07-16</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Physician attitudes</span></span>
+      <span class="tag">AMA</span><span class="tag">2026 Physician Survey</span><span class="tag">03/12</span>
+    </div>
+    <h3>
+      <span class="en">81% of physicians now use AI themselves, yet 46% do not want patients using AI to read their own radiology results, and 88% fear skill loss</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">The American Medical Association's Center for Digital Health and AI ran its 2026 Physician Survey on Augmented Intelligence, summarized by <a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/news/15819441/physicians-mixed-on-patient-use-of-ai-to-interpret-radiology-results" target="_blank" rel="noopener">AuntMinnie (March 12, 2026)</a>: <strong>81%</strong> of physicians now use AI in practice, up from 38% in 2023, and more than 75% say AI improves their ability to care for patients, up from 65%. Ask about the patient side and it inverts: <strong>46%</strong> would "never or rarely" want patients using AI to interpret radiology results, and <strong>49%</strong> say the same about pathology results. Separately, 88% worry about skill loss, 86% call data privacy critical to broader adoption, and 88% say the same of safety and efficacy validation.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Set 81% beside 46% and the next phase's real battleground appears: not the model, but <strong>who is allowed to point an AI at their own scan</strong>. Physicians accept AI as their own copilot and decline it as the patient's — while patient-facing interpretation tools spread fast as consumer products (the same pathway as the previous story's zero psychiatry clearances). That gap will become a concrete clinic-room conflict within a year or two, not an academic argument. And the 88% who fear skill loss line up with today's Prof. Valmed result — 94 seconds versus 206, with accuracy unchanged: faster is not the same as more capable.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">This is survey coverage from March 12, not this week's news. More importantly, AuntMinnie's report <strong>does not disclose the sample size or sampling method</strong>, and an AMA membership survey carries self-selection bias, so a figure like "81%" should be read as a self-reported share among respondents, not a population estimate for US physicians. The report also never defines the scope of "using AI" — whether ambient documentation, scheduling and billing count.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/news/15819441/physicians-mixed-on-patient-use-of-ai-to-interpret-radiology-results" target="_blank" rel="noopener">AuntMinnie, 2026-03-12</a></p></div>
+  </div>
+</section>
+
+<!-- ============ 02 產品分析 ============ -->
+<section id="product">
+  <h2>02 — Product Analysis</h2>
+  <div class="sec-title">
+    <span class="en">Today deliberately dissects two things that look nothing like rivals: a gradient-boosted score that has existed since 2018, and a 2025 frontier LLM — because the one with a patient outcome is the former</span>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>Epic Deterioration Index (EDI)</h3>
+      <p class="sub"><span class="en-inline">In-EHR inpatient deterioration risk score · Epic Systems (USA)</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> The EDI is an inpatient deterioration risk score that lives inside the Epic EHR, fed by structured vitals, labs and nursing assessments, emitting a 0–100 score. It is not generative and contains no LLM. Who buys it? Nobody — it is something Epic customers already have, which is why RWJBarnabas's intervention cost sat almost entirely in process redesign rather than procurement. The actual product innovation was changing the score's consumer from a nursing-station dashboard to the <a href="https://www.2minutemedicine.com/artificial-intelligence-ai-triggered-rapid-response-notifications-were-associated-with-lower-mortality-among-inpatients/" target="_blank" rel="noopener">rapid response team's pager</a>.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: one of the year's very few clinical AI results attached to mortality — 11 hospitals, 23,132 encounters, high-risk inpatient mortality 23.1% → 18.6%, adjusted <a href="https://hitconsultant.net/2026/07/29/rwjbarnabas-rutgers-nejm-ai-epic-deterioration-index-mortality-reduc/" target="_blank" rel="noopener">aOR 0.82 (95% CI 0.74–0.91)</a> — and ICU transfers did not rise proportionally, so it was not bought by shipping everyone to intensive care.</span>
+        </li>
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: zero procurement friction. It already sits inside thousands of Epic customers' systems, making it far more replicable than any new model requiring contracting, integration and validation — exactly the kind of thing the ARISE report means when it says <a href="https://www.arise-ai.org/report" target="_blank" rel="noopener">the next phase will not be driven by newer models alone</a>.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: only <strong>46.6%</strong> of post-implementation encounters actually fired a notification, so we do not know whether this system becomes an alarm-fatigue disaster at full coverage; and in the band just across the threshold (EDI 55–59) the aOR is 0.86 with a 95% CI of 0.63–1.17 — <strong>not significant</strong>.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: a before-and-after design cannot exclude contributions from concurrent quality-improvement work; two hospitals implemented incompletely, seasons were unevenly distributed, and the authors flag generalizability as uncertain. The missing datum is unambiguous: <strong>there is no randomized trial</strong>.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>AI Consult 2.0 (Penda Health, on GPT-4o)</h3>
+      <p class="sub"><span class="en-inline">In-EHR clinical safety net for primary care · Penda Health (Kenya) / OpenAI GPT-4o</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> AI Consult is not a chatbot but a safety-net layer that hooks onto the moment a clinical officer records a diagnosis or writes a prescription and flags likely errors in real time. Its users are primary care clinical officers — non-physician clinicians in Kenya's system — and it runs on GPT-4o. It was designed not to interrupt the workflow, speaking only when it detects a problem; that single design decision ends up explaining both its success and its failure, per the <a href="https://www.nature.com/articles/s41591-026-04503-6" target="_blank" rel="noopener">Nature Medicine trial report</a>.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: one of very few LLM clinical products willing to run a cluster-randomized trial and publish the result honestly, missed primary endpoint included. That alone makes it more credible than the great majority of medical models that grade their own homework — compare the self-tested, self-scored 100% MedQA problem covered in this site's October 1 issue.</span>
+        </li>
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: the secondary endpoints genuinely moved — diagnosis documentation aOR 1.74, comprehensive notes aOR 1.68, treatment plans aOR 1.71, antibiotic cost down <a href="https://trial.medpath.com/news/generative-ai-clinical-decision-support-shows-safety-and-documentation-gains-but-no-significant-reduction-in-treatment-failure-in-kenyan-primary-care-trial" target="_blank" rel="noopener">US$0.15</a> per patient, with no drop in patient satisfaction. With antimicrobial resistance a global problem, prescribing discipline is itself a reimbursable value.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: the primary endpoint missed, and the authors' phrasing caps the ceiling in advance — "any benefit, if present, is probably modest." Worse, it is underpowered: secondary write-ups note that detecting a smaller difference would need <strong>100,000-plus</strong> patients, which means products like this cannot produce evidence of reduced treatment failure any time soon — not because the effect is absent, but because it is unshowable at feasible scale.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: only 49.4% of flagged outputs were rated "definitely safe" and 1.1% were judged unsafe. Multiply that by another of today's findings — junior clinicians detected only <a href="https://www.micheledpierri.com/2026/10/02/ai-digital-health-quarterly-review-2026q3/" target="_blank" rel="noopener">15.8% of GPT-4o hallucinations</a> — and the assumption that a human will catch the wrong ones does not hold in a primary care setting.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>The contrast between the two is this issue's argument.</strong> The EDI is far weaker than GPT-4o as a model, yet it attaches to mortality, because its output is wired to a team that physically moves. AI Consult is far stronger, yet it only moved documentation, because its output terminates at the eyes of a busy human being. Clinical AI's bottleneck is no longer the model's ceiling but <strong>whether anyone walks the stretch of road after the output</strong>.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============ 03 公司與競爭 ============ -->
+<section id="company">
+  <h2>03 — Companies &amp; Competition</h2>
+  <div class="sec-title">
+    <span class="en">Who stands where, on what, against whom</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th><span class="en-inline">Company</span></th>
+        <th><span class="en-inline">Recent state &amp; numbers</span></th>
+        <th><span class="en-inline">Position &amp; moat</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Epic Systems</strong><br><span class="en-inline">The de facto EHR standard in US hospitals</span></td>
+          <td>
+            <span class="en">Its built-in EDI is associated, across RWJBarnabas's 11 hospitals and 23,132 encounters, with high-risk inpatient mortality falling 23.1% → 18.6%, <a href="https://hitconsultant.net/2026/07/29/rwjbarnabas-rutgers-nejm-ai-epic-deterioration-index-mortality-reduc/" target="_blank" rel="noopener">adjusted aOR 0.82, NEJM AI DOI 10.1056/AIoa2500973</a>; RRT evaluation rate 25.3% → 37.5%.</span>
+          </td>
+          <td>
+            <span class="en">Its moat is already being inside: no procurement, no integration, and the distribution rights for clinical AI in its hands. Its weakness is that the model itself is unremarkable — and once the evidence bar rises from association to randomization, Epic has neither the habit nor the incentive to run trials.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Penda Health + OpenAI</strong><br><span class="en-inline">Kenyan primary care network × frontier model</span></td>
+          <td>
+            <span class="en">A cluster-randomized trial across 16 clinics, 103 clinical officers and <a href="https://pubmed.ncbi.nlm.nih.gov/42362867/" target="_blank" rel="noopener">9,691 patients</a>: primary endpoint 2.2% versus 2.0%, aOR 0.77, P = 0.13; documentation quality aOR 1.68–1.74; antibiotic cost down US$0.15 per patient.</span>
+          </td>
+          <td>
+            <span class="en">Its moat is the honesty of its evidence plus real deployment experience in a low-resource setting — OpenAI's hardest-to-copy asset on the clinical side. Its weakness is the business model: gains in documentation quality and antibiotic cost are hard to convert, in Kenyan primary care, into willingness to pay enough to cover GPT-4o inference.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>UltraSight</strong><br><span class="en-inline">Real-time AI guidance for cardiac ultrasound acquisition</span></td>
+          <td>
+            <span class="en">In Mayo's prospective study of 995 adults, 9 operators with zero experience acquired images on a Philips Lumify, and AI-FoCUS detected SHD with <a href="https://www.nature.com/articles/s41746-026-02856-3" target="_blank" rel="noopener">90.1% sensitivity, 99.1% specificity and 95.4% PPV</a> (interpretation by blinded experts).</span>
+          </td>
+          <td>
+            <span class="en">Its moat is commoditizing the most hand-skill-dependent step in echocardiography, bundled into Philips's handheld hardware channel. Its weakness is that it solves acquisition and not interpretation, so what it sells is a preprocessor for experts rather than a substitute — and in regions short of cardiologists, including parts of rural Taiwan, that limit is its ceiling.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Powerful Medical</strong><br><span class="en-inline">PMcardio / Queen of Hearts, OMI-oriented AI-ECG</span></td>
+          <td>
+            <span class="en">A retrospective registry of 1,032 STEMI activations across three networks: <a href="https://www.tctmd.com/news/ai-ecg-finds-stemi-faster-cuts-false-positive-cath-lab-activations" target="_blank" rel="noopener">92% sensitivity versus 71%, 81% specificity versus 29%, AUC 0.94</a>, with false-positive cath lab activations among biomarker-negative patients falling 41.8% → 7.9%.</span>
+          </td>
+          <td>
+            <span class="en">Its moat is choosing a different training target — occlusion MI rather than conventional STEMI criteria — so it catches the group textbook criteria miss. Its weakness is the retrospective design, plus the fact that what it mainly improves is avoiding unnecessary activations: a value that is harder to sell in systems paid by procedure volume.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>ARISE（Stanford × Harvard）</strong><br><span class="en-inline">Not selling a product — selling the evaluation standard</span></td>
+          <td>
+            <span class="en">Its first annual report notes the FDA has cleared more than 1,200 AI-enabled devices while, among the 500-plus studies reviewed, <a href="https://medicine.stanford.edu/news/current-news/standard-news/clinical-ai-has-boomed.html" target="_blank" rel="noopener">nearly 50% used exam questions and only 5% used real patient data</a>; it argues the evidence bar must move to multi-turn unstructured data and real-world consequences.</span>
+          </td>
+          <td>
+            <span class="en">Its moat is academic neutrality and joint endorsement from Stanford, Harvard and BIDMC — in a market where vendors routinely grade themselves, defining what counts as effective is itself a form of power. Its weakness is that it has no enforcement, and no published full methodology to re-check study by study.</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>Today's competitive structure is a crossing of distribution against evidence.</strong> Whoever holds distribution (Epic) can deploy without evidence, while whoever produces the most honest evidence (Penda and OpenAI) holds no distribution. The layer in between — UltraSight, Powerful Medical — has each chosen to solve one short stretch of workflow and leave responsibility with the expert: regulatorily safe, and a ceiling welded on at the same time.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============ 04 台灣視角 ============ -->
+<section id="taiwan">
+  <h2>04 — Taiwan Angle</h2>
+  <div class="sec-title">
+    <span class="en">Taiwan is building data infrastructure — and today's evidence says what will be missing once it is built is workflow</span>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>(1) The timeline is now pinned to year-end — but it is a data timeline, not an outcomes timeline.</strong> Health Minister Shih Chung-liang, previewing the Biotech Forum held on October 7, said on September 15 that medical AI's "first task is establishing data standards, governance systems and a trustworthy operating environment," and gave firm dates: <strong>FHIR data readiness at medical centers by the end of 2026, and nationwide hospital interconnection by the end of 2027</strong>. The policy instruments include the five-year, <strong>NT$489 billion</strong> Deepening Health Taiwan Plan, the four-year, <strong>NT$240 billion</strong> National Drug Resilience Preparedness Plan, and a planned <strong>NT$100 billion</strong> investment in innovative medical devices and drug R&amp;D (<a href="https://udn.com/news/story/7240/9754542" target="_blank" rel="noopener">Economic Daily News / UDN, 2026-09-15</a>). Set that against today's RWJBarnabas result: they had no new data and no new model — they wired an existing score to the rapid response team and got aOR 0.82. FHIR interconnection is a necessary condition, not a sufficient one.</span>
+    </p>
+    <p>
+      <span class="en"><strong>(2) Taiwan already has the institutional skeleton of "responsible AI centers" — what it lacks is the RRT wire.</strong> In 2025 the Ministry of Health and Welfare established responsible-AI implementation centers with ten hospitals, framed as "trustworthy gatekeepers for smart healthcare" (<a href="https://www.mohw.gov.tw/cp-16-82236-1.html" target="_blank" rel="noopener">MOHW</a>). The gatekeeper metaphor is itself the problem: gatekeeping asks whether a model may enter, while today's evidence points entirely at what happens afterwards — who receives the alert, and who moves. Only 41% of ESTOP-AKI's recommendations were fully followed; the EDI fired in only 46.6% of encounters. If Taiwan's medical centers treat AI adoption as an IT department project rather than a quality-improvement project, that same gap copies over unchanged.</span>
+    </p>
+    <p>
+      <span class="en"><strong>(3) On the payment side, what is most worth copying today is the studies avoided, not the patients caught.</strong> Mayo's two-step pathway cut imaging utilization to <strong>47%</strong> at the cost of sensitivity falling from 90.1% to 77.0% (<a href="https://www.nature.com/articles/s41746-026-02856-3" target="_blank" rel="noopener">npj Digital Medicine</a>); Powerful Medical cut false-positive cath lab activations from 41.8% to 7.9% (<a href="https://www.tctmd.com/news/ai-ecg-finds-stemi-faster-cuts-false-positive-cath-lab-activations" target="_blank" rel="noopener">TCTMD</a>). Under Taiwan's global-budget NHI, "fewer unnecessary procedures" converts into a reimbursement argument more easily than "higher detection rate" — and is also more easily misused as a pretext for squeezing test volumes. The sensitivity that fell from 90.1% to 77.0% is precisely the cost that has to be stated out loud before that ledger is opened.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============ 05 延伸閱讀 ============ -->
+<section id="reading">
+  <h2>05 — Further Reading</h2>
+  <div class="sec-title">
+    <span class="en">Chosen on one criterion: it changes the question you ask of the next AI paper, rather than handing you one more number</span>
+  </div>
+
+  <ol class="reading">
+    <li>
+      <a href="https://www.nature.com/articles/s41591-026-04503-6" target="_blank" rel="noopener">Generative AI-enabled clinical decision support system in primary care: a pragmatic, cluster-randomized trial — Nature Medicine (2026-06-26)</a>
+      <p class="why"><span class="en">Copy the abstract's closing line and use it as a ruler: "LLM assistance was safe but did not reduce treatment failure within 14 days." This is the cleanest randomized evidence yet for a frontier model in a real consulting room, and the methods deserve a full read — above all the passage on event rates coming in below expectation and leaving the trial underpowered.</span></p>
+    </li>
+    <li>
+      <a href="https://www.arise-ai.org/report" target="_blank" rel="noopener">State of Clinical AI Report 2026 — ARISE, Stanford–Harvard Research Network</a>
+      <p class="why"><span class="en">Read it not for the 5% but for the "jagged frontier" frame: a single model's gap between controlled tasks and real-world variability is not a smooth slope but a sawtooth. That frame changes how you read any benchmark.</span></p>
+    </li>
+    <li>
+      <a href="https://www.micheledpierri.com/2026/10/02/ai-digital-health-quarterly-review-2026q3/" target="_blank" rel="noopener">AI &amp; Digital Health: Quarterly Review 2026Q3 — micheledpierri.com (2026-10-02)</a>
+      <p class="why"><span class="en">The freshest document in this issue, and the only one that tallies Q3's trials, foundation models and regulatory moves side by side. Note that it files ESTOP-AKI's 41% adherence and ALLIANCE's faster-but-no-more-accurate result in the same section — that arrangement is itself the argument.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/articles/s41591-026-04371-0" target="_blank" rel="noopener">Advancing conversational diagnostic AI with multimodal reasoning — Nature Medicine (2026-05-14)</a>
+      <p class="why"><span class="en">Multimodal AMIE beat primary care physicians on 29 of 32 evaluation axes across 105 simulated telehealth consultations — and then the authors themselves note it is not a clinical trial, that a chat interface has no physical examination, and that pretraining data leakage is possible. Read it against this issue's second story and the chasm between winning an OSCE and not winning an RCT comes into focus.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/articles/s41586-025-10097-9" target="_blank" rel="noopener">An agentic system for rare disease diagnosis with traceable reasoning (DeepRare) — Nature, vol 651, 775–784 (2026)</a>
+      <p class="why"><span class="en">Rare disease is one of the few settings where AI should genuinely hold an advantage: prevalence under 1 in 2,000, patterns clinicians were never going to connect, and diagnostic odysseys routinely running five years or more. Read it for the traceable-reasoning design — tying the inference chain back to medical evidence is the only approach in this issue that confronts head-on how a human is supposed to check an AI.</span></p>
+    </li>
+  </ol>
+</section>
+
+<!-- ============ 06 參考文獻 ============ -->
+<section id="refs">
+  <h2>06 — References</h2>
+  <div class="sec-title">
+    <span class="en">References</span>
+  </div>
+
+  <div class="panel">
+    <ol class="refs">
+      <li>Artificial intelligence (AI)-triggered rapid response notifications were associated with lower mortality among inpatients. <em>2 Minute Medicine</em>, 2026-10-02. <a href="https://www.2minutemedicine.com/artificial-intelligence-ai-triggered-rapid-response-notifications-were-associated-with-lower-mortality-among-inpatients/" target="_blank" rel="noopener">2minutemedicine.com</a></li>
+      <li>RWJBarnabas Links Real-Time Epic EDI Alerts Directly to Rapid Response Teams (NEJM AI, DOI 10.1056/AIoa2500973). <em>HIT Consultant</em>, 2026-07-29. <a href="https://hitconsultant.net/2026/07/29/rwjbarnabas-rutgers-nejm-ai-epic-deterioration-index-mortality-reduc/" target="_blank" rel="noopener">hitconsultant.net</a></li>
+      <li>AI-enabled tool helps identify hospitalized patients at risk of rapid clinical decline. <em>News-Medical</em>, 2026-07-29. <a href="https://www.news-medical.net/news/20260729/AI-enabled-tool-helps-identify-hospitalized-patients-at-risk-of-rapid-clinical-decline.aspx" target="_blank" rel="noopener">news-medical.net</a></li>
+      <li>RWJBarnabas Health Sees Improvements Using Epic Deterioration Index. <em>Healthcare Innovation</em>, 2026-07. <a href="https://www.hcinnovationgroup.com/analytics-ai/artifical-intelligence-machine-learning/news/55394336/rwjbarnabas-health-sees-improvements-using-epic-deterioration-index" target="_blank" rel="noopener">hcinnovationgroup.com</a></li>
+      <li>AI tool helps detect patient deterioration earlier, reducing hospital deaths. <em>Medical Xpress</em>, 2026-07. <a href="https://medicalxpress.com/news/2026-07-ai-tool-patient-deterioration-earlier.html" target="_blank" rel="noopener">medicalxpress.com</a></li>
+      <li>Agweyu A, Mwaniki P, Menon V, et al. Generative AI-enabled clinical decision support system in primary care: a pragmatic, cluster-randomized trial. <em>Nature Medicine</em>, online 2026-06-26, print 2026-08. <a href="https://www.nature.com/articles/s41591-026-04503-6" target="_blank" rel="noopener">nature.com</a></li>
+      <li>PubMed record 42362867 (full abstract, Nature Medicine). <em>PubMed / Europe PMC</em>, 2026. <a href="https://pubmed.ncbi.nlm.nih.gov/42362867/" target="_blank" rel="noopener">pubmed.ncbi.nlm.nih.gov</a></li>
+      <li>AI clinical support tool improved clinician decisions in real-world primary care trial. <em>University of Birmingham</em>, 2026. <a href="https://www.birmingham.ac.uk/news/2026/ai-clinical-support-tool-improved-clinician-decisions-in-real-world-primary-care-trial" target="_blank" rel="noopener">birmingham.ac.uk</a></li>
+      <li>Generative AI Clinical Decision Support Shows Safety and Documentation Gains But No Significant Reduction in Treatment Failure in Kenyan Primary Care Trial. <em>MedPath</em>, 2026. <a href="https://trial.medpath.com/news/generative-ai-clinical-decision-support-shows-safety-and-documentation-gains-but-no-significant-reduction-in-treatment-failure-in-kenyan-primary-care-trial" target="_blank" rel="noopener">trial.medpath.com</a></li>
+      <li>AI &amp; Digital Health: Quarterly Review 2026Q3. <em>micheledpierri.com</em>, 2026-10-02. <a href="https://www.micheledpierri.com/2026/10/02/ai-digital-health-quarterly-review-2026q3/" target="_blank" rel="noopener">micheledpierri.com</a></li>
+      <li>News: AI tool quicker, not more accurate than humans when diagnosing rheum disease, study finds (medRxiv, 2026-08-29). <em>ACDIS</em>, 2026-09-10. <a href="https://acdis.org/articles/news-ai-tool-quicker-not-more-accurate-humans-when-diagnosing-rheum-disease-study-finds" target="_blank" rel="noopener">acdis.org</a></li>
+      <li>Brodeur P, Goh E, Rodman A, Chen JH. State of Clinical AI Report 2026. <em>ARISE (Stanford–Harvard Research Network)</em>, 2026. <a href="https://www.arise-ai.org/report" target="_blank" rel="noopener">arise-ai.org</a></li>
+      <li>Clinical AI Has Boomed. A New Stanford-Harvard State of Clinical AI Report Shows What Holds Up in Practice. <em>Stanford Medicine</em>, 2026-01-15. <a href="https://medicine.stanford.edu/news/current-news/standard-news/clinical-ai-has-boomed.html" target="_blank" rel="noopener">medicine.stanford.edu</a></li>
+      <li>Killalea MM, Borgeson J, Bird JG, et al. Improving structural heart disease screening: AI-ECG and novice AI-guided focused cardiac ultrasound. <em>npj Digital Medicine</em> 9:712, 2026-06-09. <a href="https://www.nature.com/articles/s41746-026-02856-3" target="_blank" rel="noopener">nature.com</a></li>
+      <li>AI-ECG Finds STEMI Faster, Cuts False-Positive Cath Lab Activations (Queen of Hearts US Registry; <em>JACC: Cardiovascular Interventions</em>). <em>TCTMD</em>, 2025-10-31. <a href="https://www.tctmd.com/news/ai-ecg-finds-stemi-faster-cuts-false-positive-cath-lab-activations" target="_blank" rel="noopener">tctmd.com</a></li>
+      <li>Queen of Hearts: AI ECG for STEMI &amp; OMI. <em>Powerful Medical</em>. <a href="https://www.powerfulmedical.com/pmcardio-stemi/" target="_blank" rel="noopener">powerfulmedical.com</a></li>
+      <li>Radiology dominates thirty years of FDA AI device approvals (Golshani P, et al. <em>Cureus</em>, 2026-07-13). <em>AuntMinnie</em>, 2026-07-16. <a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/article/15830219/radiology-dominates-thirty-years-of-fda-ai-device-approvals" target="_blank" rel="noopener">auntminnie.com</a></li>
+      <li>Physicians mixed on patient use of AI to interpret radiology results (AMA 2026 Physician Survey on Augmented Intelligence). <em>AuntMinnie</em>, 2026-03-12. <a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/news/15819441/physicians-mixed-on-patient-use-of-ai-to-interpret-radiology-results" target="_blank" rel="noopener">auntminnie.com</a></li>
+      <li>Advancing conversational diagnostic AI with multimodal reasoning. <em>Nature Medicine</em>, 2026-05-14. <a href="https://www.nature.com/articles/s41591-026-04371-0" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Zhao et al. An agentic system for rare disease diagnosis with traceable reasoning (DeepRare). <em>Nature</em> 651:775–784, 2026. <a href="https://www.nature.com/articles/s41586-025-10097-9" target="_blank" rel="noopener">nature.com</a></li>
+      <li>AI succeeds in diagnosing rare diseases (News &amp; Views). <em>Nature</em>, 2026-02-18. <a href="https://www.nature.com/articles/d41586-026-00290-9" target="_blank" rel="noopener">nature.com</a></li>
+      <li>生技論壇10月7日登場 衛福部長石崇良：積極建構AI醫療基建. <em>經濟日報／聯合新聞網</em>, 2026-09-15. <a href="https://udn.com/news/story/7240/9754542" target="_blank" rel="noopener">udn.com</a></li>
+      <li>醫療AI要聰明，還要能負責！十家醫院打造可信賴的智慧醫療守門人. <em>衛生福利部</em>, 2025. <a href="https://www.mohw.gov.tw/cp-16-82236-1.html" target="_blank" rel="noopener">mohw.gov.tw</a></li>
+      <li>General-purpose large language models outperform specialized clinical AI tools on medical benchmarks. <em>Nature Medicine</em>, 2026. <a href="https://www.nature.com/articles/s41591-026-04431-5" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Registered AI Medical-Imaging Clinical Trials on ClinicalTrials.gov: Publication Yield, Predictors, and Portfolio Evolution. <em>Academic Radiology</em>, 2026 (abstract not retrievable; see editor's note). <a href="https://www.academicradiology.org/article/S1076-6332(26)00436-8/abstract" target="_blank" rel="noopener">academicradiology.org</a></li>
+    </ol>
+    <div class="note">
+      <span class="en"><strong>Editor's note:</strong> (1) <strong>News on this rotation was thin today</strong> — no new large prospective clinical AI trial was published in the past 72 hours, so this issue extends the window back to September 28 and builds its spine from two documents published on October 2 (2 Minute Medicine's appraisal of the NEJM AI study, and the Q3 quarterly review). Every other story carries its original publication date in its tags and source row; the oldest is TCTMD's October 2025 report, kept deliberately to contrast one modality's performance at two different decision points. (2) <strong>Pages that could not be read</strong>: the <em>Nature Medicine</em> article page (s41591-026-04503-6) and a Europe PMC bibliographic query for the Academic Radiology paper were refused by the proxy with HTTP 429 during this run, while PubMed and academicradiology.org returned reCAPTCHA and 403 respectively. The Kenyan trial's full abstract and statistics come from the Europe PMC record for PubMed 42362867 (verbatim abstract); its secondary endpoints (aOR 1.68–1.74, US$0.15, 49.4% / 1.1%) are cited from MedPath's secondary summary rather than the paper, so defer to the original. For the Academic Radiology paper only the title was obtained and no figures are cited. <em>The Lancet Digital Health</em>'s editorial (PIIS2589-7500(26)00053-1) also returned 403 and was therefore left out of Further Reading. (3) <strong>Vendor-reported figures and design limits</strong>: Powerful Medical is Queen of Hearts' commercial developer and that registry is retrospective; UltraSight and Philips supplied the equipment in the AI-FoCUS study. The EDI study is a before-and-after cohort, not a randomized trial. (4) <strong>Proportions that could not be re-checked study by study</strong>: ARISE's "nearly 50% exam questions / only 5% real patient data" is corroborated only by Stanford Medicine's release, as the public page lists no methodology; the Q3 review is a bylined curation rather than peer-reviewed, and original citations could not be obtained for its September hallucination study (15.8% / 13.1%) or for some ESTOP-AKI and ALLIANCE details — ALLIANCE's accuracy and timing figures are separately corroborated by ACDIS. (5) The AMA survey's sample size and sampling method are not disclosed in the secondary coverage. (6) This report is not investment or medical advice.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-row">
+    <div>
+      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Monday / Clinical Applications &amp; Research<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
+    </div>
+    <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
+  </div>
+</footer>
+</main>
+
+<div class="fabs">
+  <button class="up" id="up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+  <a class="home-fab" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg></a>
+</div>
+
+<script>
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.getElementById('theme-ic').textContent =
+    document.body.classList.contains('dark') ? '◑' : '◐';
+}
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.body.classList.add('dark');
+  document.getElementById('theme-ic').textContent = '◑';
+}
+window.addEventListener('scroll', function(){
+  document.getElementById('up').classList.toggle('show', window.scrollY > 600);
+});
+
+/* GitHub 星星數：無需授權，失敗或被限流時靜默保留佔位符 */
+(function(){
+  var el = document.getElementById('ghs');
+  if (!el || typeof fetch !== 'function') return;
+  fetch('https://api.github.com/repos/tingwei161803/ai-medical-daily', {headers:{Accept:'application/vnd.github+json'}})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if (!d || typeof d.stargazers_count !== 'number') return;
+      var n = d.stargazers_count;
+      el.textContent = n >= 1000 ? (Math.round(n/100)/10) + 'k' : String(n);
+    })
+    .catch(function(){});
+})();
+</script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/reports/2026-10-05.html" hreflang="zh-Hant" rel="alternate" lang="zh-Hant">中文版</a></p>
+</body>
+</html>
