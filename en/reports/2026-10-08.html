@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>AI &amp; Medical AI Daily · 2026-10-08</title>
+<meta property="og:url" content="https://ai-medical-daily.peteraim.com/en/reports/2026-10-08.html" />
+<link rel="canonical" href="https://ai-medical-daily.peteraim.com/en/reports/2026-10-08.html" />
+<link rel="alternate" hreflang="zh-Hant" href="https://ai-medical-daily.peteraim.com/reports/2026-10-08.html" />
+<link rel="alternate" hreflang="en" href="https://ai-medical-daily.peteraim.com/en/reports/2026-10-08.html" />
+<link rel="alternate" hreflang="x-default" href="https://ai-medical-daily.peteraim.com/reports/2026-10-08.html" />
+<meta name="description" content="Medical AI's technical week ran almost entirely on two layers, orchestration and evaluation: RadOnc-Agent (Oct 7) chains 26 radiotherapy functions while disclaiming clinical validity; an Oct 1 rubric review finds no single instrument covers all six clinical-reasoning dimensions, faithfulness weakest; clinical concept centers (Oct 2) push evaluation from outputs into the latent space of 11 open-weight models; a Sept 30 long-horizon study puts Episodic and Hybrid context ahead of feeding the full history; and Taiwan on Oct 5 advanced FHIR Box and next-generation 3D PACS as the infrastructure layer, with NTUH targeting hospital-wide automated AI 3D imaging by 2028.">
+<meta name="report-date" content="2026-10-08">
+<meta name="report-theme" content="technology">
+<meta name="report-title-zh" content="「技術突破」這一週交出的全是編排，沒有一份交出效度——10/7 掛上 arXiv 的 RadOnc-Agent 用一個 LLM 把整條放射治療照護路徑的 26 個可呼叫函式串成對話介面，作者卻在自己的論文裡寫下結果「並未證實臨床正確性、臨床效用或前瞻性效益」；10/1 那份 rubric 盤點把臨床推理拆成六個維度後發現沒有任何單一工具涵蓋得完，最弱的 faithfulness 只找到一份臨床因果消融研究、而且用的是選擇題；9/30 那份長程病史實驗更直接——決定成敗的不是模型能讀多少病史，而是證據怎麼挑、怎麼擺；而四個月前那份 54 項任務的 HealthAgentBench，最高分至今仍是 42%">
+<meta name="report-title-en" content="Technology week delivered orchestration and not one piece of validity: RadOnc-Agent, posted to arXiv on Oct 7, wires 26 callable functions across the whole radiotherapy pathway behind one LLM and a chat box, yet its own authors write that the results do not establish clinical correctness, clinical utility or prospective benefit; an Oct 1 rubric review split clinical reasoning into six dimensions and found no single instrument covers them all, with faithfulness the weakest — one clinical causal-ablation study, done in multiple choice; a Sept 30 long-horizon experiment put it plainer still, that what decides the outcome is not how much history a model can read but how the evidence is chosen and arranged; and on HealthAgentBench, 54 tasks four months old, the top score is still 42%">
+<meta name="report-summary-zh" content="本週醫療 AI 的技術進展幾乎全落在「編排」與「怎麼評估」兩層：RadOnc-Agent（10/7）把放射治療 26 個函式串起來卻自陳未證實臨床效度，臨床推理 rubric 盤點（10/1）指出六個維度沒有單一工具涵蓋得完、faithfulness 最弱，臨床概念中心（10/2）把評估從輸出推進到 11 個開源模型的潛在空間，長程病史實驗（9/30）顯示 Episodic 與 Hybrid 策略勝過餵完整病史，而台灣在 10/5 把 FHIR Box 與新一代 3D PACS 當基礎設施層推進、台大拚 2028 全院自動化 AI 3D 影像。">
+<meta name="report-summary-en" content="Medical AI's technical week ran almost entirely on two layers, orchestration and evaluation: RadOnc-Agent (Oct 7) chains 26 radiotherapy functions while disclaiming clinical validity; an Oct 1 rubric review finds no single instrument covers all six clinical-reasoning dimensions, faithfulness weakest; clinical concept centers (Oct 2) push evaluation from outputs into the latent space of 11 open-weight models; a Sept 30 long-horizon study puts Episodic and Hybrid context ahead of feeding the full history; and Taiwan on Oct 5 advanced FHIR Box and next-generation 3D PACS as the infrastructure layer, with NTUH targeting hospital-wide automated AI 3D imaging by 2028.">
+<meta property="og:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HJLDQZDK5V');
+</script>
+<link rel="stylesheet" href="/assets/report.css">
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><span>◆</span> <span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <div class="bar-sp"></div>
+    <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
+    <div class="seg">
+      <a href="/reports/2026-10-08.html" hreflang="zh-Hant" lang="zh-Hant" rel="alternate">中文</a>
+      <a class="on" href="/en/reports/2026-10-08.html" hreflang="en" lang="en" aria-current="page">EN</a>
+    </div>
+    <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="kicker">
+    <span class="en-inline">Thursday · Technology</span>
+  </div>
+  <h1>
+    <span class="en">Technology week delivered orchestration and not one piece of validity: RadOnc-Agent, posted to arXiv on Oct 7, wires 26 callable functions across the whole radiotherapy pathway behind one LLM and a chat box, yet its own authors write that the results do not establish clinical correctness, clinical utility or prospective benefit; an Oct 1 rubric review split clinical reasoning into six dimensions and found no single instrument covers them all, with faithfulness the weakest — one clinical causal-ablation study, done in multiple choice; a Sept 30 long-horizon experiment put it plainer still, that what decides the outcome is not how much history a model can read but how the evidence is chosen and arranged; and on HealthAgentBench, 54 tasks four months old, the top score is still 42%</span>
+  </h1>
+  <div class="dateline">
+    <span class="en-inline">Thursday, October 8, 2026 · Covering Sep 25–Oct 8 · Taipei time</span>
+  </div>
+  <p class="lede">
+    <span class="en">Lay this week's technology news side by side and every item has the same shape: somebody chained more tools into a longer pipeline, then spent one sentence somewhere in the paper or the press release conceding that none of it has been validated. <a href="https://arxiv.org/abs/2610.06923" target="_blank" rel="noopener">RadOnc-Agent</a> (Oct 7) is the cleanest specimen — 26 callable functions, one conversational interface, the entire radiotherapy care pathway — and its authors themselves write that the results "do not establish clinical correctness, clinical utility or prospective benefit." The real technical movement happened at the other end, on the measuring stick: <a href="https://arxiv.org/abs/2610.01938" target="_blank" rel="noopener">the Oct 1 rubric review</a> split clinical reasoning into six dimensions and found no single instrument covers them all; <a href="https://arxiv.org/abs/2610.02829" target="_blank" rel="noopener">clinical concept centers, Oct 2</a>, pushed evaluation out of the output text and into the latent space of 11 open-weight models; <a href="https://arxiv.org/abs/2610.00562" target="_blank" rel="noopener">the Sept 30 long-horizon experiment</a> found the deciding factor is not how much history a model can read but how it is chosen. Taiwan's week landed on exactly that layer: <a href="https://money.udn.com/money/story/7307/9795500" target="_blank" rel="noopener">the health ministry's Oct 5 conference on domestic AI, 3D medical imaging and the metaverse</a> pushed FHIR Box and a next-generation 3D PACS — not a model, but the plumbing that makes evidence selectable in the first place.</span>
+  </p>
+
+  <nav class="toc">
+    <a href="#top"><span class="en-inline">Top Stories</span></a>
+    <a href="#product"><span class="en-inline">Product Analysis</span></a>
+    <a href="#company"><span class="en-inline">Companies &amp; Competition</span></a>
+    <a href="#taiwan"><span class="en-inline">Taiwan Angle</span></a>
+    <a href="#reading"><span class="en-inline">Further Reading</span></a>
+    <a href="#refs"><span class="en-inline">References</span></a>
+  </nav>
+</div>
+
+<!-- ============ 01 重點新聞 ============ -->
+<section id="top">
+  <h2>01 — Top Stories</h2>
+  <div class="sec-title">
+    <span class="en">Eight items, one shared seam: orchestration runs ahead, proof of validity stays behind</span>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Agent orchestration</span></span>
+      <span class="tag">arXiv</span><span class="tag">RadOnc-Agent</span><span class="tag">10/07</span>
+    </div>
+    <h3>
+      <span class="en">One LLM chains 26 radiotherapy functions, then the authors write down "does not establish clinical correctness"</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Posted to the arXiv cs.AI new-submissions listing on October 7, <a href="https://arxiv.org/abs/2610.06923" target="_blank" rel="noopener">RadOnc-Agent (arXiv:2610.06923)</a> uses one LLM as orchestrator to put <strong>26 callable functions</strong> spanning the entire radiotherapy care pathway behind a single conversational interface. Radiotherapy is one of medicine's best test beds for orchestration: it is already a long pipeline with a fixed order — indication, target and organ-at-risk delineation, dose prescription, plan optimisation, QA, follow-up — each stage already has its own AI tool, and the missing piece has always been the layer that joins them. The paper's own evaluation statement is unambiguous: the authors write that the results <strong>"do not establish clinical correctness, clinical utility or prospective benefit"</strong> (<a href="https://arxiv.org/list/cs.AI/new" target="_blank" rel="noopener">arXiv cs.AI new submissions, 2026-10-07</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">That disclaimer is not modesty; it is the field's actual state. When radiotherapy orchestration goes wrong, what is wrong is not a sentence of advice but the dose distribution delivered into a patient's body — and the evaluation tooling that could show the chain was joined correctly is precisely what three other papers this week say does not yet exist. Read RadOnc-Agent next to those three and the same gap is being pointed at from both sides: engineering can already chain 26 functions, while the measurement end has not even settled how to score whether the chain is right.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">At the time of writing both the arXiv abs page and the full-text HTML were refused by the fetch proxy with HTTP 429. This item rests only on the Oct 7 new-submissions listing — title, arXiv ID, function count and the authors' disclaimer above. <strong>The full text was not read</strong>: which LLM orchestrates, how the 26 functions break down, the evaluation design and any quantitative result are all unverified here, and so none are quoted.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://arxiv.org/abs/2610.06923" target="_blank" rel="noopener">arXiv:2610.06923, 2026-10-07</a> ／ <a href="https://arxiv.org/list/cs.AI/new" target="_blank" rel="noopener">arXiv cs.AI new submissions, 2026-10-07</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Interpretability</span></span>
+      <span class="tag">arXiv</span><span class="tag">11 個開源權重模型</span><span class="tag">10/02</span>
+    </div>
+    <h3>
+      <span class="en">Evaluation moves from what the model says to where it lights up: dedicated clinical concept centers found in 11 open-weight models</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Submitted on October 2, <a href="https://arxiv.org/abs/2610.02829" target="_blank" rel="noopener">Clinical Concept Centers in LLMs (arXiv:2610.02829)</a> — by Aishik Nagar, Abhishek Vaidyanathan, Arun-Kumar Kaliya-Perumal, Elijah Tzen Hsuen Boey and Stefan Winkler — reports dedicated clinical concept centers in the latent space of <strong>all eleven open-weight models</strong> tested. Four properties carry the weight: the centers fire only on their aligned clinical narratives; they influence model behaviour <strong>causally</strong>, in both constrained and open-ended settings; under adversarial role-based priming the models stay internally coherent and keep using the relevant centers; and steering along the centers yields downstream gains in simulated deployment settings. There is also a <strong>blinded clinician validation</strong>: how strongly these centers activate and are used predicts clinician preference.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This paper aims straight at the gap running through today's edition. The authors state plainly that a model's stated reasoning can omit the features actually driving its answer — meaning that scoring the output text has a structural ceiling. If clinical concepts really are locatable, causally verifiable internal representations, then "is this model reliable in this setting" could move from reading outputs to reading internals, with steering available as a lever on top. Set against <a href="https://arxiv.org/abs/2610.01938" target="_blank" rel="noopener">the same week's rubric review</a>, which ranks faithfulness the weakest of its six dimensions, the two papers are biting the same problem from opposite ends.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">Only the arXiv abstract and metadata were read here; <strong>the full text was not</strong>. The abstract is qualitative throughout ("meaningful" improvements, activations that "predict" preference) and gives <strong>no figures at all</strong>: which eleven models, what effect sizes, how many clinicians in the blinded study and with what agreement statistics are none of them stated at abstract level. This is a single preprint, not peer-reviewed.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://arxiv.org/abs/2610.02829" target="_blank" rel="noopener">arXiv:2610.02829v1, 2026-10-02</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Evaluation method</span></span>
+      <span class="tag">arXiv</span><span class="tag">六個維度</span><span class="tag">10/01</span>
+    </div>
+    <h3>
+      <span class="en">Split clinical reasoning into six dimensions and nothing covers them all — faithfulness has one study, in multiple choice</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Submitted October 1, <a href="https://arxiv.org/abs/2610.01938" target="_blank" rel="noopener">A rubric landscape for evaluating clinical reasoning in large language models (arXiv:2610.01938)</a>, by Zhangshu Joshua Jiang, Zina Ibrahim and James T. Teo, sets three literatures that normally never meet alongside each other: medical-education assessment instruments, clinical LLM benchmarks from 2023 onward, and general-domain methods for evaluating long-form generation. It defines clinical reasoning as updating evidence across time and sources to form and justify a patient's problem representation and plan, then examines six dimensions — <strong>problem representation, temporal synthesis, differential and management reasoning, counterfactual reasoning, calibrated uncertainty and reasoning faithfulness</strong>. The finding: <strong>no single instrument covers all six</strong>. Problem representation and differential/management reasoning are reasonably covered, though reliability varies by instrument and setting; TIMER-Eval targets temporal synthesis and ER-Reason assesses sequential diagnostic belief updating; dedicated uncertainty and counterfactual evaluations are emerging but barely applied to longitudinal free-text reasoning; and <strong>faithfulness is weakest — one identified clinical causal-ablation study, which used multiple-choice questions</strong>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This review explains why RadOnc-Agent's disclaimer is honest rather than evasive: showing an orchestration chain is clinically right requires all six dimensions to hold at once, and the existing tools cannot be assembled to cover them. The authors' remedies are themselves technical proposals, and nearly every one argues against today's fashion for a single aggregate score — <strong>binary rubric items</strong>, <strong>separate completeness and correctness scores</strong>, case-specific importance weighting with <strong>non-compensable safety caps</strong> (break the cap and no amount of high scoring rescues it), <strong>temporal order-consistency checks</strong>, and <strong>chance-corrected reliability reporting</strong>. Put another way: medical AI's scorecard has to move from averaging to veto.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">This is a structured narrative review, not a systematic one, and neither the abstract nor the page <strong>states how many instruments or papers were examined</strong>, so no coverage figure can be given here. Preprints are included and flagged. The authors themselves note that the work offers a <strong>design rationale rather than a validated instrument</strong> — it names the gap without closing it. Only the abstract and metadata were read.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://arxiv.org/abs/2610.01938" target="_blank" rel="noopener">arXiv:2610.01938v1, 2026-10-01</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Long-horizon reasoning</span></span>
+      <span class="tag">arXiv</span><span class="tag">MedLoCoMo</span><span class="tag">09/30</span>
+    </div>
+    <h3>
+      <span class="en">Feeding in the whole chart is not the best move: Episodic and Hybrid win, and answering well does not transfer to abstaining</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Submitted September 30 and listed on Oct 1, <a href="https://arxiv.org/abs/2610.00562" target="_blank" rel="noopener">Can LLMs Reason Over Long Horizons? (arXiv:2610.00562)</a>, by Taye Akinrele, Noorbakhsh Amiri Golilarz, Subash Neupane, Sudip Mittal and Shahram Rahimi, uses the <strong>MedLoCoMo</strong> dataset and <strong>four open-weight models</strong> to compare five ways of handing a patient history to a model: <strong>Full, Recent, Episodic, Semantic and Hybrid</strong>. It measures three things — answer correctness, robustness as the distance between a query and its supporting evidence grows, and the ability to <strong>abstain</strong> on questions whose premises the history does not support. The results: <strong>Episodic and Hybrid give the strongest overall accuracy</strong>; <strong>Recent Context degrades worst as evidence gets more distant</strong>, while Episodic and Hybrid hold the highest accuracy at long range; and the line most worth copying down — <strong>strong performance on answerable questions does not reliably carry over to abstaining on adversarial ones</strong>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">The authors state the conclusion in a form you can act on architecturally: reliable longitudinal reasoning depends less on how much history a model can access than on <strong>how relevant evidence is selected and presented</strong>. That is a direct refusal of the last two years' instinct that a longer context window settles the matter — the investment belongs in the retrieval and organisation layer. The abstention finding matters more still: clinically, the dangerous failure is not getting one question wrong but answering a false-premise question confidently, and this experiment shows the strategies that win on accuracy do not acquire that capability for free. It has to be measured, and trained, separately.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">At abstract level <strong>no figures are given</strong> — how far apart the five strategies' accuracies are, how steep the degradation curve is, how low the abstention rates fall are all directional only, and <strong>the four open-weight models are not named</strong>. Results come from a single dataset, MedLoCoMo, with no cross-dataset or cross-institution external validation. Only the abstract and metadata were read; this is a preprint, not peer-reviewed.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://arxiv.org/abs/2610.00562" target="_blank" rel="noopener">arXiv:2610.00562v1, 2026-09-30</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Taiwan infrastructure</span></span>
+      <span class="tag">衛福部</span><span class="tag">FHIR Box · 3D PACS</span><span class="tag">10/05</span>
+    </div>
+    <h3>
+      <span class="en">Taiwan's week was plumbing, not models: FHIR Box, a next-generation 3D PACS, and NTUH aiming for hospital-wide automated AI 3D imaging by 2028</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On October 5 Taiwan's health ministry held the <a href="https://money.udn.com/money/story/7307/9795500" target="_blank" rel="noopener">2026 Domestic AI, 3D Medical Imaging and Metaverse Application Conference</a>, and both headline items sit in the infrastructure layer: <strong>FHIR Box</strong>, which converts hospital data into the international HL7 FHIR standard <strong>without replacing existing core systems</strong>, so different hospital systems can exchange data; and a <strong>next-generation 3D PACS</strong> for storing, transmitting and sharing 3D images in clinical settings. NTUH president <strong>Yu Chung-jen</strong> said 3D imaging helps surgical planning and doctor-patient communication, and the hospital plans to complete a hospital-wide framework converting medical images into AI-generated 3D images <strong>by 2028</strong>. Domestic vendor <strong>Chih-Chieh Medical Technology</strong>'s <strong>Anatomy Cloud</strong> platform automatically converts conventional 2D images into 3D anatomical models, with modelling in as little as <strong>about 5 minutes</strong> by the company's account; Chih-Chieh donated <strong>10</strong> workstations, which the ministry will place at medical centres and public hospitals as demonstration equipment. Minister <strong>Shih Chung-liang</strong> said medical metaverse applications already cover teaching, preoperative explanation, surgical planning and intraoperative navigation, but deployment requires <strong>thin-slice CT, dedicated software and high-performance computing</strong>, plus collaboration between physicians and biomedical engineers.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Put this beside the Sept 30 long-horizon experiment and the technical significance of Taiwan's step comes into focus. If the deciding factor is how relevant evidence is selected and presented, then selectability presupposes data that is standardised and reachable across institutions — which is exactly what FHIR Box does, by the path of least resistance, leaving core systems in place. The 3D PACS is the same logic: without a storage-and-transmission standard of its own, an AI-generated 3D model stays on one workstation and never enters the care pathway. This layer rarely makes international headlines, and it decides whether any of the models above can actually run.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">Anatomy Cloud's "as little as about 5 minutes" is a <strong>vendor claim</strong> with no third-party measurement seen. NTUH's 2028 hospital-wide rollout is a <strong>plan</strong>, not a completed deployment. A related report's headline mentions the system reaching 29 medical centres by 2028, but <strong>the body does not confirm that figure</strong>, so it is not used here. The sharpest gap is reimbursement: Taichung Veterans General Hospital honorary superintendent <strong>Chen Shih-an</strong> said broader clinical use needs service and payment mechanisms, and today <strong>some hospitals are applying for self-pay billing codes</strong> for 3D imaging, with any link to national health insurance still prospective. The demonstration kit has arrived; the way to pay for it has not been laid.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://money.udn.com/money/story/7307/9795500" target="_blank" rel="noopener">經濟日報／聯合報, 2026-10-05</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Native 3D model</span></span>
+      <span class="tag">NV-Reason-CT</span><span class="tag">CT-RATE</span><span class="tag">09/25</span>
+    </div>
+    <h3>
+      <span class="en">A 3D CT language model that refuses to merge spatial tokens: 0.871 macro-AUROC on CT-RATE, and not one baseline in the paper</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en"><a href="https://arxiv.org/abs/2609.27511" target="_blank" rel="noopener">NV-Reason-CT (arXiv:2609.27511, submitted Sep 23, v2 Sep 25)</a>, by Andriy Myronenko, Dong Yang, Yucheng Tang, Baris Turkbey, Zongwei Zhou, Wenxuan Li, Daguang Xu and others, is a generative vision-language model for chest and abdominal CT. Architecturally the notable choice is that it <strong>passes all visual tokens, with their 3D coordinates, straight into language decoding with no spatial token merging</strong> — most 3D medical VLMs pool voxels first to contain compute; this one declines to. Training used roughly <strong>550,000 multimodal instruction examples</strong> drawn from <strong>70,111 unique CT image inputs</strong>, sourced from standardised reports, abnormality- and anatomy-focused questions, multi-turn interactions, and radiologist reasoning captured by recording and transcribing expert interpretation; the recipe is supervised fine-tuning followed by <strong>GRPO with verifiable rewards</strong>. Results: <strong>0.614 macro-F1 and 0.871 macro-AUROC on CT-RATE, with no task-specific classification head</strong>; report-derived macro-F1 of <strong>0.592</strong>. The authors state they release the model and training code.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">The refusal to merge tokens is itself the argument: in 3D medical imaging lesions are often small and position-critical, and what pooling discards tends to be exactly the voxels the diagnosis turns on. Feeding 3D coordinates into the language side is a bet that anatomical localisation is worth the compute. The other design worth noting is the training data's <strong>spoken radiologist reasoning</strong> — not rationales reverse-engineered from reports, but recordings of physicians thinking as they read. That maps intuitively onto the faithfulness dimension the rubric review found most lacking: if you want a model's reasoning to be real, the supervision signal had better be real too.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">In the content obtained here there is <strong>no comparison against any other model</strong> — 0.871 sits with no baseline beside it, so leading or trailing cannot be judged. <strong>Parameter count is not disclosed.</strong> A held-out NIH cohort was used for evaluation but <strong>no results are given</strong>. The figure most in need of discounting is the "50% reduction in average interpretation and reporting time": that comes from a <strong>preliminary</strong> expert study by the authors' own account, with <strong>no sample size stated</strong>, and the paper labels it preliminary itself. The release statement carries neither a repository link nor licence terms.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://arxiv.org/abs/2609.27511" target="_blank" rel="noopener">arXiv:2609.27511v2, 2026-09-25</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Digital twin</span></span>
+      <span class="tag">Duke · PRISM</span><span class="tag">Welldoc</span><span class="tag">10/02</span>
+    </div>
+    <h3>
+      <span class="en">Duke turns human digital twins into a heart-failure pilot, and Welldoc bets on small language models rather than large ones</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Per <a href="https://www.fiercehealthcare.com/health-tech/weekly-rundown-yosi-health-integrates-scheduling-intake-google-services-grindr-acquires" target="_blank" rel="noopener">Fierce Healthcare's October 2 weekly rundown</a>, <strong>Duke University</strong> launched a "human digital twin" programme combining medical imaging, AI and wearable data, led by the Duke Center for Computational and Digital Health Innovation (CCDHI) and running on <strong>PRISM</strong>, a platform integrating EHRs, imaging and behavioural signals; the <strong>first pilot targets heart failure</strong>, with the long-term goal of detecting physiological decline before symptoms or hospitalisation. In the same batch, <strong>Welldoc</strong> launched an AI-driven care-loop platform whose technical choice is worth recording: it runs on the company's <strong>clinically validated small language models</strong> rather than a general-purpose large model, built on <strong>more than 500 million health data points</strong> across <strong>more than 80 health domains</strong>. Separately, <strong>UVA Health and K Health</strong> expanded a virtual primary care partnership, with K Health's clinical AI infrastructure supporting visits inside UVA's patient portal.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Welldoc's choice is the week's most underrated technical signal. While everyone else enlarges models and lengthens context, someone is running the other way, making narrow, validated, cheap-to-serve small models the backbone — which points the same direction as the Sept 30 long-horizon result: if performance turns on how evidence is chosen rather than how big the model is, a small model that gets the choosing right within one health domain need not lose to a general-purpose large one. Duke's digital twin is a bet in the opposite direction: build the patient as a simulable object, and ask not what is in this image but where this person is heading next.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">This whole item is <strong>announcements, not results</strong>. Duke's heart-failure pilot publishes no scale, enrolment or prospective endpoint; detecting decline before symptoms is a stated goal, not a demonstrated performance. Welldoc's "clinically validated," its 500 million data points and 80-plus health domains are all <strong>company claims</strong>, with no corresponding peer-reviewed study or third-party audit seen here, and the "small language models" come with no parameter count or architecture. The K Health/UVA partnership likewise publishes no clinical or operational figures.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.fiercehealthcare.com/health-tech/weekly-rundown-yosi-health-integrates-scheduling-intake-google-services-grindr-acquires" target="_blank" rel="noopener">Fierce Healthcare, 2026-10-02</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Yardstick (background)</span></span>
+      <span class="tag">Microsoft Research</span><span class="tag">HealthAgentBench</span><span class="tag">06/30</span>
+    </div>
+    <h3>
+      <span class="en">Measure this week's orchestration on a 54-task ruler: 42% at best, imaging is the bottleneck, and the harness alone moves the score 7 points</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Microsoft Research's <a href="https://arxiv.org/abs/2606.31179" target="_blank" rel="noopener">HealthAgentBench (arXiv:2606.31179, 2026-06-30)</a>, by Qianchu Liu, Sheng Zhang, Hoifung Poon and colleagues, puts <strong>54 tasks in 7 categories</strong>, each a terminal-based Docker environment built on the Harbor framework: an agent receives raw clinical data and minimal instructions, then has to explore, plan and produce a verifiable output, scored as <strong>binary success or failure</strong> against expert labels or human performance. The categories are X-ray report correction (10), CT abnormality classification (10), pathology tumour area selection (10), clinical trial matching (9), EHR data quality auditing (8), EHR event modelling (6) and EHR format conversion (1). Ten frontier agents, three harnesses, xhigh reasoning effort, web browsing disabled, three attempts per task. The scores: <strong>Codex GPT-5.5 at 42% (best), Copilot CLI Opus-4.8 36%, Copilot CLI GPT-5.5 35%, Claude Code Opus-4.8 32%, Codex GPT-5.4-mini 16% (weakest)</strong>. Two category results stand out: <strong>no agent clears 50% on EHR data quality auditing</strong> (best was Claude Code Opus-4.6 at 42%), while <strong>nine of ten agents score 100% on EHR format conversion</strong>. Imaging is the main bottleneck — Codex agents averaged <strong>22%</strong> on imaging tasks against <strong>12%</strong> for Claude Code agents, while text tasks were near parity (<strong>50% vs 48%</strong>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This four-month-old benchmark is the only ruler available today for systems like RadOnc-Agent, and its reading is unkind: the strongest frontier agents get just over four in ten realistic healthcare tasks right. Two details are worth holding onto. First, <strong>the harness is itself a variable</strong> — the same GPT-5.5 scores 42% under Codex and only 35% under Copilot CLI, meaning part of any reported score is not the model's. Second, <strong>cost and performance do not track</strong>: Claude Code agents were the most expensive and produced roughly twice as many output tokens per task as the best Codex run. The most diagnostic finding is that disclosing where the errors were located substantially improved recall on EHR data quality auditing — which corroborates the Sept 30 conclusion: the bottleneck is search and composition, not knowledge.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">This is a <strong>June 30 paper, outside this edition's seven-day window</strong>; it is cited here as a yardstick and as background, not as this week's news. The authors' own limitations are worth copying across: the benchmark is not exhaustive across healthcare agent use cases; <strong>the terminal interface was chosen for evaluation, not deployment</strong>; each category holds only about 5–15 sampled tasks, with three attempts each; and Copilot CLI's multi-agent design means <strong>its results do not reflect a single pure model</strong>. Overall scores for five further agents (Opus-4.7, Opus-4.6, Sonnet-4.6, GPT-5.4, GPT-5.3) were not explicitly given in the content obtained here.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://arxiv.org/abs/2606.31179" target="_blank" rel="noopener">arXiv:2606.31179v1, 2026-06-30</a> ／ <a href="https://arxiv.org/html/2606.31179v1" target="_blank" rel="noopener">HealthAgentBench 全文 HTML</a></p></div>
+  </div>
+</section>
+
+<!-- ============ 02 產品分析 ============ -->
+<section id="product">
+  <h2>02 — Product Analysis</h2>
+  <div class="sec-title">
+    <span class="en">Two routes into radiation oncology and radiology: one trades orchestration for breadth, one trades a single model for depth — and neither has a comparator</span>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>RadOnc-Agent</h3>
+      <p class="sub"><span class="en-inline">LLM-orchestrated full-pathway radiotherapy framework · academic preprint (arXiv, institutions undisclosed)</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> One LLM acts as switchboard, collecting <strong>26 callable functions</strong> spanning the whole radiotherapy care pathway into a single conversational interface so clinicians can drive, in natural language, steps that previously lived in separate tools (<a href="https://arxiv.org/abs/2610.06923" target="_blank" rel="noopener">arXiv:2610.06923, 2026-10-07</a>). What it sells is not better accuracy at any one step but <strong>accessibility across the whole pipeline</strong> — which is where radiotherapy's real cost sits: physicians and medical physicists hand-carrying information between six or seven systems.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: the setting is well chosen. Radiotherapy is already a long pipeline with <strong>a fixed order and an AI tool at every stage</strong>, and the join has always been what was missing; orchestration here is far easier to define success for than orchestration in open-ended diagnosis. <a href="https://arxiv.org/abs/2606.31179" target="_blank" rel="noopener">HealthAgentBench</a>'s category breakdown supports that read — on a structured, verifiable task (EHR format conversion) nine of ten agents scored 100%, while on an open-ended one (data quality auditing) every agent fell below 50%.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: the authors put the validity gap in the paper themselves — the results <strong>"do not establish clinical correctness, clinical utility or prospective benefit."</strong> That sentence weighs more in radiotherapy than in most settings: an orchestration error ends as a dose distribution, not a suggestion. And <strong>the full text could not be read here</strong> (arXiv was refused by the fetch proxy with a 429), so which LLM orchestrates, how the 26 functions break down and what the evaluation design looks like are all missing — not details, but the entire basis for judging whether it is usable.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>NV-Reason-CT</h3>
+      <p class="sub"><span class="en-inline">Native 3D chest/abdominal CT vision-language model · authors include NVIDIA researchers (US)</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> A single model doing abnormality classification, report generation and interactive reasoning (including differentials and uncertainty), taking the <strong>depth rather than breadth</strong> route: no tool chaining, just 3D volumes consumed natively. The technical pitch is that <strong>all visual tokens, with their 3D coordinates, go straight into language decoding with no spatial token merging</strong>, plus training data in which the <strong>550,000</strong> instruction examples include <strong>transcribed spoken radiologist interpretation</strong>, finished with SFT followed by <strong>GRPO with verifiable rewards</strong> (<a href="https://arxiv.org/abs/2609.27511" target="_blank" rel="noopener">arXiv:2609.27511v2, 2026-09-25</a>).</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: <strong>0.871 macro-AUROC and 0.614 macro-F1 on CT-RATE with no task-specific classification head</strong> — a generative model reaching that without a bolted-on head suggests the language side genuinely ingests the image information rather than borrowing marks from a classifier. The report-derived macro-F1 of <strong>0.592</strong> sits close to the 0.614 direct figure, implying the reports it writes broadly match its internal judgement. The authors state the model and training code are released.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: <strong>there is no comparator model anywhere in the paper</strong> — nothing sits beside 0.871, so leading or merely matching cannot be told; <strong>parameter count is undisclosed</strong>; a held-out NIH cohort was evaluated but <strong>no results are reported</strong>, leaving the external-validity column blank. The "50% reduction in interpretation and reporting time" is a <strong>preliminary</strong> author claim with <strong>no sample size</strong>. The release statement carries no repository link or licence.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>The real difference between the two routes is not architecture but who carries the cost of validation.</strong> The orchestration route pushes that burden onto the whole chain: each added function adds a layer of combination to be proven, and <a href="https://arxiv.org/abs/2610.01938" target="_blank" rel="noopener">the Oct 1 rubric review</a> says no instrument currently measures that compositional validity. The single-model route gathers validation behind one interface, where numbers are easy to report — and were reported — but what it lacks is a comparator: 0.871 with no baseline, the exact inverse of HealthAgentBench's 42% arrived at by racing ten agents against each other. The methodological lesson of the week comes from <a href="https://arxiv.org/abs/2606.31179" target="_blank" rel="noopener">HealthAgentBench</a> instead: only because it ran three harnesses at once did the fact that one model loses 7 points on a change of wrapper become visible at all.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============ 03 公司與競爭 ============ -->
+<section id="company">
+  <h2>03 — Companies &amp; Competition</h2>
+  <div class="sec-title">
+    <span class="en">Who stands where, on what, against whom</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th><span class="en-inline">Company</span></th>
+        <th><span class="en-inline">Recent state &amp; numbers</span></th>
+        <th><span class="en-inline">Position &amp; moat</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Microsoft Research</strong><br><span class="en-inline">The one who built the ruler</span></td>
+          <td>
+            <span class="en"><a href="https://arxiv.org/abs/2606.31179" target="_blank" rel="noopener">HealthAgentBench (Jun 30)</a>: 54 tasks, 7 categories, Docker terminal environments, binary scoring; ten frontier agents across three harnesses, best <strong>42%</strong>. It also appears in <a href="https://cdss.berkeley.edu/news/uc-berkeley-and-ucsf-researchers-release-top-performing-ai-model-medical-imaging" target="_blank" rel="noopener">Pillar-0's comparison table</a> as <strong>MI2 at .75 AUC</strong> (2025-11-20).</span>
+          </td>
+          <td>
+            <span class="en">The moat is <strong>occupying the standard-setting seat</strong>: whoever's benchmark gets cited decides where "good enough" sits. The weakness is that it sells both models and the ruler, so neutrality will eventually be asked about — structurally the same question raised about <a href="https://www.gridhealth.io/charge-insights/openevidence-tempo-no-ones-watching" target="_blank" rel="noopener">OpenEvidence's self-scored benchmarks</a>, just at one remove.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Google Research</strong><br><span class="en-inline">The open-weight production line</span></td>
+          <td>
+            <span class="en"><a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">MedGemma 1.5 4B and MedASR (2026-01-13)</a>: MRI disease-finding classification <strong>65%</strong> (from 51%), histopathology ROUGE-L <strong>0.49</strong> (from 0.02, matching task-specific PolyPath's 0.498), Chest ImaGenome anatomical localisation IoU <strong>38%</strong> (from 3%), EHRQA <strong>90%</strong> (from 68%). MedASR's word error rate on chest X-ray dictation is <strong>5.2%</strong>, <strong>58%</strong> fewer errors than Whisper large-v3's 12.5%. Free for research and commercial use.</span>
+          </td>
+          <td>
+            <span class="en">The moat is <strong>a 4B footprint small enough to run offline, free for commercial use</strong>: under hospital-network and data-stays-inside constraints that beats a higher score. The weakness is that a January release is, by October, the thing everyone names as the bar to clear — <a href="https://www.biopharmatrend.com/news/open-radiology-ai-model-released-for-ct-mri-analysis-1523/" target="_blank" rel="noopener">Raidium's Curia-2 (Mar 6)</a> and <a href="https://cdss.berkeley.edu/news/uc-berkeley-and-ucsf-researchers-release-top-performing-ai-model-medical-imaging" target="_blank" rel="noopener">Pillar-0</a> both do exactly that.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>NVIDIA</strong><br><span class="en-inline">Two bets: native 3D imaging and bio-compute</span></td>
+          <td>
+            <span class="en"><a href="https://arxiv.org/abs/2609.27511" target="_blank" rel="noopener">NV-Reason-CT (Sep 25)</a>: CT-RATE macro-AUROC <strong>0.871</strong>, macro-F1 <strong>0.614</strong>, 550k instructions over 70,111 CTs, SFT plus GRPO, release stated. On the bio side, its <a href="https://nvidianews.nvidia.com/news/nvidia-expands-open-model-families-to-power-the-next-wave-of-agentic-physical-and-healthcare-ai" target="_blank" rel="noopener">March 16 announcement</a> covered BioNeMo's <strong>Proteina-Complexa</strong> for protein binder design (experimentally tested by Novo Nordisk, Viva Biotech and Manifold Bio) and <strong>nvQSP</strong>, up to <strong>77x</strong> faster than traditional single-threaded CPU simulation.</span>
+          </td>
+          <td>
+            <span class="en">The moat is <strong>selling compute and models as one bundle</strong>: a design like refusing to merge spatial tokens is only affordable to someone indifferent to compute cost, and that routes the value back to its own hardware. The weakness is that the research numbers lack comparators — 0.871 with no baseline is hard to carry into a hospital procurement meeting.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>OpenEvidence</strong><br><span class="en-inline">Highest scores, loudest questions about who graded them</span></td>
+          <td>
+            <span class="en"><a href="https://datanorth.ai/news/openevidence-launches-four-medical-ai-models" target="_blank" rel="noopener">Four models launched Sep 3</a>: <strong>Osler</strong> (about 5 seconds, now the default), <strong>Sackett</strong> (about 30 seconds, asks the clinician for context), <strong>Snow</strong> (about 5 minutes, researches the literature first) and <strong>Darwin</strong> (research preview, by application). Self-reported scores: <strong>100% on MedQA</strong>, plus <a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openevidences-new-model-achieves-1st-perfect-score-on-medical-ai-benchmark/" target="_blank" rel="noopener">72.8% MedXpertQA, 82.7% HealthBench Professional, 87.2% NOHARM</a>. The first three are free to verified clinicians.</span>
+          </td>
+          <td>
+            <span class="en">The moat is <strong>distribution to physicians</strong> (free, plus a three-tier latency choice), not the scores. <a href="https://www.gridhealth.io/charge-insights/openevidence-tempo-no-ones-watching" target="_blank" rel="noopener">GridHealth (Sep 22)</a> notes all four figures are <strong>first-party</strong>: designed, scored and published in-house with no outside review, and HealthBench Professional was itself built by OpenAI. A perfect MedQA may also mean <strong>the benchmark is saturated</strong> rather than the problem solved. This is today's theme in its commercial form.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Aidoc</strong><br><span class="en-inline">Deployed scale traded for a regulatory lane</span></td>
+          <td>
+            <span class="en"><a href="https://www.aidoc.com/about/news/aidoc-receives-fda-breakthrough-device-designation-for-ai-that-drafts-radiology-reports/" target="_blank" rel="noopener">FDA Breakthrough Device Designation on Jun 25 (Q260882)</a>: the product, <strong>First Read</strong>, reads chest radiographs and drafts preliminary report text, built on its <strong>CARE</strong> foundation model with the same architecture as the already-cleared Triage; the designation covers four life-threatening findings, and it is <strong>investigational use only, not cleared</strong>. Platform figures: over <strong>120 million</strong> cases, nearly <strong>2,000</strong> hospitals, about <strong>60 million</strong> patients a year; a <strong>$150M Series E in April</strong>.</span>
+          </td>
+          <td>
+            <span class="en">The moat is <strong>a pipe already plugged into two thousand hospitals</strong> — the technical bar for drafting reports is falling, but the bar for getting one onto a radiologist's reading station is not. The weakness is that First Read <strong>publishes no performance figures of its own</strong>, and the company's own release lists <strong>automation bias</strong> among the known risks of generative reporting — the hardest one to guard against in a draft-report workflow.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>智捷醫學科技 Chih-Chieh</strong><br><span class="en-inline">Taiwan 2D-to-3D modelling</span></td>
+          <td>
+            <span class="en"><a href="https://money.udn.com/money/story/7307/9795500" target="_blank" rel="noopener">At the ministry's Oct 5 conference</a>: <strong>Anatomy Cloud</strong> automatically converts conventional 2D images into 3D anatomical models, in as little as <strong>about 5 minutes</strong> by the company's account; it donated <strong>10</strong> workstations for the ministry to place at medical centres and public hospitals as demonstration equipment.</span>
+          </td>
+          <td>
+            <span class="en">The moat is <strong>domestic status plus a policy lane</strong>: under a "domestic AI" label, how fast demonstration kit gets installed is not decided by scores. The weaknesses are concrete — <strong>the 5 minutes is a vendor claim</strong> with no third-party measurement, and <a href="https://money.udn.com/money/story/7307/9795500" target="_blank" rel="noopener">the reimbursement path is unbuilt</a> (some hospitals are applying for self-pay codes). Demo units get in; routine use cannot be paid for.</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>Today's competitive structure has nobody holding the seat that matters: who is entitled to grade.</strong> The model layer has sorted itself out — Google holds offline-inside-the-hospital with a free 4B, NVIDIA holds native 3D with compute, OpenEvidence holds the physician's desktop by being free, Aidoc holds the last mile with two thousand hospitals, and Taiwanese vendors hold the demonstration floor with a policy label. The scoring layer is empty: <a href="https://arxiv.org/abs/2606.31179" target="_blank" rel="noopener">the most-cited ruler comes from a company that also sells models</a>, <a href="https://www.gridhealth.io/charge-insights/openevidence-tempo-no-ones-watching" target="_blank" rel="noopener">the prettiest scores come from the party being scored</a>, and the most honest piece of work — the Oct 1 rubric review — concludes that the available tools cannot be assembled. In that structure the most valuable position left is not another model but becoming the third-party evaluator everyone will accept.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============ 04 台灣視角 ============ -->
+<section id="taiwan">
+  <h2>04 — Taiwan Angle</h2>
+  <div class="sec-title">
+    <span class="en">Taiwan advanced both plumbing and policy this week, and left the evaluation box empty</span>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>(1) FHIR Box is not only interoperability; it is the precondition for evidence being selectable at all.</strong> The Sept 30 long-horizon experiment states it plainly: reliable longitudinal clinical reasoning depends on <strong>how relevant evidence is selected and presented</strong>, not on how much a model can read (<a href="https://arxiv.org/abs/2610.00562" target="_blank" rel="noopener">arXiv:2610.00562</a>). Both of Taiwan's moves this week sit on that layer: <strong>FHIR Box</strong> (converting hospital data to HL7 FHIR without replacing core systems) and the <strong>next-generation 3D PACS</strong>, from <a href="https://money.udn.com/money/story/7307/9795500" target="_blank" rel="noopener">the Oct 5 conference</a>. Earlier, Health Minister Shih Chung-liang gave the timetable in a <a href="https://money.udn.com/money/story/5648/9754542" target="_blank" rel="noopener">Sept 15 interview</a>: <strong>key data from all national medical centres connected by the end of 2026, extended to hospitals nationwide by the end of 2027</strong>, with FHIR paired with <strong>federated learning</strong> for trial recruitment — finding eligible patients and sites quickly while protecting privacy, converting electronic records directly and cutting manual collection. In technical terms: what Taiwan is building is not a model but the retrievable, cross-institution evidence layer that Episodic and Hybrid strategies depend on.</span>
+    </p>
+    <p>
+      <span class="en"><strong>(2) The Oct 7 biotech forum covered money, law and data — not evaluation.</strong> At <a href="https://udn.com/news/story/7241/9801591" target="_blank" rel="noopener">the 2026 Biotech Forum on Oct 7</a>, Minister Shih ran through the policy ledger: the twin regenerative-medicine laws effective in January, the <strong>National Health Insurance Data Management Act effective in August</strong> (opening the NHI database to academic and industry use under legal conditions), "<strong>Trust 100</strong>" targeting 100-day review for qualifying domestic new drugs and key medicines, NHI spending of <strong>NT$988.3bn</strong> this year and possibly <strong>NT$1.0434tn</strong> next, a four-year <strong>NT$24bn</strong> drug resilience plan, a five-year <strong>NT$48.9bn</strong> Healthy Taiwan plan, a ten-year <strong>NT$10bn</strong> biotech development fund, and an HTA centre awaiting promulgation as an administrative legal entity. Note that <strong>not one item on that list concerns AI validity assessment</strong>. Data access, funding and faster review are all moving; who verifies whether these models work on Taiwanese patients has neither an institution nor a budget line.</span>
+    </p>
+    <p>
+      <span class="en"><strong>(3) The reimbursement gap and the evaluation gap are the same gap.</strong> Taichung Veterans General Hospital honorary superintendent Chen Shih-an put it most practically on Oct 5: broader clinical use needs <strong>service and payment mechanisms</strong>, and today some hospitals are applying for <strong>self-pay billing codes</strong> for 3D imaging, with any NHI link still prospective (<a href="https://money.udn.com/money/story/7307/9795500" target="_blank" rel="noopener">Economic Daily News, Oct 5</a>). The two are tied together: for NHI to reimburse, somebody has to be able to state the size of the benefit — and the common conclusion of this edition's three papers is that the measuring apparatus needed to state it has not been assembled anywhere, let alone here: <a href="https://arxiv.org/abs/2610.01938" target="_blank" rel="noopener">no single instrument covers all six dimensions</a>, and <a href="https://arxiv.org/abs/2606.31179" target="_blank" rel="noopener">the strongest agents manage 42% on 54 realistic tasks</a>. Which makes Taiwan's position an opportunity: the data layer (FHIR Box) is due to be laid by the end of 2027, while the evaluation box is empty worldwide. Whoever stands up localised validity assessment will hold something nobody else has — and it is precisely what <a href="https://money.udn.com/money/story/5648/9754542" target="_blank" rel="noopener">the federated-learning architecture mentioned on Sept 15</a> is best suited to: validating a model's performance on real patients across hospitals without centralising the data.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============ 05 延伸閱讀 ============ -->
+<section id="reading">
+  <h2>05 — Further Reading</h2>
+  <div class="sec-title">
+    <span class="en">Five that tell you how to measure, rather than announcing one more model</span>
+  </div>
+
+  <ol class="reading">
+    <li>
+      <a href="https://arxiv.org/abs/2610.01938" target="_blank" rel="noopener">A rubric landscape for evaluating clinical reasoning in large language models — arXiv:2610.01938 (2026-10-01)</a>
+      <p class="why"><span class="en">If you read one thing from this week, read this. Its six dimensions work as a checklist the next time you assess a clinical LLM, and the non-compensable safety cap belongs in any internal evaluation policy.</span></p>
+    </li>
+    <li>
+      <a href="https://arxiv.org/html/2606.31179v1" target="_blank" rel="noopener">HealthAgentBench: A Unified Benchmark Suite of Realistic Agentic Healthcare Environments — Microsoft Research, arXiv:2606.31179 (2026-06-30)</a>
+      <p class="why"><span class="en">Read the category table, not the headline. The spread across its seven categories — 100% on format conversion against under 50% on data quality auditing — tells you more about which jobs agents can take today than any aggregate percentage.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/articles/s41746-026-02443-6" target="_blank" rel="noopener">Benchmarking large language model-based agent systems for clinical decision tasks — npj Digital Medicine (2026-02-18)</a>
+      <p class="why"><span class="en">The most citable and least cited paper of the year: Kather's group set agent systems beside zero-shot baselines, found the gains "modest" and mostly not significant, and priced them at <strong>over 10x the tokens</strong> (about 93,000 per MedQA scenario against 14,600). Remember the other number too — after in-agent safeguards blocked <strong>89.9%</strong> of hallucinations, hallucinations still touched roughly <strong>30%</strong> of clinical scenarios.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/articles/s41467-026-76004-6" target="_blank" rel="noopener">A benchmark study of vision and pathology foundation models for computational pathology — Nature Communications (2026-07-24)</a>
+      <p class="why"><span class="en">Read it for the counterintuitive finding: Gevaert's group ran <strong>32 foundation models</strong> over <strong>41 tasks, 53 datasets and more than 17,500 whole-slide images</strong>, and found <strong>no statistically significant AUROC difference</strong> between pathology-specific and general vision models, with model size and pretraining scale <strong>not consistently predicting performance</strong>. The next time someone pitches "ours is a medical-specific model," this is your comparator.</span></p>
+    </li>
+    <li>
+      <a href="https://www.gridhealth.io/charge-insights/openevidence-tempo-no-ones-watching" target="_blank" rel="noopener">OpenEvidence &amp; TEMPO: No One is Reviewing AI — GridHealth (2026-09-22)</a>
+      <p class="why"><span class="en">A short piece that translates this edition's technical theme into commercial and regulatory language. Its core line — a claim is not evidence because the vendor is confident — belongs on the wall of any hospital AI procurement room. It also notes in passing that the FDA's TEMPO pilot lets generative-AI devices reach patients before formal marketing authorisation, with plans to scale to 40 participants across four clinical areas.</span></p>
+    </li>
+  </ol>
+</section>
+
+<!-- ============ 06 參考文獻 ============ -->
+<section id="refs">
+  <h2>06 — References</h2>
+  <div class="sec-title">
+    <span class="en">References</span>
+  </div>
+
+  <div class="panel">
+    <ol class="refs">
+      <li>RadOnc-Agent: An LLM-Orchestrated Framework for AI Workflows Across the Radiotherapy Care Pathway. <em>arXiv:2610.06923</em>, 2026-10-07. <a href="https://arxiv.org/abs/2610.06923" target="_blank" rel="noopener">arxiv.org</a></li>
+      <li>Artificial Intelligence — new submissions, Wednesday 7 October 2026. <em>arXiv cs.AI</em>, 2026-10-07. <a href="https://arxiv.org/list/cs.AI/new" target="_blank" rel="noopener">arxiv.org</a></li>
+      <li>Nagar A, Vaidyanathan A, Kaliya-Perumal A-K, Boey ETH, Winkler S. Clinical Concept Centers in LLMs. <em>arXiv:2610.02829v1</em>, 2026-10-02. <a href="https://arxiv.org/abs/2610.02829" target="_blank" rel="noopener">arxiv.org</a></li>
+      <li>Jiang ZJ, Ibrahim Z, Teo JT. A rubric landscape for evaluating clinical reasoning in large language models: what exists, what is missing, and what needs to be combined. <em>arXiv:2610.01938v1</em>, 2026-10-01. <a href="https://arxiv.org/abs/2610.01938" target="_blank" rel="noopener">arxiv.org</a></li>
+      <li>Akinrele T, Amiri Golilarz N, Neupane S, Mittal S, Rahimi S. Can LLMs Reason Over Long Horizons? An Empirical Evaluation of Context Strategies for Longitudinal Clinical Reasoning. <em>arXiv:2610.00562v1</em>, 2026-09-30. <a href="https://arxiv.org/abs/2610.00562" target="_blank" rel="noopener">arxiv.org</a></li>
+      <li>醫療元宇宙走入臨床 國產AI、3D醫療影像落地 台大拚2028全院導入. <em>經濟日報／聯合報</em>, 2026-10-05. <a href="https://money.udn.com/money/story/7307/9795500" target="_blank" rel="noopener">money.udn.com</a></li>
+      <li>Myronenko A, Yang D, Tang Y, Turkbey B, Zhou Z, Li W, Xu D, et al. NV-Reason-CT: 3D Visual Language Model for CT Analysis. <em>arXiv:2609.27511v2</em>, 2026-09-25 (v1 2026-09-23). <a href="https://arxiv.org/abs/2609.27511" target="_blank" rel="noopener">arxiv.org</a></li>
+      <li>Gleeson C. Weekly Rundown: Duke University launches digital twin program; Welldoc unveils AI-powered care loop. <em>Fierce Healthcare</em>, 2026-10-02. <a href="https://www.fiercehealthcare.com/health-tech/weekly-rundown-yosi-health-integrates-scheduling-intake-google-services-grindr-acquires" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>Liu Q, Zhang S, Qin G, Valanarasu JMJ, Rokuss M, … Poon H. HealthAgentBench: A Unified Benchmark Suite of Realistic Agentic Healthcare Environments for Challenging Frontier AI Agents. <em>arXiv:2606.31179v1 (Microsoft Research)</em>, 2026-06-30. <a href="https://arxiv.org/abs/2606.31179" target="_blank" rel="noopener">arxiv.org</a> ／ <a href="https://arxiv.org/html/2606.31179v1" target="_blank" rel="noopener">HTML</a></li>
+      <li>Liu Y, Carrero ZI, Jiang X, Ferber D, Wölflein G, … Kather JN. Benchmarking large language model-based agent systems for clinical decision tasks. <em>npj Digital Medicine</em> 9:259, 2026-02-18. <a href="https://www.nature.com/articles/s41746-026-02443-6" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Bareja R, Carrillo-Perez F, Zheng Y, Pizurica M, Nandi TN, Tian L, Shen J, Madduri R, Gevaert O. A benchmark study of vision and pathology foundation models for computational pathology. <em>Nature Communications</em> 17:9012, 2026-07-24. <a href="https://www.nature.com/articles/s41467-026-76004-6" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Vorontsov E, Shaikovski G, Fuchs TJ, Severson K, … Liu S. End-to-end multimodal pathology foundation model with clinical dialogue (PRISM2). <em>Nature Medicine</em> 32(9):3203–3213, published online 2026-07-31. <a href="https://www.nature.com/articles/s41591-026-04521-4" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Golden D, Mahvar F. Next generation medical image interpretation with MedGemma 1.5 and medical speech to text with MedASR. <em>Google Research Blog</em>, 2026-01-13. <a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">research.google</a></li>
+      <li>NVIDIA Expands Open Model Families to Power the Next Wave of Agentic, Physical and Healthcare AI. <em>NVIDIA Newsroom</em>, 2026-03-16. <a href="https://nvidianews.nvidia.com/news/nvidia-expands-open-model-families-to-power-the-next-wave-of-agentic-physical-and-healthcare-ai" target="_blank" rel="noopener">nvidianews.nvidia.com</a></li>
+      <li>OpenEvidence launches four medical AI models; Darwin scores 100% on MedQA. <em>DataNorth</em>, 2026-09-04 (models released 2026-09-03). <a href="https://datanorth.ai/news/openevidence-launches-four-medical-ai-models" target="_blank" rel="noopener">datanorth.ai</a></li>
+      <li>Bruce G. OpenEvidence's new model achieves 1st perfect score on medical AI benchmark. <em>Becker's Hospital Review</em>, 2026-09-08. <a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openevidences-new-model-achieves-1st-perfect-score-on-medical-ai-benchmark/" target="_blank" rel="noopener">beckershospitalreview.com</a></li>
+      <li>OpenEvidence &amp; TEMPO: No One is Reviewing AI. <em>GridHealth Charge Insights</em>, 2026-09-22. <a href="https://www.gridhealth.io/charge-insights/openevidence-tempo-no-ones-watching" target="_blank" rel="noopener">gridhealth.io</a></li>
+      <li>Aidoc Receives FDA Breakthrough Device Designation for AI That Drafts Radiology Reports (First Read, CARE foundation model, Q260882). <em>Aidoc newsroom</em>, 2026-06-25. <a href="https://www.aidoc.com/about/news/aidoc-receives-fda-breakthrough-device-designation-for-ai-that-drafts-radiology-reports/" target="_blank" rel="noopener">aidoc.com</a></li>
+      <li>UC Berkeley and UCSF researchers release top-performing AI model for medical imaging (Pillar-0, Atlas architecture, RaTE). <em>UC Berkeley CDSS</em>, 2025-11-20. <a href="https://cdss.berkeley.edu/news/uc-berkeley-and-ucsf-researchers-release-top-performing-ai-model-medical-imaging" target="_blank" rel="noopener">cdss.berkeley.edu</a></li>
+      <li>Open Radiology AI Model Released for CT &amp; MRI Analysis (Raidium Curia-2 / Curia-2B). <em>BioPharmaTrend</em>, 2026-03-06. <a href="https://www.biopharmatrend.com/news/open-radiology-ai-model-released-for-ct-mri-analysis-1523/" target="_blank" rel="noopener">biopharmatrend.com</a></li>
+      <li>謝柏宏. 生技論壇10月7日登場 衛福部長石崇良：積極建構 AI 醫療基建. <em>經濟日報</em>, 2026-09-15. <a href="https://money.udn.com/money/story/5648/9754542" target="_blank" rel="noopener">money.udn.com</a></li>
+      <li>謝柏宏. 生技論壇／衛福部長喊政策多箭齊發 石崇良：打造生醫護國神山. <em>經濟日報／聯合新聞網</em>, 2026-10-08（論壇於 2026-10-07 舉行）. <a href="https://udn.com/news/story/7241/9801591" target="_blank" rel="noopener">udn.com</a></li>
+      <li>ICYMI: Last Week in AI — Sep 28 to Oct 4, 2026. <em>Open Data Science</em>, 2026-10 (週報). <a href="https://opendatascience.com/icymi-last-week-in-ai-sep-28-oct-4-2026/" target="_blank" rel="noopener">opendatascience.com</a></li>
+    </ol>
+    <div class="note">
+      <span class="en"><strong>Editor's note:</strong> (1) <strong>International news in today's rotation was thin over the past 24–72 hours</strong> — no major medical-specific model release or large-vendor technical announcement landed this week — so the window was extended back to <strong>Sep 25–Oct 8</strong>, with the through-line built from arXiv's Oct 1–7 new submissions plus Taiwan's Oct 5 infrastructure news, and with HealthAgentBench (Jun 30) and the npj Digital Medicine benchmark (Feb 18) cited as yardsticks and background, each dated in place. (2) <strong>The full text of RadOnc-Agent (arXiv:2610.06923) was not read here</strong>: at the time of writing both the abs and HTML pages were refused by the fetch proxy with HTTP 429, so the title, arXiv ID, the "26 callable functions," the conversational interface and the authors' disclaimer that the results "do not establish clinical correctness, clinical utility or prospective benefit" all come from the <a href="https://arxiv.org/list/cs.AI/new" target="_blank" rel="noopener">arXiv cs.AI new-submissions listing of 2026-10-07</a> — listing-level secondary information, not the paper. arXiv:2610.03176 (Hindsight-Guided Rationale Distillation for Rare Disease Diagnosis, Oct 2) was refused in the same batch and is therefore not cited at all. (3) <strong>For arXiv:2610.02829, 2610.01938 and 2610.00562 only the abstracts and metadata were read</strong>; wherever an abstract gives no figure, this report says so rather than estimating or inferring. All three are preprints, not peer-reviewed. (4) <strong>Vendor- or author-reported figures with no third-party audit</strong>: Chih-Chieh's Anatomy Cloud modelling in "as little as about 5 minutes"; NV-Reason-CT's "50% reduction in interpretation and reporting time" (labelled preliminary by the authors, no sample size); Welldoc's "clinically validated small language models" and its 500 million data points across 80-plus health domains; Aidoc's 120 million cases, nearly 2,000 hospitals and 60 million patients a year; OpenEvidence's four scores (100% MedQA, 72.8% MedXpertQA, 82.7% HealthBench Professional, 87.2% NOHARM); and NVIDIA's 77x figure for nvQSP. (5) <strong>Google's MedGemma 1.5 comparisons are mostly internal Google benchmarks</strong> (CT/MRI classification, histopathology ROUGE-L, lab report extraction, the single-image composite); only Chest ImaGenome, MS-CXR-T, MedQA and EHRQA are public benchmarks. (6) NTUH's 2028 hospital-wide rollout and the two-stage FHIR Box timetable for 2026 and 2027 are <strong>plans</strong>, not completed deployments; a related report's headline figure of 29 medical centres by 2028 is not used here because the body does not confirm it. (7) The Duke digital twin, Welldoc and K Health/UVA items are taken from Fierce Healthcare's Oct 2 roundup, <strong>not from the original releases</strong>. (8) Every source cited is a publicly readable page with no paywall; the Economic Daily News and UDN reports are freely accessible. (9) All URLs were visited and successfully read at the time of writing, with the two arXiv exceptions in point (2) — those links point to the correct pages, but their contents could not be retrieved here.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-row">
+    <div>
+      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Thursday / Technology<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
+    </div>
+    <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
+  </div>
+</footer>
+</main>
+
+<div class="fabs">
+  <button class="up" id="up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+  <a class="home-fab" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg></a>
+</div>
+
+<script>
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.getElementById('theme-ic').textContent =
+    document.body.classList.contains('dark') ? '◑' : '◐';
+}
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.body.classList.add('dark');
+  document.getElementById('theme-ic').textContent = '◑';
+}
+window.addEventListener('scroll', function(){
+  document.getElementById('up').classList.toggle('show', window.scrollY > 600);
+});
+
+(function(){
+  var el = document.getElementById('ghs');
+  if (!el || typeof fetch !== 'function') return;
+  fetch('https://api.github.com/repos/tingwei161803/ai-medical-daily', {headers:{Accept:'application/vnd.github+json'}})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if (!d || typeof d.stargazers_count !== 'number') return;
+      var n = d.stargazers_count;
+      el.textContent = n >= 1000 ? (Math.round(n/100)/10) + 'k' : String(n);
+    })
+    .catch(function(){});
+})();
+</script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/reports/2026-10-08.html" hreflang="zh-Hant" rel="alternate" lang="zh-Hant">中文版</a></p>
+</body>
+</html>

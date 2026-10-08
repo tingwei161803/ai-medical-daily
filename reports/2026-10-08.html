@@ -8,6 +8,10 @@
 <title>AI／醫療AI 每日新知日報 · 2026-10-08</title>
 <meta property="og:url" content="https://ai-medical-daily.peteraim.com/reports/2026-10-08.html" />
 <link rel="canonical" href="https://ai-medical-daily.peteraim.com/reports/2026-10-08.html" />
+<link rel="alternate" hreflang="zh-Hant" href="https://ai-medical-daily.peteraim.com/reports/2026-10-08.html" />
+<link rel="alternate" hreflang="en" href="https://ai-medical-daily.peteraim.com/en/reports/2026-10-08.html" />
+<link rel="alternate" hreflang="x-default" href="https://ai-medical-daily.peteraim.com/reports/2026-10-08.html" />
+<meta name="description" content="本週醫療 AI 的技術進展幾乎全落在「編排」與「怎麼評估」兩層：RadOnc-Agent（10/7）把放射治療 26 個函式串起來卻自陳未證實臨床效度，臨床推理 rubric 盤點（10/1）指出六個維度沒有單一工具涵蓋得完、faithfulness 最弱，臨床概念中心（10/2）把評估從輸出推進到 11 個開源模型的潛在空間，長程病史實驗（9/30）顯示 Episodic 與 Hybrid 策略勝過餵完整病史，而台灣在 10/5 把 FHIR Box 與新一代 3D PACS 當基礎設施層推進、台大拚 2028 全院自動化 AI 3D 影像。">
 <meta name="report-date" content="2026-10-08">
 <meta name="report-theme" content="technology">
 <meta name="report-title-zh" content="「技術突破」這一週交出的全是編排，沒有一份交出效度——10/7 掛上 arXiv 的 RadOnc-Agent 用一個 LLM 把整條放射治療照護路徑的 26 個可呼叫函式串成對話介面，作者卻在自己的論文裡寫下結果「並未證實臨床正確性、臨床效用或前瞻性效益」；10/1 那份 rubric 盤點把臨床推理拆成六個維度後發現沒有任何單一工具涵蓋得完，最弱的 faithfulness 只找到一份臨床因果消融研究、而且用的是選擇題；9/30 那份長程病史實驗更直接——決定成敗的不是模型能讀多少病史，而是證據怎麼挑、怎麼擺；而四個月前那份 54 項任務的 HealthAgentBench，最高分至今仍是 42%">
@@ -29,16 +33,16 @@
 </script>
 <link rel="stylesheet" href="/assets/report.css">
 </head>
-<body class="lang-zh">
+<body>
 
 <header class="bar">
   <div class="bar-in">
-    <a class="brand" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span><span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <a class="brand" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span></a>
     <div class="bar-sp"></div>
     <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub / 在 GitHub 給這個專案一顆星"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
     <div class="seg">
-      <button id="b-zh" class="on" onclick="setLang('zh')">中文</button>
-      <button id="b-en" onclick="setLang('en')">EN</button>
+      <a class="on" href="/reports/2026-10-08.html" hreflang="zh-Hant" lang="zh-Hant" aria-current="page">中文</a>
+      <a href="/en/reports/2026-10-08.html" hreflang="en" lang="en" rel="alternate">EN</a>
     </div>
     <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
   </div>
@@ -48,28 +52,24 @@
 <div class="hero">
   <div class="kicker">
     <span class="zh-inline">星期四 · 技術突破</span>
-    <span class="en-inline">Thursday · Technology</span>
   </div>
   <h1>
     <span class="zh">「技術突破」這一週交出的全是編排，沒有一份交出效度——10/7 掛上 arXiv 的 RadOnc-Agent 用一個 LLM 把整條放射治療照護路徑的 26 個可呼叫函式串成對話介面，作者卻在自己的論文裡寫下結果「並未證實臨床正確性、臨床效用或前瞻性效益」；10/1 那份 rubric 盤點把臨床推理拆成六個維度後發現沒有任何單一工具涵蓋得完，最弱的 faithfulness 只找到一份臨床因果消融研究、而且用的是選擇題；9/30 那份長程病史實驗更直接——決定成敗的不是模型能讀多少病史，而是證據怎麼挑、怎麼擺；而四個月前那份 54 項任務的 HealthAgentBench，最高分至今仍是 42%</span>
-    <span class="en">Technology week delivered orchestration and not one piece of validity: RadOnc-Agent, posted to arXiv on Oct 7, wires 26 callable functions across the whole radiotherapy pathway behind one LLM and a chat box, yet its own authors write that the results do not establish clinical correctness, clinical utility or prospective benefit; an Oct 1 rubric review split clinical reasoning into six dimensions and found no single instrument covers them all, with faithfulness the weakest — one clinical causal-ablation study, done in multiple choice; a Sept 30 long-horizon experiment put it plainer still, that what decides the outcome is not how much history a model can read but how the evidence is chosen and arranged; and on HealthAgentBench, 54 tasks four months old, the top score is still 42%</span>
   </h1>
   <div class="dateline">
     <span class="zh-inline">2026 年 10 月 8 日（四）· 涵蓋 9/25–10/8 · 台北時間</span>
-    <span class="en-inline">Thursday, October 8, 2026 · Covering Sep 25–Oct 8 · Taipei time</span>
   </div>
   <p class="lede">
     <span class="zh">把這一週的技術新聞攤開來，會發現它們全部長得一樣：有人把更多工具串進一條更長的鏈子，然後在論文或新聞稿的某一段，用一句話承認這件事還沒被驗過。<a href="https://arxiv.org/abs/2610.06923" target="_blank" rel="noopener">RadOnc-Agent</a>（10/7）是最乾淨的標本——26 個可呼叫函式、一個對話介面、橫跨整條放射治療照護路徑，而作者在論文裡自己寫下結果「並未證實臨床正確性、臨床效用或前瞻性效益」。真正的技術進展反而發生在量尺這一端：<a href="https://arxiv.org/abs/2610.01938" target="_blank" rel="noopener">10/1 的 rubric 盤點</a>把臨床推理拆成六個維度、指出沒有單一工具涵蓋得完；<a href="https://arxiv.org/abs/2610.02829" target="_blank" rel="noopener">10/2 的臨床概念中心</a>把評估從輸出推進到 11 個開源權重模型的潛在空間；<a href="https://arxiv.org/abs/2610.00562" target="_blank" rel="noopener">9/30 的長程病史實驗</a>發現決勝點不在能讀多少、而在怎麼挑。而台灣這一週做的事剛好接在同一層：<a href="https://money.udn.com/money/story/7307/9795500" target="_blank" rel="noopener">10/5 衛福部的國產 AI、3D 醫療影像與元宇宙應用大會</a>推的是 FHIR Box 與新一代 3D PACS——不是模型，是讓證據挑得出來的管線。</span>
-    <span class="en">Lay this week's technology news side by side and every item has the same shape: somebody chained more tools into a longer pipeline, then spent one sentence somewhere in the paper or the press release conceding that none of it has been validated. <a href="https://arxiv.org/abs/2610.06923" target="_blank" rel="noopener">RadOnc-Agent</a> (Oct 7) is the cleanest specimen — 26 callable functions, one conversational interface, the entire radiotherapy care pathway — and its authors themselves write that the results "do not establish clinical correctness, clinical utility or prospective benefit." The real technical movement happened at the other end, on the measuring stick: <a href="https://arxiv.org/abs/2610.01938" target="_blank" rel="noopener">the Oct 1 rubric review</a> split clinical reasoning into six dimensions and found no single instrument covers them all; <a href="https://arxiv.org/abs/2610.02829" target="_blank" rel="noopener">clinical concept centers, Oct 2</a>, pushed evaluation out of the output text and into the latent space of 11 open-weight models; <a href="https://arxiv.org/abs/2610.00562" target="_blank" rel="noopener">the Sept 30 long-horizon experiment</a> found the deciding factor is not how much history a model can read but how it is chosen. Taiwan's week landed on exactly that layer: <a href="https://money.udn.com/money/story/7307/9795500" target="_blank" rel="noopener">the health ministry's Oct 5 conference on domestic AI, 3D medical imaging and the metaverse</a> pushed FHIR Box and a next-generation 3D PACS — not a model, but the plumbing that makes evidence selectable in the first place.</span>
   </p>
 
   <nav class="toc">
-    <a href="#top"><span class="zh-inline">重點新聞</span><span class="en-inline">Top Stories</span></a>
-    <a href="#product"><span class="zh-inline">產品分析</span><span class="en-inline">Product Analysis</span></a>
-    <a href="#company"><span class="zh-inline">公司與競爭</span><span class="en-inline">Companies &amp; Competition</span></a>
-    <a href="#taiwan"><span class="zh-inline">台灣視角</span><span class="en-inline">Taiwan Angle</span></a>
-    <a href="#reading"><span class="zh-inline">延伸閱讀</span><span class="en-inline">Further Reading</span></a>
-    <a href="#refs"><span class="zh-inline">參考文獻</span><span class="en-inline">References</span></a>
+    <a href="#top"><span class="zh-inline">重點新聞</span></a>
+    <a href="#product"><span class="zh-inline">產品分析</span></a>
+    <a href="#company"><span class="zh-inline">公司與競爭</span></a>
+    <a href="#taiwan"><span class="zh-inline">台灣視角</span></a>
+    <a href="#reading"><span class="zh-inline">延伸閱讀</span></a>
+    <a href="#refs"><span class="zh-inline">參考文獻</span></a>
   </nav>
 </div>
 
@@ -78,230 +78,197 @@
   <h2>01 — Top Stories</h2>
   <div class="sec-title">
     <span class="zh">八則消息，一條共通的縫：編排能力跑在前面，效度證明留在後面</span>
-    <span class="en">Eight items, one shared seam: orchestration runs ahead, proof of validity stays behind</span>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">代理人編排</span><span class="en-inline">Agent orchestration</span></span>
+      <span class="tag hot"><span class="zh-inline">代理人編排</span></span>
       <span class="tag">arXiv</span><span class="tag">RadOnc-Agent</span><span class="tag">10/07</span>
     </div>
     <h3>
       <span class="zh">一個 LLM 串起放射治療 26 個函式，然後作者自己寫下「未證實臨床正確性」</span>
-      <span class="en">One LLM chains 26 radiotherapy functions, then the authors write down "does not establish clinical correctness"</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">10 月 7 日掛上 arXiv cs.AI 新投稿列表的 <a href="https://arxiv.org/abs/2610.06923" target="_blank" rel="noopener">RadOnc-Agent（arXiv:2610.06923）</a>，用一個 LLM 當編排者，把橫跨整條放射治療照護路徑的 <strong>26 個可呼叫函式</strong>收進同一個對話介面。放射治療是醫療裡最適合拿來試編排的場景之一：它本身就是一條有明確先後順序的長流程（適應症判斷、靶區與風險器官描繪、劑量處方、計畫最佳化、品保、追蹤），每一段都已經有各自的 AI 工具，缺的一直是把它們接起來的那層。論文的評估結論也寫得毫不含糊——作者自述結果<strong>「並未證實臨床正確性、臨床效用或前瞻性效益」</strong>（<a href="https://arxiv.org/list/cs.AI/new" target="_blank" rel="noopener">arXiv cs.AI 新投稿列表，2026-10-07</a>）。</span>
-        <span class="en">Posted to the arXiv cs.AI new-submissions listing on October 7, <a href="https://arxiv.org/abs/2610.06923" target="_blank" rel="noopener">RadOnc-Agent (arXiv:2610.06923)</a> uses one LLM as orchestrator to put <strong>26 callable functions</strong> spanning the entire radiotherapy care pathway behind a single conversational interface. Radiotherapy is one of medicine's best test beds for orchestration: it is already a long pipeline with a fixed order — indication, target and organ-at-risk delineation, dose prescription, plan optimisation, QA, follow-up — each stage already has its own AI tool, and the missing piece has always been the layer that joins them. The paper's own evaluation statement is unambiguous: the authors write that the results <strong>"do not establish clinical correctness, clinical utility or prospective benefit"</strong> (<a href="https://arxiv.org/list/cs.AI/new" target="_blank" rel="noopener">arXiv cs.AI new submissions, 2026-10-07</a>).</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">這句自陳不是謙虛，是現在整個領域的真實狀態。放射治療的編排一旦出錯，錯的不是一句建議，而是照進病人身體裡的劑量分布；而能證明「這條鏈子接對了」的評估工具，恰好是這一週另外三篇論文在說還不存在的東西。把 RadOnc-Agent 跟那三篇擺在一起讀，會看到同一個缺口從兩邊被指出來：工程端已經能串 26 個函式，量尺端連「串對了」要怎麼量都還沒收斂。</span>
-        <span class="en">That disclaimer is not modesty; it is the field's actual state. When radiotherapy orchestration goes wrong, what is wrong is not a sentence of advice but the dose distribution delivered into a patient's body — and the evaluation tooling that could show the chain was joined correctly is precisely what three other papers this week say does not yet exist. Read RadOnc-Agent next to those three and the same gap is being pointed at from both sides: engineering can already chain 26 functions, while the measurement end has not even settled how to score whether the chain is right.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">撰稿時 arXiv 的 abs 與 HTML 全文頁都被抓取代理以 HTTP 429 擋下，本則只讀到 10/7 新投稿列表層級的標題、arXiv ID、函式數量與上述作者自述限制，<strong>未讀到全文</strong>：使用哪一個 LLM 當編排者、26 個函式的分類、評估設計與任何量化數字，本報一概未能查證，也因此沒有引用。</span>
-        <span class="en">At the time of writing both the arXiv abs page and the full-text HTML were refused by the fetch proxy with HTTP 429. This item rests only on the Oct 7 new-submissions listing — title, arXiv ID, function count and the authors' disclaimer above. <strong>The full text was not read</strong>: which LLM orchestrates, how the 26 functions break down, the evaluation design and any quantitative result are all unverified here, and so none are quoted.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://arxiv.org/abs/2610.06923" target="_blank" rel="noopener">arXiv:2610.06923, 2026-10-07</a> ／ <a href="https://arxiv.org/list/cs.AI/new" target="_blank" rel="noopener">arXiv cs.AI new submissions, 2026-10-07</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">可解釋性</span><span class="en-inline">Interpretability</span></span>
+      <span class="tag hot"><span class="zh-inline">可解釋性</span></span>
       <span class="tag">arXiv</span><span class="tag">11 個開源權重模型</span><span class="tag">10/02</span>
     </div>
     <h3>
       <span class="zh">評估從「看它說什麼」走進「看它哪裡亮」：11 個開源模型裡找到專屬的臨床概念中心</span>
-      <span class="en">Evaluation moves from what the model says to where it lights up: dedicated clinical concept centers found in 11 open-weight models</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">10 月 2 日投稿的 <a href="https://arxiv.org/abs/2610.02829" target="_blank" rel="noopener">Clinical Concept Centers in LLMs（arXiv:2610.02829）</a>，作者群為 Aishik Nagar、Abhishek Vaidyanathan、Arun-Kumar Kaliya-Perumal、Elijah Tzen Hsuen Boey 與 Stefan Winkler，在他們測試的<strong>全部十一個開源權重模型</strong>的潛在空間裡都找到「專屬的臨床概念中心」。這些中心的四個性質是重點：只對與之對齊的臨床敘事放電、會<strong>因果地</strong>影響模型在限制型與開放型情境下的行為、在對抗性的角色扮演提示下模型仍保持內部一致並繼續動用相關中心，以及沿著這些中心做 steering 能在模擬部署情境裡提升下游表現。另外做了一組<strong>盲測臨床醫師驗證</strong>：這些中心的活化與使用程度，可以預測醫師的偏好。</span>
-        <span class="en">Submitted on October 2, <a href="https://arxiv.org/abs/2610.02829" target="_blank" rel="noopener">Clinical Concept Centers in LLMs (arXiv:2610.02829)</a> — by Aishik Nagar, Abhishek Vaidyanathan, Arun-Kumar Kaliya-Perumal, Elijah Tzen Hsuen Boey and Stefan Winkler — reports dedicated clinical concept centers in the latent space of <strong>all eleven open-weight models</strong> tested. Four properties carry the weight: the centers fire only on their aligned clinical narratives; they influence model behaviour <strong>causally</strong>, in both constrained and open-ended settings; under adversarial role-based priming the models stay internally coherent and keep using the relevant centers; and steering along the centers yields downstream gains in simulated deployment settings. There is also a <strong>blinded clinician validation</strong>: how strongly these centers activate and are used predicts clinician preference.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">這篇的論證針對的正是本期主線上那個缺口。作者明說，模型寫出來的推理過程可能漏掉真正驅動答案的特徵——也就是說，拿輸出文字評分這條路有結構性的上限。如果臨床概念真的是可定位、可因果驗證的內部表徵，那麼「這個模型在這個情境下可不可靠」就有機會從讀輸出變成讀內部，而且 steering 還能反過來當成提升手段。對照 <a href="https://arxiv.org/abs/2610.01938" target="_blank" rel="noopener">同一週那份 rubric 盤點</a>把 faithfulness 列為六個維度裡最弱的一項，這兩篇其實是從兩個方向咬同一個問題。</span>
-        <span class="en">This paper aims straight at the gap running through today's edition. The authors state plainly that a model's stated reasoning can omit the features actually driving its answer — meaning that scoring the output text has a structural ceiling. If clinical concepts really are locatable, causally verifiable internal representations, then "is this model reliable in this setting" could move from reading outputs to reading internals, with steering available as a lever on top. Set against <a href="https://arxiv.org/abs/2610.01938" target="_blank" rel="noopener">the same week's rubric review</a>, which ranks faithfulness the weakest of its six dimensions, the two papers are biting the same problem from opposite ends.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">本報只讀到 arXiv 摘要與 metadata，<strong>未讀全文</strong>。摘要通篇用質性語言（「meaningful 的提升」、活化「可預測」偏好），<strong>沒有給任何數字</strong>：十一個模型是哪些、效果量多大、盲測醫師人數與一致性統計，摘要層級一律沒有。這是單篇未經同儕審查的 preprint。</span>
-        <span class="en">Only the arXiv abstract and metadata were read here; <strong>the full text was not</strong>. The abstract is qualitative throughout ("meaningful" improvements, activations that "predict" preference) and gives <strong>no figures at all</strong>: which eleven models, what effect sizes, how many clinicians in the blinded study and with what agreement statistics are none of them stated at abstract level. This is a single preprint, not peer-reviewed.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://arxiv.org/abs/2610.02829" target="_blank" rel="noopener">arXiv:2610.02829v1, 2026-10-02</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">評估方法</span><span class="en-inline">Evaluation method</span></span>
+      <span class="tag hot"><span class="zh-inline">評估方法</span></span>
       <span class="tag">arXiv</span><span class="tag">六個維度</span><span class="tag">10/01</span>
     </div>
     <h3>
       <span class="zh">臨床推理拆成六個維度之後：沒有單一工具涵蓋得完，faithfulness 只找到一份研究、而且是選擇題</span>
-      <span class="en">Split clinical reasoning into six dimensions and nothing covers them all — faithfulness has one study, in multiple choice</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">10 月 1 日投稿的 <a href="https://arxiv.org/abs/2610.01938" target="_blank" rel="noopener">A rubric landscape for evaluating clinical reasoning in large language models（arXiv:2610.01938）</a>，作者為 Zhangshu Joshua Jiang、Zina Ibrahim 與 James T. Teo，把三支互不相通的文獻擺到一起比對：醫學教育的評量工具、2023 年起的臨床 LLM benchmark，以及一般領域的長文生成評估方法。它先把臨床推理定義成「跨時間與來源更新證據、以形成並辯護病人的問題表徵與處置計畫」，再拆成六個維度檢視——<strong>problem representation、temporal synthesis、differential 與 management reasoning、counterfactual reasoning、calibrated uncertainty、reasoning faithfulness</strong>。結論是<strong>沒有任何單一工具涵蓋全部六項</strong>：problem representation 與 differential／management reasoning 覆蓋算合理（但信度隨工具與場景浮動），TIMER-Eval 針對 temporal synthesis、ER-Reason 評序列式診斷信念更新，uncertainty 與 counterfactual 的專屬評估剛冒出來、用在長程自由文字推理上還很有限，而<strong>最弱的是 faithfulness——只找到一份臨床因果消融研究，而且用的是選擇題</strong>。</span>
-        <span class="en">Submitted October 1, <a href="https://arxiv.org/abs/2610.01938" target="_blank" rel="noopener">A rubric landscape for evaluating clinical reasoning in large language models (arXiv:2610.01938)</a>, by Zhangshu Joshua Jiang, Zina Ibrahim and James T. Teo, sets three literatures that normally never meet alongside each other: medical-education assessment instruments, clinical LLM benchmarks from 2023 onward, and general-domain methods for evaluating long-form generation. It defines clinical reasoning as updating evidence across time and sources to form and justify a patient's problem representation and plan, then examines six dimensions — <strong>problem representation, temporal synthesis, differential and management reasoning, counterfactual reasoning, calibrated uncertainty and reasoning faithfulness</strong>. The finding: <strong>no single instrument covers all six</strong>. Problem representation and differential/management reasoning are reasonably covered, though reliability varies by instrument and setting; TIMER-Eval targets temporal synthesis and ER-Reason assesses sequential diagnostic belief updating; dedicated uncertainty and counterfactual evaluations are emerging but barely applied to longitudinal free-text reasoning; and <strong>faithfulness is weakest — one identified clinical causal-ablation study, which used multiple-choice questions</strong>.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">這份盤點解釋了為什麼 RadOnc-Agent 那句自陳是誠實而非推託：要證明一條編排鏈「臨床上是對的」，需要的正好是這六個維度一起成立，而現有工具連湊都湊不齊。作者的補救方案本身就是技術建議，而且幾乎每一條都在反對目前流行的單一總分做法——改用<strong>二元 rubric 項目</strong>、把 <strong>completeness 與 correctness 分開計分</strong>、個案重要性加權搭配<strong>不可補償的安全上限</strong>（safety cap 一破，高分不能救）、加入<strong>時序一致性檢查</strong>、報告<strong>chance-corrected 的信度</strong>。換句話說：醫療 AI 的評分表得先從「平均分」改成「否決制」。</span>
-        <span class="en">This review explains why RadOnc-Agent's disclaimer is honest rather than evasive: showing an orchestration chain is clinically right requires all six dimensions to hold at once, and the existing tools cannot be assembled to cover them. The authors' remedies are themselves technical proposals, and nearly every one argues against today's fashion for a single aggregate score — <strong>binary rubric items</strong>, <strong>separate completeness and correctness scores</strong>, case-specific importance weighting with <strong>non-compensable safety caps</strong> (break the cap and no amount of high scoring rescues it), <strong>temporal order-consistency checks</strong>, and <strong>chance-corrected reliability reporting</strong>. Put another way: medical AI's scorecard has to move from averaging to veto.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">這是結構化敘事回顧（structured narrative review），不是系統性回顧；摘要與頁面<strong>沒有說共檢視了幾份工具或幾篇論文</strong>，本報因此無法給出覆蓋率數字。收錄範圍包含 preprint（有標記）。作者自己也寫明，這份工作提供的是<strong>設計理據，而不是一個已驗證的量表</strong>——也就是說，它指出缺口，但還沒把缺口補上。本報只讀摘要與 metadata，未讀全文。</span>
-        <span class="en">This is a structured narrative review, not a systematic one, and neither the abstract nor the page <strong>states how many instruments or papers were examined</strong>, so no coverage figure can be given here. Preprints are included and flagged. The authors themselves note that the work offers a <strong>design rationale rather than a validated instrument</strong> — it names the gap without closing it. Only the abstract and metadata were read.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://arxiv.org/abs/2610.01938" target="_blank" rel="noopener">arXiv:2610.01938v1, 2026-10-01</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag"><span class="zh-inline">長程推理</span><span class="en-inline">Long-horizon reasoning</span></span>
+      <span class="tag"><span class="zh-inline">長程推理</span></span>
       <span class="tag">arXiv</span><span class="tag">MedLoCoMo</span><span class="tag">09/30</span>
     </div>
     <h3>
       <span class="zh">把整份病史餵進去不是最好的做法：Episodic 與 Hybrid 勝出，而「會答」不等於「會棄答」</span>
-      <span class="en">Feeding in the whole chart is not the best move: Episodic and Hybrid win, and answering well does not transfer to abstaining</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">9 月 30 日投稿、10/1 進入列表的 <a href="https://arxiv.org/abs/2610.00562" target="_blank" rel="noopener">Can LLMs Reason Over Long Horizons?（arXiv:2610.00562）</a>，作者為 Taye Akinrele、Noorbakhsh Amiri Golilarz、Subash Neupane、Sudip Mittal 與 Shahram Rahimi，在 <strong>MedLoCoMo</strong> 資料集上用<strong>四個開源權重模型</strong>比較五種把病史交給模型的策略：<strong>Full、Recent、Episodic、Semantic、Hybrid</strong>。量三件事——答案正確率、隨「問題與其支持證據之間距離」拉長的穩健度，以及在前提不被病史支持的題目上<strong>棄答</strong>的能力。結果：<strong>Episodic 與 Hybrid 整體準確率最強</strong>；<strong>Recent Context 隨證據距離拉長衰退最嚴重</strong>，而 Episodic 與 Hybrid 在長距離仍維持最高準確率；而最值得抄下來的一句是——<strong>在可回答題上表現強，並不可靠地轉移成在對抗題上棄答</strong>。</span>
-        <span class="en">Submitted September 30 and listed on Oct 1, <a href="https://arxiv.org/abs/2610.00562" target="_blank" rel="noopener">Can LLMs Reason Over Long Horizons? (arXiv:2610.00562)</a>, by Taye Akinrele, Noorbakhsh Amiri Golilarz, Subash Neupane, Sudip Mittal and Shahram Rahimi, uses the <strong>MedLoCoMo</strong> dataset and <strong>four open-weight models</strong> to compare five ways of handing a patient history to a model: <strong>Full, Recent, Episodic, Semantic and Hybrid</strong>. It measures three things — answer correctness, robustness as the distance between a query and its supporting evidence grows, and the ability to <strong>abstain</strong> on questions whose premises the history does not support. The results: <strong>Episodic and Hybrid give the strongest overall accuracy</strong>; <strong>Recent Context degrades worst as evidence gets more distant</strong>, while Episodic and Hybrid hold the highest accuracy at long range; and the line most worth copying down — <strong>strong performance on answerable questions does not reliably carry over to abstaining on adversarial ones</strong>.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">作者把結論寫成一句可以直接拿去改架構的話：可靠的長程推理，取決的不是模型能取用多少病史，而是<strong>相關證據怎麼被挑選與呈現</strong>。這對過去兩年「把 context window 加長就好」的直覺是正面否定——真正要投資的是檢索與組織那一層。而棄答那個發現更要緊：臨床上最危險的失敗模式不是答錯一題，是對一個前提就不成立的問題給出一個自信的答案，而這份實驗說明準確率高的策略不會自動帶來這項能力，得分開量、分開練。</span>
-        <span class="en">The authors state the conclusion in a form you can act on architecturally: reliable longitudinal reasoning depends less on how much history a model can access than on <strong>how relevant evidence is selected and presented</strong>. That is a direct refusal of the last two years' instinct that a longer context window settles the matter — the investment belongs in the retrieval and organisation layer. The abstention finding matters more still: clinically, the dangerous failure is not getting one question wrong but answering a false-premise question confidently, and this experiment shows the strategies that win on accuracy do not acquire that capability for free. It has to be measured, and trained, separately.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">摘要層級<strong>沒有給任何數字</strong>——五種策略的準確率差距多少、衰退曲線多陡、棄答率多低，全部只有方向性描述；<strong>四個開源權重模型是哪四個也沒有列出</strong>。結果來自單一資料集 MedLoCoMo，沒有跨資料集或跨機構的外部驗證。本報只讀摘要與 metadata，未讀全文；這是未經同儕審查的 preprint。</span>
-        <span class="en">At abstract level <strong>no figures are given</strong> — how far apart the five strategies' accuracies are, how steep the degradation curve is, how low the abstention rates fall are all directional only, and <strong>the four open-weight models are not named</strong>. Results come from a single dataset, MedLoCoMo, with no cross-dataset or cross-institution external validation. Only the abstract and metadata were read; this is a preprint, not peer-reviewed.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://arxiv.org/abs/2610.00562" target="_blank" rel="noopener">arXiv:2610.00562v1, 2026-09-30</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">台灣基礎設施</span><span class="en-inline">Taiwan infrastructure</span></span>
+      <span class="tag hot"><span class="zh-inline">台灣基礎設施</span></span>
       <span class="tag">衛福部</span><span class="tag">FHIR Box · 3D PACS</span><span class="tag">10/05</span>
     </div>
     <h3>
       <span class="zh">台灣這一週推的不是模型，是管線：FHIR Box、新一代 3D PACS，台大拚 2028 全院自動化 AI 3D 影像</span>
-      <span class="en">Taiwan's week was plumbing, not models: FHIR Box, a next-generation 3D PACS, and NTUH aiming for hospital-wide automated AI 3D imaging by 2028</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">衛福部 10 月 5 日舉辦<a href="https://money.udn.com/money/story/7307/9795500" target="_blank" rel="noopener">「2026 國產 AI、3D 醫療影像與元宇宙應用大會」</a>，推的兩樣東西都在基礎設施層：<strong>FHIR Box</strong>——把醫院資料轉成國際 HL7 FHIR 標準、<strong>不必抽換既有核心系統</strong>，讓不同醫院系統之間交換資料；以及<strong>新一代 3D PACS</strong>，負責 3D 影像在臨床場景的儲存、傳輸與共享。台大醫院院長<strong>余忠仁</strong>說 3D 醫療影像有助手術規劃與醫病溝通，台大計畫在<strong>2028 年</strong>完成全院、把醫療影像自動轉成 AI 生成 3D 影像的框架。國產業者<strong>智捷醫學科技</strong>的 <strong>Anatomy Cloud</strong> 平台可把傳統 2D 影像自動轉成 3D 解剖模型，公司稱建模最快約<strong>5 分鐘</strong>；智捷捐出<strong>10 套</strong>工作站，由衛福部配置到醫學中心與公立醫院當示範設備。部長<strong>石崇良</strong>說醫療元宇宙的應用已涵蓋醫學教學、術前病情說明、手術規劃與術中導航，但落地需要<strong>薄層 CT、專用軟體、高效能運算</strong>，以及醫師與生醫工程的協作。</span>
-        <span class="en">On October 5 Taiwan's health ministry held the <a href="https://money.udn.com/money/story/7307/9795500" target="_blank" rel="noopener">2026 Domestic AI, 3D Medical Imaging and Metaverse Application Conference</a>, and both headline items sit in the infrastructure layer: <strong>FHIR Box</strong>, which converts hospital data into the international HL7 FHIR standard <strong>without replacing existing core systems</strong>, so different hospital systems can exchange data; and a <strong>next-generation 3D PACS</strong> for storing, transmitting and sharing 3D images in clinical settings. NTUH president <strong>Yu Chung-jen</strong> said 3D imaging helps surgical planning and doctor-patient communication, and the hospital plans to complete a hospital-wide framework converting medical images into AI-generated 3D images <strong>by 2028</strong>. Domestic vendor <strong>Chih-Chieh Medical Technology</strong>'s <strong>Anatomy Cloud</strong> platform automatically converts conventional 2D images into 3D anatomical models, with modelling in as little as <strong>about 5 minutes</strong> by the company's account; Chih-Chieh donated <strong>10</strong> workstations, which the ministry will place at medical centres and public hospitals as demonstration equipment. Minister <strong>Shih Chung-liang</strong> said medical metaverse applications already cover teaching, preoperative explanation, surgical planning and intraoperative navigation, but deployment requires <strong>thin-slice CT, dedicated software and high-performance computing</strong>, plus collaboration between physicians and biomedical engineers.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">把這則跟 9/30 那份長程推理實驗擺在一起，台灣這一步的技術意義才看得清楚：既然決勝點是「相關證據怎麼被挑選與呈現」，那麼可挑選的前提就是資料先標準化、跨院可取得——FHIR Box 做的正是這件事，而且走的是「不抽換核心系統」這條阻力最小的路。3D PACS 同理：3D 影像如果沒有自己的儲傳規格，AI 生成的模型就只能停在單機、進不了照護流程。這一層通常不上國際頭條，但它決定了上面所有模型能不能真的跑起來。</span>
-        <span class="en">Put this beside the Sept 30 long-horizon experiment and the technical significance of Taiwan's step comes into focus. If the deciding factor is how relevant evidence is selected and presented, then selectability presupposes data that is standardised and reachable across institutions — which is exactly what FHIR Box does, by the path of least resistance, leaving core systems in place. The 3D PACS is the same logic: without a storage-and-transmission standard of its own, an AI-generated 3D model stays on one workstation and never enters the care pathway. This layer rarely makes international headlines, and it decides whether any of the models above can actually run.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">Anatomy Cloud 的「最快約 5 分鐘」是<strong>廠商自述</strong>，未見第三方量測；台大 2028 全院導入是<strong>計畫目標</strong>，不是已完成的部署。另一篇相關報導的標題提到該系統要在 2028 年進到 29 家醫學中心，但<strong>內文未確認這個數字</strong>，本報不採用。最關鍵的缺口在給付：台中榮總榮譽院長<strong>陳適安</strong>說更廣的臨床使用需要服務與給付機制，目前是<strong>部分醫院在申請 3D 影像自費代碼</strong>、未來才可能接上健保；也就是說，示範設備已經進場，付錢的路還沒鋪好。</span>
-        <span class="en">Anatomy Cloud's "as little as about 5 minutes" is a <strong>vendor claim</strong> with no third-party measurement seen. NTUH's 2028 hospital-wide rollout is a <strong>plan</strong>, not a completed deployment. A related report's headline mentions the system reaching 29 medical centres by 2028, but <strong>the body does not confirm that figure</strong>, so it is not used here. The sharpest gap is reimbursement: Taichung Veterans General Hospital honorary superintendent <strong>Chen Shih-an</strong> said broader clinical use needs service and payment mechanisms, and today <strong>some hospitals are applying for self-pay billing codes</strong> for 3D imaging, with any link to national health insurance still prospective. The demonstration kit has arrived; the way to pay for it has not been laid.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://money.udn.com/money/story/7307/9795500" target="_blank" rel="noopener">經濟日報／聯合報, 2026-10-05</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag"><span class="zh-inline">原生 3D 模型</span><span class="en-inline">Native 3D model</span></span>
+      <span class="tag"><span class="zh-inline">原生 3D 模型</span></span>
       <span class="tag">NV-Reason-CT</span><span class="tag">CT-RATE</span><span class="tag">09/25</span>
     </div>
     <h3>
       <span class="zh">不合併空間 token 的 3D CT 語言模型：CT-RATE macro-AUROC 0.871，但整篇沒有一個對照模型</span>
-      <span class="en">A 3D CT language model that refuses to merge spatial tokens: 0.871 macro-AUROC on CT-RATE, and not one baseline in the paper</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh"><a href="https://arxiv.org/abs/2609.27511" target="_blank" rel="noopener">NV-Reason-CT（arXiv:2609.27511，9/23 投稿、v2 於 9/25）</a>由 Andriy Myronenko、Dong Yang、Yucheng Tang、Baris Turkbey、Zongwei Zhou、Wenxuan Li、Daguang Xu 等人提出，做的是胸腹部 CT 的生成式視覺語言模型。架構上最值得注意的一點是它<strong>把所有視覺 token 連同其 3D 座標直接送進語言解碼，不做空間 token 合併</strong>——多數 3D 醫療 VLM 為了壓算力會先把體素池化，這篇選擇不壓。訓練資料是約<strong>55 萬筆多模態指令範例</strong>、來自<strong>70,111 筆獨特 CT 影像輸入</strong>，來源包含標準化報告、以異常與解剖為焦點的問答、多輪互動，以及把放射科醫師錄音逐字轉寫下來的判讀推理；訓練流程是監督微調之後接<strong>帶可驗證獎勵的 GRPO</strong>。結果：<strong>CT-RATE macro-F1 0.614、macro-AUROC 0.871，且未使用任務專用分類頭</strong>；生成報告再反推的 macro-F1 為 <strong>0.592</strong>。作者聲明釋出模型與訓練程式碼。</span>
-        <span class="en"><a href="https://arxiv.org/abs/2609.27511" target="_blank" rel="noopener">NV-Reason-CT (arXiv:2609.27511, submitted Sep 23, v2 Sep 25)</a>, by Andriy Myronenko, Dong Yang, Yucheng Tang, Baris Turkbey, Zongwei Zhou, Wenxuan Li, Daguang Xu and others, is a generative vision-language model for chest and abdominal CT. Architecturally the notable choice is that it <strong>passes all visual tokens, with their 3D coordinates, straight into language decoding with no spatial token merging</strong> — most 3D medical VLMs pool voxels first to contain compute; this one declines to. Training used roughly <strong>550,000 multimodal instruction examples</strong> drawn from <strong>70,111 unique CT image inputs</strong>, sourced from standardised reports, abnormality- and anatomy-focused questions, multi-turn interactions, and radiologist reasoning captured by recording and transcribing expert interpretation; the recipe is supervised fine-tuning followed by <strong>GRPO with verifiable rewards</strong>. Results: <strong>0.614 macro-F1 and 0.871 macro-AUROC on CT-RATE, with no task-specific classification head</strong>; report-derived macro-F1 of <strong>0.592</strong>. The authors state they release the model and training code.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">「不合併 token」這個選擇本身就是論點：3D 醫療影像的病灶常常小、位置關鍵，池化掉的往往正是診斷要的那幾個 voxel。把 3D 座標一起餵進語言端，是在賭解剖定位能力值得那份算力。另一個該注意的設計是訓練資料裡<strong>放射科醫師的口述判讀推理</strong>——不是從報告反推理由，而是錄下醫師邊看邊想的過程；這在直覺上正好對應前面那份 rubric 盤點最缺的 faithfulness 維度：如果你要模型的推理是真的，監督訊號最好也是真的。</span>
-        <span class="en">The refusal to merge tokens is itself the argument: in 3D medical imaging lesions are often small and position-critical, and what pooling discards tends to be exactly the voxels the diagnosis turns on. Feeding 3D coordinates into the language side is a bet that anatomical localisation is worth the compute. The other design worth noting is the training data's <strong>spoken radiologist reasoning</strong> — not rationales reverse-engineered from reports, but recordings of physicians thinking as they read. That maps intuitively onto the faithfulness dimension the rubric review found most lacking: if you want a model's reasoning to be real, the supervision signal had better be real too.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">本報取得的內容裡<strong>完全沒有與其他模型的對照</strong>——0.871 這個數字沒有任何 baseline 擺在旁邊，無從判斷領先或落後。<strong>參數量未揭露</strong>。另有一組 NIH 外部世代被用於評估，但<strong>結果未給</strong>。最該打折的是那句「平均判讀與報告時間少 50%」：這來自作者自述的<strong>初步</strong>專家研究，<strong>未給樣本數</strong>，論文自己標為 preliminary。釋出聲明也沒有附上 repo 連結或授權條款。</span>
-        <span class="en">In the content obtained here there is <strong>no comparison against any other model</strong> — 0.871 sits with no baseline beside it, so leading or trailing cannot be judged. <strong>Parameter count is not disclosed.</strong> A held-out NIH cohort was used for evaluation but <strong>no results are given</strong>. The figure most in need of discounting is the "50% reduction in average interpretation and reporting time": that comes from a <strong>preliminary</strong> expert study by the authors' own account, with <strong>no sample size stated</strong>, and the paper labels it preliminary itself. The release statement carries neither a repository link nor licence terms.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://arxiv.org/abs/2609.27511" target="_blank" rel="noopener">arXiv:2609.27511v2, 2026-09-25</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag"><span class="zh-inline">數位孿生</span><span class="en-inline">Digital twin</span></span>
+      <span class="tag"><span class="zh-inline">數位孿生</span></span>
       <span class="tag">Duke · PRISM</span><span class="tag">Welldoc</span><span class="tag">10/02</span>
     </div>
     <h3>
       <span class="zh">Duke 把人體數位孿生做成心衰竭 pilot，Welldoc 選的是小語言模型而非大模型</span>
-      <span class="en">Duke turns human digital twins into a heart-failure pilot, and Welldoc bets on small language models rather than large ones</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">根據 <a href="https://www.fiercehealthcare.com/health-tech/weekly-rundown-yosi-health-integrates-scheduling-intake-google-services-grindr-acquires" target="_blank" rel="noopener">Fierce Healthcare 10/2 的每週彙整</a>，<strong>Duke 大學</strong>啟動一項「人體數位孿生」計畫，結合醫療影像、AI 與穿戴式裝置資料，由 Duke Center for Computational and Digital Health Innovation（CCDHI）主導，使用整合電子病歷、影像與行為訊號的 <strong>PRISM</strong> 平台；<strong>第一個 pilot 鎖定心衰竭</strong>，長期目標是在症狀出現或住院之前偵測生理功能的下滑。同一批消息裡，<strong>Welldoc</strong> 推出 AI 驅動的照護迴路平台，技術選擇值得記下來——它跑的是該公司<strong>經臨床驗證的小語言模型（small language models）</strong>，而非通用大模型，背後是<strong>超過 5 億筆健康資料點</strong>、橫跨<strong>80 多個健康領域</strong>。另外 <strong>UVA Health 與 K Health</strong> 擴大虛擬初級照護合作，由 K Health 的臨床 AI 基礎設施在 UVA 的病人入口內支援看診。</span>
-        <span class="en">Per <a href="https://www.fiercehealthcare.com/health-tech/weekly-rundown-yosi-health-integrates-scheduling-intake-google-services-grindr-acquires" target="_blank" rel="noopener">Fierce Healthcare's October 2 weekly rundown</a>, <strong>Duke University</strong> launched a "human digital twin" programme combining medical imaging, AI and wearable data, led by the Duke Center for Computational and Digital Health Innovation (CCDHI) and running on <strong>PRISM</strong>, a platform integrating EHRs, imaging and behavioural signals; the <strong>first pilot targets heart failure</strong>, with the long-term goal of detecting physiological decline before symptoms or hospitalisation. In the same batch, <strong>Welldoc</strong> launched an AI-driven care-loop platform whose technical choice is worth recording: it runs on the company's <strong>clinically validated small language models</strong> rather than a general-purpose large model, built on <strong>more than 500 million health data points</strong> across <strong>more than 80 health domains</strong>. Separately, <strong>UVA Health and K Health</strong> expanded a virtual primary care partnership, with K Health's clinical AI infrastructure supporting visits inside UVA's patient portal.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">Welldoc 的選擇是這一週最被低估的技術訊號。在所有人都在加大模型與加長 context 的時候，有人反向把窄域、可驗證、跑得動的小模型當成主幹——這跟 9/30 那份長程推理實驗的結論同向：如果效能取決於證據怎麼挑而不是模型多大，那麼在特定健康領域裡把挑選做對的小模型，不必輸給通用大模型。Duke 的數位孿生則是另一個方向的賭注：把病人建成一個可模擬的物件，問的不是「這張影像有什麼」，而是「這個人接下來會往哪走」。</span>
-        <span class="en">Welldoc's choice is the week's most underrated technical signal. While everyone else enlarges models and lengthens context, someone is running the other way, making narrow, validated, cheap-to-serve small models the backbone — which points the same direction as the Sept 30 long-horizon result: if performance turns on how evidence is chosen rather than how big the model is, a small model that gets the choosing right within one health domain need not lose to a general-purpose large one. Duke's digital twin is a bet in the opposite direction: build the patient as a simulable object, and ask not what is in this image but where this person is heading next.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">這整則都是<strong>發布消息，不是結果</strong>。Duke 的心衰竭 pilot 沒有公布規模、收案數或任何前瞻性指標；「症狀出現前偵測生理下滑」目前是目標陳述，不是已達成的效能。Welldoc 的「經臨床驗證」與 5 億筆資料點、80 多個健康領域全為<strong>公司自述</strong>，本報未見對應的同儕審查研究或第三方稽核；「小語言模型」也沒有公布參數量或架構。K Health／UVA 的合作同樣沒有公布臨床或營運成效數字。</span>
-        <span class="en">This whole item is <strong>announcements, not results</strong>. Duke's heart-failure pilot publishes no scale, enrolment or prospective endpoint; detecting decline before symptoms is a stated goal, not a demonstrated performance. Welldoc's "clinically validated," its 500 million data points and 80-plus health domains are all <strong>company claims</strong>, with no corresponding peer-reviewed study or third-party audit seen here, and the "small language models" come with no parameter count or architecture. The K Health/UVA partnership likewise publishes no clinical or operational figures.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://www.fiercehealthcare.com/health-tech/weekly-rundown-yosi-health-integrates-scheduling-intake-google-services-grindr-acquires" target="_blank" rel="noopener">Fierce Healthcare, 2026-10-02</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag"><span class="zh-inline">量尺（背景）</span><span class="en-inline">Yardstick (background)</span></span>
+      <span class="tag"><span class="zh-inline">量尺（背景）</span></span>
       <span class="tag">Microsoft Research</span><span class="tag">HealthAgentBench</span><span class="tag">06/30</span>
     </div>
     <h3>
       <span class="zh">把這一週的編排成果放進 54 項任務的尺上量：最高 42%，影像是瓶頸，連 harness 都能讓分數掉 7 個百分點</span>
-      <span class="en">Measure this week's orchestration on a 54-task ruler: 42% at best, imaging is the bottleneck, and the harness alone moves the score 7 points</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">Microsoft Research 的 <a href="https://arxiv.org/abs/2606.31179" target="_blank" rel="noopener">HealthAgentBench（arXiv:2606.31179，2026-06-30）</a>由 Qianchu Liu、Sheng Zhang、Hoifung Poon 等人提出，把<strong>54 項任務分成 7 類</strong>，每一項都是一個 Docker 終端環境（建在 Harbor 框架上）：代理人拿到原始臨床資料與最少量指示，必須自己探索、規劃並產出可驗證的輸出，計分是對專家標註或人類表現的<strong>二元成敗</strong>。七類為 X 光報告校正（10）、CT 異常分類（10）、病理腫瘤區域選取（10）、臨床試驗配對（9）、EHR 資料品質稽核（8）、EHR 事件建模（6）、EHR 格式轉換（1）。十個前沿代理人、三種 harness、xhigh reasoning effort、關閉網頁瀏覽、每題 3 次嘗試。成績：<strong>Codex GPT-5.5 42%（最佳）、Copilot CLI Opus-4.8 36%、Copilot CLI GPT-5.5 35%、Claude Code Opus-4.8 32%、Codex GPT-5.4-mini 16%（最弱）</strong>。分項最刺眼的兩處：<strong>EHR 資料品質稽核沒有任何代理人過 50%</strong>（最佳 Claude Code Opus-4.6 為 42%），而 <strong>EHR 格式轉換十個有九個 100%</strong>。影像是主要瓶頸——Codex 系在影像任務平均 <strong>22%</strong>、Claude Code 系 <strong>12%</strong>，但文字任務幾乎打平（<strong>50% 對 48%</strong>）。</span>
-        <span class="en">Microsoft Research's <a href="https://arxiv.org/abs/2606.31179" target="_blank" rel="noopener">HealthAgentBench (arXiv:2606.31179, 2026-06-30)</a>, by Qianchu Liu, Sheng Zhang, Hoifung Poon and colleagues, puts <strong>54 tasks in 7 categories</strong>, each a terminal-based Docker environment built on the Harbor framework: an agent receives raw clinical data and minimal instructions, then has to explore, plan and produce a verifiable output, scored as <strong>binary success or failure</strong> against expert labels or human performance. The categories are X-ray report correction (10), CT abnormality classification (10), pathology tumour area selection (10), clinical trial matching (9), EHR data quality auditing (8), EHR event modelling (6) and EHR format conversion (1). Ten frontier agents, three harnesses, xhigh reasoning effort, web browsing disabled, three attempts per task. The scores: <strong>Codex GPT-5.5 at 42% (best), Copilot CLI Opus-4.8 36%, Copilot CLI GPT-5.5 35%, Claude Code Opus-4.8 32%, Codex GPT-5.4-mini 16% (weakest)</strong>. Two category results stand out: <strong>no agent clears 50% on EHR data quality auditing</strong> (best was Claude Code Opus-4.6 at 42%), while <strong>nine of ten agents score 100% on EHR format conversion</strong>. Imaging is the main bottleneck — Codex agents averaged <strong>22%</strong> on imaging tasks against <strong>12%</strong> for Claude Code agents, while text tasks were near parity (<strong>50% vs 48%</strong>).</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">這份四個月前的基準是今天唯一能用來量 RadOnc-Agent 這類系統的尺，而尺上的讀數很不客氣：最強的前沿代理人在真實形態的醫療任務上只做對四成出頭。兩個細節尤其值得記住。一是<strong>harness 本身就是變數</strong>——同一個 GPT-5.5 在 Codex 下 42%、換到 Copilot CLI 只剩 35%，意思是你報的分數有一部分不是模型的；二是<strong>成本與效能不同向</strong>：Claude Code 系最貴，每題產出的 output token 約是最佳 Codex 執行的兩倍。而最具診斷意義的發現是——揭露錯誤位置後，EHR 資料品質稽核的 recall 大幅提升；這等於驗證了 9/30 那篇的結論：瓶頸在搜尋與組合，不在知識。</span>
-        <span class="en">This four-month-old benchmark is the only ruler available today for systems like RadOnc-Agent, and its reading is unkind: the strongest frontier agents get just over four in ten realistic healthcare tasks right. Two details are worth holding onto. First, <strong>the harness is itself a variable</strong> — the same GPT-5.5 scores 42% under Codex and only 35% under Copilot CLI, meaning part of any reported score is not the model's. Second, <strong>cost and performance do not track</strong>: Claude Code agents were the most expensive and produced roughly twice as many output tokens per task as the best Codex run. The most diagnostic finding is that disclosing where the errors were located substantially improved recall on EHR data quality auditing — which corroborates the Sept 30 conclusion: the bottleneck is search and composition, not knowledge.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">這是<strong>6/30 的論文、已在本期 7 天窗口外</strong>，本報把它當量尺與背景引用，不當本週新聞。作者自列的限制也要照抄：benchmark 不窮盡醫療代理人的使用情境；<strong>終端介面是為了評估而選，不是部署形態</strong>；每一類只有約 5–15 項抽樣任務、每題 3 次嘗試；Copilot CLI 是多代理人設計，<strong>其成績不代表單一純模型</strong>。另有五個代理人（Opus-4.7、Opus-4.6、Sonnet-4.6、GPT-5.4、GPT-5.3）的總分在本報取得的內容中未明確給出。</span>
-        <span class="en">This is a <strong>June 30 paper, outside this edition's seven-day window</strong>; it is cited here as a yardstick and as background, not as this week's news. The authors' own limitations are worth copying across: the benchmark is not exhaustive across healthcare agent use cases; <strong>the terminal interface was chosen for evaluation, not deployment</strong>; each category holds only about 5–15 sampled tasks, with three attempts each; and Copilot CLI's multi-agent design means <strong>its results do not reflect a single pure model</strong>. Overall scores for five further agents (Opus-4.7, Opus-4.6, Sonnet-4.6, GPT-5.4, GPT-5.3) were not explicitly given in the content obtained here.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://arxiv.org/abs/2606.31179" target="_blank" rel="noopener">arXiv:2606.31179v1, 2026-06-30</a> ／ <a href="https://arxiv.org/html/2606.31179v1" target="_blank" rel="noopener">HealthAgentBench 全文 HTML</a></p></div>
   </div>
 </section>
@@ -311,44 +278,37 @@
   <h2>02 — Product Analysis</h2>
   <div class="sec-title">
     <span class="zh">兩種把 AI 送進放射腫瘤／放射科的路線：一條用編排換廣度、一條用單一模型換深度，而兩條都缺對照</span>
-    <span class="en">Two routes into radiation oncology and radiology: one trades orchestration for breadth, one trades a single model for depth — and neither has a comparator</span>
   </div>
 
   <div class="grid2">
     <div class="panel">
       <h3>RadOnc-Agent</h3>
-      <p class="sub"><span class="zh-inline">LLM 編排的放射治療全流程框架 · 學術發表（arXiv，機構未揭）</span><span class="en-inline">LLM-orchestrated full-pathway radiotherapy framework · academic preprint (arXiv, institutions undisclosed)</span></p>
+      <p class="sub"><span class="zh-inline">LLM 編排的放射治療全流程框架 · 學術發表（arXiv，機構未揭）</span></p>
       <p>
         <span class="zh"><strong>功能與定位。</strong>用一個 LLM 當總機，把橫跨整條放射治療照護路徑的 <strong>26 個可呼叫函式</strong>收進一個對話介面，讓臨床端用自然語言驅動原本分散在各工具裡的步驟（<a href="https://arxiv.org/abs/2610.06923" target="_blank" rel="noopener">arXiv:2610.06923, 2026-10-07</a>）。它賣的不是任何單一步驟更準，而是<strong>整條流程的可及性</strong>——這正是放射治療最貴的部分：醫師與醫學物理師在六、七個系統之間手動搬運資訊的時間。</span>
-        <span class="en"><strong>Function and position.</strong> One LLM acts as switchboard, collecting <strong>26 callable functions</strong> spanning the whole radiotherapy care pathway into a single conversational interface so clinicians can drive, in natural language, steps that previously lived in separate tools (<a href="https://arxiv.org/abs/2610.06923" target="_blank" rel="noopener">arXiv:2610.06923, 2026-10-07</a>). What it sells is not better accuracy at any one step but <strong>accessibility across the whole pipeline</strong> — which is where radiotherapy's real cost sits: physicians and medical physicists hand-carrying information between six or seven systems.</span>
       </p>
       <ul class="clean">
-        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+        <li><span class="pro"><span class="zh-inline">優勢</span></span>
           <span class="zh">：場景選得準。放射治療本身就是一條<strong>有明確先後順序、每段都已有 AI 工具</strong>的長流程，缺的一直是接合層；在這裡做編排，比在開放式診斷做編排更容易定義「成功」。<a href="https://arxiv.org/abs/2606.31179" target="_blank" rel="noopener">HealthAgentBench</a> 的分項也支持這個判斷——結構明確、可驗證的任務（EHR 格式轉換）十個代理人有九個拿 100%，開放探索的任務（資料品質稽核）全部不到 50%。</span>
-          <span class="en">: the setting is well chosen. Radiotherapy is already a long pipeline with <strong>a fixed order and an AI tool at every stage</strong>, and the join has always been what was missing; orchestration here is far easier to define success for than orchestration in open-ended diagnosis. <a href="https://arxiv.org/abs/2606.31179" target="_blank" rel="noopener">HealthAgentBench</a>'s category breakdown supports that read — on a structured, verifiable task (EHR format conversion) nine of ten agents scored 100%, while on an open-ended one (data quality auditing) every agent fell below 50%.</span>
         </li>
-        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+        <li><span class="con"><span class="zh-inline">疑慮</span></span>
           <span class="zh">：作者自己把效度缺口寫在論文裡——結果<strong>「並未證實臨床正確性、臨床效用或前瞻性效益」</strong>。這句話在放射治療的語境裡比在多數場景都重：編排錯誤的後果是劑量分布，不是一句建議。而本報<strong>沒能讀到全文</strong>（arXiv 被抓取代理以 429 擋下），因此連它用哪個 LLM 編排、26 個函式怎麼分類、評估設計長什麼樣都缺——這些缺的不是細節，是判斷它能不能用的全部依據。</span>
-          <span class="en">: the authors put the validity gap in the paper themselves — the results <strong>"do not establish clinical correctness, clinical utility or prospective benefit."</strong> That sentence weighs more in radiotherapy than in most settings: an orchestration error ends as a dose distribution, not a suggestion. And <strong>the full text could not be read here</strong> (arXiv was refused by the fetch proxy with a 429), so which LLM orchestrates, how the 26 functions break down and what the evaluation design looks like are all missing — not details, but the entire basis for judging whether it is usable.</span>
         </li>
       </ul>
     </div>
 
     <div class="panel">
       <h3>NV-Reason-CT</h3>
-      <p class="sub"><span class="zh-inline">原生 3D 胸腹部 CT 視覺語言模型 · 作者群含 NVIDIA 研究人員（美國）</span><span class="en-inline">Native 3D chest/abdominal CT vision-language model · authors include NVIDIA researchers (US)</span></p>
+      <p class="sub"><span class="zh-inline">原生 3D 胸腹部 CT 視覺語言模型 · 作者群含 NVIDIA 研究人員（美國）</span></p>
       <p>
         <span class="zh"><strong>功能與定位。</strong>單一模型做異常分類、報告生成與互動式推理（含鑑別診斷與不確定性表達），走的是<strong>深度而非廣度</strong>：不串工具，而是把 3D 體積原生吃進去。技術賣點是<strong>所有視覺 token 連同 3D 座標直接進語言解碼、不做空間 token 合併</strong>，以及訓練資料裡那<strong>55 萬筆</strong>指令範例含<strong>放射科醫師口述判讀的逐字轉寫</strong>，並以 SFT 接 <strong>GRPO（帶可驗證獎勵）</strong>收尾（<a href="https://arxiv.org/abs/2609.27511" target="_blank" rel="noopener">arXiv:2609.27511v2, 2026-09-25</a>）。</span>
-        <span class="en"><strong>Function and position.</strong> A single model doing abnormality classification, report generation and interactive reasoning (including differentials and uncertainty), taking the <strong>depth rather than breadth</strong> route: no tool chaining, just 3D volumes consumed natively. The technical pitch is that <strong>all visual tokens, with their 3D coordinates, go straight into language decoding with no spatial token merging</strong>, plus training data in which the <strong>550,000</strong> instruction examples include <strong>transcribed spoken radiologist interpretation</strong>, finished with SFT followed by <strong>GRPO with verifiable rewards</strong> (<a href="https://arxiv.org/abs/2609.27511" target="_blank" rel="noopener">arXiv:2609.27511v2, 2026-09-25</a>).</span>
       </p>
       <ul class="clean">
-        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+        <li><span class="pro"><span class="zh-inline">優勢</span></span>
           <span class="zh">：<strong>CT-RATE macro-AUROC 0.871、macro-F1 0.614，且未用任務專用分類頭</strong>——生成式模型在不加分類頭的情況下拿到這個數字，說明語言端真的吃到了影像資訊，而非靠外掛頭補分；生成報告反推的 macro-F1 <strong>0.592</strong> 與直接分類的 0.614 差距不大，意味著它寫出來的報告跟它內部的判斷大致一致。作者聲明釋出模型與訓練程式碼。</span>
-          <span class="en">: <strong>0.871 macro-AUROC and 0.614 macro-F1 on CT-RATE with no task-specific classification head</strong> — a generative model reaching that without a bolted-on head suggests the language side genuinely ingests the image information rather than borrowing marks from a classifier. The report-derived macro-F1 of <strong>0.592</strong> sits close to the 0.614 direct figure, implying the reports it writes broadly match its internal judgement. The authors state the model and training code are released.</span>
         </li>
-        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+        <li><span class="con"><span class="zh-inline">疑慮</span></span>
           <span class="zh">：<strong>整篇沒有任何對照模型</strong>——0.871 旁邊沒有 baseline，無法知道這是領先還是追平；<strong>參數量未揭露</strong>；NIH 外部世代有評估但<strong>結果未給</strong>，等於外部效度這一欄是空白。「判讀與報告時間少 50%」是<strong>初步、未給樣本數</strong>的作者自述。釋出聲明也沒附 repo 連結與授權。</span>
-          <span class="en">: <strong>there is no comparator model anywhere in the paper</strong> — nothing sits beside 0.871, so leading or merely matching cannot be told; <strong>parameter count is undisclosed</strong>; a held-out NIH cohort was evaluated but <strong>no results are reported</strong>, leaving the external-validity column blank. The "50% reduction in interpretation and reporting time" is a <strong>preliminary</strong> author claim with <strong>no sample size</strong>. The release statement carries no repository link or licence.</span>
         </li>
       </ul>
     </div>
@@ -357,7 +317,6 @@
   <div class="panel">
     <p>
       <span class="zh"><strong>兩條路線的真正差別不在架構，在誰承擔驗證成本。</strong>編排型把驗證負擔推給整條鏈——每多一個函式，要證明的組合就多一層，而 <a href="https://arxiv.org/abs/2610.01938" target="_blank" rel="noopener">10/1 那份 rubric 盤點</a>說這種組合式效度目前無工具可量。單一模型型把驗證收在一個介面上，數字好報、也確實報了，但它少的是對照：0.871 沒有 baseline，跟 42% 有十個代理人互相比的 HealthAgentBench 恰成反例。這一週最值得學的方法論，反而來自 <a href="https://arxiv.org/abs/2606.31179" target="_blank" rel="noopener">HealthAgentBench</a>——它同時跑三種 harness，才讓「同一個模型換殼掉 7 個百分點」這件事被看見。</span>
-      <span class="en"><strong>The real difference between the two routes is not architecture but who carries the cost of validation.</strong> The orchestration route pushes that burden onto the whole chain: each added function adds a layer of combination to be proven, and <a href="https://arxiv.org/abs/2610.01938" target="_blank" rel="noopener">the Oct 1 rubric review</a> says no instrument currently measures that compositional validity. The single-model route gathers validation behind one interface, where numbers are easy to report — and were reported — but what it lacks is a comparator: 0.871 with no baseline, the exact inverse of HealthAgentBench's 42% arrived at by racing ten agents against each other. The methodological lesson of the week comes from <a href="https://arxiv.org/abs/2606.31179" target="_blank" rel="noopener">HealthAgentBench</a> instead: only because it ran three harnesses at once did the fact that one model loses 7 points on a change of wrapper become visible at all.</span>
     </p>
   </div>
 </section>
@@ -367,81 +326,68 @@
   <h2>03 — Companies &amp; Competition</h2>
   <div class="sec-title">
     <span class="zh">誰站在哪裡、憑什麼、跟誰打</span>
-    <span class="en">Who stands where, on what, against whom</span>
   </div>
 
   <div class="tbl-wrap">
     <table>
       <thead><tr>
-        <th><span class="zh-inline">公司</span><span class="en-inline">Company</span></th>
-        <th><span class="zh-inline">近況與數字</span><span class="en-inline">Recent state &amp; numbers</span></th>
-        <th><span class="zh-inline">競爭定位與護城河</span><span class="en-inline">Position &amp; moat</span></th>
+        <th><span class="zh-inline">公司</span></th>
+        <th><span class="zh-inline">近況與數字</span></th>
+        <th><span class="zh-inline">競爭定位與護城河</span></th>
       </tr></thead>
       <tbody>
         <tr>
-          <td><strong>Microsoft Research</strong><br><span class="zh-inline">把尺做出來的人</span><span class="en-inline">The one who built the ruler</span></td>
+          <td><strong>Microsoft Research</strong><br><span class="zh-inline">把尺做出來的人</span></td>
           <td>
             <span class="zh"><a href="https://arxiv.org/abs/2606.31179" target="_blank" rel="noopener">HealthAgentBench（6/30）</a>：54 任務 7 類、Docker 終端環境、二元計分；十個前沿代理人、三種 harness，最佳 <strong>42%</strong>。另在 <a href="https://cdss.berkeley.edu/news/uc-berkeley-and-ucsf-researchers-release-top-performing-ai-model-medical-imaging" target="_blank" rel="noopener">Pillar-0 的對照表</a>裡以 <strong>MI2 的 .75 AUC</strong> 出現（2025-11-20）。</span>
-            <span class="en"><a href="https://arxiv.org/abs/2606.31179" target="_blank" rel="noopener">HealthAgentBench (Jun 30)</a>: 54 tasks, 7 categories, Docker terminal environments, binary scoring; ten frontier agents across three harnesses, best <strong>42%</strong>. It also appears in <a href="https://cdss.berkeley.edu/news/uc-berkeley-and-ucsf-researchers-release-top-performing-ai-model-medical-imaging" target="_blank" rel="noopener">Pillar-0's comparison table</a> as <strong>MI2 at .75 AUC</strong> (2025-11-20).</span>
           </td>
           <td>
             <span class="zh">護城河是<strong>定義標準的位置</strong>：誰的 benchmark 被引用，誰就決定「夠好」的門檻在哪。弱點是它同時賣模型也賣尺，中立性遲早會被問到——這跟 <a href="https://www.gridhealth.io/charge-insights/openevidence-tempo-no-ones-watching" target="_blank" rel="noopener">OpenEvidence 自評分數被質疑</a>是同一類結構問題，只是離得遠一點。</span>
-            <span class="en">The moat is <strong>occupying the standard-setting seat</strong>: whoever's benchmark gets cited decides where "good enough" sits. The weakness is that it sells both models and the ruler, so neutrality will eventually be asked about — structurally the same question raised about <a href="https://www.gridhealth.io/charge-insights/openevidence-tempo-no-ones-watching" target="_blank" rel="noopener">OpenEvidence's self-scored benchmarks</a>, just at one remove.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>Google Research</strong><br><span class="zh-inline">開放權重的量產線</span><span class="en-inline">The open-weight production line</span></td>
+          <td><strong>Google Research</strong><br><span class="zh-inline">開放權重的量產線</span></td>
           <td>
             <span class="zh"><a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">MedGemma 1.5 4B 與 MedASR（2026-01-13）</a>：MRI 疾病發現分類 <strong>65%</strong>（前代 51%）、病理 ROUGE-L <strong>0.49</strong>（前代 0.02，且與專用 PolyPath 的 0.498 相當）、Chest ImaGenome 解剖定位 IoU <strong>38%</strong>（前代 3%）、EHRQA <strong>90%</strong>（前代 68%）。MedASR 在胸部 X 光口述的 WER <strong>5.2%</strong>，對 Whisper large-v3 的 12.5% 少 <strong>58%</strong> 錯誤。研究與商業用途免費。</span>
-            <span class="en"><a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">MedGemma 1.5 4B and MedASR (2026-01-13)</a>: MRI disease-finding classification <strong>65%</strong> (from 51%), histopathology ROUGE-L <strong>0.49</strong> (from 0.02, matching task-specific PolyPath's 0.498), Chest ImaGenome anatomical localisation IoU <strong>38%</strong> (from 3%), EHRQA <strong>90%</strong> (from 68%). MedASR's word error rate on chest X-ray dictation is <strong>5.2%</strong>, <strong>58%</strong> fewer errors than Whisper large-v3's 12.5%. Free for research and commercial use.</span>
           </td>
           <td>
             <span class="zh">護城河是<strong>「小到能離線跑」的 4B 尺寸加免費商用</strong>：在醫院內網與資料不出院的要求下，這比分數高更有決定性。弱點是 1 月的版本到十月已被 <a href="https://www.biopharmatrend.com/news/open-radiology-ai-model-released-for-ct-mri-analysis-1523/" target="_blank" rel="noopener">Raidium Curia-2（3/6）</a>與 <a href="https://cdss.berkeley.edu/news/uc-berkeley-and-ucsf-researchers-release-top-performing-ai-model-medical-imaging" target="_blank" rel="noopener">Pillar-0</a>當成要超越的對象逐一點名。</span>
-            <span class="en">The moat is <strong>a 4B footprint small enough to run offline, free for commercial use</strong>: under hospital-network and data-stays-inside constraints that beats a higher score. The weakness is that a January release is, by October, the thing everyone names as the bar to clear — <a href="https://www.biopharmatrend.com/news/open-radiology-ai-model-released-for-ct-mri-analysis-1523/" target="_blank" rel="noopener">Raidium's Curia-2 (Mar 6)</a> and <a href="https://cdss.berkeley.edu/news/uc-berkeley-and-ucsf-researchers-release-top-performing-ai-model-medical-imaging" target="_blank" rel="noopener">Pillar-0</a> both do exactly that.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>NVIDIA</strong><br><span class="zh-inline">兩頭押：原生 3D 影像 + 生技運算</span><span class="en-inline">Two bets: native 3D imaging and bio-compute</span></td>
+          <td><strong>NVIDIA</strong><br><span class="zh-inline">兩頭押：原生 3D 影像 + 生技運算</span></td>
           <td>
             <span class="zh"><a href="https://arxiv.org/abs/2609.27511" target="_blank" rel="noopener">NV-Reason-CT（9/25）</a>：CT-RATE macro-AUROC <strong>0.871</strong>、macro-F1 <strong>0.614</strong>、55 萬筆指令／70,111 筆 CT、SFT+GRPO、聲明開源。生技端，<a href="https://nvidianews.nvidia.com/news/nvidia-expands-open-model-families-to-power-the-next-wave-of-agentic-physical-and-healthcare-ai" target="_blank" rel="noopener">3/16 發表</a>的 BioNeMo <strong>Proteina-Complexa</strong>（蛋白結合劑設計，Novo Nordisk、Viva Biotech、Manifold Bio 已做實驗驗證）與 <strong>nvQSP</strong>（較傳統單執行緒 CPU 模擬快 <strong>77 倍</strong>）。</span>
-            <span class="en"><a href="https://arxiv.org/abs/2609.27511" target="_blank" rel="noopener">NV-Reason-CT (Sep 25)</a>: CT-RATE macro-AUROC <strong>0.871</strong>, macro-F1 <strong>0.614</strong>, 550k instructions over 70,111 CTs, SFT plus GRPO, release stated. On the bio side, its <a href="https://nvidianews.nvidia.com/news/nvidia-expands-open-model-families-to-power-the-next-wave-of-agentic-physical-and-healthcare-ai" target="_blank" rel="noopener">March 16 announcement</a> covered BioNeMo's <strong>Proteina-Complexa</strong> for protein binder design (experimentally tested by Novo Nordisk, Viva Biotech and Manifold Bio) and <strong>nvQSP</strong>, up to <strong>77x</strong> faster than traditional single-threaded CPU simulation.</span>
           </td>
           <td>
             <span class="zh">護城河是<strong>算力與模型綁在一起賣</strong>：「不合併空間 token」這種設計只有不心疼算力的人做得起，而這恰好把價值導回它自己的硬體。弱點是研究端的數字缺對照——0.871 沒有 baseline，在醫院採購會上不好用。</span>
-            <span class="en">The moat is <strong>selling compute and models as one bundle</strong>: a design like refusing to merge spatial tokens is only affordable to someone indifferent to compute cost, and that routes the value back to its own hardware. The weakness is that the research numbers lack comparators — 0.871 with no baseline is hard to carry into a hospital procurement meeting.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>OpenEvidence</strong><br><span class="zh-inline">分數最高、也最被質疑誰在評</span><span class="en-inline">Highest scores, loudest questions about who graded them</span></td>
+          <td><strong>OpenEvidence</strong><br><span class="zh-inline">分數最高、也最被質疑誰在評</span></td>
           <td>
             <span class="zh"><a href="https://datanorth.ai/news/openevidence-launches-four-medical-ai-models" target="_blank" rel="noopener">9/3 發表四個模型</a>：<strong>Osler</strong>（約 5 秒，已設為預設）、<strong>Sackett</strong>（約 30 秒，會向醫師索取脈絡）、<strong>Snow</strong>（約 5 分鐘，先查文獻）、<strong>Darwin</strong>（研究預覽，須申請）。自評分數：<strong>MedQA 100%</strong>、<a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openevidences-new-model-achieves-1st-perfect-score-on-medical-ai-benchmark/" target="_blank" rel="noopener">MedXpertQA 72.8%、HealthBench Professional 82.7%、NOHARM 87.2%</a>。前三個對經核實醫師免費。</span>
-            <span class="en"><a href="https://datanorth.ai/news/openevidence-launches-four-medical-ai-models" target="_blank" rel="noopener">Four models launched Sep 3</a>: <strong>Osler</strong> (about 5 seconds, now the default), <strong>Sackett</strong> (about 30 seconds, asks the clinician for context), <strong>Snow</strong> (about 5 minutes, researches the literature first) and <strong>Darwin</strong> (research preview, by application). Self-reported scores: <strong>100% on MedQA</strong>, plus <a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openevidences-new-model-achieves-1st-perfect-score-on-medical-ai-benchmark/" target="_blank" rel="noopener">72.8% MedXpertQA, 82.7% HealthBench Professional, 87.2% NOHARM</a>. The first three are free to verified clinicians.</span>
           </td>
           <td>
             <span class="zh">護城河是<strong>醫師端的分發</strong>（免費＋三段式延遲選擇），不是分數。<a href="https://www.gridhealth.io/charge-insights/openevidence-tempo-no-ones-watching" target="_blank" rel="noopener">GridHealth（9/22）</a>指出四項分數<strong>全為第一方自評</strong>：自己設計、自己打分、未經外部審查，且 HealthBench Professional 本身是 OpenAI 開發的；MedQA 滿分也可能表示<strong>題庫飽和</strong>而非問題解決。這正是今天整份日報的主題在商業端的對應物。</span>
-            <span class="en">The moat is <strong>distribution to physicians</strong> (free, plus a three-tier latency choice), not the scores. <a href="https://www.gridhealth.io/charge-insights/openevidence-tempo-no-ones-watching" target="_blank" rel="noopener">GridHealth (Sep 22)</a> notes all four figures are <strong>first-party</strong>: designed, scored and published in-house with no outside review, and HealthBench Professional was itself built by OpenAI. A perfect MedQA may also mean <strong>the benchmark is saturated</strong> rather than the problem solved. This is today's theme in its commercial form.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>Aidoc</strong><br><span class="zh-inline">已部署規模換監理通道</span><span class="en-inline">Deployed scale traded for a regulatory lane</span></td>
+          <td><strong>Aidoc</strong><br><span class="zh-inline">已部署規模換監理通道</span></td>
           <td>
             <span class="zh"><a href="https://www.aidoc.com/about/news/aidoc-receives-fda-breakthrough-device-designation-for-ai-that-drafts-radiology-reports/" target="_blank" rel="noopener">6/25 取得 FDA 突破性器材認定（Q260882）</a>：產品 <strong>First Read</strong> 讀胸部 X 光並生成初步報告文字，建在其 <strong>CARE</strong> 基礎模型上、與已取證的 Triage 同架構，認定涵蓋四項致命發現，目前<strong>僅供研究用、未取證</strong>。平台數字：逾 <strong>1.2 億</strong>病例、近 <strong>2,000</strong> 家醫院、年支援約 <strong>6,000 萬</strong>病人；<strong>4 月 1.5 億美元 Series E</strong>。</span>
-            <span class="en"><a href="https://www.aidoc.com/about/news/aidoc-receives-fda-breakthrough-device-designation-for-ai-that-drafts-radiology-reports/" target="_blank" rel="noopener">FDA Breakthrough Device Designation on Jun 25 (Q260882)</a>: the product, <strong>First Read</strong>, reads chest radiographs and drafts preliminary report text, built on its <strong>CARE</strong> foundation model with the same architecture as the already-cleared Triage; the designation covers four life-threatening findings, and it is <strong>investigational use only, not cleared</strong>. Platform figures: over <strong>120 million</strong> cases, nearly <strong>2,000</strong> hospitals, about <strong>60 million</strong> patients a year; a <strong>$150M Series E in April</strong>.</span>
           </td>
           <td>
             <span class="zh">護城河是<strong>已經接進兩千家醫院的管線</strong>——報告生成這件事技術門檻正在下降，但把它送到放射科閱片台前的路徑門檻沒有。弱點是 First Read <strong>沒有公布任何自身效能數字</strong>，而且公司自己在新聞稿裡列出生成式報告的已知風險包含<strong>自動化偏誤</strong>：這在報告草稿場景是最難防的一項。</span>
-            <span class="en">The moat is <strong>a pipe already plugged into two thousand hospitals</strong> — the technical bar for drafting reports is falling, but the bar for getting one onto a radiologist's reading station is not. The weakness is that First Read <strong>publishes no performance figures of its own</strong>, and the company's own release lists <strong>automation bias</strong> among the known risks of generative reporting — the hardest one to guard against in a draft-report workflow.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>智捷醫學科技 Chih-Chieh</strong><br><span class="zh-inline">台灣 2D→3D 建模</span><span class="en-inline">Taiwan 2D-to-3D modelling</span></td>
+          <td><strong>智捷醫學科技 Chih-Chieh</strong><br><span class="zh-inline">台灣 2D→3D 建模</span></td>
           <td>
             <span class="zh"><a href="https://money.udn.com/money/story/7307/9795500" target="_blank" rel="noopener">10/5 衛福部大會</a>：<strong>Anatomy Cloud</strong> 把傳統 2D 影像自動轉成 3D 解剖模型，公司稱最快約 <strong>5 分鐘</strong>；捐出 <strong>10 套</strong>工作站，由衛福部配置到醫學中心與公立醫院當示範設備。</span>
-            <span class="en"><a href="https://money.udn.com/money/story/7307/9795500" target="_blank" rel="noopener">At the ministry's Oct 5 conference</a>: <strong>Anatomy Cloud</strong> automatically converts conventional 2D images into 3D anatomical models, in as little as <strong>about 5 minutes</strong> by the company's account; it donated <strong>10</strong> workstations for the ministry to place at medical centres and public hospitals as demonstration equipment.</span>
           </td>
           <td>
             <span class="zh">護城河是<strong>國產身分＋政策通道</strong>：在「國產 AI」政策標籤下，示範設備進場的速度不是靠分數決定的。弱點很具體——<strong>5 分鐘是廠商自述</strong>、無第三方量測，而且<a href="https://money.udn.com/money/story/7307/9795500" target="_blank" rel="noopener">給付路徑尚未鋪好</a>（部分醫院在申請自費代碼）；示範機送得進去，常規使用付不出來。</span>
-            <span class="en">The moat is <strong>domestic status plus a policy lane</strong>: under a "domestic AI" label, how fast demonstration kit gets installed is not decided by scores. The weaknesses are concrete — <strong>the 5 minutes is a vendor claim</strong> with no third-party measurement, and <a href="https://money.udn.com/money/story/7307/9795500" target="_blank" rel="noopener">the reimbursement path is unbuilt</a> (some hospitals are applying for self-pay codes). Demo units get in; routine use cannot be paid for.</span>
           </td>
         </tr>
       </tbody>
@@ -451,7 +397,6 @@
   <div class="panel">
     <p>
       <span class="zh"><strong>今天的競爭結構是「誰有資格打分」這件事還沒有人佔住。</strong>模型端已經分層清楚——Google 用免費 4B 佔住院內離線、NVIDIA 用算力佔住原生 3D、OpenEvidence 用免費佔住醫師桌面、Aidoc 用兩千家醫院佔住最後一哩、台灣廠商用政策標籤佔住示範場。但評分這一層是空的：<a href="https://arxiv.org/abs/2606.31179" target="_blank" rel="noopener">最被引用的尺出自一家同時賣模型的公司</a>，<a href="https://www.gridhealth.io/charge-insights/openevidence-tempo-no-ones-watching" target="_blank" rel="noopener">最漂亮的分數出自受評者自己</a>，而最誠實的那一份（10/1 的 rubric 盤點）結論是「現有工具湊不齊」。在這種結構下，接下來最有價值的位置不是再訓一個模型，是成為那個能被各方接受的第三方評估機構。</span>
-      <span class="en"><strong>Today's competitive structure has nobody holding the seat that matters: who is entitled to grade.</strong> The model layer has sorted itself out — Google holds offline-inside-the-hospital with a free 4B, NVIDIA holds native 3D with compute, OpenEvidence holds the physician's desktop by being free, Aidoc holds the last mile with two thousand hospitals, and Taiwanese vendors hold the demonstration floor with a policy label. The scoring layer is empty: <a href="https://arxiv.org/abs/2606.31179" target="_blank" rel="noopener">the most-cited ruler comes from a company that also sells models</a>, <a href="https://www.gridhealth.io/charge-insights/openevidence-tempo-no-ones-watching" target="_blank" rel="noopener">the prettiest scores come from the party being scored</a>, and the most honest piece of work — the Oct 1 rubric review — concludes that the available tools cannot be assembled. In that structure the most valuable position left is not another model but becoming the third-party evaluator everyone will accept.</span>
     </p>
   </div>
 </section>
@@ -461,21 +406,17 @@
   <h2>04 — Taiwan Angle</h2>
   <div class="sec-title">
     <span class="zh">台灣這一週同時推進了管線與政策，但評估那一格還是空的</span>
-    <span class="en">Taiwan advanced both plumbing and policy this week, and left the evaluation box empty</span>
   </div>
 
   <div class="panel">
     <p>
       <span class="zh"><strong>(1) FHIR Box 不只是互通，它是「證據可挑選」的前置條件。</strong>9/30 那份長程推理實驗把結論寫得很白：可靠的長程臨床推理取決於<strong>相關證據怎麼被挑選與呈現</strong>，而不是模型能讀多少（<a href="https://arxiv.org/abs/2610.00562" target="_blank" rel="noopener">arXiv:2610.00562</a>）。台灣這一週推的兩件事剛好都在這一層：<a href="https://money.udn.com/money/story/7307/9795500" target="_blank" rel="noopener">10/5 大會</a>的 <strong>FHIR Box</strong>（不抽換核心系統、把院內資料轉成 HL7 FHIR）與<strong>新一代 3D PACS</strong>。更早一點，衛福部長石崇良在 <a href="https://money.udn.com/money/story/5648/9754542" target="_blank" rel="noopener">9/15 的受訪</a>裡給了時程：<strong>2026 年底全國醫學中心關鍵資料連上線、2027 年底擴及全國醫院</strong>，並提到以 FHIR 搭配<strong>聯邦學習</strong>做臨床試驗收案——在保護隱私的前提下快速找出合格病人與機構，電子病歷可直接轉換、減少人工收集。換算成技術語言：台灣正在建的不是模型，是 Episodic 與 Hybrid 策略賴以成立的那個可檢索、可跨院的證據層。</span>
-      <span class="en"><strong>(1) FHIR Box is not only interoperability; it is the precondition for evidence being selectable at all.</strong> The Sept 30 long-horizon experiment states it plainly: reliable longitudinal clinical reasoning depends on <strong>how relevant evidence is selected and presented</strong>, not on how much a model can read (<a href="https://arxiv.org/abs/2610.00562" target="_blank" rel="noopener">arXiv:2610.00562</a>). Both of Taiwan's moves this week sit on that layer: <strong>FHIR Box</strong> (converting hospital data to HL7 FHIR without replacing core systems) and the <strong>next-generation 3D PACS</strong>, from <a href="https://money.udn.com/money/story/7307/9795500" target="_blank" rel="noopener">the Oct 5 conference</a>. Earlier, Health Minister Shih Chung-liang gave the timetable in a <a href="https://money.udn.com/money/story/5648/9754542" target="_blank" rel="noopener">Sept 15 interview</a>: <strong>key data from all national medical centres connected by the end of 2026, extended to hospitals nationwide by the end of 2027</strong>, with FHIR paired with <strong>federated learning</strong> for trial recruitment — finding eligible patients and sites quickly while protecting privacy, converting electronic records directly and cutting manual collection. In technical terms: what Taiwan is building is not a model but the retrievable, cross-institution evidence layer that Episodic and Hybrid strategies depend on.</span>
     </p>
     <p>
       <span class="zh"><strong>(2) 10/7 生技論壇講了錢、法規與資料，沒有講評估。</strong>石崇良在 <a href="https://udn.com/news/story/7241/9801591" target="_blank" rel="noopener">10/7 的 2026 生技論壇</a>上把政策盤點了一輪：再生醫療雙法 1 月上路、<strong>《全民健康保險資料管理條例》8 月上路</strong>（健保資料庫可在法定條件下供學術與產業使用）、「<strong>信賴 100</strong>」力求 100 天內完成國產新藥與關鍵藥品審查、健保今年 <strong>9,883 億元</strong>、明年可達 <strong>1 兆 434 億元</strong>、藥物韌性整備計畫四年 <strong>240 億元</strong>、健康台灣深耕計畫五年 <strong>489 億元</strong>、生技醫藥發展基金十年 <strong>100 億元</strong>、HTA 中心行政法人化待公布。注意這整份清單裡<strong>沒有任何一項是關於 AI 效度評估的</strong>——資料可用、錢到位、審查加速都在推進，但「誰來驗這些模型在台灣病人身上有沒有效」沒有對應的機構或預算項目。</span>
-      <span class="en"><strong>(2) The Oct 7 biotech forum covered money, law and data — not evaluation.</strong> At <a href="https://udn.com/news/story/7241/9801591" target="_blank" rel="noopener">the 2026 Biotech Forum on Oct 7</a>, Minister Shih ran through the policy ledger: the twin regenerative-medicine laws effective in January, the <strong>National Health Insurance Data Management Act effective in August</strong> (opening the NHI database to academic and industry use under legal conditions), "<strong>Trust 100</strong>" targeting 100-day review for qualifying domestic new drugs and key medicines, NHI spending of <strong>NT$988.3bn</strong> this year and possibly <strong>NT$1.0434tn</strong> next, a four-year <strong>NT$24bn</strong> drug resilience plan, a five-year <strong>NT$48.9bn</strong> Healthy Taiwan plan, a ten-year <strong>NT$10bn</strong> biotech development fund, and an HTA centre awaiting promulgation as an administrative legal entity. Note that <strong>not one item on that list concerns AI validity assessment</strong>. Data access, funding and faster review are all moving; who verifies whether these models work on Taiwanese patients has neither an institution nor a budget line.</span>
     </p>
     <p>
       <span class="zh"><strong>(3) 給付缺口與評估缺口是同一個缺口。</strong>台中榮總榮譽院長陳適安在 10/5 說得最實際：更廣的臨床使用需要<strong>服務與給付機制</strong>，現在是部分醫院在申請 3D 影像<strong>自費代碼</strong>、未來才可能接上健保（<a href="https://money.udn.com/money/story/7307/9795500" target="_blank" rel="noopener">經濟日報，10/5</a>）。這兩件事其實綁在一起：健保要給付，就得有人說得出這項技術的效益有多大；而本期三篇論文的共同結論是，說出效益需要的那套量尺目前連國際上都還沒湊齊——<a href="https://arxiv.org/abs/2610.01938" target="_blank" rel="noopener">六個維度沒有單一工具涵蓋得完</a>、<a href="https://arxiv.org/abs/2606.31179" target="_blank" rel="noopener">最強代理人在 54 項真實形態任務上只有 42%</a>。所以台灣現在的位置其實是一個機會：資料層（FHIR Box）2027 年底就要鋪完，而評估這一格全世界都還空著。能把本地化的效度評估建起來的人，手上會有別人沒有的東西——而那正好是 <a href="https://money.udn.com/money/story/5648/9754542" target="_blank" rel="noopener">9/15 提到的聯邦學習架構</a>最適合做的事：不必集中資料，就能跨院驗證一個模型在真實病人身上的表現。</span>
-      <span class="en"><strong>(3) The reimbursement gap and the evaluation gap are the same gap.</strong> Taichung Veterans General Hospital honorary superintendent Chen Shih-an put it most practically on Oct 5: broader clinical use needs <strong>service and payment mechanisms</strong>, and today some hospitals are applying for <strong>self-pay billing codes</strong> for 3D imaging, with any NHI link still prospective (<a href="https://money.udn.com/money/story/7307/9795500" target="_blank" rel="noopener">Economic Daily News, Oct 5</a>). The two are tied together: for NHI to reimburse, somebody has to be able to state the size of the benefit — and the common conclusion of this edition's three papers is that the measuring apparatus needed to state it has not been assembled anywhere, let alone here: <a href="https://arxiv.org/abs/2610.01938" target="_blank" rel="noopener">no single instrument covers all six dimensions</a>, and <a href="https://arxiv.org/abs/2606.31179" target="_blank" rel="noopener">the strongest agents manage 42% on 54 realistic tasks</a>. Which makes Taiwan's position an opportunity: the data layer (FHIR Box) is due to be laid by the end of 2027, while the evaluation box is empty worldwide. Whoever stands up localised validity assessment will hold something nobody else has — and it is precisely what <a href="https://money.udn.com/money/story/5648/9754542" target="_blank" rel="noopener">the federated-learning architecture mentioned on Sept 15</a> is best suited to: validating a model's performance on real patients across hospitals without centralising the data.</span>
     </p>
   </div>
 </section>
@@ -485,29 +426,28 @@
   <h2>05 — Further Reading</h2>
   <div class="sec-title">
     <span class="zh">挑的是「告訴你要怎麼量」的五篇，不是「宣布又做出一個模型」的那些</span>
-    <span class="en">Five that tell you how to measure, rather than announcing one more model</span>
   </div>
 
   <ol class="reading">
     <li>
       <a href="https://arxiv.org/abs/2610.01938" target="_blank" rel="noopener">A rubric landscape for evaluating clinical reasoning in large language models — arXiv:2610.01938 (2026-10-01)</a>
-      <p class="why"><span class="zh">如果這一週只讀一篇，讀這篇。它給的六個維度可以直接當成你評一個臨床 LLM 時的檢查表，而「不可補償的安全上限」那條建議值得抄進任何內部評估規範。</span><span class="en">If you read one thing from this week, read this. Its six dimensions work as a checklist the next time you assess a clinical LLM, and the non-compensable safety cap belongs in any internal evaluation policy.</span></p>
+      <p class="why"><span class="zh">如果這一週只讀一篇，讀這篇。它給的六個維度可以直接當成你評一個臨床 LLM 時的檢查表，而「不可補償的安全上限」那條建議值得抄進任何內部評估規範。</span></p>
     </li>
     <li>
       <a href="https://arxiv.org/html/2606.31179v1" target="_blank" rel="noopener">HealthAgentBench: A Unified Benchmark Suite of Realistic Agentic Healthcare Environments — Microsoft Research, arXiv:2606.31179 (2026-06-30)</a>
-      <p class="why"><span class="zh">讀它的分項表而不是總分。七類任務的落差（格式轉換 100% 對資料品質稽核不到 50%）比任何一個整體百分比都更能告訴你，代理人現在能接哪種工作、不能接哪種。</span><span class="en">Read the category table, not the headline. The spread across its seven categories — 100% on format conversion against under 50% on data quality auditing — tells you more about which jobs agents can take today than any aggregate percentage.</span></p>
+      <p class="why"><span class="zh">讀它的分項表而不是總分。七類任務的落差（格式轉換 100% 對資料品質稽核不到 50%）比任何一個整體百分比都更能告訴你，代理人現在能接哪種工作、不能接哪種。</span></p>
     </li>
     <li>
       <a href="https://www.nature.com/articles/s41746-026-02443-6" target="_blank" rel="noopener">Benchmarking large language model-based agent systems for clinical decision tasks — npj Digital Medicine (2026-02-18)</a>
-      <p class="why"><span class="zh">今年最該被引用卻最常被忽略的一篇：Kather 團隊把代理人系統與 zero-shot 基線並排後發現增益「modest」且多數不顯著，而代價是 <strong>10 倍以上的 token</strong>（MedQA 每題約 93,000 對 14,600）；更該記住的是內建防護擋掉 <strong>89.9%</strong> 幻覺之後，幻覺仍影響約 <strong>30%</strong> 的臨床情境。</span><span class="en">The most citable and least cited paper of the year: Kather's group set agent systems beside zero-shot baselines, found the gains "modest" and mostly not significant, and priced them at <strong>over 10x the tokens</strong> (about 93,000 per MedQA scenario against 14,600). Remember the other number too — after in-agent safeguards blocked <strong>89.9%</strong> of hallucinations, hallucinations still touched roughly <strong>30%</strong> of clinical scenarios.</span></p>
+      <p class="why"><span class="zh">今年最該被引用卻最常被忽略的一篇：Kather 團隊把代理人系統與 zero-shot 基線並排後發現增益「modest」且多數不顯著，而代價是 <strong>10 倍以上的 token</strong>（MedQA 每題約 93,000 對 14,600）；更該記住的是內建防護擋掉 <strong>89.9%</strong> 幻覺之後，幻覺仍影響約 <strong>30%</strong> 的臨床情境。</span></p>
     </li>
     <li>
       <a href="https://www.nature.com/articles/s41467-026-76004-6" target="_blank" rel="noopener">A benchmark study of vision and pathology foundation models for computational pathology — Nature Communications (2026-07-24)</a>
-      <p class="why"><span class="zh">讀它是為了那個反直覺的結論：Gevaert 團隊用 <strong>32 個基礎模型</strong>跑 <strong>41 項任務、53 個資料集、逾 17,500 張全切片影像</strong>，結果病理專用視覺模型與通用視覺模型之間<strong>沒有統計顯著的 AUROC 差異</strong>，而且模型大小與預訓練規模<strong>不能穩定預測表現</strong>。下次有人用「我們是醫療專用模型」當賣點時，這篇是你的對照。</span><span class="en">Read it for the counterintuitive finding: Gevaert's group ran <strong>32 foundation models</strong> over <strong>41 tasks, 53 datasets and more than 17,500 whole-slide images</strong>, and found <strong>no statistically significant AUROC difference</strong> between pathology-specific and general vision models, with model size and pretraining scale <strong>not consistently predicting performance</strong>. The next time someone pitches "ours is a medical-specific model," this is your comparator.</span></p>
+      <p class="why"><span class="zh">讀它是為了那個反直覺的結論：Gevaert 團隊用 <strong>32 個基礎模型</strong>跑 <strong>41 項任務、53 個資料集、逾 17,500 張全切片影像</strong>，結果病理專用視覺模型與通用視覺模型之間<strong>沒有統計顯著的 AUROC 差異</strong>，而且模型大小與預訓練規模<strong>不能穩定預測表現</strong>。下次有人用「我們是醫療專用模型」當賣點時，這篇是你的對照。</span></p>
     </li>
     <li>
       <a href="https://www.gridhealth.io/charge-insights/openevidence-tempo-no-ones-watching" target="_blank" rel="noopener">OpenEvidence &amp; TEMPO: No One is Reviewing AI — GridHealth (2026-09-22)</a>
-      <p class="why"><span class="zh">把本期的技術主題翻譯成商業與監理語言的一篇短評。它的核心句——「廠商自己有信心，不會讓一個主張變成證據」——值得貼在任何醫院 AI 採購會議室的牆上；另外它順手點出 FDA TEMPO 試辦讓生成式 AI 器材在正式上市許可前就接觸病人，計畫擴到 40 個參與者、四個臨床領域。</span><span class="en">A short piece that translates this edition's technical theme into commercial and regulatory language. Its core line — a claim is not evidence because the vendor is confident — belongs on the wall of any hospital AI procurement room. It also notes in passing that the FDA's TEMPO pilot lets generative-AI devices reach patients before formal marketing authorisation, with plans to scale to 40 participants across four clinical areas.</span></p>
+      <p class="why"><span class="zh">把本期的技術主題翻譯成商業與監理語言的一篇短評。它的核心句——「廠商自己有信心，不會讓一個主張變成證據」——值得貼在任何醫院 AI 採購會議室的牆上；另外它順手點出 FDA TEMPO 試辦讓生成式 AI 器材在正式上市許可前就接觸病人，計畫擴到 40 個參與者、四個臨床領域。</span></p>
     </li>
   </ol>
 </section>
@@ -517,7 +457,6 @@
   <h2>06 — References</h2>
   <div class="sec-title">
     <span class="zh">參考文獻</span>
-    <span class="en">References</span>
   </div>
 
   <div class="panel">
@@ -548,7 +487,6 @@
     </ol>
     <div class="note">
       <span class="zh"><strong>編輯說明：</strong>（1）<strong>今日本主題在過去 24–72 小時的國際新聞偏少</strong>——本週沒有重量級的醫療專用模型發表或大廠技術公告，因此窗口向前延伸至 <strong>9/25–10/8</strong>，主線改以 arXiv 10/1–10/7 的新投稿與台灣 10/5 的基礎設施進展構成，並把 6/30 的 HealthAgentBench 與 2/18 的 npj Digital Medicine 當量尺與背景引用，日期已逐則標明。（2）<strong>RadOnc-Agent（arXiv:2610.06923）本報未讀到全文</strong>：撰稿時 abs 與 HTML 頁均被抓取代理以 HTTP 429 擋下，所引用的標題、arXiv ID、「26 個可呼叫函式」、對話介面與作者自述限制「並未證實臨床正確性、臨床效用或前瞻性效益」，全部來自 <a href="https://arxiv.org/list/cs.AI/new" target="_blank" rel="noopener">arXiv cs.AI 2026-10-07 新投稿列表</a>，屬二手列表層級資訊而非原文。同一批被 429 擋下的還有 arXiv:2610.03176（Hindsight-Guided Rationale Distillation for Rare Disease Diagnosis，10/2），因此本報完全未引用它。（3）<strong>arXiv:2610.02829、2610.01938、2610.00562 三篇只讀摘要與 metadata，未讀全文</strong>；凡摘要未提供數字之處，本報均明寫「未給數字」而非估算或推論。三篇皆為未經同儕審查的 preprint。（4）<strong>廠商／作者自述、未經第三方稽核的數字</strong>：智捷醫學 Anatomy Cloud 的「最快約 5 分鐘」、NV-Reason-CT 的「判讀與報告時間少 50%」（作者自標 preliminary、未給樣本數）、Welldoc 的「經臨床驗證的小語言模型」與 5 億筆資料點／80 多個健康領域、Aidoc 的 1.2 億病例／近 2,000 家醫院／年 6,000 萬病人、OpenEvidence 四項分數（MedQA 100%、MedXpertQA 72.8%、HealthBench Professional 82.7%、NOHARM 87.2%）、NVIDIA nvQSP 的 77 倍。（5）<strong>Google MedGemma 1.5 的對照數字全為 Google 內部基準</strong>（CT／MRI 分類、病理 ROUGE-L、實驗室報告擷取、單張影像綜合），僅 Chest ImaGenome、MS-CXR-T、MedQA、EHRQA 為公開基準。（6）台大 2028 全院導入、FHIR Box 2026／2027 兩階段時程皆為<strong>計畫目標</strong>，非已完成部署；另一篇相關報導標題提到的「2028 年進到 29 家醫學中心」因內文未確認，本報未採用。（7）Duke 數位孿生、Welldoc、K Health／UVA 三則轉引自 Fierce Healthcare 10/2 彙整，<strong>非原始新聞稿</strong>。（8）本期所引來源均為公開可讀頁面，無付費牆內容；經濟日報／聯合新聞網報導為一般可讀。（9）所有 URL 均為撰稿時實際造訪並成功讀取者，唯第（2）點所列兩篇 arXiv 連結例外——連結本身指向正確頁面，但本報未能讀取其內容。</span>
-      <span class="en"><strong>Editor's note:</strong> (1) <strong>International news in today's rotation was thin over the past 24–72 hours</strong> — no major medical-specific model release or large-vendor technical announcement landed this week — so the window was extended back to <strong>Sep 25–Oct 8</strong>, with the through-line built from arXiv's Oct 1–7 new submissions plus Taiwan's Oct 5 infrastructure news, and with HealthAgentBench (Jun 30) and the npj Digital Medicine benchmark (Feb 18) cited as yardsticks and background, each dated in place. (2) <strong>The full text of RadOnc-Agent (arXiv:2610.06923) was not read here</strong>: at the time of writing both the abs and HTML pages were refused by the fetch proxy with HTTP 429, so the title, arXiv ID, the "26 callable functions," the conversational interface and the authors' disclaimer that the results "do not establish clinical correctness, clinical utility or prospective benefit" all come from the <a href="https://arxiv.org/list/cs.AI/new" target="_blank" rel="noopener">arXiv cs.AI new-submissions listing of 2026-10-07</a> — listing-level secondary information, not the paper. arXiv:2610.03176 (Hindsight-Guided Rationale Distillation for Rare Disease Diagnosis, Oct 2) was refused in the same batch and is therefore not cited at all. (3) <strong>For arXiv:2610.02829, 2610.01938 and 2610.00562 only the abstracts and metadata were read</strong>; wherever an abstract gives no figure, this report says so rather than estimating or inferring. All three are preprints, not peer-reviewed. (4) <strong>Vendor- or author-reported figures with no third-party audit</strong>: Chih-Chieh's Anatomy Cloud modelling in "as little as about 5 minutes"; NV-Reason-CT's "50% reduction in interpretation and reporting time" (labelled preliminary by the authors, no sample size); Welldoc's "clinically validated small language models" and its 500 million data points across 80-plus health domains; Aidoc's 120 million cases, nearly 2,000 hospitals and 60 million patients a year; OpenEvidence's four scores (100% MedQA, 72.8% MedXpertQA, 82.7% HealthBench Professional, 87.2% NOHARM); and NVIDIA's 77x figure for nvQSP. (5) <strong>Google's MedGemma 1.5 comparisons are mostly internal Google benchmarks</strong> (CT/MRI classification, histopathology ROUGE-L, lab report extraction, the single-image composite); only Chest ImaGenome, MS-CXR-T, MedQA and EHRQA are public benchmarks. (6) NTUH's 2028 hospital-wide rollout and the two-stage FHIR Box timetable for 2026 and 2027 are <strong>plans</strong>, not completed deployments; a related report's headline figure of 29 medical centres by 2028 is not used here because the body does not confirm it. (7) The Duke digital twin, Welldoc and K Health/UVA items are taken from Fierce Healthcare's Oct 2 roundup, <strong>not from the original releases</strong>. (8) Every source cited is a publicly readable page with no paywall; the Economic Daily News and UDN reports are freely accessible. (9) All URLs were visited and successfully read at the time of writing, with the two arXiv exceptions in point (2) — those links point to the correct pages, but their contents could not be retrieved here.</span>
     </div>
   </div>
 </section>
@@ -557,7 +495,6 @@
   <div class="foot-row">
     <div>
       <span class="zh">AI／醫療AI 每日新知日報 · 由 Claude 於台北時間每日自動產出 · 本期主題：星期四／技術突破<br>本報告內容經來源查證，但不構成投資或醫療建議。所有數據請以原始出處為準。</span>
-      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Thursday / Technology<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
     </div>
     <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com / 返回 peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
   </div>
@@ -570,16 +507,6 @@
 </div>
 
 <script>
-function setLang(l){
-  document.body.classList.remove('lang-zh','lang-en');
-  document.body.classList.add('lang-'+l);
-  document.documentElement.lang = (l==='zh') ? 'zh-Hant' : 'en';
-  document.getElementById('b-zh').classList.toggle('on', l==='zh');
-  document.getElementById('b-en').classList.toggle('on', l==='en');
-  document.title = (l==='zh')
-    ? 'AI／醫療AI 每日新知日報 · 2026-10-08'
-    : 'AI & Medical AI Daily · 2026-10-08';
-}
 function toggleTheme(){
   document.body.classList.toggle('dark');
   document.getElementById('theme-ic').textContent =
@@ -606,5 +533,6 @@ window.addEventListener('scroll', function(){
     .catch(function(){});
 })();
 </script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/en/reports/2026-10-08.html" hreflang="en" rel="alternate" lang="en">English version</a></p>
 </body>
 </html>
