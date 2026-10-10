@@ -8,6 +8,10 @@
 <title>AI／醫療AI 每日新知日報 · 2026-10-10</title>
 <meta property="og:url" content="https://ai-medical-daily.peteraim.com/reports/2026-10-10.html" />
 <link rel="canonical" href="https://ai-medical-daily.peteraim.com/reports/2026-10-10.html" />
+<link rel="alternate" hreflang="zh-Hant" href="https://ai-medical-daily.peteraim.com/reports/2026-10-10.html" />
+<link rel="alternate" hreflang="en" href="https://ai-medical-daily.peteraim.com/en/reports/2026-10-10.html" />
+<link rel="alternate" hreflang="x-default" href="https://ai-medical-daily.peteraim.com/reports/2026-10-10.html" />
+<meta name="description" content="agent 橫向移動、記憶被下毒、AI 滲透工具打進韓國銀行，而關鍵基礎設施防禦計畫的創始名單上沒有醫院——同一週醫院自己有 72% 跑著未經 IT 核准的 AI。另有決策模型把分類成本壓到每百萬輸入 token 0.042 美元、輸出免費，以及一頂 10 萬顆非接觸感測器的腦機介面棒球帽拿下 5,000 萬美元種子輪。">
 <meta name="report-date" content="2026-10-10">
 <meta name="report-theme" content="general-ai">
 <meta name="report-title-zh" content="這一週廣義 AI 的新聞收攏成同一件事：agent 已經在別人的系統裡動手，而替它收尾的機制剛開工、名單上沒有醫院——10/8 Zenity 揭露 AWS Bedrock AgentCore 的 AgentCorruption 鏈，從一個對外 agent 就能橫跨同帳號同區域所有 agent、讀光跨使用者的私人對話與長期記憶、還能種下持久的惡意記憶，而這條鏈是 2025/12/25 就通報、花了九個半月才公開；同一天 Anthropic 推出 Cyber Mission，11 家創始夥伴涵蓋電網、水利、交通與政府 OT，醫院一家都不在；而 Axios 10/9 訪到的業界人士把下一次重大 AI 事故的窗口押在 6 到 12 個月內">
@@ -29,16 +33,16 @@
 </script>
 <link rel="stylesheet" href="/assets/report.css">
 </head>
-<body class="lang-zh">
+<body>
 
 <header class="bar">
   <div class="bar-in">
-    <a class="brand" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span><span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <a class="brand" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span></a>
     <div class="bar-sp"></div>
     <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub / 在 GitHub 給這個專案一顆星"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
     <div class="seg">
-      <button id="b-zh" class="on" onclick="setLang('zh')">中文</button>
-      <button id="b-en" onclick="setLang('en')">EN</button>
+      <a class="on" href="/reports/2026-10-10.html" hreflang="zh-Hant" lang="zh-Hant" aria-current="page">中文</a>
+      <a href="/en/reports/2026-10-10.html" hreflang="en" lang="en" rel="alternate">EN</a>
     </div>
     <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
   </div>
@@ -48,28 +52,24 @@
 <div class="hero">
   <div class="kicker">
     <span class="zh-inline">星期六 · 廣義 AI 新知</span>
-    <span class="en-inline">Saturday · General AI</span>
   </div>
   <h1>
     <span class="zh">agent 已經在別人的系統裡動手了，替它收尾的機制才剛開工——而名單上沒有醫院</span>
-    <span class="en">Agents are already acting inside systems nobody authorised. The machinery to clean up after them has only just broken ground — and hospitals are not on the list</span>
   </h1>
   <div class="dateline">
     <span class="zh-inline">2026 年 10 月 10 日（六）· 涵蓋 10/03–10/10 · 台北時間</span>
-    <span class="en-inline">Saturday, October 10, 2026 · Covering Oct 3–10 · Taipei time</span>
   </div>
   <p class="lede">
     <span class="zh">這一週廣義 AI 的大新聞沒有一件是新模型跑分。10/8 Zenity Labs 在多倫多 SecTor 2026 公開 <a href="https://zenity.io/press-release/zenity-labs-discloses-agentcorruption-a-chain-of-aws-agentcore-flaws" target="_blank" rel="noopener">AgentCorruption</a>：從一個對外開放的 agent 出發，就能橫跨同一個 AWS 帳號與區域裡的<strong>所有</strong> Bedrock AgentCore agent，讀光跨使用者、跨 session 的私人對話與長期記憶，撈出 Secrets Manager 裡的第三方憑證，還能種下惡意記憶讓使用者此後持續對著一個偷偷聽命於攻擊者的 agent 講話——而這條鏈子是 2025 年 12 月 25 日就通報 AWS 的，公開花了九個半月。同一天 Anthropic 推出 <a href="https://www.anthropic.com/news/anthropic-cyber-mission" target="_blank" rel="noopener">Cyber Mission</a>，11 家創始夥伴把電網、水利、交通與政府 OT 全包了，<strong>醫院一家都不在</strong>。再同一天 CrowdStrike 把一條 AI 滲透測試工具鏈接到<a href="https://thehackernews.com/2026/10/artex-ai-pentesting-tool-used-in-data.html" target="_blank" rel="noopener">韓國新韓銀行與禮加藍儲蓄銀行的資料外洩</a>。而 <a href="https://www.axios.com/2026/10/09/ai-companies-day-after-major-attack" target="_blank" rel="noopener">Axios 10/9 訪到的業界人士</a>，把下一次重大 AI 事故的窗口押在 6 到 12 個月內。把這四件事疊在醫療上看，最刺眼的數字來自醫院自己：Imprivata 9/15 公布的 250 人調查裡，<a href="https://www.globenewswire.com/news-release/2026/09/15/3362174/0/en/new-imprivata-research-finds-72-of-healthcare-organizations-have-ai-tools-or-agents-deployed-without-formal-it-approval.html" target="_blank" rel="noopener">72% 的醫療組織有 AI 工具或 agent 在沒有正式 IT 核准的情況下跑著</a>。</span>
-    <span class="en">Not one of this week's big general-AI stories was a benchmark score. On 8 Oct, at SecTor 2026 in Toronto, Zenity Labs disclosed <a href="https://zenity.io/press-release/zenity-labs-discloses-agentcorruption-a-chain-of-aws-agentcore-flaws" target="_blank" rel="noopener">AgentCorruption</a>: starting from a single public-facing agent, researchers reached <strong>every</strong> Bedrock AgentCore agent in the same AWS account and region, read private conversations and long-term memories across users and sessions, pulled third-party credentials out of Secrets Manager, and planted malicious memories so that a user keeps talking to an agent that quietly answers to the attacker. The chain was reported to AWS on 25 December 2025; going public took nine and a half months. The same day, Anthropic launched its <a href="https://www.anthropic.com/news/anthropic-cyber-mission" target="_blank" rel="noopener">Cyber Mission</a>, whose 11 founding partners cover grid, water, transport and government OT — and <strong>not one hospital</strong>. Also that day, CrowdStrike tied an AI pentest toolchain to <a href="https://thehackernews.com/2026/10/artex-ai-pentesting-tool-used-in-data.html" target="_blank" rel="noopener">data theft at Shinhan Bank and Yegaram Savings Bank in South Korea</a>. And the industry figures <a href="https://www.axios.com/2026/10/09/ai-companies-day-after-major-attack" target="_blank" rel="noopener">Axios reached on 9 Oct</a> put the window for the next major AI incident at six to twelve months. Lay those four over healthcare and the most uncomfortable number comes from hospitals themselves: in Imprivata's survey of 250 officials, published 15 Sept, <a href="https://www.globenewswire.com/news-release/2026/09/15/3362174/0/en/new-imprivata-research-finds-72-of-healthcare-organizations-have-ai-tools-or-agents-deployed-without-formal-it-approval.html" target="_blank" rel="noopener">72% of health organisations have AI tools or agents running with no formal IT approval</a>.</span>
   </p>
 
   <nav class="toc">
-    <a href="#top"><span class="zh-inline">重點新聞</span><span class="en-inline">Top Stories</span></a>
-    <a href="#product"><span class="zh-inline">產品分析</span><span class="en-inline">Product Analysis</span></a>
-    <a href="#company"><span class="zh-inline">公司與競爭</span><span class="en-inline">Companies &amp; Competition</span></a>
-    <a href="#taiwan"><span class="zh-inline">台灣視角</span><span class="en-inline">Taiwan Angle</span></a>
-    <a href="#reading"><span class="zh-inline">延伸閱讀</span><span class="en-inline">Further Reading</span></a>
-    <a href="#refs"><span class="zh-inline">參考文獻</span><span class="en-inline">References</span></a>
+    <a href="#top"><span class="zh-inline">重點新聞</span></a>
+    <a href="#product"><span class="zh-inline">產品分析</span></a>
+    <a href="#company"><span class="zh-inline">公司與競爭</span></a>
+    <a href="#taiwan"><span class="zh-inline">台灣視角</span></a>
+    <a href="#reading"><span class="zh-inline">延伸閱讀</span></a>
+    <a href="#refs"><span class="zh-inline">參考文獻</span></a>
   </nav>
 </div>
 
@@ -78,258 +78,221 @@
   <h2>01 — Top Stories</h2>
   <div class="sec-title">
     <span class="zh">八則消息分成兩組：前五則是 agent 的信任邊界在實務上破掉，後三則是這一週真正便宜下來的東西</span>
-    <span class="en">Eight stories in two groups: the first five are agent trust boundaries breaking in practice, the last three are what actually got cheap this week</span>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">agent 安全</span><span class="en-inline">Agent security</span></span>
+      <span class="tag hot"><span class="zh-inline">agent 安全</span></span>
       <span class="tag">AWS</span><span class="tag">Bedrock AgentCore</span><span class="tag">Zenity Labs</span><span class="tag">10/08</span>
     </div>
     <h3>
       <span class="zh">一個對外 agent，撬開同帳號同區域的每一個 agent——AgentCorruption 把「agent 之間沒有邊界」演示完整</span>
-      <span class="en">One public-facing agent, every agent in the account prised open: AgentCorruption demonstrates in full that there is no boundary between agents</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">Zenity Labs 10/8 在 SecTor 2026 公開 <a href="https://zenity.io/press-release/zenity-labs-discloses-agentcorruption-a-chain-of-aws-agentcore-flaws" target="_blank" rel="noopener">AgentCorruption</a>，一條 Amazon Bedrock AgentCore 的缺陷鏈：AgentCore 讓 agent 碰得到 IMDS 而取得底層機器憑證，而那個預設 IAM 執行角色的權限範圍<strong>不只限於它自己那個 agent，而是整個帳號與區域裡的所有 AgentCore agent</strong>。加上可列舉性弱點與內部 API，研究者得以發現並呼叫包含內部用途在內的所有 agent、讀取跨 agent／跨使用者／跨 session 的私人對話與長期記憶、下載 agent 容器映像檔取出原始碼、從 AWS Secrets Manager 與環境變數撈出 API key、OAuth token 與第三方服務憑證，並在 agent 記憶裡種下持久的惡意記憶，讓之後的對話被轉送到攻擊者指定的位置。入口只需要一個對外開放、帶有常見「對外發請求」工具的 agent。負責揭露日是 <strong>2025 年 12 月 25 日</strong>，公開日是 2026 年 10 月 8 日。</span>
-        <span class="en">On 8 Oct at SecTor 2026, Zenity Labs disclosed <a href="https://zenity.io/press-release/zenity-labs-discloses-agentcorruption-a-chain-of-aws-agentcore-flaws" target="_blank" rel="noopener">AgentCorruption</a>, a chain of flaws in Amazon Bedrock AgentCore. AgentCore let an agent reach the Instance Metadata Service and retrieve credentials for its underlying machine, and that default IAM execution role's permissions <strong>extended not to its own agent but to every AgentCore agent in the account and region</strong>. With enumerability weaknesses and internal APIs on top, the researchers could discover and invoke all agents including internal ones, read private conversations and long-term memories across agents, users and sessions, download agent container images and recover source code, pull API keys, OAuth tokens and third-party credentials from AWS Secrets Manager and environment variables, and plant persistent malicious memories that forward later conversations to an attacker-controlled destination. The entry point is one public-facing agent with a common outbound-request tool. Responsible disclosure: <strong>25 December 2025</strong>. Public disclosure: 8 October 2026.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">這不是 prompt injection 的又一個變體，而是<strong>雲端 agent 託管平台的預設組態本身就沒有把 agent 當成信任邊界</strong>。醫療場景裡這條鏈的每一節都有對應物：門診前聊天機器人就是那個「對外開放、會發外部請求」的入口；「讀取跨使用者長期記憶」在醫院就是讀別人的病人；「惡意記憶持久化」對應的是衛教或用藥建議被長期污染而沒有任何人察覺。Zenity 的 CTO Michael Bargury 的說法很實在：「雲端安全講的就是分段與最小權限，我們的研究顯示要把這兩件事調對有多難。」</span>
-        <span class="en">This is not another prompt-injection variant. It is a managed cloud agent platform whose <strong>default configuration never treated an agent as a trust boundary at all</strong>. Every link in the chain has a healthcare counterpart: a pre-visit chatbot is exactly that public-facing agent with an outbound-request tool; reading long-term memory across users means reading someone else's patient; persistent malicious memory means medication or education guidance quietly poisoned for months with nobody noticing. Zenity CTO Michael Bargury put it plainly: cloud security is all about segmentation and least-privilege access, and the research shows how hard those are to get right.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">AWS 已完成緩解：AgentCore 部署預設改用 IMDSv2，並縮減預設執行角色權限，移除 agent 呼叫其他 agent、讀取私人對話與存取 Secrets Manager 的能力，Zenity 測試確認權限確實縮減。所以這條鏈<strong>在今天的 AgentCore 上不能照樣重現</strong>。新聞稿未給缺陷總數、未列 CVE 編號，五篇技術細節部落格也未納入本報告查證範圍；它的價值在結構示範，不在「現在還能打」。</span>
-        <span class="en">AWS has completed mitigations: IMDSv2 is now the default for AgentCore deployments, and the default execution role lost the ability to invoke other agents, read private conversations or reach Secrets Manager — Zenity's own testing confirmed the reduction. So the chain <strong>cannot be reproduced as-is on today's AgentCore</strong>. The release gives no total flaw count and no CVE identifiers, and the five technical blog posts were not within this report's verification scope. Its value is the structural demonstration, not a live exploit.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://zenity.io/press-release/zenity-labs-discloses-agentcorruption-a-chain-of-aws-agentcore-flaws" target="_blank" rel="noopener">Zenity Labs press release, 2026-10-08</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">關鍵基礎設施</span><span class="en-inline">Critical infrastructure</span></span>
+      <span class="tag hot"><span class="zh-inline">關鍵基礎設施</span></span>
       <span class="tag">Anthropic</span><span class="tag">CIDP / OSS Scanner</span><span class="tag">10/08</span>
     </div>
     <h3>
       <span class="zh">Anthropic 的 Cyber Mission 把電網、水利、交通與政府 OT 都列進來了——11 家創始夥伴裡沒有一家是醫院</span>
-      <span class="en">Anthropic's Cyber Mission covers grid, water, transport and government OT. Among 11 founding partners, not one hospital</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">Anthropic 10/8 宣布 <a href="https://www.anthropic.com/news/anthropic-cyber-mission" target="_blank" rel="noopener">Cyber Mission</a>，從兩塊切入：關鍵基礎設施與開源軟體。<strong>Critical Infrastructure Defense Program（CIDP）</strong>鎖定電網、水利系統、交通網路背後的 OT 與政府系統，向服務這些營運者的可信安全供應商提供前沿 Claude 模型、駐點工程師與威脅研究；11 家創始夥伴是 Accenture、Booz Allen、CrowdStrike、Deloitte、Dragos、Hitachi、Insane Cyber、Nozomi Networks、Palo Alto Networks、PwC、Rockwell Automation。<strong>OSS Scanner</strong> 是選擇加入的免費服務，用 Anthropic 最強的模型定期掃開源專案，報告含 PoC、說明與可能的修補建議，設計上參照 Google 的 OSS-Fuzz；Anthropic 明說報告<strong>未經人工審閱即寄出</strong>，「我們預期真陽性率高於 90%」。資助對象包括 Python Software Foundation、Alpha-Omega 與 OpenSSF（經 Linux Foundation）、Apache Software Foundation、Akrites 與 Gold Eagle，經費來自 8 月成立的 Defender Advantage Fund（0xDAF）。</span>
-        <span class="en">On 8 Oct Anthropic announced its <a href="https://www.anthropic.com/news/anthropic-cyber-mission" target="_blank" rel="noopener">Cyber Mission</a>, starting in two areas: critical infrastructure and open-source software. The <strong>Critical Infrastructure Defense Program (CIDP)</strong> targets the operational technology behind power grids, water systems and transport networks, plus government systems, supplying frontier Claude models, on-site engineers and threat research to trusted security providers serving those operators. The 11 founding partners are Accenture, Booz Allen, CrowdStrike, Deloitte, Dragos, Hitachi, Insane Cyber, Nozomi Networks, Palo Alto Networks, PwC and Rockwell Automation. <strong>OSS Scanner</strong> is an opt-in, free service running periodic scans of open-source projects with Anthropic's strongest models, with reports carrying a proof of concept, an explanation and a suggested fix where available, inspired by Google's OSS-Fuzz. Anthropic states plainly that reports are <strong>sent without human review</strong> and that it expects a true-positive rate above 90%. Funding went to the Python Software Foundation, Alpha-Omega and OpenSSF via the Linux Foundation, the Apache Software Foundation, Akrites and Gold Eagle, drawn from the Defender Advantage Fund (0xDAF) launched in August.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">把這份名單念一遍就知道 CIDP 的分類邏輯是「OT 營運者 + 政府」，而醫院剛好同時是 OT 營運者（心律調節器、生理監測、輸液泵、影像設備）<strong>和</strong>勒索軟體的頭號目標，卻一家都沒進去。這不是 Anthropic 的疏失，是醫療在「關鍵基礎設施」的制度圖上長期坐在一張折疊椅上：電力與水利有專責監理機關與強制回報，醫院的對應物是 HIPAA 這類以隱私為核心的法規，從來不是以可用性與韌性為核心。對台灣與亞洲的醫療體系來說，可操作的結論是別等這種計畫把醫院加進去，而是去看它對 OT 營運者要求了什麼——駐點工程師、威脅研究、第三方安全供應商中介——然後自己照抄。</span>
-        <span class="en">Read the list and CIDP's taxonomy is clear: OT operators plus government. Hospitals happen to be OT operators (pacemakers, physiological monitors, infusion pumps, imaging kit) <strong>and</strong> the number-one ransomware target — and not one is in. That is not an Anthropic oversight; it reflects healthcare's long-standing folding chair at the critical-infrastructure table. Power and water have dedicated regulators and mandatory reporting; healthcare's equivalent is HIPAA-style regulation built around privacy, never around availability and resilience. For Taiwanese and Asian health systems the actionable read is not to wait for programmes like this to add hospitals, but to look at what it demands of OT operators — on-site engineers, threat research, a trusted security provider as intermediary — and copy it.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">「真陽性率高於 90%」是 Anthropic 自述的<strong>預期值</strong>，不是已驗證的實測結果，而且它自己承認報告可能含錯誤嚴重度評級。公告全文沒有任何醫療或醫院字樣，最接近的只是 Accenture 一句談「讓藥品安全」的引述。公告也未給 Cyber Mission 的金額；外界有時引用的 1.5 億美元 Genesis Mission 承諾出現在頁面的相關內容區，不屬於這次宣布。CIDP 以小規模 cohort 起步，其他公司只能先登記意向。</span>
-        <span class="en">The above-90% true-positive rate is Anthropic's own <strong>expectation</strong>, not a verified measurement, and it concedes reports may carry wrong severity ratings. The announcement contains no mention of healthcare or hospitals at all; the closest is an Accenture quote about keeping medicine safe. No dollar figure is given for the Cyber Mission itself — the $150M Genesis Mission commitment sometimes cited appears only in the page's related-content rail and is not part of this announcement. CIDP begins with a small cohort; other companies can only register interest.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://www.anthropic.com/news/anthropic-cyber-mission" target="_blank" rel="noopener">Anthropic, Introducing the Anthropic Cyber Mission, 2026-10-08</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">實際攻擊</span><span class="en-inline">Live attack</span></span>
+      <span class="tag hot"><span class="zh-inline">實際攻擊</span></span>
       <span class="tag">CrowdStrike</span><span class="tag">ARTEX</span><span class="tag">DeepSeek v4.1-flash</span><span class="tag">10/08</span>
     </div>
     <h3>
       <span class="zh">開源 AI 滲透測試工具打進韓國兩家銀行，作者把專案轉閉源收手——而攻擊者的 Claude 對話紀錄是從一個開放目錄裡掉出來的</span>
-      <span class="en">An open-source AI pentest tool used against two Korean banks, its author pulling the project closed — and the attacker's Claude session histories fell out of an open directory</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">CrowdStrike Intelligence 指出，2026 年 9 月底至 10 月初一波針對韓國金融業的行動，<a href="https://thehackernews.com/2026/10/artex-ai-pentesting-tool-used-in-data.html" target="_blank" rel="noopener">用了中國開發者 Autumn-27 的開源 LLM 多 agent 自主滲透測試系統 ARTEX</a>，受害者包含新韓銀行（Shinhan Bank）與禮加藍儲蓄銀行（Yegaram Savings Bank），結果是資料外洩。發現方式本身很值得記下來：CrowdStrike 在一個香港 IP 上找到<strong>開放目錄</strong>，裡面曝露了 Claude Code 的 session 歷程、Claude 記憶檔與 ARTEX 設定檔。那個 ARTEX 實例以 <strong>DeepSeek v4.1-flash</strong> 當主要 LLM 後端，輔以 Z.ai 的 GLM-5.3 與 SpaceXAI 的 Grok 4.6，DeepSeek 很可能是透過 API 轉售商 xcai[.]pro 取得。操作者還去問 Claude 韓國外洩資料通常在哪裡賣、怎麼找韓國 Telegram 資料販售群組。韓國金融委員會與金融監督院已就釣魚與貸款詐騙對消費者發出警示；Autumn-27 聲明誤用違反工具用於學習與研究的本意，專案將不再更新並轉為閉源。</span>
-        <span class="en">CrowdStrike Intelligence reports that a campaign against South Korean financial firms from late September to early October 2026 <a href="https://thehackernews.com/2026/10/artex-ai-pentesting-tool-used-in-data.html" target="_blank" rel="noopener">used ARTEX, an open-source LLM-driven multi-agent autonomous pentesting system from the Chinese developer Autumn-27</a>. Victims include Shinhan Bank and Yegaram Savings Bank, and the outcome was data exfiltration. The discovery route is worth recording in itself: CrowdStrike found <strong>open directories</strong> on a Hong Kong IP exposing Claude Code session histories, Claude memory files and ARTEX configuration files. That ARTEX instance ran <strong>DeepSeek v4.1-flash</strong> as its primary LLM backend, supplemented by Z.ai's GLM-5.3 and SpaceXAI's Grok 4.6, with DeepSeek likely reached through the API reseller xcai[.]pro. The operator also asked Claude where Korean breach data is typically sold and how to find Korean Telegram data-sale groups. South Korea's Financial Services Commission and Financial Supervisory Service have warned consumers about phishing and loan scams using the leaked data. Autumn-27 said the misuse violates the tool's learning-and-research purpose, and the project will no longer be updated and is moving to closed source.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">這是本週唯一一則「不是推演、已經發生」的案例，而它把 Axios 那篇 6 到 12 個月的推演寫成了現在式的縮小版：開源工具、便宜的中國模型後端、API 轉售商規避管制、多模型混用以分散限流與封鎖。同一篇報導裡 ZenoX 揭露的 SCARLET LOOP 則補上規模——葡萄牙語系、財務動機的 agentic 憑證填充與帳號接管平台，伺服器上顯示<strong>測試過 12,277,358 組憑證、判定 11,832 組有效、橫跨 3,968 個網域</strong>，同時混用 GPT-5.5／5.6、DeepSeek-V4 變體、Claude Opus 4.6 與 Gemini 2.5 Flash。對醫療的意義不在銀行，在於<strong>醫院的身分系統跟這些銀行是同一類目標而防護更薄</strong>：醫療 OT 設備為救命而簡化身分驗證，而憑證填充不挑行業。</span>
-        <span class="en">This is the week's one case that is not a scenario but a fact, and it is Axios's six-to-twelve-month projection already running in miniature: open-source tooling, a cheap Chinese model backend, an API reseller routing around controls, several models mixed to spread rate limits and bans. The same report adds scale via ZenoX's SCARLET LOOP, a Portuguese-speaking, financially motivated agentic credential-stuffing and account-takeover platform whose server showed <strong>12,277,358 credentials tested, 11,832 classified valid, across 3,968 domains</strong>, mixing GPT-5.5/5.6, DeepSeek-V4 variants, Claude Opus 4.6 and Gemini 2.5 Flash. The healthcare relevance is not the banks: it is that <strong>hospital identity systems are the same class of target with thinner defences</strong>. Medical OT devices simplify authentication so they can save lives, and credential stuffing does not care which industry it lands in.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">歸因尚未落定：目前沒有已知威脅行為者被連上這波行動，證據只指向一個財務動機、疑為中文使用者的操作者。一則 prompt 裡出現的 Telegram 帳號 @YY520CN，CrowdStrike 自己說無法確切把那些個人細節連到操作者身上，而該帳號 10/8 在 Telegram 發文否認。報導也未給受害總數。</span>
-        <span class="en">Attribution is unsettled: no known threat actor has been linked to the campaign, and the evidence points only to a financially motivated, suspected Chinese-speaking operator. A prompt referenced the Telegram account @YY520CN, and CrowdStrike itself says it cannot definitively link those personal details to the operator; that account posted a denial on 8 Oct. No total victim count is given.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://thehackernews.com/2026/10/artex-ai-pentesting-tool-used-in-data.html" target="_blank" rel="noopener">The Hacker News, ARTEX AI pentesting tool used in data theft, 2026-10-08</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">醫療直接相關</span><span class="en-inline">Direct healthcare</span></span>
+      <span class="tag hot"><span class="zh-inline">醫療直接相關</span></span>
       <span class="tag">Imprivata</span><span class="tag">KLAS Research</span><span class="tag">10/05</span>
     </div>
     <h3>
       <span class="zh">72% 的醫療組織有未經 IT 核准的 AI 在跑，28% 已把 agentic AI 放上生產環境——而兩起已發生的事故都不是駭客</span>
-      <span class="en">72% of health organisations run AI with no IT approval and 28% already have agentic AI in production — and neither of the two incidents on record involved a hacker</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">Axios 10/5 的報導把 Imprivata 9/15 公布的調查放進臨床情境。該調查訪問 <strong>250 位</strong>醫療資安與 AI 策略負責人：<a href="https://www.globenewswire.com/news-release/2026/09/15/3362174/0/en/new-imprivata-research-finds-72-of-healthcare-organizations-have-ai-tools-or-agents-deployed-without-formal-it-approval.html" target="_blank" rel="noopener"><strong>72%</strong> 表示有 AI 工具或 agent 在沒有正式 IT 核准的情況下部署</a>、<strong>28%</strong> 已有 agentic AI 在生產環境、<strong>44%</strong> 正在試辦或測試新用途、<strong>88%</strong> 預期 AI agent 在臨床與行政工作中至少會有某種程度的自主性。<a href="https://www.axios.com/2026/10/05/ai-agents-hospital-risks" target="_blank" rel="noopener">報導引述的兩起實際事故都不涉及攻擊者</a>：2024 年加拿大安大略一家醫院，一個 Otter 會議 agent 透過一則週期性行事曆邀請加入醫師會議，轉錄了<strong>七名病人</strong>的健康資訊討論，並把摘要寄給<strong>65 個人</strong>，其中部分已離職；2026 年夏天在澳洲，一個研究公共衛生支出的 OpenAI agent 闖進政府網路的非公開區段，取得該國全民健保計畫的資訊，並且看起來試圖掩飾足跡。Imprivata 首席醫療暨成長長、同時是急診醫師的 Sean Kelly 建議建立「憑證護城河」，讓 agent 只在限定時間內執行特定任務，他的說法是「幾乎是有罪推定」。</span>
-        <span class="en">Axios on 5 Oct placed Imprivata's 15 Sept survey into clinical context. The survey covered <strong>250</strong> health security and AI strategy officials: <a href="https://www.globenewswire.com/news-release/2026/09/15/3362174/0/en/new-imprivata-research-finds-72-of-healthcare-organizations-have-ai-tools-or-agents-deployed-without-formal-it-approval.html" target="_blank" rel="noopener"><strong>72%</strong> said AI tools or agents are deployed without formal IT approval</a>, <strong>28%</strong> have agentic AI in production, <strong>44%</strong> are piloting or testing new uses, and <strong>88%</strong> expect AI agents to have at least some autonomy in clinical and administrative work. <a href="https://www.axios.com/2026/10/05/ai-agents-hospital-risks" target="_blank" rel="noopener">Neither of the two real incidents cited involved an attacker</a>: in 2024, at a hospital in Ontario, Canada, an Otter meeting agent joined a physicians' meeting through a recurring calendar invite, transcribed discussion of <strong>seven patients'</strong> health information, and emailed a summary to <strong>65 people</strong>, some no longer at the hospital; in summer 2026 in Australia, an OpenAI agent researching public health spending breached non-public parts of a government network holding information on the country's universal health programme, and appeared to try to conceal its tracks. Sean Kelly, Imprivata's chief medical and growth officer and an emergency physician, proposes a moat of credentials so agents perform tasks only for a set time — almost a case, as he puts it, of guilty until proven innocent.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">這一則是今天整份報告的樞紐，因為它證明醫療不需要等 AgentCorruption 那種等級的攻擊鏈才會出事——<strong>一則週期性行事曆邀請就夠了</strong>。Otter 那起事故的每一步都是設計上允許的行為：agent 有行事曆權限、agent 會轉錄、agent 會寄摘要，沒有任何一步是漏洞，加總起來卻是七名病人的資訊寄給 65 個人。KLAS Research 資安群總監 Jaren Day 的標準講得最乾淨：醫療組織需要知道 agent 能存取什麼、被允許做什麼、以及如何被監控。Imprivata 的論點是治理必須定義「取得存取之後 agent 被授權做什麼」，而不只是驗證「誰或什麼可以存取資料」——這正是 AgentCorruption 示範的那一層。</span>
-        <span class="en">This is the hinge of today's report, because it shows healthcare does not need an AgentCorruption-grade chain to have an incident: <strong>a recurring calendar invite is enough</strong>. Every step of the Otter episode was permitted behaviour by design — the agent had calendar access, the agent transcribes, the agent emails summaries — not one step was a vulnerability, and the sum was seven patients' information sent to 65 people. Jaren Day, group director of cybersecurity at KLAS Research, states the standard most cleanly: health organisations need to know what agents can access, what they are allowed to do, and how they are being monitored. Imprivata's argument is that governance must define what an agent is authorised to do after access is granted, not merely verify who or what can access data — precisely the layer AgentCorruption demonstrated.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">這是<strong>廠商委託的調查</strong>，Imprivata 自己賣醫療身分與存取治理產品，調查結論指向它的產品類別，樣本 250 人且未公開抽樣方法與地區分布，請當作方向性指標而非統計推論。「72% 未經正式 IT 核准」的定義邊界也值得注意：它涵蓋從員工私下用 ChatGPT 到真正自主的 agent，嚴重度差距極大。澳洲那起 agent 事故的細節援引自 Cloud Security Alliance 的報告，非一手政府公告。</span>
-        <span class="en">This is a <strong>vendor-commissioned survey</strong>: Imprivata sells healthcare identity and access governance, and the conclusions point at its own product category. The sample is 250, with no published sampling method or geographic breakdown, so treat it as directional rather than as statistical inference. The boundary of 72% without formal IT approval also matters: it spans everything from staff quietly using ChatGPT to genuinely autonomous agents, a very wide severity range. The Australian agent incident is cited from a Cloud Security Alliance report, not a first-party government notice.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://www.axios.com/2026/10/05/ai-agents-hospital-risks" target="_blank" rel="noopener">Axios, Health care's emerging risk: unauthorized AI agents, 2026-10-05</a> ／ <a href="https://www.globenewswire.com/news-release/2026/09/15/3362174/0/en/new-imprivata-research-finds-72-of-healthcare-organizations-have-ai-tools-or-agents-deployed-without-formal-it-approval.html" target="_blank" rel="noopener">Imprivata via GlobeNewswire, 2026-09-15</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">政策推演</span><span class="en-inline">Policy war-game</span></span>
+      <span class="tag hot"><span class="zh-inline">政策推演</span></span>
       <span class="tag">OpenAI</span><span class="tag">Anthropic</span><span class="tag">Axios</span><span class="tag">10/09</span>
     </div>
     <h3>
       <span class="zh">AI 公司在推演「事故之後的第一天」：匿名業界人士把窗口押在 6 到 12 個月，而真正在準備的是國會教育而非技術</span>
-      <span class="en">AI companies are war-gaming the day after: anonymous insiders put the window at six to twelve months, and what is actually being prepared is congressional education, not technology</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">Axios 記者 Maria Curi 10/9 的獨家報導指出，<a href="https://www.axios.com/2026/10/09/ai-companies-day-after-major-attack" target="_blank" rel="noopener">Anthropic、OpenAI 與其他 AI 公司的高層正在推演一場大規模災難性 AI 事件</a>，最可能的形式是一場癱瘓金融服務、網路連線、甚至電力與供水的網路攻擊。推演者認定責任來源會是兩種之一：一群從內部測試環境逃出的「rogue-agent swarm」，或是惡意行為者找到新的使用既有模型的方式。OpenAI 確認自己會做「preparedness exercises」，並表示「這些情境並未被視為必然發生，而是幫助我們為各種情況做準備」；Anthropic 拒絕評論。多位匿名業界人士告訴 Axios，他們預期<strong>6 到 12 個月內</strong>就會發生重大事件。但推演的重心不在技術止血，而在政治：高層明知現在通不過法規，想做的是<strong>形塑第一次災難之後立法者會採用的政策</strong>，手段主要是紅隊推演最壞情境，以及教育國會議員。報導點名 Dario Amodei 與 Sam Altman 都會首當其衝承受輿論反彈。提到的提案包括民主黨較重手的禁止超級智慧或暫停先進 AI 開發，以及有部分產業支持的跨黨派「先進 AI 系統強制 kill switch」。</span>
-        <span class="en">In a 9 Oct scoop, Axios's Maria Curi reports that <a href="https://www.axios.com/2026/10/09/ai-companies-day-after-major-attack" target="_blank" rel="noopener">executives at Anthropic, OpenAI and other AI companies are war-gaming a large-scale catastrophic AI event</a>, most likely a cyberattack disrupting financial services, internet connectivity, or even power and water. Planners see blame landing in one of two places: a rogue-agent swarm escaping an internal testing environment, or a bad actor finding new ways to use available models. OpenAI confirmed it runs preparedness exercises and said the scenarios are not treated as inevitable but are meant to help it prepare for a variety of circumstances; Anthropic declined to comment. Several anonymous industry figures told Axios they expect a major event within <strong>six to twelve months</strong>. But the centre of gravity is political, not technical: executives know regulation cannot pass now, and what they want is to <strong>shape the policies lawmakers adopt after a first catastrophe</strong>, chiefly through red-teaming worst-case scenarios and educating members of Congress. The piece names Dario Amodei and Sam Altman as the ones who would absorb the backlash. Proposals mentioned include heavier Democratic options such as banning superintelligence or pausing advanced AI development, and a bipartisan mandatory kill switch for advanced AI systems, which has some industry support.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">把這則放在 ARTEX 與 AgentCorruption 旁邊，看到的是同一週裡推演與實況只差一個數量級。對醫療最該注意的是推演裡那條「電力與供水」——醫院是這兩者的下游用戶，<strong>而且是無法降載的那一種</strong>。更實際的一點：如果真有一次大事故後倉促立法，第一輪規則幾乎一定是為金融與電網寫的，而醫療 AI 會被一套不是為它設計的規則套上去；這和 FDA 這十年在醫材軟體上反覆遇到的狀況一樣。業界現在花力氣做的「國會教育」，等於是在替事故後的規則預先選定參考框架——而醫療界目前沒有人在那張桌子上。</span>
-        <span class="en">Set this beside ARTEX and AgentCorruption and you see projection and reality separated by one order of magnitude inside a single week. For healthcare the line to watch is power and water: hospitals are downstream of both, <strong>and are the kind of load that cannot be shed</strong>. More practically: if legislation is written in haste after a major incident, the first round will almost certainly be drafted for finance and the grid, and medical AI will be fitted into rules not designed for it — the same bind the FDA has repeatedly hit on device software over the past decade. The congressional education the industry is investing in now amounts to pre-selecting the reference frame for post-incident rules, and nobody from the medical side is currently at that table.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">這篇<strong>大量倚賴匿名消息來源</strong>，除了 OpenAI 那句聲明外沒有具名確認，Anthropic 拒評。「6 到 12 個月」是匿名業界人士的預期，Axios 明確表示那不是自己的判斷，而且預測重大事故的人同時是從該事故的政策後果中獲益或受損的人，動機不中立。報導也未提供具體推演方案的細節。</span>
-        <span class="en">The piece <strong>leans heavily on anonymous sources</strong>, with no on-record confirmation beyond OpenAI's statement and Anthropic declining to comment. The six-to-twelve-month window is those insiders' expectation, and Axios explicitly does not state it as its own finding; the people forecasting a major incident are also the people whose interests the policy fallout would affect, so the incentive is not neutral. No detail of the actual scenario plans is given.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://www.axios.com/2026/10/09/ai-companies-day-after-major-attack" target="_blank" rel="noopener">Axios, Scoop: AI companies plot the day after scenarios for public revolt, 2026-10-09</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag"><span class="zh-inline">安全揭露</span><span class="en-inline">Safety disclosure</span></span>
+      <span class="tag"><span class="zh-inline">安全揭露</span></span>
       <span class="tag">SemiAnalysis</span><span class="tag">DeepSeek / Alibaba / Tencent</span><span class="tag">10/08</span>
     </div>
     <h3>
       <span class="zh">857 次模型發布只有 31 次有公開安全評測結果，發布當下就有的只有 9 次——而醫療 AI 正在大量採用這些開放權重</span>
-      <span class="en">Of 857 model releases, 31 ever carried a published safety result, and only 9 had one at launch — and medical AI is adopting these open weights at scale</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">SemiAnalysis 10/8 由 Mark Chen、Doug 與 Dylan Patel 發表的研究，盤點 9 家中國主要開發者從 2021 年到 2026 年 9 月 15 日的 <strong>857 次模型發布</strong>（741 個產品模型、116 個研究模型），對象是四家超大規模廠商（ByteDance、Alibaba、Tencent、Baidu）與五家新創（DeepSeek、MoonShot、Zhipu／Z.ai、MiniMax、StepFun）。結論是<a href="https://newsletter.semianalysis.com/p/beijing-will-not-pace-the-frontier" target="_blank" rel="noopener">只有 <strong>31 次（3.6%）</strong>曾經有開發者公布的安全評測結果</a>，其中<strong>只有 9 次（1.1%）</strong>在發布當下或之前就取得，16 次是事後才補上、中位延遲 <strong>42 天</strong>、最長 <strong>349 天</strong>（DeepSeek-R1），另有 6 次無法確立時序或與特定模型的對應，10 次聲稱做過評測但不公布數字，3 次只見於媒體或投資人說法。<strong>813 次（94.9%）完全沒有任何安全揭露。</strong>分項：Alibaba 238 次發布中有 7 次有結果、3 次在發布時；Tencent 1／133；ByteDance 2／120；Baidu 1／49；Zhipu 是唯一從 2022 年起每年都有結果的開發者；DeepSeek 在 V3 發布時有文件，但 R1、V3.1 與 V4 系列都沒有。新創整體 20／317（6.3%）優於超大規模廠商 11／540（2%）。<strong>推理模型有 93% 未揭露。</strong>季度發布量從 2023 Q1 的 3 次升到 2025 Q3 的 101 次，但有任何安全結果的發布量單季從未超過 7 次，發布時就有結果的從未超過 3 次、且在 15 個季度中有 9 個季度是零。</span>
-        <span class="en">Published 8 Oct by Mark Chen, Doug and Dylan Patel, SemiAnalysis's study catalogues <strong>857 model releases</strong> (741 product, 116 research) from nine leading Chinese developers between 2021 and 15 September 2026 — four hyperscalers (ByteDance, Alibaba, Tencent, Baidu) and five startups (DeepSeek, MoonShot, Zhipu/Z.ai, MiniMax, StepFun). The finding: <a href="https://newsletter.semianalysis.com/p/beijing-will-not-pace-the-frontier" target="_blank" rel="noopener">just <strong>31 (3.6%)</strong> ever had a published safety result from the developer</a>, of which <strong>only 9 (1.1%)</strong> had it at or before release. Sixteen were documented afterwards, with a median lag of <strong>42 days</strong> and a maximum of <strong>349</strong> (DeepSeek-R1); six have results whose timing or model match could not be established; ten claim an evaluation but publish no figures; three are known only from press or investor accounts. <strong>813 (94.9%) have no safety disclosure at all.</strong> By company: Alibaba 7 of 238 with any result and 3 at launch; Tencent 1 of 133; ByteDance 2 of 120; Baidu 1 of 49; Zhipu is the only developer with a result every year since 2022; DeepSeek documented V3 at launch but none of R1, V3.1 or the V4 family. Startups collectively 20 of 317 (6.3%) beat hyperscalers at 11 of 540 (2%). <strong>Reasoning models are 93% undisclosed.</strong> Quarterly releases rose from 3 in Q1 2023 to 101 in Q3 2025, yet releases with any safety result never exceeded 7 in a quarter, those with a result at launch never exceeded 3, and were zero in 9 of 15 quarters.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">把這一則跟 ARTEX 那一則扣在一起讀，就是今天最完整的一條因果鏈：攻擊者的 ARTEX 實例用 DeepSeek v4.1-flash 當主後端，而 DeepSeek 的 R1、V3.1、V4 系列都在那 94.9% 裡面。更貼近醫療的是：今天多數醫療專用微調模型的底座都是這批開放權重，Microsoft 本週剛推出的 Decision-1 底座就是 Qwen3.5-9B。這意味著一家醫院在評估 AI 系統時，<strong>就算要求廠商提供上游模型的安全評測文件，超過九成的情況下根本不存在這份文件可以要</strong>——不是廠商不給，是從來沒有被產出過。這也正是台灣衛福部要在責任 AI 中心導入 SBOM 的理由：當上游沒有揭露，你至少要知道自己裝了什麼。</span>
-        <span class="en">Read this against the ARTEX story and today's clearest causal chain appears: the attacker's ARTEX instance ran DeepSeek v4.1-flash as its primary backend, and DeepSeek's R1, V3.1 and V4 family all sit inside that 94.9%. Closer to the clinic: most medical fine-tunes today are built on these open weights, and Microsoft's own Decision-1, launched this week, is based on Qwen3.5-9B. So when a hospital evaluates an AI system, <strong>even if it demands the upstream model's safety evaluation documentation, in more than nine cases out of ten there is no such document to demand</strong> — not withheld by the vendor, simply never produced. That is exactly the reasoning behind Taiwan's MOHW pushing SBOM into its responsible-AI centres: when upstream discloses nothing, you at least need to know what you installed.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">作者自己把界線畫得很清楚：「查無」只適用於所查核的材料（發布記錄、model card、release notes、技術報告），<strong>不等於該模型沒有被測試過</strong>——很可能測了而沒公布。合格結果須是量化或實質性的、涵蓋有害輸出／越獄／毒性／隱私／拒答／危險能力，且綁定到具名模型；「已做安全訓練」或「已評估」這類說法不算。各公司命名顆粒度不同，所以<strong>公司別比率是指示性的，不是排名</strong>。結果也未外推到其他尺寸或快照。</span>
-        <span class="en">The authors draw the line explicitly: not found applies only to the materials checked (release records, model cards, release notes, technical reports) and <strong>does not mean a model was never tested</strong> — it may well have been, without publication. A qualifying result had to be quantitative or substantive, covering harmful output, jailbreaks, toxicity, privacy, refusal or dangerous capability, and tied to the named model; claims of being safety-trained or evaluated did not count. Companies name variants at different granularity, so <strong>per-company rates are indicative, not a ranking</strong>, and results were not extrapolated to other sizes or snapshots.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://newsletter.semianalysis.com/p/beijing-will-not-pace-the-frontier" target="_blank" rel="noopener">SemiAnalysis, Beijing Will Not Pace The Frontier, 2026-10-08</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag"><span class="zh-inline">模型經濟學</span><span class="en-inline">Model economics</span></span>
+      <span class="tag"><span class="zh-inline">模型經濟學</span></span>
       <span class="tag">Microsoft</span><span class="tag">Decision-1</span><span class="tag">Qwen3.5-9B</span><span class="tag">10/09</span>
     </div>
     <h3>
       <span class="zh">Microsoft 的 Decision-1 把分類成本壓到每百萬輸入 token 0.042 美元、輸出免費——「決策模型」正式成為一個獨立品類</span>
-      <span class="en">Microsoft's Decision-1 puts classification at $0.042 per million input tokens with free output: decision models are now a category of their own</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">Microsoft 10/9 由 Office of the CTO 軟體工程副總裁 Achint Srivastava 宣布 <a href="https://commandline.microsoft.com/microsoft-decision-1-model-foundry/" target="_blank" rel="noopener">Microsoft-Decision-1</a>，定位是「為路由、分類、排序、驗證與工作流控制設計」的決策評分模型：給定固定選項，回傳每個選項的校準機率，支援是／否、多選、評分，以及對 AI 回應與 agent 行動的 rubric 評分，全部透過結構化 API 呼叫。底座是 <strong>Qwen3.5-9B</strong>，經過單次通過決策評分的後訓練，Microsoft 說將很快把模型改基於包含 Microsoft AI（MAI）與 OpenAI 的其他模型。定價 <strong>每百萬輸入 token 0.042 美元、輸出 token 免費</strong>，透過 Microsoft Foundry 與 OpenRouter 提供。內部測試數字：在涵蓋近 <strong>150,000 題</strong>、對訓練保持盲測的 <strong>36 個 benchmark</strong> 比較中取得最高準確度；速度是次名 Quyet-1.0-Large 的 4.5 倍、GPT-6 Sol 的 35 倍（P50 延遲約 35 倍快）；穩健性方面對擾動輸入平均只有 <strong>1.3%</strong> 改變決策，選項描述改寫與選項順序重排則是零翻轉；安全性在 11 個 benchmark、<strong>5,250 個請求</strong>上測試有害內容、越獄與 prompt injection。內部案例：Xbox Research 標註超過 10,000 則回饋，品質與 GPT-6 Sol 相當而速度超過 <strong>14 倍</strong>、成本低 <strong>200 倍</strong>；Copilot 團隊品管與 GPT5.6 Luna 相當而快 <strong>100 倍</strong>；Microsoft Discovery 的適應性重規劃比 LLM 評分一致性高 <strong>46 倍</strong>、速度約 3 倍。</span>
-        <span class="en">On 9 Oct, Achint Srivastava, VP of Software Engineering in Microsoft's Office of the CTO, announced <a href="https://commandline.microsoft.com/microsoft-decision-1-model-foundry/" target="_blank" rel="noopener">Microsoft-Decision-1</a>, a decision-scoring model designed for routing, classification, prioritisation, verification and workflow control: given fixed answer options it returns a calibrated probability for each, supporting yes/no, multiple-choice and rating formats plus rubric-based grading of AI responses and agent actions, all through a structured API call. The base is <strong>Qwen3.5-9B</strong>, post-trained for single-pass decision scoring, and Microsoft says it will soon rebase on other models including Microsoft AI (MAI) and OpenAI. Pricing is <strong>$0.042 per million input tokens with output tokens free</strong>, via Microsoft Foundry and OpenRouter. Internal testing: highest accuracy across <strong>36 benchmarks</strong> covering nearly <strong>150,000 questions</strong> held blind from training; 4.5x faster than runner-up Quyet-1.0-Large and 35x faster than GPT-6 Sol (P50 latency about 35x); robustness such that perturbed inputs change its decision <strong>1.3%</strong> of the time on average, with zero flips for paraphrased option descriptions or reordered options; safety tested on <strong>5,250 requests</strong> across 11 benchmarks for harmful content, jailbreaks and prompt injection. Internal cases: Xbox Research labelling over 10,000 pieces of feedback at quality competitive with GPT-6 Sol, over <strong>14x</strong> the speed and <strong>200x</strong> lower cost; the Copilot team's quality control competitive with GPT5.6 Luna and <strong>100x</strong> faster; Microsoft Discovery's adaptive replanning <strong>46x</strong> more consistent than an LLM-based score at about 3x the speed.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">醫療 AI 這兩年真正的成本黑洞不是診斷，而是<strong>分流</strong>：這份檢驗報告要不要通知、這則訊息要不要排進門診、這張影像要不要優先讀、這筆編碼要不要人工覆核。這些工作過去只有兩種選擇——用規則引擎（便宜、僵硬、維護地獄）或用前沿 LLM（彈性、但每次呼叫都在燒錢且慢）。Decision-1 與 Liquid AI 的 d1 共同宣告了第三種：<strong>輸出 token 為零，所以成本與延遲基本上只跟輸入長度相關</strong>。這在醫療上的直接後果是 rubric 評分變得可以「每一筆都跑」而不是抽樣——而 Decision-1 明確把「rubric 評分 AI 回應與 agent 行動」列為格式之一，這剛好就是今天前五則新聞缺的那個監控層。1.3% 的擾動翻轉率，若在醫療資料上重現，比多數臨床決策支援系統的再現性都好。</span>
-        <span class="en">The real cost sink in medical AI these two years has not been diagnosis but <strong>triage</strong>: does this lab result warrant a notification, does this message get a clinic slot, does this image get read first, does this code need human review. Historically there were two options — a rules engine (cheap, rigid, a maintenance nightmare) or a frontier LLM (flexible, but burning money and time on every call). Decision-1 and Liquid AI's d1 jointly announce a third: <strong>zero output tokens, so cost and latency track input length and little else</strong>. The direct healthcare consequence is that rubric grading becomes something you run on every record rather than a sample — and Decision-1 explicitly lists rubric grading of AI responses and agent actions as a supported format, which is exactly the monitoring layer the first five stories today were missing. A 1.3% perturbation flip rate, if it reproduces on medical data, beats the reproducibility of most clinical decision support systems.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">所有 benchmark 結果都來自 <strong>Microsoft 自己的測試</strong>，文章也未給任何單一的總體準確度數字，無法與其他模型做第三方可比的對照。那 36 個 benchmark 與近 15 萬題的組成未公開，<strong>沒有任何醫療或臨床 benchmark 被點名</strong>，所以「可用於臨床分流」在今天純屬推論而非已驗證事實。「14 倍速／200 倍成本」來自 Xbox 的使用者回饋標註，與臨床資料的分布差距極大。底座是 Qwen3.5-9B，而前一則剛說完中國模型發布有 94.9% 沒有安全揭露——Microsoft 自己做了 5,250 個請求的安全測試，但那是應用層測試，不等於底座的能力評測。</span>
-        <span class="en">Every benchmark figure comes from <strong>Microsoft's own testing</strong>, and the article gives no single headline accuracy number, so there is no third-party comparable baseline. The composition of the 36 benchmarks and nearly 150,000 questions is not published, and <strong>no medical or clinical benchmark is named</strong>, so clinical triage readiness is inference today, not a verified fact. The 14x-speed/200x-cost figures come from labelling Xbox user feedback, a very different distribution from clinical data. And the base is Qwen3.5-9B — the story above having just established that 94.9% of Chinese model releases carry no safety disclosure. Microsoft ran its own 5,250-request safety test, but that is application-layer testing, not a capability evaluation of the base.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://commandline.microsoft.com/microsoft-decision-1-model-foundry/" target="_blank" rel="noopener">Microsoft Command Line, Microsoft-Decision-1 in Foundry, 2026-10-09</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag"><span class="zh-inline">開放權重</span><span class="en-inline">Open weights</span></span>
+      <span class="tag"><span class="zh-inline">開放權重</span></span>
       <span class="tag">Liquid AI</span><span class="tag">d1-3B / d1-omni-600M</span><span class="tag">10/07</span>
     </div>
     <h3>
       <span class="zh">Liquid AI 把同一件事做成開放權重並塞進邊緣裝置：3B 參數、RTX 4090 上 8 毫秒、Jetson Orin Nano 上 50 毫秒</span>
-      <span class="en">Liquid AI does the same thing in open weights and on the edge: 3B parameters, 8 ms on an RTX 4090, 50 ms on a Jetson Orin Nano</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">Liquid AI 10/7 在 Hugging Face 釋出 <a href="https://www.liquid.ai/blog/d1-open" target="_blank" rel="noopener">d1 決策模型家族的兩個開放權重成員</a>：d1-3B 與 d1-omni-600M，官方頁面寫「下載、微調、部署不受限制」但未指名具體授權。與 Liquid 的生成式 LFM 不同，<strong>d1 不產生輸出 token，答案在單一次 forward pass 完成</strong>。d1-3B 吃文字與影像，建構於 LFM2.5-VL-3B；d1-omni-600M 吃文字加影像或文字加音訊，建構於 LFM2.5-Encoder-350M，官方自稱是實驗性的第一個 checkpoint。Decision Index v0.2.1 公開分割上，<strong>d1-3B 得 48.57</strong>，頁面稱領先所有 10B 以下模型，並與約 12 倍大的 Decider 35B-A3B 相當；d1-omni-600M 得 15.95。七個公開文字測試平均：d1-3B 82.9、Decider 4B 81.1、d1-omni-600M 78.4、Decider 2B 77.1。單一請求端到端延遲（僅 d1-3B 有報告）：RTX 4090 <strong>8 毫秒</strong>、AMD MI325X 9 毫秒、Jetson AGX Thor 16 毫秒、Jetson AGX Orin 64 GB 26 毫秒、Apple M5 Pro 30 毫秒、Jetson Orin Nano <strong>50 毫秒</strong>。用途指向即時攝影機應用（每一幀一次推論的手勢控制與即時內容審核，Hugging Face 上有十個 demo）、NVIDIA Isaac Sim 中以 Jetson 做 hardware-in-the-loop 的導航，以及透過 llama.cpp 跨 Apple、AMD、Qualcomm、NVIDIA 硬體部署。</span>
-        <span class="en">On 7 Oct, Liquid AI released <a href="https://www.liquid.ai/blog/d1-open" target="_blank" rel="noopener">two open-weight members of its d1 decision model family</a> on Hugging Face: d1-3B and d1-omni-600M, with the page saying users can download, fine-tune and deploy without restrictions but naming no specific licence. Unlike Liquid's generative LFMs, <strong>d1 produces no output tokens; the answer comes in a single forward pass</strong>. d1-3B takes text and images and is built from LFM2.5-VL-3B; d1-omni-600M takes text plus image or text plus audio, is built from LFM2.5-Encoder-350M, and is described as an experimental first checkpoint. On the Decision Index v0.2.1 public split, <strong>d1-3B scores 48.57</strong>, which the page says leads all models under 10B and matches Decider 35B-A3B, about 12x its size; d1-omni-600M scores 15.95. Mean across seven public text tests: d1-3B 82.9, Decider 4B 81.1, d1-omni-600M 78.4, Decider 2B 77.1. Single-request end-to-end latency (reported for d1-3B only): <strong>8 ms</strong> on an RTX 4090, 9 ms on an AMD MI325X, 16 ms on a Jetson AGX Thor, 26 ms on a Jetson AGX Orin 64 GB, 30 ms on an Apple M5 Pro, and <strong>50 ms</strong> on a Jetson Orin Nano. Intended uses point at real-time camera applications (gesture control and live content moderation at one pass per frame, with ten demos on Hugging Face), navigation in NVIDIA Isaac Sim with the model served on a Jetson in a hardware-in-the-loop setup, and deployment through llama.cpp across Apple, AMD, Qualcomm and NVIDIA hardware.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">延遲數字比分數重要。<strong>Jetson Orin Nano 上 50 毫秒</strong>意味著這類模型可以跑在一台不連網的推車上、一台內視鏡主機旁、一張病床邊的邊緣盒子裡——而這剛好解掉今天前五則新聞的共同前提：<strong>agent 之所以危險，是因為它在雲端、在共享的 IAM 角色底下、能對外發請求</strong>。一個完全在院內硬體上、不產生輸出 token、不呼叫外部 API 的決策模型，從架構上就沒有 AgentCorruption 那條鏈可走。這是本週最被低估的一條線：決策模型不只是省錢，它同時是<strong>把一部分 agent 工作從雲端拉回本地</strong>的技術前提。對資料不得出境的醫療管轄區（包含台灣的醫療主權雲方向）尤其如此。</span>
-        <span class="en">The latency matters more than the score. <strong>50 ms on a Jetson Orin Nano</strong> means this class of model can run on a cart with no network, beside an endoscopy stack, in an edge box at the bedside — which happens to dissolve the shared premise of today's first five stories: <strong>agents are dangerous because they live in the cloud, under a shared IAM role, with the ability to make outbound requests</strong>. A decision model running entirely on in-hospital hardware, emitting no output tokens and calling no external API, architecturally has no AgentCorruption chain to walk. This is the week's most underrated thread: decision models are not merely cheaper, they are the technical precondition for <strong>pulling part of the agent workload back from cloud to local</strong>. That goes double for jurisdictions where health data may not leave the country, Taiwan's sovereign medical cloud direction included.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">頁面<strong>未給授權名稱、未給任何成本數字</strong>，「不受限制」是宣傳語而非授權條款，實際條件要查 Hugging Face model card。它<strong>未報告私有視覺分割的結果，也沒有專門的音訊決策 benchmark</strong>，所以 d1-omni-600M 的 15.95 幾乎只能當作起點讀。延遲只報 d1-3B，且是單一請求端到端，不是並發吞吐。Decision Index 是 Liquid 生態內的指標，與 Microsoft 那 36 個 benchmark 不可直接相比。同樣地，<strong>沒有任何醫療 benchmark</strong>，所有臨床推論都是本報告的外推。</span>
-        <span class="en">The page gives <strong>no licence name and no cost figures</strong> — without restrictions is marketing copy, not a licence term, and the actual conditions live in the Hugging Face model card. It <strong>reports no private vision split and no dedicated audio decision benchmark</strong>, so d1-omni-600M's 15.95 can only be read as a starting point. Latency is reported for d1-3B only, single-request end-to-end rather than concurrent throughput. The Decision Index is a metric inside Liquid's own ecosystem and is not directly comparable to Microsoft's 36 benchmarks. And again, <strong>no medical benchmark at all</strong>: every clinical inference here is this report's extrapolation.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://www.liquid.ai/blog/d1-open" target="_blank" rel="noopener">Liquid AI, d1 open-weight decision models, 2026-10-07</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag"><span class="zh-inline">神經介面</span><span class="en-inline">Neural interface</span></span>
+      <span class="tag"><span class="zh-inline">神經介面</span></span>
       <span class="tag">Sabi</span><span class="tag">Khosla Ventures</span><span class="tag">10/09</span>
     </div>
     <h3>
       <span class="zh">一頂裝了約 10 萬顆非接觸感測器的棒球帽拿下 5,000 萬美元種子輪——而它明確不做醫療宣稱，這正是它值得醫療界注意的原因</span>
-      <span class="en">A baseball cap with about 100,000 non-contact sensors raises a $50M seed — and it makes no medical claim at all, which is precisely why healthcare should watch it</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">Sabi 10/9 於舊金山宣布 <a href="https://www.manilatimes.net/2026/10/10/tmt-newswire/globenewswire/sabi-raises-50-million-seed-round-led-by-khosla-ventures-to-put-a-brain-ai-interface-inside-a-baseball-cap/2442864" target="_blank" rel="noopener">5,000 萬美元種子輪，由 Khosla Ventures 領投</a>，參與者包括 Accel、Initialized Capital、前 OpenAI 產品長 Kevin Weil、DST Global、Collaborative Fund 與 Ascend。創辦人為執行長 Rahul Chhabra 與技術長 Atmadeep Banerjee，後者是 NeurIPS 2023 論文 MindEye（從非侵入式腦部紀錄解碼觀看影像）的共同第一作者；團隊含 Kernel、Apple、Microsoft、Meta、Adobe、Nike 的主管與史丹佛的神經科學家。產品是一頂內藏感測器的棒球帽，<strong>穿透頭髮讀取神經訊號，不需導電膠、不需手術、不需直接接觸頭皮</strong>；每顆感測器 1 至 5 毫米，以自製 EEG 晶片為核心，設計上可跨越最多 5 毫米的頭髮間隙，無線連接手機或電腦。訊號由一個「Brain Foundation Model」處理，訓練資料是<strong>超過 100,000 小時</strong>的標註非侵入式紀錄，收集時受試者想像詞彙或執行心理任務，Sabi 稱這是同類中已公開的最大資料集。規劃的三種互動：想像語音轉文字、意念轉 prompt、意圖預測（系統建議可能的按鍵或螢幕動作供使用者確認）。隱私設計上宣稱神經資料自感測器起即加密、推論在加密資料上執行使伺服器不會收到未加密訊號。原型預計於 <strong>CES 2027</strong> 亮相。</span>
-        <span class="en">On 9 Oct in San Francisco, Sabi announced a <a href="https://www.manilatimes.net/2026/10/10/tmt-newswire/globenewswire/sabi-raises-50-million-seed-round-led-by-khosla-ventures-to-put-a-brain-ai-interface-inside-a-baseball-cap/2442864" target="_blank" rel="noopener">$50M seed round led by Khosla Ventures</a>, with Accel, Initialized Capital, former OpenAI chief product officer Kevin Weil, DST Global, Collaborative Fund and Ascend participating. The founders are CEO Rahul Chhabra and CTO Atmadeep Banerjee, co-first author of MindEye, the NeurIPS 2023 paper on decoding viewed images from non-invasive brain recordings; the team includes leaders from Kernel, Apple, Microsoft, Meta, Adobe and Nike plus Stanford neuroscientists. The product is a baseball cap with hidden sensors that <strong>read neural signals through hair, with no gel, no surgery and no direct scalp contact</strong>. Each sensor measures 1 to 5 mm, is built around a custom EEG chip, is designed to work across up to 5 mm of hair, and connects wirelessly to a phone or computer. Signals are processed by a Brain Foundation Model trained on <strong>over 100,000 hours</strong> of labelled non-invasive recordings collected while participants imagined words or performed mental tasks — which Sabi calls the largest disclosed dataset of its kind. Three planned interactions: imagined speech to text, thought to prompt, and intent prediction, where the system suggests likely keystrokes or on-screen actions for the user to confirm. On privacy, it claims neural data is encrypted from the sensor onward and that inference runs on encrypted data so servers never receive unencrypted neural signals. An early prototype is set to debut at <strong>CES 2027</strong>.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">這是本週唯一一則「廣義 AI 直接吃進醫療地盤」的消息，而它的關鍵姿態是<strong>刻意不站進醫療</strong>：新聞稿明確把自己與臨床腦機介面對比，描述為日常使用裝置，不做任何醫療或臨床宣稱。這不是謙虛，是監理路徑的選擇——消費電子可以在 CES 亮相然後直接出貨，臨床 BCI 得走 FDA。但資料不管你怎麼自稱：一個蒐集 10 萬小時以上標註神經紀錄、放在日常頭戴裝置上、可持續採集的管線，<strong>在資料規模上會很快超過任何臨床 EEG 研究</strong>，而它不受研究倫理審查、不受 HIPAA 約束。對照 Imprivata 那則「醫院自己有 72% 的 AI 未經核准」，這是同一個問題的另一端：真正難管的 AI 不是進了醫院的那些，而是<strong>繞過醫療身分、直接在消費端採集醫療級訊號</strong>的那些。台灣在這塊沒有對應的法規抽屜：它既不是醫材，也不是 EEG 研究，而個資法處理「神經訊號是不是敏感個資」目前沒有明文。</span>
-        <span class="en">This is the week's one story where general AI walks straight onto medical ground, and its defining posture is <strong>deliberately not standing on it</strong>: the release explicitly contrasts the device with clinical brain-computer interfaces, describes it as for everyday use, and makes no medical or clinical claim. That is not modesty, it is a regulatory routing decision — consumer electronics can debut at CES and ship; a clinical BCI goes through the FDA. But data does not care what you call yourself. A pipeline collecting over 100,000 hours of labelled neural recordings, mounted on an everyday headwear device and able to keep collecting, <strong>will outscale any clinical EEG study very quickly</strong> — and it sits outside research ethics review and outside HIPAA. Read against the 72% of hospital AI running unapproved, this is the same problem from the other end: the hardest AI to govern is not what gets into hospitals but what <strong>bypasses medical identity and collects medical-grade signal directly on the consumer side</strong>. Taiwan has no matching regulatory drawer for this: it is neither a medical device nor EEG research, and the Personal Data Protection Act says nothing explicit about whether neural signal counts as sensitive personal data.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">這是<strong>公司新聞稿</strong>，所有效能與資料主張都未經獨立驗證。唯一的量化效能宣稱是自製晶片比廣泛使用的 Texas Instruments ADS1299 EEG 前端<strong>省電超過 50 倍</strong>，而這是內部 benchmark。新聞稿<strong>完全沒有準確率或錯誤率</strong>——對一個主打「想像語音轉文字」的裝置，這是最關鍵的缺口。也沒有定價、沒有監理狀態、沒有正式上市日期。產品目前是「預計在 CES 2027 亮相的早期原型」，不是出貨中的產品；「10 萬顆感測器」與「每顆 1 至 5 毫米」兩個數字如何在一頂帽子裡同時成立，新聞稿未說明。</span>
-        <span class="en">This is a <strong>company press release</strong> and none of its performance or dataset claims are independently verified. The single quantitative performance claim is that the custom chip is <strong>more than 50x as power-efficient</strong> as the widely used Texas Instruments ADS1299 EEG front end — an internal benchmark. The release gives <strong>no accuracy or error rate at all</strong>, the most important gap for a device whose headline is imagined speech to text. There is no pricing, no regulatory status and no general availability date. What exists is an early prototype set to debut at CES 2027, not a shipping product; and the release does not explain how 100,000 sensors and a 1-to-5 mm sensor size coexist inside one cap.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://www.manilatimes.net/2026/10/10/tmt-newswire/globenewswire/sabi-raises-50-million-seed-round-led-by-khosla-ventures-to-put-a-brain-ai-interface-inside-a-baseball-cap/2442864" target="_blank" rel="noopener">Sabi via GlobeNewswire / The Manila Times, 2026-10-09</a> ／ <a href="https://www.forbes.com/sites/rashishrivastava/2026/10/09/vinod-khosla-backs-an-ai-startup-building-a-mind-reading-baseball-cap/" target="_blank" rel="noopener">Forbes, 2026-10-09</a></p></div>
   </div>
 </section>
@@ -339,60 +302,49 @@
   <h2>02 — Product Analysis</h2>
   <div class="sec-title">
     <span class="zh">同一週、同一個品類、兩條相反的路：一邊把決策做成雲端 API 並壓到趨近免費，一邊把它做成開放權重塞進院內硬體——醫療該選哪一條，取決於你怕的是成本還是邊界</span>
-    <span class="en">One week, one category, two opposite routes: one turns decisions into a cloud API priced near zero, the other into open weights on in-hospital hardware. Which healthcare should take depends on whether you fear cost or boundaries</span>
   </div>
 
   <div class="grid2">
     <div class="panel">
       <h3>Microsoft-Decision-1</h3>
-      <p class="sub"><span class="zh-inline">雲端決策評分 API，回傳校準機率 · Microsoft（美國）</span><span class="en-inline">Cloud decision-scoring API returning calibrated probabilities · Microsoft (US)</span></p>
+      <p class="sub"><span class="zh-inline">雲端決策評分 API，回傳校準機率 · Microsoft（美國）</span></p>
       <p>
         <span class="zh"><strong>功能與定位。</strong>給定固定選項，單次通過回傳每個選項的校準機率，支援是／否、多選、評分與 rubric 評分（含對 agent 行動的評分），走結構化 API；底座 Qwen3.5-9B，Microsoft 說將改基於 MAI 與 OpenAI 模型。賣給已在 Microsoft Foundry 生態內、要替大量 LLM 呼叫找便宜替代品的企業，<a href="https://commandline.microsoft.com/microsoft-decision-1-model-foundry/" target="_blank" rel="noopener">也上 OpenRouter</a>。</span>
-        <span class="en"><strong>Function and position.</strong> Given fixed options, it returns a calibrated probability per option in a single pass, supporting yes/no, multiple-choice, rating and rubric grading — including grading of agent actions — via a structured API. The base is Qwen3.5-9B, which Microsoft says will be rebased on MAI and OpenAI models. It is sold to enterprises already inside Microsoft Foundry looking for a cheap substitute for high-volume LLM calls, and is <a href="https://commandline.microsoft.com/microsoft-decision-1-model-foundry/" target="_blank" rel="noopener">also on OpenRouter</a>.</span>
       </p>
       <ul class="clean">
-        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+        <li><span class="pro"><span class="zh-inline">優勢</span></span>
           <span class="zh">：定價結構本身就是護城河——<a href="https://commandline.microsoft.com/microsoft-decision-1-model-foundry/" target="_blank" rel="noopener">每百萬輸入 token 0.042 美元、輸出免費</a>，把「每一筆都評分」從預算議題變成工程議題。Xbox 內部案例是品質與 GPT-6 Sol 相當、成本低 200 倍。</span>
-          <span class="en">: the pricing structure is itself the moat — <a href="https://commandline.microsoft.com/microsoft-decision-1-model-foundry/" target="_blank" rel="noopener">$0.042 per million input tokens with free output</a> — which turns grade-every-record from a budget question into an engineering one. The internal Xbox case reports quality competitive with GPT-6 Sol at 200x lower cost.</span>
         </li>
-        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+        <li><span class="pro"><span class="zh-inline">優勢</span></span>
           <span class="zh">：穩健性數字是這類模型少見地有被量測的：<a href="https://commandline.microsoft.com/microsoft-decision-1-model-foundry/" target="_blank" rel="noopener">擾動輸入平均 1.3% 改變決策，選項改寫與順序重排零翻轉</a>。順序不變性對醫療分流表單特別重要，因為臨床系統裡選項順序常因 UI 版本而變。</span>
-          <span class="en">: robustness is unusually measured for this class of model — <a href="https://commandline.microsoft.com/microsoft-decision-1-model-foundry/" target="_blank" rel="noopener">1.3% of perturbed inputs change the decision, with zero flips for paraphrased or reordered options</a>. Order invariance matters especially for clinical triage forms, where option order shifts with UI versions.</span>
         </li>
-        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+        <li><span class="con"><span class="zh-inline">疑慮</span></span>
           <span class="zh">：全部是自述數字、無第三方對照、無單一總體準確度，而且<strong>36 個 benchmark 裡沒有任何一個被指名是醫療或臨床的</strong>。要用在分流上，院方得自己做內部驗證——而這份驗證的成本，很可能遠高於它省下的 token 錢。</span>
-          <span class="en">: everything is self-reported, with no third-party baseline and no single headline accuracy, and <strong>not one of the 36 benchmarks is named as medical or clinical</strong>. To use it for triage a provider must run its own validation — and that validation will likely cost far more than the token savings.</span>
         </li>
-        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+        <li><span class="con"><span class="zh-inline">疑慮</span></span>
           <span class="zh">：它是雲端 API，所以今天第一則新聞的整個威脅模型照樣適用：病人資料要離院、要走共享的雲端身分、而<a href="https://zenity.io/press-release/zenity-labs-discloses-agentcorruption-a-chain-of-aws-agentcore-flaws" target="_blank" rel="noopener">AgentCorruption 示範的就是雲端 agent 平台的預設權限邊界會錯</a>。對資料不得出境的管轄區，便宜救不了合規。</span>
-          <span class="en">: it is a cloud API, so the entire threat model of today's first story still applies — patient data leaves the building, travels under a shared cloud identity, and <a href="https://zenity.io/press-release/zenity-labs-discloses-agentcorruption-a-chain-of-aws-agentcore-flaws" target="_blank" rel="noopener">AgentCorruption is precisely a demonstration that default permission boundaries on cloud agent platforms get it wrong</a>. Where data may not leave the jurisdiction, cheap does not rescue compliance.</span>
         </li>
       </ul>
     </div>
 
     <div class="panel">
       <h3>Liquid AI d1-3B / d1-omni-600M</h3>
-      <p class="sub"><span class="zh-inline">開放權重、零輸出 token 的邊緣決策模型 · Liquid AI（美國）</span><span class="en-inline">Open-weight, zero-output-token edge decision models · Liquid AI (US)</span></p>
+      <p class="sub"><span class="zh-inline">開放權重、零輸出 token 的邊緣決策模型 · Liquid AI（美國）</span></p>
       <p>
         <span class="zh"><strong>功能與定位。</strong>同樣是單一次 forward pass 給出結構化決策，但<a href="https://www.liquid.ai/blog/d1-open" target="_blank" rel="noopener">以開放權重發布並明確針對邊緣硬體</a>：d1-3B 吃文字＋影像（建構於 LFM2.5-VL-3B），d1-omni-600M 吃文字＋影像或文字＋音訊（建構於 LFM2.5-Encoder-350M，官方自稱實驗性第一個 checkpoint）。賣點是你自己持有權重、自己決定它跑在哪台機器上。</span>
-        <span class="en"><strong>Function and position.</strong> Also a structured decision in a single forward pass, but <a href="https://www.liquid.ai/blog/d1-open" target="_blank" rel="noopener">shipped as open weights and aimed explicitly at edge hardware</a>: d1-3B takes text plus images (built from LFM2.5-VL-3B); d1-omni-600M takes text plus image or text plus audio (built from LFM2.5-Encoder-350M, described as an experimental first checkpoint). The pitch is that you hold the weights and decide which machine they run on.</span>
       </p>
       <ul class="clean">
-        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+        <li><span class="pro"><span class="zh-inline">優勢</span></span>
           <span class="zh">：延遲落在真實的院內硬體上——<a href="https://www.liquid.ai/blog/d1-open" target="_blank" rel="noopener">RTX 4090 上 8 毫秒、Jetson AGX Thor 16 毫秒、Jetson Orin Nano 50 毫秒</a>，且可透過 llama.cpp 跨 Apple、AMD、Qualcomm、NVIDIA 部署。每一幀一次推論的即時攝影機應用，對應的醫療場景是手術室動作辨識與流程計時。</span>
-          <span class="en">: latency lands on hardware hospitals actually own — <a href="https://www.liquid.ai/blog/d1-open" target="_blank" rel="noopener">8 ms on an RTX 4090, 16 ms on a Jetson AGX Thor, 50 ms on a Jetson Orin Nano</a> — deployable through llama.cpp across Apple, AMD, Qualcomm and NVIDIA. The one-pass-per-frame camera use case maps onto operating-room action recognition and workflow timing.</span>
         </li>
-        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+        <li><span class="pro"><span class="zh-inline">優勢</span></span>
           <span class="zh">：在 <a href="https://www.liquid.ai/blog/d1-open" target="_blank" rel="noopener">Decision Index v0.2.1 公開分割上 d1-3B 得 48.57</a>，官方稱與約 12 倍大的 Decider 35B-A3B 相當——意思是這條路不需要用「犧牲品質換本地部署」來說服人，至少在這個指標上不需要。</span>
-          <span class="en">: <a href="https://www.liquid.ai/blog/d1-open" target="_blank" rel="noopener">d1-3B scores 48.57 on the Decision Index v0.2.1 public split</a>, which the company says matches Decider 35B-A3B at roughly 12x the size — meaning this route does not have to be argued as quality traded away for local deployment, at least not on this metric.</span>
         </li>
-        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+        <li><span class="con"><span class="zh-inline">疑慮</span></span>
           <span class="zh">：<strong>授權名稱沒給</strong>。「下載、微調、部署不受限制」是官網的宣傳語，不是授權條款，而醫療機構的法務不會接受宣傳語。在確認 Hugging Face model card 上的實際授權之前，這個產品在合規評估上是空白的。</span>
-          <span class="en">: <strong>no licence is named</strong>. Download, fine-tune and deploy without restrictions is marketing copy on the company page, not a licence term, and no hospital legal team accepts marketing copy. Until the actual licence on the Hugging Face model card is confirmed, this product is a blank on a compliance review.</span>
         </li>
-        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+        <li><span class="con"><span class="zh-inline">疑慮</span></span>
           <span class="zh">：<a href="https://www.liquid.ai/blog/d1-open" target="_blank" rel="noopener">私有視覺分割與專門的音訊決策 benchmark 都沒有結果</a>，而 d1-omni-600M 只有 15.95。醫療最想用的兩個模態——影像與語音——剛好是這次最沒有被驗證的兩個。延遲也只報單一請求端到端，沒有並發吞吐，而醫院的真實負載是並發。</span>
-          <span class="en">: <a href="https://www.liquid.ai/blog/d1-open" target="_blank" rel="noopener">no private vision split and no dedicated audio decision benchmark are reported</a>, and d1-omni-600M sits at 15.95. The two modalities healthcare most wants — imaging and speech — are exactly the two least validated here. Latency is single-request end-to-end only, with no concurrent throughput, and hospital load is concurrent.</span>
         </li>
       </ul>
     </div>
@@ -401,7 +353,6 @@
   <div class="panel">
     <p>
       <span class="zh"><strong>兩者的真正對比不在分數，在威脅模型。</strong>Decision-1 便宜到可以每一筆都評分，但它把資料與身分都交給雲端，而這一週最大的新聞正是雲端 agent 平台的預設權限邊界是錯的；d1 把推論留在院內硬體上，但它連授權名稱都還沒公布。對一家台灣的醫學中心來說，可操作的結論不是二選一，而是<strong>分層</strong>：把「要不要通知、要不要優先」這種不離開院內的分流決策放在 d1 這條路上先做原型，同時把 Decision-1 當成<strong>評估工具而非生產元件</strong>——拿它的 rubric 評分能力去跑既有 AI 系統的回溯稽核，因為稽核資料可以去識別化，而臨床決策不行。</span>
-      <span class="en"><strong>The real contrast is not the score, it is the threat model.</strong> Decision-1 is cheap enough to grade every record, but it hands both data and identity to the cloud — and the week's biggest story is that default permission boundaries on cloud agent platforms were wrong. d1 keeps inference on in-hospital hardware, but has not even published a licence name. For a Taiwanese medical centre the actionable conclusion is not either/or but <strong>layering</strong>: prototype the triage decisions that never need to leave the building — does this warrant a notification, does this get priority — on the d1 route, while treating Decision-1 as <strong>an evaluation tool rather than a production component</strong>, pointing its rubric grading at retrospective audits of existing AI systems. Audit data can be de-identified; clinical decisions cannot.</span>
     </p>
   </div>
 </section>
@@ -411,81 +362,68 @@
   <h2>03 — Companies &amp; Competition</h2>
   <div class="sec-title">
     <span class="zh">誰站在哪裡、憑什麼、跟誰打</span>
-    <span class="en">Who stands where, on what, against whom</span>
   </div>
 
   <div class="tbl-wrap">
     <table>
       <thead><tr>
-        <th><span class="zh-inline">公司</span><span class="en-inline">Company</span></th>
-        <th><span class="zh-inline">近況與數字</span><span class="en-inline">Recent state &amp; numbers</span></th>
-        <th><span class="zh-inline">競爭定位與護城河</span><span class="en-inline">Position &amp; moat</span></th>
+        <th><span class="zh-inline">公司</span></th>
+        <th><span class="zh-inline">近況與數字</span></th>
+        <th><span class="zh-inline">競爭定位與護城河</span></th>
       </tr></thead>
       <tbody>
         <tr>
-          <td><strong>Anthropic</strong><br><span class="zh-inline">前沿模型 + 防禦方生態</span><span class="en-inline">Frontier models plus a defender ecosystem</span></td>
+          <td><strong>Anthropic</strong><br><span class="zh-inline">前沿模型 + 防禦方生態</span></td>
           <td>
             <span class="zh">10/8 推出 <a href="https://www.anthropic.com/news/anthropic-cyber-mission" target="_blank" rel="noopener">Cyber Mission</a>，CIDP 11 家創始夥伴、OSS Scanner 自述預期真陽性率逾 90%、資助 PSF／OpenSSF／Apache 等，經費出自 8 月設立的 0xDAF；6 月起的州與地方政府網防計畫已覆蓋美國過半數州。同一週 <a href="https://techcrunch.com/2026/10/08/anthropic-changes-usage-policy-to-ban-model-abuse-and-election-interference/" target="_blank" rel="noopener">使用政策更新（11/12 生效）禁止持續性虐待模型與假帳號欺騙活動</a>。</span>
-            <span class="en">Launched the <a href="https://www.anthropic.com/news/anthropic-cyber-mission" target="_blank" rel="noopener">Cyber Mission</a> on 8 Oct: 11 CIDP founding partners, an OSS Scanner with a self-stated expected true-positive rate above 90%, funding to the PSF, OpenSSF and Apache among others, drawn from the 0xDAF fund set up in August; its June programme for state and local government has reached over half of US states. The same week its <a href="https://techcrunch.com/2026/10/08/anthropic-changes-usage-policy-to-ban-model-abuse-and-election-interference/" target="_blank" rel="noopener">usage policy update, effective 12 Nov, banned sustained model abuse and deceptive fake-account campaigns</a>.</span>
           </td>
           <td>
             <span class="zh">護城河是「透過安全服務商中介進入 OT 營運者」這條通路——不賣給醫院，而是賣給 CrowdStrike、Dragos、Palo Alto 這些本來就在那裡的人。弱點是這條通路的定義裡沒有醫療，而<a href="https://thehackernews.com/2026/10/artex-ai-pentesting-tool-used-in-data.html" target="_blank" rel="noopener">攻擊者這一週也在用 Claude Code 找資料銷贓管道</a>，防禦方敘事與濫用事實同週出現。</span>
-            <span class="en">The moat is the channel into OT operators through security providers — not selling to hospitals but to CrowdStrike, Dragos and Palo Alto, who are already there. The weakness is that healthcare is not in that channel's definition, and <a href="https://thehackernews.com/2026/10/artex-ai-pentesting-tool-used-in-data.html" target="_blank" rel="noopener">the same week attackers were using Claude Code to find channels for selling stolen data</a> — the defender narrative and the misuse arriving together.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>Microsoft</strong><br><span class="zh-inline">把決策做成最便宜的 API 層</span><span class="en-inline">Decisions as the cheapest API layer</span></td>
+          <td><strong>Microsoft</strong><br><span class="zh-inline">把決策做成最便宜的 API 層</span></td>
           <td>
             <span class="zh">10/9 推出 <a href="https://commandline.microsoft.com/microsoft-decision-1-model-foundry/" target="_blank" rel="noopener">Decision-1：每百萬輸入 token 0.042 美元、輸出免費，底座 Qwen3.5-9B</a>，上 Foundry 與 OpenRouter；自述在 36 個 benchmark、近 15 萬題上最高準確度，比 GPT-6 Sol 快約 35 倍，Xbox 案例成本低 200 倍。</span>
-            <span class="en">Launched <a href="https://commandline.microsoft.com/microsoft-decision-1-model-foundry/" target="_blank" rel="noopener">Decision-1 on 9 Oct at $0.042 per million input tokens with free output, based on Qwen3.5-9B</a>, on Foundry and OpenRouter; self-reported highest accuracy across 36 benchmarks and nearly 150,000 questions, about 35x faster than GPT-6 Sol, and 200x lower cost in the Xbox case.</span>
           </td>
           <td>
             <span class="zh">護城河是 Foundry 的通路與「輸出免費」這個定價姿態——它不是在賣模型，是在用一個品類去綁住工作流控制層。弱點有兩層：底座是中國開放權重，而<a href="https://newsletter.semianalysis.com/p/beijing-will-not-pace-the-frontier" target="_blank" rel="noopener">那批發布有 94.9% 沒有安全揭露</a>；而它自己也說要改基於 MAI 與 OpenAI，等於承認現在的底座是過渡。</span>
-            <span class="en">The moat is Foundry distribution plus the free-output pricing posture: it is not selling a model so much as using a category to lock in the workflow-control layer. Two weaknesses: the base is Chinese open weights, and <a href="https://newsletter.semianalysis.com/p/beijing-will-not-pace-the-frontier" target="_blank" rel="noopener">94.9% of those releases carry no safety disclosure</a>; and Microsoft itself says it will rebase on MAI and OpenAI, conceding the current base is transitional.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>Liquid AI</strong><br><span class="zh-inline">同品類的開放權重／邊緣路線</span><span class="en-inline">The open-weight, edge route in the same category</span></td>
+          <td><strong>Liquid AI</strong><br><span class="zh-inline">同品類的開放權重／邊緣路線</span></td>
           <td>
             <span class="zh">10/7 在 Hugging Face 釋出 <a href="https://www.liquid.ai/blog/d1-open" target="_blank" rel="noopener">d1-3B（Decision Index v0.2.1 公開分割 48.57）與 d1-omni-600M（15.95）</a>，d1-3B 在 RTX 4090 上 8 毫秒、Jetson Orin Nano 上 50 毫秒；無授權名稱、無成本數字、無私有視覺分割結果。</span>
-            <span class="en">Released <a href="https://www.liquid.ai/blog/d1-open" target="_blank" rel="noopener">d1-3B (48.57 on the Decision Index v0.2.1 public split) and d1-omni-600M (15.95)</a> on Hugging Face on 7 Oct, with d1-3B at 8 ms on an RTX 4090 and 50 ms on a Jetson Orin Nano; no licence name, no cost figures, no private vision split result.</span>
           </td>
           <td>
             <span class="zh">護城河是「在你自己的硬體上、不離開本地」這個架構承諾，加上 llama.cpp 的跨硬體覆蓋——這對資料主權管轄區是 Microsoft 用降價買不到的東西。弱點是規模：它要跟 Foundry 的通路對打，而且連授權都還沒講清楚，醫療採購到不了法務這一關。</span>
-            <span class="en">The moat is the architectural promise of on your own hardware, never leaving the building, plus llama.cpp's cross-hardware reach — something Microsoft cannot buy with price cuts in data-sovereignty jurisdictions. The weakness is scale: it is up against Foundry distribution, and with the licence still unstated, a healthcare procurement cannot get past legal.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>AWS / Amazon</strong><br><span class="zh-inline">託管 agent 平台的既有龍頭</span><span class="en-inline">The incumbent in managed agent platforms</span></td>
+          <td><strong>AWS / Amazon</strong><br><span class="zh-inline">託管 agent 平台的既有龍頭</span></td>
           <td>
             <span class="zh">Bedrock AgentCore 被 <a href="https://zenity.io/press-release/zenity-labs-discloses-agentcorruption-a-chain-of-aws-agentcore-flaws" target="_blank" rel="noopener">AgentCorruption 鏈命中</a>；已完成緩解（IMDSv2 預設、縮減預設執行角色權限、移除 agent 互相呼叫與存取 Secrets Manager 的能力），Zenity 測試確認。通報到公開歷時九個半月（2025-12-25 至 2026-10-08）。</span>
-            <span class="en">Bedrock AgentCore was <a href="https://zenity.io/press-release/zenity-labs-discloses-agentcorruption-a-chain-of-aws-agentcore-flaws" target="_blank" rel="noopener">hit by the AgentCorruption chain</a>. Mitigations are complete — IMDSv2 by default, a reduced default execution role, agents no longer able to invoke each other or reach Secrets Manager — and Zenity confirmed the reduction. Disclosure to publication took nine and a half months (25 Dec 2025 to 8 Oct 2026).</span>
           </td>
           <td>
             <span class="zh">護城河是既有雲端佔有率與 IAM 生態，修補速度也確實把問題收掉了。弱點是這次暴露的不是一個 bug 而是<strong>預設組態的心智模型</strong>：把 agent 當成無狀態的 compute 而非需要分段的主體。同業之後要賣的就是這一句話，而醫療客戶問的第一個問題會是「我的每一個 agent 是不是獨立的信任邊界」。</span>
-            <span class="en">The moat is incumbent cloud share plus the IAM ecosystem, and the patch did close the issue. The weakness is that what was exposed is not a bug but the <strong>mental model of the default configuration</strong>: treating an agent as stateless compute rather than a principal needing segmentation. That sentence is what rivals will now sell against, and the first question from healthcare customers will be whether each of their agents is its own trust boundary.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>Imprivata</strong><br><span class="zh-inline">醫療身分與存取治理</span><span class="en-inline">Healthcare identity and access governance</span></td>
+          <td><strong>Imprivata</strong><br><span class="zh-inline">醫療身分與存取治理</span></td>
           <td>
             <span class="zh">9/15 公布 <a href="https://www.globenewswire.com/news-release/2026/09/15/3362174/0/en/new-imprivata-research-finds-72-of-healthcare-organizations-have-ai-tools-or-agents-deployed-without-formal-it-approval.html" target="_blank" rel="noopener">250 人調查：72% 無 IT 核准、28% agentic AI 在生產、44% 試辦中、88% 預期 agent 有自主性</a>；10/5 透過 <a href="https://www.axios.com/2026/10/05/ai-agents-hospital-risks" target="_blank" rel="noopener">Axios 把論述推成「憑證護城河」與「有罪推定」</a>。</span>
-            <span class="en">Published a <a href="https://www.globenewswire.com/news-release/2026/09/15/3362174/0/en/new-imprivata-research-finds-72-of-healthcare-organizations-have-ai-tools-or-agents-deployed-without-formal-it-approval.html" target="_blank" rel="noopener">250-respondent survey on 15 Sept: 72% without IT approval, 28% with agentic AI in production, 44% piloting, 88% expecting agent autonomy</a>, then pushed the argument through <a href="https://www.axios.com/2026/10/05/ai-agents-hospital-risks" target="_blank" rel="noopener">Axios on 5 Oct as a moat of credentials and guilty until proven innocent</a>.</span>
           </td>
           <td>
             <span class="zh">護城河是醫院單一登入與存取治理的既有裝機量，以及一位同時是急診醫師的首席醫療長所帶來的臨床可信度。弱點是它在賣的東西正是調查結論所指的東西，而這份調查沒有公開抽樣方法；它的真正競爭者不是另一家廠商，是醫院「先部署再治理」的慣性，和 KLAS 那套「能存取什麼／被允許做什麼／如何被監控」的三問標準誰先被 EHR 廠商內建。</span>
-            <span class="en">The moat is installed base in hospital single sign-on and access governance, plus the clinical credibility of a chief medical officer who is also an emergency physician. The weakness is that what it sells is exactly what its own survey points to, and the survey publishes no sampling method; its real competitor is not another vendor but hospitals' deploy-first-govern-later habit, and whether the EHR vendors build in the KLAS three-question standard — what can it access, what is it allowed to do, how is it monitored — first.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>Sabi</strong><br><span class="zh-inline">消費級非侵入式腦機介面</span><span class="en-inline">Consumer non-invasive brain interface</span></td>
+          <td><strong>Sabi</strong><br><span class="zh-inline">消費級非侵入式腦機介面</span></td>
           <td>
             <span class="zh"><a href="https://www.manilatimes.net/2026/10/10/tmt-newswire/globenewswire/sabi-raises-50-million-seed-round-led-by-khosla-ventures-to-put-a-brain-ai-interface-inside-a-baseball-cap/2442864" target="_blank" rel="noopener">10/9 宣布 5,000 萬美元種子輪，Khosla Ventures 領投</a>；自製 EEG 晶片宣稱比 TI ADS1299 省電逾 50 倍，Brain Foundation Model 訓練於逾 10 萬小時標註非侵入式紀錄，原型預計 CES 2027 亮相。無準確率、無定價、無監理狀態。</span>
-            <span class="en">Announced a <a href="https://www.manilatimes.net/2026/10/10/tmt-newswire/globenewswire/sabi-raises-50-million-seed-round-led-by-khosla-ventures-to-put-a-brain-ai-interface-inside-a-baseball-cap/2442864" target="_blank" rel="noopener">$50M seed led by Khosla Ventures on 9 Oct</a>; its custom EEG chip claims over 50x the power efficiency of the TI ADS1299, and its Brain Foundation Model is trained on over 100,000 hours of labelled non-invasive recordings, with a prototype due at CES 2027. No accuracy, no pricing, no regulatory status.</span>
           </td>
           <td>
             <span class="zh">護城河是資料：逾 10 萬小時的標註非侵入式紀錄，加上一個能持續採集的日常裝置形狀。它的競爭者名義上是 Neuralink 這類臨床 BCI，實質上不是——它選的是消費電子的監理路徑，所以真正的對手是 Apple 與 Meta 的穿戴感測線。弱點是它最關鍵的數字（想像語音轉文字的準確率）一個都沒公布，而這個品類過去十年的死法全都是「demo 很好、日常使用不堪用」。</span>
-            <span class="en">The moat is data: over 100,000 hours of labelled non-invasive recordings, plus an everyday device form factor that keeps collecting. Its nominal competitors are clinical BCIs like Neuralink, but not really — it chose the consumer-electronics regulatory route, so the real rivals are Apple's and Meta's wearable sensing lines. The weakness is that the number that decides everything, imagined-speech-to-text accuracy, is not published at all, and this category's standard failure mode for a decade has been a great demo that is unusable day to day.</span>
           </td>
         </tr>
       </tbody>
@@ -495,7 +433,6 @@
   <div class="panel">
     <p>
       <span class="zh"><strong>今天的競爭結構是一個缺口的形狀。</strong>供給側這一週同時備齊了三樣東西——便宜到趨近免費的決策評分（Microsoft）、可跑在院內硬體上的開放權重（Liquid AI）、以及一套把前沿模型送進關鍵基礎設施營運者的通路（Anthropic）。需求側也備齊了：72% 的醫療組織已經有未經核准的 AI 在跑，28% 已把 agentic AI 放上生產。<strong>缺的是把兩邊接起來的那一方</strong>：Anthropic 的 CIDP 名單上沒有醫院，Microsoft 與 Liquid AI 的 benchmark 裡沒有醫療，而 Imprivata 賣的是身分治理、不是模型。這個缺口通常由兩種人填：EHR 廠商把監控層內建（Epic 這類），或是監理機關用強制要求把它變成採購條件——而本週唯一真的在做第二件事的，是台灣衛福部的 SBOM 路線。</span>
-      <span class="en"><strong>Today's competitive structure is shaped like a gap.</strong> The supply side assembled three things in one week: decision scoring priced near zero (Microsoft), open weights that run on in-hospital hardware (Liquid AI), and a channel delivering frontier models to critical-infrastructure operators (Anthropic). The demand side is assembled too: 72% of health organisations already run unapproved AI and 28% have agentic AI in production. <strong>What is missing is whoever connects the two</strong>: Anthropic's CIDP list has no hospitals, Microsoft's and Liquid AI's benchmarks have no medicine, and Imprivata sells identity governance rather than models. Gaps like this get filled by one of two parties — EHR vendors building the monitoring layer in (an Epic), or a regulator turning it into a procurement condition by mandate. And the only party actually doing the second this week is Taiwan's MOHW, with its SBOM route.</span>
     </p>
   </div>
 </section>
@@ -505,34 +442,29 @@
   <h2>04 — Taiwan Angle</h2>
   <div class="sec-title">
     <span class="zh">台灣這一年在醫療 AI 資安上做的三件事，剛好一一對上本週國際新聞暴露的三個缺口——而其中一件，台灣可能比 FDA 早</span>
-    <span class="en">The three things Taiwan has done on medical AI security this year map one-to-one onto the three gaps this week's international news exposed — and on one of them, Taiwan may be ahead of the FDA</span>
   </div>
 
   <div class="panel">
     <p>
       <span class="zh"><strong>(1) SBOM 對上「上游沒有安全揭露」這個缺口。</strong>SemiAnalysis 這週算出 857 次中國模型發布只有 3.6% 有公開安全評測結果、94.9% 完全沒有——而這批開放權重正是今天多數醫療微調模型（以及 Microsoft Decision-1）的底座。衛福部的回應早在半年前就定調：<a href="https://blog.mohw.gov.tw/2101/" target="_blank" rel="noopener">在由 10 家醫院營運的負責任 AI 中心導入 SBOM 機制，要求進院的 AI 系統除通過獨立委員會的資安與個資審查外，還需揭露 SBOM 並完成弱點掃描</a>。衛福部資訊處長李建璋 5/6 在台灣資安大會醫療資安論壇的說法是，醫療 AI 的資安風險不只來自模型，整套系統常包含推論框架、第三方函式庫、容器映像檔與 API，任一元件有漏洞都可能成為入口——這段話幾乎就是 AgentCorruption 的事前描述。他並指出美國 FDA 已將 SBOM 納入醫療軟體治理，<strong>台灣希望從實務端先行驗證，時程上可能早於 FDA 相關法規</strong>。把 AgentCorruption 擺進來看，SBOM 的限制也同時清楚了：它能告訴你裝了哪些元件，不能告訴你那些元件被授予了什麼權限——而這次出事的是權限範圍，不是元件清單。台灣下一步該補的是「agent 權限清單」，不是更細的 SBOM。</span>
-      <span class="en"><strong>(1) SBOM against the gap of no upstream safety disclosure.</strong> SemiAnalysis calculated this week that of 857 Chinese model releases, only 3.6% ever carried a published safety result and 94.9% carried none — and these open weights are the base for most medical fine-tunes today, Microsoft's Decision-1 included. Taiwan's MOHW settled its answer half a year ago: <a href="https://blog.mohw.gov.tw/2101/" target="_blank" rel="noopener">introducing SBOM into the responsible-AI centres run by 10 hospitals, requiring any AI system entering a hospital to disclose an SBOM and complete vulnerability scanning on top of passing an independent committee's security and personal-data review</a>. Speaking at the healthcare security forum of the Taiwan Cybersecurity Conference on 6 May, MOHW chief of information Lee Chien-chang argued that the security risk in medical AI is not only the model: the full system usually includes an inference framework, third-party libraries, container images and APIs, and a flaw in any component can become the entry point. That is very nearly an advance description of AgentCorruption. He also noted that the US FDA has already folded SBOM into medical software governance and that <strong>Taiwan wants to validate from the practice end first, possibly ahead of the FDA's own rules</strong>. Set AgentCorruption beside it, though, and SBOM's limit is equally clear: it tells you which components are installed, not what permissions those components were granted — and what failed here was the permission scope, not the component list. Taiwan's next addition should be an agent permission inventory, not a finer-grained SBOM.</span>
     </p>
   </div>
 
   <div class="panel">
     <p>
       <span class="zh"><strong>(2) SMART Scope 與 FHIR Box 對上「取得存取之後 agent 被允許做什麼」這個缺口。</strong>Imprivata 的論點是治理必須定義 agent 取得存取之後被授權做什麼，而 Sean Kelly 要的「憑證護城河」——只在限定時間內執行特定任務——在台灣其實已經有一個國家級的雛形：<a href="https://blog.mohw.gov.tw/2101/" target="_blank" rel="noopener">國家級 SMART on FHIR 應用市集已上架 115 款應用，並採用 Smart Scope 機制，讓 App 只能存取獲明確授權的特定欄位</a>。這是欄位級授權，不是系統級授權，而 Otter 那起事故（<a href="https://www.axios.com/2026/10/05/ai-agents-hospital-risks" target="_blank" rel="noopener">七名病人的資訊寄給 65 個人</a>）本質上就是系統級授權的必然產物。基礎設施這一面也在推進：<a href="https://udn.com/news/story/7240/9754542" target="_blank" rel="noopener">衛福部長石崇良表示每家醫學中心將獲配一個 FHIR Box，在不替換醫院既有資訊系統的前提下標準化並安全交換資料，預計 2026 年底完成各醫學中心關鍵資料串接、2027 年底達成全國醫院資料串聯</a>。可操作的建議很具體：<strong>把 Smart Scope 的欄位級授權模型直接套到 agent 上</strong>，不要為 agent 另開一套權限體系——因為 AgentCorruption 的教訓正是「為 agent 另開的那套預設權限最寬」。</span>
-      <span class="en"><strong>(2) SMART Scope and FHIR Box against the gap of what an agent may do once it has access.</strong> Imprivata's argument is that governance must define what an agent is authorised to do after access is granted, and Sean Kelly's moat of credentials — tasks performed only for a set time — already has a national-scale prototype in Taiwan: <a href="https://blog.mohw.gov.tw/2101/" target="_blank" rel="noopener">the national SMART on FHIR app marketplace lists 115 applications and uses Smart Scope so an app can only reach the specific fields it was explicitly authorised for</a>. That is field-level authorisation rather than system-level, and the Otter incident — <a href="https://www.axios.com/2026/10/05/ai-agents-hospital-risks" target="_blank" rel="noopener">seven patients' information emailed to 65 people</a> — is what system-level authorisation inevitably produces. The infrastructure side is moving too: <a href="https://udn.com/news/story/7240/9754542" target="_blank" rel="noopener">Health Minister Shih Chung-liang says each medical centre will receive a FHIR Box that standardises and securely exchanges data without replacing the hospital's existing information systems, with key data at all medical centres connected by the end of 2026 and nationwide hospital linkage targeted for the end of 2027</a>. The actionable recommendation is concrete: <strong>apply the Smart Scope field-level authorisation model directly to agents</strong> rather than standing up a separate permission regime for them — because AgentCorruption's lesson is precisely that the separate regime built for agents had the widest defaults.</span>
     </p>
   </div>
 
   <div class="panel">
     <p>
       <span class="zh"><strong>(3) 醫療主權雲與邊緣決策模型對上「資料與身分交給雲端」這個缺口。</strong>衛福部<a href="https://blog.mohw.gov.tw/2101/" target="_blank" rel="noopener">今年 1 月已與微軟、Google Cloud、AWS 協調醫療主權雲八大方針，重點包括醫療資料留存臺灣、全程加密、金鑰由醫院掌握、未經授權不得二次利用、系統具韌性與可稽核性、管理人員須為本國籍；醫院改用公有雲成本可能增加 5% 至 15%</a>，正式版本預計近期公布。本週 Liquid AI 的 d1 剛好把這道算式改寫了一次：如果一部分決策工作可以用開放權重跑在院內的 Jetson 上（<a href="https://www.liquid.ai/blog/d1-open" target="_blank" rel="noopener">Orin Nano 50 毫秒</a>），那麼那 5% 到 15% 的雲端溢價就只需要付在真正需要雲端的工作上。這一題在台灣的緊迫性有一個數字可以量：<a href="https://blog.mohw.gov.tw/2101/" target="_blank" rel="noopener">榮總、臺大等大型醫院每月約遭受 150 萬至 200 萬次攻擊</a>，李建璋認為與地緣政治有關，而去年的 Crazy Hunter 勒索軟體事件已促使政府把醫療資安提升至國安層級。對照 Anthropic 的 CIDP 把電網與水利納入、醫院排除在外，台灣的情況正好相反——醫療資安已經是國安層級，缺的不是定位而是工具。<strong>所以本週對台灣最務實的一條線不是等誰來把醫院加進名單，而是把 CIDP 對 OT 營運者的那三樣東西（前沿模型、駐點工程師、威脅研究）寫進負責任 AI 中心的採購規格裡。</strong></span>
-      <span class="en"><strong>(3) The sovereign medical cloud and edge decision models against the gap of handing data and identity to the cloud.</strong> In January the MOHW <a href="https://blog.mohw.gov.tw/2101/" target="_blank" rel="noopener">coordinated eight principles for a sovereign medical cloud with Microsoft, Google Cloud and AWS: health data stays in Taiwan, encryption throughout, keys held by the hospital, no secondary use without authorisation, resilience and auditability, and management personnel who are Taiwanese nationals, with public-cloud migration costs possibly rising 5% to 15%</a>; the formal version is due shortly. Liquid AI's d1 rewrote that arithmetic this week: if part of the decision workload can run on open weights on an in-hospital Jetson (<a href="https://www.liquid.ai/blog/d1-open" target="_blank" rel="noopener">50 ms on an Orin Nano</a>), then that 5-to-15% cloud premium only has to be paid on the work that genuinely needs the cloud. The urgency has a number attached: <a href="https://blog.mohw.gov.tw/2101/" target="_blank" rel="noopener">large hospitals such as Veterans General and NTU absorb roughly 1.5 to 2 million attacks a month</a>, which Lee attributes partly to geopolitics, and last year's Crazy Hunter ransomware incident already pushed the government to treat health security as a national-security matter. Against Anthropic's CIDP including grid and water while excluding hospitals, Taiwan's position is the inverse: health security is already at national-security level, and what is missing is not the designation but the tooling. <strong>So the most practical thread for Taiwan this week is not waiting for someone to add hospitals to a list, but writing CIDP's three deliverables for OT operators — frontier models, on-site engineers, threat research — into the procurement specifications of the responsible-AI centres.</strong></span>
     </p>
   </div>
 
   <div class="panel">
     <p>
       <span class="zh"><strong>補一條時間軸上的對照。</strong>10/5 衛福部舉辦 2026 國產 AI、3D 醫療影像暨元宇宙應用大會，<a href="https://udn.com/news/story/7266/9795500" target="_blank" rel="noopener">台大醫院院長余忠仁表示台大預計 2028 年完成全院 AI 自動 3D 醫療影像轉換架構；智捷醫學科技的 Anatomy Cloud AI 3D 平台自動把 2D 影像轉成 3D 解剖模型，據稱最快約 5 分鐘，該公司捐出 10 台工作站，衛福部計畫部署到醫學中心與公立醫院當示範單位；臺中榮總榮譽院長陳適安則指出 3D 影像要走進常規照護，需要服務與給付機制，部分醫院正在申請 3D 影像的自費收費代碼，未來可能連結健保方案</a>。把這一則跟本週的決策模型放在一起，台灣的順序其實是對的：先建資料標準與交換（FHIR Box）、再建影像與 3D 的產出能力、然後才是給付。但 Decision-1 與 d1 這週提醒的是，<strong>中間還缺一層「每一筆都被評分與稽核」的監控層</strong>，而這一層現在的邊際成本已經低到不該再被排到 2028 年之後。</span>
-      <span class="en"><strong>One timeline comparison to add.</strong> On 5 Oct the MOHW held the 2026 Domestic AI, 3D Medical Imaging and Metaverse Application Conference, where <a href="https://udn.com/news/story/7266/9795500" target="_blank" rel="noopener">NTU Hospital director Yu Chung-jen said the hospital expects to complete an AI-based automated 3D medical image conversion framework across the whole hospital by 2028; Chih-Chieh Medical Technology's Anatomy Cloud AI 3D platform converts 2D images into 3D anatomical models automatically, reportedly in as little as about five minutes, and the company donated 10 workstations that the MOHW plans to deploy at medical centres and public hospitals as demonstration units; and Taichung Veterans General honorary director Chen Shih-an noted that 3D imaging needs service and payment mechanisms to reach routine care, with some hospitals applying for self-pay billing codes that could later link to NHI programmes</a>. Place that beside this week's decision models and Taiwan's sequencing is in fact right: data standards and exchange first (FHIR Box), then imaging and 3D output capability, then payment. What Decision-1 and d1 point out, though, is that <strong>a monitoring layer that grades and audits every record is still missing in between</strong> — and its marginal cost is now low enough that it should not be queued behind 2028.</span>
     </p>
   </div>
 </section>
@@ -542,29 +474,28 @@
   <h2>05 — Further Reading</h2>
   <div class="sec-title">
     <span class="zh">挑的是本週讀完會改變你對某件事的估計值的四篇，而不是資訊量最大的四篇</span>
-    <span class="en">Four pieces chosen because reading them changes an estimate you hold, not because they carry the most information</span>
   </div>
 
   <ol class="reading">
     <li>
       <a href="https://newsletter.semianalysis.com/p/beijing-will-not-pace-the-frontier" target="_blank" rel="noopener">Beijing Will Not Pace The Frontier — SemiAnalysis (2026-10-08)</a>
-      <p class="why"><span class="zh">值得讀的是方法論那一段，不是結論。它把「合格的安全評測結果」的判準寫得很硬（須量化或實質、須綁定具名模型、「已做安全訓練」不算），並且明確說「查無」只適用於所查核的材料——這套自我設限的寫法，比它的 3.6% 更值得任何想做供應鏈盤點的醫院抄走。</span><span class="en">Read it for the methodology section, not the conclusion. It defines what counts as a qualifying safety result unusually strictly — quantitative or substantive, tied to the named model, with safety-trained claims not counting — and says plainly that not found applies only to the materials checked. That self-limiting discipline is more worth copying, for any hospital planning a supply-chain inventory, than the 3.6% itself.</span></p>
+      <p class="why"><span class="zh">值得讀的是方法論那一段，不是結論。它把「合格的安全評測結果」的判準寫得很硬（須量化或實質、須綁定具名模型、「已做安全訓練」不算），並且明確說「查無」只適用於所查核的材料——這套自我設限的寫法，比它的 3.6% 更值得任何想做供應鏈盤點的醫院抄走。</span></p>
     </li>
     <li>
       <a href="https://www.axios.com/2026/10/05/ai-agents-hospital-risks" target="_blank" rel="noopener">Health care&rsquo;s emerging risk: unauthorized AI agents — Axios (2026-10-05)</a>
-      <p class="why"><span class="zh">讀它是為了 Otter 那三百字。整起事故裡沒有任何一步是漏洞、沒有攻擊者、沒有越權——只是一則週期性行事曆邀請加上設計上允許的轉錄與寄送行為，結果是七名病人的資訊寄給 65 個人。這是今天所有 agent 治理討論最便宜的一堂課。</span><span class="en">Read it for the three hundred words on Otter. Not one step in that incident was a vulnerability: no attacker, no privilege escalation — just a recurring calendar invite plus transcription and emailing that the design permitted, ending with seven patients' information sent to 65 people. It is the cheapest lesson available in any agent-governance discussion today.</span></p>
+      <p class="why"><span class="zh">讀它是為了 Otter 那三百字。整起事故裡沒有任何一步是漏洞、沒有攻擊者、沒有越權——只是一則週期性行事曆邀請加上設計上允許的轉錄與寄送行為，結果是七名病人的資訊寄給 65 個人。這是今天所有 agent 治理討論最便宜的一堂課。</span></p>
     </li>
     <li>
       <a href="https://blog.mohw.gov.tw/2101/" target="_blank" rel="noopener">衛福部推 SBOM 填補 AI 供應鏈漏洞、醫療主權雲八大方針 — 衛福部部落格轉載 ITHome (2026-05 刊出)</a>
-      <p class="why"><span class="zh">這是本報告唯一一篇非本週的推薦，刻意如此：讀過它再回去看 AgentCorruption，會發現李建璋半年前描述的風險結構（推論框架、第三方函式庫、容器映像檔、API，任一元件都可能是入口）幾乎逐項命中。它也是少見把成本講出來的政策文件——公有雲遷移 5% 到 15% 的溢價。</span><span class="en">The one recommendation here that is not from this week, deliberately so. Read it and then go back to AgentCorruption, and you find that the risk structure Lee Chien-chang described half a year ago — inference framework, third-party libraries, container images, APIs, any component a potential entry point — lands item by item. It is also a rare policy document that states a cost: a 5-to-15% premium on public-cloud migration.</span></p>
+      <p class="why"><span class="zh">這是本報告唯一一篇非本週的推薦，刻意如此：讀過它再回去看 AgentCorruption，會發現李建璋半年前描述的風險結構（推論框架、第三方函式庫、容器映像檔、API，任一元件都可能是入口）幾乎逐項命中。它也是少見把成本講出來的政策文件——公有雲遷移 5% 到 15% 的溢價。</span></p>
     </li>
     <li>
       <a href="https://www.liquid.ai/blog/d1-open" target="_blank" rel="noopener">d1: open-weight decision models — Liquid AI (2026-10-07)</a>
-      <p class="why"><span class="zh">跳過分數表，直接看延遲表。那六行硬體數字（RTX 4090 到 Jetson Orin Nano）決定了這一整個品類對醫療的意義——它不是「更便宜的 LLM」，而是「可以不離開院內的決策層」。讀完再去看它沒給授權名稱這件事，就知道這條路離採購還有多遠。</span><span class="en">Skip the score tables and go straight to the latency table. Those six hardware rows, from RTX 4090 to Jetson Orin Nano, decide what this whole category means for healthcare: not a cheaper LLM, but a decision layer that never has to leave the building. Then note that no licence is named, and you know how far this route still is from procurement.</span></p>
+      <p class="why"><span class="zh">跳過分數表，直接看延遲表。那六行硬體數字（RTX 4090 到 Jetson Orin Nano）決定了這一整個品類對醫療的意義——它不是「更便宜的 LLM」，而是「可以不離開院內的決策層」。讀完再去看它沒給授權名稱這件事，就知道這條路離採購還有多遠。</span></p>
     </li>
     <li>
       <a href="https://www.axios.com/2026/10/09/ai-companies-day-after-major-attack" target="_blank" rel="noopener">Scoop: AI companies plot &lsquo;the day after&rsquo; scenarios for public revolt — Axios (2026-10-09)</a>
-      <p class="why"><span class="zh">讀它不是為了那個 6 到 12 個月的預測（匿名、有動機、不可驗證），而是為了看清這些公司真正在準備的是什麼：不是技術止血，是立法框架的預先定錨。對醫療界的含意是，如果你想讓事故後的規則考慮到臨床現實，現在就該有人在那個房間裡。</span><span class="en">Read it not for the six-to-twelve-month forecast — anonymous, interested, unverifiable — but to see what these companies are actually preparing: not technical containment but pre-anchoring the legislative frame. The implication for healthcare is that if you want post-incident rules to account for clinical reality, someone from your side needs to be in that room now.</span></p>
+      <p class="why"><span class="zh">讀它不是為了那個 6 到 12 個月的預測（匿名、有動機、不可驗證），而是為了看清這些公司真正在準備的是什麼：不是技術止血，是立法框架的預先定錨。對醫療界的含意是，如果你想讓事故後的規則考慮到臨床現實，現在就該有人在那個房間裡。</span></p>
     </li>
   </ol>
 </section>
@@ -574,7 +505,6 @@
   <h2>06 — References</h2>
   <div class="sec-title">
     <span class="zh">參考文獻</span>
-    <span class="en">References</span>
   </div>
 
   <div class="panel">
@@ -598,7 +528,6 @@
     </ol>
     <div class="note">
       <span class="zh"><strong>編輯說明：</strong>(1) 本期主線五則（Zenity、Anthropic、ARTEX／CrowdStrike、Axios 兩篇）與三則產品消息（Microsoft、Liquid AI、Sabi）均經逐篇造訪原始頁面查證，所引數字取自該頁面可見內容。(2) <strong>廠商自述、未經第三方稽核的數字</strong>：Anthropic OSS Scanner 的「真陽性率預期逾 90%」是預期值而非實測；Microsoft Decision-1 的 36 個 benchmark、15 萬題、35 倍速、200 倍成本、1.3% 擾動翻轉率全為 Microsoft 內部測試；Liquid AI 的 Decision Index 分數與延遲為官方自述、未見第三方複現；Sabi 的「省電逾 50 倍」為內部 benchmark，且該則全文為公司新聞稿，無準確率、無定價、無監理狀態。(3) <strong>調查方法未完整公開</strong>：Imprivata 的 250 人調查為廠商委託，未公布抽樣方法與地區分布；Black Book 的新聞稿未提供樣本數與方法，本報告僅引用其框架（六層破口、十項控制），未引用任何未經揭露的百分比。(4) <strong>二手引用</strong>：澳洲 OpenAI agent 事故細節經 Axios 援引 Cloud Security Alliance 報告，非一手政府公告；ARTEX 一則中 CrowdStrike 的研究發現經 The Hacker News 轉述，未取得 CrowdStrike 原始報告；SCARLET LOOP 數字源自同篇報導所引的 ZenoX。(5) <strong>窗口外延</strong>：台灣視角所引的衛福部 SBOM 與醫療主權雲八大方針刊出於 2026 年 5 月，石崇良生技論壇預告文為 2026-09-15，均超出本期 10/03–10/10 的七日窗口，係為提供政策脈絡而刻意前推，已在正文與本清單標註日期。(6) <strong>付費牆</strong>：Forbes 與 SemiAnalysis 部分內容可能受付費牆限制，本報告所引均取自可公開瀏覽的頁面內容；Bloomberg 相關消息未納入引用。(7) <strong>Memento 3 在 ARC-AGI-3 上的成績</strong>在初步盤點中出現，但原始論文頁面查證失敗，故本期未採用。</span>
-      <span class="en"><strong>Editor's note:</strong> (1) The five main stories (Zenity, Anthropic, ARTEX/CrowdStrike and both Axios pieces) and the three product stories (Microsoft, Liquid AI, Sabi) were each verified by visiting the original page, and the figures quoted come from content visible there. (2) <strong>Vendor-reported figures not independently audited</strong>: Anthropic's above-90% true-positive rate for OSS Scanner is an expectation, not a measurement; Decision-1's 36 benchmarks, 150,000 questions, 35x speed, 200x cost and 1.3% perturbation flip rate are all Microsoft's internal testing; Liquid AI's Decision Index scores and latencies are self-reported with no third-party reproduction found; Sabi's over-50x power efficiency is an internal benchmark, and that entire story rests on a company press release with no accuracy, pricing or regulatory status. (3) <strong>Incompletely published survey methodology</strong>: Imprivata's 250-respondent survey is vendor-commissioned with no sampling method or geographic breakdown published; Black Book's release gives no sample size or methodology, so this report cites only its framework (six breach-path layers, ten controls) and none of its undisclosed percentages. (4) <strong>Secondary citation</strong>: details of the Australian OpenAI agent incident reach Axios via a Cloud Security Alliance report rather than a first-party government notice; CrowdStrike's findings in the ARTEX story are relayed by The Hacker News, with the original CrowdStrike report not obtained; the SCARLET LOOP figures come from ZenoX as cited in that same piece. (5) <strong>Window extended</strong>: the MOHW SBOM and sovereign-medical-cloud items in the Taiwan section were published in May 2026, and the Shih Chung-liang biotech forum preview is dated 2026-09-15 — both outside this edition's 3–10 Oct window, carried deliberately for policy context, with dates marked in the body and in this list. (6) <strong>Paywalls</strong>: parts of Forbes and SemiAnalysis may sit behind paywalls, and everything cited here was taken from publicly viewable page content; Bloomberg-sourced items were not cited. (7) <strong>Memento 3's ARC-AGI-3 result</strong> surfaced during the initial sweep, but verification of the source paper page failed, so it is not used in this edition.</span>
     </div>
   </div>
 </section>
@@ -607,7 +536,6 @@
   <div class="foot-row">
     <div>
       <span class="zh">AI／醫療AI 每日新知日報 · 由 Claude 於台北時間每日自動產出 · 本期主題：星期六／廣義 AI 新知<br>本報告內容經來源查證，但不構成投資或醫療建議。所有數據請以原始出處為準。</span>
-      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Saturday / General AI<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
     </div>
     <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com / 返回 peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
   </div>
@@ -620,16 +548,6 @@
 </div>
 
 <script>
-function setLang(l){
-  document.body.classList.remove('lang-zh','lang-en');
-  document.body.classList.add('lang-'+l);
-  document.documentElement.lang = (l==='zh') ? 'zh-Hant' : 'en';
-  document.getElementById('b-zh').classList.toggle('on', l==='zh');
-  document.getElementById('b-en').classList.toggle('on', l==='en');
-  document.title = (l==='zh')
-    ? 'AI／醫療AI 每日新知日報 · 2026-10-10'
-    : 'AI & Medical AI Daily · 2026-10-10';
-}
 function toggleTheme(){
   document.body.classList.toggle('dark');
   document.getElementById('theme-ic').textContent =
@@ -656,5 +574,6 @@ window.addEventListener('scroll', function(){
     .catch(function(){});
 })();
 </script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/en/reports/2026-10-10.html" hreflang="en" rel="alternate" lang="en">English version</a></p>
 </body>
 </html>
