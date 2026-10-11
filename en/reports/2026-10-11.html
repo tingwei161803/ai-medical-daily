@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>AI &amp; Medical AI Daily · 2026-10-11</title>
+<meta property="og:url" content="https://ai-medical-daily.peteraim.com/en/reports/2026-10-11.html" />
+<link rel="canonical" href="https://ai-medical-daily.peteraim.com/en/reports/2026-10-11.html" />
+<link rel="alternate" hreflang="zh-Hant" href="https://ai-medical-daily.peteraim.com/reports/2026-10-11.html" />
+<link rel="alternate" hreflang="en" href="https://ai-medical-daily.peteraim.com/en/reports/2026-10-11.html" />
+<link rel="alternate" hreflang="x-default" href="https://ai-medical-daily.peteraim.com/reports/2026-10-11.html" />
+<meta name="description" content="The week's dividing line was not the model: what actually lowered mortality was a non-LLM deterioration score wired into a rapid-response workflow; the public money for agent accountability came to $1.5 million; and the only quantitative post-market signal is still recalls — 60 of 950 cleared AI devices recalled 182 times, 43.4% within the first year.">
+<meta name="report-date" content="2026-10-11">
+<meta name="report-theme" content="weekly-review">
+<meta name="report-title-zh" content="本週要把三筆數字釘在一起看才成立：10/5 那份 NEJM AI 研究用 11 家醫院、23,132 名病人，把 EDI&gt;60 高風險住院病人死亡率從 23.1% 壓到 18.6%、風險校正後死亡勝算降 18%、RRT 評估從 25.3% 升到 37.5%，而它靠的是 Epic 一個不含 LLM 的惡化指數；同一週替「agent 問責」開出的公開資金，是 10/6 HHS ONC 的 150 萬美元兩案；而 10/8 KFF 整理出的上市後唯一量化訊號，是 950 張 FDA 核准 AI 醫材裡 60 張被召回 182 次、其中 79 次發生在核准後 12 個月內">
+<meta name="report-title-en" content="Three numbers from this week only make sense held together: the NEJM AI study (10/5) cut mortality among high-risk inpatients from 23.1% to 18.6% across 11 hospitals and 23,132 patients — an 18% risk-adjusted reduction in the odds of death, rapid-response evaluations rising from 25.3% to 37.5% — and it ran on an Epic deterioration index with no LLM in it; the public money for agent accountability was $1.5 million in two ONC awards on 10/6; and the only quantitative post-market signal, as KFF laid it out on 10/8, is that 60 of 950 FDA-cleared AI devices were recalled 182 times, 79 of them within 12 months of clearance">
+<meta name="report-summary-zh" content="本週的分水嶺不在模型：真正壓低死亡率的是一個接進 rapid response 流程、不含 LLM 的惡化分數；替 agent 建問責機制的公開資金只有 150 萬美元；而上市後唯一的量化訊號仍是召回——950 張 AI 醫材、60 張被召回 182 次、43.4% 發生在核准後第一年。">
+<meta name="report-summary-en" content="The week's dividing line was not the model: what actually lowered mortality was a non-LLM deterioration score wired into a rapid-response workflow; the public money for agent accountability came to $1.5 million; and the only quantitative post-market signal is still recalls — 60 of 950 cleared AI devices recalled 182 times, 43.4% within the first year.">
+<meta property="og:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HJLDQZDK5V');
+</script>
+<link rel="stylesheet" href="/assets/report.css">
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><span>◆</span> <span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <div class="bar-sp"></div>
+    <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
+    <div class="seg">
+      <a href="/reports/2026-10-11.html" hreflang="zh-Hant" lang="zh-Hant" rel="alternate">中文</a>
+      <a class="on" href="/en/reports/2026-10-11.html" hreflang="en" lang="en" aria-current="page">EN</a>
+    </div>
+    <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="kicker">
+    <span class="en-inline">Sunday · Weekly Review &amp; Further Reading</span>
+  </div>
+  <h1>
+    <span class="en">The system that actually lowered mortality this week had no LLM in it — and the public money for agent accountability was $1.5 million</span>
+  </h1>
+  <div class="dateline">
+    <span class="en-inline">Sunday, October 11, 2026 · Covering Oct 5–11 · Taipei time</span>
+  </div>
+  <p class="lede">
+    <span class="en">Stack this week's six daily reports on top of each other and the through-line is not a stronger model — it is the <strong>burden of proof changing hands three times</strong>. In the clinic: the <a href="https://hitconsultant.net/2026/07/29/rwjbarnabas-rutgers-nejm-ai-epic-deterioration-index-mortality-reduc/" target="_blank" rel="noopener">NEJM AI study</a> (DOI 10.1056/AIoa2500973) across 11 hospitals and 23,132 patients took mortality among high-risk inpatients (EDI&gt;60) from 23.1% to 18.6% using an Epic deterioration index — no LLM — wired into a rapid response team; in the same week the Kenyan GPT-4o cluster-randomized trial in <a href="https://www.nature.com/articles/s41591-026-04503-6" target="_blank" rel="noopener">Nature Medicine</a> returned 2.2% versus 2.0% on its primary endpoint, aOR 0.77 (95% CI 0.55–1.08), p=0.13. In finance: the hospital CFO has become the adjudicator, while payers book the same dollars as their own cost — the <a href="https://aha.org/news/blog/2026-10-05-better-information-better-care-how-coding-supports-todays-complex-patients" target="_blank" rel="noopener">AHA's 10/5 rebuttal</a> converts BCBSA's $942 million into roughly 0.3 percentage points of total commercial spending growth. In accountability: <a href="https://healthit.gov/news/hhs-announces-2026-leap-in-health-it-awardees-to-accelerate-the-use-of-agentic-ai-in-clinical-care-and-close-gaps-in-laboratory-interoperability" target="_blank" rel="noopener">ONC's two LEAP awards on 10/6 came to $1.5 million</a>, and the only quantitative post-market signal, as <a href="https://kff.org/health-information-trust/ai-in-health-care-moves-toward-more-autonomous-roles" target="_blank" rel="noopener">KFF set out on 10/8</a>, is still recalls.</span>
+  </p>
+
+  <nav class="toc">
+    <a href="#top"><span class="en-inline">Top Stories</span></a>
+    <a href="#product"><span class="en-inline">Product Analysis</span></a>
+    <a href="#company"><span class="en-inline">Companies &amp; Competition</span></a>
+    <a href="#taiwan"><span class="en-inline">Taiwan Angle</span></a>
+    <a href="#reading"><span class="en-inline">Further Reading</span></a>
+    <a href="#refs"><span class="en-inline">References</span></a>
+  </nav>
+</div>
+
+<section id="top">
+  <h2>01 — Top Stories</h2>
+  <div class="sec-title">
+    <span class="en">Eight things, ordered by who vouches for the effect: a clinical endpoint, a hospital's finance office, a payer's bill, a third-party evaluator, a recall record — and last, the class with nobody vouching at all</span>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Lead thread</span></span>
+      <span class="tag">NEJM AI</span><span class="tag">Nature Medicine</span><span class="tag">Epic</span><span class="tag">10/05</span>
+    </div>
+    <h3>
+      <span class="en">1. Workflow beat model: the system that lowered mortality had no LLM, and the trial that had one missed its primary endpoint</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Monday's report set two studies side by side. The RWJBarnabas Health–Rutgers study in <em>NEJM AI</em> (DOI 10.1056/AIoa2500973) covered <strong>11 acute care hospitals and 23,132 patients</strong>: among the high-risk group flagged by an Epic Deterioration Index above 60, mortality fell from <strong>23.1% to 18.6%</strong>, a <strong>18% risk-adjusted reduction</strong> in the odds of death, while rapid response team evaluations rose from <strong>25.3% to 37.5%</strong> (<a href="https://hitconsultant.net/2026/07/29/rwjbarnabas-rutgers-nejm-ai-epic-deterioration-index-mortality-reduc/" target="_blank" rel="noopener">HIT Consultant</a>, <a href="https://www.news-medical.net/news/20260729/AI-enabled-tool-helps-identify-hospitalized-patients-at-risk-of-rapid-clinical-decline.aspx" target="_blank" rel="noopener">News-Medical</a>). There is no LLM anywhere in it: it is a notification pipeline that pushes an existing deterioration score to a rapid response team in real time. The counterpoint landed the same week in <a href="https://www.nature.com/articles/s41591-026-04503-6" target="_blank" rel="noopener">Nature Medicine</a> — a Kenyan trial across <strong>16 Penda Health clinics, 103 clinical officers and 9,691 patients</strong>, with GPT-4o (May 2025 release, temperature 0.1) embedded as AI Consult 2.0. The primary endpoint, expert-adjudicated treatment failure within 14 days, came in at <strong>2.2% (102/4,693) versus 2.0% (94/4,654)</strong>, <strong>aOR 0.77, 95% CI 0.55–1.08, p=0.13</strong>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This is the cleanest contrast of the week, and its conclusion is inconvenient for procurement: <strong>the pipeline that lands a notification on a human changes outcomes more than a model's reasoning does</strong>. What a hospital is actually buying is not the model but the answer to "who walks to the bedside, and in how many minutes."</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">The RWJBarnabas work is a before-and-after comparison inside one health system, not a randomized trial; the public coverage gives no confidence interval for the adjusted odds ratio and no figure for how often a notification actually fired among eligible hospitalizations. The Kenyan trial is properly cluster-randomized but missed significance; the further-adjusted aOR of 0.72 (0.50–1.03, p=0.07) is still only a trend. Neither supports "swap in an LLM and it gets better" or "LLMs don't work."</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://hitconsultant.net/2026/07/29/rwjbarnabas-rutgers-nejm-ai-epic-deterioration-index-mortality-reduc/" target="_blank" rel="noopener">HIT Consultant（NEJM AI DOI 10.1056/AIoa2500973）</a> ／ <a href="https://www.nature.com/articles/s41591-026-04503-6" target="_blank" rel="noopener">Nature Medicine 32:3032–3039, 2026-06-26</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Money vs proof</span></span>
+      <span class="tag">AHA</span><span class="tag">BCBSA</span><span class="tag">10/05</span>
+    </div>
+    <h3>
+      <span class="en">2. Payers and hospitals collided over the same $942 million — and the AHA points out no medical records were reviewed</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On 10/5 the American Hospital Association formally rebutted BCBSA's report that AI-assisted coding is inflating spending. Two charges sit at the centre: the analysis "insinuates conclusions about AI-enabled coding without reviewing the underlying medical records," and it "does not appear to identify which claims involved AI tools" (<a href="https://aha.org/news/blog/2026-10-05-better-information-better-care-how-coding-supports-todays-complex-patients" target="_blank" rel="noopener">AHA blog, 2026-10-05</a>, <a href="https://www.aha.org/news/headline/2026-10-05-aha-blog-responds-bcbs-report-suggesting-hospitals-use-ai-documentation-tools-drives-increased" target="_blank" rel="noopener">AHA Headline</a>). The AHA also lays out the magnitudes: BCBSA's <strong>$942 million is a cumulative 2023–2025 figure</strong>; per-member commercial inpatient costs at participating Blue plans rose about <strong>9%</strong> from 2023 to 2024, of which BCBSA attributed roughly <strong>20% (about 1.8 percentage points)</strong> to coding intensity; inpatient facility care is about <strong>17%</strong> of employer-sponsored health spending, which works out to roughly <strong>0.3 percentage points</strong> of total commercial spending growth — against a <strong>7%</strong> rise in employer family premiums in 2024. The AHA turns the same standard back on insurers, citing an HHS OIG audit of BlueCross and BlueShield of Alabama's Medicare Advantage submissions in which <strong>247 of 271</strong> sampled enrollee-years carried unsupported diagnoses.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Friday's report noted that the medical-AI products taking money this week moved the burden of proof from clinical endpoints to the hospital finance office. The 10/5 rebuttal shows the next move: <strong>once the standard of proof is financial, neither side's evidence needs a medical record</strong>. Payers infer AI's effect from claims data, hospitals prove AI's value from booked finance, and the chart in between — the only document that can settle whether a diagnosis holds — is opened by neither.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">The AHA is the hospitals' trade body and BCBSA the insurers' — two position papers marking each other down, not an independent audit. The 0.3-percentage-point figure is the AHA's own arithmetic, not something BCBSA concedes; and invoking the OIG audit, while factually sound, is not an answer to whether AI-assisted coding raises spending.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://aha.org/news/blog/2026-10-05-better-information-better-care-how-coding-supports-todays-complex-patients" target="_blank" rel="noopener">American Hospital Association, 2026-10-05</a> ／ <a href="https://healthsystemcio.com/2026/09/29/hospital-ai-coding-audit-trail/" target="_blank" rel="noopener">HealthSystemCIO（BCBSA 原始數字）, 2026-09-29</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Most underrated</span></span>
+      <span class="tag">HHS ONC</span><span class="tag">MedStar</span><span class="tag">Regenstrief</span><span class="tag">10/06</span>
+    </div>
+    <h3>
+      <span class="en">3. The first federal money for an agent accountability rail arrived — and it is $1.5 million</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On 10/6 ONC, within HHS, named two 2026 LEAP in Health IT awardees <strong>totalling $1.5 million</strong> (<a href="https://healthit.gov/news/hhs-announces-2026-leap-in-health-it-awardees-to-accelerate-the-use-of-agentic-ai-in-clinical-care-and-close-gaps-in-laboratory-interoperability" target="_blank" rel="noopener">HealthIT.gov</a>, <a href="https://www.fiercehealthcare.com/health-tech/weekly-rundown-hhs-awards-15m-ai-projects-arcadia-launches-portfolio-solutions" target="_blank" rel="noopener">Fierce Healthcare, 2026-10-09</a>). Area 1, agentic AI in clinical care, went to <strong>MedStar Health Research Institute</strong> for "Sovereign Execution: Vigilant, Gated and Verifiable Agentic Care" — a <strong>fully open-source middleware harness</strong> that orchestrates complex clinical follow-ups through durable long-running processes, builds patient-gated data pods on the <strong>Solid protocol</strong>, and routes AI tasks in a <strong>cryptographically verifiable</strong> way with tamper-evident certificates. Area 3, laboratory interoperability, went to the <strong>Regenstrief Institute</strong> for a toolkit helping small independent labs adopt standardized terminology. The notice posted 2026-06-16 and closed 2026-07-16; ONC named three areas of interest but received applications only for Areas 1 and 3.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Set this figure next to the week's others and the picture resolves. Thursday's report catalogued ever more complete agent orchestration frameworks; Saturday's recorded agents already moving laterally inside someone else's cloud account; Friday's rounds sold autonomous decisioning in tens of millions. <strong>The one piece of public money explicitly aimed at establishing who issued which instruction, when, and how it is verified is $1.5 million — smaller than any seed round this week.</strong> MedStar's design is at least the right shape for an answer: make the audit rail an open-source middleware layer rather than letting each vendor assert that it has one.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">ONC's notice does not say how the $1.5 million splits between the two awards, so what the agentic-AI project actually receives is unknown. This is a research grant, not a requirement: nothing will oblige anyone to adopt a Sovereign Execution Bridge once it exists, and the Solid protocol has almost no production-scale deployment record in healthcare.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://healthit.gov/news/hhs-announces-2026-leap-in-health-it-awardees-to-accelerate-the-use-of-agentic-ai-in-clinical-care-and-close-gaps-in-laboratory-interoperability" target="_blank" rel="noopener">ONC / HealthIT.gov, 2026-10-06</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Regulation</span></span>
+      <span class="tag">FDA</span><span class="tag">Utah</span><span class="tag">UK</span><span class="tag">10/05–10/07</span>
+    </div>
+    <h3>
+      <span class="en">4. Oversight moved post-market all week: Utah named six evaluators, the UK accepted all 44 recommendations, the FDA put two AI guidances on its FY2027 list</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On 10/5 Utah elevated its health AI sandbox to a "health care pillar," naming <strong>six third-party evaluators</strong> at once and opening three clinical pilots — prescription renewals, topical acne medication and pelvic floor physical therapy (<a href="https://www.fox13now.com/news/local-news/salt-lake-city/utah-launches-health-care-ai-push-with-new-clinical-pilots-outside-evaluators" target="_blank" rel="noopener">Fox 13</a>, <a href="https://www.deseret.com/politics/2026/10/05/utah-announces-partnership-with-major-healthcare-providers-to-create-artificial-intelligence-clinical-pilot-programs/" target="_blank" rel="noopener">Deseret News</a>). The list includes CHAI, whose assurance labs were shut down in 2025, and the startup <a href="https://www.financialcontent.com/article/bizwire-2026-10-5-vega-health-selected-as-third-party-evaluator-for-utahs-ai-sandbox" target="_blank" rel="noopener">Vega Health</a>. The acne pilot lets consumers obtain AI-generated prescriptions for topical medication through Nolla Health's Skin App, for a year (<a href="https://histalk2.com/2026/10/07/healthcare-ai-news-10-7-26/" target="_blank" rel="noopener">HISTalk, 2026-10-07</a>). On 10/6 the UK government <strong>accepted all 44 recommendations</strong> from the National Commission into the Regulation of AI in Healthcare, shifting the centre of gravity from one-time premarket approval to lifecycle monitoring (<a href="https://pharmaceutical-journal.com/article/news/government-accepts-all-44-recommendations-from-regulation-of-ai-in-healthcare-report" target="_blank" rel="noopener">The Pharmaceutical Journal</a>). And on 10/1 the FDA's CDRH put AI device lifecycle management and PCCP guidances on its <strong>FY2027 A-list</strong> (<a href="https://www.fda.gov/medical-devices/guidance-documents-medical-devices-and-radiation-emitting-products/cdrh-proposed-guidances-fiscal-year-2027-fy-2027" target="_blank" rel="noopener">FDA</a>, <a href="https://www.medtechdive.com/news/fda-to-prioritize-guidance-on-ai-surgical-robots-next-year/831984/" target="_blank" rel="noopener">MedTech Dive</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Three jurisdictions moved the same way in the same week: <strong>they stopped pretending AI can be cleared clean before launch, and switched to watching it after</strong>. Note what Utah did — it institutionalized third-party evaluation, and CHAI, shut down under federal political pressure, is on the list. The practical capacity to regulate did not disappear; it relocated from Washington to a statehouse.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">Between "accepting recommendations" and a working regime sit an act of legislation and a budget; the FDA's A-list is a schedule, and whether either guidance is finalized within FY2027 is undecided. Utah's pilots are small and run inside a voluntary state sandbox, and the six evaluators' methods and independence have no published, comparable standard. STAT's reporting on Utah sits behind a paywall; only publicly visible facts are used here.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.fox13now.com/news/local-news/salt-lake-city/utah-launches-health-care-ai-push-with-new-clinical-pilots-outside-evaluators" target="_blank" rel="noopener">Fox 13 Salt Lake City, 2026-10-05</a> ／ <a href="https://pharmaceutical-journal.com/article/news/government-accepts-all-44-recommendations-from-regulation-of-ai-in-healthcare-report" target="_blank" rel="noopener">The Pharmaceutical Journal, 2026-10-06</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Number of the week</span></span>
+      <span class="tag">KFF</span><span class="tag">JAMA Health Forum</span><span class="tag">CMS</span><span class="tag">10/08</span>
+    </div>
+    <h3>
+      <span class="en">5. Autonomy is running ahead, and the only quantitative post-market signal is this: 60 of 950 cleared AI devices recalled 182 times, 43.4% within 12 months of clearance</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On 10/8 KFF's <em>The Monitor</em> (Vol. 56) set two things side by side. On one side, the push toward autonomy: <strong>more than 200 companies</strong> have CMS approval to test tools of this kind, and the FDA has separately allowed <strong>four</strong> for use with Medicare patients outside its standard approval pathway. On the other, the only quantitative record of consequences — citing a <em>JAMA Health Forum</em> research letter, <strong>60 of 950 FDA-cleared AI devices (6.3%) were recalled a combined 182 times, with 79 of those (43.4%) within 12 months of clearance</strong> (<a href="https://kff.org/health-information-trust/ai-in-health-care-moves-toward-more-autonomous-roles" target="_blank" rel="noopener">KFF, 2026-10-08</a>). Go back to the paper and <a href="https://jamanetwork.com/journals/jama-health-forum/fullarticle/2837802" target="_blank" rel="noopener">Lee et al. (JAMA Health Forum 2025;6(8):e253172)</a> carry a sharper finding still: devices with <strong>no reported clinical validation averaged 3.4 recalls each</strong>, against 1.9 for retrospectively validated and 2.0 for prospectively validated ones; in multivariable analysis, lacking clinical validation carried an odds ratio for recall of <strong>2.8 (95% CI 1.6–4.7)</strong>. KFF also notes that the FDA's public docket on generative-AI devices <strong>closes 2026-10-19</strong> (<a href="https://www.mddionline.com/artificial-intelligence/fda-seeks-input-on-regulatory-framework-for-genai-medical-devices" target="_blank" rel="noopener">MD+DI</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This is the only empirical floor under the week's regulatory talk. All three jurisdictions in item 4 say they will watch post-market; this recall data says what post-market looks like: <strong>the risk is front-loaded into year one and strongly associated with whether clinical validation was done at all</strong>. The validation cost saved before clearance reappears as a recall in the first year after it — exactly the stretch that PCCP and lifecycle guidance are meant to cover and that is currently only on a schedule. For a buyer in Taiwan, this trio of numbers makes a better due-diligence checklist than any vendor white paper.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">The recall data comes from a research letter published in August 2025, not new work this week; what is new is KFF placing it in the context of autonomy. The "more than 200 companies with CMS approval" and "four allowed by the FDA" figures are KFF's citations of reporting in <em>The New York Times</em> and STAT; no primary document was obtained here. Recalls are a reporting artifact — they capture problems found and filed, not the full extent of harm.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://kff.org/health-information-trust/ai-in-health-care-moves-toward-more-autonomous-roles" target="_blank" rel="noopener">KFF The Monitor Vol. 56, 2026-10-08</a> ／ <a href="https://jamanetwork.com/journals/jama-health-forum/fullarticle/2837802" target="_blank" rel="noopener">JAMA Health Forum 2025;6(8):e253172</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Technology</span></span>
+      <span class="tag">arXiv</span><span class="tag">RadOnc-Agent</span><span class="tag">10/07</span>
+    </div>
+    <h3>
+      <span class="en">6. Orchestration reached 96.7% — and the authors themselves wrote that it "does not establish clinical correctness, clinical utility or prospective benefit"</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Thursday's lead was <a href="https://arxiv.org/abs/2610.06923" target="_blank" rel="noopener">RadOnc-Agent (arXiv:2610.06923, submitted 2026-10-02, surfacing in the 10/7 new-submissions list)</a>: an LLM controller that divides the radiotherapy care pathway into four clinical phases and strings together <strong>26 callable functions</strong>. The numbers are handsome — about <strong>98.8%</strong> correct function selection on single-function requests, about <strong>96.5%</strong> completion on synthetic cross-stage workflows and about <strong>96.7%</strong> on workflows built from de-identified patient records; ablations show that removing longitudinal state lowers cross-stage completion and that disabling validation produces frequent mismatched backend dispatch. Then, in the same paper, the authors state that these results <strong>"do not establish clinical correctness, clinical utility or prospective benefit"</strong> — technical feasibility only. The same week's <a href="https://arxiv.org/abs/2610.01938" target="_blank" rel="noopener">rubric landscape (arXiv:2610.01938)</a> broke clinical reasoning into six dimensions and found no single instrument covering them all, and the top score on the 54 tasks of <a href="https://arxiv.org/abs/2606.31179" target="_blank" rel="noopener">HealthAgentBench</a>, four months on, is still 42%.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">96.7% and 42% measure different things, and the gap between them is the state of the art this week: <strong>calling the right function is nearly solved; being clinically right is not yet being measured</strong>. That is also the easiest confusion to fall into when buying — the score a vendor demonstrates is usually the former.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">RadOnc-Agent is a preprint, not peer reviewed, and its evaluation is synthetic workflows plus retrospective replay of de-identified records — no patients, no prospective enrolment. The authors' limitation deserves quoting verbatim rather than being paraphrased into optimism.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://arxiv.org/abs/2610.06923" target="_blank" rel="noopener">arXiv:2610.06923, 2026-10-02</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Security</span></span>
+      <span class="tag">Zenity</span><span class="tag">AWS AgentCore</span><span class="tag">Anthropic</span><span class="tag">10/08</span>
+    </div>
+    <h3>
+      <span class="en">7. One public-facing agent was enough to read every private conversation and long-term memory in the account — and no hospital is on the critical-infrastructure defence roster</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On 10/8 Zenity Labs disclosed <strong>AgentCorruption</strong> at SecTor 2026, a chain of flaws in AWS Bedrock AgentCore: a single prompt to a public-facing agent reached the host's instance metadata service and yielded credentials for an overprivileged default IAM role, which in turn reached <strong>every AgentCore agent in the same AWS account and region</strong> — invoking internal agents, reading private conversations and long-term memories across users, retrieving agent source code from container images, and pulling credentials from Secrets Manager and environment variables. Researchers also <strong>planted malicious memories</strong> that redirected later conversations to an attacker-controlled destination. It was reported on <strong>2025-12-25</strong>, roughly <strong>287 days (about 9.5 months)</strong> before public disclosure; AWS has since made IMDSv2 the AgentCore default and cut the default execution role's permissions (<a href="https://zenity.io/press-release/zenity-labs-discloses-agentcorruption-a-chain-of-aws-agentcore-flaws" target="_blank" rel="noopener">Zenity, 2026-10-08</a>). The same day Anthropic launched <a href="https://www.anthropic.com/news/anthropic-cyber-mission" target="_blank" rel="noopener">Cyber Mission</a>, whose Critical Infrastructure Defense Program lists <strong>11 founding partners</strong> — Accenture, Booz Allen, Deloitte, PwC, CrowdStrike, Dragos, Insane Cyber, Nozomi Networks, Palo Alto Networks, Rockwell Automation and Hitachi — aimed at power grids, water systems, transportation and government systems, with <strong>no healthcare organization among them</strong> and no mention of healthcare as a target sector. Hospitals' own exposure, meanwhile, is the <strong>72% of organizations running AI tools or agents without formal IT approval</strong> found by <a href="https://www.globenewswire.com/news-release/2026/09/15/3362174/0/en/new-imprivata-research-finds-72-of-healthcare-organizations-have-ai-tools-or-agents-deployed-without-formal-it-approval.html" target="_blank" rel="noopener">Imprivata</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Stack item 3 against this one and it reads clearly: <strong>the agent attack surface now has a demonstrated case, its accountability layer has a $1.5 million research grant, and the defence coalition has not put hospitals on the list</strong>. Memory poisoning is the part that bites hardest in healthcare — a medical agent's long-term memory holds a patient's history and preferences, and persistent malicious content planted there does not damage a single conversation.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">Zenity sells agent security, so the disclosure carries a commercial motive; AWS has hardened the defaults and Zenity confirmed the permission reduction, so this is not a hole still standing open. Imprivata's 72% comes from vendor-commissioned research whose sampling and definitions are not independently audited. And healthcare's absence from Anthropic's roster means it is not in the first wave, not that it is excluded.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://zenity.io/press-release/zenity-labs-discloses-agentcorruption-a-chain-of-aws-agentcore-flaws" target="_blank" rel="noopener">Zenity Labs, 2026-10-08</a> ／ <a href="https://www.anthropic.com/news/anthropic-cyber-mission" target="_blank" rel="noopener">Anthropic, 2026-10-08</a> ／ <a href="https://www.axios.com/2026/10/05/ai-agents-hospital-risks" target="_blank" rel="noopener">Axios, 2026-10-05</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Distribution</span></span>
+      <span class="tag">Nextech</span><span class="tag">Elsevier</span><span class="tag">AHRQ</span><span class="tag">10/05–10/09</span>
+    </div>
+    <h3>
+      <span class="en">8. The distribution fight moved inside the EHR: Nextech took on two agentic-AI vendors at once, Elsevier sold clinical AI to nurses</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Across 10/5–10/9, <strong>Nextech</strong> integrated agentic AI patient-access tools from both Assort Health and EliseAI into its specialty EHR, letting clients choose between the two; both partnerships are multi-year with joint roadmaps and co-investment, and Assort will additionally co-develop an ophthalmology solution. No dollar figures were disclosed. <strong>Elsevier</strong> launched ClinicalKey Nursing AI, answering nurses' questions on procedures, medications and discharge planning with citations; in a <strong>four-week US test with 96 registered nurses</strong>, <strong>94% said it increased their confidence in clinical decisions and 73% reported time savings during shifts</strong>, and Elsevier says its nursing solutions are used in more than 2,800 hospitals worldwide. Separately, <strong>AHRQ</strong>'s Super Intelligence for Healthcare Improvement initiative proposed two competitions with <strong>$7.95 million</strong> in prizes, one of them for automating and speeding clinical evidence reviews (<a href="https://www.fiercehealthcare.com/health-tech/weekly-rundown-hhs-awards-15m-ai-projects-arcadia-launches-portfolio-solutions" target="_blank" rel="noopener">Fierce Healthcare, 2026-10-09</a>, <a href="https://histalk2.com/2026/10/07/healthcare-ai-news-10-7-26/" target="_blank" rel="noopener">HISTalk, 2026-10-07</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Tuesday's report said the money is buying "who uses it"; this is the distribution version of the same point. <strong>EHR vendors are no longer binding to one AI exclusively — they are shelving two as options</strong>, which is bad news for AI startups because it demotes the product to an interchangeable SKU on an EHR's shelf and leaves pricing power with the EHR. The Elsevier line is the one to watch: nurses are the largest group in a hospital and historically the least sold to.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">Elsevier's 94% and 73% are vendor-reported, from four weeks and 96 self-assessing nurses — satisfaction and perceived time saved, not a controlled trial, and with no patient outcomes or error rates. Neither Nextech deal discloses a figure, so the scale of the "co-investment" cannot be judged. And AHRQ's $7.95 million is proposed prize money, not money paid out.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.fiercehealthcare.com/health-tech/weekly-rundown-hhs-awards-15m-ai-projects-arcadia-launches-portfolio-solutions" target="_blank" rel="noopener">Fierce Healthcare Weekly Rundown, 2026-10-09</a></p></div>
+  </div>
+</section>
+
+<section id="product">
+  <h2>02 — Product Analysis</h2>
+  <div class="sec-title">
+    <span class="en">The two ends of autonomy: autonomous coding already shipping and billing, against an audit rail that only got its $1.5 million this week</span>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>AKASA Autonomous Inpatient Coding</h3>
+      <p class="sub"><span class="en-inline">Autonomous inpatient coding and CDI · AKASA (USA)</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> Launched 10/2, the platform completes inpatient coding and clinical documentation improvement in <strong>about 90 seconds</strong> after discharge; AKASA says its clients represent <strong>$180 billion in net patient revenue</strong> and roughly <strong>10%</strong> of US inpatient discharges (<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/akasa-debuts-autonomous-ai-platform-inpatient-medical-coding-cdi" target="_blank" rel="noopener">Fierce Healthcare, 2026-10-02</a>). The buyer is the revenue-cycle office, not a clinical department.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: one of the few products this week whose benefit can be booked on a financial statement — coding is work with a known unit price and cycle time, so the saving settles without a clinical endpoint, and the installed base is itself the distribution (<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/akasa-debuts-autonomous-ai-platform-inpatient-medical-coding-cdi" target="_blank" rel="noopener">Fierce Healthcare</a>).</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: this is exactly the line item 2 is fighting over. BCBSA books the 2023–2025 rise in inpatient coding complexity as <strong>$942 million</strong> in extra payments by Blue plans, and the AHA's 10/5 rebuttal says they <strong>reviewed no medical records</strong> and did not identify which claims involved AI (<a href="https://aha.org/news/blog/2026-10-05-better-information-better-care-how-coding-supports-todays-complex-patients" target="_blank" rel="noopener">AHA</a>). The product's benefit therefore sits inside a band that is <strong>actively contested, with neither side holding chart-level evidence</strong>; and "about 90 seconds" and the client scale are vendor-reported, with no independently audited accuracy or claim-denial rate.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>MedStar Sovereign Execution Bridge</h3>
+      <p class="sub"><span class="en-inline">Open-source agent audit middleware (ONC LEAP research award) · MedStar Health Research Institute (USA)</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> Selected on 10/6 under ONC's LEAP in Health IT (two awards totalling $1.5 million), under the full title "Sovereign Execution: Vigilant, Gated and Verifiable Agentic Care." It is not a product sold to hospitals but a layer: a <strong>fully open-source middleware harness</strong> that orchestrates complex clinical follow-ups through durable long-running processes, builds patient-gated data pods on the <strong>Solid protocol</strong>, and routes AI tasks in a cryptographically verifiable way with tamper-evident certificates (<a href="https://healthit.gov/news/hhs-announces-2026-leap-in-health-it-awardees-to-accelerate-the-use-of-agentic-ai-in-clinical-care-and-close-gaps-in-laboratory-interoperability" target="_blank" rel="noopener">HealthIT.gov, 2026-10-06</a>).</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: it addresses precisely the gap item 7 exposed. Zenity's AgentCorruption chain read long-term memories across users and <strong>planted persistent malicious memories</strong> (<a href="https://zenity.io/press-release/zenity-labs-discloses-agentcorruption-a-chain-of-aws-agentcore-flaws" target="_blank" rel="noopener">Zenity</a>) — and cryptographically verifiable task routing, tamper-evident certificates and patient-gated data pods are, by design, how such an act leaves an undeniable trace. Open-sourcing it is the right call too: an audit rail each vendor implements and self-certifies is not an audit rail.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: the scale is wholly out of proportion. Friday's three rounds alone ran into tens of millions, and AKASA's clients together carry $180 billion in net patient revenue, while this entire layer has $1.5 million of public money across two awards, with no published split. The practical worry is adoption: a research grant is neither a payment condition nor a regulatory requirement, so nothing obliges a hospital to wire it in — and the Solid protocol's production record in healthcare is close to blank.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="company">
+  <h2>03 — Companies &amp; Competition</h2>
+  <div class="sec-title">
+    <span class="en">Who stands where, on what, against whom</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th><span class="en-inline">Company</span></th>
+        <th><span class="en-inline">Recent state &amp; numbers</span></th>
+        <th><span class="en-inline">Position &amp; moat</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Abridge</strong><br><span class="en-inline">Ambient clinical documentation</span></td>
+          <td>
+            <span class="en">Took a seat on the VA's <strong>five-year, $775.72 million</strong> enterprise contract on 9/22 — a ceiling rather than a check, redeemable only through task orders from 170 medical centres, with Knowtex sharing the seat (<a href="https://www.nextgov.com/artificial-intelligence/2026/09/va-selects-abridge-ambient-scribe-under-new-enterprise-contract/416140/" target="_blank" rel="noopener">Nextgov</a>, <a href="https://theinference.org/article/abridge-s-775-72-million-va-win-is-a-ceiling-not-a-check" target="_blank" rel="noopener">The Inference</a>). It has clinical backing few peers can match: a UW Health randomized trial in <em>NEJM AI</em> found documentation time down <strong>30 minutes per provider per day</strong> and a clinically meaningful drop in burnout scores (<a href="https://www.med.wisc.edu/news/ambient-ai-improves-practitioner-well-being" target="_blank" rel="noopener">UW School of Medicine</a>).</span>
+          </td>
+          <td>
+            <span class="en">The moat is federal-scale distribution plus peer-reviewed evidence — a combination nobody else on this list holds. The thin part is that a task-order structure puts revenue recognition outside its own control, and a co-awardee eats into the same ceiling.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>OpenEvidence</strong><br><span class="en-inline">Clinical evidence retrieval</span></td>
+          <td>
+            <span class="en">Confirmed a further <strong>$250 million at a $15 billion valuation</strong> in late September (<a href="https://www.forbes.com/sites/saibala/2026/09/30/openevidence-confirms-it-has-raised-an-additional-250-million-at-a-15-billion-valuation/" target="_blank" rel="noopener">Forbes, 2026-09-30</a>); its Darwin model posted the first perfect score on MedQA (<a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openevidences-new-model-achieves-1st-perfect-score-on-medical-ai-benchmark/" target="_blank" rel="noopener">Becker's</a>).</span>
+          </td>
+          <td>
+            <span class="en">The moat is physician habit plus journal licensing. But item 6 is precisely the caveat: a benchmark score and clinical validity are different quantities, and a perfect MedQA does not answer whether the advice entering a chart is right.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>AKASA</strong><br><span class="en-inline">Autonomous revenue cycle and coding</span></td>
+          <td>
+            <span class="en">Launched autonomous inpatient coding on 10/2, done in about 90 seconds post-discharge; clients represent <strong>$180 billion</strong> in net patient revenue and roughly <strong>10%</strong> of US inpatient discharges (<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/akasa-debuts-autonomous-ai-platform-inpatient-medical-coding-cdi" target="_blank" rel="noopener">Fierce Healthcare, 2026-10-02</a>).</span>
+          </td>
+          <td>
+            <span class="en">The moat is an installed revenue-cycle base. Its largest external risk is not a competitor but payers and legislators: BCBSA's $942 million charge and the AHA's rebuttal (<a href="https://aha.org/news/blog/2026-10-05-better-information-better-care-how-coding-supports-todays-complex-patients" target="_blank" rel="noopener">AHA, 2026-10-05</a>) are deciding whether this category's benefit counts as legitimate revenue at all.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Healthleap</strong><br><span class="en-inline">Inpatient screening layer</span></td>
+          <td>
+            <span class="en">Announced <strong>$38 million</strong> on 10/7 ($8 million seed co-led by Sequoia and First Round, $30 million Series A led by Hummingbird), on the strength of a malnutrition programme at Penn showing <strong>$23.8 million in annualized financial benefit</strong> ($17.5 million from shorter stays, $6.3 million from additional reimbursement) (<a href="https://techcrunch.com/2026/10/07/healthleap-raises-38m-for-its-ai-that-flags-hospital-patients-who-may-need-a-closer-look/" target="_blank" rel="noopener">TechCrunch</a>, <a href="https://hitconsultant.net/2026/10/07/healthleap-raises-38m-series-a-sequoia-first-round-clinical-ai-inpatient-screening/" target="_blank" rel="noopener">HIT Consultant</a>).</span>
+          </td>
+          <td>
+            <span class="en">Pricing tied to hard ROI the hospital's own finance office books — the sharpest commercial design of the week. The risk is again item 2: that $6.3 million of "additional reimbursement" is exactly the category payers are contesting.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Vitalize</strong><br><span class="en-inline">Labour and capacity scheduling</span></td>
+          <td>
+            <span class="en">Announced a <strong>$31 million</strong> Series A on 10/6, evidenced by St. Luke's cutting <strong>premium labour 54% within 12 weeks</strong> (<a href="https://www.fiercehealthcare.com/health-tech/vitalize-secures-31m-scale-ai-powered-operating-system-hospital-staffing-and-scheduling" target="_blank" rel="noopener">Fierce Healthcare</a>, <a href="https://medcitynews.com/2026/10/vitalize-secures-31m-to-help-hospitals-manage-labor-capacity/" target="_blank" rel="noopener">MedCity News</a>).</span>
+          </td>
+          <td>
+            <span class="en">It touches no clinical decision, so it faces neither the regulatory nor the validity problem, and its benefit is not contested by payers — the one fully self-consistent ROI story of the week. The weakness is a crowded field of incumbent scheduling vendors; the differentiation sits in data, not the model.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Elsevier</strong><br><span class="en-inline">Clinical reference content turning into AI tooling</span></td>
+          <td>
+            <span class="en">Launched ClinicalKey Nursing AI this week; in a four-week test with 96 registered nurses, <strong>94%</strong> reported greater confidence in clinical decisions and <strong>73%</strong> reported time savings, with its nursing solutions said to be in use at more than <strong>2,800 hospitals</strong> worldwide (<a href="https://www.fiercehealthcare.com/health-tech/weekly-rundown-hhs-awards-15m-ai-projects-arcadia-launches-portfolio-solutions" target="_blank" rel="noopener">Fierce Healthcare, 2026-10-09</a>).</span>
+          </td>
+          <td>
+            <span class="en">The moat is content licensing and existing subscriptions, running head-on at OpenEvidence's physician habit but entering through a less contested group — nursing. The weakness is that 94% and 73% are self-assessments, with no error rate or patient outcome attached.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Oura</strong><br><span class="en-inline">Consumer health wearables</span></td>
+          <td>
+            <span class="en">Pulled a <strong>55 million share, $40–44 per share, up to $2.2 billion</strong> IPO on 9/29 citing market "uncertainty," leaving an approximately $15 billion valuation outside the door, while holding <strong>5.7 million paid subscriptions</strong> and <strong>$907.9 million</strong> in prior-year revenue (<a href="https://techcrunch.com/2026/09/29/oura-shelves-its-2-2b-ipo-citing-uncertainty-in-the-market/" target="_blank" rel="noopener">TechCrunch</a>, <a href="https://www.cnbc.com/2026/09/29/smart-ring-maker-oura-postpones-ipo-due-to-market-uncertainty.html" target="_blank" rel="noopener">CNBC</a>).</span>
+          </td>
+          <td>
+            <span class="en">The one case this week that makes concrete whether public markets will price health AI at all: subscriptions and revenue are there, the exit is shut, and so private markets fall back on pricing by ARR multiple.</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>Three trend lines close the week.</strong> (1) <strong>The burden of proof has changed hands three times</strong>: clinical endpoint → hospital finance office → payer's bill, and that last stop is zero-sum, with neither side opening a chart (item 2). (2) <strong>Oversight moved post-market all week</strong>, yet the only quantitative post-market signal available is recalls: 60 of 950 cleared AI devices recalled 182 times, 43.4% in the first year, with an odds ratio of 2.8 against lacking clinical validation (items 4 and 5). (3) <strong>The money is buying distribution, not accountability</strong>: EHRs shelve AI as an interchangeable SKU, autonomous coding ships by the unit, and the entire public budget for an agent audit rail is $1.5 million (items 3 and 8). <strong>The one date to put in a calendar</strong>: the FDA's public docket on generative-AI devices <strong>closes 2026-10-19</strong> — eight days out (<a href="https://www.mddionline.com/artificial-intelligence/fda-seeks-input-on-regulatory-framework-for-genai-medical-devices" target="_blank" rel="noopener">MD+DI</a>).</span>
+    </p>
+  </div>
+</section>
+
+<section id="taiwan">
+  <h2>04 — Taiwan Angle</h2>
+  <div class="sec-title">
+    <span class="en">Taiwan spent the week building infrastructure and a showcase; the world spent it building post-market measurement — and the missing piece lines up exactly</span>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>(1) Taiwan's week was all on the infrastructure side.</strong> On 10/5 the Ministry of Health and Welfare hosted the 2026 Domestic AI 3D Medical Imaging and Metaverse Application Conference, where Zhijie Technology announced donations of 3D image reconstruction equipment to domestic hospitals; Minister Shih Chung-liang listed the applications as anatomy teaching, pre-operative explanation, surgical planning and intra-operative navigation, and said the system has already been donated to several diplomatic allies whose clinicians are coming to Taiwan to train on it (<a href="https://www.cna.com.tw/news/ahel/202610050086.aspx" target="_blank" rel="noopener">CNA, 2026-10-05</a>). Coverage the same week put Zhijie's target at <strong>29 medical centres by 2028</strong>, with NTU Hospital aiming for hospital-wide deployment (<a href="https://newtalk.tw/news/view/2026-10-05/1063720" target="_blank" rel="noopener">Newtalk</a>, <a href="https://udn.com/news/story/7266/9795500" target="_blank" rel="noopener">United Daily News</a>). At the 10/7 biotech forum Shih returned to "actively building AI medical infrastructure" (<a href="https://money.udn.com/money/story/5648/9754542" target="_blank" rel="noopener">Economic Daily News</a>).</span>
+    </p>
+    <p>
+      <span class="en"><strong>(2) Taiwan already has PCCP guidance; what it lacks is a post-market signal.</strong> The TFDA published its application points and drafting guidance for predetermined change control plans for AI/ML device software back on 2024-09-25 (<a href="https://www.fda.gov.tw/TC/siteListContent.aspx?sid=11652&amp;id=47477" target="_blank" rel="noopener">TFDA</a>) — earlier than the FDA has even scheduled its own equivalent for FY2027. But the numbers in item 5 — <strong>60 of 950 recalled, 182 events, 43.4% in year one, OR 2.8 where clinical validation is absent</strong> — say the trouble arrives after launch, and Taiwan has no public, comparable, device-level register of AI adverse events and recalls that a buyer can look up. <strong>This is a low-cost, high-leverage policy gap</strong>: PCCP governs which changes are permitted; recall statistics govern what happened after the change. Neither works alone.</span>
+    </p>
+    <p>
+      <span class="en"><strong>(3) Translate item 1 to Taiwanese scale and the conclusion is cheap.</strong> The RWJBarnabas system that lowered mortality has no LLM in it; its core is wiring an existing deterioration score to a rapid response team in real time, lifting RRT evaluations from 25.3% to 37.5% (<a href="https://hitconsultant.net/2026/07/29/rwjbarnabas-rutgers-nejm-ai-epic-deterioration-index-mortality-reduc/" target="_blank" rel="noopener">HIT Consultant</a>). Most Taiwanese medical centres already hold enough data in their HIS and EMR to compute a comparable score; what needs investment is a <strong>redesign of the notification path and on-call staffing</strong>, not another model purchase. Set against the funding figures abroad this week, this is the class of result Taiwan is most likely to reproduce on limited resources — and proving it worked requires exactly the post-launch measurement point (2) describes.</span>
+    </p>
+  </div>
+</section>
+
+<section id="reading">
+  <h2>05 — Further Reading</h2>
+  <div class="sec-title">
+    <span class="en">Chosen for one thing: each changes the questions you ask about a medical AI product, rather than only telling you what happened</span>
+  </div>
+
+  <ol class="reading">
+    <li>
+      <a href="https://jamanetwork.com/journals/jama-health-forum/fullarticle/2837802" target="_blank" rel="noopener">Early Recalls and Clinical Validation Gaps in Artificial Intelligence–Enabled Medical Devices — JAMA Health Forum 2025;6(8):e253172 (2025-08-22)</a>
+      <p class="why"><span class="en">Every "oversight moves post-market" conversation this week rests on this one paper: 950 devices, 60 recalled, 182 events, 43.4% in the first year, and an odds ratio of 2.8 (95% CI 1.6–4.7) where clinical validation is absent. More useful as a due-diligence template than as news.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/articles/s41591-026-04503-6" target="_blank" rel="noopener">Generative AI-enabled clinical decision support system in primary care: a cluster-randomized trial — Nature Medicine 32:3032–3039 (2026-06-26)</a>
+      <p class="why"><span class="en">The largest and cleanest randomized trial of LLM-based clinical decision support so far, and its primary endpoint missed significance. Read it for how it defines treatment failure and handles clustering — that methodology will be the benchmark for the next several years of comparable trials.</span></p>
+    </li>
+    <li>
+      <a href="https://kff.org/health-information-trust/ai-in-health-care-moves-toward-more-autonomous-roles" target="_blank" rel="noopener">AI in Health Care Moves Toward More Autonomous Roles — KFF The Monitor, Vol. 56 (2026-10-08)</a>
+      <p class="why"><span class="en">The only piece this week that puts the push toward autonomy and the recall record on the same page, and it notes the FDA's generative-AI docket closing 10/19 along the way. It models a habit: for every autonomy milestone, go find the matching consequence statistic.</span></p>
+    </li>
+    <li>
+      <a href="https://arxiv.org/abs/2610.06923" target="_blank" rel="noopener">RadOnc-Agent: An LLM-Orchestrated Framework for AI Workflows Across the Radiotherapy Care Pathway — arXiv:2610.06923 (2026-10-02)</a>
+      <p class="why"><span class="en">Read it not for the 26 functions or the 96.7% completion rate but for the authors' own limitation: it "does not establish clinical correctness, clinical utility or prospective benefit." That sentence belongs on the last slide of every agent-orchestration deck.</span></p>
+    </li>
+    <li>
+      <a href="https://healthit.gov/news/hhs-announces-2026-leap-in-health-it-awardees-to-accelerate-the-use-of-agentic-ai-in-clinical-care-and-close-gaps-in-laboratory-interoperability" target="_blank" rel="noopener">HHS Announces 2026 LEAP in Health IT Awardees — ONC / HealthIT.gov (2026-10-06)</a>
+      <p class="why"><span class="en">A one-page notice, but the only official document that spells out what agent accountability should look like: patient-gated data pods, cryptographically verifiable task routing, tamper-evident certificates. Read it against this week's AgentCorruption disclosure and the $1.5 million starts to look serious.</span></p>
+    </li>
+    <li>
+      <a href="https://aha.org/news/blog/2026-10-05-better-information-better-care-how-coding-supports-todays-complex-patients" target="_blank" rel="noopener">Better Information, Better Care: How Coding Supports Today's Complex Patients — American Hospital Association (2026-10-05)</a>
+      <p class="why"><span class="en">A position paper, but one that lays the dispute out as checkable arithmetic: the $942 million is three years cumulative, and inpatient coding intensity contributes roughly 0.3 percentage points to total commercial spending growth. Read it to learn how to put an alarming total back into its denominator.</span></p>
+    </li>
+  </ol>
+</section>
+
+<section id="refs">
+  <h2>06 — References</h2>
+  <div class="sec-title">
+    <span class="en">References</span>
+  </div>
+
+  <div class="panel">
+    <ol class="refs">
+      <li>RWJBarnabas Links Real-Time Epic EDI Alerts Directly to Rapid Response Teams（NEJM AI, DOI 10.1056/AIoa2500973）. <em>HIT Consultant</em>, 2026-07-29. <a href="https://hitconsultant.net/2026/07/29/rwjbarnabas-rutgers-nejm-ai-epic-deterioration-index-mortality-reduc/" target="_blank" rel="noopener">hitconsultant.net</a></li>
+      <li>AI-enabled tool helps identify hospitalized patients at risk of rapid clinical decline. <em>News-Medical</em>, 2026-07-29. <a href="https://www.news-medical.net/news/20260729/AI-enabled-tool-helps-identify-hospitalized-patients-at-risk-of-rapid-clinical-decline.aspx" target="_blank" rel="noopener">news-medical.net</a></li>
+      <li>Generative AI-enabled clinical decision support system in primary care: a pragmatic cluster-randomized controlled trial. <em>Nature Medicine</em> 32:3032–3039, 2026-06-26. <a href="https://www.nature.com/articles/s41591-026-04503-6" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Smith M, Holloman J. Better Information, Better Care: How Coding Supports Today's Complex Patients. <em>American Hospital Association</em>, 2026-10-05. <a href="https://aha.org/news/blog/2026-10-05-better-information-better-care-how-coding-supports-todays-complex-patients" target="_blank" rel="noopener">aha.org</a></li>
+      <li>AHA blog responds to BCBS report suggesting hospitals' use of AI documentation tools drives increased healthcare costs. <em>American Hospital Association</em>, 2026-10-05. <a href="https://www.aha.org/news/headline/2026-10-05-aha-blog-responds-bcbs-report-suggesting-hospitals-use-ai-documentation-tools-drives-increased" target="_blank" rel="noopener">aha.org</a></li>
+      <li>Insurers Blame Hospital AI Coding for $942 Million in Added Costs. <em>HealthSystemCIO</em>, 2026-09-29. <a href="https://healthsystemcio.com/2026/09/29/hospital-ai-coding-audit-trail/" target="_blank" rel="noopener">healthsystemcio.com</a></li>
+      <li>HHS Announces 2026 LEAP in Health IT Awardees to Accelerate the Use of Agentic AI in Clinical Care and Close Gaps in Laboratory Interoperability. <em>ONC / HealthIT.gov</em>, 2026-10-06. <a href="https://healthit.gov/news/hhs-announces-2026-leap-in-health-it-awardees-to-accelerate-the-use-of-agentic-ai-in-clinical-care-and-close-gaps-in-laboratory-interoperability" target="_blank" rel="noopener">healthit.gov</a></li>
+      <li>Gleeson C. Weekly Rundown: Nextech taps Assort Health, EliseAI for agentic AI; Elsevier rolls out clinical AI tool for nurses（含 HHS 150 萬美元、Arcadia、Solera）. <em>Fierce Healthcare</em>, 2026-10-09. <a href="https://www.fiercehealthcare.com/health-tech/weekly-rundown-hhs-awards-15m-ai-projects-arcadia-launches-portfolio-solutions" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>Healthcare AI News 10/7/26（含 ARPA-H 臨床試驗、Nolla Health 痤瘡試點、AHRQ 795 萬美元獎金）. <em>HISTalk</em>, 2026-10-07. <a href="https://histalk2.com/2026/10/07/healthcare-ai-news-10-7-26/" target="_blank" rel="noopener">histalk2.com</a></li>
+      <li>Luther J, Yilma H, Washington I. AI in Health Care Moves Toward More Autonomous Roles. <em>KFF The Monitor</em>, Vol. 56, 2026-10-08. <a href="https://kff.org/health-information-trust/ai-in-health-care-moves-toward-more-autonomous-roles" target="_blank" rel="noopener">kff.org</a></li>
+      <li>Lee B, Kramer P, Sandri S, et al. Early Recalls and Clinical Validation Gaps in Artificial Intelligence–Enabled Medical Devices. <em>JAMA Health Forum</em> 2025;6(8):e253172, 2025-08-22. <a href="https://jamanetwork.com/journals/jama-health-forum/fullarticle/2837802" target="_blank" rel="noopener">jamanetwork.com</a></li>
+      <li>AI devices with no clinical validation tied to more recalls, study finds. <em>MedTech Dive</em>. <a href="https://www.medtechdive.com/news/ai-medical-devices-no-validation-more-recalls-jama/758991/" target="_blank" rel="noopener">medtechdive.com</a></li>
+      <li>Wallace C. FDA Opens Comment Period on GenAI Device Regulation（徵詢至 2026-10-19）. <em>MD+DI</em>, 2026-08-19. <a href="https://www.mddionline.com/artificial-intelligence/fda-seeks-input-on-regulatory-framework-for-genai-medical-devices" target="_blank" rel="noopener">mddionline.com</a></li>
+      <li>CDRH Proposed Guidances for Fiscal Year 2027 (FY 2027). <em>U.S. Food and Drug Administration</em>, 2026-10-01. <a href="https://www.fda.gov/medical-devices/guidance-documents-medical-devices-and-radiation-emitting-products/cdrh-proposed-guidances-fiscal-year-2027-fy-2027" target="_blank" rel="noopener">fda.gov</a></li>
+      <li>FDA to prioritize guidance on AI, surgical robots next year. <em>MedTech Dive</em>, 2026-10-02. <a href="https://www.medtechdive.com/news/fda-to-prioritize-guidance-on-ai-surgical-robots-next-year/831984/" target="_blank" rel="noopener">medtechdive.com</a></li>
+      <li>Utah launches health care AI push with new clinical pilots, outside evaluators. <em>Fox 13 Salt Lake City</em>, 2026-10-05. <a href="https://www.fox13now.com/news/local-news/salt-lake-city/utah-launches-health-care-ai-push-with-new-clinical-pilots-outside-evaluators" target="_blank" rel="noopener">fox13now.com</a></li>
+      <li>Utah announces partnership with major healthcare providers to create artificial intelligence clinical pilot programs. <em>Deseret News</em>, 2026-10-05. <a href="https://www.deseret.com/politics/2026/10/05/utah-announces-partnership-with-major-healthcare-providers-to-create-artificial-intelligence-clinical-pilot-programs/" target="_blank" rel="noopener">deseret.com</a></li>
+      <li>Vega Health Selected As Third-Party Evaluator for Utah's AI Sandbox. <em>Business Wire</em>, 2026-10-05. <a href="https://www.financialcontent.com/article/bizwire-2026-10-5-vega-health-selected-as-third-party-evaluator-for-utahs-ai-sandbox" target="_blank" rel="noopener">financialcontent.com</a></li>
+      <li>Government accepts all 44 recommendations from regulation of AI in healthcare report. <em>The Pharmaceutical Journal</em>, 2026-10-06. <a href="https://pharmaceutical-journal.com/article/news/government-accepts-all-44-recommendations-from-regulation-of-ai-in-healthcare-report" target="_blank" rel="noopener">pharmaceutical-journal.com</a></li>
+      <li>Jiang C, Wei S, Zhao S, Li J, Chen J, Liu W. RadOnc-Agent: An LLM-Orchestrated Framework for AI Workflows Across the Radiotherapy Care Pathway. <em>arXiv</em>:2610.06923, 2026-10-02. <a href="https://arxiv.org/abs/2610.06923" target="_blank" rel="noopener">arxiv.org</a></li>
+      <li>Jiang ZJ, Ibrahim Z, Teo JT. A rubric landscape for evaluating clinical reasoning in large language models. <em>arXiv</em>:2610.01938, 2026-10-01. <a href="https://arxiv.org/abs/2610.01938" target="_blank" rel="noopener">arxiv.org</a></li>
+      <li>Liu Q, Zhang S, Qin G, et al. HealthAgentBench: A Unified Benchmark Suite of Realistic Clinical Agent Tasks. <em>arXiv</em>:2606.31179, 2026-06. <a href="https://arxiv.org/abs/2606.31179" target="_blank" rel="noopener">arxiv.org</a></li>
+      <li>Zenity Labs Discloses AgentCorruption, a Chain of AWS AgentCore Flaws. <em>Zenity</em>, 2026-10-08. <a href="https://zenity.io/press-release/zenity-labs-discloses-agentcorruption-a-chain-of-aws-agentcore-flaws" target="_blank" rel="noopener">zenity.io</a></li>
+      <li>Introducing the Anthropic Cyber Mission. <em>Anthropic</em>, 2026-10-08. <a href="https://www.anthropic.com/news/anthropic-cyber-mission" target="_blank" rel="noopener">anthropic.com</a></li>
+      <li>Health care's emerging risk: unauthorized AI agents. <em>Axios</em>, 2026-10-05. <a href="https://www.axios.com/2026/10/05/ai-agents-hospital-risks" target="_blank" rel="noopener">axios.com</a></li>
+      <li>New Imprivata Research Finds 72% of Healthcare Organizations Have AI Tools or Agents Deployed Without Formal IT Approval. <em>GlobeNewswire</em>, 2026-09-15. <a href="https://www.globenewswire.com/news-release/2026/09/15/3362174/0/en/new-imprivata-research-finds-72-of-healthcare-organizations-have-ai-tools-or-agents-deployed-without-formal-it-approval.html" target="_blank" rel="noopener">globenewswire.com</a></li>
+      <li>AKASA debuts autonomous AI platform for inpatient medical coding, CDI. <em>Fierce Healthcare</em>, 2026-10-02. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/akasa-debuts-autonomous-ai-platform-inpatient-medical-coding-cdi" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>Healthleap raises $38M for its AI that flags hospital patients who may need a closer look. <em>TechCrunch</em>, 2026-10-07. <a href="https://techcrunch.com/2026/10/07/healthleap-raises-38m-for-its-ai-that-flags-hospital-patients-who-may-need-a-closer-look/" target="_blank" rel="noopener">techcrunch.com</a></li>
+      <li>Healthleap Raises $38M for Clinical AI Screening Platform Targeting Overlooked Inpatient Conditions. <em>HIT Consultant</em>, 2026-10-07. <a href="https://hitconsultant.net/2026/10/07/healthleap-raises-38m-series-a-sequoia-first-round-clinical-ai-inpatient-screening/" target="_blank" rel="noopener">hitconsultant.net</a></li>
+      <li>Vitalize secures $31M to scale AI-powered operating system for hospital staffing and scheduling. <em>Fierce Healthcare</em>, 2026-10-06. <a href="https://www.fiercehealthcare.com/health-tech/vitalize-secures-31m-scale-ai-powered-operating-system-hospital-staffing-and-scheduling" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>Vitalize Secures $31M to Help Hospitals Manage Labor, Capacity. <em>MedCity News</em>, 2026-10. <a href="https://medcitynews.com/2026/10/vitalize-secures-31m-to-help-hospitals-manage-labor-capacity/" target="_blank" rel="noopener">medcitynews.com</a></li>
+      <li>VA selects Abridge ambient scribe under new enterprise contract. <em>Nextgov/FCW</em>, 2026-09-22. <a href="https://www.nextgov.com/artificial-intelligence/2026/09/va-selects-abridge-ambient-scribe-under-new-enterprise-contract/416140/" target="_blank" rel="noopener">nextgov.com</a></li>
+      <li>Abridge's $775.72 million VA win is a ceiling, not a check. <em>The Inference</em>, 2026-09. <a href="https://theinference.org/article/abridge-s-775-72-million-va-win-is-a-ceiling-not-a-check" target="_blank" rel="noopener">theinference.org</a></li>
+      <li>Ambient AI improves practitioner well-being（UW Health／Abridge, NEJM AI 兩篇）. <em>University of Wisconsin School of Medicine and Public Health</em>, 2025-12-12. <a href="https://www.med.wisc.edu/news/ambient-ai-improves-practitioner-well-being" target="_blank" rel="noopener">med.wisc.edu</a></li>
+      <li>OpenEvidence Confirms It Has Raised An Additional $250 Million At A $15 Billion Valuation. <em>Forbes</em>, 2026-09-30. <a href="https://www.forbes.com/sites/saibala/2026/09/30/openevidence-confirms-it-has-raised-an-additional-250-million-at-a-15-billion-valuation/" target="_blank" rel="noopener">forbes.com</a></li>
+      <li>OpenEvidence's new model achieves 1st perfect score on medical AI benchmark. <em>Becker's Hospital Review</em>, 2026-09. <a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openevidences-new-model-achieves-1st-perfect-score-on-medical-ai-benchmark/" target="_blank" rel="noopener">beckershospitalreview.com</a></li>
+      <li>Oura shelves its $2.2B IPO, citing 'uncertainty' in the market. <em>TechCrunch</em>, 2026-09-29. <a href="https://techcrunch.com/2026/09/29/oura-shelves-its-2-2b-ipo-citing-uncertainty-in-the-market/" target="_blank" rel="noopener">techcrunch.com</a></li>
+      <li>Smart ring maker Oura postpones IPO due to market 'uncertainty'. <em>CNBC</em>, 2026-09-29. <a href="https://www.cnbc.com/2026/09/29/smart-ring-maker-oura-postpones-ipo-due-to-market-uncertainty.html" target="_blank" rel="noopener">cnbc.com</a></li>
+      <li>衛福部推元宇宙智慧醫療 石崇良：提升台灣競爭力. <em>中央社</em>, 2026-10-05. <a href="https://www.cna.com.tw/news/ahel/202610050086.aspx" target="_blank" rel="noopener">cna.com.tw</a></li>
+      <li>智捷：AI 3D 醫療影像系統 拚 2028 年導入 29 家醫學中心. <em>新頭殼 Newtalk</em>, 2026-10-05. <a href="https://newtalk.tw/news/view/2026-10-05/1063720" target="_blank" rel="noopener">newtalk.tw</a></li>
+      <li>醫療元宇宙走入臨床 國產 AI、3D 醫療影像落地 台大拚 2028 全院導入. <em>聯合報</em>, 2026-10-05. <a href="https://udn.com/news/story/7266/9795500" target="_blank" rel="noopener">udn.com</a></li>
+      <li>生技論壇 10 月 7 日登場 衛福部長石崇良：積極建構 AI 醫療基建. <em>經濟日報</em>, 2026-09-15. <a href="https://money.udn.com/money/story/5648/9754542" target="_blank" rel="noopener">money.udn.com</a></li>
+      <li>公告「應用人工智慧／機器學習技術之醫療器材軟體預定變更控制計畫（PCCP）申請要點暨撰寫說明指引」. <em>衛生福利部食品藥物管理署</em>, 2024-09-25. <a href="https://www.fda.gov.tw/TC/siteListContent.aspx?sid=11652&amp;id=47477" target="_blank" rel="noopener">fda.gov.tw</a></li>
+      <li>Brodeur P, Goh E, Rodman A, Chen JH. State of Clinical AI Report 2026. <em>ARISE</em>, 2026. <a href="https://www.arise-ai.org/report" target="_blank" rel="noopener">arise-ai.org</a></li>
+    </ol>
+    <div class="note">
+      <span class="en"><strong>Editor's note:</strong> This is a weekly review. Its spine comes from this site's six daily reports for 10/05–10/10, with three items added that did not get their own edition that week (ONC LEAP on 10/06, KFF's The Monitor on 10/08, the AHA rebuttal on 10/05); every figure was re-checked against its primary source. What to discount: <strong>(1)</strong> the JAMA Health Forum recall study was published 2025-08-22 and is not new research this week — what is new is KFF placing it in the context of autonomy; <strong>(2)</strong> KFF's "more than 200 companies with CMS approval to test" and "four allowed by the FDA for Medicare patients outside the standard pathway" are its citations of <em>The New York Times</em> and STAT, and no primary document was obtained here; <strong>(3)</strong> Abridge's VA contract, Oura's withdrawn IPO and OpenEvidence's round all occurred in late September and were the subject of this site's Tuesday (10/06) edition, which worked from that window; they are retained here as competitive-landscape background with their original dates marked; <strong>(4)</strong> both the AHA and BCBSA are trade-body position papers, and the AHA's 0.3 percentage points is its own arithmetic; Elsevier's 94%/73%, AKASA's "about 90 seconds" and client scale, Vitalize's 54%, Healthleap's $23.8 million and Imprivata's 72% are all vendor- or customer-reported and not independently audited; <strong>(5)</strong> RadOnc-Agent is a preprint and not peer reviewed; <strong>(6)</strong> STAT's reporting on the Utah sandbox is paywalled, so only facts supportable from the publicly visible headline and lede are used, with Utah's detail taken instead from Fox 13, Deseret News and Business Wire; <strong>(7)</strong> the RWJBarnabas study is a before-and-after comparison within one health system, and the public coverage provides neither a confidence interval for the adjusted odds ratio nor the share of eligible hospitalizations in which a notification actually fired.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-row">
+    <div>
+      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Sunday / Weekly Review &amp; Further Reading<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
+    </div>
+    <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
+  </div>
+</footer>
+</main>
+
+<div class="fabs">
+  <button class="up" id="up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+  <a class="home-fab" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg></a>
+</div>
+
+<script>
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.getElementById('theme-ic').textContent =
+    document.body.classList.contains('dark') ? '◑' : '◐';
+}
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.body.classList.add('dark');
+  document.getElementById('theme-ic').textContent = '◑';
+}
+window.addEventListener('scroll', function(){
+  document.getElementById('up').classList.toggle('show', window.scrollY > 600);
+});
+
+(function(){
+  var el = document.getElementById('ghs');
+  if (!el || typeof fetch !== 'function') return;
+  fetch('https://api.github.com/repos/tingwei161803/ai-medical-daily', {headers:{Accept:'application/vnd.github+json'}})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if (!d || typeof d.stargazers_count !== 'number') return;
+      var n = d.stargazers_count;
+      el.textContent = n >= 1000 ? (Math.round(n/100)/10) + 'k' : String(n);
+    })
+    .catch(function(){});
+})();
+</script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/reports/2026-10-11.html" hreflang="zh-Hant" rel="alternate" lang="zh-Hant">中文版</a></p>
+</body>
+</html>
