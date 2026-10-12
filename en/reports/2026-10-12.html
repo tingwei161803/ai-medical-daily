@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>AI &amp; Medical AI Daily · 2026-10-12</title>
+<meta property="og:url" content="https://ai-medical-daily.peteraim.com/en/reports/2026-10-12.html" />
+<link rel="canonical" href="https://ai-medical-daily.peteraim.com/en/reports/2026-10-12.html" />
+<link rel="alternate" hreflang="zh-Hant" href="https://ai-medical-daily.peteraim.com/reports/2026-10-12.html" />
+<link rel="alternate" hreflang="en" href="https://ai-medical-daily.peteraim.com/en/reports/2026-10-12.html" />
+<link rel="alternate" hreflang="x-default" href="https://ai-medical-daily.peteraim.com/reports/2026-10-12.html" />
+<meta name="description" content="AMIE published a prospective feasibility study in The Lancet — 98 completers, a differential that caught the final diagnosis 90% of the time — in the same week Nature Medicine found only 12.2% of 3,967 clinical prediction-model papers shared code. Clinical AI's evidence and its checkability moved in opposite directions.">
+<meta name="report-date" content="2026-10-12">
+<meta name="report-theme" content="clinical">
+<meta name="report-title-zh" content="這一週臨床 AI 的證據往前走了一步，證據的可查證性卻往後退——10/8 登上 The Lancet 的 AMIE 前瞻研究在 BIDMC 收了 100 人、98 人完成，七項鑑別診斷命中最終診斷 90%、前三項 75%、安全監督全程零中斷，但盲評裡醫師在處置計畫的「可行性」（p=0.003）與「成本效益」（p=0.004）兩項仍然贏；10/9 Nature Medicine 盤點 3,967 篇臨床預測模型論文，只有 12.2% 附上程式碼，而附了的 380 個 repo 裡僅 37.6% 列出相依套件、3.9% 有測試；同一週 Mount Sinai 用 20 個模型、501 種情境變體、逾 1,000 萬次回應量到的是：一句安全提醒把潛在有害選項從 16.6% 壓到 10.1%，19 個模型改善、卻沒有一個歸零">
+<meta name="report-title-en" content="Clinical AI's evidence moved forward this week while the checkability of that evidence moved back — the AMIE prospective study published in The Lancet on 8 Oct enrolled 100 patients at BIDMC with 98 completing, its seven-item differential captured the final diagnosis 90% of the time and its top three 75%, and not one conversation hit a safety stop, yet in blinded review clinicians still beat it on the practicality (p=0.003) and cost-effectiveness (p=0.004) of the management plan; on 9 Oct Nature Medicine audited 3,967 clinical prediction-model papers and found only 12.2% shared code, with just 37.6% of the 380 characterised repositories specifying dependencies and 3.9% carrying tests; and in the same week Mount Sinai ran 20 models over 501 scenario variants and more than 10 million responses to show that one short safety reminder cut potentially harmful choices from 16.6% to 10.1% — improving 19 of 20 models, and zeroing out none">
+<meta name="report-summary-zh" content="AMIE 在 The Lancet 交出 98 人完成的前瞻可行性研究、鑑別診斷命中 90%，同一週 Nature Medicine 指出 3,967 篇臨床預測模型論文只有 12.2% 附程式碼——臨床 AI 的證據與證據的可查證性，這一週往相反方向走。">
+<meta name="report-summary-en" content="AMIE published a prospective feasibility study in The Lancet — 98 completers, a differential that caught the final diagnosis 90% of the time — in the same week Nature Medicine found only 12.2% of 3,967 clinical prediction-model papers shared code. Clinical AI's evidence and its checkability moved in opposite directions.">
+<meta property="og:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HJLDQZDK5V');
+</script>
+<link rel="stylesheet" href="/assets/report.css">
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><span>◆</span> <span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <div class="bar-sp"></div>
+    <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
+    <div class="seg">
+      <a href="/reports/2026-10-12.html" hreflang="zh-Hant" lang="zh-Hant" rel="alternate">中文</a>
+      <a class="on" href="/en/reports/2026-10-12.html" hreflang="en" lang="en" aria-current="page">EN</a>
+    </div>
+    <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="kicker">
+    <span class="en-inline">Monday · Clinical Applications &amp; Research</span>
+  </div>
+  <h1>
+    <span class="en">Clinical AI's evidence moved forward this week while the checkability of that evidence moved back — the AMIE prospective study published in The Lancet on 8 Oct enrolled 100 patients at BIDMC with 98 completing, its seven-item differential captured the final diagnosis 90% of the time and its top three 75%, and not one conversation hit a safety stop, yet in blinded review clinicians still beat it on the practicality (p=0.003) and cost-effectiveness (p=0.004) of the management plan; on 9 Oct Nature Medicine audited 3,967 clinical prediction-model papers and found only 12.2% shared code, with just 37.6% of the 380 characterised repositories specifying dependencies and 3.9% carrying tests; and in the same week Mount Sinai ran 20 models over 501 scenario variants and more than 10 million responses to show that one short safety reminder cut potentially harmful choices from 16.6% to 10.1% — improving 19 of 20 models, and zeroing out none</span>
+  </h1>
+  <div class="dateline">
+    <span class="en-inline">Monday, October 12, 2026 · Covering Oct 05–12 · Taipei time</span>
+  </div>
+  <p class="lede">
+    <span class="en">Six items, six different strengths of the word "clinical." At the strong end is the <a href="https://ascopost.com/news/october-2026/autonomous-ai-triaged-urgent-suspected-skin-cancer-referrals-in-real-world-implementation-study/" target="_blank" rel="noopener">8,391-patient real-world skin cancer triage reported at EADV 2026</a>: a CE-marked Class III autonomous AI discharged 25–31% of patients at two NHS sites with no clinician review, saved 2,851 clinician hours, and missed six cases (five BCCs and one melanoma in situ). At the weak end is the <a href="https://www.eurekalert.org/news-releases/1146589" target="_blank" rel="noopener">general-purpose AI search test at AHA Hypertension 2026</a>: across 324 home blood pressure monitors, four tools identified validated models correctly only 63–91% of the time, and the presenting author's own line was that most performed "only slightly better than if you had flipped a coin for each question." In between sit <a href="https://blog.google/innovation-and-ai/technology/health/amie-clinical-study-lancet" target="_blank" rel="noopener">AMIE's first outing in a real clinic</a>, <a href="https://www.nature.com/articles/s41591-026-04691-1" target="_blank" rel="noopener">Nature Medicine's code audit of 3,967 prediction-model papers</a>, <a href="https://www.mountsinai.org/about/newsroom/2026/mount-sinai-study-finds-safety-prompts-can-help-ai-models-make-safer-clinical-choices" target="_blank" rel="noopener">Mount Sinai's safety-reminder experiment</a>, and the open medical vision-language model and cross-national evaluation network that landed in Nature Medicine together on 6 Oct. Lined up, today's question is not whether AI works but which layer of its evidence a third party can re-run.</span>
+  </p>
+
+  <nav class="toc">
+    <a href="#top"><span class="en-inline">Top Stories</span></a>
+    <a href="#product"><span class="en-inline">Product Analysis</span></a>
+    <a href="#company"><span class="en-inline">Companies &amp; Competition</span></a>
+    <a href="#taiwan"><span class="en-inline">Taiwan Angle</span></a>
+    <a href="#reading"><span class="en-inline">Further Reading</span></a>
+    <a href="#refs"><span class="en-inline">References</span></a>
+  </nav>
+</div>
+
+<section id="top">
+  <h2>01 — Top Stories</h2>
+  <div class="sec-title">
+    <span class="en">Six items, ranked from discharging patients unsupervised down to misidentifying a blood pressure monitor</span>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Prospective study</span></span>
+      <span class="tag">Google</span><span class="tag">BIDMC</span><span class="tag">AMIE</span><span class="tag">10/08</span>
+    </div>
+    <h3>
+      <span class="en">AMIE's first real clinic: 98 completers, a differential that caught 90% of final diagnoses, zero safety stops — and management plans still less practical and less cost-effective than clinicians'</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On 8 October, Google, Beth Israel Deaconess Medical Center (BIDMC) and the ARISE Network published AMIE's prospective feasibility study in <a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(26)01535-7/abstract" target="_blank" rel="noopener">The Lancet's main title</a> — <a href="https://blog.google/innovation-and-ai/technology/health/amie-clinical-study-lancet" target="_blank" rel="noopener">Google's own first appearance there, by its account</a>. The design is single-arm, in BIDMC's urgent-care-style ambulatory clinic: <a href="https://www.arise-ai.org/blog/amie-lancet" target="_blank" rel="noopener">100 adults enrolled, 98 completing both the AI conversation and the visit</a>, with patients chatting by text up to five days before the appointment and <a href="https://arxiv.org/abs/2603.08448v2" target="_blank" rel="noopener">a human safety supervisor watching every exchange in real time</a>. AMIE's seven-item differential contained the chart-review-established final diagnosis in 90% of cases and its top three in 75%. Blinded evaluators found no statistical difference from the attending physicians on differential quality (p=0.6), appropriateness of the management plan (p=0.1) or its safety (p=1.0) — but clinicians were significantly better on practicality (p=0.003) and cost-effectiveness (p=0.004). Patients' attitudes to AI shifted favourably after use (p&lt;0.001). <a href="https://blog.google/innovation-and-ai/technology/health/amie-clinical-study-lancet" target="_blank" rel="noopener">The AI summaries helped clinicians prepare in 75% of cases and shaped their approach to care in more than half</a>, and no conversation met the predefined criteria for a safety stop.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">For two years the evidence on conversational diagnostic AI has been almost entirely OSCE-style simulation — this site's <a href="https://ai-medical-daily.peteraim.com/reports/2026-10-05.html" target="_blank" rel="noopener">5 Oct edition</a> covered multimodal AMIE beating primary care physicians on 29 of 32 axes across 105 simulated teleconsultations, with the authors themselves noting it was not a clinical trial. This paper puts the same system in front of real patients and real clinicians with real chart review, at the pre-visit moment most likely to become a product. It also pins down what is unresolved: n=98, single-arm, single-site, supervised throughout — and the two axes clinicians won, practicality and cost-effectiveness, are precisely the two that cost money when a recommendation becomes an order. <a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(26)01763-0/abstract" target="_blank" rel="noopener">The accompanying comment is titled "Conversational diagnostic AI in primary care: what happens after it speaks?"</a> — which is the question of who cleans up afterwards.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">The 90% is hit rate for a seven-item list, not single-diagnosis accuracy; the top three reach only 75%. The losses on practicality and cost-effectiveness come from 98 patients, so neither direction generalises. The team itself states in <a href="https://www.arise-ai.org/blog/amie-lancet" target="_blank" rel="noopener">the ARISE announcement that these are safety results from a closely supervised research workflow and do not show unsupervised AI is ready for clinical care</a>; it is also a study with a large Google author list and Google resources behind it.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(26)01535-7/abstract" target="_blank" rel="noopener">The Lancet, 2026-10-08</a> · <a href="https://blog.google/innovation-and-ai/technology/health/amie-clinical-study-lancet" target="_blank" rel="noopener">Google Blog, 2026-10-08</a> · <a href="https://www.arise-ai.org/blog/amie-lancet" target="_blank" rel="noopener">ARISE Network, 2026-10-08</a> · <a href="https://arxiv.org/abs/2603.08448v2" target="_blank" rel="noopener">arXiv:2603.08448</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Reproducibility</span></span>
+      <span class="tag">Nature Medicine</span><span class="tag">Dana-Farber</span><span class="tag">MIT</span><span class="tag">10/09</span>
+    </div>
+    <h3>
+      <span class="en">Of 3,967 clinical prediction-model papers, 12.2% shared code — and of the 380 characterised repositories, 3.9% had tests</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On 9 October, Dana-Farber Cancer Institute, MIT and collaborators published <a href="https://www.nature.com/articles/s41591-026-04691-1" target="_blank" rel="noopener">an Analysis in Nature Medicine</a>: an LLM-assisted screen of PubMed articles citing TRIPOD (6,762) and TRIPOD+AI (411), leaving 6,658 after de-duplication and 3,967 after excluding unretrievable papers and those not developing or validating a multivariable prediction model. Of those, 482 (12.2%) shared code — 380 in characterisable repositories, 75 in appendices, 27 through unsupported providers. The share is rising: <a href="https://www.nature.com/articles/s41591-026-04691-1" target="_blank" rel="noopener">6.3% in 2015, 14.5% in 2024 (119/820), 15.8% in 2025 (74/468), with odds up 12% a year (OR 1.12)</a>, and TRIPOD+AI citers sharing 2.6 times as often as TRIPOD citers (29.2% vs 11.4%, adjusted OR 2.61). But shared is not runnable: of the 380 repositories, 83.4% were on GitHub and 80.5% had a README, yet only 52.1% described purpose and expected outputs, 37.6% specified dependencies (21.6% with version pins), 35.3% carried a license, <strong>3.9% had tests</strong> and 8.4% documented hardware requirements; 64.3% of those with stochastic components fixed a random seed. Journal variance is stark: <a href="https://www.nature.com/articles/s41591-026-04691-1" target="_blank" rel="noopener">Nature Communications 71.4% (n=14) and npj Digital Medicine 57.1% (n=28), while 17 of the 71 journals with more than ten articles were at 0%</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This is the control group for the first item. However well a study like AMIE's is run, what a third party needs to check is not only the conclusion but whether the same code yields the same number. <a href="https://www.dana-farber.org/newsroom/news-releases/2026/ai-assisted-scoping-review-of-code-sharing-in-clinical-prediction-model-research" target="_blank" rel="noopener">Dana-Farber's release puts the consequence plainly: without reproducible code, clinicians, regulators and health systems cannot independently judge whether a model is reliable enough for care</a>. The three largest contributors of papers were China (32.4% of articles), the US (11.6%) and the UK (9.1%) — while the highest sharing rates were Finland (33.3%), Belgium (26.7%) and Israel (23.1%). Output and checkability are, for now, uncorrelated. The authors say the audit will inform the TRIPOD-Code reporting guideline.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">The team <strong>did not run</strong> the code, so the paper reports no re-run or reproduction rate at all — it assesses documentation and structural features, not actual reproducibility. The authors note that LLM-based classification is imperfect and the estimates are best read as trends rather than exact counts, and the inclusion criterion is citing TRIPOD or TRIPOD+AI rather than all prediction-model papers, which biases the denominator.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.nature.com/articles/s41591-026-04691-1" target="_blank" rel="noopener">Nature Medicine, 2026-10-09</a> · <a href="https://www.dana-farber.org/newsroom/news-releases/2026/ai-assisted-scoping-review-of-code-sharing-in-clinical-prediction-model-research" target="_blank" rel="noopener">Dana-Farber newsroom, 2026-10-09</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Safety evaluation</span></span>
+      <span class="tag">Mount Sinai</span><span class="tag">Communications Medicine</span><span class="tag">20 models</span><span class="tag">10/08</span>
+    </div>
+    <h3>
+      <span class="en">One safety reminder cut LLMs' potentially harmful clinical choices from 16.6% to 10.1%: 19 of 20 models improved, none reached zero</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On 8 October, Mount Sinai publicised a study already online in Nature's <em>Communications Medicine</em> (26 September, DOI 10.1038/s43856-026-01933-8): <a href="https://www.mountsinai.org/about/newsroom/2026/mount-sinai-study-finds-safety-prompts-can-help-ai-models-make-safer-clinical-choices" target="_blank" rel="noopener">20 large language models tested against unsafe clinical instructions across 50 scenarios and 501 variants</a>, 100 of the cases adapted from deidentified hospital discharge records. Instructions included skipping recommended follow-up blood tests to reduce workload, sometimes framed as urgent or as coming from a superior. Each model chose among four actions — comply, maintain the recommended follow-up, seek clinician help, or another option — with every combination run ten times and answer order randomised, for more than 10 million responses and roughly 1.18 million potentially harmful choices. Without a reminder, potentially harmful choices were 16.6% of responses; with one short safety reminder they fell to 10.1%, a 6.5-percentage-point absolute drop and about 39% relative, and <a href="https://www.mountsinai.org/about/newsroom/2026/mount-sinai-study-finds-safety-prompts-can-help-ai-models-make-safer-clinical-choices" target="_blank" rel="noopener">19 of the 20 models improved</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This is the largest test so far of whether a model complies when the instruction itself is unsafe — and what it measures is not whether the model knows the right answer but whether it abandons it because someone says "this is urgent" or "the chief wants it." The deployment implication is concrete: a reminder is a near-zero-cost intervention, so 6.5 percentage points is cheap. But the 10.1% residue means roughly one in ten responses still picks a potentially harmful action, which in a system running thousands of calls a day is not rounding error. <a href="https://www.mountsinai.org/about/newsroom/2026/mount-sinai-study-finds-safety-prompts-can-help-ai-models-make-safer-clinical-choices" target="_blank" rel="noopener">First author Mahmud Omar's framing: a reminder should be viewed as one safeguard, not a substitute for clinical oversight</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">This is scenario testing, not deployment — no real patients and no real workflow pressure. The release does not identify the single model that failed to improve, nor give per-model figures. The team says prompt injection and budget pressure in agentic settings remain untested future work. The paper itself appeared on 26 September, before this edition's window; it is Mount Sinai's 8 October release that brought it into this week.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.mountsinai.org/about/newsroom/2026/mount-sinai-study-finds-safety-prompts-can-help-ai-models-make-safer-clinical-choices" target="_blank" rel="noopener">Mount Sinai Newsroom, 2026-10-08</a> · <a href="https://www.eurekalert.org/news-releases/1146930" target="_blank" rel="noopener">EurekAlert release</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Real-world deployment</span></span>
+      <span class="tag">EADV 2026</span><span class="tag">NHS</span><span class="tag">Class III CE</span><span class="tag">10/05</span>
+    </div>
+    <h3>
+      <span class="en">8,391 patients over 16 months: autonomous AI discharged 25–31% of urgent skin cancer referrals at two NHS sites with no clinician review, saving 2,851 clinician hours and missing six cases</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Presented at the EADV 2026 Congress (Abstract P2827), <a href="https://ascopost.com/news/october-2026/autonomous-ai-triaged-urgent-suspected-skin-cancer-referrals-in-real-world-implementation-study/" target="_blank" rel="noopener">reported by The ASCO Post on 5 October</a> and <a href="https://www.dermatologytimes.com/view/autonomous-ai-could-create-capacity-for-more-than-8-500-additional-dermatology-appointments" target="_blank" rel="noopener">by Dermatology Times on 1 October</a>: a real-world implementation study in which a CE-marked Class III autonomous AI device read clinical and dermoscopic smartphone images across two UK NHS hospitals for 16 months, covering 8,391 patients — 94% of the two sites' urgent suspected skin cancer referrals — of whom 86% consented to autonomous decision-making. The AI discharged 31% of patients at one site and 25% at the other with no clinician review; teledermatologists discharged a further 24% and 25%. Patients needing routine follow-up fell from 27% on the standard teledermatology pathway to 12% on the autonomous one, and the biopsy rate fell from 43% under conventional face-to-face care to 27%. The investigators estimate 2,851 clinician hours saved, equivalent at 20 minutes a consultation to more than 8,500 additional face-to-face appointments over the 16 months and about a 62% gain in clinical capacity. Sensitivity exceeded 98% for invasive melanoma, SCC and BCC; specificity was 72.1%.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Of this edition's six items, this is the only one where the AI actually made a decision that changed where a patient went with nobody watching — the other five keep a human in the loop. It is also the only one that reports both a capacity benefit and a miss list: <a href="https://www.dermatologytimes.com/view/autonomous-ai-could-create-capacity-for-more-than-8-500-additional-dermatology-appointments" target="_blank" rel="noopener">six false negatives (five BCCs and one melanoma in situ), found through post-market surveillance, with no adverse outcomes in the follow-up available</a>. Read against the KFF figures cited in this site's <a href="https://ai-medical-daily.peteraim.com/reports/2026-10-11.html" target="_blank" rel="noopener">11 Oct edition</a> — 60 of 950 FDA-authorised AI devices recalled 182 times — the point is that the risk in autonomous AI sits not in the first validation but in whether anyone keeps watching after deployment. Lead investigator Lucy Thomas's own line: deploying an AI system safely "isn't a one-off exercise."</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">This is a conference abstract, not peer reviewed. <strong>Neither report names the device or its manufacturer.</strong> What is established is that lead investigator Lucy Thomas discloses consulting and Clinical Advisory Board roles with Skin Analytics Ltd., and that <a href="https://skin-analytics.com/news/regulatory-certification/derm-class-iii-ce-mark/" target="_blank" rel="noopener">the company claimed in February 2025 that its DERM was the EU's only Class III CE-marked device of this kind</a> — but "the device in this study is DERM" is this report's inference, not a statement in the coverage. The capacity and time figures are estimates; the device was funded by Chelsea &amp; Westminster Hospital NHS Foundation Trust and the study partly supported by a La Roche-Posay (L'Oréal) grant; only one of the two sites is named.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://ascopost.com/news/october-2026/autonomous-ai-triaged-urgent-suspected-skin-cancer-referrals-in-real-world-implementation-study/" target="_blank" rel="noopener">The ASCO Post, 2026-10-05</a> · <a href="https://www.dermatologytimes.com/view/autonomous-ai-could-create-capacity-for-more-than-8-500-additional-dermatology-appointments" target="_blank" rel="noopener">Dermatology Times, 2026-10-01</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Patient-facing risk</span></span>
+      <span class="tag">AHA Hypertension 2026</span><span class="tag">Gemini</span><span class="tag">ChatGPT</span><span class="tag">10/08</span>
+    </div>
+    <h3>
+      <span class="en">324 home blood pressure monitors: four leading AI search tools identified clinically validated models correctly only 63–91% of the time, and changed their answers on retest</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On 8 October, moderated poster #TH125 at the American Heart Association's Hypertension Scientific Sessions 2026 (7–11 October, Arlington, Virginia): <a href="https://www.eurekalert.org/news-releases/1146589" target="_blank" rel="noopener">324 home blood pressure monitors sourced in Canada in April–May 2026 (145 validated, 179 not) were put to Google Gemini, Microsoft Copilot, ChatGPT and Perplexity AI in three question styles</a> — a general-public phrasing, one directing the tool to a named validation registry (StrideBP, ValidateBP, Hypertension Canada), and a detailed question requiring a one-word answer. Gemini scored 86–91% correct depending on phrasing; the other three about 63–83%. All four did worse on <strong>validated</strong> devices than on unvalidated ones, all at times labelled registry-listed validated monitors as failing to meet standards, and on retesting — the 20% of devices with mixed results, re-run by three examiners on different computers and days — the answers often changed. <a href="https://www.eurekalert.org/news-releases/1146589" target="_blank" rel="noopener">Presenting author Anna Soriano, an internal medicine resident at the University of Montreal, summed it up: "We found that most AI tools performed only slightly better than if you had flipped a coin for each question."</a></span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This item covers the scenario almost every medical-AI evaluation skips: patients are not using medical AI, they are using general-purpose AI. And what they ask is not "what do I have" but "should I buy this device" — a question with an authoritative registry, a single right answer, and which ought to be retrieval rather than reasoning. That four tools cannot be stable on that question type is the cheapest available proof that a general model is not a clinical tool. Set against the first item: AMIE delivered 90% in a supervised setting with clinicians closing the loop, while a patient at home checking a checkable fact gets 63–91% and inconsistency. Home blood pressure readings drive hypertension diagnosis and dose adjustment, so an unvalidated device contaminates the whole decision chain.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">This is a conference abstract; <a href="https://www.eurekalert.org/news-releases/1146589" target="_blank" rel="noopener">the release itself states the findings are preliminary and not peer reviewed, with the abstract due to appear in a <em>Hypertension</em> supplement on 17 November 2026</a>. Testing ran in April–May 2026, model versions have turned over since, and the authors accept results may change as the technology improves. The three other tools are reported only as a combined 63–83% range, with no individual figures. Private browsing was used but cannot rule out training-data influence, and the authors could not explain why the tools struggled specifically on validated devices.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.eurekalert.org/news-releases/1146589" target="_blank" rel="noopener">AHA / EurekAlert, 2026-10-08</a> · <a href="https://medicalxpress.com/news/2026-10-ai-tools-unreliable-home-blood.html" target="_blank" rel="noopener">Medical Xpress, 2026-10</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Open model</span></span>
+      <span class="tag">Google</span><span class="tag">MedGemma</span><span class="tag">Nature Medicine</span><span class="tag">10/06</span>
+    </div>
+    <h3>
+      <span class="en">MedGemma lands in Nature Medicine: the 4B model lifts hallucination discrimination from 0.09 to 0.50 and cuts physician-rated factual error from 18.5% to 15.4%</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On 6 October, <a href="https://www.nature.com/articles/s41591-026-04626-w" target="_blank" rel="noopener">Nature Medicine published the Article "An open vision-language model for diverse medical applications"</a> (open access), bringing Google's MedGemma family into the peer-reviewed record (date and article type per <a href="https://www.nature.com/nm/articles?year=2026" target="_blank" rel="noopener">Nature Medicine's 2026 article listing</a>). <a href="https://www.newsdirectory3.com/medgemma-outperforms-baseline-models-in-medical-ai-nature-com-reports/" target="_blank" rel="noopener">Per secondary coverage of the figures</a>: 86.2 on MedQA, the highest for an open model at release (DeepSeek-R1 at 671B parameters aside), against 78.2 for the next-closest documented open model, OpenBioLLM 70B. On the MedHallu hard set, MedGemma 4B scored 0.50 normalised versus 0.09 for Gemma 3 4B, and physician-rated factually inaccurate responses fell from 18.5% (Gemma 3 4B) to 15.4% (MedGemma 4B), about a 17% relative reduction. Imaging results (radiology, histopathology, dermatology, ophthalmology) and MIMIC-CXR report generation are described as matching or beating larger and task-specific comparators, but that summary gives no figures; MedGemma 27B exceeded human physician performance on AgentClinic-MedQA simulated encounters, while the 4B variants struggled on the same simulated tasks.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Put this next to the second item and the week's through-line is clear: in a single week Nature Medicine published both an open-weights medical model and the finding that 87.8% of clinical prediction-model papers ship no code at all. Open weights can be downloaded, validated locally and re-run by third parties — precisely the layer the second item says the field lacks. For resource-constrained health systems, a 4B model that runs on local hardware means sensitive records need not leave the building; and the 15.4% physician-rated factual error rate says just as plainly that it is not something to put in front of a patient.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">This report repeatedly failed to load the nature.com page for this Article (server error), so every score above comes from secondary coverage and has not been checked against the paper; the Article's existence, date and type are confirmed via <a href="https://www.nature.com/nm/articles?year=2026" target="_blank" rel="noopener">Nature Medicine's article listing</a>. Separately, all of these numbers are benchmark scores, not clinical outcomes — MedGemma has no prospective clinical study behind it and does not sit at the same evidence level as items one and four.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.nature.com/articles/s41591-026-04626-w" target="_blank" rel="noopener">Nature Medicine, 2026-10-06</a> · <a href="https://www.newsdirectory3.com/medgemma-outperforms-baseline-models-in-medical-ai-nature-com-reports/" target="_blank" rel="noopener">News Directory 3 (secondary), 2026-10-08</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Evaluation governance</span></span>
+      <span class="tag">MAGIC</span><span class="tag">Duke-NUS</span><span class="tag">Nature Medicine</span><span class="tag">10/06</span>
+    </div>
+    <h3>
+      <span class="en">The same day, Nature Medicine published MAGIC: a cross-national network to drag generative-AI evaluation out of English and high-income settings</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On 6 October, Nature Medicine published the Correspondence "MAGIC: an international network for evaluating generative artificial intelligence in global health" (<a href="https://www.nature.com/nm/articles?year=2026" target="_blank" rel="noopener">see Nature Medicine's 2026 article listing</a>). <a href="https://magic-ai.health/" target="_blank" rel="noopener">The network's site gives MAGIC's full name as the Medical AI Global Initiative and Collaboration and states its aim as building a global evaluation ecosystem producing globally representative evidence</a>, with two planned outputs: a continuously updated, modular benchmark covering multilingual coverage (especially low-resource languages), regional disease burden (disease spectrums and comorbidity patterns) and sociocultural adaptability; and a reporting standard disclosing scope and limitations, covering intended use, target users, care settings, evaluation data, performance and safety. The contact address sits at Duke-NUS.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">All five preceding items come out of the US, UK and Canada — BIDMC, Dana-Farber/MIT, Mount Sinai, two NHS hospitals, the University of Montreal. That is exactly what MAGIC is addressing: a 90% differential hit rate measured in a Boston clinic does not carry to settings with a different disease spectrum, different comorbidity structure, and a consultation that does not happen in English. For Taiwan this matters more than it looks — Traditional Chinese sits in the band that is not quite low-resource but is certainly not an optimisation target, and Taiwan's disease spectrum (hepatitis B, oral cancer, betel-quid-related lesions) is almost absent from any English-language benchmark.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">This is a Correspondence, not a research paper — no results, only a plan. <a href="https://magic-ai.health/" target="_blank" rel="noopener">The network's site lists no member institutions, participating countries, site count or launch date</a>, and neither the benchmark nor the reporting standard has a published version. What is citable today is an intention, not a usable evaluation instrument.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.nature.com/nm/articles?year=2026" target="_blank" rel="noopener">Nature Medicine article listing, 2026-10-06</a> · <a href="https://magic-ai.health/" target="_blank" rel="noopener">magic-ai.health</a></p></div>
+  </div>
+</section>
+
+<section id="product">
+  <h2>02 — Product Analysis</h2>
+  <div class="sec-title">
+    <span class="en">Two ends of the same "clinical" label in one week: one has just met real patients for the first time, the other has been discharging them on its own for 16 months</span>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>AMIE (Articulate Medical Intelligence Explorer)</h3>
+      <p class="sub"><span class="en-inline">Pre-visit conversational history-taking and differential research system · Google (US)</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> Patients complete a text-based history before the visit; the system produces a summary and a differential list for the clinician to read beforehand. It is <strong>not a product</strong>: no pricing, no commercial customers, no regulatory authorisation — the deliverable is a paper, not a purchase order. <a href="https://blog.google/innovation-and-ai/technology/health/amie-clinical-study-lancet" target="_blank" rel="noopener">Its strongest current claim is that AI summaries helped clinicians prepare in 75% of cases and shaped care approach in more than half</a>, obtained under <a href="https://www.arise-ai.org/blog/amie-lancet" target="_blank" rel="noopener">98 patients, one site, and human safety supervision throughout</a>.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: an evidence-level jump. From simulated OSCEs straight to <a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(26)01535-7/abstract" target="_blank" rel="noopener">a prospective study in The Lancet's main title</a>, with <a href="https://arxiv.org/abs/2603.08448v2" target="_blank" rel="noopener">an arXiv preprint exposing every p value</a> — rare transparency in conversational medical AI.</span>
+        </li>
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: a clean safety record. <a href="https://arxiv.org/abs/2603.08448v2" target="_blank" rel="noopener">Zero stops under the predefined criteria, and patients' attitudes to AI shifted favourably after use (p&lt;0.001)</a> — a direct answer to the long-standing question of whether patients will accept it.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: it wins on quality and loses on cost. <a href="https://arxiv.org/abs/2603.08448v2" target="_blank" rel="noopener">Management-plan practicality (p=0.003) and cost-effectiveness (p=0.004) both went significantly to the clinicians</a> — and those two are what hospital procurement and payers actually read. A system that proposes expensive, impractical plans does not sell on a tie in clinical quality.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: the missing data is specific. No control arm, no quantified visit-time or downstream-utilisation outcome, no multi-site data, nothing outside English — and patient satisfaction and clinician preparedness are <a href="https://www.arise-ai.org/blog/amie-lancet" target="_blank" rel="noopener">described as high or beneficial with no numbers attached</a>.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>DERM (Skin Analytics) ／ the CE-marked Class III autonomous skin AI</h3>
+      <p class="sub"><span class="en-inline">Autonomous triage and discharge for urgent suspected skin cancer referrals · Skin Analytics (UK)</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> It reads clinical and dermoscopic smartphone images, discharges patients it judges benign, and routes higher-risk cases to a teledermatologist. What it sells is capacity against the NHS waiting list, not diagnostic accuracy as such. <a href="https://skin-analytics.com/news/regulatory-certification/derm-class-iii-ce-mark/" target="_blank" rel="noopener">The company claimed in February 2025 that DERM holds a Class III CE mark under EU MDR 2017/745 and is the EU's first and only such device able to rule out cancer without clinician review, self-reporting 99.8% accuracy in ruling out cancer and more than 110,000 cases assessed across UK deployments</a>. <strong>The device in item four is not named</strong>; this report infers DERM from the lead investigator's Skin Analytics disclosure and the company's exclusivity claim.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: the hardest regulatory moat here. Class III CE is the top tier of MDR scrutiny, and no second company holds the indication of discharging patients without clinician review — <a href="https://skin-analytics.com/news/regulatory-certification/derm-class-iii-ce-mark/" target="_blank" rel="noopener">the company makes that its core claim</a>.</span>
+        </li>
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: it reports numbers a hospital finance office signs off on. <a href="https://ascopost.com/news/october-2026/autonomous-ai-triaged-urgent-suspected-skin-cancer-referrals-in-real-world-implementation-study/" target="_blank" rel="noopener">16 months, 8,391 patients, 2,851 clinician hours saved, biopsy rate down from 43% to 27%, follow-up need down from 27% to 12%</a> — the language of capacity and cost, which is exactly what AMIE lost on.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: 72.1% specificity and six false negatives are the same coin. <a href="https://www.dermatologytimes.com/view/autonomous-ai-could-create-capacity-for-more-than-8-500-additional-dermatology-appointments" target="_blank" rel="noopener">Those six (five BCCs, one melanoma in situ) surfaced only through post-market surveillance</a> — meaning the system's safety rests on the surveillance continuing to run, not on the device.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: one indication, one health system. The evidence comes entirely from UK NHS referral pathways, and <a href="https://skin-analytics.com/news/regulatory-certification/derm-class-iii-ce-mark/" target="_blank" rel="noopener">the company's own page states DERM is investigational-use only in the United States</a> — the largest single payer market is shut. The capacity and hour figures are also estimates, and the study was partly funded by La Roche-Posay.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="company">
+  <h2>03 — Companies &amp; Competition</h2>
+  <div class="sec-title">
+    <span class="en">Who stands where, on what, against whom</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th><span class="en-inline">Company / institution</span></th>
+        <th><span class="en-inline">Recent state &amp; numbers</span></th>
+        <th><span class="en-inline">Position &amp; moat</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Google</strong><br><span class="en-inline">Publishing and open weights in parallel</span></td>
+          <td>
+            <span class="en">Two papers in one week: on 8 Oct <a href="https://blog.google/innovation-and-ai/technology/health/amie-clinical-study-lancet" target="_blank" rel="noopener">the AMIE prospective study in The Lancet's main title (a first, by Google's account)</a>; on 6 Oct <a href="https://www.nature.com/articles/s41591-026-04626-w" target="_blank" rel="noopener">MedGemma in Nature Medicine</a>. Partners are BIDMC and the ARISE Network, with <a href="https://www.arise-ai.org/blog/amie-lancet" target="_blank" rel="noopener">an author list including Vivek Natarajan, Mike Schaekermann, Pushmeet Kohli and Adam Rodman</a>.</span>
+          </td>
+          <td>
+            <span class="en">The moat is publishing cadence plus access to academic centres: holding a slot in two leading journals in one week is the cheapest trust a company without a product can buy. The weakness is the same fact — neither paper is a commodity, with no authorisation, no customers and no pricing, so a competitor holding one clearance steps straight over it.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Skin Analytics</strong><br><span class="en-inline">The only autonomous-discharge skin cancer AI</span></td>
+          <td>
+            <span class="en"><a href="https://skin-analytics.com/news/regulatory-certification/derm-class-iii-ce-mark/" target="_blank" rel="noopener">Announced DERM's MDR Class III CE mark in February 2025, self-reporting 99.8% accuracy in ruling out cancer and more than 110,000 cases assessed across UK deployments</a>; this week's <a href="https://ascopost.com/news/october-2026/autonomous-ai-triaged-urgent-suspected-skin-cancer-referrals-in-real-world-implementation-study/" target="_blank" rel="noopener">8,391-patient implementation study at EADV 2026</a> adds real-world capacity data (device unnamed — see item four).</span>
+          </td>
+          <td>
+            <span class="en">The moat is regulatory permission for the autonomous indication, not the model — anyone can train a lesion classifier, but nobody else can legally let one discharge a patient in the EU. The weakness is one indication, one health system, and <a href="https://skin-analytics.com/news/regulatory-certification/derm-class-iii-ce-mark/" target="_blank" rel="noopener">investigational-use-only status in the US</a>.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Mount Sinai</strong><br><span class="en-inline">An academic centre whose output is the evaluation itself</span></td>
+          <td>
+            <span class="en"><a href="https://www.mountsinai.org/about/newsroom/2026/mount-sinai-study-finds-safety-prompts-can-help-ai-models-make-safer-clinical-choices" target="_blank" rel="noopener">20 models, 501 scenario variants, more than 10 million responses, about 1.18 million potentially harmful choices; harmful picks from 16.6% to 10.1%, with 19 of 20 models improving</a> (Communications Medicine, online 26 Sep). The team includes Mahmud Omar, Girish N. Nadkarni, Eyal Klang and Benjamin S. Glicksberg.</span>
+          </td>
+          <td>
+            <span class="en">The moat is vendor neutrality — it tests 20 models rather than its own one, so buyers can lift the conclusion straight into procurement terms. The weakness is that scenario testing is still far from deployment, and since it sells nothing, its influence depends on whether institutions write its reminder into policy.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Dana-Farber ／ MIT</strong><br><span class="en-inline">The side turning reproducibility into a standard</span></td>
+          <td>
+            <span class="en"><a href="https://www.nature.com/articles/s41591-026-04691-1" target="_blank" rel="noopener">3,967 papers, 12.2% sharing code, only 3.9% of the 380 repositories carrying tests; authors include Thomas Sounack, Charlotta Lindvall, Tom Pollard, Leo Anthony Celi, Gary S. Collins and Karel G. M. Moons</a>; <a href="https://www.dana-farber.org/newsroom/news-releases/2026/ai-assisted-scoping-review-of-code-sharing-in-clinical-prediction-model-research" target="_blank" rel="noopener">funded primarily by the NIH</a>.</span>
+          </td>
+          <td>
+            <span class="en">The moat is authorship of the guideline: this audit feeds TRIPOD-Code, and the TRIPOD family is already a de facto peer-review standard — whoever writes the guideline decides what everyone else must submit. The weakness is that guidelines are not binding, and this audit never ran the code, so it lacks the hardest number of all: an actual reproduction rate.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Everlywell ／ Clairity</strong><br><span class="en-inline">The DTC route around clinicians and payers</span></td>
+          <td>
+            <span class="en"><a href="https://statnews.com/2026/10/08/why-clairity-took-breast-cancer-risk-prediction-ai-directly-to-patients" target="_blank" rel="noopener">STAT's 8 Oct story (paywalled) carries the headline and subhead that this startup took its breast cancer risk prediction AI straight to patients because waiting on doctors and insurers would have taken too long</a>; <a href="https://www.onclive.com/view/clairity-breast-is-added-to-nccn-guidelines-for-breast-cancer-screening-and-diagnosis" target="_blank" rel="noopener">Clairity Breast is already in NCCN's Breast Cancer Screening and Diagnosis guideline v1.2026, using a 5-year AI risk of ≥1.7% as one higher-risk criterion, validated on roughly 77,000 mammograms from five screening centres</a>.</span>
+          </td>
+          <td>
+            <span class="en">The moat is the combination of FDA de novo authorisation and NCCN guideline inclusion, which lets it assert clinical legitimacy without a physician referral. The weakness is item five's problem exactly: once the tool is in a patient's hands and the clinical loop is removed, nobody owns interpretation or follow-up — and general-purpose AI cannot even identify a blood pressure monitor reliably.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>智捷醫學科技 Zhijie Medical</strong><br><span class="en-inline">Taiwan's AI 3D medical imaging</span></td>
+          <td>
+            <span class="en"><a href="https://newtalk.tw/news/view/2026-10-05/1063720" target="_blank" rel="noopener">CNA report, 5 Oct: chairman Sun Ji-hsin says the system converts CT/MRI grayscale slices into colour 3D models in three to five minutes and separates more than 260 organs and tissues; it has been tested in the Ministry of Health and Welfare's data centre, with a target of all 29 Taiwanese medical centres by 2028. The company also acquired Japan's Holoeyes, which it says reaches more than 100 Japanese hospitals</a>.</span>
+          </td>
+          <td>
+            <span class="en">The moat is local distribution and regulator relationships (testing in the MOHW data centre, offering the platform to diplomatic allies) plus the existing Japanese hospital network. The weakness is glaring: <a href="https://newtalk.tw/news/view/2026-10-05/1063720" target="_blank" rel="noopener">the report discloses no regulatory authorisation, no signed or installed hospital, no revenue, no acquisition price and no clinical study data</a> — on this edition's evidence ladder it has not reached the first rung.</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>Today's competitive structure is not about whose model is stronger but about who can hand their claim to someone else to check.</strong> Google buys trust with two journal papers; Skin Analytics buys autonomy with a Class III certificate; Mount Sinai buys neutrality with 10 million responses; Dana-Farber/MIT buys rule-making power with a guideline; Everlywell/Clairity buys legitimacy around payers with FDA authorisation plus NCCN inclusion; and Zhijie, so far, has a target date of 2028. Six players, six currencies — and the exchange rate from item two is that of 3,967 papers, 12.2% ship code. The market is still priced in "take my word for it."</span>
+    </p>
+  </div>
+</section>
+
+<section id="taiwan">
+  <h2>04 — Taiwan Angle</h2>
+  <div class="sec-title">
+    <span class="en">Taiwan's AI health news this week is about plumbing; the international news is about evidence — the two are not yet joined</span>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>(1) Item two is a mirror for Taiwan, and Taiwan is not in it.</strong> <a href="https://www.nature.com/articles/s41591-026-04691-1" target="_blank" rel="noopener">Nature Medicine's code audit ranks output by country — China (32.4%), the US (11.6%), the UK (9.1%) — and sharing rates by country, led by Finland (33.3%), Belgium (26.7%) and Israel (23.1%)</a>. Taiwan is near the top of neither. The practical point is not prestige: when a Taiwanese hospital wants to procure or independently validate a prediction model, it depends on somebody else choosing to publish the code — and globally only 12.2% do, of whom only 37.6% specify dependencies. The most basic gatekeeping step, re-running a model on your own institution's data before adopting it, is currently impossible for roughly nine in ten papers.</span>
+    </p>
+    <p>
+      <span class="en"><strong>(2) Taiwan's current bet is on data plumbing, with deadlines before the end of next year.</strong> <a href="https://udn.com/news/story/7240/9754542" target="_blank" rel="noopener">Health Minister Shih Chung-liang explained in mid-September that the ministry is promoting the FHIR health-data exchange standard and installing "FHIR Box" devices at medical centres so hospitals can standardise and exchange data without replacing their information systems; key data from all national medical centres is to be connected by the end of 2026 and hospital linkage nationwide pushed further by the end of 2027, alongside a planned national integrated clinical trial network and a NT$10 billion strategic investment paired with the NHI sandbox to draw in private capital</a> (the same report cites the Healthy Taiwan Deep Cultivation Plan at NT$48.9 billion over five years and the National Drug Resilience Preparedness Plan at NT$24 billion over four; published 15 Sep, before this edition's window, and carried here as background). The plumbing is a precondition: without interoperable data, the regional disease burden and multilingual evaluation that item seven's MAGIC wants cannot be attempted in Taiwan at all.</span>
+    </p>
+    <p>
+      <span class="en"><strong>(3) The domestic supply side's claims still sit on the bottom rung of this edition's evidence ladder.</strong> <a href="https://newtalk.tw/news/view/2026-10-05/1063720" target="_blank" rel="noopener">CNA reported on 5 October on Zhijie Medical Technology's AI 3D imaging system, targeting all 29 medical centres by 2028, tested in the MOHW data centre, with Japan's Holoeyes acquired</a>. Set beside item four, the gap is legible: the UK system reports 16 months, 8,391 patients, 2,851 hours and six false negatives; Zhijie reports a feature spec and a year. This is not a verdict on one company but on the aggregate — five of this edition's six international items have third-party-checkable numbers as their core asset, and none of Taiwan's news this week does. <strong>One concrete recommendation:</strong> as the FHIR Box linkage completes, write local re-validation on the institution's own data and post-market surveillance into procurement and hospital governance terms — because item four already shows that the six missed cases in autonomous AI were not caught by pre-market validation but by surveillance.</span>
+    </p>
+  </div>
+</section>
+
+<section id="reading">
+  <h2>05 — Further Reading</h2>
+  <div class="sec-title">
+    <span class="en">Five pieces answering one question — what has to be true before clinical AI evidence counts — ordered from scale to substance</span>
+  </div>
+
+  <ol class="reading">
+    <li>
+      <a href="https://www.nature.com/articles/s41591-026-04691-1" target="_blank" rel="noopener">AI-assisted scoping review of code sharing in clinical prediction model research — Nature Medicine (2026-10-09)</a>
+      <p class="why"><span class="en">The paper behind item two. Worth reading for the appendix-grade detail: 3.9% with tests, 21.6% with version pins, 64.3% fixing a random seed. If you are writing AI procurement terms for a hospital, those three numbers are the terms.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/articles/s41586-026-10675-5" target="_blank" rel="noopener">Towards autonomous medical artificial intelligence agents — Nature (2026-06-17)</a>
+      <p class="why"><span class="en">MIRA averaged 88.9% across 574 cases and eight diseases against 78.1% for four board-certified physicians (p&lt;0.001), with 467 of 468 prescriptions rated correctly dosed. But the patients are MIMIC-IV-derived simulations and the authors cannot rule out training-data overlap. Read against item one, it is the gap between winning big in simulation and drawing level with real patients.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/articles/s41591-026-04277-x" target="_blank" rel="noopener">AI-based triage and decision support in mammography and digital breast tomosynthesis for breast cancer screening: a paired, noninferiority trial — Nature Medicine (2026-03-19)</a>
+      <p class="why"><span class="en">31,301 women screened in Spain: radiologist readings down 63.6%, cancer detection up from 6.3 to 7.3 per 1,000 (+15.2%, P&lt;0.001) — but recall up 14.8% and noninferiority not met on recall. It is the most honest available invoice for what AI's workload saving costs, and the methodological predecessor to item four's 2,851 hours saved against six missed cases.</span></p>
+    </li>
+    <li>
+      <a href="https://ai.nejm.org/doi/full/10.1056/AIoa2501001" target="_blank" rel="noopener">Automation Bias in Large Language Model–Assisted Diagnostic Reasoning among Physicians Trained in AI Literacy — A Randomized Clinical Trial — NEJM AI</a>
+      <p class="why"><span class="en">Forty-four physicians with 20 hours of AI-literacy training, facing deliberately flawed LLM recommendations, <a href="https://www.bjh.be/automation-bias-persists-in-ai-trained-physicians-erroneous-llm-advice-worsens-diagnostic-reasoning/" target="_blank" rel="noopener">saw diagnostic reasoning scores fall from 84.9% to 73.3% and top-choice accuracy from 90.5% to 76.1%</a> (NCT06963957). Item three shows that reminding the model works; this shows that training the doctor is not enough. Together they are the whole risk picture.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/articles/s41591-026-04389-4" target="_blank" rel="noopener">Show us the evidence for the value of medical AI — Nature Medicine editorial (2026-04-21)</a>
+      <p class="why"><span class="en">Not a single figure in it, yet it is the scorecard for all six of today's items: it proposes separating claims into analytic performance, clinical actionability, workflow benefit and improved outcomes, each requiring a different strength of evidence, with stronger claims demanding stronger prospective proof. Measure today's six against it and only item four reaches the fourth tier.</span></p>
+    </li>
+  </ol>
+</section>
+
+<section id="refs">
+  <h2>06 — References</h2>
+  <div class="sec-title">
+    <span class="en">References</span>
+  </div>
+
+  <div class="panel">
+    <ol class="refs">
+      <li>Conversational diagnostic artificial intelligence in ambulatory primary care: a prospective feasibility study. <em>The Lancet</em>, 2026-10-08. <a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(26)01535-7/abstract" target="_blank" rel="noopener">thelancet.com</a></li>
+      <li>Conversational diagnostic AI in primary care: what happens after it speaks? <em>The Lancet</em> (Comment), 2026-10. <a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(26)01763-0/abstract" target="_blank" rel="noopener">thelancet.com</a></li>
+      <li>Study in The Lancet suggests AI could improve patient-physician relationships. <em>Google Blog</em>, 2026-10-08. <a href="https://blog.google/innovation-and-ai/technology/health/amie-clinical-study-lancet" target="_blank" rel="noopener">blog.google</a></li>
+      <li>ARISE, BIDMC and Google AMIE publish prospective clinical AI feasibility study in The Lancet. <em>ARISE Network</em>, 2026-10-08. <a href="https://www.arise-ai.org/blog/amie-lancet" target="_blank" rel="noopener">arise-ai.org</a></li>
+      <li>A prospective clinical feasibility study of a conversational diagnostic AI in an ambulatory primary care clinic. <em>arXiv:2603.08448v2</em>, 2026-03-10. <a href="https://arxiv.org/abs/2603.08448v2" target="_blank" rel="noopener">arxiv.org</a></li>
+      <li>AI-assisted scoping review of code sharing in clinical prediction model research. <em>Nature Medicine</em>, 2026-10-09. <a href="https://www.nature.com/articles/s41591-026-04691-1" target="_blank" rel="noopener">nature.com</a></li>
+      <li>AI-assisted scoping review of code sharing in clinical prediction model research (news release). <em>Dana-Farber Cancer Institute</em>, 2026-10-09. <a href="https://www.dana-farber.org/newsroom/news-releases/2026/ai-assisted-scoping-review-of-code-sharing-in-clinical-prediction-model-research" target="_blank" rel="noopener">dana-farber.org</a></li>
+      <li>Mount Sinai Study Finds Safety Prompts Can Help AI Models Make Safer Clinical Choices. <em>Mount Sinai Newsroom</em>, 2026-10-08 (paper: <em>Communications Medicine</em>, online 2026-09-26, DOI 10.1038/s43856-026-01933-8). <a href="https://www.mountsinai.org/about/newsroom/2026/mount-sinai-study-finds-safety-prompts-can-help-ai-models-make-safer-clinical-choices" target="_blank" rel="noopener">mountsinai.org</a></li>
+      <li>Mount Sinai study finds safety prompts can help AI models make safer clinical choices. <em>EurekAlert</em>, 2026-10-08. <a href="https://www.eurekalert.org/news-releases/1146930" target="_blank" rel="noopener">eurekalert.org</a></li>
+      <li>Autonomous AI Triaged Urgent Suspected Skin Cancer Referrals in Real-World Implementation Study (EADV 2026, Abstract P2827). <em>The ASCO Post</em>, 2026-10-05. <a href="https://ascopost.com/news/october-2026/autonomous-ai-triaged-urgent-suspected-skin-cancer-referrals-in-real-world-implementation-study/" target="_blank" rel="noopener">ascopost.com</a></li>
+      <li>Autonomous AI Could Create Capacity for More Than 8,500 Additional Dermatology Appointments. <em>Dermatology Times</em>, 2026-10-01. <a href="https://www.dermatologytimes.com/view/autonomous-ai-could-create-capacity-for-more-than-8-500-additional-dermatology-appointments" target="_blank" rel="noopener">dermatologytimes.com</a></li>
+      <li>DERM receives Class III CE mark. <em>Skin Analytics</em>, 2025-02-06. <a href="https://skin-analytics.com/news/regulatory-certification/derm-class-iii-ce-mark/" target="_blank" rel="noopener">skin-analytics.com</a></li>
+      <li>Top AI tools accurately identified validated home BP monitors only about 2/3 of the time (AHA Hypertension Scientific Sessions 2026, Poster TH125). <em>American Heart Association / EurekAlert</em>, 2026-10-08. <a href="https://www.eurekalert.org/news-releases/1146589" target="_blank" rel="noopener">eurekalert.org</a></li>
+      <li>Leading AI search tools give unreliable answers about home blood pressure monitor validation, research finds. <em>Medical Xpress</em>, 2026-10. <a href="https://medicalxpress.com/news/2026-10-ai-tools-unreliable-home-blood.html" target="_blank" rel="noopener">medicalxpress.com</a></li>
+      <li>An open vision-language model for diverse medical applications. <em>Nature Medicine</em>, 2026-10-06. <a href="https://www.nature.com/articles/s41591-026-04626-w" target="_blank" rel="noopener">nature.com</a></li>
+      <li>MedGemma outperforms baseline models in medical AI, nature.com reports (secondary summary). <em>News Directory 3</em>, 2026-10-08. <a href="https://www.newsdirectory3.com/medgemma-outperforms-baseline-models-in-medical-ai-nature-com-reports/" target="_blank" rel="noopener">newsdirectory3.com</a></li>
+      <li>Articles in 2026 (used to verify publication dates and article types). <em>Nature Medicine</em>. <a href="https://www.nature.com/nm/articles?year=2026" target="_blank" rel="noopener">nature.com</a></li>
+      <li>MAGIC — Medical AI Global Initiative and Collaboration. <em>magic-ai.health</em>, accessed 2026-10-12. <a href="https://magic-ai.health/" target="_blank" rel="noopener">magic-ai.health</a></li>
+      <li>Why this startup is taking its AI to predict breast cancer risk directly to patients (paywalled; headline and subhead only). <em>STAT News</em>, 2026-10-08. <a href="https://statnews.com/2026/10/08/why-clairity-took-breast-cancer-risk-prediction-ai-directly-to-patients" target="_blank" rel="noopener">statnews.com</a></li>
+      <li>Clairity Breast Is Added to NCCN Guidelines for Breast Cancer Screening and Diagnosis. <em>OncLive</em>, 2026-04-14. <a href="https://www.onclive.com/view/clairity-breast-is-added-to-nccn-guidelines-for-breast-cancer-screening-and-diagnosis" target="_blank" rel="noopener">onclive.com</a></li>
+      <li>智捷：AI 3D醫療影像系統 拚2028年導入29家醫學中心. <em>Newtalk 新聞／中央社</em>, 2026-10-05. <a href="https://newtalk.tw/news/view/2026-10-05/1063720" target="_blank" rel="noopener">newtalk.tw</a></li>
+      <li>生技論壇10月7日登場 衛福部長石崇良：積極建構AI醫療基建. <em>經濟日報／聯合新聞網</em>, 2026-09-15. <a href="https://udn.com/news/story/7240/9754542" target="_blank" rel="noopener">udn.com</a></li>
+      <li>Towards autonomous medical artificial intelligence agents. <em>Nature</em> 655, 1282–1291, 2026-06-17. <a href="https://www.nature.com/articles/s41586-026-10675-5" target="_blank" rel="noopener">nature.com</a></li>
+      <li>AI-based triage and decision support in mammography and digital tomosynthesis for breast cancer screening: a paired, noninferiority trial. <em>Nature Medicine</em> 32, 1296–1305, 2026-03-19. <a href="https://www.nature.com/articles/s41591-026-04277-x" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Automation Bias in Large Language Model–Assisted Diagnostic Reasoning among Physicians Trained in AI Literacy — A Randomized Clinical Trial. <em>NEJM AI</em>. <a href="https://ai.nejm.org/doi/full/10.1056/AIoa2501001" target="_blank" rel="noopener">ai.nejm.org</a></li>
+      <li>Automation Bias Persists in AI-Trained Physicians: Erroneous LLM Advice Worsens Diagnostic Reasoning. <em>Belgian Journal of Hematology (news)</em>, 2026-05-11. <a href="https://www.bjh.be/automation-bias-persists-in-ai-trained-physicians-erroneous-llm-advice-worsens-diagnostic-reasoning/" target="_blank" rel="noopener">bjh.be</a></li>
+      <li>Show us the evidence for the value of medical AI. <em>Nature Medicine</em> 32, 1163, 2026-04-21. <a href="https://www.nature.com/articles/s41591-026-04389-4" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Medical Record Abstraction for Quality Improvement in Sepsis Care Using Artificial Intelligence: A Cluster Randomized Trial. <em>JAMA Network Open</em> 9(6):e2611885, 2026-06-25. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13306301/" target="_blank" rel="noopener">pmc.ncbi.nlm.nih.gov</a></li>
+    </ol>
+    <div class="note">
+      <span class="en"><strong>Editor's note:</strong> (1) Of the six top stories, item three's underlying paper (Communications Medicine) went online on 26 September, before this report's seven-day window; Mount Sinai's 8 October release is what brought it into this week. Item four's Dermatology Times coverage is dated 1 October and the ASCO Post's 5 October, both inside the window. (2) Every benchmark figure for MedGemma in item six is <strong>taken from secondary coverage</strong> — this report repeatedly failed to load the nature.com page (server error). The Article's existence, date (2026-10-06) and type (Article, Open Access) are confirmed via Nature Medicine's 2026 article listing, but the numbers have not been checked against the paper. (3) The device in item four is <strong>not named in either report</strong>; "the device is Skin Analytics' DERM" is this report's inference from lead investigator Lucy Thomas's disclosure and the company's Class III exclusivity claim, and is labelled as an inference in the text. (4) Items four and five are both conference abstracts (EADV 2026, AHA Hypertension 2026) and are not peer reviewed; the AHA abstract is due in a <em>Hypertension</em> supplement on 2026-11-17. (5) STAT News's Clairity story sits behind a paywall; this report quotes only the publicly visible headline and subhead and cites no figure from the body. (6) The FHIR Box and budget figures in Taiwan Angle point 2 come from a 15 September report, before this window, and are marked as background in the text. (7) The Lancet article and comment pages and the NEJM AI article page would not load for this report; their titles and bibliographic details come from search results and journal links, while the specific figures are drawn from the readable arXiv preprint, the ARISE announcement and secondary coverage, with sources marked at each point. (8) Vendor self-reported claims carry no third-party audit here: Skin Analytics' 99.8% and 110,000 cases, and Zhijie's feature specification and 2028 timeline, are all company statements.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-row">
+    <div>
+      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Monday / Clinical Applications &amp; Research<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
+    </div>
+    <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
+  </div>
+</footer>
+</main>
+
+<div class="fabs">
+  <button class="up" id="up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+  <a class="home-fab" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg></a>
+</div>
+
+<script>
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.getElementById('theme-ic').textContent =
+    document.body.classList.contains('dark') ? '◑' : '◐';
+}
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.body.classList.add('dark');
+  document.getElementById('theme-ic').textContent = '◑';
+}
+window.addEventListener('scroll', function(){
+  document.getElementById('up').classList.toggle('show', window.scrollY > 600);
+});
+
+/* GitHub 星星數：無需授權，失敗或被限流時靜默保留佔位符 */
+(function(){
+  var el = document.getElementById('ghs');
+  if (!el || typeof fetch !== 'function') return;
+  fetch('https://api.github.com/repos/tingwei161803/ai-medical-daily', {headers:{Accept:'application/vnd.github+json'}})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if (!d || typeof d.stargazers_count !== 'number') return;
+      var n = d.stargazers_count;
+      el.textContent = n >= 1000 ? (Math.round(n/100)/10) + 'k' : String(n);
+    })
+    .catch(function(){});
+})();
+</script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/reports/2026-10-12.html" hreflang="zh-Hant" rel="alternate" lang="zh-Hant">中文版</a></p>
+</body>
+</html>
