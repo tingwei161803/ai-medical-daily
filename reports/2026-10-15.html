@@ -8,6 +8,10 @@
 <title>AI／醫療AI 每日新知日報 · 2026-10-15</title>
 <meta property="og:url" content="https://ai-medical-daily.peteraim.com/reports/2026-10-15.html" />
 <link rel="canonical" href="https://ai-medical-daily.peteraim.com/reports/2026-10-15.html" />
+<link rel="alternate" hreflang="zh-Hant" href="https://ai-medical-daily.peteraim.com/reports/2026-10-15.html" />
+<link rel="alternate" hreflang="en" href="https://ai-medical-daily.peteraim.com/en/reports/2026-10-15.html" />
+<link rel="alternate" hreflang="x-default" href="https://ai-medical-daily.peteraim.com/reports/2026-10-15.html" />
+<meta name="description" content="三件事把醫療 AI 的技術重心從「模型拿幾分」推向「部署後怎麼被用」：Penn 的人機協作癲癇系統讓病人直接跟植入式監測對話、誤報降約八成；NYU 證明公開 benchmark 與臨床真實用法只有約三成重疊；Nature Medicine 十月號社論把「逾 90% 已部署、≤53% 覺得好用」當成整期的問題意識。">
 <meta name="report-date" content="2026-10-15">
 <meta name="report-theme" content="technology">
 <meta name="report-title-zh" content="技術這一週把「評測」本身推上了台面——10/13 登上 Nature Medicine 的 Penn 研究讓 13 名癲癇病人用手機直接跟顱內 EEG 對話，1,300 多則訊息換來偵測誤報下降約 80%、逾 92% 的提問得到準確回覆、逾 67% 的即時偵測被病人親手標記；10/8 NYU 把 127,833 筆臨床對話攤開來對照 58 個公開 benchmark，真實使用裡 36.2% 是文書與行政、診斷只占 3.7%，而中位數 benchmark 只覆蓋真實任務組合的 31%、完全不含文書請求；同一週 10/14 Nature Medicine 十月號社論點出的落差是：逾 90% 美國醫療體系已開始部署 AI，卻只有 53% 以下說它好用">
@@ -29,16 +33,16 @@
 </script>
 <link rel="stylesheet" href="/assets/report.css">
 </head>
-<body class="lang-zh">
+<body>
 
 <header class="bar">
   <div class="bar-in">
-    <a class="brand" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span><span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <a class="brand" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span></a>
     <div class="bar-sp"></div>
     <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub / 在 GitHub 給這個專案一顆星"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
     <div class="seg">
-      <button id="b-zh" class="on" onclick="setLang('zh')">中文</button>
-      <button id="b-en" onclick="setLang('en')">EN</button>
+      <a class="on" href="/reports/2026-10-15.html" hreflang="zh-Hant" lang="zh-Hant" aria-current="page">中文</a>
+      <a href="/en/reports/2026-10-15.html" hreflang="en" lang="en" rel="alternate">EN</a>
     </div>
     <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
   </div>
@@ -48,28 +52,24 @@
 <div class="hero">
   <div class="kicker">
     <span class="zh-inline">星期四 · 技術突破</span>
-    <span class="en-inline">Thursday · Technology</span>
   </div>
   <h1>
     <span class="zh">評測本身成了這一週的技術議題：Penn 讓病人直接跟植入式 EEG 對話、誤報降約 80%，NYU 證明公開 benchmark 與真實臨床用法只有約三成重疊，而 Nature Medicine 十月號社論把「逾 90% 已部署、≤53% 覺得好用」攤在桌上</span>
-    <span class="en">Measurement became the technology story: Penn let patients text an implanted EEG and cut false alarms by about 80%, NYU showed public benchmarks overlap real clinical use by only about a third, and the October Nature Medicine editorial put "over 90% deploying, 53% or fewer finding it useful" on the table</span>
   </h1>
   <div class="dateline">
     <span class="zh-inline">2026 年 10 月 15 日（四）· 涵蓋 10/08–10/15 · 台北時間</span>
-    <span class="en-inline">Thursday, October 15, 2026 · Covering Oct 8–15 · Taipei time</span>
   </div>
   <p class="lede">
     <span class="zh">今天的三條主線其實是同一條：模型分數不再是技術新聞的主詞。10 月 13 日 <a href="https://www.nature.com/articles/s41591-026-04680-4" target="_blank" rel="noopener">Nature Medicine</a> 刊出賓州大學的人機協作癲癇系統，13 名病人用手機與顱內 EEG 來回 1,300 多則訊息，<a href="https://www.nih.gov/news-events/news-releases/patients-engage-epilepsy-monitor-real-time-improving-seizure-detection" target="_blank" rel="noopener">NIH 新聞稿</a>記錄的結果是偵測誤報在研究期間下降約 80%、超過 92% 的腦波提問得到準確回覆。10 月 8 日 NYU Langone 團隊把一家學術醫療體系 127,833 筆臨床對話與 58 個公開 benchmark 逐一對照，<a href="https://arxiv.org/abs/2610.11069" target="_blank" rel="noopener">arXiv:2610.11069</a> 的結論是中位數 benchmark 只覆蓋真實任務組合的 31%、且不含任何文書請求。10 月 14 日 <a href="https://www.nature.com/articles/s41591-026-04726-7" target="_blank" rel="noopener">Nature Medicine 十月號社論</a>把這件事寫成整期的問題意識：逾 90% 的美國醫療體系已開始部署 AI 工具，但只有 53% 以下認為它們很有用。</span>
-    <span class="en">Today's three threads are one thread: benchmark scores are no longer the subject of the sentence. On 13 October <a href="https://www.nature.com/articles/s41591-026-04680-4" target="_blank" rel="noopener">Nature Medicine</a> published Penn's human-AI epilepsy system, in which 13 patients exchanged more than 1,300 messages with an intracranial EEG through a phone; the <a href="https://www.nih.gov/news-events/news-releases/patients-engage-epilepsy-monitor-real-time-improving-seizure-detection" target="_blank" rel="noopener">NIH release</a> records false detections falling about 80% over the study and over 92% of brain-activity questions answered accurately. On 8 October an NYU Langone team set 127,833 clinician conversations from one academic health system against 58 public benchmarks; <a href="https://arxiv.org/abs/2610.11069" target="_blank" rel="noopener">arXiv:2610.11069</a> finds the median benchmark covers just 31% of the real task mix and contains no documentation requests. On 14 October the <a href="https://www.nature.com/articles/s41591-026-04726-7" target="_blank" rel="noopener">October Nature Medicine editorial</a> made that the framing question for a whole issue: over 90% of US health systems have begun deploying AI tools, and 53% or fewer rate them highly useful.</span>
   </p>
 
   <nav class="toc">
-    <a href="#top"><span class="zh-inline">重點新聞</span><span class="en-inline">Top Stories</span></a>
-    <a href="#product"><span class="zh-inline">產品分析</span><span class="en-inline">Product Analysis</span></a>
-    <a href="#company"><span class="zh-inline">公司與競爭</span><span class="en-inline">Companies &amp; Competition</span></a>
-    <a href="#taiwan"><span class="zh-inline">台灣視角</span><span class="en-inline">Taiwan Angle</span></a>
-    <a href="#reading"><span class="zh-inline">延伸閱讀</span><span class="en-inline">Further Reading</span></a>
-    <a href="#refs"><span class="zh-inline">參考文獻</span><span class="en-inline">References</span></a>
+    <a href="#top"><span class="zh-inline">重點新聞</span></a>
+    <a href="#product"><span class="zh-inline">產品分析</span></a>
+    <a href="#company"><span class="zh-inline">公司與競爭</span></a>
+    <a href="#taiwan"><span class="zh-inline">台灣視角</span></a>
+    <a href="#reading"><span class="zh-inline">延伸閱讀</span></a>
+    <a href="#refs"><span class="zh-inline">參考文獻</span></a>
   </nav>
 </div>
 
@@ -77,174 +77,149 @@
   <h2>01 — Top Stories</h2>
   <div class="sec-title">
     <span class="zh">六則消息排在一起，看到的是同一個轉向：能被量到的東西，正在從「模型答對幾題」換成「系統被用的時候發生了什麼」。</span>
-    <span class="en">Put the six side by side and the same turn shows up in all of them: what gets measured is shifting from how many questions a model answers to what happens when the system is actually used.</span>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">人機協作</span><span class="en-inline">Human-AI loop</span></span>
+      <span class="tag hot"><span class="zh-inline">人機協作</span></span>
       <span class="tag">Penn Medicine</span><span class="tag">Nature Medicine</span><span class="tag">10/13</span>
     </div>
     <h3>
       <span class="zh">病人用手機跟自己腦中的 EEG 對話：13 人、1,300 多則訊息，偵測誤報降約 80%</span>
-      <span class="en">Patients text the EEG inside their own head: 13 people, 1,300-plus messages, false detections down about 80%</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">賓州大學團隊在癲癇監測病房做了一項概念驗證研究，讓 13 名接受連續顱內 EEG 監測的成年病人，透過手機上的對話式代理直接與監測系統往來：詢問自己的腦波、要求視覺化、回報症狀、每天三次填寫睡眠與情緒問卷，並親手把系統偵測到的發作標記為真、假或不確定。研究 10 月 13 日刊於 <a href="https://www.nature.com/articles/s41591-026-04680-4" target="_blank" rel="noopener">Nature Medicine（DOI: 10.1038/s41591-026-04680-4）</a>。<a href="https://www.nih.gov/news-events/news-releases/patients-engage-epilepsy-monitor-real-time-improving-seizure-detection" target="_blank" rel="noopener">NIH/NINDS 當天的新聞稿</a>列出的數字是：病人與系統交換逾 1,300 則訊息，發作偵測誤報在研究期間下降約 80%，專家回饋再降 2%，系統對腦波提問給出準確且切題回覆的比例逾 92%，病人標記了逾 67% 的即時偵測結果。</span>
-        <span class="en">A University of Pennsylvania team ran a proof-of-concept study in an epilepsy monitoring unit in which 13 adults on continuous intracranial EEG dealt with the monitoring system directly through a conversational agent on a phone: asking about their own brain activity, requesting visualisations, reporting symptoms, answering surveys three times a day on sleep and mood, and labelling detected seizures themselves as true, false or uncertain. The study appeared on 13 October in <a href="https://www.nature.com/articles/s41591-026-04680-4" target="_blank" rel="noopener">Nature Medicine (DOI: 10.1038/s41591-026-04680-4)</a>. The <a href="https://www.nih.gov/news-events/news-releases/patients-engage-epilepsy-monitor-real-time-improving-seizure-detection" target="_blank" rel="noopener">NIH/NINDS release</a> that day gives the figures: more than 1,300 messages exchanged, false seizure-detection alarms down about 80% over the study, a further 2% from expert feedback, over 92% of brain-activity questions answered accurately and relevantly, and more than 67% of real-time detections labelled by patients.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">醫材上的 AI 這幾年主要被當成「給醫師看的偵測器」，這份研究把病人放進了訓練迴圈本身——誤報的下降不是來自更大的模型，而是來自病人每天回饋哪一次偵測是假的。資深作者 Brian Litt 在 NIH 新聞稿裡的那句「這些裝置首先是為醫師做的」，正是這篇要翻轉的前提；共同第一作者 Zack Goldblum 補的那句更直接：「好幾位病人完全沒被提示，就主動問能不能把這套系統帶回家。」這也是 <a href="https://www.pennmedicine.org/news/ai-platform-allows-patients-to-text-with-their-medical-device" target="_blank" rel="noopener">Penn Medicine 自己的說明</a>點名下一步要延伸到心律裝置、胰島素幫浦與帕金森氏症深部腦刺激的理由。</span>
-        <span class="en">AI on medical devices has mostly been built as a detector for clinicians to read. This study puts the patient inside the training loop itself: the drop in false alarms comes not from a larger model but from patients saying, day by day, which detections were wrong. Senior author Brian Litt's line in the NIH release — "these devices are made first and foremost for doctors" — is precisely the premise the paper inverts, and co-first author Zack Goldblum's is blunter: "Completely unprompted, several patients asked if they could take the system home with them." It is also why <a href="https://www.pennmedicine.org/news/ai-platform-allows-patients-to-text-with-their-medical-device" target="_blank" rel="noopener">Penn's own write-up</a> names cardiac devices, insulin pumps and deep brain stimulation for Parkinson's as the next targets.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">13 人、住院環境、概念驗證。研究沒有報告發作偵測本身的絕對準確度指標，對發作頻率、生活品質、急診次數與醫療使用量的影響都還在評估中。「個人化系統將只需要偶爾的臨床監督」是作者的展望，不是這份資料證明的結論。經費為 NIH Pioneer Award（DP1NS122038，約 560 萬美元）等多筆 NINDS 補助。</span>
-        <span class="en">Thirteen people, an inpatient setting, a proof of concept. The study reports no absolute accuracy metric for seizure detection itself, and effects on seizure frequency, quality of life, emergency visits and healthcare use are still being evaluated. The claim that personalised systems will need only occasional clinical supervision is the authors' projection, not a result this dataset demonstrates. Funding is an NIH Pioneer Award (DP1NS122038, about US$5.6 million) plus other NINDS grants.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://www.nature.com/articles/s41591-026-04680-4" target="_blank" rel="noopener">Nature Medicine, 2026-10-13</a> ｜ <a href="https://www.nih.gov/news-events/news-releases/patients-engage-epilepsy-monitor-real-time-improving-seizure-detection" target="_blank" rel="noopener">NIH news release, 2026-10-13</a> ｜ <a href="https://www.pennmedicine.org/news/ai-platform-allows-patients-to-text-with-their-medical-device" target="_blank" rel="noopener">Penn Medicine, 2026-10-13</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">評測落差</span><span class="en-inline">Benchmark gap</span></span>
+      <span class="tag hot"><span class="zh-inline">評測落差</span></span>
       <span class="tag">NYU Langone</span><span class="tag">arXiv</span><span class="tag">10/08</span>
     </div>
     <h3>
       <span class="zh">127,833 筆真實臨床對話對上 58 個公開 benchmark：中位數只覆蓋三成任務，而且完全沒有文書</span>
-      <span class="en">127,833 real clinician conversations against 58 public benchmarks: the median covers three-tenths of the task mix, and no documentation at all</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">NYU Langone 與 NYU Tandon、Stern、Grossman 等單位組成的團隊，取 2025 年 8 月 12 日至 2026 年 4 月 3 日一家學術醫療體系內部安全 LLM 助理的 127,833 筆對話（成功標註 127,625 筆），來自 6,342 名臨床人員、35 個專科，與 58 個公開 benchmark（共 10,659 個標註題目）逐項比對。論文 10 月 8 日上傳 <a href="https://arxiv.org/abs/2610.11069" target="_blank" rel="noopener">arXiv:2610.11069</a>。真實使用的組成是：文書與行政 36.2%、知識檢索 28.9%、診斷僅 3.7%；護理師與進階執業人員約占一半查詢量。36.1% 的提問以原本問法無法被好好回答，22.2% 缺少病人或在地資訊。而中位數 benchmark 只共享 31% 的真實任務組合；號稱貼近臨床的 benchmark 套組（中位 35%）並沒有比前沿模型技術報告裡的那些（中位 40%）更接近真實。</span>
-        <span class="en">A team spanning NYU Langone and NYU's Tandon, Stern and Grossman schools took 127,833 conversations (127,625 successfully annotated) logged between 12 August 2025 and 3 April 2026 in one academic health system's secure LLM assistant, from 6,342 clinicians across 35 specialties, and compared them item by item against 58 public benchmarks totalling 10,659 labelled items. The paper went up on 8 October as <a href="https://arxiv.org/abs/2610.11069" target="_blank" rel="noopener">arXiv:2610.11069</a>. Real use breaks down as 36.2% documentation and administration, 28.9% knowledge retrieval and just 3.7% diagnosis, with nurses and advanced practice providers accounting for about half of queries. 36.1% of queries could not be answered well as posed and 22.2% needed missing patient or local information. The median benchmark shares only 31% of the real task mix — and suites designed to resemble clinical practice (median 35%) sit no closer to real use than those from frontier model reports (median 40%).</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">這是目前把「benchmark 分數」與「臨床實際怎麼用」放在同一張表上、規模最大的一次對照，而且差距不是程度問題而是種類問題：診斷在真實使用裡只有 3.7%，在 MedQA 與腳本一致性測驗裡卻幾乎是全部，後兩者分別有 97.6% 與 97.7% 的題目最安全的回應就是直接作答——真實臨床裡那個比例是 61.2%，另有 26.8% 的最佳回應是反問澄清。換句話說，業界用來排名的題庫，系統性地獎勵了一種在病房裡只占六成場合才正確的行為。</span>
-        <span class="en">This is the largest side-by-side yet of benchmark scores and actual clinical use, and the gap is one of kind rather than degree. Diagnosis is 3.7% of real use but nearly all of MedQA and a script concordance test, where 97.6% and 97.7% of items are safest answered directly — against 61.2% in real practice, with another 26.8% best served by asking a clarifying question first. The question banks the field ranks itself on systematically reward a behaviour that is correct in only about six of ten situations on the ward.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">單一學術醫療體系、單一內部助理工具，任務組成未必能外推到社區醫院或其他國家。潛在傷害的 13.2%（高或危急）是作者自承的保守上限，臨床醫師共識下約為 3.7%，兩個數字差 3.6 倍，引用時務必標明是哪一個。這是 preprint，尚未經同儕審查。</span>
-        <span class="en">One academic health system, one internal assistant: the task mix may not transfer to community hospitals or other countries. The 13.2% rated high or critical for potential harm is the authors' own cautious upper bound; under clinician consensus it is about 3.7% — a 3.6-fold spread, so cite which one you mean. This is a preprint and has not been peer reviewed.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://arxiv.org/abs/2610.11069" target="_blank" rel="noopener">arXiv:2610.11069 — Clinician use of language models diverges from how the models are evaluated, 2026-10-08</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">部署後評估</span><span class="en-inline">Post-deployment</span></span>
+      <span class="tag hot"><span class="zh-inline">部署後評估</span></span>
       <span class="tag">Nature Medicine</span><span class="tag">Stanford</span><span class="tag">10/14</span>
     </div>
     <h3>
       <span class="zh">「逾 90% 已部署、53% 以下覺得好用」：Nature Medicine 十月號把部署後的漂移與放棄當成整期主題</span>
-      <span class="en">"Over 90% deploying, 53% or fewer finding it useful": the October Nature Medicine builds a whole issue around drift and abandonment after go-live</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">10 月 14 日線上刊出的 <a href="https://www.nature.com/articles/s41591-026-04726-7" target="_blank" rel="noopener">Nature Medicine 社論〈Making AI work in healthcare〉</a>（第 32 卷第 10 期，第 3499 頁）替整期的部署專題定調，核心句是「醫療 AI 的價值取決於它是否帶來更好的照護，而不只是更好的表現」。社論引述的調查顯示逾 90% 的美國醫療體系已開始部署 AI 工具，但只有 53% 以下給出高度有用的評價；同時點名美國 FDA 已有在正式授權前先行部署臨床決策支援工具的試辦計畫，以及中國 DeepSeek 釋出後據報逾 800 家醫療機構導入。同期由史丹佛 Nigam Shah 等人撰寫的 <a href="https://www.nature.com/articles/s41591-026-04574-5" target="_blank" rel="noopener">ChatEHR 部署經驗</a>（8 月 10 日線上、十月號第 3512–3515 頁）直言 benchmark 式評估「不足以監測與評估」臨床人員與 LLM 的實際互動，並附上一張部署期間未獲支持陳述的分析圖。社論也記下一次試辦評估中，臨床人員的採用率在四週內隨投入度下降而下滑。</span>
-        <span class="en">The <a href="https://www.nature.com/articles/s41591-026-04726-7" target="_blank" rel="noopener">Nature Medicine editorial "Making AI work in healthcare"</a>, online 14 October (vol 32, issue 10, p 3499), sets the frame for a deployment-themed issue, and its thesis is that "the value of medical AI will depend on whether it helps deliver better care, not just better performance." The survey it cites has over 90% of US health systems beginning to deploy AI tools while 53% or fewer rate them highly useful; it also notes the FDA's pilot for deploying clinical decision support before authorisation, and reports of more than 800 healthcare institutions deploying China's DeepSeek after release. In the same issue, Stanford's Nigam Shah and colleagues report <a href="https://www.nature.com/articles/s41591-026-04574-5" target="_blank" rel="noopener">lessons from deploying ChatEHR</a> (online 10 August, pp 3512–3515), stating plainly that benchmark-based evaluation was "insufficient for monitoring and evaluating" clinician-driven interactions with the model, with a figure analysing unsupported claims made during deployment. The editorial also records a pilot in which clinician adoption declined over four weeks as engagement fell away.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">這一期把三種失敗模式收在同一個封面底下，而它們都不是模型不準：模型版本更迭與病歷書寫習慣改變造成的效能漂移（Shah 等）、把演算法嵌進照護路徑每一段才可行（Yan 等的中國眼科 AI 系統）、以及同一套糖尿病視網膜病變 AI 在印度、泰國、澳洲需要三種不同導入策略（Tiwari 等）。社論同時記下美國 ADVOCATE 計畫投入 6,270 萬美元，要部署心血管自主 AI 醫材並研究其真實世界影響——這是把「部署後證據」當成一個需要專門預算的研究類別來做。</span>
-        <span class="en">The issue gathers three failure modes under one cover, none of which is an inaccurate model: performance drift caused by model iterations and changing documentation habits (Shah et al.), an algorithm that only became feasible once embedded at every stage of the care pathway (Yan et al.'s eye-care AI in China), and one diabetic retinopathy system needing three different implementation strategies across India, Thailand and Australia (Tiwari et al.). The editorial also notes US$62.7 million for the US ADVOCATE programme to deploy autonomous cardiovascular AI devices and study their real-world impact — post-deployment evidence treated as a research category with its own budget line.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">社論是觀點文章，不是新資料；「逾 90%／≤53%」來自 Poon 等人 2025 年刊於 <em>JAMA</em> 系統期刊的調查，是受訪者自評而非量測結果。DeepSeek 的 800 家機構數字，社論引用的是新聞媒體（Global Times 等）而非官方統計。ChatEHR 全文在付費牆後，本報只根據可公開瀏覽的摘要、圖說與書目資料撰寫。</span>
-        <span class="en">The editorial is a viewpoint, not new data; the "over 90% / 53% or fewer" figures come from a Poon et al. 2025 survey in a <em>JAMA</em>-network journal and are respondent self-assessments, not measurements. The 800-institution DeepSeek figure is sourced by the editorial to news outlets (Global Times among them), not official statistics. The ChatEHR paper is paywalled; this report draws only on the publicly visible abstract, figure caption and bibliographic record.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://www.nature.com/articles/s41591-026-04726-7" target="_blank" rel="noopener">Nature Medicine editorial, 2026-10-14</a> ｜ <a href="https://www.nature.com/articles/s41591-026-04574-5" target="_blank" rel="noopener">Shah et al., ChatEHR at Stanford Medicine, 2026-08-10</a> ｜ <a href="https://www.nature.com/articles/s41591-026-04631-z" target="_blank" rel="noopener">Yan et al., AI-agent eye clinic in China, 2026-09-10</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">語音模型</span><span class="en-inline">Speech model</span></span>
+      <span class="tag hot"><span class="zh-inline">語音模型</span></span>
       <span class="tag">Speechmatics</span><span class="tag">Oak</span><span class="tag">10/14</span>
     </div>
     <h3>
       <span class="zh">Speechmatics 推出醫療語音模型 Oak：不用 WER 當指標，改量「醫學名詞召回率」，自稱 91.1% 對上同業平均 74.3%</span>
-      <span class="en">Speechmatics ships Oak for medical speech and drops WER for medical-term recall: a claimed 91.1% against a 74.3% peer average</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">英國劍橋的 Speechmatics 於 10 月 14 日發表醫療語音辨識模型 <a href="https://www.globenewswire.com/news-release/2026/10/14/3380824/0/en/voice-ai-model-built-to-accurately-capture-real-multilingual-medical-conversations.html" target="_blank" rel="noopener">Oak</a>，主打臨床現場最常見卻最難處理的情況：不預先指定語言、說話者在同一句話中切換語言。官方數字為支援 55 種語言、在英語加 10 種常用語言上測得醫學名詞召回率 91.1%（其他八家供應商平均約 74.3%）、西班牙語 96.3%（同業平均 86.8%）、一小時音檔 18 秒內轉寫完成。模型可雲端使用或在醫療機構環境內自建部署，自建部署以 NVIDIA Dynamo-Triton 提供服務。</span>
-        <span class="en">Cambridge-based Speechmatics released <a href="https://www.globenewswire.com/news-release/2026/10/14/3380824/0/en/voice-ai-model-built-to-accurately-capture-real-multilingual-medical-conversations.html" target="_blank" rel="noopener">Oak</a> on 14 October, a medical speech recognition model aimed at the hardest ordinary case in a clinic: no preset language, and speakers switching languages mid-sentence. The company reports 55 supported languages, 91.1% medical-term recall across English plus ten commonly used languages (against roughly 74.3% for eight other providers), 96.3% on Spanish (peer average 86.8%), and an hour of audio transcribed in under 18 seconds. Oak runs in the cloud or self-hosted inside a health organisation's environment, served with NVIDIA Dynamo-Triton.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">真正值得注意的不是分數，是換了尺。Speechmatics 公開主張字錯率（WER）對高風險醫療用途不夠嚴謹，因為漏掉一個藥名或劑量跟漏掉一個虛詞在 WER 裡權重相同。這跟今天另外兩則的方向一致：當評測指標跟真實後果對不上，先改指標。對照組很清楚——Google 今年 1 月發表的開源 <a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">MedASR</a> 走的正是 WER 路線（胸部 X 光口述 5.2% 對 Whisper large-v3 的 12.5%，內部多專科口述 5.2% 對 28.2%）。兩家在量不同的東西，買方得自己決定哪一個對得上自己的風險。</span>
-        <span class="en">The number is not the news; the ruler is. Speechmatics argues publicly that word error rate is not rigorous enough for high-stakes medical use, because dropping a drug name and dropping a function word weigh the same in WER. That runs with the other two stories today: when the metric does not match the consequence, change the metric first. The contrast is sharp — Google's open <a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">MedASR</a>, released in January, reports exactly on WER (5.2% on chest X-ray dictation against 12.5% for Whisper large-v3; 5.2% against 28.2% on an internal multi-specialty set). The two are measuring different things, and buyers have to decide which one maps onto their own risk.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">全部數字都出自 Speechmatics 自家 9 月 29 日的內部研究（19 組測試集、乾淨與吵雜音檔、各家預設設定、不加自訂詞彙），對照組為 AWS、AssemblyAI、Deepgram、ElevenLabs、Google、Microsoft、OpenAI、Soniox，未經第三方稽核，也未揭露訓練資料。供應商自選指標、自建測試集、自己宣布勝出，這件事本身就是今天這一期要討論的問題的一部分。</span>
-        <span class="en">Every figure comes from Speechmatics' own internal study dated 29 September (19 test sets, clean and noisy audio, each provider's default settings, no custom vocabulary), with AWS, AssemblyAI, Deepgram, ElevenLabs, Google, Microsoft, OpenAI and Soniox as comparators. None of it is independently audited and no training data is disclosed. A vendor choosing the metric, building the test set and announcing the win is itself an instance of the problem this issue is about.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://www.globenewswire.com/news-release/2026/10/14/3380824/0/en/voice-ai-model-built-to-accurately-capture-real-multilingual-medical-conversations.html" target="_blank" rel="noopener">GlobeNewswire / Speechmatics, 2026-10-14</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">部署</span><span class="en-inline">Deployment</span></span>
+      <span class="tag hot"><span class="zh-inline">部署</span></span>
       <span class="tag">Northwestern Medicine</span><span class="tag">OpenEvidence</span><span class="tag">Epic</span><span class="tag">10/13</span>
     </div>
     <h3>
       <span class="zh">Northwestern Medicine 把 OpenEvidence 整個嵌進 Epic：單一登入 10/8 上線，護理師與藥師一起用</span>
-      <span class="en">Northwestern Medicine embeds OpenEvidence across Epic: single sign-on live 8 Oct, nurses and pharmacists included</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">Northwestern Medicine 於 10 月 13 日宣布，將 OpenEvidence 的臨床智慧平台全院嵌入 Epic 電子病歷，臨床人員單一登入自 10 月 8 日起生效；護理師、藥師與其他臨床團隊成員以既有病歷帳號自動登入，可在工作流程內查詢藥物劑量、交互作用與現行指引，答覆附上同儕審查文獻引用，包含 NEJM 與 JAMA Network 內容。<a href="https://www.healthcareitnews.com/news/northwestern-medicine-integrates-openevidence-epic" target="_blank" rel="noopener">Healthcare IT News 的報導</a>指出這是第一階段；加州 Sutter Health 與紐約 Mount Sinai Health System 同樣在 Epic 內部署 OpenEvidence。</span>
-        <span class="en">Northwestern Medicine announced on 13 October that it has embedded OpenEvidence's clinical intelligence platform enterprise-wide in its Epic EHR, with clinician single sign-on live since 8 October. Nurses, pharmacists and other clinical team members sign in automatically with existing EHR credentials and can check drug dosing, interactions and current guidelines inside their workflow, with answers citing peer-reviewed literature including NEJM and JAMA Network content. <a href="https://www.healthcareitnews.com/news/northwestern-medicine-integrates-openevidence-epic" target="_blank" rel="noopener">Healthcare IT News</a> describes this as a first phase; Sutter Health in California and Mount Sinai Health System in New York are deploying OpenEvidence in Epic as well.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">NYU 那份研究說真實查詢裡知識檢索占 28.9%、護理師與進階執業人員貢獻約一半查詢量——Northwestern 這次部署幾乎是照著那張分布圖做的：把答題系統放進病歷、而且不只開放給醫師。值得留意的是誰在收割通路：Epic 自家 8 月在使用者大會上發表了 <a href="https://www.fiercehealthcare.com/health-tech/epic-expands-ai-ambitions-agent-platform-cosmos-powered-predictions-and-deeper-workflow" target="_blank" rel="noopener">Agent Factory 代理平台與 Cosmos 訓練的 Curiosity 模型</a>，計畫 2027 年 3 月以整合元件釋出；在那之前，第三方證據工具正在同一個畫面裡把位置站好。</span>
-        <span class="en">The NYU study puts knowledge retrieval at 28.9% of real queries, with nurses and advanced practice providers supplying about half the volume — and this deployment tracks that distribution almost exactly: an answering system inside the chart, and not only for physicians. Worth watching is who ends up owning the channel. Epic used its August users' meeting to announce <a href="https://www.fiercehealthcare.com/health-tech/epic-expands-ai-ambitions-agent-platform-cosmos-powered-predictions-and-deeper-workflow" target="_blank" rel="noopener">Agent Factory and Curiosity, a model trained on Cosmos</a>, with release as an integrated EHR component planned for March 2027. Until then, third-party evidence tools are taking up position on the same screen.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">公告未提供任何使用者數、查詢量或站點數，也沒有任何成效數據——沒有查詢品質、採用率、對處置或安全事件影響的量測。這是一則部署消息，不是一則成效消息；在 Nature Medicine 社論記錄「採用率四週內隨投入度下滑」的同一週，缺少採用曲線特別值得記上一筆。</span>
-        <span class="en">The announcement gives no user, query or site counts, and no outcome data at all — nothing on answer quality, adoption, or effects on management or safety events. This is a deployment story, not a results story; in the same week the Nature Medicine editorial records adoption declining over four weeks as engagement fell, the missing adoption curve is worth noting.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://www.healthcareitnews.com/news/northwestern-medicine-integrates-openevidence-epic" target="_blank" rel="noopener">Healthcare IT News, 2026-10-13</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">成效量測</span><span class="en-inline">Outcome measurement</span></span>
+      <span class="tag hot"><span class="zh-inline">成效量測</span></span>
       <span class="tag">Houston Methodist</span><span class="tag">Apella</span><span class="tag">10/09</span>
     </div>
     <h3>
       <span class="zh">用「虛擬孿生」當對照組：Houston Methodist 量到心胸外科手術量增加 7%、每月約多 25 例</span>
-      <span class="en">A virtual twin as the control arm: Houston Methodist measures a 7% rise in cardiothoracic case volume, about 25 extra cases a month</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">Houston Methodist 在 15 間手術室的高複雜度心胸外科區導入 Apella 的影像式 AI（自動辨識圍手術期事件，餵給儀表板、預測性排程工具與報表），並以合成對照法評估：用院內其他尚未導入該技術的手術室加權混合，建出一個在上線前六個月能追蹤該區手術量的「虛擬孿生」。<a href="https://www.healthcareitnews.com/news/houston-methodist-measures-7-surgical-volume-gain-ai" target="_blank" rel="noopener">Healthcare IT News 10 月 9 日的報導</a>指出，上線後十個月手術量上升 7%、約相當於每月多 25 例，病例組成維持穩定、總手術時間幾乎未變、周轉時間下降，相對於合成對照的延遲開刀中位數每例減少約 2.7 分鐘（作者自稱為探索性發現，部分次要指標未達統計顯著）。</span>
-        <span class="en">Houston Methodist put Apella's image-based AI — which automatically identifies perioperative events and feeds dashboards, predictive scheduling and reports — into a high-acuity 15-room cardiothoracic suite, and evaluated it with a synthetic control: a weighted blend of other in-house ORs that had not adopted the technology, calibrated to track the suite's volume over the six months before go-live. <a href="https://www.healthcareitnews.com/news/houston-methodist-measures-7-surgical-volume-gain-ai" target="_blank" rel="noopener">Healthcare IT News reported on 9 October</a> that case volume rose 7% over the following ten months, about 25 extra cases a month, with case mix stable, total operative time essentially unchanged, turnover times down, and median late-start minutes about 2.7 lower per case than the synthetic control — which the authors call exploratory, with some secondary measures not reaching significance.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">在一個很難做隨機分派的場域（你不能把一半手術室分到對照組），合成對照提供了一條可操作的中間路線，而且它量的是醫院財務長聽得懂的單位：手術量。這一週所有關於「部署後要量什麼」的討論裡，這是少數真的把方法學寫出來的案例。副主題也很誠實：導入 AI 之後，手術沒有變快（總手術時間幾乎未變），多出來的量來自排程與周轉。</span>
-        <span class="en">In a setting where randomisation is close to impossible — you cannot assign half your operating rooms to a control arm — a synthetic control offers a workable middle path, and it measures in a unit a hospital CFO understands: case volume. Among this week's talk about what to measure after go-live, it is one of the few cases where the method is actually written down. The sub-finding is honest too: surgery did not get faster (total operative time barely moved); the extra volume came from scheduling and turnover.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">單一醫院、單一科別、非隨機。合成對照的有效性完全取決於「虛擬孿生」是否真的捕捉到反事實，而同期其他營運改變（人力、排程政策、個案來源）無法被完全排除；報導本身也未把它描述為同儕審查研究。延遲開刀那個 2.7 分鐘是作者自己標為探索性的。</span>
-        <span class="en">One hospital, one service line, not randomised. A synthetic control is only as good as the counterfactual the virtual twin captures, and concurrent operational changes — staffing, scheduling policy, referral patterns — cannot be fully excluded; the report does not describe it as a peer-reviewed study. The 2.7-minute late-start figure is flagged exploratory by the authors themselves.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://www.healthcareitnews.com/news/houston-methodist-measures-7-surgical-volume-gain-ai" target="_blank" rel="noopener">Healthcare IT News, 2026-10-09</a></p></div>
   </div>
 </section>
@@ -253,60 +228,49 @@
   <h2>02 — Product Analysis</h2>
   <div class="sec-title">
     <span class="zh">今天這兩個產品做同一件事（把臨床語音轉成字），卻拒絕用同一把尺量自己——這組對比把整期的主題縮到了一張表上。</span>
-    <span class="en">Two products doing the same job — turning clinical speech into text — that refuse to measure themselves with the same ruler. The contrast compresses the whole issue onto one page.</span>
   </div>
 
   <div class="grid2">
     <div class="panel">
       <h3>Speechmatics Oak</h3>
-      <p class="sub"><span class="zh-inline">閉源商用醫療語音辨識 · Speechmatics（英國劍橋）</span><span class="en-inline">Closed commercial medical ASR · Speechmatics (Cambridge, UK)</span></p>
+      <p class="sub"><span class="zh-inline">閉源商用醫療語音辨識 · Speechmatics（英國劍橋）</span></p>
       <p>
         <span class="zh"><strong>功能與定位。</strong>支援 55 種語言、不需預先指定語言、容許句中語碼轉換的醫療語音辨識模型，賣給需要在多語病人族群中做臨床文書的醫療機構，可雲端或機構內自建部署（自建以 NVIDIA Dynamo-Triton 服務），並列出 HIPAA、SOC 2 Type II、ISO/IEC 27001:2022 與 GDPR 合規，<a href="https://www.globenewswire.com/news-release/2026/10/14/3380824/0/en/voice-ai-model-built-to-accurately-capture-real-multilingual-medical-conversations.html" target="_blank" rel="noopener">發表於 10 月 14 日</a>。</span>
-        <span class="en"><strong>Function and position.</strong> A medical speech recognition model covering 55 languages with no preset language and tolerance for mid-sentence code switching, sold to health organisations documenting care across multilingual patient populations, available in the cloud or self-hosted inside the organisation (served with NVIDIA Dynamo-Triton), and listing HIPAA, SOC 2 Type II, ISO/IEC 27001:2022 and GDPR compliance, <a href="https://www.globenewswire.com/news-release/2026/10/14/3380824/0/en/voice-ai-model-built-to-accurately-capture-real-multilingual-medical-conversations.html" target="_blank" rel="noopener">announced 14 October</a>.</span>
       </p>
       <ul class="clean">
-        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+        <li><span class="pro"><span class="zh-inline">優勢</span></span>
           <span class="zh">：指標選得比對手誠實。把評估從字錯率換成醫學名詞召回率，直接對應「漏掉藥名或劑量」這個真實後果，<a href="https://www.globenewswire.com/news-release/2026/10/14/3380824/0/en/voice-ai-model-built-to-accurately-capture-real-multilingual-medical-conversations.html" target="_blank" rel="noopener">官方報 91.1% 對同業平均 74.3%</a>。</span>
-          <span class="en">: the metric is the honest part. Swapping word error rate for medical-term recall maps directly onto the consequence that matters — a missed drug name or dose — with <a href="https://www.globenewswire.com/news-release/2026/10/14/3380824/0/en/voice-ai-model-built-to-accurately-capture-real-multilingual-medical-conversations.html" target="_blank" rel="noopener">91.1% claimed against a 74.3% peer average</a>.</span>
         </li>
-        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+        <li><span class="pro"><span class="zh-inline">優勢</span></span>
           <span class="zh">：語碼轉換是台灣、新加坡、美國移民社區這類場域每天都在發生、而單語模型每天都在漏的情況，西班牙語 96.3% 對 86.8% 的差距說明這個缺口確實存在。</span>
-          <span class="en">: code switching is a daily occurrence in Taiwan, Singapore and US immigrant communities, and a daily failure for monolingual models — the 96.3% against 86.8% gap on Spanish says the hole is real.</span>
         </li>
-        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+        <li><span class="con"><span class="zh-inline">疑慮</span></span>
           <span class="zh">：自選指標、自建測試集、自行公布勝出，無第三方稽核、無訓練資料揭露。換尺可以讓評估更貼近臨床，也可以讓對手的強項消失在表格外——目前沒有任何獨立資料能分辨是哪一種。</span>
-          <span class="en">: vendor-chosen metric, vendor-built test sets, vendor-announced win, no independent audit and no disclosed training data. Changing the ruler can bring evaluation closer to the clinic, or make a rival's strength vanish off the table — and no independent data currently distinguishes the two.</span>
         </li>
-        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+        <li><span class="con"><span class="zh-inline">疑慮</span></span>
           <span class="zh">：11 種語言之外的另外 44 種沒有公布數字；對台灣最關鍵的中文與台語表現，官方新聞稿沒有提供任何拆解。</span>
-          <span class="en">: no figures are published for the other 44 of its 55 languages, and the release breaks out nothing for Mandarin or Taiwanese Hokkien — the two that matter most for Taiwan.</span>
         </li>
       </ul>
     </div>
 
     <div class="panel">
       <h3>Google MedASR + MedGemma 1.5</h3>
-      <p class="sub"><span class="zh-inline">開放權重醫療模型家族 · Google Research（美國）</span><span class="en-inline">Open-weight medical model family · Google Research (US)</span></p>
+      <p class="sub"><span class="zh-inline">開放權重醫療模型家族 · Google Research（美國）</span></p>
       <p>
         <span class="zh"><strong>功能與定位。</strong>MedASR 是針對醫療口述微調的開放語音辨識模型，MedGemma 1.5 4B 是可離線執行的小型開放多模態醫療模型，兩者皆<a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">於 1 月 13 日發布</a>、經 Hugging Face 與 Vertex AI 提供，官方說明維持研究與商業用途免費。定位不是賣終端產品，而是讓醫療機構與廠商自己拿去微調。</span>
-        <span class="en"><strong>Function and position.</strong> MedASR is an open speech recognition model fine-tuned for medical dictation; MedGemma 1.5 4B is a small open multimodal medical model that runs offline. Both <a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">shipped on 13 January</a> through Hugging Face and Vertex AI, and Google states they remain free for research and commercial use. The play is not a finished product but a base for health organisations and vendors to fine-tune.</span>
       </p>
       <ul class="clean">
-        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+        <li><span class="pro"><span class="zh-inline">優勢</span></span>
           <span class="zh">：權重開放、可離線、可自行驗證。<a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">MedASR 在胸部 X 光口述的字錯率 5.2%，對照 Whisper large-v3 的 12.5%；內部多專科口述 5.2% 對 28.2%</a>——這些數字別人可以自己重跑，Oak 的不行。</span>
-          <span class="en">: open weights, offline-capable, independently verifiable. <a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">MedASR reports 5.2% word error rate on chest X-ray dictation against 12.5% for Whisper large-v3, and 5.2% against 28.2% on an internal multi-specialty set</a> — figures anyone can rerun, which is not true of Oak's.</span>
         </li>
-        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+        <li><span class="pro"><span class="zh-inline">優勢</span></span>
           <span class="zh">：同一家族涵蓋影像與文字，MedGemma 1.5 4B 相對前代在 MRI 病灶分類 65% 對 51%、胸部 X 光解剖定位 IoU 38% 對 3%、EHRQA 90% 對 68%，讓「語音進來、影像與病歷一起處理」可以在同一套開放堆疊裡做完。</span>
-          <span class="en">: one family spans images and text. MedGemma 1.5 4B against its predecessor reports 65% versus 51% on MRI finding classification, 38% versus 3% IoU on chest X-ray anatomical localisation and 90% versus 68% on EHRQA — so speech in, images and chart handled together, all inside one open stack.</span>
         </li>
-        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+        <li><span class="con"><span class="zh-inline">疑慮</span></span>
           <span class="zh">：WER 正是 Speechmatics 指控不適用於高風險醫療的那個指標，Google 沒有公布任何以醫學名詞為單位的召回率，兩家因此無法直接比較——這對買方是真實的資訊缺口，不是修辭。</span>
-          <span class="en">: WER is precisely the metric Speechmatics says is unfit for high-stakes medical use, and Google publishes no term-level recall at all, so the two cannot be compared directly. For a buyer that is a real information gap, not a rhetorical one.</span>
         </li>
-        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+        <li><span class="con"><span class="zh-inline">疑慮</span></span>
           <span class="zh">：Google 自己在同一篇裡註明這些模型是起點，使用前需驗證與調整，輸出不應直接影響臨床決策——開放權重把驗證成本轉嫁給導入方，而這正是 Nature Medicine 社論說大多數醫療體系還沒有能力做的事。</span>
-          <span class="en">: Google states in the same post that these are starting points needing validation and adaptation, and that outputs should not directly inform clinical decisions. Open weights shift the validation cost onto the adopter — exactly the capability the Nature Medicine editorial says most health systems do not yet have.</span>
         </li>
       </ul>
     </div>
@@ -315,7 +279,6 @@
   <div class="panel">
     <p>
       <span class="zh"><strong>把兩邊併起來看。</strong>Oak 的賣點是「我們量了你真正在乎的東西」，但你只能相信它；MedASR 的賣點是「你可以自己量」，但它量的是一個對臨床後果加權錯誤的指標。這不是誰比較好的問題，而是今天這期的核心命題在產品層的具體化：指標的可信度，現在由誰能重跑它決定。</span>
-      <span class="en"><strong>Side by side.</strong> Oak's pitch is "we measured the thing you actually care about" — and you have to take that on trust. MedASR's pitch is "you can measure it yourself" — on a metric that weights clinical consequence wrongly. This is not a question of which is better; it is today's central claim made concrete at product level: a metric's credibility now rests on who is able to rerun it.</span>
     </p>
   </div>
 </section>
@@ -324,81 +287,68 @@
   <h2>03 — Companies &amp; Competition</h2>
   <div class="sec-title">
     <span class="zh">誰站在哪裡、憑什麼、跟誰打</span>
-    <span class="en">Who stands where, on what, against whom</span>
   </div>
 
   <div class="tbl-wrap">
     <table>
       <thead><tr>
-        <th><span class="zh-inline">公司</span><span class="en-inline">Company</span></th>
-        <th><span class="zh-inline">近況與數字</span><span class="en-inline">Recent state &amp; numbers</span></th>
-        <th><span class="zh-inline">競爭定位與護城河</span><span class="en-inline">Position &amp; moat</span></th>
+        <th><span class="zh-inline">公司</span></th>
+        <th><span class="zh-inline">近況與數字</span></th>
+        <th><span class="zh-inline">競爭定位與護城河</span></th>
       </tr></thead>
       <tbody>
         <tr>
-          <td><strong>Epic</strong><br><span class="zh-inline">病歷系統本身就是通路</span><span class="en-inline">The EHR is the channel</span></td>
+          <td><strong>Epic</strong><br><span class="zh-inline">病歷系統本身就是通路</span></td>
           <td>
             <span class="zh">8 月使用者大會發表 Agent Factory（可從 120 個現有 AI 功能改造或自建代理，計畫 2027 年廣泛供應）與 Cosmos 訓練的生成式預測模型 Curiosity（20 家機構驗證中、預計 2027 年 3 月以整合元件釋出）；Cosmos 涵蓋逾 3.2 億名病人、230 億次就醫；急性照護病歷市占 43.7%、逾 3,700 家醫院、逾 85% 客戶使用 Epic AI（<a href="https://www.fiercehealthcare.com/health-tech/epic-expands-ai-ambitions-agent-platform-cosmos-powered-predictions-and-deeper-workflow" target="_blank" rel="noopener">Fierce Healthcare, 2026-08-19</a>）。</span>
-            <span class="en">At its August users' meeting it launched Agent Factory (customise one of 120 existing AI features or build an agent, wide availability planned for 2027) and Curiosity, a generative prediction model trained on Cosmos (20 organisations validating, release as an integrated EHR component planned for March 2027). Cosmos spans over 320 million patients and 23 billion encounters; Epic holds 43.7% of the acute-care EHR market across more than 3,700 hospitals, with over 85% of customers using Epic AI (<a href="https://www.fiercehealthcare.com/health-tech/epic-expands-ai-ambitions-agent-platform-cosmos-powered-predictions-and-deeper-workflow" target="_blank" rel="noopener">Fierce Healthcare, 2026-08-19</a>).</span>
           </td>
           <td>
             <span class="zh">護城河是畫面本身：所有第三方工具最終都得在 Epic 裡出現。弱點是時程——Curiosity 要到 2027 年 3 月，而 OpenEvidence 現在就已經在 Northwestern、Sutter、Mount Sinai 的同一個畫面裡。</span>
-            <span class="en">The moat is the screen: every third-party tool eventually has to appear inside Epic. The weakness is timing — Curiosity lands in March 2027, while OpenEvidence is already on that same screen at Northwestern, Sutter and Mount Sinai.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>OpenEvidence</strong><br><span class="zh-inline">臨床證據問答，免費給已驗證臨床人員</span><span class="en-inline">Clinical evidence Q&amp;A, free to verified clinicians</span></td>
+          <td><strong>OpenEvidence</strong><br><span class="zh-inline">臨床證據問答，免費給已驗證臨床人員</span></td>
           <td>
             <span class="zh">9 月 3 日發表四款模型 Osler（約 5 秒）／Sackett（約 30 秒）／Snow（約 5 分鐘完整文獻回顧）／Darwin（研究預覽、需申請）；自稱 Darwin 為史上第一個 MedQA 滿分系統，MedXpertQA 72.8%、HealthBench Professional 82.7%、NOHARM 87.2%，並點名次佳為 Claude Fable 5 與 Gemini 3.7；1 月估值 120 億美元（<a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openevidences-new-model-achieves-1st-perfect-score-on-medical-ai-benchmark/" target="_blank" rel="noopener">Becker's, 2026-09-08</a>）。10 月 13 日全院嵌入 Northwestern Medicine 的 Epic（<a href="https://www.healthcareitnews.com/news/northwestern-medicine-integrates-openevidence-epic" target="_blank" rel="noopener">Healthcare IT News</a>）。</span>
-            <span class="en">On 3 September it released four models — Osler (about 5 seconds), Sackett (about 30 seconds), Snow (a full literature review in about 5 minutes) and Darwin (research preview, by application) — claiming Darwin as the first system ever to score 100% on MedQA, with 72.8% on MedXpertQA, 82.7% on HealthBench Professional and 87.2% on NOHARM, naming Claude Fable 5 and Gemini 3.7 as next best; valued at US$12 billion in January (<a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openevidences-new-model-achieves-1st-perfect-score-on-medical-ai-benchmark/" target="_blank" rel="noopener">Becker's, 2026-09-08</a>). On 13 October it went enterprise-wide inside Northwestern Medicine's Epic (<a href="https://www.healthcareitnews.com/news/northwestern-medicine-integrates-openevidence-epic" target="_blank" rel="noopener">Healthcare IT News</a>).</span>
           </td>
           <td>
             <span class="zh">護城河是出版商授權（NEJM、JAMA Network 內容）加上免費分發換來的臨床人員安裝基礎。弱點正好是今天的主題：它最響亮的宣稱是 MedQA 滿分，而 NYU 的資料顯示 MedQA 有 97.6% 的題目最安全的回應就是直接作答，真實臨床只有 61.2%。</span>
-            <span class="en">The moat is publisher licensing (NEJM and JAMA Network content) plus an installed base of clinicians bought with free distribution. The weakness is today's theme exactly: its loudest claim is a perfect MedQA score, and NYU's data shows 97.6% of MedQA items are safest answered directly, against 61.2% in real practice.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>Google Research</strong><br><span class="zh-inline">開放權重，把驗證成本外推</span><span class="en-inline">Open weights, validation cost pushed outward</span></td>
+          <td><strong>Google Research</strong><br><span class="zh-inline">開放權重，把驗證成本外推</span></td>
           <td>
             <span class="zh">1 月 13 日發布 MedGemma 1.5 4B（可離線）與開放語音模型 MedASR，經 Hugging Face 與 Vertex AI 提供、研究與商業用途免費；MedASR 胸部 X 光口述 WER 5.2% 對 Whisper large-v3 的 12.5%，MedGemma 1.5 4B 在 EHRQA 90%、MedQA 69%（<a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">Google Research, 2026-01-13</a>）。</span>
-            <span class="en">On 13 January it released MedGemma 1.5 4B (offline-capable) and the open speech model MedASR via Hugging Face and Vertex AI, free for research and commercial use; MedASR reports 5.2% WER on chest X-ray dictation against 12.5% for Whisper large-v3, and MedGemma 1.5 4B scores 90% on EHRQA and 69% on MedQA (<a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">Google Research, 2026-01-13</a>).</span>
           </td>
           <td>
             <span class="zh">護城河是生態位而非產品：成為別人微調的起點，就不必自己贏每一場部署。弱點是它把最難的部分（在地驗證與監測）留給客戶，而這正是 Nature Medicine 社論認定多數醫療體系還做不到的那一段。</span>
-            <span class="en">The moat is a niche rather than a product: be the base everyone fine-tunes, and you need not win each deployment yourself. The weakness is that it leaves the hard part — local validation and monitoring — to the customer, the very step the Nature Medicine editorial judges most health systems unable to take.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>Speechmatics</strong><br><span class="zh-inline">多語醫療語音的挑戰者</span><span class="en-inline">Multilingual medical speech challenger</span></td>
+          <td><strong>Speechmatics</strong><br><span class="zh-inline">多語醫療語音的挑戰者</span></td>
           <td>
             <span class="zh">10 月 14 日發表 Oak，支援 55 種語言，自家 9 月 29 日內部研究報醫學名詞召回率 91.1%（八家同業平均約 74.3%）、西班牙語 96.3% 對 86.8%、一小時音檔 18 秒內轉寫，對照組含 AWS、Deepgram、ElevenLabs、Google、Microsoft、OpenAI、AssemblyAI、Soniox（<a href="https://www.globenewswire.com/news-release/2026/10/14/3380824/0/en/voice-ai-model-built-to-accurately-capture-real-multilingual-medical-conversations.html" target="_blank" rel="noopener">GlobeNewswire, 2026-10-14</a>）。</span>
-            <span class="en">It launched Oak on 14 October across 55 languages, with its own 29 September internal study reporting 91.1% medical-term recall (about 74.3% average across eight competitors), 96.3% against 86.8% on Spanish, and an hour of audio transcribed in under 18 seconds, against AWS, Deepgram, ElevenLabs, Google, Microsoft, OpenAI, AssemblyAI and Soniox (<a href="https://www.globenewswire.com/news-release/2026/10/14/3380824/0/en/voice-ai-model-built-to-accurately-capture-real-multilingual-medical-conversations.html" target="_blank" rel="noopener">GlobeNewswire, 2026-10-14</a>).</span>
           </td>
           <td>
             <span class="zh">護城河是語碼轉換與可機構內自建部署這兩件大廠做得不夠細的事。弱點是全部證據都在自己手上，而它挑戰的對手裡有三家（Google、Microsoft、OpenAI）同時是醫療體系的雲端供應商。</span>
-            <span class="en">The moat is code switching plus self-hosting, two things the hyperscalers handle coarsely. The weakness is that all the evidence sits in its own hands, and three of the rivals it names (Google, Microsoft, OpenAI) are also the cloud providers those health systems already run on.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>Apella</strong><br><span class="zh-inline">手術室影像式 AI</span><span class="en-inline">Image-based AI for the OR</span></td>
+          <td><strong>Apella</strong><br><span class="zh-inline">手術室影像式 AI</span></td>
           <td>
             <span class="zh">在 Houston Methodist 15 間手術室的心胸外科區部署，院方以合成對照法量到上線後十個月手術量增加 7%、約每月多 25 例，周轉時間下降、總手術時間幾乎未變（<a href="https://www.healthcareitnews.com/news/houston-methodist-measures-7-surgical-volume-gain-ai" target="_blank" rel="noopener">Healthcare IT News, 2026-10-09</a>）。</span>
-            <span class="en">Deployed in Houston Methodist's 15-room cardiothoracic suite, where the hospital's synthetic control analysis measured a 7% rise in case volume over ten months — about 25 extra cases a month — with turnover times down and total operative time essentially unchanged (<a href="https://www.healthcareitnews.com/news/houston-methodist-measures-7-surgical-volume-gain-ai" target="_blank" rel="noopener">Healthcare IT News, 2026-10-09</a>).</span>
           </td>
           <td>
             <span class="zh">護城河是把成效講成手術量而非準確率，直接對上醫院的收入表。弱點是對照組是院方自己建的虛擬孿生，不是隨機分派，而且證據目前只有一家醫院、一個科別。</span>
-            <span class="en">The moat is stating the benefit as case volume rather than accuracy, which lands straight on the hospital's revenue line. The weakness is that the control arm is a virtual twin the hospital built itself, not randomisation, and the evidence so far is one hospital and one service line.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>Tsinghua / Beijing Tsinghua Changgung</strong><br><span class="zh-inline">AI 原生門診的實地嘗試</span><span class="en-inline">A field attempt at an AI-native clinic</span></td>
+          <td><strong>Tsinghua / Beijing Tsinghua Changgung</strong><br><span class="zh-inline">AI 原生門診的實地嘗試</span></td>
           <td>
             <span class="zh">AI-TEC 眼科代理門診 2025 年 11 月整合進北京清華長庚醫院臨床流程，由一組分工代理負責問診前病史、風險評估與檢查選擇、眼科資料分析、臨床決策支援與衛教追蹤；臨床人員校正訓練標註後 AUROC 自約 0.80 升至 0.94（<a href="https://www.nature.com/articles/s41591-026-04631-z" target="_blank" rel="noopener">Nature Medicine, 2026-09-10</a>）。</span>
-            <span class="en">The AI-TEC agent eye clinic was integrated into clinical workflow at Beijing Tsinghua Changgung Hospital in November 2025, with a set of specialised agents covering pre-consultation history, risk assessment and test selection, analysis of eye data, clinical decision support, and patient education and follow-up; AUROC rose from about 0.80 to 0.94 once clinicians corrected the training labels (<a href="https://www.nature.com/articles/s41591-026-04631-z" target="_blank" rel="noopener">Nature Medicine, 2026-09-10</a>).</span>
           </td>
           <td>
             <span class="zh">護城河是願意把代理放進真實門診並把失敗寫出來：報導指出原始病歷不完整不一致、直接訓練反而更差，而額外點擊造成醫師採用率明顯下滑。弱點是單一醫院、原型階段，本報未能取得付費牆後的收案數與門診量拆解。</span>
-            <span class="en">The moat is a willingness to put agents in a real clinic and write up the failures: coverage reports that raw records were incomplete and inconsistent so that training on them made performance worse, and that extra clicks sharply reduced physician adoption. The weakness is one hospital at prototype stage, and this report could not obtain the paywalled case counts or visit breakdown.</span>
           </td>
         </tr>
       </tbody>
@@ -408,7 +358,6 @@
   <div class="panel">
     <p>
       <span class="zh"><strong>今天的競爭結構是一個「誰能證明自己」的分層。</strong>最上層是通路（Epic），它不必證明任何事，只要等到 2027 年 3 月；中間層是用分發換安裝基礎的證據型產品（OpenEvidence），它的宣稱最響亮但最經不起今天這份 NYU 資料的檢驗；下層是把驗證權交出去的開放權重（Google）與把驗證權留在自己手上的閉源挑戰者（Speechmatics），兩者的差別不在模型，而在誰有資格說「這個數字是真的」。真正在往前走的，反而是 Penn、Houston Methodist、清華長庚這類把部署後的量測方法寫出來的機構——他們不賣模型，但他們決定了買方將來要問什麼問題。</span>
-      <span class="en"><strong>Today's competitive structure is a hierarchy of who can prove what.</strong> At the top sits the channel (Epic), which need prove nothing and simply wait for March 2027. In the middle sit evidence products that bought an installed base with free distribution (OpenEvidence), whose loudest claim is the one least able to survive today's NYU data. Below them are open weights that hand verification away (Google) and a closed challenger that keeps verification in-house (Speechmatics) — a difference that lies not in the models but in who is entitled to say a number is true. What is actually moving forward is the institutions writing down how to measure after go-live — Penn, Houston Methodist, Beijing Tsinghua Changgung. They sell no models, but they are setting the questions buyers will ask next.</span>
     </p>
   </div>
 </section>
@@ -417,21 +366,17 @@
   <h2>04 — Taiwan Angle</h2>
   <div class="sec-title">
     <span class="zh">台灣已經把錢和算力押在代理型 AI 上，今天缺的那一塊剛好是這三篇論文在補的：部署之後怎麼量。</span>
-    <span class="en">Taiwan has already put money and compute behind agentic AI; the piece it is missing is the one these three papers supply — how to measure after go-live.</span>
   </div>
 
   <div class="panel">
     <p>
       <span class="zh"><strong>(1) 部署規模已經到位，量測框架還沒有。</strong>NVIDIA 6 月 1 日的公告記載，台灣政府投入 15 億美元打造受監管的主權 AI 原生醫療體系，鴻海以生態系整合者身分與長庚、高醫大附設中和紀念醫院、馬偕、台大醫院、台中榮總、台北榮總等醫學中心部署代理團隊（CoDoctor 平台下的 ECG、Corovia 冠狀動脈重建、Endovia 大腸鏡即時病灶偵測，加上手術室 Scrub Bot 與護理協作機器人 Nurabot），並稱台灣醫學中心的 AI 系統每年涵蓋逾 1,400 萬人次就醫、已有 85 項經 FDA 或 TFDA 核准的醫療 AI 解決方案（<a href="https://blogs.nvidia.com.tw/blog/nvidia-foxconn-and-taiwan-medical-centers-bring-agentic-and-physical-ai-to-healthy-taiwan/" target="_blank" rel="noopener">NVIDIA 台灣官方部落格, 2026-06-01</a>）。這個部署密度，正好讓今天 Nature Medicine 十月號談的三種失敗模式——效能漂移、採用率衰退、同一套系統在不同院所需要不同導入策略——全部適用；而公告裡列出的數字（Nurabot 每天省 2 至 3 小時、導航精確度 98%、Corovia 把兩小時流程縮到一分鐘、模擬優先縮短部署時間 40%）都是廠商自述的能力值，不是部署後的成效量測。</span>
-      <span class="en"><strong>(1) The deployment scale is in place; the measurement framework is not.</strong> NVIDIA's 1 June announcement records US$1.5 billion of Taiwanese government money behind a regulated, sovereign AI-native health system, with Foxconn as ecosystem integrator deploying agent teams across Chang Gung Memorial Hospital, Kaohsiung Medical University Chung-Ho Memorial Hospital, MacKay Memorial Hospital, National Taiwan University Hospital, Taichung Veterans General Hospital and Taipei Veterans General Hospital — ECG, Corovia coronary reconstruction and Endovia real-time colonoscopy lesion detection on the CoDoctor platform, plus the Scrub Bot in theatre and the Nurabot nursing robot. It states that AI systems in Taiwan's medical centres cover more than 14 million patient encounters a year and that 85 medical AI solutions have FDA or TFDA clearance (<a href="https://blogs.nvidia.com.tw/blog/nvidia-foxconn-and-taiwan-medical-centers-bring-agentic-and-physical-ai-to-healthy-taiwan/" target="_blank" rel="noopener">NVIDIA Taiwan blog, 2026-06-01</a>). That density makes all three failure modes in the October Nature Medicine issue directly applicable — performance drift, decaying adoption, and one system needing different implementation strategies at different sites. And the figures in the announcement (Nurabot saving 2–3 hours a day, 98% navigation accuracy, Corovia compressing a two-hour workflow to a minute, simulation-first cutting deployment time 40%) are vendor-stated capability claims, not post-deployment outcome measurements.</span>
     </p>
     <p>
       <span class="zh"><strong>(2) FHIR Box 的時程，決定台灣有沒有條件做 NYU 那種研究。</strong>NYU 之所以能拿 127,833 筆對話對照 58 個 benchmark，前提是一家醫療體系內部有一個統一的助理工具與可回溯的紀錄。衛福部資訊處長李建璋 8 月 6 日在立法院厚生會智慧醫療委員會成立大會說明的 FHIR Box 路線——政府訂標準、提供轉換工具，去年 3 家醫學中心試辦、今年底全台醫學中心資料互通、3 至 5 年推廣至約 8 成醫療院所——正是這類研究的基礎設施（<a href="https://www.cna.com.tw/news/ahel/202608060301.aspx" target="_blank" rel="noopener">中央社, 2026-08-06</a>）。衛福部長石崇良 6 月在高醫大論壇提出的「333 政策」也給了同一條時間線：醫學中心病歷 2026 年底互通，區域與地區醫院 2027、2028 年跟上，健康台灣深耕計畫五年 489 億元（<a href="https://udn.com/news/story/7266/9592218" target="_blank" rel="noopener">聯合報, 2026-06-27</a>）。換句話說，台灣要到 2027 年才會有做「真實使用 vs. benchmark」對照所需的跨院資料底，而 AI 現在就在用。</span>
-      <span class="en"><strong>(2) The FHIR Box timetable decides whether Taiwan can run NYU-style studies at all.</strong> NYU could set 127,833 conversations against 58 benchmarks only because one health system had a single internal assistant and a retrievable log. The FHIR Box route described on 6 August by Lee Chien-chang, head of the health ministry's information department, at the founding meeting of the Legislative Yuan Hou-sheng Association's smart healthcare committee — government sets the standard and supplies conversion tools, three medical centres piloted last year, interoperability across all medical centres by the end of this year, roughly 80% of providers within three to five years — is precisely that infrastructure (<a href="https://www.cna.com.tw/news/ahel/202608060301.aspx" target="_blank" rel="noopener">CNA, 2026-08-06</a>). Health Minister Shih Chung-liang's "333 policy", set out at the Kaohsiung Medical University forum in June, runs on the same clock: medical-centre records interoperable by end-2026, regional and district hospitals in 2027 and 2028, with NT$48.9 billion over five years for the Healthy Taiwan Deep Cultivation Plan (<a href="https://udn.com/news/story/7266/9592218" target="_blank" rel="noopener">United Daily News, 2026-06-27</a>). The cross-hospital data floor needed for a real-use-versus-benchmark comparison therefore arrives in 2027 — and the AI is in use now.</span>
     </p>
     <p>
       <span class="zh"><strong>(3) 多語語音這一項，台灣是被低估的難題市場。</strong>Speechmatics 把語碼轉換當成賣點，而台灣門診的日常就是國語、台語、客語與英文名詞在同一句話裡交替，加上東南亞語系的移工與看護。Oak 公布的 11 種語言裡沒有拆出中文表現，Google MedASR 的 WER 數字也沒有中文或台語拆解；這代表任何要導入的台灣醫院，都得自己建測試集來驗——而這件事，正好就是 Nature Medicine 社論說多數機構缺乏能力去做的那一段。相對地，高雄醫學大學附設中和紀念醫院 10 月 14 日在 HIMSS TV 上談的正是跨國協作共建醫院 AI 的模式（<a href="https://www.healthcareitnews.com/topics/artificial-intelligence" target="_blank" rel="noopener">Healthcare IT News, 2026-10-14</a>），這條路徑如果能把在地驗證資料集也一起共建，會比單純導入模型有用得多。</span>
-      <span class="en"><strong>(3) On multilingual speech, Taiwan is an underrated hard market.</strong> Speechmatics sells code switching, and a Taiwanese outpatient clinic is exactly that: Mandarin, Taiwanese Hokkien, Hakka and English terminology alternating within a sentence, plus Southeast Asian languages among migrant workers and carers. Oak publishes no Mandarin breakdown among its eleven tested languages, and Google's MedASR WER figures break out neither Mandarin nor Hokkien — so any Taiwanese hospital adopting either has to build its own test set to verify, which is the capability the Nature Medicine editorial says most institutions lack. Against that, Kaohsiung Medical University Chung-Ho Memorial Hospital used HIMSS TV on 14 October to describe a model of building and deploying hospital AI through worldwide collaboration (<a href="https://www.healthcareitnews.com/topics/artificial-intelligence" target="_blank" rel="noopener">Healthcare IT News, 2026-10-14</a>); if that route can co-build local validation datasets rather than only import models, it will be worth considerably more.</span>
     </p>
   </div>
 </section>
@@ -440,29 +385,28 @@
   <h2>05 — Further Reading</h2>
   <div class="sec-title">
     <span class="zh">挑選標準：讀完會改變你下一次評估一套醫療 AI 時要問的問題，而不只是增加你知道的產品數量。</span>
-    <span class="en">Chosen on one test: reading it changes the questions you ask the next time you evaluate a medical AI, rather than adding to the list of products you know about.</span>
   </div>
 
   <ol class="reading">
     <li>
       <a href="https://arxiv.org/abs/2610.11069" target="_blank" rel="noopener">Clinician use of language models diverges from how the models are evaluated — arXiv:2610.11069 (2026-10-08)</a>
-      <p class="why"><span class="zh">今天最該讀完全文的一篇。它附帶建立的 Clinical AI Benchmark Atlas（58 個 benchmark、10,659 個標註題目）本身就是一份可以拿來反查任何廠商宣稱的工具。</span><span class="en">The one to read in full today. The Clinical AI Benchmark Atlas it builds along the way — 58 benchmarks, 10,659 labelled items — is itself a tool for checking any vendor claim against.</span></p>
+      <p class="why"><span class="zh">今天最該讀完全文的一篇。它附帶建立的 Clinical AI Benchmark Atlas（58 個 benchmark、10,659 個標註題目）本身就是一份可以拿來反查任何廠商宣稱的工具。</span></p>
     </li>
     <li>
       <a href="https://www.nature.com/articles/s41591-026-04726-7" target="_blank" rel="noopener">Making AI work in healthcare — Nature Medicine editorial (2026-10-14)</a>
-      <p class="why"><span class="zh">兩頁的篇幅就把整期十幾篇部署研究串成一條論證，當作十月號的閱讀地圖最省時；它列出的參考文獻比社論本身更有價值。</span><span class="en">Two pages that thread a dozen deployment studies into one argument — the quickest map to the October issue, and its reference list is worth more than the editorial itself.</span></p>
+      <p class="why"><span class="zh">兩頁的篇幅就把整期十幾篇部署研究串成一條論證，當作十月號的閱讀地圖最省時；它列出的參考文獻比社論本身更有價值。</span></p>
     </li>
     <li>
       <a href="https://www.nature.com/articles/s41591-026-04680-4" target="_blank" rel="noopener">Human–artificial intelligence collaboration for comanaging epilepsy in real time — Nature Medicine (2026-10-13)</a>
-      <p class="why"><span class="zh">開放取用。值得讀的不是結果而是系統設計：病人標註如何回灌、誤報如何被壓下去，這套迴圈的結構可以直接搬到心律裝置與血糖監測上。</span><span class="en">Open access. Read it for the system design rather than the result: how patient labels feed back and how false alarms came down. The loop transfers directly to cardiac devices and glucose monitoring.</span></p>
+      <p class="why"><span class="zh">開放取用。值得讀的不是結果而是系統設計：病人標註如何回灌、誤報如何被壓下去，這套迴圈的結構可以直接搬到心律裝置與血糖監測上。</span></p>
     </li>
     <li>
       <a href="https://www.nature.com/articles/s41591-026-04574-5" target="_blank" rel="noopener">Lessons from deploying the ChatEHR system at Stanford Medicine — Nature Medicine (2026-08-10)</a>
-      <p class="why"><span class="zh">付費牆後，但光是那句「benchmark 式評估不足以監測與評估臨床互動」加上「部署期間未獲支持陳述」的分析圖，就值得任何正在簽約的醫院把全文找來。</span><span class="en">Paywalled, but the line that benchmark-based evaluation was insufficient for monitoring clinician interactions, plus a figure analysing unsupported claims during deployment, is reason enough for any hospital mid-contract to get hold of the full text.</span></p>
+      <p class="why"><span class="zh">付費牆後，但光是那句「benchmark 式評估不足以監測與評估臨床互動」加上「部署期間未獲支持陳述」的分析圖，就值得任何正在簽約的醫院把全文找來。</span></p>
     </li>
     <li>
       <a href="https://www.nature.com/articles/s41591-026-04631-z" target="_blank" rel="noopener">Initial lessons from real-world implementation of an AI-agent eye clinic in China — Nature Medicine (2026-09-10)</a>
-      <p class="why"><span class="zh">目前少數把代理型門診放進真實醫院、而且願意寫失敗的紀錄：原始病歷品質會讓訓練變差、多幾次點擊就會讓醫師不用。想做代理門診的人請先讀這篇再編預算。</span><span class="en">One of the few records of an agentic clinic inside a real hospital that is willing to write down the failures: raw record quality made training worse, and a few extra clicks were enough to stop physicians using it. Read it before budgeting for one.</span></p>
+      <p class="why"><span class="zh">目前少數把代理型門診放進真實醫院、而且願意寫失敗的紀錄：原始病歷品質會讓訓練變差、多幾次點擊就會讓醫師不用。想做代理門診的人請先讀這篇再編預算。</span></p>
     </li>
   </ol>
 </section>
@@ -471,7 +415,6 @@
   <h2>06 — References</h2>
   <div class="sec-title">
     <span class="zh">參考文獻</span>
-    <span class="en">References</span>
   </div>
 
   <div class="panel">
@@ -498,7 +441,6 @@
     </ol>
     <div class="note">
       <span class="zh"><strong>編輯說明：</strong>（1）Nature Medicine 的 ChatEHR（Shah 等）與 AI-agent 眼科門診（Yan 等）兩篇全文在付費牆後，本報只根據可公開瀏覽的摘要、圖說與書目資料撰寫；AI-TEC 的 AUROC 0.80→0.94 與「原始病歷品質使訓練變差、額外點擊使採用下滑」兩點引自二手報導 Medical Daily，而非原始論文。（2）arXiv:2610.11069 的頁面在本次製作期間多次被代理伺服器以 HTTP 429 拒絕，正文內容取自該論文 HTML 版可讀取的前段（約前 10 萬字元），最後約 1.5 萬字元未讀；本報引用的數字皆出自已讀取段落，但未能核對全文結論段。該篇為 preprint，尚未經同儕審查。（3）Speechmatics Oak 的所有效能數字均為該公司 2026-09-29 內部研究自述，未經第三方稽核，訓練資料未揭露；Google MedASR 與 MedGemma 1.5 的數字同為廠商自述。（4）Houston Methodist 的 7% 手術量增幅出自醫院自建的合成對照分析，報導未將其描述為同儕審查研究。（5）Epic（8/19）、OpenEvidence 模型家族（9/3–9/8）、Google MedGemma 1.5／MedASR（1/13）、NVIDIA 台灣（6/1）與台灣政策三則（6/27、8/6）皆超出本期 7 天窗口，列為背景而非當日新聞，日期均已就地標示。（6）本期未列入 10/14 STAT 關於自主臨床 AI 遊說的報導，因 10/14 法規主題日已處理該主線。</span>
-      <span class="en"><strong>Editor's note:</strong> (1) The Nature Medicine ChatEHR paper (Shah et al.) and the AI-agent eye clinic (Yan et al.) are both paywalled; this report draws only on their publicly visible abstracts, figure captions and bibliographic records. AI-TEC's AUROC 0.80→0.94 and the points about raw record quality degrading training and extra clicks reducing adoption are taken from secondary coverage in Medical Daily, not the primary paper. (2) The arXiv:2610.11069 page was repeatedly refused by the fetch proxy with HTTP 429 during production; the content here comes from the readable first portion of the paper's HTML version (roughly the first 100,000 characters), with the final ~15,000 unread. Every figure cited is from the portion that was read, but the concluding section could not be checked. It is a preprint and not peer reviewed. (3) All Speechmatics Oak performance figures are self-reported from the company's internal study of 2026-09-29, unaudited, with training data undisclosed; the Google MedASR and MedGemma 1.5 figures are likewise vendor-reported. (4) Houston Methodist's 7% volume gain comes from a synthetic control analysis the hospital built itself, and the report does not describe it as peer reviewed. (5) Epic (19 Aug), the OpenEvidence model family (3–8 Sep), Google MedGemma 1.5/MedASR (13 Jan), NVIDIA Taiwan (1 Jun) and the three Taiwan policy items (27 Jun, 6 Aug) all fall outside this edition's seven-day window and are included as background rather than same-day news, each dated in place. (6) STAT's 14 October reporting on lobbying over autonomous clinical AI is omitted here because the 14 October regulation edition already covered that thread.</span>
     </div>
   </div>
 </section>
@@ -507,7 +449,6 @@
   <div class="foot-row">
     <div>
       <span class="zh">AI／醫療AI 每日新知日報 · 由 Claude 於台北時間每日自動產出 · 本期主題：星期四／技術突破<br>本報告內容經來源查證，但不構成投資或醫療建議。所有數據請以原始出處為準。</span>
-      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Thursday / Technology<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
     </div>
     <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com / 返回 peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
   </div>
@@ -520,16 +461,6 @@
 </div>
 
 <script>
-function setLang(l){
-  document.body.classList.remove('lang-zh','lang-en');
-  document.body.classList.add('lang-'+l);
-  document.documentElement.lang = (l==='zh') ? 'zh-Hant' : 'en';
-  document.getElementById('b-zh').classList.toggle('on', l==='zh');
-  document.getElementById('b-en').classList.toggle('on', l==='en');
-  document.title = (l==='zh')
-    ? 'AI／醫療AI 每日新知日報 · 2026-10-15'
-    : 'AI & Medical AI Daily · 2026-10-15';
-}
 function toggleTheme(){
   document.body.classList.toggle('dark');
   document.getElementById('theme-ic').textContent =
@@ -556,5 +487,6 @@ window.addEventListener('scroll', function(){
     .catch(function(){});
 })();
 </script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/en/reports/2026-10-15.html" hreflang="en" rel="alternate" lang="en">English version</a></p>
 </body>
 </html>
