@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>AI／醫療AI 每日新知日報 · 2026-10-16</title>
+<meta property="og:url" content="https://ai-medical-daily.peteraim.com/reports/2026-10-16.html" />
+<link rel="canonical" href="https://ai-medical-daily.peteraim.com/reports/2026-10-16.html" />
+<meta name="report-date" content="2026-10-16">
+<meta name="report-theme" content="product">
+<meta name="report-title-zh" content="OpenEvidence 的使用量第一次被攤在同儕審查的桌面上，而攤開它的那隻手有一半是自己的——10/15 登上 JAMA 的研究數到 2024 年 1 月至 2026 年 6 月共 271,000,000 次查詢、952,008 名已驗證 NPI 的美國臨床人員，月活躍使用者從 355 人長到 703,265 人、每人每月查詢數 18 次升到 39.5 次、月留存 70% 至 90%，但資料由 OpenEvidence 提供、數名共同作者是它的員工，作者自己把這些數字稱為下界；同一天 10/15 擁有 125,000 名臨床人員、190 家醫療體系的競爭對手 Nabla 把 OpenEvidence 掛進自己的「Clinical questions」面板，而 Abridge 走的是反方向——自己買下 UpToDate、NEJM 與 JAMA 的授權，10/8 把德州大學系統 8 家機構、年 1,170 萬門診人次整個簽成企業級合約">
+<meta name="report-title-en" content="OpenEvidence's usage finally reached a peer-reviewed page, and the hand that opened it was half its own: the JAMA study out on 10/15 counts 271,000,000 queries and 952,008 NPI-verified US clinicians between January 2024 and June 2026, monthly actives from 355 to 703,265, queries per active user from 18 to 39.5 a month, retention of 70% to 90% — but OpenEvidence supplied the data, several co-authors were its employees, and the authors call the counts lower bounds; the same day, Nabla, a rival scribe with 125,000 clinicians across 190 health systems, wired OpenEvidence into its own Clinical questions panel, while Abridge went the other way, licensing UpToDate, NEJM and JAMA itself and signing all eight University of Texas System institutions and their 11.7 million annual outpatient visits on 10/8">
+<meta name="report-summary-zh" content="週五產品與公司深度分析：OpenEvidence 與 Abridge 正在從兩端走向同一個位置——10/15 的 JAMA 研究第一次給出 OpenEvidence 的規模（271M 次查詢、952,008 名臨床人員、月活 703,265）卻也暴露資料來自公司自己；同一天 Nabla 選擇把它當基礎設施掛進來，Abridge 則自己買授權、用 10/8 的德州大學系統合約把工作流鎖死。拆解兩套商業模式、護城河與各自的疑慮。">
+<meta name="report-summary-en" content="Friday deep dive: OpenEvidence and Abridge are converging on the same position from opposite ends. The JAMA study published 10/15 gives OpenEvidence's scale for the first time — 271M queries, 952,008 clinicians, 703,265 monthly actives — while disclosing that the company supplied the data. The same day Nabla chose to plug it in as infrastructure; Abridge licensed the evidence itself and locked the workflow with its 10/8 University of Texas System agreement. We take apart both models, both moats, and what to discount in each.">
+<meta property="og:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HJLDQZDK5V');
+</script>
+<link rel="stylesheet" href="/assets/report.css">
+</head>
+<body class="lang-zh">
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span><span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <div class="bar-sp"></div>
+    <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub / 在 GitHub 給這個專案一顆星"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
+    <div class="seg">
+      <button id="b-zh" class="on" onclick="setLang('zh')">中文</button>
+      <button id="b-en" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="kicker">
+    <span class="zh-inline">星期五 · 產品與公司深度分析</span>
+    <span class="en-inline">Friday · Product &amp; Company Deep Dive</span>
+  </div>
+  <h1>
+    <span class="zh">OpenEvidence 的使用量第一次被攤在同儕審查的桌面上，而攤開它的那隻手有一半是自己的——10/15 登上 JAMA 的研究數到 2024 年 1 月至 2026 年 6 月共 271,000,000 次查詢、952,008 名已驗證 NPI 的美國臨床人員，月活躍使用者從 355 人長到 703,265 人、每人每月查詢數 18 次升到 39.5 次、月留存 70% 至 90%，但資料由 OpenEvidence 提供、數名共同作者是它的員工，作者自己把這些數字稱為下界；同一天 10/15 擁有 125,000 名臨床人員、190 家醫療體系的競爭對手 Nabla 把 OpenEvidence 掛進自己的「Clinical questions」面板，而 Abridge 走的是反方向——自己買下 UpToDate、NEJM 與 JAMA 的授權，10/8 把德州大學系統 8 家機構、年 1,170 萬門診人次整個簽成企業級合約</span>
+    <span class="en">OpenEvidence's usage finally reached a peer-reviewed page, and the hand that opened it was half its own: the JAMA study out on 10/15 counts 271,000,000 queries and 952,008 NPI-verified US clinicians between January 2024 and June 2026, monthly actives from 355 to 703,265, queries per active user from 18 to 39.5 a month, retention of 70% to 90% — but OpenEvidence supplied the data, several co-authors were its employees, and the authors call the counts lower bounds; the same day, Nabla, a rival scribe with 125,000 clinicians across 190 health systems, wired OpenEvidence into its own Clinical questions panel, while Abridge went the other way, licensing UpToDate, NEJM and JAMA itself and signing all eight University of Texas System institutions and their 11.7 million annual outpatient visits on 10/8</span>
+  </h1>
+  <div class="dateline">
+    <span class="zh-inline">2026 年 10 月 16 日（五）· 涵蓋 10/08–10/16 · 台北時間</span>
+    <span class="en-inline">Friday, October 16, 2026 · Covering Oct 8–16 · Taipei time</span>
+  </div>
+  <p class="lede">
+    <span class="zh">今天這一週把兩家公司放在同一張桌子上，而它們正從相反的兩端走向同一個位置。<a href="https://doi.org/10.1001/jama.2026.21868" target="_blank" rel="noopener">10/15 登上 <em>JAMA</em> 的研究</a>（DOI 10.1001/jama.2026.21868）第一次用同儕審查的格式給出 OpenEvidence 的規模：2024 年 1 月至 2026 年 6 月 <strong>271,000,000 次查詢</strong>、<strong>952,008 名</strong>已驗證 NPI 的美國臨床人員，月活躍使用者從 2024 年 1 月的 355 人長到 2026 年 6 月的 <strong>703,265 人</strong>，每位活躍使用者的月查詢數從 18 次升到 39.5 次，月對月留存落在 <strong>70% 至 90%</strong>（<a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openevidence-drew-271m-queries-from-952000-clinicians-in-2-5-years/" target="_blank" rel="noopener">Becker's 的整理</a>）。同一天，<a href="http://www.prnewswire.com/news-releases/nabla-integrates-with-openevidence-to-deliver-clinical-evidence-at-the-point-of-care-302909243.html" target="_blank" rel="noopener">擁有 125,000 名臨床人員、190 家醫療體系與醫師集團的 Nabla 宣布把 OpenEvidence 掛進自己的「Clinical questions」面板</a>——一個環境語音對手選擇把證據層外包出去。Abridge 走的是另一條：<a href="https://www.abridge.com/press-release/abridge-integrates-nejm-jama" target="_blank" rel="noopener">4/15 自己簽下 NEJM Group 與 AMA 的多年內容授權</a>，<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-expands-ai-decision-support-more-clinicians-bid-become-healthcares" target="_blank" rel="noopener">8/17 宣稱自 4 月起已有逾 300 家企業級醫療體系採用其決策支援、每位臨床人員的查詢量兩個月內成長三倍</a>，再用 <a href="https://www.abridge.com/press-release/ut-health-enterprise-wide" target="_blank" rel="noopener">10/8 的德州大學系統企業級合約</a>把工作流鎖死。中間還夾著 <a href="https://www.mobihealthnews.com/news/suki-raises-90m-ai-clinical-workflows" target="_blank" rel="noopener">10/14 Suki 的 9,000 萬美元 E 輪</a>，創辦人 Punit Soni 的一句話幾乎是今天的註腳：「臨床文書從來不是終點，它是入口。」</span>
+    <span class="en">This week put two companies on the same table, and they are arriving at the same position from opposite ends. <a href="https://doi.org/10.1001/jama.2026.21868" target="_blank" rel="noopener">The study published in <em>JAMA</em> on 10/15</a> (DOI 10.1001/jama.2026.21868) is the first peer-reviewed account of OpenEvidence's scale: <strong>271,000,000 queries</strong> and <strong>952,008</strong> NPI-verified US clinicians between January 2024 and June 2026, monthly active users rising from 355 in January 2024 to <strong>703,265</strong> in June 2026, queries per active user climbing from 18 to 39.5 a month, and month-over-month retention of <strong>70% to 90%</strong> (<a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openevidence-drew-271m-queries-from-952000-clinicians-in-2-5-years/" target="_blank" rel="noopener">Becker's summary</a>). The same day, <a href="http://www.prnewswire.com/news-releases/nabla-integrates-with-openevidence-to-deliver-clinical-evidence-at-the-point-of-care-302909243.html" target="_blank" rel="noopener">Nabla — 125,000 clinicians across 190 health systems and provider groups — wired OpenEvidence into its own Clinical questions panel</a>: a rival ambient scribe outsourcing its evidence layer. Abridge took the other road, <a href="https://www.abridge.com/press-release/abridge-integrates-nejm-jama" target="_blank" rel="noopener">signing multi-year content deals with NEJM Group and the AMA itself on 4/15</a>, <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-expands-ai-decision-support-more-clinicians-bid-become-healthcares" target="_blank" rel="noopener">claiming on 8/17 that more than 300 enterprise health systems had adopted its decision support since April with queries per clinician tripling in two months</a>, then locking the workflow with <a href="https://www.abridge.com/press-release/ut-health-enterprise-wide" target="_blank" rel="noopener">its 10/8 University of Texas System enterprise agreement</a>. Wedged between them sits <a href="https://www.mobihealthnews.com/news/suki-raises-90m-ai-clinical-workflows" target="_blank" rel="noopener">Suki's $90 million Series E on 10/14</a>, where founder Punit Soni supplied the day's footnote: "Clinical documentation was never the destination. It was the entry point."</span>
+  </p>
+
+  <nav class="toc">
+    <a href="#top"><span class="zh-inline">重點新聞</span><span class="en-inline">Top Stories</span></a>
+    <a href="#product"><span class="zh-inline">產品分析</span><span class="en-inline">Product Analysis</span></a>
+    <a href="#company"><span class="zh-inline">公司與競爭</span><span class="en-inline">Companies &amp; Competition</span></a>
+    <a href="#taiwan"><span class="zh-inline">台灣視角</span><span class="en-inline">Taiwan Angle</span></a>
+    <a href="#reading"><span class="zh-inline">延伸閱讀</span><span class="en-inline">Further Reading</span></a>
+    <a href="#refs"><span class="zh-inline">參考文獻</span><span class="en-inline">References</span></a>
+  </nav>
+</div>
+
+<!-- ============ 01 重點新聞 ============ -->
+<section id="top">
+  <h2>01 — Top Stories</h2>
+  <div class="sec-title">
+    <span class="zh">八則消息，一條主線：臨床證據這一層正在被決定由誰擁有——自己買授權、外包給別人，還是乾脆變成別人的基礎設施。</span>
+    <span class="en">Eight items, one through-line: the clinical evidence layer is being assigned an owner — license it yourself, outsource it, or become someone else's infrastructure.</span>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">同儕審查 · 使用行為</span><span class="en-inline">Peer-reviewed · Usage</span></span>
+      <span class="tag">OpenEvidence</span><span class="tag">JAMA</span><span class="tag">Mass General Brigham</span><span class="tag">10/15</span>
+    </div>
+    <h3>
+      <span class="zh">271,000,000 次查詢、952,008 名已驗證臨床人員：OpenEvidence 的規模第一次進了 <em>JAMA</em>，但資料是公司自己交出來的</span>
+      <span class="en">271,000,000 queries, 952,008 verified clinicians: OpenEvidence's scale reaches <em>JAMA</em> — on data the company handed over itself</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">10 月 15 日，<em>JAMA</em> 刊出〈Clinician Use of an Artificial Intelligence–Enabled Clinical Information Platform〉（<a href="https://doi.org/10.1001/jama.2026.21868" target="_blank" rel="noopener">DOI 10.1001/jama.2026.21868</a>）。研究以 2024 年 1 月至 2026 年 6 月的查詢紀錄為對象，數到 <strong>271,000,000 次查詢</strong>、<strong>952,008 名</strong>持已驗證 NPI 的美國臨床人員，其中醫師 <strong>556,200 人</strong>；月活躍使用者由 355 人成長到 <strong>703,265 人</strong>，每位活躍使用者的月查詢數由 18 次增至 <strong>39.5 次</strong>，月對月留存率約 <strong>70% 至 90%</strong>。查詢類型中，治療與處置占 <strong>33.1%</strong>、診斷占 <strong>13.9%</strong>；跨專科查詢的比例從血液腫瘤科的 35% 一路到急診醫學科的 <strong>88%</strong>。執業早期醫師只占醫師人力的 24.3%，卻貢獻了 <strong>61.8%</strong> 的醫師查詢量；NP 與 PA 的每人每月查詢數 44.5 次，高於醫師的 37.1 次（<a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openevidence-drew-271m-queries-from-952000-clinicians-in-2-5-years/" target="_blank" rel="noopener">Becker's Hospital Review 整理</a>、<a href="https://scimex.org/newsfeed/what-are-medical-professionals-using-ai-for" target="_blank" rel="noopener">Scimex 的解禁稿</a>）。</span>
+        <span class="en">On October 15 <em>JAMA</em> published "Clinician Use of an Artificial Intelligence–Enabled Clinical Information Platform" (<a href="https://doi.org/10.1001/jama.2026.21868" target="_blank" rel="noopener">DOI 10.1001/jama.2026.21868</a>). Working from query logs between January 2024 and June 2026, it counts <strong>271,000,000 queries</strong> from <strong>952,008</strong> US clinicians with verified NPIs, <strong>556,200</strong> of them physicians. Monthly active users grew from 355 to <strong>703,265</strong>; queries per active user per month rose from 18 to <strong>39.5</strong>; month-over-month retention ran about <strong>70% to 90%</strong>. Treatment and management accounted for <strong>33.1%</strong> of physician queries and diagnosis for <strong>13.9%</strong>. Out-of-specialty queries ranged from 35% among oncologists and hematologists to <strong>88%</strong> among emergency physicians. Early-career physicians are 24.3% of the physician workforce but produced <strong>61.8%</strong> of physician queries, and nurse practitioners and physician assistants averaged 44.5 queries per active user-month against 37.1 for physicians (<a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openevidence-drew-271m-queries-from-952000-clinicians-in-2-5-years/" target="_blank" rel="noopener">Becker's Hospital Review</a>, <a href="https://scimex.org/newsfeed/what-are-medical-professionals-using-ai-for" target="_blank" rel="noopener">Scimex embargo note</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">在這之前，OpenEvidence 的規模只能從公司新聞稿與創投備忘錄裡拿到——「40% 美國醫師每天使用」這個說法連 <a href="https://www.nature.com/articles/s41746-026-03077-4" target="_blank" rel="noopener">8/12 刊於 <em>npj Digital Medicine</em> 的系統性回顧</a>都只能加上「據稱」兩字。現在它有了一個可引用的數字區間。更值得注意的是行為結構而非總量：88% 的急診醫師查詢落在自己專科之外、執業早期醫師以 24.3% 的人力貢獻 61.8% 的查詢，說明這個產品真正吃下的是「專科邊界之外的即時不確定性」，而這剛好是 UpToDate 式訂閱制最難用人力維護、也最難用單一專科深度防守的地帶。39.5 次／月的使用強度代表它已經不是查詢工具，而是嵌進決策節奏的東西。</span>
+        <span class="en">Until now OpenEvidence's scale existed only in company releases and investor memos — even <a href="https://www.nature.com/articles/s41746-026-03077-4" target="_blank" rel="noopener">the systematic review published in <em>npj Digital Medicine</em> on 8/12</a> could only call the "40% of US physicians daily" claim "reportedly" true. Now there is a citable range. The shape of the behaviour matters more than the total: 88% of emergency physicians' queries fall outside their own specialty, and early-career physicians supply 61.8% of physician queries on 24.3% of the workforce. What the product actually consumes is the real-time uncertainty that sits beyond specialty boundaries — precisely the terrain a UpToDate-style subscription is most expensive to staff and hardest to defend with single-specialty depth. An intensity of 39.5 queries a month means this is no longer a lookup tool but something folded into the rhythm of deciding.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">資料由 OpenEvidence 提供，公司也參與了分析，數名共同作者在研究期間是 OpenEvidence 的員工。作者自己把這些計數稱為「下界」，因為資料只涵蓋平台主要問答介面內的查詢。這份研究量的是「使用」，完全沒有量「結果」——沒有診斷正確率、沒有病人終點、沒有與對照組的比較。高留存與高使用強度可以是臨床價值的證據，也可以只是習慣養成的證據，這份研究沒有能力區分兩者。</span>
+        <span class="en">OpenEvidence provided the data and contributed to the analysis, and several co-authors were company employees during the study. The authors themselves describe the counts as lower bounds, because the data covers only queries made through the platform's main question interface. This study measures use and nothing else — no diagnostic accuracy, no patient outcomes, no comparison group. High retention and high intensity can be evidence of clinical value or evidence of habit formation, and this design cannot tell the two apart.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://doi.org/10.1001/jama.2026.21868" target="_blank" rel="noopener">JAMA, 2026-10-15</a> · <a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openevidence-drew-271m-queries-from-952000-clinicians-in-2-5-years/" target="_blank" rel="noopener">Becker's Hospital Review, 2026-10-15</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">整合 · 競合</span><span class="en-inline">Integration · Coopetition</span></span>
+      <span class="tag">Nabla</span><span class="tag">OpenEvidence</span><span class="tag">Clinical questions</span><span class="tag">10/15</span>
+    </div>
+    <h3>
+      <span class="zh">環境語音對手 Nabla 把 OpenEvidence 掛進自己的面板：125,000 名臨床人員、190 家體系，證據層外包</span>
+      <span class="en">Nabla, a rival ambient scribe, plugs OpenEvidence into its own panel: 125,000 clinicians, 190 health systems, evidence layer outsourced</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">10 月 15 日美東上午 8 點，<a href="http://www.prnewswire.com/news-releases/nabla-integrates-with-openevidence-to-deliver-clinical-evidence-at-the-point-of-care-302909243.html" target="_blank" rel="noopener">Nabla 宣布與 OpenEvidence 整合</a>：臨床人員可在病歷旁開啟「Clinical questions」面板，直接就當下這位病人提問，Nabla 會把病人人口學資料、就診診斷、目前用藥、醫師輸入的情境與已生成的病歷傳給 OpenEvidence，回覆附上同儕審查文獻的引用。Nabla 聲明情境資料經去識別化、不涉及 PHI。數字面：Nabla 目前有 <strong>逾 125,000 名臨床人員</strong>、橫跨 <strong>190 家</strong>醫療體系與醫師集團，整合所有主要 EHR，支援 <strong>35 種以上</strong>語言。</span>
+        <span class="en">At 8:00 am ET on October 15, <a href="http://www.prnewswire.com/news-releases/nabla-integrates-with-openevidence-to-deliver-clinical-evidence-at-the-point-of-care-302909243.html" target="_blank" rel="noopener">Nabla announced an integration with OpenEvidence</a>. Clinicians can open a Clinical questions panel beside the note and ask about the patient in front of them; Nabla passes OpenEvidence the patient's demographics, visit diagnosis, current medications, provider-entered context and the generated note, and answers come back with citations to peer-reviewed literature. Nabla states the context is anonymized and no protected health information is involved. The numbers: Nabla has <strong>over 125,000 clinicians</strong> across <strong>190</strong> health systems and provider groups, integrates with all major EHRs, and supports <strong>more than 35</strong> languages.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這是今天整份日報的分水嶺。Nabla 與 Abridge 面對同一道題：病歷寫完之後，下一格該放什麼。Abridge 選擇自己買下 UpToDate、NEJM 與 JAMA 的授權，把決策支援做成自家產品；Nabla 選擇承認證據層已經有人贏了，把 OpenEvidence 當基礎設施接進來。對 OpenEvidence 來說，這是它從「醫師會主動打開的網站」變成「別人產品裡的一層」的第一個公開案例——而被嵌入的那一層，通常就是最後收得到錢的那一層。值得注意的是 OpenEvidence 在這份新聞稿裡沒有給任何引述，所有話都是 Nabla 說的。</span>
+        <span class="en">This is the hinge of today's report. Nabla and Abridge face the same question: what goes in the box after the note is written. Abridge licensed UpToDate, NEJM and JAMA and built decision support as its own product; Nabla conceded that the evidence layer already has a winner and wired OpenEvidence in as infrastructure. For OpenEvidence this is the first public instance of its becoming a layer inside someone else's product rather than a site physicians open themselves — and the embedded layer is usually the one that eventually collects. Worth noting: OpenEvidence supplied no quote for the release. Every word in it is Nabla's.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">這是雙方的新聞稿，沒有第三方查核。「去識別化、不涉及 PHI」是 Nabla 的自述，而傳過去的欄位包含人口學資料、診斷、用藥與整份已生成病歷——這組合在再識別風險上並不是零，新聞稿沒有說明去識別化的方法或由誰稽核。125,000 與 190 兩個數字也是公司自報，沒有時間切點以外的驗證。新聞稿裡唯一的臨床評價來自一位神經科醫師的個人感想（「過去要花幾小時的研究現在只要幾分鐘」），那是感受，不是量測。</span>
+        <span class="en">This is both companies' own release, with no third-party verification. "Anonymized, no PHI" is Nabla's own characterization, and the fields being passed include demographics, diagnosis, medications and the entire generated note — a combination whose re-identification risk is not zero, with no account of the de-identification method or who audits it. The 125,000 and 190 figures are self-reported. The only clinical appraisal in the release is one neurologist's impression that "what once took hours of research now takes minutes," which is a feeling, not a measurement.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="http://www.prnewswire.com/news-releases/nabla-integrates-with-openevidence-to-deliver-clinical-evidence-at-the-point-of-care-302909243.html" target="_blank" rel="noopener">PR Newswire / Nabla, 2026-10-15</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">募資</span><span class="en-inline">Funding</span></span>
+      <span class="tag">Suki</span><span class="tag">Series E</span><span class="tag">$90M</span><span class="tag">10/14</span>
+    </div>
+    <h3>
+      <span class="zh">Suki 拿下 9,000 萬美元 E 輪：「臨床文書從來不是終點，它是入口」</span>
+      <span class="en">Suki raises a $90 million Series E: "Clinical documentation was never the destination. It was the entry point."</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">10 月 14 日，<a href="https://www.mobihealthnews.com/news/suki-raises-90m-ai-clinical-workflows" target="_blank" rel="noopener">MobiHealthNews 報導 Suki 完成 9,000 萬美元 E 輪</a>。既有投資人 Philips Ventures、Zoom Ventures、Hedosophia、Venrock 與 Flare Capital Partners 參與，新加入的是 Healthier Capital、Crosslink Capital 與 Hercules Capital；Healthier Capital 合夥人 Aman Mahajan 醫師進入董事會。報導指出在 Zoom Ventures 去年投資後，Suki 的累計募資為 1.68 億美元，本輪後總額與估值均未揭露。產品面涵蓋環境式文書、口述、編碼支援、醫令預備與臨床輔助，整合 Epic、Oracle Health、athenahealth 與 MEDITECH。客戶案例包括 Austin Regional Clinic 橫跨 15 個社區的 40 個院所，以及 Rush University System for Health 的 28 個專科。創辦人兼執行長 Punit Soni 說：「臨床文書從來不是終點，它是入口。」</span>
+        <span class="en">On October 14 <a href="https://www.mobihealthnews.com/news/suki-raises-90m-ai-clinical-workflows" target="_blank" rel="noopener">MobiHealthNews reported Suki's $90 million Series E</a>. Existing backers Philips Ventures, Zoom Ventures, Hedosophia, Venrock and Flare Capital Partners took part; Healthier Capital, Crosslink Capital and Hercules Capital are new, and Healthier Capital partner Dr Aman Mahajan joined the board. The report puts Suki's cumulative funding at $168 million after Zoom Ventures' investment last year; neither a post-round total nor a valuation was disclosed. The product spans ambient documentation, dictation, coding support, order staging and clinical assistance, integrating with Epic, Oracle Health, athenahealth and MEDITECH. Named deployments include Austin Regional Clinic across 40 locations in 15 communities and Rush University System for Health across 28 specialties. Founder and CEO Punit Soni: "Clinical documentation was never the destination. It was the entry point."</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">把 Soni 這句話跟 Nabla 的整合、Abridge 的授權採購擺在一起，三家公司在同一週說了同一件事：環境語音記錄本身已經是地板價了。真正的問題是誰能在病歷之外多收一筆——證據查詢、編碼、醫令、事前授權。1.68 億美元累計募資對照 Abridge 逾 <a href="https://technical.ly/entrepreneurship/abridge-300m-healthtech-ai-funding/" target="_blank" rel="noopener">8 億美元</a>、OpenEvidence 過去一年逾 <a href="https://refreshmiami.com/news/openevidence-hits-15b-valuation-as-its-ambitions-move-far-beyond-medical-search/" target="_blank" rel="noopener">10 億美元</a>，也說明了這個市場的資本落差有多大：Suki 這一輪是續命與擴編，不是搶旗。</span>
+        <span class="en">Put Soni's line beside Nabla's integration and Abridge's licensing purchases and three companies said the same thing in one week: ambient capture itself is now the floor price. The live question is who can charge for something beyond the note — evidence lookup, coding, orders, prior authorization. And $168 million cumulative against Abridge's <a href="https://technical.ly/entrepreneurship/abridge-300m-healthtech-ai-funding/" target="_blank" rel="noopener">$800 million-plus</a> and OpenEvidence's <a href="https://refreshmiami.com/news/openevidence-hits-15b-valuation-as-its-ambitions-move-far-beyond-medical-search/" target="_blank" rel="noopener">$1 billion-plus in the past year alone</a> measures the capital gap in this market: this round buys Suki runway and a bigger commercial team, not the flag.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">報導未揭露領投方、本輪後估值與總募資額，也沒有任何營收、ARR 或客戶數成長數字。兩個客戶案例是院所數與專科數，不是使用人數或留存。部分媒體把這一輪描述為主攻「事前授權自動化」，但 MobiHealthNews 的資金用途只寫到「擴充 AI 能力與商務團隊」，該定位未在這份報導中獲得證實，本報不採用。</span>
+        <span class="en">The report names no lead investor, no post-round valuation and no post-round total, and gives no revenue, ARR or customer-growth figures. The two named deployments are counts of sites and specialties, not users or retention. Some outlets framed the round as a push into prior-authorization automation; MobiHealthNews describes the use of funds only as growing AI capabilities and the commercial team, so that framing is unconfirmed in this source and is not adopted here.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.mobihealthnews.com/news/suki-raises-90m-ai-clinical-workflows" target="_blank" rel="noopener">MobiHealthNews, 2026-10-14</a> · <a href="https://www.citybiz.co/article/917690/suki-raises-90-million-in-series-e-financing-to-expand-healthcare-ai-platform/" target="_blank" rel="noopener">citybiz, 2026-10</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">企業級合約</span><span class="en-inline">Enterprise deal</span></span>
+      <span class="tag">Abridge</span><span class="tag">UT System</span><span class="tag">8 家機構</span><span class="tag">10/8</span>
+    </div>
+    <h3>
+      <span class="zh">Abridge 把德州大學系統 8 家健康機構整個簽下來：年 1,170 萬門診人次、200 萬住院日</span>
+      <span class="en">Abridge signs all eight University of Texas System health institutions: 11.7 million outpatient visits and 2 million hospital days a year</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">10 月 8 日，<a href="https://www.abridge.com/press-release/ut-health-enterprise-wide" target="_blank" rel="noopener">Abridge 宣布與德州大學系統簽訂企業級協議</a>，涵蓋 UT Southwestern、UT Medical Branch、MD Anderson、Dell Medical School、UT Health Tyler、UTHealth Houston、UT Health San Antonio 與 UT Health Rio Grande Valley 共 8 家機構。該系統旗下醫院與診所過去一年有近 <strong>1,170 萬</strong>門診人次、逾 <strong>200 萬</strong>住院日。2025 年的試行涵蓋 5 個地理據點、門診住院與急診場域、逾 50 個專科，過去 12 個月錄音臨床人員數成長 <strong>73%</strong>、月病歷數成長 <strong>80%</strong>。Abridge 表示今年將支援逾 <strong>1 億</strong>次醫病對話、橫跨逾 <strong>300 家</strong>美國醫療體系，平台已在 28 種以上語言的就診場景完成驗證。協議採「系統級框架、院級自主決定」的結構，未來可能延伸至照護缺口標記、支付方行政流程與臨床試驗配對（<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-university-texas-system-enter-enterprise-wide-agreement-expanded-ai" target="_blank" rel="noopener">Fierce Healthcare 的報導</a>）。</span>
+        <span class="en">On October 8 <a href="https://www.abridge.com/press-release/ut-health-enterprise-wide" target="_blank" rel="noopener">Abridge announced an enterprise-wide agreement with the University of Texas System</a>, covering UT Southwestern, UT Medical Branch, MD Anderson, Dell Medical School, UT Health Tyler, UTHealth Houston, UT Health San Antonio and UT Health Rio Grande Valley — eight institutions whose hospitals and clinics logged nearly <strong>11.7 million</strong> outpatient visits and more than <strong>2 million</strong> hospital days in the past year. The 2025 pilot spanned five geographic locations, outpatient, inpatient and emergency settings and more than 50 specialties; over the past twelve months recording clinicians grew <strong>73%</strong> and monthly notes <strong>80%</strong>. Abridge says it expects to support more than <strong>100 million</strong> patient-clinician conversations this year across more than <strong>300</strong> US health systems, with the platform validated for encounters in 28-plus languages. The agreement is structured as a systemwide framework with local decision-making left to each institution, and may later extend to surfacing care gaps, payer administrative workflows and clinical trial matching (<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-university-texas-system-enter-enterprise-wide-agreement-expanded-ai" target="_blank" rel="noopener">Fierce Healthcare</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這份合約的意義不在規模，在結構。「系統級框架 + 院級自主」是 Abridge 面對 Epic 內建功能時唯一能守的陣地：當 <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/epic-rolls-out-ai-charting-and-more-built-automation-clinicians-and" target="_blank" rel="noopener">Epic 自家的 AI Charting 已經隨 EHR 出貨</a>、而 Epic 握有美國急症醫院 EHR 市場 42% 與 55% 的病床，第三方廠商無法在「功能」上贏，只能在「採購層級」上贏——把合約簽到系統總部，讓單一院所就算想換也要面對系統級的治理成本。試行期 73% 與 80% 的成長是這套策略的賣點：先讓臨床人員自己長出來，再把它變成合約。</span>
+        <span class="en">The significance is structural, not the size. "Systemwide framework, local decisions" is the only ground Abridge can hold against a built-in Epic feature: with <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/epic-rolls-out-ai-charting-and-more-built-automation-clinicians-and" target="_blank" rel="noopener">Epic's own AI Charting now shipping inside the EHR</a> and Epic holding 42% of the US acute hospital EHR market and 55% of beds, a third-party vendor cannot win on features — only on the level at which it is purchased. Sign at system headquarters and any single institution wanting to switch must first absorb a systemwide governance cost. The pilot's 73% and 80% growth is the pitch for that strategy: let clinicians grow the footprint themselves, then convert it into a contract.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">新聞稿沒有給可取用此服務的臨床人員總數，也沒有合約金額、年限或最低承諾量。73% 與 80% 是試行期的相對成長率，沒有分母，無法換算成實際人數。「今年逾 1 億次對話」與「逾 300 家醫療體系」都是 Abridge 自報、未經稽核，而「逾 300 家」這個數字在 <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-expands-ai-decision-support-more-clinicians-bid-become-healthcares" target="_blank" rel="noopener">8 月的新聞</a>裡被用來描述「採用決策支援的體系數」、在 4 月的新聞稿裡整體客戶數還寫 250 家——這類數字在不同稿件間的定義並不一致，不宜直接相減或疊加。合約也明確把實際部署決定權留給各院，簽約不等於上線。</span>
+        <span class="en">The release gives no total count of clinicians with access, no contract value, no term and no minimum commitment. The 73% and 80% are relative pilot growth rates with no denominator, so they cannot be converted into headcount. Both "more than 100 million conversations this year" and "more than 300 health systems" are unaudited Abridge figures — and that 300 appears in <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-expands-ai-decision-support-more-clinicians-bid-become-healthcares" target="_blank" rel="noopener">August's coverage</a> as the count of systems that adopted decision support, while April's release put total health systems at 250. These counts are not defined consistently across releases and should not be subtracted or stacked. The agreement also explicitly leaves deployment decisions to each institution: signing is not going live.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.abridge.com/press-release/ut-health-enterprise-wide" target="_blank" rel="noopener">Abridge press release, 2026-10-08</a> · <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-university-texas-system-enter-enterprise-wide-agreement-expanded-ai" target="_blank" rel="noopener">Fierce Healthcare, 2026-10</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="zh-inline">部署 · EHR 內嵌</span><span class="en-inline">Deployment · In-EHR</span></span>
+      <span class="tag">Northwestern Medicine</span><span class="tag">OpenEvidence</span><span class="tag">Epic</span><span class="tag">10/13</span>
+    </div>
+    <h3>
+      <span class="zh">Northwestern Medicine 把 OpenEvidence 內嵌進 Epic，單一登入開放給護理師與藥師</span>
+      <span class="en">Northwestern Medicine embeds OpenEvidence in Epic, with single sign-on extended to nurses and pharmacists</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">10 月 13 日，<a href="https://www.healthcareitnews.com/news/northwestern-medicine-integrates-openevidence-epic" target="_blank" rel="noopener">Healthcare IT News 報導 Northwestern Medicine 已把 OpenEvidence 嵌入其 Epic EHR</a>，使用者自 10 月 8 日起以既有 EHR 憑證自動登入，範圍包含護理師、藥師與其他臨床團隊成員。可查詢藥物劑量、藥物交互作用與照護指引，回覆引用同儕審查文獻，包含 <em>NEJM</em> 與 JAMA Network 的內容。Northwestern 醫療長 James Adams 的說法是「給臨床人員一個在照護現場可信的單一答案來源」；OpenEvidence 策略合作資深副總 Vivien Ho 則把部署歸功於院方的協作方式。</span>
+        <span class="en">On October 13 <a href="https://www.healthcareitnews.com/news/northwestern-medicine-integrates-openevidence-epic" target="_blank" rel="noopener">Healthcare IT News reported that Northwestern Medicine has embedded OpenEvidence in its Epic EHR</a>, with users automatically signed in from October 8 using existing EHR credentials — nurses, pharmacists and other clinical team members included. Queries cover drug dosing, drug interactions and care guidelines, and answers cite peer-reviewed literature including <em>NEJM</em> and JAMA Network content. Northwestern chief medical officer James Adams framed it as "a single, trusted source for evidence-based answers at the point of care"; OpenEvidence SVP of strategic partnerships Vivien Ho credited the health system's collaborative approach for making the deployment possible.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">把這則跟 JAMA 那份研究對讀，會看到 OpenEvidence 真正的成長軸線：JAMA 研究裡 NP 與 PA 的每人每月查詢數 44.5 次已經高於醫師的 37.1 次，而 Northwestern 這次直接把單一登入開給護理師與藥師。訂閱制年代的授權邏輯是按醫師人頭計價，廣告支撐的免費模式沒有這個天花板——它可以把整個臨床團隊一次納入，而每多一個使用者就多一組可販售的注意力。這也是 OpenEvidence 與 Abridge 的結構差異：Abridge 的單位是「一場對話」，OpenEvidence 的單位是「一個會問問題的人」。</span>
+        <span class="en">Read this against the JAMA study and OpenEvidence's real growth axis appears. In that study nurse practitioners and physician assistants already averaged 44.5 queries per active user-month against physicians' 37.1 — and Northwestern has now opened single sign-on to nurses and pharmacists outright. Subscription-era licensing prices by physician head; an ad-supported free model has no such ceiling, so it can absorb an entire clinical team at once, and every additional user is another block of sellable attention. This is also the structural difference between the two companies: Abridge's unit is a conversation, OpenEvidence's unit is a person who asks questions.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">報導未揭露臨床人員數量、使用率或任何成效數字，也沒有說明院方是否付費、以何種方式付費。沒有任何關於廣告是否出現在院內部署版本、或是否被院方關閉的資訊——這是本則消息最關鍵卻完全缺席的一欄。</span>
+        <span class="en">The report discloses no clinician count, no utilization rate and no outcome figures, and does not say whether or how the health system pays. Nothing is said about whether advertising appears in the in-system deployment or has been switched off by the health system — the single most consequential column here, and entirely absent.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.healthcareitnews.com/news/northwestern-medicine-integrates-openevidence-epic" target="_blank" rel="noopener">Healthcare IT News, 2026-10-13</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="zh-inline">內容護城河</span><span class="en-inline">Content moat</span></span>
+      <span class="tag">Behind the Knife</span><span class="tag">OpenEvidence</span><span class="tag">外科教育</span><span class="tag">10/14</span>
+    </div>
+    <h3>
+      <span class="zh">OpenEvidence 把外科教育平台 Behind the Knife 收進答案裡：逾 1,000 集播客、80 多國聽眾</span>
+      <span class="en">OpenEvidence folds surgical-education platform Behind the Knife into its answers: 1,000-plus episodes, listeners in 80-plus countries</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">10 月 14 日美東上午 10:47，<a href="https://finance.yahoo.com/healthcare/articles/behind-knife-openevidence-announce-collaboration-144700068.html" target="_blank" rel="noopener">Behind the Knife 與 OpenEvidence 宣布合作</a>：BTK 的外科教育素材庫進入 OpenEvidence 平台以強化查詢結果，OpenEvidence 則嵌入 BTK 的學習工具，包括 ABSITE 複習、口試準備，以及一般外科與外科重症照護課程，並以一個探討 AI 與臨床實務的播客系列開場。BTK 自稱是「全世界收聽人數最多的外科播客」，素材庫含逾 <strong>1,000 集</strong>播客、影片圖譜、口試複習課程、題庫與一套 AI 口試模擬器，聽眾分布於 <strong>80 多個國家</strong>。</span>
+        <span class="en">At 10:47 am ET on October 14, <a href="https://finance.yahoo.com/healthcare/articles/behind-knife-openevidence-announce-collaboration-144700068.html" target="_blank" rel="noopener">Behind the Knife and OpenEvidence announced a collaboration</a>: BTK's surgical education library enters the OpenEvidence platform to enrich query results, while OpenEvidence is embedded in BTK's learning tools — ABSITE review, oral board prep, and the general surgery and surgical critical care curricula — launching with a podcast series on AI in clinical practice. BTK calls itself the world's most listened-to surgery podcast, with a library of more than <strong>1,000</strong> podcast episodes, video atlases, oral board review courses, question banks and an AI-powered oral board simulator, reaching listeners in <strong>more than 80 countries</strong>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這是 OpenEvidence 護城河真正的建法，而它跟模型沒什麼關係。<a href="https://research.contrary.com/company/openevidence" target="_blank" rel="noopener">Contrary Research 的整理</a>把內容授權列為它的主要成本項目，<a href="https://media.jamanetwork.com/announcement/openevidence-and-the-jama-network-sign-strategic-content-agreement/" target="_blank" rel="noopener">JAMA Network 的策略內容協議</a>與 NEJM Group 的合作則是它答案可信度的來源。BTK 這一筆補的是另一塊：期刊給的是指引層，外科教育素材給的是「指引沒寫、但主治醫師會教」的那一層。注意流向是雙向的——OpenEvidence 同時進入外科住院醫師的考試準備路徑，而那正是 JAMA 研究裡貢獻 61.8% 醫師查詢量的執業早期族群。</span>
+        <span class="en">This is how OpenEvidence's moat is actually built, and it has little to do with models. <a href="https://research.contrary.com/company/openevidence" target="_blank" rel="noopener">Contrary Research's breakdown</a> lists content licensing as a primary cost, and <a href="https://media.jamanetwork.com/announcement/openevidence-and-the-jama-network-sign-strategic-content-agreement/" target="_blank" rel="noopener">the JAMA Network strategic content agreement</a> plus the NEJM Group partnership are where its answers' credibility comes from. BTK fills a different gap: journals supply the guideline layer, surgical education supplies the layer guidelines do not write down but attendings teach. Note that the flow runs both ways — OpenEvidence simultaneously enters the exam-prep path of surgical residents, exactly the early-career cohort that supplied 61.8% of physician queries in the JAMA study.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">Yahoo Finance 頁面明確標示這是付費發布的新聞稿，所有觸及數字與市場地位的說法都來自公司，不是獨立查核。新聞稿裡「使用 OpenEvidence 的美國醫師比其他所有 AI 平台加總還多」引用的是未指名的「獨立研究」，「多數美國醫師平均每天使用」同樣無從查證——這類說法與 <a href="https://www.nature.com/articles/s41746-026-03077-4" target="_blank" rel="noopener">npj Digital Medicine 系統性回顧</a>對「40% 美國醫師每天使用」只能標注「據稱」是同一個問題。合作未揭露金額、年限或任何排他條款。</span>
+        <span class="en">The Yahoo Finance page labels this a paid press release, so every reach and market-position claim in it comes from the companies, not independent verification. The release's assertion that more US physicians use OpenEvidence than all other AI platforms combined cites unnamed "independent studies," and the claim that the majority of US physicians use it daily on average is equally uncheckable — the same problem <a href="https://www.nature.com/articles/s41746-026-03077-4" target="_blank" rel="noopener">the npj Digital Medicine review</a> ran into when it could only mark the "40% of US physicians daily" figure as "reportedly" true. No deal value, term or exclusivity is disclosed.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://finance.yahoo.com/healthcare/articles/behind-knife-openevidence-announce-collaboration-144700068.html" target="_blank" rel="noopener">Yahoo Finance（付費新聞稿 / paid release）, 2026-10-14</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="zh-inline">支付方 · 財報</span><span class="en-inline">Payer · Earnings</span></span>
+      <span class="tag">UnitedHealth Group</span><span class="tag">Q3</span><span class="tag">-33% / -36%</span><span class="tag">10/14</span>
+    </div>
+    <h3>
+      <span class="zh">UnitedHealth 在 Q3 法說會上給出支付方端的 AI 數字：病歷審閱時間減 33%、申訴週期減 36%</span>
+      <span class="en">UnitedHealth puts payer-side AI numbers on its Q3 call: chart review time down 33%, appeal cycle time down 36%</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">在第三季財報電話會議上，UnitedHealth Group 執行長表示 AI 輔助的病歷摘要讓審閱時間減少 <strong>33%</strong>，AI 協助的資料蒐集讓申訴（appeal）週期時間縮短 <strong>36%</strong>（<a href="https://www.pymnts.com/earnings/2026/unitedhealth-says-chart-review-time-falls-33percent-with-ai-usage/" target="_blank" rel="noopener">PYMNTS 的整理</a>，經 <a href="https://histalk2.com/2026/10/14/healthcare-ai-news-10-14-26/" target="_blank" rel="noopener">HIStalk 10/14 的 AI 新聞彙編</a>收錄）。</span>
+        <span class="en">On its third-quarter earnings call, UnitedHealth Group's CEO said AI-enabled chart summarization cut review time by <strong>33%</strong> and AI-assisted information gathering shortened appeal cycle times by <strong>36%</strong> (<a href="https://www.pymnts.com/earnings/2026/unitedhealth-says-chart-review-time-falls-33percent-with-ai-usage/" target="_blank" rel="noopener">PYMNTS</a>, carried in <a href="https://histalk2.com/2026/10/14/healthcare-ai-news-10-14-26/" target="_blank" rel="noopener">HIStalk's 10/14 healthcare AI roundup</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">今天前六則都在講誰能賣給醫師，這一則提醒錢的另一端早就在用同一套技術，而且是在對立的方向上。Abridge 的 10/8 新聞稿把「支付方行政流程」列為未來延伸方向、Suki 的產品線含編碼支援——這些功能的價值最終取決於支付方那一側的審查速度與拒付邏輯，而支付方同樣在用 AI 加速。一邊用 AI 產生更完整的文件、另一邊用 AI 更快地審閱與駁回，淨效果不會自動落在醫師或病人身上。</span>
+        <span class="en">The first six items all concern who can sell to physicians; this one is a reminder that the other end of the money has been using the same technology for a while, pointed the other way. Abridge's 10/8 release lists payer administrative workflows as a future extension and Suki's product line includes coding support — and the value of those features ultimately depends on how fast the payer side reviews and how it denies. The payer side is accelerating with AI too. One side generating more complete documentation while the other reviews and rejects faster does not automatically net out in favour of clinicians or patients.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">這兩個百分比出自法說會上的管理層陳述，沒有方法說明、沒有基期定義、沒有外部稽核，也沒有說明「申訴週期縮短」最終對申訴核准率的影響是正或負。本報僅引自二手報導，未取得法說會原始逐字稿。</span>
+        <span class="en">Both percentages are management statements on an earnings call, with no methodology, no stated baseline, no external audit, and nothing on whether a shorter appeal cycle raises or lowers the rate at which appeals succeed. Cited here from secondary coverage only; the call transcript itself was not obtained.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.pymnts.com/earnings/2026/unitedhealth-says-chart-review-time-falls-33percent-with-ai-usage/" target="_blank" rel="noopener">PYMNTS, 2026-10</a> · <a href="https://histalk2.com/2026/10/14/healthcare-ai-news-10-14-26/" target="_blank" rel="noopener">HIStalk, 2026-10-14</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="zh-inline">評估機制 · 公部門</span><span class="en-inline">Evaluation · Public funding</span></span>
+      <span class="tag">Duke</span><span class="tag">NIA</span><span class="tag">$25M / 5 年</span><span class="tag">10/14</span>
+    </div>
+    <h3>
+      <span class="zh">Duke 以近 2,500 萬美元、五年期 NIA 經費成立全國中心，專門評估高齡與失智照護的 AI 工具</span>
+      <span class="en">Duke launches a national center on nearly $25 million of five-year NIA funding to evaluate AI tools in aging and dementia care</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh"><a href="https://medschool.duke.edu/news/duke-launches-national-hub-advance-trustworthy-ai-aging-and-dementia-care-0" target="_blank" rel="noopener">Duke 宣布成立一個全國性中心</a>，以美國國家老化研究院（NIA）近 <strong>2,500 萬美元</strong>、為期 <strong>五年</strong>的經費，評估並落實高齡與失智照護領域的 AI 工具，其中至少 <strong>80%</strong> 的研究經費投向阿茲海默症與相關失智症（經 <a href="https://histalk2.com/2026/10/14/healthcare-ai-news-10-14-26/" target="_blank" rel="noopener">HIStalk 10/14</a> 收錄）。</span>
+        <span class="en"><a href="https://medschool.duke.edu/news/duke-launches-national-hub-advance-trustworthy-ai-aging-and-dementia-care-0" target="_blank" rel="noopener">Duke announced a national center</a> funded with nearly <strong>$25 million</strong> from the National Institute on Aging over <strong>five years</strong>, to evaluate and implement AI tools for aging and dementia care, with at least <strong>80%</strong> of research funding directed to Alzheimer's disease and related dementias (carried in <a href="https://histalk2.com/2026/10/14/healthcare-ai-news-10-14-26/" target="_blank" rel="noopener">HIStalk 10/14</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">把這一則放在 JAMA 那份研究旁邊，落差就很清楚：私部門兩天內動用的資本（Suki 9,000 萬美元一輪）超過公部門五年投入一個評估中心的三倍，而今天唯一被同儕審查的「使用」資料，仍然是由被研究的公司自己提供的。獨立評估的產能是這個領域真正的瓶頸，而這個中心的規模說明瓶頸還沒鬆開。</span>
+        <span class="en">Set this beside the JAMA study and the asymmetry is plain: the private capital deployed in two days — Suki's $90 million in a single round — is more than three times what the public sector is putting into one evaluation center over five years, and the only peer-reviewed usage data published today still came from the company being studied. Independent evaluation capacity is the real bottleneck in this field, and this center's size says the bottleneck has not loosened.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://medschool.duke.edu/news/duke-launches-national-hub-advance-trustworthy-ai-aging-and-dementia-care-0" target="_blank" rel="noopener">Duke School of Medicine, 2026-10</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="zh-inline">反向訊號</span><span class="en-inline">Counter-signal</span></span>
+      <span class="tag">Medical Protection Society</span><span class="tag">英國 NHS</span><span class="tag">10/14</span>
+    </div>
+    <h3>
+      <span class="zh">英國：AI 代寫的病人申訴信「有時超過 20 頁」，把節省下來的時間還回去了</span>
+      <span class="en">England: AI-written patient complaints "sometimes exceeding 20 pages" are handing the saved time straight back</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">英國 Medical Protection Society 警告，由 AI 生成的冗長病人申訴信——<strong>有時超過 20 頁</strong>——正在增加 NHS 家醫科醫師的工作負擔（<a href="https://www.the-independent.com/news/uk/home-news/nhs-gp-complaint-ai-generated-uk-b3065018.html" target="_blank" rel="noopener">The Independent 的報導</a>，經 <a href="https://histalk2.com/2026/10/14/healthcare-ai-news-10-14-26/" target="_blank" rel="noopener">HIStalk 10/14</a> 收錄）。</span>
+        <span class="en">England's Medical Protection Society has warned that lengthy AI-generated patient complaints — <strong>sometimes exceeding 20 pages</strong> — are adding to NHS GPs' workload (<a href="https://www.the-independent.com/news/uk/home-news/nhs-gp-complaint-ai-generated-uk-b3065018.html" target="_blank" rel="noopener">The Independent</a>, carried in <a href="https://histalk2.com/2026/10/14/healthcare-ai-news-10-14-26/" target="_blank" rel="noopener">HIStalk 10/14</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">今天所有產品的賣點都是「把文書負擔拿掉」。這一則是同一項技術從另一端把負擔加回來的第一手證據：生成成本趨近於零時，文件量會膨脹到接收端的處理上限為止。對任何一家把「節省 X 分鐘」寫進銷售簡報的公司來說，這是最應該被放進同一張試算表、卻幾乎不會被放進去的那一欄。</span>
+        <span class="en">Every product in today's report sells on removing documentation burden. This is first-hand evidence of the same technology adding it back from the other side: when generation costs approach zero, document volume expands until it hits the receiving end's processing limit. For any company that puts "saves X minutes" on a sales slide, this is the column that belongs in the same spreadsheet and almost never makes it there.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">這是一個專業保障組織的觀察與警告，不是量測研究：沒有申訴件數統計、沒有與 AI 普及前的對照基期，也沒有辨識哪些信件確實由 AI 生成的方法說明。本報僅引自二手報導。</span>
+        <span class="en">This is a professional protection organisation's observation and warning, not a measurement study: no complaint volume statistics, no pre-AI baseline, and no stated method for identifying which letters were in fact AI-generated. Cited here from secondary coverage only.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.the-independent.com/news/uk/home-news/nhs-gp-complaint-ai-generated-uk-b3065018.html" target="_blank" rel="noopener">The Independent, 2026-10</a></p></div>
+  </div>
+</section>
+
+<!-- ============ 02 產品分析 ============ -->
+<section id="product">
+  <h2>02 — Product Analysis</h2>
+  <div class="sec-title">
+    <span class="zh">兩個產品正在解同一個問題——「醫師在決定的那一秒需要什麼」——但一個從查詢框往工作流走，一個從錄音筆往證據庫走。對比的點不在功能表，在誰掌握分母：注意力，還是對話。</span>
+    <span class="en">Two products are solving the same problem — what a clinician needs in the second of deciding — but one is walking from the search box into the workflow and the other from the microphone into the evidence base. The contrast is not in the feature list; it is in who controls the denominator: attention, or conversations.</span>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>OpenEvidence</h3>
+      <p class="sub"><span class="zh-inline">免費、廣告支撐的臨床問答平台 · OpenEvidence（美國・邁阿密）</span><span class="en-inline">Free, ad-supported clinical question-answering platform · OpenEvidence (US, Miami)</span></p>
+      <p>
+        <span class="zh"><strong>功能與定位。</strong>驗證 NPI 的美國臨床人員免費使用，以同儕審查文獻為基礎回答臨床問題並附引用。營收來自情境式廣告與贊助內容——<a href="https://research.contrary.com/company/openevidence" target="_blank" rel="noopener">Contrary Research 的拆解</a>指出其說法是資訊系統與廣告投放系統「完全不相連」、廣告「不應視為背書」，另有自 2025 年 4 月起的 CME 學分模組；對照的市場規模是美國藥廠 2019 年投入約 <strong>200 億美元</strong>的醫師行銷支出。可信度來自授權而非模型：<a href="https://media.jamanetwork.com/announcement/openevidence-and-the-jama-network-sign-strategic-content-agreement/" target="_blank" rel="noopener">JAMA Network 策略內容協議</a>、NEJM Group 合作，以及 <a href="https://finance.yahoo.com/healthcare/articles/behind-knife-openevidence-announce-collaboration-144700068.html" target="_blank" rel="noopener">10/14 新增的 Behind the Knife 外科教育庫</a>。它正在同時往兩個方向擴張：<a href="https://www.healthcareitnews.com/news/northwestern-medicine-integrates-openevidence-epic" target="_blank" rel="noopener">往下進 Epic 工作流</a>、<a href="http://www.prnewswire.com/news-releases/nabla-integrates-with-openevidence-to-deliver-clinical-evidence-at-the-point-of-care-302909243.html" target="_blank" rel="noopener">往旁變成別人產品的一層</a>，以及 <a href="https://refreshmiami.com/news/openevidence-hits-15b-valuation-as-its-ambitions-move-far-beyond-medical-search/" target="_blank" rel="noopener">往上走進自己的抗癌藥開發</a>。</span>
+        <span class="en"><strong>Function and position.</strong> Free to US clinicians with a verified NPI, answering clinical questions from peer-reviewed literature with citations. Revenue comes from contextual advertising and sponsored content — <a href="https://research.contrary.com/company/openevidence" target="_blank" rel="noopener">Contrary Research's breakdown</a> records the company's position that the information system and the ad display system are "fully unconnected" and that advertisements "shall not be considered an endorsement," alongside CME credit modules since April 2025; the market being addressed is the roughly <strong>$20 billion</strong> US pharma spent on physician marketing as of 2019. Credibility comes from licensing rather than models: <a href="https://media.jamanetwork.com/announcement/openevidence-and-the-jama-network-sign-strategic-content-agreement/" target="_blank" rel="noopener">the JAMA Network strategic content agreement</a>, the NEJM Group partnership, and <a href="https://finance.yahoo.com/healthcare/articles/behind-knife-openevidence-announce-collaboration-144700068.html" target="_blank" rel="noopener">the Behind the Knife surgical library added on 10/14</a>. It is expanding in three directions at once: <a href="https://www.healthcareitnews.com/news/northwestern-medicine-integrates-openevidence-epic" target="_blank" rel="noopener">down into the Epic workflow</a>, <a href="http://www.prnewswire.com/news-releases/nabla-integrates-with-openevidence-to-deliver-clinical-evidence-at-the-point-of-care-302909243.html" target="_blank" rel="noopener">sideways into becoming a layer in other companies' products</a>, and <a href="https://refreshmiami.com/news/openevidence-hits-15b-valuation-as-its-ambitions-move-far-beyond-medical-search/" target="_blank" rel="noopener">up into developing its own cancer drugs</a>.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：使用強度與留存現在有同儕審查的數字支撐——<a href="https://doi.org/10.1001/jama.2026.21868" target="_blank" rel="noopener">JAMA 10/15 的研究</a>給出月活 703,265 人、每人每月 39.5 次查詢、月留存 70% 至 90%。這不是行銷漏斗的頂端數字，是使用習慣。</span>
+          <span class="en">: intensity and retention now have peer-reviewed numbers behind them — <a href="https://doi.org/10.1001/jama.2026.21868" target="_blank" rel="noopener">the JAMA study of 10/15</a> gives 703,265 monthly actives, 39.5 queries per active user per month and 70% to 90% month-over-month retention. These are not top-of-funnel marketing figures; they describe a habit.</span>
+        </li>
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：免費模式讓它沒有「按醫師人頭計價」的天花板，可以一次吃下整個臨床團隊——<a href="https://www.healthcareitnews.com/news/northwestern-medicine-integrates-openevidence-epic" target="_blank" rel="noopener">Northwestern 把單一登入開給護理師與藥師</a>，而 JAMA 研究裡 NP／PA 的 44.5 次／月已高於醫師的 37.1 次。UpToDate 式訂閱制在同一塊地上要逐人收費。</span>
+          <span class="en">: being free removes the per-physician licensing ceiling and lets it absorb an entire clinical team at once — <a href="https://www.healthcareitnews.com/news/northwestern-medicine-integrates-openevidence-epic" target="_blank" rel="noopener">Northwestern opened single sign-on to nurses and pharmacists</a>, and in the JAMA data NPs and PAs already run 44.5 queries a month against physicians' 37.1. A UpToDate-style subscription has to charge per seat on that same ground.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：證據只到「使用」為止。<a href="https://www.nature.com/articles/s41746-026-03077-4" target="_blank" rel="noopener">npj Digital Medicine 8/12 的系統性回顧</a>只收得到 11 篇在臨床或模擬臨床場域的同儕審查研究，結論是它在「指引明確」的情境表現最強、在複雜情境則變異較大，而且「經常強化既有的臨床決定，而非改變它」——後面這一句對一個宣稱改善決策的產品是個相當尖的問題。回顧同時指出樣本小、方法異質、平台一直在變，呼籲前瞻性真實世界研究。</span>
+          <span class="en">: the evidence stops at use. <a href="https://www.nature.com/articles/s41746-026-03077-4" target="_blank" rel="noopener">The npj Digital Medicine systematic review of 8/12</a> found only eleven peer-reviewed studies in clinical or simulated clinical settings, concluding that performance is strongest in guideline-based situations and more variable in complex ones, and that the platform "often reinforced existing clinical decisions rather than changing them" — a sharp finding for a product that claims to improve decisions. The review also flags small samples, methodological heterogeneity and a constantly changing platform, and calls for prospective real-world studies.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：商業模式與產品利益的結構性張力。付錢的是藥廠，使用的是醫師，受影響的是病人，而廣告與答案共享同一個螢幕位置。<a href="https://research.contrary.com/company/openevidence" target="_blank" rel="noopener">Contrary 列出的風險</a>正是這一條，另加一條監管風險：若被視為在指導臨床決策，可能落入 FDA 的醫材監管範圍。今天的 Northwestern 與 Nabla 兩則部署消息都完全沒有說明廣告在院內或第三方整合情境下如何處理，這是目前最大的資訊缺口。</span>
+          <span class="en">: a structural tension between the business model and the product's interest. Pharma pays, clinicians use, patients are affected, and the ad shares a screen with the answer. <a href="https://research.contrary.com/company/openevidence" target="_blank" rel="noopener">Contrary lists exactly this risk</a>, plus a regulatory one: if the platform is seen as directing clinical decisions it could fall under FDA device oversight. Neither today's Northwestern deployment nor the Nabla integration says anything about how advertising is handled inside a health system or a third-party product — currently the largest information gap of the two.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>Abridge AI（Clinical Decision Support）</h3>
+      <p class="sub"><span class="zh-inline">企業級訂閱、以環境語音為入口的臨床決策支援 · Abridge（美國・匹茲堡）</span><span class="en-inline">Enterprise subscription, decision support entered through ambient capture · Abridge (US, Pittsburgh)</span></p>
+      <p>
+        <span class="zh"><strong>功能與定位。</strong>起點是環境語音病歷，但 <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-expands-ai-decision-support-more-clinicians-bid-become-healthcares" target="_blank" rel="noopener">8/17 的擴張</a>把它變成在工作流內、具備病人情境的證據助手，桌機與行動端皆可用，且沿用醫療體系既有的資安、治理與 EHR 整合路徑——這是它與「再開一個網站」最關鍵的差別。內容來源是自行採購的授權組合：<a href="https://www.wolterskluwer.com/en/news/wolters-kluwer-and-abridge-partner-to-integrate-uptodate-trusted-physicianauthored-content-in-aigene" target="_blank" rel="noopener">Wolters Kluwer 的 UpToDate</a>、<a href="https://www.abridge.com/press-release/abridge-integrates-nejm-jama" target="_blank" rel="noopener">4/15 簽下的 NEJM 與 JAMA Network（11 本專科期刊加 <em>JAMA Network Open</em>）</a>，加上 American Diabetes Association、AAFP、<em>Neurology</em>、<em>Journal of Clinical Oncology</em> 等。付費方是醫療體系，單位是對話量與席次，不是注意力。</span>
+        <span class="en"><strong>Function and position.</strong> It starts from ambient documentation, but <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-expands-ai-decision-support-more-clinicians-bid-become-healthcares" target="_blank" rel="noopener">the 8/17 expansion</a> turned it into a patient-aware evidence assistant inside the workflow, on desktop and mobile, deployed through the security, governance and EHR integrations a health system already runs for Abridge's documentation — the decisive difference from opening another website. The content is a licensing portfolio it bought itself: <a href="https://www.wolterskluwer.com/en/news/wolters-kluwer-and-abridge-partner-to-integrate-uptodate-trusted-physicianauthored-content-in-aigene" target="_blank" rel="noopener">Wolters Kluwer's UpToDate</a>, <a href="https://www.abridge.com/press-release/abridge-integrates-nejm-jama" target="_blank" rel="noopener">NEJM and the JAMA Network signed on 4/15 (eleven specialty journals plus <em>JAMA Network Open</em>)</a>, plus the American Diabetes Association, AAFP, <em>Neurology</em> and the <em>Journal of Clinical Oncology</em>, among others. Health systems pay; the unit is conversations and seats, not attention.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：採用曲線異常陡。<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-expands-ai-decision-support-more-clinicians-bid-become-healthcares" target="_blank" rel="noopener">8/17 的數字</a>是自 4 月起逾 300 家企業級醫療體系採用決策支援、服務逾 2.5 億名病人、月活躍使用者超過合格 Abridge 臨床人員的一半、每位臨床人員查詢量兩個月內成長三倍；Shiv Rao 的說法是「決策支援的採用速度超過我們出過的任何東西」。UPMC 的醫資長表示逾 60% 的 Abridge 使用者是自己發現的。</span>
+          <span class="en">: an unusually steep adoption curve. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-expands-ai-decision-support-more-clinicians-bid-become-healthcares" target="_blank" rel="noopener">The 8/17 figures</a>: more than 300 enterprise health systems adopting decision support since April, serving over 250 million patients, monthly actives above half of eligible Abridge clinicians, and queries per clinician tripling in two months. Shiv Rao's line is that "adoption of decision support has outpaced anything we've shipped before." UPMC's CMIO reports that more than 60% of its Abridge users found it by self-discovery.</span>
+        </li>
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：採購層級與通路。<a href="https://www.abridge.com/press-release/abridge-integrates-nejm-jama" target="_blank" rel="noopener">2025 與 2026 連兩年 Best in KLAS 環境式 AI</a>、<a href="https://hitconsultant.net/2026/09/22/abridge-awarded-va-enterprise-contract-ambient-ai-veterans-health-administration/" target="_blank" rel="noopener">9/22 取得 7.757 億美元 VA 企業級合約的一席</a>（<a href="https://www.healthcareitnews.com/news/abridge-ambient-ai-now-available-all-va-medical-centers" target="_blank" rel="noopener">現已開放給全美退伍軍人醫療中心</a>），再加上 10/8 的德州大學系統企業級協議——這是 Epic 內建功能最難繞過的一層：既有的治理核准與整合成本。</span>
+          <span class="en">: the level at which it is bought, and its channels. <a href="https://www.abridge.com/press-release/abridge-integrates-nejm-jama" target="_blank" rel="noopener">Best in KLAS for Ambient AI in both 2025 and 2026</a>, <a href="https://hitconsultant.net/2026/09/22/abridge-awarded-va-enterprise-contract-ambient-ai-veterans-health-administration/" target="_blank" rel="noopener">a seat on a $775.7 million VA enterprise contract on 9/22</a> (<a href="https://www.healthcareitnews.com/news/abridge-ambient-ai-now-available-all-va-medical-centers" target="_blank" rel="noopener">now available across VA medical centers</a>), and the UT System enterprise agreement on 10/8 — the layer a built-in Epic feature finds hardest to route around: governance approvals and integration cost already paid for.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：成本結構與價格天花板的夾擊。它的證據層是買來的，授權費是持續成本，而對手把同一層免費給出去。<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/epic-rolls-out-ai-charting-and-more-built-automation-clinicians-and" target="_blank" rel="noopener">Epic 的 AI Charting 已隨 EHR 出貨</a>、Epic 握有 42% 急症醫院 EHR 市場與 55% 病床，一旦文書功能被視為 EHR 的內建項，Abridge 的訂閱必須完全靠「病歷之外那一格」撐起價格。它的 <a href="https://technical.ly/entrepreneurship/abridge-300m-healthtech-ai-funding/" target="_blank" rel="noopener">53 億美元估值（2025 年 6 月）</a>定價的是後者，不是前者。</span>
+          <span class="en">: squeezed between cost structure and price ceiling. Its evidence layer is purchased, licensing fees are a running cost, and a competitor gives the same layer away free. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/epic-rolls-out-ai-charting-and-more-built-automation-clinicians-and" target="_blank" rel="noopener">Epic's AI Charting now ships inside the EHR</a> and Epic holds 42% of the acute hospital EHR market and 55% of beds; once documentation is treated as an EHR built-in, Abridge's subscription has to be carried entirely by the box after the note. Its <a href="https://technical.ly/entrepreneurship/abridge-300m-healthtech-ai-funding/" target="_blank" rel="noopener">$5.3 billion valuation (June 2025)</a> prices the latter, not the former.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：沒有一個等同於今天 JAMA 那份研究的外部使用資料，也沒有臨床結果資料。所有採用數字——300 家、2.5 億名病人、三倍成長、1 億次對話——都是公司自報，而且不同月份的新聞稿對「體系數」的定義並不一致（4 月寫 250 家為整體客戶、8 月寫逾 300 家為決策支援採用者）。「月活躍使用者超過合格臨床人員的一半」沒有給分母，「查詢量三倍」沒有給基期絕對值。</span>
+          <span class="en">: there is no external usage dataset equivalent to today's JAMA study, and no clinical outcome data. Every adoption figure — 300 systems, 250 million patients, tripled queries, 100 million conversations — is self-reported, and successive releases define "health systems" inconsistently (April's 250 described total customers; August's 300-plus described decision-support adopters). "Monthly actives above half of eligible clinicians" comes without a denominator, and "queries tripled" without an absolute baseline.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 公司與競爭 ============ -->
+<section id="company">
+  <h2>03 — Companies &amp; Competition</h2>
+  <div class="sec-title">
+    <span class="zh">誰站在哪裡、憑什麼、跟誰打</span>
+    <span class="en">Who stands where, on what, against whom</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th><span class="zh-inline">公司</span><span class="en-inline">Company</span></th>
+        <th><span class="zh-inline">近況與數字</span><span class="en-inline">Recent state &amp; numbers</span></th>
+        <th><span class="zh-inline">競爭定位與護城河</span><span class="en-inline">Position &amp; moat</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>OpenEvidence</strong><br><span class="zh-inline">免費、廣告支撐的臨床問答層</span><span class="en-inline">Free, ad-supported clinical answer layer</span></td>
+          <td>
+            <span class="zh"><a href="https://refreshmiami.com/news/openevidence-hits-15b-valuation-as-its-ambitions-move-far-beyond-medical-search/" target="_blank" rel="noopener">9/25 報導 2.5 億美元新輪、估值 150 億美元</a>，由多家醫療體系與 a16z 領投，較 1 月 <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/openevidence-clinches-250m-series-d-rapidly-growing-its-reach-doctors" target="_blank" rel="noopener">120 億美元的 D 輪</a>再上調；過去一年募資逾 10 億美元，早期投資人含 Thrive、DST、GV、Kleiner Perkins、Sequoia 與 Nvidia。<a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openevidence-weighs-200m-funding-round-at-20b-valuation-report/" target="_blank" rel="noopener">7/20 Becker's 引述 The Information</a>：年化營收約 3 億美元（約每月 2,500 萬美元）、逾 86 萬名持照美國臨床人員。<a href="https://doi.org/10.1001/jama.2026.21868" target="_blank" rel="noopener">10/15 JAMA</a>：271M 次查詢、952,008 名已驗證臨床人員。</span>
+            <span class="en"><a href="https://refreshmiami.com/news/openevidence-hits-15b-valuation-as-its-ambitions-move-far-beyond-medical-search/" target="_blank" rel="noopener">A $250 million round at a $15 billion valuation reported 9/25</a>, led by health systems and a16z, up from <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/openevidence-clinches-250m-series-d-rapidly-growing-its-reach-doctors" target="_blank" rel="noopener">January's $12 billion Series D</a>; more than $1 billion raised in the past year, with earlier investors including Thrive, DST, GV, Kleiner Perkins, Sequoia and Nvidia. <a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openevidence-weighs-200m-funding-round-at-20b-valuation-report/" target="_blank" rel="noopener">Becker's on 7/20, citing The Information</a>: roughly $300 million annualized revenue (about $25 million a month) and more than 860,000 licensed US clinicians. <a href="https://doi.org/10.1001/jama.2026.21868" target="_blank" rel="noopener">JAMA on 10/15</a>: 271M queries, 952,008 verified clinicians.</span>
+          </td>
+          <td>
+            <span class="zh">護城河是授權內容加使用習慣，不是模型：期刊授權（JAMA、NEJM）、教育素材（<a href="https://finance.yahoo.com/healthcare/articles/behind-knife-openevidence-announce-collaboration-144700068.html" target="_blank" rel="noopener">10/14 的 Behind the Knife</a>）、MSK 的 OncoKB，再加上 70% 至 90% 的月留存。薄的地方是：營收來自付錢要影響處方的那一方，而臨床結果證據仍停在 11 篇小規模研究。</span>
+            <span class="en">The moat is licensed content plus habit, not models: journal licensing (JAMA, NEJM), education libraries (<a href="https://finance.yahoo.com/healthcare/articles/behind-knife-openevidence-announce-collaboration-144700068.html" target="_blank" rel="noopener">Behind the Knife on 10/14</a>), MSK's OncoKB, and 70% to 90% monthly retention. Where it is thin: revenue comes from the party paying to influence prescribing, while outcome evidence still rests on eleven small studies.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Abridge</strong><br><span class="zh-inline">環境語音入口 + 自購授權的決策支援</span><span class="en-inline">Ambient entry point plus self-licensed decision support</span></td>
+          <td>
+            <span class="zh"><a href="https://technical.ly/entrepreneurship/abridge-300m-healthtech-ai-funding/" target="_blank" rel="noopener">2025 年 6 月 3 億美元輪、估值約 53 億美元</a>（a16z 與 Khosla 領投，四個月內自 27.5 億美元翻倍），自 2018 年創立累計募資逾 8 億美元。<a href="https://www.abridge.com/press-release/ut-health-enterprise-wide" target="_blank" rel="noopener">10/8</a>：德州大學系統 8 家機構企業級協議、年近 1,170 萬門診人次；自稱今年支援逾 1 億次對話、逾 300 家美國醫療體系。<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-expands-ai-decision-support-more-clinicians-bid-become-healthcares" target="_blank" rel="noopener">8/17</a>：決策支援逾 300 家體系、服務逾 2.5 億名病人。</span>
+            <span class="en"><a href="https://technical.ly/entrepreneurship/abridge-300m-healthtech-ai-funding/" target="_blank" rel="noopener">A $300 million round at roughly $5.3 billion in June 2025</a> (a16z and Khosla leading, doubling from $2.75 billion in four months), with more than $800 million raised since its 2018 founding. <a href="https://www.abridge.com/press-release/ut-health-enterprise-wide" target="_blank" rel="noopener">On 10/8</a>: an enterprise-wide agreement across eight UT System institutions and nearly 11.7 million annual outpatient visits; it claims support for more than 100 million conversations this year across 300-plus US health systems. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-expands-ai-decision-support-more-clinicians-bid-become-healthcares" target="_blank" rel="noopener">On 8/17</a>: decision support at 300-plus systems serving over 250 million patients.</span>
+          </td>
+          <td>
+            <span class="zh">護城河是採購層級與既有整合：系統級合約、連兩年 Best in KLAS、<a href="https://hitconsultant.net/2026/09/22/abridge-awarded-va-enterprise-contract-ambient-ai-veterans-health-administration/" target="_blank" rel="noopener">7.757 億美元 VA 企業合約的一席</a>。薄的地方是成本與價格同時被壓：授權是持續支出、對手免費、而 Epic 把文書做成內建功能。</span>
+            <span class="en">The moat is purchase level and sunk integration: systemwide contracts, Best in KLAS two years running, <a href="https://hitconsultant.net/2026/09/22/abridge-awarded-va-enterprise-contract-ambient-ai-veterans-health-administration/" target="_blank" rel="noopener">a seat on the $775.7 million VA enterprise contract</a>. Where it is thin: cost and price squeezed at once — licensing is a running expense, the rival is free, and Epic is making documentation a built-in.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Nabla</strong><br><span class="zh-inline">環境語音，選擇外包證據層</span><span class="en-inline">Ambient scribe that chose to outsource the evidence layer</span></td>
+          <td>
+            <span class="zh"><a href="http://www.prnewswire.com/news-releases/nabla-integrates-with-openevidence-to-deliver-clinical-evidence-at-the-point-of-care-302909243.html" target="_blank" rel="noopener">10/15 整合 OpenEvidence</a>，自報逾 125,000 名臨床人員、190 家醫療體系與醫師集團、支援 35 種以上語言、整合所有主要 EHR。<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/nabla-banks-70m-series-c" target="_blank" rel="noopener">2025 年 6 月完成 7,000 萬美元 C 輪</a>，主打臨床工作流的 agentic AI。</span>
+            <span class="en"><a href="http://www.prnewswire.com/news-releases/nabla-integrates-with-openevidence-to-deliver-clinical-evidence-at-the-point-of-care-302909243.html" target="_blank" rel="noopener">Integrated OpenEvidence on 10/15</a>, self-reporting more than 125,000 clinicians across 190 health systems and provider groups, 35-plus languages and integration with all major EHRs. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/nabla-banks-70m-series-c" target="_blank" rel="noopener">A $70 million Series C in June 2025</a>, pitched on agentic AI for clinical workflows.</span>
+          </td>
+          <td>
+            <span class="zh">它放棄了自建證據層，換來更快上架與更低的授權成本——代價是最可能收到錢的那一層握在別人手上，而那個別人同時是 Abridge 的對手、也可能是 Nabla 的對手。多語言（35 種以上）與歐洲出身是它對 Abridge 的差異化。</span>
+            <span class="en">It gave up building its own evidence layer for faster shipping and lower licensing cost — at the price of leaving the layer most likely to collect revenue in someone else's hands, someone who is simultaneously Abridge's rival and potentially Nabla's. Multilingual coverage (35-plus) and European origins are its differentiation against Abridge.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Suki</strong><br><span class="zh-inline">文書為入口的臨床作業系統</span><span class="en-inline">Clinical operating layer entered through documentation</span></td>
+          <td>
+            <span class="zh"><a href="https://www.mobihealthnews.com/news/suki-raises-90m-ai-clinical-workflows" target="_blank" rel="noopener">10/14 完成 9,000 萬美元 E 輪</a>（Philips Ventures、Zoom Ventures、Hedosophia、Venrock、Flare Capital 續投，Healthier Capital、Crosslink、Hercules 新進），去年 Zoom Ventures 投資後累計 1.68 億美元；整合 Epic、Oracle Health、athenahealth、MEDITECH；客戶含 Austin Regional Clinic（15 社區 40 院所）與 Rush（28 專科）。</span>
+            <span class="en"><a href="https://www.mobihealthnews.com/news/suki-raises-90m-ai-clinical-workflows" target="_blank" rel="noopener">A $90 million Series E on 10/14</a> (Philips Ventures, Zoom Ventures, Hedosophia, Venrock and Flare Capital returning; Healthier Capital, Crosslink and Hercules new), on $168 million cumulative after Zoom Ventures' investment last year; integrations with Epic, Oracle Health, athenahealth and MEDITECH; customers including Austin Regional Clinic (40 sites in 15 communities) and Rush (28 specialties).</span>
+          </td>
+          <td>
+            <span class="zh">定位是「文書之外的那一格」——編碼、醫令預備、臨床輔助。護城河最薄的一家：資本規模僅 Abridge 的五分之一左右，沒有專屬期刊授權組合，也沒有像 VA 那樣的單一大型通路。Punit Soni 自己把文書稱為入口，等於承認入口本身不收錢。</span>
+            <span class="en">Positioned on the box after the note — coding, order staging, clinical assistance. The thinnest moat of the group: roughly a fifth of Abridge's capital, no proprietary journal licensing portfolio, and no single large channel like the VA. Punit Soni calling documentation the entry point is an admission that the entry point itself does not pay.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Epic</strong><br><span class="zh-inline">EHR 平台，把功能做成內建項</span><span class="en-inline">The EHR platform turning features into built-ins</span></td>
+          <td>
+            <span class="zh"><a href="https://www.fiercehealthcare.com/ai-and-machine-learning/epic-rolls-out-ai-charting-and-more-built-automation-clinicians-and" target="_blank" rel="noopener">2/4 發布並出貨 AI Charting</a>（與 Microsoft 共同開發、跑在 Azure 上），聲稱 85% 客戶已啟用生成式 AI；Insights 月使用逾 1,600 萬次、約為 2025 年 11 月的三倍；逾 200 家機構使用 Penny 做專業費用編碼，多家回報編碼相關拒付下降逾 20%、申訴信撰寫快 23%；軟體裝設於逾 3,700 家醫院、45,000 家診所，<a href="https://www.statnews.com/2026/02/04/epic-ai-charting-ambient-scribe-abridge-microsoft/" target="_blank" rel="noopener">握有急症醫院 EHR 市場 42% 與 55% 病床</a>。</span>
+            <span class="en"><a href="https://www.fiercehealthcare.com/ai-and-machine-learning/epic-rolls-out-ai-charting-and-more-built-automation-clinicians-and" target="_blank" rel="noopener">Announced and shipped AI Charting on 2/4</a> (built with Microsoft, running on Azure), claiming 85% of customers live with generative AI; Insights used more than 16 million times a month, about triple November 2025; more than 200 organizations using Penny for professional billing coding, many reporting coding-related denials down more than 20% and appeal letters produced 23% faster; software installed in more than 3,700 hospitals and 45,000 clinics, <a href="https://www.statnews.com/2026/02/04/epic-ai-charting-ambient-scribe-abridge-microsoft/" target="_blank" rel="noopener">with 42% of the acute hospital EHR market and 55% of beds</a>.</span>
+          </td>
+          <td>
+            <span class="zh">它不需要贏，只需要讓這些功能不值錢。護城河是分母本身：病歷、工作流與採購關係。薄的地方是它不擁有期刊授權，而 <a href="https://www.healthcareitnews.com/news/northwestern-medicine-integrates-openevidence-epic" target="_blank" rel="noopener">Northwestern 把 OpenEvidence 嵌進 Epic</a> 顯示證據層仍可由第三方從 Epic 內部補上。</span>
+            <span class="en">It does not need to win, only to make these features worthless. Its moat is the denominator itself: the record, the workflow, the purchasing relationship. Where it is thin: it owns no journal licensing, and <a href="https://www.healthcareitnews.com/news/northwestern-medicine-integrates-openevidence-epic" target="_blank" rel="noopener">Northwestern's embedding of OpenEvidence inside Epic</a> shows the evidence layer can still be supplied by a third party from within Epic.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Microsoft / Nuance</strong><br><span class="zh-inline">Dragon Copilot，平台級捆綁</span><span class="en-inline">Dragon Copilot, bundled at platform scale</span></td>
+          <td>
+            <span class="zh">Dragon Copilot 是 Microsoft 把 Nuance 語音資產統一後的醫療前線產品，<a href="https://www.healthcareitnews.com/news/microsofts-ai-tool-unification-dragon-copilot-takes-center-stage-himss26" target="_blank" rel="noopener">在 HIMSS26 成為其醫療 AI 整併的主軸</a>，並<a href="https://www.healthcareitnews.com/news/athenahealth-ehr-make-microsoft-dragon-copilot-available-doctors" target="_blank" rel="noopener">透過 athenahealth 的 EHR 向醫師供應</a>。Epic 的 AI Charting 亦與 Microsoft 共同開發、跑在 Azure 上。</span>
+            <span class="en">Dragon Copilot is Microsoft's front-line clinical product after unifying Nuance's voice assets, <a href="https://www.healthcareitnews.com/news/microsofts-ai-tool-unification-dragon-copilot-takes-center-stage-himss26" target="_blank" rel="noopener">the centerpiece of its healthcare AI consolidation at HIMSS26</a> and <a href="https://www.healthcareitnews.com/news/athenahealth-ehr-make-microsoft-dragon-copilot-available-doctors" target="_blank" rel="noopener">distributed to physicians through athenahealth's EHR</a>. Epic's AI Charting was also built with Microsoft and runs on Azure.</span>
+          </td>
+          <td>
+            <span class="zh">它同時是 Epic 的供應商與第三方廠商的對手，這個雙重身分既是通路也是限制。護城河是雲與既有 Nuance 合約；薄的地方是 <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/epic-rolls-out-ai-charting-and-more-built-automation-clinicians-and" target="_blank" rel="noopener">Abridge 連兩年拿下 Best in KLAS 環境式 AI</a> 這件事本身——在這個類別裡，最大的那一家不是評價最高的那一家。</span>
+            <span class="en">It is simultaneously Epic's supplier and the third-party vendors' rival, which is both a channel and a constraint. The moat is the cloud and the installed Nuance contracts; where it is thin is the plain fact that <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/epic-rolls-out-ai-charting-and-more-built-automation-clinicians-and" target="_blank" rel="noopener">Abridge took Best in KLAS for Ambient AI two years running</a> — in this category the largest player is not the best-rated one.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Wolters Kluwer（UpToDate）</strong><br><span class="zh-inline">訂閱制證據庫，現在同時是上游供應商</span><span class="en-inline">Subscription evidence base, now also an upstream supplier</span></td>
+          <td>
+            <span class="zh">UpToDate 是個人訂閱年費數百美元等級的傳統臨床證據庫（<a href="https://research.contrary.com/company/openevidence" target="_blank" rel="noopener">Contrary 的競品整理</a>）。它選擇<a href="https://www.wolterskluwer.com/en/news/wolters-kluwer-and-abridge-partner-to-integrate-uptodate-trusted-physicianauthored-content-in-aigene" target="_blank" rel="noopener">把內容授權給 Abridge 整合進 AI 生成的病歷流程</a>，而非自建問答產品對撞。</span>
+            <span class="en">UpToDate is the incumbent clinical evidence base, with individual subscriptions in the hundreds of dollars a year (<a href="https://research.contrary.com/company/openevidence" target="_blank" rel="noopener">Contrary's competitor notes</a>). It chose to <a href="https://www.wolterskluwer.com/en/news/wolters-kluwer-and-abridge-partner-to-integrate-uptodate-trusted-physicianauthored-content-in-aigene" target="_blank" rel="noopener">license its content into Abridge's AI-generated documentation workflow</a> rather than build a competing question-answering product head-on.</span>
+          </td>
+          <td>
+            <span class="zh">護城河是人工撰寫與審訂的內容，這也是 Abridge 願意付錢的原因。薄的地方是結構性的：授權收入穩定，但使用者介面與使用習慣正在轉移到別人的產品裡，而一個被嵌進他人答案中的內容庫，長期議價能力只會往下走。</span>
+            <span class="en">The moat is human-authored, human-reviewed content, which is exactly what Abridge is paying for. Where it is thin is structural: licensing revenue is steady, but the interface and the habit are migrating into someone else's product, and a content base embedded inside another company's answers only loses bargaining power over time.</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="zh"><strong>把這一節收束成一句話：今天的競爭結構不是「誰的 AI 比較好」，而是「證據這一層被誰擁有，以及誰付錢」。</strong>三種答案已經各自下注——Abridge 買下它（持續成本、企業訂閱收費）、OpenEvidence 免費送出去（藥廠付錢、換取注意力與習慣）、Nabla 向它租用（放棄這一層的利潤以換取速度）。Epic 的策略是讓這整個問題降格成內建功能，而 Wolters Kluwer 正在從「賣給醫師」變成「賣給賣給醫師的人」。真正尚未被定價的風險是第三種答案的結構：當<a href="https://doi.org/10.1001/jama.2026.21868" target="_blank" rel="noopener">月留存 70% 至 90%、每人每月 39.5 次查詢</a>的使用習慣已經養成，而<a href="https://www.nature.com/articles/s41746-026-03077-4" target="_blank" rel="noopener">現有同儕審查證據只有 11 篇、且指出它「經常強化既有決定而非改變它」</a>，那麼廣告模式的影響力在被量到之前就已經先建立了。</span>
+      <span class="en"><strong>Close the section in one sentence: today's competition is not about whose AI is better but about who owns the evidence layer and who pays for it.</strong> Three answers have placed their bets — Abridge buys it (a running cost, recovered through enterprise subscriptions), OpenEvidence gives it away (pharma pays, in exchange for attention and habit), Nabla rents it (surrendering that layer's margin for speed). Epic's play is to demote the whole question into a built-in feature, and Wolters Kluwer is shifting from selling to physicians to selling to the people who sell to physicians. The risk still unpriced belongs to the third answer's structure: when a habit of <a href="https://doi.org/10.1001/jama.2026.21868" target="_blank" rel="noopener">70% to 90% monthly retention and 39.5 queries per user per month</a> is already formed while <a href="https://www.nature.com/articles/s41746-026-03077-4" target="_blank" rel="noopener">the peer-reviewed evidence runs to eleven studies and reports that the platform "often reinforced existing clinical decisions rather than changing them"</a>, an advertising model's influence is established before anyone has measured it.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============ 04 台灣視角 ============ -->
+<section id="taiwan">
+  <h2>04 — Taiwan Angle</h2>
+  <div class="sec-title">
+    <span class="zh">今天這場仗打的是「證據層的所有權」與「誰付錢」，而這兩件事在台灣的答案跟美國完全不同——這正是風險與機會都被低估的地方。</span>
+    <span class="en">Today's fight is over who owns the evidence layer and who pays for it, and Taiwan's answer to both differs completely from the US — which is where both the risk and the opportunity are being underestimated.</span>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="zh"><strong>(1) 廣告支撐的免費模式在台灣幾乎無法複製，所以「免費的 OpenEvidence」不會自動變成台灣醫師的免費資源。</strong>OpenEvidence 的經濟學建立在美國藥廠對醫師的行銷支出上——<a href="https://research.contrary.com/company/openevidence" target="_blank" rel="noopener">Contrary Research 引用的規模是 2019 年約 200 億美元</a>。台灣的處方藥行銷受《藥事法》與相關規範限制、市場規模也不在同一個數量級，這意味著同一套產品進入台灣時，要嘛走訂閱制（回到 UpToDate 的價格結構）、要嘛由醫院或政府買單。<a href="https://unwire.pro/2026/09/24/anthropic-openevidence-medical-ai/news/" target="_blank" rel="noopener">9/24 OpenEvidence 與 Anthropic 合作向約 100 個中低收入國家免費提供</a>的那條路徑，台灣既不符合資格、也不會是談判對象。真正該問的問題是：台灣醫師現在用的是哪一套，以及院方知不知道。</span>
+      <span class="en"><strong>(1) An ad-supported free model is close to unreproducible in Taiwan, so "free OpenEvidence" will not automatically become a free resource for Taiwanese clinicians.</strong> OpenEvidence's economics rest on US pharma's spending on physician marketing — <a href="https://research.contrary.com/company/openevidence" target="_blank" rel="noopener">about $20 billion as of 2019, per Contrary Research</a>. Taiwan's prescription-drug marketing is constrained by the Pharmaceutical Affairs Act and related rules, and the market is not of the same order of magnitude. The same product entering Taiwan therefore has to either charge a subscription (back to UpToDate's price structure) or be paid for by hospitals or the state. <a href="https://unwire.pro/2026/09/24/anthropic-openevidence-medical-ai/news/" target="_blank" rel="noopener">The route OpenEvidence took with Anthropic on 9/24, offering free access across roughly 100 low- and middle-income countries</a>, neither covers Taiwan nor makes it a counterparty. The question worth asking is which platform Taiwanese clinicians are using right now, and whether their institutions know.</span>
+    </p>
+    <p>
+      <span class="zh"><strong>(2) 台灣在建的是「資料可交換」，而今天這場仗打的是「證據可嵌入」——兩者接不上，國產廠商就只能做最後一哩。</strong>衛福部長石崇良 <a href="https://money.udn.com/money/story/5648/9754542" target="_blank" rel="noopener">9/15 說明的次世代智慧醫療路線</a>以 FHIR 交換標準為核心，在各醫學中心配置「FHIR Box」讓醫院不換原系統即可完成標準化轉換與安全交換，時程是今年底前完成全國醫學中心重要醫療資料對接、明年底推動全國醫院串接，並規劃投入 <strong>100 億元</strong>策略性投資搭配法規輔導與健保沙盒。這是正確且必要的基礎工程，但它解的是「資料能不能流動」。今天 Abridge 與 OpenEvidence 競爭的是上面那一層：病人情境加上權威證據，在醫師決定的那一秒出現在同一個畫面裡。FHIR Box 讓台灣廠商有機會做到 Nabla 那一步（把情境餵給某個證據層），卻沒有解決台灣沒有 UpToDate 或 NEJM 等級本土證據庫可授權的問題——而這恰好是 Abridge 願意持續付錢、OpenEvidence 砸了整年募資去買的東西。</span>
+      <span class="en"><strong>(2) Taiwan is building data interoperability while today's fight is over evidence embeddability — and if the two do not meet, domestic vendors are left with the last mile only.</strong> Health Minister 石崇良's <a href="https://money.udn.com/money/story/5648/9754542" target="_blank" rel="noopener">next-generation smart healthcare roadmap, set out on 9/15</a>, centers on the FHIR exchange standard, with a "FHIR Box" at each medical center so hospitals can standardize and exchange data securely without replacing their existing systems. The timeline: key medical data across all medical centers connected by the end of this year, nationwide hospital linkage pushed through by the end of next year, alongside a planned <strong>NT$10 billion</strong> strategic investment paired with regulatory guidance and an NHI sandbox. This is correct and necessary plumbing, but what it solves is whether data can move. What Abridge and OpenEvidence are competing over is the layer above: patient context plus authoritative evidence, on the same screen in the second of deciding. The FHIR Box gives Taiwanese vendors a path to Nabla's position — feeding context into somebody's evidence layer — without addressing the fact that Taiwan has no UpToDate- or NEJM-scale domestic evidence base to license. Which is exactly what Abridge keeps paying for and what OpenEvidence spent a year's fundraising buying.</span>
+    </p>
+    <p>
+      <span class="zh"><strong>(3) 台灣已經有一個比美國更適合回答「AI 到底有沒有用」的機制，但它的產能和今天的商業速度不成比例。</strong>衛福部 <a href="https://www.mohw.gov.tw/cp-16-80155-1.html" target="_blank" rel="noopener">2024 年 10 月 7 日啟動的三大 AI 中心</a>裡，「臨床 AI 取證驗證中心」與 TFDA 合作、預先組成醫院聯盟協助廠商驗證模型並提升在台灣人群的準確性，「AI 影響性研究中心」與健保署合作、建立跨體系跨層級的臨床試驗機制為健保給付定價建立科學基礎——這套設計正面對上了今天的核心問題：JAMA 那份研究量的是使用、不是結果，而台灣的機制從一開始就把給付綁在效益評估上。問題是規模：當時 30 家醫院提 48 案、16 家醫院 19 案通過決選。對照 <a href="https://udn.com/news/story/7266/9592218" target="_blank" rel="noopener">「健康台灣深耕計畫」五年 489 億元</a>的量級，驗證與影響性研究這一端的投入仍遠小於商業部署的速度。今天 Suki 一輪 9,000 萬美元（約新台幣 28 億元）就超過許多本土計畫的全期經費，而真正能決定台灣該不該給付的，是後者。</span>
+      <span class="en"><strong>(3) Taiwan already has a better mechanism than the US for answering whether AI actually works — but its capacity is out of proportion to today's commercial speed.</strong> Among the <a href="https://www.mohw.gov.tw/cp-16-80155-1.html" target="_blank" rel="noopener">three AI centers the Ministry of Health and Welfare launched on October 7, 2024</a>, the Clinical AI Validation Center works with the TFDA, assembling a hospital consortium in advance to help vendors validate models and improve accuracy in Taiwanese populations, while the AI Impact Research Center works with the National Health Insurance Administration to build cross-system, cross-tier trial mechanisms that give NHI reimbursement pricing a scientific basis. That design meets today's central problem head-on: the JAMA study measures use, not outcomes, whereas Taiwan's mechanism ties payment to benefit assessment from the start. The problem is scale — 30 hospitals submitted 48 proposals and 16 hospitals with 19 proposals made the final cut. Against the order of magnitude of <a href="https://udn.com/news/story/7266/9592218" target="_blank" rel="noopener">the NT$48.9 billion, five-year Healthy Taiwan Deep Cultivation Plan</a>, the investment on the validation and impact-research side remains far smaller than the pace of commercial deployment. Suki's single $90 million round today — roughly NT$2.8 billion — exceeds the full-term budget of many domestic programs, and it is the latter that decides whether Taiwan should pay for any of this.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============ 05 延伸閱讀 ============ -->
+<section id="reading">
+  <h2>05 — Further Reading</h2>
+  <div class="sec-title">
+    <span class="zh">挑選標準：能直接檢驗今天這條主線的材料——同儕審查的原始研究、揭露商業模式的長文，以及把「廣告出現在臨床建議旁」這件事攤開來談的爭論。</span>
+    <span class="en">Chosen for whether they test today's through-line directly: the primary peer-reviewed work, the long reads that open up the business model, and the argument over advertising sitting beside a clinical recommendation.</span>
+  </div>
+
+  <ol class="reading">
+    <li>
+      <a href="https://doi.org/10.1001/jama.2026.21868" target="_blank" rel="noopener">Clinician Use of an Artificial Intelligence–Enabled Clinical Information Platform — <em>JAMA</em> (2026-10-15)</a>
+      <p class="why"><span class="zh">今天所有討論的原始出處。讀它的時候請直接翻到資金與利益揭露那一段，再回頭看方法：這決定了 271M 與 952,008 這兩個數字該被當成什麼。</span><span class="en">The primary source for everything discussed today. Go straight to the funding and disclosure statements, then back to the methods: that sequence determines what the 271M and 952,008 figures should be taken to mean.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/articles/s41746-026-03077-4" target="_blank" rel="noopener">OpenEvidence clinical question-answering platform: systematic review of early evaluations — <em>npj Digital Medicine</em> (2026-08-12)</a>
+      <p class="why"><span class="zh">目前唯一獨立整理 OpenEvidence 臨床表現的同儕審查文獻，由 Bar-Ilan、Mayo Clinic 與 Mount Sinai 的團隊完成、無資金來源、無利益衝突。它只找到 11 篇研究，而「經常強化既有決定而非改變它」這個結論，比任何使用量數字都更值得被引用。</span><span class="en">The only independent peer-reviewed synthesis of OpenEvidence's clinical performance, from teams at Bar-Ilan, Mayo Clinic and Mount Sinai, with no funding and no declared conflicts. It found eleven studies, and its conclusion that the platform "often reinforced existing clinical decisions rather than changing them" deserves citing more than any usage figure.</span></p>
+    </li>
+    <li>
+      <a href="https://research.contrary.com/company/openevidence" target="_blank" rel="noopener">Report: OpenEvidence Business Breakdown &amp; Founding Story — Contrary Research</a>
+      <p class="why"><span class="zh">把廣告模式、CME 模組、內容授權成本與競品（UpToDate、DynaMed）攤在同一頁上，是理解「為什麼它可以免費」最省時間的一份材料。注意它屬創投研究機構出品，對風險的描述誠實但對成長的框架偏多頭。</span><span class="en">Lays the advertising model, CME modules, content licensing costs and competitors (UpToDate, DynaMed) out on one page — the fastest route to understanding why the product can be free. Note that it comes from a venture research outfit: honest on risks, bullish in how it frames growth.</span></p>
+    </li>
+    <li>
+      <a href="https://www.medscape.com/viewarticle/when-ai-recommends-treatment-should-drug-ads-appear-2026a1000qyd" target="_blank" rel="noopener">When AI Recommends Treatment, Should Drug Ads Appear? — Medscape (2026)</a>
+      <p class="why"><span class="zh">今天這份日報迴避不了的那個問題，由一家本身靠醫師廣告營運的媒體來問，讀起來格外有意思。本報未能取得全文（抓取失敗），僅依標題列入，內容請自行判讀。</span><span class="en">The question today's report cannot avoid, asked by an outlet that itself runs on physician advertising — which makes it worth reading twice. We could not retrieve the full text (the fetch failed), so it is listed on its title alone; judge the content for yourself.</span></p>
+    </li>
+    <li>
+      <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-expands-ai-decision-support-more-clinicians-bid-become-healthcares" target="_blank" rel="noopener">Abridge expands AI decision support in bid to become healthcare's copilot — Fierce Healthcare (2026-08-17)</a>
+      <p class="why"><span class="zh">想理解 Abridge 的賭注，這一篇比 10/8 的德州大學新聞稿有用：它列出完整的授權內容清單與採用數字，也是目前唯一能看到 Abridge 自述「決策支援採用速度超過我們出過的任何東西」的出處。</span><span class="en">More useful than the 10/8 UT release for understanding Abridge's bet: it lists the full licensed-content roster alongside the adoption figures, and it is the only place Abridge is on record that decision-support adoption "outpaced anything we've shipped before."</span></p>
+    </li>
+    <li>
+      <a href="https://money.udn.com/money/story/5648/9754542" target="_blank" rel="noopener">生技論壇：衛福部長石崇良談 AI 醫療基建 — 經濟日報 (2026-09-15)</a>
+      <p class="why"><span class="zh">台灣這一側最完整的一份政策說明：FHIR Box、醫學中心年底對接、明年底全國串接、100 億元策略性投資與健保沙盒。把它跟今天的美國新聞對讀，就會看出台灣在建地基、美國在搶樓層。</span><span class="en">The fullest statement of policy on the Taiwan side: the FHIR Box, medical centers connected by year-end, nationwide linkage by the end of next year, an NT$10 billion strategic investment and the NHI sandbox. Read against today's US news, it shows Taiwan laying foundations while the US fights over floors.</span></p>
+    </li>
+  </ol>
+</section>
+
+<!-- ============ 06 參考文獻 ============ -->
+<section id="refs">
+  <h2>06 — References</h2>
+  <div class="sec-title">
+    <span class="zh">參考文獻</span>
+    <span class="en">References</span>
+  </div>
+
+  <div class="panel">
+    <ol class="refs">
+      <li>Clinician Use of an Artificial Intelligence–Enabled Clinical Information Platform. <em>JAMA</em>, 2026-10-15. DOI 10.1001/jama.2026.21868. <a href="https://doi.org/10.1001/jama.2026.21868" target="_blank" rel="noopener">doi.org</a></li>
+      <li>OpenEvidence drew 271M queries from 952,000 clinicians in 2.5 years. <em>Becker's Hospital Review</em>, 2026-10-15. <a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openevidence-drew-271m-queries-from-952000-clinicians-in-2-5-years/" target="_blank" rel="noopener">beckershospitalreview.com</a></li>
+      <li>What are medical professionals using AI for? (embargo listing). <em>Scimex</em>, 2026-10-16. <a href="https://scimex.org/newsfeed/what-are-medical-professionals-using-ai-for" target="_blank" rel="noopener">scimex.org</a></li>
+      <li>Nabla Integrates with OpenEvidence to Deliver Clinical Evidence at the Point of Care. <em>PR Newswire / Nabla</em>, 2026-10-15. <a href="http://www.prnewswire.com/news-releases/nabla-integrates-with-openevidence-to-deliver-clinical-evidence-at-the-point-of-care-302909243.html" target="_blank" rel="noopener">prnewswire.com</a></li>
+      <li>Suki raises $90M for AI clinical workflows. <em>MobiHealthNews</em>, 2026-10-14. <a href="https://www.mobihealthnews.com/news/suki-raises-90m-ai-clinical-workflows" target="_blank" rel="noopener">mobihealthnews.com</a></li>
+      <li>Suki Raises $90 Million in Series E Financing to Expand Healthcare AI Platform. <em>citybiz</em>, 2026-10. <a href="https://www.citybiz.co/article/917690/suki-raises-90-million-in-series-e-financing-to-expand-healthcare-ai-platform/" target="_blank" rel="noopener">citybiz.co</a></li>
+      <li>Abridge Announces Enterprise-Wide Agreement to Expand AI-Enabled Care Across The University of Texas System. <em>Abridge press release</em>, 2026-10-08. <a href="https://www.abridge.com/press-release/ut-health-enterprise-wide" target="_blank" rel="noopener">abridge.com</a></li>
+      <li>Abridge, University of Texas System enter enterprise-wide agreement for expanded AI-enabled care. <em>Fierce Healthcare</em>, 2026-10. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-university-texas-system-enter-enterprise-wide-agreement-expanded-ai" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>Northwestern Medicine integrates OpenEvidence into Epic. <em>Healthcare IT News</em>, 2026-10-13. <a href="https://www.healthcareitnews.com/news/northwestern-medicine-integrates-openevidence-epic" target="_blank" rel="noopener">healthcareitnews.com</a></li>
+      <li>Behind the Knife and OpenEvidence Announce Collaboration to Bring Innovative Surgical Education to the Point of Care（付費新聞稿 / paid press release）. <em>Yahoo Finance</em>, 2026-10-14. <a href="https://finance.yahoo.com/healthcare/articles/behind-knife-openevidence-announce-collaboration-144700068.html" target="_blank" rel="noopener">finance.yahoo.com</a></li>
+      <li>Healthcare AI News 10/14/26. <em>HIStalk</em>, 2026-10-14. <a href="https://histalk2.com/2026/10/14/healthcare-ai-news-10-14-26/" target="_blank" rel="noopener">histalk2.com</a></li>
+      <li>UnitedHealth Says Chart Review Time Falls 33% With AI Usage. <em>PYMNTS</em>, 2026-10. <a href="https://www.pymnts.com/earnings/2026/unitedhealth-says-chart-review-time-falls-33percent-with-ai-usage/" target="_blank" rel="noopener">pymnts.com</a></li>
+      <li>Duke launches national hub to advance trustworthy AI in aging and dementia care. <em>Duke School of Medicine</em>, 2026-10. <a href="https://medschool.duke.edu/news/duke-launches-national-hub-advance-trustworthy-ai-aging-and-dementia-care-0" target="_blank" rel="noopener">medschool.duke.edu</a></li>
+      <li>AI-generated patient complaints adding to GP workload, warns Medical Protection Society. <em>The Independent</em>, 2026-10. <a href="https://www.the-independent.com/news/uk/home-news/nhs-gp-complaint-ai-generated-uk-b3065018.html" target="_blank" rel="noopener">the-independent.com</a></li>
+      <li>OpenEvidence clinical question-answering platform: systematic review of early evaluations. <em>npj Digital Medicine</em>, 2026-08-12. <a href="https://www.nature.com/articles/s41746-026-03077-4" target="_blank" rel="noopener">nature.com</a></li>
+      <li>OpenEvidence hits $15B valuation as its ambitions move far beyond medical search. <em>Refresh Miami</em>, 2026-09-25. <a href="https://refreshmiami.com/news/openevidence-hits-15b-valuation-as-its-ambitions-move-far-beyond-medical-search/" target="_blank" rel="noopener">refreshmiami.com</a></li>
+      <li>OpenEvidence clinches $250M Series D, rapidly growing its reach with doctors. <em>Fierce Healthcare</em>, 2026-01. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/openevidence-clinches-250m-series-d-rapidly-growing-its-reach-doctors" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>OpenEvidence weighs $200M funding round at $20B valuation: Report（原始報導 The Information, 2026-07-17）. <em>Becker's Hospital Review</em>, 2026-07-20. <a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openevidence-weighs-200m-funding-round-at-20b-valuation-report/" target="_blank" rel="noopener">beckershospitalreview.com</a></li>
+      <li>Report: OpenEvidence Business Breakdown &amp; Founding Story. <em>Contrary Research</em>. <a href="https://research.contrary.com/company/openevidence" target="_blank" rel="noopener">research.contrary.com</a></li>
+      <li>OpenEvidence and the JAMA Network sign strategic content agreement. <em>JAMA Network</em>, 2025-06. <a href="https://media.jamanetwork.com/announcement/openevidence-and-the-jama-network-sign-strategic-content-agreement/" target="_blank" rel="noopener">media.jamanetwork.com</a></li>
+      <li>Abridge Integrates Peer-Reviewed Evidence with NEJM &amp; JAMA. <em>Abridge press release</em>, 2026-04-15. <a href="https://www.abridge.com/press-release/abridge-integrates-nejm-jama" target="_blank" rel="noopener">abridge.com</a></li>
+      <li>Abridge expands AI decision support to more clinicians in bid to become healthcare's copilot. <em>Fierce Healthcare</em>, 2026-08-17. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/abridge-expands-ai-decision-support-more-clinicians-bid-become-healthcares" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>Wolters Kluwer and Abridge partner to integrate UpToDate content in AI-generated clinical documentation. <em>Wolters Kluwer</em>. <a href="https://www.wolterskluwer.com/en/news/wolters-kluwer-and-abridge-partner-to-integrate-uptodate-trusted-physicianauthored-content-in-aigene" target="_blank" rel="noopener">wolterskluwer.com</a></li>
+      <li>Abridge Wins Seat on $775.7M VA Enterprise Contract to Power Ambient Clinical AI. <em>HIT Consultant</em>, 2026-09-22. <a href="https://hitconsultant.net/2026/09/22/abridge-awarded-va-enterprise-contract-ambient-ai-veterans-health-administration/" target="_blank" rel="noopener">hitconsultant.net</a></li>
+      <li>Abridge ambient AI now available to all VA medical centers. <em>Healthcare IT News</em>, 2026-09. <a href="https://www.healthcareitnews.com/news/abridge-ambient-ai-now-available-all-va-medical-centers" target="_blank" rel="noopener">healthcareitnews.com</a></li>
+      <li>Abridge lands $300M funding round led by Andreessen Horowitz. <em>Technical.ly</em>, 2025-06-25. <a href="https://technical.ly/entrepreneurship/abridge-300m-healthtech-ai-funding/" target="_blank" rel="noopener">technical.ly</a></li>
+      <li>Nabla banks $70M Series C to build out agentic AI for clinical workflows. <em>Fierce Healthcare</em>, 2025-06. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/nabla-banks-70m-series-c" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>Epic's AI scribe goes live as EHR giant touts strong adoption of built-in AI features. <em>Fierce Healthcare</em>, 2026-02-05. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/epic-rolls-out-ai-charting-and-more-built-automation-clinicians-and" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>Epic launches AI Charting, potentially scrambling the ambient scribe market（STAT+ 付費牆 / paywalled）. <em>STAT News</em>, 2026-02-04. <a href="https://www.statnews.com/2026/02/04/epic-ai-charting-ambient-scribe-abridge-microsoft/" target="_blank" rel="noopener">statnews.com</a></li>
+      <li>Microsoft's AI tool unification in Dragon Copilot takes center stage at HIMSS26. <em>Healthcare IT News</em>, 2026. <a href="https://www.healthcareitnews.com/news/microsofts-ai-tool-unification-dragon-copilot-takes-center-stage-himss26" target="_blank" rel="noopener">healthcareitnews.com</a></li>
+      <li>Athenahealth EHR to make Microsoft Dragon Copilot available to doctors. <em>Healthcare IT News</em>, 2026. <a href="https://www.healthcareitnews.com/news/athenahealth-ehr-make-microsoft-dragon-copilot-available-doctors" target="_blank" rel="noopener">healthcareitnews.com</a></li>
+      <li>Abridge's decision support tool takes on OpenEvidence（STAT+ 付費牆 / paywalled）. <em>STAT News</em>, 2025-10-21. <a href="https://www.statnews.com/2025/10/21/abridge-openevidence-battle-over-doctor-decision-support/" target="_blank" rel="noopener">statnews.com</a></li>
+      <li>When AI Recommends Treatment, Should Drug Ads Appear?（未能取得全文 / full text not retrieved）. <em>Medscape</em>, 2026. <a href="https://www.medscape.com/viewarticle/when-ai-recommends-treatment-should-drug-ads-appear-2026a1000qyd" target="_blank" rel="noopener">medscape.com</a></li>
+      <li>OpenEvidence is free for now. Its CEO has a plan for who will pay.（未能取得全文 / full text not retrieved）. <em>NBC News</em>. <a href="https://www.nbcnews.com/tech/tech-news/openevidence-free-now-ceo-plan-will-pay-rcna343672" target="_blank" rel="noopener">nbcnews.com</a></li>
+      <li>Anthropic 聯手 OpenEvidence 向約 100 國醫護免費提供醫療 AI. <em>Unwire.pro</em>, 2026-09-24. <a href="https://unwire.pro/2026/09/24/anthropic-openevidence-medical-ai/news/" target="_blank" rel="noopener">unwire.pro</a></li>
+      <li>生技論壇 10 月 7 日登場 衛福部長石崇良：積極建構 AI 醫療基建. <em>經濟日報</em>, 2026-09-15. <a href="https://money.udn.com/money/story/5648/9754542" target="_blank" rel="noopener">money.udn.com</a></li>
+      <li>高醫大論壇揭示 AI 醫療新局！衛福部推「333 政策」 國家 489 億預算力挺. <em>聯合報</em>, 2026-06-27. <a href="https://udn.com/news/story/7266/9592218" target="_blank" rel="noopener">udn.com</a></li>
+      <li>衛生福利部三大 AI 中心啟動記者會. <em>衛生福利部</em>, 2024-10-07. <a href="https://www.mohw.gov.tw/cp-16-80155-1.html" target="_blank" rel="noopener">mohw.gov.tw</a></li>
+      <li>Artificial intelligence and healthcare's growing data economy. <em>Rice University Baker Institute</em>, 2026. <a href="https://www.bakerinstitute.org/research/artificial-intelligence-and-healthcares-growing-data-economy" target="_blank" rel="noopener">bakerinstitute.org</a></li>
+      <li>Confido Health expands agentic operating platform（CareOS, $12.5M extension）. <em>PR Newswire</em>, 2026-10. <a href="https://www.prnewswire.com/news-releases/confido-health-expands-agentic-operating-platform-to-move-healthcare-from-systems-of-record-to-systems-of-action-302908090.html" target="_blank" rel="noopener">prnewswire.com</a></li>
+      <li>General Medicine Raises $120 Million to Build the Healthcare Store. <em>PR Newswire</em>, 2026-10. <a href="https://www.prnewswire.com/news-releases/general-medicine-raises-120-million-to-build-the-healthcare-store-302899356.html" target="_blank" rel="noopener">prnewswire.com</a></li>
+      <li>Fierce Healthcare Fundraising Tracker '26（Allswell $7M, 2026-10-14）. <em>Fierce Healthcare</em>, 2026-10. <a href="https://www.fiercehealthcare.com/health-tech/fierce-healthcare-fundraising-tracker-26" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>Healthleap raises $38M for its AI that flags hospital patients who may need a closer look. <em>TechCrunch</em>, 2026-10-07. <a href="https://techcrunch.com/2026/10/07/healthleap-raises-38m-for-its-ai-that-flags-hospital-patients-who-may-need-a-closer-look/" target="_blank" rel="noopener">techcrunch.com</a></li>
+    </ol>
+    <div class="note">
+      <span class="zh"><strong>編輯說明：</strong>（1）今日主線的核心文獻是 2026-10-15 刊於 <em>JAMA</em> 的研究（DOI 10.1001/jama.2026.21868）。本報未能取得期刊全文，所有數字引自 Becker's Hospital Review 的整理與 Scimex 的解禁稿；該研究的資料由 OpenEvidence 提供、公司參與分析、數名共同作者在研究期間為其員工，作者自述計數為「下界」，引用時務請連同這些條件一起引用。（2）STAT News 的兩篇（2026-02-04 Epic AI Charting、2025-10-21 Abridge 決策支援）均在 STAT+ 付費牆後，本報僅依公開可見的標題與導言撰寫，未使用牆後內容。（3）Medscape 的廣告議題文章與 NBC News 的 OpenEvidence 商業模式報導抓取失敗（分別為伺服器錯誤與 robots 限制），僅依標題列入延伸閱讀與參考文獻，未就其內容做任何事實陳述。（4）Behind the Knife 與 OpenEvidence 的合作消息，Yahoo Finance 頁面明確標示為付費新聞稿；其中「使用 OpenEvidence 的美國醫師比其他所有 AI 平台加總還多」「多數美國醫師平均每日使用」兩項說法引用未指名的研究，本報已標注為公司自述、未採信為事實。（5）Abridge、OpenEvidence、Nabla、Suki 的客戶數、體系數、對話數、臨床人員數均為公司自報，未經第三方稽核；且 Abridge 不同月份新聞稿對「醫療體系數」的定義不一致（4 月 250 家為整體客戶、8 月逾 300 家為決策支援採用者），本報已於內文註明，不建議跨稿件相減或疊加。（6）UnitedHealth 的 33%／36% 兩項數字出自法說會管理層陳述，本報僅引自 PYMNTS 的二手報導，未取得逐字稿。（7）Suki 本輪的「主攻事前授權」定位見於部分媒體標題，但未在 MobiHealthNews 的報導中獲得證實，本報不予採用。（8）台灣段落中，衛福部三大 AI 中心的資料為 2024-10-07 的啟動公告，屬背景資料而非本週新聞；台灣處方藥行銷受法規限制一節為本報依《藥事法》架構所作的制度性判斷，非引自特定來源，請自行查證。（9）新台幣換算（9,000 萬美元約 28 億元）為概算，依約 1:31 匯率估計，非當日即時匯率。</span>
+      <span class="en"><strong>Editor's note:</strong> (1) The central document behind today's through-line is the study published in <em>JAMA</em> on 2026-10-15 (DOI 10.1001/jama.2026.21868). We could not obtain the journal's full text; every figure here comes from Becker's Hospital Review's summary and the Scimex embargo listing. OpenEvidence supplied that study's data, contributed to its analysis, and several co-authors were company employees during the study period, with the authors themselves calling the counts lower bounds — carry those conditions with any citation. (2) Both STAT News pieces (Epic AI Charting, 2026-02-04; Abridge decision support, 2025-10-21) sit behind the STAT+ paywall; this report is written only from the publicly visible headline and lede, with no paywalled content used. (3) The Medscape article on advertising and the NBC News report on OpenEvidence's business model both failed to fetch (a server error and a robots restriction respectively); they are listed on their titles alone, and no factual claim is made about their contents. (4) The Behind the Knife–OpenEvidence item appears on a Yahoo Finance page explicitly labelled a paid press release; its claims that more US physicians use OpenEvidence than all other AI platforms combined, and that the majority of US physicians use it daily on average, cite unnamed studies and are marked here as company assertions rather than accepted as fact. (5) Customer, health-system, conversation and clinician counts for Abridge, OpenEvidence, Nabla and Suki are all self-reported and not independently audited; Abridge's own releases define "health systems" inconsistently across months (April's 250 covered total customers, August's 300-plus covered decision-support adopters), which is flagged in the body — do not subtract or stack figures across releases. (6) UnitedHealth's 33% and 36% are management statements on an earnings call, cited here from PYMNTS's secondary coverage with no transcript obtained. (7) The framing of Suki's round as a prior-authorization push appears in some headlines but is unconfirmed in the MobiHealthNews report and is not adopted here. (8) In the Taiwan section, the three MOHW AI centers are documented by the 2024-10-07 launch announcement and are background rather than this week's news; the point about Taiwan's prescription-drug marketing being constrained by regulation is this report's institutional reading of the Pharmaceutical Affairs Act framework rather than a claim drawn from a specific source — verify it yourself. (9) The NT$ conversion ($90 million ≈ NT$2.8 billion) is approximate, estimated at about 1:31, not a same-day rate.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-row">
+    <div>
+      <span class="zh">AI／醫療AI 每日新知日報 · 由 Claude 於台北時間每日自動產出 · 本期主題：星期五／產品與公司深度分析<br>本報告內容經來源查證，但不構成投資或醫療建議。所有數據請以原始出處為準。</span>
+      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Friday / Product &amp; Company Deep Dive<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
+    </div>
+    <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com / 返回 peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
+  </div>
+</footer>
+</main>
+
+<div class="fabs">
+  <button class="up" id="up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+  <a class="home-fab" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg></a>
+</div>
+
+<script>
+function setLang(l){
+  document.body.classList.remove('lang-zh','lang-en');
+  document.body.classList.add('lang-'+l);
+  document.documentElement.lang = (l==='zh') ? 'zh-Hant' : 'en';
+  document.getElementById('b-zh').classList.toggle('on', l==='zh');
+  document.getElementById('b-en').classList.toggle('on', l==='en');
+  document.title = (l==='zh')
+    ? 'AI／醫療AI 每日新知日報 · 2026-10-16'
+    : 'AI & Medical AI Daily · 2026-10-16';
+}
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.getElementById('theme-ic').textContent =
+    document.body.classList.contains('dark') ? '◑' : '◐';
+}
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.body.classList.add('dark');
+  document.getElementById('theme-ic').textContent = '◑';
+}
+window.addEventListener('scroll', function(){
+  document.getElementById('up').classList.toggle('show', window.scrollY > 600);
+});
+
+(function(){
+  var el = document.getElementById('ghs');
+  if (!el || typeof fetch !== 'function') return;
+  fetch('https://api.github.com/repos/tingwei161803/ai-medical-daily', {headers:{Accept:'application/vnd.github+json'}})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if (!d || typeof d.stargazers_count !== 'number') return;
+      var n = d.stargazers_count;
+      el.textContent = n >= 1000 ? (Math.round(n/100)/10) + 'k' : String(n);
+    })
+    .catch(function(){});
+})();
+</script>
+</body>
+</html>
