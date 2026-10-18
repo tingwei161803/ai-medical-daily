@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>AI／醫療AI 每日新知日報 · 2026-10-18</title>
+<meta property="og:url" content="https://ai-medical-daily.peteraim.com/reports/2026-10-18.html" />
+<link rel="canonical" href="https://ai-medical-daily.peteraim.com/reports/2026-10-18.html" />
+<meta name="report-date" content="2026-10-18">
+<meta name="report-theme" content="weekly-review">
+<meta name="report-title-zh" content="本週三組數字落在同一條線上——10/15 登上 JAMA 的 OpenEvidence 使用研究數到 2024 年 1 月至 2026 年 6 月共 2.71 億次查詢、952,008 名已驗證 NPI 的美國臨床人員、月活躍使用者從 355 人長到 703,265 人，畢業未滿十年的醫師只占人力 24.3% 卻送出 61.8% 的醫師查詢；10/16 刊出的 Frontiers in Digital Health 系統性回顧從 1,065 筆文獻篩出 22 篇，對照的是 FDA 累計授權逾 1,451 張 AI/ML 醫材、而全美樣本只有 58.1% 的醫院在上線後做監測、47.4% 不評估部署後準確度、51.4% 沒有偏差評估流程；而 FDA 替生成式 AI 醫材畫框架的那份文件還只是 8/18 的討論稿，公開意見 10/19 截止——就是明天">
+<meta name="report-title-en" content="Three sets of numbers from this week land on the same line: the JAMA study published 15 Oct counted 271 million queries from 952,008 NPI-verified US clinicians between January 2024 and June 2026, with monthly active users rising from 355 to 703,265 and physicians within ten years of graduation — 24.3% of the workforce — filing 61.8% of all physician queries; the systematic review published 16 Oct in Frontiers in Digital Health screened 1,065 records down to 22 studies and set FDA's cumulative 1,451-plus authorised AI/ML devices against a national sample in which only 58.1% of hospitals monitor anything after go-live, 47.4% never evaluate post-deployment accuracy and 51.4% have no bias protocol at all; and FDA's own framework for generative-AI devices is still the 18 Aug discussion paper whose comment window shuts on 19 Oct — tomorrow">
+<meta name="report-summary-zh" content="本週回顧：採用端已經有 952,008 名美國臨床人員在同一個平台上送出 2.71 億次查詢，監管端只有 58.1% 的醫院在上線後做任何監測，而 FDA 的生成式 AI 醫材框架到 10/19 才結束公開意見——三組數字指向同一個缺口，而本週的錢（Suki 9,000 萬美元 E 輪、NVIDIA 入股 Doctolib）全部押在缺口的採用那一側。">
+<meta name="report-summary-en" content="Weekly review: on the adoption side 952,008 US clinicians have filed 271 million queries on a single platform; on the oversight side only 58.1% of hospitals monitor anything after go-live; and FDA's generative-AI device framework only closes its comment window on 19 Oct. This week's money — Suki's $90M Series E, NVIDIA's stake in Doctolib — is all on the adoption side of that gap.">
+<meta property="og:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HJLDQZDK5V');
+</script>
+<link rel="stylesheet" href="/assets/report.css">
+</head>
+<body class="lang-zh">
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span><span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <div class="bar-sp"></div>
+    <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub / 在 GitHub 給這個專案一顆星"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
+    <div class="seg">
+      <button id="b-zh" class="on" onclick="setLang('zh')">中文</button>
+      <button id="b-en" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="kicker">
+    <span class="zh-inline">星期日 · 本週回顧與精選延伸閱讀</span>
+    <span class="en-inline">Sunday · Weekly Review &amp; Further Reading</span>
+  </div>
+  <h1>
+    <span class="zh">本週三組數字落在同一條線上——採用端 952,008 人、監管端 58.1%、而 FDA 的生成式 AI 醫材框架明天才關上意見窗</span>
+    <span class="en">Three sets of numbers from this week land on the same line: 952,008 clinicians on the adoption side, 58.1% on the oversight side, and FDA's generative-AI device comment window shutting tomorrow</span>
+  </h1>
+  <div class="dateline">
+    <span class="zh-inline">2026 年 10 月 18 日（日）· 涵蓋 10/12–10/18 · 台北時間</span>
+    <span class="en-inline">Sunday, October 18, 2026 · Covering Oct 12–18 · Taipei time</span>
+  </div>
+  <p class="lede">
+    <span class="zh">這一週不缺新聞，缺的是把新聞放在一起看的角度。10/15 登上 <em>JAMA</em> 的那份研究第一次用同儕審查的格式把醫療 AI 的真實使用量攤開：<a href="https://jamanetwork.com/journals/jama/fullarticle/2855491" target="_blank" rel="noopener">2024 年 1 月至 2026 年 6 月共 2.71 億次查詢、952,008 名已驗證 NPI 的美國臨床人員</a>。隔天 10/16 刊出的系統性回顧量的是同一個系統的另一端：<a href="https://bioengineer.org/hospitals-are-deploying-ai-faster-than-regulators-can-keep-up-landmark-review-warns/" target="_blank" rel="noopener">全美樣本只有 58.1% 的醫院在 AI 上線後做任何監測</a>。而把這兩個數字之間那段空白補起來的那份文件，到今天還只是 FDA 8 月 18 日發布、<a href="https://www.mddionline.com/artificial-intelligence/fda-seeks-input-on-regulatory-framework-for-genai-medical-devices" target="_blank" rel="noopener">公開意見 10/19 截止</a>的討論稿——明天關窗。本週的資金則全部押在缺口的採用那一側：<a href="https://finance.yahoo.com/healthcare/articles/suki-secures-90-million-build-130000237.html" target="_blank" rel="noopener">Suki 的 9,000 萬美元 E 輪</a>與<a href="https://www.cna.com.tw/news/aopl/202610140010.aspx" target="_blank" rel="noopener">NVIDIA 入股 Doctolib</a>都在 10/13 落地。</span>
+    <span class="en">There was no shortage of news this week; what was missing was the angle that puts it side by side. The <em>JAMA</em> study published on 15 Oct was the first peer-reviewed account of how much medical AI is actually being used: <a href="https://jamanetwork.com/journals/jama/fullarticle/2855491" target="_blank" rel="noopener">271 million queries from 952,008 NPI-verified US clinicians between January 2024 and June 2026</a>. The systematic review published the next day, 16 Oct, measured the other end of the same system: <a href="https://bioengineer.org/hospitals-are-deploying-ai-faster-than-regulators-can-keep-up-landmark-review-warns/" target="_blank" rel="noopener">in a national sample only 58.1% of hospitals monitor anything at all once an AI tool goes live</a>. And the document meant to close the gap between those two figures is still a discussion paper, issued by FDA on 18 August, <a href="https://www.mddionline.com/artificial-intelligence/fda-seeks-input-on-regulatory-framework-for-genai-medical-devices" target="_blank" rel="noopener">with comments due 19 October</a> — the window shuts tomorrow. This week's capital, meanwhile, went entirely to the adoption side: <a href="https://finance.yahoo.com/healthcare/articles/suki-secures-90-million-build-130000237.html" target="_blank" rel="noopener">Suki's $90M Series E</a> and <a href="https://www.cna.com.tw/news/aopl/202610140010.aspx" target="_blank" rel="noopener">NVIDIA's stake in Doctolib</a> both landed on 13 Oct.</span>
+  </p>
+
+  <nav class="toc">
+    <a href="#top"><span class="zh-inline">重點新聞</span><span class="en-inline">Top Stories</span></a>
+    <a href="#product"><span class="zh-inline">產品分析</span><span class="en-inline">Product Analysis</span></a>
+    <a href="#company"><span class="zh-inline">公司與競爭</span><span class="en-inline">Companies &amp; Competition</span></a>
+    <a href="#taiwan"><span class="zh-inline">台灣視角</span><span class="en-inline">Taiwan Angle</span></a>
+    <a href="#reading"><span class="zh-inline">延伸閱讀</span><span class="en-inline">Further Reading</span></a>
+    <a href="#refs"><span class="zh-inline">參考文獻</span><span class="en-inline">References</span></a>
+  </nav>
+</div>
+
+<section id="top">
+  <h2>01 — Top Stories</h2>
+  <div class="sec-title">
+    <span class="zh">本週最重要的八件事，按「採用 → 證據缺口 → 治理 → 錢」的順序排，因為那正是落差擴大的方向</span>
+    <span class="en">The week's eight most important items, ordered adoption → evidence gap → governance → money, because that is the direction the gap widens in</span>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">本週第一</span><span class="en-inline">Story of the week</span></span>
+      <span class="tag">OpenEvidence</span><span class="tag">JAMA</span><span class="tag">Harvard Medical School</span><span class="tag">10/15</span>
+    </div>
+    <h3>
+      <span class="zh">醫療 AI 的真實使用量第一次有了同儕審查的數字：2.71 億次查詢、952,008 名美國臨床人員，而最重的使用者是最資淺的醫師</span>
+      <span class="en">The first peer-reviewed count of how much medical AI is really used: 271 million queries, 952,008 US clinicians — and the heaviest users are the most junior doctors</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">10/15 登上 <em>JAMA</em> 的橫斷面研究分析 OpenEvidence 去識別化查詢紀錄：2024 年 1 月 1 日至 2026 年 6 月 30 日共 <strong>2.71 億次查詢</strong>、<strong>952,008 名已驗證 NPI 的美國臨床人員</strong>（其中 556,200 名醫師、171,034 名 NP、93,241 名 PA、35,819 名藥師）。月活躍使用者從 2024 年 1 月的 <strong>355 人</strong>長到 2026 年 6 月的 <strong>703,265 人</strong>，月查詢量從約 6,000 次到 2,780 萬次，每位活躍使用者每月查詢數從 18.0 升到 39.5，月留存從約 70% 升到約 90%（2026 年 6 月有 92.5% 的活躍使用者是回訪者）。最刺眼的一組是年資分布：畢業未滿十年的醫師只占醫師人力的 <strong>24.3%</strong>，卻送出 <strong>61.8%</strong> 的醫師查詢。跨專科使用從血液腫瘤科的 35% 到急診醫學的 88%；外科醫師有 70% 的查詢問的是非外科題目。<a href="https://jamanetwork.com/journals/jama/fullarticle/2855491" target="_blank" rel="noopener">JAMA, 2026-10-15（DOI 10.1001/jama.2026.21868）</a>；<a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openevidence-drew-271m-queries-from-952000-clinicians-in-2-5-years/" target="_blank" rel="noopener">Becker's 同日整理</a>。</span>
+        <span class="en">The cross-sectional study published in <em>JAMA</em> on 15 Oct analysed de-identified OpenEvidence query logs from 1 January 2024 to 30 June 2026: <strong>271 million queries</strong> from <strong>952,008 NPI-verified US clinicians</strong> (556,200 physicians, 171,034 nurse practitioners, 93,241 physician assistants, 35,819 pharmacists). Monthly active users rose from <strong>355</strong> in January 2024 to <strong>703,265</strong> in June 2026; monthly queries from roughly 6,000 to 27.8 million; queries per active user from 18.0 to 39.5 a month; month-over-month retention from about 70% to about 90% (92.5% of June 2026 actives were returning users). The sharpest figure is the seniority split: physicians within ten years of graduation are <strong>24.3%</strong> of the physician workforce but filed <strong>61.8%</strong> of physician queries. Out-of-specialty querying ran from 35% in haematology-oncology to 88% in emergency medicine; surgeons aimed 70% of their queries at non-surgical topics. <a href="https://jamanetwork.com/journals/jama/fullarticle/2855491" target="_blank" rel="noopener">JAMA, 2026-10-15 (DOI 10.1001/jama.2026.21868)</a>; <a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openevidence-drew-271m-queries-from-952000-clinicians-in-2-5-years/" target="_blank" rel="noopener">Becker's, same day</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">在這篇之前，「有多少醫師在用 AI」只有廠商自述。現在有了一個下界，而這個下界的形狀比總量更有意思：使用強度與年資成反比（NP 與 PA 每人每月 44.5 次、醫師 37.1 次、執業滿二十年者使用比只有 0.31），而且 51.9% 的醫師查詢落在臨床決策上。換句話說，這不是在查參考資料，是在補判斷。那就把本週第二則與第三則變成同一個問題的兩面：這麼大量的判斷輔助，上線後沒人在量它表現，而監管框架還沒寫完。</span>
+        <span class="en">Before this paper, the answer to how many clinicians use AI came only from vendors. Now there is a lower bound, and its shape matters more than its size: intensity runs inversely to seniority (44.5 queries per active user-month for NPs and PAs, 37.1 for physicians, a use ratio of just 0.31 for those twenty-plus years out), and 51.9% of physician queries sit in clinical decision-making. That is not reference lookup; it is judgement support. Which makes the week's second and third items two faces of one question: judgement support at this volume, with nobody measuring its performance after go-live and the regulatory framework still unwritten.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">資料由 OpenEvidence 提供，Finlayson、Ray、Zack 三位共同作者是或曾是該公司員工或主管（Zack 為首席醫務長），作者自述該公司「提供資料並參與分析」。查詢內容分類由 LLM（GPT-5.6 Terra）在 14.4% 分層隨機樣本上完成，僅以 200 筆、6 位盲評臨床人員驗證。單一平台、僅主要問答介面，作者自己把所有數字稱為下界；也無從判斷查詢是否發生在病人照護當下。</span>
+        <span class="en">The data came from OpenEvidence; three co-authors (Finlayson, Ray, Zack) are or were company employees or officers, Zack as chief medical officer, and the authors state the company supplied the data and contributed to the analysis. Query content was classified by an LLM (GPT-5.6 Terra) on a stratified random 14.4% sample, validated against only 200 queries labelled by six blinded clinicians. Single platform, main question interface only — the authors call every figure a lower bound — and there is no way to tell whether a query happened during patient care.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://jamanetwork.com/journals/jama/fullarticle/2855491" target="_blank" rel="noopener">Clinician Use of an Artificial Intelligence–Enabled Clinical Information Platform, JAMA, 2026-10-15</a> · <a href="https://endpoints.news/heres-how-many-clinicians-are-using-ai-to-answer-their-medical-questions/" target="_blank" rel="noopener">Endpoints News, 2026-10-15</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">證據缺口</span><span class="en-inline">Evidence gap</span></span>
+      <span class="tag">Frontiers in Digital Health</span><span class="tag">University of New Mexico</span><span class="tag">FDA</span><span class="tag">10/16</span>
+    </div>
+    <h3>
+      <span class="zh">同一週的另一端：FDA 累計授權逾 1,451 張 AI/ML 醫材，而只有 58.1% 的醫院在上線後做監測、51.4% 沒有偏差評估流程</span>
+      <span class="en">The other end of the same week: FDA has authorised more than 1,451 AI/ML devices, while only 58.1% of hospitals monitor after go-live and 51.4% have no bias protocol</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">Conteh 等人發表於 <em>Frontiers in Digital Health</em>（8 卷，文章編號 1955958，DOI 10.3389/fdgth.2026.1955958）的系統性回顧＋法規落差分析，依 PRISMA 2020 從 1,065 筆文獻篩出 <strong>22 篇</strong>（篩選者間一致性 Cohen's kappa 0.84），搜尋範圍 2017 年 1 月至 2026 年 1 月。它把 FDA 到 2025 年底累計授權的 <strong>逾 1,451 張</strong> AI/ML 醫材，對照四個結構性缺口：上市後監測（2024 年全美樣本僅 <strong>58.1%</strong> 的醫院在導入後監測、<strong>47.4%</strong> 不評估部署後準確度、<strong>51.4%</strong> 無偏差評估流程、<strong>61%</strong> 評估準確度但不評估偏差）；公平性（某再入院模型訓練資料中西裔與亞裔不足 2%、白人逾 75%，且無次族群表現評估；KATE 分流系統成人 78.5%、兒童 67.1%，差距 11.4 個百分點）；問責歸屬（<strong>79%</strong> 的醫院使用 EHR 廠商自建的預測模型，卻無任何框架界定醫院、開發者、廠商與臨床人員之間的責任）；治理能力（僅 65% 的醫院使用預測模型、僅 44% 評估偏差）。<a href="https://bioengineer.org/hospitals-are-deploying-ai-faster-than-regulators-can-keep-up-landmark-review-warns/" target="_blank" rel="noopener">Bioengineer.org 轉載 Scienmag, 2026-10-16／10-17</a>。</span>
+        <span class="en">The systematic review and regulatory gap analysis by Conteh et al. in <em>Frontiers in Digital Health</em> (vol. 8, article 1955958, DOI 10.3389/fdgth.2026.1955958) followed PRISMA 2020 to screen 1,065 records down to <strong>22 studies</strong> (inter-rater Cohen's kappa 0.84), searching January 2017 to January 2026. It sets FDA's cumulative <strong>1,451-plus</strong> authorised AI/ML devices through end-2025 against four structural gaps. Post-market monitoring: in a 2024 national sample only <strong>58.1%</strong> of hospitals monitored after implementation, <strong>47.4%</strong> never evaluated post-deployment accuracy, <strong>51.4%</strong> had no bias assessment protocol and <strong>61%</strong> assessed accuracy but not bias. Equity: one readmission model's training data was under 2% Hispanic and Asian and over 75% Caucasian with no subgroup evaluation, and the KATE triage system scored 78.5% in adults against 67.1% in children, an 11.4-point gap. Accountability: <strong>79%</strong> of hospitals run predictive models built by EHR vendors, yet no framework assigns responsibility among hospitals, developers, vendors and clinicians. Governance capacity: only 65% of hospitals used predictive models and only 44% assessed bias. <a href="https://bioengineer.org/hospitals-are-deploying-ai-faster-than-regulators-can-keep-up-landmark-review-warns/" target="_blank" rel="noopener">Bioengineer.org reposting Scienmag, 2026-10-16/17</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這篇回顧提供了本週最有用的一組對照數字：同一份文獻裡既有「規管級證據」的成功案例，也有部署後崩掉的案例。成功的那些很硬——FDA 授權的肺栓塞工具在 11,736 次測試中陰性預測值 99.9%、工作清單偵測時間從 7,714 分鐘降到 87 分鐘、漏診從 44.8% 降到 2.6%；某敗血症預測演算法把抗生素送達時間壓到 2.76 小時、院內死亡率從 21.3% 降到 9.0%（相對降幅 58%）。崩掉的那些同樣硬——某 COVID-19 胸部 X 光工具在公開資料集 AUC 逾 0.95，前瞻部署後掉到約 0.70（19 週間四分位區間 0.66–0.74）。差別不在模型，在有沒有人在上線後量它。而量它的那套制度，全美只有略過半數的醫院有。</span>
+        <span class="en">This review supplies the week's most useful contrast, because it holds both the regulatory-grade successes and the post-deployment collapses in one place. The successes are hard numbers: an FDA-authorised pulmonary embolism tool reached 99.9% negative predictive value across 11,736 tests, cut worklist detection time from 7,714 minutes to 87 and missed cases from 44.8% to 2.6%; a sepsis prediction algorithm got antibiotics delivered within 2.76 hours and cut in-hospital mortality from 21.3% to 9.0%, a 58% relative reduction. So are the failures: a COVID-19 chest radiograph tool scoring above 0.95 AUC on open datasets fell to roughly 0.70 in prospective deployment (0.66–0.74 across quartiles over 19 weeks). The difference is not the model; it is whether anyone measures it after go-live. And barely half of US hospitals have the machinery to do that.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">22 篇的樣本很小，作者自述多為回溯性、單中心研究，且僅檢索四個資料庫、僅英文文獻、研究計畫為回溯註冊。CMS 2022–2025 那組 70 項品質指標的「使用 AI 醫院趨勢較佳」是觀察性關聯，作者明確表示不是因果。加拿大、沙烏地、荷蘭的研究僅作脈絡，不作為美國法規表現的直接證據。本報告引用的是 Scienmag／Bioengineer 的新聞稿轉載，未取得期刊原文全文。</span>
+        <span class="en">Twenty-two studies is a small base, and the authors note most were retrospective and single-centre, with only four databases searched, English-language publications only and retrospective protocol registration. The CMS 2022–2025 finding across 70 quality measures, where AI-using hospitals trended better on some indicators, is an observational association the authors explicitly decline to call causal. Studies from Canada, Saudi Arabia and the Netherlands were used for context, not as direct evidence on US regulatory performance. This report cites the Scienmag/Bioengineer press coverage; the journal full text was not retrieved.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://bioengineer.org/hospitals-are-deploying-ai-faster-than-regulators-can-keep-up-landmark-review-warns/" target="_blank" rel="noopener">Hospitals Are Deploying AI Faster Than Regulators Can Keep Up, Bioengineer.org / Scienmag, 2026-10-16</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">明天截止</span><span class="en-inline">Closes tomorrow</span></span>
+      <span class="tag">FDA</span><span class="tag">CDRH</span><span class="tag"><span class="zh-inline">生成式 AI 醫材</span><span class="en-inline">GenAI devices</span></span><span class="tag">10/19</span>
+    </div>
+    <h3>
+      <span class="zh">補上這段空白的那份文件，公開意見明天關窗——而它自稱不代表草案或定稿指引</span>
+      <span class="en">The document meant to close that gap shuts its comment window tomorrow — and it says of itself that it is neither a draft nor a final guidance</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">FDA 於 2026 年 8 月 18 日發布生成式 AI 醫材監管途徑討論文件並開放公開意見，<strong>截止日為 2026 年 10 月 19 日</strong>，也就是本日報發出的隔天。文件的上市前取徑建立在「能力評估」（competency assessment）這個比喻上，明白地以醫師訓練與授證為模型，分成非臨床裝置基準測試與臨床確認兩部分；並提出一套雙軸風險框架，以及涵蓋基礎模型與 agentic AI 系統的討論。上市後則只「探討若干可能的風險相稱監測取徑」。<a href="https://www.mddionline.com/artificial-intelligence/fda-seeks-input-on-regulatory-framework-for-genai-medical-devices" target="_blank" rel="noopener">MD+DI, 2026-08-19</a>；<a href="https://www.maynardnexsen.com/publication-fda-releases-discussion-paper-on-generative-ai-enabled-medical-devices-what-manufacturers-and-investors-need-to-know" target="_blank" rel="noopener">Maynard Nexsen 法律分析</a>；<a href="https://www.cov.com/-/media/files/corporate/publications/2026/08/fda-releases-highly-anticipated-discussion-paper-august-2026.pdf" target="_blank" rel="noopener">Covington 客戶通報（PDF）</a>。</span>
+        <span class="en">FDA issued its discussion paper on a regulatory approach for generative-AI-enabled medical devices on 18 August 2026 and opened a public docket, <strong>with comments due 19 October 2026</strong> — the day after this report goes out. Its premarket approach rests on a competency-assessment metaphor explicitly modelled on physician training and credentialing, split into non-clinical device benchmarking and clinical confirmation, alongside a two-axis risk framework and discussion covering foundation models and agentic AI systems. On the postmarket side it only explores several possible risk-proportionate monitoring approaches. <a href="https://www.mddionline.com/artificial-intelligence/fda-seeks-input-on-regulatory-framework-for-genai-medical-devices" target="_blank" rel="noopener">MD+DI, 2026-08-19</a>; <a href="https://www.maynardnexsen.com/publication-fda-releases-discussion-paper-on-generative-ai-enabled-medical-devices-what-manufacturers-and-investors-need-to-know" target="_blank" rel="noopener">Maynard Nexsen analysis</a>; <a href="https://www.cov.com/-/media/files/corporate/publications/2026/08/fda-releases-highly-anticipated-discussion-paper-august-2026.pdf" target="_blank" rel="noopener">Covington client alert (PDF)</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">把這一則放在前兩則之間，本週的結構就清楚了：使用量已經以百萬計，上市後監測只有半數醫院在做，而把兩者接起來的那份文件連指引效力都沒有。更值得注意的是，目前唯一走完 510(k) 的含 LLM 醫材 UpDoc（<a href="https://innolitics.com/articles/updoc-fda-cleared-ai-agent/" target="_blank" rel="noopener">K253281，2025 年 12 月 23 日核准</a>）是以「Calculator, Drug Dose」產品碼（21 CFR 868.1890，Class II）、以 Hygieia 的 d-Nav 系統（K181916）為前案過關的——也就是說，生成式元件並未觸發 De Novo，劑量邏輯仍是確定性的、由醫師設定。制度還沒為生成式 AI 開一條路，產品已經從現有的路走過去了。</span>
+        <span class="en">Place this between the two items above and the week's structure is clear: usage is already in the millions, post-market monitoring covers barely half of hospitals, and the document joining the two does not even carry guidance force. Note too that the only LLM-enabled device so far through 510(k), UpDoc (<a href="https://innolitics.com/articles/updoc-fda-cleared-ai-agent/" target="_blank" rel="noopener">K253281, cleared 23 December 2025</a>), came through under the product code "Calculator, Drug Dose" (21 CFR 868.1890, Class II) with Hygieia's d-Nav System (K181916) as predicate — meaning the generative components did not trigger De Novo and the dosing logic stayed deterministic and clinician-configured. The system has not yet opened a path for generative AI; products are already walking through the existing one.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">本則引自二手法律分析與產業媒體，未逐字核對 FDA 原文件；MD+DI 未載明 docket 編號與題目總數。UpDoc 的「首例」稱號來自該公司 2026 年 6 月 25 日新聞稿，Innolitics 明確表示未予驗證，並指出無法確定該稿指的是 K253281 或尚未入庫的新案，公開紀錄也未揭露底層基礎模型。</span>
+        <span class="en">This item is drawn from secondary legal analysis and trade press; the FDA document itself was not read line by line, and MD+DI gives neither the docket number nor the total count of questions. UpDoc's "first" label comes from the company's own press release of 25 June 2026, which Innolitics states it did not verify, noting it cannot tell whether that release refers to K253281 or to a newer submission not yet in the public database, and that the public record does not identify the underlying foundation model.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.mddionline.com/artificial-intelligence/fda-seeks-input-on-regulatory-framework-for-genai-medical-devices" target="_blank" rel="noopener">FDA Opens Comment Period on GenAI Device Regulation, MD+DI, 2026-08-19</a> · <a href="https://innolitics.com/articles/updoc-fda-cleared-ai-agent/" target="_blank" rel="noopener">Innolitics, UpDoc K253281</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">治理</span><span class="en-inline">Governance</span></span>
+      <span class="tag">AMA</span><span class="tag"><span class="zh-inline">agentic AI</span><span class="en-inline">Agentic AI</span></span><span class="tag">10/13</span>
+    </div>
+    <h3>
+      <span class="zh">在聯邦還沒答的地方，AMA 自己先答了：臨床權限要靠證據取得、靠已展現的表現維持</span>
+      <span class="en">Where the federal answer is still missing, the AMA wrote its own: clinical authority must be earned through evidence and maintained through demonstrated performance</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">10/13 美國醫學會（AMA）發布 agentic AI 治理框架，核心主張是 AI 系統的「臨床權限必須靠證據取得、靠持續表現維持」，且其權限與監督層級會隨證據、表現、風險或底層技術的變化而升降。框架以四個問題展開：功能（執行哪項臨床任務，從文書與監測到分流、診斷、治療、處方）；證據與風險（憑什麼證明它能做，失敗的後果是什麼——風險與自主性愈高，證據門檻愈高）；權限與監督（可以採取哪些行動、在什麼條件下，從提供意見到自行決策並執行）；問責（誰承擔風險與結果，責任應隨權限、控制力、風險認知與防止傷害的能力分配，可能落在開發者、部署者、醫療體系、醫師或支付方）。AMA 並明確界定此處的 licensure 指「授權一個 AI 系統在定義好的臨床角色中運作」，不是行醫執照。<a href="https://www.beckershospitalreview.com/healthcare-information-technology/digital-health/ama-agentic-ai-must-earn-clinical-authority-through-evidence/" target="_blank" rel="noopener">Becker's, 2026-10-13</a>；<a href="https://www.medtechdive.com/news/ama-releases-governance-framework-for-agentic-ai-in-healthcare/833208/" target="_blank" rel="noopener">MedTech Dive</a>；<a href="https://www.fiercehealthcare.com/regulatory/american-medical-association-rolls-out-governance-framework-agentic-ai-solutions" target="_blank" rel="noopener">Fierce Healthcare</a>。</span>
+        <span class="en">On 13 October the American Medical Association published a governance framework for agentic AI, whose core claim is that an AI system's clinical authority must be earned through evidence and maintained through ongoing performance, with authority and oversight rising or falling as evidence, performance, risk or the underlying technology change. It runs on four questions. Function: which clinical task, on a span from documentation and monitoring to triage, diagnosis, treatment and prescribing. Evidence and risk: what demonstrates the system can do it and what failure costs — higher stakes and greater autonomy demand stronger evidence. Authority and oversight: which actions it may take and under what conditions, from offering input to making and executing decisions. Accountability: who bears the risk and the outcome, with responsibility tracking authority, control, knowledge of risk and ability to prevent harm — developers, deployers, health systems, physicians or payers. The AMA explicitly defines licensure here as authorising an AI system to operate in a defined clinical role, not a licence to practise medicine. <a href="https://www.beckershospitalreview.com/healthcare-information-technology/digital-health/ama-agentic-ai-must-earn-clinical-authority-through-evidence/" target="_blank" rel="noopener">Becker's, 2026-10-13</a>; <a href="https://www.medtechdive.com/news/ama-releases-governance-framework-for-agentic-ai-in-healthcare/833208/" target="_blank" rel="noopener">MedTech Dive</a>; <a href="https://www.fiercehealthcare.com/regulatory/american-medical-association-rolls-out-governance-framework-agentic-ai-solutions" target="_blank" rel="noopener">Fierce Healthcare</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">AMA 這份框架與 FDA 討論文件在同一週出現、用的還是同一個比喻（授證／能力評估），差別是 AMA 把「可升可降」寫進了設計，而 FDA 連上市後控制手段是否在現行法定授權內都還沒答。這代表治理的實質內容正在從聯邦往專業團體與醫療體系自己身上移——對廠商來說，未來擋在前面的可能不是一張 510(k)，而是每一家醫療體系自己的權限分級與再評估週期。</span>
+        <span class="en">The AMA framework and FDA's discussion paper landed in the same week on the same metaphor — credentialing, competency assessment — with one difference: the AMA builds revocability into the design, while FDA has not yet answered whether its postmarket levers even sit inside existing statutory authority. The substance of governance is migrating from the federal level to professional bodies and health systems themselves. For vendors, the gate ahead may not be a 510(k) but each health system's own authority tiers and reassessment cycle.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">AMA 框架不具法律強制力，也未定義正式的層級或分級門檻——Becker's 明確指出文件描述的是權限的連續帶與持續循環，而非成文的級距。本則數字性內容為零，是一份原則文件。</span>
+        <span class="en">The AMA framework carries no legal force and defines no formal tiers or numeric thresholds — Becker's notes explicitly that the document describes a continuum of authority and a continuous cycle rather than codified levels. There are no statistics in it; it is a principles document.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.beckershospitalreview.com/healthcare-information-technology/digital-health/ama-agentic-ai-must-earn-clinical-authority-through-evidence/" target="_blank" rel="noopener">AMA: Agentic AI must earn clinical authority through evidence, Becker's, 2026-10-13</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">本週最大一筆錢</span><span class="en-inline">Biggest cheque</span></span>
+      <span class="tag">Suki</span><span class="tag">Healthier Capital</span><span class="tag">Venrock</span><span class="tag">10/13</span>
+    </div>
+    <h3>
+      <span class="zh">Suki 拿到 9,000 萬美元 E 輪，而它要買的不是更多客戶，是從聽寫往轉診與事前授權的縱深</span>
+      <span class="en">Suki raised a $90M Series E — and what it is buying is not more customers but depth, from dictation into referrals and prior authorisation</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">10/12 Axios 獨家、10/13 正式發布：環境臨床文書新創 Suki 完成 <strong>9,000 萬美元 E 輪</strong>，新投資人為 Healthier Capital、Crosslink Capital、Hercules Capital，既有投資人 Venrock、Flare Capital Partners、Hedosophia、Philips Ventures、Zoom Ventures 跟投，五輪累計<strong>逾 2.5 億美元</strong>。公司自述：<strong>逾 450 家</strong>醫療機構使用其臨床端應用、<strong>逾 30 家</strong>技術夥伴把它嵌入自家平台（包含 Optum、Zoom、athenahealth），2026 年支援的看診人次年成長<strong>逾 190%</strong>，夥伴業務營收兩年成長<strong>逾十倍</strong>，KLAS 驗證的每位醫師每月財務效益<strong>逾 2,600 美元</strong>。資金用途是打造處理轉診與事前授權的 AI agent，執行長 Punit Soni 明說不打算再加很多夥伴、而要把現有夥伴做深。<a href="https://finance.yahoo.com/healthcare/articles/suki-secures-90-million-build-130000237.html" target="_blank" rel="noopener">Business Wire 新聞稿, 2026-10-13</a>；<a href="https://www.healthcaredive.com/news/suki-raises-90m-in-series-e-round-to-create-ai-agents/832862/" target="_blank" rel="noopener">Healthcare Dive, 2026-10-13</a>；<a href="https://www.axios.com/pro/health-tech-deals/2026/10/12/suki-series-e-90m-healthier-capital" target="_blank" rel="noopener">Axios Pro 獨家, 2026-10-12</a>。</span>
+        <span class="en">Axios broke it on 12 Oct; the announcement followed on 13 Oct. The ambient clinical documentation startup Suki closed a <strong>$90 million Series E</strong>, with new investors Healthier Capital, Crosslink Capital and Hercules Capital joining existing backers Venrock, Flare Capital Partners, Hedosophia, Philips Ventures and Zoom Ventures — <strong>more than $250 million</strong> across five rounds. Company-stated scale: <strong>over 450</strong> healthcare organisations on its clinician-facing app, <strong>more than 30</strong> technology partners embedding it (Optum, Zoom, athenahealth among them), patient encounters supported up <strong>more than 190%</strong> year over year in 2026, partner-business revenue up <strong>more than tenfold</strong> in two years, and KLAS-validated financial impact of <strong>more than $2,600</strong> per provider per month. The money goes to AI agents for referrals and prior authorisation; CEO Punit Soni said plainly that he does not plan to add many more partners but to go deeper with the ones he has. <a href="https://finance.yahoo.com/healthcare/articles/suki-secures-90-million-build-130000237.html" target="_blank" rel="noopener">Business Wire release, 2026-10-13</a>; <a href="https://www.healthcaredive.com/news/suki-raises-90m-in-series-e-round-to-create-ai-agents/832862/" target="_blank" rel="noopener">Healthcare Dive, 2026-10-13</a>; <a href="https://www.axios.com/pro/health-tech-deals/2026/10/12/suki-series-e-90m-healthier-capital" target="_blank" rel="noopener">Axios Pro exclusive, 2026-10-12</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">9,000 萬在這條賽道已經是中等規模——Healthcare Dive 在同一篇裡把它放在 Ambience Healthcare 的 2.43 億與 Abridge 的 3 億旁邊比。真正的訊號在用途：聽寫這一層的差異化已經接近耗盡，所以錢往下游的轉診與事前授權走，那裡有可計價的收入循環。這也解釋了為什麼 Suki 選擇走嵌入式通路（30 多家技術夥伴），而不是直接跟醫療體系簽——通路租來的客戶拿不到產品黏著度，但拿得到擴散速度。對照 <a href="https://rockhealth.com/insights/q3-2026-market-update-crystallizing-fifteen-years-of-digital-health/" target="_blank" rel="noopener">Rock Health 10/9 的 Q3 季報</a>（第三季 37 億美元／114 件、年初至今 111 億美元／358 件、平均單筆 3,100 萬美元，較 2025 年的 2,950 萬與 2024 年的 2,060 萬逐年攀升，而自 2025 年 8 月 HeartFlow 之後一家新上市都沒有），本週這筆錢落在「大額、少量、無退出」這個已經成形的分布裡。</span>
+        <span class="en">Ninety million is now mid-sized in this lane — Healthcare Dive set it alongside Ambience Healthcare's $243 million and Abridge's $300 million in the same piece. The real signal is the use of funds: differentiation in the dictation layer is close to exhausted, so the money moves downstream into referrals and prior authorisation, where there is a billable revenue cycle. It also explains the embedded channel strategy, thirty-plus technology partners rather than direct health-system contracts: rented customers buy you diffusion speed, not product stickiness. Against <a href="https://rockhealth.com/insights/q3-2026-market-update-crystallizing-fifteen-years-of-digital-health/" target="_blank" rel="noopener">Rock Health's Q3 update of 9 Oct</a> — $3.7B across 114 deals in Q3, $11.1B across 358 deals year to date, average deal size $31.0M against $29.5M in 2025 and $20.6M in 2024, and no new listing since HeartFlow in August 2025 — this cheque sits squarely inside the shape the market has already taken: larger rounds, fewer of them, no exits.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">450 家機構、190% 年成長、十倍夥伴營收、每月 2,600 美元效益全部是公司自述，新聞稿未揭露估值、臨床人員數、營收絕對金額，Healthcare Dive 也未載明領投方。KLAS 驗證指的是第三方調查方法，不等於經稽核的財務數字。Axios Pro 原文在付費牆後，本報告只依其公開標題與導言。</span>
+        <span class="en">The 450 organisations, 190% growth, tenfold partner revenue and $2,600 monthly impact are all company-reported; the release discloses no valuation, no clinician count and no absolute revenue, and Healthcare Dive does not name a lead investor. KLAS validation refers to a third-party survey method, not audited financials. The Axios Pro original sits behind a paywall; this report relies only on its public headline and dek.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://finance.yahoo.com/healthcare/articles/suki-secures-90-million-build-130000237.html" target="_blank" rel="noopener">Suki Secures $90 Million to Build and Scale AI Agents, Business Wire, 2026-10-13</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">機構結盟</span><span class="en-inline">Institutional alignment</span></span>
+      <span class="tag">OpenEvidence</span><span class="tag">Johns Hopkins Medicine</span><span class="tag">JAMA Network</span><span class="tag">10/13–10/15</span>
+    </div>
+    <h3>
+      <span class="zh">同一週，OpenEvidence 把自己接上約翰霍普金斯的醫學教育，而 JAMA 宣布 2027 年初要開一份 AI 期刊</span>
+      <span class="en">In the same week OpenEvidence wired itself into Johns Hopkins' medical education, and JAMA announced an AI journal for early 2027</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">10/13，OpenEvidence 與 Johns Hopkins Medicine 宣布合作，範圍是兩塊：醫學教育（設計一套強化核心科學與臨床推理能力的訓練模式，並建構協助醫師持續學習的適應性 AI 系統）與臨床照護（開發能彙整最佳證據、納入個別病人病史、並援引 JHM 既有照護標準的工具）。具名者為 JHM 教育副院長 Sanjay Desai、OpenEvidence 首席醫務長 Travis Zack、JHM 首席醫療資訊與 AI 官 Sara Murray。兩天後 10/15，JAMA Network 宣布將於 <strong>2027 年初</strong>推出全線上期刊 <strong>JAMA AI</strong>，由 Roy Perlis 任創刊主編，範圍涵蓋 AI 在各領域的應用，並及於行動應用、穿戴感測器、生理監測、數位影像與虛擬實境；每一篇投稿都會先經 AI 驅動的評估與審查，再接傳統同儕審查。<a href="https://hopkinsmedicine.org/news/newsroom/news-releases/2026/10/openevidence-and-johns-hopkins-medicine-announce-landmark-collaboration-to-design-the-future-of-medicine-and-medical-education-in-the-age-of-ai" target="_blank" rel="noopener">Johns Hopkins Medicine 新聞稿, 2026-10-13</a>；<a href="https://www.fiercehealthcare.com/health-tech/weekly-rundown-97-healthcare-orgs-experienced-cyberattack-past-12-months-proofpoint-inc" target="_blank" rel="noopener">Fierce Healthcare 週報, 2026-10-16</a>。</span>
+        <span class="en">On 13 Oct, OpenEvidence and Johns Hopkins Medicine announced a collaboration spanning two areas: medical education — designing a training model that reinforces core scientific and clinical reasoning and building adaptive AI systems to support continuing learning — and clinical care, developing tools that assemble the best available evidence, account for an individual patient's history and draw on JHM's established practices. Named: Sanjay Desai, JHM Vice Dean for Education; Travis Zack, OpenEvidence Chief Medical Officer; Sara Murray, JHM Chief Medical Informatics and AI Officer. Two days later, on 15 Oct, JAMA Network announced <strong>JAMA AI</strong>, a fully online journal launching in <strong>early 2027</strong> under inaugural editor Roy Perlis, covering AI across all areas of care and extending to mobile apps, wearable sensors, physiologic monitors, digital imaging and virtual reality — with every submission receiving AI-driven assessment and review alongside traditional peer review. <a href="https://hopkinsmedicine.org/news/newsroom/news-releases/2026/10/openevidence-and-johns-hopkins-medicine-announce-landmark-collaboration-to-design-the-future-of-medicine-and-medical-education-in-the-age-of-ai" target="_blank" rel="noopener">Johns Hopkins Medicine release, 2026-10-13</a>; <a href="https://www.fiercehealthcare.com/health-tech/weekly-rundown-97-healthcare-orgs-experienced-cyberattack-past-12-months-proofpoint-inc" target="_blank" rel="noopener">Fierce Healthcare weekly rundown, 2026-10-16</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">把這一則跟本週第一則放在一起看，OpenEvidence 的佈局就不只是使用量：10/13 拿到美國醫學教育最有象徵資本的那個機構的名字，10/15 自己的使用資料登上 <em>JAMA</em>，同一天 JAMA Network 宣布開一份 AI 期刊。這是三種不同的正當性在同一週疊起來——教育端、同儕審查端、出版端。而 JAMA 的那份期刊把「AI 驅動的評估」寫進審稿流程本身，意味著評價醫療 AI 的基礎設施也要由 AI 承擔一部分；期刊自己的說法是會維持 JAMA 標準，並強調「行醫實務仍將本質上屬於人類」。</span>
+        <span class="en">Read with this week's lead item, OpenEvidence's position is about more than volume: on 13 Oct it acquired the name of the institution with the most symbolic capital in US medical education; on 15 Oct its own usage data appeared in <em>JAMA</em>; and on the same day JAMA Network announced an AI journal. Three kinds of legitimacy stacked in one week — education, peer review, publishing. And by writing AI-driven assessment into the review pipeline itself, JAMA concedes that some of the infrastructure for evaluating medical AI will be carried by AI, while insisting it keeps JAMA's standards and that "the practice of medicine will remain essentially human."</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">Johns Hopkins 新聞稿完全沒有數字：沒有金額、沒有學生人數、沒有時程，兩塊範圍都寫成「plan to」。稿中關於 OpenEvidence 使用普及度的說法（例如多數美國醫師在用）出自該公司，新聞稿本身未獨立驗證。JAMA AI 的創刊細節引自 Fierce Healthcare 週報整理，未取得 JAMA 原始公告。</span>
+        <span class="en">The Johns Hopkins release contains no figures at all: no money, no student numbers, no timeline, and both workstreams are phrased as plans. Its claims about OpenEvidence's reach, such as being used by most US physicians, come from the company and are not independently verified in the release. The JAMA AI launch details are taken from Fierce Healthcare's weekly rundown; the original JAMA announcement was not retrieved.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://hopkinsmedicine.org/news/newsroom/news-releases/2026/10/openevidence-and-johns-hopkins-medicine-announce-landmark-collaboration-to-design-the-future-of-medicine-and-medical-education-in-the-age-of-ai" target="_blank" rel="noopener">OpenEvidence and Johns Hopkins Medicine Announce Landmark Collaboration, JHM, 2026-10-13</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">主權算力</span><span class="en-inline">Sovereign compute</span></span>
+      <span class="tag">NVIDIA</span><span class="tag">Doctolib</span><span class="tag">Les Echos</span><span class="tag">10/13</span>
+    </div>
+    <h3>
+      <span class="zh">NVIDIA 入股 Doctolib，而 Doctolib 給出的理由是要自己訓模型、把病人資料留在自己手上</span>
+      <span class="en">NVIDIA took a stake in Doctolib — and Doctolib's stated reason is to train its own models and keep patient data in its own hands</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">10/13 NVIDIA 執行長黃仁勳在巴黎記者會宣布，NVIDIA 將取得四家法國新創的少數股權：醫療預約平台 <strong>Doctolib</strong>、機器人基礎模型公司 Genesis AI、商業規劃軟體 Pigment、材料科學 AI 公司 Entalpic，消息由 <em>Les Echos</em> 首報、路透轉述。金額與持股比例均未揭露。Doctolib 在 2026 年較早的募資輪估值為 <strong>36 億歐元</strong>，其 8 月啟動的研究計畫分析其網站 <strong>5,000 萬名</strong>使用者的資料。Doctolib 執行長表示資金將用於招募人才與開發自家 AI 模型，驅動面向病人與醫師的個人助理並處理行政工作，並明確表示模型將跑在 NVIDIA 晶片上，以保有對模型與病人資料的控制權，而非採用 OpenAI 或 Anthropic 等供應商的專有模型。<a href="https://www.cna.com.tw/news/aopl/202610140010.aspx" target="_blank" rel="noopener">中央社, 2026-10-14</a>；<a href="https://www.streetinsider.com/Reuters/Nvidia+buys+stakes+in+four+French+tech+startups,+Les+Echos+reports/27180463.html" target="_blank" rel="noopener">Reuters／StreetInsider, 2026-10-13</a>。</span>
+        <span class="en">On 13 Oct, at a Paris press conference, NVIDIA CEO Jensen Huang said the company would take minority stakes in four French startups: the medical appointment platform <strong>Doctolib</strong>, robotics foundation-model company Genesis AI, business planning software Pigment and materials-science AI company Entalpic. <em>Les Echos</em> broke it; Reuters relayed it. Neither amounts nor stake sizes were disclosed. Doctolib was valued at <strong>€3.6 billion</strong> in an earlier 2026 round, and the research project it launched in August analyses data from <strong>50 million</strong> users of its site. Doctolib's CEO said the money goes to hiring and to developing its own AI models, powering personal assistants for patients and doctors and handling administrative work — and said explicitly that those models will run on NVIDIA chips so the company keeps control of both the models and patient data, rather than using proprietary models from providers such as OpenAI or Anthropic. <a href="https://www.cna.com.tw/news/aopl/202610140010.aspx" target="_blank" rel="noopener">CNA, 2026-10-14</a>; <a href="https://www.streetinsider.com/Reuters/Nvidia+buys+stakes+in+four+French+tech+startups,+Les+Echos+reports/27180463.html" target="_blank" rel="noopener">Reuters/StreetInsider, 2026-10-13</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這一則的重點不在金額，在理由。歐洲最大的醫療預約平台公開把「不用美國實驗室的專有模型」當成產品決策講出來，而它的算力供應商同時成為它的股東——資料主權與算力依賴在同一筆交易裡被綁在一起。這是本週唯一一則不在美國制度框架裡、卻直指同一個問題的消息：當監管端對生成式 AI 醫材還沒定案，掌握資料與模型的那一方就會先把位置站好。對台灣的採購與資料治理討論，這是一個比任何白皮書都具體的先例。</span>
+        <span class="en">What matters here is not the amount but the reason. Europe's largest medical booking platform has made "not using proprietary models from American labs" an explicit product decision — and its compute supplier has simultaneously become its shareholder, binding data sovereignty and compute dependence into a single transaction. It is the week's only item outside the US regulatory frame that points at the same question: while oversight of generative-AI devices is still unsettled, whoever holds the data and the models takes position first. For Taiwan's procurement and data-governance debate it is a more concrete precedent than any white paper.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">金額、持股比例、交易結構全部未揭露，原始消息來自 <em>Les Echos</em>（付費牆）、本報告依中央社與路透的轉述撰寫。36 億歐元是較早一輪的估值，非本次交易估值。5,000 萬使用者是 Doctolib 自述的研究計畫規模，不等於活躍使用者數；醫師數與營運國家數在可得來源中均未載明。</span>
+        <span class="en">Amount, stake size and deal structure are all undisclosed; the original report is in <em>Les Echos</em>, behind a paywall, and this item relies on the CNA and Reuters relays. The €3.6 billion is the valuation from an earlier round, not from this transaction. The 50 million users is the scale Doctolib itself gave for its research project, not an active-user count, and neither the doctor count nor the number of countries it operates in appears in the available sources.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.cna.com.tw/news/aopl/202610140010.aspx" target="_blank" rel="noopener">輝達宣布投資法國醫療網站 Doctolib 擬用 AI 改善服務, 中央社, 2026-10-14</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">趨勢線索</span><span class="en-inline">Trend line</span></span>
+      <span class="tag">Nature Medicine</span><span class="tag">Stanford</span><span class="tag">10/14</span>
+    </div>
+    <h3>
+      <span class="zh">《Nature Medicine》十月號把整期變成一份部署檢討：六篇現場教訓、一篇 agentic 自主性的缺環、一組關於 benchmark 的互相反駁</span>
+      <span class="en">Nature Medicine turned its October issue into a deployment post-mortem: six field-lessons Comments, one piece on the missing links in agentic autonomy, and a pair of papers arguing over benchmarks</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">《Nature Medicine》32 卷 10 期（2026 年 10 月）的社論題為 <a href="https://www.nature.com/articles/s41591-026-04726-7" target="_blank" rel="noopener">Making AI work in healthcare</a>，而整期圍著它排了六篇部署教訓的 Comment：<a href="https://www.nature.com/articles/s41591-026-04574-5" target="_blank" rel="noopener">史丹佛醫學中心 ChatEHR 系統的部署教訓</a>、<a href="https://www.nature.com/articles/s41591-026-04631-z" target="_blank" rel="noopener">中國 AI agent 眼科診所的真實世界初期教訓</a>、<a href="https://www.nature.com/articles/s41591-026-04643-9" target="_blank" rel="noopener">臨床 AI 全球擴張的實務教訓：從一家醫院到逾百萬名篩檢病人</a>、<a href="https://www.nature.com/articles/s41591-026-04639-5" target="_blank" rel="noopener">對話式醫療 AI 的前瞻證據很難、但不可妥協</a>、<a href="https://www.nature.com/articles/s41591-026-04633-x" target="_blank" rel="noopener">從演算法到病人結果：醫療 AI 最早幾個隨機試驗之一的教訓</a>、<a href="https://www.nature.com/articles/s41591-026-04568-3" target="_blank" rel="noopener">節約型 AI 是子宮頸癌篩檢缺的那一塊</a>。News &amp; Views 一篇 <a href="https://www.nature.com/articles/s41591-026-04658-2" target="_blank" rel="noopener">The missing links in agentic AI autonomy</a>。另有一組 Matters Arising 直接互槓：<a href="https://www.nature.com/articles/s41591-026-04638-6" target="_blank" rel="noopener">有限的 benchmark 限制了通用型對臨床型 AI 比較的結論</a>，以及<a href="https://www.nature.com/articles/s41591-026-04637-7" target="_blank" rel="noopener">原作者的回應</a>。研究論文端則包括<a href="https://www.nature.com/articles/s41591-026-04601-5" target="_blank" rel="noopener">急診部 LLM 臨床決策支援系統的前瞻評估</a>與<a href="https://www.nature.com/articles/s41591-026-04609-x" target="_blank" rel="noopener">可靠臨床決策的地端醫療 AI agent</a>。</span>
+        <span class="en"><em>Nature Medicine</em> volume 32, issue 10 (October 2026) runs an editorial titled <a href="https://www.nature.com/articles/s41591-026-04726-7" target="_blank" rel="noopener">Making AI work in healthcare</a>, and the issue is built around it with six Comments on deployment lessons: <a href="https://www.nature.com/articles/s41591-026-04574-5" target="_blank" rel="noopener">lessons from deploying the ChatEHR system at Stanford Medicine</a>, <a href="https://www.nature.com/articles/s41591-026-04631-z" target="_blank" rel="noopener">initial lessons from a real-world AI-agent eye clinic in China</a>, <a href="https://www.nature.com/articles/s41591-026-04643-9" target="_blank" rel="noopener">practical lessons in the global scaling of clinical AI, from one hospital to over a million patients screened</a>, <a href="https://www.nature.com/articles/s41591-026-04639-5" target="_blank" rel="noopener">prospective evidence for conversational medical AI is hard but non-negotiable</a>, <a href="https://www.nature.com/articles/s41591-026-04633-x" target="_blank" rel="noopener">from algorithms to patient outcomes, lessons from one of the first randomized trials of AI in medicine</a>, and <a href="https://www.nature.com/articles/s41591-026-04568-3" target="_blank" rel="noopener">frugal AI is the missing piece in cervical cancer screening</a>. A News &amp; Views piece covers <a href="https://www.nature.com/articles/s41591-026-04658-2" target="_blank" rel="noopener">the missing links in agentic AI autonomy</a>. A pair of Matters Arising argue it out directly: <a href="https://www.nature.com/articles/s41591-026-04638-6" target="_blank" rel="noopener">limited benchmarks constrain the conclusions of a general-purpose versus clinical AI comparison</a> and <a href="https://www.nature.com/articles/s41591-026-04637-7" target="_blank" rel="noopener">the original authors' reply</a>. On the research side the issue includes <a href="https://www.nature.com/articles/s41591-026-04601-5" target="_blank" rel="noopener">a prospective evaluation of an LLM clinical decision support system in the emergency department</a> and <a href="https://www.nature.com/articles/s41591-026-04609-x" target="_blank" rel="noopener">on-premise medical AI agents for reliable clinical decision-making</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">一份期刊把一整期的版面給「部署之後發生了什麼」，本身就是本週最清楚的趨勢訊號：這個領域的重心已經從「模型能不能」移到「上線之後還能不能」。而這正好對上本週第二則量到的那個缺口——醫院端沒有監測機制，期刊端卻開始大量生產現場教訓。兩件事同時發生不是矛盾，是同一個需求的供給端與需求端：真實部署的知識正在被寫下來，但還沒變成每一家醫院的例行程序。那篇 Matters Arising 的互相反駁尤其值得注意，因為它爭的是 benchmark 本身夠不夠用來下結論——這跟 FDA 討論文件裡「非臨床裝置基準測試」那一半直接相關。</span>
+        <span class="en">A journal handing an entire issue to what happens after deployment is itself the week's clearest trend signal: the field's centre of gravity has moved from whether a model can to whether it still can once it is live. And that maps straight onto the gap measured in this week's second item — hospitals have no monitoring machinery, while journals have begun mass-producing field lessons. The two are not in tension; they are the supply and demand sides of one need. Knowledge from real deployments is being written down, but it has not yet become routine practice in each hospital. The Matters Arising exchange deserves particular attention, because what it disputes is whether benchmarks are adequate to support conclusions at all — which bears directly on the non-clinical device benchmarking half of FDA's discussion paper.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">本則依《Nature Medicine》32 卷 10 期的目次頁撰寫，社論與六篇 Comment 的全文在產出時均無法取得（抓取失敗），因此本報告<strong>不引用其中任何數據或結論細節</strong>，只陳述該期的編輯安排與文章標題——這些可在目次頁逐條查證。想看實質內容請自行點進各篇原文。</span>
+        <span class="en">This item is written from the table of contents of <em>Nature Medicine</em> vol. 32 issue 10; full texts of the editorial and the six Comments could not be retrieved at production time (fetches failed), so this report <strong>cites no figures or substantive conclusions from any of them</strong> and states only the issue's editorial arrangement and article titles, each verifiable on the contents page. For the substance, follow the links to the originals.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.nature.com/nm/volumes/32/issues/10" target="_blank" rel="noopener">Nature Medicine, Volume 32 Issue 10, October 2026 (contents)</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">容易被漏掉</span><span class="en-inline">Easy to miss</span></span>
+      <span class="tag">Proofpoint</span><span class="tag">UMass Memorial Health</span><span class="tag">Microsoft</span><span class="tag">Accenture</span><span class="tag">10/15</span>
+    </div>
+    <h3>
+      <span class="zh">在所有人談模型的這一週，97% 的醫療機構說過去 12 個月至少被攻擊一次，而只有 42% 有針對 AI 的安全措施</span>
+      <span class="en">In a week everyone talked about models, 97% of healthcare organisations said they were attacked at least once in twelve months — and only 42% have AI-specific security measures</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">Proofpoint 本週發布的 2026 年醫療網路安全報告（調查 705 名 IT 與資安從業人員）：<strong>97%</strong> 的受訪機構過去 12 個月遭遇至少一次網路攻擊，其中 <strong>74%</strong> 回報後續病人照護受到干擾；每機構平均攻擊次數從 2025 年的 <strong>43 次</strong>升到 2026 年的 <strong>51 次</strong>，最昂貴那一次攻擊的平均成本上升 <strong>8%</strong> 至 <strong>420 萬美元</strong>。與 AI 直接相關的三項：<strong>60%</strong> 缺乏管理敏感資料的控制措施、僅 <strong>42%</strong> 採用針對 AI 的安全措施、僅 <strong>32%</strong> 能完整掌握員工使用未經核可工具的情況。同一週 10/15，UMass Memorial Health 宣布與 Microsoft 及 Accenture 展開多年期合作，以 Azure 建置統一資料平台取代既有的孤島式報表系統，並由 Accenture 導入 agentic AI 工具自動化流程，執行長 Eric Dickson 具名。<a href="https://www.fiercehealthcare.com/health-tech/weekly-rundown-97-healthcare-orgs-experienced-cyberattack-past-12-months-proofpoint-inc" target="_blank" rel="noopener">Fierce Healthcare 週報, 2026-10-16</a>。</span>
+        <span class="en">Proofpoint's 2026 healthcare cyber report, released this week, surveyed 705 IT and IT-security practitioners: <strong>97%</strong> of organisations faced at least one cyberattack in the past twelve months, and among those attacked <strong>74%</strong> reported subsequent disruption to patient care. Average attacks per organisation rose from <strong>43</strong> in 2025 to <strong>51</strong> in 2026, and the average cost of the most expensive attack rose <strong>8%</strong> to <strong>$4.2 million</strong>. Three findings bear directly on AI: <strong>60%</strong> lack controls governing sensitive data, only <strong>42%</strong> use AI-specific security measures, and only <strong>32%</strong> have full visibility into employees' use of unsanctioned tools. In the same week, on 15 Oct, UMass Memorial Health announced a multi-year initiative with Microsoft and Accenture to replace siloed reporting systems with a unified data platform on Azure, with Accenture introducing agentic AI tools to automate workflows; President and CEO Eric Dickson is named. <a href="https://www.fiercehealthcare.com/health-tech/weekly-rundown-97-healthcare-orgs-experienced-cyberattack-past-12-months-proofpoint-inc" target="_blank" rel="noopener">Fierce Healthcare weekly rundown, 2026-10-16</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">把這兩則放在一起，本週的落差多了一個維度。一邊是 97% 被攻擊、只有 32% 看得見員工在用什麼未核可工具——而本週第一則量到的 952,008 名臨床人員裡，有多少是在機構核可的路徑上用的？這份調查沒答，但它把問題問出來了。另一邊是 UMass Memorial 這類案子正在把 agentic AI 接進營運流程，而接進去的前提是先有統一資料平台——也就是說，資料治理的順序問題（先統一、再自動化）正在被大型體系用採購合約回答，而不是用政策文件。</span>
+        <span class="en">Together these add a dimension to the week's gap. On one side, 97% attacked and only 32% able to see which unsanctioned tools their staff are using — of the 952,008 clinicians counted in this week's lead item, how many were on an institutionally sanctioned path? The survey does not answer that, but it poses it. On the other, deals like UMass Memorial's are wiring agentic AI into operations, and the precondition is a unified data platform first. The sequencing question in data governance — consolidate, then automate — is being answered by large systems through procurement contracts rather than policy documents.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">Proofpoint 是資安廠商，調查為自家委託、受訪者 705 人、自我回報，攻擊次數與成本均非經稽核。「97%」這類趨近飽和的數字在廠商調查中常見，應視為受訪群體特性而非全體產業比率。UMass Memorial 一案未揭露金額與時程，本報告依 Fierce 的週報整理，未取得三方的原始新聞稿。</span>
+        <span class="en">Proofpoint is a security vendor; the survey is its own, self-reported by 705 respondents, and neither attack counts nor costs are audited. Near-saturation figures like 97% are common in vendor surveys and should be read as a property of the respondent pool rather than an industry-wide rate. The UMass Memorial deal discloses neither value nor timeline, and this item relies on Fierce's rundown rather than the three parties' own releases.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.fiercehealthcare.com/health-tech/weekly-rundown-97-healthcare-orgs-experienced-cyberattack-past-12-months-proofpoint-inc" target="_blank" rel="noopener">Weekly Rundown, Fierce Healthcare, 2026-10-16</a></p></div>
+  </div>
+</section>
+
+<section id="product">
+  <h2>02 — Product Analysis</h2>
+  <div class="sec-title">
+    <span class="zh">本週兩個產品剛好站在落差的兩端：一個被同儕審查量到了規模，一個把錢押在規模之後的縱深</span>
+    <span class="en">Two products this week stand at opposite ends of the gap: one had its scale measured by peer review, the other is betting money on what comes after scale</span>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>OpenEvidence</h3>
+      <p class="sub"><span class="zh-inline">臨床問答與證據彙整平台 · OpenEvidence（美國）· 對已驗證美國臨床人員免費</span><span class="en-inline">Clinical question-answering and evidence platform · OpenEvidence (US) · free to verified US clinicians</span></p>
+      <p>
+        <span class="zh"><strong>功能與定位。</strong>臨床人員以自然語言提問，平台回傳附引用的綜合答案。本週的 <em>JAMA</em> 研究給出了它的使用形狀：51.9% 的醫師查詢用於臨床決策、33.1% 關於治療與處置、14.1% 關於藥物資訊、13.9% 關於診斷，而跨專科查詢占 35% 至 88%——也就是說，它的主要戰場不是「查自己的專科」，而是「處理不在自己射程內的病人」。商業模式方面，新聞稿與研究均載明對已驗證美國臨床人員免費，<a href="https://jamanetwork.com/journals/jama/fullarticle/2855491" target="_blank" rel="noopener">JAMA, 2026-10-15</a>。</span>
+        <span class="en"><strong>Function and position.</strong> Clinicians ask in natural language and get a synthesised, cited answer. This week's <em>JAMA</em> study gives the shape of its use: 51.9% of physician queries serve clinical decision-making, 33.1% concern treatment and management, 14.1% medication information, 13.9% diagnosis — and out-of-specialty queries run 35% to 88%. Its real battleground is not looking things up inside one's own specialty but handling patients outside one's range. On the business model, both the release and the study state it is free to verified US clinicians, <a href="https://jamanetwork.com/journals/jama/fullarticle/2855491" target="_blank" rel="noopener">JAMA, 2026-10-15</a>.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：留存。月留存從約 70% 升到約 90%，2026 年 6 月有 92.5% 的活躍使用者是回訪者，只有 9.6% 的臨床人員用過一天就沒再回來——這種曲線在臨床工具裡罕見，<a href="https://jamanetwork.com/journals/jama/fullarticle/2855491" target="_blank" rel="noopener">JAMA 研究</a>。</span>
+          <span class="en">: retention. Month-over-month retention rose from about 70% to about 90%, 92.5% of June 2026 actives were returning users, and only 9.6% of clinicians queried on a single day and never came back — a curve rarely seen in clinical tools, <a href="https://jamanetwork.com/journals/jama/fullarticle/2855491" target="_blank" rel="noopener">JAMA study</a>.</span>
+        </li>
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：機構正當性。10/13 與 Johns Hopkins Medicine 的合作直接接上醫學教育端，<a href="https://hopkinsmedicine.org/news/newsroom/news-releases/2026/10/openevidence-and-johns-hopkins-medicine-announce-landmark-collaboration-to-design-the-future-of-medicine-and-medical-education-in-the-age-of-ai" target="_blank" rel="noopener">JHM 新聞稿</a>。</span>
+          <span class="en">: institutional legitimacy. The 13 Oct collaboration with Johns Hopkins Medicine plugs straight into medical education, <a href="https://hopkinsmedicine.org/news/newsroom/news-releases/2026/10/openevidence-and-johns-hopkins-medicine-announce-landmark-collaboration-to-design-the-future-of-medicine-and-medical-education-in-the-age-of-ai" target="_blank" rel="noopener">JHM release</a>.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：那份量到規模的研究，資料與部分作者都來自公司本身（Zack 為首席醫務長），而研究完全沒有量結果——沒有準確率、沒有臨床結局、沒有誤導率。使用量與有效性是兩件事，這週只證明了前者。</span>
+          <span class="en">: the study that measured the scale drew both its data and several authors from the company itself (Zack is its chief medical officer), and it measures no outcomes at all — no accuracy, no clinical endpoints, no error rate. Usage and effectiveness are different things, and this week only established the first.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：年資分布是雙面刃。畢業未滿十年者占 24.3% 人力、送出 61.8% 查詢，這既是最強的成長引擎，也是 <a href="https://endpoints.news/ai-will-force-doctors-to-focus-on-clinical-reasoning-experts-say/" target="_blank" rel="noopener">Endpoints 10/15 那場專題座談</a>（UCI Health 的 Pandita、BIDMC 的 Rodman 對談）爭論的核心：臨床推理能力會被養成還是被外包，目前沒有縱貫資料可答。</span>
+          <span class="en">: the seniority distribution cuts both ways. Physicians within ten years of graduation are 24.3% of the workforce and file 61.8% of queries — the strongest growth engine and also the crux of the debate at <a href="https://endpoints.news/ai-will-force-doctors-to-focus-on-clinical-reasoning-experts-say/" target="_blank" rel="noopener">the Endpoints panel on 15 Oct</a> (Pandita of UCI Health and Rodman of Beth Israel Deaconess): whether clinical reasoning gets trained or outsourced. No longitudinal data answers it yet.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>Suki</h3>
+      <p class="sub"><span class="zh-inline">環境臨床文書與 agent 平台 · Suki（美國）· 以嵌入式通路為主</span><span class="en-inline">Ambient clinical documentation and agent platform · Suki (US) · embedded-channel first</span></p>
+      <p>
+        <span class="zh"><strong>功能與定位。</strong>核心是環境聽寫與臨床文書，但本週 9,000 萬美元 E 輪的用途明確寫成「打造處理轉診與事前授權的 AI agent」。它與 Abridge、Ambience、Nabla 最大的策略差異在通路：<strong>逾 30 家</strong>技術夥伴把 Suki 嵌入自家平台（Optum、Zoom、athenahealth），而非一家一家簽醫療體系；公司同時自述<strong>逾 450 家</strong>醫療機構使用其臨床端應用，<a href="https://finance.yahoo.com/healthcare/articles/suki-secures-90-million-build-130000237.html" target="_blank" rel="noopener">Business Wire, 2026-10-13</a>。</span>
+        <span class="en"><strong>Function and position.</strong> The core is ambient dictation and clinical documentation, but this week's $90M Series E names its use of funds plainly: AI agents for referrals and prior authorisation. Its biggest strategic difference from Abridge, Ambience and Nabla is channel — <strong>more than 30</strong> technology partners embed Suki inside their own platforms (Optum, Zoom, athenahealth) rather than signing health systems one by one, while the company also claims <strong>over 450</strong> healthcare organisations on its clinician-facing app, <a href="https://finance.yahoo.com/healthcare/articles/suki-secures-90-million-build-130000237.html" target="_blank" rel="noopener">Business Wire, 2026-10-13</a>.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：通路的擴散速度。夥伴業務營收兩年成長逾十倍、2026 年支援看診人次年成長逾 190%，都是嵌入式路徑的直接結果，<a href="https://finance.yahoo.com/healthcare/articles/suki-secures-90-million-build-130000237.html" target="_blank" rel="noopener">公司新聞稿</a>。</span>
+          <span class="en">: channel diffusion speed. Partner-business revenue up more than tenfold in two years and encounters supported up more than 190% year over year in 2026 are both direct consequences of the embedded route, <a href="https://finance.yahoo.com/healthcare/articles/suki-secures-90-million-build-130000237.html" target="_blank" rel="noopener">company release</a>.</span>
+        </li>
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：有第三方可引述的經濟效益。KLAS 驗證的每位醫師每月逾 2,600 美元財務效益，是這條賽道少數不是純自述的數字，<a href="https://www.healthcaredive.com/news/suki-raises-90m-in-series-e-round-to-create-ai-agents/832862/" target="_blank" rel="noopener">Healthcare Dive</a>。</span>
+          <span class="en">: a citable third-party economics figure. KLAS-validated financial impact of more than $2,600 per provider per month is one of the few numbers in this lane that is not purely self-reported, <a href="https://www.healthcaredive.com/news/suki-raises-90m-in-series-e-round-to-create-ai-agents/832862/" target="_blank" rel="noopener">Healthcare Dive</a>.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：通路租來的客戶關係淺。嵌在 Optum 或 athenahealth 裡的 Suki，換掉的成本由夥伴決定，而不是由使用它的醫師決定；執行長自己說要往既有夥伴做深，某種程度上是承認這一點。</span>
+          <span class="en">: rented customer relationships are shallow. For a Suki embedded inside Optum or athenahealth, the switching decision belongs to the partner, not to the physician using it; the CEO's stated plan to go deeper with existing partners is, in part, an acknowledgement of that.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：轉診與事前授權是 agent 真正會做決定的地方，而這正好落在本週 AMA 框架與 FDA 討論文件都還沒定案的那一格。公司新聞稿對 agent 的監督機制、錯誤率、責任歸屬一個字都沒提——缺什麼數據就直說缺，這裡缺的是全部。</span>
+          <span class="en">: referrals and prior authorisation are exactly where an agent makes real decisions, and that falls precisely in the cell that both the AMA framework and FDA's discussion paper left unsettled this week. The company's release says nothing at all about agent oversight, error rates or accountability — and where a figure is missing it should be said: here all of them are.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="company">
+  <h2>03 — Companies &amp; Competition</h2>
+  <div class="sec-title">
+    <span class="zh">誰站在哪裡、憑什麼、跟誰打</span>
+    <span class="en">Who stands where, on what, against whom</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th><span class="zh-inline">公司</span><span class="en-inline">Company</span></th>
+        <th><span class="zh-inline">近況與數字</span><span class="en-inline">Recent state &amp; numbers</span></th>
+        <th><span class="zh-inline">競爭定位與護城河</span><span class="en-inline">Position &amp; moat</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>OpenEvidence</strong><br><span class="zh-inline">臨床問答，對已驗證臨床人員免費</span><span class="en-inline">Clinical Q&amp;A, free to verified clinicians</span></td>
+          <td>
+            <span class="zh">2.71 億次查詢、952,008 名美國臨床人員（2024/1–2026/6），月活躍 703,265、月留存約 90%，<a href="https://jamanetwork.com/journals/jama/fullarticle/2855491" target="_blank" rel="noopener">JAMA, 2026-10-15</a>；10/13 宣布與 Johns Hopkins Medicine 合作，<a href="https://hopkinsmedicine.org/news/newsroom/news-releases/2026/10/openevidence-and-johns-hopkins-medicine-announce-landmark-collaboration-to-design-the-future-of-medicine-and-medical-education-in-the-age-of-ai" target="_blank" rel="noopener">JHM</a>。</span>
+            <span class="en">271M queries from 952,008 US clinicians (Jan 2024–Jun 2026), 703,265 monthly actives, about 90% monthly retention, <a href="https://jamanetwork.com/journals/jama/fullarticle/2855491" target="_blank" rel="noopener">JAMA, 2026-10-15</a>; announced a Johns Hopkins Medicine collaboration on 13 Oct, <a href="https://hopkinsmedicine.org/news/newsroom/news-releases/2026/10/openevidence-and-johns-hopkins-medicine-announce-landmark-collaboration-to-design-the-future-of-medicine-and-medical-education-in-the-age-of-ai" target="_blank" rel="noopener">JHM</a>.</span>
+          </td>
+          <td>
+            <span class="zh">護城河是習慣與留存曲線，加上這週取得的同儕審查與教育端正當性。薄的地方是沒有結果證據，且免費模式的變現路徑在公開資料中仍不明。</span>
+            <span class="en">The moat is habit and the retention curve, plus the peer-reviewed and education-side legitimacy acquired this week. It is thin on outcome evidence, and the monetisation path behind the free model remains unclear in public sources.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Suki</strong><br><span class="zh-inline">環境文書轉 agent，嵌入式通路</span><span class="en-inline">Ambient documentation turning agentic, embedded channel</span></td>
+          <td>
+            <span class="zh">10/13 完成 9,000 萬美元 E 輪，五輪累計逾 2.5 億美元；逾 450 家機構、逾 30 家技術夥伴；KLAS 驗證每位醫師每月逾 2,600 美元效益，<a href="https://finance.yahoo.com/healthcare/articles/suki-secures-90-million-build-130000237.html" target="_blank" rel="noopener">Business Wire, 2026-10-13</a>。</span>
+            <span class="en">Closed a $90M Series E on 13 Oct, more than $250M across five rounds; over 450 organisations and 30-plus technology partners; KLAS-validated impact above $2,600 per provider per month, <a href="https://finance.yahoo.com/healthcare/articles/suki-secures-90-million-build-130000237.html" target="_blank" rel="noopener">Business Wire, 2026-10-13</a>.</span>
+          </td>
+          <td>
+            <span class="zh">護城河是通路而非直接關係，優勢在擴散速度，弱點在客戶由夥伴持有。往轉診與事前授權走是為了取得可計價的收入循環位置，但也走進了治理最未定的地帶。</span>
+            <span class="en">The moat is channel rather than direct relationships: fast diffusion, with customers owned by the partner. Moving into referrals and prior authorisation buys a billable revenue-cycle position — and walks into the least settled part of governance.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Abridge</strong><br><span class="zh-inline">環境文書，直接簽醫療體系</span><span class="en-inline">Ambient documentation, direct to health systems</span></td>
+          <td>
+            <span class="zh">Healthcare Dive 在 Suki 那則中載明 Abridge 去年募得 3 億美元、Ambience Healthcare 2.43 億美元，作為 Suki 這 9,000 萬的規模對照，<a href="https://www.healthcaredive.com/news/suki-raises-90m-in-series-e-round-to-create-ai-agents/832862/" target="_blank" rel="noopener">Healthcare Dive, 2026-10-13</a>。</span>
+            <span class="en">In its Suki piece, Healthcare Dive records Abridge raising $300M and Ambience Healthcare $243M last year, as the scale against which Suki's $90M is measured, <a href="https://www.healthcaredive.com/news/suki-raises-90m-in-series-e-round-to-create-ai-agents/832862/" target="_blank" rel="noopener">Healthcare Dive, 2026-10-13</a>.</span>
+          </td>
+          <td>
+            <span class="zh">護城河是直接簽下的大型體系合約與自有內容授權，深但擴張慢。與 Suki 的對打本質上是「深度對通路」，兩邊都還沒證明哪一種在 agent 階段更站得住。</span>
+            <span class="en">Its moat is directly signed large-system contracts and its own content licensing: deep but slow to extend. The fight with Suki is depth against channel, and neither side has yet shown which holds up better once agents enter the picture.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Doctolib</strong><br><span class="zh-inline">歐洲醫療預約平台，法國</span><span class="en-inline">European medical booking platform, France</span></td>
+          <td>
+            <span class="zh">10/13 NVIDIA 宣布取得少數股權（金額未揭露）；2026 年較早一輪估值 36 億歐元；8 月研究計畫涵蓋其網站 5,000 萬名使用者資料，<a href="https://www.cna.com.tw/news/aopl/202610140010.aspx" target="_blank" rel="noopener">中央社, 2026-10-14</a>。</span>
+            <span class="en">NVIDIA announced a minority stake on 13 Oct, amount undisclosed; valued at €3.6 billion in an earlier 2026 round; its August research project covers data from 50 million users of its site, <a href="https://www.cna.com.tw/news/aopl/202610140010.aspx" target="_blank" rel="noopener">CNA, 2026-10-14</a>.</span>
+          </td>
+          <td>
+            <span class="zh">護城河是歐洲的預約與病人關係通道，加上明確以資料主權為賣點的自建模型路線。弱點是算力供應商同時成為股東，自主性的敘事與依賴結構在同一筆交易裡。</span>
+            <span class="en">The moat is Europe's booking and patient-relationship channel plus a self-built model strategy sold explicitly on data sovereignty. The weakness is that the compute supplier is now also a shareholder: the autonomy narrative and the dependency sit in the same transaction.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>NVIDIA</strong><br><span class="zh-inline">算力供應商兼醫療 AI 股東</span><span class="en-inline">Compute supplier and health-AI shareholder</span></td>
+          <td>
+            <span class="zh">10/13 在巴黎宣布入股四家法國新創（Doctolib、Genesis AI、Pigment、Entalpic），<a href="https://www.streetinsider.com/Reuters/Nvidia+buys+stakes+in+four+French+tech+startups,+Les+Echos+reports/27180463.html" target="_blank" rel="noopener">Reuters, 2026-10-13</a>；另於同期承諾 2.5 億美元、五年期算力投入英國 agentic AI 安全研究，<a href="https://www.pharmtech.com/view/pharmtech-weekly-roundup-october-16-2026-rare-diseases-cmc-and-ai-accountability" target="_blank" rel="noopener">PharmTech, 2026-10-16</a>。</span>
+            <span class="en">Announced stakes in four French startups in Paris on 13 Oct (Doctolib, Genesis AI, Pigment, Entalpic), <a href="https://www.streetinsider.com/Reuters/Nvidia+buys+stakes+in+four+French+tech+startups,+Les+Echos+reports/27180463.html" target="_blank" rel="noopener">Reuters, 2026-10-13</a>; separately committed $250 million of compute over five years to UK agentic-AI safety research, <a href="https://www.pharmtech.com/view/pharmtech-weekly-roundup-october-16-2026-rare-diseases-cmc-and-ai-accountability" target="_blank" rel="noopener">PharmTech, 2026-10-16</a>.</span>
+          </td>
+          <td>
+            <span class="zh">護城河是同時站在供應端與股權端，讓客戶的主權敘事反過來鞏固自己的通路。薄的地方是這種雙重身分在歐洲的競爭法與資料治理審視下，遲早要被問。</span>
+            <span class="en">The moat is standing on both the supply side and the equity side, so a customer's sovereignty narrative reinforces NVIDIA's own channel. It is thin in that this dual position will eventually have to answer to European competition law and data-governance scrutiny.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Microsoft / Accenture</strong><br><span class="zh-inline">醫療體系資料平台與 agentic 導入</span><span class="en-inline">Health-system data platforms and agentic rollout</span></td>
+          <td>
+            <span class="zh">10/15 與 UMass Memorial Health 展開多年期合作：以 Azure 建置統一資料平台取代孤島式報表，Accenture 導入 agentic AI 工具自動化流程，金額與時程未揭露，<a href="https://www.fiercehealthcare.com/health-tech/weekly-rundown-97-healthcare-orgs-experienced-cyberattack-past-12-months-proofpoint-inc" target="_blank" rel="noopener">Fierce Healthcare, 2026-10-16</a>。</span>
+            <span class="en">Began a multi-year initiative with UMass Memorial Health on 15 Oct: a unified data platform on Azure replacing siloed reporting, with Accenture introducing agentic AI tools to automate workflows; value and timeline undisclosed, <a href="https://www.fiercehealthcare.com/health-tech/weekly-rundown-97-healthcare-orgs-experienced-cyberattack-past-12-months-proofpoint-inc" target="_blank" rel="noopener">Fierce Healthcare, 2026-10-16</a>.</span>
+          </td>
+          <td>
+            <span class="zh">護城河是資料平台先行的順序優勢：誰的平台承載整合，誰就決定後續 agent 跑在哪裡。弱點是這類案子的成效要數年才看得見，而本週的網安調查顯示只有 42% 的機構有針對 AI 的安全措施。</span>
+            <span class="en">The moat is the sequencing advantage of platform-first: whoever's platform carries the consolidation decides where the agents later run. The weakness is that results from such deals take years to show, while this week's security survey found only 42% of organisations have AI-specific measures in place.</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="zh"><strong>把這一節收束成一句話：本週的競爭結構是一個「採用已經贏了、證據還沒開始」的形狀。</strong>無論是 OpenEvidence 的留存曲線、Suki 的通路擴散、Doctolib 的主權敘事，還是 Microsoft 與 Accenture 的平台先行，六家公司的護城河全部建立在「誰先進到工作流裡」，而沒有一家的護城河建立在「誰的結果最好」——因為本週沒有任何一則消息提供結果證據。<a href="https://rockhealth.com/insights/q3-2026-market-update-crystallizing-fifteen-years-of-digital-health/" target="_blank" rel="noopener">Rock Health 的 Q3 數字</a>（平均單筆 3,100 萬美元、自 2025 年 8 月以來零件新上市）說明資本也認了這個形狀：少數幾家拿大錢搶位置，而退出要等證據。</span>
+      <span class="en"><strong>Close the section in one sentence: this week's competitive structure has the shape of adoption already won and evidence not yet begun.</strong> OpenEvidence's retention curve, Suki's channel diffusion, Doctolib's sovereignty narrative, Microsoft and Accenture's platform-first sequencing — all six companies' moats rest on who gets into the workflow first, and not one rests on whose outcomes are best, because not a single item this week supplied outcome evidence. <a href="https://rockhealth.com/insights/q3-2026-market-update-crystallizing-fifteen-years-of-digital-health/" target="_blank" rel="noopener">Rock Health's Q3 figures</a> — $31.0M average deal size, no new listing since August 2025 — show capital has accepted that shape too: a few companies take large cheques to hold position, and exits wait for the evidence.</span>
+    </p>
+  </div>
+</section>
+
+<section id="taiwan">
+  <h2>04 — Taiwan Angle</h2>
+  <div class="sec-title">
+    <span class="zh">本週美國量到的那個缺口，台灣在 2024 年就為它蓋了機構；現在要驗的是機構有沒有在運作</span>
+    <span class="en">The gap measured in the US this week is one Taiwan built institutions for back in 2024; what needs checking now is whether those institutions are working</span>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="zh"><strong>(1) 美國缺的「取證」與「給付」環節，台灣在兩年前就立了名字。</strong>衛福部 2024 年 10 月 7 日啟動三大 AI 中心：負責任 AI 執行中心（管理規範、資安與隱私、模型與資料與效能資訊公開、可解釋性分析、模型生命週期管理）、臨床 AI 取證驗證中心（與資訊處及 TFDA 合辦，串接醫院網絡驗證模型、加速審查）、AI 影響性研究中心（與資訊處及健保署合辦，跨體系臨床試驗以評估臨床效益並建立給付的科學定價基礎）。該計畫 2024 年 7 月 23 日公告、8 月 1 日截止收件，共 30 家醫院提出 48 件計畫，經三輪國內外委員審查後由 <strong>16 家醫院、19 件計畫</strong>入選，名單包含台大、中榮、北榮、成大、中國醫、三總、林口長庚等，<a href="https://www.mohw.gov.tw/cp-16-80155-1.html" target="_blank" rel="noopener">衛福部新聞稿, 2024-10-07</a>。把這份架構疊到本週那篇 Frontiers 回顧的四個缺口上，對應關係幾乎是一比一：上市後監測對負責任 AI 執行中心、公平性與次族群表現對取證驗證中心、給付與臨床效益對影響性研究中心。台灣缺的不是制度設計，而是公開的執行數據——這三個中心運作兩年後，有多少模型完成驗證、有多少進入給付、上線後監測的覆蓋率是多少，目前在公開資料中都查不到。美國那篇回顧之所以有力，正是因為它拿得出 58.1%、47.4%、51.4% 這種難看的數字。</span>
+      <span class="en"><strong>(1) The evidence-generation and reimbursement links the US is missing are ones Taiwan named two years ago.</strong> On 7 October 2024 the Ministry of Health and Welfare launched three AI centres: a Responsible AI Implementation Centre (management rules, information security and privacy, publication of model, data and performance information, explainability analysis, model lifecycle management); a Clinical AI Evidence Validation Centre, run with the Ministry's Department of Information Technology and the TFDA, linking hospital networks to validate models and speed review; and an AI Impact Research Centre, run with the Department of Information Technology and the National Health Insurance Administration, running cross-system clinical trials to assess clinical benefit and set a scientific pricing basis for reimbursement. The subsidy programme was announced on 23 July 2024 and closed on 1 August; 30 hospitals submitted 48 proposals, and after three rounds of review by domestic and international committee members <strong>16 hospitals and 19 proposals</strong> were selected, including National Taiwan University Hospital, Taichung Veterans General, Taipei Veterans General, National Cheng Kung University Hospital, China Medical University Hospital, Tri-Service General Hospital and Linkou Chang Gung, <a href="https://www.mohw.gov.tw/cp-16-80155-1.html" target="_blank" rel="noopener">MOHW release, 2024-10-07</a>. Lay that architecture over the four gaps in this week's Frontiers review and the mapping is almost one to one: post-market monitoring to the Responsible AI centre, equity and subgroup performance to the Validation centre, reimbursement and clinical benefit to the Impact Research centre. What Taiwan lacks is not institutional design but published execution data — two years in, how many models have completed validation, how many have entered reimbursement, and what share of deployments are monitored after go-live are all unavailable in public sources. The US review carries weight precisely because it can produce ugly numbers like 58.1%, 47.4% and 51.4%.</span>
+    </p>
+    <p>
+      <span class="zh"><strong>(2) AI 基本法的醫療細則草案，原本就該在這幾週出現。</strong>2026 年 8 月 6 日衛福部表示，AI 基本法之下的醫療領域 AI 實施細則草案預計<strong>三個月內</strong>提出——換算就是 11 月前後，也就是現在。同一則報導中的 FHIR Box 進度是：2025 年由三家醫學中心試辦，<strong>2026 年底</strong>上線、全台醫學中心病歷互通，三到五年內擴及全國約 <strong>80%</strong> 醫療機構（報導並以歐盟約需十年、單一醫院重建病歷系統成本可能逾百億作為對照），<a href="https://udn.com/news/story/7266/9675552" target="_blank" rel="noopener">聯合報, 2026-08-06</a>。把本週的國際消息換算成台灣尺度：AMA 10/13 那份框架處理的是「權限分級與再評估」，FDA 10/19 關窗的討論文件處理的是「上市前能力評估與上市後監測」，而台灣即將出現的細則草案若只寫原則、不寫誰在上線後量、量什麼、多久量一次，就會重複美國這週被量出來的那個缺口——制度齊備、執行空白。對產業端的實際意涵是：現在是提意見的時間窗，不是草案出來之後。</span>
+      <span class="en"><strong>(2) The draft medical implementation rules under the AI Basic Act were due in exactly these weeks.</strong> On 6 August 2026 the Ministry said a draft of AI implementation rules for the medical field under the AI Basic Act was expected <strong>within three months</strong> — which lands around November, meaning now. The same report put FHIR Box's progress as: three medical centres piloting in 2025, launch at <strong>end of 2026</strong> with records interoperable across Taiwan's medical centres, and expansion to roughly <strong>80%</strong> of medical institutions nationwide within three to five years, set against an EU approach the report describes as taking about ten years and a note that rebuilding one hospital's record system alone could cost over NT$10 billion, <a href="https://udn.com/news/story/7266/9675552" target="_blank" rel="noopener">United Daily News, 2026-08-06</a>. Converting this week's international news to Taiwanese scale: the AMA's 13 Oct framework addresses authority tiers and reassessment; FDA's paper closing on 19 Oct addresses premarket competency assessment and postmarket monitoring. If Taiwan's forthcoming draft states principles only — without saying who measures after go-live, what they measure and how often — it will reproduce the very gap the US had measured this week: complete institutions, empty execution. The practical implication for industry is that the window for comment is now, not after the draft appears.</span>
+    </p>
+    <p>
+      <span class="zh"><strong>(3) 本土產品端的一個具體對照。</strong>10/5 中央社報導，智捷醫學科技（董事長孫繼信，已併購日本醫學影像公司 Holoeyes）的 AI 3D 醫療影像系統可將 CT 與 MRI 在約 <strong>3 至 5 分鐘</strong>內轉為彩色 3D 模型、辨識並分離<strong>逾 260 個</strong>器官與組織，網頁版可在電腦、手機、平板檢視或輸出至混合實境頭戴裝置，目前在衛福部資料中心測試，自動定位功能正在申請專利、目標毫米級精度；公司目標是配合 2028 年推進至全台 <strong>29 家</strong>醫學中心，Holoeyes 在日本已有逾百家醫院網絡，<a href="https://newtalk.tw/news/view/2026-10-05/1063720" target="_blank" rel="noopener">Newtalk 轉載中央社, 2026-10-05</a>。這一則放在本週脈絡裡的意義是：台灣有能力把產品做到可輸出 IP 的程度，但新聞中既無任何核准或認證、也無臨床結果數據，在衛福部資料中心測試不等於取證。這恰好是三大 AI 中心裡「取證驗證」那一環該產出的東西——如果它在運作，這類產品的下一則新聞應該是驗證結果，而不是導入家數目標。</span>
+      <span class="en"><strong>(3) One concrete domestic comparison.</strong> CNA reported on 5 October that Chih-Chieh Medical Technology (chaired by Sun Chi-hsin, which has acquired the Japanese medical imaging firm Holoeyes) has an AI 3D medical imaging system that converts CT and MRI scans into coloured 3D models in about <strong>3 to 5 minutes</strong>, identifying and separating <strong>more than 260</strong> organs and tissues, viewable on computers, phones and tablets or exportable to mixed-reality headsets, currently under test in the Ministry's data centre, with a patent pending on automatic positioning and a millimetre-accuracy target. The company's stated goal is to roll out to Taiwan's <strong>29</strong> medical centres by 2028, and Holoeyes already has a network of more than 100 hospitals in Japan, <a href="https://newtalk.tw/news/view/2026-10-05/1063720" target="_blank" rel="noopener">Newtalk reposting CNA, 2026-10-05</a>. What this means in this week's context: Taiwan can build products to the point of exporting intellectual property, but the report contains neither any clearance or certification nor any clinical outcome data, and testing in the Ministry's data centre is not evidence generation. That is precisely what the validation link among the three AI centres exists to produce — if it is working, the next news item about products like this should be validation results, not a target number of hospitals.</span>
+    </p>
+  </div>
+</section>
+
+<section id="reading">
+  <h2>05 — Further Reading</h2>
+  <div class="sec-title">
+    <span class="zh">五篇，全部挑能把本週那個落差講得更深的，而不是本週已經被報導過的</span>
+    <span class="en">Five pieces, all chosen to go deeper into this week's gap rather than to restate what has already been reported</span>
+  </div>
+
+  <ol class="reading">
+    <li>
+      <a href="https://jamanetwork.com/journals/jama/fullarticle/2855491" target="_blank" rel="noopener">Clinician Use of an Artificial Intelligence–Enabled Clinical Information Platform — JAMA (2026-10-15)</a>
+      <p class="why"><span class="zh">本週唯一必讀。不要只看 2.71 億這個總量，去看表格裡的使用比（use ratio）那一欄：血液腫瘤 2.00、內科 1.88、家醫 1.80，對上麻醉 0.37、眼科 0.23、放射 0.24、骨科 0.24。這一欄告訴你的是哪些專科的工作本來就是「處理不確定性」，而那正是這類工具真正的市場邊界。</span><span class="en">The week's one must-read. Do not stop at the 271 million; go to the use-ratio column — 2.00 in haematology-oncology, 1.88 in internal medicine, 1.80 in family medicine, against 0.37 in anaesthesiology and 0.23–0.24 in ophthalmology, radiology and orthopaedics. That column tells you which specialties' work is handling uncertainty in the first place, which is the real market boundary for tools like this.</span></p>
+    </li>
+    <li>
+      <a href="https://bioengineer.org/hospitals-are-deploying-ai-faster-than-regulators-can-keep-up-landmark-review-warns/" target="_blank" rel="noopener">A framework for safe, ethical, and trustworthy AI deployment and integration in hospitals — Frontiers in Digital Health, via Scienmag (2026-10-16)</a>
+      <p class="why"><span class="zh">讀它是為了那組成功與失敗並置的案例：肺栓塞工具陰性預測值 99.9%、敗血症演算法把死亡率從 21.3% 壓到 9.0%，對上 COVID-19 胸部 X 光工具 AUC 從逾 0.95 掉到約 0.70。同一份文獻裡，兩種結局的差別不在模型大小。</span><span class="en">Read it for the successes and failures placed side by side: a pulmonary embolism tool at 99.9% negative predictive value and a sepsis algorithm cutting mortality from 21.3% to 9.0%, against a COVID-19 chest radiograph tool whose AUC fell from above 0.95 to roughly 0.70. Within one review, the difference between the two outcomes is not model size.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/nm/volumes/32/issues/10" target="_blank" rel="noopener">Nature Medicine, Volume 32 Issue 10 — the deployment-lessons issue (2026-10)</a>
+      <p class="why"><span class="zh">整期當一篇讀。從社論 Making AI work in healthcare 進去，優先讀史丹佛 ChatEHR 與中國 AI agent 眼科診所那兩篇 Comment——真實部署的失敗模式只有在這種第一手檢討裡看得到，論文的方法章節不會寫。</span><span class="en">Read the issue as one piece. Enter through the editorial, Making AI work in healthcare, then prioritise the two Comments on Stanford's ChatEHR and the AI-agent eye clinic in China — the failure modes of real deployment appear only in first-hand post-mortems like these, never in a methods section.</span></p>
+    </li>
+    <li>
+      <a href="https://rockhealth.com/insights/q3-2026-market-update-crystallizing-fifteen-years-of-digital-health/" target="_blank" rel="noopener">Q3 2026 market update: Crystallizing fifteen years of digital health — Rock Health (2026-10-09)</a>
+      <p class="why"><span class="zh">把本週的 9,000 萬美元放回分布裡看的那份底稿。重點不是第三季 37 億，是平均單筆從 2024 年的 2,060 萬、2025 年的 2,950 萬到今年的 3,100 萬，以及 M&amp;A 從去年同期 172 件掉到 164 件——錢更集中、出場更難。</span><span class="en">The baseline that puts this week's $90M back into its distribution. The point is not the $3.7B quarter but average deal size moving from $20.6M in 2024 to $29.5M in 2025 to $31.0M this year, with M&amp;A falling from 172 deals through Q3 last year to 164 — more concentrated money, harder exits.</span></p>
+    </li>
+    <li>
+      <a href="https://www.cov.com/-/media/files/corporate/publications/2026/08/fda-releases-highly-anticipated-discussion-paper-august-2026.pdf" target="_blank" rel="noopener">FDA Releases Highly Anticipated Discussion Paper on Generative AI-Enabled Medical Devices — Covington (2026-08, PDF)</a>
+      <p class="why"><span class="zh">意見窗 10/19 關上，想在關窗前理解它在問什麼，這份客戶通報是最快的入口。讀的時候盯住一件事：上市後那一半的手段究竟落在哪條法源上——那是整份文件最薄、也最決定未來五年的地方。</span><span class="en">With the comment window closing on 19 Oct, this client alert is the fastest route into what the paper is actually asking. Read it watching one thing: which statutory authority the postmarket half of the toolkit actually rests on — the thinnest part of the document, and the part that will decide the next five years.</span></p>
+    </li>
+  </ol>
+</section>
+
+<section id="refs">
+  <h2>06 — References</h2>
+  <div class="sec-title">
+    <span class="zh">參考文獻</span>
+    <span class="en">References</span>
+  </div>
+
+  <div class="panel">
+    <ol class="refs">
+      <li>Clinician Use of an Artificial Intelligence–Enabled Clinical Information Platform. <em>JAMA</em>, 2026-10-15. DOI 10.1001/jama.2026.21868; PMID 42879271. <a href="https://jamanetwork.com/journals/jama/fullarticle/2855491" target="_blank" rel="noopener">jamanetwork.com</a></li>
+      <li>OpenEvidence drew 271M queries from 952,000 clinicians in 2.5 years. <em>Becker's Hospital Review</em>, 2026-10-15. <a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openevidence-drew-271m-queries-from-952000-clinicians-in-2-5-years/" target="_blank" rel="noopener">beckershospitalreview.com</a></li>
+      <li>Here's how many clinicians are using AI to answer their medical questions. <em>Endpoints News</em>, 2026-10-15. <a href="https://endpoints.news/heres-how-many-clinicians-are-using-ai-to-answer-their-medical-questions/" target="_blank" rel="noopener">endpoints.news</a></li>
+      <li>Study characterizes clinicians' use of the AI platform OpenEvidence. <em>Medical Xpress</em>, 2026-10. <a href="https://medicalxpress.com/news/2026-10-characterizes-clinicians-ai-platform-openevidence.html" target="_blank" rel="noopener">medicalxpress.com</a></li>
+      <li>First Large-Scale Study Shows How Doctors Use AI in Medicine. <em>Harvard Medical School</em>, 2026-10. <a href="https://hms.harvard.edu/news/first-large-scale-study-shows-how-doctors-use-ai-medicine" target="_blank" rel="noopener">hms.harvard.edu</a></li>
+      <li>Conteh J, Kapucu N, Ebevuhe EF, Adeniji OW. A framework for safe, ethical, and trustworthy AI deployment and integration in hospitals: a systematic review and regulatory gap analysis with emphasis on the U.S. regulatory context. <em>Frontiers in Digital Health</em> 8:1955958, 2026. DOI 10.3389/fdgth.2026.1955958. News coverage: <em>Scienmag</em> 2026-10-16 / <em>Bioengineer.org</em> 2026-10-17. <a href="https://bioengineer.org/hospitals-are-deploying-ai-faster-than-regulators-can-keep-up-landmark-review-warns/" target="_blank" rel="noopener">bioengineer.org</a></li>
+      <li>FDA Opens Comment Period on GenAI Device Regulation. <em>MD+DI</em>, 2026-08-19 (comments due 2026-10-19). <a href="https://www.mddionline.com/artificial-intelligence/fda-seeks-input-on-regulatory-framework-for-genai-medical-devices" target="_blank" rel="noopener">mddionline.com</a></li>
+      <li>FDA Releases Discussion Paper on Generative AI-Enabled Medical Devices: What Manufacturers and Investors Need to Know. <em>Maynard Nexsen</em>, 2026-08. <a href="https://www.maynardnexsen.com/publication-fda-releases-discussion-paper-on-generative-ai-enabled-medical-devices-what-manufacturers-and-investors-need-to-know" target="_blank" rel="noopener">maynardnexsen.com</a></li>
+      <li>FDA Releases Highly Anticipated Discussion Paper on Generative AI-Enabled Medical Devices. <em>Covington &amp; Burling</em>, 2026-08 (PDF). <a href="https://www.cov.com/-/media/files/corporate/publications/2026/08/fda-releases-highly-anticipated-discussion-paper-august-2026.pdf" target="_blank" rel="noopener">cov.com</a></li>
+      <li>First FDA-Cleared AI Agent and LLM Enabled Device Confirmed (UpDoc, K253281, cleared 2025-12-23; product code NDC, 21 CFR 868.1890; predicate d-Nav K181916). <em>Innolitics</em>. <a href="https://innolitics.com/articles/updoc-fda-cleared-ai-agent/" target="_blank" rel="noopener">innolitics.com</a></li>
+      <li>AMA: Agentic AI must earn clinical authority through evidence. <em>Becker's Hospital Review</em>, 2026-10-13. <a href="https://www.beckershospitalreview.com/healthcare-information-technology/digital-health/ama-agentic-ai-must-earn-clinical-authority-through-evidence/" target="_blank" rel="noopener">beckershospitalreview.com</a></li>
+      <li>AMA releases governance framework for agentic AI in healthcare. <em>MedTech Dive</em>, 2026-10-13. <a href="https://www.medtechdive.com/news/ama-releases-governance-framework-for-agentic-ai-in-healthcare/833208/" target="_blank" rel="noopener">medtechdive.com</a></li>
+      <li>American Medical Association rolls out governance framework for agentic AI solutions. <em>Fierce Healthcare</em>, 2026-10-13. <a href="https://www.fiercehealthcare.com/regulatory/american-medical-association-rolls-out-governance-framework-agentic-ai-solutions" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>Suki Secures $90 Million to Build and Scale AI Agents for Health Systems and Health Tech Companies. <em>Business Wire</em> (via Yahoo Finance), 2026-10-13. <a href="https://finance.yahoo.com/healthcare/articles/suki-secures-90-million-build-130000237.html" target="_blank" rel="noopener">finance.yahoo.com</a></li>
+      <li>Suki raises $90M in Series E round to create AI agents. <em>Healthcare Dive</em>, 2026-10-13. <a href="https://www.healthcaredive.com/news/suki-raises-90m-in-series-e-round-to-create-ai-agents/832862/" target="_blank" rel="noopener">healthcaredive.com</a></li>
+      <li>Exclusive: Ambient scribe startup Suki raises $90M Series E. <em>Axios Pro</em>, 2026-10-12 (paywalled; headline and dek only). <a href="https://www.axios.com/pro/health-tech-deals/2026/10/12/suki-series-e-90m-healthier-capital" target="_blank" rel="noopener">axios.com</a></li>
+      <li>OpenEvidence and Johns Hopkins Medicine Announce Landmark Collaboration to Design the Future of Medicine and Medical Education in the Age of AI. <em>Johns Hopkins Medicine</em>, 2026-10-13. <a href="https://hopkinsmedicine.org/news/newsroom/news-releases/2026/10/openevidence-and-johns-hopkins-medicine-announce-landmark-collaboration-to-design-the-future-of-medicine-and-medical-education-in-the-age-of-ai" target="_blank" rel="noopener">hopkinsmedicine.org</a></li>
+      <li>Weekly Rundown: JAMA Network to add AI journal in 2027; UMass Memorial Health partners with Microsoft, Accenture; Proofpoint 2026 healthcare cyber report. <em>Fierce Healthcare</em>, 2026-10-16. <a href="https://www.fiercehealthcare.com/health-tech/weekly-rundown-97-healthcare-orgs-experienced-cyberattack-past-12-months-proofpoint-inc" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>輝達宣布投資法國醫療網站 Doctolib 擬用 AI 改善服務. <em>中央社 CNA</em>, 2026-10-14. <a href="https://www.cna.com.tw/news/aopl/202610140010.aspx" target="_blank" rel="noopener">cna.com.tw</a></li>
+      <li>Nvidia buys stakes in four French tech startups, Les Echos reports. <em>Reuters</em> (via StreetInsider), 2026-10-13. <a href="https://www.streetinsider.com/Reuters/Nvidia+buys+stakes+in+four+French+tech+startups,+Les+Echos+reports/27180463.html" target="_blank" rel="noopener">streetinsider.com</a></li>
+      <li>Nvidia takes stakes in Genesis AI, Pigment, and Entalpic in Paris push. <em>Crypto Briefing</em>, 2026-10. <a href="https://cryptobriefing.com/nvidia-stakes-genesis-ai-pigment-entalpic/" target="_blank" rel="noopener">cryptobriefing.com</a></li>
+      <li>Making AI work in healthcare (editorial). <em>Nature Medicine</em> 32(10), October 2026. <a href="https://www.nature.com/articles/s41591-026-04726-7" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Nature Medicine, Volume 32 Issue 10, October 2026 (table of contents). <a href="https://www.nature.com/nm/volumes/32/issues/10" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Lessons from deploying the ChatEHR system at Stanford Medicine. <em>Nature Medicine</em>, October 2026. <a href="https://www.nature.com/articles/s41591-026-04574-5" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Initial lessons from real-world implementation of an AI-agent eye clinic in China. <em>Nature Medicine</em>, October 2026. <a href="https://www.nature.com/articles/s41591-026-04631-z" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Practical lessons in the global scaling of clinical AI: from one hospital to over a million patients screened. <em>Nature Medicine</em>, October 2026. <a href="https://www.nature.com/articles/s41591-026-04643-9" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Prospective evidence for conversational medical AI is hard, but non-negotiable. <em>Nature Medicine</em>, October 2026. <a href="https://www.nature.com/articles/s41591-026-04639-5" target="_blank" rel="noopener">nature.com</a></li>
+      <li>From algorithms to patient outcomes: lessons from one of the first randomized trials of AI in medicine. <em>Nature Medicine</em>, October 2026. <a href="https://www.nature.com/articles/s41591-026-04633-x" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Frugal AI is the missing piece in cervical cancer screening. <em>Nature Medicine</em>, October 2026. <a href="https://www.nature.com/articles/s41591-026-04568-3" target="_blank" rel="noopener">nature.com</a></li>
+      <li>The missing links in agentic AI autonomy (News &amp; Views). <em>Nature Medicine</em>, October 2026. <a href="https://www.nature.com/articles/s41591-026-04658-2" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Limited benchmarks constrain the conclusions of a general-purpose versus clinical AI comparison (Matters Arising), and the authors' Reply. <em>Nature Medicine</em>, October 2026. <a href="https://www.nature.com/articles/s41591-026-04638-6" target="_blank" rel="noopener">nature.com</a> · <a href="https://www.nature.com/articles/s41591-026-04637-7" target="_blank" rel="noopener">Reply</a></li>
+      <li>Prospective evaluation of a large language model clinical decision support system in the emergency department. <em>Nature Medicine</em>, October 2026. <a href="https://www.nature.com/articles/s41591-026-04601-5" target="_blank" rel="noopener">nature.com</a></li>
+      <li>On-premise medical AI agents for reliable clinical decision-making. <em>Nature Medicine</em>, October 2026. <a href="https://www.nature.com/articles/s41591-026-04609-x" target="_blank" rel="noopener">nature.com</a></li>
+      <li>AI will force doctors to focus on clinical reasoning, experts say. <em>Endpoints News</em>, 2026-10-15 (paywalled; headline, dek and panellist names only). <a href="https://endpoints.news/ai-will-force-doctors-to-focus-on-clinical-reasoning-experts-say/" target="_blank" rel="noopener">endpoints.news</a></li>
+      <li>Q3 2026 market update: Crystallizing fifteen years of digital health. <em>Rock Health</em>, 2026-10-09. <a href="https://rockhealth.com/insights/q3-2026-market-update-crystallizing-fifteen-years-of-digital-health/" target="_blank" rel="noopener">rockhealth.com</a></li>
+      <li>Q3 digital health funding across 107 deals (Rock Weekly). <em>Rock Health</em>, 2026-10. <a href="https://rockhealth.com/rock-weekly/q3-digital-health-funding-3-5b-across-107-deals/" target="_blank" rel="noopener">rockhealth.com</a></li>
+      <li>PharmTech Weekly Roundup — October 16, 2026: Rare Diseases, CMC, and AI Accountability (NVIDIA $250M five-year UK agentic AI safety compute commitment). <em>Pharmaceutical Technology</em>, 2026-10-16. <a href="https://www.pharmtech.com/view/pharmtech-weekly-roundup-october-16-2026-rare-diseases-cmc-and-ai-accountability" target="_blank" rel="noopener">pharmtech.com</a></li>
+      <li>FDA and RA/QA News: Mid-October 2026. <em>The FDA Group Insider</em>, 2026-10. <a href="https://insider.thefdagroup.com/p/raqa-news-roll-mid-october-2026" target="_blank" rel="noopener">insider.thefdagroup.com</a></li>
+      <li>Week 41: Three CEO seats change hands at the top, $223M in disclosed rounds. <em>GS Capital Connect</em>, 2026-10-12. <a href="https://gscapitalconnect.substack.com/p/week-41-three-ceo-seats-change-hands" target="_blank" rel="noopener">gscapitalconnect.substack.com</a></li>
+      <li>EU AI Act Omnibus Agreement — Postponed High-Risk Deadlines and Other Key Changes (Annex I devices deferred to 2 August 2028). <em>Gibson Dunn</em>, 2026. <a href="https://www.gibsondunn.com/eu-ai-act-omnibus-agreement-postponed-high-risk-deadlines-and-other-key-changes/" target="_blank" rel="noopener">gibsondunn.com</a></li>
+      <li>衛生福利部三大 AI 中心啟動記者會. <em>衛生福利部</em>, 2024-10-07. <a href="https://www.mohw.gov.tw/cp-16-80155-1.html" target="_blank" rel="noopener">mohw.gov.tw</a></li>
+      <li>智慧醫療再跨一步 衛福部推 FHIR Box 年底串聯全台醫學中心病歷. <em>聯合報 / UDN</em>, 2026-08-06. <a href="https://udn.com/news/story/7266/9675552" target="_blank" rel="noopener">udn.com</a></li>
+      <li>智捷：AI 3D 醫療影像系統 拚 2028 年導入 29 家醫學中心. <em>Newtalk 轉載中央社</em>, 2026-10-05. <a href="https://newtalk.tw/news/view/2026-10-05/1063720" target="_blank" rel="noopener">newtalk.tw</a></li>
+      <li>Microsoft's releases MAI-Base-2 aimed at open models with a twist. <em>Constellation Research</em>, 2026-10. <a href="https://www.constellationr.com/insights/news/microsofts-releases-mai-base-2-aimed-open-models-twist" target="_blank" rel="noopener">constellationr.com</a></li>
+      <li>Meta launches an open-weight AI model that runs on Macs (Muse Spark Open). <em>TechCrunch</em>, 2026-10-15. <a href="https://techcrunch.com/2026/10/15/meta-launches-an-open-weight-model-that-runs-on-macs/" target="_blank" rel="noopener">techcrunch.com</a></li>
+    </ol>
+    <div class="note">
+      <span class="zh"><strong>編輯說明：</strong>本期為週日回顧，涵蓋窗口 10/12–10/18，重點放在 10/13–10/17。(1) <strong>付費牆來源</strong>：Axios Pro（Suki 獨家）與 Endpoints News（10/15 臨床推理座談）僅依公開可見的標題、導言與作者／講者姓名撰寫，未取得全文；<em>Les Echos</em>（NVIDIA 入股四家法國新創原始報導）同樣付費，本報告依中央社與路透轉述。(2) <strong>抓取失敗</strong>：《Nature Medicine》32 卷 10 期的社論與六篇 Comment 全文在產出時抓取失敗，因此第八則與延伸閱讀第三項<strong>完全不引用其中任何數據或結論</strong>，僅陳述該期目次可逐條查證的編輯安排與標題。(3) <strong>二手引用</strong>：Frontiers in Digital Health 那篇系統性回顧依 Scienmag／Bioengineer 的新聞稿轉載撰寫，未取得期刊原文全文；JAMA AI 期刊創刊、UMass Memorial × Microsoft × Accenture、Proofpoint 調查三則依 Fierce Healthcare 週報整理，未取得各方原始發布。(4) <strong>廠商自述未經稽核</strong>：Suki 的 450 家機構、30 家夥伴、190% 年成長、十倍夥伴營收、每月 2,600 美元效益（KLAS 為第三方調查方法，非財務稽核）；OpenEvidence 的使用普及度說法；Proofpoint 的攻擊次數與成本（自家委託、705 人自我回報）；智捷的 260 個器官、3–5 分鐘與 2028 年 29 家目標。(5) <strong>JAMA 研究的利益衝突</strong>：資料由 OpenEvidence 提供，Finlayson、Ray、Zack 為或曾為該公司員工／主管，Zack 為首席醫務長；查詢分類由 LLM 在 14.4% 樣本上完成、僅 200 筆人工驗證；作者自述所有數字為下界。(6) <strong>窗口外但必要的背景</strong>：FDA 討論文件（2026-08-18 發布）、UpDoc K253281（2025-12-23 核准）、EU AI Act Digital Omnibus（2026 年 5 月政治協議，Annex I 醫材義務延至 2028-08-02）、衛福部三大 AI 中心（2024-10-07）、FHIR Box 與 AI 基本法醫療細則時程（2026-08-06）、Rock Health Q3 季報（2026-10-09）、智捷（2026-10-05）均明確標註原始日期，未冒充本週消息。(7) <strong>須更正前期</strong>：本站 10/13 日報將 Rock Health Q3 數字寫為「37 億美元／114 件、年初至今 110 億美元」，依 Rock Health 原文應為第三季 <strong>37 億美元／114 件</strong>、年初至今 <strong>111 億美元／358 件</strong>；另 Rock Weekly 一篇摘要頁標題顯示 35 億／107 件，與 Insights 原文的 37 億／114 件不一致，本期採用 Insights 原文數字並同時列出兩個來源供查證。(8) 本期未引用任何無法點擊查證的數字；凡公開來源未載明者（NVIDIA 入股金額與比例、UMass Memorial 合作金額、Suki 估值、Johns Hopkins 合作規模與時程）一律標示為未揭露，未以推估填補。</span>
+      <span class="en"><strong>Editor's note:</strong> This is the Sunday review, covering 12–18 Oct with the weight on 13–17 Oct. (1) <strong>Paywalled sources:</strong> Axios Pro (the Suki exclusive) and Endpoints News (the 15 Oct clinical-reasoning panel) are used only on their publicly visible headline, dek and author/panellist names, with no full text retrieved; <em>Les Echos</em>, which broke the NVIDIA French-startup story, is likewise paywalled, so this report relies on the CNA and Reuters relays. (2) <strong>Failed fetches:</strong> full texts of the <em>Nature Medicine</em> vol. 32 issue 10 editorial and its six Comments could not be retrieved at production time, so the eighth top story and the third further-reading entry <strong>cite no figures or conclusions from any of them</strong> and state only the editorial arrangement and titles, each verifiable on the contents page. (3) <strong>Secondary citation:</strong> the Frontiers in Digital Health systematic review is written from the Scienmag/Bioengineer press coverage rather than the journal full text; the JAMA AI launch, the UMass Memorial × Microsoft × Accenture initiative and the Proofpoint survey are taken from Fierce Healthcare's weekly rundown rather than the parties' own releases. (4) <strong>Unaudited vendor-reported figures:</strong> Suki's 450 organisations, 30-plus partners, 190% growth, tenfold partner revenue and $2,600 monthly impact (KLAS validation is a third-party survey method, not a financial audit); OpenEvidence's claims about its own reach; Proofpoint's attack counts and costs (self-commissioned, 705 self-reporting respondents); and Chih-Chieh's 260 organs, 3–5 minutes and the 29-centre 2028 target. (5) <strong>Conflicts in the JAMA study:</strong> OpenEvidence supplied the data; Finlayson, Ray and Zack are or were company employees or officers, Zack as chief medical officer; query classification was done by an LLM on a 14.4% sample with only 200 queries human-validated; and the authors call every figure a lower bound. (6) <strong>Necessary background from outside the window</strong> is dated explicitly rather than presented as this week's news: FDA's discussion paper (issued 2026-08-18), UpDoc K253281 (cleared 2025-12-23), the EU AI Act Digital Omnibus (political agreement May 2026, Annex I device obligations deferred to 2028-08-02), the MOHW's three AI centres (2024-10-07), FHIR Box and the AI Basic Act medical rules timeline (2026-08-06), Rock Health's Q3 update (2026-10-09) and Chih-Chieh (2026-10-05). (7) <strong>Correction to an earlier edition:</strong> this site's 13 Oct report gave Rock Health's Q3 figures as $3.7B/114 deals with $11.0B year to date; per Rock Health's own text it is <strong>$3.7B across 114 deals</strong> in Q3 and <strong>$11.1B across 358 deals</strong> year to date. Separately, a Rock Weekly summary page headline shows $3.5B/107 deals, which does not match the $3.7B/114 in the Insights piece; this edition uses the Insights figures and lists both sources so readers can check. (8) No figure in this edition is cited without a clickable source; where the public sources do not state a number — NVIDIA's stake size and amount, the UMass Memorial deal value, Suki's valuation, the scale and timeline of the Johns Hopkins collaboration — it is marked undisclosed rather than filled in by estimate.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-row">
+    <div>
+      <span class="zh">AI／醫療AI 每日新知日報 · 由 Claude 於台北時間每日自動產出 · 本期主題：星期日／本週回顧與精選延伸閱讀<br>本報告內容經來源查證，但不構成投資或醫療建議。所有數據請以原始出處為準。</span>
+      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Sunday / Weekly Review &amp; Further Reading<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
+    </div>
+    <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com / 返回 peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
+  </div>
+</footer>
+</main>
+
+<div class="fabs">
+  <button class="up" id="up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+  <a class="home-fab" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg></a>
+</div>
+
+<script>
+function setLang(l){
+  document.body.classList.remove('lang-zh','lang-en');
+  document.body.classList.add('lang-'+l);
+  document.documentElement.lang = (l==='zh') ? 'zh-Hant' : 'en';
+  document.getElementById('b-zh').classList.toggle('on', l==='zh');
+  document.getElementById('b-en').classList.toggle('on', l==='en');
+  document.title = (l==='zh')
+    ? 'AI／醫療AI 每日新知日報 · 2026-10-18'
+    : 'AI & Medical AI Daily · 2026-10-18';
+}
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.getElementById('theme-ic').textContent =
+    document.body.classList.contains('dark') ? '◑' : '◐';
+}
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.body.classList.add('dark');
+  document.getElementById('theme-ic').textContent = '◑';
+}
+window.addEventListener('scroll', function(){
+  document.getElementById('up').classList.toggle('show', window.scrollY > 600);
+});
+
+/* GitHub 星星數：無需授權，失敗或被限流時靜默保留佔位符 */
+(function(){
+  var el = document.getElementById('ghs');
+  if (!el || typeof fetch !== 'function') return;
+  fetch('https://api.github.com/repos/tingwei161803/ai-medical-daily', {headers:{Accept:'application/vnd.github+json'}})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if (!d || typeof d.stargazers_count !== 'number') return;
+      var n = d.stargazers_count;
+      el.textContent = n >= 1000 ? (Math.round(n/100)/10) + 'k' : String(n);
+    })
+    .catch(function(){});
+})();
+</script>
+</body>
+</html>
