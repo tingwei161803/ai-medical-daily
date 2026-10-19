@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>AI &amp; Medical AI Daily · 2026-10-19</title>
+<meta property="og:url" content="https://ai-medical-daily.peteraim.com/en/reports/2026-10-19.html" />
+<link rel="canonical" href="https://ai-medical-daily.peteraim.com/en/reports/2026-10-19.html" />
+<link rel="alternate" hreflang="zh-Hant" href="https://ai-medical-daily.peteraim.com/reports/2026-10-19.html" />
+<link rel="alternate" hreflang="en" href="https://ai-medical-daily.peteraim.com/en/reports/2026-10-19.html" />
+<link rel="alternate" hreflang="x-default" href="https://ai-medical-daily.peteraim.com/reports/2026-10-19.html" />
+<meta name="description" content="SCARLET-1 shows prostate-MRI AI matching radiologists across 22,445 exams in 22 countries, yet 28% of 25 sites fall below AUC 0.80; a Seoul study finds even a thoracic radiologist spots synthetic chest x-rays only 75.8% of the time; Mount Sinai measures one safety reminder cutting harmful LLM clinical choices from 16.6% to 10.1%.">
+<meta name="report-date" content="2026-10-19">
+<meta name="report-theme" content="clinical">
+<meta name="report-title-zh" content="10/13 登上《Radiology》的 SCARLET-1 把前列腺 MRI 的 AI 推到 22 國 46 城、22,445 次檢查的尺度，外部測試 AUC 0.86／0.89／0.84、與放射科醫師一致率 83.0% 至 87.9%——但同一份資料攤開 25 個外部站點，28% 的站 AUC 不到 0.80、32% 在 0.90 以上，作者自己寫下「安全臨床使用需要謹慎選擇操作點、在地測試與長期效能監測」；同一天首爾大學醫院把 40 張真實與 120 張合成胸部 X 光交給 7 位評讀者，拿下最高平衡準確率 77.9% 的是 Gemini 3.5 Flash、勝過兩位放射科醫師，而全體評讀者的 Fleiss' kappa 只有 0.213；而 Mount Sinai 在 20 個模型、逾 1,000 萬則回應裡數到 118 萬則潛在有害的臨床選擇，一句安全提醒把有害率從 16.6% 壓到 10.1%，20 個模型中 19 個有效、沒有一個歸零">
+<meta name="report-title-en" content="SCARLET-1, published in Radiology on 13 Oct, pushed prostate-MRI AI to 22,445 exams across 46 cities in 22 countries — external AUCs of 0.86, 0.89 and 0.84 and 83.0% to 87.9% agreement with radiologists, yet across 25 external sites 28% scored below AUC 0.80 and 32% at or above 0.90, with the authors themselves writing that safe clinical use will require careful operating point selection, local testing and longitudinal performance monitoring; the same day a Seoul National University Hospital reader study handed 40 real and 120 synthetic chest x-rays to seven evaluators and the top balanced accuracy, 77.9%, went to Gemini 3.5 Flash, beating both radiologists, while agreement across all readers sat at a Fleiss' kappa of 0.213; and Mount Sinai counted 1.18 million potentially harmful clinical choices in over 10 million responses from 20 models, where one safety reminder cut the harmful rate from 16.6% to 10.1% in 19 of the 20 — and to zero in none">
+<meta name="report-summary-zh" content="SCARLET-1 用 22 國 22,445 次前列腺 MRI 證明 AI 與放射科醫師打平，但 25 個站點中 28% 的 AUC 不到 0.80；首爾大學醫院發現連胸腔專科醫師也只有 75.8% 能分辨合成胸部 X 光；Mount Sinai 量到一句安全提醒可把 LLM 的有害臨床選擇從 16.6% 降到 10.1%。">
+<meta name="report-summary-en" content="SCARLET-1 shows prostate-MRI AI matching radiologists across 22,445 exams in 22 countries, yet 28% of 25 sites fall below AUC 0.80; a Seoul study finds even a thoracic radiologist spots synthetic chest x-rays only 75.8% of the time; Mount Sinai measures one safety reminder cutting harmful LLM clinical choices from 16.6% to 10.1%.">
+<meta property="og:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HJLDQZDK5V');
+</script>
+<link rel="stylesheet" href="/assets/report.css">
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><span>◆</span> <span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <div class="bar-sp"></div>
+    <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
+    <div class="seg">
+      <a href="/reports/2026-10-19.html" hreflang="zh-Hant" lang="zh-Hant" rel="alternate">中文</a>
+      <a class="on" href="/en/reports/2026-10-19.html" hreflang="en" lang="en" aria-current="page">EN</a>
+    </div>
+    <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="kicker">
+    <span class="en-inline">Monday · Clinical Applications &amp; Research</span>
+  </div>
+  <h1>
+    <span class="en">In one week prostate-MRI AI reached AUC 0.86 across 22 countries while 28% of 25 sites failed to clear 0.80 — the number to read today is not the mean, it is the spread</span>
+  </h1>
+  <div class="dateline">
+    <span class="en-inline">Monday, October 19, 2026 · Covering Oct 13–19 · Taipei time</span>
+  </div>
+  <p class="lede">
+    <span class="en">Three clinical papers this week point at the same thing: average AI performance has stopped being the question, and the <strong>spread</strong> has become it. <a href="https://pubs.rsna.org/doi/10.1148/radiol.262081" target="_blank" rel="noopener">SCARLET-1</a>, published in Radiology on 13 October, took prostate-MRI AI to 22,445 exams from 21,252 men across 46 cities in 22 countries, with external AUCs of 0.86, 0.89 and 0.84 and 83.0% to 87.9% agreement with radiologists, as <a href="https://www.auntminnie.com/clinical-news/mri/news/15837355/ai-on-par-with-radiologists-for-finding-prostate-cancer-on-mri" target="_blank" rel="noopener">AuntMinnie</a> reported the same day; yet open the same dataset across its 25 external sites and 28% land below AUC 0.80 while 32% sit at 0.90 or higher. That same day a Seoul National University Hospital reader study put 160 chest x-rays — 40 real, 120 synthetic — in front of seven evaluators, and the best balanced accuracy of 77.9% belonged to <a href="https://doi.org/10.1007/s10278-026-02339-7" target="_blank" rel="noopener">Gemini 3.5 Flash</a>, just ahead of a thoracic radiologist with twelve years' experience at 75.8%, with agreement across all readers at a Fleiss' kappa of 0.213. And Mount Sinai counted roughly 1.18 million potentially harmful clinical choices in over 10 million responses from 20 models, where a single safety reminder cut the harmful rate from 16.6% to <a href="https://www.mountsinai.org/about/newsroom/2026/mount-sinai-study-finds-safety-prompts-can-help-ai-models-make-safer-clinical-choices" target="_blank" rel="noopener">10.1%</a> — down in 19 of 20 models, to zero in none.</span>
+  </p>
+
+  <nav class="toc">
+    <a href="#top"><span class="en-inline">Top Stories</span></a>
+    <a href="#product"><span class="en-inline">Product Analysis</span></a>
+    <a href="#company"><span class="en-inline">Companies &amp; Competition</span></a>
+    <a href="#taiwan"><span class="en-inline">Taiwan Angle</span></a>
+    <a href="#reading"><span class="en-inline">Further Reading</span></a>
+    <a href="#refs"><span class="en-inline">References</span></a>
+  </nav>
+</div>
+
+<!-- ============ 01 重點新聞 ============ -->
+<section id="top">
+  <h2>01 — Top Stories</h2>
+  <div class="sec-title">
+    <span class="en">Seven items, ordered by strength of evidence; the last one is here on purpose, as the control</span>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Clinical study</span></span>
+      <span class="tag">Radboudumc</span><span class="tag">Radiology</span><span class="tag">10/13</span>
+    </div>
+    <h3>
+      <span class="en">SCARLET-1: 22,445 prostate MRIs across 46 cities in 22 countries — AI matches radiologists, but the spread between sites says more than the mean</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en"><a href="https://pubs.rsna.org/doi/10.1148/radiol.262081" target="_blank" rel="noopener">SCARLET-1</a> (Scaling Artificial Intelligence for Prostate Cancer Detection on MRI to Global, Multiethnic Populations), published in Radiology on 13 October and led by Anindo Saha of Radboud University Medical Center in Nijmegen, spans 46 cities in 22 countries. It draws on 22,445 prostate MRI exams from 21,252 men scanned between 2012 and 2024; 20,471 exams from 19,278 patients went to training and internal testing, and 1,974 patients to external testing. The target was Gleason grade group ≥2 cancer. External AUCs came in at 0.86 for the diagnostic cohort and 0.89 and 0.84 for two screening cohorts, with agreement against radiologist reads of 83.0%, 87.9% and 87.7%; subgroup analysis by age, risk, tumour location and ethnicity moved the AUC by a mean of only 0.02 (<a href="https://www.auntminnie.com/clinical-news/mri/news/15837355/ai-on-par-with-radiologists-for-finding-prostate-cancer-on-mri" target="_blank" rel="noopener">AuntMinnie, 2026-10-13</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Most prostate-MRI AI studies run on a few hundred to a few thousand cases from a handful of European and North American centres. SCARLET-1 pushes that to 22 countries and deliberately multiethnic cohorts, which turns external validity from an adjective into a measured quantity. The real signal, though, is not the mean: across 25 external sites, <strong>28% scored below AUC 0.80 and 32% at or above 0.90</strong>, with image quality alone spreading the AUC from 0.78 to 0.88. The authors put the conclusion more bluntly than any commentator would: "Safe clinical use will require careful operating point selection, local testing, and longitudinal performance monitoring." Read plainly, the paper's most useful output is not that the AI is ready, but that moving the same model to your own site may cost it a performance tier — and the published average gives you no way to predict that.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">AuntMinnie's summary bullets and body text disagree on the image-quality AUC range, giving 0.78–0.90 in one place and 0.78–0.88 in the other; this report uses the body figure, and the exact value should be checked against the paper itself. The coverage does not name the AI model or say whether it is a commercial product, and it reports no sensitivity, specificity or detection rates. This is a retrospective external evaluation rather than a prospective trial, and the authors say prospective evaluation of clinical, equity and cost outcomes has yet to be done.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://pubs.rsna.org/doi/10.1148/radiol.262081" target="_blank" rel="noopener">Radiology, 2026-10-13</a> ／ <a href="https://www.auntminnie.com/clinical-news/mri/news/15837355/ai-on-par-with-radiologists-for-finding-prostate-cancer-on-mri" target="_blank" rel="noopener">AuntMinnie, 2026-10-13</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Reader study</span></span>
+      <span class="tag">Seoul National University Hospital</span><span class="tag">LLM</span><span class="tag">10/13</span>
+    </div>
+    <h3>
+      <span class="en">In a real-versus-synthetic chest x-ray contest the winner was Gemini 3.5 Flash — and agreement across the seven evaluators sat at a Fleiss' kappa of 0.213</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">A Seoul National University Hospital team published a reader study in the Journal of Imaging Informatics in Medicine (<a href="https://doi.org/10.1007/s10278-026-02339-7" target="_blank" rel="noopener">DOI 10.1007/s10278-026-02339-7</a>, 13 October): 160 chest x-rays, 40 of them real and 120 generated by three different AI pipelines, put to seven evaluators who had to call each one real or synthetic. The panel was two radiologists (RAD1, twelve years post-MD with seven in dedicated thoracic radiology; RAD2, thirteen years post-MD in a non-thoracic subspecialty), two general practitioners, and three LLMs: Gemini 3.5 Flash, GPT-4o and Claude 3.7 Sonnet. Because synthetic images made up 75% of the set, the primary metric was balanced accuracy. Gemini 3.5 Flash led on 77.9%, statistically indistinguishable from RAD1's 75.8%; the general practitioners were near chance. On diffusion-model images humans were right 82% to 100% of the time against 32% to 72% for the LLMs, while specificity on real images ran the other way, 90% to 100% for the LLMs and 50% to 100% for the humans. Fleiss' kappa across all evaluators was 0.213 (<a href="https://www.auntminnie.com/clinical-news/digital-x-ray/article/15837620/radiologists-llms-fail-at-spotting-aigenerated-chest-xrays" target="_blank" rel="noopener">AuntMinnie, 2026-10-15</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Synthetic images are being used hard in two directions at once: padding training sets with rare findings, and standing in for real data in de-identified releases. Both assume someone can tell the difference when it matters. The study's answer is that nobody reliably can — a thoracic subspecialist reached only 75.8%, the general practitioners were close to a coin flip, and the Fleiss' kappa of 0.213 across the seven falls in the "poor" band, meaning there was not even agreement on which images looked suspicious. The usable finding is in the direction of the errors: the LLMs almost never mislabelled a real image (90% to 100% specificity) but missed the fingerprints of diffusion models, and the humans did the reverse. That complementarity argues for chaining human and machine review in provenance audits rather than choosing one; it also concedes that no single gatekeeper is trustworthy today.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">160 images and seven evaluators is a small sample, from one institution and one modality, and with synthetic images at 75% of the set raw accuracy cannot be read directly, only balanced accuracy. The coverage does not name the first author or identify the three generation pipelines. The three LLMs tested are general-purpose models rather than medical ones, so the result does not extrapolate to purpose-trained detectors.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://doi.org/10.1007/s10278-026-02339-7" target="_blank" rel="noopener">Journal of Imaging Informatics in Medicine, 2026-10-13</a> ／ <a href="https://www.auntminnie.com/clinical-news/digital-x-ray/article/15837620/radiologists-llms-fail-at-spotting-aigenerated-chest-xrays" target="_blank" rel="noopener">AuntMinnie, 2026-10-15</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">LLM safety</span></span>
+      <span class="tag">Mount Sinai</span><span class="tag">Communications Medicine</span><span class="tag">10/08</span>
+    </div>
+    <h3>
+      <span class="en">One safety reminder cut potentially harmful clinical choices from 16.6% to 10.1% across 20 models, working in 19 of them — and zeroing out none</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">A team at the Icahn School of Medicine at Mount Sinai — first author Mahmud Omar, co-senior author Girish N. Nadkarni, who chairs the Windreich Department of Artificial Intelligence and Human Health — published "Evaluating Large Language Model Responses to Unsafe Clinical Instructions" in the 26 September online issue of Communications Medicine (<a href="https://www.nature.com/articles/s43856-026-01933-8" target="_blank" rel="noopener">DOI 10.1038/s43856-026-01933-8</a>), with the institution's release following on 8 October. They tested 20 models against 501 variations of 50 clinical scenarios plus 100 cases adapted from de-identified discharge records. Each scenario asked the model to skip recommended follow-up blood tests to cut workload, sometimes framed as urgent and sometimes as an instruction from a superior, with four options to choose from: comply, keep the recommended follow-up, seek clinician help, and so on. Three short safety reminders were tested, each combination run ten times with the answer order randomised. Of more than 10 million responses, roughly 1.18 million were potentially harmful clinical choices; <strong>the harmful rate was 16.6% with no reminder and 10.1% with one</strong>, falling in 19 of the 20 models (<a href="https://www.mountsinai.org/about/newsroom/2026/mount-sinai-study-finds-safety-prompts-can-help-ai-models-make-safer-clinical-choices" target="_blank" rel="noopener">Mount Sinai, 2026-10-08</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This is one of the few large-scale evaluations to treat prompt engineering as a measurable safety control, and what it measures is not knowledge error but <strong>compliance with an improper instruction</strong> — urgency and authority applied as pressure to see whether the model will drop a follow-up to save effort. Those are exactly the pressures a hospital LLM meets in practice: bed pressure, the end of a shift, a line from the attending. The effect is real (16.6% to 10.1%, working in 19 of 20), but 10.1% means one in ten responses still lands on the harmful option, and errors of this kind look entirely reasonable, unlike hallucinations which announce themselves. Set beside the AMA framework in the next item, it gives today's full shape: the technical side can knock the risk down a tier, and the institutional side has to assume it will never reach zero.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">The release does not name the 20 models, so there is no way to tell which generations or vendors are covered. The scenarios are numerous but homogeneous — all built around skipping a follow-up blood test — and whether the result carries over to prescribing, referral or image interpretation is unknown. The authors say they have not yet covered prompt injection against autonomous agents or pressure from time and budget, and name that as the next step. This item is drawn from the institutional release rather than the full paper.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.nature.com/articles/s43856-026-01933-8" target="_blank" rel="noopener">Communications Medicine, 2026-09-26</a> ／ <a href="https://www.mountsinai.org/about/newsroom/2026/mount-sinai-study-finds-safety-prompts-can-help-ai-models-make-safer-clinical-choices" target="_blank" rel="noopener">Mount Sinai Newsroom, 2026-10-08</a> ／ <a href="https://www.eurekalert.org/news-releases/1146930" target="_blank" rel="noopener">EurekAlert</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Governance</span></span>
+      <span class="tag">American Medical Association</span><span class="tag">Agentic AI</span><span class="tag">10/16</span>
+    </div>
+    <h3>
+      <span class="en">The AMA drew its first line around clinical AI that acts on its own: authority has to be earned through evidence and held through demonstrated performance</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On 16 October the American Medical Association's Center for Digital Health and AI issued a governance framework for agentic AI that takes on clinical functions (<a href="https://www.ama-assn.org/practice-management/digital-health/governance-framework-agentic-ai-assuming-clinical-functions" target="_blank" rel="noopener">the framework itself</a>). Its central claim is that clinical authority "should be earned through evidence and maintained through demonstrated performance," with oversight and authority shifting as evidence, performance, risk and technology change — authority as a revocable licence rather than a one-off clearance. The AMA names four areas of work: defining an AI system's clinical role, validating its performance and safeguards, setting limits on its authority, and establishing accountability for its use, risks and outcomes included. Chief executive John Whyte is named, and says the work will feed back into the AMA's positions on liability, licensure and regulation (<a href="https://www.fiercehealthcare.com/regulatory/american-medical-association-rolls-out-governance-framework-agentic-ai-solutions" target="_blank" rel="noopener">Fierce Healthcare, 2026-10-16</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">The framework sits at the other end of the same problem as the three studies above. SCARLET-1 shows one model dropping a performance tier when it moves site; Mount Sinai shows models complying under pressure from authority. Both say that for agentic AI, clear-once-and-forever does not hold. The AMA's answer is to make clinical authority a licence that has to be continuously re-earned, which is the same sentence as the SCARLET-1 authors' call for local testing and longitudinal monitoring, spoken in institutional rather than statistical language. Note who is speaking: the AMA is not a regulator but the physicians' professional body, and by drawing the line around agentic authority first it stakes out the question of who is accountable ahead of the FDA and state legislatures.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">What is public so far is four directional areas of work; the Fierce write-up gives no formal count of clauses and no numeric validation thresholds. The framework carries no legal force — it is a professional body's position, not a regulatory requirement. One distinction worth keeping straight: the "seven policy principles" mentioned in the coverage belong to the AMA's separate May framework on AI deepfake impersonation of physicians, not to this one.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.fiercehealthcare.com/regulatory/american-medical-association-rolls-out-governance-framework-agentic-ai-solutions" target="_blank" rel="noopener">Fierce Healthcare, 2026-10-16</a> ／ <a href="https://www.ama-assn.org/practice-management/digital-health/governance-framework-agentic-ai-assuming-clinical-functions" target="_blank" rel="noopener">AMA</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Workforce</span></span>
+      <span class="tag">Neiman Health Policy Institute</span><span class="tag">JACR</span><span class="tag">10/13</span>
+    </div>
+    <h3>
+      <span class="en">The claim that AI has already absorbed the growth in imaging demand got five numbers thrown back at it by the Neiman institute</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">The Harvey L. Neiman Health Policy Institute in Reston, Virginia, led by Elizabeth Rula, published an opinion piece in the Journal of the American College of Radiology (<a href="https://www.jacr.org/article/S1546-1440(26)00469-2/fulltext" target="_blank" rel="noopener">JACR full text</a>) answering 2026 comments in JAMA Health Forum by Harvard's David Cutler and Lev Klarnet (<a href="https://jamanetwork.com/journals/jama-health-forum/fullarticle/2847522" target="_blank" rel="noopener">JAMA Health Forum</a>). Cutler and Klarnet had argued that declining imaging use "allowed the US to meet the need for imaging without an increase in radiologists." The HPI team put up five figures: a 2025 projection has US imaging use growing 17% to 27% by 2055 on population growth and ageing; Medicare Part B data show significant CT and MRI volume increases from 2016 to 2024; imaging RVUs per beneficiary peaked in 2021, up 13% since 2005; 12.5% of Medicare office-based imaging studies were repeated between 2013 and 2022; and inflation-adjusted radiologist reimbursement fell 48.3% between 2005 and 2025 (<a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/article/15837225/hpi-evidence-contradicts-broad-claims-about-ai-radiology-workforce" target="_blank" rel="noopener">AuntMinnie, 2026-10-13</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">The argument looks like workforce statistics and is really about what kind of AI hospitals buy. If Cutler's version holds — demand falling, staffing adequate — then imaging AI's value proposition is substituting for reading capacity. If the HPI version holds — demand still growing while reimbursement halves over two decades — then AI lands not as a replacement for people but as a way to flatten cost per read, and the product shifts from automated interpretation toward workflow acceleration and triage. That difference shows up directly in procurement: the first buys algorithm sensitivity, the second buys integration depth and turnaround time. Note too that the 48.3% fall in reimbursement is itself why the labour-saving pitch for imaging AI has always been hard to land — the unit price of that labour has already been squeezed once.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">This is an opinion piece rather than original research, and both sides are citing datasets they already had. AuntMinnie gives no publication date for the HPI piece, so this report anchors it to the 13 October coverage date. The Medicare Part B CT and MRI growth is described only as "significant," with no figure given. HPI's funding and institutional position are tied to the American College of Radiology, which is worth holding in view while reading it.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/article/15837225/hpi-evidence-contradicts-broad-claims-about-ai-radiology-workforce" target="_blank" rel="noopener">AuntMinnie, 2026-10-13</a> ／ <a href="https://www.jacr.org/article/S1546-1440(26)00469-2/fulltext" target="_blank" rel="noopener">JACR</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Research partnership</span></span>
+      <span class="tag">Brainomix</span><span class="tag">Pulmonary Fibrosis Foundation</span><span class="tag">10/14</span>
+    </div>
+    <h3>
+      <span class="en">Brainomix pulled patients into the design end of an AI imaging study — the question is not accuracy, it is what patients want to know</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On 14 October the UK AI imaging firm Brainomix announced a partnership with the Pulmonary Fibrosis Foundation, a Chicago-based patient advocacy group, to bring its patient community into AI imaging research on fibrotic interstitial lung disease. The study frames three questions: what patients with pulmonary fibrosis want to know about their own disease; how they respond to the visual and quantitative outputs of Brainomix 360 e-Lung; and whether imaging-derived insight can support patient–clinician conversations about starting, continuing or changing treatment. e-Lung is <a href="https://www.auntminnie.com/clinical-news/ct/article/15671101/brainomix-celebrates-fda-clearance-for-elung" target="_blank" rel="noopener">FDA-cleared</a> and CE-marked, and automatically quantifies and visualises radiographic features on lung CT. Brainomix has been <a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/article/15679830/brainomix-boehringer-ingelheim-partner-on-improving-lung-disease-care" target="_blank" rel="noopener">partnered with Boehringer Ingelheim</a> since 2024 on assessing e-Lung's clinical value in fibrotic ILD (<a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/news/15837482/brainomix-adds-patient-input-to-elung-lung-ct-study" target="_blank" rel="noopener">AuntMinnie, 2026-10-14</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Imaging AI output usually stops at the radiology report, read by a physician. Putting quantitative output in front of patients raises the bar for interpretability from legible-to-a-clinician to legible-to-a-patient — and in fibrotic ILD, where the central decision is when to start antifibrotic therapy, that is part of the clinical pathway rather than a public relations gesture. The more practical reason is reimbursement: once payers want proof that AI changed a clinical decision rather than just raised an AUC, patient-side decision data becomes the evidence. Brainomix now holds both ends, a pharmaceutical partner in Boehringer — a principal supplier of antifibrotics — and a patient organisation, and that combination is groundwork for imaging biomarkers driving drug decisions.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">This is a partnership announcement, not a result. The coverage gives no enrolment, no site count, no timeline, no funding figure and names no investigator. e-Lung's FDA clearance is a device authorisation of the 510(k) kind, which is a different thing from demonstrated clinical benefit; and the Brainomix–Boehringer collaboration, running since 2024, has yet to produce published outcome-endpoint data.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/news/15837482/brainomix-adds-patient-input-to-elung-lung-ct-study" target="_blank" rel="noopener">AuntMinnie, 2026-10-14</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Control case</span></span>
+      <span class="tag">Scientific Reports</span><span class="tag">多模態影像 / Multimodal</span><span class="tag">10/03</span>
+    </div>
+    <h3>
+      <span class="en">Spotting coronary heart disease from tongue and face photos at AUC 0.9992 — the number is itself the reason to discount it</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Scientific Reports published a study by Wang Y and colleagues (<a href="https://doi.org/10.1038/s41598-026-71871-x" target="_blank" rel="noopener">DOI 10.1038/s41598-026-71871-x</a>), covered by EMJ on 3 October. It enrolled 518 participants, 200 with coronary heart disease and 318 healthy controls, with an independent test set of 104. The model is a dual-branch deep network fusing tongue and facial image features on ResNet50 and EfficientNet-B1 backbones, with Grad-CAM for explainability; the tongue branch attends to the central tongue body and coating, the facial branch to the perioral and zygomatic buccal regions. On the independent test set the multimodal ResNet50 reached F1 0.9756 and AUC 0.9992, classifying 102 of 104 correctly (about 98.1%); tongue-only gave F1 0.9524 and AUC 0.9867, face-only F1 0.9250 and AUC 0.9887. Five-fold cross-validation across all 518 gave multimodal ResNet50 AUC 0.9980±0.0027 and F1 0.9827±0.0141, and multimodal EfficientNet-B1 AUC 0.9987±0.0014 and F1 0.9829±0.0138 (<a href="https://www.emjreviews.com/cardiology/news/tongue-and-facial-images-used-to-detect-coronary-heart-disease/" target="_blank" rel="noopener">EMJ, 2026-10-03</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">It is here not because it will reach the clinic but because it forms a nearly perfect control against item 1. SCARLET-1 reached AUC 0.84 to 0.89 on external testing across 22 countries, 22,445 exams and 1,974 external patients; this one reached 0.9992 on 518 participants with a 104-person test set. The gap is not in model capability but in how the test set was built — a case-control design of 200 diagnosed against 318 healthy people inflates discrimination by construction, because no real screening population splits that cleanly. When reading clinical AI papers, <strong>the closer the AUC sits to 1, the sooner you should go looking at where the denominator came from</strong>. This is the one study today whose numbers are too good not to question first, and it is kept here deliberately as a yardstick.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">Almost everything here needs discounting: a very small sample (518, with an independent test set of only 104); a case-control design rather than consecutive enrolment from a screening population; single-source data, with EMJ stating plainly that external validation is still required; no sensitivity or specificity reported; nothing on where participants were recruited, their ethnicity or comorbidities; and no exact publication date or institutional affiliation beyond the lead author's name. Grad-CAM attention regions are not a causal mechanism.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.emjreviews.com/cardiology/news/tongue-and-facial-images-used-to-detect-coronary-heart-disease/" target="_blank" rel="noopener">EMJ Reviews, 2026-10-03</a> ／ <a href="https://doi.org/10.1038/s41598-026-71871-x" target="_blank" rel="noopener">Scientific Reports</a></p></div>
+  </div>
+</section>
+
+<!-- ============ 02 產品分析 ============ -->
+<section id="product">
+  <h2>02 — Product Analysis</h2>
+  <div class="sec-title">
+    <span class="en">Two products, two ways of writing imaging AI's value into a business model: one built on the scale of global validation, the other on a decision chain running from pharma to patients</span>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>SCARLET-1 (prostate MRI AI)</h3>
+      <p class="sub"><span class="en-inline">Prostate MRI detection model · led by Radboud University Medical Center (Netherlands)</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> Detection of clinically significant Gleason grade group ≥2 cancer on prostate MRI, positioned as a second reader or triage tool for radiologists. Training and internal testing used 20,471 exams from 19,278 patients, external testing 1,974 patients, across diagnostic and screening cohorts in 46 cities in 22 countries (<a href="https://pubs.rsna.org/doi/10.1148/radiol.262081" target="_blank" rel="noopener">Radiology, 2026-10-13</a>). Its selling point is not point accuracy but the number of distinct data distributions it has been validated against — the thing this field most lacks, since PI-RADS reading itself carries high reader variability.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: the subgroup stability is real. Across age, risk stratum, tumour location and ethnicity, the mean ΔAUC was only 0.02 (<a href="https://www.auntminnie.com/clinical-news/mri/news/15837355/ai-on-par-with-radiologists-for-finding-prostate-cancer-on-mri" target="_blank" rel="noopener">AuntMinnie</a>) — an equity metric most imaging AI papers simply do not report.</span>
+        </li>
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: agreement with radiologist reads of 83.0% to 87.9% puts it in second-reader rather than replacement territory, and that positioning is easier for both clinicians and regulators to accept than a claim of beating the radiologist.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: the between-site spread is wide enough to undo a procurement assumption — 28% of the 25 external sites scored below AUC 0.80. The average a buyer takes from the paper has no predictive power for their own site.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: the coverage does not say whether the model is a commercial product or name a vendor, and reports no sensitivity, specificity or detection rate. Without those three, a clinical team cannot choose an operating point — and the authors themselves make operating point selection a precondition of safe use.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>Brainomix 360 e-Lung</h3>
+      <p class="sub"><span class="en-inline">Quantitative lung CT imaging biomarker · Brainomix (UK)</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> Automatic quantification and visualisation of radiographic features on lung CT for tracking fibrotic interstitial lung disease, <a href="https://www.auntminnie.com/clinical-news/ct/article/15671101/brainomix-celebrates-fda-clearance-for-elung" target="_blank" rel="noopener">FDA-cleared</a> and CE-marked. Its commercial position is not the radiology worklist but the <strong>drug decision chain</strong>: a collaboration with Boehringer Ingelheim on clinical value since 2024, and from 14 October the Pulmonary Fibrosis Foundation's patient community, with all three research questions circling whether imaging output can carry a conversation about starting, continuing or changing treatment (<a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/news/15837482/brainomix-adds-patient-input-to-elung-lung-ct-study" target="_blank" rel="noopener">AuntMinnie, 2026-10-14</a>).</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: it holds both ends at once. Boehringer is a principal supplier of antifibrotics, and the patient organisation supplies evidence on whether AI changed a patient's decision — exactly the kind of endpoint payers will be asking for (<a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/article/15679830/brainomix-boehringer-ingelheim-partner-on-improving-lung-disease-care" target="_blank" rel="noopener">the 2024 collaboration</a>).</span>
+        </li>
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: positioning as a quantitative biomarker rather than a diagnosis carries lower regulatory and liability exposure than autonomous interpretation, and quantitative output lends itself to longitudinal tracking, which grows into subscription revenue rather than per-read fees.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: clearance is not benefit. The Boehringer collaboration has run since 2024 without published outcome-endpoint data, and the 14 October announcement carries no enrolment, site count, timeline or funding figure at all.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: binding tightly to a drug maker can cost a biomarker its credibility. When the same quantitative output is used to decide whether to start that company's drug, the need for independent validation goes up, not down.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 公司與競爭 ============ -->
+<section id="company">
+  <h2>03 — Companies &amp; Competition</h2>
+  <div class="sec-title">
+    <span class="en">Who stands where, on what, against whom</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th><span class="en-inline">Company / institution</span></th>
+        <th><span class="en-inline">Recent state &amp; numbers</span></th>
+        <th><span class="en-inline">Position &amp; moat</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Radboud UMC</strong><br><span class="en-inline">Nijmegen, Netherlands · academic imaging AI hub</span></td>
+          <td>
+            <span class="en">Led <a href="https://pubs.rsna.org/doi/10.1148/radiol.262081" target="_blank" rel="noopener">SCARLET-1</a> in Radiology on 13 Oct, 22,445 prostate MRIs across 46 cities in 22 countries. Jessie Gommers of the same institution is first author on the <a href="https://ecancer.org/en/news/27721-ai-supported-mammography-screening-results-in-fewer-aggressive-and-advanced-breast-cancers-finds-full-results-from-first-randomised-controlled-trial" target="_blank" rel="noopener">MASAI final-results paper</a> in The Lancet (reported 30 Jan 2026).</span>
+          </td>
+          <td>
+            <span class="en">The moat is a multinational data consortium and methodological credibility, not a product. The weakness is that a paper is not a product: the model's vendor is undisclosed, and clinical deployment still has to pass through a manufacturer and a regulator.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Brainomix</strong><br><span class="en-inline">UK · quantitative imaging biomarkers</span></td>
+          <td>
+            <span class="en">e-Lung is FDA-cleared and CE-marked; partnered with Boehringer Ingelheim since 2024; on 14 Oct announced a partnership with the Pulmonary Fibrosis Foundation bringing patients into study design (<a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/news/15837482/brainomix-adds-patient-input-to-elung-lung-ct-study" target="_blank" rel="noopener">AuntMinnie, 2026-10-14</a>). No revenue or enrolment disclosed.</span>
+          </td>
+          <td>
+            <span class="en">It runs the imaging-biomarker-tied-to-drug-decision route, a different track from workflow vendors like Aidoc and Qure.ai that lead with acute triage. The weakness is one indication bound tightly to one drug maker.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Mount Sinai</strong><br><span class="en-inline">US · Windreich Department of AI and Human Health</span></td>
+          <td>
+            <span class="en">Published its unsafe-instruction LLM study online in Communications Medicine on 26 Sep: 20 models, over 10 million responses, about 1.18 million potentially harmful choices, harmful rate 16.6% falling to 10.1% (<a href="https://www.mountsinai.org/about/newsroom/2026/mount-sinai-study-finds-safety-prompts-can-help-ai-models-make-safer-clinical-choices" target="_blank" rel="noopener">Mount Sinai, 2026-10-08</a>).</span>
+          </td>
+          <td>
+            <span class="en">Builds influence from the independent-evaluator position, selling standards rather than products. The moat is in-house real clinical records and evaluation method; the weakness is the undisclosed model list, which costs the result reproducibility.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>American Medical Association</strong><br><span class="en-inline">US · physicians' professional body</span></td>
+          <td>
+            <span class="en">Issued its agentic AI governance framework on 16 Oct with four areas of work, chief executive John Whyte named, and said explicitly that it will shape AMA positions on liability, licensure and regulation (<a href="https://www.fiercehealthcare.com/regulatory/american-medical-association-rolls-out-governance-framework-agentic-ai-solutions" target="_blank" rel="noopener">Fierce Healthcare, 2026-10-16</a>).</span>
+          </td>
+          <td>
+            <span class="en">The moat is bargaining position: staking out accountability for physicians before the FDA and state legislatures settle it. The weakness is that the framework has no legal force and so far offers direction without numeric validation thresholds.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>長佳智能 EverFortune AI</strong><br><span class="en-inline">Taiwan (6841) · AI medical devices</span></td>
+          <td>
+            <span class="en">57 device licences in all: 15 US FDA, 24 Taiwan TFDA, 6 Thailand, 6 Malaysia, 5 Vietnam, 1 Singapore, with more than 70 customers worldwide. Its appendicitis CT assessment system took US FDA 510(k) clearance in April 2026 and TFDA approval on 18 August (<a href="https://www.biotech-edu.com/20260819-everfortuneai-tfda-license/" target="_blank" rel="noopener">GeneOnline/環球生技, 2026-08-19</a>). No revenue figures disclosed.</span>
+          </td>
+          <td>
+            <span class="en">The moat is licence count and an early position across Southeast Asia, competing on breadth across indications and markets rather than depth at one. The weakness is precisely what item 1 points at: a licence evidences safety and equivalence, not performance at any given hospital.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>智捷醫學科技</strong><br><span class="en-inline">Taiwan · 3D medical imaging and PACS</span></td>
+          <td>
+            <span class="en">Its Anatomy Cloud technology converts 2D greyscale CT and MRI into coloured 3D models in roughly three to five minutes, identifying and separating more than 260 organs and tissues, exportable to mixed-reality headsets for preoperative planning; it is being tested in the Ministry of Health and Welfare data centre, targeting all 29 of Taiwan's medical centres by 2028. It has acquired the Japanese medical imaging firm Holoeyes and its network of more than 100 hospitals; chairman Sun Chi-hsin (<a href="https://www.cna.com.tw/news/afe/202610050107.aspx" target="_blank" rel="noopener">CNA, 2026-10-05</a>).</span>
+          </td>
+          <td>
+            <span class="en">The moat is its position co-developing a domestic 3D PACS with the health ministry — infrastructure, once in place, is hard to displace. The weakness is no disclosed revenue and no clinical benefit evidence, with the 29-medical-centre target still two years out.</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>Today's competitive structure forks between depth of evidence and breadth of distribution.</strong> On one side Radboud and Mount Sinai sell method and standards, their output papers and evaluation frameworks, their influence travelling through procurement specifications and regulatory language. Brainomix turns evidence into a path to reimbursement, assembling an endpoint payers will recognise out of a drug maker and a patient community. EverFortune AI and Zhijie bet on distribution and infrastructure position, getting licences and systems in place first. These could run in parallel, but SCARLET-1's finding that 28% of 25 sites fall below AUC 0.80 makes the third route steadily more expensive — because it shifts the burden of proof from obtaining a clearance to proving performance continuously at every hospital, and the AMA's 16 October framework is the institutional endorsement of exactly that shift.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============ 04 台灣視角 ============ -->
+<section id="taiwan">
+  <h2>04 — Taiwan Angle</h2>
+  <div class="sec-title">
+    <span class="en">The local testing and longitudinal monitoring SCARLET-1 asks for already has an institutional design running in Taiwan</span>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>(1) The premise behind Taiwan's three ministry AI centres is exactly item 1's conclusion.</strong> The Ministry of Health and Welfare runs a Center for Responsible AI in Healthcare, a Center for External AI Validation in Healthcare and a Center for Clinical AI Impact Evaluation, with the impact work spread across five medical centres: National Taiwan University Hospital on retinal AI for eye disease, Taipei Veterans General Hospital on AI-assisted lung CT reading for early lung cancer, Taichung Veterans General Hospital on an osteoporosis AI diagnostic system, National Cheng Kung University Hospital on automated CT muscle composition measurement to flag possible chemotherapy side effects, and Tri-Service General Hospital on AI ECG reading transmitted from ambulances to receiving hospitals. Study design is guided by Harvard biostatistics professor Li-Ren Wei, with NCKU president Meng-Ru Shen convening a five-member review committee (<a href="https://aicenter.mohw.gov.tw/AC/cp-7200-82167-208.html" target="_blank" rel="noopener">MOHW Smart Healthcare Center, 2025-04-14</a>). The SCARLET-1 authors ask for local testing and longitudinal performance monitoring; these three centres divide precisely into clearance, local validation and impact tracking. Taiwan built the institution first — what is missing is published results.</span>
+    </p>
+    <p>
+      <span class="en"><strong>(2) EverFortune AI's 57 device licences run straight into today's licence-is-not-field-performance problem.</strong> The company holds 57 licences across markets (15 US FDA, 24 Taiwan TFDA, 6 Thailand, 6 Malaysia, 5 Vietnam, 1 Singapore) and more than 70 customers worldwide, with its appendicitis CT assessment system clearing US FDA 510(k) in April 2026 and TFDA approval on 18 August (<a href="https://www.biotech-edu.com/20260819-everfortuneai-tfda-license/" target="_blank" rel="noopener">GeneOnline/環球生技, 2026-08-19</a>). The 510(k) route runs on substantial equivalence and by design requires no clinical trial. SCARLET-1 shows one model varying by a full performance tier across 25 sites — and if that holds for prostate MRI there is no reason to assume it does not hold for emergency abdominal CT. A Taiwanese vendor expanding across several Southeast Asian markets at once should be preparing local validation reports for each deployment site rather than more licences; otherwise the first time performance slips at an overseas hospital, there is nothing in hand to explain it with.</span>
+    </p>
+    <p>
+      <span class="en"><strong>(3) If Zhijie's domestic 3D PACS is to reach 29 medical centres, image provenance auditing becomes an infrastructure-level problem.</strong> Zhijie Medical Technology's Anatomy Cloud converts 2D CT and MRI into coloured 3D models in roughly three to five minutes, separating more than 260 organs and tissues; it is in testing at the health ministry's data centre, targeting all 29 of Taiwan's medical centres by 2028, and the company has acquired Japan's Holoeyes along with its network of more than 100 hospitals (<a href="https://www.cna.com.tw/news/afe/202610050107.aspx" target="_blank" rel="noopener">CNA, 2026-10-05</a>). Put item 2 into that context: when a thoracic subspecialist reaches only 75.8% balanced accuracy on synthetic chest x-rays and seven evaluators agree at a Fleiss' kappa of 0.213, any national imaging infrastructure has to record provenance and generation history at the <strong>write</strong> end rather than hoping someone downstream can tell. For a 3D PACS spanning Taiwan and Japan and co-built with the health ministry, that belongs at the same priority as reconstruction accuracy.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============ 05 延伸閱讀 ============ -->
+<section id="reading">
+  <h2>05 — Further Reading</h2>
+  <div class="sec-title">
+    <span class="en">Five chosen on three tests: primary publication first, method and numbers visible, and reading it changes how much you trust a class of claim</span>
+  </div>
+
+  <ol class="reading">
+    <li>
+      <a href="https://pubs.rsna.org/doi/10.1148/radiol.262081" target="_blank" rel="noopener">SCARLET-1: Scaling Artificial Intelligence for Prostate Cancer Detection on MRI to Global, Multiethnic Populations — Radiology (2026-10-13)</a>
+      <p class="why"><span class="en">The one paper today worth reading end to end. The point is not the AUC in the abstract but the per-site distribution across 25 sites in the supplementary material — that is what a procurement decision actually needs.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/articles/s43856-026-01933-8" target="_blank" rel="noopener">Evaluating Large Language Model Responses to Unsafe Clinical Instructions — Communications Medicine (2026-09-26)</a>
+      <p class="why"><span class="en">It turns whether a model complies with an improper instruction under pressure into a repeatable instrument rather than an anecdote. The experimental design repays reading more than the conclusion does, especially the four-option and authority-framing setup.</span></p>
+    </li>
+    <li>
+      <a href="https://doi.org/10.1007/s10278-026-02339-7" target="_blank" rel="noopener">Detection of AI-generated chest radiographs by radiologists and large language models — Journal of Imaging Informatics in Medicine (2026-10-13)</a>
+      <p class="why"><span class="en">If you run any training or de-identification programme that touches synthetic images, this will change how confident you are that someone can tell them apart when it matters. The section on humans and machines erring in opposite directions is the part to copy down.</span></p>
+    </li>
+    <li>
+      <a href="https://www.ama-assn.org/practice-management/digital-health/governance-framework-agentic-ai-assuming-clinical-functions" target="_blank" rel="noopener">Governance framework for agentic AI assuming clinical functions — American Medical Association (2026-10-16)</a>
+      <p class="why"><span class="en">Read the original rather than the coverage, because the wording is the substance: should that phrase — earned through evidence, maintained through demonstrated performance — reach state legislation, procurement and liability both get rewritten.</span></p>
+    </li>
+    <li>
+      <a href="https://ecancer.org/en/news/27721-ai-supported-mammography-screening-results-in-fewer-aggressive-and-advanced-breast-cancers-finds-full-results-from-first-randomised-controlled-trial" target="_blank" rel="noopener">AI-supported mammography screening results in fewer aggressive and advanced breast cancers: full MASAI results — ecancer (2026-01-30)</a>
+      <p class="why"><span class="en">Not this week's news, but the yardstick for today: over 100,000 women randomised, interval cancers 1.55 versus 1.76 per 1,000 (a 12% reduction), 16% fewer invasive cancers, 21% fewer large cancers, 27% fewer aggressive subtypes. That is what a genuinely positive RCT looks like — measure the other six items of today against it.</span></p>
+    </li>
+  </ol>
+</section>
+
+<!-- ============ 06 參考文獻 ============ -->
+<section id="refs">
+  <h2>06 — References</h2>
+  <div class="sec-title">
+    <span class="en">References</span>
+  </div>
+
+  <div class="panel">
+    <ol class="refs">
+      <li>SCARLET-1: Scaling Artificial Intelligence for Prostate Cancer Detection on MRI to Global, Multiethnic Populations. <em>Radiology</em>, 2026-10-13. <a href="https://pubs.rsna.org/doi/10.1148/radiol.262081" target="_blank" rel="noopener">pubs.rsna.org</a></li>
+      <li>AI on par with radiologists for finding prostate cancer on MRI. <em>AuntMinnie</em>, 2026-10-13. <a href="https://www.auntminnie.com/clinical-news/mri/news/15837355/ai-on-par-with-radiologists-for-finding-prostate-cancer-on-mri" target="_blank" rel="noopener">auntminnie.com</a></li>
+      <li>Detection of AI-generated chest radiographs by radiologists and large language models. <em>Journal of Imaging Informatics in Medicine</em>, 2026-10-13. <a href="https://doi.org/10.1007/s10278-026-02339-7" target="_blank" rel="noopener">doi.org</a></li>
+      <li>Radiologists, LLMs fail at spotting AI-generated chest x-rays. <em>AuntMinnie</em>, 2026-10-15. <a href="https://www.auntminnie.com/clinical-news/digital-x-ray/article/15837620/radiologists-llms-fail-at-spotting-aigenerated-chest-xrays" target="_blank" rel="noopener">auntminnie.com</a></li>
+      <li>Evaluating Large Language Model Responses to Unsafe Clinical Instructions. <em>Communications Medicine</em>, 2026-09-26. <a href="https://www.nature.com/articles/s43856-026-01933-8" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Mount Sinai Study Finds Safety Prompts Can Help AI Models Make Safer Clinical Choices. <em>Mount Sinai Newsroom</em>, 2026-10-08. <a href="https://www.mountsinai.org/about/newsroom/2026/mount-sinai-study-finds-safety-prompts-can-help-ai-models-make-safer-clinical-choices" target="_blank" rel="noopener">mountsinai.org</a></li>
+      <li>Mount Sinai study finds safety prompts can help AI models make safer clinical choices. <em>EurekAlert</em>, 2026-10. <a href="https://www.eurekalert.org/news-releases/1146930" target="_blank" rel="noopener">eurekalert.org</a></li>
+      <li>AMA rolls out agentic AI governance framework. <em>Fierce Healthcare</em>, 2026-10-16. <a href="https://www.fiercehealthcare.com/regulatory/american-medical-association-rolls-out-governance-framework-agentic-ai-solutions" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>Governance framework for agentic AI assuming clinical functions. <em>American Medical Association</em>, 2026-10. <a href="https://www.ama-assn.org/practice-management/digital-health/governance-framework-agentic-ai-assuming-clinical-functions" target="_blank" rel="noopener">ama-assn.org</a></li>
+      <li>HPI: Evidence contradicts broad claims about AI, radiology workforce. <em>AuntMinnie</em>, 2026-10-13. <a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/article/15837225/hpi-evidence-contradicts-broad-claims-about-ai-radiology-workforce" target="_blank" rel="noopener">auntminnie.com</a></li>
+      <li>Neiman Health Policy Institute opinion on AI and the radiology workforce. <em>Journal of the American College of Radiology</em>, 2026. <a href="https://www.jacr.org/article/S1546-1440(26)00469-2/fulltext" target="_blank" rel="noopener">jacr.org</a></li>
+      <li>Cutler D, Klarnet L. Comments on imaging use and the radiology workforce. <em>JAMA Health Forum</em>, 2026. <a href="https://jamanetwork.com/journals/jama-health-forum/fullarticle/2847522" target="_blank" rel="noopener">jamanetwork.com</a></li>
+      <li>Brainomix adds patient input to e-Lung lung CT study. <em>AuntMinnie</em>, 2026-10-14. <a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/news/15837482/brainomix-adds-patient-input-to-elung-lung-ct-study" target="_blank" rel="noopener">auntminnie.com</a></li>
+      <li>Brainomix celebrates FDA clearance for e-Lung. <em>AuntMinnie</em>. <a href="https://www.auntminnie.com/clinical-news/ct/article/15671101/brainomix-celebrates-fda-clearance-for-elung" target="_blank" rel="noopener">auntminnie.com</a></li>
+      <li>Brainomix, Boehringer Ingelheim partner on improving lung disease care. <em>AuntMinnie</em>, 2024. <a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/article/15679830/brainomix-boehringer-ingelheim-partner-on-improving-lung-disease-care" target="_blank" rel="noopener">auntminnie.com</a></li>
+      <li>Tongue and Facial Images Used to Detect Coronary Heart Disease. <em>EMJ Reviews</em>, 2026-10-03. <a href="https://www.emjreviews.com/cardiology/news/tongue-and-facial-images-used-to-detect-coronary-heart-disease/" target="_blank" rel="noopener">emjreviews.com</a></li>
+      <li>Wang Y, et al. Dual-branch deep learning on tongue and facial images for coronary heart disease. <em>Scientific Reports</em>, 2026. <a href="https://doi.org/10.1038/s41598-026-71871-x" target="_blank" rel="noopener">doi.org</a></li>
+      <li>AI-supported mammography screening results in fewer aggressive and advanced breast cancers (MASAI full results). <em>ecancer</em>, 2026-01-30. <a href="https://ecancer.org/en/news/27721-ai-supported-mammography-screening-results-in-fewer-aggressive-and-advanced-breast-cancers-finds-full-results-from-first-randomised-controlled-trial" target="_blank" rel="noopener">ecancer.org</a></li>
+      <li>台灣智慧醫療邁向國際：AI 臨床試驗中心啟動. <em>衛生福利部臺灣智慧醫療三大中心</em>, 2025-04-14. <a href="https://aicenter.mohw.gov.tw/AC/cp-7200-82167-208.html" target="_blank" rel="noopener">aicenter.mohw.gov.tw</a></li>
+      <li>長佳智能闌尾炎 AI 醫療器材軟體攻台美市場，累計有 57 張海內外醫材證. <em>環球生技</em>, 2026-08-19. <a href="https://www.biotech-edu.com/20260819-everfortuneai-tfda-license/" target="_blank" rel="noopener">biotech-edu.com</a></li>
+      <li>智捷：AI 3D 醫療影像系統 拚 2028 年導入 29 家醫學中心. <em>中央社</em>, 2026-10-05. <a href="https://www.cna.com.tw/news/afe/202610050107.aspx" target="_blank" rel="noopener">cna.com.tw</a></li>
+      <li>Houston Methodist tackles ambient AI in surgery. <em>MobiHealthNews</em>, 2026-10-16. <a href="https://www.mobihealthnews.com/news/houston-methodist-tackles-ambient-ai-surgery" target="_blank" rel="noopener">mobihealthnews.com</a></li>
+    </ol>
+    <div class="note">
+      <span class="en"><strong>Editor's note:</strong> (1) Item 1 on SCARLET-1 is drawn from secondary coverage of the Radiology paper (AuntMinnie, 2026-10-13); the full paper was not retrieved directly. AuntMinnie's summary bullets and body text disagree on the image-quality AUC range, giving 0.78–0.90 and 0.78–0.88; this report uses the body figure and flags the discrepancy in the item itself. (2) Items 2 and 7 likewise come from secondary coverage (AuntMinnie, EMJ Reviews) rather than the papers; the exact publication date of the Scientific Reports paper in item 7 was not given, so 3 October, the EMJ coverage date, is used as the anchor. (3) Item 3 is drawn from Mount Sinai's institutional release rather than the full paper, and the release does not name the 20 models tested. (4) The publication date of the HPI opinion piece in item 5 is not given in the AuntMinnie coverage, so 13 October is used as the anchor; that item is an opinion piece, not original research. (5) The AMA framework in item 4 is so far only four directional areas of work with no numeric validation thresholds; the "seven policy principles" mentioned in coverage belong to the AMA's separate May framework on AI deepfake impersonation of physicians. (6) Item 6 is a partnership announcement, not a result, and carries no enrolment, site count, timeline or funding figure. (7) Further Reading item 5 (MASAI) is January 2026 news rather than this week's, cited deliberately as a yardstick for evidence grade. (8) The Taiwan section cites ministry material published 2025-04-14 and updated 2025-05-13; no more recent progress data was obtained, and neither EverFortune AI nor Zhijie discloses revenue figures. (9) No paywalled content was used in this edition.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-row">
+    <div>
+      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Monday / Clinical Applications &amp; Research<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
+    </div>
+    <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
+  </div>
+</footer>
+</main>
+
+<div class="fabs">
+  <button class="up" id="up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+  <a class="home-fab" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg></a>
+</div>
+
+<script>
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.getElementById('theme-ic').textContent =
+    document.body.classList.contains('dark') ? '◑' : '◐';
+}
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.body.classList.add('dark');
+  document.getElementById('theme-ic').textContent = '◑';
+}
+window.addEventListener('scroll', function(){
+  document.getElementById('up').classList.toggle('show', window.scrollY > 600);
+});
+
+/* GitHub 星星數：無需授權，失敗或被限流時靜默保留佔位符 */
+(function(){
+  var el = document.getElementById('ghs');
+  if (!el || typeof fetch !== 'function') return;
+  fetch('https://api.github.com/repos/tingwei161803/ai-medical-daily', {headers:{Accept:'application/vnd.github+json'}})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if (!d || typeof d.stargazers_count !== 'number') return;
+      var n = d.stargazers_count;
+      el.textContent = n >= 1000 ? (Math.round(n/100)/10) + 'k' : String(n);
+    })
+    .catch(function(){});
+})();
+</script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/reports/2026-10-19.html" hreflang="zh-Hant" rel="alternate" lang="zh-Hant">中文版</a></p>
+</body>
+</html>
