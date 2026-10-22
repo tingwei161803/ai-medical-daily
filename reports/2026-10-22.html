@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>AI／醫療AI 每日新知日報 · 2026-10-22</title>
+<meta property="og:url" content="https://ai-medical-daily.peteraim.com/reports/2026-10-22.html" />
+<link rel="canonical" href="https://ai-medical-daily.peteraim.com/reports/2026-10-22.html" />
+<meta name="report-date" content="2026-10-22">
+<meta name="report-theme" content="technology">
+<meta name="report-title-zh" content="三天之內，三家公司各自示範了「AI 自己做生物學」的一種形狀——10/21 GTC Berlin，NVIDIA 與華盛頓大學蛋白質設計研究所把 RFD4-Proteina 以 BSD 3-Clause 開源，4.356 億參數、FP32 權重 1.74 GB、單張 H200 產一個 250 token 設計只要 5.0 秒（regional compilation 後 2.8 秒），在蛋白質結合、小分子結合、酵素骨架、DNA 結合四組 benchmark 全勝受評基線；10/20 Anthropic 公布 Claude 在 Claude Science 裡自主跑約 64 小時、動用 12 個設計工具生成 318,484 個設計、篩過 553,052 組配對、自選 180 個送驗，連同人工補的共 211 個實測只有 17 個過關（單毒素組 11/60、18%），最強的 Cn2-B1 與 Cn2-B2 達個位數 nM，而 Anthropic 自己白紙黑字寫「只證明結合、未證明中和」；10/21 OpenAI 與 PerturbAI、Scripps 用數千個 GPT-Rosalind agent 在 32 分鐘內讀完 800 萬顆細胞的小鼠全腦 CRISPR 圖譜，引用逾 700 篇文獻、對照單一 agent 的 11 篇，盲測專家 75% 偏好分散式產出">
+<meta name="report-title-en" content="Three companies, three days, three shapes of 'AI doing the biology itself' — at GTC Berlin on 10/21 NVIDIA and the UW Institute for Protein Design put RFD4-Proteina on Hugging Face under BSD 3-Clause: 435.6M parameters, 1.74 GB of FP32 weights, 5.0 seconds for a 250-token design on one H200 (2.8s with regional compilation), beating every evaluated baseline across four benchmark suites; on 10/20 Anthropic reported Claude running roughly 64 hours largely unsupervised inside Claude Science, driving 12 design tools to generate 318,484 designs, screening 553,052 design-toxin pairs and picking 180 for the bench — of 211 tested, 17 bound, 11 of 60 (18%) in the single-toxin arm, with Cn2-B1 and Cn2-B2 at single-digit nanomolar — while Anthropic states in writing that only binding, not neutralisation, has been shown; and on 10/21 OpenAI, PerturbAI and Scripps ran thousands of GPT-Rosalind agents over an 8-million-cell mouse whole-brain CRISPR atlas in 32 minutes, citing 700+ references against a single agent's 11, with blinded experts preferring the distributed output 75% of the time">
+<meta name="report-summary-zh" content="RFD4-Proteina 開源、Claude 自主跑 64 小時設計抗蛇毒結合蛋白、數千個 GPT-Rosalind agent 32 分鐘讀完 800 萬細胞圖譜——同一週 Epic 把 Connectors 架在 MCP 上、FAHR-Face 用 4,000 萬張臉算生理年齡，技術線與臨床線第一次在同一組基礎設施上對齊。">
+<meta name="report-summary-en" content="RFD4-Proteina goes open-weight, Claude runs 64 autonomous hours designing antivenom binders, thousands of GPT-Rosalind agents read an 8M-cell atlas in 32 minutes — and in the same week Epic builds Connectors on MCP while FAHR-Face reads biological age from 40 million faces.">
+<meta property="og:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HJLDQZDK5V');
+</script>
+<link rel="stylesheet" href="/assets/report.css">
+</head>
+<body class="lang-zh">
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span><span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <div class="bar-sp"></div>
+    <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub / 在 GitHub 給這個專案一顆星"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
+    <div class="seg">
+      <button id="b-zh" class="on" onclick="setLang('zh')">中文</button>
+      <button id="b-en" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="kicker">
+    <span class="zh-inline">星期四 · 技術突破</span>
+    <span class="en-inline">Thursday · Technology Breakthroughs</span>
+  </div>
+  <h1>
+    <span class="zh">三天之內，三家公司各自示範了「AI 自己做生物學」的一種形狀——10/21 GTC Berlin，NVIDIA 與華盛頓大學蛋白質設計研究所把 RFD4-Proteina 以 BSD 3-Clause 開源，4.356 億參數、FP32 權重 1.74 GB、單張 H200 產一個 250 token 設計只要 5.0 秒（regional compilation 後 2.8 秒），在蛋白質結合、小分子結合、酵素骨架、DNA 結合四組 benchmark 全勝受評基線；10/20 Anthropic 公布 Claude 在 Claude Science 裡自主跑約 64 小時、動用 12 個設計工具生成 318,484 個設計、篩過 553,052 組配對、自選 180 個送驗，連同人工補的共 211 個實測只有 17 個過關（單毒素組 11/60、18%），最強的 Cn2-B1 與 Cn2-B2 達個位數 nM，而 Anthropic 自己白紙黑字寫「只證明結合、未證明中和」；10/21 OpenAI 與 PerturbAI、Scripps 用數千個 GPT-Rosalind agent 在 32 分鐘內讀完 800 萬顆細胞的小鼠全腦 CRISPR 圖譜，引用逾 700 篇文獻、對照單一 agent 的 11 篇，盲測專家 75% 偏好分散式產出</span>
+    <span class="en">Three companies, three days, three shapes of &ldquo;AI doing the biology itself&rdquo; — at GTC Berlin on 10/21 NVIDIA and the UW Institute for Protein Design put RFD4-Proteina on Hugging Face under BSD 3-Clause: 435.6M parameters, 1.74 GB of FP32 weights, 5.0 seconds for a 250-token design on one H200 (2.8s with regional compilation), beating every evaluated baseline across four benchmark suites; on 10/20 Anthropic reported Claude running roughly 64 hours largely unsupervised inside Claude Science, driving 12 design tools to generate 318,484 designs, screening 553,052 design&ndash;toxin pairs and picking 180 for the bench — of 211 tested, 17 bound, 11 of 60 (18%) in the single-toxin arm, with Cn2-B1 and Cn2-B2 at single-digit nanomolar — while Anthropic states in writing that only binding, not neutralisation, has been shown; and on 10/21 OpenAI, PerturbAI and Scripps ran thousands of GPT-Rosalind agents over an 8-million-cell mouse whole-brain CRISPR atlas in 32 minutes, citing 700+ references against a single agent&rsquo;s 11, with blinded experts preferring the distributed output 75% of the time</span>
+  </h1>
+  <div class="dateline">
+    <span class="zh-inline">2026 年 10 月 22 日（四）· 涵蓋 10/13–10/21 · 台北時間</span>
+    <span class="en-inline">Thursday, October 22, 2026 · Covering Oct 13–21 · Taipei time</span>
+  </div>
+  <p class="lede">
+    <span class="zh">本週技術線最值得注意的不是任何單一模型的分數，而是三件事在同一個 72 小時窗口裡同時成立：模型權重真的開出來了（<a href="https://www.unite.ai/nvidia-debuts-open-protein-design-model-rfd4-proteina-with-uw-medicine/" target="_blank" rel="noopener">RFD4-Proteina 走 BSD 3-Clause、權重日期 10/19</a>）、agent 真的被放手跑了超過兩天（<a href="https://www.anthropic.com/research/claude-scorpion-toxin-binder-design" target="_blank" rel="noopener">Claude 約 64 小時、約 10,000 GPU 小時</a>）、而 agent 的規模化真的拿到了對照組（<a href="https://openai.com/index/scaling-ai-research-for-complex-biological-data/" target="_blank" rel="noopener">OpenAI 的單 agent 11 篇 vs. 分散式 700+ 篇</a>）。同一週 Epic 宣布把 Connectors 建在 Model Context Protocol 上（<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/epic-launches-connectors-link-its-ai-tools-third-party-apps" target="_blank" rel="noopener">Fierce Healthcare，10/21</a>），意味著醫院端的 agent 介面也開始收斂到同一條協定線上。而三份報告的共同腳註也一致：全部是計算結果或體外結合，沒有一個走到療效。</span>
+    <span class="en">The week&rsquo;s technology story is not any single model&rsquo;s score. It is that three things held true inside one 72-hour window: weights actually shipped (<a href="https://www.unite.ai/nvidia-debuts-open-protein-design-model-rfd4-proteina-with-uw-medicine/" target="_blank" rel="noopener">RFD4-Proteina under BSD 3-Clause, weights dated 10/19</a>), an agent was actually left running for more than two days (<a href="https://www.anthropic.com/research/claude-scorpion-toxin-binder-design" target="_blank" rel="noopener">Claude, ~64 hours and ~10,000 GPU hours</a>), and agent scale-out finally got a control arm (<a href="https://openai.com/index/scaling-ai-research-for-complex-biological-data/" target="_blank" rel="noopener">OpenAI&rsquo;s single agent cited 11 references, the distributed run 700+</a>). In the same week Epic said Connectors will run on the Model Context Protocol (<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/epic-launches-connectors-link-its-ai-tools-third-party-apps" target="_blank" rel="noopener">Fierce Healthcare, 10/21</a>), so the hospital-side agent interface is converging on the same wire too. The common footnote across all three reports is identical: everything here is computational or in-vitro binding. None of it reaches efficacy.</span>
+  </p>
+
+  <nav class="toc">
+    <a href="#top"><span class="zh-inline">重點新聞</span><span class="en-inline">Top Stories</span></a>
+    <a href="#product"><span class="zh-inline">產品分析</span><span class="en-inline">Product Analysis</span></a>
+    <a href="#company"><span class="zh-inline">公司與競爭</span><span class="en-inline">Companies &amp; Competition</span></a>
+    <a href="#taiwan"><span class="zh-inline">台灣視角</span><span class="en-inline">Taiwan Angle</span></a>
+    <a href="#reading"><span class="zh-inline">延伸閱讀</span><span class="en-inline">Further Reading</span></a>
+    <a href="#refs"><span class="zh-inline">參考文獻</span><span class="en-inline">References</span></a>
+  </nav>
+</div>
+
+<section id="top">
+  <h2>01 — Top Stories</h2>
+  <div class="sec-title">
+    <span class="zh">七則，按「離實驗台多遠」排序：先是權重與 agent，再是醫院裡的協定與介面，最後是已經寫進期刊的模型。</span>
+    <span class="en">Seven stories, ordered by distance from the bench: weights and agents first, then the protocols and interfaces inside hospitals, and last the model that already made it into a journal.</span>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">開源模型</span><span class="en-inline">Open weights</span></span>
+      <span class="tag">NVIDIA</span><span class="tag">UW IPD</span><span class="tag">RFD4-Proteina</span><span class="tag">10/19–10/21</span>
+    </div>
+    <h3>
+      <span class="zh">NVIDIA 與 David Baker 的團隊把蛋白質設計模型開成 BSD 3-Clause：4.356 億參數，單張 H200 五秒一個設計</span>
+      <span class="en">NVIDIA and David Baker&rsquo;s institute open a protein-design model under BSD 3-Clause: 435.6M parameters, five seconds per design on one H200</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">10/21 GTC Berlin，NVIDIA 與華盛頓大學醫學院蛋白質設計研究所（UW Medicine Institute for Protein Design）發表 <strong>RFD4-Proteina</strong>，一個收在 BioNeMo 平台裡、把「可程式化設計」與「搜尋」綁在一起的開放模型（<a href="https://nvidianews.nvidia.com/news/healthcare-and-life-sciences-leaders-build-on-nvidia-to-advance-drug-discovery-and-expand-patient-care" target="_blank" rel="noopener">NVIDIA 新聞稿</a>）。技術規格：flow-matching 架構、同時生成序列與全原子結構、<strong>435.6 million 參數</strong>、FP32 權重 <strong>1.74 GB</strong>、以 BF16 執行；單張 H200 上一個 250 token 的設計耗時 <strong>5.0 秒</strong>，開啟 regional compilation 後 <strong>2.8 秒</strong>。NIM 部署列出七種任務（generation、motif scaffolding、enzyme design、small-molecule binder design、antibody design、partial diffusion、inverse folding），並支援 diffusion 過程中的 reward-guided beam search。權重日期 10/19，diffusers 支援 10/20 併入，NIM 於 build.nvidia.com 與 NGC 同日上架（<a href="https://www.unite.ai/nvidia-debuts-open-protein-design-model-rfd4-proteina-with-uw-medicine/" target="_blank" rel="noopener">unite.ai 技術整理</a>）。</span>
+        <span class="en">At GTC Berlin on 10/21, NVIDIA and the UW Medicine Institute for Protein Design released <strong>RFD4-Proteina</strong>, an open BioNeMo model that couples programmable design with search (<a href="https://nvidianews.nvidia.com/news/healthcare-and-life-sciences-leaders-build-on-nvidia-to-advance-drug-discovery-and-expand-patient-care" target="_blank" rel="noopener">NVIDIA newsroom</a>). The specs: a flow-matching architecture generating sequence and all-atom structure together, <strong>435.6 million parameters</strong>, <strong>1.74 GB</strong> of FP32 weights, running in BF16; a 250-token design takes <strong>5.0 seconds</strong> on a single H200, or <strong>2.8 seconds</strong> with regional compilation. The NIM deployment lists seven tasks — generation, motif scaffolding, enzyme design, small-molecule binder design, antibody design, partial diffusion and inverse folding — and supports reward-guided beam search during diffusion. Weights are dated 10/19, diffusers support merged 10/20, and the NIM listing went up on build.nvidia.com and NGC the same day (<a href="https://www.unite.ai/nvidia-debuts-open-protein-design-model-rfd4-proteina-with-uw-medicine/" target="_blank" rel="noopener">unite.ai&rsquo;s technical write-up</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">重點在授權與尺寸的組合。BSD 3-Clause 是最寬鬆的一檔，NIM 卡片直接標註可商用；1.74 GB 的權重意味著一張消費級或單張資料中心卡就跑得動，不需要叢集。這把「設計一個 binder」的邊際成本壓到幾乎是電費，也讓它能被塞進 agent 的工具箱——同一份新聞稿裡，Genedata 的 AI co-scientist 就是用 RFD4-Proteina 在 Danaher 的自主實驗室裡協調設計與測試，而模型同時上架 Amazon Bio Discovery、Anthropic 的 Claude Science、Benchling、Databricks、Google Cloud、Hugging Face、Nebius、OpenAI 與 Tamarind Bio（<a href="https://www.globenewswire.com/news-release/2026/10/21/3385333/0/en/healthcare-and-life-sciences-leaders-build-on-nvidia-to-advance-drug-discovery-and-expand-patient-care.html" target="_blank" rel="noopener">GlobeNewswire 全文</a>）。一個模型同時出現在三家互為競爭對手的 AI 實驗室的科學產品裡，這件事本身比 benchmark 更值得記下來。</span>
+        <span class="en">The combination of licence and size is the point. BSD 3-Clause is about as permissive as it gets, and the NIM card marks the model ready for commercial use; 1.74 GB of weights means one data-centre card — or a good consumer one — rather than a cluster. That pushes the marginal cost of designing a binder down towards the electricity bill, and it makes the model small enough to sit in an agent&rsquo;s toolbox. In the same release, Genedata&rsquo;s AI co-scientist uses RFD4-Proteina to coordinate design and testing inside Danaher&rsquo;s autonomous lab, while the model ships simultaneously through Amazon Bio Discovery, Anthropic&rsquo;s Claude Science, Benchling, Databricks, Google Cloud, Hugging Face, Nebius, OpenAI and Tamarind Bio (<a href="https://www.globenewswire.com/news-release/2026/10/21/3385333/0/en/healthcare-and-life-sciences-leaders-build-on-nvidia-to-advance-drug-discovery-and-expand-patient-care.html" target="_blank" rel="noopener">full GlobeNewswire text</a>). One model landing inside the science products of three rival AI labs at once is the more quotable fact here.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">「四組 benchmark 全勝受評基線」是 NVIDIA 自述，而且出處是尚未同儕審查的 research draft，新聞稿與二手整理<strong>都沒有給出任何一個數字</strong>——沒有 success rate、沒有 throughput 的絕對值、沒有基線名單。訓練資料組成未揭露。模型卡上的 PD-L1 binder、HER2 抗體改造、酵素催化 motif、小分子口袋四個範例，卡片自己註明<strong>不是實驗結合或催化結果</strong>。</span>
+        <span class="en">&ldquo;Beat every evaluated baseline on four suites&rdquo; is NVIDIA&rsquo;s own claim, sourced to a research draft that has not been peer-reviewed, and neither the release nor the secondary coverage gives <strong>a single number</strong> — no success rate, no absolute throughput, no list of baselines. The training-data composition is undisclosed. The four worked examples on the model card (a PD-L1 binder, a HER2 antibody redesign, an enzyme catalytic motif, a small-molecule pocket) are marked on the card itself as <strong>not experimental binding or catalytic results</strong>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://nvidianews.nvidia.com/news/healthcare-and-life-sciences-leaders-build-on-nvidia-to-advance-drug-discovery-and-expand-patient-care" target="_blank" rel="noopener">NVIDIA Newsroom, 2026-10-21</a> ／ <a href="https://www.unite.ai/nvidia-debuts-open-protein-design-model-rfd4-proteina-with-uw-medicine/" target="_blank" rel="noopener">unite.ai, 2026-10-21</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">自主 agent</span><span class="en-inline">Autonomous agent</span></span>
+      <span class="tag">Anthropic</span><span class="tag">Claude Science</span><span class="tag">Adaptyv Bio</span><span class="tag">10/20</span>
+    </div>
+    <h3>
+      <span class="zh">Claude 自主跑 64 小時設計抗蠍毒結合蛋白：318,484 個設計進去，17 個真的黏住——而 Anthropic 自己先把話說死</span>
+      <span class="en">Claude runs 64 autonomous hours designing scorpion-antivenom binders: 318,484 designs in, 17 that actually bind — and Anthropic closes the door on overclaiming first</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">10/20 Anthropic Science 團隊公布，用一個內部研究版 Claude 在 Claude Science 環境裡設計對抗蠍毒神經毒素的 minibinder（<a href="https://www.anthropic.com/research/claude-scorpion-toxin-binder-design" target="_blank" rel="noopener">Anthropic 研究報告</a>）。流程：初始 prompt 之後 Claude 自主運作約 24 小時，之後只收到四次追加指示，全程約 <strong>64 小時</strong>、約 <strong>10,000 GPU 小時</strong>；Claude 自己挑毒素結構與 hotspot、自訂品質門檻、選工具、寫報告。標的是四個地區的五種神經毒素：Cn2（墨西哥）、Ts1（巴西）、AaH I 與 AaH II（北非）、LqhIII（中東）。計算量：<strong>12 個設計工具</strong>、<strong>318,484 個設計</strong>、co-fold 篩過 <strong>553,052 組 design–toxin 配對</strong>，Claude 自選 180 個、Anthropic 人工補 31 個，共 <strong>211 個</strong>送 Adaptyv Bio（無細胞表現）與 Twist Bioscience（哺乳類細胞、Fc 融合）以 SPR 實測。判定門檻訂得很硬：兩間實驗室、每次重複都要是 hit，K<sub>D</sub> ≤ 1 µM，且對 off-target 蛋白 CLEC12A 無訊號。結果 <strong>17/211</strong> 過關（Cn2 七個、AaH II 四個、AaH I 四個、LqhIII 兩個），單毒素組 <strong>11/60（18%）</strong>，而<strong>所有多毒素設計沒有一個對一種以上毒素達標</strong>。最強的 Cn2-B1 與 Cn2-B2 達個位數 nM，競爭實驗顯示其結合位與已知可在小鼠中中和 Cn2 的抗體 LR 重疊或相鄰。</span>
+        <span class="en">On 10/20 Anthropic&rsquo;s Science team described using an internal research Claude, inside Claude Science, to design minibinders against scorpion neurotoxins (<a href="https://www.anthropic.com/research/claude-scorpion-toxin-binder-design" target="_blank" rel="noopener">Anthropic&rsquo;s research report</a>). The run: Claude worked autonomously for about 24 hours after the initial prompt, then took four follow-ups, for roughly <strong>64 hours</strong> and about <strong>10,000 GPU hours</strong> in all, choosing the toxin structures and hotspots, setting its own quality thresholds, picking the tools and drafting the report. Targets were five neurotoxins from four regions: Cn2 (Mexico), Ts1 (Brazil), AaH I and AaH II (North Africa), LqhIII (Middle East). The compute: <strong>12 design tools</strong>, <strong>318,484 designs</strong>, <strong>553,052 design&ndash;toxin pairs</strong> co-folded and screened, 180 selected by Claude plus 31 added by staff for <strong>211 total</strong>, sent to Adaptyv Bio (cell-free expression) and Twist Bioscience (mammalian cells, Fc fusions) and measured by SPR. The bar was set hard: a hit at both labs in every replicate, K<sub>D</sub> at or below 1 µM, and no signal against the off-target protein CLEC12A. <strong>17 of 211</strong> cleared it — seven against Cn2, four AaH II, four AaH I, two LqhIII — and <strong>11 of 60 (18%)</strong> in the single-toxin arm, while <strong>no multi-toxin design met the bar for more than one toxin</strong>. The best two, Cn2-B1 and Cn2-B2, bound at single-digit nanomolar, and competition experiments put their site on or near that of antibody LR, reported to neutralise Cn2 in mice.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這是目前公開紀錄裡，把「agent 自主時數」與「濕實驗驗證」綁在同一份報告裡最完整的一次。18% 的單毒素命中率，Anthropic 自己說與一般蛋白質設計活動的水準相當——意思是 agent 沒有變魔術，但它在沒有人逐步指導的情況下，把一個通常需要團隊數週規劃的設計活動跑完了。更關鍵的是失敗的部分也被完整報出來：多毒素泛特異性設計全軍覆沒，這恰好是抗蛇毒／抗蠍毒最需要、也最難的那一塊。全部 211 個設計、預測結構、分數與實驗數據已公開在 Hugging Face。背景尺度：蠍螫每年影響至少 120 萬人、造成逾 3,250 人死亡，多數是醫療可近性不足地區的兒童。</span>
+        <span class="en">This is the most complete public account yet of autonomous agent-hours tied to wet-lab verification in one report. The 18% single-toxin hit rate is, by Anthropic&rsquo;s own framing, in line with ordinary protein-design campaigns — meaning the agent performed no magic, but it did run to completion a campaign that normally takes a team weeks to plan, without step-by-step human direction. More usefully, the failures are reported in full: the pan-specific multi-toxin designs failed across the board, and that is precisely the hard, valuable part of antivenom work. All 211 designs, predicted structures, scores and experimental data are public on Hugging Face. For scale: scorpion stings affect at least 1.2 million people a year and cause more than 3,250 deaths, mostly children with limited access to care.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">Anthropic 自己列了限制，而且列得比多數廠商誠實：只測重組毒素，<strong>未在細胞或動物測試中和</strong>，也未對毒液純化的毒素測試；公司明文表示「未確認中和，不宣稱做出抗蛇毒血清」。下一步需要毒液結合、patch-clamp 電生理與小鼠實驗。另外，211 個裡有 31 個是 Anthropic 員工補的，「完全自主」要打一點折；而 prompt 的改寫由投資研究公司 Citrini Research 協助，這層關係報告有揭露但值得讀者自行評估。</span>
+        <span class="en">Anthropic lists its own limitations, and more honestly than most vendors: only recombinant toxins were tested, <strong>neutralisation was not tested in cells or animals</strong>, and nothing was tested against venom-purified toxin. The company states plainly that it has not confirmed neutralisation and does not claim to have produced an antivenom. Next steps would be venom binding, patch-clamp electrophysiology and mouse studies. Separately, 31 of the 211 designs were added by Anthropic staff, so &ldquo;fully autonomous&rdquo; needs a small discount, and the prompt was adapted with Citrini Research, an investment research firm — disclosed in the report, but worth the reader&rsquo;s own weighing.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.anthropic.com/research/claude-scorpion-toxin-binder-design" target="_blank" rel="noopener">Anthropic Research, 2026-10-20</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">多 agent 架構</span><span class="en-inline">Multi-agent</span></span>
+      <span class="tag">OpenAI</span><span class="tag">PerturbAI</span><span class="tag">Scripps Research</span><span class="tag">GPT-Rosalind</span><span class="tag">10/21</span>
+    </div>
+    <h3>
+      <span class="zh">數千個 agent、32 分鐘、800 萬顆細胞：OpenAI 第一次給出「分散式 vs. 單一 agent」的對照數字</span>
+      <span class="en">Thousands of agents, 32 minutes, 8 million cells: OpenAI finally puts a control arm next to &ldquo;more agents&rdquo;</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">10/21 OpenAI 與 PerturbAI、Scripps Research 公布一組他們稱為「distributed biological reasoning」的實驗：數千個由 <strong>GPT-Rosalind</strong> 驅動的 agent 平行讀一份小鼠<strong>全腦 CRISPR 圖譜</strong>（約 800 萬顆細胞），每個 agent 負責一個基因擾動，分析細胞反應、檢索文獻、提出機制解釋，最後彙整成一份連結基因、細胞效應、文獻與候選機制的「reasoning atlas」。整段跑完 <strong>32 分鐘</strong>（<a href="https://openai.com/index/scaling-ai-research-for-complex-biological-data/" target="_blank" rel="noopener">OpenAI 公告</a>）。對照組是關鍵：在模型與資源固定的條件下，<strong>單一 agent 在最大工作量時只引用 11 篇文獻，分散式版本引用超過 700 篇</strong>；盲測人類專家在兩種報告之間，<strong>75%</strong> 偏好分散式產出。產出的兩條具體假說：小腦中 Tsc2 被擾動改變了數十個神經傳導相關基因的活性、而 Tsc1 幾乎沒變（兩者同屬 mTOR 調控，可能與結節性硬化症的學習與行為困難有關）；以及 Dctn1 擾動後膽固醇合成基因表現上升，被連到膽固醇運輸障礙的既有研究，指向 Perry 症候群的神經退化機制。atlas 公開在 GitHub、資料集在 Hugging Face、論文在 bioRxiv。</span>
+        <span class="en">On 10/21 OpenAI, PerturbAI and Scripps Research described what they call &ldquo;distributed biological reasoning&rdquo;: thousands of agents powered by <strong>GPT-Rosalind</strong>, running in parallel over a mouse <strong>whole-brain CRISPR atlas</strong> of roughly 8 million cells, each agent taking one gene perturbation — analysing the cellular response, searching the literature, proposing explanations — and the outputs assembled into a &ldquo;reasoning atlas&rdquo; linking genes, cellular effects, publications and candidate mechanisms. The whole run took <strong>32 minutes</strong> (<a href="https://openai.com/index/scaling-ai-research-for-complex-biological-data/" target="_blank" rel="noopener">OpenAI&rsquo;s announcement</a>). The control arm is the interesting part: with model and resources held fixed, <strong>a single agent cited only 11 references at the largest workload, while the distributed agents cited more than 700</strong>, and in blinded comparison human experts preferred the distributed reports <strong>75%</strong> of the time. Two concrete hypotheses came out: in the cerebellum, disrupting Tsc2 shifted the activity of dozens of neuronal-communication genes while disrupting Tsc1 barely moved them (both regulate mTOR, with possible bearing on the learning and behavioural difficulties of tuberous sclerosis); and disrupting Dctn1 raised expression of cholesterol-synthesis genes, which the agents tied to existing work on cholesterol transport defects and thus to neurodegeneration in Perry syndrome. The atlas is on GitHub, the dataset on Hugging Face, the paper on bioRxiv.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">「多開幾個 agent 會不會更好」過去一直是信仰問題，因為大家只報最終效果、不報單 agent 基線。11 篇 vs. 700+ 篇是這一年來少見的乾淨對照：固定模型、固定資源，差異只來自把工作切開平行跑。它同時也點出分散式的真正代價——700 篇引用意味著 700 條需要人去抽查的推論鏈，而 75% 的專家偏好率反過來說，有 25% 的情況下專家寧可要單 agent 那份。對醫療 AI 的意義是方法論上的：如果 agent 數量能這樣換到文獻覆蓋度，那麼「臨床決策支援能不能靠多 agent 補齊 guideline 覆蓋」就從哲學問題變成可設計的實驗。</span>
+        <span class="en">Whether more agents actually helps has been an article of faith, because papers report the final result and skip the single-agent baseline. Eleven references against 700+ is the cleanest control the year has produced: same model, same resources, the only difference being that the work was cut up and run in parallel. It also shows what distribution costs — 700 citations means 700 reasoning chains someone has to spot-check, and the 75% preference rate says that a quarter of the time the experts wanted the single-agent report instead. The methodological consequence for medical AI is direct: if agent count buys literature coverage this cleanly, then &ldquo;can multi-agent setups close guideline coverage in clinical decision support&rdquo; stops being a philosophical question and becomes a designable experiment.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">「數千個」沒有確切數字；GPT-Rosalind 的架構與訓練方式公告沒有描述。「人類團隊要做數月到一年」是團隊自估，不是量測。新穎性與價值評估「與盲測專家判斷一致」只有定性描述，沒有給一致性統計量。單 agent 對照只跑了一組固定設定，泛化性未建立。兩條假說<strong>都還沒有實驗驗證</strong>，公告自己也說科學家仍是發現的中心。這是生物研究，不是臨床應用。</span>
+        <span class="en">&ldquo;Thousands&rdquo; is never given a number, and the announcement does not describe GPT-Rosalind&rsquo;s architecture or training. &ldquo;Months to a year for a human team&rdquo; is the team&rsquo;s own estimate, not a measurement. The claim that novelty and value assessments &ldquo;aligned&rdquo; with blinded expert judgement is qualitative, with no agreement statistic. The single-agent comparison ran at one fixed setup, so generality is not established. <strong>Neither hypothesis has been experimentally validated</strong>, and the announcement itself says scientists remain central to discovery. This is biomedical research, not clinical use.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://openai.com/index/scaling-ai-research-for-complex-biological-data/" target="_blank" rel="noopener">OpenAI, 2026-10-21</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">協定與介面</span><span class="en-inline">Protocol</span></span>
+      <span class="tag">Epic</span><span class="tag">MCP</span><span class="tag">Agent Factory</span><span class="tag">10/21</span>
+    </div>
+    <h3>
+      <span class="zh">Epic 把 Connectors 建在 Model Context Protocol 上——電子病歷龍頭選了哪條線，整個生態系就得跟著接哪條線</span>
+      <span class="en">Epic builds Connectors on the Model Context Protocol — when the EHR incumbent picks a wire, the ecosystem wires to it</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">10/21 Open@Epic 大會前，Epic 宣布 <strong>Connectors</strong>：讓第三方 App 開發者把自家應用接進 Epic 的 AI agent，使 agent 能從外部 App 取資訊、也能在外部 App 裡完成任務（<a href="https://www.epic.com/epic/post/introducing-connectors-a-new-way-for-apps-to-communicate-with-epic/" target="_blank" rel="noopener">Epic 官方貼文</a>）。適用對象是三個既有助理——病人端 <strong>Emmie</strong>、臨床端 <strong>Art</strong>、營收循環與營運端 <strong>Penny</strong>——以及醫院自建於 <strong>Agent Factory</strong> 的客製 agent；Agent Factory 於八月使用者大會亮相，上線時帶<strong>逾 100 個預建 AI 功能</strong>。關鍵的技術選擇：<strong>Connectors 初期採用 Model Context Protocol（MCP）</strong>。時程是 Epic 會在 <strong>2026 年底前</strong>與部分醫院夥伴開始測試，開發者做的 Connectors 自 <strong>2027 年 3 月</strong>起在 Epic Showroom 上架；Epic 會向開發者收上架費，金額未公布（<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/epic-launches-connectors-link-its-ai-tools-third-party-apps" target="_blank" rel="noopener">Fierce Healthcare, 10/21</a>）。首批具名夥伴：Availity（給付、事前授權、理賠）、Gozio Health（院內導航）、VPL（藥品配送時程）。</span>
+        <span class="en">Ahead of the Open@Epic conference on 10/21, Epic announced <strong>Connectors</strong>: a way for third-party developers to link their apps to Epic&rsquo;s AI agents, so those agents can pull information from an outside app and complete tasks in it (<a href="https://www.epic.com/epic/post/introducing-connectors-a-new-way-for-apps-to-communicate-with-epic/" target="_blank" rel="noopener">Epic&rsquo;s own post</a>). They work with the three existing assistants — <strong>Emmie</strong> for patients, <strong>Art</strong> for clinicians, <strong>Penny</strong> for revenue cycle and operations — and with custom agents a health system builds in <strong>Agent Factory</strong>, which debuted at August&rsquo;s User Group Meeting carrying <strong>over 100 pre-built AI features</strong>. The technical choice that matters: <strong>Connectors will initially use the Model Context Protocol (MCP)</strong>. On timing, Epic plans to start testing with selected health system partners <strong>before the end of 2026</strong>, and developer-built Connectors list on Epic Showroom from <strong>March 2027</strong>; Epic will charge developers to distribute there, at undisclosed prices (<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/epic-launches-connectors-link-its-ai-tools-third-party-apps" target="_blank" rel="noopener">Fierce Healthcare, 10/21</a>). Named launch partners: Availity (coverage, prior authorisation, claims), Gozio Health (wayfinding), VPL (medication delivery timing).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">過去二十年醫療資訊互通的語言是 HL7 與 FHIR——為「交換資料」設計。MCP 是為「讓模型呼叫工具」設計的，解決的是完全不同的問題：不是把一筆檢驗值搬過去，而是讓 agent 在另一個系統裡「做一件事」。Epic 選 MCP，等於替北美醫院的 agent 層訂了事實標準；對第三方廠商來說，這決定了接下來兩年工程資源往哪放。治理設計也值得注意：Epic 說每家醫院自行控制權限、啟用前可檢視該 Connector 能讀什麼、能改什麼，並強調 Connectors <strong>不新增自主行動</strong>——把「agent 能做什麼」的決定權明確留在醫院端，這是對 10/19 剛截止的 FDA 生成式 AI 醫材意見徵集裡那場「責任該落在誰身上」辯論的直接回應。</span>
+        <span class="en">For twenty years the language of health interoperability has been HL7 and FHIR — built to move data. MCP is built to let a model call a tool, which is a different problem: not shipping a lab value across, but letting an agent <em>do something</em> inside another system. Epic picking MCP effectively sets the de facto standard for the agent layer in North American hospitals, and for third-party vendors it decides where the next two years of engineering goes. The governance design is worth noting too: Epic says each health system controls permissions and can review what a Connector may read and change before enabling it, and stresses that Connectors <strong>add no new autonomous actions</strong>. Keeping the decision about what an agent may do on the hospital side is a direct answer to the &ldquo;where does responsibility sit&rdquo; argument in the FDA generative-AI device docket that closed on 10/19.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">這是公告，不是出貨：Showroom 要到 2027 年 3 月，測試才剛要開始。Epic 沒有公布任何採用數字——Art／Emmie／Penny 各有多少醫院在用、Agent Factory 有多少 agent 上線，全部沒有。唯二的數字是 100+ 預建功能與評估 Emmie 用的「數千個測試案例」，都是 Epic 自述。上架費未公布，而這對小型開發商是決定性變數。</span>
+        <span class="en">This is an announcement, not a shipment: Showroom opens in March 2027 and testing has yet to begin. Epic published no adoption figures at all — not how many health systems run Art, Emmie or Penny, not how many agents are live in Agent Factory. The only two numbers are the 100+ pre-built features and the &ldquo;thousands of test cases&rdquo; used to evaluate Emmie, both self-reported. The Showroom fee is undisclosed, and for small developers that is the variable that decides everything.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.epic.com/epic/post/introducing-connectors-a-new-way-for-apps-to-communicate-with-epic/" target="_blank" rel="noopener">Epic, 2026-10-21</a> ／ <a href="https://www.modernhealthcare.com/health-tech/mh-epic-systems-connectors-ai-agents-2027/" target="_blank" rel="noopener">Modern Healthcare, 2026-10-21</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">基礎模型</span><span class="en-inline">Foundation model</span></span>
+      <span class="tag">Mass General Brigham</span><span class="tag">FAHR-Face</span><span class="tag">Lancet Digital Health</span><span class="tag">10/19</span>
+    </div>
+    <h3>
+      <span class="zh">4,000 萬張臉訓出的 FAHR-Face 登上《Lancet Digital Health》：一張照片同時給出生理年齡與癌症存活風險，而論文裡最該讀的是它「沒有」建立什麼</span>
+      <span class="en">FAHR-Face, trained on 40 million faces, lands in Lancet Digital Health: one photo yields both biological age and cancer survival risk — and the most important part is what the paper does <em>not</em> establish</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">10/19《Lancet Digital Health》刊出 Mass General Brigham 的 <strong>FAHR-Face</strong>（Foundation Artificial Intelligence for Health Recognition），一個以<strong>逾 4,000 萬張人臉影像</strong>訓練的基礎模型，衍生兩個工具：<strong>FAHR-FaceAge</strong>（生理年齡）與 <strong>FAHR-FaceSurvival</strong>（癌症存活風險），DOI 10.1016/j.landig.2026.101056（<a href="https://news.massgeneralbrigham.org/en/ai-facial-recognition-tools-assess-age-cancer-survival-risk" target="_blank" rel="noopener">MGB 新聞室</a>）。通訊作者 Raymond Mak、共同資深作者 Hugo JWL Aerts，經費來自歐盟 ERC。主要發現：FAHR-FaceAge 與實際年齡的<strong>差值獨立地與存活相關</strong>；兩個工具的預測<strong>只有弱相關</strong>，代表它們各自捕捉到不同資訊，在外部癌症世代中合併使用能改善存活模型配適；重度飲酒、用藥與抽菸者看起來生理上較老；年齡估計在姿勢、光線、表情、化妝與多數整形術式下穩定，僅隆鼻後有小幅偏移。研究同時開放一般人上傳自拍取得 FaceAge 研究回報（FaceAge Research Study，faceage.bwh.harvard.edu），<a href="https://www.bostonglobe.com/2026/10/20/metro/ai-biological-age-face-selfie-free-tool/" target="_blank" rel="noopener">《波士頓環球報》10/20 報導</a>了這個公開工具。</span>
+        <span class="en">On 10/19 <em>Lancet Digital Health</em> published Mass General Brigham&rsquo;s <strong>FAHR-Face</strong> (Foundation Artificial Intelligence for Health Recognition), a foundation model trained on <strong>more than 40 million face images</strong>, with two derived tools: <strong>FAHR-FaceAge</strong> for biological age and <strong>FAHR-FaceSurvival</strong> for cancer survival risk, DOI 10.1016/j.landig.2026.101056 (<a href="https://news.massgeneralbrigham.org/en/ai-facial-recognition-tools-assess-age-cancer-survival-risk" target="_blank" rel="noopener">MGB newsroom</a>). Raymond Mak is corresponding author, Hugo JWL Aerts co-senior author, funding from the EU ERC. The findings: the <strong>gap</strong> between FAHR-FaceAge and chronological age was <strong>independently associated with survival</strong>; the two tools&rsquo; predictions are <strong>only weakly correlated</strong>, so they capture complementary information, and combining them improved survival-model fit in an external cancer cohort; heavy alcohol, drug and tobacco use were associated with looking biologically older; and age estimates held steady across pose, lighting, expression, makeup and most plastic surgery, with a small shift after rhinoplasty. The team also opened a public upload tool, the FaceAge Research Study at faceage.bwh.harvard.edu, covered by <a href="https://www.bostonglobe.com/2026/10/20/metro/ai-biological-age-face-selfie-free-tool/" target="_blank" rel="noopener">the Boston Globe on 10/20</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這是「最低成本輸入訊號」方向的一個極端案例：不需要抽血、不需要影像設備、不需要病歷，一張臉就能產生兩個與存活相關的連續變數。在放射腫瘤科的語境下，它想解決的是臨床上長期靠主觀印象判斷的「這個病人撐不撐得住積極治療」。兩個工具弱相關這點技術上最有意思——它意味著臉上同時編碼了至少兩類互不重疊的健康訊號。<a href="https://www.washingtonpost.com/health/2026/10/20/how-photo-patients-face-could-predict-whether-theyll-survive-cancer/" target="_blank" rel="noopener">《華盛頓郵報》10/20</a>與<a href="https://www.cnn.com/2026/10/20/health/ai-models-cancer-survival-biological-age" target="_blank" rel="noopener">CNN 同日報導</a>把它推進了大眾視野，而這恰恰是這類工具最需要小心的地方。</span>
+        <span class="en">This is an extreme case of the &ldquo;cheapest possible input signal&rdquo; direction: no blood draw, no imaging equipment, no chart — one face yields two continuous variables associated with survival. In radiation oncology the target is the judgement clinicians have long made on impression alone, whether a patient can withstand aggressive treatment. Technically the most interesting result is that the two tools are only weakly correlated, implying the face encodes at least two non-overlapping classes of health signal. <a href="https://www.washingtonpost.com/health/2026/10/20/how-photo-patients-face-could-predict-whether-theyll-survive-cancer/" target="_blank" rel="noopener">The Washington Post on 10/20</a> and <a href="https://www.cnn.com/2026/10/20/health/ai-models-cancer-survival-biological-age" target="_blank" rel="noopener">CNN the same day</a> pushed it into public view, which is exactly where a tool like this warrants the most care.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">新聞稿與二手報導<strong>都沒有給出任何效能數字</strong>——沒有 MAE、沒有 C-index、沒有風險比、沒有信賴區間、沒有開發與外部驗證世代的人數，也沒有具名的對照模型。這是一份計算開發與驗證研究，<strong>未測試醫師使用這些分數是否改善決策或結果</strong>；生活型態關聯是相關、不是因果；臉部注意力圖顯示模型用了什麼，不等於生物機制；<strong>沒有建立臨床決策門檻、治療選擇規則或可安全使用的次族群</strong>。MGB 坦言需要更多評估才知道模型在更廣的人口與臨床情境下表現如何——而報導與新聞稿<strong>都沒有任何亞群公平性數據</strong>，這對一個以臉為輸入的模型是嚴重缺口。另需揭露：MGB 已就下一代臉部健康演算法申請美國臨時專利（No. 63/769,840），Mak、Haugg 與 Aerts 列名。</span>
+        <span class="en">Neither the release nor the secondary coverage gives <strong>a single performance figure</strong> — no MAE, no C-index, no hazard ratio, no confidence intervals, no cohort sizes for development or external validation, no named comparison models. This is a computational development-and-validation study that <strong>did not test whether physicians using these scores made better decisions or got better outcomes</strong>; the lifestyle links are associations, not causation; facial attention maps show what the model used, not a biological mechanism; and <strong>no clinical decision threshold, treatment-selection rule or safe-use subgroup was established</strong>. MGB concedes that more evaluation is needed to know how the models perform across broader demographic and clinical settings — and <strong>no subgroup fairness data appears anywhere</strong>, which for a face-input model is a serious gap. Disclosure: MGB has filed a US provisional patent (No. 63/769,840) on next-generation facial health algorithms, naming Mak, Haugg and Aerts.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://news.massgeneralbrigham.org/en/ai-facial-recognition-tools-assess-age-cancer-survival-risk" target="_blank" rel="noopener">Mass General Brigham Newsroom, 2026-10-19</a> ／ <a href="https://bioengineer.org/facial-ai-estimates-biological-age-and-predicts-cancer-survival/" target="_blank" rel="noopener">bioengineer.org, 2026-10-20</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="zh-inline">臨床 agent</span><span class="en-inline">Clinical agent</span></span>
+      <span class="tag">Abridge</span><span class="tag">Abridge Assistant</span><span class="tag">10/13</span>
+    </div>
+    <h3>
+      <span class="zh">Abridge 把 scribe 升級成 Assistant：把推理步驟攤開給醫師看，引用指到病歷的哪一段</span>
+      <span class="en">Abridge turns the scribe into an Assistant: the reasoning steps are shown as they run, and the citations point at the chart section used</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">10/13 Abridge 發表 <strong>Abridge Assistant</strong>：一個在電子病歷內與手機上介面一致的聊天／語音助理，資料來源包含病人病歷（病程紀錄、檢驗結果、外院資料）、當下的醫病對話、臨床指引，以及該醫院自己的臨床路徑與政策庫（<a href="https://www.abridge.com/blog/abridge-assistant-is-the-ai-assistant-for-healthcare" target="_blank" rel="noopener">Abridge 官方貼文</a>）。任務涵蓋摘要病人近況變化、回答臨床問題、以病歷數值預填計算機、個人化病歷書寫、起草轉診與交班。兩個設計細節值得記：第一，它把複雜請求<strong>拆成一串步驟（蒐集脈絡、檢查完整性）並即時顯示執行過程</strong>；第二，它<strong>標註自己用了病歷的哪些段落與哪些來源</strong>，讓醫師能回溯推理。評估方式是以臨床醫師制定的 rubric、由人類與 LLM 雙重評審，在每項功能上線前後都跑。自九月釋出起，所有使用 Abridge 的醫院、所有臨床人員都可使用，無論是否以 Abridge 做文書。公司自述服務<strong>逾 300 家企業級醫療體系</strong>。</span>
+        <span class="en">On 10/13 Abridge launched <strong>Abridge Assistant</strong>, a chat-and-voice assistant that presents the same way inside the EHR and on the clinician&rsquo;s phone, drawing on the patient&rsquo;s chart (notes, results, outside records), the live conversation, clinical guidelines, and the health system&rsquo;s own pathways and policy libraries (<a href="https://www.abridge.com/blog/abridge-assistant-is-the-ai-assistant-for-healthcare" target="_blank" rel="noopener">Abridge&rsquo;s post</a>). Tasks span summarising what changed for a patient, answering clinical questions, opening calculators prefilled from the chart, personalising notes, and drafting referrals and handoffs. Two design details are worth recording: it <strong>breaks complex requests into a chain of steps — gathering context, checking completeness — and shows those steps as they run</strong>; and it <strong>cites the chart sections and sources it used</strong>, so the clinician can trace the reasoning. Evaluation runs human and LLM judges against clinician-built rubrics, before and after each capability ships. Since the September release, every clinician at every Abridge health system has access, whether or not they use Abridge for documentation. The company reports serving <strong>more than 300 enterprise health systems</strong>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">環境聽寫（ambient scribe）這條賽道的技術天花板已經很近——把對話變成病歷，各家差距在收斂。Assistant 是 Abridge 把既有的 EHR 連線當通路，往「醫師在病歷裡問任何問題」擴張。值得注意的是它與 Epic Connectors 的關係：Abridge 自建助理層，Epic 則在同一週把 agent 層標準化成 MCP。兩者既是互補也是正面對撞——Epic 的 Art 做的正是臨床端助理。而「顯示執行步驟」與「引用指到病歷段落」這兩個設計，是本週在醫院端唯一具體可查核的「可解釋性」承諾。</span>
+        <span class="en">The ambient scribe lane is close to its technical ceiling — turning a conversation into a note is converging across vendors. Assistant is Abridge using its installed EHR connections as distribution and expanding into &ldquo;ask anything inside the chart&rdquo;. The relationship to Epic Connectors is the interesting part: Abridge is building its own assistant layer in the same week Epic standardised the agent layer on MCP, which makes the two simultaneously complementary and head-on — Epic&rsquo;s Art is the clinician assistant. And the two design choices here, showing the execution steps and citing the chart section used, are the only concretely checkable explainability commitments made on the hospital side this week.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">Abridge <strong>沒有揭露底層模型供應商、架構、檢索方式、延遲或任何準確率指標</strong>，也沒有公布資料保存政策。「300+ 企業級體系」與 Sutter Health 的「78% 臨床人員工作滿意度改善」都是廠商自述、未經第三方稽核；後者是滿意度調查，不是臨床品質或安全指標。「所有臨床人員都可使用」指的是權限開通，不等於實際使用率——後者 Abridge 沒有公布。</span>
+        <span class="en">Abridge <strong>does not disclose the underlying model vendors, architecture, retrieval method, latency or any accuracy metric</strong>, nor its data-retention policy. The &ldquo;300+ enterprise health systems&rdquo; figure and Sutter Health&rsquo;s &ldquo;78% of clinicians reporting improved work satisfaction&rdquo; are both vendor-reported and not independently audited; the latter is a satisfaction survey, not a clinical quality or safety measure. &ldquo;Every clinician has access&rdquo; describes entitlement, not use — and Abridge has published no utilisation figure.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.abridge.com/blog/abridge-assistant-is-the-ai-assistant-for-healthcare" target="_blank" rel="noopener">Abridge, 2026-10-13</a> ／ <a href="https://histalk2.com/2026/10/21/healthcare-ai-news-10-21-26/" target="_blank" rel="noopener">HIStalk, 2026-10-21</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="zh-inline">治療設備</span><span class="en-inline">Therapy hardware</span></span>
+      <span class="tag">Siemens Healthineers</span><span class="tag">Varian</span><span class="tag">Nemotron</span><span class="tag">Holoscan</span><span class="tag">10/21</span>
+    </div>
+    <h3>
+      <span class="zh">Siemens Healthineers 把 agent 放進放射治療計畫：開放權重模型 + CUDA 劑量計算 + 即時感測器串流</span>
+      <span class="en">Siemens Healthineers puts agents into radiotherapy planning: open-weight models plus CUDA dose calculation plus live sensor streams</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">同在 10/21 的 GTC Berlin，Siemens Healthineers 與 NVIDIA 宣布共同開發下一代<strong>適應性放射治療（adaptive radiotherapy）</strong>，三個技術元件：以 NVIDIA <strong>Nemotron 開放模型</strong>驅動的 agentic co-planning（協助腫瘤科醫師評估治療策略）、<strong>CUDA 加速的劑量計算</strong>做病人專屬模擬、以及 <strong>Holoscan 平台</strong>把即時感測器資料接進 AI（<a href="https://nvidianews.nvidia.com/news/healthcare-and-life-sciences-leaders-build-on-nvidia-to-advance-drug-discovery-and-expand-patient-care" target="_blank" rel="noopener">NVIDIA 新聞稿</a>）。Siemens Healthineers 癌症治療事業 Varian 負責人 Arthur Kaindl 把這項工作與近期推出的 Accela 系統綁在一起，並說「治療應該去適應病人，而不是反過來」。新聞稿引用的尺度預估是<strong>到 2050 年全球每年約 3,500 萬人被診斷出癌症</strong>。</span>
+        <span class="en">Also at GTC Berlin on 10/21, Siemens Healthineers and NVIDIA announced joint work on next-generation <strong>adaptive radiotherapy</strong>, built from three pieces: agentic co-planning powered by NVIDIA&rsquo;s <strong>open Nemotron models</strong> to help oncologists evaluate treatment strategies, <strong>CUDA-accelerated dose calculation</strong> for patient-specific simulation, and the <strong>Holoscan platform</strong> to connect live sensor data to AI (<a href="https://nvidianews.nvidia.com/news/healthcare-and-life-sciences-leaders-build-on-nvidia-to-advance-drug-discovery-and-expand-patient-care" target="_blank" rel="noopener">NVIDIA newsroom</a>). Arthur Kaindl, who heads Varian, the Siemens Healthineers cancer-care business, tied the work to the recently launched Accela system and said treatment &ldquo;should adapt to the patient, not the other way around&rdquo;. The scale figure cited in the release is a projection of <strong>roughly 35 million cancer diagnoses worldwide each year by 2050</strong>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">本週其他六則都在軟體層，這則是唯一把 agent 推到<strong>治療設備</strong>上的。適應性放療的瓶頸一直是時間：病人躺在機器上，解剖位置每天都在變，重新規劃劑量要算很久，所以實務上多半照舊計畫打。把劑量計算 CUDA 化加上 agent 協助決策，攻的就是這個「線上重規劃」的時間窗。它同時也是 Nemotron 開放權重策略的具體落點——NVIDIA 不只賣卡，而是讓開放模型成為醫材廠的預設底層。</span>
+        <span class="en">Six of this week&rsquo;s stories sit in software; this is the only one pushing agents onto <strong>treatment hardware</strong>. The bottleneck in adaptive radiotherapy has always been time: the patient is on the table, the anatomy shifts day to day, and recomputing the dose takes long enough that in practice the original plan usually gets delivered anyway. CUDA-accelerated dose calculation plus agent-assisted decisions attacks exactly that online-replanning window. It is also where NVIDIA&rsquo;s open-weight Nemotron strategy lands concretely: not just selling cards, but making an open model the default substrate for a device maker.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">措辭是「正在開發」與「正在探索」，不是產品。<strong>新聞稿沒有給任何效能數字</strong>——沒有重規劃時間、沒有劑量精準度、沒有臨床結果，也沒有時程與法規路徑。3,500 萬人是 2050 年的流行病學推估，與這套系統的效能無關，屬於市場尺度敘事。</span>
+        <span class="en">The verbs are &ldquo;developing&rdquo; and &ldquo;exploring&rdquo;, not shipping. <strong>The release gives no performance figures at all</strong> — no replanning time, no dose accuracy, no clinical outcome, no timeline and no regulatory path. The 35 million figure is a 2050 epidemiological projection unrelated to this system&rsquo;s performance; it is market-scale framing.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.globenewswire.com/news-release/2026/10/21/3385333/0/en/healthcare-and-life-sciences-leaders-build-on-nvidia-to-advance-drug-discovery-and-expand-patient-care.html" target="_blank" rel="noopener">GlobeNewswire / NVIDIA, 2026-10-21</a></p></div>
+  </div>
+</section>
+
+<section id="product">
+  <h2>02 — Product Analysis</h2>
+  <div class="sec-title">
+    <span class="zh">同一個問題（設計一個會黏住標的的蛋白質），兩種完全相反的產品形態：一個把能力壓成 1.74 GB 的權重交給你，一個把能力包成一個會自己跑 64 小時的 agent。</span>
+    <span class="en">The same problem — design a protein that sticks to a target — solved by two opposite product shapes: one hands you 1.74 GB of weights, the other hands you an agent that runs itself for 64 hours.</span>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>RFD4-Proteina</h3>
+      <p class="sub"><span class="zh-inline">開放權重的蛋白質設計模型 · NVIDIA × UW Medicine IPD（美國）</span><span class="en-inline">Open-weight protein design model · NVIDIA × UW Medicine IPD (USA)</span></p>
+      <p>
+        <span class="zh"><strong>功能與定位。</strong>flow-matching 架構，同時生成序列與全原子結構，使用者以「要保留什麼」做條件——結合標的、酵素 motif、配體或結構特徵。賣給誰很清楚：任何想把蛋白質設計變成自家 pipeline 一環的人，從藥廠到學術實驗室到 agent 開發者。它不是終端產品，是零件（<a href="https://www.unite.ai/nvidia-debuts-open-protein-design-model-rfd4-proteina-with-uw-medicine/" target="_blank" rel="noopener">規格與授權出處</a>）。</span>
+        <span class="en"><strong>Function and position.</strong> A flow-matching model generating sequence and all-atom structure together, conditioned on what the user wants preserved: a binding target, an enzyme motif, a ligand, a structural feature. The buyer is unambiguous — anyone making protein design a step in their own pipeline, from pharma to academic labs to agent developers. It is not an end product; it is a part (<a href="https://www.unite.ai/nvidia-debuts-open-protein-design-model-rfd4-proteina-with-uw-medicine/" target="_blank" rel="noopener">specs and licence</a>).</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：授權與尺寸的組合近乎沒有對手——BSD 3-Clause、1.74 GB FP32 權重、H200 上 5.0 秒一個設計，而且<a href="https://www.globenewswire.com/news-release/2026/10/21/3385333/0/en/healthcare-and-life-sciences-leaders-build-on-nvidia-to-advance-drug-discovery-and-expand-patient-care.html" target="_blank" rel="noopener">同時上架九個平台</a>，包含 Anthropic 與 OpenAI 自己的科學產品。</span>
+          <span class="en">: the licence-plus-size combination has few rivals — BSD 3-Clause, 1.74 GB of FP32 weights, 5.0 seconds per design on an H200, and <a href="https://www.globenewswire.com/news-release/2026/10/21/3385333/0/en/healthcare-and-life-sciences-leaders-build-on-nvidia-to-advance-drug-discovery-and-expand-patient-care.html" target="_blank" rel="noopener">simultaneous distribution across nine platforms</a>, including Anthropic&rsquo;s and OpenAI&rsquo;s own science products.</span>
+        </li>
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：七項任務涵蓋面廣（含抗體設計與 inverse folding），且支援 diffusion 中的 reward-guided beam search，意味著可以直接接外部打分函數——這是給 agent 用的設計。</span>
+          <span class="en">: seven tasks is broad coverage (antibody design and inverse folding included), and reward-guided beam search during diffusion means an external scoring function can be plugged straight in — this is a model designed to be driven by an agent.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：<strong>零個公開的量化 benchmark 分數</strong>。「勝過受評基線」沒有說勝多少、勝過誰，出處是未經審查的 draft。訓練資料組成未揭露，這對需要評估分布外表現的使用者是真實障礙。</span>
+          <span class="en">: <strong>not one published quantitative benchmark score</strong>. &ldquo;Beat the evaluated baselines&rdquo; never says by how much or against whom, and the source is an unreviewed draft. The training-data composition is undisclosed, which is a real obstacle for anyone needing to reason about out-of-distribution behaviour.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：模型卡上的四個範例全是計算結果，卡片自己註明非實驗驗證。開放權重降低了嘗試成本，但沒有降低濕實驗驗證的成本——而那才是真正的瓶頸。</span>
+          <span class="en">: all four worked examples on the model card are computational, and the card says so. Open weights lower the cost of trying, not the cost of wet-lab verification — and verification is the actual bottleneck.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>Claude Science</h3>
+      <p class="sub"><span class="zh-inline">可長時間自主運作的科學 agent 環境 · Anthropic（美國）</span><span class="en-inline">Long-horizon autonomous science agent environment · Anthropic (USA)</span></p>
+      <p>
+        <span class="zh"><strong>功能與定位。</strong>不是一個模型，是一個讓模型自己挑工具、訂門檻、跑完整個設計活動並寫報告的環境。抗蠍毒那份報告裡，Claude 在 Claude Science 內自主運作約 64 小時、呼叫 12 個設計工具、消耗約 10,000 GPU 小時，人類只給了一次初始 prompt 加四次追加（<a href="https://www.anthropic.com/research/claude-scorpion-toxin-binder-design" target="_blank" rel="noopener">Anthropic 報告</a>）。賣的是「把一整段研究流程外包出去」。</span>
+        <span class="en"><strong>Function and position.</strong> Not a model but an environment in which a model picks its own tools, sets its own thresholds, runs an entire design campaign and writes the report. In the scorpion work Claude ran autonomously for about 64 hours inside Claude Science, called 12 design tools and consumed roughly 10,000 GPU hours, on one initial prompt plus four follow-ups (<a href="https://www.anthropic.com/research/claude-scorpion-toxin-binder-design" target="_blank" rel="noopener">Anthropic&rsquo;s report</a>). What it sells is outsourcing a whole stretch of the research process.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：有濕實驗驗證，而且驗證門檻比多數論文嚴——兩間獨立實驗室、每次重複都要命中、K<sub>D</sub> ≤ 1 µM、加一個 off-target 對照（CLEC12A）。17/211 這個數字是在這個門檻下產生的。</span>
+          <span class="en">: there is wet-lab verification, and the bar is stricter than most papers set — two independent labs, a hit in every replicate, K<sub>D</sub> at or below 1 µM, plus an off-target control (CLEC12A). The 17-of-211 figure was produced under that bar.</span>
+        </li>
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：失敗照報。多毒素泛特異性設計全數未達標這件事被寫進報告正文，而且全部 211 個設計與實驗數據公開在 Hugging Face，外部可以自己重算。</span>
+          <span class="en">: the failures are reported. That no multi-toxin design cleared the bar for more than one toxin is in the body of the report, and all 211 designs with their experimental data are public on Hugging Face for outside recomputation.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：<strong>18% 的命中率「與一般設計活動相當」是 Anthropic 自己的定性說法</strong>，沒有並列的對照組——沒有「同樣的工具由人操作」的基線，所以 agent 的增益無法量化，只能說它沒有退步。</span>
+          <span class="en">: <strong>that an 18% hit rate is &ldquo;consistent with typical campaigns&rdquo; is Anthropic&rsquo;s own qualitative framing</strong>, with no side-by-side control. There is no &ldquo;same tools, human-operated&rdquo; baseline, so the agent&rsquo;s gain cannot be quantified — only that it did not lose ground.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：211 個裡 31 個由員工加入，約 15%，「自主」要扣這一塊；而約 10,000 GPU 小時換 17 個體外結合蛋白、且<strong>未測中和</strong>，單位成本與距離臨床的距離都還沒有被認真定價。</span>
+          <span class="en">: 31 of 211 designs were added by staff, about 15%, which comes off the &ldquo;autonomous&rdquo; claim; and roughly 10,000 GPU hours for 17 in-vitro binders, <strong>with no neutralisation tested</strong>, means neither the unit cost nor the distance to clinic has yet been honestly priced.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="company">
+  <h2>03 — Companies &amp; Competition</h2>
+  <div class="sec-title">
+    <span class="zh">誰站在哪裡、憑什麼、跟誰打</span>
+    <span class="en">Who stands where, on what, against whom</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th><span class="zh-inline">公司</span><span class="en-inline">Company</span></th>
+        <th><span class="zh-inline">近況與數字</span><span class="en-inline">Recent state &amp; numbers</span></th>
+        <th><span class="zh-inline">競爭定位與護城河</span><span class="en-inline">Position &amp; moat</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>NVIDIA</strong><br><span class="zh-inline">賣硬體，順便把模型層變成公共財</span><span class="en-inline">Sells hardware, and commoditises the model layer on the way</span></td>
+          <td>
+            <span class="zh">10/21 GTC Berlin 一口氣發表 RFD4-Proteina（BSD 3-Clause）、Siemens Healthineers 適應性放療合作、以及 Benchling／Biolevate／Boltz／Automata／Genedata／Hologen／Therna 的 agent 生態，歐洲端則有 Avelios、Corti、Dedalus、Dawn Health、Sword 建在 Nemotron 上，PolyAI 用 Agent Toolkit 服務涵蓋比利時與法國逾 70,000 名醫療專業人員的 Corilus 網絡（<a href="https://www.globenewswire.com/news-release/2026/10/21/3385333/0/en/healthcare-and-life-sciences-leaders-build-on-nvidia-to-advance-drug-discovery-and-expand-patient-care.html" target="_blank" rel="noopener">新聞稿</a>）。</span>
+            <span class="en">At GTC Berlin on 10/21 it shipped RFD4-Proteina under BSD 3-Clause, the Siemens Healthineers adaptive radiotherapy partnership, and an agent ecosystem spanning Benchling, Biolevate, Boltz, Automata, Genedata, Hologen and Therna, with Avelios, Corti, Dedalus, Dawn Health and Sword building on Nemotron in Europe and PolyAI using the Agent Toolkit for Corilus, whose network covers more than 70,000 healthcare professionals in Belgium and France (<a href="https://www.globenewswire.com/news-release/2026/10/21/3385333/0/en/healthcare-and-life-sciences-leaders-build-on-nvidia-to-advance-drug-discovery-and-expand-patient-care.html" target="_blank" rel="noopener">release</a>).</span>
+          </td>
+          <td>
+            <span class="zh">護城河不在模型而在 CUDA 與 BioNeMo 的工具鏈：模型愈開放，愈多人在它的硬體上跑。弱點是這套策略把模型差異化讓給別人，一旦有人在非 NVIDIA 硬體上做出同級推論成本，整個論述會鬆動。</span>
+            <span class="en">The moat is not the model but CUDA and the BioNeMo toolchain: the more open the model, the more people run it on its hardware. The weakness is that the strategy concedes model differentiation to others, and would loosen the moment someone matches the inference cost on non-NVIDIA silicon.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Anthropic</strong><br><span class="zh-inline">把 agent 的自主時長當產品</span><span class="en-inline">Sells autonomous horizon as the product</span></td>
+          <td>
+            <span class="zh">10/20 公布 Claude 約 64 小時自主設計活動：12 工具、318,484 設計、553,052 配對、211 實測、17 個達標、最佳個位數 nM、約 10,000 GPU 小時，全部資料開在 Hugging Face（<a href="https://www.anthropic.com/research/claude-scorpion-toxin-binder-design" target="_blank" rel="noopener">報告</a>）。同時是 RFD4-Proteina 九個發行通路之一（Claude Science）。</span>
+            <span class="en">On 10/20 it published a ~64-hour autonomous campaign: 12 tools, 318,484 designs, 553,052 pairs, 211 tested, 17 clearing the bar, best at single-digit nanomolar, about 10,000 GPU hours, with all data on Hugging Face (<a href="https://www.anthropic.com/research/claude-scorpion-toxin-binder-design" target="_blank" rel="noopener">report</a>). It is also one of RFD4-Proteina&rsquo;s nine distribution channels, via Claude Science.</span>
+          </td>
+          <td>
+            <span class="zh">差異化是「長時程可靠度 + 把失敗寫出來」，這在科學客戶面前比 benchmark 分數值錢。弱點是沒有自有濕實驗產能，驗證全外包（Adaptyv Bio、Twist），也沒有醫院端通路。</span>
+            <span class="en">The differentiation is long-horizon reliability plus publishing the failures, which is worth more to scientific buyers than a benchmark score. The weakness is no in-house wet-lab capacity — verification is fully outsourced to Adaptyv Bio and Twist — and no hospital-side distribution.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>OpenAI</strong><br><span class="zh-inline">把 agent 的數量當產品</span><span class="en-inline">Sells agent count as the product</span></td>
+          <td>
+            <span class="zh">10/21 與 PerturbAI、Scripps 發表數千 agent 在 32 分鐘讀完 800 萬細胞圖譜，引用 700+ 篇 vs. 單 agent 11 篇、盲測專家 75% 偏好（<a href="https://openai.com/index/scaling-ai-research-for-complex-biological-data/" target="_blank" rel="noopener">公告</a>）。亦是 RFD4-Proteina 的發行通路之一。此前 4/22 推出 ChatGPT for Clinicians 與 HealthBench Professional，對<a href="https://openai.com/index/making-chatgpt-better-for-clinicians/" target="_blank" rel="noopener">已驗證的美國臨床人員免費</a>。</span>
+            <span class="en">On 10/21, with PerturbAI and Scripps, it ran thousands of agents over an 8M-cell atlas in 32 minutes, citing 700+ references against a single agent&rsquo;s 11, with 75% blinded expert preference (<a href="https://openai.com/index/scaling-ai-research-for-complex-biological-data/" target="_blank" rel="noopener">announcement</a>). It is also an RFD4-Proteina channel. Earlier, on 4/22, it launched ChatGPT for Clinicians and HealthBench Professional, <a href="https://openai.com/index/making-chatgpt-better-for-clinicians/" target="_blank" rel="noopener">free to verified US clinicians</a>.</span>
+          </td>
+          <td>
+            <span class="zh">護城河是推論規模與分發：數千 agent 平行跑 32 分鐘，這件事本身就是算力門檻。弱點與 Anthropic 相同——產出是假說，沒有實驗驗證，而且臨床產品線（ChatGPT for Clinicians）與研究產品線（GPT-Rosalind）之間目前看不出技術共用。</span>
+            <span class="en">The moat is inference scale and distribution: thousands of agents in parallel for 32 minutes is itself a compute barrier. The weakness mirrors Anthropic&rsquo;s — the output is hypotheses, unvalidated — and there is no visible technical sharing between the clinical line (ChatGPT for Clinicians) and the research line (GPT-Rosalind).</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Epic</strong><br><span class="zh-inline">不做模型，做收費閘門</span><span class="en-inline">Builds no model, builds the tollgate</span></td>
+          <td>
+            <span class="zh">10/21 宣布 Connectors 初期採用 MCP，服務 Emmie／Art／Penny 與 Agent Factory（八月亮相，帶 100+ 預建功能）；2026 年底開始與部分醫院測試，Showroom 2027 年 3 月開放，<strong>向開發者收費但未公布金額</strong>（<a href="https://www.beckershospitalreview.com/healthcare-information-technology/ehrs/epic-takes-aim-at-swivel-chair-work-with-ai-connectors/" target="_blank" rel="noopener">Becker's, 10/21</a>）。</span>
+            <span class="en">On 10/21 it said Connectors will initially use MCP, serving Emmie, Art and Penny plus Agent Factory (unveiled in August with 100+ pre-built features); testing with selected health systems starts before end-2026, Showroom opens March 2027, and <strong>Epic will charge developers at undisclosed prices</strong> (<a href="https://www.beckershospitalreview.com/healthcare-information-technology/ehrs/epic-takes-aim-at-swivel-chair-work-with-ai-connectors/" target="_blank" rel="noopener">Becker&rsquo;s, 10/21</a>).</span>
+          </td>
+          <td>
+            <span class="zh">最厚的護城河，因為它不在技術上——是安裝基數加上「醫院自行控制權限」的治理設計，讓 Epic 既是通道又是裁判。弱點是收費閘門會把小開發商推向其他 EHR，而 Epic 自己的三個助理與第三方 App 之間存在明顯的利益衝突。</span>
+            <span class="en">The thickest moat here, and it is not technical — it is installed base plus a governance design that leaves permissions with the hospital, making Epic both the channel and the referee. The weakness is that a tollgate pushes small developers towards other EHRs, and Epic&rsquo;s own three assistants sit in open conflict of interest with the third-party apps.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Abridge</strong><br><span class="zh-inline">用已鋪好的 EHR 連線往上長</span><span class="en-inline">Grows upward along EHR connections already laid</span></td>
+          <td>
+            <span class="zh">10/13 推出 Abridge Assistant，自九月釋出起所有 Abridge 醫院的全體臨床人員皆可用；公司自述服務逾 300 家企業級醫療體系、Sutter Health 案例稱 78% 臨床人員工作滿意度改善（<a href="https://www.abridge.com/blog/abridge-assistant-is-the-ai-assistant-for-healthcare" target="_blank" rel="noopener">官方貼文</a>，皆為廠商自述）。</span>
+            <span class="en">It launched Abridge Assistant on 10/13, available to every clinician at every Abridge health system since the September release; the company reports serving over 300 enterprise health systems, with a Sutter Health case citing 78% of clinicians reporting improved work satisfaction (<a href="https://www.abridge.com/blog/abridge-assistant-is-the-ai-assistant-for-healthcare" target="_blank" rel="noopener">its own post</a>; both vendor-reported).</span>
+          </td>
+          <td>
+            <span class="zh">護城河是既有的 EHR 整合與院內治理關係，這比模型難複製。但它正面對上 Epic 的 Art，而 Epic 同時掌握分發與規則——這是本週競爭結構裡最不對稱的一組。</span>
+            <span class="en">The moat is existing EHR integration and in-hospital governance relationships, both harder to copy than a model. But it runs head-on into Epic&rsquo;s Art, while Epic controls both distribution and the rules — the most asymmetric pairing in this week&rsquo;s structure.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Mass General Brigham</strong><br><span class="zh-inline">學術機構以論文 + 專利雙軌推進</span><span class="en-inline">An academic centre advancing on paper and patent together</span></td>
+          <td>
+            <span class="zh">10/19《Lancet Digital Health》刊出 FAHR-Face（逾 4,000 萬張臉），同時已就下一代臉部健康演算法申請美國臨時專利 No. 63/769,840，並開放公眾自拍上傳的 FaceAge Research Study（<a href="https://news.massgeneralbrigham.org/en/ai-facial-recognition-tools-assess-age-cancer-survival-risk" target="_blank" rel="noopener">MGB 新聞室</a>）。經費來自歐盟 ERC。</span>
+            <span class="en">On 10/19 <em>Lancet Digital Health</em> published FAHR-Face, trained on 40M+ faces, while MGB has filed US provisional patent No. 63/769,840 on next-generation facial health algorithms and opened the public selfie-upload FaceAge Research Study (<a href="https://news.massgeneralbrigham.org/en/ai-facial-recognition-tools-assess-age-cancer-survival-risk" target="_blank" rel="noopener">MGB newsroom</a>). Funding from the EU ERC.</span>
+          </td>
+          <td>
+            <span class="zh">護城河是資料與臨床世代的可近性，廠商難以複製 4,000 萬張標註臉加上癌症存活追蹤。弱點是沒有產品化通路，而公開自拍工具在尚未發表任何亞群公平性數據的情況下上線，是一個真實的聲譽與監理風險。</span>
+            <span class="en">The moat is access to data and clinical cohorts; no vendor easily reproduces 40 million labelled faces paired with cancer survival follow-up. The weakness is no commercialisation channel — and opening a public selfie tool while publishing no subgroup fairness data at all is a real reputational and regulatory exposure.</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="zh"><strong>一句話收束：本週的競爭結構是一個分層的三明治。</strong>最底下 NVIDIA 用 BSD 3-Clause 把模型層壓成公共財、綁住硬體；中間 Anthropic 與 OpenAI 搶的是 agent 的「深度」（64 小時自主）與「寬度」（數千個並行），兩家同時都是 NVIDIA 模型的下游通路；最上面 Epic 用 MCP 與 Showroom 收費閘門把醫院端的入口握在手裡，而 Abridge 這類應用層廠商得在 Epic 的規則下跟 Epic 自家的 Art 競爭。真正沒人站的位置是「濕實驗驗證」——三份技術報告的限制欄全部指向同一個缺口，而那恰好是目前最貴、最慢、也最難用算力換的一段。</span>
+      <span class="en"><strong>In one sentence: this week&rsquo;s competitive structure is a layered sandwich.</strong> At the bottom NVIDIA uses BSD 3-Clause to commoditise the model layer and lock in the hardware. In the middle Anthropic and OpenAI compete on the agent&rsquo;s depth (64 autonomous hours) and its width (thousands in parallel), while both are simultaneously downstream distribution channels for NVIDIA&rsquo;s model. At the top Epic holds the hospital entrance with MCP and a paid Showroom, leaving application-layer vendors like Abridge to compete against Epic&rsquo;s own Art under Epic&rsquo;s rules. The position nobody occupies is wet-lab verification — the limitations section of all three technical reports points at the same gap, and it is the slowest, most expensive stretch, and the one least convertible into compute.</span>
+    </p>
+  </div>
+</section>
+
+<section id="taiwan">
+  <h2>04 — Taiwan Angle</h2>
+  <div class="sec-title">
+    <span class="zh">開放權重、MCP 與「用現成資料跑 agent」這三件事，對台灣各有不同的門檻高度</span>
+    <span class="en">Open weights, MCP, and running agents over data you already hold — three different heights of barrier for Taiwan</span>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="zh"><strong>(1) RFD4-Proteina 的 1.74 GB 把門檻降到國內實驗室可承受的區間。</strong>BSD 3-Clause 加上單張資料中心卡可跑，意味著台灣的學研單位與生技公司第一次能在不簽授權、不租叢集的前提下把蛋白質設計納入自己的流程。真正的瓶頸會立刻從算力移到<strong>濕實驗驗證產能</strong>——Anthropic 那份報告把 211 個設計送去 Adaptyv Bio 與 Twist 做 SPR 雙重複驗，這種「兩間獨立實驗室、每次重複都要命中」的驗證規格，在台灣目前並沒有對應的商業化服務可以直接買到。能補上這一段的單位，會比買更多卡的單位更有價值。</span>
+      <span class="en"><strong>(1) RFD4-Proteina&rsquo;s 1.74 GB brings the barrier inside what a Taiwanese lab can absorb.</strong> BSD 3-Clause plus a single data-centre card means academic groups and biotechs here can fold protein design into their own pipelines for the first time without a licence negotiation or a cluster rental. The bottleneck moves immediately from compute to <strong>wet-lab verification capacity</strong> — Anthropic sent its 211 designs to Adaptyv Bio and Twist for duplicate SPR, and that specification, two independent labs with a hit in every replicate, has no directly purchasable commercial equivalent in Taiwan today. Whoever closes that gap will matter more than whoever buys more cards.</span>
+    </p>
+    <p>
+      <span class="zh"><strong>(2) Epic 選 MCP，對台灣醫院資訊廠商是一個明確的技術時程訊號。</strong>衛福部今年主推的 <a href="https://www.ithome.com.tw/news/176511" target="_blank" rel="noopener">FHIR Box 跨院病歷互通</a>解的是資料交換層，而 Epic 這一步解的是<strong>上面那一層</strong>：讓 agent 在別的系統裡做事。兩者不衝突，但順序很重要——如果國內只把力氣放在 FHIR 而沒有同步規劃 agent 呼叫工具的權限與稽核模型，等到 2027 年 3 月 Epic Showroom 開放、國際廠商的 Connector 生態成形時，台灣的 HIS 會發現自己有資料標準卻沒有 agent 介面標準。Epic 那套「醫院自行檢視 Connector 能讀什麼、能改什麼」的治理設計，是現成可以直接參考的規格。</span>
+      <span class="en"><strong>(2) Epic choosing MCP is a clear timing signal for Taiwan&rsquo;s hospital IT vendors.</strong> The <a href="https://www.ithome.com.tw/news/176511" target="_blank" rel="noopener">FHIR Box cross-hospital record exchange</a> the Ministry of Health and Welfare has pushed this year solves the data-exchange layer; Epic&rsquo;s move solves <strong>the layer above it</strong>: letting an agent act inside another system. The two do not conflict, but the order matters. If the effort here goes into FHIR without a parallel plan for the permission and audit model around agent tool calls, then by March 2027, when Epic Showroom opens and an international Connector ecosystem forms, Taiwanese HIS vendors will find they have a data standard and no agent-interface standard. Epic&rsquo;s governance design — each hospital reviewing what a Connector may read and may change — is an off-the-shelf specification worth copying.</span>
+    </p>
+    <p>
+      <span class="zh"><strong>(3) OpenAI 那組實驗示範的是「已有資料 + 大量 agent」，這條路台灣的門檻最低。</strong>800 萬細胞的圖譜是既有資料，agent 只是把人力讀不完的部分平行讀完。台灣手上最接近這個形狀的資產是健保資料庫與各醫學中心的影像與病理庫。10/5 衛福部的「2026 國產 AI 3D 醫療影像暨元宇宙應用大會」上，<a href="https://udn.com/news/story/7266/9795500" target="_blank" rel="noopener">台大醫院院長余忠仁表示 2028 年要完成全院自動化 AI 3D 影像轉譯架構</a>，部長石崇良同場提到 FHIR Box 與次世代 3D PACS，智捷醫電的 Anatomy Cloud 平台約 5 分鐘把 2D 掃描轉成 3D 解剖模型、並捐贈 10 台工作站供部署為示範設備。這些都是基礎建設，但要把它變成「數千 agent 在上面跑」，缺的不是模型而是<strong>可程式化存取的資料介面與治理授權</strong>——也就是第 (2) 點講的那一層。</span>
+      <span class="en"><strong>(3) OpenAI&rsquo;s run demonstrates &ldquo;data you already have plus a lot of agents&rdquo;, and that is the lowest barrier of the three for Taiwan.</strong> The 8-million-cell atlas was existing data; the agents simply read in parallel what people could not finish reading. Taiwan&rsquo;s closest assets of that shape are the National Health Insurance database and the imaging and pathology archives of its medical centres. At the ministry&rsquo;s 2026 Domestic AI, 3D Medical Imaging and Metaverse Application Conference on 10/5, <a href="https://udn.com/news/story/7266/9795500" target="_blank" rel="noopener">NTUH president Yu Chung-jen said the hospital aims to complete a hospital-wide automated AI 3D imaging translation framework by 2028</a>, Minister Shih Chung-liang discussed FHIR Box and next-generation 3D PACS, and Zhijie Medical&rsquo;s Anatomy Cloud platform turns 2D scans into 3D anatomical models in about five minutes, with ten donated workstations to be deployed as demonstration equipment. All of that is infrastructure. Turning it into something thousands of agents can run over requires not a model but <strong>programmatically accessible data interfaces and the governance to authorise them</strong> — which is to say, point (2).</span>
+    </p>
+  </div>
+</section>
+
+<section id="reading">
+  <h2>05 — Further Reading</h2>
+  <div class="sec-title">
+    <span class="zh">挑選標準：原始出處優先，且必須含有新聞稿沒寫進去的技術細節或限制</span>
+    <span class="en">Chosen for primary sources that carry a technical detail or limitation the press release left out</span>
+  </div>
+
+  <ol class="reading">
+    <li>
+      <a href="https://www.anthropic.com/research/claude-scorpion-toxin-binder-design" target="_blank" rel="noopener">Claude Designs Protein Binders Against Scorpion Neurotoxins — Anthropic Research (2026-10-20)</a>
+      <p class="why"><span class="zh">本週唯一一份把 agent 自主時數、GPU 小時、篩選漏斗每一層的數字、以及「哪一類設計全軍覆沒」都寫清楚的報告；值得讀的是它的限制段落怎麼寫，而不是結論。</span><span class="en">The only report this week that puts agent hours, GPU hours, every stage of the screening funnel and the category that failed outright all on the page; read it for how the limitations section is written, not for the conclusion.</span></p>
+    </li>
+    <li>
+      <a href="https://openai.com/index/scaling-ai-research-for-complex-biological-data/" target="_blank" rel="noopener">Scaling AI Research for Complex Biological Data — OpenAI (2026-10-21)</a>
+      <p class="why"><span class="zh">把「多 agent 到底有沒有用」從口號變成數字的一次嘗試：固定模型與資源的單 agent 對照組，是這份公告最有方法學價值的部分。</span><span class="en">An attempt to turn &ldquo;does multi-agent actually help&rdquo; from a slogan into a number; the fixed-model, fixed-resource single-agent control is the methodologically valuable part.</span></p>
+    </li>
+    <li>
+      <a href="https://www.unite.ai/nvidia-debuts-open-protein-design-model-rfd4-proteina-with-uw-medicine/" target="_blank" rel="noopener">NVIDIA Debuts Open Protein Design Model RFD4-Proteina with UW Medicine — unite.ai (2026-10-21)</a>
+      <p class="why"><span class="zh">比 NVIDIA 自己的新聞稿有用：參數量、權重大小、授權條款、H200 延遲、七種任務清單與各版本釋出日期都在這裡，而官方稿一個都沒給。</span><span class="en">More useful than NVIDIA&rsquo;s own release: parameter count, weight size, licence terms, H200 latency, the seven-task list and the per-artefact release dates are all here, and none of them are in the official text.</span></p>
+    </li>
+    <li>
+      <a href="https://www.epic.com/epic/post/introducing-connectors-a-new-way-for-apps-to-communicate-with-epic/" target="_blank" rel="noopener">Introducing Connectors: A New Way for Apps to Communicate With Epic — Epic (2026-10-21)</a>
+      <p class="why"><span class="zh">讀原文而不是轉述，因為真正重要的是 Epic 怎麼描述權限邊界——「醫院啟用前可檢視能讀什麼、能改什麼」這句話會是接下來兩年所有 agent 稽核討論的起點。</span><span class="en">Read the original rather than the summaries, because what matters is how Epic words the permission boundary; &ldquo;review what it can read and what it can change before enabling&rdquo; will be the starting point of every agent-audit argument for two years.</span></p>
+    </li>
+    <li>
+      <a href="https://news.massgeneralbrigham.org/en/ai-facial-recognition-tools-assess-age-cancer-survival-risk" target="_blank" rel="noopener">AI facial health recognition tools help physicians assess age and survival risk — Mass General Brigham (2026-10-19)</a>
+      <p class="why"><span class="zh">把它當成「如何在沒有任何效能數字的情況下發布一個基礎模型」的案例研究來讀；新聞稿連作者群與專利號都給了，就是沒有 MAE 與 C-index。</span><span class="en">Read it as a case study in announcing a foundation model without a single performance figure; the release gives the full author list and the patent number, but no MAE and no C-index.</span></p>
+    </li>
+  </ol>
+</section>
+
+<section id="refs">
+  <h2>06 — References</h2>
+  <div class="sec-title">
+    <span class="zh">參考文獻</span>
+    <span class="en">References</span>
+  </div>
+
+  <div class="panel">
+    <ol class="refs">
+      <li>Healthcare and Life Sciences Leaders Build on NVIDIA to Advance Drug Discovery and Expand Patient Care. <em>NVIDIA Newsroom</em>, 2026-10-21. <a href="https://nvidianews.nvidia.com/news/healthcare-and-life-sciences-leaders-build-on-nvidia-to-advance-drug-discovery-and-expand-patient-care" target="_blank" rel="noopener">nvidianews.nvidia.com</a></li>
+      <li>Healthcare and Life Sciences Leaders Build on NVIDIA (full release text). <em>GlobeNewswire</em>, 2026-10-21. <a href="https://www.globenewswire.com/news-release/2026/10/21/3385333/0/en/healthcare-and-life-sciences-leaders-build-on-nvidia-to-advance-drug-discovery-and-expand-patient-care.html" target="_blank" rel="noopener">globenewswire.com</a></li>
+      <li>NVIDIA Debuts Open Protein Design Model RFD4-Proteina with UW Medicine. <em>unite.ai</em>, 2026-10-21. <a href="https://www.unite.ai/nvidia-debuts-open-protein-design-model-rfd4-proteina-with-uw-medicine/" target="_blank" rel="noopener">unite.ai</a></li>
+      <li>NVIDIA GTC Berlin 2026: Healthcare and Life Sciences Leaders Build on NVIDIA. <em>StorageNewsletter</em>, 2026-10-21. <a href="https://www.storagenewsletter.com/2026/10/21/nvidia-gtc-berlin-2026-healthcare-and-life-sciences-leaders-build-on-nvidia-to-advance-drug-discovery-and-expand-patient-care/" target="_blank" rel="noopener">storagenewsletter.com</a></li>
+      <li>Claude Designs Protein Binders Against Scorpion Neurotoxins. <em>Anthropic Research</em>, 2026-10-20. <a href="https://www.anthropic.com/research/claude-scorpion-toxin-binder-design" target="_blank" rel="noopener">anthropic.com</a></li>
+      <li>Scaling AI research for complex biological data. <em>OpenAI</em>, 2026-10-21. <a href="https://openai.com/index/scaling-ai-research-for-complex-biological-data/" target="_blank" rel="noopener">openai.com</a></li>
+      <li>Introducing Connectors: A New Way for Apps to Communicate With Epic. <em>Epic</em>, 2026-10-21. <a href="https://www.epic.com/epic/post/introducing-connectors-a-new-way-for-apps-to-communicate-with-epic/" target="_blank" rel="noopener">epic.com</a></li>
+      <li>Epic launches Connectors to link its AI tools with third-party apps. <em>Fierce Healthcare</em>, 2026-10-21. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/epic-launches-connectors-link-its-ai-tools-third-party-apps" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>Epic Systems to launch Connectors tool for AI agents. <em>Modern Healthcare</em>, 2026-10-21. <a href="https://www.modernhealthcare.com/health-tech/mh-epic-systems-connectors-ai-agents-2027/" target="_blank" rel="noopener">modernhealthcare.com</a></li>
+      <li>Epic takes aim at &lsquo;swivel-chair&rsquo; work with AI Connectors. <em>Becker&rsquo;s Hospital Review</em>, 2026-10-21. <a href="https://www.beckershospitalreview.com/healthcare-information-technology/ehrs/epic-takes-aim-at-swivel-chair-work-with-ai-connectors/" target="_blank" rel="noopener">beckershospitalreview.com</a></li>
+      <li>Epic enables EHRs to communicate with other apps. <em>Healthcare IT News</em>, 2026-10-21. <a href="https://www.healthcareitnews.com/news/epic-enables-ehrs-communicate-other-apps" target="_blank" rel="noopener">healthcareitnews.com</a></li>
+      <li>AI facial health recognition tools help physicians assess age and survival risk to guide personalized treatment. <em>Mass General Brigham Newsroom</em>, 2026-10-19. DOI 10.1016/j.landig.2026.101056. <a href="https://news.massgeneralbrigham.org/en/ai-facial-recognition-tools-assess-age-cancer-survival-risk" target="_blank" rel="noopener">news.massgeneralbrigham.org</a></li>
+      <li>Facial AI estimates biological age and predicts cancer survival. <em>bioengineer.org</em>, 2026-10-20. <a href="https://bioengineer.org/facial-ai-estimates-biological-age-and-predicts-cancer-survival/" target="_blank" rel="noopener">bioengineer.org</a></li>
+      <li>How a photo of a patient&rsquo;s face could predict whether they&rsquo;ll survive cancer. <em>The Washington Post</em>, 2026-10-20. <a href="https://www.washingtonpost.com/health/2026/10/20/how-photo-patients-face-could-predict-whether-theyll-survive-cancer/" target="_blank" rel="noopener">washingtonpost.com</a></li>
+      <li>How a photo of a person&rsquo;s face could help predict whether they&rsquo;ll survive cancer treatment. <em>CNN</em>, 2026-10-20. <a href="https://www.cnn.com/2026/10/20/health/ai-models-cancer-survival-biological-age" target="_blank" rel="noopener">cnn.com</a></li>
+      <li>You can now upload a selfie to a Mass General Brigham AI tool and it&rsquo;ll estimate your biological age. <em>The Boston Globe</em>, 2026-10-20. <a href="https://www.bostonglobe.com/2026/10/20/metro/ai-biological-age-face-selfie-free-tool/" target="_blank" rel="noopener">bostonglobe.com</a></li>
+      <li>AI Model Trained on 40 Million Faces Predicts Cancer Mortality Risk From Photos. <em>IBTimes AU</em>, 2026-10-20. <a href="https://www.ibtimes.com.au/ai-facial-photo-estimates-cancer-survival-risk-1877074" target="_blank" rel="noopener">ibtimes.com.au</a></li>
+      <li>Meet the AI Assistant for Healthcare. <em>Abridge</em>, 2026-10-13. <a href="https://www.abridge.com/blog/abridge-assistant-is-the-ai-assistant-for-healthcare" target="_blank" rel="noopener">abridge.com</a></li>
+      <li>Healthcare AI News 10/21/26. <em>HIStalk</em>, 2026-10-21. <a href="https://histalk2.com/2026/10/21/healthcare-ai-news-10-21-26/" target="_blank" rel="noopener">histalk2.com</a></li>
+      <li>AI News Today, October 21. <em>AI Weekly</em>, 2026-10-21. <a href="https://aiweekly.co/ai-news-today" target="_blank" rel="noopener">aiweekly.co</a></li>
+      <li>Making ChatGPT better for clinicians. <em>OpenAI</em>, 2026-04-22. <a href="https://openai.com/index/making-chatgpt-better-for-clinicians/" target="_blank" rel="noopener">openai.com</a></li>
+      <li>醫療元宇宙走入臨床 國產AI、3D醫療影像落地 台大拚2028全院導入. <em>聯合報</em>, 2026-10-05. <a href="https://udn.com/news/story/7266/9795500" target="_blank" rel="noopener">udn.com</a></li>
+      <li>「國產AI 3D醫療影像大會」展示科技軟實力 石崇良用政策支持台灣智慧醫療大步向前. <em>MK News</em>, 2026-10. <a href="https://mknews.com.tw/2026/10/1001565/" target="_blank" rel="noopener">mknews.com.tw</a></li>
+      <li>行政院BTC預備會議聚焦AI生技和智慧醫療，再提FHIR Box打造全臺病歷互通. <em>iThome</em>, 2026. <a href="https://www.ithome.com.tw/news/176511" target="_blank" rel="noopener">ithome.com.tw</a></li>
+      <li>AHA details recommendations to FDA on regulatory frameworks for GenAI-enabled medical devices. <em>American Hospital Association</em>, 2026-10-19. <a href="https://www.aha.org/news/headline/2026-10-19-aha-details-recommendations-fda-regulatory-frameworks-genai-enabled-medical-devices" target="_blank" rel="noopener">aha.org</a></li>
+    </ol>
+    <div class="note">
+      <span class="zh"><strong>編輯說明：</strong>（1）《Lancet Digital Health》的 FAHR-Face 原始論文位於付費牆後，本報告僅依 Mass General Brigham 新聞室公開稿與二手報導撰寫，因此<strong>全文未引用任何 MAE、C-index、風險比或世代人數</strong>——不是遺漏，是公開來源確實沒有；《華盛頓郵報》與 CNN 的報導亦在付費牆或爬蟲限制之後，僅依標題與搜尋摘要列為來源。（2）RFD4-Proteina 的 benchmark 宣稱出自 NVIDIA 未經同儕審查的 research draft，且<strong>無任何公開數值</strong>；參數量、權重大小、H200 延遲與授權條款引自 unite.ai 對 Hugging Face 與 NIM 模型卡的整理，非 NVIDIA 官方稿。（3）Anthropic 的 17/211、18%、個位數 nM 與約 10,000 GPU 小時皆為該公司自述，未經第三方稽核；Anthropic 已明文聲明未證明中和效果。（4）OpenAI 的「數千個 agent」無確切數字，「人類需數月到一年」為團隊自估而非量測。（5）Abridge 的 300+ 醫療體系與 Sutter Health 78% 滿意度為廠商自述、未經稽核。（6）Epic Connectors 為公告階段，Showroom 須至 2027 年 3 月，本報告未取得任何採用率數字。（7）台灣視角第 (3) 點引用的衛福部大會為 10/5，略早於本期 10/13–10/21 的主要窗口，作為背景脈絡列入並已標註日期。（8）本報告所有連結均為研究階段實際造訪或由搜尋結果直接返回的網址，未自行組合或推測。</span>
+      <span class="en"><strong>Editor&rsquo;s note:</strong> (1) The primary FAHR-Face paper in <em>Lancet Digital Health</em> sits behind a paywall; this report is written from the Mass General Brigham newsroom release and secondary coverage, which is why <strong>no MAE, C-index, hazard ratio or cohort size appears anywhere above</strong> — not an omission, but the limit of what the public sources contain. The Washington Post and CNN pieces are likewise behind a paywall or crawler restriction and are listed on the basis of their headlines and search summaries. (2) The RFD4-Proteina benchmark claim comes from an unreviewed NVIDIA research draft and carries <strong>no published numbers</strong>; the parameter count, weight size, H200 latency and licence terms are taken from unite.ai&rsquo;s reading of the Hugging Face and NIM model cards, not from NVIDIA&rsquo;s own text. (3) Anthropic&rsquo;s 17/211, the 18% rate, the single-digit nanomolar affinities and the ~10,000 GPU hours are all company-reported and not independently audited; Anthropic states explicitly that neutralisation has not been demonstrated. (4) OpenAI gives no exact agent count, and &ldquo;months to a year for a human team&rdquo; is the team&rsquo;s estimate rather than a measurement. (5) Abridge&rsquo;s 300+ health systems and Sutter Health&rsquo;s 78% satisfaction figure are vendor-reported and unaudited. (6) Epic Connectors is at announcement stage, Showroom opens in March 2027, and no adoption figures were obtainable. (7) The Taiwan ministry conference cited in point (3) took place on 10/5, slightly before this issue&rsquo;s main 10/13&ndash;10/21 window; it is included as background and dated accordingly. (8) Every link above is a URL actually visited during research or returned directly by search; none were constructed or inferred.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-row">
+    <div>
+      <span class="zh">AI／醫療AI 每日新知日報 · 由 Claude 於台北時間每日自動產出 · 本期主題：星期四／技術突破<br>本報告內容經來源查證，但不構成投資或醫療建議。所有數據請以原始出處為準。</span>
+      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today&rsquo;s rotation: Thursday / Technology Breakthroughs<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
+    </div>
+    <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com / 返回 peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
+  </div>
+</footer>
+</main>
+
+<div class="fabs">
+  <button class="up" id="up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+  <a class="home-fab" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg></a>
+</div>
+
+<script>
+function setLang(l){
+  document.body.classList.remove('lang-zh','lang-en');
+  document.body.classList.add('lang-'+l);
+  document.documentElement.lang = (l==='zh') ? 'zh-Hant' : 'en';
+  document.getElementById('b-zh').classList.toggle('on', l==='zh');
+  document.getElementById('b-en').classList.toggle('on', l==='en');
+  document.title = (l==='zh')
+    ? 'AI／醫療AI 每日新知日報 · 2026-10-22'
+    : 'AI & Medical AI Daily · 2026-10-22';
+}
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.getElementById('theme-ic').textContent =
+    document.body.classList.contains('dark') ? '◑' : '◐';
+}
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.body.classList.add('dark');
+  document.getElementById('theme-ic').textContent = '◑';
+}
+window.addEventListener('scroll', function(){
+  document.getElementById('up').classList.toggle('show', window.scrollY > 600);
+});
+
+/* GitHub 星星數：無需授權，失敗或被限流時靜默保留佔位符 */
+(function(){
+  var el = document.getElementById('ghs');
+  if (!el || typeof fetch !== 'function') return;
+  fetch('https://api.github.com/repos/tingwei161803/ai-medical-daily', {headers:{Accept:'application/vnd.github+json'}})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if (!d || typeof d.stargazers_count !== 'number') return;
+      var n = d.stargazers_count;
+      el.textContent = n >= 1000 ? (Math.round(n/100)/10) + 'k' : String(n);
+    })
+    .catch(function(){});
+})();
+</script>
+</body>
+</html>
