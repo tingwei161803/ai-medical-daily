@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>AI &amp; Medical AI Daily · 2026-10-22</title>
+<meta property="og:url" content="https://ai-medical-daily.peteraim.com/en/reports/2026-10-22.html" />
+<link rel="canonical" href="https://ai-medical-daily.peteraim.com/en/reports/2026-10-22.html" />
+<link rel="alternate" hreflang="zh-Hant" href="https://ai-medical-daily.peteraim.com/reports/2026-10-22.html" />
+<link rel="alternate" hreflang="en" href="https://ai-medical-daily.peteraim.com/en/reports/2026-10-22.html" />
+<link rel="alternate" hreflang="x-default" href="https://ai-medical-daily.peteraim.com/reports/2026-10-22.html" />
+<meta name="description" content="RFD4-Proteina goes open-weight, Claude runs 64 autonomous hours designing antivenom binders, thousands of GPT-Rosalind agents read an 8M-cell atlas in 32 minutes — and in the same week Epic builds Connectors on MCP while FAHR-Face reads biological age from 40 million faces.">
+<meta name="report-date" content="2026-10-22">
+<meta name="report-theme" content="technology">
+<meta name="report-title-zh" content="三天之內，三家公司各自示範了「AI 自己做生物學」的一種形狀——10/21 GTC Berlin，NVIDIA 與華盛頓大學蛋白質設計研究所把 RFD4-Proteina 以 BSD 3-Clause 開源，4.356 億參數、FP32 權重 1.74 GB、單張 H200 產一個 250 token 設計只要 5.0 秒（regional compilation 後 2.8 秒），在蛋白質結合、小分子結合、酵素骨架、DNA 結合四組 benchmark 全勝受評基線；10/20 Anthropic 公布 Claude 在 Claude Science 裡自主跑約 64 小時、動用 12 個設計工具生成 318,484 個設計、篩過 553,052 組配對、自選 180 個送驗，連同人工補的共 211 個實測只有 17 個過關（單毒素組 11/60、18%），最強的 Cn2-B1 與 Cn2-B2 達個位數 nM，而 Anthropic 自己白紙黑字寫「只證明結合、未證明中和」；10/21 OpenAI 與 PerturbAI、Scripps 用數千個 GPT-Rosalind agent 在 32 分鐘內讀完 800 萬顆細胞的小鼠全腦 CRISPR 圖譜，引用逾 700 篇文獻、對照單一 agent 的 11 篇，盲測專家 75% 偏好分散式產出">
+<meta name="report-title-en" content="Three companies, three days, three shapes of 'AI doing the biology itself' — at GTC Berlin on 10/21 NVIDIA and the UW Institute for Protein Design put RFD4-Proteina on Hugging Face under BSD 3-Clause: 435.6M parameters, 1.74 GB of FP32 weights, 5.0 seconds for a 250-token design on one H200 (2.8s with regional compilation), beating every evaluated baseline across four benchmark suites; on 10/20 Anthropic reported Claude running roughly 64 hours largely unsupervised inside Claude Science, driving 12 design tools to generate 318,484 designs, screening 553,052 design-toxin pairs and picking 180 for the bench — of 211 tested, 17 bound, 11 of 60 (18%) in the single-toxin arm, with Cn2-B1 and Cn2-B2 at single-digit nanomolar — while Anthropic states in writing that only binding, not neutralisation, has been shown; and on 10/21 OpenAI, PerturbAI and Scripps ran thousands of GPT-Rosalind agents over an 8-million-cell mouse whole-brain CRISPR atlas in 32 minutes, citing 700+ references against a single agent's 11, with blinded experts preferring the distributed output 75% of the time">
+<meta name="report-summary-zh" content="RFD4-Proteina 開源、Claude 自主跑 64 小時設計抗蛇毒結合蛋白、數千個 GPT-Rosalind agent 32 分鐘讀完 800 萬細胞圖譜——同一週 Epic 把 Connectors 架在 MCP 上、FAHR-Face 用 4,000 萬張臉算生理年齡，技術線與臨床線第一次在同一組基礎設施上對齊。">
+<meta name="report-summary-en" content="RFD4-Proteina goes open-weight, Claude runs 64 autonomous hours designing antivenom binders, thousands of GPT-Rosalind agents read an 8M-cell atlas in 32 minutes — and in the same week Epic builds Connectors on MCP while FAHR-Face reads biological age from 40 million faces.">
+<meta property="og:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HJLDQZDK5V');
+</script>
+<link rel="stylesheet" href="/assets/report.css">
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><span>◆</span> <span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <div class="bar-sp"></div>
+    <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
+    <div class="seg">
+      <a href="/reports/2026-10-22.html" hreflang="zh-Hant" lang="zh-Hant" rel="alternate">中文</a>
+      <a class="on" href="/en/reports/2026-10-22.html" hreflang="en" lang="en" aria-current="page">EN</a>
+    </div>
+    <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="kicker">
+    <span class="en-inline">Thursday · Technology Breakthroughs</span>
+  </div>
+  <h1>
+    <span class="en">Three companies, three days, three shapes of &ldquo;AI doing the biology itself&rdquo; — at GTC Berlin on 10/21 NVIDIA and the UW Institute for Protein Design put RFD4-Proteina on Hugging Face under BSD 3-Clause: 435.6M parameters, 1.74 GB of FP32 weights, 5.0 seconds for a 250-token design on one H200 (2.8s with regional compilation), beating every evaluated baseline across four benchmark suites; on 10/20 Anthropic reported Claude running roughly 64 hours largely unsupervised inside Claude Science, driving 12 design tools to generate 318,484 designs, screening 553,052 design&ndash;toxin pairs and picking 180 for the bench — of 211 tested, 17 bound, 11 of 60 (18%) in the single-toxin arm, with Cn2-B1 and Cn2-B2 at single-digit nanomolar — while Anthropic states in writing that only binding, not neutralisation, has been shown; and on 10/21 OpenAI, PerturbAI and Scripps ran thousands of GPT-Rosalind agents over an 8-million-cell mouse whole-brain CRISPR atlas in 32 minutes, citing 700+ references against a single agent&rsquo;s 11, with blinded experts preferring the distributed output 75% of the time</span>
+  </h1>
+  <div class="dateline">
+    <span class="en-inline">Thursday, October 22, 2026 · Covering Oct 13–21 · Taipei time</span>
+  </div>
+  <p class="lede">
+    <span class="en">The week&rsquo;s technology story is not any single model&rsquo;s score. It is that three things held true inside one 72-hour window: weights actually shipped (<a href="https://www.unite.ai/nvidia-debuts-open-protein-design-model-rfd4-proteina-with-uw-medicine/" target="_blank" rel="noopener">RFD4-Proteina under BSD 3-Clause, weights dated 10/19</a>), an agent was actually left running for more than two days (<a href="https://www.anthropic.com/research/claude-scorpion-toxin-binder-design" target="_blank" rel="noopener">Claude, ~64 hours and ~10,000 GPU hours</a>), and agent scale-out finally got a control arm (<a href="https://openai.com/index/scaling-ai-research-for-complex-biological-data/" target="_blank" rel="noopener">OpenAI&rsquo;s single agent cited 11 references, the distributed run 700+</a>). In the same week Epic said Connectors will run on the Model Context Protocol (<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/epic-launches-connectors-link-its-ai-tools-third-party-apps" target="_blank" rel="noopener">Fierce Healthcare, 10/21</a>), so the hospital-side agent interface is converging on the same wire too. The common footnote across all three reports is identical: everything here is computational or in-vitro binding. None of it reaches efficacy.</span>
+  </p>
+
+  <nav class="toc">
+    <a href="#top"><span class="en-inline">Top Stories</span></a>
+    <a href="#product"><span class="en-inline">Product Analysis</span></a>
+    <a href="#company"><span class="en-inline">Companies &amp; Competition</span></a>
+    <a href="#taiwan"><span class="en-inline">Taiwan Angle</span></a>
+    <a href="#reading"><span class="en-inline">Further Reading</span></a>
+    <a href="#refs"><span class="en-inline">References</span></a>
+  </nav>
+</div>
+
+<section id="top">
+  <h2>01 — Top Stories</h2>
+  <div class="sec-title">
+    <span class="en">Seven stories, ordered by distance from the bench: weights and agents first, then the protocols and interfaces inside hospitals, and last the model that already made it into a journal.</span>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Open weights</span></span>
+      <span class="tag">NVIDIA</span><span class="tag">UW IPD</span><span class="tag">RFD4-Proteina</span><span class="tag">10/19–10/21</span>
+    </div>
+    <h3>
+      <span class="en">NVIDIA and David Baker&rsquo;s institute open a protein-design model under BSD 3-Clause: 435.6M parameters, five seconds per design on one H200</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">At GTC Berlin on 10/21, NVIDIA and the UW Medicine Institute for Protein Design released <strong>RFD4-Proteina</strong>, an open BioNeMo model that couples programmable design with search (<a href="https://nvidianews.nvidia.com/news/healthcare-and-life-sciences-leaders-build-on-nvidia-to-advance-drug-discovery-and-expand-patient-care" target="_blank" rel="noopener">NVIDIA newsroom</a>). The specs: a flow-matching architecture generating sequence and all-atom structure together, <strong>435.6 million parameters</strong>, <strong>1.74 GB</strong> of FP32 weights, running in BF16; a 250-token design takes <strong>5.0 seconds</strong> on a single H200, or <strong>2.8 seconds</strong> with regional compilation. The NIM deployment lists seven tasks — generation, motif scaffolding, enzyme design, small-molecule binder design, antibody design, partial diffusion and inverse folding — and supports reward-guided beam search during diffusion. Weights are dated 10/19, diffusers support merged 10/20, and the NIM listing went up on build.nvidia.com and NGC the same day (<a href="https://www.unite.ai/nvidia-debuts-open-protein-design-model-rfd4-proteina-with-uw-medicine/" target="_blank" rel="noopener">unite.ai&rsquo;s technical write-up</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">The combination of licence and size is the point. BSD 3-Clause is about as permissive as it gets, and the NIM card marks the model ready for commercial use; 1.74 GB of weights means one data-centre card — or a good consumer one — rather than a cluster. That pushes the marginal cost of designing a binder down towards the electricity bill, and it makes the model small enough to sit in an agent&rsquo;s toolbox. In the same release, Genedata&rsquo;s AI co-scientist uses RFD4-Proteina to coordinate design and testing inside Danaher&rsquo;s autonomous lab, while the model ships simultaneously through Amazon Bio Discovery, Anthropic&rsquo;s Claude Science, Benchling, Databricks, Google Cloud, Hugging Face, Nebius, OpenAI and Tamarind Bio (<a href="https://www.globenewswire.com/news-release/2026/10/21/3385333/0/en/healthcare-and-life-sciences-leaders-build-on-nvidia-to-advance-drug-discovery-and-expand-patient-care.html" target="_blank" rel="noopener">full GlobeNewswire text</a>). One model landing inside the science products of three rival AI labs at once is the more quotable fact here.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">&ldquo;Beat every evaluated baseline on four suites&rdquo; is NVIDIA&rsquo;s own claim, sourced to a research draft that has not been peer-reviewed, and neither the release nor the secondary coverage gives <strong>a single number</strong> — no success rate, no absolute throughput, no list of baselines. The training-data composition is undisclosed. The four worked examples on the model card (a PD-L1 binder, a HER2 antibody redesign, an enzyme catalytic motif, a small-molecule pocket) are marked on the card itself as <strong>not experimental binding or catalytic results</strong>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://nvidianews.nvidia.com/news/healthcare-and-life-sciences-leaders-build-on-nvidia-to-advance-drug-discovery-and-expand-patient-care" target="_blank" rel="noopener">NVIDIA Newsroom, 2026-10-21</a> ／ <a href="https://www.unite.ai/nvidia-debuts-open-protein-design-model-rfd4-proteina-with-uw-medicine/" target="_blank" rel="noopener">unite.ai, 2026-10-21</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Autonomous agent</span></span>
+      <span class="tag">Anthropic</span><span class="tag">Claude Science</span><span class="tag">Adaptyv Bio</span><span class="tag">10/20</span>
+    </div>
+    <h3>
+      <span class="en">Claude runs 64 autonomous hours designing scorpion-antivenom binders: 318,484 designs in, 17 that actually bind — and Anthropic closes the door on overclaiming first</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On 10/20 Anthropic&rsquo;s Science team described using an internal research Claude, inside Claude Science, to design minibinders against scorpion neurotoxins (<a href="https://www.anthropic.com/research/claude-scorpion-toxin-binder-design" target="_blank" rel="noopener">Anthropic&rsquo;s research report</a>). The run: Claude worked autonomously for about 24 hours after the initial prompt, then took four follow-ups, for roughly <strong>64 hours</strong> and about <strong>10,000 GPU hours</strong> in all, choosing the toxin structures and hotspots, setting its own quality thresholds, picking the tools and drafting the report. Targets were five neurotoxins from four regions: Cn2 (Mexico), Ts1 (Brazil), AaH I and AaH II (North Africa), LqhIII (Middle East). The compute: <strong>12 design tools</strong>, <strong>318,484 designs</strong>, <strong>553,052 design&ndash;toxin pairs</strong> co-folded and screened, 180 selected by Claude plus 31 added by staff for <strong>211 total</strong>, sent to Adaptyv Bio (cell-free expression) and Twist Bioscience (mammalian cells, Fc fusions) and measured by SPR. The bar was set hard: a hit at both labs in every replicate, K<sub>D</sub> at or below 1 µM, and no signal against the off-target protein CLEC12A. <strong>17 of 211</strong> cleared it — seven against Cn2, four AaH II, four AaH I, two LqhIII — and <strong>11 of 60 (18%)</strong> in the single-toxin arm, while <strong>no multi-toxin design met the bar for more than one toxin</strong>. The best two, Cn2-B1 and Cn2-B2, bound at single-digit nanomolar, and competition experiments put their site on or near that of antibody LR, reported to neutralise Cn2 in mice.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This is the most complete public account yet of autonomous agent-hours tied to wet-lab verification in one report. The 18% single-toxin hit rate is, by Anthropic&rsquo;s own framing, in line with ordinary protein-design campaigns — meaning the agent performed no magic, but it did run to completion a campaign that normally takes a team weeks to plan, without step-by-step human direction. More usefully, the failures are reported in full: the pan-specific multi-toxin designs failed across the board, and that is precisely the hard, valuable part of antivenom work. All 211 designs, predicted structures, scores and experimental data are public on Hugging Face. For scale: scorpion stings affect at least 1.2 million people a year and cause more than 3,250 deaths, mostly children with limited access to care.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">Anthropic lists its own limitations, and more honestly than most vendors: only recombinant toxins were tested, <strong>neutralisation was not tested in cells or animals</strong>, and nothing was tested against venom-purified toxin. The company states plainly that it has not confirmed neutralisation and does not claim to have produced an antivenom. Next steps would be venom binding, patch-clamp electrophysiology and mouse studies. Separately, 31 of the 211 designs were added by Anthropic staff, so &ldquo;fully autonomous&rdquo; needs a small discount, and the prompt was adapted with Citrini Research, an investment research firm — disclosed in the report, but worth the reader&rsquo;s own weighing.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.anthropic.com/research/claude-scorpion-toxin-binder-design" target="_blank" rel="noopener">Anthropic Research, 2026-10-20</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Multi-agent</span></span>
+      <span class="tag">OpenAI</span><span class="tag">PerturbAI</span><span class="tag">Scripps Research</span><span class="tag">GPT-Rosalind</span><span class="tag">10/21</span>
+    </div>
+    <h3>
+      <span class="en">Thousands of agents, 32 minutes, 8 million cells: OpenAI finally puts a control arm next to &ldquo;more agents&rdquo;</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On 10/21 OpenAI, PerturbAI and Scripps Research described what they call &ldquo;distributed biological reasoning&rdquo;: thousands of agents powered by <strong>GPT-Rosalind</strong>, running in parallel over a mouse <strong>whole-brain CRISPR atlas</strong> of roughly 8 million cells, each agent taking one gene perturbation — analysing the cellular response, searching the literature, proposing explanations — and the outputs assembled into a &ldquo;reasoning atlas&rdquo; linking genes, cellular effects, publications and candidate mechanisms. The whole run took <strong>32 minutes</strong> (<a href="https://openai.com/index/scaling-ai-research-for-complex-biological-data/" target="_blank" rel="noopener">OpenAI&rsquo;s announcement</a>). The control arm is the interesting part: with model and resources held fixed, <strong>a single agent cited only 11 references at the largest workload, while the distributed agents cited more than 700</strong>, and in blinded comparison human experts preferred the distributed reports <strong>75%</strong> of the time. Two concrete hypotheses came out: in the cerebellum, disrupting Tsc2 shifted the activity of dozens of neuronal-communication genes while disrupting Tsc1 barely moved them (both regulate mTOR, with possible bearing on the learning and behavioural difficulties of tuberous sclerosis); and disrupting Dctn1 raised expression of cholesterol-synthesis genes, which the agents tied to existing work on cholesterol transport defects and thus to neurodegeneration in Perry syndrome. The atlas is on GitHub, the dataset on Hugging Face, the paper on bioRxiv.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Whether more agents actually helps has been an article of faith, because papers report the final result and skip the single-agent baseline. Eleven references against 700+ is the cleanest control the year has produced: same model, same resources, the only difference being that the work was cut up and run in parallel. It also shows what distribution costs — 700 citations means 700 reasoning chains someone has to spot-check, and the 75% preference rate says that a quarter of the time the experts wanted the single-agent report instead. The methodological consequence for medical AI is direct: if agent count buys literature coverage this cleanly, then &ldquo;can multi-agent setups close guideline coverage in clinical decision support&rdquo; stops being a philosophical question and becomes a designable experiment.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">&ldquo;Thousands&rdquo; is never given a number, and the announcement does not describe GPT-Rosalind&rsquo;s architecture or training. &ldquo;Months to a year for a human team&rdquo; is the team&rsquo;s own estimate, not a measurement. The claim that novelty and value assessments &ldquo;aligned&rdquo; with blinded expert judgement is qualitative, with no agreement statistic. The single-agent comparison ran at one fixed setup, so generality is not established. <strong>Neither hypothesis has been experimentally validated</strong>, and the announcement itself says scientists remain central to discovery. This is biomedical research, not clinical use.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://openai.com/index/scaling-ai-research-for-complex-biological-data/" target="_blank" rel="noopener">OpenAI, 2026-10-21</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Protocol</span></span>
+      <span class="tag">Epic</span><span class="tag">MCP</span><span class="tag">Agent Factory</span><span class="tag">10/21</span>
+    </div>
+    <h3>
+      <span class="en">Epic builds Connectors on the Model Context Protocol — when the EHR incumbent picks a wire, the ecosystem wires to it</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Ahead of the Open@Epic conference on 10/21, Epic announced <strong>Connectors</strong>: a way for third-party developers to link their apps to Epic&rsquo;s AI agents, so those agents can pull information from an outside app and complete tasks in it (<a href="https://www.epic.com/epic/post/introducing-connectors-a-new-way-for-apps-to-communicate-with-epic/" target="_blank" rel="noopener">Epic&rsquo;s own post</a>). They work with the three existing assistants — <strong>Emmie</strong> for patients, <strong>Art</strong> for clinicians, <strong>Penny</strong> for revenue cycle and operations — and with custom agents a health system builds in <strong>Agent Factory</strong>, which debuted at August&rsquo;s User Group Meeting carrying <strong>over 100 pre-built AI features</strong>. The technical choice that matters: <strong>Connectors will initially use the Model Context Protocol (MCP)</strong>. On timing, Epic plans to start testing with selected health system partners <strong>before the end of 2026</strong>, and developer-built Connectors list on Epic Showroom from <strong>March 2027</strong>; Epic will charge developers to distribute there, at undisclosed prices (<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/epic-launches-connectors-link-its-ai-tools-third-party-apps" target="_blank" rel="noopener">Fierce Healthcare, 10/21</a>). Named launch partners: Availity (coverage, prior authorisation, claims), Gozio Health (wayfinding), VPL (medication delivery timing).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">For twenty years the language of health interoperability has been HL7 and FHIR — built to move data. MCP is built to let a model call a tool, which is a different problem: not shipping a lab value across, but letting an agent <em>do something</em> inside another system. Epic picking MCP effectively sets the de facto standard for the agent layer in North American hospitals, and for third-party vendors it decides where the next two years of engineering goes. The governance design is worth noting too: Epic says each health system controls permissions and can review what a Connector may read and change before enabling it, and stresses that Connectors <strong>add no new autonomous actions</strong>. Keeping the decision about what an agent may do on the hospital side is a direct answer to the &ldquo;where does responsibility sit&rdquo; argument in the FDA generative-AI device docket that closed on 10/19.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">This is an announcement, not a shipment: Showroom opens in March 2027 and testing has yet to begin. Epic published no adoption figures at all — not how many health systems run Art, Emmie or Penny, not how many agents are live in Agent Factory. The only two numbers are the 100+ pre-built features and the &ldquo;thousands of test cases&rdquo; used to evaluate Emmie, both self-reported. The Showroom fee is undisclosed, and for small developers that is the variable that decides everything.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.epic.com/epic/post/introducing-connectors-a-new-way-for-apps-to-communicate-with-epic/" target="_blank" rel="noopener">Epic, 2026-10-21</a> ／ <a href="https://www.modernhealthcare.com/health-tech/mh-epic-systems-connectors-ai-agents-2027/" target="_blank" rel="noopener">Modern Healthcare, 2026-10-21</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Foundation model</span></span>
+      <span class="tag">Mass General Brigham</span><span class="tag">FAHR-Face</span><span class="tag">Lancet Digital Health</span><span class="tag">10/19</span>
+    </div>
+    <h3>
+      <span class="en">FAHR-Face, trained on 40 million faces, lands in Lancet Digital Health: one photo yields both biological age and cancer survival risk — and the most important part is what the paper does <em>not</em> establish</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On 10/19 <em>Lancet Digital Health</em> published Mass General Brigham&rsquo;s <strong>FAHR-Face</strong> (Foundation Artificial Intelligence for Health Recognition), a foundation model trained on <strong>more than 40 million face images</strong>, with two derived tools: <strong>FAHR-FaceAge</strong> for biological age and <strong>FAHR-FaceSurvival</strong> for cancer survival risk, DOI 10.1016/j.landig.2026.101056 (<a href="https://news.massgeneralbrigham.org/en/ai-facial-recognition-tools-assess-age-cancer-survival-risk" target="_blank" rel="noopener">MGB newsroom</a>). Raymond Mak is corresponding author, Hugo JWL Aerts co-senior author, funding from the EU ERC. The findings: the <strong>gap</strong> between FAHR-FaceAge and chronological age was <strong>independently associated with survival</strong>; the two tools&rsquo; predictions are <strong>only weakly correlated</strong>, so they capture complementary information, and combining them improved survival-model fit in an external cancer cohort; heavy alcohol, drug and tobacco use were associated with looking biologically older; and age estimates held steady across pose, lighting, expression, makeup and most plastic surgery, with a small shift after rhinoplasty. The team also opened a public upload tool, the FaceAge Research Study at faceage.bwh.harvard.edu, covered by <a href="https://www.bostonglobe.com/2026/10/20/metro/ai-biological-age-face-selfie-free-tool/" target="_blank" rel="noopener">the Boston Globe on 10/20</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This is an extreme case of the &ldquo;cheapest possible input signal&rdquo; direction: no blood draw, no imaging equipment, no chart — one face yields two continuous variables associated with survival. In radiation oncology the target is the judgement clinicians have long made on impression alone, whether a patient can withstand aggressive treatment. Technically the most interesting result is that the two tools are only weakly correlated, implying the face encodes at least two non-overlapping classes of health signal. <a href="https://www.washingtonpost.com/health/2026/10/20/how-photo-patients-face-could-predict-whether-theyll-survive-cancer/" target="_blank" rel="noopener">The Washington Post on 10/20</a> and <a href="https://www.cnn.com/2026/10/20/health/ai-models-cancer-survival-biological-age" target="_blank" rel="noopener">CNN the same day</a> pushed it into public view, which is exactly where a tool like this warrants the most care.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">Neither the release nor the secondary coverage gives <strong>a single performance figure</strong> — no MAE, no C-index, no hazard ratio, no confidence intervals, no cohort sizes for development or external validation, no named comparison models. This is a computational development-and-validation study that <strong>did not test whether physicians using these scores made better decisions or got better outcomes</strong>; the lifestyle links are associations, not causation; facial attention maps show what the model used, not a biological mechanism; and <strong>no clinical decision threshold, treatment-selection rule or safe-use subgroup was established</strong>. MGB concedes that more evaluation is needed to know how the models perform across broader demographic and clinical settings — and <strong>no subgroup fairness data appears anywhere</strong>, which for a face-input model is a serious gap. Disclosure: MGB has filed a US provisional patent (No. 63/769,840) on next-generation facial health algorithms, naming Mak, Haugg and Aerts.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://news.massgeneralbrigham.org/en/ai-facial-recognition-tools-assess-age-cancer-survival-risk" target="_blank" rel="noopener">Mass General Brigham Newsroom, 2026-10-19</a> ／ <a href="https://bioengineer.org/facial-ai-estimates-biological-age-and-predicts-cancer-survival/" target="_blank" rel="noopener">bioengineer.org, 2026-10-20</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Clinical agent</span></span>
+      <span class="tag">Abridge</span><span class="tag">Abridge Assistant</span><span class="tag">10/13</span>
+    </div>
+    <h3>
+      <span class="en">Abridge turns the scribe into an Assistant: the reasoning steps are shown as they run, and the citations point at the chart section used</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On 10/13 Abridge launched <strong>Abridge Assistant</strong>, a chat-and-voice assistant that presents the same way inside the EHR and on the clinician&rsquo;s phone, drawing on the patient&rsquo;s chart (notes, results, outside records), the live conversation, clinical guidelines, and the health system&rsquo;s own pathways and policy libraries (<a href="https://www.abridge.com/blog/abridge-assistant-is-the-ai-assistant-for-healthcare" target="_blank" rel="noopener">Abridge&rsquo;s post</a>). Tasks span summarising what changed for a patient, answering clinical questions, opening calculators prefilled from the chart, personalising notes, and drafting referrals and handoffs. Two design details are worth recording: it <strong>breaks complex requests into a chain of steps — gathering context, checking completeness — and shows those steps as they run</strong>; and it <strong>cites the chart sections and sources it used</strong>, so the clinician can trace the reasoning. Evaluation runs human and LLM judges against clinician-built rubrics, before and after each capability ships. Since the September release, every clinician at every Abridge health system has access, whether or not they use Abridge for documentation. The company reports serving <strong>more than 300 enterprise health systems</strong>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">The ambient scribe lane is close to its technical ceiling — turning a conversation into a note is converging across vendors. Assistant is Abridge using its installed EHR connections as distribution and expanding into &ldquo;ask anything inside the chart&rdquo;. The relationship to Epic Connectors is the interesting part: Abridge is building its own assistant layer in the same week Epic standardised the agent layer on MCP, which makes the two simultaneously complementary and head-on — Epic&rsquo;s Art is the clinician assistant. And the two design choices here, showing the execution steps and citing the chart section used, are the only concretely checkable explainability commitments made on the hospital side this week.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">Abridge <strong>does not disclose the underlying model vendors, architecture, retrieval method, latency or any accuracy metric</strong>, nor its data-retention policy. The &ldquo;300+ enterprise health systems&rdquo; figure and Sutter Health&rsquo;s &ldquo;78% of clinicians reporting improved work satisfaction&rdquo; are both vendor-reported and not independently audited; the latter is a satisfaction survey, not a clinical quality or safety measure. &ldquo;Every clinician has access&rdquo; describes entitlement, not use — and Abridge has published no utilisation figure.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.abridge.com/blog/abridge-assistant-is-the-ai-assistant-for-healthcare" target="_blank" rel="noopener">Abridge, 2026-10-13</a> ／ <a href="https://histalk2.com/2026/10/21/healthcare-ai-news-10-21-26/" target="_blank" rel="noopener">HIStalk, 2026-10-21</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Therapy hardware</span></span>
+      <span class="tag">Siemens Healthineers</span><span class="tag">Varian</span><span class="tag">Nemotron</span><span class="tag">Holoscan</span><span class="tag">10/21</span>
+    </div>
+    <h3>
+      <span class="en">Siemens Healthineers puts agents into radiotherapy planning: open-weight models plus CUDA dose calculation plus live sensor streams</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Also at GTC Berlin on 10/21, Siemens Healthineers and NVIDIA announced joint work on next-generation <strong>adaptive radiotherapy</strong>, built from three pieces: agentic co-planning powered by NVIDIA&rsquo;s <strong>open Nemotron models</strong> to help oncologists evaluate treatment strategies, <strong>CUDA-accelerated dose calculation</strong> for patient-specific simulation, and the <strong>Holoscan platform</strong> to connect live sensor data to AI (<a href="https://nvidianews.nvidia.com/news/healthcare-and-life-sciences-leaders-build-on-nvidia-to-advance-drug-discovery-and-expand-patient-care" target="_blank" rel="noopener">NVIDIA newsroom</a>). Arthur Kaindl, who heads Varian, the Siemens Healthineers cancer-care business, tied the work to the recently launched Accela system and said treatment &ldquo;should adapt to the patient, not the other way around&rdquo;. The scale figure cited in the release is a projection of <strong>roughly 35 million cancer diagnoses worldwide each year by 2050</strong>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Six of this week&rsquo;s stories sit in software; this is the only one pushing agents onto <strong>treatment hardware</strong>. The bottleneck in adaptive radiotherapy has always been time: the patient is on the table, the anatomy shifts day to day, and recomputing the dose takes long enough that in practice the original plan usually gets delivered anyway. CUDA-accelerated dose calculation plus agent-assisted decisions attacks exactly that online-replanning window. It is also where NVIDIA&rsquo;s open-weight Nemotron strategy lands concretely: not just selling cards, but making an open model the default substrate for a device maker.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">The verbs are &ldquo;developing&rdquo; and &ldquo;exploring&rdquo;, not shipping. <strong>The release gives no performance figures at all</strong> — no replanning time, no dose accuracy, no clinical outcome, no timeline and no regulatory path. The 35 million figure is a 2050 epidemiological projection unrelated to this system&rsquo;s performance; it is market-scale framing.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.globenewswire.com/news-release/2026/10/21/3385333/0/en/healthcare-and-life-sciences-leaders-build-on-nvidia-to-advance-drug-discovery-and-expand-patient-care.html" target="_blank" rel="noopener">GlobeNewswire / NVIDIA, 2026-10-21</a></p></div>
+  </div>
+</section>
+
+<section id="product">
+  <h2>02 — Product Analysis</h2>
+  <div class="sec-title">
+    <span class="en">The same problem — design a protein that sticks to a target — solved by two opposite product shapes: one hands you 1.74 GB of weights, the other hands you an agent that runs itself for 64 hours.</span>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>RFD4-Proteina</h3>
+      <p class="sub"><span class="en-inline">Open-weight protein design model · NVIDIA × UW Medicine IPD (USA)</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> A flow-matching model generating sequence and all-atom structure together, conditioned on what the user wants preserved: a binding target, an enzyme motif, a ligand, a structural feature. The buyer is unambiguous — anyone making protein design a step in their own pipeline, from pharma to academic labs to agent developers. It is not an end product; it is a part (<a href="https://www.unite.ai/nvidia-debuts-open-protein-design-model-rfd4-proteina-with-uw-medicine/" target="_blank" rel="noopener">specs and licence</a>).</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: the licence-plus-size combination has few rivals — BSD 3-Clause, 1.74 GB of FP32 weights, 5.0 seconds per design on an H200, and <a href="https://www.globenewswire.com/news-release/2026/10/21/3385333/0/en/healthcare-and-life-sciences-leaders-build-on-nvidia-to-advance-drug-discovery-and-expand-patient-care.html" target="_blank" rel="noopener">simultaneous distribution across nine platforms</a>, including Anthropic&rsquo;s and OpenAI&rsquo;s own science products.</span>
+        </li>
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: seven tasks is broad coverage (antibody design and inverse folding included), and reward-guided beam search during diffusion means an external scoring function can be plugged straight in — this is a model designed to be driven by an agent.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: <strong>not one published quantitative benchmark score</strong>. &ldquo;Beat the evaluated baselines&rdquo; never says by how much or against whom, and the source is an unreviewed draft. The training-data composition is undisclosed, which is a real obstacle for anyone needing to reason about out-of-distribution behaviour.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: all four worked examples on the model card are computational, and the card says so. Open weights lower the cost of trying, not the cost of wet-lab verification — and verification is the actual bottleneck.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>Claude Science</h3>
+      <p class="sub"><span class="en-inline">Long-horizon autonomous science agent environment · Anthropic (USA)</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> Not a model but an environment in which a model picks its own tools, sets its own thresholds, runs an entire design campaign and writes the report. In the scorpion work Claude ran autonomously for about 64 hours inside Claude Science, called 12 design tools and consumed roughly 10,000 GPU hours, on one initial prompt plus four follow-ups (<a href="https://www.anthropic.com/research/claude-scorpion-toxin-binder-design" target="_blank" rel="noopener">Anthropic&rsquo;s report</a>). What it sells is outsourcing a whole stretch of the research process.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: there is wet-lab verification, and the bar is stricter than most papers set — two independent labs, a hit in every replicate, K<sub>D</sub> at or below 1 µM, plus an off-target control (CLEC12A). The 17-of-211 figure was produced under that bar.</span>
+        </li>
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: the failures are reported. That no multi-toxin design cleared the bar for more than one toxin is in the body of the report, and all 211 designs with their experimental data are public on Hugging Face for outside recomputation.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: <strong>that an 18% hit rate is &ldquo;consistent with typical campaigns&rdquo; is Anthropic&rsquo;s own qualitative framing</strong>, with no side-by-side control. There is no &ldquo;same tools, human-operated&rdquo; baseline, so the agent&rsquo;s gain cannot be quantified — only that it did not lose ground.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: 31 of 211 designs were added by staff, about 15%, which comes off the &ldquo;autonomous&rdquo; claim; and roughly 10,000 GPU hours for 17 in-vitro binders, <strong>with no neutralisation tested</strong>, means neither the unit cost nor the distance to clinic has yet been honestly priced.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="company">
+  <h2>03 — Companies &amp; Competition</h2>
+  <div class="sec-title">
+    <span class="en">Who stands where, on what, against whom</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th><span class="en-inline">Company</span></th>
+        <th><span class="en-inline">Recent state &amp; numbers</span></th>
+        <th><span class="en-inline">Position &amp; moat</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>NVIDIA</strong><br><span class="en-inline">Sells hardware, and commoditises the model layer on the way</span></td>
+          <td>
+            <span class="en">At GTC Berlin on 10/21 it shipped RFD4-Proteina under BSD 3-Clause, the Siemens Healthineers adaptive radiotherapy partnership, and an agent ecosystem spanning Benchling, Biolevate, Boltz, Automata, Genedata, Hologen and Therna, with Avelios, Corti, Dedalus, Dawn Health and Sword building on Nemotron in Europe and PolyAI using the Agent Toolkit for Corilus, whose network covers more than 70,000 healthcare professionals in Belgium and France (<a href="https://www.globenewswire.com/news-release/2026/10/21/3385333/0/en/healthcare-and-life-sciences-leaders-build-on-nvidia-to-advance-drug-discovery-and-expand-patient-care.html" target="_blank" rel="noopener">release</a>).</span>
+          </td>
+          <td>
+            <span class="en">The moat is not the model but CUDA and the BioNeMo toolchain: the more open the model, the more people run it on its hardware. The weakness is that the strategy concedes model differentiation to others, and would loosen the moment someone matches the inference cost on non-NVIDIA silicon.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Anthropic</strong><br><span class="en-inline">Sells autonomous horizon as the product</span></td>
+          <td>
+            <span class="en">On 10/20 it published a ~64-hour autonomous campaign: 12 tools, 318,484 designs, 553,052 pairs, 211 tested, 17 clearing the bar, best at single-digit nanomolar, about 10,000 GPU hours, with all data on Hugging Face (<a href="https://www.anthropic.com/research/claude-scorpion-toxin-binder-design" target="_blank" rel="noopener">report</a>). It is also one of RFD4-Proteina&rsquo;s nine distribution channels, via Claude Science.</span>
+          </td>
+          <td>
+            <span class="en">The differentiation is long-horizon reliability plus publishing the failures, which is worth more to scientific buyers than a benchmark score. The weakness is no in-house wet-lab capacity — verification is fully outsourced to Adaptyv Bio and Twist — and no hospital-side distribution.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>OpenAI</strong><br><span class="en-inline">Sells agent count as the product</span></td>
+          <td>
+            <span class="en">On 10/21, with PerturbAI and Scripps, it ran thousands of agents over an 8M-cell atlas in 32 minutes, citing 700+ references against a single agent&rsquo;s 11, with 75% blinded expert preference (<a href="https://openai.com/index/scaling-ai-research-for-complex-biological-data/" target="_blank" rel="noopener">announcement</a>). It is also an RFD4-Proteina channel. Earlier, on 4/22, it launched ChatGPT for Clinicians and HealthBench Professional, <a href="https://openai.com/index/making-chatgpt-better-for-clinicians/" target="_blank" rel="noopener">free to verified US clinicians</a>.</span>
+          </td>
+          <td>
+            <span class="en">The moat is inference scale and distribution: thousands of agents in parallel for 32 minutes is itself a compute barrier. The weakness mirrors Anthropic&rsquo;s — the output is hypotheses, unvalidated — and there is no visible technical sharing between the clinical line (ChatGPT for Clinicians) and the research line (GPT-Rosalind).</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Epic</strong><br><span class="en-inline">Builds no model, builds the tollgate</span></td>
+          <td>
+            <span class="en">On 10/21 it said Connectors will initially use MCP, serving Emmie, Art and Penny plus Agent Factory (unveiled in August with 100+ pre-built features); testing with selected health systems starts before end-2026, Showroom opens March 2027, and <strong>Epic will charge developers at undisclosed prices</strong> (<a href="https://www.beckershospitalreview.com/healthcare-information-technology/ehrs/epic-takes-aim-at-swivel-chair-work-with-ai-connectors/" target="_blank" rel="noopener">Becker&rsquo;s, 10/21</a>).</span>
+          </td>
+          <td>
+            <span class="en">The thickest moat here, and it is not technical — it is installed base plus a governance design that leaves permissions with the hospital, making Epic both the channel and the referee. The weakness is that a tollgate pushes small developers towards other EHRs, and Epic&rsquo;s own three assistants sit in open conflict of interest with the third-party apps.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Abridge</strong><br><span class="en-inline">Grows upward along EHR connections already laid</span></td>
+          <td>
+            <span class="en">It launched Abridge Assistant on 10/13, available to every clinician at every Abridge health system since the September release; the company reports serving over 300 enterprise health systems, with a Sutter Health case citing 78% of clinicians reporting improved work satisfaction (<a href="https://www.abridge.com/blog/abridge-assistant-is-the-ai-assistant-for-healthcare" target="_blank" rel="noopener">its own post</a>; both vendor-reported).</span>
+          </td>
+          <td>
+            <span class="en">The moat is existing EHR integration and in-hospital governance relationships, both harder to copy than a model. But it runs head-on into Epic&rsquo;s Art, while Epic controls both distribution and the rules — the most asymmetric pairing in this week&rsquo;s structure.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Mass General Brigham</strong><br><span class="en-inline">An academic centre advancing on paper and patent together</span></td>
+          <td>
+            <span class="en">On 10/19 <em>Lancet Digital Health</em> published FAHR-Face, trained on 40M+ faces, while MGB has filed US provisional patent No. 63/769,840 on next-generation facial health algorithms and opened the public selfie-upload FaceAge Research Study (<a href="https://news.massgeneralbrigham.org/en/ai-facial-recognition-tools-assess-age-cancer-survival-risk" target="_blank" rel="noopener">MGB newsroom</a>). Funding from the EU ERC.</span>
+          </td>
+          <td>
+            <span class="en">The moat is access to data and clinical cohorts; no vendor easily reproduces 40 million labelled faces paired with cancer survival follow-up. The weakness is no commercialisation channel — and opening a public selfie tool while publishing no subgroup fairness data at all is a real reputational and regulatory exposure.</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>In one sentence: this week&rsquo;s competitive structure is a layered sandwich.</strong> At the bottom NVIDIA uses BSD 3-Clause to commoditise the model layer and lock in the hardware. In the middle Anthropic and OpenAI compete on the agent&rsquo;s depth (64 autonomous hours) and its width (thousands in parallel), while both are simultaneously downstream distribution channels for NVIDIA&rsquo;s model. At the top Epic holds the hospital entrance with MCP and a paid Showroom, leaving application-layer vendors like Abridge to compete against Epic&rsquo;s own Art under Epic&rsquo;s rules. The position nobody occupies is wet-lab verification — the limitations section of all three technical reports points at the same gap, and it is the slowest, most expensive stretch, and the one least convertible into compute.</span>
+    </p>
+  </div>
+</section>
+
+<section id="taiwan">
+  <h2>04 — Taiwan Angle</h2>
+  <div class="sec-title">
+    <span class="en">Open weights, MCP, and running agents over data you already hold — three different heights of barrier for Taiwan</span>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>(1) RFD4-Proteina&rsquo;s 1.74 GB brings the barrier inside what a Taiwanese lab can absorb.</strong> BSD 3-Clause plus a single data-centre card means academic groups and biotechs here can fold protein design into their own pipelines for the first time without a licence negotiation or a cluster rental. The bottleneck moves immediately from compute to <strong>wet-lab verification capacity</strong> — Anthropic sent its 211 designs to Adaptyv Bio and Twist for duplicate SPR, and that specification, two independent labs with a hit in every replicate, has no directly purchasable commercial equivalent in Taiwan today. Whoever closes that gap will matter more than whoever buys more cards.</span>
+    </p>
+    <p>
+      <span class="en"><strong>(2) Epic choosing MCP is a clear timing signal for Taiwan&rsquo;s hospital IT vendors.</strong> The <a href="https://www.ithome.com.tw/news/176511" target="_blank" rel="noopener">FHIR Box cross-hospital record exchange</a> the Ministry of Health and Welfare has pushed this year solves the data-exchange layer; Epic&rsquo;s move solves <strong>the layer above it</strong>: letting an agent act inside another system. The two do not conflict, but the order matters. If the effort here goes into FHIR without a parallel plan for the permission and audit model around agent tool calls, then by March 2027, when Epic Showroom opens and an international Connector ecosystem forms, Taiwanese HIS vendors will find they have a data standard and no agent-interface standard. Epic&rsquo;s governance design — each hospital reviewing what a Connector may read and may change — is an off-the-shelf specification worth copying.</span>
+    </p>
+    <p>
+      <span class="en"><strong>(3) OpenAI&rsquo;s run demonstrates &ldquo;data you already have plus a lot of agents&rdquo;, and that is the lowest barrier of the three for Taiwan.</strong> The 8-million-cell atlas was existing data; the agents simply read in parallel what people could not finish reading. Taiwan&rsquo;s closest assets of that shape are the National Health Insurance database and the imaging and pathology archives of its medical centres. At the ministry&rsquo;s 2026 Domestic AI, 3D Medical Imaging and Metaverse Application Conference on 10/5, <a href="https://udn.com/news/story/7266/9795500" target="_blank" rel="noopener">NTUH president Yu Chung-jen said the hospital aims to complete a hospital-wide automated AI 3D imaging translation framework by 2028</a>, Minister Shih Chung-liang discussed FHIR Box and next-generation 3D PACS, and Zhijie Medical&rsquo;s Anatomy Cloud platform turns 2D scans into 3D anatomical models in about five minutes, with ten donated workstations to be deployed as demonstration equipment. All of that is infrastructure. Turning it into something thousands of agents can run over requires not a model but <strong>programmatically accessible data interfaces and the governance to authorise them</strong> — which is to say, point (2).</span>
+    </p>
+  </div>
+</section>
+
+<section id="reading">
+  <h2>05 — Further Reading</h2>
+  <div class="sec-title">
+    <span class="en">Chosen for primary sources that carry a technical detail or limitation the press release left out</span>
+  </div>
+
+  <ol class="reading">
+    <li>
+      <a href="https://www.anthropic.com/research/claude-scorpion-toxin-binder-design" target="_blank" rel="noopener">Claude Designs Protein Binders Against Scorpion Neurotoxins — Anthropic Research (2026-10-20)</a>
+      <p class="why"><span class="en">The only report this week that puts agent hours, GPU hours, every stage of the screening funnel and the category that failed outright all on the page; read it for how the limitations section is written, not for the conclusion.</span></p>
+    </li>
+    <li>
+      <a href="https://openai.com/index/scaling-ai-research-for-complex-biological-data/" target="_blank" rel="noopener">Scaling AI Research for Complex Biological Data — OpenAI (2026-10-21)</a>
+      <p class="why"><span class="en">An attempt to turn &ldquo;does multi-agent actually help&rdquo; from a slogan into a number; the fixed-model, fixed-resource single-agent control is the methodologically valuable part.</span></p>
+    </li>
+    <li>
+      <a href="https://www.unite.ai/nvidia-debuts-open-protein-design-model-rfd4-proteina-with-uw-medicine/" target="_blank" rel="noopener">NVIDIA Debuts Open Protein Design Model RFD4-Proteina with UW Medicine — unite.ai (2026-10-21)</a>
+      <p class="why"><span class="en">More useful than NVIDIA&rsquo;s own release: parameter count, weight size, licence terms, H200 latency, the seven-task list and the per-artefact release dates are all here, and none of them are in the official text.</span></p>
+    </li>
+    <li>
+      <a href="https://www.epic.com/epic/post/introducing-connectors-a-new-way-for-apps-to-communicate-with-epic/" target="_blank" rel="noopener">Introducing Connectors: A New Way for Apps to Communicate With Epic — Epic (2026-10-21)</a>
+      <p class="why"><span class="en">Read the original rather than the summaries, because what matters is how Epic words the permission boundary; &ldquo;review what it can read and what it can change before enabling&rdquo; will be the starting point of every agent-audit argument for two years.</span></p>
+    </li>
+    <li>
+      <a href="https://news.massgeneralbrigham.org/en/ai-facial-recognition-tools-assess-age-cancer-survival-risk" target="_blank" rel="noopener">AI facial health recognition tools help physicians assess age and survival risk — Mass General Brigham (2026-10-19)</a>
+      <p class="why"><span class="en">Read it as a case study in announcing a foundation model without a single performance figure; the release gives the full author list and the patent number, but no MAE and no C-index.</span></p>
+    </li>
+  </ol>
+</section>
+
+<section id="refs">
+  <h2>06 — References</h2>
+  <div class="sec-title">
+    <span class="en">References</span>
+  </div>
+
+  <div class="panel">
+    <ol class="refs">
+      <li>Healthcare and Life Sciences Leaders Build on NVIDIA to Advance Drug Discovery and Expand Patient Care. <em>NVIDIA Newsroom</em>, 2026-10-21. <a href="https://nvidianews.nvidia.com/news/healthcare-and-life-sciences-leaders-build-on-nvidia-to-advance-drug-discovery-and-expand-patient-care" target="_blank" rel="noopener">nvidianews.nvidia.com</a></li>
+      <li>Healthcare and Life Sciences Leaders Build on NVIDIA (full release text). <em>GlobeNewswire</em>, 2026-10-21. <a href="https://www.globenewswire.com/news-release/2026/10/21/3385333/0/en/healthcare-and-life-sciences-leaders-build-on-nvidia-to-advance-drug-discovery-and-expand-patient-care.html" target="_blank" rel="noopener">globenewswire.com</a></li>
+      <li>NVIDIA Debuts Open Protein Design Model RFD4-Proteina with UW Medicine. <em>unite.ai</em>, 2026-10-21. <a href="https://www.unite.ai/nvidia-debuts-open-protein-design-model-rfd4-proteina-with-uw-medicine/" target="_blank" rel="noopener">unite.ai</a></li>
+      <li>NVIDIA GTC Berlin 2026: Healthcare and Life Sciences Leaders Build on NVIDIA. <em>StorageNewsletter</em>, 2026-10-21. <a href="https://www.storagenewsletter.com/2026/10/21/nvidia-gtc-berlin-2026-healthcare-and-life-sciences-leaders-build-on-nvidia-to-advance-drug-discovery-and-expand-patient-care/" target="_blank" rel="noopener">storagenewsletter.com</a></li>
+      <li>Claude Designs Protein Binders Against Scorpion Neurotoxins. <em>Anthropic Research</em>, 2026-10-20. <a href="https://www.anthropic.com/research/claude-scorpion-toxin-binder-design" target="_blank" rel="noopener">anthropic.com</a></li>
+      <li>Scaling AI research for complex biological data. <em>OpenAI</em>, 2026-10-21. <a href="https://openai.com/index/scaling-ai-research-for-complex-biological-data/" target="_blank" rel="noopener">openai.com</a></li>
+      <li>Introducing Connectors: A New Way for Apps to Communicate With Epic. <em>Epic</em>, 2026-10-21. <a href="https://www.epic.com/epic/post/introducing-connectors-a-new-way-for-apps-to-communicate-with-epic/" target="_blank" rel="noopener">epic.com</a></li>
+      <li>Epic launches Connectors to link its AI tools with third-party apps. <em>Fierce Healthcare</em>, 2026-10-21. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/epic-launches-connectors-link-its-ai-tools-third-party-apps" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>Epic Systems to launch Connectors tool for AI agents. <em>Modern Healthcare</em>, 2026-10-21. <a href="https://www.modernhealthcare.com/health-tech/mh-epic-systems-connectors-ai-agents-2027/" target="_blank" rel="noopener">modernhealthcare.com</a></li>
+      <li>Epic takes aim at &lsquo;swivel-chair&rsquo; work with AI Connectors. <em>Becker&rsquo;s Hospital Review</em>, 2026-10-21. <a href="https://www.beckershospitalreview.com/healthcare-information-technology/ehrs/epic-takes-aim-at-swivel-chair-work-with-ai-connectors/" target="_blank" rel="noopener">beckershospitalreview.com</a></li>
+      <li>Epic enables EHRs to communicate with other apps. <em>Healthcare IT News</em>, 2026-10-21. <a href="https://www.healthcareitnews.com/news/epic-enables-ehrs-communicate-other-apps" target="_blank" rel="noopener">healthcareitnews.com</a></li>
+      <li>AI facial health recognition tools help physicians assess age and survival risk to guide personalized treatment. <em>Mass General Brigham Newsroom</em>, 2026-10-19. DOI 10.1016/j.landig.2026.101056. <a href="https://news.massgeneralbrigham.org/en/ai-facial-recognition-tools-assess-age-cancer-survival-risk" target="_blank" rel="noopener">news.massgeneralbrigham.org</a></li>
+      <li>Facial AI estimates biological age and predicts cancer survival. <em>bioengineer.org</em>, 2026-10-20. <a href="https://bioengineer.org/facial-ai-estimates-biological-age-and-predicts-cancer-survival/" target="_blank" rel="noopener">bioengineer.org</a></li>
+      <li>How a photo of a patient&rsquo;s face could predict whether they&rsquo;ll survive cancer. <em>The Washington Post</em>, 2026-10-20. <a href="https://www.washingtonpost.com/health/2026/10/20/how-photo-patients-face-could-predict-whether-theyll-survive-cancer/" target="_blank" rel="noopener">washingtonpost.com</a></li>
+      <li>How a photo of a person&rsquo;s face could help predict whether they&rsquo;ll survive cancer treatment. <em>CNN</em>, 2026-10-20. <a href="https://www.cnn.com/2026/10/20/health/ai-models-cancer-survival-biological-age" target="_blank" rel="noopener">cnn.com</a></li>
+      <li>You can now upload a selfie to a Mass General Brigham AI tool and it&rsquo;ll estimate your biological age. <em>The Boston Globe</em>, 2026-10-20. <a href="https://www.bostonglobe.com/2026/10/20/metro/ai-biological-age-face-selfie-free-tool/" target="_blank" rel="noopener">bostonglobe.com</a></li>
+      <li>AI Model Trained on 40 Million Faces Predicts Cancer Mortality Risk From Photos. <em>IBTimes AU</em>, 2026-10-20. <a href="https://www.ibtimes.com.au/ai-facial-photo-estimates-cancer-survival-risk-1877074" target="_blank" rel="noopener">ibtimes.com.au</a></li>
+      <li>Meet the AI Assistant for Healthcare. <em>Abridge</em>, 2026-10-13. <a href="https://www.abridge.com/blog/abridge-assistant-is-the-ai-assistant-for-healthcare" target="_blank" rel="noopener">abridge.com</a></li>
+      <li>Healthcare AI News 10/21/26. <em>HIStalk</em>, 2026-10-21. <a href="https://histalk2.com/2026/10/21/healthcare-ai-news-10-21-26/" target="_blank" rel="noopener">histalk2.com</a></li>
+      <li>AI News Today, October 21. <em>AI Weekly</em>, 2026-10-21. <a href="https://aiweekly.co/ai-news-today" target="_blank" rel="noopener">aiweekly.co</a></li>
+      <li>Making ChatGPT better for clinicians. <em>OpenAI</em>, 2026-04-22. <a href="https://openai.com/index/making-chatgpt-better-for-clinicians/" target="_blank" rel="noopener">openai.com</a></li>
+      <li>醫療元宇宙走入臨床 國產AI、3D醫療影像落地 台大拚2028全院導入. <em>聯合報</em>, 2026-10-05. <a href="https://udn.com/news/story/7266/9795500" target="_blank" rel="noopener">udn.com</a></li>
+      <li>「國產AI 3D醫療影像大會」展示科技軟實力 石崇良用政策支持台灣智慧醫療大步向前. <em>MK News</em>, 2026-10. <a href="https://mknews.com.tw/2026/10/1001565/" target="_blank" rel="noopener">mknews.com.tw</a></li>
+      <li>行政院BTC預備會議聚焦AI生技和智慧醫療，再提FHIR Box打造全臺病歷互通. <em>iThome</em>, 2026. <a href="https://www.ithome.com.tw/news/176511" target="_blank" rel="noopener">ithome.com.tw</a></li>
+      <li>AHA details recommendations to FDA on regulatory frameworks for GenAI-enabled medical devices. <em>American Hospital Association</em>, 2026-10-19. <a href="https://www.aha.org/news/headline/2026-10-19-aha-details-recommendations-fda-regulatory-frameworks-genai-enabled-medical-devices" target="_blank" rel="noopener">aha.org</a></li>
+    </ol>
+    <div class="note">
+      <span class="en"><strong>Editor&rsquo;s note:</strong> (1) The primary FAHR-Face paper in <em>Lancet Digital Health</em> sits behind a paywall; this report is written from the Mass General Brigham newsroom release and secondary coverage, which is why <strong>no MAE, C-index, hazard ratio or cohort size appears anywhere above</strong> — not an omission, but the limit of what the public sources contain. The Washington Post and CNN pieces are likewise behind a paywall or crawler restriction and are listed on the basis of their headlines and search summaries. (2) The RFD4-Proteina benchmark claim comes from an unreviewed NVIDIA research draft and carries <strong>no published numbers</strong>; the parameter count, weight size, H200 latency and licence terms are taken from unite.ai&rsquo;s reading of the Hugging Face and NIM model cards, not from NVIDIA&rsquo;s own text. (3) Anthropic&rsquo;s 17/211, the 18% rate, the single-digit nanomolar affinities and the ~10,000 GPU hours are all company-reported and not independently audited; Anthropic states explicitly that neutralisation has not been demonstrated. (4) OpenAI gives no exact agent count, and &ldquo;months to a year for a human team&rdquo; is the team&rsquo;s estimate rather than a measurement. (5) Abridge&rsquo;s 300+ health systems and Sutter Health&rsquo;s 78% satisfaction figure are vendor-reported and unaudited. (6) Epic Connectors is at announcement stage, Showroom opens in March 2027, and no adoption figures were obtainable. (7) The Taiwan ministry conference cited in point (3) took place on 10/5, slightly before this issue&rsquo;s main 10/13&ndash;10/21 window; it is included as background and dated accordingly. (8) Every link above is a URL actually visited during research or returned directly by search; none were constructed or inferred.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-row">
+    <div>
+      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today&rsquo;s rotation: Thursday / Technology Breakthroughs<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
+    </div>
+    <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
+  </div>
+</footer>
+</main>
+
+<div class="fabs">
+  <button class="up" id="up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+  <a class="home-fab" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg></a>
+</div>
+
+<script>
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.getElementById('theme-ic').textContent =
+    document.body.classList.contains('dark') ? '◑' : '◐';
+}
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.body.classList.add('dark');
+  document.getElementById('theme-ic').textContent = '◑';
+}
+window.addEventListener('scroll', function(){
+  document.getElementById('up').classList.toggle('show', window.scrollY > 600);
+});
+
+/* GitHub 星星數：無需授權，失敗或被限流時靜默保留佔位符 */
+(function(){
+  var el = document.getElementById('ghs');
+  if (!el || typeof fetch !== 'function') return;
+  fetch('https://api.github.com/repos/tingwei161803/ai-medical-daily', {headers:{Accept:'application/vnd.github+json'}})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if (!d || typeof d.stargazers_count !== 'number') return;
+      var n = d.stargazers_count;
+      el.textContent = n >= 1000 ? (Math.round(n/100)/10) + 'k' : String(n);
+    })
+    .catch(function(){});
+})();
+</script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/reports/2026-10-22.html" hreflang="zh-Hant" rel="alternate" lang="zh-Hant">中文版</a></p>
+</body>
+</html>
