@@ -8,6 +8,10 @@
 <title>AI／醫療AI 每日新知日報 · 2026-10-24</title>
 <meta property="og:url" content="https://ai-medical-daily.peteraim.com/reports/2026-10-24.html" />
 <link rel="canonical" href="https://ai-medical-daily.peteraim.com/reports/2026-10-24.html" />
+<link rel="alternate" hreflang="zh-Hant" href="https://ai-medical-daily.peteraim.com/reports/2026-10-24.html" />
+<link rel="alternate" hreflang="en" href="https://ai-medical-daily.peteraim.com/en/reports/2026-10-24.html" />
+<link rel="alternate" hreflang="x-default" href="https://ai-medical-daily.peteraim.com/reports/2026-10-24.html" />
+<meta name="description" content="agent 在攻防兩端同時加速：微軟把數百個組織的攻擊歸因到使用開源框架 ARTEX 的 Storm-0940，NorForge 數到 Cairn agent 攻破逾 100 家公司網站、每次約 50 美元；METR 與 Redwood 在 OpenAI 內部監控系統找到「持續動作即可無限期延後被監控」等多項漏洞。同一天摩根士丹利封鎖第三方 agent，而 MAI-DxO 登上《Science》。">
 <meta name="report-date" content="2026-10-24">
 <meta name="report-theme" content="general-ai">
 <meta name="report-title-zh" content="攻防兩端同時加速：微軟 10/21 把 9 月以來對數百個組織的攻擊歸因到使用開源多代理滲透框架 ARTEX 的 Storm-0940，ConnectWise 供應鏈失守後它試登逾 2,250 個租戶、最快不到 3 小時拿下雲端特權；NorForge 10/19 的報告數到用開源 Cairn 的 agent 攻破逾 100 家公司網站、嘗試逾 1,200 個站、成功率約一成、平均不到 23 小時、每次成功約 50 美元。而 METR 與 Redwood 7/21–8/11 在 OpenAI 內部做完高權限紅隊、10/22 交回 61 頁報告：只有約 75–94% 的內部 agentic 流量「有資格」被監控，而監控只在 agent 把控制權交回使用者時才觸發——所以 agent「只要持續動作就能無限期延後被監控」。同一天摩根士丹利開始封鎖第三方 agent，而 Microsoft 的 MAI-DxO 登上《Science》，NEJM 複雜病例 83% 對上單打獨鬥醫師的 36%">
@@ -29,16 +33,16 @@
 </script>
 <link rel="stylesheet" href="/assets/report.css">
 </head>
-<body class="lang-zh">
+<body>
 
 <header class="bar">
   <div class="bar-in">
-    <a class="brand" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span><span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <a class="brand" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span></a>
     <div class="bar-sp"></div>
     <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub / 在 GitHub 給這個專案一顆星"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
     <div class="seg">
-      <button id="b-zh" class="on" onclick="setLang('zh')">中文</button>
-      <button id="b-en" onclick="setLang('en')">EN</button>
+      <a class="on" href="/reports/2026-10-24.html" hreflang="zh-Hant" lang="zh-Hant" aria-current="page">中文</a>
+      <a href="/en/reports/2026-10-24.html" hreflang="en" lang="en" rel="alternate">EN</a>
     </div>
     <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
   </div>
@@ -48,28 +52,24 @@
 <div class="hero">
   <div class="kicker">
     <span class="zh-inline">星期六 · 廣義 AI 新知</span>
-    <span class="en-inline">Saturday · General AI</span>
   </div>
   <h1>
     <span class="zh">監控它的系統，被它要監控的東西繞過了——這一週 agent 在攻防兩端同時加速，而醫院正準備把鑰匙交出去</span>
-    <span class="en">The system meant to watch the agents was bypassed by the agents it was meant to watch — this week agents accelerated on both sides of the line, just as hospitals prepare to hand over the keys</span>
   </h1>
   <div class="dateline">
     <span class="zh-inline">2026 年 10 月 24 日（六）· 涵蓋 10/17–10/24 · 台北時間</span>
-    <span class="en-inline">Saturday, October 24, 2026 · Covering Oct 17–24 · Taipei time</span>
   </div>
   <p class="lede">
     <span class="zh">今天不挑醫療新聞當主線，因為這一週最重要的 AI 事件不在醫療裡，而醫療是它最沒有準備好的落點。<a href="https://metr.org/blog/2026-10-22-red-teaming-openai-agent-monitoring/" target="_blank" rel="noopener">METR 10/22 公布</a>的紅隊報告說，OpenAI 的內部失準監控只在 agent 把控制權交回使用者時才觸發，所以 agent「只要持續動作就能無限期延後被監控」；同一週微軟把 9 月以來對數百個組織的攻擊<a href="https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/" target="_blank" rel="noopener">歸因到</a>一個用開源多代理滲透框架的國家級行為者，而 <a href="https://thenextweb.com/news/ai-agents-hacker-cairn-100-sites-deere-norforge" target="_blank" rel="noopener">NorForge 的報告</a>說一個操作者用 agent 攻破逾 100 家公司網站、每成功一次約 50 美元。對照組是摩根士丹利<a href="https://www.axios.com/2026/10/22/ai-agents-banks-unauthorized-accounts-access" target="_blank" rel="noopener">開始封鎖第三方 agent</a>，因為它分不出哪個動作是客戶要的。而同一天，<a href="https://techcrunch.com/2026/10/22/microsofts-mustafa-suleyman-says-its-ai-outperforms-doctors-on-hard-cases-as-he-chases-medical-superintelligence/" target="_blank" rel="noopener">Microsoft 的 MAI-DxO 登上《Science》</a>、Suleyman 說要追 medical superintelligence。身分與監控這一層的成熟度，現在是醫療 agent 落地的實際天花板，不是模型準確率。</span>
-    <span class="en">Today's lead is not a medical story, because the week's most consequential AI event did not happen in medicine — and medicine is where it is least ready to land. The red-team report <a href="https://metr.org/blog/2026-10-22-red-teaming-openai-agent-monitoring/" target="_blank" rel="noopener">METR published on Oct 22</a> found that OpenAI's internal misalignment monitor fired only when an agent returned control to the user, so an agent could postpone monitoring indefinitely simply by continuing to act. The same week Microsoft <a href="https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/" target="_blank" rel="noopener">attributed</a> attacks on hundreds of organizations since September to a state-aligned actor running an open-source multi-agent pentest framework, and <a href="https://thenextweb.com/news/ai-agents-hacker-cairn-100-sites-deere-norforge" target="_blank" rel="noopener">NorForge reported</a> one operator whose agents broke into more than 100 company websites at roughly $50 per success. The control group: Morgan Stanley has <a href="https://www.axios.com/2026/10/22/ai-agents-banks-unauthorized-accounts-access" target="_blank" rel="noopener">started blocking third-party agents</a> because it cannot tell which actions the customer asked for. And the same day <a href="https://techcrunch.com/2026/10/22/microsofts-mustafa-suleyman-says-its-ai-outperforms-doctors-on-hard-cases-as-he-chases-medical-superintelligence/" target="_blank" rel="noopener">Microsoft's MAI-DxO landed in Science</a>, with Suleyman chasing medical superintelligence. The maturity of the identity-and-oversight layer, not model accuracy, is now the real ceiling on clinical agents.</span>
   </p>
 
   <nav class="toc">
-    <a href="#top"><span class="zh-inline">重點新聞</span><span class="en-inline">Top Stories</span></a>
-    <a href="#product"><span class="zh-inline">產品分析</span><span class="en-inline">Product Analysis</span></a>
-    <a href="#company"><span class="zh-inline">公司與競爭</span><span class="en-inline">Companies &amp; Competition</span></a>
-    <a href="#taiwan"><span class="zh-inline">台灣視角</span><span class="en-inline">Taiwan Angle</span></a>
-    <a href="#reading"><span class="zh-inline">延伸閱讀</span><span class="en-inline">Further Reading</span></a>
-    <a href="#refs"><span class="zh-inline">參考文獻</span><span class="en-inline">References</span></a>
+    <a href="#top"><span class="zh-inline">重點新聞</span></a>
+    <a href="#product"><span class="zh-inline">產品分析</span></a>
+    <a href="#company"><span class="zh-inline">公司與競爭</span></a>
+    <a href="#taiwan"><span class="zh-inline">台灣視角</span></a>
+    <a href="#reading"><span class="zh-inline">延伸閱讀</span></a>
+    <a href="#refs"><span class="zh-inline">參考文獻</span></a>
   </nav>
 </div>
 
@@ -77,131 +77,113 @@
   <h2>01 — Top Stories</h2>
   <div class="sec-title">
     <span class="zh">五則消息排成一條線：agent 的能力已經跑在身分、監控與歸屬這三層基礎設施前面，而這三層正好是醫療最依賴的</span>
-    <span class="en">Five stories in one line: agent capability has outrun the identity, monitoring and attribution layers beneath it — the three layers medicine depends on most</span>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">AI 安全</span><span class="en-inline">AI safety</span></span>
+      <span class="tag hot"><span class="zh-inline">AI 安全</span></span>
       <span class="tag">OpenAI</span><span class="tag">METR</span><span class="tag">Redwood Research</span><span class="tag">10/22</span>
     </div>
     <h3>
       <span class="zh">METR 與 Redwood 在 OpenAI 內部待了三週，結論是「agent 只要持續動作就能無限期延後被監控」</span>
-      <span class="en">METR and Redwood spent three weeks inside OpenAI and concluded that an agent can postpone monitoring indefinitely just by continuing to act</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">一名 METR 員工與一名 Redwood Research 員工在 <strong>2026/7/21 至 8/11</strong> 進入 OpenAI，做了一次「高權限試點演練」，壓測它的內部失準監控系統，拿到內部程式庫、monitor prompt 與設定、內部文件，並訪談約十二位研究員與工程師，全程使用不離場的 OpenAI 公發裝置、現場有人陪同。成果是一份 <strong>61 頁</strong>報告，<a href="https://metr.org/blog/2026-10-22-red-teaming-openai-agent-monitoring/" target="_blank" rel="noopener">10/22 公布的公開版經 OpenAI 遮蔽後為 38 頁</a>。幾個具體數字：以 GPT-5.5 等級以上模型的內部 agentic Responses API 流量計，METR 估只有<strong>約 75–94%</strong>「有資格」被監控（內部 Codex agent 使用的子集是 99.2%，METR 自述「兩個方向都有相當大的不確定性」）；不監控 compaction 事件，使 <strong>2026 年 5 月到 7 月</strong>約「一成量級」的 Codex 流量漏掉（OpenAI 自己在演練前發現、演練期間修掉）；monitor 本身錯誤率「低於 0.2%」。漏洞方面：monitor 只在 agent 把控制權交回使用者時觸發，所以「<strong>agent 只要持續動作就能無限期延後被監控</strong>」；一個 exploit 可讓「<strong>數百個近期動作</strong>」不被監控（細節被遮蔽）；序列化差異可讓 agent 構造輸入使 monitor 失敗、軌跡不被升級給人工審查；<strong>兩個客戶端可控的 header</strong> 能對新 agent 關掉監控；還有一條路徑可「原則上」繞過 Codex sandbox 與 Auto-Review。</span>
-        <span class="en">One METR employee and one Redwood Research employee went into OpenAI from <strong>Jul 21 to Aug 11, 2026</strong> for a "pilot high-access exercise" stress-testing its internal misalignment monitoring system, with access to the internal codebase, monitor prompts and configuration, and internal documentation, plus interviews with about a dozen researchers and engineers — all on OpenAI-issued devices that never left the premises, accompanied onsite. The output was a <strong>61-page</strong> report; <a href="https://metr.org/blog/2026-10-22-red-teaming-openai-agent-monitoring/" target="_blank" rel="noopener">the public version released Oct 22, after OpenAI's redactions, runs 38 pages</a>. The figures: of internal agentic Responses API traffic from models at least as strong as GPT-5.5, METR estimated only <strong>roughly 75–94%</strong> was eligible for monitoring (99.2% for the subset used by internal Codex agents, with METR noting "substantial uncertainty in both directions"); not monitoring compaction events likely left "on the order of 10%" of eligible Codex traffic unmonitored <strong>between May and July 2026</strong> (found by OpenAI staff before the exercise, fixed during it); and the monitor itself errored on "less than 0.2%" of requests. The vulnerabilities: the monitor triggered when agents returned control to the user, so "<strong>agents could indefinitely postpone being monitored by simply continuing to take actions</strong>"; one exploit could prevent "<strong>hundreds of recent actions</strong>" from being monitored (details redacted); serialization differences between what agents see and what monitors see could let agents build inputs that make the monitor fail, so trajectories were never escalated for human review; <strong>two client-controllable headers</strong> disabled monitoring for new agents; and a path existed to "in principle" bypass Codex sandboxing and Auto-Review.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">這不是「某家公司資安沒做好」的故事，而是整個產業把 agent 治理建立在一個未經對抗測試的假設上：監控系統是外生的、agent 動不到它。METR 的建議直指這一點——「<strong>agent 採取的動作，不應該能影響監控系統是否執行、何時執行</strong>」，而這正是被破的那一條。對醫療的意義很直接：醫療 agent 的治理方案（稽核軌跡、人機協同審查、事後回溯）全部假設「所有動作都會被記錄下來」。METR 的發現是，當被監控者本身是個有能力的 agent，這個假設需要被當成安全屬性來證明，不是當成架構圖裡的一個方框。要打折的地方也要說清楚：公開版只有私下報告的一小部分、OpenAI 有遮蔽權，METR 自述這是測試「存取安排」的試點而非完整透明度報告，而 OpenAI 事後說所有影響生產防護堆疊的漏洞都已修補、<strong>但 METR 明確表示它沒有評估這些說法</strong>；覆蓋率 75–94% 也是估計值而非量測值。<a href="https://www.theregister.com/ai-and-ml/2026/10/23/red-team-report-found-openai-utterly-failed-to-monitor-its-agents-during-hugging-face-attack/5305200" target="_blank" rel="noopener">The Register 10/23 的報導</a>另補一個公道的註腳：報告並未主張 agent 刻意隱藏了活動，只是說這套監控有可能漏掉這類行為。</span>
-        <span class="en">This is not a story about one company's sloppy security. It is about an industry building agent governance on an assumption that had never been adversarially tested: that the monitor is exogenous and the agent cannot touch it. METR's recommendation names exactly that — "<strong>actions agents take should not be able to influence whether or when the monitoring system runs</strong>" — and that is precisely what broke. The implication for healthcare is direct: every governance scheme for clinical agents (audit trails, human-in-the-loop review, retrospective reconstruction) assumes that all actions get logged. METR's finding is that when the thing being monitored is itself a capable agent, that assumption has to be proven as a security property, not drawn as a box in an architecture diagram. The discounts matter too: the public version is only a small part of the private report and OpenAI held redaction rights, METR describes this as a pilot testing access arrangements rather than a full transparency report, and while OpenAI says all vulnerabilities affecting its production safeguards stack were patched, <strong>METR explicitly states it has not evaluated those claims</strong>; the 75–94% figure is an estimate, not a measurement. <a href="https://www.theregister.com/ai-and-ml/2026/10/23/red-team-report-found-openai-utterly-failed-to-monitor-its-agents-during-hugging-face-attack/5305200" target="_blank" rel="noopener">The Register's Oct 23 write-up</a> adds a fair footnote: the report does not claim agents deliberately concealed activity, only that this monitoring could have missed such behaviour.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://metr.org/blog/2026-10-22-red-teaming-openai-agent-monitoring/" target="_blank" rel="noopener">METR, Red-Teaming OpenAI's Internal Agent Monitoring Systems, 2026-10-22</a> ／ <a href="https://www.theregister.com/ai-and-ml/2026/10/23/red-team-report-found-openai-utterly-failed-to-monitor-its-agents-during-hugging-face-attack/5305200" target="_blank" rel="noopener">The Register, 2026-10-23</a> ／ <a href="https://www.cnbc.com/2026/10/22/metr-redwood-research-open-ai-test.html" target="_blank" rel="noopener">CNBC, 2026-10-22</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">資安</span><span class="en-inline">Security</span></span>
+      <span class="tag hot"><span class="zh-inline">資安</span></span>
       <span class="tag">Microsoft</span><span class="tag">ConnectWise</span><span class="tag">ARTEX</span><span class="tag">10/21</span>
     </div>
     <h3>
       <span class="zh">微軟把 ConnectWise 供應鏈失守歸因到用開源多代理框架 ARTEX 的 Storm-0940：事後試登逾 2,250 個租戶，最快不到 3 小時拿下雲端特權</span>
-      <span class="en">Microsoft attributes the ConnectWise supply-chain compromise to Storm-0940 running ARTEX, an open-source multi-agent framework: 2,250-plus tenants targeted afterwards, privileged cloud access in under three hours</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">微軟威脅情報 <strong>10/21</strong> 發布分析：中國國家級關聯行為者 <strong>Storm-0940</strong>（2021 年起活躍、以竊取資料為目的）<strong>最早自 2026 年 9 月</strong>起使用 <strong>ARTEX</strong> 自動化對全球<strong>數百個組織</strong>的攻擊，受害產業橫跨航太與國防、汽車、化工、能源、金融服務、政府、法律、製造、媒體、軍方、半導體、軟體、科技與智庫非營利組織。部分攻擊讓它在<strong>初始鎖定後不到 3 小時</strong>就取得雲端基礎設施的特權存取。微軟評估 Storm-0940 就是那起多租戶雲端備份應用的 <strong>ConnectWise 供應鏈失守</strong>的責任方（<a href="https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/" target="_blank" rel="noopener">ConnectWise 的初步公告發於 10/16</a>），事後該行為者試圖登入<strong>逾 2,250 個租戶</strong>。另外一波 <strong>10/10–10/14</strong> 的密碼噴灑，用 <strong>144.172.64.99</strong> 的基礎設施打 <strong>8 個組織</strong>的 <strong>327 個帳號</strong>，微軟遙測記到<strong>逾 15.1 萬次失敗登入</strong>、<strong>10/11 尖峰每分鐘 2,900 次</strong>，該役未觀察到任何成功驗證。</span>
-        <span class="en">Microsoft Threat Intelligence published its analysis on <strong>Oct 21</strong>: <strong>Storm-0940</strong>, a China-state-aligned actor active since 2021 and focused on data theft, used <strong>ARTEX</strong> <strong>as early as September 2026</strong> to automate attacks on <strong>hundreds of organizations</strong> worldwide, across aerospace and defence, automotive, chemicals, energy, financial services, government, legal, manufacturing, media, military, semiconductor, software, technology, and think tanks and non-profits. Several attacks gave it privileged access to cloud infrastructure in <strong>less than three hours</strong> from initial targeting. Microsoft assesses Storm-0940 was responsible for the <strong>ConnectWise supply-chain compromise</strong> of a multi-tenant cloud backup application (<a href="https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/" target="_blank" rel="noopener">ConnectWise published its initial advisory on Oct 16</a>); afterwards the actor tried to sign in to <strong>more than 2,250 tenants</strong>. A separate password-spray from <strong>Oct 10 to 14</strong>, from infrastructure at <strong>144.172.64.99</strong>, targeted <strong>327 accounts</strong> across <strong>eight organizations</strong>, producing <strong>over 151,000 failed logons</strong> in Microsoft telemetry and peaking at <strong>2,900 failures per minute on Oct 11</strong>, with no successful authentication observed in that campaign.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">ARTEX 是什麼</span><span class="en-inline">What ARTEX is</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">ARTEX 是什麼</span></div>
       <p class="val">
         <span class="zh">微軟的描述是：「ARTEX 是一個開源滲透測試框架，可以使用任何 AI 模型來自動化各種攻擊性安全工作流程。」技術上是一套以 Go 寫成、前端用 Next.js 的多代理 LLM 系統；介面預設英文，可切換韓文、中文、西班牙文、日文。它的 agent 能在幾乎沒有人類介入的情況下，從偵查一路自主跑到資料外洩，並把發現的資產與弱點存進一張圖。2026 年 10 月的公開報導已把它連結到韓國金融機構的個資外洩事件，微軟表示已在不同地區看到數個威脅行為者在用它。</span>
-        <span class="en">Microsoft's own description: "ARTEX is an open-source penetration testing framework that can use any AI model to automate a variety of offensive security workflows." Technically it is a multi-agent LLM system written in Go with a Next.js frontend; the interface defaults to English and can be switched to Korean, Mandarin, Spanish or Japanese. Its agents run an autonomous penetration test from reconnaissance through data exfiltration with little human input, storing discovered assets and vulnerabilities in a graph. Public reporting in October 2026 already linked it to personal-data breaches at Korean financial institutions, and Microsoft says it has seen several threat actors in different regions using it.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">三個結構性的點。一、<strong>agent 把供應鏈攻擊的時間常數壓短了</strong>：微軟明說 agent 連續工作、可同時追多條突破路徑，縮短從選定目標到達成目的的時間。二、<strong>它攻擊的是信任而不是憑證</strong>：拿下幾個 ConnectWise 雲端應用的控制權後，agent 直接用這些應用既有的信任關係去驗證進入客戶租戶，不需要互動式使用者登入——這正是今天醫院和 HIS／雲端備份廠商之間的關係形狀。三、<strong>框架是開源的</strong>，所以這不是一次性的國家級能力，而是一條任何人都能取用的生產線。對醫療的直接意義：多租戶的醫療 IT 服務商（備份、PACS 雲、遠距判讀、計費）正是這個攻擊模式最理想的槓桿點，而醫院通常看不進這些廠商的內部——<strong>打一家 HIS 廠商等於打進數十到數百家醫療機構</strong>。要打折的地方：微軟自己強調大部分鎖定並未成功，且這些活動並非源於微軟自身系統被攻破；歸因本質上是機率判斷，這份報告是單一廠商視角、基於微軟遙測，沒有第三方獨立確證，「數百個組織」是範圍描述而非精確計數。</span>
-        <span class="en">Three structural points. First, <strong>agents compress the time constant of supply-chain attacks</strong>: Microsoft says explicitly that agents work continuously and can pursue several breach paths at once, cutting the time from target selection to objective. Second, <strong>it attacks trust rather than credentials</strong>: after taking control of several ConnectWise cloud applications, the agents authenticated into customer tenants using the trust those applications already held, with no interactive user sign-in — exactly the shape of the relationship between a hospital and its HIS or cloud-backup vendor today. Third, <strong>the framework is open source</strong>, so this is not a one-off state capability but a production line anyone can pick up. The direct healthcare read: multi-tenant health IT providers (backup, cloud PACS, teleradiology, billing) are the ideal leverage point for this pattern, and hospitals generally cannot see inside them — <strong>hitting one HIS vendor means reaching dozens to hundreds of care providers</strong>. The discounts: Microsoft itself stresses that most of the targeting was unsuccessful and that the activity did not stem from a compromise of its own systems; attribution is inherently probabilistic, this is a single-vendor view built on Microsoft telemetry with no independent confirmation, and "hundreds of organizations" is a range, not a precise count.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/" target="_blank" rel="noopener">Microsoft Security Blog, Storm-0940 uses ARTEX agentic AI in ConnectWise supply chain compromise, 2026-10-21</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">資安</span><span class="en-inline">Security</span></span>
+      <span class="tag hot"><span class="zh-inline">資安</span></span>
       <span class="tag">NorForge</span><span class="tag">Cairn</span><span class="tag">Deere</span><span class="tag">10/19</span>
     </div>
     <h3>
       <span class="zh">一個操作者、一套開源 agent 框架、逾 1,200 個目標：成功攻破逾 100 家公司網站，平均不到 23 小時，每成功一次約 50 美元</span>
-      <span class="en">One operator, one open-source agent framework, 1,200-plus targets: more than 100 company websites breached, averaging just under 23 hours, at about $50 per success</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">挪威資安公司 NorForge 的首席威脅研究員 Snorre Fagerland 在 <strong>10/19</strong> 發布報告：一個中文語系的攻擊者用開源多代理平台 <strong>Cairn</strong>（agent 逐步朝目標推進，並把發現貼到一面所有 agent 都能讀的共享看板）攻破<strong>逾 100 家公司</strong>的網站。路透記者 Raphael Satter 在發布前看過報告並確認了部分受害者：到前一週晚間，agent 已嘗試<strong>逾 1,200 個站</strong>；單一中文語系叢集就有<strong>逾 1,100 個攻擊專案、分布在 14 個控制面板</strong>，各工具平均成功率<strong>約 10%</strong>。成本上，Fagerland 給路透的粗估是約 <strong>5,000 美元的 token 支出</strong>換來約<strong>每成功一次 50 美元</strong>；NorForge 報告本身的數字是含失敗嘗試<strong>平均每項任務約 5 美元</strong>。行動自 <strong>9/25</strong> 開始，成功攻擊平均耗時<strong>不到 23 小時</strong>。所有任務跑在一個名為 <strong>claudecode_deepseek-v4.1-flash</strong> 的 worker 上。<a href="https://thenextweb.com/news/ai-agents-hacker-cairn-100-sites-deere-norforge" target="_blank" rel="noopener">目標是美國、加拿大、日本、澳洲月流量 20 萬至 150 萬次的網路商店</a>，agent 嘗試在各站執行程式並植入上傳型 web shell。被點名的受害者包括 <strong>Deere</strong>（已採取補救措施、未見敏感資訊被存取）、<strong>SharkNinja</strong>（稱攻擊打在一個獨立的產品支援站、已被控制住）與 <strong>Cummins</strong>（正在調查一起可能發生在其供應商網站上的攻擊）。掃描面板資料另外翻出數百組憑證與 API key，用 Trufflehog 驗證有 <strong>11%</strong> 仍有效。</span>
-        <span class="en">Snorre Fagerland, principal threat researcher at the Norwegian security firm NorForge, published a report on <strong>Oct 19</strong>: a Chinese-speaking attacker used the open-source multi-agent platform <strong>Cairn</strong> — whose agents work towards a goal step by step and post findings to a shared board every agent can read — to break into the websites of <strong>more than 100 companies</strong>. Reuters reporter Raphael Satter saw the report before publication and identified some victims: by late the previous week the agents had attempted <strong>more than 1,200 sites</strong>; the Chinese-language cluster alone held <strong>over 1,100 attack projects across 14 control panels</strong>, with an average success rate across tools of <strong>about 10%</strong>. On cost, Fagerland's rough figure for Reuters was roughly <strong>$5,000 in tokens</strong> for about <strong>$50 per successful hack</strong>; NorForge's own report puts it at <strong>about $5 per task</strong> including failed attempts. The campaign began <strong>Sep 25</strong>, and successful attacks took <strong>just under 23 hours</strong> on average. All tasks ran on a worker named <strong>claudecode_deepseek-v4.1-flash</strong>. <a href="https://thenextweb.com/news/ai-agents-hacker-cairn-100-sites-deere-norforge" target="_blank" rel="noopener">The targets were online shops in the US, Canada, Japan and Australia with 200,000 to 1.5 million visits</a>, and the agents tried to run code on each site and plant an uploader web shell. Named victims include <strong>Deere</strong> (took remediation steps, saw no sign sensitive information was accessed), <strong>SharkNinja</strong> (said the attack hit a standalone product-support site and was contained) and <strong>Cummins</strong> (investigating a possible attack on a vendor-run website). Scanning the panel data also turned up hundreds of credentials and API keys, of which Trufflehog verified <strong>11%</strong> as still valid.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">把這則跟上一則並排看，差別就是重點：Storm-0940 是國家級資源，這一則是<strong>一個人</strong>。每成功一次 50 美元、平均不到 23 小時、成功率一成——這組數字把「對一個中型網站發動定製化入侵」的單位成本壓到低於一次外送訂單的毛利。醫療的落點很具體：台灣與各國的中小型診所、檢驗所、健檢中心、長照機構幾乎都有一個外包的、長期未更新的網站或預約系統，上面常掛著可連到內部的憑證。過去這些站之所以安全，不是因為防護好，而是因為<strong>攻擊它們不划算</strong>。這個經濟假設在本週失效了。要打折的地方：路透無法確定究竟有多少資料（如果有）被取走，TNW 也未獨立驗證這些入侵；「每次 50 美元」是研究者給記者的粗估，與報告內文的「每項任務約 5 美元」是不同的計算基準，報告自己說不確定性相當大；模型歸屬是從 worker 名稱推斷的，不是廠商確認。</span>
-        <span class="en">Read this alongside the previous story and the difference is the point: Storm-0940 is a state-resourced operation, this is <strong>one person</strong>. Fifty dollars per success, under 23 hours on average, a 10% hit rate — those numbers push the unit cost of a bespoke intrusion against a mid-sized website below the margin on a food-delivery order. The healthcare read is concrete: small and mid-sized clinics, labs, health-screening centres and long-term care facilities in Taiwan and elsewhere almost all run an outsourced, long-unpatched website or booking system, often holding credentials that reach inside. What kept those sites safe was never the strength of their defences but the fact that <strong>attacking them did not pay</strong>. That economic assumption stopped holding this week. The discounts: Reuters could not establish how much data, if any, was taken, and TNW has not independently verified the intrusions; the "$50 per success" figure is a researcher's rough estimate on a different basis from the report's own "about $5 per task", with considerable stated uncertainty; and the model attribution is inferred from a worker name rather than confirmed by any vendor.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://thenextweb.com/news/ai-agents-hacker-cairn-100-sites-deere-norforge" target="_blank" rel="noopener">The Next Web, reporting NorForge's "inside_cairn" report and Reuters, 2026-10-19 onward</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">金融與 agent 治理</span><span class="en-inline">Finance &amp; agent governance</span></span>
+      <span class="tag hot"><span class="zh-inline">金融與 agent 治理</span></span>
       <span class="tag">Morgan Stanley</span><span class="tag">JPMorgan</span><span class="tag">1Password</span><span class="tag">10/22</span>
     </div>
     <h3>
       <span class="zh">摩根士丹利開始封鎖第三方 AI agent，因為它分不出哪個動作是客戶要的——而同一天 1Password 推出讓 agent 登入卻看不到密碼的產品</span>
-      <span class="en">Morgan Stanley has begun blocking third-party AI agents because it cannot tell which actions the customer asked for — and the same day 1Password shipped agent sign-in without exposing passwords</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">Axios 的 Madison Mills <strong>10/22</strong> 報導：美國主要銀行正在偵測到未經授權的第三方 AI agent 在客戶帳戶裡活動，部分 agent 看起來在沒有使用者指示的情況下行動。有些銀行追蹤到 agent 打電話進客服中心，主管們最擔心的是有採購權或能移動資金的 agent。<a href="https://www.axios.com/2026/10/22/ai-agents-banks-unauthorized-accounts-access" target="_blank" rel="noopener">多數銀行無法可靠分辨 agent 活動是使用者指派的、還是 agent 跑脫了</a>，一位銀行主管說他們難以區分不同 agent。應對上：<strong>摩根士丹利已開始封鎖</strong>第三方 agent 進入其平台（發言人表示該行並未觀察到「跑脫的 AI agent 存取我們的平台」），<strong>JPMorgan、美國銀行與花旗</strong>也在限制 agent，<strong>Chase</strong> 直接告訴客戶不要把帳號密碼給任何人。多數銀行已授權或正走向<strong>唯讀存取</strong>。同一天 <strong>1Password for Agents</strong> 上線：agent 嘗試登入時先送一組獨有的數位金鑰給 1Password 確認身分，使用者收到該次嘗試的通知並<strong>本人核可</strong>，核可後由 1Password 自己填入憑證，agent 從頭到尾看不到帳密。<a href="https://techcrunch.com/2026/10/22/1password-launches-a-way-for-ai-agents-to-log-in-on-your-behalf-without-seeing-your-password/" target="_blank" rel="noopener">TechCrunch 點名支援的 agent 包括 Anthropic 的 Claude Duet、OpenAI 的 Dots 與 ChatGPT Work、Grok Bot、Meta 的 Muse 與新創 Town 的 agent</a>。</span>
-        <span class="en">Madison Mills reported for Axios on <strong>Oct 22</strong> that major US banks are detecting unauthorized third-party AI agents operating in customer accounts, with some appearing to act without user instructions. Some banks have tracked agents calling into call centres, and executives worry most about agents with purchase authority or the ability to move funds. <a href="https://www.axios.com/2026/10/22/ai-agents-banks-unauthorized-accounts-access" target="_blank" rel="noopener">Most banks cannot reliably tell whether agent activity is user-directed or whether an agent has gone rogue</a>, and one executive said they struggle to differentiate between agents. The responses: <strong>Morgan Stanley has begun blocking</strong> third-party agents from its platforms (a spokesperson said the bank has not observed "rogue AI agents accessing our platforms"), <strong>JPMorgan, Bank of America and Citi</strong> are also restricting agents, and <strong>Chase</strong> told customers not to give their usernames and passwords to anyone. Most banks have authorized, or are moving towards, <strong>read-only access</strong>. The same day <strong>1Password for Agents</strong> went live: when an agent tries to log in it first sends a unique digital key to 1Password to confirm its identity, the user is alerted to that specific attempt and must <strong>personally approve</strong> it, and 1Password then fills the credentials itself, so the agent never sees them. <a href="https://techcrunch.com/2026/10/22/1password-launches-a-way-for-ai-agents-to-log-in-on-your-behalf-without-seeing-your-password/" target="_blank" rel="noopener">TechCrunch names the supported agents as Anthropic's Claude Duet, OpenAI's Dots and ChatGPT Work, Grok Bot, Meta's Muse and agents from the startup Town</a>.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">這是本週最有參考價值的一組，因為它是一個高度監管、歸屬責任極其明確的產業給出的第一份實際答卷，而答案是：<strong>先降為唯讀，等身分層長出來再說</strong>。醫療的結構幾乎完全一樣——高度監管、行為必須可歸屬到特定人、錯誤不可逆——唯一的差別是醫療沒有「唯讀」這條退路：臨床 agent 的價值主要在它能下單、能開 order、能回訊息、能更新病歷，一旦限制成唯讀就剩摘要。1Password 的解法值得精確理解：<strong>它解的是憑證外洩與身分確認</strong>，<strong>沒解的是授權範圍與事後歸屬</strong>——核可的是「這次登入」，不是「登入後能做哪些事」，而逐次人工核可在規模化後必然退化成反射性點擊，這正是醫療 alert fatigue 的老問題換一個介面重演。真正該抄的是那個設計原則：<strong>agent 必須有自己的身分，而不是借用某位臨床人員的帳號</strong>。今天絕大多數醫院的 AI 工具都是後者，所以稽核軌跡上看到的是醫師的 ID 在半夜開了一百個 order。要打折的地方：Axios 該則<strong>全篇沒有任何具體數字</strong>，多數敘述來自匿名消息源，而摩根士丹利官方立場與「封鎖」的動機敘述並不完全一致；1Password 的「不會看到密碼」是廠商自述的架構特性，報導未公開金鑰確認之外的協定名稱，也沒有定價與全面可用時程。</span>
-        <span class="en">This is the week's most instructive pairing, because it is the first practical answer from a heavily regulated industry with unambiguous attribution requirements, and the answer is: <strong>drop to read-only and wait for the identity layer to grow in</strong>. Healthcare's structure is almost identical — heavily regulated, actions must be attributable to a specific person, mistakes are irreversible — with one difference: in medicine "read-only" is not a fallback that still meets the business need. The value of a clinical agent lies in placing orders, replying to messages and updating the record; restrict it to read-only and what remains is summarization. 1Password's answer deserves precision: <strong>it solves credential exposure and agent identity</strong> but <strong>not authorization scope or after-the-fact attribution</strong> — what gets approved is this login, not what may be done after it, and per-login approval degrades into reflexive clicking at scale, which is alert fatigue replayed through a new interface. What health systems should copy is the design principle: <strong>an agent must hold its own identity rather than borrow a clinician's account</strong>. Today almost every hospital AI tool does the latter, which is why the audit trail shows a physician's ID placing a hundred orders at 3am. The discounts: the Axios piece contains <strong>no specific figures at all</strong> and rests largely on anonymous sources, and Morgan Stanley's official line does not sit entirely with the stated motive for blocking; 1Password's "never sees the password" is a vendor-stated architectural property, with no protocol named beyond the key-confirmation step and no pricing or general-availability date.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://www.axios.com/2026/10/22/ai-agents-banks-unauthorized-accounts-access" target="_blank" rel="noopener">Axios, Madison Mills, 2026-10-22</a> ／ <a href="https://techcrunch.com/2026/10/22/1password-launches-a-way-for-ai-agents-to-log-in-on-your-behalf-without-seeing-your-password/" target="_blank" rel="noopener">TechCrunch, 2026-10-22</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">醫療 AI</span><span class="en-inline">Medical AI</span></span>
+      <span class="tag hot"><span class="zh-inline">醫療 AI</span></span>
       <span class="tag">Microsoft AI</span><span class="tag">MAI-DxO</span><span class="tag">Science</span><span class="tag">10/22</span>
     </div>
     <h3>
       <span class="zh">MAI-DxO 登上《Science》：NEJM 複雜病例 83% 對上單打獨鬥醫師的 36%，但論文自己的數字顯示大部分增益來自底層模型而非編排</span>
-      <span class="en">MAI-DxO lands in Science: 83% on complex NEJM cases against 36% for unaided physicians — though the paper's own numbers show most of the gain comes from the underlying model, not the orchestration</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">Microsoft 的 <strong>MAI-DxO</strong> 在 <strong>2026/10/22（週四）</strong>刊於《<strong>Science</strong>》。它編排數個 AI agent 像一組醫師會診那樣運作：向病人問診、開立檢查、相互辯論出診斷。<a href="https://techcrunch.com/2026/10/22/microsofts-mustafa-suleyman-says-its-ai-outperforms-doctors-on-hard-cases-as-he-chases-medical-superintelligence/" target="_blank" rel="noopener">在模擬的 NEJM 複雜病例上，MAI-DxO 正確率 83%，而獨自作業、可查閱參考資料的基層醫師與一般內科醫師是 36%</a>（專科醫師與醫師團隊不在對照組內）。逐模型拆解才是這篇真正的資訊量：<strong>GPT-5</strong> 單用簡短基本 prompt 在複雜病例上就有 <strong>78.9%</strong>、每病例成本約 <strong>8,400 美元</strong>；加上 DxO 後成本降約 3,000 美元，但正確率只升約 <strong>4 個百分點</strong>。<strong>GPT-5.5</strong>（2026 年 4 月釋出）在複雜病例上從 <strong>72% 升到近 87%</strong>、成本略降。<strong>急診病例</strong>則幾乎沒有增益：GPT-5.5 加不加 DxO 都約 <strong>85%</strong>。<strong>Gemini 2.5 Flash</strong> 單用 46.4%、加 DxO 近 69%——強弱模型之間的落差仍大於 DxO 帶來的提升。受測模型涵蓋 OpenAI、Google、Anthropic、Meta 與 DeepSeek。Microsoft 把 medical superintelligence 定義為「在醫學推理與協調上超越當代最強的人類主導醫療系統的能力」；Microsoft AI 執行長 Mustafa Suleyman 說公司正與 <strong>Mayo Clinic</strong> 合作一個醫療基礎模型、計畫明年釋出，並預期醫療 AI 在 <strong>24 至 36 個月</strong>內大幅改善，且將與波士頓的 <strong>Beth Israel Deaconess Medical Center</strong> 在真實急診與急症照護場景中測試 DxO。</span>
-        <span class="en">Microsoft's <strong>MAI-DxO</strong> was published in <strong>Science</strong> on <strong>Thursday, Oct 22, 2026</strong>. It orchestrates several AI agents to work like a panel of physicians: questioning the patient, ordering tests, and debating towards a diagnosis. <a href="https://techcrunch.com/2026/10/22/microsofts-mustafa-suleyman-says-its-ai-outperforms-doctors-on-hard-cases-as-he-chases-medical-superintelligence/" target="_blank" rel="noopener">On simulated complex NEJM cases MAI-DxO was correct 83% of the time, against 36% for primary care doctors and general internists working alone with reference materials</a> (specialists and physician teams were not in the comparison). The per-model breakdown is where the real information is: <strong>GPT-5</strong> with a short, basic prompt already scored <strong>78.9%</strong> on complex cases at about <strong>$8,400 per case</strong>; adding DxO cut cost by about $3,000 but raised accuracy only about <strong>4 points</strong>. <strong>GPT-5.5</strong> (released April 2026) went from <strong>72% to nearly 87%</strong> on complex cases, at slightly lower cost. On <strong>emergency department cases</strong> there was almost no gain: GPT-5.5 scored about <strong>85%</strong> either way. <strong>Gemini 2.5 Flash</strong> scored 46.4% alone and nearly 69% with DxO — the gap between weaker and stronger models remained larger than DxO's boost. Models from OpenAI, Google, Anthropic, Meta and DeepSeek were tested. Microsoft defines medical superintelligence as "the capacity to surpass the strongest contemporary human-led health systems" in medical reasoning and coordination; Microsoft AI CEO Mustafa Suleyman said the company is working with the <strong>Mayo Clinic</strong> on a healthcare foundation model slated for release next year, expects healthcare AI to improve substantially within <strong>24 to 36 months</strong>, and will test DxO with <strong>Beth Israel Deaconess Medical Center</strong> in Boston in real emergency and urgent care settings.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">把它放進今天這條線，它的角色不是「醫療 AI 又破紀錄」，而是<strong>需求側的時鐘</strong>。前四則說的是 agent 的身分、監控與供應鏈這三層還沒長好；這一則說的是，最大的平台廠已經把「超越人類主導醫療系統」寫成公開目標、已經有頂尖期刊背書、已經排好與一家波士頓學術醫學中心的真實場景試驗。供給與治理的時間差就是風險所在。另一個該被注意的訊號是<strong>成本</strong>：每病例約 8,400 美元的推論成本，意味著這套方法目前只在「診斷錯誤代價極高的罕病與複雜病例」這一段有經濟意義，而這恰好與急診病例沒有增益的結果互相印證。</span>
-        <span class="en">On today's line, its role is not "medical AI breaks another record" but <strong>the clock on the demand side</strong>. The four stories above say the identity, monitoring and supply-chain layers under agents are not grown in yet; this one says the largest platform vendor has already written "surpassing human-led health systems" down as a public goal, already has a top-tier journal behind it, and already has a real-world trial lined up with a Boston academic medical centre. The gap between supply and governance is where the risk lives. The other signal worth noting is <strong>cost</strong>: about $8,400 of inference per case means the approach currently makes economic sense only where diagnostic error is very expensive — rare disease and complex cases — which is exactly consistent with the absence of gains on emergency department cases.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">這則要打的折最多。一、<strong>對照組的設計</strong>：83% 對上的 36% 是「獨自作業、可查參考資料」的基層與一般內科醫師，<strong>專科醫師與醫師團隊沒有被納入對照</strong>，而 NEJM 複雜病例的正確診斷通常本來就需要專科與團隊。二、<strong>病例來源</strong>：NEJM 病例是為教學而寫、資訊完整、已知有單一正確答案，與急診現場的不確定性不同——而論文自己的急診結果（加 DxO 無明顯增益）就是這個落差的證據。三、<strong>增益歸屬</strong>：TechCrunch 明確指出大部分改善來自底層模型，DxO 是在上面加分；Gemini 2.5 Flash 從 46.4% 到 69% 的大幅提升，反而說明 DxO 主要在補弱模型的不足。四、<strong>這是模擬</strong>，Beth Israel Deaconess 的真實場景測試還沒做。五、成本數字是每病例約 8,400 美元，與任何現行給付制度都不相容。</span>
-        <span class="en">This story needs the most discounting. First, <strong>the comparison group</strong>: the 36% against which 83% is measured is primary care doctors and general internists working alone with reference materials — <strong>specialists and physician teams were not included</strong>, and correctly diagnosing an NEJM complex case normally requires exactly those. Second, <strong>the case source</strong>: NEJM cases are written for teaching, information-complete and known to have a single right answer, unlike the uncertainty of a real emergency department — and the paper's own emergency results are the evidence of that gap. Third, <strong>attribution of the gain</strong>: TechCrunch notes plainly that most of the improvement comes from the underlying models, with DxO adding on top; Gemini 2.5 Flash's jump from 46.4% to 69% suggests DxO mainly compensates for weaker models. Fourth, <strong>this is simulation</strong> — the Beth Israel Deaconess real-world test has not been run. Fifth, the cost figure of roughly $8,400 per case is incompatible with any current reimbursement scheme.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://techcrunch.com/2026/10/22/microsofts-mustafa-suleyman-says-its-ai-outperforms-doctors-on-hard-cases-as-he-chases-medical-superintelligence/" target="_blank" rel="noopener">TechCrunch, 2026-10-22</a> ／ <a href="https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-friday-october-23-2026/" target="_blank" rel="noopener">The Neuron Daily digest, 2026-10-23</a></p></div>
   </div>
 </section>
@@ -210,29 +192,24 @@
   <h2>02 — Product Analysis</h2>
   <div class="sec-title">
     <span class="zh">本週最值得細看的產品不在 agent 這條線上，而是一個把基因體判讀成本壓到千分之一量級的開源模型——它把「誰負責」整件事留給了使用者</span>
-    <span class="en">The week's most interesting product is not on the agent line but an open model that pushes genomic interpretation cost down by three orders of magnitude — and leaves accountability entirely to the user</span>
   </div>
 
   <div class="grid2">
     <div class="panel">
       <h3>Carbon-X</h3>
-      <p class="sub"><span class="zh-inline">開源 14.8B 參數 DNA 對話模型 · Hugging Face × 中關村學院 × Telethon Institute of Genetics and Medicine／Naples Federico II · 2026/10/22 發表</span><span class="en-inline">Open 14.8B-parameter DNA chat model · Hugging Face x Zhongguancun Academy x Telethon Institute of Genetics and Medicine / Naples Federico II · released 2026-10-22</span></p>
+      <p class="sub"><span class="zh-inline">開源 14.8B 參數 DNA 對話模型 · Hugging Face × 中關村學院 × Telethon Institute of Genetics and Medicine／Naples Federico II · 2026/10/22 發表</span></p>
       <p>
         <span class="zh"><strong>功能與定位。</strong>讓研究者用自然語言「與 DNA 對話」：分析與生成 DNA 序列、回答變異效應問題。技術上以 <strong>Qwen3-14B</strong> 為底加入 DNA token，<strong>Apache 2.0</strong> 授權，context window <strong>40,960 token</strong>，bfloat16 權重可塞進<strong>單張 80 GB GPU</strong>、以 vLLM 服務。tokenizer 加入 4,096 個六鹼基 6-mer、1,364 個 tail token 與三個標記。訓練分四段：詞彙擴充約 100 億 token（凍結 transformer 主體）、mid-training 3,020 億 token（序列長度 8,192，55% 原始 DNA、20% 英文網頁、15% 生物學文本、10% 指令資料）、SFT 三個 epoch 跨 20 個資料子集（約 30% 是變異效應推理），以及兩輪帶程式碼檢核獎勵的非同步 GRPO。<a href="https://explainx.ai/blog/hugging-face-carbon-x-14b-open-dna-chat-model-variant-effects-1800x-cheaper-claimed-vs-verified-2026" target="_blank" rel="noopener">在作者自評的五項 DNA benchmark 上平均 66.7 分</a>，對照 GPT-6.1 Sol (Max) 的 67.5、Opus 5.5 (Max) 的 60.9、Gemini 4 Argon (Low) 的 49.8。</span>
-        <span class="en"><strong>Function and position.</strong> It lets researchers "chat with DNA" in natural language: analysing and generating DNA sequences and answering variant-effect questions. Technically it is <strong>Qwen3-14B</strong> with DNA tokens added, under <strong>Apache 2.0</strong>, with a <strong>40,960-token</strong> context window, bfloat16 weights that fit on a <strong>single 80 GB GPU</strong>, served with vLLM. The tokenizer adds 4,096 six-base 6-mers, 1,364 tail tokens and three markers. Training ran in four stages: vocabulary extension on about 10B tokens with the transformer body frozen; mid-training on 302B tokens at sequence length 8,192 (55% raw DNA, 20% English web text, 15% biology text, 10% instruction data); supervised fine-tuning over three epochs across 20 dataset subsets, about 30% of it variant-effect reasoning; and two rounds of asynchronous GRPO with code-checked rewards. <a href="https://explainx.ai/blog/hugging-face-carbon-x-14b-open-dna-chat-model-variant-effects-1800x-cheaper-claimed-vs-verified-2026" target="_blank" rel="noopener">It averages 66.7 across five author-reported DNA benchmarks</a>, against 67.5 for GPT-6.1 Sol (Max), 60.9 for Opus 5.5 (Max) and 49.8 for Gemini 4 Argon (Low).</span>
       </p>
       <ul class="clean">
-        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+        <li><span class="pro"><span class="zh-inline">優勢</span></span>
           <span class="zh">：<strong>成本結構，而不是分數</strong>，才是這個模型的新聞點。模型卡估算其每題推論成本約為 GPT-6.1 Sol 的<strong>千八百分之一</strong>，並推估分析 ClinVar 的 <strong>240 萬個 VUS（未知意義變異）約需 300 美元</strong>，對照競品的 <a href="https://explainx.ai/blog/hugging-face-carbon-x-14b-open-dna-chat-model-variant-effects-1800x-cheaper-claimed-vs-verified-2026" target="_blank" rel="noopener">3.2 萬至 400 萬美元</a>。對臨床基因體學來說，VUS 重新判讀一直是個規模問題而非方法問題——能全量重跑，意義完全不同。加上 <strong>Apache 2.0 與單卡可跑</strong>，醫學中心可以在院內、資料不出場的前提下自建，這在基因體資料跨境傳輸受限的管轄區（含台灣）是決定性的。</span>
-          <span class="en">: the news here is the <strong>cost structure, not the score</strong>. The model card estimates inference at about <strong>1/1,800</strong> of GPT-6.1 Sol's cost per problem, and extrapolates that analysing ClinVar's <strong>2.4 million variants of uncertain significance would cost roughly $300</strong>, against <a href="https://explainx.ai/blog/hugging-face-carbon-x-14b-open-dna-chat-model-variant-effects-1800x-cheaper-claimed-vs-verified-2026" target="_blank" rel="noopener">$32,000 to $4 million</a> for rivals. In clinical genomics, VUS reinterpretation has always been a problem of scale rather than method — being able to re-run the whole set changes the picture entirely. Add <strong>Apache 2.0 and single-GPU inference</strong> and a medical centre can run it in-house without data leaving the premises, which is decisive in jurisdictions that restrict cross-border transfer of genomic data, Taiwan included.</span>
         </li>
-        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+        <li><span class="con"><span class="zh-inline">疑慮</span></span>
           <span class="zh">：<strong>所有關鍵數字都是作者自報，且五項 benchmark 中有兩項是作者自己建的</strong>，沒有獨立重現。千八百分之一的成本是基於作者的定價假設（以 H200 每小時 5 美元計），而<strong>吞吐量數字並未公開</strong>；300 美元跑完 240 萬個 VUS 只是外推，<strong>並未真的跑過 ClinVar</strong>；「便宜一千倍以上」的說法來自一則無署名社群貼文，不在模型卡上。</span>
-          <span class="en">: <strong>every headline figure is author-reported, and two of the five benchmarks were built by the authors themselves</strong>, with no independent replication. The 1/1,800 cost rests on the authors' pricing assumptions (H200 at $5/hour) and <strong>the throughput figure is not disclosed</strong>; the $300 for 2.4 million VUS is an extrapolation and <strong>no ClinVar run was actually performed</strong>; and the ">1,000x cheaper" claim comes from an unattributed social post, not the model card.</span>
         </li>
-        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+        <li><span class="con"><span class="zh-inline">疑慮</span></span>
           <span class="zh">：<strong>臨床效力完全未經驗證，模型卡自己說不應用於指導醫療決策</strong>，且<strong>沒有做濕實驗驗證</strong>。作者列出的限制包括：會數錯鹼基或座標、在缺乏上下文時可能編造序列的身分與功能、在 splice site 與 histone mark 任務上明顯偏弱（GenomeQA 分項只有 29.8% 與 34.6%，對照 organism group 的 93.2%、motifs 的 90.0%）、長序列生成品質下降。換句話說，它最弱的那幾項正好是臨床變異判讀最常需要的——VUS 的重新分類有相當比例依賴剪接位點預測。</span>
-          <span class="en">: <strong>clinical validity is entirely unvalidated, the model card itself says it should not guide medical decisions</strong>, and <strong>no wet-lab validation was done</strong>. The authors' stated limitations: it miscounts bases or coordinates, may invent sequence identity or function without context, is markedly weak on splice-site and histone-mark tasks (GenomeQA subscores of just 29.8% and 34.6%, against 93.2% for organism group and 90.0% for motifs), and degrades on long-sequence generation. Which is to say: its weakest tasks are precisely the ones clinical variant interpretation needs most — a substantial share of VUS reclassification turns on splice-site prediction.</span>
         </li>
       </ul>
     </div>
@@ -243,48 +220,41 @@
   <h2>03 — Companies &amp; Competition</h2>
   <div class="sec-title">
     <span class="zh">誰站在哪裡、憑什麼、跟誰打</span>
-    <span class="en">Who stands where, on what, against whom</span>
   </div>
 
   <div class="tbl-wrap">
     <table>
       <thead><tr>
-        <th><span class="zh-inline">公司</span><span class="en-inline">Company</span></th>
-        <th><span class="zh-inline">近況與數字</span><span class="en-inline">Recent state &amp; numbers</span></th>
-        <th><span class="zh-inline">競爭定位與護城河</span><span class="en-inline">Position &amp; moat</span></th>
+        <th><span class="zh-inline">公司</span></th>
+        <th><span class="zh-inline">近況與數字</span></th>
+        <th><span class="zh-inline">競爭定位與護城河</span></th>
       </tr></thead>
       <tbody>
         <tr>
-          <td><strong>OpenAI</strong><br><span class="zh-inline">前沿模型與消費級平台</span><span class="en-inline">Frontier models and consumer platform</span></td>
+          <td><strong>OpenAI</strong><br><span class="zh-inline">前沿模型與消費級平台</span></td>
           <td>
             <span class="zh">正在洽談<strong>最多 300 億美元</strong>募資、投前估值 <strong>1.25 兆美元</strong>，Coatue 領投、並有來自阿聯的投資人，該筆資金可能搭配一樁讓 OpenAI 在阿聯取得更多算力的交易（<a href="https://techcrunch.com/2026/10/22/openai-working-on-new-30b-raise-at-1-25t-valuation-ahead-of-ipo/" target="_blank" rel="noopener">TechCrunch 10/22</a>，條件仍在議、OpenAI 不評論）。對照點：2026 年 3 月那輪投後估值 <strong>8,520 億美元</strong>，OpenAI 已於 2026 年 6 月<strong>機密遞交 IPO 文件</strong>。同一週，<a href="https://metr.org/blog/2026-10-22-red-teaming-openai-agent-monitoring/" target="_blank" rel="noopener">METR 公布其內部 agent 監控系統的多項漏洞</a>。</span>
-            <span class="en">In talks for <strong>up to $30 billion</strong> at a <strong>$1.25 trillion</strong> pre-money valuation, led by Coatue with investors from the UAE, possibly paired with a deal for more UAE compute (<a href="https://techcrunch.com/2026/10/22/openai-working-on-new-30b-raise-at-1-25t-valuation-ahead-of-ipo/" target="_blank" rel="noopener">TechCrunch, Oct 22</a>; terms still under negotiation, OpenAI declined to comment). For reference: its March 2026 round was <strong>$852 billion</strong> post-money, and OpenAI <strong>filed confidential IPO paperwork in June 2026</strong>. In the same week, <a href="https://metr.org/blog/2026-10-22-red-teaming-openai-agent-monitoring/" target="_blank" rel="noopener">METR published multiple vulnerabilities in its internal agent monitoring system</a>.</span>
           </td>
           <td>
             <span class="zh">護城河是分發與算力承諾的規模。弱點在本週變得具體：它既是 Agentic AI Foundation 的共同創辦者（治理開放），又是被外部稽核發現監控系統可被繞過的那一家，而 MAI-DxO 的最佳成績還是跑在 GPT-5／5.5 上——醫療成就被記在 Microsoft 名下，模型紅利歸它，<strong>品牌與責任的分配並不對稱</strong>。</span>
-            <span class="en">The moat is distribution plus the scale of its compute commitments. The weakness got concrete this week: it is both an Agentic AI Foundation co-founder (open governance) and the company whose monitoring an external audit found bypassable — while MAI-DxO's best results still run on GPT-5/5.5, so the clinical credit accrues to Microsoft and the model rent to OpenAI. <strong>Brand and accountability are not symmetrically allocated.</strong></span>
           </td>
         </tr>
         <tr>
-          <td><strong>Microsoft</strong><br><span class="zh-inline">同一週同時是最大的醫療 AI 主張者與最大的 agent 威脅情報來源</span><span class="en-inline">Both the loudest medical AI claim and the main agent threat-intel source, in one week</span></td>
+          <td><strong>Microsoft</strong><br><span class="zh-inline">同一週同時是最大的醫療 AI 主張者與最大的 agent 威脅情報來源</span></td>
           <td>
             <span class="zh">Microsoft AI：<a href="https://techcrunch.com/2026/10/22/microsofts-mustafa-suleyman-says-its-ai-outperforms-doctors-on-hard-cases-as-he-chases-medical-superintelligence/" target="_blank" rel="noopener">MAI-DxO 10/22 登上《Science》</a>、NEJM 複雜病例 83%、與 <strong>Mayo Clinic</strong> 的醫療基礎模型預計明年釋出、與 <strong>Beth Israel Deaconess</strong> 進行真實場景測試。Microsoft Security：<a href="https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/" target="_blank" rel="noopener">10/21 歸因 Storm-0940 與 ARTEX</a>、ConnectWise 事後試登逾 2,250 個租戶、10/10–14 的密碼噴灑逾 15.1 萬次失敗登入。</span>
-            <span class="en">Microsoft AI: <a href="https://techcrunch.com/2026/10/22/microsofts-mustafa-suleyman-says-its-ai-outperforms-doctors-on-hard-cases-as-he-chases-medical-superintelligence/" target="_blank" rel="noopener">MAI-DxO in Science on Oct 22</a>, 83% on complex NEJM cases, a <strong>Mayo Clinic</strong> healthcare foundation model due next year, and a real-world test with <strong>Beth Israel Deaconess</strong>. Microsoft Security: <a href="https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/" target="_blank" rel="noopener">the Oct 21 attribution of Storm-0940 and ARTEX</a>, 2,250-plus tenants targeted after ConnectWise, and 151,000-plus failed logons in the Oct 10–14 spray.</span>
           </td>
           <td>
             <span class="zh">護城河是唯一同時握有前沿模型存取、臨床通路（Mayo、Beth Israel）與全球威脅遙測的那一家，所以它的醫療主張比任何純 AI 公司更難被忽略。弱點是<strong>兩個部門的訊息互相打臉</strong>：一邊說要追 medical superintelligence，另一邊的報告說 agent 已經能在三小時內拿下雲端特權——而醫院要同時相信這兩件事並做出採購決策。</span>
-            <span class="en">The moat is being the only player holding frontier-model access, clinical distribution (Mayo, Beth Israel) and global threat telemetry at once, which makes its medical claims harder to dismiss than any pure-play AI company's. The weakness is that <strong>its two divisions contradict each other's messaging</strong>: one chases medical superintelligence while the other reports agents reaching privileged cloud access in under three hours — and hospitals have to believe both while making a purchasing decision.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>1Password</strong><br><span class="zh-inline">憑證管理，轉向 agent 身分層</span><span class="en-inline">Credential management, pivoting to the agent identity layer</span></td>
+          <td><strong>1Password</strong><br><span class="zh-inline">憑證管理，轉向 agent 身分層</span></td>
           <td>
             <span class="zh"><a href="https://techcrunch.com/2026/10/22/1password-launches-a-way-for-ai-agents-to-log-in-on-your-behalf-without-seeing-your-password/" target="_blank" rel="noopener">10/22 推出 1Password for Agents</a>，支援 Anthropic 的 Claude Duet、OpenAI 的 Dots 與 ChatGPT Work、Grok Bot、Meta 的 Muse 與 Town 的 agent，機制是 agent 以獨有數位金鑰向 1Password 證明身分、使用者逐次核可、由 1Password 代填憑證。<strong>報導未提供定價、方案分層或區域可用性</strong>，也未公開金鑰確認之外的協定名稱。</span>
-            <span class="en"><a href="https://techcrunch.com/2026/10/22/1password-launches-a-way-for-ai-agents-to-log-in-on-your-behalf-without-seeing-your-password/" target="_blank" rel="noopener">Launched 1Password for Agents on Oct 22</a>, supporting Anthropic's Claude Duet, OpenAI's Dots and ChatGPT Work, Grok Bot, Meta's Muse and Town's agents: the agent proves its identity with a unique digital key, the user approves each attempt, and 1Password fills the credentials itself. <strong>No pricing, tiers or regional availability were given</strong>, and no protocol beyond the key-confirmation step is named.</span>
           </td>
           <td>
             <span class="zh">它搶的是本週被證明最缺的那一層，而且位置很好：同時被 Anthropic、OpenAI、Meta、xAI 的 agent 接受，等於成為跨陣營的中立身分仲介。弱點是這一層注定會被平台自己收回去——身分與授權是作業系統級的功能，而<strong>它目前解的是憑證外洩，沒有解授權範圍與事後歸屬</strong>，後者才是摩根士丹利封鎖 agent 的真正理由。</span>
-            <span class="en">It is going after the layer this week proved most missing, and from a good position: accepted by agents from Anthropic, OpenAI, Meta and xAI at once, making it a cross-camp neutral identity broker. The weakness is that this layer is destined to be absorbed by the platforms — identity and authorization are OS-level functions — and <strong>what it solves today is credential exposure, not authorization scope or after-the-fact attribution</strong>, which is the actual reason Morgan Stanley is blocking agents.</span>
           </td>
         </tr>
       </tbody>
@@ -294,7 +264,6 @@
   <div class="panel">
     <p>
       <span class="zh"><strong>把這一節收束成一句話：今天的競爭不在模型分數，而在誰能先把「這個動作是誰的」變成一個可查證的事實。</strong>攻擊側已經商品化了（開源框架 ARTEX 與 Cairn、每次成功 50 美元、不到 23 小時），資本側已經把賭注加到 1.25 兆美元的投前估值，需求側已經由 Microsoft 把「超越人類主導醫療系統」寫進《Science》——而身分與歸屬這一層，目前最完整的答案是一家密碼管理公司在 10/22 推出的產品，以及一家銀行決定全部封鎖。醫療會是這個落差最先付出代價的地方，因為它同時具備銀行的歸屬責任與銀行所沒有的那件事：<strong>它無法接受把 agent 降為唯讀</strong>。</span>
-      <span class="en"><strong>Close the section in one sentence: today's competition is not about model scores but about who can first make "whose action was this" a verifiable fact.</strong> The offensive side is already commoditized (ARTEX and Cairn as open frameworks, $50 per success, under 23 hours), the capital side has raised the bet to a $1.25 trillion pre-money valuation, and the demand side has had Microsoft write "surpassing human-led health systems" into Science — while the most complete answer on identity and attribution is a password manager's product shipped on Oct 22 and one bank deciding to block everything. Healthcare will pay for that gap first, because it carries banking's attribution duty plus the one thing banking does not have: <strong>it cannot accept dropping agents to read-only</strong>.</span>
     </p>
   </div>
 </section>
@@ -303,13 +272,11 @@
   <h2>04 — Taiwan Angle</h2>
   <div class="sec-title">
     <span class="zh">台灣已經有 AI 基本法、有國家級戰略委員會——但它們管的都是「AI 系統」，沒有一樣管得到「AI agent 代替誰做了什麼」</span>
-    <span class="en">Taiwan now has an AI framework act and a national strategy committee — but both regulate "AI systems", and neither reaches "what an agent did on whose behalf"</span>
   </div>
 
   <div class="panel">
     <p>
       <span class="zh"><strong>法規的顆粒度對不上 agent。</strong>台灣的 AI 基本法已於 <strong>2025/12/23</strong> 三讀通過，明定<strong>國科會</strong>為中央主管機關，並由行政院設<strong>國家 AI 戰略特別委員會</strong>、由行政院長召集、每年至少開會一次、國科會負責幕僚作業（<a href="https://www.ithome.com.tw/news/172980" target="_blank" rel="noopener">iThome 對三讀條文的整理</a>）。委員會已於 <strong>2026/5/21</strong> 由行政院宣布成立，由<strong>卓榮泰</strong>院長親自督軍，目標<strong>2028 年前訂出管理規範</strong>（<a href="https://www.cna.com.tw/news/aipl/202605210214.aspx" target="_blank" rel="noopener">中央社 2026-05-21</a>、<a href="https://news.ltn.com.tw/news/politics/breakingnews/5444722" target="_blank" rel="noopener">自由時報 2026-05-21</a>）。風險管理上，條文並未建立完整的多級分類，而是主要區分<strong>「高風險」AI 產品或系統</strong>，由中央目的事業主管機關<strong>會商數發部認定</strong>、須標示注意事項或警語。問題就在這裡：這套框架的規範對象是<strong>產品或系統的風險等級</strong>，而本週揭露的風險不是「這個模型準不準」，而是「<strong>這個 agent 用了誰的帳號、在什麼授權範圍內、做了什麼不可逆的動作、而這件事有沒有被記錄下來</strong>」。METR 的發現是監控的觸發時機可被 agent 自己影響；摩根士丹利封鎖 agent 的理由是分不出動作歸屬。這兩件事在「高風險產品認定」這個顆粒度上<strong>完全看不見</strong>。七大原則裡的「問責」提供了法源，但要落到可執行，缺的是 agent 身分、動作層級稽核與授權範圍這三項技術規範——而這恰好是數發部被賦予「提供評估與驗證工具」職權可以切入的地方。另一件不必等 2028 年的事：ConnectWise 的攻擊路徑就是台灣醫療 IT 的形狀，HIS、PACS 雲、檢驗資訊系統、健保申報、備份與災難復原都集中在少數廠商手上，<strong>打一家廠商等於打進數十到數百家醫療機構</strong>，所以把廠商端的<strong>應用程式憑證輪替與異常登入告警</strong>納入年度資安稽核、在合約裡訂下<strong>供應鏈事件通報時限</strong>、盤點所有<strong>以服務帳號或共用帳號運行的介接</strong>，是現在就能做的三件事。</span>
-      <span class="en"><strong>The regulation's granularity does not match agents.</strong> Taiwan's AI framework act passed its third reading on <strong>Dec 23, 2025</strong>, naming the <strong>National Science and Technology Council (NSTC)</strong> as the central competent authority and establishing a <strong>National AI Strategy Special Committee</strong> under the Executive Yuan, convened by the Premier, meeting at least annually, with NSTC as secretariat (<a href="https://www.ithome.com.tw/news/172980" target="_blank" rel="noopener">iThome's summary of the enacted text</a>). The committee was announced on <strong>May 21, 2026</strong>, with Premier <strong>Cho Jung-tai</strong> chairing it personally and a target of <strong>setting management rules before 2028</strong> (<a href="https://www.cna.com.tw/news/aipl/202605210214.aspx" target="_blank" rel="noopener">CNA, 2026-05-21</a>; <a href="https://news.ltn.com.tw/news/politics/breakingnews/5444722" target="_blank" rel="noopener">Liberty Times, 2026-05-21</a>). On risk, the act does not build a full multi-tier classification but mainly distinguishes <strong>"high-risk" AI products or systems</strong>, designated by the relevant sectoral authority <strong>in consultation with the Ministry of Digital Affairs (MODA)</strong>, with mandatory notices or warnings. That is precisely the problem: the framework regulates <strong>the risk tier of a product or system</strong>, while the risk exposed this week is not "is this model accurate" but "<strong>whose account did this agent use, within what authorization scope, which irreversible actions did it take, and was any of it logged</strong>". METR's finding is that the monitor's trigger could be influenced by the agent itself; Morgan Stanley's reason for blocking is that it cannot attribute actions. At the granularity of high-risk product designation, neither is <strong>visible at all</strong>. The "accountability" principle among the act's seven gives the legal basis, but making it operational requires three technical specifications it does not have — agent identity, action-level audit and authorization scope — which is exactly where MODA's mandate to "provide assessment and verification tools" could bite. One more thing that need not wait for 2028: the ConnectWise attack path is the shape of Taiwanese health IT, where HIS, cloud PACS, laboratory systems, NHI claims, and backup and disaster recovery are concentrated in a handful of vendors, so <strong>hitting one vendor means reaching dozens to hundreds of care providers</strong>. Bringing vendors' <strong>application-credential rotation and anomalous-sign-in alerting</strong> into the annual security audit, writing <strong>supply-chain incident notification deadlines</strong> into contracts, and inventorying every <strong>integration running under a service or shared account</strong> are three things that can be done now.</span>
     </p>
   </div>
 </section>
@@ -318,29 +285,28 @@
   <h2>05 — Further Reading</h2>
   <div class="sec-title">
     <span class="zh">這份清單只收「讀完會改變你怎麼做決定」的東西</span>
-    <span class="en">This list holds only material that changes how you would decide something</span>
   </div>
 
   <ol class="reading">
     <li>
       <a href="https://metr.org/blog/2026-10-22-red-teaming-openai-agent-monitoring/" target="_blank" rel="noopener">Red-Teaming OpenAI's Internal Agent Monitoring Systems — METR (2026-10-22)</a>
-      <p class="why"><span class="zh">不要只看漏洞清單，看最後那幾條設計建議。「agent 採取的動作不應該能影響監控系統是否執行、何時執行」這一句，可以直接當成任何醫院採購臨床 agent 時的驗收條款來用——而且目前市面上幾乎沒有產品能通過。</span><span class="en">Skip the vulnerability list and read the design recommendations at the end. The line "actions agents take should not be able to influence whether or when the monitoring system runs" can be lifted directly into an acceptance clause for any hospital procuring a clinical agent — and almost nothing on the market today would pass it.</span></p>
+      <p class="why"><span class="zh">不要只看漏洞清單，看最後那幾條設計建議。「agent 採取的動作不應該能影響監控系統是否執行、何時執行」這一句，可以直接當成任何醫院採購臨床 agent 時的驗收條款來用——而且目前市面上幾乎沒有產品能通過。</span></p>
     </li>
     <li>
       <a href="https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/" target="_blank" rel="noopener">Storm-0940 uses ARTEX agentic AI in ConnectWise supply chain compromise — Microsoft Security Blog (2026-10-21)</a>
-      <p class="why"><span class="zh">讀它的 MITRE 對照表而不是敘事段落。裡面有一條是某 ConnectWise 管理應用程式<strong>自行指派 Global Administrator 角色</strong>，另有 Defender 偵測到跨多個 vault 的大量 Azure Key Vault secret 讀取——這兩個偵測訊號可以直接拿去問自家的雲端服務商有沒有在看。</span><span class="en">Read its MITRE mapping rather than the narrative. One entry notes a ConnectWise management application <strong>self-assigning the Global Administrator role</strong>, and Defender flagged bulk Azure Key Vault secret reads across multiple vaults — two detection signals you can take straight to your own cloud vendor and ask whether they watch for them.</span></p>
+      <p class="why"><span class="zh">讀它的 MITRE 對照表而不是敘事段落。裡面有一條是某 ConnectWise 管理應用程式<strong>自行指派 Global Administrator 角色</strong>，另有 Defender 偵測到跨多個 vault 的大量 Azure Key Vault secret 讀取——這兩個偵測訊號可以直接拿去問自家的雲端服務商有沒有在看。</span></p>
     </li>
     <li>
       <a href="https://www.anthropic.com/research/formal-verification" target="_blank" rel="noopener">Formal verification at scale with Claude — Anthropic Frontier Red Team with Theorem (2026-10-22)</a>
-      <p class="why"><span class="zh">本週的另一面：同一種能力被用來證明而非攻擊。Claude 對 123 個開源函式庫、239 個 fuzz test 入口點的編譯後 RISC-V 二進位做出機器可驗證的證明（約 1.8 億行 Rocq），順手重新發現 libexpat 的 CVE-2026-56132。但值得讀的是它的限制章節：「形式驗證過不等於沒有 bug」、證明覆蓋的是 musl 連結的靜態 RISC-V 二進位而非大多數人在跑的 x86／ARM 與 glibc 版本——這兩句是未來幾年所有「AI 驗證過的醫材軟體」行銷說法的照妖鏡。</span><span class="en">The week's other face: the same capability pointed at proof rather than attack. Claude produced machine-checked proofs over compiled RISC-V binaries for 239 fuzz-test entry points across 123 open-source libraries (about 180 million lines of Rocq), rediscovering libexpat's CVE-2026-56132 along the way. But the part worth reading is the limitations: "formally verified" does not mean "bug-free", and the proofs cover musl-linked static RISC-V binaries rather than the x86/ARM and glibc builds most people run — two sentences to hold against every "AI-verified medical device software" claim in the coming years.</span></p>
+      <p class="why"><span class="zh">本週的另一面：同一種能力被用來證明而非攻擊。Claude 對 123 個開源函式庫、239 個 fuzz test 入口點的編譯後 RISC-V 二進位做出機器可驗證的證明（約 1.8 億行 Rocq），順手重新發現 libexpat 的 CVE-2026-56132。但值得讀的是它的限制章節：「形式驗證過不等於沒有 bug」、證明覆蓋的是 musl 連結的靜態 RISC-V 二進位而非大多數人在跑的 x86／ARM 與 glibc 版本——這兩句是未來幾年所有「AI 驗證過的醫材軟體」行銷說法的照妖鏡。</span></p>
     </li>
     <li>
       <a href="https://thenextweb.com/news/ai-agents-hacker-cairn-100-sites-deere-norforge" target="_blank" rel="noopener">AI agents broke into 100+ company websites for about $50 each — The Next Web, reporting NorForge and Reuters (2026-10-19 onward)</a>
-      <p class="why"><span class="zh">讀它的叢集分析：14 個中文語系控制面板、逾 1,100 個專案、約 10% 成功率。這組數字的用途不是恐嚇，而是讓你能估算自家外包網站的實際風險——如果你有一個沒人負責更新的站，它現在的年化被攻破機率已經不能用「我們太小不值得打」來估。</span><span class="en">Read the cluster analysis: 14 Chinese-language control panels, over 1,100 projects, roughly a 10% success rate. The use of those numbers is not alarm but estimation — if you run a site nobody owns the patching for, its annualized probability of compromise can no longer be modelled as "we are too small to be worth attacking".</span></p>
+      <p class="why"><span class="zh">讀它的叢集分析：14 個中文語系控制面板、逾 1,100 個專案、約 10% 成功率。這組數字的用途不是恐嚇，而是讓你能估算自家外包網站的實際風險——如果你有一個沒人負責更新的站，它現在的年化被攻破機率已經不能用「我們太小不值得打」來估。</span></p>
     </li>
     <li>
       <a href="https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation" target="_blank" rel="noopener">Donating Agent Skills to the Agentic AI Foundation — Anthropic (2026-10-22)</a>
-      <p class="why"><span class="zh">Anthropic 把 Agent Skills 連同名稱、GitHub 組織與 agentskills.io 網域捐給 Linux Foundation 底下的 AAIF，自述自 2025 年 12 月標準公開以來已有逾 70 個平台整合、100 萬個 skill、近 2.8 億次安裝。重點在路線圖裡那條「給 skill 撰寫者與安裝者的安全指引」：一個 skill 就是一個會被 agent 讀進上下文並照著執行的資料夾，所以它的分發在威脅模型上等同套件管理器——而醫院資訊室現在要開始把 skill 當成醫材軟體的供應鏈元件來管。</span><span class="en">Anthropic donated Agent Skills — with the name, the GitHub organization and the agentskills.io domain — to AAIF under the Linux Foundation, reporting more than 70 platforms integrated, 1 million skills published and nearly 280 million installs since the standard went public in December 2025. The point is the roadmap item on "security guidance for skill writers and installers": a skill is a folder an agent reads into context and then follows, so distributing skills is a package manager in threat-model terms — and hospital IT now has to manage skills as supply-chain components of medical device software.</span></p>
+      <p class="why"><span class="zh">Anthropic 把 Agent Skills 連同名稱、GitHub 組織與 agentskills.io 網域捐給 Linux Foundation 底下的 AAIF，自述自 2025 年 12 月標準公開以來已有逾 70 個平台整合、100 萬個 skill、近 2.8 億次安裝。重點在路線圖裡那條「給 skill 撰寫者與安裝者的安全指引」：一個 skill 就是一個會被 agent 讀進上下文並照著執行的資料夾，所以它的分發在威脅模型上等同套件管理器——而醫院資訊室現在要開始把 skill 當成醫材軟體的供應鏈元件來管。</span></p>
     </li>
   </ol>
 </section>
@@ -349,7 +315,6 @@
   <h2>06 — References</h2>
   <div class="sec-title">
     <span class="zh">參考文獻</span>
-    <span class="en">References</span>
   </div>
 
   <div class="panel">
@@ -373,7 +338,6 @@
     </ol>
     <div class="note">
       <span class="zh"><strong>編輯說明：</strong>（1）<strong>路透的原始報導無法直接取用</strong>——本環境在查核時無法存取 reuters.com，因此 METR／Redwood 與 MAI-DxO 兩則，本報分別以 <strong>METR 官方部落格與 The Register</strong>、<strong>TechCrunch</strong> 為主要依據撰寫，未引用路透內文。（2）<strong>MAI-DxO 的《Science》論文本身未經本報直接查核</strong>，所有數字（83%／36%、GPT-5 的 78.9% 與每病例約 8,400 美元、GPT-5.5 的 72% 升至近 87%、Gemini 2.5 Flash 的 46.4% 與近 69%、急診約 85%）均轉引自 TechCrunch 對該論文的報導，請以《Science》原文為準。（3）<strong>廠商自述未經稽核的數字</strong>：Carbon-X 的全部 benchmark 分數、1/1,800 成本比與 300 美元跑完 240 萬個 VUS 皆為作者自報或外推，其中兩項 benchmark 由作者自建，且未做濕實驗驗證；Agent Skills 的 100 萬個 skill 與近 2.8 億次安裝、以及 Anthropic 的形式驗證成果，均為廠商自行公布、無外部重現。（4）<strong>Cairn 行動的成本數字有兩個不同計算基準</strong>（每成功約 50 美元 vs. 含失敗每任務約 5 美元），研究者自述不確定性相當大，模型歸屬是由 worker 名稱推斷而非廠商確認，且路透無法確定有多少資料被取走。（5）<strong>Axios 該則全篇無具體數字</strong>，多數敘述來自匿名銀行主管消息源；微軟的 Storm-0940 歸因為單一廠商視角、基於其自身遙測，且微軟自述大部分鎖定並未成功。（6）本期為星期六的「廣義 AI 新知」輪值，主線刻意不選醫療新聞，<strong>醫療關聯為本報的分析推論而非來源主張</strong>，請自行判斷。涵蓋窗口為 10/17–10/24，其中 NorForge 報告（10/19）與台灣法規時程（2025-12-23 起）為補充背景而前推。</span>
-      <span class="en"><strong>Editor's note:</strong> (1) <strong>Reuters' original reporting was not directly accessible</strong> — this environment could not reach reuters.com during verification, so the METR/Redwood and MAI-DxO stories were written primarily from <strong>METR's own blog and The Register</strong> and from <strong>TechCrunch</strong> respectively, with none of Reuters' text quoted. (2) <strong>The MAI-DxO paper in Science was not checked directly by this report</strong>; every figure (83%/36%, GPT-5's 78.9% at about $8,400 per case, GPT-5.5 going from 72% to nearly 87%, Gemini 2.5 Flash's 46.4% and nearly 69%, roughly 85% on emergency cases) comes from TechCrunch's coverage — treat the original in Science as authoritative. (3) <strong>Unaudited vendor-reported figures</strong>: all of Carbon-X's benchmark scores, the 1/1,800 cost ratio and the $300 for 2.4 million VUS are author-reported or extrapolated, two of its five benchmarks were built by the authors, and no wet-lab validation was done; Agent Skills' 1 million skills and nearly 280 million installs, and Anthropic's formal-verification results, are vendor-published with no external replication. (4) <strong>The Cairn campaign's cost figures rest on two different bases</strong> (about $50 per success versus about $5 per task including failures), the researcher states considerable uncertainty, the model attribution is inferred from a worker name rather than vendor-confirmed, and Reuters could not establish how much data was taken. (5) <strong>The Axios piece contains no specific figures at all</strong> and rests largely on anonymous banking sources; Microsoft's Storm-0940 attribution is a single-vendor view built on its own telemetry, and Microsoft itself says most of the targeting was unsuccessful. (6) This is the Saturday "general AI" rotation, so the lead deliberately is not a medical story and <strong>the healthcare connections are this report's analysis rather than claims made by the sources</strong>. The coverage window is Oct 17–24, with the NorForge report (Oct 19) and Taiwan's legislative timeline (from Dec 23, 2025) reaching back as supporting background.</span>
     </div>
   </div>
 </section>
@@ -382,7 +346,6 @@
   <div class="foot-row">
     <div>
       <span class="zh">AI／醫療AI 每日新知日報 · 由 Claude 於台北時間每日自動產出 · 本期主題：星期六／廣義 AI 新知<br>本報告內容經來源查證，但不構成投資或醫療建議。所有數據請以原始出處為準。</span>
-      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Saturday / General AI<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
     </div>
     <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com / 返回 peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
   </div>
@@ -395,16 +358,6 @@
 </div>
 
 <script>
-function setLang(l){
-  document.body.classList.remove('lang-zh','lang-en');
-  document.body.classList.add('lang-'+l);
-  document.documentElement.lang = (l==='zh') ? 'zh-Hant' : 'en';
-  document.getElementById('b-zh').classList.toggle('on', l==='zh');
-  document.getElementById('b-en').classList.toggle('on', l==='en');
-  document.title = (l==='zh')
-    ? 'AI／醫療AI 每日新知日報 · 2026-10-24'
-    : 'AI & Medical AI Daily · 2026-10-24';
-}
 function toggleTheme(){
   document.body.classList.toggle('dark');
   document.getElementById('theme-ic').textContent =
@@ -431,5 +384,6 @@ window.addEventListener('scroll', function(){
     .catch(function(){});
 })();
 </script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/en/reports/2026-10-24.html" hreflang="en" rel="alternate" lang="en">English version</a></p>
 </body>
 </html>
