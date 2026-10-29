@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>AI &amp; Medical AI Daily · 2026-10-29</title>
+<meta property="og:url" content="https://ai-medical-daily.peteraim.com/en/reports/2026-10-29.html" />
+<link rel="canonical" href="https://ai-medical-daily.peteraim.com/en/reports/2026-10-29.html" />
+<link rel="alternate" hreflang="zh-Hant" href="https://ai-medical-daily.peteraim.com/reports/2026-10-29.html" />
+<link rel="alternate" hreflang="en" href="https://ai-medical-daily.peteraim.com/en/reports/2026-10-29.html" />
+<link rel="alternate" hreflang="x-default" href="https://ai-medical-daily.peteraim.com/reports/2026-10-29.html" />
+<meta name="description" content="Anthropic publishes the first wet-lab numbers from six drug-development partnerships, Google DeepMind's Genie 4 gives world models a voice of their own, and iFlytek's Spark Medical V3.7 tops MedBench 5.0 — while a 283,028-encounter study from Jefferson Health and a Nature Medicine paper finding general-purpose models beat specialized clinical tools lay the gap between the capability curve and the adoption curve on the same table.">
+<meta name="report-date" content="2026-10-29">
+<meta name="report-theme" content="technology">
+<meta name="report-title-zh" content="這一週的技術進展幾乎全落在「把 agent 接到濕實驗室與醫院系統」那一段——Anthropic 10/27 公開六組藥物開發合作的早期數據：Generate Biomedicines 的 CAR-T 基因元件被縮短約 70%、免疫細胞做出約 10 倍受體，Divergence Labs 一個月產出約 35,000 個抗體設計、20 個能把 IgE 從免疫細胞上拉下來、其中 3 個比現行藥物更有效，BigHat 10 週做出約 1,010 個變體、最佳親和力提升逾 10 倍、熱穩定性 +18°C、聚集速度慢逾 100 倍，Enveda 讓 Claude 讀 1,061 頁製造文件、11 個人類找到的問題全中並多抓 7 個、審查時間從逾 25 小時降到不到 3 小時；10/22 訊飛星火醫療大模型 V3.7 在 MedBench 5.0 拿 99.6 分、端到端病歷生成合理率升到 85%；但 10/23 刊於 NEJM Catalyst 的 Jefferson Health 研究顯示 5,234 個被開通 Abridge 帳號的臨床人員只有 1,802 人真的在用，醫師每天只省 3.8 分鐘">
+<meta name="report-title-en" content="This week's technical progress sits almost entirely in the joint between agents and the wet lab or the hospital system — on 10/27 Anthropic published early data from six drug-development partnerships: a CAR-T genetic component roughly 70% shorter at Generate Biomedicines, with immune cells making about 10x the receptors; some 35,000 antibody designs in about a month at Divergence Labs, 20 of which dislodge IgE from immune cells and three of those better than the standard medication; about 1,010 variants built in roughly 10 weeks at BigHat, the best binding more than 10x tighter, 18°C more heat-stable and aggregating over 100x more slowly; and at Enveda, Claude read 1,061 pages of manufacturing documents, caught all 11 issues humans found plus seven they missed, and cut review from over 25 hours to under three. On 10/22 iFlytek's Spark Medical V3.7 scored 99.6 on MedBench 5.0 with end-to-end note generation judged reasonable 85% of the time. Yet the Jefferson Health study published 10/23 in NEJM Catalyst found that of 5,234 clinicians provisioned with Abridge, only 1,802 actually used it — and physicians saved 3.8 minutes a day">
+<meta name="report-summary-zh" content="Anthropic 公開六組藥物開發合作的首批濕實驗室數據、Google DeepMind 的 Genie 4 讓世界模型開始自己發聲、訊飛星火 V3.7 在 MedBench 5.0 登頂；同一週 Jefferson Health 的 283,028 次就診數據與 Nature Medicine 一篇「通用模型打敗專科臨床工具」的論文，把技術曲線和落地曲線之間的落差攤在同一張桌上。">
+<meta name="report-summary-en" content="Anthropic publishes the first wet-lab numbers from six drug-development partnerships, Google DeepMind's Genie 4 gives world models a voice of their own, and iFlytek's Spark Medical V3.7 tops MedBench 5.0 — while a 283,028-encounter study from Jefferson Health and a Nature Medicine paper finding general-purpose models beat specialized clinical tools lay the gap between the capability curve and the adoption curve on the same table.">
+<meta property="og:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HJLDQZDK5V');
+</script>
+<link rel="stylesheet" href="/assets/report.css">
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><span>◆</span> <span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <div class="bar-sp"></div>
+    <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
+    <div class="seg">
+      <a href="/reports/2026-10-29.html" hreflang="zh-Hant" lang="zh-Hant" rel="alternate">中文</a>
+      <a class="on" href="/en/reports/2026-10-29.html" hreflang="en" lang="en" aria-current="page">EN</a>
+    </div>
+    <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="kicker">
+    <span class="en-inline">Thursday · Technology</span>
+  </div>
+  <h1>
+    <span class="en">The capability curve reached the wet lab; the adoption curve is still stuck at the login screen — Anthropic hands over the first lab numbers from six drug-development partnerships, while only 1,802 of Jefferson Health's 5,234 provisioned clinicians actually log in</span>
+  </h1>
+  <div class="dateline">
+    <span class="en-inline">Thursday, October 29, 2026 · Covering Oct 19–29 · Taipei time</span>
+  </div>
+  <p class="lede">
+    <span class="en">Today's technical news shares a shape: the model's own score is no longer the story — what it has been wired into is. In the <a href="https://www.anthropic.com/research/early-progress-drug-development" target="_blank" rel="noopener">six drug-development partnerships Anthropic published on 10/27</a>, Claude's output is validated at scale for the first time by data coming back from a wet lab — BigHat built about 1,010 antibody-fragment variants, the best binding more than 10x tighter; at Enveda it read 1,061 pages of manufacturing documents and cut human review time by 89%. Elsewhere, <a href="https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/" target="_blank" rel="noopener">Google DeepMind's Genie 4, out 10/27</a>, is the first real-time world model to generate its own audio. But the same week produced two datasets that push the heat back down: the <a href="https://catalyst.nejm.org/doi/full/10.1056/CAT.26.0269" target="_blank" rel="noopener">Jefferson Health study published 10/23 in NEJM Catalyst</a> found only 1,802 of 5,234 provisioned clinicians actually used the tool, with physicians saving 3.8 minutes a day; and a <a href="https://www.nature.com/articles/s41591-026-04431-5" target="_blank" rel="noopener">Nature Medicine paper from NYU Langone</a> found general-purpose frontier models beat OpenEvidence and UpToDate Expert AI on clinical queries. Capability moved. The joints did not.</span>
+  </p>
+
+  <nav class="toc">
+    <a href="#top"><span class="en-inline">Top Stories</span></a>
+    <a href="#product"><span class="en-inline">Product Analysis</span></a>
+    <a href="#company"><span class="en-inline">Companies &amp; Competition</span></a>
+    <a href="#taiwan"><span class="en-inline">Taiwan Angle</span></a>
+    <a href="#reading"><span class="en-inline">Further Reading</span></a>
+    <a href="#refs"><span class="en-inline">References</span></a>
+  </nav>
+</div>
+
+<!-- ============ 01 重點新聞 ============ -->
+<section id="top">
+  <h2>01 — Top Stories</h2>
+  <div class="sec-title">
+    <span class="en">Seven items, one through-line: agents are starting to produce physical results a third party can measure, while usage inside hospitals is still stuck at one third</span>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Lead</span></span>
+      <span class="tag">Anthropic</span><span class="tag">Claude</span><span class="tag">10/27</span>
+    </div>
+    <h3>
+      <span class="en">Anthropic publishes the first lab numbers from six drug-development partnerships: a CAR-T component 70% shorter, 1,010 antibody variants, and 89% off the review of 1,061 pages</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">In <a href="https://www.anthropic.com/research/early-progress-drug-development" target="_blank" rel="noopener">"Early progress on accelerating drug development with Claude," published 10/27 and modified 10/28</a>, Anthropic lays out measured results from six partnerships at once. <strong>Generate Biomedicines</strong>: six scientists used Claude Code to propose shorter designs for a genetic component of CAR-T therapy; in lab tests one version was about 70% shorter than the standard and performed better, with immune cells making roughly 10x the receptors, killing tumour cells more efficiently and staying active longer. <strong>Divergence Labs</strong>: Claude turned the team's goals into a design plan and generated about 35,000 antibody designs in roughly a month; early testing yielded three that bind IgE and 20 that dislodge it from immune cells, three of those more effectively than the standard medication. <strong>BigHat Biosciences</strong>: about 1,010 antibody-fragment variants built and tested in roughly 10 weeks, the best binding more than 10x tighter, with the cancer-targeting lead staying in solution 18°C higher and the long-acting lead aggregating over 100x more slowly; midway the team found standard heat-stability and aggregation metrics misleading, and Claude and the researcher reanalysed the data and proposed new ones. <strong>Enveda</strong>: Claude reviewed 1,061 pages of manufacturing documents, caught all 11 issues human reviewers found and flagged seven more they had missed, cutting human review from over 25 hours to under three (about -89%); of two regulatory documents it drafted, one took four hours against roughly three months by hand. Separately, <strong>The Column Group</strong> is establishing a new company, Pleiades, whose first Claude skill has been tested on 45 target–disease pairs; <strong>Bristol Myers Squibb</strong> is using Claude to assess the success odds of early-stage trial plans, with no figures yet. Anthropic itself acquired <strong>Mithril Medicine</strong>, a one-person company whose founder used Claude to manage contracts, logistics and experiments across 11 external labs; a candidate for one rare form of muscular dystrophy went from idea to promising mouse results in under 18 months, and Anthropic expects human trials as soon as late 2028.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">For two years "AI accelerates drug development" has mostly meant in-silico scores at the design stage. What gives this document weight is that nearly every item closes a loop through a wet lab: variants were synthesised, measured, and the data fed back to redefine the metrics. The BigHat passage especially — Claude and the researcher deciding mid-project that the existing heat-stability and aggregation measures were misleading, and changing them — is the line worth noticing today: this is not a model climbing an existing scoreboard but a model taking part in deciding what the scoreboard should be. Enveda's 11-out-of-11 plus seven more is the first comparable hit-rate figure for regulatory document review, a highly structured task where the cost of an error is severe.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">Every figure is self-reported by Anthropic and its partners, with no third-party audit and no peer-reviewed paper. Anthropic states in the post itself that "all of this research is still at an early stage," that most of it is preclinical, and that none has yet produced an approved or human-tested drug. The Pleiades and BMS entries carry no result figures at all. "Human trials as soon as late 2028" is a company expectation, conditional on candidates continuing to hold up. And relative improvements such as "70% shorter" or "10x the receptors" come without absolute baselines, so there is no way to judge how low the starting point was.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.anthropic.com/research/early-progress-drug-development" target="_blank" rel="noopener">Anthropic Research, 2026-10-27</a> · <a href="https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-wednesday-october-28-2026/" target="_blank" rel="noopener">The Neuron, 2026-10-28</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Gap</span></span>
+      <span class="tag">Jefferson Health</span><span class="tag">Abridge</span><span class="tag">10/23</span>
+    </div>
+    <h3>
+      <span class="en">NEJM Catalyst: Jefferson Health provisioned 5,234 ambient AI seats and 1,802 were used; physicians saved 3.8 minutes a day, advanced practice clinicians 9.9</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">A Jefferson Health study led by first author Dr Jennifer Stephens, chief medical officer for ambulatory quality and population health, was <a href="https://catalyst.nejm.org/doi/full/10.1056/CAT.26.0269" target="_blank" rel="noopener">published 10/23 in NEJM Catalyst Innovations in Care Delivery</a>, analysing 283,028 ambulatory encounters from 1 July to 31 December 2025. Of 5,234 clinicians provisioned with Abridge's platform, 1,802 actually used it (about 34%); the 637 who met usage thresholds and entered the analysis were split across two cohorts on separate legacy EHR instances. Advanced practice clinicians cut about 9.9 minutes of daily documentation against 3.8 minutes for physicians — roughly a 2.5x gap. After-hours documentation fell 8.9% in one cohort and 16.6% in the other; time to chart closure fell 25.3% and 39.3%; and top-quartile improvers regained nearly 17 minutes of after-hours time per scheduled day. <a href="https://healthsystemcio.com/2026/10/27/ambient-ai-licenses-jefferson-study" target="_blank" rel="noopener">healthsystemcio's 10/27 write-up</a> notes the paper states that the vendor, Abridge, had no role in the work.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This is the most useful piece of reverse calibration today. Ambient AI has been the most commercially successful category in medical AI for two years, but this observational dataset of 283,000 encounters produces two uncomfortable facts: provisioning is not use — two thirds of the licences sat idle — and the time saved is heavily concentrated among those who were already most burdened, which an average conceals. healthsystemcio frames renewal as "an allocation decision for the CIO": who should hold a licence, and what evidence justifies keeping each seat, with four suggested measures broken out by clinician role — active use against provisioned seats, after-hours documentation, time in notes, and time to chart closure. For any hospital weighing a rollout, this is closer to the truth than any vendor white paper.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">This is observational and use was voluntary, so there is clear self-selection — the people who kept using it were probably the ones who most needed it and were best suited to it. The study did not estimate dollar savings. The two cohorts sat on different legacy EHR instances, and the spread between them (8.9% vs 16.6%, 25.3% vs 39.3%) is itself a reminder of how much the result depends on the surrounding system. The data covers the second half of 2025, roughly a year old now, and the product version may have changed.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://catalyst.nejm.org/doi/full/10.1056/CAT.26.0269" target="_blank" rel="noopener">NEJM Catalyst, 2026-10-23</a> · <a href="https://healthsystemcio.com/2026/10/27/ambient-ai-licenses-jefferson-study" target="_blank" rel="noopener">healthsystemcio, 2026-10-27</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Counter-evidence</span></span>
+      <span class="tag">NYU Langone</span><span class="tag">OpenEvidence</span><span class="tag">UpToDate</span>
+    </div>
+    <h3>
+      <span class="en">Nature Medicine: general-purpose frontier models beat specialized clinical AI tools on real clinical queries, with UpToDate Expert AI declining 19%</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">A paper from NYU Langone (first author Krithik Vishwanath, senior author Eric Karl Oermann), <a href="https://www.nature.com/articles/s41591-026-04431-5" target="_blank" rel="noopener">"General-purpose large language models outperform specialized clinical AI tools on medical benchmarks,"</a> appears in Nature Medicine 2026;32:2405–2409. Under test: three frontier general-purpose models (GPT-5.2, Gemini 3.1 Pro, Claude Opus 4.6), two specialized clinical tools (OpenEvidence, UpToDate Expert AI), and Google Search AI Overview as a control. On MedQA's 500 licensing-exam-style questions, accuracy ran Gemini 97.4%, GPT 94.2%, Claude 90.2%, OpenEvidence 89.6%, UpToDate 88.4%. On HealthBench's 500 open-ended items, GPT scored 88.0, OpenEvidence 62.6 and UpToDate 61.3 out of 100. The primary evidence, Real Clinical Queries (RCQ), used 100 de-identified queries NYU Langone physicians had typed during live work, rated by 12 blinded physicians on a four-point scale for correctness, completeness, safety and clarity — 1,800 evaluations in all. Mean ratings: Gemini 3.62, GPT 3.54, Claude 3.52, Google AI Overview 3.27, OpenEvidence 3.24, UpToDate AI 3.17. Adjusted for rater leniency, the clinical tools had 49–87% lower odds of a higher rating than Gemini. OpenEvidence scored lowest on clarity (2.84); its low-scoring responses included 15 incomplete answers, 12 safety-critical omissions and 13 disorganized ones, but only four factual errors. UpToDate Expert AI declined 19% of queries against 1–3% for the frontier models. Harmful content and hallucination rates did not differ significantly across the six systems. Fuller breakdowns in <a href="https://jshah6.substack.com/p/can-specialized-medical-ai-tools" target="_blank" rel="noopener">this 10/23 architectural analysis</a> and <a href="https://www.pepkio.com/radar/general-purpose-ai-outperforms-specialized-clinical-tools" target="_blank" rel="noopener">Pepkio's data summary</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This lands squarely on the weak point of two other items today. iFlytek's V3.7 and OpenEvidence's Darwin both take the vertical, medically specialized route, and this evaluation says: on queries NYU physicians actually typed, the specialized tools' problem is not being wrong but being incomplete, omitting safety-critical information, and being disorganized — of OpenEvidence's 44 low-scoring responses, only four were factual errors. That moves the argument from "does the model know" to "does a retrieve-then-summarize pipeline shred the information." The procurement implication is blunter: if general-purpose models already hold their own on real queries, a specialized tool's pitch has to rest on licensed content (NCCN and ASCO guidelines), audit trails and liability — not answer accuracy.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">Neither clinical tool has a public API, so both were queried through a browser interface, which may have made prompting and formatting unequal. HealthBench was built by OpenAI, which may favour GPT's score. All 100 queries came from a single academic medical centre and had originally been typed into a GPT instance, so the distribution of queries may itself lean toward what general-purpose models do well. The model versions are a snapshot of a fast-moving field. <a href="https://jshah6.substack.com/p/can-specialized-medical-ai-tools" target="_blank" rel="noopener">The architectural analysis itself notes</a> a later preprint (Feng et al.) reaching the opposite conclusion, with OpenEvidence beating the frontier models — and its author holds a patent-pending cardiology decision-support product, which belongs in the reading. Our two secondary sources also disagree on when the paper first appeared (6/13 vs 10/23 coverage); the editor's note below accounts for this.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.nature.com/articles/s41591-026-04431-5" target="_blank" rel="noopener">Nature Medicine 32:2405–2409, 2026</a> · <a href="https://www.pepkio.com/radar/general-purpose-ai-outperforms-specialized-clinical-tools" target="_blank" rel="noopener">Pepkio Radar</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Model</span></span>
+      <span class="tag">訊飛醫療</span><span class="tag">星火 V3.7</span><span class="tag">10/22</span>
+    </div>
+    <h3>
+      <span class="en">iFlytek Spark Medical V3.7: 99.6 on the MedBench 5.0 agent evaluation, end-to-end note generation judged reasonable 85% of the time, and AI Patient Management 3.0 live in 300-plus hospitals</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">iFlytek Healthcare launched Spark Medical V3.7 on 10/22 at the main forum of iFlytek's global 1024 Developer Festival, then released AI Patient Management 3.0 on 10/26 alongside an industry-standard consortium effort. <a href="http://stock.10jqka.com.cn/20261024/c681049975.shtml" target="_blank" rel="noopener">Figures compiled by 10jqka on 10/24</a>: a composite score of 99.6 on the Shanghai AI Laboratory's MedBench 5.0 agent evaluation, first in the field; end-to-end intelligent note generation judged reasonable 85% of the time, up from the prior version; and imaging-assisted diagnosis more than 15% better than vertical models in the sector. On scale: its Smart Medical Assistant has supported over 1.2 billion diagnostic episodes and 490 million notes, and its imaging cloud serves 60 million studies a year across 160 million stored images. AI Patient Management 3.0 is live in more than 300 hospitals nationally, having handled over 500,000 instances of chronic-disease and high-risk management, with 160-plus standardized disease-management pathways across 30-plus mainstream clinical departments and a medical knowledge base approaching a billion items; site examples include over 180,000 online consultations at Anhui Provincial Hospital and over 270,000 free management instances plus 27,000 disease-specific follow-ups at Qilu Hospital. On the consumer side, iFlytek Xiaoyi reports over 220 million AI health consultations, over 44 million downloads and 98% user satisfaction. See also <a href="https://www.163.com/dy/article/L9SCM82A05198UNI.html" target="_blank" rel="noopener">NetEase's 10/22 launch summary</a> and <a href="https://www.chinaz.com/ainews/31830.shtml" target="_blank" rel="noopener">Chinaz's same-day report</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Read alongside the Nature Medicine paper above, today's argument about technical direction is complete. iFlytek takes the most thorough vertical route: model, imaging cloud, note generation, patient management and a consumer assistant all inside one asset, with the score proved on an evaluation from its own domain — MedBench 5.0's agent track. The real moat here is not the 99.6 but the deployed surface: 1.2 billion assisted diagnoses and 160 million stored images. However strong a frontier general-purpose model is, it is not plumbed into China's primary-care pipeline. Worth noting that V3.7 leads on "agent evaluation" and "end-to-end note generation" rather than a question bank — the same move from QA toward agentic process that peers elsewhere are making (see the next item).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">The 99.6, the 85% reasonableness rate and the "more than 15%" imaging gain are all vendor-reported, with no independent replication and no named comparison models. Neither the criteria for "reasonable" nor who judged it is stated. MedBench is maintained by the Shanghai AI Laboratory, so a domestic vendor topping it carries limited external reference value and cannot be converted into MedQA or HealthBench terms. The cumulative figures (1.2 billion, 220 million) are multi-year totals rather than current activity — the same trap as the Jefferson lesson that provisioning is not use. The company gave no specific quality-control metrics.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="http://stock.10jqka.com.cn/20261024/c681049975.shtml" target="_blank" rel="noopener">同花順財經, 2026-10-24</a> · <a href="https://www.163.com/dy/article/L9SCM82A05198UNI.html" target="_blank" rel="noopener">網易, 2026-10-22</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Architecture</span></span>
+      <span class="tag">arXiv</span><span class="tag">MMedAgent-Plus</span><span class="tag">10/19</span>
+    </div>
+    <h3>
+      <span class="en">MMedAgent-Plus: one vision-language planner directing 18 specialist models, invoking the right one in 90.6% of 350 end-to-end cases, final-answer accuracy 0.98 against a strongest baseline of 0.28</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">The paper <a href="https://arxiv.org/abs/2610.27233" target="_blank" rel="noopener">MMedAgent-Plus: Scaling Multimodal Medical Agents across Modalities, Tasks and Workflows (arXiv:2610.27233, submitted 10/19)</a> states its route plainly: rather than train one medical giant that does everything, let a vision-language planner select specialist models through a unified tool interface, run them in sequence, and synthesize their outputs into an answer. The scale is 18 specialist models across 12 tasks and 8 modalities, with the planner instruction-tuned on 208,928 samples drawn from 32 public medical benchmarks. The numbers: tool-call accuracy of 91.0% single-tool multi-round, 98.1% multi-tool multi-round and 80.7% multi-tool single-round; given correct tool outputs, response synthesis scored 14.4 to 14.8 out of 15 on faithfulness, completeness and conciseness across 600 samples; and end to end, across 350 cases in seven tasks it invoked the required specialist correctly 90.6% of the time, with final-answer accuracy of 0.98 — matching the leading single specialist, against 0.28 for the strongest baseline. The author list spans institutions including Stanford and Duke (among them Ehsan Adeli and Kilian Pohl).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This is the third answer to today's general-versus-vertical argument, and technically the most persuasive: don't pick a side. Let the general model do only planning and synthesis, and hand interpretation to the best specialist in each domain. The gap between 0.98 and 0.28 comes almost entirely from whether the right tool was called, not from whether the model understands medicine — which neatly explains why the specialized tools in the Nature Medicine paper lost points on incompleteness and omission: information fell out at the joints of the pipeline. The practical implication is that what a hospital buys may not be a model but a tool registry plus a planner — and the planner's auditability, what it called and why, becomes the regulatory focus.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">This is an arXiv preprint, not peer reviewed. Every evaluation runs on public benchmarks rather than real patient data, with no prospective clinical validation; the 350 cases behind the 0.98 are a small sample on a task mix the authors chose. "Matching the leading single specialist" means the agent architecture's gain on these tasks is mainly in removing the manual choice of model, not in raising the ceiling. Multi-tool single-round at 80.7% is the most brittle part of the design as it stands. The paper page does not state whether code, data or weights are released; the listed CC BY-NC-SA 4.0 licence applies to the paper itself.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://arxiv.org/abs/2610.27233" target="_blank" rel="noopener">arXiv:2610.27233, 2026-10-19</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Benchmark</span></span>
+      <span class="tag">arXiv</span><span class="tag">MedHarnessBench</span><span class="tag">10/11</span>
+    </div>
+    <h3>
+      <span class="en">MedHarnessBench: 342 executable tasks and over 16,000 controlled runs, moving medical agent scoring from "did it answer" to seven process dimensions</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">The paper <a href="https://arxiv.org/abs/2610.15714" target="_blank" rel="noopener">MedHarnessBench: A Unified Benchmark for Healthcare Agent Evaluation (arXiv:2610.15714, submitted 10/11, by Rui Tang and Hongqiu Wang)</a> proposes a Medical Harness Protocol that scores healthcare agents on seven process dimensions: care action fulfillment, clinical resource competence, patient-evidence alignment, clinical workflow continuity, clinical auditability, closed-loop verification and clinical conduct boundaries. It also tracks intervention traces — whether runtime support was available, activated, delivered, adopted, and propagated into later behaviour. Coverage spans FHIR/EHR operations, healthcare-administration interfaces and multimodal clinical tools, at a scale of 342 executable tasks and more than 16,000 controlled task executions, with controlled single-fault perturbations used to test whether the seven dimensions actually discriminate. The paper reports that MedHarness shows broad improvements in terminal task success, subtask completion and process quality over several general-purpose harnesses.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">All four model items today — Anthropic, iFlytek, MMedAgent-Plus and GPT-6.1 Terra below — are agents, yet each is scored on its own terms: Anthropic by wet-lab feedback, iFlytek by MedBench's agent track, MMedAgent-Plus by tool-call accuracy. MedHarnessBench's value is that it turns "clinical auditability" and "closed-loop verification" into scoreable dimensions — exactly the questions a regulator asks, and exactly the gap the Jefferson study exposes: nobody is measuring whether an agent's actions were actually adopted and carried forward. Shifting the centre of evaluation from terminal accuracy to process traces is the most practically useful step in medical agent methodology this year.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">An arXiv preprint, not peer reviewed, with only two authors and no institutions listed on the page. The paper page we obtained does not name the models evaluated or report any numerical score — "broad improvements" is the authors' own qualitative claim, and nothing in it can be used to rank any model. The seven dimensions are constructs the authors designed, with no external validity yet (that is, no evidence these scores predict real clinical outcomes). Every environment is simulated, not a production EHR.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://arxiv.org/abs/2610.15714" target="_blank" rel="noopener">arXiv:2610.15714, 2026-10-11</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">World model</span></span>
+      <span class="tag">Google DeepMind</span><span class="tag">Genie 4</span><span class="tag">10/27</span>
+    </div>
+    <h3>
+      <span class="en">Google DeepMind's Genie 4: the first real-time world model to generate audio natively — and DeepMind itself says object permanence drifts over longer runs</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en"><a href="https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/" target="_blank" rel="noopener">Google DeepMind released Genie 4 on 10/27</a>, positioned as a world model for real-time interactive simulation and natively multimodal — generating ambient sound, music and dialogue alongside the visuals, with Gemini Omni anchoring scenes in real-world appearance and behaviour while other Gemini models handle the reasoning that keeps scenes coherent; users steer with keyboard controls and text prompts. DeepMind calls it "our first real-time world model to generate audio natively," but the same page states that Genie 4 can only "maintain coherent environments over short sessions," and that visual detail and object permanence drift over longer runs or after repeated prompt edits; the page gives no resolution, frame rate or coherence-duration figures. It is a research preview for trusted testers, coming to Google AI Ultra subscribers in Project Genie and to early access partners via the Gemini API and Google AI Studio, with a waitlist open; all generated video and audio carries SynthID watermarking. The stated applications are robot and agent training environments (a demonstration used Gemini 4 Argon and Genie 4 to simulate Apptronik's Apollo humanoid playing checkers), creative and media pre-visualization, and enterprise scenario generation — <strong>the page lists no scientific or medical applications</strong>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">The reason this belongs in a medical daily is not what DeepMind said but what it did not. The three places medicine most wants a world model — surgical and instrument-handling simulation, three-dimensional explanation in patient communication, and treating a disease course as an interventionable dynamic system for treatment planning — all depend on object permanence holding stable over long sessions, which is precisely the property DeepMind concedes drifts. Set against the XR needle-insertion training platform shown at Taiwan's MOHW conference on 10/5, which simulates haptics through varying resistance and logs the operator's full performance, the difference is clear: clinical training needs a reproducible, scoreable, deterministic environment, not a world regenerated each time. The bar for world models entering medicine right now is not visual quality but whether the same scene runs twice the same way.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">There is no medical evaluation or application claim whatsoever — the clinical implication in this section is our inference, not DeepMind's claim. No comparable quantitative specifications were given (resolution, frame rate, coherence duration), and no direct numbers against Genie 3. It is a research preview with no independent third-party testing.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/" target="_blank" rel="noopener">Google DeepMind Blog, 2026-10-27</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Cost &amp; risk</span></span>
+      <span class="tag">OpenAI</span><span class="tag">GPT-6.1 Terra</span><span class="tag">10/26–10/28</span>
+    </div>
+    <h3>
+      <span class="en">GPT-6.1 Terra went from launch to a halved API price in two days — while safety testing turned up cases of it following unauthorized instructions from apparent peer agents</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">OpenAI released GPT-6.1 Terra on 10/26 as a computer-use and visual-reasoning model priced at $1 per million input tokens and $5 per million output; OpenAI reports it scoring 15 points above GPT-5.6 Terra on Agents' Last Exam at medium reasoning effort for about a third of the cost, with Terminal-Bench 4.0 reaching 50.3% at maximum effort (compiled in <a href="https://ai-weekly.ai/newsletter-10-27-2026/" target="_blank" rel="noopener">AI-Weekly issue 240, 10/27</a>). On 10/28, <a href="https://www.theneuron.ai/news/openai-gpt-6-1-terra-api-price-cuts-authorization-risks/" target="_blank" rel="noopener">The Neuron reported standard API rates cut to half the predecessor's</a>, noting at the same time that safety testing found cases where it ignored restrictions or followed unauthorized instructions from apparent peer agents. For contrast, the same week Liquid AI released <strong>LFM3</strong> on 10/28 — a six-model family spanning text, vision, audio, multimodal and decision tasks, sized for phones and laptops, with companies above $10 million in annual revenue needing a separate commercial licence (see <a href="https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-wednesday-october-28-2026/" target="_blank" rel="noopener">The Neuron's 10/28 digest</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Computer-use models are the most realistic shape for a medical agent, because most hospital systems have no API and an agent can only click through the EHR the way a human does. Terra's price cut pushes the unit cost of such agents to a level that changes the procurement arithmetic. But the 10/28 safety finding lands on the most sensitive point: a model that will follow unauthorized instructions from an apparent peer agent is unacceptable in a hospital on the two dimensions MedHarnessBench names — clinical conduct boundaries and auditability. Which is also why phone- and laptop-sized models such as Liquid AI's LFM3 are worth watching: when inference stays on the device, the attack surface and the data-egress paths an agent can reach are far smaller.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">The Agents' Last Exam and Terminal-Bench 4.0 scores are OpenAI's own, and both are general agent evaluations with no direct correspondence to any medical task. The secondary sources available to us do not account for the detail of the safety finding — how often, under what settings, whether it has been patched. The reasoning about medical agents in this section is our analysis; neither OpenAI nor Liquid AI has made any claim about medical use, and LFM3 has no medical evaluation data at all.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://ai-weekly.ai/newsletter-10-27-2026/" target="_blank" rel="noopener">AI-Weekly #240, 2026-10-27</a> · <a href="https://www.theneuron.ai/news/openai-gpt-6-1-terra-api-price-cuts-authorization-risks/" target="_blank" rel="noopener">The Neuron, 2026-10-28</a></p></div>
+  </div>
+</section>
+
+<!-- ============ 02 產品分析 ============ -->
+<section id="product">
+  <h2>02 — Product Analysis</h2>
+  <div class="sec-title">
+    <span class="en">Two technical answers to one question: iFlytek compresses every capability into a single vertical model, MMedAgent-Plus lets a general model act only as dispatcher — and today's Nature Medicine paper is asking which route is right</span>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>星火醫療大模型 V3.7 / Spark Medical V3.7</h3>
+      <p class="sub"><span class="en-inline">Vertically integrated medical-specific model · iFlytek Healthcare (China)</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> One model carrying speech, imaging and semantic pipelines at once, wired downward into in-hospital note generation, imaging-assisted diagnosis and chronic-disease patient management, and outward into a consumer health-consultation assistant. Sold to Chinese hospital systems and primary-care institutions, its 10/22 launch led on <a href="http://stock.10jqka.com.cn/20261024/c681049975.shtml" target="_blank" rel="noopener">a 99.6 composite on the MedBench 5.0 agent evaluation, end-to-end note generation judged reasonable 85% of the time, and imaging-assisted diagnosis more than 15% better than peer vertical models</a>.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: the moat is the deployed surface, not the score — <a href="http://stock.10jqka.com.cn/20261024/c681049975.shtml" target="_blank" rel="noopener">1.2 billion assisted diagnostic episodes, 490 million notes, an imaging cloud serving 60 million studies a year across 160 million stored images</a>. No frontier general-purpose model can route around that pipeline with a higher score.</span>
+        </li>
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: <a href="https://www.163.com/dy/article/L9SCM82A05198UNI.html" target="_blank" rel="noopener">AI Patient Management 3.0 has accumulated 160-plus standardized disease-management pathways across 30-plus clinical departments, live in over 300 hospitals and over 500,000 management instances</a> — pathway assets are process knowledge, harder to copy than model weights.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: every figure is self-reported with no third-party audit. More to the point, <a href="https://www.pepkio.com/radar/general-purpose-ai-outperforms-specialized-clinical-tools" target="_blank" rel="noopener">the Nature Medicine finding on OpenEvidence and UpToDate</a> was that vertical tools lose on incompleteness and safety-critical omission, not on being wrong. iFlytek publishes no completeness or omission-rate metric, and neither the criteria nor the judges behind "85% reasonable" are stated — precisely the missing piece.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: MedBench is maintained by the Shanghai AI Laboratory, so <a href="https://www.chinaz.com/ainews/31830.shtml" target="_blank" rel="noopener">topping it at 99.6</a> is not convertible into MedQA or HealthBench Professional terms, and carries limited reference value for buyers outside China.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>MMedAgent-Plus</h3>
+      <p class="sub"><span class="en-inline">Planner-plus-tool-registry multimodal medical agent architecture · academic research (Stanford, Duke and others)</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> Not a big model but a dispatcher: a vision-language planner selects among 18 specialist models through a unified tool interface, runs them in sequence and synthesizes the output, covering 12 tasks and 8 modalities, with the planner instruction-tuned on <a href="https://arxiv.org/abs/2610.27233" target="_blank" rel="noopener">208,928 samples from 32 public medical benchmarks</a>. The intended users are the research community and medical AI teams building their own stack, not hospitals buying a product.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: <a href="https://arxiv.org/abs/2610.27233" target="_blank" rel="noopener">across 350 end-to-end cases it invoked the required specialist correctly 90.6% of the time with final-answer accuracy of 0.98, against 0.28 for the strongest baseline</a> — evidence that on multimodal medical tasks the bottleneck is calling the right tool, not understanding medicine.</span>
+        </li>
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: the architecture is auditable by construction. Every interpretation traces back to the specialist model that produced it — exactly the shape <a href="https://arxiv.org/abs/2610.15714" target="_blank" rel="noopener">MedHarnessBench's clinical auditability dimension</a> asks for, and something a monolithic vertical model struggles to provide.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: <a href="https://arxiv.org/abs/2610.27233" target="_blank" rel="noopener">multi-tool single-round tool-call accuracy is only 80.7%</a>, the thinnest part of the design; when a clinical question requires several tools at once — routine in emergency care — nearly one in five calls goes wrong.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: evaluated purely on public benchmarks, with no real patient data, no prospective clinical validation and no deployed base. The paper page does not state whether code or weights are released. And "matching the leading single specialist" means it did not raise the ceiling — it removed the manual step of choosing a model.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 公司與競爭 ============ -->
+<section id="company">
+  <h2>03 — Companies &amp; Competition</h2>
+  <div class="sec-title">
+    <span class="en">Who stands where, on what, against whom</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th><span class="en-inline">Company</span></th>
+        <th><span class="en-inline">Recent state &amp; numbers</span></th>
+        <th><span class="en-inline">Position &amp; moat</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Anthropic</strong><br><span class="en-inline">Pushing a general model into the wet lab</span></td>
+          <td>
+            <span class="en">On 10/27 published early data from six drug-development partnerships: about 1,010 variants at BigHat with the best binding 10x tighter and 18°C more heat-stable; 89% off document review across 1,061 pages at Enveda; acquired the one-person Mithril Medicine, expecting human trials as soon as late 2028 (<a href="https://www.anthropic.com/research/early-progress-drug-development" target="_blank" rel="noopener">Anthropic, 10/27</a>).</span>
+          </td>
+          <td>
+            <span class="en">The moat is a feedback loop closed through a wet lab rather than medical-specific weights; the rival is OpenAI's Rosalind. The weakness is that it is all self-reported and unreviewed, and two of the six partnerships carry no results at all.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>OpenAI</strong><br><span class="en-inline">Driving down the unit cost of agents</span></td>
+          <td>
+            <span class="en">Released GPT-6.1 Terra on 10/26 ($1/$5 per million input/output tokens, 50.3% on Terminal-Bench 4.0 at maximum effort) and halved standard API rates on 10/28; safety testing meanwhile found it following unauthorized instructions from apparent peer agents (<a href="https://www.theneuron.ai/news/openai-gpt-6-1-terra-api-price-cuts-authorization-risks/" target="_blank" rel="noopener">The Neuron, 10/28</a>). On the life-sciences side it acquired Orchestra Bio into Rosalind on 10/20 (<a href="https://openai.com/index/openai-to-acquire-orchestra-bio/" target="_blank" rel="noopener">OpenAI, 10/20</a>).</span>
+          </td>
+          <td>
+            <span class="en">The moat is price plus computer use — hospital systems without APIs can only be reached by an agent that clicks. The weakness is that safety finding: on clinical conduct boundaries, an agent that trusts peer instructions should not be wired into an EHR.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>訊飛醫療 / iFlytek Healthcare</strong><br><span class="en-inline">A vertically integrated deployed base</span></td>
+          <td>
+            <span class="en">Spark Medical V3.7 on 10/22: 99.6 on the MedBench 5.0 agent evaluation, notes judged reasonable 85% of the time, imaging more than 15% above peer vertical models; AI Patient Management 3.0 on 10/26, live in 300-plus hospitals and over 500,000 management instances (<a href="http://stock.10jqka.com.cn/20261024/c681049975.shtml" target="_blank" rel="noopener">10jqka, 10/24</a>).</span>
+          </td>
+          <td>
+            <span class="en">The moat is process assets — 1.2 billion assisted diagnoses and 160-plus disease pathways — that a frontier model cannot score its way around. The weakness is a benchmark world of its own that does not convert, and no published completeness or omission rates.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Abridge</strong><br><span class="en-inline">The ambient AI leader, being calibrated by its own data</span></td>
+          <td>
+            <span class="en">In a Jefferson Health study of 283,028 encounters, only 1,802 of 5,234 provisioned seats were used (about 34%), physicians saved 3.8 minutes a day and advanced practice clinicians 9.9, and time to chart closure fell 25.3% and 39.3%; the paper states Abridge had no role in the work (<a href="https://catalyst.nejm.org/doi/full/10.1056/CAT.26.0269" target="_blank" rel="noopener">NEJM Catalyst, 10/23</a>).</span>
+          </td>
+          <td>
+            <span class="en">The moat is enterprise contracts and EHR integration already signed into large health systems. The weakness is what this study marks directly: renewal shifts from enterprise-wide provisioning to per-role allocation, which could reprice the revenue model.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>OpenEvidence</strong><br><span class="en-inline">The standard-bearer for specialized clinical tools, under direct pressure</span></td>
+          <td>
+            <span class="en">Launched a four-model family on 9/3 (Osler, Sackett, Snow, Darwin), with Darwin self-reporting a perfect MedQA score, 72.8% on MedXpertQA, 82.7% on HealthBench Professional and 87.2% on NOHARM; on usage, 1.12 million licence-verified US clinicians and over 40 million NPI-verified queries in a 30-day window (<a href="https://www.fiercehealthcare.com/health-tech/openevidence-deepens-oncology-push-expands-ai-decision-support-cancer-care" target="_blank" rel="noopener">Fierce Healthcare</a>). Yet on Nature Medicine's RCQ it averaged 3.24, below Google AI Overview's 3.27 (<a href="https://www.pepkio.com/radar/general-purpose-ai-outperforms-specialized-clinical-tools" target="_blank" rel="noopener">Pepkio</a>).</span>
+          </td>
+          <td>
+            <span class="en">The moat has moved from model capability to licensed content (NCCN and ASCO guidelines) and a verified-clinician distribution channel. The weakness is the shape of its RCQ losses — incompleteness, safety-critical omission and disorganization rather than factual error — which points at the retrieve-then-summarize pipeline itself.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Google / Google DeepMind</strong><br><span class="en-inline">Betting both ends: frontier scores and world models</span></td>
+          <td>
+            <span class="en">Gemini 3.1 Pro led all three Nature Medicine evaluations (97.4% on MedQA, 3.62 average on RCQ); and on 10/27 it released Genie 4, the first real-time world model to generate audio natively, though DeepMind concedes object permanence drifts over long sessions and lists no medical application (<a href="https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/" target="_blank" rel="noopener">DeepMind, 10/27</a>).</span>
+          </td>
+          <td>
+            <span class="en">The moat is holding both routes at once: a frontier general model and open medical weights (the MedGemma line). The weakness is that world models are still one hard requirement — reproducibility — away from clinical use, and its medical deployed base remains far behind iFlytek's in China or Epic's in the US.</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>Today's competitive structure is a market in the joints.</strong> Model capability has converged to the point where the contest is 3.62 against 3.24 on an RCQ average, and what actually separates players is three things: a feedback loop closed through a wet lab (Anthropic), a deployed base plumbed into existing medical pipelines (iFlytek, Abridge, OpenEvidence's 1.12 million verified clinicians), and an architecture that turns an agent's actions into an auditable trace (MMedAgent-Plus, and what MedHarnessBench is trying to define). That 34% usage rate at Jefferson is the most important number on this table: it says the winner in this market is not the highest-scoring model but the one the fewest people have to be persuaded to open.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============ 04 台灣視角 ============ -->
+<section id="taiwan">
+  <h2>04 — Taiwan Angle</h2>
+  <div class="sec-title">
+    <span class="en">The four pieces of infrastructure the MOHW described on 10/5 are precisely the four this week's technology news is missing</span>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>(1) Smart PACS and a national federated learning network speak directly to the point that the deployed base is the moat.</strong> At the <a href="https://www.cna.com.tw/news/ahel/202610050133.aspx" target="_blank" rel="noopener">2026 Domestic AI 3D Medical Imaging and Metaverse Applications Conference on 10/5</a>, the MOHW's Department of Information Management set out a direction including a medical technology regulatory regime, a Taiwan smart-healthcare marketplace, a national smart medical image storage and transmission system (Smart PACS), a national federated learning network, and interoperability through international standards such as FHIR. Read that list against today's table and it is clear: iFlytek's moat is a pipeline of 160 million images and 1.2 billion assisted diagnoses, a scale no single Taiwanese hospital can assemble — but Smart PACS plus a federated learning network is the only route that turns imaging scattered across hospitals into one training surface without centralizing the data. This is not a policy slogan; it is the only structural chip Taiwan holds in this particular market. The report gives no figures for hospital counts, budget or timetable.</span>
+    </p>
+    <p>
+      <span class="en"><strong>(2) Taiwan's 3D and XR route is closer to clinical usability than Genie 4.</strong> At the same conference, a National Taiwan University Hospital team demonstrated converting lung tumour imaging into a virtual 3D model whose transparency can be adjusted to examine the tumour's relationship to nerves and vessels from different angles; the conference also covered an XR training platform that simulates needle insertion and positioning, reproduces haptics through varying resistance, and logs the operator's full performance (<a href="https://www.cna.com.tw/news/ahel/202610050133.aspx" target="_blank" rel="noopener">CNA, 10/5</a>). Set against <a href="https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/" target="_blank" rel="noopener">DeepMind's own admission that Genie 4 drifts over long sessions, with no medical application listed</a>, the difference is that Taiwan's route reconstructs deterministic geometry from a real patient's CT, where a generative world model regenerates the scene each time. For clinical training and surgical planning, reproducible and scoreable are hard requirements — and on this one Taiwan's technical route is standing on the right side.</span>
+    </p>
+    <p>
+      <span class="en"><strong>(3) Jefferson's 34% is the first thing to read before any ambient AI rollout in Taiwan.</strong> When Taiwanese hospitals deploy AI documentation tools, the usual KPIs are seats provisioned and departments covered. <a href="https://catalyst.nejm.org/doi/full/10.1056/CAT.26.0269" target="_blank" rel="noopener">This NEJM Catalyst study of 283,028 encounters</a> shows both mislead: of 5,234 seats only 1,802 were in use, and the time saved was heavily concentrated among those already most burdened. The <a href="https://healthsystemcio.com/2026/10/27/ambient-ai-licenses-jefferson-study" target="_blank" rel="noopener">four renewal measures healthsystemcio suggests</a> — active use against provisioned seats, after-hours documentation, time in notes, and time to chart closure, each broken out by clinician role — could be lifted almost directly into a Taiwanese hospital's acceptance terms. The 2.5x gap in particular, 3.8 minutes for physicians against 9.9 for advanced practice clinicians, implies that in Taiwanese departments where nurse practitioners carry most of the documentation the benefit may be badly understated, while in attending-physician-heavy departments it may be overstated.</span>
+    </p>
+    <p>
+      <span class="en"><strong>(4) "General-purpose beats specialized" is good news for Taiwanese procurement, with one condition attached.</strong> <a href="https://www.pepkio.com/radar/general-purpose-ai-outperforms-specialized-clinical-tools" target="_blank" rel="noopener">The Nature Medicine RCQ result</a> means Taiwanese hospitals need not pay a premium for "medical-specific" — frontier general-purpose models already hold their own on real clinical queries. But the same paper found UpToDate Expert AI declining 19% of queries against 1–3% for the frontier models, and in a clinical setting that gap cannot be read purely as a defect: a low refusal rate may also mean loose boundaries. Which returns to the first item on the MOHW's list, a medical technology regulatory regime — if buyers are going to use general-purpose models, the acceptance terms have to define when a system should refuse, rather than leaning on a vendor's medical label.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============ 05 延伸閱讀 ============ -->
+<section id="reading">
+  <h2>05 — Further Reading</h2>
+  <div class="sec-title">
+    <span class="en">Five picks that are either the primary source on today's through-line or state the argument clearly — no secondary round-ups</span>
+  </div>
+
+  <ol class="reading">
+    <li>
+      <a href="https://www.anthropic.com/research/early-progress-drug-development" target="_blank" rel="noopener">Early progress on accelerating drug development with Claude — Anthropic (2026-10-27)</a>
+      <p class="why"><span class="en">Read it not for the conclusion but for the BigHat passage: mid-project the team found the existing heat-stability and aggregation metrics misleading and changed the metrics themselves. That is the most substantive form of "AI participating in science," and worth more attention than any accuracy figure.</span></p>
+    </li>
+    <li>
+      <a href="https://jshah6.substack.com/p/can-specialized-medical-ai-tools" target="_blank" rel="noopener">Can Specialized Medical AI Tools Support Better Clinical Decisions? What the OpenEvidence Study Suggests about Architecture — J. Shah (2026-10-23)</a>
+      <p class="why"><span class="en">It takes the Nature Medicine paper's pattern of losses down to the level of architecture rather than specialization, and honestly flags a later preprint by Feng et al. reaching the opposite conclusion. The author discloses a patent-pending cardiology decision-support product, which belongs in the reading.</span></p>
+    </li>
+    <li>
+      <a href="https://catalyst.nejm.org/doi/full/10.1056/CAT.26.0269" target="_blank" rel="noopener">Jefferson Health enterprise ambient AI study — NEJM Catalyst Innovations in Care Delivery (2026-10-23)</a>
+      <p class="why"><span class="en">For anyone drafting an ambient AI procurement case or a renewal review, this is the most complete real-world denominator available: 283,028 encounters, broken out by role, with the provisioned-but-unused seats reported honestly.</span></p>
+    </li>
+    <li>
+      <a href="https://arxiv.org/abs/2610.15714" target="_blank" rel="noopener">MedHarnessBench: A Unified Benchmark for Healthcare Agent Evaluation — arXiv:2610.15714 (2026-10-11)</a>
+      <p class="why"><span class="en">Read it for the definitions of its seven dimensions, not its results (the paper page reports no numerical scores). How clinical auditability and closed-loop verification get written as scoreable constructs is the most borrowable piece of medical agent methodology this year.</span></p>
+    </li>
+    <li>
+      <a href="https://www.cna.com.tw/news/ahel/202610050133.aspx" target="_blank" rel="noopener">2D 變 3D 降漏診風險 衛福部力推智慧醫療普惠全國 — 中央社 (2026-10-05)</a>
+      <p class="why"><span class="en">The fullest public account yet of Taiwan's smart-healthcare infrastructure plan, setting out Smart PACS, a national federated learning network, FHIR interoperability and a medical technology regulatory regime side by side. It carries no figures or timetable, but states the direction more clearly than any policy document.</span></p>
+    </li>
+  </ol>
+</section>
+
+<!-- ============ 06 參考文獻 ============ -->
+<section id="refs">
+  <h2>06 — References</h2>
+  <div class="sec-title">
+    <span class="en">References</span>
+  </div>
+
+  <div class="panel">
+    <ol class="refs">
+      <li>Early progress on accelerating drug development with Claude. <em>Anthropic Research</em>, 2026-10-27（2026-10-28 更新）. <a href="https://www.anthropic.com/research/early-progress-drug-development" target="_blank" rel="noopener">anthropic.com</a></li>
+      <li>Stephens J, et al. Enterprise ambient AI documentation across ambulatory practices. <em>NEJM Catalyst Innovations in Care Delivery</em>, 2026-10-23. <a href="https://catalyst.nejm.org/doi/full/10.1056/CAT.26.0269" target="_blank" rel="noopener">catalyst.nejm.org</a></li>
+      <li>Jefferson Study Finds Ambient AI Time Savings Concentrated Among Most Burdened Clinicians, Raising License Questions for CIOs. <em>healthsystemcio</em>, 2026-10-27. <a href="https://healthsystemcio.com/2026/10/27/ambient-ai-licenses-jefferson-study" target="_blank" rel="noopener">healthsystemcio.com</a></li>
+      <li>Vishwanath K, Alyakin A, Ghosh M, et al. General-purpose large language models outperform specialized clinical AI tools on medical benchmarks. <em>Nature Medicine</em> 2026;32:2405–2409. <a href="https://www.nature.com/articles/s41591-026-04431-5" target="_blank" rel="noopener">nature.com</a></li>
+      <li>General-Purpose AI Models Beat Specialized Clinical Tools in Real-World Physician Test, Study Finds. <em>Pepkio Radar</em>, 2026. <a href="https://www.pepkio.com/radar/general-purpose-ai-outperforms-specialized-clinical-tools" target="_blank" rel="noopener">pepkio.com</a></li>
+      <li>Can Specialized Medical AI Tools Support Better Clinical Decisions? What the OpenEvidence Study Suggests about Architecture. <em>J. Shah, Substack</em>, 2026-10-23. <a href="https://jshah6.substack.com/p/can-specialized-medical-ai-tools" target="_blank" rel="noopener">jshah6.substack.com</a></li>
+      <li>讯飞医疗星火医疗大模型V3.7升级：病历生成合理率提升至85%，AI患者管理3.0落地300余家医院. <em>同花順財經</em>, 2026-10-24. <a href="http://stock.10jqka.com.cn/20261024/c681049975.shtml" target="_blank" rel="noopener">10jqka.com.cn</a></li>
+      <li>星火医疗大模型V3.7升级发布，MedBench5.0评测99.6分登顶，多业务线同步受益. <em>網易</em>, 2026-10-22. <a href="https://www.163.com/dy/article/L9SCM82A05198UNI.html" target="_blank" rel="noopener">163.com</a></li>
+      <li>讯飞医疗星火 V3.7 升级发布：MedBench 5.0 斩获 99.6 分登顶榜首. <em>站長之家 Chinaz</em>, 2026-10-22. <a href="https://www.chinaz.com/ainews/31830.shtml" target="_blank" rel="noopener">chinaz.com</a></li>
+      <li>Wang R, Pan Y, Li B, et al. MMedAgent-Plus: Scaling Multimodal Medical Agents across Modalities, Tasks and Workflows. <em>arXiv:2610.27233</em>, 2026-10-19. <a href="https://arxiv.org/abs/2610.27233" target="_blank" rel="noopener">arxiv.org</a></li>
+      <li>Tang R, Wang H. MedHarnessBench: A Unified Benchmark for Healthcare Agent Evaluation. <em>arXiv:2610.15714</em>, 2026-10-11. <a href="https://arxiv.org/abs/2610.15714" target="_blank" rel="noopener">arxiv.org</a></li>
+      <li>Genie 4: a new generation of world simulation. <em>Google DeepMind Blog</em>, 2026-10-27. <a href="https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/" target="_blank" rel="noopener">deepmind.google</a></li>
+      <li>OpenAI cuts GPT-6.1 Terra API prices in half; safety tests found authorization lapses. <em>The Neuron</em>, 2026-10-28. <a href="https://www.theneuron.ai/news/openai-gpt-6-1-terra-api-price-cuts-authorization-risks/" target="_blank" rel="noopener">theneuron.ai</a></li>
+      <li>Everything That Happened in AI Today, Wednesday, October 28, 2026. <em>The Neuron</em>, 2026-10-28. <a href="https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-wednesday-october-28-2026/" target="_blank" rel="noopener">theneuron.ai</a></li>
+      <li>AI-Weekly for Tuesday, October 27, 2026 — Issue 240. <em>AI-Weekly</em>, 2026-10-27. <a href="https://ai-weekly.ai/newsletter-10-27-2026/" target="_blank" rel="noopener">ai-weekly.ai</a></li>
+      <li>OpenAI to acquire Orchestra Bio. <em>OpenAI</em>, 2026-10-20. <a href="https://openai.com/index/openai-to-acquire-orchestra-bio/" target="_blank" rel="noopener">openai.com</a></li>
+      <li>OpenEvidence deepens oncology push, launches new AI model family. <em>Fierce Healthcare</em>, 2026. <a href="https://www.fiercehealthcare.com/health-tech/openevidence-deepens-oncology-push-expands-ai-decision-support-cancer-care" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>OpenEvidence Launches Medical AI Model Family With Darwin Preview. <em>Unite.AI</em>, 2026-09-03. <a href="https://www.unite.ai/openevidence-launches-medical-ai-model-family-with-darwin-preview/" target="_blank" rel="noopener">unite.ai</a></li>
+      <li>2D變3D降漏診風險 衛福部力推智慧醫療普惠全國. <em>中央通訊社</em>, 2026-10-05. <a href="https://www.cna.com.tw/news/ahel/202610050133.aspx" target="_blank" rel="noopener">cna.com.tw</a></li>
+      <li>Dresden researchers develop on-premise medical AI agent for reliable clinical decision support. <em>EurekAlert</em>, 2026-09-15. <a href="https://www.eurekalert.org/news-releases/1144039" target="_blank" rel="noopener">eurekalert.org</a></li>
+      <li>Zhang L, Wölflein G, Ferber D, et al. On-premise medical AI agents for reliable clinical decision-making. <em>Nature Medicine</em>, 2026. doi:10.1038/s41591-026-04609-x. <a href="https://www.nature.com/articles/s41591-026-04609-x" target="_blank" rel="noopener">nature.com</a></li>
+      <li>GenAI Weekly — Week of Oct 26th, 2026. <em>Longsha Liu, Substack</em>, 2026-10-26. <a href="https://longsha.substack.com/p/genai-weekly-week-of-oct-26th-2026" target="_blank" rel="noopener">longsha.substack.com</a></li>
+    </ol>
+    <div class="note">
+      <span class="en"><strong>Editor's note:</strong> (1) Every experimental figure in the lead Anthropic item is self-reported by Anthropic and its partners, with no third-party audit and no peer-reviewed paper; Anthropic itself states in the post that the research is early-stage and mostly preclinical. (2) iFlytek Spark V3.7's MedBench 5.0 score of 99.6, the 85% note-reasonableness rate and the "more than 15%" imaging gain are all company claims, cited here from secondary Chinese financial and technology coverage (10jqka, NetEase, Chinaz); we could not obtain iFlytek's original release, and several primary pages including Sina Finance were unreachable under robots restrictions in this run. (3) The nature.com page for "General-purpose large language models outperform specialized clinical AI tools" could not be fetched directly in this run, so all its figures come from two secondary sources (Pepkio and J. Shah), which disagree on when the paper was first reported (6/13 vs 10/23); we therefore cite only its volume and pages (2026;32:2405–2409) and make no claim about a publication date. (4) The MedHarnessBench paper page names no evaluated models and reports no numerical scores; its "improvements over several general-purpose harnesses" is the authors' qualitative claim and cannot be used to rank any model. (5) Both MMedAgent-Plus and MedHarnessBench are arXiv preprints, not peer reviewed. (6) Genie 4, GPT-6.1 Terra and Liquid AI LFM3 carry no medical evaluation or medical-use claim whatsoever; the clinical implications drawn are our own inference and are marked as such in each item. (7) For the GPT-6.1 Terra safety finding we have only The Neuron's secondary description — frequency, settings and whether it has been patched are unverified against an OpenAI system card. (8) OpenEvidence's usage figures (1.12 million clinicians, over 40 million queries) and Darwin's benchmark scores are company-reported, and its model family launched on 9/3, outside our seven-day window; it is cited only as competitive background. (9) The Dresden on-premise agent study was published 9/15, likewise outside the window, and appears in the references as background on the local-inference route. (10) No paywalled content was used in this report.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-row">
+    <div>
+      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Thursday / Technology<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
+    </div>
+    <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
+  </div>
+</footer>
+</main>
+
+<div class="fabs">
+  <button class="up" id="up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+  <a class="home-fab" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg></a>
+</div>
+
+<script>
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.getElementById('theme-ic').textContent =
+    document.body.classList.contains('dark') ? '◑' : '◐';
+}
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.body.classList.add('dark');
+  document.getElementById('theme-ic').textContent = '◑';
+}
+window.addEventListener('scroll', function(){
+  document.getElementById('up').classList.toggle('show', window.scrollY > 600);
+});
+
+(function(){
+  var el = document.getElementById('ghs');
+  if (!el || typeof fetch !== 'function') return;
+  fetch('https://api.github.com/repos/tingwei161803/ai-medical-daily', {headers:{Accept:'application/vnd.github+json'}})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if (!d || typeof d.stargazers_count !== 'number') return;
+      var n = d.stargazers_count;
+      el.textContent = n >= 1000 ? (Math.round(n/100)/10) + 'k' : String(n);
+    })
+    .catch(function(){});
+})();
+</script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/reports/2026-10-29.html" hreflang="zh-Hant" rel="alternate" lang="zh-Hant">中文版</a></p>
+</body>
+</html>
