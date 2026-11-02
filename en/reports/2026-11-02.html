@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>AI &amp; Medical AI Daily · 2026-11-02</title>
+<meta property="og:url" content="https://ai-medical-daily.peteraim.com/en/reports/2026-11-02.html" />
+<link rel="canonical" href="https://ai-medical-daily.peteraim.com/en/reports/2026-11-02.html" />
+<link rel="alternate" hreflang="zh-Hant" href="https://ai-medical-daily.peteraim.com/reports/2026-11-02.html" />
+<link rel="alternate" hreflang="en" href="https://ai-medical-daily.peteraim.com/en/reports/2026-11-02.html" />
+<link rel="alternate" hreflang="x-default" href="https://ai-medical-daily.peteraim.com/reports/2026-11-02.html" />
+<meta name="description" content="A week of clinical evidence: EVLF-FM points its reasoning at the pixel, NEJM AI prices AI's care plans at 3.2x the physician's, and a lung-screening meta-analysis states flatly that the evidence does not support autonomous AI diagnosis.">
+<meta name="report-date" content="2026-11-02">
+<meta name="report-theme" content="clinical">
+<meta name="report-title-zh" content="AI 愈來愈會「看」，但完全不會「節制」——Nature Medicine 10/29 刊出新加坡 Duke-NUS 的 EVLF-FM，1,326,315 筆訓練樣本、11 種影像模態、內部 12 個資料集診斷平均準確率 0.858／F1 0.797、9 種模態像素級定位平均 mIOU 0.743，外部 HRCTCov19 以 0.954 準確率贏過 MedGemma 27B 的 0.874；但同一批外部驗證裡 RetinalOCT 只有 0.481、超音波 US3M 0.526。而把 24 套 AI 的處置計畫跟主治醫師逐案配對的 NEJM AI 研究算出：AI 平均每次就診開出 314 美元、醫師 97 美元，差 216 美元（95% CI 177–257）約 3.2 倍，在 133 次醫師「完全沒開檢查」的就診裡 AI 有 45–79% 硬加上檢查；加「省錢」提示後 19 套系統成本比下降，但 17 套與醫師診斷的一致度同時掉下來">
+<meta name="report-title-en" content="AI is getting better at seeing and no better at restraint — Nature Medicine published Duke-NUS's EVLF-FM on 29 Oct: 1,326,315 training samples, 11 imaging modalities, mean diagnostic accuracy 0.858 / F1 0.797 across 12 internal datasets, mean pixel-level grounding mIOU 0.743 across nine modalities, and 0.954 accuracy on the external HRCTCov19 CT set against MedGemma 27B's 0.874 — yet only 0.481 on RetinalOCT and 0.526 on the US3M ultrasound set in that same external run. Meanwhile a NEJM AI study paired 24 AI systems' assessment-and-plan notes against the treating physician's, case by case: AI ordered $314 of care per visit against the physician's $97, a $216 gap (95% CI 177–257) and roughly 3.2x; in the 133 encounters where physicians ordered no testing at all, the AI systems added tests in 45–79% of them; cost-conscious prompting lowered the ratio in 19 systems but cut diagnostic agreement with physicians in 17">
+<meta name="report-summary-zh" content="臨床證據週：EVLF-FM 把診斷證據指到像素，NEJM AI 算出 AI 開的單比醫師貴 3.2 倍，肺癌篩檢統合分析直接寫下「不支持自主 AI 診斷」。">
+<meta name="report-summary-en" content="A week of clinical evidence: EVLF-FM points its reasoning at the pixel, NEJM AI prices AI's care plans at 3.2x the physician's, and a lung-screening meta-analysis states flatly that the evidence does not support autonomous AI diagnosis.">
+<meta property="og:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HJLDQZDK5V');
+</script>
+<link rel="stylesheet" href="/assets/report.css">
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><span>◆</span> <span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <div class="bar-sp"></div>
+    <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
+    <div class="seg">
+      <a href="/reports/2026-11-02.html" hreflang="zh-Hant" lang="zh-Hant" rel="alternate">中文</a>
+      <a class="on" href="/en/reports/2026-11-02.html" hreflang="en" lang="en" aria-current="page">EN</a>
+    </div>
+    <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="kicker">
+    <span class="en-inline">Monday · Clinical Applications &amp; Research</span>
+  </div>
+  <h1>
+    <span class="en">AI is getting better at seeing, and no better at restraint</span>
+  </h1>
+  <div class="dateline">
+    <span class="en-inline">Monday, November 2, 2026 · Covering Oct 19–Nov 1 · Taipei time</span>
+  </div>
+  <p class="lede">
+    <span class="en">Every piece of clinical evidence that landed this week sits on the same line. <a href="https://www.nature.com/articles/s41591-026-04655-5" target="_blank" rel="noopener">Nature Medicine published</a> Duke-NUS's EVLF-FM on 29 October: 1,326,315 training samples across 11 imaging modalities, mean diagnostic accuracy 0.858 and F1 0.797 over 12 internal datasets, and mean pixel-level grounding mIOU of <a href="https://arxiv.org/abs/2509.24231" target="_blank" rel="noopener">0.743</a> across nine modalities — it does not just answer, it points at the pixels it answered from. The same week, <a href="https://ai.nejm.org/doi/full/10.1056/AIoa2600537" target="_blank" rel="noopener">NEJM AI</a> paired 24 AI systems' plans against the treating physician's, case by case: $314 of care per visit from the AI against the physician's $97, a gap of <a href="https://www.2minutemedicine.com/care-recommendations-by-large-language-models-were-associated-with-higher-healthcare-costs/" target="_blank" rel="noopener">$216 (95% CI 177–257)</a>, about 3.2x. And a lung-screening meta-analysis reported on 29 October put it bluntly: pooled sensitivity 85.4%, specificity 83.5%, and the evidence <a href="https://bioengineer.org/ai-lung-cancer-screening-shows-promise-but-falls-short-of-clinical-autonomy/" target="_blank" rel="noopener">"does not support autonomous AI diagnosis or AI-triggered invasive management."</a> Sharper sight, finer pointing, bigger bill — all three are true at once.</span>
+  </p>
+
+  <nav class="toc">
+    <a href="#top"><span class="en-inline">Top Stories</span></a>
+    <a href="#product"><span class="en-inline">Product Analysis</span></a>
+    <a href="#company"><span class="en-inline">Companies &amp; Competition</span></a>
+    <a href="#taiwan"><span class="en-inline">Taiwan Angle</span></a>
+    <a href="#reading"><span class="en-inline">Further Reading</span></a>
+    <a href="#refs"><span class="en-inline">References</span></a>
+  </nav>
+</div>
+
+<section id="top">
+  <h2>01 — Top Stories</h2>
+  <div class="sec-title">
+    <span class="en">Seven papers, two directions: the models' seeing keeps improving; nobody is ready to let go of their deciding</span>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Foundation model</span></span>
+      <span class="tag">Duke-NUS</span><span class="tag">EVLF-FM</span><span class="tag">10/29</span>
+    </div>
+    <h3>
+      <span class="en">EVLF-FM: eleven imaging modalities, one model, and the evidence pinned to the pixel</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en"><a href="https://www.nature.com/articles/s41591-026-04655-5" target="_blank" rel="noopener">Nature Medicine published</a> "A clinical multimodal vision language foundation model with fine-grain explainability" on 29 October, first-authored by Yang Bai with Daniel Shu Wei Ting of Duke-NUS and the Singapore National Eye Centre as senior author, 43 authors in all. The <a href="https://arxiv.org/abs/2509.24231" target="_blank" rel="noopener">arXiv preprint</a> puts the training set at 1,326,315 samples — 554,391 diagnostic, 415,378 grounding, 208,230 visual question answering — drawn from 23 datasets across 11 imaging modalities (CT, MRI, X-ray, ultrasound, PET, histopathology, dermatoscopy, colour fundus, OCT, endoscopy among them) and six specialties: dermatology, hepatology, ophthalmology, pathology, pulmonology and radiology. Mean diagnostic accuracy across 12 internal datasets is 0.858 with F1 0.797, ahead of DINO (0.813 / 0.730), ViT (0.807 / 0.712), InternVL 8B (0.766 / 0.648) and LLaVA v1.5 13B (0.759 / 0.624). Pixel-level grounding averages mIOU 0.743 and Acc@0.5 0.837 across nine modalities, reaching 0.934 on X-ray, 0.866 on dermatoscopy and 0.821 on ultrasound. External validation ran on 8,884 independent samples from 10 further datasets in five modalities. The <a href="https://github.com/baiyang4/EVLF" target="_blank" rel="noopener">code is on GitHub</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Medical imaging AI has two chronic weaknesses: one model reads one kind of scan, and it cannot say why. EVLF-FM runs a disease-level vision encoder alongside a pixel-level one, each feeding the language model's embedding space through its own learnable connector. Training comes in two stages — supervised fine-tuning with LoRA, then GRPO reinforcement learning rewarding a correct diagnosis (+1), localisation by IoU and open-ended answers by F1 — and the RL stage used only about 1% of the SFT data volume. The point is that "show me where the lesion is" becomes a training signal rather than a heat map bolted on afterwards. That matters because what regulators and clinicians have always wanted is not accuracy alone but which part of the image the claim rests on.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">The external zero-shot results are wildly uneven. On HRCTCov19 (CT) it reaches 0.954 accuracy / 0.949 F1 against MedGemma 27B's 0.874 / 0.854 — but RetinalOCT comes in at 0.481 / 0.338, the US3M ultrasound set at 0.526 / 0.497, and the ATPOS fundus set at F1 0.325, with US3M and ATPOS both losing to MedGemma 27B (0.613 / 0.501 and 0.759 / 0.440). External grounding on Med-GRIT-270K averages mIOU 0.362 zero-shot, below the specialist BiRD model's 0.539, and only draws level at 0.541 few-shot. Model size can be inferred as the 8B class from the comparisons; the paper does not name the underlying vision or language backbone. Several arXiv table values conflict with the narrative text (the body reports mean mIOU 0.626 vs 0.577 where the table says 0.743 vs 0.656, and the VQA column labels appear transposed); this report uses the table values. Above all: these are retrospective benchmarks. There is no prospective clinical validation.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.nature.com/articles/s41591-026-04655-5" target="_blank" rel="noopener">Nature Medicine, 2026-10-29</a> · <a href="https://arxiv.org/pdf/2509.24231v1" target="_blank" rel="noopener">arXiv:2509.24231</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/42957777/" target="_blank" rel="noopener">PubMed 42957777</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Cost</span></span>
+      <span class="tag">NEJM AI</span><span class="tag">24 systems</span><span class="tag">10/27–29</span>
+    </div>
+    <h3>
+      <span class="en">Same chart, same visit: the AI orders $314, the physician $97</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en"><a href="https://ai.nejm.org/doi/full/10.1056/AIoa2600537" target="_blank" rel="noopener">"Comparative Cost of Care Recommended by Large Language Models versus Treating Physicians"</a> (Aran D, Goldhaber-Fiebert JD, Many I, Nguyen A, Yang D, Shelly S; online 15 October, in the November 2026 issue, 3(11)) took 200 de-identified outpatient and emergency department notes, cut each one before the physician's assessment, let every AI system write its own assessment and plan from the identical presentation, then compared it against the paired physician plan. Tests and referrals were priced at 2026 Medicare schedules; newly prescribed medications were counted but not priced. The AI plans averaged $314 per visit against the physicians' $97 — a mean difference of <a href="https://www.2minutemedicine.com/care-recommendations-by-large-language-models-were-associated-with-higher-healthcare-costs/" target="_blank" rel="noopener">$216 (95% CI 177–257)</a>, about 3.2x — with diagnostic testing contributing $105 and specialist referrals $111. New medications averaged 1.14 per AI plan against 0.59 per physician plan. In the 133 encounters where the physician ordered no diagnostic testing whatsoever, the AI systems added testing in 45–79% of cases. <a href="https://www.techtarget.com/healthtechanalytics/news/366652874/AIs-recommendations-cost-3x-more-than-physician-care-plans" target="_blank" rel="noopener">TechTarget's 27 October write-up</a> adds another cut: diagnostic testing alone ran $176 per visit against $71, per-system averages spanned $209 to $599, and close to a fifth of the AI plans did catch guideline-concordant tests or orders the physician had left out.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Studies that make the economic consequence of an AI recommendation the primary endpoint — and use real physician plans as the comparator — are still rare. The finding has an uncomfortable shape: the value proposition easiest to sell into a hospital ("the AI won't miss anything") and the consequence hardest to sell to a payer ("the AI orders everything") are two faces of the same behaviour. The intervention result is worse news still. Cost-conscious prompting did lower the cost ratio in 19 systems, but 17 of those showed reduced diagnostic agreement with the physician. No prompt on offer yet buys restraint and accuracy at the same time.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">The notes come from a public de-identified corpus of the MTSamples kind, not continuous real-world care records, and the AI never sees the context the physician holds — how the patient looks, where the labs are trending, what was agreed last visit. Counting tests and referrals but not pricing medications understates the drug-cost side of the gap. Watch the inconsistencies in secondary coverage: <a href="https://www.techtarget.com/healthtechanalytics/news/366652874/AIs-recommendations-cost-3x-more-than-physician-care-plans" target="_blank" rel="noopener">TechTarget says "20 general-purpose LLMs" and that physicians ordered no tests in 66.5% of cases</a>, while <a href="https://www.2minutemedicine.com/care-recommendations-by-large-language-models-were-associated-with-higher-healthcare-costs/" target="_blank" rel="noopener">2minutemedicine says 24 systems (20 general-purpose plus 4 medical-specific) and 133 no-test encounters</a> — 133/200 is exactly 66.5%, so the denominators agree and only the system count differs. Neither names the models tested, so there is no way to tell which generation these figures describe; this report uses the 24-system figure and flags the discrepancy. Finally, the prices are Medicare's, and do not transfer to any other payment system, Taiwan's NHI included.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://ai.nejm.org/doi/full/10.1056/AIoa2600537" target="_blank" rel="noopener">NEJM AI, 2026-10-15 (Nov 2026 issue)</a> · <a href="https://www.techtarget.com/healthtechanalytics/news/366652874/AIs-recommendations-cost-3x-more-than-physician-care-plans" target="_blank" rel="noopener">TechTarget, 2026-10-27</a> · <a href="https://www.2minutemedicine.com/care-recommendations-by-large-language-models-were-associated-with-higher-healthcare-costs/" target="_blank" rel="noopener">2 Minute Medicine, 2026-10-29</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Overuse</span></span>
+      <span class="tag">Clalit</span><span class="tag">Annals of Internal Medicine</span><span class="tag">10/19</span>
+    </div>
+    <h3>
+      <span class="en">LLMs mostly hold the Choosing Wisely line — and break exactly where the societies disagree: thyroid ultrasound, 42.8%</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Dean Ariel and colleagues at Clalit Health Services in Israel published in the Annals of Internal Medicine on 19 October, expanding 15 Choosing Wisely "don't do this" recommendations into 225 scenarios, prompting six commercial LLMs from a clinician's perspective and collecting 4,050 responses. Overall the models recommended unnecessary care in only <a href="https://www.auntminnie.com/home/article/15837911/llms-mostly-avoid-unnecessary-care-in-choosing-wisely-tests" target="_blank" rel="noopener">5.4% of cases</a>, with 8 of the 15 recommendations drawing no overuse at all. The breaches cluster in two places: dedicated ultrasound for incidental sub-centimetre thyroid nodules at 42.8%, and routine electrocardiography in low-risk adults at 28.3%, with the remaining five between 0.6% and 3.3%. Undertreatment ran the other way at just 0.6% overall, absent for 11 recommendations, highest for PSA screening at 3.3%.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">The 42.8% is not a model going rogue; it is a model faithfully reproducing a human disagreement. Of the 15 recommendations, this is the only one where the societies publicly contradict each other: the American Thyroid Association advises dedicated ultrasound for incidental small nodules, while the American College of Radiology advises no further workup below 1.0–1.5 cm depending on age. The authors put it precisely: "What divides them, and what the models confronted, is precisely whether to image." Read alongside the 3.2x in the previous story, the conclusion is fairly clear. Where guidance is clean and consistent, LLM restraint is actually decent; the cost explodes in the grey zones with no consensus — and grey zones are most of clinical work. It also echoes a separate set of numbers from the Mount Sinai team published in Communications Medicine in late September: 20 models, 501 variations of 50 clinical scenarios, over 10 million responses, with potentially harmful clinical choices at <a href="https://www.mountsinai.org/about/newsroom/2026/mount-sinai-study-finds-safety-prompts-can-help-ai-models-make-safer-clinical-choices" target="_blank" rel="noopener">16.6% of responses without a safety reminder and 10.1% with one</a>, improving in 19 of 20 models. Prompts help. The remaining 10.1% is not a prompting problem.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">The scenarios are synthesised from the recommendations rather than drawn from real patients, and they carry none of the patient preference, anxiety or prior-imaging history that in a real clinic is often what actually drives the extra test. The six models are unnamed and unversioned, so none of this maps to a product on sale. The prompt took a clinician's perspective; asked directly by a patient, the numbers could look entirely different — adjacent literature repeatedly finds the patient frame easier to steer. These figures are taken from <a href="https://www.auntminnie.com/home/article/15837911/llms-mostly-avoid-unnecessary-care-in-choosing-wisely-tests" target="_blank" rel="noopener">AuntMinnie's coverage</a>; the Annals of Internal Medicine paper itself sits behind a paywall and this report draws only on the publicly visible title, lede and that secondary account.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.auntminnie.com/home/article/15837911/llms-mostly-avoid-unnecessary-care-in-choosing-wisely-tests" target="_blank" rel="noopener">AuntMinnie, 2026-10-19 (Annals of Internal Medicine)</a> · <a href="https://www.mountsinai.org/about/newsroom/2026/mount-sinai-study-finds-safety-prompts-can-help-ai-models-make-safer-clinical-choices" target="_blank" rel="noopener">Mount Sinai Newsroom, 2026-10-08</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Meta-analysis</span></span>
+      <span class="tag">Lung screening</span><span class="tag">Diagn Progn Res</span><span class="tag">10/29</span>
+    </div>
+    <h3>
+      <span class="en">Pooled sensitivity 85.4% for AI lung screening — and 11 of 11 studies at high risk of bias on flow and timing</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">A systematic review and meta-analysis in Diagnostic and Prognostic Research 10(1), article 21 (DOI 10.1186/s41512-026-00235-w) was reported on 29 October. It searched MEDLINE, Embase and Web of Science from January 2010 to December 2025, screened 2,207 records, assessed 56 full texts and included 11 studies (published 2019–2025; 8 retrospective, 3 prospective, 7 multicentre) — but only 5 had data sufficient for quantitative pooling, covering 2,220 participants (232 cases, 1,988 non-cases), individual studies ranging from 100 to 1,139 people. The results: <a href="https://bioengineer.org/ai-lung-cancer-screening-shows-promise-but-falls-short-of-clinical-autonomy/" target="_blank" rel="noopener">pooled sensitivity 85.4% and specificity 83.5%</a>, with per-study sensitivity 75.0–95.5% and specificity 64.0–92.7%, a positive likelihood ratio of 5.17, a negative likelihood ratio of 0.18 and a diagnostic odds ratio of 29.53; 10 of the 11 reported AUCs, spanning roughly 0.76 to 0.99.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">The authors' phrasing is worth reading literally: the evidence "does not support autonomous AI diagnosis or AI-triggered invasive management," AI should not replace radiologist interpretation, and it should not serve as a stand-alone rule-in test — but a negative likelihood ratio of 0.18 does support rule-out uses, meaning prescreening and triage. That is close to the common shape of all clinical AI evidence today: ruling out is more reliable than ruling in, and the workload hospitals most want to shed sits precisely on the ruling-out end. The background numbers are worth keeping too: 96.4% of positive screens in NLST were false positives, and lung cancer accounted for an estimated 2.5 million cases and 1.8 million deaths worldwide in 2022, so even a triage-only improvement moves large absolute numbers.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">The most valuable part of this paper is its bias assessment, and that page reads badly: QUADAS-2 rated patient selection at high risk of bias in 8 of 11 studies, the index test in 7, and flow and timing in 11 of 11, with the reference standard unclear in 8. Reporting quality is poor too — only 3 of 11 reported explainability methods, 4 reported model availability, and none reported regulatory status. Deeks' funnel plot asymmetry test came in at p = 0.368 but underpowered, so publication bias cannot be excluded. The quantitative pool is 5 studies and 2,220 people, very small by screening standards, and the included studies span 2019–2025 across wildly different model generations, which is itself a reason to discount a single pooled figure. Taken from <a href="https://bioengineer.org/ai-lung-cancer-screening-shows-promise-but-falls-short-of-clinical-autonomy/" target="_blank" rel="noopener">Bioengineer's coverage</a>; the full text was not obtained.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://bioengineer.org/ai-lung-cancer-screening-shows-promise-but-falls-short-of-clinical-autonomy/" target="_blank" rel="noopener">Bioengineer, 2026-10-29 (Diagnostic and Prognostic Research 10:21)</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Prospective trial</span></span>
+      <span class="tag">Google DeepMind</span><span class="tag">AMIE</span><span class="tag">The Lancet</span>
+    </div>
+    <h3>
+      <span class="en">AMIE completed 98 real patients: zero forced stops, one hallucination — and clinicians' plans preferred 27% to 6%</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">The Lancet published the first prospective evaluation of a patient-facing conversational diagnostic AI inside a real clinic on 8 October (<a href="https://www.sciencedirect.com/science/article/abs/pii/S0140673626015357" target="_blank" rel="noopener">ScienceDirect</a>; <a href="https://pubmed.ncbi.nlm.nih.gov/42849491/" target="_blank" rel="noopener">PubMed 42849491</a>). Adam Rodman of Harvard Medical School and Beth Israel Deaconess is corresponding author, with Peter Brodeur and Jacob Koshy as co-first authors and 44 further authors including Google researchers; the work was <a href="https://hms.harvard.edu/news/real-world-study-patient-facing-ai-primary-care" target="_blank" rel="noopener">funded by Alphabet</a> and ran from April to November 2025 at BIDMC's Healthcare Associates. The system was Google DeepMind's AMIE, built on Gemini 2.5 Pro with no domain-specific fine-tuning and switched mid-study to Gemini 2.5 Flash to cut latency. Patients chatted from home after booking an urgent primary care appointment; AMIE gathered symptoms and history, offered possible diagnoses to raise with the doctor, and generated a clinician summary, with <a href="https://ascoai.org/articles/2026/10/conversational-ai-system-evaluated-for-safety-in-first-real-world-primary-care-test/" target="_blank" rel="noopener">a board-certified internist monitoring every conversation live and able to intervene</a>. Across 1,452 urgent visits in the window, 114 patients started an encounter, 100 finished (88%) and 98 also completed the appointment. Results: zero supervisor-forced conversation stops, one hallucination (a past surgery date stated as future) and five cases of supervisor-supplied clinical information. On diagnosis, the reference diagnosis appeared in the top 7 differentials 90% of the time, the top 3 75%, and ranked first 56%. On management plans, 48% were rated equal in quality, with the clinician's plan preferred 27% of the time against AMIE's 6%. Rated favourable or very favourable: safety 93% for AMIE against 95% for clinicians, appropriateness 83% against 94%, cost-effectiveness 85% against 97%, practicality 94% against 100%. Of the 44 clinicians who previewed the transcript, 75% said it helped them prepare and 57% said it may have shaped their clinical approach.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Until now, every striking number about conversational diagnostic AI came from simulated patients or exam questions. This study put it in front of real ones, and honestly set its primary endpoints at safety and feasibility rather than effectiveness. Its most useful output is the set of nearly-equal-but-not-quite gaps: 93% against 95% on safety looks close, but 83% against 94% on appropriateness and 85% against 97% on cost-effectiveness are hard to wave away — and that last pair points at the same defect as the 3.2x above. Note too the shape of the diagnostic result: top-ranked diagnosis correct only 56%, but the right answer inside the top 7 differentials 90% of the time. That is a system suited to being a "don't miss this" list, not a "this is it" conclusion.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">Single-arm, no comparator, single centre, n = 98; patients could receive up to $50 each, which together with novelty effects likely inflated ratings. Participants skewed younger than the overall urgent care population, known pregnancy and mental health complaints were excluded, AMIE had no chart access, and no mobile interface was offered. Clinician survey completion was only 61% (patients 90–92%), and 27% of clinician surveys said there had been no chance to review the AMIE record before the visit — so the "75% found it helpful" denominator is 44 people. One interaction was rated somewhat harmful (lymphoma listed as a possible diagnosis, distressing the patient), three cases raised concern about premature diagnostic closure, and clinicians rated AMIE poorly on eliciting family history; patients were markedly less confident that their information would stay confidential or that AI is honest and trustworthy. The decisive caveat is in the commentary: Omar and Nadkarni note that the staffing model here — a specialist watching every single conversation in real time — simply cannot be sustained at scale, which means the safety this study demonstrates was obtained under supervision conditions that cannot be reproduced. Publication date was 8 October, slightly before this edition's window; late October was the peak of commentary and secondary coverage, not a new paper.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://hms.harvard.edu/news/real-world-study-patient-facing-ai-primary-care" target="_blank" rel="noopener">Harvard Medical School, 2026-10-13</a> · <a href="https://ascoai.org/articles/2026/10/conversational-ai-system-evaluated-for-safety-in-first-real-world-primary-care-test/" target="_blank" rel="noopener">ASCO AI, 2026-10-28</a> · <a href="https://www.sciencedirect.com/science/article/abs/pii/S0140673626015357" target="_blank" rel="noopener">The Lancet, 2026-10-08</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Digital twin</span></span>
+      <span class="tag">Stanford</span><span class="tag">SIMCO</span><span class="tag">Science Advances</span>
+    </div>
+    <h3>
+      <span class="en">218 million immune cells, one digital twin, and a recommendation of aspirin plus lansoprazole to delay preterm labour</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Science Advances published "Single-cell-level digital twins for preterm birth prevention strategies" on 21 October (<a href="https://www.science.org/doi/10.1126/sciadv.aed2741" target="_blank" rel="noopener">DOI 10.1126/sciadv.aed2741</a>), first-authored by Jakob Einhaus with Brice Gaudillière of Stanford Medicine as expert contact. The SIMCO framework (Simulated Immunome Modeling of Clinical Outcomes) took blood cells from 19 donors (<a href="https://www.eurekalert.org/news-releases/1148250" target="_blank" rel="noopener">11 pregnant, 8 non-pregnant controls</a>), treated them in vitro across 80 drug, cytokine and combination conditions, and profiled more than 50 markers per cell by mass cytometry — <a href="https://www.techtimes.com/articles/329774/20261030/preterm-birth-prevention-ai-finds-aspirin-antacid-combo-15-times-better-aspirin-alone.htm" target="_blank" rel="noopener">218 million immune cells in all</a>. Untreated samples were then used to link gestational age at delivery to immune activity, and the two datasets combined so the twins could replicate how each drug shifts labour-related immune signalling. Of nine FDA-approved low-risk drugs tested, two showed potential to delay labour onset: 5-methyltetrahydrofolate, and aspirin combined with lansoprazole (SALPZ); the other seven accelerated labour onset before slowing it. The validation cohort was 63 pregnant patients including 5 who delivered preterm, with a Pearson R of 0.64 against actual gestational age at delivery and an RMSE of 24.1 days. Nature Medicine <a href="https://www.nature.com/articles/d41591-026-00056-w" target="_blank" rel="noopener">picked it up as a research highlight on 29 October</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This is a clean example of AI used not to read images but to design the trial. The output is not a risk score but a candidate list you can take straight to registration — SALPZ has already entered a registered trial (<a href="https://www.techtimes.com/articles/329774/20261030/preterm-birth-prevention-ai-finds-aspirin-antacid-combo-15-times-better-aspirin-alone.htm" target="_blank" rel="noopener">NCT07337655</a>). Preterm birth is a field that has gone decades without a good drug: roughly 10% of US pregnancies deliver preterm, more than 15 million newborns are affected worldwide each year, and preterm birth rates among Black women run about 50% higher than among white women. For a problem with tangled mechanisms, few testable drugs and brutally hard trials, narrowing 80 conditions to 2 in simulation before spending real money on a prospective study is one of the more defensible uses of AI on the research side of medicine.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">Every effect size here is simulated; there are no patient outcomes. The headline "15x" is arrived at this way: SALPZ showed a median delay of 17.3 days among simulated responders and classified 87.3% of simulated patients as responders, while aspirin alone gave about 1.1 days at the same threshold — a ratio of two simulated numbers, not a clinical effect. Simulated delays for single agents: 24.7 days for 5-methyltetrahydrofolate, 18.8 days for maprotiline. The samples are tiny: 19 donors in vitro (11 pregnant, 8 not), and only 5 preterm deliveries among the 63 in validation, too few events to support subgroup analysis of a preterm prediction. The EurekAlert release is itself slightly inconsistent on which two drugs won (one passage lists tetrahydrofolate alongside salicylic acid and lansoprazole). Some details here are taken from Tech Times (30 Oct) and EurekAlert (21 Oct); the Science Advances full text was not obtained, and Stanford's own news page was blocked by robots rules at fetch time.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.eurekalert.org/news-releases/1148250" target="_blank" rel="noopener">EurekAlert / AAAS, 2026-10-21</a> · <a href="https://www.science.org/doi/10.1126/sciadv.aed2741" target="_blank" rel="noopener">Science Advances</a> · <a href="https://www.nature.com/articles/d41591-026-00056-w" target="_blank" rel="noopener">Nature Medicine Research Highlight, 2026-10-29</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Early detection</span></span>
+      <span class="tag">Mayo Clinic</span><span class="tag">REDMOD</span><span class="tag">Gut</span>
+    </div>
+    <h3>
+      <span class="en">Finding pancreatic cancer on CTs read as normal: 73% sensitivity against radiologists' 39%, a median 475 days early</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Mayo Clinic's REDMOD (Radiomics-based Early Detection MODel) returned to the news cycle in late October. The study took abdominal CTs from 219 patients later diagnosed with pancreatic cancer (87 scanned 3–12 months before diagnosis, 76 at 12–24 months, 56 beyond 24 months) against 1,243 controls free of pancreatic cancer for up to three years, matched on age, sex and scan date, plus a 539-patient multi-institution independent test set and the 80-patient NIH-PCT dataset. Every one of those scans <strong>had originally been read as normal</strong>. The results: <a href="https://www.sciencedaily.com/releases/2026/10/261024222031.htm" target="_blank" rel="noopener">a median 475 days (about 1.3 years) ahead of clinical diagnosis, 73% sensitivity against 39% for experienced radiologists reading the same images unaided</a>, with the gap widening to 68% against 23% on scans more than two years pre-diagnosis. Correct cancer-free classification was just over 81% in the independent set and 87.5% on NIH-PCT, with 90–92% agreement across repeat scans months apart in the same patient. <a href="https://newsnetwork.mayoclinic.org/discussion/mayo-clinic-ai-detects-pancreatic-cancer-up-to-3-years-before-diagnosis-in-landmark-validation-study/" target="_blank" rel="noopener">Mayo's own account</a> adds that the model is built to analyse CTs already taken for other reasons, aimed especially at high-risk groups such as new-onset diabetes, flagging risk before any mass is visible; the prospective AI-PACED study will assess early detection, false positives and clinical outcomes. It was also named to <a href="https://time.com/collection/best-inventions/2026/mayo-clinic-radiomics-based-early-detection-model/" target="_blank" rel="noopener">TIME's Best Inventions of 2026</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Pancreatic cancer is close to a synonym for found-too-late, and this model's angle is a shrewd one: it asks for no additional scan, and instead squeezes a second reading out of images the health system already holds and already called normal. What makes 73% against 39% matter is not that the AI beats the doctor; it is that what the model finds is not yet a lesion by any human definition — the radiologist who wrote "normal" was correct at the time. This is also the only study in this edition where the AI sees something a human in principle cannot, which puts it in a different category from the agreement-with-clinicians studies above.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en"><strong>The dates need stating plainly:</strong> this Gut paper went online on 22 April 2026, with Mayo's press release on 29 April (<a href="https://newsnetwork.mayoclinic.org/discussion/mayo-clinic-ai-detects-pancreatic-cancer-up-to-3-years-before-diagnosis-in-landmark-validation-study/" target="_blank" rel="noopener">source</a>). The 24–27 October wave (<a href="https://www.sciencedaily.com/releases/2026/10/261024222031.htm" target="_blank" rel="noopener">ScienceDaily, 26 Oct</a> among others) is secondary coverage driven partly by the TIME listing — <strong>not a new paper</strong>. It is included here because it speaks directly to this edition's theme, not because it published this week. The substantive reservation: Mayo's release reports no specificity and no false-positive rate, which is the single most important number for a tool that finds cancer on scans read as normal — a slightly high false-positive rate inverts the cost-effectiveness of the whole strategy, which is precisely what AI-PACED is meant to answer. The headline "up to three years" is the maximum; the median lead time is about 16 months. Controls were matched on age, sex and scan date, but a retrospective design cannot exclude selection effects such as being scanned because of symptoms. There are no prospective results and no clinical outcome (survival) data yet.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.sciencedaily.com/releases/2026/10/261024222031.htm" target="_blank" rel="noopener">ScienceDaily / BMJ Group, 2026-10-26</a> · <a href="https://newsnetwork.mayoclinic.org/discussion/mayo-clinic-ai-detects-pancreatic-cancer-up-to-3-years-before-diagnosis-in-landmark-validation-study/" target="_blank" rel="noopener">Mayo Clinic News Network, 2026-04-29</a> · <a href="https://time.com/collection/best-inventions/2026/mayo-clinic-radiomics-based-early-detection-model/" target="_blank" rel="noopener">TIME Best Inventions 2026</a></p></div>
+  </div>
+</section>
+
+<section id="product">
+  <h2>02 — Product Analysis</h2>
+  <div class="sec-title">
+    <span class="en">Two systems from this week, sitting at opposite ends of clinical AI: one points its evidence at the pixel, the other moves the interview into the patient's home</span>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>EVLF-FM</h3>
+      <p class="sub"><span class="en-inline">Explainable multimodal medical imaging foundation model · Duke-NUS / Singapore National Eye Centre (Singapore)</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> One model ingests 11 imaging modalities and performs disease diagnosis, visual question answering and pixel-level lesion grounding at once. The pitch is not accuracy but auditable reasoning: it ties each conclusion to a specific region of the image. Weights and code are <a href="https://github.com/baiyang4/EVLF" target="_blank" rel="noopener">public on GitHub</a> at the 8B scale, aimed at academic centres and national programmes that want to build in-house and keep images inside the hospital. <a href="https://www.nature.com/articles/s41591-026-04655-5" target="_blank" rel="noopener">Paper in Nature Medicine, 29 Oct</a>.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: grounding is not a post-hoc heat map but trained directly with IoU as a reinforcement learning reward, averaging <a href="https://arxiv.org/abs/2509.24231" target="_blank" rel="noopener">mIOU 0.743 across nine modalities and 0.934 on X-ray</a>, clearly above InternVL 3 8B's 0.656.</span>
+        </li>
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: open weights at a tractable 8B scale make it a ready starting point for sovereign-AI and federated-learning strategies — exactly one of the three themes set for Taiwan MOHW's <a href="https://www.threads.com/@mohw_digital_health_platform/post/DeQZrAVD0ME/" target="_blank" rel="noopener">Clinical AI Validation Center international seminar on 20 October 2026</a>.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: external zero-shot performance collapses in places — 0.481 accuracy on RetinalOCT, 0.526 on US3M ultrasound, F1 0.325 on the ATPOS fundus set, with the latter two losing to MedGemma 27B. One-model-does-everything does not yet hold on outside data.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: no prospective validation, no regulatory pathway, and the arXiv version's tables contradict its own narrative (mean mIOU appears as both 0.743 and 0.626); the underlying vision and language backbones are never named, leaving anyone trying to reproduce it short of a key detail.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>AMIE (Articulate Medical Intelligence Explorer)</h3>
+      <p class="sub"><span class="en-inline">Patient-facing conversational diagnostic AI · Google DeepMind / Google Research (US)</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> After booking an urgent primary care appointment, the patient chats with AMIE from home; the system gathers symptoms and history, lists differentials to raise with the doctor, and produces a pre-visit summary for the clinician. It runs on Gemini 2.5 Pro with no domain-specific fine-tuning, switched mid-study to Gemini 2.5 Flash for latency. What it sells is not a diagnosis but the relocation of history-taking out of the exam room. <a href="https://hms.harvard.edu/news/real-world-study-patient-facing-ai-primary-care" target="_blank" rel="noopener">Alphabet-funded, published in The Lancet on 8 October</a>.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: it is the only patient-facing diagnostic AI to have completed a prospective real-patient evaluation — 98 completions, <a href="https://ascoai.org/articles/2026/10/conversational-ai-system-evaluated-for-safety-in-first-real-world-primary-care-test/" target="_blank" rel="noopener">zero supervisor-forced stops and a single hallucination</a>, with safety rated favourable in 93% of cases against clinicians' 95%.</span>
+        </li>
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: measurable value on the clinician side — of the 44 who previewed the record, 75% said it helped them prepare and 57% that it may have shifted their approach, with the correct answer inside the top 7 differentials 90% of the time.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: that safety record was obtained with a specialist watching every conversation in real time, which the commentary authors say cannot be sustained at scale; the top-ranked diagnosis is correct only 56% of the time, with appropriateness at 83% against clinicians' 94% and cost-effectiveness 85% against 97%.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: n = 98, single-arm, single-centre, patients paid up to $50, known pregnancy and mental health complaints excluded, and no chart access — structurally insufficient for any effectiveness claim, which the authors themselves do not make.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>Where the contrast lies.</strong> EVLF-FM handles seeing, AMIE handles asking, and their failure modes are complementary. EVLF-FM's accuracy can fall to 0.481 on external data it has not seen, but it can at least tell you which region it was looking at; AMIE has the handsome safety record but no auditable reasoning trace at all, and on appropriateness and cost-effectiveness — the two dimensions a payer actually cares about — it trails clinicians by 11 to 12 percentage points. Stack the two bodies of evidence and only one kind of product is buyable today: an assistive tool with a defined scope, a human signature on the output, and a measured price tag.</span>
+    </p>
+  </div>
+</section>
+
+<section id="company">
+  <h2>03 — Companies &amp; Competition</h2>
+  <div class="sec-title">
+    <span class="en">Who stands where, on what, against whom</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th><span class="en-inline">Company / institution</span></th>
+        <th><span class="en-inline">Recent state &amp; numbers</span></th>
+        <th><span class="en-inline">Position &amp; moat</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Google DeepMind / Google Research</strong><br><span class="en-inline">The only player to land patient-facing diagnostic AI in The Lancet</span></td>
+          <td>
+            <span class="en">The AMIE prospective feasibility study was <a href="https://hms.harvard.edu/news/real-world-study-patient-facing-ai-primary-care" target="_blank" rel="noopener">published in The Lancet on 8 October, funded by Alphabet</a>, run with Harvard Medical School and BIDMC across 48 authors; 114 enrolled, 98 completed, zero forced stops, one hallucination, correct diagnosis in the top 3 differentials 75% of the time and ranked first 56%. Built on Gemini 2.5 Pro / Flash with no domain fine-tuning.</span>
+          </td>
+          <td>
+            <span class="en">The moat is academic access and first-mover prospective evidence: others are still publishing benchmarks while Google has real-patient data. The weakness is that the safety rests on real-time supervision that does not scale, and there is no auditable reasoning trace to hand a regulator.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Duke-NUS / 新加坡國家眼科中心</strong><br><span class="en-inline">A regional open-source multimodal foundation model</span></td>
+          <td>
+            <span class="en">EVLF-FM was <a href="https://www.nature.com/articles/s41591-026-04655-5" target="_blank" rel="noopener">published in Nature Medicine on 29 October</a> with 43 authors: 1,326,315 training samples, 23 datasets, 11 imaging modalities, six specialties; internal diagnostic accuracy 0.858 / F1 0.797, mean grounding mIOU 0.743 across nine modalities, external validation on 8,884 samples from 10 datasets. <a href="https://github.com/baiyang4/EVLF" target="_blank" rel="noopener">Code open-sourced</a>.</span>
+          </td>
+          <td>
+            <span class="en">The opposite bet to Google's: open, explainable, kept inside the hospital. For sovereign-medical-AI policy across Asia it is a ready-made base layer, and it is the route Taiwan's MOHW is weighing. The weaknesses are unstable external generalisation and the total absence of a commercial or regulatory path.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Mayo Clinic</strong><br><span class="en-inline">Early detection by re-reading scans it already owns</span></td>
+          <td>
+            <span class="en">REDMOD was <a href="https://newsnetwork.mayoclinic.org/discussion/mayo-clinic-ai-detects-pancreatic-cancer-up-to-3-years-before-diagnosis-in-landmark-validation-study/" target="_blank" rel="noopener">published in Gut on 22 April 2026</a> and re-covered in late October on the back of its <a href="https://time.com/collection/best-inventions/2026/mayo-clinic-radiomics-based-early-detection-model/" target="_blank" rel="noopener">TIME Best Inventions 2026</a> listing; 219 cancer cases against 1,243 controls plus a 539-patient independent set, 73% sensitivity against radiologists' 39%, a median 475 days early. Specificity and false-positive rate are unpublished; the prospective AI-PACED study is under way.</span>
+          </td>
+          <td>
+            <span class="en">The moat is the image archive itself: retrospective data spanning institutions, scanner makes and protocols is an asset only a system like Mayo holds, and no startup can buy it. The weakness is that the one number it most needs is still missing — without a false-positive rate, no payer can price it.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Stanford Medicine</strong><br><span class="en-inline">Simulation standing in for the early trial</span></td>
+          <td>
+            <span class="en">The SIMCO framework was <a href="https://www.eurekalert.org/news-releases/1148250" target="_blank" rel="noopener">published in Science Advances on 21 October</a>: 19 donors, 80 conditions, 218 million immune cells; two candidates narrowed from nine FDA-approved drugs (5-methyltetrahydrofolate, and aspirin plus lansoprazole), with Pearson R 0.64 and RMSE 24.1 days in a 63-patient validation cohort; SALPZ has entered registered trial NCT07337655.</span>
+          </td>
+          <td>
+            <span class="en">It competes with no medical AI company; its competitor is the early-phase trial that never gets run. The moat is the pairing of single-cell mass cytometry wet-lab capability with modelling capability, a combination rare in industry. The weakness is sample sizes small enough that every conclusion is a hypothesis.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Clalit Health Services</strong><br><span class="en-inline">Testing LLMs inside a real payer system</span></td>
+          <td>
+            <span class="en">Published a Choosing Wisely evaluation in the Annals of Internal Medicine on 19 October: six commercial LLMs, 15 recommendations, 225 scenarios, <a href="https://www.auntminnie.com/home/article/15837911/llms-mostly-avoid-unnecessary-care-in-choosing-wisely-tests" target="_blank" rel="noopener">4,050 responses and an overall overuse rate of 5.4%</a>, rising to 42.8% on thyroid ultrasound and 28.3% on low-risk electrocardiography.</span>
+          </td>
+          <td>
+            <span class="en">Israel's largest integrated health organisation is payer and provider at once, so the question it asks is always whether this will cost it more. That position makes it one of the few institutions able to define the economic endpoints for clinical AI — the same vantage point as the NEJM AI paper in this edition.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Roche Diagnostics × 台灣衛福部</strong><br><span class="en-inline">A PPP wiring AI decision support into national data</span></td>
+          <td>
+            <span class="en">The two <a href="https://news.cnyes.com/news/id/6583558" target="_blank" rel="noopener">signed an MOU on 21 August 2026</a>, targeting risk stratification and early warning for declining kidney function in chronic kidney disease first, exchanging data via FHIR and the MOHW's own "FHIR Box" without altering hospital information systems; Chang Gung, Mackay and Chung Shan Medical University Hospital have completed live cross-hospital record exchange. Roche's global business director Matthew Prime framed it as "AI models must be continually validated with real-world data."</span>
+          </td>
+          <td>
+            <span class="en">The moat is not a model but a data pipeline and an institutional position: whoever lays down the FHIR standard and cross-hospital exchange first decides how everyone else's AI plugs in. The weakness is that the route's fate depends on NHI reimbursement, and reimbursement decisions wait on local RCT results.</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>Today's competitive structure is about the shape of the evidence, not the size of the model.</strong> Across the seven papers here, what separates the players in industry terms is not parameter count but who has produced the class of evidence the others lack. Google has prospective real-patient data and no auditable reasoning; Duke-NUS has auditable reasoning and no patients; Mayo has an unmatched retrospective image archive and no false-positive rate; Clalit has the payer's vantage point and no model of its own. Nobody's evidence is complete, and in every case the missing piece is precisely the one regulators and payers want to see.</span>
+    </p>
+  </div>
+</section>
+
+<section id="taiwan">
+  <h2>04 — Taiwan Angle</h2>
+  <div class="sec-title">
+    <span class="en">The governance scaffolding is up and the local evidence is still coming — and the figure most worth translating to Taiwanese scale today is the cost one</span>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>(1) The NEJM AI 3.2x becomes a different thing under a global budget.</strong> That study priced care at 2026 Medicare rates, and Medicare pays fee-for-service — an extra AI-ordered test is extra spending. Taiwan's NHI runs a global budget: extra tests do not enlarge the pot, they crowd others out of it. The same behaviour that appears in the US as rising expenditure shows up in Taiwan as a falling point value and as displacement of other specialties, and the latter does not appear on any ledger, which makes it harder to treat as a problem. The Taiwan AI Impact Research Center, launched by the MOHW on 20 November 2025, exists to fill exactly this gap: local RCTs and health technology assessment across five demonstration sites — Taipei Veterans General, Taichung Veterans General, Tri-Service General, National Cheng Kung University Hospital and National Taiwan University Hospital. Information Division director Li Chien-chang noted then that past RCTs had relied on overseas data and that <a href="https://udn.com/news/story/7266/9152553" target="_blank" rel="noopener">"if the results are good, the ministry will consider whether they can be included in NHI"</a>, with findings expected to reach the NHI Joint Decision-Making Committee in about three years. A study design that makes cost the primary endpoint is precisely the template those five hospitals should copy.</span>
+    </p>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>(2) EVLF-FM proves a sovereign-grade explainable model is buildable in Asia.</strong> One medical school and one eye centre in Singapore produced an open-source multimodal foundation model spanning 11 modalities and 1,326,315 samples, and placed it in Nature Medicine — this is not frontier-lab-scale work. The MOHW Information Division's <a href="https://www.threads.com/@mohw_digital_health_platform/post/DeQZrAVD0ME/" target="_blank" rel="noopener">Clinical AI Validation Center international seminar on 20 October 2026</a> set sovereign AI, federated learning and foundation models as its three themes, with speakers including Adam Dunn of the University of Sydney (federated learning to clinical evidence across health systems), Long Phi Le of Massachusetts General Hospital (multimodal medical foundation models supporting medical sovereignty) and Joyce Oen-Hsiao of Yale (from validation to physician adoption). The agenda is right; what Taiwan lacks is not an agenda but a citable model of its own — and EVLF-FM's 8B scale and open licence are exactly the size at which cross-hospital federated learning can begin.</span>
+    </p>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>(3) The governance framework has run ahead of the evidence.</strong> The MOHW's Responsible AI Execution Center launched on 28 September 2024, and by its <a href="https://dep.mohw.gov.tw/DOIM/cp-935-82236-114.html" target="_blank" rel="noopener">results presentation on 21 April 2025</a> had funded 10 hospitals (Linkou Chang Gung, Taipei Veterans General, Kaohsiung Medical University's Chung-Ho Memorial, China Medical University Hospital, Changhua Christian, Chi Mei, Lien Hsin International, Chiayi Chang Gung, Tucheng Chang Gung and New Taipei's Jen-Kang), structured on three pillars — nine transparency principles, information security and privacy protection, and AI lifecycle management — with a Responsible AI certification mark planned as the core of product review and trust-building, alongside post-market surveillance for smart medical devices to be built with the Food and Drug Administration. <a href="https://health.ltn.com.tw/article/breakingnews/5018588" target="_blank" rel="noopener">Information Division director Li Chien-chang describes Taiwan as the first country in Asia, after the US and EU, to put responsible AI into clinical practice</a>. Leading with institutions is the right call, but not one of the seven studies in this edition came from Taiwan. The scaffolding is up and the local evidence meant to fill it has not grown yet; that lag is the risk worth watching over the next three years.</span>
+    </p>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>(4) Taiwan already has its imaging question; what it lacks is endpoint design.</strong> The Domestic AI 3D Medical Imaging and Metaverse Application Conference on 5 October 2026, hosted by the MOHW Information Division, featured National Taiwan University Hospital's Chiang Hsu-heng (thoracic surgery) and Kuo Ting-chun (general surgery) on converting 2D images to 3D for rib-fracture reading, surgical planning and patient communication, with <a href="https://www.cna.com.tw/news/ahel/202610050133.aspx" target="_blank" rel="noopener">Li Chien-chang saying the key now is making 2D-to-3D conversion available nationwide, and naming standards and platforms — FHIR among them — as the ministry's most important future task</a>. Carry over the lesson from Mayo's REDMOD in this edition: what drew the sharpest questions was not its sensitivity but the absence of a published false-positive rate. If Taiwan's nationwide 2D-to-3D push measures only how many extra fractures were found, and not how many additional downstream tests were ordered and how many points they consumed, then the dossier that reaches the NHI committee in three years will be missing the only column a payer reads.</span>
+    </p>
+  </div>
+</section>
+
+<section id="reading">
+  <h2>05 — Further Reading</h2>
+  <div class="sec-title">
+    <span class="en">Chosen for one thing: each takes on what clinical AI evidence ought to look like, rather than reporting another scorecard</span>
+  </div>
+
+  <ol class="reading">
+    <li>
+      <a href="https://ai.nejm.org/doi/full/10.1056/AIoa2600537" target="_blank" rel="noopener">Comparative Cost of Care Recommended by Large Language Models versus Treating Physicians — NEJM AI (2026-10-15)</a>
+      <p class="why"><span class="en">The one paper here most worth reading in the original. It demonstrates a design nearly everyone else skips: not whose diagnosis is right, but what following the plan costs — against the actual treating physician as comparator.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/articles/s41591-026-04639-5" target="_blank" rel="noopener">Prospective evidence for conversational medical AI is hard, but non-negotiable — Nature Medicine (2026)</a>
+      <p class="why"><span class="en">Read it alongside the AMIE paper. It addresses the structural problem that recurs throughout this edition: what a feasibility study can establish is narrowly bounded, and the field has not yet filled in the steps between feasibility and effectiveness.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/articles/s41591-026-04431-5" target="_blank" rel="noopener">General-purpose large language models outperform specialized clinical AI tools on medical benchmarks — Nature Medicine (2026)</a>
+      <p class="why"><span class="en">It presses the question of whether a specialised medical model is worth buying at all. Pair it with <a href="https://www.nature.com/articles/s41591-026-04457-9" target="_blank" rel="noopener">the same group's follow-up using physicians' real-world questions</a>, and read both against EVLF-FM losing to MedGemma 27B on two external datasets in this edition.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/articles/s41591-026-04438-y" target="_blank" rel="noopener">AI-induced never-skilling in medical education — Nature Medicine (2026)</a>
+      <p class="why"><span class="en">Three papers in this edition conclude that AI works as an assistant and not as a conclusion, but none asks what happens if a resident has that assistant from day one and never develops the skill being assisted. This one asks.</span></p>
+    </li>
+    <li>
+      <a href="https://www.mountsinai.org/about/newsroom/2026/mount-sinai-study-finds-safety-prompts-can-help-ai-models-make-safer-clinical-choices" target="_blank" rel="noopener">Evaluating Large Language Model Responses to Unsafe Clinical Instructions — Communications Medicine / Mount Sinai (2026-09-26)</a>
+      <p class="why"><span class="en">Large enough to remember on its own: 20 models, 501 scenario variants, over 10 million responses. The value is in the shape of the result — a safety reminder cutting harmful choices from 16.6% to 10.1% proves both that prompting works and that prompting has a ceiling.</span></p>
+    </li>
+  </ol>
+</section>
+
+<section id="refs">
+  <h2>06 — References</h2>
+  <div class="sec-title">
+    <span class="en">References</span>
+  </div>
+
+  <div class="panel">
+    <ol class="refs">
+      <li>A clinical multimodal vision language foundation model with fine-grain explainability. <em>Nature Medicine</em>, 2026-10-29. <a href="https://www.nature.com/articles/s41591-026-04655-5" target="_blank" rel="noopener">nature.com</a></li>
+      <li>EVLF-FM: Explainable Vision Language Foundation Model for Medicine. <em>arXiv:2509.24231</em>. <a href="https://arxiv.org/abs/2509.24231" target="_blank" rel="noopener">arxiv.org</a> · <a href="https://arxiv.org/pdf/2509.24231v1" target="_blank" rel="noopener">PDF</a></li>
+      <li>A clinical multimodal vision language foundation model with fine-grain explainability. <em>PubMed</em>, PMID 42957777. <a href="https://pubmed.ncbi.nlm.nih.gov/42957777/" target="_blank" rel="noopener">pubmed.ncbi.nlm.nih.gov</a></li>
+      <li>EVLF — source code repository. <em>GitHub (baiyang4/EVLF)</em>. <a href="https://github.com/baiyang4/EVLF" target="_blank" rel="noopener">github.com</a></li>
+      <li>Comparative Cost of Care Recommended by Large Language Models versus Treating Physicians. <em>NEJM AI</em>, 2026;3(11):AIoa2600537, online 2026-10-15. <a href="https://ai.nejm.org/doi/full/10.1056/AIoa2600537" target="_blank" rel="noopener">ai.nejm.org</a></li>
+      <li>AI's recommendations cost 3x more than physician care plans. <em>TechTarget Healthtech Analytics</em>, 2026-10-27. <a href="https://www.techtarget.com/healthtechanalytics/news/366652874/AIs-recommendations-cost-3x-more-than-physician-care-plans" target="_blank" rel="noopener">techtarget.com</a></li>
+      <li>Care recommendations by large language models were associated with higher healthcare costs. <em>2 Minute Medicine</em>, 2026-10-29. <a href="https://www.2minutemedicine.com/care-recommendations-by-large-language-models-were-associated-with-higher-healthcare-costs/" target="_blank" rel="noopener">2minutemedicine.com</a></li>
+      <li>LLMs mostly avoid unnecessary care in Choosing Wisely tests. <em>AuntMinnie</em>, 2026-10-19 (reporting <em>Annals of Internal Medicine</em>). <a href="https://www.auntminnie.com/home/article/15837911/llms-mostly-avoid-unnecessary-care-in-choosing-wisely-tests" target="_blank" rel="noopener">auntminnie.com</a></li>
+      <li>Mount Sinai Study Finds Safety Prompts Can Help AI Models Make Safer Clinical Choices. <em>Mount Sinai Newsroom</em>, 2026-10-08 (study in <em>Communications Medicine</em>, 2026-09-26, DOI 10.1038/s43856-026-01933-8). <a href="https://www.mountsinai.org/about/newsroom/2026/mount-sinai-study-finds-safety-prompts-can-help-ai-models-make-safer-clinical-choices" target="_blank" rel="noopener">mountsinai.org</a></li>
+      <li>AI lung cancer screening shows promise but falls short of clinical autonomy. <em>Bioengineer</em>, 2026-10-29 (reporting <em>Diagnostic and Prognostic Research</em> 10(1):21, DOI 10.1186/s41512-026-00235-w). <a href="https://bioengineer.org/ai-lung-cancer-screening-shows-promise-but-falls-short-of-clinical-autonomy/" target="_blank" rel="noopener">bioengineer.org</a></li>
+      <li>Conversational diagnostic artificial intelligence in ambulatory primary care: a prospective feasibility study. <em>The Lancet</em>, 2026-10-08. <a href="https://www.sciencedirect.com/science/article/abs/pii/S0140673626015357" target="_blank" rel="noopener">sciencedirect.com</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/42849491/" target="_blank" rel="noopener">PubMed 42849491</a></li>
+      <li>A Real-World Study of Patient-Facing AI in Primary Care. <em>Harvard Medical School</em>, 2026-10-13. <a href="https://hms.harvard.edu/news/real-world-study-patient-facing-ai-primary-care" target="_blank" rel="noopener">hms.harvard.edu</a></li>
+      <li>Conversational AI System Evaluated for Safety in First Real-World Primary Care Test. <em>ASCO AI</em>, 2026-10-28. <a href="https://ascoai.org/articles/2026/10/conversational-ai-system-evaluated-for-safety-in-first-real-world-primary-care-test/" target="_blank" rel="noopener">ascoai.org</a></li>
+      <li>Single-cell-level digital twins for preterm birth prevention strategies. <em>Science Advances</em>, 2026, DOI 10.1126/sciadv.aed2741. <a href="https://www.science.org/doi/10.1126/sciadv.aed2741" target="_blank" rel="noopener">science.org</a></li>
+      <li>Two out of nine FDA-approved drugs could slow preterm labor, new digital twin model suggests. <em>EurekAlert / AAAS</em>, 2026-10-21. <a href="https://www.eurekalert.org/news-releases/1148250" target="_blank" rel="noopener">eurekalert.org</a></li>
+      <li>Applying digital twins to prevent preterm births. <em>Nature Medicine</em> Research Highlight, 2026-10-29. <a href="https://www.nature.com/articles/d41591-026-00056-w" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Preterm Birth Prevention AI Finds Aspirin-Antacid Combo 15 Times Better Than Aspirin Alone. <em>Tech Times</em>, 2026-10-30. <a href="https://www.techtimes.com/articles/329774/20261030/preterm-birth-prevention-ai-finds-aspirin-antacid-combo-15-times-better-aspirin-alone.htm" target="_blank" rel="noopener">techtimes.com</a></li>
+      <li>AI detects "invisible" signs of pancreatic cancer years before diagnosis. <em>ScienceDaily / BMJ Group</em>, 2026-10-26 (study in <em>Gut</em>, DOI 10.1136/gutjnl-2025-337266). <a href="https://www.sciencedaily.com/releases/2026/10/261024222031.htm" target="_blank" rel="noopener">sciencedaily.com</a></li>
+      <li>Mayo Clinic AI helps specialists detect pancreatic cancer up to 3 years before diagnosis in landmark validation study. <em>Mayo Clinic News Network</em>, 2026-04-29. <a href="https://newsnetwork.mayoclinic.org/discussion/mayo-clinic-ai-detects-pancreatic-cancer-up-to-3-years-before-diagnosis-in-landmark-validation-study/" target="_blank" rel="noopener">newsnetwork.mayoclinic.org</a></li>
+      <li>Mayo Clinic Radiomics-Based Early Detection Model — The Best Inventions of 2026. <em>TIME</em>, 2026. <a href="https://time.com/collection/best-inventions/2026/mayo-clinic-radiomics-based-early-detection-model/" target="_blank" rel="noopener">time.com</a></li>
+      <li>台灣AI影響性研究中心啟動 導入AI臨床試驗盼供健保共擬會給付參考. <em>聯合報 / UDN</em>, 2025-11-20. <a href="https://udn.com/news/story/7266/9152553" target="_blank" rel="noopener">udn.com</a></li>
+      <li>醫療AI要聰明，還要能負責！十家醫院打造可信賴的智慧醫療守門人 — 2025年衛生福利部負責任AI執行中心成果發表會. <em>衛生福利部資訊處</em>, 2025-04-21. <a href="https://dep.mohw.gov.tw/DOIM/cp-935-82236-114.html" target="_blank" rel="noopener">dep.mohw.gov.tw</a></li>
+      <li>10醫院完成AI認證制度建立 衛福部：醫療數位轉型一大步. <em>自由健康網</em>. <a href="https://health.ltn.com.tw/article/breakingnews/5018588" target="_blank" rel="noopener">health.ltn.com.tw</a></li>
+      <li>AI診斷「落地」！衛福部與羅氏大廠簽MOU 首波瞄準腎臟病推AI臨床決策. <em>鉅亨網 / Anue</em>, 2026-08-21. <a href="https://news.cnyes.com/news/id/6583558" target="_blank" rel="noopener">news.cnyes.com</a></li>
+      <li>2D變3D降漏診風險 衛福部力推智慧醫療普惠全國. <em>中央社 / CNA</em>, 2026-10-05. <a href="https://www.cna.com.tw/news/ahel/202610050133.aspx" target="_blank" rel="noopener">cna.com.tw</a></li>
+      <li>臨床AI取證驗證中心國際研討會（2026-10-20）議程公告. <em>衛生福利部數位健康平台 / Threads</em>, 2026-10. <a href="https://www.threads.com/@mohw_digital_health_platform/post/DeQZrAVD0ME/" target="_blank" rel="noopener">threads.com</a></li>
+      <li>Prospective evidence for conversational medical AI is hard, but non-negotiable. <em>Nature Medicine</em>, 2026. <a href="https://www.nature.com/articles/s41591-026-04639-5" target="_blank" rel="noopener">nature.com</a></li>
+      <li>General-purpose large language models outperform specialized clinical AI tools on medical benchmarks. <em>Nature Medicine</em>, 2026. <a href="https://www.nature.com/articles/s41591-026-04431-5" target="_blank" rel="noopener">nature.com</a></li>
+      <li>General-purpose chatbots outperform clinical AI tools on physicians' real-world questions. <em>Nature Medicine</em>, 2026. <a href="https://www.nature.com/articles/s41591-026-04457-9" target="_blank" rel="noopener">nature.com</a></li>
+      <li>AI-induced never-skilling in medical education. <em>Nature Medicine</em>, 2026, DOI 10.1038/s41591-026-04438-y. <a href="https://www.nature.com/articles/s41591-026-04438-y" target="_blank" rel="noopener">nature.com</a></li>
+    </ol>
+    <div class="note">
+      <span class="en"><strong>Editor's note:</strong> (1) <strong>Window and dates</strong>: the primary window for this edition is 19 Oct–1 Nov. Two items were originally published before it and are flagged as such in their cards — the AMIE paper appeared on 8 October (late October was the peak of commentary and secondary coverage), and Mayo's REDMOD paper went online in Gut on 22 April 2026 with a press release on 29 April, the 24–27 October wave being secondary coverage driven partly by its TIME Best Inventions listing. REDMOD is included because it speaks directly to this edition's theme, not because it published this week. (2) <strong>Paywalls and full texts not obtained</strong>: the full texts of the Annals of Internal Medicine (Choosing Wisely), The Lancet (AMIE), Science Advances (SIMCO), Diagnostic and Prognostic Research (lung screening meta-analysis) and Gut (REDMOD) papers were not obtained; the figures here rest on publicly visible titles and ledes plus the named secondary coverage. Nature's article pages and Stanford's news page could not be read at fetch time (site errors and robots rules respectively), so EVLF-FM's detailed numbers are taken from the arXiv preprint. (3) <strong>Conflicting figures</strong>: secondary coverage of the NEJM AI study gives both "20 general-purpose LLMs" and "24 systems (20 general-purpose plus 4 medical-specific)"; this report uses 24 and notes the discrepancy in the card. Several arXiv table values for EVLF-FM conflict with its own narrative (mean mIOU 0.743 vs 0.626; apparently transposed VQA column labels), and this report uses the table values. (4) <strong>Simulated is not clinical</strong>: SIMCO's "15x" and every delay figure are simulation outputs rather than patient outcomes, and the card shows how the ratio was computed. (5) <strong>Timing of the Taiwan section</strong>: the institutional facts cited there (Responsible AI Execution Center launched 28 Sep 2024, results presentation 21 Apr 2025, Taiwan AI Impact Research Center launched 20 Nov 2025, Roche MOU 21 Aug 2026, 3D imaging conference 5 Oct 2026, Clinical AI Validation Center seminar 20 Oct 2026) are not this week's news; they are background used to interpret this week's international developments. The Liberty Times health page cited there does not carry a full date, so this report relies on its content and makes no claim about its publication date. (6) No vendor-reported, independently unaudited commercial figure is used as a primary conclusion in this edition; all performance numbers for EVLF-FM and AMIE come from peer-reviewed papers or their preprints, and neither has prospective clinical effectiveness evidence.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-row">
+    <div>
+      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Monday / Clinical Applications &amp; Research<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
+    </div>
+    <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
+  </div>
+</footer>
+</main>
+
+<div class="fabs">
+  <button class="up" id="up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+  <a class="home-fab" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg></a>
+</div>
+
+<script>
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.getElementById('theme-ic').textContent =
+    document.body.classList.contains('dark') ? '◑' : '◐';
+}
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.body.classList.add('dark');
+  document.getElementById('theme-ic').textContent = '◑';
+}
+window.addEventListener('scroll', function(){
+  document.getElementById('up').classList.toggle('show', window.scrollY > 600);
+});
+
+/* GitHub 星星數：無需授權，失敗或被限流時靜默保留佔位符 */
+(function(){
+  var el = document.getElementById('ghs');
+  if (!el || typeof fetch !== 'function') return;
+  fetch('https://api.github.com/repos/tingwei161803/ai-medical-daily', {headers:{Accept:'application/vnd.github+json'}})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if (!d || typeof d.stargazers_count !== 'number') return;
+      var n = d.stargazers_count;
+      el.textContent = n >= 1000 ? (Math.round(n/100)/10) + 'k' : String(n);
+    })
+    .catch(function(){});
+})();
+</script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/reports/2026-11-02.html" hreflang="zh-Hant" rel="alternate" lang="zh-Hant">中文版</a></p>
+</body>
+</html>
