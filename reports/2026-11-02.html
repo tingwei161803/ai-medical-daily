@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>AI／醫療AI 每日新知日報 · 2026-11-02</title>
+<meta property="og:url" content="https://ai-medical-daily.peteraim.com/reports/2026-11-02.html" />
+<link rel="canonical" href="https://ai-medical-daily.peteraim.com/reports/2026-11-02.html" />
+<meta name="report-date" content="2026-11-02">
+<meta name="report-theme" content="clinical">
+<meta name="report-title-zh" content="AI 愈來愈會「看」，但完全不會「節制」——Nature Medicine 10/29 刊出新加坡 Duke-NUS 的 EVLF-FM，1,326,315 筆訓練樣本、11 種影像模態、內部 12 個資料集診斷平均準確率 0.858／F1 0.797、9 種模態像素級定位平均 mIOU 0.743，外部 HRCTCov19 以 0.954 準確率贏過 MedGemma 27B 的 0.874；但同一批外部驗證裡 RetinalOCT 只有 0.481、超音波 US3M 0.526。而把 24 套 AI 的處置計畫跟主治醫師逐案配對的 NEJM AI 研究算出：AI 平均每次就診開出 314 美元、醫師 97 美元，差 216 美元（95% CI 177–257）約 3.2 倍，在 133 次醫師「完全沒開檢查」的就診裡 AI 有 45–79% 硬加上檢查；加「省錢」提示後 19 套系統成本比下降，但 17 套與醫師診斷的一致度同時掉下來">
+<meta name="report-title-en" content="AI is getting better at seeing and no better at restraint — Nature Medicine published Duke-NUS's EVLF-FM on 29 Oct: 1,326,315 training samples, 11 imaging modalities, mean diagnostic accuracy 0.858 / F1 0.797 across 12 internal datasets, mean pixel-level grounding mIOU 0.743 across nine modalities, and 0.954 accuracy on the external HRCTCov19 CT set against MedGemma 27B's 0.874 — yet only 0.481 on RetinalOCT and 0.526 on the US3M ultrasound set in that same external run. Meanwhile a NEJM AI study paired 24 AI systems' assessment-and-plan notes against the treating physician's, case by case: AI ordered $314 of care per visit against the physician's $97, a $216 gap (95% CI 177–257) and roughly 3.2x; in the 133 encounters where physicians ordered no testing at all, the AI systems added tests in 45–79% of them; cost-conscious prompting lowered the ratio in 19 systems but cut diagnostic agreement with physicians in 17">
+<meta name="report-summary-zh" content="臨床證據週：EVLF-FM 把診斷證據指到像素，NEJM AI 算出 AI 開的單比醫師貴 3.2 倍，肺癌篩檢統合分析直接寫下「不支持自主 AI 診斷」。">
+<meta name="report-summary-en" content="A week of clinical evidence: EVLF-FM points its reasoning at the pixel, NEJM AI prices AI's care plans at 3.2x the physician's, and a lung-screening meta-analysis states flatly that the evidence does not support autonomous AI diagnosis.">
+<meta property="og:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HJLDQZDK5V');
+</script>
+<link rel="stylesheet" href="/assets/report.css">
+</head>
+<body class="lang-zh">
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span><span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <div class="bar-sp"></div>
+    <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub / 在 GitHub 給這個專案一顆星"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
+    <div class="seg">
+      <button id="b-zh" class="on" onclick="setLang('zh')">中文</button>
+      <button id="b-en" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="kicker">
+    <span class="zh-inline">星期一 · 臨床應用與研究</span>
+    <span class="en-inline">Monday · Clinical Applications &amp; Research</span>
+  </div>
+  <h1>
+    <span class="zh">AI 愈來愈會「看」，但完全不會「節制」</span>
+    <span class="en">AI is getting better at seeing, and no better at restraint</span>
+  </h1>
+  <div class="dateline">
+    <span class="zh-inline">2026 年 11 月 2 日（一）· 涵蓋 10/19–11/01 · 台北時間</span>
+    <span class="en-inline">Monday, November 2, 2026 · Covering Oct 19–Nov 1 · Taipei time</span>
+  </div>
+  <p class="lede">
+    <span class="zh">這一週落地的臨床證據全部擠在同一條分界線上。<a href="https://www.nature.com/articles/s41591-026-04655-5" target="_blank" rel="noopener">Nature Medicine 10/29</a> 刊出新加坡 Duke-NUS 團隊的 EVLF-FM，用 1,326,315 筆樣本、11 種影像模態訓練，內部 12 個資料集診斷平均準確率 0.858、F1 0.797，9 種模態的像素級定位平均 mIOU 達 <a href="https://arxiv.org/abs/2509.24231" target="_blank" rel="noopener">0.743</a>——它不只給答案，還把答案指到那幾顆像素。同一週，<a href="https://ai.nejm.org/doi/full/10.1056/AIoa2600537" target="_blank" rel="noopener">NEJM AI</a> 把 24 套 AI 的處置計畫跟主治醫師逐案配對：AI 平均每次就診開出 314 美元、醫師 97 美元，差 <a href="https://www.2minutemedicine.com/care-recommendations-by-large-language-models-were-associated-with-higher-healthcare-costs/" target="_blank" rel="noopener">216 美元（95% CI 177–257）</a>，約 3.2 倍。而一篇 10/29 見報的肺癌篩檢統合分析把話說到底：合併敏感度 85.4%、特異度 83.5%，但<a href="https://bioengineer.org/ai-lung-cancer-screening-shows-promise-but-falls-short-of-clinical-autonomy/" target="_blank" rel="noopener">「不支持自主 AI 診斷或由 AI 觸發的侵入性處置」</a>。看得更準、指得更細、開得更貴——三件事同時成立。</span>
+    <span class="en">Every piece of clinical evidence that landed this week sits on the same line. <a href="https://www.nature.com/articles/s41591-026-04655-5" target="_blank" rel="noopener">Nature Medicine published</a> Duke-NUS's EVLF-FM on 29 October: 1,326,315 training samples across 11 imaging modalities, mean diagnostic accuracy 0.858 and F1 0.797 over 12 internal datasets, and mean pixel-level grounding mIOU of <a href="https://arxiv.org/abs/2509.24231" target="_blank" rel="noopener">0.743</a> across nine modalities — it does not just answer, it points at the pixels it answered from. The same week, <a href="https://ai.nejm.org/doi/full/10.1056/AIoa2600537" target="_blank" rel="noopener">NEJM AI</a> paired 24 AI systems' plans against the treating physician's, case by case: $314 of care per visit from the AI against the physician's $97, a gap of <a href="https://www.2minutemedicine.com/care-recommendations-by-large-language-models-were-associated-with-higher-healthcare-costs/" target="_blank" rel="noopener">$216 (95% CI 177–257)</a>, about 3.2x. And a lung-screening meta-analysis reported on 29 October put it bluntly: pooled sensitivity 85.4%, specificity 83.5%, and the evidence <a href="https://bioengineer.org/ai-lung-cancer-screening-shows-promise-but-falls-short-of-clinical-autonomy/" target="_blank" rel="noopener">"does not support autonomous AI diagnosis or AI-triggered invasive management."</a> Sharper sight, finer pointing, bigger bill — all three are true at once.</span>
+  </p>
+
+  <nav class="toc">
+    <a href="#top"><span class="zh-inline">重點新聞</span><span class="en-inline">Top Stories</span></a>
+    <a href="#product"><span class="zh-inline">產品分析</span><span class="en-inline">Product Analysis</span></a>
+    <a href="#company"><span class="zh-inline">公司與競爭</span><span class="en-inline">Companies &amp; Competition</span></a>
+    <a href="#taiwan"><span class="zh-inline">台灣視角</span><span class="en-inline">Taiwan Angle</span></a>
+    <a href="#reading"><span class="zh-inline">延伸閱讀</span><span class="en-inline">Further Reading</span></a>
+    <a href="#refs"><span class="zh-inline">參考文獻</span><span class="en-inline">References</span></a>
+  </nav>
+</div>
+
+<section id="top">
+  <h2>01 — Top Stories</h2>
+  <div class="sec-title">
+    <span class="zh">七篇研究，兩種方向：模型的「看」在進步，模型的「決定」還沒人敢放手</span>
+    <span class="en">Seven papers, two directions: the models' seeing keeps improving; nobody is ready to let go of their deciding</span>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">基礎模型</span><span class="en-inline">Foundation model</span></span>
+      <span class="tag">Duke-NUS</span><span class="tag">EVLF-FM</span><span class="tag">10/29</span>
+    </div>
+    <h3>
+      <span class="zh">EVLF-FM：11 種影像模態、一個模型，而且把證據指到像素</span>
+      <span class="en">EVLF-FM: eleven imaging modalities, one model, and the evidence pinned to the pixel</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh"><a href="https://www.nature.com/articles/s41591-026-04655-5" target="_blank" rel="noopener">Nature Medicine 於 10/29 刊出</a>「A clinical multimodal vision language foundation model with fine-grain explainability」，第一作者 Yang Bai、通訊作者為新加坡 Duke-NUS／新加坡國家眼科中心的 Daniel Shu Wei Ting，共 43 位作者。<a href="https://arxiv.org/abs/2509.24231" target="_blank" rel="noopener">arXiv 預印本版本</a>揭露的訓練量是 1,326,315 筆樣本（診斷 554,391、視覺定位 415,378、視覺問答 208,230），來自 23 個資料集、11 種影像模態（CT、MRI、X 光、超音波、PET、組織病理、皮膚鏡、彩色眼底、OCT、內視鏡等），涵蓋皮膚科、肝膽科、眼科、病理科、胸腔科、放射科六個專科。內部 12 個資料集的診斷平均準確率 0.858、F1 0.797，勝過 DINO（0.813／0.730）、ViT（0.807／0.712）、InternVL 8B（0.766／0.648）與 LLaVA v1.5 13B（0.759／0.624）。9 種模態的像素級視覺定位平均 mIOU 0.743、Acc@0.5 0.837，其中 X 光 0.934、皮膚鏡 0.866、超音波 0.821。外部驗證用 10 個資料集、8,884 筆獨立樣本、5 種影像模態。<a href="https://github.com/baiyang4/EVLF" target="_blank" rel="noopener">程式碼放在 GitHub</a>。</span>
+        <span class="en"><a href="https://www.nature.com/articles/s41591-026-04655-5" target="_blank" rel="noopener">Nature Medicine published</a> "A clinical multimodal vision language foundation model with fine-grain explainability" on 29 October, first-authored by Yang Bai with Daniel Shu Wei Ting of Duke-NUS and the Singapore National Eye Centre as senior author, 43 authors in all. The <a href="https://arxiv.org/abs/2509.24231" target="_blank" rel="noopener">arXiv preprint</a> puts the training set at 1,326,315 samples — 554,391 diagnostic, 415,378 grounding, 208,230 visual question answering — drawn from 23 datasets across 11 imaging modalities (CT, MRI, X-ray, ultrasound, PET, histopathology, dermatoscopy, colour fundus, OCT, endoscopy among them) and six specialties: dermatology, hepatology, ophthalmology, pathology, pulmonology and radiology. Mean diagnostic accuracy across 12 internal datasets is 0.858 with F1 0.797, ahead of DINO (0.813 / 0.730), ViT (0.807 / 0.712), InternVL 8B (0.766 / 0.648) and LLaVA v1.5 13B (0.759 / 0.624). Pixel-level grounding averages mIOU 0.743 and Acc@0.5 0.837 across nine modalities, reaching 0.934 on X-ray, 0.866 on dermatoscopy and 0.821 on ultrasound. External validation ran on 8,884 independent samples from 10 further datasets in five modalities. The <a href="https://github.com/baiyang4/EVLF" target="_blank" rel="noopener">code is on GitHub</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">醫療影像 AI 的兩個老毛病是「一個模型只看一種片子」與「說不出為什麼」。EVLF-FM 的做法是疾病級視覺編碼器加上像素級編碼器並行，各自接一個可學習的 connector 進入語言模型的嵌入空間；訓練分兩段，先監督微調（LoRA），再用 GRPO 強化學習，獎勵設計是診斷正確 +1、定位用 IoU、開放式問答用 F1——而 RL 階段只用了約 1% 的監督微調資料量。換句話說，把「指出病灶在哪裡」直接當成訓練訊號，而不是事後再補一張熱力圖。這條路線的意義在於：監管機關與臨床醫師要的從來不只是正確率，而是「你憑哪一塊影像這樣說」。</span>
+        <span class="en">Medical imaging AI has two chronic weaknesses: one model reads one kind of scan, and it cannot say why. EVLF-FM runs a disease-level vision encoder alongside a pixel-level one, each feeding the language model's embedding space through its own learnable connector. Training comes in two stages — supervised fine-tuning with LoRA, then GRPO reinforcement learning rewarding a correct diagnosis (+1), localisation by IoU and open-ended answers by F1 — and the RL stage used only about 1% of the SFT data volume. The point is that "show me where the lesion is" becomes a training signal rather than a heat map bolted on afterwards. That matters because what regulators and clinicians have always wanted is not accuracy alone but which part of the image the claim rests on.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">外部零樣本的成績極不平均：HRCTCov19（CT）準確率 0.954／F1 0.949，贏過 MedGemma 27B 的 0.874／0.854；但 RetinalOCT 只有 0.481／0.338，US3M 超音波 0.526／0.497，ATPOS 眼底 F1 僅 0.325——其中 US3M 與 ATPOS 兩項還輸給 MedGemma 27B（0.613／0.501 與 0.759／0.440）。外部視覺定位在 Med-GRIT-270K 的零樣本平均 mIOU 只有 0.362，低於專用模型 BiRD 的 0.539，要 few-shot（0.541）才勉強追平。模型規模從對照敘述推斷是 8B 等級，論文未直接點名基礎視覺／語言模型。arXiv 版本的表格數值與正文敘述有數處不一致（例如正文寫平均 mIOU 0.626 對 0.577，表格卻是 0.743 對 0.656），VQA 表格的欄位標籤也疑似錯置；本報告採表格數值。最重要的一點：全部是回溯式基準測試，沒有任何前瞻臨床驗證。</span>
+        <span class="en">The external zero-shot results are wildly uneven. On HRCTCov19 (CT) it reaches 0.954 accuracy / 0.949 F1 against MedGemma 27B's 0.874 / 0.854 — but RetinalOCT comes in at 0.481 / 0.338, the US3M ultrasound set at 0.526 / 0.497, and the ATPOS fundus set at F1 0.325, with US3M and ATPOS both losing to MedGemma 27B (0.613 / 0.501 and 0.759 / 0.440). External grounding on Med-GRIT-270K averages mIOU 0.362 zero-shot, below the specialist BiRD model's 0.539, and only draws level at 0.541 few-shot. Model size can be inferred as the 8B class from the comparisons; the paper does not name the underlying vision or language backbone. Several arXiv table values conflict with the narrative text (the body reports mean mIOU 0.626 vs 0.577 where the table says 0.743 vs 0.656, and the VQA column labels appear transposed); this report uses the table values. Above all: these are retrospective benchmarks. There is no prospective clinical validation.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.nature.com/articles/s41591-026-04655-5" target="_blank" rel="noopener">Nature Medicine, 2026-10-29</a> · <a href="https://arxiv.org/pdf/2509.24231v1" target="_blank" rel="noopener">arXiv:2509.24231</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/42957777/" target="_blank" rel="noopener">PubMed 42957777</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">成本</span><span class="en-inline">Cost</span></span>
+      <span class="tag">NEJM AI</span><span class="tag">24 systems</span><span class="tag">10/27–29</span>
+    </div>
+    <h3>
+      <span class="zh">同一份病歷，AI 開 314 美元、醫師開 97 美元</span>
+      <span class="en">Same chart, same visit: the AI orders $314, the physician $97</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh"><a href="https://ai.nejm.org/doi/full/10.1056/AIoa2600537" target="_blank" rel="noopener">NEJM AI 的「Comparative Cost of Care Recommended by Large Language Models versus Treating Physicians」</a>（Aran D、Goldhaber-Fiebert JD、Many I、Nguyen A、Yang D、Shelly S；10/15 線上刊出，收在 2026 年 11 月號 3(11)）拿 200 份去識別化的門診與急診病歷，把病歷在「醫師評估」之前切斷，讓每套 AI 看完全相同的臨床呈現後自己寫 assessment and plan，再與配對的醫師計畫逐案比較；檢查與轉診照 2026 年 Medicare 費率定價，新開立藥物只計數不計價。結果：AI 計畫平均每次就診 314 美元、醫師 97 美元，平均差距 <a href="https://www.2minutemedicine.com/care-recommendations-by-large-language-models-were-associated-with-higher-healthcare-costs/" target="_blank" rel="noopener">216 美元（95% CI 177–257）</a>，約 3.2 倍；其中診斷檢查貢獻 105 美元、專科轉診貢獻 111 美元。新開藥物平均 1.14 項對醫師的 0.59 項。在 133 次「醫師完全沒開任何檢查」的就診中，各套 AI 分別在 45–79% 的案例裡加上了檢查。<a href="https://www.techtarget.com/healthtechanalytics/news/366652874/AIs-recommendations-cost-3x-more-than-physician-care-plans" target="_blank" rel="noopener">TechTarget 10/27 的報導</a>補上另一組切面：診斷檢查單項是每次 176 美元對 71 美元，單一系統的平均落在 209 到 599 美元之間，而且近五分之一的 AI 計畫確實抓到了醫師漏掉、但符合指引的檢查或處置。</span>
+        <span class="en"><a href="https://ai.nejm.org/doi/full/10.1056/AIoa2600537" target="_blank" rel="noopener">"Comparative Cost of Care Recommended by Large Language Models versus Treating Physicians"</a> (Aran D, Goldhaber-Fiebert JD, Many I, Nguyen A, Yang D, Shelly S; online 15 October, in the November 2026 issue, 3(11)) took 200 de-identified outpatient and emergency department notes, cut each one before the physician's assessment, let every AI system write its own assessment and plan from the identical presentation, then compared it against the paired physician plan. Tests and referrals were priced at 2026 Medicare schedules; newly prescribed medications were counted but not priced. The AI plans averaged $314 per visit against the physicians' $97 — a mean difference of <a href="https://www.2minutemedicine.com/care-recommendations-by-large-language-models-were-associated-with-higher-healthcare-costs/" target="_blank" rel="noopener">$216 (95% CI 177–257)</a>, about 3.2x — with diagnostic testing contributing $105 and specialist referrals $111. New medications averaged 1.14 per AI plan against 0.59 per physician plan. In the 133 encounters where the physician ordered no diagnostic testing whatsoever, the AI systems added testing in 45–79% of cases. <a href="https://www.techtarget.com/healthtechanalytics/news/366652874/AIs-recommendations-cost-3x-more-than-physician-care-plans" target="_blank" rel="noopener">TechTarget's 27 October write-up</a> adds another cut: diagnostic testing alone ran $176 per visit against $71, per-system averages spanned $209 to $599, and close to a fifth of the AI plans did catch guideline-concordant tests or orders the physician had left out.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這是目前少見把「AI 建議的經濟後果」當主要終點、而且用真實醫師計畫當對照的研究。它的發現有一個很不舒服的結構：最容易被賣進醫院的那種價值主張（「AI 不會漏掉」）與最難被支付方接受的那種後果（「AI 什麼都開」）其實是同一件事的兩面。更麻煩的是干預的結果——19 套系統在加上「成本意識」提示後成本比確實下降，但其中 17 套與醫師診斷的一致度同時掉下來。也就是說，目前還沒有一個提示詞能同時買到節制與準確。</span>
+        <span class="en">Studies that make the economic consequence of an AI recommendation the primary endpoint — and use real physician plans as the comparator — are still rare. The finding has an uncomfortable shape: the value proposition easiest to sell into a hospital ("the AI won't miss anything") and the consequence hardest to sell to a payer ("the AI orders everything") are two faces of the same behaviour. The intervention result is worse news still. Cost-conscious prompting did lower the cost ratio in 19 systems, but 17 of those showed reduced diagnostic agreement with the physician. No prompt on offer yet buys restraint and accuracy at the same time.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">病歷來自 MTSamples 這類公開去識別化語料，不是真實的連續照護紀錄，而且 AI 看不到醫師手上的其他脈絡（病人長相、檢驗趨勢、上次門診的交代）。只計檢查與轉診、藥物不計價，等於低估了藥費那一側的差距。二手報導的細節不一致要注意：<a href="https://www.techtarget.com/healthtechanalytics/news/366652874/AIs-recommendations-cost-3x-more-than-physician-care-plans" target="_blank" rel="noopener">TechTarget 寫「20 套通用 LLM」、醫師在 66.5% 的案例沒開檢查</a>，<a href="https://www.2minutemedicine.com/care-recommendations-by-large-language-models-were-associated-with-higher-healthcare-costs/" target="_blank" rel="noopener">2minutemedicine 寫「24 套（20 通用 + 4 醫療專用）」、133 次零檢查</a>——133/200 正好是 66.5%，所以兩邊的分母一致，差異在「幾套系統」。兩篇報導都沒有列出受測模型名稱，所以無法判斷這些數字對應到哪一代模型；本報告採 24 套的說法並標注分歧。最後，費率是 Medicare，換到任何其他支付制度（包含台灣健保）都不能直接搬。</span>
+        <span class="en">The notes come from a public de-identified corpus of the MTSamples kind, not continuous real-world care records, and the AI never sees the context the physician holds — how the patient looks, where the labs are trending, what was agreed last visit. Counting tests and referrals but not pricing medications understates the drug-cost side of the gap. Watch the inconsistencies in secondary coverage: <a href="https://www.techtarget.com/healthtechanalytics/news/366652874/AIs-recommendations-cost-3x-more-than-physician-care-plans" target="_blank" rel="noopener">TechTarget says "20 general-purpose LLMs" and that physicians ordered no tests in 66.5% of cases</a>, while <a href="https://www.2minutemedicine.com/care-recommendations-by-large-language-models-were-associated-with-higher-healthcare-costs/" target="_blank" rel="noopener">2minutemedicine says 24 systems (20 general-purpose plus 4 medical-specific) and 133 no-test encounters</a> — 133/200 is exactly 66.5%, so the denominators agree and only the system count differs. Neither names the models tested, so there is no way to tell which generation these figures describe; this report uses the 24-system figure and flags the discrepancy. Finally, the prices are Medicare's, and do not transfer to any other payment system, Taiwan's NHI included.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://ai.nejm.org/doi/full/10.1056/AIoa2600537" target="_blank" rel="noopener">NEJM AI, 2026-10-15 (Nov 2026 issue)</a> · <a href="https://www.techtarget.com/healthtechanalytics/news/366652874/AIs-recommendations-cost-3x-more-than-physician-care-plans" target="_blank" rel="noopener">TechTarget, 2026-10-27</a> · <a href="https://www.2minutemedicine.com/care-recommendations-by-large-language-models-were-associated-with-higher-healthcare-costs/" target="_blank" rel="noopener">2 Minute Medicine, 2026-10-29</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="zh-inline">過度醫療</span><span class="en-inline">Overuse</span></span>
+      <span class="tag">Clalit</span><span class="tag">Annals of Internal Medicine</span><span class="tag">10/19</span>
+    </div>
+    <h3>
+      <span class="zh">LLM 大致守得住 Choosing Wisely，但學會自己打架的那一條就破了：甲狀腺超音波 42.8%</span>
+      <span class="en">LLMs mostly hold the Choosing Wisely line — and break exactly where the societies disagree: thyroid ultrasound, 42.8%</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">以色列 Clalit Health Services 的 Dean Ariel 等人在 10/19 於 Annals of Internal Medicine 發表研究，拿 15 條 Choosing Wisely「別做」建議展開成 225 個情境，對 6 套商用 LLM 以「臨床醫師視角」提示，收集 4,050 則回應。整體而言，模型只在 <a href="https://www.auntminnie.com/home/article/15837911/llms-mostly-avoid-unnecessary-care-in-choosing-wisely-tests" target="_blank" rel="noopener">5.4% 的案例建議了過度檢查</a>，15 條裡有 8 條完全沒有過度建議。破口集中在兩條：「偶發、小於 1 公分的甲狀腺結節做專門超音波」42.8%，「低風險成人的例行心電圖」28.3%，其餘五條落在 0.6% 到 3.3%。反方向的「過度保守」整體只有 0.6%，11 條完全沒有，最高的是 PSA 篩檢的 3.3%。</span>
+        <span class="en">Dean Ariel and colleagues at Clalit Health Services in Israel published in the Annals of Internal Medicine on 19 October, expanding 15 Choosing Wisely "don't do this" recommendations into 225 scenarios, prompting six commercial LLMs from a clinician's perspective and collecting 4,050 responses. Overall the models recommended unnecessary care in only <a href="https://www.auntminnie.com/home/article/15837911/llms-mostly-avoid-unnecessary-care-in-choosing-wisely-tests" target="_blank" rel="noopener">5.4% of cases</a>, with 8 of the 15 recommendations drawing no overuse at all. The breaches cluster in two places: dedicated ultrasound for incidental sub-centimetre thyroid nodules at 42.8%, and routine electrocardiography in low-risk adults at 28.3%, with the remaining five between 0.6% and 3.3%. Undertreatment ran the other way at just 0.6% overall, absent for 11 recommendations, highest for PSA screening at 3.3%.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">42.8% 那一條不是模型失控，而是模型忠實地把人類的分歧照抄了一遍——這 15 條裡唯一存在學會公開互相矛盾的就是它：美國甲狀腺學會主張對偶發的小結節做專門超音波，美國放射學會則主張依年齡在 1.0–1.5 公分以下不必追查。作者寫得很準：「分開它們、也正是模型面對的，恰恰就是『要不要照這張影像』。」把這一條與前一則 NEJM AI 的 3.2 倍並讀，結論相當清楚：在指引乾淨、立場一致的題目上，LLM 的節制力其實不差；真正讓成本爆開的是沒有共識的灰色地帶，而臨床工作的大半就是灰色地帶。這也呼應了 Mount Sinai 團隊 9 月底發表在 Communications Medicine 的另一組數字——20 套模型、501 種情境變體、超過一千萬則回應，在沒有安全提示時有 <a href="https://www.mountsinai.org/about/newsroom/2026/mount-sinai-study-finds-safety-prompts-can-help-ai-models-make-safer-clinical-choices" target="_blank" rel="noopener">16.6% 的回應做出潛在有害的臨床選擇，加一句簡短的安全提醒後降到 10.1%</a>，20 套裡有 19 套改善。提示詞有用，但剩下的 10.1% 不會被提示詞解決。</span>
+        <span class="en">The 42.8% is not a model going rogue; it is a model faithfully reproducing a human disagreement. Of the 15 recommendations, this is the only one where the societies publicly contradict each other: the American Thyroid Association advises dedicated ultrasound for incidental small nodules, while the American College of Radiology advises no further workup below 1.0–1.5 cm depending on age. The authors put it precisely: "What divides them, and what the models confronted, is precisely whether to image." Read alongside the 3.2x in the previous story, the conclusion is fairly clear. Where guidance is clean and consistent, LLM restraint is actually decent; the cost explodes in the grey zones with no consensus — and grey zones are most of clinical work. It also echoes a separate set of numbers from the Mount Sinai team published in Communications Medicine in late September: 20 models, 501 variations of 50 clinical scenarios, over 10 million responses, with potentially harmful clinical choices at <a href="https://www.mountsinai.org/about/newsroom/2026/mount-sinai-study-finds-safety-prompts-can-help-ai-models-make-safer-clinical-choices" target="_blank" rel="noopener">16.6% of responses without a safety reminder and 10.1% with one</a>, improving in 19 of 20 models. Prompts help. The remaining 10.1% is not a prompting problem.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">情境是依建議合成出來的，不是真實病人，也沒有病人的偏好、焦慮與既往檢查史——而這三樣在真實門診裡常常就是過度檢查的真正推力。6 套模型未具名、未標版本，所以無法對應到任何現售產品。提示用「臨床醫師視角」，若換成病人直接提問，數字很可能完全不同（同一期刊圈的其他研究一再顯示病人視角更容易被引導）。本則數據轉引自 <a href="https://www.auntminnie.com/home/article/15837911/llms-mostly-avoid-unnecessary-care-in-choosing-wisely-tests" target="_blank" rel="noopener">AuntMinnie 的報導</a>，Annals of Internal Medicine 原文在付費牆後，本報告只依公開可見的標題與導言與該報導撰寫。</span>
+        <span class="en">The scenarios are synthesised from the recommendations rather than drawn from real patients, and they carry none of the patient preference, anxiety or prior-imaging history that in a real clinic is often what actually drives the extra test. The six models are unnamed and unversioned, so none of this maps to a product on sale. The prompt took a clinician's perspective; asked directly by a patient, the numbers could look entirely different — adjacent literature repeatedly finds the patient frame easier to steer. These figures are taken from <a href="https://www.auntminnie.com/home/article/15837911/llms-mostly-avoid-unnecessary-care-in-choosing-wisely-tests" target="_blank" rel="noopener">AuntMinnie's coverage</a>; the Annals of Internal Medicine paper itself sits behind a paywall and this report draws only on the publicly visible title, lede and that secondary account.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.auntminnie.com/home/article/15837911/llms-mostly-avoid-unnecessary-care-in-choosing-wisely-tests" target="_blank" rel="noopener">AuntMinnie, 2026-10-19 (Annals of Internal Medicine)</a> · <a href="https://www.mountsinai.org/about/newsroom/2026/mount-sinai-study-finds-safety-prompts-can-help-ai-models-make-safer-clinical-choices" target="_blank" rel="noopener">Mount Sinai Newsroom, 2026-10-08</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="zh-inline">統合分析</span><span class="en-inline">Meta-analysis</span></span>
+      <span class="tag">Lung screening</span><span class="tag">Diagn Progn Res</span><span class="tag">10/29</span>
+    </div>
+    <h3>
+      <span class="zh">肺癌篩檢 AI 合併敏感度 85.4%，但 11 篇研究有 11 篇在「流程與時序」上高偏誤風險</span>
+      <span class="en">Pooled sensitivity 85.4% for AI lung screening — and 11 of 11 studies at high risk of bias on flow and timing</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">一篇刊於 Diagnostic and Prognostic Research 10(1) 第 21 號（DOI 10.1186/s41512-026-00235-w）的系統性回顧與統合分析在 10/29 被報導。檢索 MEDLINE、Embase、Web of Science 自 2010 年 1 月到 2025 年 12 月，篩 2,207 筆紀錄、評讀 56 篇全文，最後納入 11 篇（2019–2025 年發表；8 篇回溯、3 篇前瞻、7 篇多中心），但只有 5 篇的資料足以做量化合併，涵蓋 2,220 人（232 例癌症、1,988 例非癌症），單篇規模從 100 到 1,139 人。結果：<a href="https://bioengineer.org/ai-lung-cancer-screening-shows-promise-but-falls-short-of-clinical-autonomy/" target="_blank" rel="noopener">合併敏感度 85.4%、特異度 83.5%</a>，各研究敏感度 75.0–95.5%、特異度 64.0–92.7%，陽性似然比 5.17、陰性似然比 0.18、診斷勝算比 29.53；11 篇中有 10 篇報告 AUC，範圍約 0.76 到 0.99。</span>
+        <span class="en">A systematic review and meta-analysis in Diagnostic and Prognostic Research 10(1), article 21 (DOI 10.1186/s41512-026-00235-w) was reported on 29 October. It searched MEDLINE, Embase and Web of Science from January 2010 to December 2025, screened 2,207 records, assessed 56 full texts and included 11 studies (published 2019–2025; 8 retrospective, 3 prospective, 7 multicentre) — but only 5 had data sufficient for quantitative pooling, covering 2,220 participants (232 cases, 1,988 non-cases), individual studies ranging from 100 to 1,139 people. The results: <a href="https://bioengineer.org/ai-lung-cancer-screening-shows-promise-but-falls-short-of-clinical-autonomy/" target="_blank" rel="noopener">pooled sensitivity 85.4% and specificity 83.5%</a>, with per-study sensitivity 75.0–95.5% and specificity 64.0–92.7%, a positive likelihood ratio of 5.17, a negative likelihood ratio of 0.18 and a diagnostic odds ratio of 29.53; 10 of the 11 reported AUCs, spanning roughly 0.76 to 0.99.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">作者的結論寫法值得逐字看：證據「不支持自主 AI 診斷或由 AI 觸發的侵入性處置」，AI 不應取代放射科醫師判讀、也不該當獨立的 rule-in 檢驗；但陰性似然比 0.18 這個數字確實支持 rule-out 用途，也就是前篩與分流。這幾乎是今天所有臨床 AI 證據的共同形狀：往下排除比往上確診可靠，而醫療現場最想省的人力正好在排除那一端。對照組背景數字也值得記住——NLST 的陽性篩檢中有 96.4% 是偽陽性，2022 年全球肺癌約 250 萬例、180 萬人死亡，所以就算只改善分流，絕對人數也不小。</span>
+        <span class="en">The authors' phrasing is worth reading literally: the evidence "does not support autonomous AI diagnosis or AI-triggered invasive management," AI should not replace radiologist interpretation, and it should not serve as a stand-alone rule-in test — but a negative likelihood ratio of 0.18 does support rule-out uses, meaning prescreening and triage. That is close to the common shape of all clinical AI evidence today: ruling out is more reliable than ruling in, and the workload hospitals most want to shed sits precisely on the ruling-out end. The background numbers are worth keeping too: 96.4% of positive screens in NLST were false positives, and lung cancer accounted for an estimated 2.5 million cases and 1.8 million deaths worldwide in 2022, so even a triage-only improvement moves large absolute numbers.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">這篇最有價值的其實是它的偏誤評估，而那一頁讀起來相當難看：QUADAS-2 判定「病人選取」高偏誤風險 8/11、「index test」7/11、「流程與時序」11/11 全部高風險，「參考標準」8/11 不明。報告品質也很差：11 篇裡只有 3 篇報告可解釋性方法、4 篇報告模型可取得性、0 篇報告法規狀態。Deeks 漏斗圖不對稱檢定 p = 0.368 但檢定力不足，所以無法排除發表偏誤。量化合併只有 5 篇、2,220 人，以篩檢研究的尺度來說非常小；納入研究跨 2019–2025，模型世代差異極大，合併成單一數字本身就該打折。本則轉引自 <a href="https://bioengineer.org/ai-lung-cancer-screening-shows-promise-but-falls-short-of-clinical-autonomy/" target="_blank" rel="noopener">Bioengineer 的報導</a>，未取得原文全文。</span>
+        <span class="en">The most valuable part of this paper is its bias assessment, and that page reads badly: QUADAS-2 rated patient selection at high risk of bias in 8 of 11 studies, the index test in 7, and flow and timing in 11 of 11, with the reference standard unclear in 8. Reporting quality is poor too — only 3 of 11 reported explainability methods, 4 reported model availability, and none reported regulatory status. Deeks' funnel plot asymmetry test came in at p = 0.368 but underpowered, so publication bias cannot be excluded. The quantitative pool is 5 studies and 2,220 people, very small by screening standards, and the included studies span 2019–2025 across wildly different model generations, which is itself a reason to discount a single pooled figure. Taken from <a href="https://bioengineer.org/ai-lung-cancer-screening-shows-promise-but-falls-short-of-clinical-autonomy/" target="_blank" rel="noopener">Bioengineer's coverage</a>; the full text was not obtained.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://bioengineer.org/ai-lung-cancer-screening-shows-promise-but-falls-short-of-clinical-autonomy/" target="_blank" rel="noopener">Bioengineer, 2026-10-29 (Diagnostic and Prognostic Research 10:21)</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">前瞻試驗</span><span class="en-inline">Prospective trial</span></span>
+      <span class="tag">Google DeepMind</span><span class="tag">AMIE</span><span class="tag">The Lancet</span>
+    </div>
+    <h3>
+      <span class="zh">AMIE 在真實診所跑完 98 位病人：零次強制中止、1 次幻覺，而醫師版處置計畫被偏好 27% 比 6%</span>
+      <span class="en">AMIE completed 98 real patients: zero forced stops, one hallucination — and clinicians' plans preferred 27% to 6%</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">The Lancet 10/8 刊出全球第一個把病人端對話式診斷 AI 放進真實診所前瞻評估的研究（<a href="https://www.sciencedirect.com/science/article/abs/pii/S0140673626015357" target="_blank" rel="noopener">ScienceDirect</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/42849491/" target="_blank" rel="noopener">PubMed 42849491</a>）。通訊作者是哈佛醫學院／Beth Israel Deaconess 的 Adam Rodman，共同第一作者 Peter Brodeur 與 Jacob Koshy，另有 44 位作者含 Google 研究人員，<a href="https://hms.harvard.edu/news/real-world-study-patient-facing-ai-primary-care" target="_blank" rel="noopener">由 Alphabet 資助</a>，執行期間 2025 年 4 月到 11 月，地點是 BIDMC 的 Healthcare Associates。受測系統是 Google DeepMind 的 AMIE，底層為 Gemini 2.5 Pro（無領域微調），中途為降低延遲改用 Gemini 2.5 Flash。病人在預約急件門診後從家裡用安全文字對話，AMIE 收集症狀與病史、提出待與醫師討論的可能診斷，並產生給醫師的摘要；<a href="https://ascoai.org/articles/2026/10/conversational-ai-system-evaluated-for-safety-in-first-real-world-primary-care-test/" target="_blank" rel="noopener">每一場對話都由一位內科專科醫師即時監看並可介入</a>。期間共 1,452 次急件門診預約，114 人開始對話、100 人完成（88%）、98 人同時完成門診。結果：監督醫師零次強制中止對話，1 次幻覺（把過去的手術日期說成未來），5 次補充臨床資訊。診斷表現：參考診斷落在前 7 個鑑別診斷 90%、前 3 個 75%、排第一 56%。處置計畫：48% 被判為同等品質，醫師版被偏好 27%、AMIE 版 6%。評分（良好／非常良好）：安全性 AMIE 93% 對醫師 95%、適當性 83% 對 94%、成本效益 85% 對 97%、實用性 94% 對 100%。44 位醫師事前看過紀錄，其中 75% 覺得有助準備、57% 說可能影響了自己的臨床做法。</span>
+        <span class="en">The Lancet published the first prospective evaluation of a patient-facing conversational diagnostic AI inside a real clinic on 8 October (<a href="https://www.sciencedirect.com/science/article/abs/pii/S0140673626015357" target="_blank" rel="noopener">ScienceDirect</a>; <a href="https://pubmed.ncbi.nlm.nih.gov/42849491/" target="_blank" rel="noopener">PubMed 42849491</a>). Adam Rodman of Harvard Medical School and Beth Israel Deaconess is corresponding author, with Peter Brodeur and Jacob Koshy as co-first authors and 44 further authors including Google researchers; the work was <a href="https://hms.harvard.edu/news/real-world-study-patient-facing-ai-primary-care" target="_blank" rel="noopener">funded by Alphabet</a> and ran from April to November 2025 at BIDMC's Healthcare Associates. The system was Google DeepMind's AMIE, built on Gemini 2.5 Pro with no domain-specific fine-tuning and switched mid-study to Gemini 2.5 Flash to cut latency. Patients chatted from home after booking an urgent primary care appointment; AMIE gathered symptoms and history, offered possible diagnoses to raise with the doctor, and generated a clinician summary, with <a href="https://ascoai.org/articles/2026/10/conversational-ai-system-evaluated-for-safety-in-first-real-world-primary-care-test/" target="_blank" rel="noopener">a board-certified internist monitoring every conversation live and able to intervene</a>. Across 1,452 urgent visits in the window, 114 patients started an encounter, 100 finished (88%) and 98 also completed the appointment. Results: zero supervisor-forced conversation stops, one hallucination (a past surgery date stated as future) and five cases of supervisor-supplied clinical information. On diagnosis, the reference diagnosis appeared in the top 7 differentials 90% of the time, the top 3 75%, and ranked first 56%. On management plans, 48% were rated equal in quality, with the clinician's plan preferred 27% of the time against AMIE's 6%. Rated favourable or very favourable: safety 93% for AMIE against 95% for clinicians, appropriateness 83% against 94%, cost-effectiveness 85% against 97%, practicality 94% against 100%. Of the 44 clinicians who previewed the transcript, 75% said it helped them prepare and 57% said it may have shaped their clinical approach.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">在這之前，所有關於對話式診斷 AI 的驚人數字都來自模擬病人或考題。這篇把它搬到真實病人面前，而且主要終點誠實地設在安全性與可行性、不是療效。它交出的最有用資訊其實是那幾個「幾乎一樣但就是差一點」的差距：安全性 93% 對 95% 看起來接近，但適當性 83% 對 94%、成本效益 85% 對 97% 的落差很難忽視——而後者正好與前面 NEJM AI 的 3.2 倍指向同一個毛病。另外，排第一的診斷只對 56%、但前 7 名包含正確答案的機率 90%，這個形狀說明它適合當「別漏掉」的清單，不適合當「就是這個」的結論。</span>
+        <span class="en">Until now, every striking number about conversational diagnostic AI came from simulated patients or exam questions. This study put it in front of real ones, and honestly set its primary endpoints at safety and feasibility rather than effectiveness. Its most useful output is the set of nearly-equal-but-not-quite gaps: 93% against 95% on safety looks close, but 83% against 94% on appropriateness and 85% against 97% on cost-effectiveness are hard to wave away — and that last pair points at the same defect as the 3.2x above. Note too the shape of the diagnostic result: top-ranked diagnosis correct only 56%, but the right answer inside the top 7 differentials 90% of the time. That is a system suited to being a "don't miss this" list, not a "this is it" conclusion.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">單臂、無對照組、單一中心，n = 98；病人每人最多可獲 50 美元報酬，加上新奇效應，很可能推高了評分。參與者比整體急件門診族群年輕，已知懷孕與精神科主訴被排除，AMIE 看不到病歷，也沒提供手機介面。醫師問卷回收率只有 61%（病人 90–92%），而且 27% 的醫師問卷說門診前根本沒機會看 AMIE 紀錄——所以「75% 覺得有助準備」的分母只有 44 人。有 1 次互動被評為「有點有害」（把淋巴癌列為可能診斷造成病人焦慮），3 例醫師擔心過早收斂診斷，醫師也普遍覺得 AMIE 問家族史問得不好；病人對「資訊會被保密」與「AI 誠實可信」的信心明顯偏低。最關鍵的一條在評論裡：Omar 與 Nadkarni 指出，這種「每一場對話都有專科醫師即時監看」的人力配置，規模化時根本不可能維持——也就是說，這篇研究證明的安全性，是在一個無法複製的監督條件下取得的。發表日為 10/8，略早於本期窗口；10 月下旬是評論與二次報導的高峰，不是新論文。</span>
+        <span class="en">Single-arm, no comparator, single centre, n = 98; patients could receive up to $50 each, which together with novelty effects likely inflated ratings. Participants skewed younger than the overall urgent care population, known pregnancy and mental health complaints were excluded, AMIE had no chart access, and no mobile interface was offered. Clinician survey completion was only 61% (patients 90–92%), and 27% of clinician surveys said there had been no chance to review the AMIE record before the visit — so the "75% found it helpful" denominator is 44 people. One interaction was rated somewhat harmful (lymphoma listed as a possible diagnosis, distressing the patient), three cases raised concern about premature diagnostic closure, and clinicians rated AMIE poorly on eliciting family history; patients were markedly less confident that their information would stay confidential or that AI is honest and trustworthy. The decisive caveat is in the commentary: Omar and Nadkarni note that the staffing model here — a specialist watching every single conversation in real time — simply cannot be sustained at scale, which means the safety this study demonstrates was obtained under supervision conditions that cannot be reproduced. Publication date was 8 October, slightly before this edition's window; late October was the peak of commentary and secondary coverage, not a new paper.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://hms.harvard.edu/news/real-world-study-patient-facing-ai-primary-care" target="_blank" rel="noopener">Harvard Medical School, 2026-10-13</a> · <a href="https://ascoai.org/articles/2026/10/conversational-ai-system-evaluated-for-safety-in-first-real-world-primary-care-test/" target="_blank" rel="noopener">ASCO AI, 2026-10-28</a> · <a href="https://www.sciencedirect.com/science/article/abs/pii/S0140673626015357" target="_blank" rel="noopener">The Lancet, 2026-10-08</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="zh-inline">數位孿生</span><span class="en-inline">Digital twin</span></span>
+      <span class="tag">Stanford</span><span class="tag">SIMCO</span><span class="tag">Science Advances</span>
+    </div>
+    <h3>
+      <span class="zh">2.18 億顆免疫細胞建出「數位孿生」，推薦阿斯匹靈 + lansoprazole 延後早產</span>
+      <span class="en">218 million immune cells, one digital twin, and a recommendation of aspirin plus lansoprazole to delay preterm labour</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">Science Advances 於 10/21 刊出「Single-cell-level digital twins for preterm birth prevention strategies」（<a href="https://www.science.org/doi/10.1126/sciadv.aed2741" target="_blank" rel="noopener">DOI 10.1126/sciadv.aed2741</a>），第一作者 Jakob Einhaus，專家聯絡人為史丹佛醫學院的 Brice Gaudillière。團隊建立的 SIMCO 框架（Simulated Immunome Modeling of Clinical Outcomes）取 19 位捐血者（<a href="https://www.eurekalert.org/news-releases/1148250" target="_blank" rel="noopener">11 位孕婦與 8 位非孕對照</a>）的血液細胞，在 80 種藥物、細胞激素與組合條件下體外處理，用質譜流式細胞技術測量每顆細胞 50 多個標記，共分析 <a href="https://www.techtimes.com/articles/329774/20261030/preterm-birth-prevention-ai-finds-aspirin-antacid-combo-15-times-better-aspirin-alone.htm" target="_blank" rel="noopener">2.18 億顆免疫細胞</a>；再用未處理樣本把分娩週數與免疫活性連起來，兩組資料合併後讓數位孿生重現每種藥物如何改變與產程相關的免疫活性。測試的 9 種 FDA 已核准低風險藥物中，有 2 種顯示可能延後產程：5-甲基四氫葉酸，以及阿斯匹靈加 lansoprazole 的組合（SALPZ）；其餘 7 種先加速產程才延後。驗證世代為 63 位孕婦（含 5 位早產），模型預測與實際分娩週數的 Pearson R = 0.64、RMSE 24.1 天。Nature Medicine 於 <a href="https://www.nature.com/articles/d41591-026-00056-w" target="_blank" rel="noopener">10/29 以研究亮點收錄這篇</a>。</span>
+        <span class="en">Science Advances published "Single-cell-level digital twins for preterm birth prevention strategies" on 21 October (<a href="https://www.science.org/doi/10.1126/sciadv.aed2741" target="_blank" rel="noopener">DOI 10.1126/sciadv.aed2741</a>), first-authored by Jakob Einhaus with Brice Gaudillière of Stanford Medicine as expert contact. The SIMCO framework (Simulated Immunome Modeling of Clinical Outcomes) took blood cells from 19 donors (<a href="https://www.eurekalert.org/news-releases/1148250" target="_blank" rel="noopener">11 pregnant, 8 non-pregnant controls</a>), treated them in vitro across 80 drug, cytokine and combination conditions, and profiled more than 50 markers per cell by mass cytometry — <a href="https://www.techtimes.com/articles/329774/20261030/preterm-birth-prevention-ai-finds-aspirin-antacid-combo-15-times-better-aspirin-alone.htm" target="_blank" rel="noopener">218 million immune cells in all</a>. Untreated samples were then used to link gestational age at delivery to immune activity, and the two datasets combined so the twins could replicate how each drug shifts labour-related immune signalling. Of nine FDA-approved low-risk drugs tested, two showed potential to delay labour onset: 5-methyltetrahydrofolate, and aspirin combined with lansoprazole (SALPZ); the other seven accelerated labour onset before slowing it. The validation cohort was 63 pregnant patients including 5 who delivered preterm, with a Pearson R of 0.64 against actual gestational age at delivery and an RMSE of 24.1 days. Nature Medicine <a href="https://www.nature.com/articles/d41591-026-00056-w" target="_blank" rel="noopener">picked it up as a research highlight on 29 October</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這是「AI 不是用來讀影像，而是用來設計試驗」的一個乾淨例子。它的輸出不是風險分數，而是一份可以直接去登記臨床試驗的候選清單——SALPZ 已經進了 <a href="https://www.techtimes.com/articles/329774/20261030/preterm-birth-prevention-ai-finds-aspirin-antacid-combo-15-times-better-aspirin-alone.htm" target="_blank" rel="noopener">NCT07336755／NCT07337655</a> 這類登記試驗。早產是一個長年沒有好藥的領域：美國每年約 10% 的懷孕為早產，全球每年逾 1,500 萬名新生兒受影響，而黑人婦女的早產率約比白人婦女高五成。在這種「病理機制複雜、可試藥物有限、臨床試驗極難做」的題目上，先用模擬把 80 種條件篩到 2 種，再把真金白銀放進前瞻試驗，是 AI 在臨床研究端最可信的用法之一。</span>
+        <span class="en">This is a clean example of AI used not to read images but to design the trial. The output is not a risk score but a candidate list you can take straight to registration — SALPZ has already entered a registered trial (<a href="https://www.techtimes.com/articles/329774/20261030/preterm-birth-prevention-ai-finds-aspirin-antacid-combo-15-times-better-aspirin-alone.htm" target="_blank" rel="noopener">NCT07337655</a>). Preterm birth is a field that has gone decades without a good drug: roughly 10% of US pregnancies deliver preterm, more than 15 million newborns are affected worldwide each year, and preterm birth rates among Black women run about 50% higher than among white women. For a problem with tangled mechanisms, few testable drugs and brutally hard trials, narrowing 80 conditions to 2 in simulation before spending real money on a prospective study is one of the more defensible uses of AI on the research side of medicine.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">所有效果量都是模擬值，沒有任何病人結果。那個被標題大寫的「15 倍」是這樣算出來的：SALPZ 在模擬反應者中的中位延後是 17.3 天、87.3% 的模擬病人被判為反應者，而阿斯匹靈單用在同一門檻約 1.1 天，兩數相除約 15——這是兩個模擬數字的比值，不是臨床療效。單用藥的模擬延後：5-甲基四氫葉酸 24.7 天、maprotiline 18.8 天。樣本極小：體外實驗只有 19 位捐血者（11 孕 + 8 非孕），驗證世代 63 人裡只有 5 例早產，以早產預測來說這個事件數偏低到不足以支撐子族群分析。EurekAlert 新聞稿對「哪兩種藥勝出」的措辭本身略有前後不一（一處寫四氫葉酸與阿斯匹靈、lansoprazole 並列）。本則部分細節轉引自 Tech Times 10/30 與 EurekAlert 10/21 的報導，未取得 Science Advances 全文；史丹佛官方新聞頁在本次抓取時被 robots 規則擋下。</span>
+        <span class="en">Every effect size here is simulated; there are no patient outcomes. The headline "15x" is arrived at this way: SALPZ showed a median delay of 17.3 days among simulated responders and classified 87.3% of simulated patients as responders, while aspirin alone gave about 1.1 days at the same threshold — a ratio of two simulated numbers, not a clinical effect. Simulated delays for single agents: 24.7 days for 5-methyltetrahydrofolate, 18.8 days for maprotiline. The samples are tiny: 19 donors in vitro (11 pregnant, 8 not), and only 5 preterm deliveries among the 63 in validation, too few events to support subgroup analysis of a preterm prediction. The EurekAlert release is itself slightly inconsistent on which two drugs won (one passage lists tetrahydrofolate alongside salicylic acid and lansoprazole). Some details here are taken from Tech Times (30 Oct) and EurekAlert (21 Oct); the Science Advances full text was not obtained, and Stanford's own news page was blocked by robots rules at fetch time.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.eurekalert.org/news-releases/1148250" target="_blank" rel="noopener">EurekAlert / AAAS, 2026-10-21</a> · <a href="https://www.science.org/doi/10.1126/sciadv.aed2741" target="_blank" rel="noopener">Science Advances</a> · <a href="https://www.nature.com/articles/d41591-026-00056-w" target="_blank" rel="noopener">Nature Medicine Research Highlight, 2026-10-29</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="zh-inline">早期偵測</span><span class="en-inline">Early detection</span></span>
+      <span class="tag">Mayo Clinic</span><span class="tag">REDMOD</span><span class="tag">Gut</span>
+    </div>
+    <h3>
+      <span class="zh">在被判為正常的 CT 上找到胰腺癌：敏感度 73% 對放射科醫師 39%，平均領先 475 天</span>
+      <span class="en">Finding pancreatic cancer on CTs read as normal: 73% sensitivity against radiologists' 39%, a median 475 days early</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">Mayo Clinic 的 REDMOD（Radiomics-based Early Detection MODel）在 10 月下旬重新回到新聞版面。研究取 219 位後來確診胰腺癌病人的腹部 CT（確診前 3–12 個月 87 例、12–24 個月 76 例、超過 24 個月 56 例），對上 1,243 位三年內無胰腺癌、按年齡性別與掃描日期配對的對照；另有 539 人的多院獨立測試組與 80 人的 NIH-PCT 資料集。這些影像<strong>當初全部被判讀為正常</strong>。結果：<a href="https://www.sciencedaily.com/releases/2026/10/261024222031.htm" target="_blank" rel="noopener">平均領先臨床診斷 475 天（約 1.3 年），敏感度 73%，同一批影像由有經驗的放射科醫師不用 AI 判讀則為 39%</a>；確診前超過兩年的影像差距更大，68% 對 23%。獨立測試組正確判為無癌略高於 81%，NIH-PCT 為 87.5%，同一病人數月後重複掃描的結果一致率 90–92%。<a href="https://newsnetwork.mayoclinic.org/discussion/mayo-clinic-ai-detects-pancreatic-cancer-up-to-3-years-before-diagnosis-in-landmark-validation-study/" target="_blank" rel="noopener">Mayo 官方說明</a>補充：模型設計是分析「為其他原因已經拍好的 CT」，特別針對新發糖尿病這類高風險族群，在腫塊還看不見之前就標記風險；前瞻性的 AI-PACED 研究將評估早期偵測、偽陽性與臨床結果。本季它也入選 <a href="https://time.com/collection/best-inventions/2026/mayo-clinic-radiomics-based-early-detection-model/" target="_blank" rel="noopener">TIME 2026 年最佳發明</a>。</span>
+        <span class="en">Mayo Clinic's REDMOD (Radiomics-based Early Detection MODel) returned to the news cycle in late October. The study took abdominal CTs from 219 patients later diagnosed with pancreatic cancer (87 scanned 3–12 months before diagnosis, 76 at 12–24 months, 56 beyond 24 months) against 1,243 controls free of pancreatic cancer for up to three years, matched on age, sex and scan date, plus a 539-patient multi-institution independent test set and the 80-patient NIH-PCT dataset. Every one of those scans <strong>had originally been read as normal</strong>. The results: <a href="https://www.sciencedaily.com/releases/2026/10/261024222031.htm" target="_blank" rel="noopener">a median 475 days (about 1.3 years) ahead of clinical diagnosis, 73% sensitivity against 39% for experienced radiologists reading the same images unaided</a>, with the gap widening to 68% against 23% on scans more than two years pre-diagnosis. Correct cancer-free classification was just over 81% in the independent set and 87.5% on NIH-PCT, with 90–92% agreement across repeat scans months apart in the same patient. <a href="https://newsnetwork.mayoclinic.org/discussion/mayo-clinic-ai-detects-pancreatic-cancer-up-to-3-years-before-diagnosis-in-landmark-validation-study/" target="_blank" rel="noopener">Mayo's own account</a> adds that the model is built to analyse CTs already taken for other reasons, aimed especially at high-risk groups such as new-onset diabetes, flagging risk before any mass is visible; the prospective AI-PACED study will assess early detection, false positives and clinical outcomes. It was also named to <a href="https://time.com/collection/best-inventions/2026/mayo-clinic-radiomics-based-early-detection-model/" target="_blank" rel="noopener">TIME's Best Inventions of 2026</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">胰腺癌幾乎是「發現就太晚」的代名詞，而這個模型的切入點相當聰明：它不要求新增任何一次掃描，而是回頭把醫療系統裡早就存在、而且早就被判為正常的影像再榨一次。73% 對 39% 這個差距之所以重要，不是因為「AI 比醫師強」，而是因為它找到的東西在人眼定義下根本還不是病灶——放射科醫師判讀「正常」在當下是正確的。這也是本期唯一一則「AI 看到的東西人類原則上看不到」的研究，和前面幾則「AI 跟人類比對一致度」的研究在性質上完全不同。</span>
+        <span class="en">Pancreatic cancer is close to a synonym for found-too-late, and this model's angle is a shrewd one: it asks for no additional scan, and instead squeezes a second reading out of images the health system already holds and already called normal. What makes 73% against 39% matter is not that the AI beats the doctor; it is that what the model finds is not yet a lesion by any human definition — the radiologist who wrote "normal" was correct at the time. This is also the only study in this edition where the AI sees something a human in principle cannot, which puts it in a different category from the agreement-with-clinicians studies above.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh"><strong>日期必須講清楚：</strong>這篇 Gut 論文的線上發表日是 2026/4/22、Mayo 官方新聞稿 4/29（<a href="https://newsnetwork.mayoclinic.org/discussion/mayo-clinic-ai-detects-pancreatic-cancer-up-to-3-years-before-diagnosis-in-landmark-validation-study/" target="_blank" rel="noopener">來源</a>）。10/24–10/27 這一波（<a href="https://www.sciencedaily.com/releases/2026/10/261024222031.htm" target="_blank" rel="noopener">ScienceDaily 10/26</a> 等）是二次報導與 TIME 最佳發明入選帶來的，<strong>不是新論文</strong>，收錄原因是它與本期主軸直接對話，而非本週新發表。實質上的保留：Mayo 新聞稿沒有報告特異度與偽陽性率，而這正是「在被判為正常的影像上找癌」最關鍵的數字——偽陽性率只要高一點，整個篩檢策略的成本效益就翻盤，這也正是 AI-PACED 要回答的。標題的「最早三年」是最大值，中位領先約 16 個月。對照組雖按年齡性別與掃描日期配對，但回溯設計無法排除「有症狀所以被掃描」這類選取偏誤。目前沒有任何前瞻結果，也沒有臨床結局（存活率）資料。</span>
+        <span class="en"><strong>The dates need stating plainly:</strong> this Gut paper went online on 22 April 2026, with Mayo's press release on 29 April (<a href="https://newsnetwork.mayoclinic.org/discussion/mayo-clinic-ai-detects-pancreatic-cancer-up-to-3-years-before-diagnosis-in-landmark-validation-study/" target="_blank" rel="noopener">source</a>). The 24–27 October wave (<a href="https://www.sciencedaily.com/releases/2026/10/261024222031.htm" target="_blank" rel="noopener">ScienceDaily, 26 Oct</a> among others) is secondary coverage driven partly by the TIME listing — <strong>not a new paper</strong>. It is included here because it speaks directly to this edition's theme, not because it published this week. The substantive reservation: Mayo's release reports no specificity and no false-positive rate, which is the single most important number for a tool that finds cancer on scans read as normal — a slightly high false-positive rate inverts the cost-effectiveness of the whole strategy, which is precisely what AI-PACED is meant to answer. The headline "up to three years" is the maximum; the median lead time is about 16 months. Controls were matched on age, sex and scan date, but a retrospective design cannot exclude selection effects such as being scanned because of symptoms. There are no prospective results and no clinical outcome (survival) data yet.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.sciencedaily.com/releases/2026/10/261024222031.htm" target="_blank" rel="noopener">ScienceDaily / BMJ Group, 2026-10-26</a> · <a href="https://newsnetwork.mayoclinic.org/discussion/mayo-clinic-ai-detects-pancreatic-cancer-up-to-3-years-before-diagnosis-in-landmark-validation-study/" target="_blank" rel="noopener">Mayo Clinic News Network, 2026-04-29</a> · <a href="https://time.com/collection/best-inventions/2026/mayo-clinic-radiomics-based-early-detection-model/" target="_blank" rel="noopener">TIME Best Inventions 2026</a></p></div>
+  </div>
+</section>
+
+<section id="product">
+  <h2>02 — Product Analysis</h2>
+  <div class="sec-title">
+    <span class="zh">兩套本週登場的系統，剛好站在臨床 AI 的兩個對立端：一個把證據指到像素，一個把問診搬進病人家裡</span>
+    <span class="en">Two systems from this week, sitting at opposite ends of clinical AI: one points its evidence at the pixel, the other moves the interview into the patient's home</span>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>EVLF-FM</h3>
+      <p class="sub"><span class="zh-inline">可解釋的多模態醫療影像基礎模型 · Duke-NUS／新加坡國家眼科中心（新加坡）</span><span class="en-inline">Explainable multimodal medical imaging foundation model · Duke-NUS / Singapore National Eye Centre (Singapore)</span></p>
+      <p>
+        <span class="zh"><strong>功能與定位。</strong>一個模型吃 11 種影像模態，同時做疾病診斷、視覺問答與像素級病灶定位，賣點不是準確率而是「可被稽核的推理」——它會把結論連到影像上的具體區域。權重與程式碼<a href="https://github.com/baiyang4/EVLF" target="_blank" rel="noopener">公開在 GitHub</a>，8B 等級，對應的客戶是想自建、不想把影像送出院的醫學中心與國家級計畫，<a href="https://www.nature.com/articles/s41591-026-04655-5" target="_blank" rel="noopener">論文見 Nature Medicine 10/29</a>。</span>
+        <span class="en"><strong>Function and position.</strong> One model ingests 11 imaging modalities and performs disease diagnosis, visual question answering and pixel-level lesion grounding at once. The pitch is not accuracy but auditable reasoning: it ties each conclusion to a specific region of the image. Weights and code are <a href="https://github.com/baiyang4/EVLF" target="_blank" rel="noopener">public on GitHub</a> at the 8B scale, aimed at academic centres and national programmes that want to build in-house and keep images inside the hospital. <a href="https://www.nature.com/articles/s41591-026-04655-5" target="_blank" rel="noopener">Paper in Nature Medicine, 29 Oct</a>.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：像素級定位不是事後熱力圖，而是用 IoU 當強化學習獎勵直接訓出來的，9 種模態平均 <a href="https://arxiv.org/abs/2509.24231" target="_blank" rel="noopener">mIOU 0.743、X 光達 0.934</a>，明顯高於 InternVL 3 8B 的 0.656。</span>
+          <span class="en">: grounding is not a post-hoc heat map but trained directly with IoU as a reinforcement learning reward, averaging <a href="https://arxiv.org/abs/2509.24231" target="_blank" rel="noopener">mIOU 0.743 across nine modalities and 0.934 on X-ray</a>, clearly above InternVL 3 8B's 0.656.</span>
+        </li>
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：開源且規模適中（8B），對主權 AI 與聯邦學習路線是現成的起點——這正是衛福部資訊處 <a href="https://www.threads.com/@mohw_digital_health_platform/post/DeQZrAVD0ME/" target="_blank" rel="noopener">2026/10/20「臨床AI取證驗證中心國際研討會」</a>設定的三大主題之一。</span>
+          <span class="en">: open weights at a tractable 8B scale make it a ready starting point for sovereign-AI and federated-learning strategies — exactly one of the three themes set for Taiwan MOHW's <a href="https://www.threads.com/@mohw_digital_health_platform/post/DeQZrAVD0ME/" target="_blank" rel="noopener">Clinical AI Validation Center international seminar on 20 October 2026</a>.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：外部零樣本表現崩得很嚴重，RetinalOCT 僅 0.481 準確率、US3M 超音波 0.526、ATPOS 眼底 F1 0.325，而且後兩項輸給 MedGemma 27B——「一個模型通吃」在跨院資料上還不成立。</span>
+          <span class="en">: external zero-shot performance collapses in places — 0.481 accuracy on RetinalOCT, 0.526 on US3M ultrasound, F1 0.325 on the ATPOS fundus set, with the latter two losing to MedGemma 27B. One-model-does-everything does not yet hold on outside data.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：零前瞻驗證、零法規路徑，而且 arXiv 版本的表格與正文數字互相矛盾（平均 mIOU 一處 0.743、一處 0.626）；基礎視覺／語言模型未具名，想複製的團隊缺一塊關鍵資訊。</span>
+          <span class="en">: no prospective validation, no regulatory pathway, and the arXiv version's tables contradict its own narrative (mean mIOU appears as both 0.743 and 0.626); the underlying vision and language backbones are never named, leaving anyone trying to reproduce it short of a key detail.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>AMIE (Articulate Medical Intelligence Explorer)</h3>
+      <p class="sub"><span class="zh-inline">病人端對話式診斷 AI · Google DeepMind／Google Research（美國）</span><span class="en-inline">Patient-facing conversational diagnostic AI · Google DeepMind / Google Research (US)</span></p>
+      <p>
+        <span class="zh"><strong>功能與定位。</strong>病人預約急件門診後，先在家裡用文字跟 AMIE 對話，系統收集症狀與病史、列出待與醫師討論的鑑別診斷，並產生一份給醫師的門診前摘要。底層是 Gemini 2.5 Pro（無領域微調），研究中途為降延遲改為 Gemini 2.5 Flash。它賣的不是診斷結論，而是「把問診時間從診間搬出去」。<a href="https://hms.harvard.edu/news/real-world-study-patient-facing-ai-primary-care" target="_blank" rel="noopener">研究由 Alphabet 資助，10/8 刊於 The Lancet</a>。</span>
+        <span class="en"><strong>Function and position.</strong> After booking an urgent primary care appointment, the patient chats with AMIE from home; the system gathers symptoms and history, lists differentials to raise with the doctor, and produces a pre-visit summary for the clinician. It runs on Gemini 2.5 Pro with no domain-specific fine-tuning, switched mid-study to Gemini 2.5 Flash for latency. What it sells is not a diagnosis but the relocation of history-taking out of the exam room. <a href="https://hms.harvard.edu/news/real-world-study-patient-facing-ai-primary-care" target="_blank" rel="noopener">Alphabet-funded, published in The Lancet on 8 October</a>.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：這是目前唯一走完真實病人前瞻評估的病人端診斷 AI，98 位完成、<a href="https://ascoai.org/articles/2026/10/conversational-ai-system-evaluated-for-safety-in-first-real-world-primary-care-test/" target="_blank" rel="noopener">零次監督醫師強制中止、僅 1 次幻覺</a>，安全性評分 93% 對醫師 95%。</span>
+          <span class="en">: it is the only patient-facing diagnostic AI to have completed a prospective real-patient evaluation — 98 completions, <a href="https://ascoai.org/articles/2026/10/conversational-ai-system-evaluated-for-safety-in-first-real-world-primary-care-test/" target="_blank" rel="noopener">zero supervisor-forced stops and a single hallucination</a>, with safety rated favourable in 93% of cases against clinicians' 95%.</span>
+        </li>
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：對醫師端有可量測的實際價值：44 位事前看過紀錄的醫師中 75% 覺得有助準備、57% 說可能改變了自己的做法，而且鑑別診斷前 7 名命中正確答案 90%。</span>
+          <span class="en">: measurable value on the clinician side — of the 44 who previewed the record, 75% said it helped them prepare and 57% that it may have shifted their approach, with the correct answer inside the top 7 differentials 90% of the time.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：安全性是在「每一場對話都有專科醫師即時監看」下取得的，評論作者直指這種人力在規模化時無法維持；而排第一的診斷只對 56%，適當性 83% 對醫師 94%、成本效益 85% 對 97%。</span>
+          <span class="en">: that safety record was obtained with a specialist watching every conversation in real time, which the commentary authors say cannot be sustained at scale; the top-ranked diagnosis is correct only 56% of the time, with appropriateness at 83% against clinicians' 94% and cost-effectiveness 85% against 97%.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：n = 98、單臂無對照、單一中心，病人有最多 50 美元報酬，排除已知懷孕與精神科主訴，且 AMIE 看不到病歷——結構上還不足以支撐任何療效主張，作者自己也只宣稱可行性。</span>
+          <span class="en">: n = 98, single-arm, single-centre, patients paid up to $50, known pregnancy and mental health complaints excluded, and no chart access — structurally insufficient for any effectiveness claim, which the authors themselves do not make.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="zh"><strong>對比在哪。</strong>EVLF-FM 處理的是「看」，AMIE 處理的是「問」，而兩者的失敗模式剛好互補：EVLF-FM 在它沒見過的外部資料上準確率可以掉到 0.481，但它至少能告訴你它在看哪一塊；AMIE 的安全性紀錄漂亮，但它完全沒有可稽核的推理軌跡，而且在「適當性」與「成本效益」這兩個跟支付方直接相關的維度上，離醫師還有 11 到 12 個百分點。把兩者的證據疊起來，今天真正可以買的東西其實只有一種：有明確範圍、有人簽名、且被量過成本的輔助工具。</span>
+      <span class="en"><strong>Where the contrast lies.</strong> EVLF-FM handles seeing, AMIE handles asking, and their failure modes are complementary. EVLF-FM's accuracy can fall to 0.481 on external data it has not seen, but it can at least tell you which region it was looking at; AMIE has the handsome safety record but no auditable reasoning trace at all, and on appropriateness and cost-effectiveness — the two dimensions a payer actually cares about — it trails clinicians by 11 to 12 percentage points. Stack the two bodies of evidence and only one kind of product is buyable today: an assistive tool with a defined scope, a human signature on the output, and a measured price tag.</span>
+    </p>
+  </div>
+</section>
+
+<section id="company">
+  <h2>03 — Companies &amp; Competition</h2>
+  <div class="sec-title">
+    <span class="zh">誰站在哪裡、憑什麼、跟誰打</span>
+    <span class="en">Who stands where, on what, against whom</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th><span class="zh-inline">公司／機構</span><span class="en-inline">Company / institution</span></th>
+        <th><span class="zh-inline">近況與數字</span><span class="en-inline">Recent state &amp; numbers</span></th>
+        <th><span class="zh-inline">競爭定位與護城河</span><span class="en-inline">Position &amp; moat</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Google DeepMind / Google Research</strong><br><span class="zh-inline">唯一把病人端診斷 AI 送進 Lancet 的玩家</span><span class="en-inline">The only player to land patient-facing diagnostic AI in The Lancet</span></td>
+          <td>
+            <span class="zh">AMIE 前瞻可行性研究 <a href="https://hms.harvard.edu/news/real-world-study-patient-facing-ai-primary-care" target="_blank" rel="noopener">10/8 刊於 The Lancet，由 Alphabet 資助</a>，與哈佛醫學院／BIDMC 合作、48 位作者；114 人入組、98 人完成，零次強制中止、1 次幻覺，鑑別診斷前 3 名命中 75%、排第一 56%。底層模型 Gemini 2.5 Pro／Flash，無領域微調。</span>
+            <span class="en">The AMIE prospective feasibility study was <a href="https://hms.harvard.edu/news/real-world-study-patient-facing-ai-primary-care" target="_blank" rel="noopener">published in The Lancet on 8 October, funded by Alphabet</a>, run with Harvard Medical School and BIDMC across 48 authors; 114 enrolled, 98 completed, zero forced stops, one hallucination, correct diagnosis in the top 3 differentials 75% of the time and ranked first 56%. Built on Gemini 2.5 Pro / Flash with no domain fine-tuning.</span>
+          </td>
+          <td>
+            <span class="zh">護城河是學術通路與前瞻證據的先行者優勢——別人還在發基準測試，它已經有真實病人資料。弱點是這套安全性建立在不可規模化的即時監督上，而且沒有任何可稽核的推理軌跡可以交給監管機關。</span>
+            <span class="en">The moat is academic access and first-mover prospective evidence: others are still publishing benchmarks while Google has real-patient data. The weakness is that the safety rests on real-time supervision that does not scale, and there is no auditable reasoning trace to hand a regulator.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Duke-NUS / 新加坡國家眼科中心</strong><br><span class="zh-inline">區域級開源多模態基礎模型</span><span class="en-inline">A regional open-source multimodal foundation model</span></td>
+          <td>
+            <span class="zh">EVLF-FM <a href="https://www.nature.com/articles/s41591-026-04655-5" target="_blank" rel="noopener">10/29 刊於 Nature Medicine</a>，43 位作者，1,326,315 筆訓練樣本、23 個資料集、11 種影像模態、6 個專科；內部診斷準確率 0.858／F1 0.797，9 模態定位平均 mIOU 0.743；外部 8,884 筆、10 個資料集。<a href="https://github.com/baiyang4/EVLF" target="_blank" rel="noopener">程式碼開源</a>。</span>
+            <span class="en">EVLF-FM was <a href="https://www.nature.com/articles/s41591-026-04655-5" target="_blank" rel="noopener">published in Nature Medicine on 29 October</a> with 43 authors: 1,326,315 training samples, 23 datasets, 11 imaging modalities, six specialties; internal diagnostic accuracy 0.858 / F1 0.797, mean grounding mIOU 0.743 across nine modalities, external validation on 8,884 samples from 10 datasets. <a href="https://github.com/baiyang4/EVLF" target="_blank" rel="noopener">Code open-sourced</a>.</span>
+          </td>
+          <td>
+            <span class="zh">走的是與 Google 完全相反的路：開源、可解釋、留在院內。對亞洲各國的「主權醫療 AI」政策而言這是現成的基座，也是台灣衛福部正在評估的那條路線。弱點是外部泛化不穩、且完全沒有商業化或法規路徑。</span>
+            <span class="en">The opposite bet to Google's: open, explainable, kept inside the hospital. For sovereign-medical-AI policy across Asia it is a ready-made base layer, and it is the route Taiwan's MOHW is weighing. The weaknesses are unstable external generalisation and the total absence of a commercial or regulatory path.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Mayo Clinic</strong><br><span class="zh-inline">把舊影像再榨一次的早期偵測</span><span class="en-inline">Early detection by re-reading scans it already owns</span></td>
+          <td>
+            <span class="zh">REDMOD 於 <a href="https://newsnetwork.mayoclinic.org/discussion/mayo-clinic-ai-detects-pancreatic-cancer-up-to-3-years-before-diagnosis-in-landmark-validation-study/" target="_blank" rel="noopener">2026/4/22 刊於 Gut</a>、10 月下旬因入選 <a href="https://time.com/collection/best-inventions/2026/mayo-clinic-radiomics-based-early-detection-model/" target="_blank" rel="noopener">TIME 2026 最佳發明</a>再度被報導；219 例癌症對 1,243 例對照、539 人獨立測試組，敏感度 73% 對放射科醫師 39%，平均領先 475 天；特異度與偽陽性率未公布，前瞻 AI-PACED 研究進行中。</span>
+            <span class="en">REDMOD was <a href="https://newsnetwork.mayoclinic.org/discussion/mayo-clinic-ai-detects-pancreatic-cancer-up-to-3-years-before-diagnosis-in-landmark-validation-study/" target="_blank" rel="noopener">published in Gut on 22 April 2026</a> and re-covered in late October on the back of its <a href="https://time.com/collection/best-inventions/2026/mayo-clinic-radiomics-based-early-detection-model/" target="_blank" rel="noopener">TIME Best Inventions 2026</a> listing; 219 cancer cases against 1,243 controls plus a 539-patient independent set, 73% sensitivity against radiologists' 39%, a median 475 days early. Specificity and false-positive rate are unpublished; the prospective AI-PACED study is under way.</span>
+          </td>
+          <td>
+            <span class="zh">護城河是影像檔案庫本身——跨院、跨機型、跨協定的回溯資料是 Mayo 這種體系獨有的資產，新創買不到。弱點正好是它最需要的那個數字還沒交出來：不公布偽陽性率，支付方就無法定價。</span>
+            <span class="en">The moat is the image archive itself: retrospective data spanning institutions, scanner makes and protocols is an asset only a system like Mayo holds, and no startup can buy it. The weakness is that the one number it most needs is still missing — without a false-positive rate, no payer can price it.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Stanford Medicine</strong><br><span class="zh-inline">用模擬取代前期臨床試驗</span><span class="en-inline">Simulation standing in for the early trial</span></td>
+          <td>
+            <span class="zh">SIMCO 框架 <a href="https://www.eurekalert.org/news-releases/1148250" target="_blank" rel="noopener">10/21 刊於 Science Advances</a>，19 位捐血者、80 種條件、2.18 億顆免疫細胞；9 種 FDA 已核准藥物篩出 2 種候選（5-甲基四氫葉酸、阿斯匹靈 + lansoprazole），63 人驗證世代 Pearson R = 0.64、RMSE 24.1 天；SALPZ 已進入登記試驗 NCT07337655。</span>
+            <span class="en">The SIMCO framework was <a href="https://www.eurekalert.org/news-releases/1148250" target="_blank" rel="noopener">published in Science Advances on 21 October</a>: 19 donors, 80 conditions, 218 million immune cells; two candidates narrowed from nine FDA-approved drugs (5-methyltetrahydrofolate, and aspirin plus lansoprazole), with Pearson R 0.64 and RMSE 24.1 days in a 63-patient validation cohort; SALPZ has entered registered trial NCT07337655.</span>
+          </td>
+          <td>
+            <span class="zh">它不跟任何醫療 AI 公司競爭，競爭對手是「做不出來的前期臨床試驗」本身。護城河是單細胞質譜流式的濕實驗室能力加上建模能力的組合，這在產業界極少見。弱點是樣本數小到任何結論都只能當假設。</span>
+            <span class="en">It competes with no medical AI company; its competitor is the early-phase trial that never gets run. The moat is the pairing of single-cell mass cytometry wet-lab capability with modelling capability, a combination rare in industry. The weakness is sample sizes small enough that every conclusion is a hypothesis.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Clalit Health Services</strong><br><span class="zh-inline">把 LLM 放在真實支付體系裡測</span><span class="en-inline">Testing LLMs inside a real payer system</span></td>
+          <td>
+            <span class="zh">10/19 於 Annals of Internal Medicine 發表 Choosing Wisely 測試：6 套商用 LLM、15 條建議、225 情境、<a href="https://www.auntminnie.com/home/article/15837911/llms-mostly-avoid-unnecessary-care-in-choosing-wisely-tests" target="_blank" rel="noopener">4,050 則回應，整體過度建議率 5.4%</a>，甲狀腺超音波那一條 42.8%、低風險心電圖 28.3%。</span>
+            <span class="en">Published a Choosing Wisely evaluation in the Annals of Internal Medicine on 19 October: six commercial LLMs, 15 recommendations, 225 scenarios, <a href="https://www.auntminnie.com/home/article/15837911/llms-mostly-avoid-unnecessary-care-in-choosing-wisely-tests" target="_blank" rel="noopener">4,050 responses and an overall overuse rate of 5.4%</a>, rising to 42.8% on thyroid ultrasound and 28.3% on low-risk electrocardiography.</span>
+          </td>
+          <td>
+            <span class="zh">以色列最大的整合型健保組織，同時是支付方與提供者，所以它問的問題永遠是「這會不會讓我多花錢」。這個位置讓它成為少數能定義「臨床 AI 的經濟終點」的機構——和本期 NEJM AI 那篇研究是同一種視角。</span>
+            <span class="en">Israel's largest integrated health organisation is payer and provider at once, so the question it asks is always whether this will cost it more. That position makes it one of the few institutions able to define the economic endpoints for clinical AI — the same vantage point as the NEJM AI paper in this edition.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Roche Diagnostics × 台灣衛福部</strong><br><span class="zh-inline">用 PPP 把 AI 臨床決策接進國家級資料</span><span class="en-inline">A PPP wiring AI decision support into national data</span></td>
+          <td>
+            <span class="zh">雙方 <a href="https://news.cnyes.com/news/id/6583558" target="_blank" rel="noopener">2026/8/21 簽署 MOU</a>，首波瞄準慢性腎臟病的風險分層與腎功能惡化預警，以 FHIR 與衛福部自建的「FHIR Box」在不改動醫院資訊系統的前提下交換資料；長庚、馬偕、中山附醫已完成跨院即時病歷交換。羅氏全球業務總監 Matthew Prime 的說法是「AI 模型必須透過真實世界數據持續驗證」。</span>
+            <span class="en">The two <a href="https://news.cnyes.com/news/id/6583558" target="_blank" rel="noopener">signed an MOU on 21 August 2026</a>, targeting risk stratification and early warning for declining kidney function in chronic kidney disease first, exchanging data via FHIR and the MOHW's own "FHIR Box" without altering hospital information systems; Chang Gung, Mackay and Chung Shan Medical University Hospital have completed live cross-hospital record exchange. Roche's global business director Matthew Prime framed it as "AI models must be continually validated with real-world data."</span>
+          </td>
+          <td>
+            <span class="zh">護城河不是模型而是資料管線與制度位置：誰先把 FHIR 標準與跨院交換鋪成，誰就決定後來的 AI 要怎麼接。弱點是這條路線的成敗取決於健保給付，而給付決策要等本土 RCT 的結果。</span>
+            <span class="en">The moat is not a model but a data pipeline and an institutional position: whoever lays down the FHIR standard and cross-hospital exchange first decides how everyone else's AI plugs in. The weakness is that the route's fate depends on NHI reimbursement, and reimbursement decisions wait on local RCT results.</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="zh"><strong>今天的競爭結構是「證據的形狀」而不是「模型的大小」。</strong>本期七篇研究裡，真正在產業上分出勝負的不是誰的參數多，而是誰先交出對方沒有的那一類證據：Google 有真實病人的前瞻資料但沒有可稽核的推理，Duke-NUS 有可稽核的推理但沒有任何病人，Mayo 有無人能及的回溯影像庫但沒有偽陽性率，Clalit 有支付方視角但沒有自己的模型。沒有一家手上的證據是完整的，而缺的那一塊剛好都是監管機關與支付方要看的那一塊。</span>
+      <span class="en"><strong>Today's competitive structure is about the shape of the evidence, not the size of the model.</strong> Across the seven papers here, what separates the players in industry terms is not parameter count but who has produced the class of evidence the others lack. Google has prospective real-patient data and no auditable reasoning; Duke-NUS has auditable reasoning and no patients; Mayo has an unmatched retrospective image archive and no false-positive rate; Clalit has the payer's vantage point and no model of its own. Nobody's evidence is complete, and in every case the missing piece is precisely the one regulators and payers want to see.</span>
+    </p>
+  </div>
+</section>
+
+<section id="taiwan">
+  <h2>04 — Taiwan Angle</h2>
+  <div class="sec-title">
+    <span class="zh">治理的架子已經搭好，本土證據還在路上——而今天最該被搬到台灣尺度的是「成本」那一條</span>
+    <span class="en">The governance scaffolding is up and the local evidence is still coming — and the figure most worth translating to Taiwanese scale today is the cost one</span>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="zh"><strong>(1) NEJM AI 的 3.2 倍在總額支付下會變成另一種東西。</strong>那篇研究是用 2026 年 Medicare 費率算的，而 Medicare 是按服務計酬——AI 多開的檢查就是多出來的支出。台灣健保是總額支付：AI 多開的檢查不會讓總額變大，只會在同一個池子裡排擠別人。換句話說，同一個行為在美國顯示為「醫療費用上升」，在台灣會顯示為「點值下降」與「排擠其他科別」，而後者在帳面上看不見，也因此更難被當成問題處理。衛福部於 2025/11/20 啟動的台灣AI影響性研究中心正是為了補這一塊：以台北榮總、台中榮總、三軍總醫院、成大醫院、台大醫院五家示範醫院執行本土 RCT 與醫療科技評估，資訊處處長李建璋當時說明過去的 RCT 都依賴國外數據，<a href="https://udn.com/news/story/7266/9152553" target="_blank" rel="noopener">「若成效好，將研議是否可納入健保」</a>，結果預計約三年後送健保共擬會。NEJM AI 這類把成本當主要終點的設計，正好是這五家醫院該照抄的題型。</span>
+      <span class="en"><strong>(1) The NEJM AI 3.2x becomes a different thing under a global budget.</strong> That study priced care at 2026 Medicare rates, and Medicare pays fee-for-service — an extra AI-ordered test is extra spending. Taiwan's NHI runs a global budget: extra tests do not enlarge the pot, they crowd others out of it. The same behaviour that appears in the US as rising expenditure shows up in Taiwan as a falling point value and as displacement of other specialties, and the latter does not appear on any ledger, which makes it harder to treat as a problem. The Taiwan AI Impact Research Center, launched by the MOHW on 20 November 2025, exists to fill exactly this gap: local RCTs and health technology assessment across five demonstration sites — Taipei Veterans General, Taichung Veterans General, Tri-Service General, National Cheng Kung University Hospital and National Taiwan University Hospital. Information Division director Li Chien-chang noted then that past RCTs had relied on overseas data and that <a href="https://udn.com/news/story/7266/9152553" target="_blank" rel="noopener">"if the results are good, the ministry will consider whether they can be included in NHI"</a>, with findings expected to reach the NHI Joint Decision-Making Committee in about three years. A study design that makes cost the primary endpoint is precisely the template those five hospitals should copy.</span>
+    </p>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="zh"><strong>(2) EVLF-FM 證明「主權級可解釋模型」在亞洲做得出來。</strong>新加坡一個醫學院加一間眼科中心就交出了 11 種模態、1,326,315 筆樣本的開源多模態基礎模型，而且刊在 Nature Medicine——這不是需要前沿實驗室規模才能做的事。衛福部資訊處 2026/10/20 的<a href="https://www.threads.com/@mohw_digital_health_platform/post/DeQZrAVD0ME/" target="_blank" rel="noopener">「臨床AI取證驗證中心國際研討會」</a>把主權 AI、聯邦學習、基礎模型設為三大主題，講者包含雪梨大學 Adam Dunn（從聯邦學習到臨床實證的跨院驗證）、麻州總醫院 Long Phi Le（支援醫療主權的多模態醫療基礎模型）與耶魯 Joyce Oen-Hsiao（從驗證到醫師採用）。議程設定是對的，但台灣目前缺的不是議程而是一個可以被引用的模型——EVLF-FM 的 8B 規模與開源授權，恰好是跨院聯邦學習可以直接起步的尺寸。</span>
+      <span class="en"><strong>(2) EVLF-FM proves a sovereign-grade explainable model is buildable in Asia.</strong> One medical school and one eye centre in Singapore produced an open-source multimodal foundation model spanning 11 modalities and 1,326,315 samples, and placed it in Nature Medicine — this is not frontier-lab-scale work. The MOHW Information Division's <a href="https://www.threads.com/@mohw_digital_health_platform/post/DeQZrAVD0ME/" target="_blank" rel="noopener">Clinical AI Validation Center international seminar on 20 October 2026</a> set sovereign AI, federated learning and foundation models as its three themes, with speakers including Adam Dunn of the University of Sydney (federated learning to clinical evidence across health systems), Long Phi Le of Massachusetts General Hospital (multimodal medical foundation models supporting medical sovereignty) and Joyce Oen-Hsiao of Yale (from validation to physician adoption). The agenda is right; what Taiwan lacks is not an agenda but a citable model of its own — and EVLF-FM's 8B scale and open licence are exactly the size at which cross-hospital federated learning can begin.</span>
+    </p>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="zh"><strong>(3) 治理制度已經鋪到比證據更前面。</strong>衛福部負責任AI執行中心 2024/9/28 啟動，到 <a href="https://dep.mohw.gov.tw/DOIM/cp-935-82236-114.html" target="_blank" rel="noopener">2025/4/21 成果發表</a>時已補助 10 家醫院（林口長庚、台北榮總、高醫大附設中和醫院、中國醫藥大學附設醫院、彰化基督教醫院、奇美、聯新國際、嘉義長庚、土城長庚、新北仁康），架構是九大透明性原則、資安與隱私保護、AI 生命週期管理三根柱子，並規劃「負責任AI標章」作為產品審查與信任機制的核心，同時要與食藥署建立智慧醫材的上市後監測。<a href="https://health.ltn.com.tw/article/breakingnews/5018588" target="_blank" rel="noopener">資訊處處長李建璋稱台灣是繼美國與歐盟之後、亞洲第一個把負責任 AI 落實到臨床場域的國家</a>。制度先行本身是對的選擇，但本期七篇研究裡沒有一篇是台灣做的——治理架子搭在前面，裡面要放的本土證據還沒長出來，這個時間差就是未來三年最該盯的風險。</span>
+      <span class="en"><strong>(3) The governance framework has run ahead of the evidence.</strong> The MOHW's Responsible AI Execution Center launched on 28 September 2024, and by its <a href="https://dep.mohw.gov.tw/DOIM/cp-935-82236-114.html" target="_blank" rel="noopener">results presentation on 21 April 2025</a> had funded 10 hospitals (Linkou Chang Gung, Taipei Veterans General, Kaohsiung Medical University's Chung-Ho Memorial, China Medical University Hospital, Changhua Christian, Chi Mei, Lien Hsin International, Chiayi Chang Gung, Tucheng Chang Gung and New Taipei's Jen-Kang), structured on three pillars — nine transparency principles, information security and privacy protection, and AI lifecycle management — with a Responsible AI certification mark planned as the core of product review and trust-building, alongside post-market surveillance for smart medical devices to be built with the Food and Drug Administration. <a href="https://health.ltn.com.tw/article/breakingnews/5018588" target="_blank" rel="noopener">Information Division director Li Chien-chang describes Taiwan as the first country in Asia, after the US and EU, to put responsible AI into clinical practice</a>. Leading with institutions is the right call, but not one of the seven studies in this edition came from Taiwan. The scaffolding is up and the local evidence meant to fill it has not grown yet; that lag is the risk worth watching over the next three years.</span>
+    </p>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="zh"><strong>(4) 影像端的本土題目已經有了，缺的是終點設計。</strong>2026/10/5 的「國產 AI 3D 醫療影像暨元宇宙應用大會」由衛福部資訊處主辦，台大醫院胸腔外科江旴恒與一般外科郭庭均分享 2D 影像轉 3D 在肋骨骨折判讀、手術規劃與病人溝通上的應用，<a href="https://www.cna.com.tw/news/ahel/202610050133.aspx" target="_blank" rel="noopener">李建璋說「現在關鍵是讓 2D 醫療影像轉 3D 技術普惠全國」，並指未來最重要的工作是把標準與平台（含 FHIR 這類國際標準）建起來</a>。把本期 Mayo REDMOD 的教訓搬過來：那篇最被質疑的不是敏感度，而是「沒公布偽陽性率」。台灣在推 2D 轉 3D 普惠全國時，如果只量「多找到幾個骨折」而不同時量「多做了幾次後續檢查、多花了多少點值」，三年後送到健保共擬會的資料就會缺掉支付方唯一在意的那一欄。</span>
+      <span class="en"><strong>(4) Taiwan already has its imaging question; what it lacks is endpoint design.</strong> The Domestic AI 3D Medical Imaging and Metaverse Application Conference on 5 October 2026, hosted by the MOHW Information Division, featured National Taiwan University Hospital's Chiang Hsu-heng (thoracic surgery) and Kuo Ting-chun (general surgery) on converting 2D images to 3D for rib-fracture reading, surgical planning and patient communication, with <a href="https://www.cna.com.tw/news/ahel/202610050133.aspx" target="_blank" rel="noopener">Li Chien-chang saying the key now is making 2D-to-3D conversion available nationwide, and naming standards and platforms — FHIR among them — as the ministry's most important future task</a>. Carry over the lesson from Mayo's REDMOD in this edition: what drew the sharpest questions was not its sensitivity but the absence of a published false-positive rate. If Taiwan's nationwide 2D-to-3D push measures only how many extra fractures were found, and not how many additional downstream tests were ordered and how many points they consumed, then the dossier that reaches the NHI committee in three years will be missing the only column a payer reads.</span>
+    </p>
+  </div>
+</section>
+
+<section id="reading">
+  <h2>05 — Further Reading</h2>
+  <div class="sec-title">
+    <span class="zh">挑選標準：直接碰到「臨床 AI 的證據該長什麼樣」這個問題，而不是再報一次成績單</span>
+    <span class="en">Chosen for one thing: each takes on what clinical AI evidence ought to look like, rather than reporting another scorecard</span>
+  </div>
+
+  <ol class="reading">
+    <li>
+      <a href="https://ai.nejm.org/doi/full/10.1056/AIoa2600537" target="_blank" rel="noopener">Comparative Cost of Care Recommended by Large Language Models versus Treating Physicians — NEJM AI (2026-10-15)</a>
+      <p class="why"><span class="zh">本期最該讀原文的一篇。它示範了一個別人幾乎都跳過的研究設計：不比診斷正確率，而是比「照這個計畫走要花多少錢」，而且對照組是真的那位主治醫師。</span><span class="en">The one paper here most worth reading in the original. It demonstrates a design nearly everyone else skips: not whose diagnosis is right, but what following the plan costs — against the actual treating physician as comparator.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/articles/s41591-026-04639-5" target="_blank" rel="noopener">Prospective evidence for conversational medical AI is hard, but non-negotiable — Nature Medicine (2026)</a>
+      <p class="why"><span class="zh">配著 AMIE 那篇讀。它處理的正是本期反覆出現的那個結構問題：可行性研究能證明的事情非常有限，而從可行性跳到療效之間少掉的那幾步，目前整個領域都還沒補上。</span><span class="en">Read it alongside the AMIE paper. It addresses the structural problem that recurs throughout this edition: what a feasibility study can establish is narrowly bounded, and the field has not yet filled in the steps between feasibility and effectiveness.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/articles/s41591-026-04431-5" target="_blank" rel="noopener">General-purpose large language models outperform specialized clinical AI tools on medical benchmarks — Nature Medicine (2026)</a>
+      <p class="why"><span class="zh">把「要不要買專用醫療模型」這個問題問到底。與<a href="https://www.nature.com/articles/s41591-026-04457-9" target="_blank" rel="noopener">同作者群用醫師真實問題做的後續研究</a>一起看，對照本期 EVLF-FM 的外部驗證在兩個資料集上輸給 MedGemma 27B，會更有意思。</span><span class="en">It presses the question of whether a specialised medical model is worth buying at all. Pair it with <a href="https://www.nature.com/articles/s41591-026-04457-9" target="_blank" rel="noopener">the same group's follow-up using physicians' real-world questions</a>, and read both against EVLF-FM losing to MedGemma 27B on two external datasets in this edition.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/articles/s41591-026-04438-y" target="_blank" rel="noopener">AI-induced never-skilling in medical education — Nature Medicine (2026)</a>
+      <p class="why"><span class="zh">本期有三篇研究的結論都是「AI 當助手可以、當結論不行」，但沒有一篇問：如果住院醫師從第一天就有這個助手，他會不會根本不長出那個被輔助的能力。這篇問了。</span><span class="en">Three papers in this edition conclude that AI works as an assistant and not as a conclusion, but none asks what happens if a resident has that assistant from day one and never develops the skill being assisted. This one asks.</span></p>
+    </li>
+    <li>
+      <a href="https://www.mountsinai.org/about/newsroom/2026/mount-sinai-study-finds-safety-prompts-can-help-ai-models-make-safer-clinical-choices" target="_blank" rel="noopener">Evaluating Large Language Model Responses to Unsafe Clinical Instructions — Communications Medicine / Mount Sinai (2026-09-26)</a>
+      <p class="why"><span class="zh">規模大到值得單獨記住：20 套模型、501 種情境變體、逾千萬則回應。真正的價值在那個「加提示詞從 16.6% 降到 10.1%」的結構——它同時證明提示詞有效，也證明提示詞有上限。</span><span class="en">Large enough to remember on its own: 20 models, 501 scenario variants, over 10 million responses. The value is in the shape of the result — a safety reminder cutting harmful choices from 16.6% to 10.1% proves both that prompting works and that prompting has a ceiling.</span></p>
+    </li>
+  </ol>
+</section>
+
+<section id="refs">
+  <h2>06 — References</h2>
+  <div class="sec-title">
+    <span class="zh">參考文獻</span>
+    <span class="en">References</span>
+  </div>
+
+  <div class="panel">
+    <ol class="refs">
+      <li>A clinical multimodal vision language foundation model with fine-grain explainability. <em>Nature Medicine</em>, 2026-10-29. <a href="https://www.nature.com/articles/s41591-026-04655-5" target="_blank" rel="noopener">nature.com</a></li>
+      <li>EVLF-FM: Explainable Vision Language Foundation Model for Medicine. <em>arXiv:2509.24231</em>. <a href="https://arxiv.org/abs/2509.24231" target="_blank" rel="noopener">arxiv.org</a> · <a href="https://arxiv.org/pdf/2509.24231v1" target="_blank" rel="noopener">PDF</a></li>
+      <li>A clinical multimodal vision language foundation model with fine-grain explainability. <em>PubMed</em>, PMID 42957777. <a href="https://pubmed.ncbi.nlm.nih.gov/42957777/" target="_blank" rel="noopener">pubmed.ncbi.nlm.nih.gov</a></li>
+      <li>EVLF — source code repository. <em>GitHub (baiyang4/EVLF)</em>. <a href="https://github.com/baiyang4/EVLF" target="_blank" rel="noopener">github.com</a></li>
+      <li>Comparative Cost of Care Recommended by Large Language Models versus Treating Physicians. <em>NEJM AI</em>, 2026;3(11):AIoa2600537, online 2026-10-15. <a href="https://ai.nejm.org/doi/full/10.1056/AIoa2600537" target="_blank" rel="noopener">ai.nejm.org</a></li>
+      <li>AI's recommendations cost 3x more than physician care plans. <em>TechTarget Healthtech Analytics</em>, 2026-10-27. <a href="https://www.techtarget.com/healthtechanalytics/news/366652874/AIs-recommendations-cost-3x-more-than-physician-care-plans" target="_blank" rel="noopener">techtarget.com</a></li>
+      <li>Care recommendations by large language models were associated with higher healthcare costs. <em>2 Minute Medicine</em>, 2026-10-29. <a href="https://www.2minutemedicine.com/care-recommendations-by-large-language-models-were-associated-with-higher-healthcare-costs/" target="_blank" rel="noopener">2minutemedicine.com</a></li>
+      <li>LLMs mostly avoid unnecessary care in Choosing Wisely tests. <em>AuntMinnie</em>, 2026-10-19 (reporting <em>Annals of Internal Medicine</em>). <a href="https://www.auntminnie.com/home/article/15837911/llms-mostly-avoid-unnecessary-care-in-choosing-wisely-tests" target="_blank" rel="noopener">auntminnie.com</a></li>
+      <li>Mount Sinai Study Finds Safety Prompts Can Help AI Models Make Safer Clinical Choices. <em>Mount Sinai Newsroom</em>, 2026-10-08 (study in <em>Communications Medicine</em>, 2026-09-26, DOI 10.1038/s43856-026-01933-8). <a href="https://www.mountsinai.org/about/newsroom/2026/mount-sinai-study-finds-safety-prompts-can-help-ai-models-make-safer-clinical-choices" target="_blank" rel="noopener">mountsinai.org</a></li>
+      <li>AI lung cancer screening shows promise but falls short of clinical autonomy. <em>Bioengineer</em>, 2026-10-29 (reporting <em>Diagnostic and Prognostic Research</em> 10(1):21, DOI 10.1186/s41512-026-00235-w). <a href="https://bioengineer.org/ai-lung-cancer-screening-shows-promise-but-falls-short-of-clinical-autonomy/" target="_blank" rel="noopener">bioengineer.org</a></li>
+      <li>Conversational diagnostic artificial intelligence in ambulatory primary care: a prospective feasibility study. <em>The Lancet</em>, 2026-10-08. <a href="https://www.sciencedirect.com/science/article/abs/pii/S0140673626015357" target="_blank" rel="noopener">sciencedirect.com</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/42849491/" target="_blank" rel="noopener">PubMed 42849491</a></li>
+      <li>A Real-World Study of Patient-Facing AI in Primary Care. <em>Harvard Medical School</em>, 2026-10-13. <a href="https://hms.harvard.edu/news/real-world-study-patient-facing-ai-primary-care" target="_blank" rel="noopener">hms.harvard.edu</a></li>
+      <li>Conversational AI System Evaluated for Safety in First Real-World Primary Care Test. <em>ASCO AI</em>, 2026-10-28. <a href="https://ascoai.org/articles/2026/10/conversational-ai-system-evaluated-for-safety-in-first-real-world-primary-care-test/" target="_blank" rel="noopener">ascoai.org</a></li>
+      <li>Single-cell-level digital twins for preterm birth prevention strategies. <em>Science Advances</em>, 2026, DOI 10.1126/sciadv.aed2741. <a href="https://www.science.org/doi/10.1126/sciadv.aed2741" target="_blank" rel="noopener">science.org</a></li>
+      <li>Two out of nine FDA-approved drugs could slow preterm labor, new digital twin model suggests. <em>EurekAlert / AAAS</em>, 2026-10-21. <a href="https://www.eurekalert.org/news-releases/1148250" target="_blank" rel="noopener">eurekalert.org</a></li>
+      <li>Applying digital twins to prevent preterm births. <em>Nature Medicine</em> Research Highlight, 2026-10-29. <a href="https://www.nature.com/articles/d41591-026-00056-w" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Preterm Birth Prevention AI Finds Aspirin-Antacid Combo 15 Times Better Than Aspirin Alone. <em>Tech Times</em>, 2026-10-30. <a href="https://www.techtimes.com/articles/329774/20261030/preterm-birth-prevention-ai-finds-aspirin-antacid-combo-15-times-better-aspirin-alone.htm" target="_blank" rel="noopener">techtimes.com</a></li>
+      <li>AI detects "invisible" signs of pancreatic cancer years before diagnosis. <em>ScienceDaily / BMJ Group</em>, 2026-10-26 (study in <em>Gut</em>, DOI 10.1136/gutjnl-2025-337266). <a href="https://www.sciencedaily.com/releases/2026/10/261024222031.htm" target="_blank" rel="noopener">sciencedaily.com</a></li>
+      <li>Mayo Clinic AI helps specialists detect pancreatic cancer up to 3 years before diagnosis in landmark validation study. <em>Mayo Clinic News Network</em>, 2026-04-29. <a href="https://newsnetwork.mayoclinic.org/discussion/mayo-clinic-ai-detects-pancreatic-cancer-up-to-3-years-before-diagnosis-in-landmark-validation-study/" target="_blank" rel="noopener">newsnetwork.mayoclinic.org</a></li>
+      <li>Mayo Clinic Radiomics-Based Early Detection Model — The Best Inventions of 2026. <em>TIME</em>, 2026. <a href="https://time.com/collection/best-inventions/2026/mayo-clinic-radiomics-based-early-detection-model/" target="_blank" rel="noopener">time.com</a></li>
+      <li>台灣AI影響性研究中心啟動 導入AI臨床試驗盼供健保共擬會給付參考. <em>聯合報 / UDN</em>, 2025-11-20. <a href="https://udn.com/news/story/7266/9152553" target="_blank" rel="noopener">udn.com</a></li>
+      <li>醫療AI要聰明，還要能負責！十家醫院打造可信賴的智慧醫療守門人 — 2025年衛生福利部負責任AI執行中心成果發表會. <em>衛生福利部資訊處</em>, 2025-04-21. <a href="https://dep.mohw.gov.tw/DOIM/cp-935-82236-114.html" target="_blank" rel="noopener">dep.mohw.gov.tw</a></li>
+      <li>10醫院完成AI認證制度建立 衛福部：醫療數位轉型一大步. <em>自由健康網</em>. <a href="https://health.ltn.com.tw/article/breakingnews/5018588" target="_blank" rel="noopener">health.ltn.com.tw</a></li>
+      <li>AI診斷「落地」！衛福部與羅氏大廠簽MOU 首波瞄準腎臟病推AI臨床決策. <em>鉅亨網 / Anue</em>, 2026-08-21. <a href="https://news.cnyes.com/news/id/6583558" target="_blank" rel="noopener">news.cnyes.com</a></li>
+      <li>2D變3D降漏診風險 衛福部力推智慧醫療普惠全國. <em>中央社 / CNA</em>, 2026-10-05. <a href="https://www.cna.com.tw/news/ahel/202610050133.aspx" target="_blank" rel="noopener">cna.com.tw</a></li>
+      <li>臨床AI取證驗證中心國際研討會（2026-10-20）議程公告. <em>衛生福利部數位健康平台 / Threads</em>, 2026-10. <a href="https://www.threads.com/@mohw_digital_health_platform/post/DeQZrAVD0ME/" target="_blank" rel="noopener">threads.com</a></li>
+      <li>Prospective evidence for conversational medical AI is hard, but non-negotiable. <em>Nature Medicine</em>, 2026. <a href="https://www.nature.com/articles/s41591-026-04639-5" target="_blank" rel="noopener">nature.com</a></li>
+      <li>General-purpose large language models outperform specialized clinical AI tools on medical benchmarks. <em>Nature Medicine</em>, 2026. <a href="https://www.nature.com/articles/s41591-026-04431-5" target="_blank" rel="noopener">nature.com</a></li>
+      <li>General-purpose chatbots outperform clinical AI tools on physicians' real-world questions. <em>Nature Medicine</em>, 2026. <a href="https://www.nature.com/articles/s41591-026-04457-9" target="_blank" rel="noopener">nature.com</a></li>
+      <li>AI-induced never-skilling in medical education. <em>Nature Medicine</em>, 2026, DOI 10.1038/s41591-026-04438-y. <a href="https://www.nature.com/articles/s41591-026-04438-y" target="_blank" rel="noopener">nature.com</a></li>
+    </ol>
+    <div class="note">
+      <span class="zh"><strong>編輯說明：</strong>（1）<strong>窗口與日期</strong>：本期主窗口為 10/19–11/01。有兩則的原始發表早於窗口，已在卡片內明確標注——AMIE 論文發表於 10/8（10 月下旬為評論與二次報導高峰）；Mayo REDMOD 的 Gut 論文線上日為 2026/4/22、官方新聞稿 4/29，10/24–10/27 這一波是二次報導與 TIME 最佳發明入選帶來的，收錄原因是它與本期主軸直接對話，而非本週新發表。（2）<strong>付費牆與未取得全文</strong>：Annals of Internal Medicine（Choosing Wisely 研究）、The Lancet（AMIE）、Science Advances（SIMCO）、Diagnostic and Prognostic Research（肺癌統合分析）、Gut（REDMOD）的全文均未取得，相關數字依公開可見的標題、導言與列名的二手報導撰寫；Nature 系列頁面與史丹佛官方新聞頁在本次抓取時分別因站方錯誤與 robots 規則無法讀取，EVLF-FM 的細部數字因此改以 arXiv 預印本為準。（3）<strong>數字衝突</strong>：NEJM AI 研究的受測系統數在二手報導中有「20 套通用」與「24 套（20 通用 + 4 醫療專用）」兩種說法，本報告採 24 套並已於卡片內標注分歧；EVLF-FM 的 arXiv 版本表格數值與正文敘述有數處不一致（平均 mIOU 0.743 對 0.626、VQA 欄位標籤疑似錯置），本報告採表格值。（4）<strong>模擬值不是療效</strong>：SIMCO 的「15 倍」與所有延後天數皆為模擬輸出，非病人結果，已於卡片內拆解計算方式。（5）<strong>台灣視角的時間性</strong>：台灣段落引用的制度事實（負責任AI執行中心 2024/9/28 啟動、2025/4/21 成果發表、台灣AI影響性研究中心 2025/11/20 啟動、羅氏 MOU 2026/8/21、3D 影像大會 2026/10/5、取證驗證中心研討會 2026/10/20）皆非本週新聞，而是用來解讀本週國際消息的背景；自由健康網該篇報導頁面未標示完整年月，本報告僅引用其內容事實而不主張其發布日期。（6）本期無任何廠商自述、未經第三方稽核的商業數字被當成主要結論使用；EVLF-FM 與 AMIE 的全部效能數字皆來自同儕審查論文或其預印本，但兩者均無前瞻臨床療效證據。</span>
+      <span class="en"><strong>Editor's note:</strong> (1) <strong>Window and dates</strong>: the primary window for this edition is 19 Oct–1 Nov. Two items were originally published before it and are flagged as such in their cards — the AMIE paper appeared on 8 October (late October was the peak of commentary and secondary coverage), and Mayo's REDMOD paper went online in Gut on 22 April 2026 with a press release on 29 April, the 24–27 October wave being secondary coverage driven partly by its TIME Best Inventions listing. REDMOD is included because it speaks directly to this edition's theme, not because it published this week. (2) <strong>Paywalls and full texts not obtained</strong>: the full texts of the Annals of Internal Medicine (Choosing Wisely), The Lancet (AMIE), Science Advances (SIMCO), Diagnostic and Prognostic Research (lung screening meta-analysis) and Gut (REDMOD) papers were not obtained; the figures here rest on publicly visible titles and ledes plus the named secondary coverage. Nature's article pages and Stanford's news page could not be read at fetch time (site errors and robots rules respectively), so EVLF-FM's detailed numbers are taken from the arXiv preprint. (3) <strong>Conflicting figures</strong>: secondary coverage of the NEJM AI study gives both "20 general-purpose LLMs" and "24 systems (20 general-purpose plus 4 medical-specific)"; this report uses 24 and notes the discrepancy in the card. Several arXiv table values for EVLF-FM conflict with its own narrative (mean mIOU 0.743 vs 0.626; apparently transposed VQA column labels), and this report uses the table values. (4) <strong>Simulated is not clinical</strong>: SIMCO's "15x" and every delay figure are simulation outputs rather than patient outcomes, and the card shows how the ratio was computed. (5) <strong>Timing of the Taiwan section</strong>: the institutional facts cited there (Responsible AI Execution Center launched 28 Sep 2024, results presentation 21 Apr 2025, Taiwan AI Impact Research Center launched 20 Nov 2025, Roche MOU 21 Aug 2026, 3D imaging conference 5 Oct 2026, Clinical AI Validation Center seminar 20 Oct 2026) are not this week's news; they are background used to interpret this week's international developments. The Liberty Times health page cited there does not carry a full date, so this report relies on its content and makes no claim about its publication date. (6) No vendor-reported, independently unaudited commercial figure is used as a primary conclusion in this edition; all performance numbers for EVLF-FM and AMIE come from peer-reviewed papers or their preprints, and neither has prospective clinical effectiveness evidence.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-row">
+    <div>
+      <span class="zh">AI／醫療AI 每日新知日報 · 由 Claude 於台北時間每日自動產出 · 本期主題：星期一／臨床應用與研究<br>本報告內容經來源查證，但不構成投資或醫療建議。所有數據請以原始出處為準。</span>
+      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Monday / Clinical Applications &amp; Research<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
+    </div>
+    <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com / 返回 peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
+  </div>
+</footer>
+</main>
+
+<div class="fabs">
+  <button class="up" id="up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+  <a class="home-fab" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg></a>
+</div>
+
+<script>
+function setLang(l){
+  document.body.classList.remove('lang-zh','lang-en');
+  document.body.classList.add('lang-'+l);
+  document.documentElement.lang = (l==='zh') ? 'zh-Hant' : 'en';
+  document.getElementById('b-zh').classList.toggle('on', l==='zh');
+  document.getElementById('b-en').classList.toggle('on', l==='en');
+  document.title = (l==='zh')
+    ? 'AI／醫療AI 每日新知日報 · 2026-11-02'
+    : 'AI & Medical AI Daily · 2026-11-02';
+}
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.getElementById('theme-ic').textContent =
+    document.body.classList.contains('dark') ? '◑' : '◐';
+}
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.body.classList.add('dark');
+  document.getElementById('theme-ic').textContent = '◑';
+}
+window.addEventListener('scroll', function(){
+  document.getElementById('up').classList.toggle('show', window.scrollY > 600);
+});
+
+/* GitHub 星星數：無需授權，失敗或被限流時靜默保留佔位符 */
+(function(){
+  var el = document.getElementById('ghs');
+  if (!el || typeof fetch !== 'function') return;
+  fetch('https://api.github.com/repos/tingwei161803/ai-medical-daily', {headers:{Accept:'application/vnd.github+json'}})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if (!d || typeof d.stargazers_count !== 'number') return;
+      var n = d.stargazers_count;
+      el.textContent = n >= 1000 ? (Math.round(n/100)/10) + 'k' : String(n);
+    })
+    .catch(function(){});
+})();
+</script>
+</body>
+</html>
