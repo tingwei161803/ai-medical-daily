@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>AI／醫療AI 每日新知日報 · 2026-11-05</title>
+<meta property="og:url" content="https://ai-medical-daily.peteraim.com/reports/2026-11-05.html" />
+<link rel="canonical" href="https://ai-medical-daily.peteraim.com/reports/2026-11-05.html" />
+<meta name="report-date" content="2026-11-05">
+<meta name="report-theme" content="technology">
+<meta name="report-title-zh" content="agent 從「說」跨到「做」的同一週，三層基礎設施同時落地——11/4 Nature 刊出上海交大的 AutoDNA，用四個規劃 agent 加兩個執行 agent 調度 20 多類儀器，把 DNA 合成、定序與癌症相關突變檢出全程無人化，預印本報酵素法合成 8 輪後逐步產率 97.7%（93.00%→97.79%）、一次 DNA 儲存往返 162.9 小時／9,365 個硬體步驟、多用戶排程比循序快 3.60 倍；11/2 athenahealth 開出 athenaPatient MCP server，讓病人把檢驗、用藥、診斷直接接到 Claude；11/3 Anthropic 開源 FlashProve，要用不洩漏權重的密碼學指紋證明「這段輸出究竟出自哪個模型」。而最該讓醫院停下來的數字來自 10/29 Doximity 的劑量稽核：9 個 2026 年模型、2,204 種藥、261,508 筆劑量，至少 2.3% 給錯，每 1,000 個回答約 20 個含嚴重劑量錯誤、約 30.5 個落在 NCC MERP E–H 類，被抓到的錯誤裡 43.8% 嚴重、3.4% 可能致命，2024 年後核准的新藥出錯勝算是 5.1 倍（95% CI 3.9–6.5）">
+<meta name="report-title-en" content="The week agents crossed from saying to doing, and three layers of plumbing landed at once — Nature published Shanghai Jiao Tong's AutoDNA on Nov 4, where four planning agents and two execution agents drive more than twenty classes of instrument through DNA synthesis, sequencing and cancer-linked mutation detection with no human in the loop (the preprint reports 97.7% stepwise yield after eight enzymatic cycles, rising 93.00%→97.79%, a 162.9-hour DNA-storage round trip across 9,365 hardware steps, and 3.60x speedup over sequential scheduling); athenahealth opened its athenaPatient MCP server on Nov 2 so patients can pipe labs, medications and diagnoses straight into Claude; and Anthropic open-sourced FlashProve on Nov 3, a cryptographic fingerprint that proves which model produced an output without exposing its weights. The figure hospitals should stop for came from Doximity's Oct 29 dosing audit: nine 2026-vintage models, 2,204 drugs, 261,508 dosages, at least 2.3% wrong, roughly 20 serious dosing errors per 1,000 answers and about 30.5 per 1,000 in NCC MERP categories E–H, with 43.8% of detected errors serious and 3.4% potentially lethal, and 5.1x the odds of error on drugs approved since 2024 (95% CI 3.9–6.5)">
+<meta name="report-summary-zh" content="Nature 11/4 的 AutoDNA 把 LLM agent 群放進濕實驗室、athenahealth 11/2 用 MCP 把病歷接上 Claude、Anthropic 11/3 開源 FlashProve 要證明輸出出自哪個模型；而 Doximity 對 261,508 筆劑量的稽核顯示至少 2.3% 給錯、3.4% 的已知錯誤可能致命。">
+<meta name="report-summary-en" content="Nature's Nov 4 AutoDNA paper puts LLM agents inside a wet lab, athenahealth wires patient records into Claude over MCP, and Anthropic open-sources FlashProve to prove which model wrote an output — while Doximity's audit of 261,508 dosages finds at least 2.3% wrong and 3.4% of detected errors potentially lethal.">
+<meta property="og:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HJLDQZDK5V');
+</script>
+<link rel="stylesheet" href="/assets/report.css">
+</head>
+<body class="lang-zh">
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span><span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <div class="bar-sp"></div>
+    <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub / 在 GitHub 給這個專案一顆星"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
+    <div class="seg">
+      <button id="b-zh" class="on" onclick="setLang('zh')">中文</button>
+      <button id="b-en" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="kicker">
+    <span class="zh-inline">星期四 · 技術突破</span>
+    <span class="en-inline">Thursday · Technology</span>
+  </div>
+  <h1>
+    <span class="zh">agent 從「說」跨到「做」的同一週，三層基礎設施同時落地——濕實驗室、病歷管線、模型身分</span>
+    <span class="en">The week agents crossed from saying to doing: the wet lab, the records pipe, and the model's identity all landed at once</span>
+  </h1>
+  <div class="dateline">
+    <span class="zh-inline">2026 年 11 月 5 日（四）· 涵蓋 10/27–11/4 · 台北時間</span>
+    <span class="en-inline">Thursday, November 5, 2026 · Covering Oct 27–Nov 4 · Taipei time</span>
+  </div>
+  <p class="lede">
+    <span class="zh">本週的技術突破不在模型排行榜上，而在「模型被允許親手動什麼」。<a href="https://www.nature.com/articles/s41586-026-11228-6" target="_blank" rel="noopener">Nature 11/4 刊出</a>上海交通大學團隊的 AutoDNA：四個規劃 agent（Experiment Planner、Literature Researcher、Reagent Manager、Hypothesis Proposer）加兩個執行 agent（Program Developer、Hardware Executor &amp; Validator），把每個儀器動作包成帶自然語言描述的 Python 物件，讓模型直接推理並呼叫硬體，<a href="https://tldr.tech/story/0e051baa-103e-49f4-90b5-12723ff48737" target="_blank" rel="noopener">可操作 20 多類儀器</a>，人只負責補試劑與硬體維護。同一週 <a href="https://www.athenahealth.com/about/press-releases/patients-connect-health-records" target="_blank" rel="noopener">athenahealth 11/2 開出 athenaPatient MCP server</a>，病人可把檢驗、用藥、診斷、就診紀錄接給 Claude；<a href="https://techcrunch.com/2026/11/03/anthropic-is-working-on-a-system-to-prove-ai-models-identity/" target="_blank" rel="noopener">Anthropic 11/3 開源 FlashProve</a>，要讓任何人用不洩漏權重的密碼學指紋驗證「這段輸出到底出自哪個模型」。但真正該讓醫院停下來的是 <a href="https://blog.doximity.com/articles/over-2-of-llm-doses-are-wrong-some-can-be-lethal" target="_blank" rel="noopener">10/29 Doximity 對 261,508 筆劑量的稽核</a>：至少 2.3% 給錯，每 1,000 個回答約 20 個含嚴重劑量錯誤，被抓到的錯誤裡 3.4% 可能致命。能力在往下游走，量測卻還沒追上去。</span>
+    <span class="en">This week's technology story is not a leaderboard move but a change in what models are allowed to touch with their own hands. <a href="https://www.nature.com/articles/s41586-026-11228-6" target="_blank" rel="noopener">Nature published AutoDNA on Nov 4</a>, from a Shanghai Jiao Tong University team: four planning agents (Experiment Planner, Literature Researcher, Reagent Manager, Hypothesis Proposer) and two execution agents (Program Developer, Hardware Executor &amp; Validator), with every instrument operation wrapped as a Python object carrying a natural-language description so the model can reason about hardware and call it directly. It <a href="https://tldr.tech/story/0e051baa-103e-49f4-90b5-12723ff48737" target="_blank" rel="noopener">drives more than twenty classes of instrument</a>; humans only restock reagents and maintain the machines. In the same week <a href="https://www.athenahealth.com/about/press-releases/patients-connect-health-records" target="_blank" rel="noopener">athenahealth opened its athenaPatient MCP server on Nov 2</a>, letting patients hand labs, medications, diagnoses and visit history to Claude, and <a href="https://techcrunch.com/2026/11/03/anthropic-is-working-on-a-system-to-prove-ai-models-identity/" target="_blank" rel="noopener">Anthropic open-sourced FlashProve on Nov 3</a>, so anyone can verify which model produced an output using a cryptographic fingerprint that reveals no weights. What hospitals should actually stop for, though, is <a href="https://blog.doximity.com/articles/over-2-of-llm-doses-are-wrong-some-can-be-lethal" target="_blank" rel="noopener">Doximity's Oct 29 audit of 261,508 dosages</a>: at least 2.3% wrong, roughly 20 serious dosing errors per 1,000 answers, and 3.4% of the errors it caught potentially lethal. Capability is moving downstream faster than measurement.</span>
+  </p>
+
+  <nav class="toc">
+    <a href="#top"><span class="zh-inline">重點新聞</span><span class="en-inline">Top Stories</span></a>
+    <a href="#product"><span class="zh-inline">產品分析</span><span class="en-inline">Product Analysis</span></a>
+    <a href="#company"><span class="zh-inline">公司與競爭</span><span class="en-inline">Companies &amp; Competition</span></a>
+    <a href="#taiwan"><span class="zh-inline">台灣視角</span><span class="en-inline">Taiwan Angle</span></a>
+    <a href="#reading"><span class="zh-inline">延伸閱讀</span><span class="en-inline">Further Reading</span></a>
+    <a href="#refs"><span class="zh-inline">參考文獻</span><span class="en-inline">References</span></a>
+  </nav>
+</div>
+
+<!-- ============ 01 重點新聞 ============ -->
+<section id="top">
+  <h2>01 — Top Stories</h2>
+  <div class="sec-title">
+    <span class="zh">八件事，按「模型被允許動的東西」由實體往抽象排：濕實驗室的儀器、藥袋裡的毫克數、EHR 裡的病歷、掛號系統的時段，最後是模型自己的身分。</span>
+    <span class="en">Eight items, ordered by what the model is allowed to touch — from instruments in a wet lab, to milligrams in a prescription, to records inside an EHR, to slots in a booking system, and finally to the model's own identity.</span>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">主線 · 自主實驗室</span><span class="en-inline">Lead · Autonomous lab</span></span>
+      <span class="tag">Nature</span><span class="tag">AutoDNA</span><span class="tag">上海交通大學</span><span class="tag">11/04</span>
+    </div>
+    <h3>
+      <span class="zh">Nature 11/4：六個 agent、20 多類儀器，AutoDNA 把 DNA 合成到定序整條流程交給模型跑</span>
+      <span class="en">Nature, Nov 4: six agents, twenty-plus instrument classes — AutoDNA hands the whole DNA synthesis-to-sequencing pipeline to the model</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">11 月 4 日，<a href="https://www.nature.com/articles/s41586-026-11228-6" target="_blank" rel="noopener">Nature 刊出《An AI-native experimental laboratory for autonomous biomolecular operations》</a>（Wu 等人）。系統名為 AutoDNA，<a href="https://tldr.tech/story/0e051baa-103e-49f4-90b5-12723ff48737" target="_blank" rel="noopener">來自上海交通大學，可操作 20 多類儀器</a>，支援核酸合成、轉錄、擴增與定序，應用指向診斷、藥物開發與資訊儲存。架構上把每一個儀器操作包成帶自然語言描述的 Python 物件（atomic services），讓 LLM agent 能推理並直接呼叫硬體；規劃端有 Experiment Planner、Literature Researcher、Reagent Manager、Hypothesis Proposer，執行端有 Program Developer 與 Hardware Executor &amp; Validator，排程器掌握儀器即時狀態並做功能等價改道（加熱器忙碌時改用 thermal cycler）。<a href="https://pith.science/paper/2507.02379" target="_blank" rel="noopener">預印本（arXiv 2507.02379）的數字</a>：整合 25 台儀器；酵素法 DNA 合成經 8 輪 PAGE 優化後逐步產率 97.7%（軌跡自 93.00% 升到 97.79%）；一次 DNA 儲存往返耗時 162.9 小時、9,365 個硬體步驟，把 46 bytes 編成 78 條 strand，除補試劑外無人工介入；多用戶排程比循序執行快 3.60 倍、省 168.8 分鐘；加熱器使用率自 55.0% 升到 79.0%（1.44 倍），thermal cycler 自 47.6% 升到 80.6%（1.69 倍）。<a href="https://histalk2.com/2026/11/04/healthcare-ai-news-11-4-26/" target="_blank" rel="noopener">HIStalk 11/4 對 Nature 正式版的摘要</a>則寫：配對到專家優化後的 DNA 合成產率、併行實驗快 3.2 倍、並檢出且驗證了一個癌症相關突變。</span>
+        <span class="en">On November 4, <a href="https://www.nature.com/articles/s41586-026-11228-6" target="_blank" rel="noopener">Nature published "An AI-native experimental laboratory for autonomous biomolecular operations"</a> (Wu et al.). The system, AutoDNA, comes <a href="https://tldr.tech/story/0e051baa-103e-49f4-90b5-12723ff48737" target="_blank" rel="noopener">from Shanghai Jiao Tong University and operates more than twenty classes of instrument</a>, covering nucleic-acid synthesis, transcription, amplification and sequencing, with applications aimed at diagnostics, drug development and information storage. Architecturally, every instrument operation is wrapped as a Python object carrying a natural-language description — "atomic services" — so LLM agents can reason about hardware and call it directly. Planning is split across an Experiment Planner, Literature Researcher, Reagent Manager and Hypothesis Proposer; execution across a Program Developer and a Hardware Executor &amp; Validator; and the scheduler tracks live instrument status with functional-equivalence rerouting (using a thermal cycler when the heater is busy). <a href="https://pith.science/paper/2507.02379" target="_blank" rel="noopener">The preprint's figures (arXiv 2507.02379)</a>: 25 instruments integrated; 97.7% stepwise yield for enzymatic DNA synthesis after an eight-cycle PAGE optimization, with the trajectory climbing from 93.00% to 97.79%; a DNA-storage round trip taking 162.9 hours and 9,365 hardware steps, encoding 46 bytes into 78 strands with no manual intervention beyond reagent refills; a 3.60x speedup over sequential execution in multi-user scheduling, saving 168.8 minutes; heater utilization rising from 55.0% to 79.0% (1.44x) and the thermal cycler from 47.6% to 80.6% (1.69x). <a href="https://histalk2.com/2026/11/04/healthcare-ai-news-11-4-26/" target="_blank" rel="noopener">HIStalk's Nov 4 summary of the published version</a> adds that it matched expert-optimized DNA synthesis yields, ran concurrent experiments 3.2-fold faster, and detected and validated a cancer-associated mutation.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">過去兩年醫療 AI 的 agent 討論幾乎都停在文字層：寫病歷、查指引、送 prior auth。AutoDNA 把 agent 放到「會壞掉、會污染、會耗掉真實試劑」的物理世界，而且挑的是分子診斷最上游的那段流程。對醫療端的直接意義有兩個：第一，伴隨診斷與定序的瓶頸從來不只是演算法，而是誰在半夜三點重跑那一盤 PCR；第二，一旦實驗流程由模型產生程式碼來驅動，「這批檢驗是怎麼做出來的」就從實驗記錄本變成一份可重播的執行軌跡——這對後面第 8 則要談的稽核層是好消息，對 CLIA／LDT 這類以人員資格與 SOP 為核心的監管框架則是個還沒有答案的問題。</span>
+        <span class="en">For two years, agent talk in healthcare has stayed at the text layer: drafting notes, looking up guidelines, filing prior authorizations. AutoDNA puts agents into a physical world that breaks, contaminates and consumes real reagents — and it picks the most upstream stretch of molecular diagnostics to do it in. Two consequences land directly on the clinical side. First, the bottleneck in companion diagnostics and sequencing was never only the algorithm; it was who re-runs that PCR plate at three in the morning. Second, once a protocol is driven by model-generated code, "how was this assay actually performed" stops being a lab notebook and becomes a replayable execution trace — good news for the audit layer in item 8 below, and an open question for regulatory frameworks such as CLIA and LDT oversight, which are built around personnel qualifications and written SOPs.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">同儕評註指出的問題不輕：<a href="https://pith.science/paper/2507.02379" target="_blank" rel="noopener">頭條的產率與儲存結果各只有單次執行</a>，沒有重複實驗與誤差棒；「匹配人類專家最佳水準」比的是別家文獻值而非同批平行對照；完全沒報 LLM 產碼失敗率、重試次數或人工救援次數；吞吐量的 3.60 倍是對自己的循序執行、不是對外部平台；而「自主」的邊界在補試劑那裡其實是模糊的。另外，Nature 正式版的 3.2 倍與預印本的 3.60 倍不一致，應以正式版為準——本報因 nature.com 無法直接取用，架構與細項數字引自預印本與其公開評註頁，未能逐字核對正式版。</span>
+        <span class="en">The peer commentary is not gentle. <a href="https://pith.science/paper/2507.02379" target="_blank" rel="noopener">The headline yield and storage results each come from a single run</a>, with no replicates and no error bars; the "matches human experts" claim is measured against a literature value from a different lab rather than a same-batch parallel control; nothing is reported on LLM code-generation failure rates, retries or human recovery events; the 3.60x throughput gain is against the system's own sequential execution, not an external platform; and the boundary of "autonomy" is genuinely fuzzy at the reagent-refill step. Note also that the published version's 3.2-fold figure disagrees with the preprint's 3.60x, and the published version should govern — this report could not retrieve nature.com directly, so the architecture and detailed figures here are cited from the preprint and its public review page rather than verified line by line against the journal text.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.nature.com/articles/s41586-026-11228-6" target="_blank" rel="noopener">Nature, 2026-11-04</a> · <a href="https://www.nature.com/articles/d41586-026-03270-1" target="_blank" rel="noopener">Nature News: AI agents enter the &lsquo;wet lab&rsquo;</a> · <a href="https://pith.science/paper/2507.02379" target="_blank" rel="noopener">arXiv 2507.02379 preprint review</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">量測 · 用藥安全</span><span class="en-inline">Measurement · Medication safety</span></span>
+      <span class="tag">Doximity</span><span class="tag">DoseCheck</span><span class="tag">RxIndex</span><span class="tag">10/29</span>
+    </div>
+    <h3>
+      <span class="zh">261,508 筆劑量、9 個 2026 年模型：至少 2.3% 給錯，被抓到的錯誤裡 3.4% 可能致命</span>
+      <span class="en">261,508 dosages across nine 2026-vintage models: at least 2.3% wrong, and 3.4% of the errors caught are potentially lethal</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">10 月 29 日，<a href="https://blog.doximity.com/articles/over-2-of-llm-doses-are-wrong-some-can-be-lethal" target="_blank" rel="noopener">Doximity 醫療總監 Alex Blau 公布一份劑量稽核</a>：9 個 2026 年發布的常用 LLM、8,000 多道「依真實醫師提問建模」的劑量題、涵蓋 2,204 種藥，共評估 261,508 筆劑量。結果以 EQUIP 量表評定嚴重度，並以 NCC MERP 量表做敏感度分析。至少 2.3% 的劑量是錯的，作者自稱這是保守下界；每 1,000 個回答約有 20 個含嚴重劑量錯誤，NCC MERP 敏感度分析下約 30.5／1,000 落在 E–H 類（即已造成或可能造成傷害）。被偵測到的錯誤中 43.8% 屬嚴重、3.4% 可能致命；最嚴重的那一群裡，每 5 個有 1 個是單位或小數點錯誤，每 20 個有 1 個是搞混兩種藥或兩種給藥途徑。最清楚的風險分層來自上市時間：2024 年之後核准的藥，出錯勝算是 5.1 倍（95% CI 3.9–6.5）。同一篇同時發表對策 DoseCheck。</span>
+        <span class="en">On October 29, <a href="https://blog.doximity.com/articles/over-2-of-llm-doses-are-wrong-some-can-be-lethal" target="_blank" rel="noopener">Doximity medical director Alex Blau published a dosing audit</a>: nine widely used LLMs, all released in 2026, answered more than 8,000 dosing questions "modeled on real physician queries" across 2,204 drugs, for 261,508 dosages evaluated in total. Severity was scored on the EQUIP scale with a sensitivity analysis on NCC MERP. At least 2.3% of doses were wrong, which the author calls a conservative lower bound. Roughly 20 of every 1,000 answers contained a serious dosing error, and about 30.5 per 1,000 fell into NCC MERP categories E–H — errors that caused or could cause harm. Of the errors detected, 43.8% were serious and 3.4% potentially lethal; among the most severe, one in five was a unit or decimal error and one in twenty confused two medications or two routes of administration. The cleanest risk stratifier was recency: drugs approved in 2024 or later carried 5.1 times the odds of error (95% CI 3.9–6.5). The same post launched the countermeasure, DoseCheck.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這是本週唯一一份把「模型做臨床動作」的錯誤率拆到可行動顆粒度的量測，而它指向的對策方向跟主流相反：不是再疊一個模型去審第一個模型，而是把劑量這類有唯一正確答案的欄位，交給確定性的查表層。單位與小數點錯誤占最嚴重錯誤的五分之一，這種錯誤不需要推理就能抓，但也正是語言模型最不該被信任的地方。而 5.1 倍那個數字給出一條可以立刻寫進政策的規則：對 2024 年後核准的藥，模型輸出的劑量不應在未經結構化資料驗證的情況下進入處方流程。</span>
+        <span class="en">This is the week's only measurement that breaks an agentic clinical action down to an actionable grain, and the remedy it points to runs against the prevailing instinct: not stacking a second model to review the first, but handing fields with a single correct answer — dosing above all — to a deterministic lookup layer. Unit and decimal errors account for a fifth of the most severe mistakes; catching those requires no reasoning at all, and they are precisely where a language model deserves least trust. The 5.1x figure, meanwhile, yields a rule that can be written into policy today: for drugs approved since 2024, a model-produced dose should not enter a prescribing workflow without validation against structured data.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">這是廠商自家部落格，且 Doximity 同時在賣解法。頁面未附完整研究、未說明同儕審查狀態、未公布各模型分項數據（9 個模型一個都沒點名），也沒有獨立第三方複驗。「至少 2.3%」的保守下界如何定義、8,000 道題如何從真實提問建模，都只有作者自述。DoseCheck 的 &lt;100 毫秒與 RxIndex 覆蓋度同樣是廠商自述。</span>
+        <span class="en">This is a vendor's own blog, and Doximity is selling the fix in the same breath. The page carries no full study, no statement of peer-review status, no per-model breakdown — not one of the nine models is named — and no independent replication. How the "at least 2.3%" lower bound was defined, and how 8,000 questions were modeled on real queries, rest on the author's account alone. DoseCheck's sub-100-millisecond latency and RxIndex coverage are likewise vendor-reported.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://blog.doximity.com/articles/over-2-of-llm-doses-are-wrong-some-can-be-lethal" target="_blank" rel="noopener">Doximity Blog, 2026-10-29</a> · <a href="https://www.healthcareaiguy.com/p/healthcare-ai-guy-weekly-11-3" target="_blank" rel="noopener">Healthcare AI Guy Weekly, 2026-11-03</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">可驗證性 · 開源</span><span class="en-inline">Verifiability · Open source</span></span>
+      <span class="tag">Anthropic</span><span class="tag">FlashProve</span><span class="tag">11/03</span>
+    </div>
+    <h3>
+      <span class="zh">FlashProve：用不洩漏權重的密碼學指紋，證明「這段輸出究竟出自哪個模型」</span>
+      <span class="en">FlashProve: proving which model produced an output, with a cryptographic fingerprint that reveals no weights</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">11 月 3 日，<a href="https://techcrunch.com/2026/11/03/anthropic-is-working-on-a-system-to-prove-ai-models-identity/" target="_blank" rel="noopener">Anthropic 公布並開源 FlashProve</a>，目標是「provable inference」：模型實驗室為每個發布的模型公布一份指紋，事後任何輸出都能與指紋做密碼學比對。設計上三件事是關鍵——指紋不揭露模型權重，所以封閉商用模型可以參與而不交出最值錢的資產；驗證輕到可以在本地裝置上跑；而且要能抵抗冒充者，包括建造並運行該模型的實驗室自己。Anthropic 同時放出詳細技術規格與各元件的可運作程式碼到 GitHub（文章未指明授權條款）。團隊自述用途包括：抓出業者偷換便宜模型省成本、或偷換昂貴模型美化評測數字，以及讓使用者確認自己用的模型就是以為的那個、驗證第三方「這份程式碼安全掃描／商業計畫審查是由某個先進模型完成」的說法。</span>
+        <span class="en">On November 3, <a href="https://techcrunch.com/2026/11/03/anthropic-is-working-on-a-system-to-prove-ai-models-identity/" target="_blank" rel="noopener">Anthropic published and open-sourced FlashProve</a>, aimed at "provable inference": a lab publishes a fingerprint for each model it releases, and any output can later be matched against that fingerprint and verified cryptographically. Three design properties carry the idea — the fingerprint does not reveal model weights, so closed commercial models can participate without surrendering their most valuable asset; verification is light enough to run on a local device; and the scheme is meant to resist impostors, including the lab that built and runs the model. Anthropic also released a detailed technical specification and working code for various elements on GitHub (the article does not name the license). Stated use cases: catching a provider that quietly swaps in a cheaper model to cut costs, or a more expensive one to inflate benchmark results; letting users confirm the model they are using is the one they think it is; and verifying third-party claims that a code security scan or business-plan review was performed by a particular advanced model.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">醫療是「模型身分」問題最尖銳的地方，因為這裡的每個輸出都可能進入法律紀錄。病歷摘要、鑑別診斷清單、影像報告初稿，事後要追「這是哪個模型、哪個版本做的」，目前唯一的證據就是廠商的日誌與自述——而廠商正是最有動機換模型的那一方（成本、量能、延遲）。把這件事跟 <a href="https://www.hhs.gov/press-room/hhs-finalizes-hti-5-deregulatory-rule.html" target="_blank" rel="noopener">HHS 11 月初定案的 HTI-5 去監管規則（刪 14 項認證基準、改 7 項、預估省逾 15 億美元）</a>放在一起看就很清楚：聯邦剛把預測型 AI 的來源屬性揭露從 EHR 認證拿掉，而同一週一份開源密碼學工具提出了不依賴監管命令也能成立的替代路徑。兩者解的是同一個問題，只是一個靠規則、一個靠數學。</span>
+        <span class="en">Healthcare is where model identity bites hardest, because every output here can end up in a legal record. For a note summary, a differential list or a draft imaging report, the only evidence of "which model, which version" is today the vendor's own logs and assurances — and the vendor is precisely the party with the strongest incentive to swap models, for cost, capacity or latency. Set this beside <a href="https://www.hhs.gov/press-room/hhs-finalizes-hti-5-deregulatory-rule.html" target="_blank" rel="noopener">the HTI-5 deregulatory rule HHS finalized in early November, which cuts 14 certification criteria, revises 7 more and projects over $1.5 billion in savings</a>, and the shape is clear: federal rules just removed source-attribute disclosure for predictive AI from EHR certification, and in the same week an open-source cryptographic tool proposed a route to the same end that needs no regulatory mandate. Both address one problem; one does it with rules, the other with mathematics.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">這不是產品。研究者自述「分享的是中間進度，不是完成的研究計畫」，並明說「我們公開的目的就是希望別人來看、拿去、改進」；Anthropic 與任何其他實驗室都<strong>沒有</strong>部署 FlashProve 的計畫。TechCrunch 的報導未給任何開銷倍數、模型規模或延遲數字（網路上流傳的「72 倍開銷」出自第三方整理，本報未採用為事實）。在真正有實驗室願意公布指紋之前，這套機制對醫院採購沒有可用的槓桿。</span>
+        <span class="en">This is not a product. The researchers describe the work as "meant to share intermediate progress, and not a completed research agenda," and say plainly that they are publishing it "with the goal that others look at what we have done, take it, and improve it." Neither Anthropic nor any other lab has plans to deploy FlashProve. TechCrunch reports no overhead multiples, model sizes or latency figures (a "72x overhead" number circulating in third-party write-ups is not adopted as fact here). Until a lab actually publishes fingerprints, this gives hospital procurement no usable leverage.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://techcrunch.com/2026/11/03/anthropic-is-working-on-a-system-to-prove-ai-models-identity/" target="_blank" rel="noopener">TechCrunch, 2026-11-03</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">管線 · MCP</span><span class="en-inline">Plumbing · MCP</span></span>
+      <span class="tag">athenahealth</span><span class="tag">Claude</span><span class="tag">athenaPatient</span><span class="tag">11/02</span>
+    </div>
+    <h3>
+      <span class="zh">病歷出 EHR 的新管線：athenaPatient MCP server 讓病人自己把檢驗與用藥接給 Claude</span>
+      <span class="en">A new pipe out of the EHR: the athenaPatient MCP server lets patients hand their labs and medications to Claude themselves</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">11 月 2 日，<a href="https://www.athenahealth.com/about/press-releases/patients-connect-health-records" target="_blank" rel="noopener">athenahealth 發布 athenaPatient MCP server</a>，副標寫它「建立了一條讓病人就自身健康進行更知情、更個人化對話的途徑」。<a href="https://www.athenahealth.com/resources/blog/mcp-servers-securely-connect-to-consumer-ai" target="_blank" rel="noopener">athenahealth 自家的技術說明</a>指出可分享的範圍包括檢驗、用藥、診斷與就診紀錄。走的協定是 Model Context Protocol，接的是 Anthropic 的 Claude。這是主流 EHR 廠商第一次把病人端的病歷匯出做成消費級 AI 可以直接呼叫的 MCP 介面，而非傳統的 FHIR API 或患者入口網站下載。</span>
+        <span class="en">On November 2, <a href="https://www.athenahealth.com/about/press-releases/patients-connect-health-records" target="_blank" rel="noopener">athenahealth announced the athenaPatient MCP server</a>, with a subheadline saying it "establishes a way for patients to have more informed, personalized conversations" about their health. <a href="https://www.athenahealth.com/resources/blog/mcp-servers-securely-connect-to-consumer-ai" target="_blank" rel="noopener">athenahealth's own technical note</a> says the shareable scope covers labs, medications, diagnoses and visit history. The protocol is the Model Context Protocol; the consumer on the other end is Anthropic's Claude. This is the first time a mainstream EHR vendor has turned patient-side record export into an MCP interface a consumer AI can call directly, rather than a traditional FHIR API or a patient-portal download.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這條管線的方向值得注意：它不是醫院把資料給 AI，而是病人行使查閱權後把資料給 AI。在美國法律下這條路繞開了大部分 HIPAA 的業務夥伴協議安排——資料一旦到病人手上再轉給消費級服務，受保護健康資訊的保護傘就換了。對產業結構的意思是，EHR 廠商不必等醫院 IT 委員會同意，就能讓自己的資料進到前沿模型的 context 裡；而對病人安全的意思是，上面第 2 則那 2.3% 的劑量錯誤率，將開始作用在「手裡有自己完整用藥清單、但沒有任何臨床訓練」的人身上。</span>
+        <span class="en">The direction of this pipe matters: it is not the hospital handing data to an AI, it is the patient exercising a right of access and then handing the data onward. Under US law that route sidesteps most of the HIPAA business-associate machinery — once data is in the patient's hands and passed to a consumer service, the protective umbrella over protected health information changes shape. Structurally, it means an EHR vendor no longer needs a hospital IT committee's blessing to get its data into a frontier model's context. For patient safety, it means the 2.3% dosing error rate in item 2 above starts operating on people who hold their own complete medication list and have no clinical training whatsoever.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">新聞稿本身極短。未說明上線範圍與時程、未說明涵蓋多少病人或診所、未交代同意流程、資料保留政策與撤回機制，也沒有任何高階主管引述。本報取得的頁面主要只有標題與副標，正文細節缺失；「第一次」的判斷是本報對照現有 EHR 病人端介面後的觀察，不是 athenahealth 的主張。</span>
+        <span class="en">The press release is extremely thin. It states no rollout scope or timeline, no patient or practice counts, nothing on consent flow, data-retention policy or revocation, and carries no executive quotes. The page retrieved for this report contained little beyond headline and subheadline, with the body detail missing; the "first time" characterization is this report's reading against existing EHR patient-side interfaces, not a claim athenahealth makes.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.athenahealth.com/about/press-releases/patients-connect-health-records" target="_blank" rel="noopener">athenahealth Press Release, 2026-11-02</a> · <a href="https://www.athenahealth.com/resources/blog/mcp-servers-securely-connect-to-consumer-ai" target="_blank" rel="noopener">athenahealth Blog</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">臨床決策支援</span><span class="en-inline">Clinical decision support</span></span>
+      <span class="tag">Mayo Clinic Platform</span><span class="tag">35+ 專科</span><span class="tag">11/03</span>
+    </div>
+    <h3>
+      <span class="zh">Mayo Clinic Platform 把自家知識包成 CDS：35 個以上專科的 LLM 聊天，加 22 個臨床計算器，直接進 EHR</span>
+      <span class="en">Mayo Clinic Platform packages its own knowledge as CDS: LLM chat across 35+ specialties plus 22 clinical calculators, straight into the EHR</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">11 月 3 日，<a href="https://newsnetwork.mayoclinic.org/discussion/mayo-clinic-platforms-new-clinical-decision-support-solution-provides-trusted-medical-information-to-enhance-individualized-patient-care/" target="_blank" rel="noopener">Mayo Clinic Platform 發布新的臨床決策支援方案</a>，11 月起開放。兩個元件：專科聊天涵蓋 35 個以上專科、對應 Mayo 的次專科分工模型、由大型語言模型驅動、引用同儕審查文獻、每日更新，可直接嵌進 EHR；以及 22 個臨床計算器，可用聊天或語音叫出，混合業界標準工具與 Mayo 自研工具。使用者是 Mayo 自家臨床人員，以及參與 Mayo Clinic Platform 醫療提供者計畫的機構。Mayo Clinic Platform 營運長 Maneesh Goyal 的切入點是「臨床人員能取得的醫學知識量太大」；神經外科主任兼平台首席醫務官 Gelareh Zadeh 則強調「它不取代臨床判斷」。</span>
+        <span class="en">On November 3, <a href="https://newsnetwork.mayoclinic.org/discussion/mayo-clinic-platforms-new-clinical-decision-support-solution-provides-trusted-medical-information-to-enhance-individualized-patient-care/" target="_blank" rel="noopener">Mayo Clinic Platform announced a new clinical decision support solution</a>, available from November. Two components: a specialty chat covering more than 35 specialties, mirroring Mayo's subspecialty model, powered by a large language model, citing peer-reviewed literature, updated daily, and embeddable directly in the EHR; and 22 clinical calculators callable by chat or voice dictation, mixing industry-standard tools with proprietary Mayo-developed ones. Users are Mayo's own clinicians plus organizations in Mayo Clinic Platform's healthcare provider programs. Platform COO Maneesh Goyal frames the problem as the sheer volume of medical knowledge clinicians must reach; Gelareh Zadeh, chair of Neurosurgery at Rochester and the platform's chief medical officer, stresses that "it does not replace clinical judgment."</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這是本週最清楚的一筆「知識當資產」交易。CDS 市場目前由 <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/nyu-langone-brings-openevidences-clinical-ai-ehr-systemwide" target="_blank" rel="noopener">OpenEvidence 這類以文獻檢索為核心的玩家（已在 NYU Langone 全院嵌進 Epic、服務 6,000 名以上醫師與教職）</a>推進，Mayo 走的是另一條路：賣的不是檢索能力，而是「Mayo 的次專科共識」這件無法被爬取的東西。22 個計算器也不是湊數——把計算器拉進聊天介面，正好是上面第 2 則說的那個答案：有唯一正確答案的欄位，交給確定性工具，而不是讓模型自己算。</span>
+        <span class="en">This is the week's clearest knowledge-as-asset transaction. The CDS market is currently being driven by literature-retrieval players such as <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/nyu-langone-brings-openevidences-clinical-ai-ehr-systemwide" target="_blank" rel="noopener">OpenEvidence, now embedded in Epic across NYU Langone and serving 6,000-plus physicians and faculty</a>. Mayo is taking a different line: what it sells is not retrieval but Mayo's own subspecialty consensus, which is the one thing that cannot be scraped. The 22 calculators are not filler either — pulling calculators into the chat surface is precisely the answer item 2 above argues for: fields with a single correct answer go to a deterministic tool rather than being computed by the model.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">整份發布沒有一個效能數字：沒有正確率、沒有引用準確度、沒有評測結果、沒有使用者數或機構數，連底層模型是誰、是自研還是外購都沒說。「可整合進數量持續增加的 EHR 環境」是一句不能驗證的話。Mayo 只表示其負責任 AI 做法涵蓋安全性、有效性、隱私、資安與臨床價值評估，並有人為監督與持續監測——這是流程描述，不是結果。</span>
+        <span class="en">The announcement contains not one performance figure: no accuracy, no citation-fidelity measure, no benchmark result, no user or institution counts, and no word on which underlying model it uses or whether that model is built or bought. "Integrable into a growing number of EHR environments" is an unverifiable sentence. Mayo says only that its responsible-AI approach covers safety, effectiveness, privacy, security and clinical value, with human oversight and ongoing monitoring — a description of process, not of outcome.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://newsnetwork.mayoclinic.org/discussion/mayo-clinic-platforms-new-clinical-decision-support-solution-provides-trusted-medical-information-to-enhance-individualized-patient-care/" target="_blank" rel="noopener">Mayo Clinic News Network, 2026-11-03</a> · <a href="https://histalk2.com/2026/11/04/healthcare-ai-news-11-4-26/" target="_blank" rel="noopener">HIStalk, 2026-11-04</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">agent 基礎設施</span><span class="en-inline">Agent infrastructure</span></span>
+      <span class="tag">Zocdoc</span><span class="tag">Instinct</span><span class="tag">MCP</span><span class="tag">10/28</span>
+    </div>
+    <h3>
+      <span class="zh">Zocdoc 反向操作：把掛號基礎設施整個開給 AI agent，流量四個月成長近 30 倍</span>
+      <span class="en">Zocdoc goes the other way: it opens its booking infrastructure to AI agents, and agent traffic grows nearly 30x in four months</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">10 月 28 日，<a href="https://www.zocdoc.com/about/news/as-others-put-up-walls-zocdoc-opens-its-doors-and-welcomes-ai-agents-to-reliably-connect-patients-to-care/" target="_blank" rel="noopener">Zocdoc 宣布把找醫師、驗保險、完成預約的能力開給 AI agent</a>，提供四種接法：MCP server、REST API、以 llms.txt 給 agent 的指引，以及 deep links。首個深度整合夥伴是 Instinct，其 agent 直接接 MCP server 完成確認預約，並加入 Zocdoc 的 Care Access Network——該網路已含 Google Gemini、Amazon Health AI、Yelp、Healthgrades 與 Blue Shield of California。規模面：20 萬名以上已驗證醫師、175 項以上排程系統整合、10,000 個以上保險方案。成長曲線是這則新聞真正的內容：AI agent 流量自 2026 年 7 月以來成長近 30 倍，自 9 月初起約每 10 天翻倍，10 月前兩週的 agent 流量超過前三個月總和。創辦人兼執行長 Oliver Kharraz 的說法是：「Most of the internet is treating AI agents like intruders.」</span>
+        <span class="en">On October 28, <a href="https://www.zocdoc.com/about/news/as-others-put-up-walls-zocdoc-opens-its-doors-and-welcomes-ai-agents-to-reliably-connect-patients-to-care/" target="_blank" rel="noopener">Zocdoc opened provider search, insurance verification and appointment booking to AI agents</a>, through four routes: an MCP server, a REST API, agent guidance via llms.txt, and deep links. The first deep integration partner is Instinct, whose agent reaches the MCP server directly to make confirmed bookings, and which joins Zocdoc's Care Access Network alongside Google Gemini, Amazon Health AI, Yelp, Healthgrades and Blue Shield of California. On scale: 200,000-plus verified providers, 175-plus scheduling integrations, 10,000-plus insurance plans. The growth curve is the real content here: AI agent traffic is up nearly 30x since July 2026, has roughly doubled every 10 days since early September, and in the first two weeks of October exceeded the prior three months combined. Founder and CEO Oliver Kharraz: "Most of the internet is treating AI agents like intruders."</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">把這則跟第 4 則並讀，本週的管線圖就完整了：MCP 正在同時成為病歷出 EHR 的介面（athenahealth）與醫療服務被 agent 消費的介面（Zocdoc）。而「每 10 天翻倍」這個數字值得特別注意，因為它量的不是宣傳而是實際請求量——若為真，醫療機構決定要不要支援 agent 流量的時間窗比多數人預期的短。另一面是：當掛號可以被 agent 完成，誰為「agent 幫病人掛錯科、延誤就醫」負責，目前沒有任何框架處理。</span>
+        <span class="en">Read this alongside item 4 and the week's plumbing diagram completes itself: MCP is becoming, at the same time, the interface by which records leave the EHR (athenahealth) and the interface by which care services get consumed by agents (Zocdoc). The "doubling every 10 days" figure deserves particular attention because it measures actual request volume rather than announcements — if it holds, the window in which provider organizations decide whether to support agent traffic is shorter than most expect. The other side: when a booking can be completed by an agent, nothing in any existing framework answers who is responsible if the agent books the wrong specialty and delays care.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">30 倍、每 10 天翻倍、10 月前兩週超越前三個月——全部是 Zocdoc 自家數據，且新聞稿未定義量測方法（是請求數、成功預約數，還是 user-agent 判定的流量？）。基數未公布，所以 30 倍可能是從很小的數字起算。Instinct 之外沒有其他夥伴的實際使用量。</span>
+        <span class="en">The 30x, the 10-day doubling and the two-weeks-beats-three-months claim are all Zocdoc's own numbers, and the release defines no measurement method — requests, completed bookings, or traffic classified by user-agent? No baseline is published, so a 30x rise could start from a very small number. Beyond Instinct, no actual usage volume is given for any partner.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.zocdoc.com/about/news/as-others-put-up-walls-zocdoc-opens-its-doors-and-welcomes-ai-agents-to-reliably-connect-patients-to-care/" target="_blank" rel="noopener">Zocdoc Newsroom, 2026-10-28</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">藥物開發 · agent</span><span class="en-inline">Drug development · agents</span></span>
+      <span class="tag">Anthropic</span><span class="tag">Enveda</span><span class="tag">BigHat</span><span class="tag">Mithril</span><span class="tag">10/27</span>
+    </div>
+    <h3>
+      <span class="zh">1,061 頁製造文件、11 個人類找到的問題全抓到還多標 7 個：Anthropic 公布 agent 在藥物開發的早期數字，並併下一人公司 Mithril</span>
+      <span class="en">1,061 pages of manufacturing documents, all 11 human-found issues caught plus seven more: Anthropic publishes early agent figures in drug development, and acquires the one-person Mithril</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">10 月 27 日，<a href="https://www.anthropic.com/research/early-progress-drug-development" target="_blank" rel="noopener">Anthropic 公布六個藥物開發夥伴的早期結果</a>。Enveda 的案例最具體：製造部門化學家原本高達 75% 的時間花在文書上；Claude 審查 1,061 頁文件，抓到人類審查者找到的全部 11 個問題，另外多標出 7 個人類漏掉的；人工審查時間從 25 小時以上降到 3 小時以下（下降 89%），一份法規文件初稿 4 小時完成、手寫約需 3 個月，第二稿經標準人工審查只找到一個小錯。BigHat Biosciences：Claude 對兩個抗體片段 lead 提出修改，實驗室約 10 週內測了約 1,010 個變體，最佳版本結合力強 10 倍以上，抗癌 lead 在溶液中可耐溫高 18°C，長效 lead 聚集速度慢 100 倍以上。Generate Biomedicines：一個 Claude 提出的設計比標準版短約 70%，讓免疫細胞製造出約 10 倍的受體。Divergence Labs：約一個月產出約 35,000 個抗體設計，測出 3 個 binder 與 20 個能把 IgE 擠開的設計，其中 3 個看起來優於標準藥。Bristol Myers Squibb 用 Claude 評估早期藥物的臨床試驗計畫與成功機率，2027 年預計擴大。10 月 28 日 Anthropic <a href="https://htworld.co.uk/leadership/entrepreneurship/anthropic-acquires-drug-discovery-platform-mithril-medicine-htai26/" target="_blank" rel="noopener">併購一人公司 Mithril Medicine</a>（金額未揭露），創辦人 Cody Tranbarger 用 Claude 協調 11 個外部實驗室開發兩種罕見肌肉萎縮症療法，其中一種從想法到有希望的小鼠結果不到 18 個月；若候選藥持續成立，最快 2028 年底進人體試驗。</span>
+        <span class="en">On October 27, <a href="https://www.anthropic.com/research/early-progress-drug-development" target="_blank" rel="noopener">Anthropic published early results from six drug-development partners</a>. The Enveda case is the most concrete: manufacturing chemists had been spending up to 75% of their time on paperwork; Claude reviewed 1,061 pages, caught all 11 issues human reviewers had found and flagged seven more they had missed; human review time fell from over 25 hours to under three, a drop of 89%; a first draft of one regulatory document took four hours against roughly three months by hand, and standard human review of the second draft found one minor error. BigHat Biosciences: Claude proposed changes to two antibody-fragment leads, and the lab tested about 1,010 variants over about 10 weeks — the best versions bound more than 10x more tightly, the cancer-targeting lead stayed in solution 18°C higher, and the longer-lasting lead clumped more than 100x more slowly. Generate Biomedicines: one Claude-proposed design was about 70% shorter than the standard version and let immune cells make roughly 10x as many receptors. Divergence Labs: about 35,000 antibody designs in about a month, yielding three binders and 20 designs that could dislodge IgE, three of which appeared to outperform the standard medication. Bristol Myers Squibb uses Claude to assess clinical trial plans for an early-stage drug and estimate their chance of success, with expansion planned for 2027. On October 28 Anthropic <a href="https://htworld.co.uk/leadership/entrepreneurship/anthropic-acquires-drug-discovery-platform-mithril-medicine-htai26/" target="_blank" rel="noopener">acquired the one-person company Mithril Medicine</a> (terms undisclosed); founder Cody Tranbarger had used Claude to coordinate work across 11 external labs on treatments for two rare forms of muscular dystrophy, one of which went from idea to promising mouse results in under 18 months. If the candidates keep holding up, a drug could reach human trials as soon as late 2028.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">本週最被低估的一行是 Enveda 的「法規文件初稿 4 小時 vs 手寫 3 個月」。藥物開發的瓶頸長年被描述成科學問題，但 CMC 文件、批次紀錄、法規送件這些工作占掉的人力與時間從來不是科學——而這是 agent 能直接吃掉的部分，不需要任何生物學突破。同樣值得注意的是 Mithril 的形狀：一個人加 11 個外接實驗室，由模型做專案協調，做到小鼠概念驗證。這是 AutoDNA 那套東西的商業版本，而且已經被一家前沿實驗室用併購的方式確認了價格。</span>
+        <span class="en">The week's most underrated line is Enveda's four hours versus three months for a regulatory first draft. The bottleneck in drug development is habitually described as scientific, but CMC documentation, batch records and regulatory filings consume person-years that have nothing to do with science — and that is exactly the part an agent can eat without any biological breakthrough at all. The shape of Mithril deserves equal attention: one person plus 11 contract labs, with the model doing project coordination, reaching mouse proof-of-concept. That is the commercial version of what AutoDNA demonstrates in hardware, and a frontier lab has now put a price on it by acquisition.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">全部來自 Anthropic 自家部落格，沒有一項經第三方稽核或同儕審查。Anthropic 自己也寫明這些研究處於早期、絕大多數是臨床前，藥物普遍尚未進入人體測試；BigHat 團隊一開始懷疑自家耐熱與聚集指標有誤導性，重新分析並改用新指標；Divergence 的結果來自早期測試；The Column Group 的工具仍在發展中。Mithril 的「2028 年底」是明確的條件句，不是時程表。而 Anthropic 正在 IPO 程序中，把「AI 找出疾病療法」寫成最重要的應用——這份發布同時是科學進展報告與招股說明的素材。</span>
+        <span class="en">All of it comes from Anthropic's own blog, with no third-party audit or peer review. Anthropic itself states the research is early-stage and largely preclinical, with the drugs generally untested in humans; BigHat's team initially suspected its own heat-stability and aggregation metrics were misleading and reanalyzed with new ones; Divergence's results are from early tests; The Column Group's tooling is still being built. Mithril's "late 2028" is an explicit conditional, not a schedule. And Anthropic is mid-IPO process, having named AI's potential to find cures as its foremost application — so this post is simultaneously a science progress report and prospectus material.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.anthropic.com/research/early-progress-drug-development" target="_blank" rel="noopener">Anthropic Research, 2026-10-27</a> · <a href="https://htworld.co.uk/leadership/entrepreneurship/anthropic-acquires-drug-discovery-platform-mithril-medicine-htai26/" target="_blank" rel="noopener">HTWorld, 2026-10-28</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">控制層 · 治理</span><span class="en-inline">Control plane · Governance</span></span>
+      <span class="tag">Corti</span><span class="tag">Rhapsody</span><span class="tag">CrowdStrike</span><span class="tag">Apple</span><span class="tag">10/20–11/03</span>
+    </div>
+    <h3>
+      <span class="zh">agent 控制層在兩週內長出三層：編排與追蹤、身分與配額、以及一個「殺掉」按鈕</span>
+      <span class="en">The agent control plane grew three layers in two weeks: orchestration and tracing, identity and quotas, and a kill switch</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">10 月 22 日，<a href="https://corti.ai/newsroom/corti-advances-execution-and-control-layer-for-complex-agentic-ai-systems-in-healthcare" target="_blank" rel="noopener">Corti 發布 Agentic Framework</a>：中央 orchestrator 協調專職 agent、維持共享脈絡、連接臨床系統與可信醫學知識源；新的 trace API 供開發者追查失敗、搭配開源評測函式庫與 Feedback API；內建 guardrail 與人工核可機制；新增 Schema Connectors（既有的還有 MCP、A2A 與 sub-agent connector）；逐 token 串流並可中斷任務；模型建於開放基礎、以 OpenAI 相容 API 提供；推論基礎設施與 NVIDIA 合作，用 NVIDIA GPU 與 Triton Inference Server；機構可自選模型、基礎設施與部署方式，含地端。Corti 自稱年服務 1 億名以上病人，首個落地是 Dedalus 的 ORBIS Buddy（Dedalus 支援 7,500 家以上醫療機構、5,700 家實驗室與診斷中心，覆蓋 5.4 億人以上）。10 月 20 日，<a href="https://www.prnewswire.com/news-releases/rhapsody-launches-guardian-to-govern-ai-agent-and-api-access-to-healthcare-data-and-services-302913231.html" target="_blank" rel="noopener">Rhapsody 推出 Guardian</a>：驗證 agent 身分、強制範圍化存取、施加速率限制、記錄 agent／MCP／API 活動並維持稽核軌跡，定位是把 CHAI 與 Joint Commission 的指引落成實際控制；現已可用，可獨立部署或搭配 Rhapsody、Corepoint 等整合平台。而 11 月 3 日前後，<a href="https://theneuron.ai/digest/everything-that-happened-in-ai-today-wednesday-november-4-2026" target="_blank" rel="noopener">CrowdStrike 推出 Falcon Guardian AI Kill Switch</a>，讓管理員停止失控 agent、阻止其重新啟動或限制其網路存取；同一時間 Apple 在風險揭露文件中警告自主 agent 可能超出權限、繞過安全機制或暗中行動，並可能造成不可逆的後果。</span>
+        <span class="en">On October 22, <a href="https://corti.ai/newsroom/corti-advances-execution-and-control-layer-for-complex-agentic-ai-systems-in-healthcare" target="_blank" rel="noopener">Corti released its Agentic Framework</a>: a central orchestrator coordinating specialized agents, holding shared context and connecting to clinical systems and trusted medical knowledge sources; new trace APIs for investigating failures, with an open-source evaluation library and a Feedback API; built-in guardrails and human approval mechanisms; new Schema Connectors alongside existing MCP, A2A and sub-agent connectors; token-by-token streaming with interruptible tasks; models built on open foundations and served through an OpenAI-compatible API; and inference infrastructure developed with NVIDIA on NVIDIA GPUs and Triton Inference Server, with organizations free to choose models, infrastructure and deployment, including on-premises. Corti says it serves over 100 million patients annually; the first deployment is Dedalus's ORBIS Buddy (Dedalus supports more than 7,500 healthcare organizations and 5,700 labs and diagnostic centers, covering more than 540 million people). On October 20, <a href="https://www.prnewswire.com/news-releases/rhapsody-launches-guardian-to-govern-ai-agent-and-api-access-to-healthcare-data-and-services-302913231.html" target="_blank" rel="noopener">Rhapsody launched Guardian</a>: it authenticates AI agents, enforces scoped access, applies rate limits, records agent, MCP and API activity and maintains an audit trail, positioned as turning CHAI and Joint Commission guidance into actual controls; available now, deployable standalone or alongside Rhapsody, Corepoint or another integration platform. And around November 3, <a href="https://theneuron.ai/digest/everything-that-happened-in-ai-today-wednesday-november-4-2026" target="_blank" rel="noopener">CrowdStrike shipped Falcon Guardian AI Kill Switch</a>, letting administrators stop a rogue agent, block its relaunch or restrict its network access — while Apple warned in a risk filing that autonomous agents could exceed permissions, circumvent security or act covertly, with potentially irreversible effects.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這三件事放在一起，說明 2026 下半年醫療 AI 的競爭已經從「模型多準」移到「agent 能不能被關掉、被稽核、被限額」。Corti 引的兩個外部預測把壓力講得很直白：IDC 估 2029 年全球有 12 億個 AI agent 在運作、每天執行 2,170 億次動作；Gartner 預測到 2027 年有 40% 的企業會因為治理缺口而降級或下架自主 agent。對醫院來說，重點不是哪一家的控制層比較好，而是上面第 4、6 則那些 MCP 介面正在開通，而身分驗證、範圍化存取與速率限制這三樣東西，MCP 協定本身並不提供。</span>
+        <span class="en">Taken together, these three show that competition in healthcare AI in late 2026 has moved from how accurate the model is to whether the agent can be switched off, audited and rate-limited. The two external forecasts Corti cites state the pressure plainly: IDC estimates 1.2 billion AI agents operating globally by 2029, performing 217 billion actions daily; Gartner predicts that by 2027, 40% of enterprises will demote or decommission autonomous agents over governance gaps. For a hospital the point is not whose control plane is better but that the MCP interfaces in items 4 and 6 are opening now, and the three things that matter — identity, scoped access, rate limits — are not provided by the MCP protocol itself.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">Corti 的「年服務 1 億病人」與 Dedalus 的 5.4 億覆蓋人數都是公司自述，且 Corti 的新聞稿沒有任何延遲或實際處理量數字。Rhapsody 的發布更是零指標：沒有客戶數、沒有效能數字，也沒有指明用哪些標準（未提 OAuth、FHIR 或任何具名協定）。IDC 與 Gartner 的預測是廠商引用的第三方預測，不是量測。CrowdStrike 的 kill switch 依其自述，端點終止能力仍在擴充中。</span>
+        <span class="en">Corti's "over 100 million patients annually" and Dedalus's 540-million coverage figure are both company-stated, and Corti's release carries no latency or actual throughput numbers at all. Rhapsody's announcement has zero metrics: no customer count, no performance figures, and no named standards (it mentions neither OAuth, nor FHIR, nor any specific protocol). The IDC and Gartner numbers are third-party forecasts quoted by a vendor, not measurements. CrowdStrike's kill switch, by its own account, still has endpoint termination rolling out.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://corti.ai/newsroom/corti-advances-execution-and-control-layer-for-complex-agentic-ai-systems-in-healthcare" target="_blank" rel="noopener">Corti Newsroom, 2026-10-22</a> · <a href="https://www.prnewswire.com/news-releases/rhapsody-launches-guardian-to-govern-ai-agent-and-api-access-to-healthcare-data-and-services-302913231.html" target="_blank" rel="noopener">PR Newswire, 2026-10-20</a> · <a href="https://theneuron.ai/digest/everything-that-happened-in-ai-today-wednesday-november-4-2026" target="_blank" rel="noopener">The Neuron, 2026-11-04</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">臨床證據</span><span class="en-inline">Clinical evidence</span></span>
+      <span class="tag">npj Digital Medicine</span><span class="tag">MR-AI</span><span class="tag">Nature Cancer</span><span class="tag">10/27–11/03</span>
+    </div>
+    <h3>
+      <span class="zh">本週兩份「agent 真的省到時間」的證據：每週掃 2.5 萬份病歷找漏掉的轉診，以及免疫療法副作用標註快 2.71 分鐘</span>
+      <span class="en">Two pieces of evidence that agents actually save time: 25,000 notes scanned weekly for missed referrals, and 2.71 minutes saved annotating immunotherapy side effects</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">一套名為 MR-AI 的系統在 7 家基層診所每週掃描約 25,000 份病歷，尋找被漏掉的轉診；<a href="https://www.nature.com/articles/s41746-026-03444-1" target="_blank" rel="noopener">npj Digital Medicine 的準實驗研究</a>估計漏掉轉診的偵測率提高約 7 倍。另一邊，<a href="https://www.nature.com/articles/s43018-026-01264-6" target="_blank" rel="noopener">Nature Cancer 的交叉設計研究</a>顯示 AI 輔助把免疫療法副作用標註時間縮短 2.71 分鐘，同時正確率上升。對照組則是上週那份已被廣泛引用的成本研究：<a href="https://ai.nejm.org/doi/full/10.1056/AIoa2600537" target="_blank" rel="noopener">NEJM AI 算出 AI 建議的照護平均每次就診 314 美元、醫師 97 美元</a>，差額主要來自多開的檢查與轉診。還有一份反向的對照：<a href="https://www.nature.com/articles/s44360-026-00205-y" target="_blank" rel="noopener">跨 5 個模型的藥名推薦研究</a>發現，領導品牌平均占首選推薦的 97.5%，模型偏好原廠藥而非學名藥。</span>
+        <span class="en">A system called MR-AI scanned roughly 25,000 notes weekly across seven primary care clinics looking for missed referrals; <a href="https://www.nature.com/articles/s41746-026-03444-1" target="_blank" rel="noopener">a quasi-experimental study in npj Digital Medicine</a> estimates about a sevenfold increase in missed-referral detection. Separately, <a href="https://www.nature.com/articles/s43018-026-01264-6" target="_blank" rel="noopener">a crossover study in Nature Cancer</a> found AI assistance cut immunotherapy side-effect annotation time by 2.71 minutes while improving accuracy. The counterweight is last week's much-quoted cost study: <a href="https://ai.nejm.org/doi/full/10.1056/AIoa2600537" target="_blank" rel="noopener">NEJM AI calculated AI-recommended care at $314 per visit against $97 for physicians</a>, the gap coming mostly from extra tests and referrals. And one more in the other direction: <a href="https://www.nature.com/articles/s44360-026-00205-y" target="_blank" rel="noopener">a study across five models of drug-name recommendations</a> found leading brands averaged 97.5% of first-choice recommendations, with models favoring brands over generics.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這四份研究合起來給出一個比任何單篇都有用的結論：agent 在「找出被遺漏的東西」上有真實且可量化的價值（7 倍、2.71 分鐘），在「決定要不要加做」上系統性地往多的方向偏（314 vs 97 美元、97.5% 偏原廠藥）。這不是模型品質問題，是目標函數問題——模型沒有被訓練成要承擔邊際成本與機會成本。實務上的推論很直接：本週落地的那些 agent 介面，應該先接到偵測與召回類任務，而不是處置與開單類任務。</span>
+        <span class="en">Together these four give a conclusion more useful than any one of them alone: agents have real, quantifiable value at finding what was missed (sevenfold, 2.71 minutes), and they skew systematically toward more at deciding what to add ($314 versus $97, 97.5% brand preference). That is not a model-quality problem but an objective-function one — these models were never trained to carry marginal cost or opportunity cost. The practical inference is direct: the agent interfaces landing this week should be wired first to detection and recall tasks, not to ordering and treatment-selection tasks.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">MR-AI 是準實驗設計，不是隨機分派，7 倍這個效果量容易被基期偵測率極低放大；本報因 nature.com 無法直接取用，該研究的樣本細節與信賴區間引自 Healthcare AI Guy 11/3 的彙整，未能核對原文。Nature Cancer 的 2.71 分鐘是單一標註任務上的差異，不等於臨床工作流的總時間節省。藥名推薦那份研究的 97.5% 未區分有無學名藥可選的情境。</span>
+        <span class="en">MR-AI is quasi-experimental rather than randomized, and a sevenfold effect size is easily inflated by a very low baseline detection rate; because nature.com could not be retrieved directly, that study's sample details and confidence intervals here are cited from Healthcare AI Guy's November 3 roundup rather than checked against the paper. Nature Cancer's 2.71 minutes is a difference on one annotation task, not total workflow time saved. The 97.5% in the drug-name study does not separate cases where a generic was available from those where none was.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.nature.com/articles/s41746-026-03444-1" target="_blank" rel="noopener">npj Digital Medicine</a> · <a href="https://www.nature.com/articles/s43018-026-01264-6" target="_blank" rel="noopener">Nature Cancer</a> · <a href="https://ai.nejm.org/doi/full/10.1056/AIoa2600537" target="_blank" rel="noopener">NEJM AI</a> · <a href="https://www.healthcareaiguy.com/p/healthcare-ai-guy-weekly-11-3" target="_blank" rel="noopener">Healthcare AI Guy Weekly, 2026-11-03</a></p></div>
+  </div>
+</section>
+
+<!-- ============ 02 產品分析 ============ -->
+<section id="product">
+  <h2>02 — Product Analysis</h2>
+  <div class="sec-title">
+    <span class="zh">兩個方向相反的產品：AutoDNA 把決策權盡量交給模型，DoseCheck 刻意把決策權從模型手上拿回來。它們在回答同一個問題——模型該被信任到哪一層。</span>
+    <span class="en">Two products pointing opposite ways: AutoDNA hands as much decision-making as possible to the model, while DoseCheck deliberately takes decision-making back from it. Both answer the same question — how far down the stack a model should be trusted.</span>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>AutoDNA</h3>
+      <p class="sub"><span class="zh-inline">AI 原生自主生物分子實驗室 · 上海交通大學團隊（中國）</span><span class="en-inline">AI-native autonomous biomolecular laboratory · Shanghai Jiao Tong University team (China)</span></p>
+      <p>
+        <span class="zh"><strong>功能與定位。</strong>它不是一台儀器，而是一層把濕實驗室整個包成 API 的軟體。核心設計是「co-design」：模型、實驗設計與儀器一起設計，每個儀器操作成為帶自然語言描述的 atomic service，讓 LLM agent 能夠推理、生成驅動程式碼並直接執行。支援核酸合成、轉錄、擴增與定序，<a href="https://www.nature.com/articles/s41586-026-11228-6" target="_blank" rel="noopener">Nature 11/4 刊出</a>，應用指向分子診斷、藥物開發與 DNA 資訊儲存，並能同時處理多個使用者的請求。買家還不存在——這是論文，不是產品——但潛在買家很清楚：中央實驗室、CRO、以及任何需要在固定 SOP 上反覆跑同一套分子流程的單位。</span>
+        <span class="en"><strong>Function and position.</strong> It is not an instrument but a software layer that wraps an entire wet lab as an API. The core design idea is co-design — models, experiments and instruments designed together — with each instrument operation becoming an atomic service carrying a natural-language description, so LLM agents can reason, generate driver code and execute directly. It covers nucleic-acid synthesis, transcription, amplification and sequencing, was <a href="https://www.nature.com/articles/s41586-026-11228-6" target="_blank" rel="noopener">published in Nature on November 4</a>, targets molecular diagnostics, drug development and DNA information storage, and handles multiple users' requests concurrently. There is no buyer yet — this is a paper, not a product — but the likely buyers are obvious: central labs, CROs, and anyone running the same molecular workflow against a fixed SOP over and over.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：排程才是真正的貢獻。<a href="https://pith.science/paper/2507.02379" target="_blank" rel="noopener">多用戶排程比循序執行快 3.60 倍、省 168.8 分鐘</a>，加熱器使用率自 55.0% 升到 79.0%、thermal cycler 自 47.6% 升到 80.6%，而且靠的是功能等價改道（加熱器忙碌時改用 thermal cycler）這種人類排程員會懶得做的動作。</span>
+          <span class="en">: scheduling is the real contribution. <a href="https://pith.science/paper/2507.02379" target="_blank" rel="noopener">Multi-user scheduling ran 3.60x faster than sequential execution, saving 168.8 minutes</a>, with heater utilization climbing from 55.0% to 79.0% and the thermal cycler from 47.6% to 80.6% — achieved through functional-equivalence rerouting (using a thermal cycler when the heater is busy), exactly the kind of move a human scheduler cannot be bothered to make.</span>
+        </li>
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：產率確實到了可用水準。酵素法 DNA 合成經 8 輪 PAGE 優化後<a href="https://pith.science/paper/2507.02379" target="_blank" rel="noopener">逐步產率 97.7%，軌跡自 93.00% 爬到 97.79%</a>——優化過程本身由 agent 提假設、跑實驗、讀結果再提下一輪，這部分比最終數字更有說服力。</span>
+          <span class="en">: the yield reaches a usable level. Enzymatic DNA synthesis hit <a href="https://pith.science/paper/2507.02379" target="_blank" rel="noopener">97.7% stepwise yield after eight PAGE optimization cycles, climbing from 93.00% to 97.79%</a> — and the optimization loop itself, where an agent proposes a hypothesis, runs the experiment, reads the result and proposes the next round, is more persuasive than the final number.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：失敗率完全沒報。沒有 LLM 產碼失敗次數、重試次數、人工救援次數的統計——而這恰恰是任何實驗室評估要不要採用時第一個會問的數字。缺就是缺。</span>
+          <span class="en">: failure rates are simply absent. No statistics on LLM code-generation failures, retries or human recovery events — and that is the very first number any lab would ask for when deciding whether to adopt this. It is missing, and missing it stays.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：單次執行、無重複、無誤差棒，且「匹配人類專家」比的是別家文獻值而非同批平行對照；吞吐量基準是自己的循序模式。另外預印本<a href="https://pith.science/paper/2507.02379" target="_blank" rel="noopener">未附程式碼與資料可得性聲明</a>（Nature 版的 Zenodo 存放處 DOI 10.5281/zenodo.20624108 補上了這一塊）。</span>
+          <span class="en">: single runs, no replicates, no error bars, and the "matches human experts" claim is measured against another lab's published value rather than a same-batch parallel control; the throughput baseline is the system's own sequential mode. The preprint also <a href="https://pith.science/paper/2507.02379" target="_blank" rel="noopener">carried no code or data availability statement</a> — the published version addresses this with a Zenodo deposit, DOI 10.5281/zenodo.20624108.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>Doximity DoseCheck</h3>
+      <p class="sub"><span class="zh-inline">確定性劑量驗證層 · Doximity（美國）</span><span class="en-inline">Deterministic dosage verification layer · Doximity (United States)</span></p>
+      <p>
+        <span class="zh"><strong>功能與定位。</strong>它架在 Doximity Ask 裡，抽出模型輸出中的每一個劑量主張（藥名、劑量、途徑、頻次、適應症），逐項比對自家結構化藥品資料庫 RxIndex——<a href="https://blog.doximity.com/articles/over-2-of-llm-doses-are-wrong-some-can-be-lethal" target="_blank" rel="noopener">1,900 份藥品專論、36,000 個以上劑量方案，來源為 FDA 標籤、指引與原始文獻</a>。關鍵的架構決定是「不用另一個語言模型去查第一個」：驗證是確定性查表，不是二次推理。對上就給綠色徽章、每個驗證過的劑量連回原始專論，回傳時間少於 100 毫秒。賣給醫師（Doximity 自述為免費的附加安全層），商業模式是把醫師留在 Doximity Ask 裡。</span>
+        <span class="en"><strong>Function and position.</strong> It sits inside Doximity Ask, extracts every dosage claim in a model's output — drug, dose, route, frequency, indication — and checks each against Doximity's own structured drug database, RxIndex: <a href="https://blog.doximity.com/articles/over-2-of-llm-doses-are-wrong-some-can-be-lethal" target="_blank" rel="noopener">1,900 drug monographs and more than 36,000 dosing regimens, sourced from FDA labeling, guidelines and primary literature</a>. The decisive architectural choice is not using a second language model to check the first: verification is a deterministic lookup, not a second round of reasoning. Matching doses get a green badge, each verified dose links back to its monograph, and results return in under 100 milliseconds. It is aimed at physicians — Doximity describes it as a free additional safety layer — and the business model is keeping physicians inside Doximity Ask.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：它攻擊的錯誤型態正好是模型最不該被信任、也最容易用查表抓到的那一類。<a href="https://blog.doximity.com/articles/over-2-of-llm-doses-are-wrong-some-can-be-lethal" target="_blank" rel="noopener">最嚴重錯誤裡每 5 個有 1 個是單位或小數點錯</a>——這類錯誤零推理即可偵測，而且是目前「用 LLM 審 LLM」架構最容易一起錯過的。</span>
+          <span class="en">: the error class it attacks is exactly the one a model least deserves trust on and a lookup most easily catches. <a href="https://blog.doximity.com/articles/over-2-of-llm-doses-are-wrong-some-can-be-lethal" target="_blank" rel="noopener">One in five of the most severe errors was a unit or decimal mistake</a> — detectable with zero reasoning, and precisely the kind that an LLM-checking-an-LLM architecture tends to miss in both passes.</span>
+        </li>
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：&lt;100 毫秒與逐項連回專論，解掉了臨床決策支援最老的問題：警示要快到不打斷流程，而且要能當場看到依據。Mayo 11/3 把 22 個計算器拉進聊天介面，走的是同一個方向。</span>
+          <span class="en">: sub-100-millisecond latency plus a per-item link back to the monograph solves the oldest problem in clinical decision support — an alert has to be fast enough not to break flow, and has to show its basis on the spot. Mayo pulling 22 calculators into its chat surface on November 3 is the same move.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：覆蓋率缺口恰好落在最危險的地方。RxIndex 收 1,900 份專論，但稽核涵蓋 2,204 種藥，而出錯勝算最高的正是<a href="https://blog.doximity.com/articles/over-2-of-llm-doses-are-wrong-some-can-be-lethal" target="_blank" rel="noopener">2024 年後核准的新藥（5.1 倍，95% CI 3.9–6.5）</a>——也就是最可能還沒進資料庫的那一群。Doximity 未公布 RxIndex 的更新頻率與新藥納入時程。</span>
+          <span class="en">: the coverage gap sits exactly where the danger is. RxIndex holds 1,900 monographs while the audit spanned 2,204 drugs, and the highest odds of error were on <a href="https://blog.doximity.com/articles/over-2-of-llm-doses-are-wrong-some-can-be-lethal" target="_blank" rel="noopener">drugs approved since 2024 (5.1x, 95% CI 3.9–6.5)</a> — the group least likely to be in the database yet. Doximity publishes no update cadence for RxIndex and no timeline for adding new approvals.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：所有數字都是廠商自述，而廠商同時是問題的揭露者與解法的銷售者。研究未公布、同儕審查狀態未說明、9 個受測模型一個都沒點名、沒有分項數據、也沒有獨立複驗。這不代表數字錯，但代表它還不能當成採購依據。</span>
+          <span class="en">: every figure is vendor-reported, and the vendor is both the discloser of the problem and the seller of the fix. The study is unpublished, its peer-review status unstated, none of the nine tested models named, no per-model breakdown given, and no independent replication performed. That does not make the numbers wrong, but it does mean they cannot yet carry a procurement decision.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 公司與競爭 ============ -->
+<section id="company">
+  <h2>03 — Companies &amp; Competition</h2>
+  <div class="sec-title">
+    <span class="zh">誰站在哪裡、憑什麼、跟誰打</span>
+    <span class="en">Who stands where, on what, against whom</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th><span class="zh-inline">公司</span><span class="en-inline">Company</span></th>
+        <th><span class="zh-inline">近況與數字</span><span class="en-inline">Recent state &amp; numbers</span></th>
+        <th><span class="zh-inline">競爭定位與護城河</span><span class="en-inline">Position &amp; moat</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Anthropic</strong><br><span class="zh-inline">前沿模型 · 本週同時出現在藥物開發、病歷管線與可驗證性三條線上</span><span class="en-inline">Frontier models · appeared this week in drug development, the records pipeline and verifiability alike</span></td>
+          <td>
+            <span class="zh">11/3 開源 <a href="https://techcrunch.com/2026/11/03/anthropic-is-working-on-a-system-to-prove-ai-models-identity/" target="_blank" rel="noopener">FlashProve</a>（明言無部署計畫）；10/27 公布<a href="https://www.anthropic.com/research/early-progress-drug-development" target="_blank" rel="noopener">六個藥物開發夥伴成果</a>：Enveda 審查 1,061 頁、人工時間 -89%、法規初稿 4 小時 vs 3 個月；BigHat 約 1,010 個變體／約 10 週，結合力 &gt;10 倍、耐溫 +18°C、聚集慢 &gt;100 倍；Divergence 一個月約 35,000 個抗體設計；10/28 併購一人公司 Mithril Medicine。11/2 其 Claude 成為 <a href="https://www.athenahealth.com/about/press-releases/patients-connect-health-records" target="_blank" rel="noopener">athenaPatient MCP server</a> 的對接端。另據 11/2 報導，Anthropic 在更新的法規申報中警告可能接近其內部「AI 大幅加速研究」門檻。</span>
+            <span class="en">Open-sourced <a href="https://techcrunch.com/2026/11/03/anthropic-is-working-on-a-system-to-prove-ai-models-identity/" target="_blank" rel="noopener">FlashProve</a> on Nov 3, explicitly with no deployment plans; published <a href="https://www.anthropic.com/research/early-progress-drug-development" target="_blank" rel="noopener">results from six drug-development partners</a> on Oct 27 — Enveda: 1,061 pages reviewed, human time down 89%, regulatory first draft in 4 hours versus 3 months; BigHat: ~1,010 variants in ~10 weeks, &gt;10x binding, +18°C thermal stability, &gt;100x slower aggregation; Divergence: ~35,000 antibody designs in a month; and acquired the one-person Mithril Medicine on Oct 28. On Nov 2 its Claude became the consumer end of the <a href="https://www.athenahealth.com/about/press-releases/patients-connect-health-records" target="_blank" rel="noopener">athenaPatient MCP server</a>. Separately, reporting on Nov 2 said Anthropic warned in an updated regulatory filing that it may approach its internal threshold for dramatically accelerated AI-assisted research.</span>
+          </td>
+          <td>
+            <span class="zh">護城河在「模型＋協定＋信任機制」三件一起推：MCP 讓資料自己走過來，FlashProve 讓身分可驗證，藥物開發夥伴關係把模型推進最難被取代的工作流。弱點是這些都還不是收入——藥物成果絕大多數臨床前，FlashProve 沒有部署計畫，而 IPO 程序讓每一份研究發布都同時具有招股文件的性質。</span>
+            <span class="en">The moat is pushing models, protocol and trust mechanisms together: MCP makes the data walk over by itself, FlashProve makes identity verifiable, and the drug-development partnerships push the model into workflows that are hardest to displace. The weakness is that none of this is revenue yet — the drug results are overwhelmingly preclinical, FlashProve has no deployment plan, and the IPO process gives every research post the character of prospectus material.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Google</strong><br><span class="zh-inline">開放權重醫療模型的供給方</span><span class="en-inline">Supplier of open-weight medical models</span></td>
+          <td>
+            <span class="zh">本週無新發布。對照基準仍是 <a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">2026/1/13 的 MedGemma 1.5 4B 與 MedASR</a>：MRI 疾病發現分類自 51% 升到 65%、CT 自 58% 升到 61%、組織病理 ROUGE-L 自 0.02 升到 0.49（持平於專用模型 PolyPath 的 0.498）、Chest ImaGenome 解剖定位 IoU 自 3% 升到 38%、EHRQA 自 68% 升到 90%、MedQA 自 64% 升到 69%；MedASR 在胸部 X 光聽寫 WER 5.2%（Whisper large-v3 為 12.5%），內部醫療聽寫基準 5.2% 對 28.2%。HAI-DEF 系列維持研究與商用免費，權重在 Hugging Face。</span>
+            <span class="en">No new release this week. The reference point remains <a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">MedGemma 1.5 4B and MedASR from January 13, 2026</a>: MRI disease-finding classification up from 51% to 65%, CT from 58% to 61%, histopathology ROUGE-L from 0.02 to 0.49 (level with the task-specific PolyPath model's 0.498), Chest ImaGenome anatomical localization IoU from 3% to 38%, EHRQA from 68% to 90%, MedQA from 64% to 69%; MedASR reached 5.2% WER on chest X-ray dictation against Whisper large-v3's 12.5%, and 5.2% versus 28.2% on an internal medical dictation benchmark. The HAI-DEF family stays free for research and commercial use, with weights on Hugging Face.</span>
+          </td>
+          <td>
+            <span class="zh">護城河是「免費把下限拉高」：只要一個 4B 開放權重模型能跑離線、能讀 CT 與 MRI，付費醫療專用模型就必須證明自己贏過它。弱點在產品化——Google 給的是權重與雲端部署，不是 Mayo 那種帶臨床共識與責任承擔的 CDS 方案，而醫院買的通常是後者。</span>
+            <span class="en">The moat is raising the floor for free: once a 4B open-weight model runs offline and reads CT and MRI, every paid medical model has to prove it beats that. The weakness is productization — Google ships weights and cloud deployment, not the kind of CDS package Mayo sells with clinical consensus and accountability attached, and hospitals usually buy the latter.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Mayo Clinic Platform</strong><br><span class="zh-inline">把機構知識當產品賣的學術醫學中心</span><span class="en-inline">An academic medical center selling institutional knowledge as product</span></td>
+          <td>
+            <span class="zh">11/3 發布<a href="https://newsnetwork.mayoclinic.org/discussion/mayo-clinic-platforms-new-clinical-decision-support-solution-provides-trusted-medical-information-to-enhance-individualized-patient-care/" target="_blank" rel="noopener">新 CDS 方案</a>，11 月起開放：35 個以上專科的 LLM 聊天（引用同儕審查文獻、每日更新、可嵌進 EHR）＋22 個臨床計算器（聊天或語音叫出，含自研工具）。使用者為 Mayo 臨床人員與其醫療提供者計畫的參與機構。未公布任何效能、使用者或機構數字。</span>
+            <span class="en">Announced a <a href="https://newsnetwork.mayoclinic.org/discussion/mayo-clinic-platforms-new-clinical-decision-support-solution-provides-trusted-medical-information-to-enhance-individualized-patient-care/" target="_blank" rel="noopener">new CDS solution</a> on Nov 3, available from November: LLM chat across 35-plus specialties (citing peer-reviewed literature, updated daily, embeddable in the EHR) plus 22 clinical calculators callable by chat or voice, including proprietary tools. Users are Mayo clinicians and organizations in its healthcare provider programs. No performance, user or institution figures published.</span>
+          </td>
+          <td>
+            <span class="zh">護城河是不可爬取的次專科共識，加上 Mayo 這個品牌在醫療界的擔保價值。對手是 <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/nyu-langone-brings-openevidences-clinical-ai-ehr-systemwide" target="_blank" rel="noopener">OpenEvidence（已在 NYU Langone 全院嵌 Epic、服務 6,000 名以上醫師）</a>與 UpToDate 這類傳統參考資源。弱點很實際：一個發布完全沒有數字的 CDS 產品，在 HTI-5 把透明度要求拿掉之後，買方沒有任何工具去比較它與對手。</span>
+            <span class="en">The moat is subspecialty consensus that cannot be scraped, plus the warranty value of the Mayo name inside medicine. The competition is <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/nyu-langone-brings-openevidences-clinical-ai-ehr-systemwide" target="_blank" rel="noopener">OpenEvidence, already embedded in Epic across NYU Langone and serving 6,000-plus physicians</a>, and traditional references such as UpToDate. The weakness is concrete: a CDS product launched with no numbers at all leaves buyers, now that HTI-5 has removed the transparency requirements, with no instrument for comparing it against a rival.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Doximity</strong><br><span class="zh-inline">醫師網路 · 本週唯一公布自家風險量測的玩家</span><span class="en-inline">Physician network · the only player this week to publish a measurement of its own risk</span></td>
+          <td>
+            <span class="zh">10/29 公布<a href="https://blog.doximity.com/articles/over-2-of-llm-doses-are-wrong-some-can-be-lethal" target="_blank" rel="noopener">261,508 筆劑量稽核</a>（9 個 2026 年模型、2,204 種藥、8,000+ 題）：至少 2.3% 錯、每 1,000 答約 20 個嚴重錯誤、NCC MERP E–H 類約 30.5／1,000、已偵測錯誤中 43.8% 嚴重／3.4% 可能致命、2024 年後新藥勝算比 5.1 倍（95% CI 3.9–6.5）。同時推出 DoseCheck，對接 RxIndex（1,900 份專論、36,000+ 劑量方案），&lt;100 毫秒、不用第二個 LLM 複查，列為免費。</span>
+            <span class="en">Published a <a href="https://blog.doximity.com/articles/over-2-of-llm-doses-are-wrong-some-can-be-lethal" target="_blank" rel="noopener">261,508-dosage audit</a> on Oct 29 (nine 2026 models, 2,204 drugs, 8,000-plus questions): at least 2.3% wrong, ~20 serious errors per 1,000 answers, ~30.5 per 1,000 in NCC MERP E–H, 43.8% of detected errors serious and 3.4% potentially lethal, and 5.1x odds of error on post-2024 approvals (95% CI 3.9–6.5). It launched DoseCheck alongside, backed by RxIndex (1,900 monographs, 36,000-plus regimens), returning in under 100 ms, with no second LLM in the loop, listed as free.</span>
+          </td>
+          <td>
+            <span class="zh">護城河是 RxIndex 這份結構化藥品資料，以及美國醫師的註冊基數。策略上它做了一件罕見的事：先公布自己所在領域的錯誤率，再賣修補層——這讓它在定義「什麼叫合格的劑量輸出」上取得話語權。弱點是覆蓋率缺口正落在高風險處（1,900 份專論 vs 2,204 種藥，而新藥風險最高），且全部數字未經第三方驗證。</span>
+            <span class="en">The moat is RxIndex as a structured drug asset, plus the registered base of US physicians. Strategically it did something rare: publish the error rate of its own category first, then sell the patch — which buys it authority over what counts as an acceptable dosing output. The weakness is that the coverage gap falls on the high-risk side (1,900 monographs against 2,204 drugs, with new approvals carrying the greatest risk), and that none of the figures is third-party verified.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>athenahealth</strong><br><span class="zh-inline">EHR 廠商 · 本週把病歷出口改成 MCP</span><span class="en-inline">EHR vendor · turned its record export into MCP this week</span></td>
+          <td>
+            <span class="zh">11/2 發布 <a href="https://www.athenahealth.com/about/press-releases/patients-connect-health-records" target="_blank" rel="noopener">athenaPatient MCP server</a>，病人可把檢驗、用藥、診斷、就診紀錄分享給 Claude。未公布上線範圍、病人或診所數、同意流程與資料保留政策。對比組是 <a href="https://histalk2.com/2026/11/04/healthcare-ai-news-11-4-26/" target="_blank" rel="noopener">Epic：在 ONC 取消認證要求之後，仍表示會繼續向客戶提供 AI 透明度文件與評估工具</a>。</span>
+            <span class="en">Announced the <a href="https://www.athenahealth.com/about/press-releases/patients-connect-health-records" target="_blank" rel="noopener">athenaPatient MCP server</a> on Nov 2, letting patients share labs, medications, diagnoses and visit history with Claude. No rollout scope, patient or practice counts, consent flow or retention policy published. The contrast case is <a href="https://histalk2.com/2026/11/04/healthcare-ai-news-11-4-26/" target="_blank" rel="noopener">Epic, which said it will keep providing AI transparency documentation and evaluation tools to customers even after ONC removed the requirement</a>.</span>
+          </td>
+          <td>
+            <span class="zh">護城河是病人端入口的所有權：走病人查閱權這條路，athenahealth 不需要醫院 IT 委員會點頭就能讓資料進到前沿模型裡，這是對 Epic 的側翼攻擊。弱點是它把安全責任外推給了消費級 AI——而本週 Doximity 的 2.3% 正好量出那一端的錯誤率。</span>
+            <span class="en">The moat is ownership of the patient-side front door: routing through the patient's right of access, athenahealth needs no hospital IT committee's approval to get data into a frontier model — a flanking move on Epic. The weakness is that it pushes safety responsibility out to a consumer AI, and Doximity's 2.3% this week is a measurement of the error rate at precisely that end.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Corti · Rhapsody</strong><br><span class="zh-inline">agent 控制層的兩種賣法：編排 vs 治理</span><span class="en-inline">Two ways to sell the agent control plane: orchestration versus governance</span></td>
+          <td>
+            <span class="zh">Corti 10/22 發布 <a href="https://corti.ai/newsroom/corti-advances-execution-and-control-layer-for-complex-agentic-ai-systems-in-healthcare" target="_blank" rel="noopener">Agentic Framework</a>：orchestrator、trace API、開源評測函式庫、Feedback API、Schema Connectors（另有 MCP／A2A／sub-agent）、逐 token 串流可中斷、OpenAI 相容 API、與 NVIDIA 合作（GPU＋Triton）、可地端；自述年服務 1 億病人以上，首個客戶 Dedalus（7,500 家以上機構、5,700 家實驗室、覆蓋 5.4 億人以上）。Rhapsody 10/20 推 <a href="https://www.prnewswire.com/news-releases/rhapsody-launches-guardian-to-govern-ai-agent-and-api-access-to-healthcare-data-and-services-302913231.html" target="_blank" rel="noopener">Guardian</a>：agent 身分驗證、範圍化存取、速率限制、agent／MCP／API 活動稽核軌跡，對接 CHAI 與 Joint Commission 指引，現已可用、無任何指標公布。</span>
+            <span class="en">Corti shipped its <a href="https://corti.ai/newsroom/corti-advances-execution-and-control-layer-for-complex-agentic-ai-systems-in-healthcare" target="_blank" rel="noopener">Agentic Framework</a> on Oct 22: an orchestrator, trace APIs, an open-source evaluation library, a Feedback API, Schema Connectors alongside MCP, A2A and sub-agent connectors, interruptible token-by-token streaming, an OpenAI-compatible API, inference built with NVIDIA on GPUs and Triton, and on-premises deployment; it claims over 100 million patients served annually, with Dedalus as first customer (7,500-plus organizations, 5,700 labs, 540 million-plus people covered). Rhapsody launched <a href="https://www.prnewswire.com/news-releases/rhapsody-launches-guardian-to-govern-ai-agent-and-api-access-to-healthcare-data-and-services-302913231.html" target="_blank" rel="noopener">Guardian</a> on Oct 20: agent authentication, scoped access, rate limits and an audit trail across agent, MCP and API activity, mapped to CHAI and Joint Commission guidance, available now, with no metrics published.</span>
+          </td>
+          <td>
+            <span class="zh">兩家都在賭同一件事：MCP 協定本身不提供身分、配額與稽核，所以會有人賣這一層。Corti 從臨床 AI 往上長成平台（護城河是既有的聽寫與臨床模型基礎＋歐洲 EHR 通路），Rhapsody 從整合引擎往上長成治理層（護城河是既有的 Rhapsody／Corepoint 裝機量）。弱點共通：兩家都沒有公布任何量化效能，而醫院在尚無監管強制的情況下，很難為「控制層」單獨編預算。</span>
+            <span class="en">Both bet on the same proposition: the MCP protocol itself provides no identity, quotas or audit, so someone will sell that layer. Corti grows upward from clinical AI into a platform (moat: an existing dictation and clinical-model base plus European EHR distribution); Rhapsody grows upward from an integration engine into a governance layer (moat: the installed base of Rhapsody and Corepoint). The shared weakness: neither publishes any quantitative performance, and absent a regulatory mandate hospitals find it hard to budget for a control plane on its own.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Zocdoc</strong><br><span class="zh-inline">醫療預約市集 · 選擇歡迎 agent 而非封鎖</span><span class="en-inline">Care booking marketplace · chose to welcome agents rather than block them</span></td>
+          <td>
+            <span class="zh">10/28 <a href="https://www.zocdoc.com/about/news/as-others-put-up-walls-zocdoc-opens-its-doors-and-welcomes-ai-agents-to-reliably-connect-patients-to-care/" target="_blank" rel="noopener">開放 MCP server／REST API／llms.txt／deep links</a>；首個深度夥伴 Instinct；Care Access Network 含 Google Gemini、Amazon Health AI、Yelp、Healthgrades、Blue Shield of California。20 萬名以上已驗證醫師、175 項以上排程整合、10,000 個以上保險方案。agent 流量自 7 月成長近 30 倍、9 月初起約每 10 天翻倍、10 月前兩週超過前三個月總和（皆為自家數據，未定義量測方法）。</span>
+            <span class="en">On Oct 28 it <a href="https://www.zocdoc.com/about/news/as-others-put-up-walls-zocdoc-opens-its-doors-and-welcomes-ai-agents-to-reliably-connect-patients-to-care/" target="_blank" rel="noopener">opened an MCP server, a REST API, llms.txt and deep links</a>; Instinct is the first deep partner; the Care Access Network includes Google Gemini, Amazon Health AI, Yelp, Healthgrades and Blue Shield of California. It reports 200,000-plus verified providers, 175-plus scheduling integrations and 10,000-plus insurance plans, with agent traffic up nearly 30x since July, doubling roughly every 10 days since early September, and October's first two weeks exceeding the prior three months combined — all company data, with no measurement method defined.</span>
+          </td>
+          <td>
+            <span class="zh">護城河是排程整合與保險驗證這兩件極難複製的管線工作——agent 可以生成文字，但無法生成 175 條排程系統接線。策略上它選擇成為 agent 的供應端而非被繞過的中介。弱點是它把自己放進了一條沒有責任框架的路徑：當 agent 幫病人掛錯科，Zocdoc、agent 開發者與醫師之間的責任分配目前無人定義。</span>
+            <span class="en">The moat is the two hardest pieces of plumbing to replicate — scheduling integrations and insurance verification. An agent can generate text; it cannot generate 175 scheduling-system connections. Strategically Zocdoc chose to become the supply side for agents rather than the intermediary they route around. The weakness is that it has placed itself on a path with no liability framework: when an agent books the wrong specialty, nothing allocates responsibility between Zocdoc, the agent developer and the clinician.</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="zh"><strong>今天的競爭結構是一條還缺一節的管線。</strong>上游有人把能力推到物理世界（AutoDNA、Anthropic 的藥物開發夥伴），中游有人把資料與服務改成 agent 可呼叫的介面（athenahealth、Zocdoc 都選了 MCP），下游有人賣控制與稽核（Corti、Rhapsody、CrowdStrike），旁邊有人賣可驗證性（FlashProve）。缺的那一節是量測：整條管線上，只有 Doximity 公布了一個可以用來拒絕某個輸出的錯誤率，而那還是廠商自己算的。在 <a href="https://www.hhs.gov/press-room/hhs-finalizes-hti-5-deregulatory-rule.html" target="_blank" rel="noopener">HTI-5 把 EHR 認證的 AI 透明度要求拿掉</a>之後，買方手上剩下的工具只有廠商自願公布的數字——而本週七家公司裡，有五家一個數字都沒給。</span>
+      <span class="en"><strong>Today's competitive structure is a pipeline with one section missing.</strong> Upstream, capability is being pushed into the physical world (AutoDNA, Anthropic's drug-development partners). Midstream, data and services are being reshaped into agent-callable interfaces, with athenahealth and Zocdoc both choosing MCP. Downstream, control and audit are for sale (Corti, Rhapsody, CrowdStrike), with verifiability alongside (FlashProve). The missing section is measurement: along the whole pipeline, only Doximity published an error rate you could use to reject a given output, and even that one is vendor-calculated. With <a href="https://www.hhs.gov/press-room/hhs-finalizes-hti-5-deregulatory-rule.html" target="_blank" rel="noopener">HTI-5 removing AI transparency requirements from EHR certification</a>, the only instrument left to buyers is whatever vendors volunteer — and of this week's seven companies, five gave no number at all.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============ 04 台灣視角 ============ -->
+<section id="taiwan">
+  <h2>04 — Taiwan Angle</h2>
+  <div class="sec-title">
+    <span class="zh">本週三件事在台灣各對應到一個已經存在、但還沒接上的機制：模型身分對應負責任 AI 中心、劑量錯誤率對應仿單與健保給藥規則、MCP 管線對應 FHIR 資料平台。</span>
+    <span class="en">Each of this week's three threads maps onto a mechanism that already exists in Taiwan but has not been wired up: model identity to the responsible-AI centers, dosing error rates to local labeling and NHI prescribing rules, and the MCP pipeline to the FHIR data platform.</span>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="zh"><strong>(1) FlashProve 給了台灣「負責任 AI 執行中心」一個不靠自述的選項。</strong>衛福部 <a href="https://news.cnyes.com/news/id/5733509" target="_blank" rel="noopener">2024 年 10 月 7 日啟動三大 AI 中心</a>：負責任 AI 執行中心（台大醫院與台北榮總同為責任醫院）、臨床 AI 取證驗證中心（台大醫院，與 TFDA 共同執行）、AI 影響性研究中心（台北榮總，與健保署共同執行）；當時 30 家醫院送 48 件申請、16 家醫院 19 案通過，台大與北榮各得 2 案。負責任 AI 執行中心的任務之一就是「公開揭露模型、資料與效能資訊」並建立模型生命週期管理——而這件事目前在全世界都只有一種實作方式，就是相信廠商的日誌。<a href="https://techcrunch.com/2026/11/03/anthropic-is-working-on-a-system-to-prove-ai-models-identity/" target="_blank" rel="noopener">FlashProve 11/3 提出的指紋機制</a>之所以值得台灣的驗證中心注意，不是因為它成熟（Anthropic 自己說沒有部署計畫），而是因為它把「模型版本揭露」從一個信任問題改寫成一個密碼學問題。對一個要替台灣族群做模型驗證、而且驗證完之後模型還會被廠商持續更新的中心來說，這是目前唯一能在不取得權重的前提下確認「上線跑的還是我驗過的那個模型」的技術路徑。</span>
+      <span class="en"><strong>(1) FlashProve hands Taiwan's Responsible AI Execution Center an option that does not rest on vendor assurances.</strong> The Ministry of Health and Welfare <a href="https://news.cnyes.com/news/id/5733509" target="_blank" rel="noopener">launched three AI centers on October 7, 2024</a>: a Responsible AI Execution Center (with both National Taiwan University Hospital and Taipei Veterans General Hospital as responsible hospitals), a Clinical AI Evidence Validation Center (NTUH, run jointly with the TFDA), and an AI Impact Research Center (Taipei Veterans General, run jointly with the National Health Insurance Administration). Thirty hospitals filed 48 applications; 16 hospitals passed with 19 projects, NTUH and Taipei Veterans holding two each. One of the Responsible AI Execution Center's charges is public disclosure of model, data and performance information, plus lifecycle management of models — and worldwide that charge currently has exactly one implementation: trusting the vendor's logs. What makes <a href="https://techcrunch.com/2026/11/03/anthropic-is-working-on-a-system-to-prove-ai-models-identity/" target="_blank" rel="noopener">the fingerprint scheme Anthropic proposed on Nov 3</a> worth the validation center's attention is not maturity — Anthropic says it has no deployment plans — but that it rewrites model-version disclosure from a trust problem into a cryptographic one. For a center that validates models for the Taiwanese population and then watches vendors keep updating them, this is the only technical route available for confirming that what runs in production is still the model that was validated, without ever holding the weights.</span>
+    </p>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="zh"><strong>(2) Doximity 的 2.3% 不能直接搬到台灣用，而這正是問題。</strong>那份稽核是用 <a href="https://blog.doximity.com/articles/over-2-of-llm-doses-are-wrong-some-can-be-lethal" target="_blank" rel="noopener">FDA 標籤、美國指引與美國原始文獻建的 RxIndex（1,900 份專論、36,000 個以上劑量方案）</a>當真值。台灣的仿單核准劑量、健保給藥規則與常用劑型與美國並不一致，同一個模型在台灣用藥情境下的錯誤率，據本報所見沒有任何公開量測。更要緊的是 5.1 倍那條規律——2024 年後核准的新藥出錯勝算最高——在台灣會被放大，因為新藥在台上市時間與適應症給付範圍往往與美國錯開，模型最可能依美國標籤回答。要複製 DoseCheck 那種確定性驗證層，缺的不是技術（查表而已，<a href="https://blog.doximity.com/articles/over-2-of-llm-doses-are-wrong-some-can-be-lethal" target="_blank" rel="noopener">&lt;100 毫秒</a>，不需要第二個模型），而是一份結構化、持續更新、涵蓋健保給藥規則的台灣藥品劑量資料。這件事的規模遠小於訓練一個醫療模型，但目前沒有任何一個 AI 中心的任務說明把它列進去。</span>
+      <span class="en"><strong>(2) Doximity's 2.3% cannot be transplanted to Taiwan, and that is exactly the problem.</strong> That audit used <a href="https://blog.doximity.com/articles/over-2-of-llm-doses-are-wrong-some-can-be-lethal" target="_blank" rel="noopener">RxIndex — 1,900 monographs and more than 36,000 dosing regimens built from FDA labeling, US guidelines and US primary literature</a> — as ground truth. Taiwan's approved label doses, NHI prescribing rules and commonly stocked formulations do not line up with the American ones, and as far as this report can find, no public measurement exists of the same models' error rate in a Taiwanese prescribing context. The 5.1x pattern matters more here, not less: drugs approved since 2024 carry the highest odds of error, and in Taiwan that effect is amplified, because local launch timing and reimbursed indications frequently diverge from the US, while the model most likely answers from the US label. Reproducing a deterministic verification layer like DoseCheck does not lack technology — it is a lookup, <a href="https://blog.doximity.com/articles/over-2-of-llm-doses-are-wrong-some-can-be-lethal" target="_blank" rel="noopener">under 100 milliseconds</a>, with no second model required. What is missing is a structured, continuously updated Taiwanese dosing dataset that encodes NHI prescribing rules. That job is far smaller than training a medical model, and not one of the AI centers' published mandates includes it.</span>
+    </p>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="zh"><strong>(3) FHIR 解資料格式，MCP 解 agent 怎麼合法地拿到它——台灣目前只有前半。</strong>本週 <a href="https://www.athenahealth.com/about/press-releases/patients-connect-health-records" target="_blank" rel="noopener">athenahealth</a> 與 <a href="https://www.zocdoc.com/about/news/as-others-put-up-walls-zocdoc-opens-its-doors-and-welcomes-ai-agents-to-reliably-connect-patients-to-care/" target="_blank" rel="noopener">Zocdoc</a> 選的都是 MCP。台灣這邊的對照是 <a href="https://udn.com/news/story/7241/9590837" target="_blank" rel="noopener">2026 年 6 月 26 日醫材公會與工研院宣布的「AI 智慧醫療數據大平台」</a>：號稱台灣第一個以 FHIR 標準建立的智慧醫療數據平台，九家醫材廠參與（遠傳電信、晉弘科技、瑪克多、炳碩生醫、商之器、美商宇心生醫、博鑫醫電、超象科技、緯謙科技），工研院擔任第三方中立法人負責資料整合與 FHIR 落實，涵蓋生理監測、心電圖、醫療影像、超音波、手術室與遠距醫療資料，目標把業界常見的一到兩年驗證期縮短。兩層是互補而非替代：FHIR 讓資料可被程式讀懂，MCP 決定 agent 在什麼授權範圍下讀得到——而第三層（本報第 7 則談的身分驗證、範圍化存取與速率限制）在台灣目前連討論都很少見。醫院若在 FHIR 平台上開放 agent 存取而沒有補上那一層，等於把 Zocdoc 自述的「每 10 天翻倍」流量曲線接到一個沒有配額的介面上。</span>
+      <span class="en"><strong>(3) FHIR solves the data format; MCP decides how an agent legitimately reaches it — Taiwan has only the first half.</strong> Both <a href="https://www.athenahealth.com/about/press-releases/patients-connect-health-records" target="_blank" rel="noopener">athenahealth</a> and <a href="https://www.zocdoc.com/about/news/as-others-put-up-walls-zocdoc-opens-its-doors-and-welcomes-ai-agents-to-reliably-connect-patients-to-care/" target="_blank" rel="noopener">Zocdoc</a> chose MCP this week. Taiwan's counterpart is the <a href="https://udn.com/news/story/7241/9590837" target="_blank" rel="noopener">AI Smart Healthcare Data Platform announced on June 26, 2026 by the Taiwan Medical Device Association with ITRI</a>: billed as Taiwan's first smart healthcare data platform built on the FHIR standard, with nine device companies taking part (Far EasTone, Crystalvue, MacDo, Point Robotics, EBM Technologies, QT Medical, Bosen, Soundwave and Weichien), ITRI acting as a neutral third-party institution for data integration and FHIR implementation, and coverage spanning physiological monitoring, ECG, medical imaging, ultrasound, operating-room and telemedicine data, with the aim of shortening the one-to-two-year validation cycles the industry commonly faces. The two layers are complementary, not substitutes: FHIR makes data machine-readable, MCP decides under what authorization an agent gets to read it — and the third layer, the identity, scoped access and rate limiting discussed in item 7, is barely even a conversation in Taiwan yet. A hospital that opens agent access on top of a FHIR platform without adding that layer is wiring Zocdoc's self-reported doubling-every-10-days curve into an interface with no quota.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============ 05 延伸閱讀 ============ -->
+<section id="reading">
+  <h2>05 — Further Reading</h2>
+  <div class="sec-title">
+    <span class="zh">挑選標準：原始發表優先於二手報導，有方法與數字的優先於有敘事的，以及至少一份能讓你對本期主線持懷疑態度的材料。</span>
+    <span class="en">Selection criteria: primary publications over secondary coverage, method and numbers over narrative, and at least one item that lets you stay skeptical of this issue's lead story.</span>
+  </div>
+
+  <ol class="reading">
+    <li>
+      <a href="https://www.nature.com/articles/s41586-026-11228-6" target="_blank" rel="noopener">An AI-native experimental laboratory for autonomous biomolecular operations — Nature (2026-11-04)</a>
+      <p class="why"><span class="zh">本期主線的原始論文。讀法建議直接跳到方法與補充資料裡的排程與錯誤處理段落——頭條的產率數字不如那部分有資訊量。</span><span class="en">The primary paper behind this issue's lead. Skip to the scheduling and error-handling sections in the methods and supplementary material; they carry more information than the headline yield figure.</span></p>
+    </li>
+    <li>
+      <a href="https://pith.science/paper/2507.02379" target="_blank" rel="noopener">AutoDNA 預印本與公開評註 — arXiv 2507.02379 / Pith</a>
+      <p class="why"><span class="zh">配著上一篇讀。它逐條列出單次執行、文獻值對照、未報失敗率等問題，是本期唯一對主線持懷疑立場的材料，也示範了「可以相信到哪裡」該怎麼問。</span><span class="en">Read it against the paper above. It itemizes the single-run results, the literature-value comparison and the unreported failure rates — the only skeptical material on this issue's lead, and a model for how to ask how far a result can be trusted.</span></p>
+    </li>
+    <li>
+      <a href="https://blog.doximity.com/articles/over-2-of-llm-doses-are-wrong-some-can-be-lethal" target="_blank" rel="noopener">Over 2% of LLM doses are wrong. Some can be lethal. — Doximity Blog (2026-10-29)</a>
+      <p class="why"><span class="zh">把它當成一份「該怎麼量測臨床動作」的方法示範來讀，而不是當結論。EQUIP 加 NCC MERP 的雙量表設計，和按上市年份分層這兩個決定，是任何醫院要自己做內部稽核時可以直接抄的。</span><span class="en">Read it as a demonstration of how to measure a clinical action, not as a conclusion. The dual-scale design (EQUIP plus NCC MERP) and the stratification by approval year are two decisions any hospital running its own internal audit can copy directly.</span></p>
+    </li>
+    <li>
+      <a href="https://www.anthropic.com/research/early-progress-drug-development" target="_blank" rel="noopener">Early progress in drug development — Anthropic Research (2026-10-27)</a>
+      <p class="why"><span class="zh">忽略抗體設計那幾段漂亮數字，看 Enveda 的文件審查案例：1,061 頁、人工時間 -89%、法規初稿 4 小時 vs 3 個月。藥物開發真正被 agent 吃掉的是文書，而這一段完全不需要生物學突破。</span><span class="en">Skip past the handsome antibody-design numbers and read the Enveda documentation case: 1,061 pages, human review time down 89%, a regulatory first draft in four hours against three months. What agents are actually eating in drug development is paperwork, and that part needs no biological breakthrough at all.</span></p>
+    </li>
+    <li>
+      <a href="https://hai.stanford.edu/news/stanford-develops-real-world-benchmarks-for-healthcare-ai-agents" target="_blank" rel="noopener">MedAgentBench: a virtual EHR environment to benchmark medical LLM agents — Stanford HAI / NEJM AI (2025-09-15)</a>
+      <p class="why"><span class="zh">本期所有 MCP 與 agent 介面消息的必要背景。它用 100 份病人檔、78.5 萬筆紀錄、300 個醫師設計的任務去測 agent 在虛擬 EHR 裡經 FHIR 端點做事，當時最高成功率是 Claude 3.5 Sonnet v2 的 69.67%、GPT-4o 64.00%、開源最佳 DeepSeek-V3 62.67%。一年後介面都開通了，這條基準線有沒有被重測，是本期最該被問而沒人問的問題。</span><span class="en">Necessary background for every MCP and agent-interface item in this issue. It tests agents acting through FHIR endpoints in a virtual EHR across 100 patient profiles, 785,000 records and 300 physician-written tasks; the best success rate at the time was Claude 3.5 Sonnet v2 at 69.67%, with GPT-4o at 64.00% and DeepSeek-V3 the best open model at 62.67%. A year on, the interfaces are open — whether that baseline has been re-measured is the question this issue most deserves and nobody is asking.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/articles/d41586-026-03270-1" target="_blank" rel="noopener">AI agents enter the &lsquo;wet lab&rsquo; — Nature News (2026-11)</a>
+      <p class="why"><span class="zh">Nature 自家的新聞分析，用來校正本報對 AutoDNA 的解讀。本報因 nature.com 無法直接取用而未能引用其內容，列在這裡供讀者自行核對。</span><span class="en">Nature's own news analysis, useful for calibrating this report's reading of AutoDNA. This report could not retrieve nature.com directly and so quotes nothing from it; it is listed here for readers to check independently.</span></p>
+    </li>
+  </ol>
+</section>
+
+<!-- ============ 06 參考文獻 ============ -->
+<section id="refs">
+  <h2>06 — References</h2>
+  <div class="sec-title">
+    <span class="zh">參考文獻</span>
+    <span class="en">References</span>
+  </div>
+
+  <div class="panel">
+    <ol class="refs">
+      <li>An AI-native experimental laboratory for autonomous biomolecular operations. <em>Nature</em>, 2026-11-04. <a href="https://www.nature.com/articles/s41586-026-11228-6" target="_blank" rel="noopener">nature.com</a></li>
+      <li>AI agents enter the &lsquo;wet lab&rsquo;. <em>Nature News</em>, 2026-11. <a href="https://www.nature.com/articles/d41586-026-03270-1" target="_blank" rel="noopener">nature.com</a></li>
+      <li>An AI-native experimental laboratory for autonomous biomolecular engineering (preprint and open review). <em>arXiv 2507.02379 / Pith</em>, 2026. <a href="https://pith.science/paper/2507.02379" target="_blank" rel="noopener">pith.science</a></li>
+      <li>AI agents run this automated biology lab that sequences DNA. <em>TLDR</em>, 2026-11-04. <a href="https://tldr.tech/story/0e051baa-103e-49f4-90b5-12723ff48737" target="_blank" rel="noopener">tldr.tech</a></li>
+      <li>Anthropic is working on a system to prove AI models&rsquo; identity. <em>TechCrunch</em>, 2026-11-03. <a href="https://techcrunch.com/2026/11/03/anthropic-is-working-on-a-system-to-prove-ai-models-identity/" target="_blank" rel="noopener">techcrunch.com</a></li>
+      <li>Patients can now connect their health records to Claude (athenaPatient MCP server). <em>athenahealth Press Release</em>, 2026-11-02. <a href="https://www.athenahealth.com/about/press-releases/patients-connect-health-records" target="_blank" rel="noopener">athenahealth.com</a></li>
+      <li>MCP servers securely connect to consumer AI. <em>athenahealth Blog</em>, 2026-11. <a href="https://www.athenahealth.com/resources/blog/mcp-servers-securely-connect-to-consumer-ai" target="_blank" rel="noopener">athenahealth.com</a></li>
+      <li>Over 2% of LLM doses are wrong. Some can be lethal. <em>Doximity Blog</em>, 2026-10-29. <a href="https://blog.doximity.com/articles/over-2-of-llm-doses-are-wrong-some-can-be-lethal" target="_blank" rel="noopener">blog.doximity.com</a></li>
+      <li>Mayo Clinic Platform&rsquo;s new clinical decision support solution. <em>Mayo Clinic News Network</em>, 2026-11-03. <a href="https://newsnetwork.mayoclinic.org/discussion/mayo-clinic-platforms-new-clinical-decision-support-solution-provides-trusted-medical-information-to-enhance-individualized-patient-care/" target="_blank" rel="noopener">newsnetwork.mayoclinic.org</a></li>
+      <li>Healthcare AI News 11/4/26. <em>HIStalk</em>, 2026-11-04. <a href="https://histalk2.com/2026/11/04/healthcare-ai-news-11-4-26/" target="_blank" rel="noopener">histalk2.com</a></li>
+      <li>As others put up walls, Zocdoc opens its doors and welcomes AI agents. <em>Zocdoc Newsroom</em>, 2026-10-28. <a href="https://www.zocdoc.com/about/news/as-others-put-up-walls-zocdoc-opens-its-doors-and-welcomes-ai-agents-to-reliably-connect-patients-to-care/" target="_blank" rel="noopener">zocdoc.com</a></li>
+      <li>Early progress in drug development. <em>Anthropic Research</em>, 2026-10-27. <a href="https://www.anthropic.com/research/early-progress-drug-development" target="_blank" rel="noopener">anthropic.com</a></li>
+      <li>Anthropic acquires drug discovery platform Mithril Medicine. <em>HTWorld</em>, 2026-10-28. <a href="https://htworld.co.uk/leadership/entrepreneurship/anthropic-acquires-drug-discovery-platform-mithril-medicine-htai26/" target="_blank" rel="noopener">htworld.co.uk</a></li>
+      <li>Corti advances execution and control layer for complex agentic AI systems in healthcare. <em>Corti Newsroom</em>, 2026-10-22. <a href="https://corti.ai/newsroom/corti-advances-execution-and-control-layer-for-complex-agentic-ai-systems-in-healthcare" target="_blank" rel="noopener">corti.ai</a></li>
+      <li>Rhapsody launches Guardian to govern AI agent and API access to healthcare data and services. <em>PR Newswire</em>, 2026-10-20. <a href="https://www.prnewswire.com/news-releases/rhapsody-launches-guardian-to-govern-ai-agent-and-api-access-to-healthcare-data-and-services-302913231.html" target="_blank" rel="noopener">prnewswire.com</a></li>
+      <li>Everything That Happened in AI Today, Wednesday, November 4, 2026. <em>The Neuron</em>, 2026-11-04. <a href="https://theneuron.ai/digest/everything-that-happened-in-ai-today-wednesday-november-4-2026" target="_blank" rel="noopener">theneuron.ai</a></li>
+      <li>Everything That Happened in AI Today, Tuesday, November 3, 2026. <em>The Neuron</em>, 2026-11-03. <a href="https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-tuesday-november-3-2026/" target="_blank" rel="noopener">theneuron.ai</a></li>
+      <li>Healthcare AI Guy Weekly, 11/3. <em>Healthcare AI Guy</em>, 2026-11-03. <a href="https://www.healthcareaiguy.com/p/healthcare-ai-guy-weekly-11-3" target="_blank" rel="noopener">healthcareaiguy.com</a></li>
+      <li>AI-assisted detection of missed referrals in primary care (MR-AI). <em>npj Digital Medicine</em>, 2026. <a href="https://www.nature.com/articles/s41746-026-03444-1" target="_blank" rel="noopener">nature.com</a></li>
+      <li>AI assistance for immunotherapy adverse-event annotation (crossover study). <em>Nature Cancer</em>, 2026. <a href="https://www.nature.com/articles/s43018-026-01264-6" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Drug-name recommendation patterns across five large language models. <em>Nature</em> (s44360-026-00205-y), 2026. <a href="https://www.nature.com/articles/s44360-026-00205-y" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Cost of AI-recommended versus physician-recommended care. <em>NEJM AI</em>, 2026. <a href="https://ai.nejm.org/doi/full/10.1056/AIoa2600537" target="_blank" rel="noopener">ai.nejm.org</a></li>
+      <li>HHS finalizes HTI-5 deregulatory rule. <em>HHS Press Room</em>, 2026-11. <a href="https://www.hhs.gov/press-room/hhs-finalizes-hti-5-deregulatory-rule.html" target="_blank" rel="noopener">hhs.gov</a></li>
+      <li>NYU Langone brings OpenEvidence&rsquo;s clinical AI into the EHR systemwide. <em>Fierce Healthcare</em>, 2026. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/nyu-langone-brings-openevidences-clinical-ai-ehr-systemwide" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>Next generation medical image interpretation with MedGemma 1.5 and medical speech to text with MedASR. <em>Google Research Blog</em>, 2026-01-13. <a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">research.google</a></li>
+      <li>Stanford develops real-world benchmarks for healthcare AI agents (MedAgentBench). <em>Stanford HAI</em>, 2025-09-15. <a href="https://hai.stanford.edu/news/stanford-develops-real-world-benchmarks-for-healthcare-ai-agents" target="_blank" rel="noopener">hai.stanford.edu</a></li>
+      <li>智慧醫療里程碑！衛福部 3 大 AI 中心啟動，台大、台北榮總各獲選 2 項計畫責任醫院. <em>鉅亨網</em>, 2024-10-07. <a href="https://news.cnyes.com/news/id/5733509" target="_blank" rel="noopener">news.cnyes.com</a></li>
+      <li>醫材公會攜工研院及醫材業者建 AI 醫療數據平台，促智慧醫療產業升級. <em>經濟日報／udn</em>, 2026-06-26. <a href="https://udn.com/news/story/7241/9590837" target="_blank" rel="noopener">udn.com</a></li>
+    </ol>
+    <div class="note">
+      <span class="zh"><strong>編輯說明：</strong>本期窗口為 10/27–11/04（台北時間），主線集中在 11/02–11/04。需要誠實交代的有八項。一，<strong>nature.com 在本次產製中無法直接取用</strong>（連線被站方拒絕），因此 AutoDNA 的架構、agent 分工與逐項數字引自預印本 arXiv 2507.02379 及其公開評註頁，而 Nature 正式版的「20 多類儀器、併行實驗快 3.2 倍、檢出並驗證一個癌症相關突變」引自 HIStalk 11/4 與 TLDR 的摘要，未能逐字核對期刊正文；正式版 3.2 倍與預印本 3.60 倍不一致，以正式版為準。二，同理，npj Digital Medicine 的 MR-AI 研究、Nature Cancer 的 2.71 分鐘、藥名推薦研究的 97.5% 皆引自 Healthcare AI Guy 11/3 的彙整，未能核對原文的樣本細節與信賴區間。三，<strong>Doximity 的全部劑量數字為廠商自家部落格、未經同儕審查與第三方稽核</strong>，9 個受測模型未點名、無分項數據；DoseCheck 的 &lt;100 毫秒與 RxIndex 覆蓋度同為廠商自述。四，<strong>Anthropic 藥物開發的全部數字為自家部落格</strong>，絕大多數屬臨床前，Mithril 的「2028 年底進人體試驗」是條件句；Anthropic 正處 IPO 程序，該發布同時具招股材料性質。五，Zocdoc 的「近 30 倍／每 10 天翻倍／10 月前兩週超過前三個月」與 Corti 的「年服務 1 億病人」、Dedalus 的 5.4 億覆蓋人數，皆為公司自述且未定義量測方法；IDC 的 12 億 agent 與 Gartner 的 40% 為廠商引用的第三方預測，非量測。六，FlashProve 僅有 TechCrunch 一個來源，Anthropic 技術規格本體未在本次產製中取用；網路流傳的「72 倍開銷」出自第三方整理，本報未採信。七，<strong>台灣段落使用的是既有背景而非本週新聞</strong>：三大 AI 中心為 2024/10/07 啟動，醫材公會與工研院的 FHIR 平台為 2026/06/26 發布，本報未查到 10/27–11/04 之間與本期主題直接相關的台灣新聞，故以既有機制對照國際消息，並在文中標明日期。八，MedGemma 1.5 與 MedASR 為 2026/01/13 發布，不在本期窗口，僅作為 Google 開放權重基準線的對照。此外，Mayo Clinic Platform 的 CDS 發布完全沒有效能數字，本報未替它補任何推估。</span>
+      <span class="en"><strong>Editor&rsquo;s note:</strong> This issue covers Oct 27–Nov 4 (Taipei time), with the lead stories concentrated in Nov 2–4. Eight disclosures are owed. First, <strong>nature.com could not be retrieved during production</strong> (the site refused the connection), so AutoDNA&rsquo;s architecture, agent roles and itemized figures are cited from the arXiv 2507.02379 preprint and its public review page, while the published version&rsquo;s &ldquo;twenty-plus instrument classes, 3.2-fold faster concurrent experiments, and a cancer-associated mutation detected and validated&rdquo; comes from HIStalk&rsquo;s Nov 4 column and TLDR&rsquo;s summary rather than line-by-line verification against the journal text; the published 3.2-fold figure disagrees with the preprint&rsquo;s 3.60x, and the published version governs. Second, for the same reason, the npj Digital Medicine MR-AI study, Nature Cancer&rsquo;s 2.71 minutes and the drug-name study&rsquo;s 97.5% are all cited from Healthcare AI Guy&rsquo;s Nov 3 roundup, with sample details and confidence intervals unverified against the papers. Third, <strong>all of Doximity&rsquo;s dosing figures come from the company&rsquo;s own blog</strong>, without peer review or third-party audit; none of the nine tested models is named and no per-model data is given, and DoseCheck&rsquo;s sub-100-millisecond latency and RxIndex coverage are likewise vendor-reported. Fourth, <strong>every Anthropic drug-development figure comes from its own blog</strong>, overwhelmingly preclinical, and Mithril&rsquo;s &ldquo;human trials by late 2028&rdquo; is a conditional; Anthropic is mid-IPO, which gives that post the character of prospectus material. Fifth, Zocdoc&rsquo;s &ldquo;nearly 30x / doubling every 10 days / first two weeks of October beating the prior three months,&rdquo; Corti&rsquo;s &ldquo;over 100 million patients annually&rdquo; and Dedalus&rsquo;s 540-million coverage are all company-stated with no measurement method defined; IDC&rsquo;s 1.2 billion agents and Gartner&rsquo;s 40% are third-party forecasts quoted by a vendor, not measurements. Sixth, FlashProve rests on a single source, TechCrunch; Anthropic&rsquo;s technical specification itself was not retrieved in this production run, and the &ldquo;72x overhead&rdquo; figure circulating in third-party write-ups is not credited here. Seventh, <strong>the Taiwan section uses standing context rather than this week&rsquo;s news</strong>: the three AI centers launched on Oct 7, 2024 and the Medical Device Association–ITRI FHIR platform was announced on Jun 26, 2026. This report found no Taiwanese news between Oct 27 and Nov 4 directly bearing on this issue&rsquo;s theme, so it sets existing mechanisms against the international items and labels every date in the text. Eighth, MedGemma 1.5 and MedASR shipped on Jan 13, 2026, outside this window, and appear only as the reference line for Google&rsquo;s open-weight models. Separately, Mayo Clinic Platform&rsquo;s CDS announcement contains no performance figures at all, and this report supplies no estimate in their place.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-row">
+    <div>
+      <span class="zh">AI／醫療AI 每日新知日報 · 由 Claude 於台北時間每日自動產出 · 本期主題：星期四／技術突破<br>本報告內容經來源查證，但不構成投資或醫療建議。所有數據請以原始出處為準。</span>
+      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today&rsquo;s rotation: Thursday / Technology<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
+    </div>
+    <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com / 返回 peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
+  </div>
+</footer>
+</main>
+
+<div class="fabs">
+  <button class="up" id="up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+  <a class="home-fab" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg></a>
+</div>
+
+<script>
+function setLang(l){
+  document.body.classList.remove('lang-zh','lang-en');
+  document.body.classList.add('lang-'+l);
+  document.documentElement.lang = (l==='zh') ? 'zh-Hant' : 'en';
+  document.getElementById('b-zh').classList.toggle('on', l==='zh');
+  document.getElementById('b-en').classList.toggle('on', l==='en');
+  document.title = (l==='zh')
+    ? 'AI／醫療AI 每日新知日報 · 2026-11-05'
+    : 'AI & Medical AI Daily · 2026-11-05';
+}
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.getElementById('theme-ic').textContent =
+    document.body.classList.contains('dark') ? '◑' : '◐';
+}
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.body.classList.add('dark');
+  document.getElementById('theme-ic').textContent = '◑';
+}
+window.addEventListener('scroll', function(){
+  document.getElementById('up').classList.toggle('show', window.scrollY > 600);
+});
+
+/* GitHub 星星數：無需授權，失敗或被限流時靜默保留佔位符 */
+(function(){
+  var el = document.getElementById('ghs');
+  if (!el || typeof fetch !== 'function') return;
+  fetch('https://api.github.com/repos/tingwei161803/ai-medical-daily', {headers:{Accept:'application/vnd.github+json'}})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if (!d || typeof d.stargazers_count !== 'number') return;
+      var n = d.stargazers_count;
+      el.textContent = n >= 1000 ? (Math.round(n/100)/10) + 'k' : String(n);
+    })
+    .catch(function(){});
+})();
+</script>
+</body>
+</html>
