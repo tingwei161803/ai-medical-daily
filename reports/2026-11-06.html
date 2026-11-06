@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>AI／醫療AI 每日新知日報 · 2026-11-06</title>
+<meta property="og:url" content="https://ai-medical-daily.peteraim.com/reports/2026-11-06.html" />
+<link rel="canonical" href="https://ai-medical-daily.peteraim.com/reports/2026-11-06.html" />
+<meta name="report-date" content="2026-11-06">
+<meta name="report-theme" content="product">
+<meta name="report-title-zh" content="同一週擺出兩種「醫療 AI 怎麼收錢」的極端解——11/2 Hippocratic AI 發表 Polaris 6 Ultra，671B 主模型外加 30 個專科監督模型與 142 個生產監控器、整個 constellation 7.4 兆參數（Polaris 5 為 5.0 兆），首句延遲 278 毫秒、端到端速度為前代 1.3 倍，2,778 通臨床人員覆核的實際通話裡藥名或症狀聽錯從每百通 1.19 降到 0.20、數字與姓名聽錯從 0.57 降到 0.00、純噪音音訊幻聽從 24% 降到 0.6%、電視人聲被當成病人從 64.8% 降到 3% 以下，公司累計募資 4.44 億美元、2.5 億通語音互動、300 多個上線臨床場景，收的是醫院的「agent 工時」；另一邊 10/27 Vera Health 以 12 名員工、零企業行銷預算拿下 2,850 萬美元 A 輪（累計 3,200 萬），800,000 名臨床醫師、190 國、9 月下載量超過 OpenEvidence 與 Doximity 相加，而估值 150 億美元的 OpenEvidence 走藥廠廣告，Sacra 估 7 月年化約 3 億美元、CPM 逾 1,000 美元卻只賣出約 5% 存貨。10/29 Nature Health 的 883,403 筆回答正好戳在這條金流上：5 個模型的第一建議平均 97.5% 集中在單一商品名、123 組情境裡 96 組主導產品占比超過 90%，原廠藥被推薦的勝算是學名藥的 20.5 倍、有獨立 Wikipedia 條目的勝算 3.00 倍">
+<meta name="report-title-en" content="One week, two opposite answers to who pays for medical AI — on Nov 2 Hippocratic AI shipped Polaris 6 Ultra: a 671B generative core wrapped in 30 specialist supervisors and 142 production monitors, 7.4 trillion parameters of constellation against Polaris 5's 5.0 trillion, 278 ms to first sentence, 1.3x the end-to-end speed of its predecessor, and on 2,778 clinician-reviewed production calls misheard medications or symptoms down from 1.19 to 0.20 per hundred calls, misheard numbers and names from 0.57 to 0.00, hallucinated words on noise-only audio from 24% to 0.6%, television speech attributed to the patient from 64.8% to under 3% — a company with $444M raised, 250 million voice interactions and 300-plus live clinical use cases, selling hospitals agent-hours. On Oct 27 Vera Health raised a $28.5M Series A on twelve employees and a zero-dollar enterprise marketing budget ($32M total), with 800,000 clinicians in 190 countries and more September downloads than OpenEvidence and Doximity combined — while the $15B OpenEvidence runs on pharma advertising, roughly $300M annualized by July on Sacra's estimate, CPMs above $1,000 and only about 5% of inventory sold. Then on Oct 29 Nature Health put 883,403 answers against that revenue line: across five models the single most frequent product took 97.5% of first recommendations, 96 of 123 scenarios had a dominant product above 90%, originator brands carried 20.5x the odds of a generic, and a product with its own Wikipedia entry 3.00x">
+<meta name="report-summary-zh" content="週五深度拆解：Hippocratic AI 的 Polaris 6 Ultra 把語音 agent 的安全層堆到 7.4 兆參數、首句 278 毫秒，賣的是醫院的 agent 工時；Vera Health 用 12 個人、零行銷預算把 800,000 名醫師做到 190 國，OpenEvidence 用藥廠廣告撐起 150 億美元估值。而 Nature Health 的 883,403 筆回答顯示，AI 的第一建議平均 97.5% 收斂到同一個商品名。">
+<meta name="report-summary-en" content="Friday deep dive: Hippocratic AI's Polaris 6 Ultra stacks 7.4 trillion parameters of safety around a voice agent and answers in 278 ms, sold to hospitals as agent-hours; Vera Health reached 800,000 clinicians in 190 countries on twelve people and no marketing budget, while OpenEvidence carries a $15B valuation on pharma ads. And 883,403 answers in Nature Health show AI's first drug pick converging 97.5% onto one brand name.">
+<meta property="og:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HJLDQZDK5V');
+</script>
+<link rel="stylesheet" href="/assets/report.css">
+</head>
+<body class="lang-zh">
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span><span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <div class="bar-sp"></div>
+    <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub / 在 GitHub 給這個專案一顆星"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
+    <div class="seg">
+      <button id="b-zh" class="on" onclick="setLang('zh')">中文</button>
+      <button id="b-en" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="kicker">
+    <span class="zh-inline">星期五 · 產品與公司深度分析</span>
+    <span class="en-inline">Friday · Product &amp; Company Deep Dive</span>
+  </div>
+  <h1>
+    <span class="zh">兩種「誰付錢」的答案同時攤開：醫院買 agent 工時，藥廠買醫師的注意力</span>
+    <span class="en">Two answers to "who pays" land in the same week: hospitals buy agent-hours, pharma buys the physician's attention</span>
+  </h1>
+  <div class="dateline">
+    <span class="zh-inline">2026 年 11 月 6 日（五）· 涵蓋 10/27–11/5 · 台北時間</span>
+    <span class="en-inline">Friday, November 6, 2026 · Covering Oct 27 – Nov 5 · Taipei time</span>
+  </div>
+  <p class="lede">
+    <span class="zh">週五是深度拆解日。這一週剛好把醫療 AI 的兩條金流並排放在桌上：11 月 2 日 Hippocratic AI 發表 <a href="https://hitconsultant.net/2026/11/02/hippocratic-ai-unveils-polaris-6-ultra-bedside-intuition-healthcare-model/" target="_blank" rel="noopener">Polaris 6 Ultra</a>，把 671B 的主生成模型包進 30 個專科監督模型與 142 個生產監控器、整個 constellation 衝到 7.4 兆參數，公司累計募資 <a href="https://healthtechnologynet.com/2026/11/02/hippocratic-ai-unveils-polaris-6-ultra-the-first-healthcare-model-with-bedside-intuition-built-on-real-life-experience-with-lower-pricing/" target="_blank" rel="noopener">4.44 億美元、2.5 億通語音互動</a>，向醫院收的是一小時一小時的 agent 工時。另一邊 10 月 27 日 <a href="https://hitconsultant.net/2026/10/27/vera-health-raises-28m-series-a-threshold-ventures-evidence-graded-clinical-ai/" target="_blank" rel="noopener">Vera Health 用 12 名員工拿下 2,850 萬美元 A 輪</a>，800,000 名臨床醫師、190 國、永久免費，而同一個賽道上估值 150 億美元的 OpenEvidence 把帳單轉嫁給藥廠廣告——<a href="https://clinicalaireport.com/is-openevidence-free" target="_blank" rel="noopener">Sacra 估 7 月年化約 3 億美元、CPM 逾 1,000 美元卻只賣出約 5% 存貨</a>。然後 10 月 29 日 Nature Health 的 883,403 筆回答把這條金流釘在牆上：<a href="https://coolhealth.com.tw/ai-drug-brand-bias" target="_blank" rel="noopener">5 個模型的第一建議平均 97.5% 收斂到同一個商品名，原廠藥勝算是學名藥的 20.5 倍</a>。本期拆的不是誰的技術好，是誰的錢從哪裡來、以及那條金流會把建議推往哪裡。</span>
+    <span class="en">Friday is deep-dive day, and this week set medical AI's two revenue lines side by side. On November 2 Hippocratic AI shipped <a href="https://hitconsultant.net/2026/11/02/hippocratic-ai-unveils-polaris-6-ultra-bedside-intuition-healthcare-model/" target="_blank" rel="noopener">Polaris 6 Ultra</a>, wrapping a 671B generative core in 30 specialist supervisors and 142 production monitors for a 7.4-trillion-parameter constellation, on <a href="https://healthtechnologynet.com/2026/11/02/hippocratic-ai-unveils-polaris-6-ultra-the-first-healthcare-model-with-bedside-intuition-built-on-real-life-experience-with-lower-pricing/" target="_blank" rel="noopener">$444M raised and 250 million voice interactions</a> — and it bills hospitals by the agent-hour. On October 27, <a href="https://hitconsultant.net/2026/10/27/vera-health-raises-28m-series-a-threshold-ventures-evidence-graded-clinical-ai/" target="_blank" rel="noopener">Vera Health closed a $28.5M Series A with twelve employees</a>, 800,000 clinicians in 190 countries, free for good. In the same lane the $15B OpenEvidence sends the bill to pharma instead — <a href="https://clinicalaireport.com/is-openevidence-free" target="_blank" rel="noopener">roughly $300M annualized by July on Sacra's estimate, CPMs above $1,000, only about 5% of inventory sold</a>. Then on October 29, 883,403 answers in Nature Health pinned that revenue line to the wall: <a href="https://coolhealth.com.tw/ai-drug-brand-bias" target="_blank" rel="noopener">across five models the first recommendation converged 97.5% onto a single brand name, with originator drugs carrying 20.5x the odds of a generic</a>. Today is not about whose model is better. It is about where each company's money comes from, and which way that money bends the advice.</span>
+  </p>
+
+  <nav class="toc">
+    <a href="#top"><span class="zh-inline">重點新聞</span><span class="en-inline">Top Stories</span></a>
+    <a href="#product"><span class="zh-inline">產品分析</span><span class="en-inline">Product Analysis</span></a>
+    <a href="#company"><span class="zh-inline">公司與競爭</span><span class="en-inline">Companies &amp; Competition</span></a>
+    <a href="#taiwan"><span class="zh-inline">台灣視角</span><span class="en-inline">Taiwan Angle</span></a>
+    <a href="#reading"><span class="zh-inline">延伸閱讀</span><span class="en-inline">Further Reading</span></a>
+    <a href="#refs"><span class="zh-inline">參考文獻</span><span class="en-inline">References</span></a>
+  </nav>
+</div>
+
+<section id="top">
+  <h2>01 — Top Stories</h2>
+  <div class="sec-title">
+    <span class="zh">八件事，兩條金流：賣給醫院的工時，與賣給藥廠的版位</span>
+    <span class="en">Eight items, two revenue lines: hours sold to hospitals, slots sold to pharma</span>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">語音 agent</span><span class="en-inline">Voice agents</span></span>
+      <span class="tag">Hippocratic AI</span><span class="tag">Polaris 6 Ultra</span><span class="tag">11/02</span>
+    </div>
+    <h3>
+      <span class="zh">Polaris 6 Ultra：把 7.4 兆參數堆在「不要聽錯藥名」這一件事上</span>
+      <span class="en">Polaris 6 Ultra: 7.4 trillion parameters spent on not mishearing a drug name</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">Hippocratic AI 於 11 月 2 日自加州 Menlo Park 發表 Polaris 6 Ultra，<a href="https://hitconsultant.net/2026/11/02/hippocratic-ai-unveils-polaris-6-ultra-bedside-intuition-healthcare-model/" target="_blank" rel="noopener">架構是 671B 參數的主生成模型加上 30 個專科監督模型與 142 個持續運行的生產監控器，整個 constellation 7.4 兆參數，前一代 Polaris 5 為 5.0 兆</a>（<a href="https://hippocraticai.com/category/press-release/" target="_blank" rel="noopener">官方新聞稿日期為 10/31</a>）。首句延遲 278 毫秒，官方在相同 prompt 上比對的四家最快商業供應商為 0.71–0.94 秒，端到端速度為前代 1.3 倍。自家醫療 TTS 在 629 個藥名上唸對 90%，對照商業 TTS 的 75%。最硬的一組數字來自 2,778 通由臨床人員覆核的實際通話：藥名或症狀聽錯從每百通 1.19 降到 0.20、數字姓名與聯絡方式聽錯從 0.57 降到 0.00、純噪音音訊上的幻聽從 24% 降到 0.6%、電視人聲被誤當成病人發言從 64.8% 降到 3% 以下。訓練語料為 <a href="https://healthtechnologynet.com/2026/11/02/hippocratic-ai-unveils-polaris-6-ultra-the-first-healthcare-model-with-bedside-intuition-built-on-real-life-experience-with-lower-pricing/" target="_blank" rel="noopener">3.23 億通真實病人對話</a>。</span>
+        <span class="en">Hippocratic AI announced Polaris 6 Ultra from Menlo Park on November 2. <a href="https://hitconsultant.net/2026/11/02/hippocratic-ai-unveils-polaris-6-ultra-bedside-intuition-healthcare-model/" target="_blank" rel="noopener">The architecture is a 671B-parameter generative core plus 30 specialist supervisor models and 142 continuously running production monitors — 7.4 trillion parameters of constellation, against 5.0 trillion in Polaris 5</a> (<a href="https://hippocraticai.com/category/press-release/" target="_blank" rel="noopener">the company's own release is dated Oct 31</a>). Time to first sentence is 278 ms, against 0.71–0.94 seconds for the four fastest commercial providers on byte-identical prompts, and end-to-end speed is 1.3x the previous generation. Its in-house medical TTS pronounced 90% of 629 drug names correctly, versus 75% for a leading commercial TTS. The hardest numbers come from 2,778 clinician-reviewed production calls: misheard medications or symptoms fell from 1.19 to 0.20 per hundred calls, misheard numbers, names and contact details from 0.57 to 0.00, hallucinated words on noise-only audio from 24% to 0.6%, and television speech attributed to the patient from 64.8% to under 3%. Training drew on <a href="https://healthtechnologynet.com/2026/11/02/hippocratic-ai-unveils-polaris-6-ultra-the-first-healthcare-model-with-bedside-intuition-built-on-real-life-experience-with-lower-pricing/" target="_blank" rel="noopener">323 million real patient conversations</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">注意這些數字的性質：它們不是「診斷準確率」，而是「電話品質」。把電視聲音當成病人說話、在沒人講話的噪音裡幻聽，這些是語音 agent 真正會害死人的失效模式，而過去一年大多數廠商的新聞稿都不報這一類。Hippocratic 願意把 64.8% 這種難看的基線寫出來，本身就是這則消息最有價值的部分——它把討論從「模型多聰明」拉回「在一間有電視開著的病房裡，這通電話會不會記錯劑量」。</span>
+        <span class="en">Note what kind of numbers these are. They are not diagnostic accuracy; they are call quality. Attributing a television voice to the patient, or hallucinating words out of room noise, are the failure modes that actually hurt people on a voice line — and most vendor releases over the past year have not reported them at all. That Hippocratic published an ugly 64.8% baseline is the most useful thing in this announcement: it moves the argument from how clever the model is to whether, in a room with the TV on, the call records the right dose.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">「比基礎模型高 18 分、比最強前沿模型高 11 分」用的是 Hippocratic 自家的內部醫療智能 benchmark，無第三方稽核，也沒公開題庫。「輕微傷害率 0.00%」同樣是自家臨床輸出測試。新聞稿只說「彈性定價更低」，沒有給任何每小時單價；也沒有具名客戶，只提到「多家醫療體系」身兼投資人。<a href="https://hitconsultant.net/2026/11/02/hippocratic-ai-unveils-polaris-6-ultra-bedside-intuition-healthcare-model/" target="_blank" rel="noopener">連監督模型的數量在同一份稿裡都出現 30 與 31 兩個版本</a>。</span>
+        <span class="en">The "18 points above base, 11 points above the best frontier model" figures come from Hippocratic's own internal healthcare-intelligence benchmark, with no third-party audit and no published item set. The "0.00% minor-harm rate" is likewise in-house clinician output testing. The release says only that pricing is newly flexible and lower; it gives no per-hour rate, and names no customer, referring only to unnamed "health systems" among its investors. <a href="https://hitconsultant.net/2026/11/02/hippocratic-ai-unveils-polaris-6-ultra-bedside-intuition-healthcare-model/" target="_blank" rel="noopener">Even the supervisor count appears as both 30 and 31 within the same document</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://hitconsultant.net/2026/11/02/hippocratic-ai-unveils-polaris-6-ultra-bedside-intuition-healthcare-model/" target="_blank" rel="noopener">HIT Consultant, 2026-11-02</a> ／ <a href="https://healthtechnologynet.com/2026/11/02/hippocratic-ai-unveils-polaris-6-ultra-the-first-healthcare-model-with-bedside-intuition-built-on-real-life-experience-with-lower-pricing/" target="_blank" rel="noopener">Health Technology Net（新聞稿全文）, 2026-11-02</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">臨床決策支援</span><span class="en-inline">Decision support</span></span>
+      <span class="tag">Mayo Clinic Platform</span><span class="tag">CDS</span><span class="tag">11/03</span>
+    </div>
+    <h3>
+      <span class="zh">Mayo 自己做了一套進 EHR 的 CDS：35 個次專科聊天室加 22 個計算器</span>
+      <span class="en">Mayo built its own in-EHR decision support: 35 subspecialty chats and 22 calculators</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">Mayo Clinic Platform 於 11 月 3 日商業上線一套 AI 臨床決策支援方案，<a href="https://hitconsultant.net/2026/11/03/mayo-clinic-platform-launches-ai-clinical-decision-support-ehr-solution/" target="_blank" rel="noopener">由兩個元件組成：涵蓋 35 個以上次專科的 LLM 臨床聊天（回答自然語言問題並引用同儕審查文獻），以及 22 個可用文字或語音叫出的風險與診斷計算器</a>。知識庫每日吸收新的臨床試驗結果、改版指引與藥物安全警訊；計算器混用業界標準風險分層演算法與 Mayo 研究者自建並驗證的工具。使用對象是 Mayo 自己的臨床人員，以及參與 Mayo Clinic Platform 醫療提供者方案的外部機構。<a href="https://www.news-medical.net/news/20261104/AI-enabled-Mayo-Clinic-tool-supports-individualized-patient-care-decisions.aspx" target="_blank" rel="noopener">官方強調重點是讓醫師不必離開 EHR 去翻多個參考來源</a>。</span>
+        <span class="en">On November 3 Mayo Clinic Platform commercially launched an AI clinical decision support solution built from two pieces: <a href="https://hitconsultant.net/2026/11/03/mayo-clinic-platform-launches-ai-clinical-decision-support-ehr-solution/" target="_blank" rel="noopener">an LLM-powered clinical chat spanning 35-plus subspecialties that answers natural-language questions with citations to peer-reviewed literature, and 22 risk and diagnostic calculators reachable by text or voice dictation</a>. The knowledge base ingests new trial results, revised guidelines and drug safety warnings daily; the calculators mix industry-standard risk stratification algorithms with proprietary tools developed and validated by Mayo investigators. It is available to Mayo's own clinicians and to outside organizations in Mayo Clinic Platform's provider programs. <a href="https://www.news-medical.net/news/20261104/AI-enabled-Mayo-Clinic-tool-supports-individualized-patient-care-decisions.aspx" target="_blank" rel="noopener">Mayo's framing is that clinicians should not have to leave the EHR to consult several references</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這是今天兩條金流之外的第三條路：醫療體系自己做，用品牌與自家驗證過的演算法當護城河，不靠廣告也不賣 agent 工時。對 OpenEvidence、Vera Health、UpToDate 來說，Mayo 的名字本身就是最難複製的那一項——引用同一批文獻，但掛 Mayo 的招牌。值得注意的是 Mayo 把它開放給「參與平台方案的外部機構」，意思是這套東西最終會變成一個賣給別家醫院的產品，而不只是內部工具。</span>
+        <span class="en">This is a third revenue line beside today's two: the health system builds it itself, with its brand and its own validated algorithms as the moat — no ads, no agent-hours. For OpenEvidence, Vera Health and UpToDate, the Mayo name is the one input they cannot copy: the same literature, under a different signature. Worth noting that Mayo is opening it to outside organizations in its platform programs, which means this ends up as a product sold to other hospitals, not merely an internal tool.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">公開報導裡沒有任何定價、沒有支援的 EHR 廠商名單、沒有已導入的外部機構家數，也沒有一個臨床成效或準確率數字——只有「35 個以上次專科」、「22 個計算器」、「每日更新」這三個規模數字。對一套聲稱要取代醫師查多個來源的工具，完全沒有誤答率或引用正確率的揭露。</span>
+        <span class="en">Public coverage carries no pricing, no list of supported EHR vendors, no count of outside organizations live, and not one clinical outcome or accuracy figure — only three scale numbers: 35-plus subspecialties, 22 calculators, daily updates. For a tool pitched as replacing several reference lookups, nothing is disclosed about error rate or citation fidelity.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://hitconsultant.net/2026/11/03/mayo-clinic-platform-launches-ai-clinical-decision-support-ehr-solution/" target="_blank" rel="noopener">HIT Consultant, 2026-11-03</a> ／ <a href="https://histalk2.com/2026/11/04/healthcare-ai-news-11-4-26/" target="_blank" rel="noopener">HIStalk, 2026-11-04</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">研究</span><span class="en-inline">Research</span></span>
+      <span class="tag">Nature Health</span><span class="tag">GPT-5.4 / Claude / Gemini / Llama / MedGemma</span><span class="tag">10/29</span>
+    </div>
+    <h3>
+      <span class="zh">88 萬筆回答：AI 的第一個藥名建議，97.5% 收斂到同一個商品</span>
+      <span class="en">883,403 answers: AI's first drug pick converges 97.5% onto one brand</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">大阪公立大學與美國 MD Anderson 癌症中心的團隊在 Nature Health 發表〈Large language models show product name convergence in drug recommendations〉。<a href="https://coolhealth.com.tw/ai-drug-brand-bias" target="_blank" rel="noopener">設計是 123 組「常見疾病 × 指定有效成分」配上 1,440 種社會人口背景，生成 177,120 個合成臨床情境，丟給 GPT-5.4、Claude Sonnet 4.6、Gemini 3.1 Flash、Llama 4、MedGemma 五個模型，每次請它提出最多 3 個 FDA 核准商品名，共收得 883,403 筆至少含一個建議的回答，再由 4 名醫師核對品名與核准資訊</a>。結果：每組疾病平均有 5.5 種 FDA 核准產品可選，但第一建議中最常出現的單一產品平均占 97.5%，123 組裡有 96 組主導產品占比超過 90%，模型間一致性 Fleiss' κ = 0.895。對照美國 2019–2023 年真實處方調查，最常開立的產品平均只有 29.7% 與 AI 第一選擇一致、依處方量加權後僅 17.0%。偏誤方向很清楚：原廠藥被推薦的勝算是學名藥的 20.5 倍、Google 搜尋量較高者 1.70 倍、有獨立 Wikipedia 條目者 3.00 倍。成本模擬顯示 51 種有完整價格資料的成分裡有 38 種（74.5%）在 AI 建議分布下更貴。</span>
+        <span class="en">A team from Osaka Metropolitan University and MD Anderson published "Large language models show product name convergence in drug recommendations" in Nature Health. <a href="https://coolhealth.com.tw/ai-drug-brand-bias" target="_blank" rel="noopener">The design crossed 123 condition-and-active-ingredient pairs with 1,440 sociodemographic profiles into 177,120 synthetic clinical scenarios, put them to GPT-5.4, Claude Sonnet 4.6, Gemini 3.1 Flash, Llama 4 and MedGemma asking for up to three FDA-approved brand names each, collected 883,403 answers containing at least one recommendation, and had four physicians verify names and approval status</a>. Each pair had 5.5 approved products available on average — yet the single most frequent product took 97.5% of first recommendations, 96 of the 123 pairs had a dominant product above 90%, and inter-model agreement reached Fleiss' κ = 0.895. Against US prescribing data for 2019–2023, the most-prescribed product matched the AI's first pick only 29.7% of the time, and 17.0% weighted by prescription volume. The direction of the bias is unambiguous: originator brands carried 20.5x the odds of a generic, products with higher Google search volume 1.70x, and products with their own Wikipedia entry 3.00x. In a cost simulation, 38 of 51 ingredients with complete pricing (74.5%) came out more expensive under the AI's recommendation distribution.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這篇與今天的主題直接相扣：它證明了即使完全沒有廣告，模型也會因為「商品名在網路語料裡的聲量」而系統性偏向原廠藥。Wikipedia 條目 3.00 倍這一項尤其值得咀嚼——那不是臨床證據，是維基編輯活動。於是 OpenEvidence 這類靠藥廠廣告維生的平台處在一個很尷尬的位置：它可以誠實地說廣告不影響答案，但這篇論文顯示，不必影響答案，只要影響語料就夠了。而藥廠行銷本來就在影響語料。</span>
+        <span class="en">This bolts directly onto today's theme: it shows that even with no advertising at all, models skew systematically toward originator brands purely because of how loudly a brand name appears in web text. The 3.00x for having a Wikipedia entry is the one to sit with — that is not clinical evidence, it is editing activity. Which puts an ad-funded platform like OpenEvidence in an awkward spot: it can honestly say advertisers do not touch the answers, while this paper shows you never needed to touch the answers — touching the corpus is enough. And pharma marketing has always been in the business of touching the corpus.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">全部是合成情境，沒有真實病人、沒有真實處方行為。那個最搶眼的「每年採購成本增加 5,560 萬美元、增幅 1,019%」是在「假設醫師照 AI 建議分布開藥」前提下的推估，不是實際發生的費用，轉述時務必帶上這個前提。價格資料為美國基礎，不能直接套進台灣健保。模型版本或提示詞換掉，結果可能不同。本文數字引自中文二手報導，<a href="https://www.nature.com/articles/s44360-026-00205-y" target="_blank" rel="noopener">原始論文頁面</a>在本次產製時無法取回全文。</span>
+        <span class="en">Everything here is synthetic: no real patients, no real prescribing behavior. The eye-catching "$55.6M a year, a 1,019% increase" is a projection conditional on physicians prescribing according to the AI's recommendation distribution — not money anyone has spent, and the conditional must travel with the figure. Pricing is US-based and does not transfer to Taiwan's single payer. Different model versions or prompts could move the results. The figures here are taken from Chinese-language secondary coverage; the <a href="https://www.nature.com/articles/s44360-026-00205-y" target="_blank" rel="noopener">primary paper page</a> could not be retrieved in full during this run.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.nature.com/articles/s44360-026-00205-y" target="_blank" rel="noopener">Nature Health（原始論文）</a> ／ <a href="https://coolhealth.com.tw/ai-drug-brand-bias" target="_blank" rel="noopener">CoolHealth 中文報導, 2026-10-29（11/03 更新）</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">募資</span><span class="en-inline">Funding</span></span>
+      <span class="tag">Vera Health</span><span class="tag">Threshold Ventures</span><span class="tag">10/27</span>
+    </div>
+    <h3>
+      <span class="zh">12 個人、零企業行銷預算，把 800,000 名醫師做到 190 國</span>
+      <span class="en">Twelve people, no enterprise marketing budget, 800,000 clinicians in 190 countries</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">Vera Health 於 10 月 27 日公布 2,850 萬美元 A 輪，<a href="https://hitconsultant.net/2026/10/27/vera-health-raises-28m-series-a-threshold-ventures-evidence-graded-clinical-ai/" target="_blank" rel="noopener">由 Threshold Ventures 領投，Mantis VC 與 SV Angel 參與，既有股東 Y Combinator 與 Gradient 加碼，累計資本 3,200 萬美元</a>。公司自述使用者超過 800,000 名臨床醫師、遍及 190 國，一年前只有數千名活躍醫師；在西班牙與義大利約每 4 名執業醫師有 1 人在用、法國每 7 人有 1 人。自 2026 年 6 月起每月都是 Apple App Store 與 Google Play 全球下載量最高的臨床 App，<a href="https://dealroom.co/news/167199-vera-health-raises-28-5m-series-a-as-clinical-ai-tool-hits-800-000-users/" target="_blank" rel="noopener">9 月下載量超過 OpenEvidence 與 Doximity 相加</a>。團隊 12 人、企業行銷預算為零，成長幾乎全靠醫師口碑。</span>
+        <span class="en">Vera Health announced a $28.5M Series A on October 27, <a href="https://hitconsultant.net/2026/10/27/vera-health-raises-28m-series-a-threshold-ventures-evidence-graded-clinical-ai/" target="_blank" rel="noopener">led by Threshold Ventures with Mantis VC and SV Angel, and existing backers Y Combinator and Gradient increasing their stakes, for $32M in total capitalization</a>. The company reports more than 800,000 clinicians across 190 countries, up from a few thousand active clinicians a year earlier — about one in four practicing physicians in Spain and Italy, one in seven in France. It has been the most-downloaded clinical app worldwide on both the Apple App Store and Google Play every month since June 2026, and <a href="https://dealroom.co/news/167199-vera-health-raises-28-5m-series-a-as-clinical-ai-tool-hits-800-000-users/" target="_blank" rel="noopener">logged more September downloads than OpenEvidence and Doximity combined</a>. Headcount is twelve, the enterprise marketing budget is zero, and growth has come almost entirely from peer referral.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">架構上的差別才是重點：Vera 的設計是先檢索並評分證據、再生成答案，而不是先生成文字再補引用。它索引 6,000 萬篇以上同儕審查文獻、臨床指引、共識聲明與 FDA／EMA 藥品標籤，並對研究設計、樣本數、世代檢力、時效、期刊影響係數與引用速度打分，再把主張依證據強度上色——證據薄弱的用紅色標出來。這是把「不確定性」做成 UI 元件，而不是藏在免責聲明裡。企業版 Vera Spaces 讓醫院上傳自家醫令套組、處方集與流程，與全球文獻並列優先，示範情境是按該院抗生素敏感性報告調整的抗微生物劑量。</span>
+        <span class="en">The architectural difference is the point: Vera retrieves and grades evidence before generating an answer, rather than generating text and attaching citations after. It indexes more than 60 million peer-reviewed publications, guidelines, consensus statements and FDA/EMA drug labels, scores study design, sample size, cohort power, recency, journal impact factor and citation velocity, and then color-codes each claim by evidence strength, flagging thin evidence in red. That makes uncertainty a UI element rather than a disclaimer. The enterprise tier, Vera Spaces, lets hospitals upload their own order sets, formularies and protocols to be prioritized alongside global literature — the worked example is antimicrobial dosing tuned to a hospital's own antibiogram.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">所有使用者數字都是公司自述，沒有第三方稽核；「下載量最高」是下載量而不是活躍使用量，而一個 12 人團隊要服務 800,000 名醫師，這個比例本身就該讓人追問實際日活。估值、營收、Vera Spaces 定價全未揭露。對醫師永久免費的承諾，在沒有廣告也沒有公開企業營收的情況下，長期由誰補貼是未解問題。</span>
+        <span class="en">Every user figure is company-reported with no third-party audit, and "most downloaded" measures downloads, not active use — a twelve-person team serving 800,000 physicians is a ratio that invites a question about daily actives. Valuation, revenue and Vera Spaces pricing are all undisclosed. With no advertising and no published enterprise revenue, who subsidizes a permanent free tier for clinicians is an open question.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://hitconsultant.net/2026/10/27/vera-health-raises-28m-series-a-threshold-ventures-evidence-graded-clinical-ai/" target="_blank" rel="noopener">HIT Consultant, 2026-10-27</a> ／ <a href="https://www.fiercehealthcare.com/finance/vera-health-secures-285m-series-ai-driven-clinical-search-engine" target="_blank" rel="noopener">Fierce Healthcare, 2026-10-27</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">部署</span><span class="en-inline">Deployment</span></span>
+      <span class="tag">OpenEvidence</span><span class="tag">NYU Langone</span><span class="tag">Epic</span><span class="tag">10/29</span>
+    </div>
+    <h3>
+      <span class="zh">OpenEvidence 進了 NYU Langone 的 Epic 病歷，覆蓋 1,240 萬次門診</span>
+      <span class="en">OpenEvidence moves inside NYU Langone's Epic chart, covering 12.4 million visits</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">10 月 29 日 <a href="https://nyulangone.org/news/openevidence-and-nyu-langone-health-partner-bring-patient-aware-intelligence-12-million-visits-new-york-city" target="_blank" rel="noopener">OpenEvidence 與 NYU Langone Health 宣布把「Patient Aware Clinical Intelligence」嵌進該體系的 Epic 工作流</a>：醫師可在 Epic 內用自然語言提問，得到帶有病人情境的同儕審查文獻答案。覆蓋範圍含 7 個住院院區、數百個門診據點與 Family Health Centers，並延伸到 NYU Grossman 醫學院與 Long Island 醫學院的受訓醫師。規模數字：6,000 名以上主治與教職、2,000 名以上住院醫師與 fellow、全體員工逾 54,000 人、每年門診 1,240 萬次、急診逾 421,000 次，Family Health Centers 另有逾 10 萬名病人與約 60 萬次就診。<a href="https://www.unite.ai/nyu-langone-embeds-openevidence-in-epic-ehr-for-12m-annual-visits/" target="_blank" rel="noopener">OpenEvidence 創辦人 Daniel Nadler 的說法是「全世界的醫學文獻現在都進到這 1,200 萬次就診的每一個診間裡」</a>。</span>
+        <span class="en">On October 29, <a href="https://nyulangone.org/news/openevidence-and-nyu-langone-health-partner-bring-patient-aware-intelligence-12-million-visits-new-york-city" target="_blank" rel="noopener">OpenEvidence and NYU Langone Health announced that "Patient Aware Clinical Intelligence" is embedded in the system's Epic workflow</a>: clinicians ask in natural language inside Epic and get peer-reviewed answers carrying the patient's context. The footprint covers seven inpatient locations, several hundred outpatient sites and the Family Health Centers, and extends to trainees at NYU Grossman School of Medicine and NYU Grossman Long Island School of Medicine. The scale figures: 6,000-plus physicians and faculty, 2,000-plus residents and fellows, over 54,000 employees, 12.4 million outpatient visits a year, over 421,000 ED visits, plus more than 100,000 patients and about 600,000 visits at the Family Health Centers. <a href="https://www.unite.ai/nyu-langone-embeds-openevidence-in-epic-ehr-for-12m-annual-visits/" target="_blank" rel="noopener">Founder Daniel Nadler's line is that "the world's medical literature is now in the room for every one of the 12 million visits"</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">「Patient Aware」這三個字是這則消息的全部重量所在。OpenEvidence 原本是一個不碰病歷的文獻問答工具，所以它靠廣告維生時，藥廠買到的只是醫師的注意力。一旦它讀得到病歷，同一個版位買到的就是「這位醫師此刻正在處理哪一類病人」。NYU Langone 之前的 Mount Sinai 與 Sutter Health 也是同一套 Epic 嵌入，<a href="https://clinicalaireport.com/is-openevidence-free" target="_blank" rel="noopener">而 Sacra 指出這些醫療體系的部署跑的是同一個廣告支撐模型</a>。這是今天整份日報最該被追問的一條線。</span>
+        <span class="en">The weight of this item sits entirely in the words "Patient Aware." OpenEvidence began as a literature Q&amp;A tool that never touched the chart, so what pharma bought with an ad slot was a physician's attention. Once it can read the chart, the same slot buys knowledge of which kind of patient that physician is working through right now. Mount Sinai and Sutter Health run the same Epic embedding, and <a href="https://clinicalaireport.com/is-openevidence-free" target="_blank" rel="noopener">Sacra notes those health-system deployments run on the same ad-supported model</a>. This is the line in today's report most deserving of a follow-up question.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">新聞稿完全沒說這個工具讀取哪些病人資料、如何保留或分享、誰能存取、有什麼安全與隱私保障，唯一的隱私連結是 NYU Langone 的網站隱私政策，而稿中並未說明該政策是否涵蓋這個工具。合約條件與財務條件未揭露，臨床驗證資料除廠商自述外沒有。連據點數在同一份稿裡都出現「逾 400」與「逾 330」兩個版本。「超過半數美國醫師每日使用」、「用的人比所有其他 AI 平台加起來還多」都是公司說法。</span>
+        <span class="en">The release says nothing about which patient data the tool reads, how it is retained or shared, who can access it, or what security and privacy safeguards apply; the only privacy link is NYU Langone's website privacy policy, and the release does not say whether that policy covers this tool. Contract and financial terms are undisclosed, and there is no clinical validation beyond vendor claims. Even the site count appears as both "more than 400" and "more than 330" in the same document. "A majority of US physicians use it daily" and "more physicians than all other AI platforms combined" are company claims.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://nyulangone.org/news/openevidence-and-nyu-langone-health-partner-bring-patient-aware-intelligence-12-million-visits-new-york-city" target="_blank" rel="noopener">NYU Langone Health 新聞稿, 2026-10-29</a> ／ <a href="https://www.unite.ai/nyu-langone-embeds-openevidence-in-epic-ehr-for-12m-annual-visits/" target="_blank" rel="noopener">Unite.AI, 2026-10-29</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">治理</span><span class="en-inline">Governance</span></span>
+      <span class="tag">Epic</span><span class="tag">ONC</span><span class="tag">HTI-5</span><span class="tag">11/04</span>
+    </div>
+    <h3>
+      <span class="zh">法規把 AI 透明度要求刪掉之後，Epic 說它自己留著</span>
+      <span class="en">With the AI transparency requirement deleted, Epic says it is keeping it anyway</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh"><a href="https://histalk2.com/2026/11/04/healthcare-ai-news-11-4-26/" target="_blank" rel="noopener">11 月 4 日 HIStalk 報導，Epic 表示在 ONC 取消認證 EHR 的 AI 透明度要求之後，它仍會繼續向客戶提供 AI 透明度文件與評估工具</a>，讓醫療體系自行評估其軟體的公平性、效度與其他屬性。這是接在 <a href="https://healthcareaiguy.com/p/healthcare-ai-guy-weekly-11-3" target="_blank" rel="noopener">HHS 定案的 HTI-5 規則刪除 14 項認證基準、修改 7 項、預估節省逾 15 億美元</a>之後的直接反應。</span>
+        <span class="en"><a href="https://histalk2.com/2026/11/04/healthcare-ai-news-11-4-26/" target="_blank" rel="noopener">HIStalk reported on November 4 that Epic will keep supplying AI transparency documentation and evaluation tools to customers even though ONC has eliminated those requirements for certified EHRs</a>, so health systems can still assess the fairness, validity and other attributes of its software. It is a direct response to <a href="https://healthcareaiguy.com/p/healthcare-ai-guy-weekly-11-3" target="_blank" rel="noopener">HHS's final HTI-5 rule, which cut 14 certification criteria, revised 7 and projects over $1.5B in savings</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">在 42% 醫院市占的位置上自願維持一項已經被刪除的揭露義務，實際效果等於替整個市場重新設定下限：其他 EHR 與 AI 廠商現在要回答的問題不是「法規有沒有要求」，而是「為什麼 Epic 給、你不給」。這是本週最安靜但可能最有結構性影響的一則——法規鬆手之後，標準有機會由市占最大的那一家接手定義，好處是維持了透明度，代價是透明度的定義權從監管機關移到了廠商手上。</span>
+        <span class="en">Voluntarily keeping a disclosure obligation that has just been deleted, from a position of 42% hospital market share, effectively resets the floor for everyone: the question other EHR and AI vendors now have to answer is not whether the rule requires it, but why Epic provides it and they do not. This is the quietest item of the week and possibly the most structural — when regulation lets go, the largest incumbent gets to define the standard. Transparency survives; the authority to define transparency moves from the regulator to the vendor.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">這是二手報導中 Epic 的表態，沒有公開的文件規格、沒有承諾維持多久、也沒有說評估工具涵蓋哪些模型與哪些屬性。自願揭露隨時可以收回，而且揭露的內容與格式由 Epic 自訂，無外部稽核。HTI-5 原訂 12 月 28 日生效，資訊阻斷相關條文仍在審查中。</span>
+        <span class="en">This is Epic's stated position in secondary coverage: no published documentation spec, no commitment on duration, and no word on which models or attributes the evaluation tools cover. A voluntary disclosure can be withdrawn at any time, and its content and format are Epic's to set, with no external audit. HTI-5 takes effect December 28, and its information-blocking provisions remain under review.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://histalk2.com/2026/11/04/healthcare-ai-news-11-4-26/" target="_blank" rel="noopener">HIStalk Healthcare AI News, 2026-11-04</a> ／ <a href="https://healthcareaiguy.com/p/healthcare-ai-guy-weekly-11-3" target="_blank" rel="noopener">Healthcare AI Guy Weekly, 2026-11-03</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">併購</span><span class="en-inline">M&amp;A</span></span>
+      <span class="tag">Anthropic</span><span class="tag">Mithril Medicine</span><span class="tag">10/27</span>
+    </div>
+    <h3>
+      <span class="zh">模型公司買下一人藥廠：Anthropic 收購 Mithril Medicine，並公布六家夥伴的臨床前數字</span>
+      <span class="en">A model company buys a one-person drugmaker: Anthropic acquires Mithril Medicine and publishes six partners' preclinical numbers</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">10 月 27 日 <a href="https://www.anthropic.com/research/early-progress-drug-development" target="_blank" rel="noopener">Anthropic 公布收購 Mithril Medicine——一家只有一個人的公司，創辦人 Cody Tranbarger 用 Claude 調度 11 家外部實驗室的合約、物流與實驗，把一種罕見肌肉萎縮症的候選療法在 18 個月內從想法推到有前景的小鼠結果</a>；若後續成立，最快 2028 年底進人體試驗。同一份文件攤開六家夥伴的早期數據：Generate Biomedicines 用 Claude 重新設計的 CAR-T 組件比標準版短約 70%，實驗室中免疫細胞表現約 10 倍受體數、殺腫瘤效率更高且活性更久；Divergence Labs 一個月產出約 35,000 個抗體設計，測出 3 個能結合 IgE、20 個能把它推開，其中 3 個優於標準藥物；BigHat Biosciences 約 10 週做出並測試約 1,010 個變體，最佳版本結合力強 10 倍以上、一個候選在溶液中耐受溫度高 18°C、另一個聚集速度慢 100 倍以上；Enveda 在 1,061 頁文件上，Claude 抓到人類審閱者找到的全部 11 個問題並多標出 7 個，審閱時間從逾 25 小時降到不到 3 小時（降 89%），一份法規文件草稿從約 3 個月變成 4 小時。</span>
+        <span class="en">On October 27, <a href="https://www.anthropic.com/research/early-progress-drug-development" target="_blank" rel="noopener">Anthropic disclosed its acquisition of Mithril Medicine — a one-person company whose founder, Cody Tranbarger, used Claude to coordinate contracts, logistics and experiments across 11 external labs, taking a candidate treatment for a rare muscular dystrophy from idea to promising mouse results in under 18 months</a>; if it holds up, human trials could begin as early as late 2028. The same document lays out early data from six partners. Generate Biomedicines used Claude to redesign a CAR-T component about 70% shorter than standard, with immune cells expressing roughly 10x the receptors, killing tumor cells more efficiently and staying active longer in lab tests. Divergence Labs generated about 35,000 antibody designs in roughly a month, finding three that bind IgE and 20 that dislodge it, three of those better than the standard medication. BigHat Biosciences made and tested about 1,010 variants in roughly 10 weeks, with the best binding more than 10x more tightly, one lead staying in solution 18°C higher and another aggregating more than 100x more slowly. At Enveda, across 1,061 pages of documentation Claude caught all 11 issues human reviewers found and flagged seven they missed, cutting review time 89% from over 25 hours to under three, and drafting one regulatory document in four hours instead of about three months.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">把這則放進今天的框架：這是第四條金流——模型公司不賣訂閱也不賣廣告，直接持有資產。OpenEvidence 在 9 月那輪也被報導「悄悄轉向腫瘤藥物開發」，<a href="https://dealroom.co/news/155918-openevidence-raises-250m-at-15b-pivots-into-drug-development/" target="_blank" rel="noopener">方向與 Anthropic 這一步驚人地一致</a>。兩家公司各自從截然不同的起點（通用模型／醫師搜尋）走向同一個終點：如果你的模型真的能把臨床前研發壓縮一個數量級，那麼收授權費是最沒效率的變現方式。Enveda 的 89% 與 4 小時對 3 個月，是整份文件裡唯一牽涉到法規文件的數字，也是最容易被醫藥業立即採用的那一項。</span>
+        <span class="en">Placed in today's frame, this is a fourth revenue line: the model company sells neither subscriptions nor ads and simply owns the asset. OpenEvidence's September round was also reported as a <a href="https://dealroom.co/news/155918-openevidence-raises-250m-at-15b-pivots-into-drug-development/" target="_blank" rel="noopener">quiet pivot into oncology drug development, strikingly parallel to Anthropic's move</a>. Two companies starting from opposite ends — a general model and a physician search engine — arriving at the same conclusion: if your model genuinely compresses preclinical work by an order of magnitude, collecting a license fee is the least efficient way to monetize it. Enveda's 89% and its four hours against three months are the only regulatory-documentation figures in the whole document, and the ones pharma can adopt soonest.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">全部是臨床前，沒有一項進入人體。所有數字由各夥伴的實驗室或試點工作提出，Anthropic 自己也在文中強調多屬早期。The Column Group 與 Bristol Myers Squibb 兩項沒有給任何量化結果。收購金額未揭露。「2028 年底進人體試驗」是條件式說法，不是時程承諾。</span>
+        <span class="en">All of it is preclinical; none has reached humans. Every figure is reported by the partners' own lab or pilot work, and Anthropic itself stresses the work is early. The Column Group and Bristol Myers Squibb items carry no quantitative results at all. The acquisition price is undisclosed. "Human trials as early as late 2028" is a conditional, not a schedule.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.anthropic.com/research/early-progress-drug-development" target="_blank" rel="noopener">Anthropic Research, 2026-10-27</a> ／ <a href="https://qz.com/anthropic-mithril-medicine-acquisition-drug-programs-102826" target="_blank" rel="noopener">Quartz, 2026-10-28</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">營收</span><span class="en-inline">Revenue</span></span>
+      <span class="tag">eClinicalWorks</span><span class="tag">healow</span><span class="tag">10/23</span>
+    </div>
+    <h3>
+      <span class="zh">把 AI 免費送、靠 EHR 收錢：eClinicalWorks 報 13 億美元營收</span>
+      <span class="en">Give the AI away, charge for the EHR: eClinicalWorks reports $1.3B</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">10 月 23 日於納許維爾的年度大會上，<a href="https://www.eclinicalworks.com/eclinicalworks-and-healow-announce-record-revenues-exceeding-1-3-billion-for-2026-driven-by-accelerating-ai-adoption/" target="_blank" rel="noopener">eClinicalWorks 與 healow 宣布 2026 年合計營收預期超過 13 億美元，healow 單獨預期 1.75 億美元創新高</a>。產品面：Agentic RCM 自述自動化約 98% 的人工收入循環作業；AI Workbench 讓機構自建、部署與管理 AI agent，附預建 agent 市集並新增 MCP 端點支援；12.04 版的 Canvas for Care 自 11 月 1 日起開始部署。公司同時開了兩條新業務線——一套 AI 原生的住院 EHR（已有醫院承諾年底上線，具名者為 American Specialty Hospital 與 Riceland Healthcare）與一套藥局管理系統。公司約 6,500 名員工、1999 年成立。</span>
+        <span class="en">At its annual conference in Nashville on October 23, <a href="https://www.eclinicalworks.com/eclinicalworks-and-healow-announce-record-revenues-exceeding-1-3-billion-for-2026-driven-by-accelerating-ai-adoption/" target="_blank" rel="noopener">eClinicalWorks and healow said combined 2026 revenue is expected to exceed $1.3 billion, with healow alone at a record $175 million</a>. On product: Agentic RCM claims to automate about 98% of manual revenue cycle work; AI Workbench lets organizations build, deploy and manage AI agents, with a marketplace of prebuilt agents and new Model Context Protocol endpoint support; version 12.04's Canvas for Care began deployment on November 1. The company also opened two new business lines — an AI-native inpatient hospital EHR, with hospitals committed to go live by year-end (American Specialty Hospital and Riceland Healthcare named) and a pharmacy management system. Headcount is about 6,500; the company was founded in 1999.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這是今天最被低估的一條：執行長 Girish Navani 公開主張 AI「會很貴」但仍要免費提供，<a href="https://www.newsweek.com/pro/health-care/eclinicalworks-ceo-girish-navani-ai-interview-access-health-12632119" target="_blank" rel="noopener">理由是 AI 本身不該是一條獨立的收費項目</a>。對照 Abridge 以約 53 億美元估值溢價賣環境聽寫、Hippocratic 按 agent 工時收費，eClinicalWorks 的策略是把 AI 當作保住 EHR 席位的贈品。如果這招有效，獨立 AI 功能廠商的定價空間會被 EHR 既有席位從底下擠掉——這是本週競爭結構裡最實際的威脅，比任何新模型都實際。</span>
+        <span class="en">The most underrated item today: CEO Girish Navani publicly argues that AI "will cost a lot" and should still be given away, <a href="https://www.newsweek.com/pro/health-care/eclinicalworks-ceo-girish-navani-ai-interview-access-health-12632119" target="_blank" rel="noopener">on the grounds that AI should not be a separate line item</a>. Against Abridge selling ambient documentation at a premium and Hippocratic billing by the agent-hour, eClinicalWorks treats AI as the giveaway that defends its EHR seat. If that works, standalone AI feature vendors get squeezed from below by incumbents who already hold the seat — the most concrete competitive threat of the week, more concrete than any new model.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">13 億美元是「預期超過」而非已實現的審計數字，公司未上市、無財報可查，也沒有給任何成長率或去年對照。「自動化約 98%」為公司自述，無第三方驗證。同一份新聞稿的公司簡介自相矛盾：一處寫「逾 190,000 名提供者、近 100 萬名醫療專業人員」，另一處寫「180,000+ 醫師、850,000+ 醫療專業人員」。</span>
+        <span class="en">The $1.3B is "expected to exceed," not an audited result; the company is private with no filings to check, and gives no growth rate or prior-year comparison. The "about 98% automated" claim is self-reported with no third-party validation. The release's own boilerplate contradicts itself: "over 190,000 providers and nearly 1 million medical professionals" in one place, "180,000+ physicians" and "850,000+ medical professionals" in another.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.eclinicalworks.com/eclinicalworks-and-healow-announce-record-revenues-exceeding-1-3-billion-for-2026-driven-by-accelerating-ai-adoption/" target="_blank" rel="noopener">eClinicalWorks 新聞稿, 2026-10-23</a> ／ <a href="https://healthcareaiguy.com/p/healthcare-ai-guy-weekly-11-3" target="_blank" rel="noopener">Healthcare AI Guy Weekly, 2026-11-03</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">資安</span><span class="en-inline">Security</span></span>
+      <span class="tag">ChatGPT</span><span class="tag">Johns Hopkins Bayview</span><span class="tag">11/04</span>
+    </div>
+    <h3>
+      <span class="zh">兩週內兩起同一種外洩：員工把病歷貼進自己的 ChatGPT</span>
+      <span class="en">Two breaches of the same shape in two weeks: staff pasted charts into their own ChatGPT</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh"><a href="https://histalk2.com/2026/11/04/healthcare-ai-news-11-4-26/" target="_blank" rel="noopener">11 月 4 日 HIStalk 報導，華盛頓州兩家心理衛生機構各有員工用個人 ChatGPT 帳號草擬病歷，可能暴露 16 名病人的姓名、診斷與用藥資訊</a>。這是兩週內第二起同型事件：<a href="https://healthcareaiguy.com/p/healthcare-ai-guy-weekly-11-3" target="_blank" rel="noopener">Johns Hopkins Bayview 於 10 月 23 日通知 3,182 名病人，原因是一名員工把資料送進未經核准的 AI 工具，院方提供 12 個月信用監控</a>。</span>
+        <span class="en"><a href="https://histalk2.com/2026/11/04/healthcare-ai-news-11-4-26/" target="_blank" rel="noopener">HIStalk reported on November 4 that at two Washington state mental health facilities, employees used personal ChatGPT accounts to draft clinical notes, potentially exposing the names, diagnoses and medication details of 16 patients</a>. It is the second incident of this shape in two weeks: <a href="https://healthcareaiguy.com/p/healthcare-ai-guy-weekly-11-3" target="_blank" rel="noopener">Johns Hopkins Bayview notified 3,182 patients on October 23 after an employee sent data to an unapproved AI tool, offering 12 months of credit monitoring</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">把這兩起放在今天的產品分析旁邊，結論很不客氣：醫院在評估 Polaris 6 Ultra 的 142 個生產監控器或 Vera Health 的證據分級 UI 時，真正的對照組不是「什麼都不用」，而是「臨床人員已經在用自己的免費帳號」。16 名和 3,182 名病人的資料已經出去了，而這兩件事都不是模型失效，是採購速度跟不上使用需求。對採購端的實務含意是：延後導入並不等於零風險，它只是把風險從可稽核的廠商合約移到不可稽核的個人帳號。</span>
+        <span class="en">Set these beside today's product analysis and the conclusion is blunt. When a hospital evaluates Polaris 6 Ultra's 142 production monitors or Vera Health's evidence-grading UI, the real comparator is not "use nothing" — it is "clinicians are already using their own free accounts." The data of 16 and 3,182 patients is already out, and neither event was a model failure; both were procurement moving slower than demand. The practical implication for buyers: deferring adoption is not the zero-risk option. It only moves the risk from an auditable vendor contract to an unauditable personal account.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">兩起都引自二手報導而非機構原始通知函，華盛頓州那起只說「可能暴露」，未確認資料是否被第三方取用或留存。16 人是很小的樣本，不應據此推論盛行率；真正的使用率沒有任何機構公布過。</span>
+        <span class="en">Both are cited from secondary coverage rather than the institutions' own notification letters, and the Washington state case says only "potentially exposed," with no confirmation that data was accessed or retained by anyone else. Sixteen patients is a very small number and cannot support a prevalence claim; no institution has published actual rates of this behavior.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://histalk2.com/2026/11/04/healthcare-ai-news-11-4-26/" target="_blank" rel="noopener">HIStalk Healthcare AI News, 2026-11-04</a> ／ <a href="https://healthcareaiguy.com/p/healthcare-ai-guy-weekly-11-3" target="_blank" rel="noopener">Healthcare AI Guy Weekly, 2026-11-03</a></p></div>
+  </div>
+</section>
+
+<section id="product">
+  <h2>02 — Product Analysis</h2>
+  <div class="sec-title">
+    <span class="zh">本週兩件新事物，剛好站在光譜兩端：一個把安全做成 7.4 兆參數的基礎設施，一個把不確定性做成一個紅色標記</span>
+    <span class="en">Two new things this week, at opposite ends of one spectrum: one turns safety into 7.4 trillion parameters of infrastructure, the other turns uncertainty into a red flag on screen</span>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>Polaris 6 Ultra</h3>
+      <p class="sub"><span class="zh-inline">病人端自主語音照護模型 · Hippocratic AI（美國）</span><span class="en-inline">Autonomous patient-facing voice care model · Hippocratic AI (US)</span></p>
+      <p>
+        <span class="zh"><strong>功能與定位。</strong>不是 copilot，是直接打電話給病人的 agent：術前準備、出院後追蹤、慢病管理、用藥確認、Medicare 年度健檢前置收案。賣給醫療體系，計價單位是「agent 工時」。<a href="https://healthtechnologynet.com/2026/11/02/hippocratic-ai-unveils-polaris-6-ultra-the-first-healthcare-model-with-bedside-intuition-built-on-real-life-experience-with-lower-pricing/" target="_blank" rel="noopener">累計已完成逾 2.5 億通病人語音互動、300 多個上線臨床場景，公司累計募資 4.44 億美元</a>。技術特點是把安全當成架構而非後處理：671B 主模型外掛 30 個專科監督模型與 142 個生產監控器，再加上 mid-sentence reasoning——在當前句還在串流時就規劃下一句，所以首句延遲壓到 278 毫秒而不產生可聽見的停頓，而規劃決策會寫進面向臨床人員的 Safety Portal。</span>
+        <span class="en"><strong>Function and position.</strong> Not a copilot — an agent that phones the patient: pre-op preparation, post-discharge follow-up, chronic disease management, medication confirmation, pre-work for Medicare annual wellness visits. Sold to health systems, priced by the agent-hour. <a href="https://healthtechnologynet.com/2026/11/02/hippocratic-ai-unveils-polaris-6-ultra-the-first-healthcare-model-with-bedside-intuition-built-on-real-life-experience-with-lower-pricing/" target="_blank" rel="noopener">More than 250 million patient voice interactions completed to date across 300-plus live clinical use cases, on $444M raised</a>. Its technical signature is treating safety as architecture rather than post-processing: a 671B core surrounded by 30 specialist supervisors and 142 production monitors, plus mid-sentence reasoning — planning the next sentence while the current one still streams, which is how 278 ms to first sentence arrives without an audible pause, with the planning decisions logged to a clinician-facing Safety Portal.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：願意公布難看的基線。<a href="https://hitconsultant.net/2026/11/02/hippocratic-ai-unveils-polaris-6-ultra-bedside-intuition-healthcare-model/" target="_blank" rel="noopener">2,778 通臨床人員覆核通話裡，電視人聲被誤判為病人從 64.8% 降到 3% 以下、純噪音幻聽從 24% 降到 0.6%</a>——在這個產業，報出 64.8% 這種數字比報出 0.6% 更難。</span>
+          <span class="en">: it publishes the ugly baseline. <a href="https://hitconsultant.net/2026/11/02/hippocratic-ai-unveils-polaris-6-ultra-bedside-intuition-healthcare-model/" target="_blank" rel="noopener">Across 2,778 clinician-reviewed calls, television speech attributed to the patient fell from 64.8% to under 3%, and hallucinations on noise-only audio from 24% to 0.6%</a> — in this industry, reporting a 64.8% is harder than reporting a 0.6%.</span>
+        </li>
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：ASR 吃病歷。<a href="https://healthtechnologynet.com/2026/11/02/hippocratic-ai-unveils-polaris-6-ultra-the-first-healthcare-model-with-bedside-intuition-built-on-real-life-experience-with-lower-pricing/" target="_blank" rel="noopener">CASR v3 以病人的 EHR 與對話歷程做條件</a>，所以它知道這位病人在吃哪種藥，才聽得出模糊發音指的是哪一個藥名——這一步通用語音模型做不到，是真正的結構性護城河。</span>
+          <span class="en">: the ASR is conditioned on the chart. <a href="https://healthtechnologynet.com/2026/11/02/hippocratic-ai-unveils-polaris-6-ultra-the-first-healthcare-model-with-bedside-intuition-built-on-real-life-experience-with-lower-pricing/" target="_blank" rel="noopener">CASR v3 conditions on the patient's EHR and dialogue history</a>, so it knows which medications this patient takes and can resolve a slurred syllable into the right drug name — something a general speech model structurally cannot do.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：核心賣點全部無法外部驗證。「比前沿模型高 11 分」用的是自家 benchmark、題庫未公開；「輕微傷害率 0.00%」是自家測試。這類數字在同儕審查期刊上一篇都還沒看到。</span>
+          <span class="en">: the headline claims are all unverifiable from outside. "Eleven points above the best frontier model" runs on an in-house benchmark with no published items; "0.00% minor-harm rate" is in-house testing. None of it has appeared in a peer-reviewed journal.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：定價不透明。新聞稿只寫「更低的彈性定價」，連一個區間都沒有。而 agent 工時這種計價方式，對採購端最難編列預算的正是用量——通話量不像人力席次，它會隨著臨床團隊愈用愈順而上升。沒有價格就無法算 ROI。</span>
+          <span class="en">: pricing is opaque. The release says only "lower, flexible pricing," without even a range. And the agent-hour is the hardest unit for a buyer to budget, because call volume is not a headcount seat — it rises as clinical teams get comfortable with it. With no price, there is no ROI calculation.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：沒有一個具名客戶。在 300 多個上線場景與 2.5 億通互動的規模下，連一家願意掛名的醫療體系都沒有出現在新聞稿裡，這件事本身就是一個資訊。</span>
+          <span class="en">: not one named customer. At 300-plus live use cases and 250 million interactions, no health system appears in the release willing to be named — which is itself a piece of information.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>Vera Health（含 Vera Spaces）</h3>
+      <p class="sub"><span class="zh-inline">證據分級優先的臨床搜尋 · Vera Health（美國／全球）</span><span class="en-inline">Evidence-graded-first clinical search · Vera Health (US/global)</span></p>
+      <p>
+        <span class="zh"><strong>功能與定位。</strong>醫師端的臨床問答，對全球持照臨床人員與醫學生永久免費，企業版 Vera Spaces 賣給醫院。<a href="https://hitconsultant.net/2026/10/27/vera-health-raises-28m-series-a-threshold-ventures-evidence-graded-clinical-ai/" target="_blank" rel="noopener">索引逾 6,000 萬篇同儕審查文獻、臨床指引、共識聲明與 FDA／EMA 藥品標籤</a>，並與美國急診醫學會（ACEP）合作把官方政策與決策樹直接嵌進搜尋結果。技術上最關鍵的選擇是順序：先檢索、先對研究設計／樣本數／世代檢力／時效／期刊影響係數／引用速度打分，再生成答案——而不是先生成再補引用。合規面為 HIPAA 與 GDPR、SOC 2 Type II，且明示不用醫師的查詢訓練模型。</span>
+        <span class="en"><strong>Function and position.</strong> Clinical Q&amp;A for physicians, permanently free for licensed clinicians and trainees worldwide, with Vera Spaces as the enterprise tier sold to hospitals. <a href="https://hitconsultant.net/2026/10/27/vera-health-raises-28m-series-a-threshold-ventures-evidence-graded-clinical-ai/" target="_blank" rel="noopener">It indexes over 60 million peer-reviewed publications, guidelines, consensus statements and FDA/EMA drug labels</a>, and embeds official American College of Emergency Physicians policies and decision trees directly in results. The decisive technical choice is order of operations: retrieve first, score study design, sample size, cohort power, recency, journal impact factor and citation velocity first, then generate — rather than generate and attach citations after. It is HIPAA and GDPR compliant, SOC 2 Type II certified, and states it does not train on clinicians' queries.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：不確定性是看得見的。主張依證據強度上色、薄弱處標紅，這是把「這句話你可以多信」做進介面。<a href="https://hitconsultant.net/2026/11/03/mayo-clinic-platform-launches-ai-clinical-decision-support-ehr-solution/" target="_blank" rel="noopener">對照 Mayo 與其他同類產品只說「引用同儕審查文獻」</a>，差別是後者把判斷留給醫師自己去點開引用。</span>
+          <span class="en">: uncertainty is visible. Color-coding claims by evidence strength and flagging thin evidence in red builds "how much should you trust this sentence" into the interface. <a href="https://hitconsultant.net/2026/11/03/mayo-clinic-platform-launches-ai-clinical-decision-support-ehr-solution/" target="_blank" rel="noopener">Against Mayo and peers that say only that they cite peer-reviewed literature</a>, the difference is that the latter leave the judgment to whoever opens the citation.</span>
+        </li>
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：沒有廣告，所以沒有今天 Nature Health 那篇點出的那條利益衝突線。它仍然可能有語料導致的品牌偏誤（那是全產業的問題），但至少金流沒有站在偏誤的同一邊。</span>
+          <span class="en">: no advertising, so none of the conflict-of-interest line that today's Nature Health paper traces. It may still inherit corpus-driven brand bias — that is an industry-wide problem — but at least the money is not standing on the same side as the bias.</span>
+        </li>
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：地理分布完全不同。<a href="https://dealroom.co/news/167199-vera-health-raises-28-5m-series-a-as-clinical-ai-tool-hits-800-000-users/" target="_blank" rel="noopener">西班牙與義大利約 1/4 執業醫師、法國約 1/7</a>，而 OpenEvidence 的條款直接排除歐盟、EEA 與英國。這不是搶同一塊餅，是兩個市場。</span>
+          <span class="en">: a completely different geography. <a href="https://dealroom.co/news/167199-vera-health-raises-28-5m-series-a-as-clinical-ai-tool-hits-800-000-users/" target="_blank" rel="noopener">About one in four practicing physicians in Spain and Italy, one in seven in France</a> — while OpenEvidence's terms exclude the EU, EEA and UK outright. These are not two companies fighting over one pie; they are two markets.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：營運模式的數學還沒成立。12 名員工、3,200 萬美元累計資本，要支撐 800,000 名使用者的推論成本與 6,000 萬篇文獻的持續索引，而 Vera Spaces 的定價、客戶數、營收一項都沒揭露。免費承諾的可持續性目前只有一句話，沒有數字。</span>
+          <span class="en">: the operating math is not yet demonstrated. Twelve employees and $32M of total capital have to carry inference costs for 800,000 users and continuous indexing of 60 million documents, and Vera Spaces discloses neither pricing nor customer count nor revenue. The sustainability of the free promise currently rests on a sentence, not a number.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：證據分級本身沒有驗證。用期刊影響係數與引用速度當評分輸入，是對「證據品質」的代理指標，而不是證據品質——影響係數高的期刊也會刊登會被撤稿的論文。這套打分法對臨床結果的影響，目前沒有任何研究。</span>
+          <span class="en">: the grading itself is unvalidated. Using journal impact factor and citation velocity as scoring inputs is a proxy for evidence quality, not evidence quality — high-impact journals also publish papers that get retracted. There is no study of how this scoring affects clinical outcomes.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="company">
+  <h2>03 — Companies &amp; Competition</h2>
+  <div class="sec-title">
+    <span class="zh">誰站在哪裡、憑什麼、跟誰打</span>
+    <span class="en">Who stands where, on what, against whom</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th><span class="zh-inline">公司</span><span class="en-inline">Company</span></th>
+        <th><span class="zh-inline">近況與數字</span><span class="en-inline">Recent state &amp; numbers</span></th>
+        <th><span class="zh-inline">競爭定位與護城河</span><span class="en-inline">Position &amp; moat</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Hippocratic AI</strong><br><span class="zh-inline">病人端語音 agent，按工時計價</span><span class="en-inline">Patient-facing voice agents, billed by the hour</span></td>
+          <td>
+            <span class="zh">11/2 發表 Polaris 6 Ultra，<a href="https://healthtechnologynet.com/2026/11/02/hippocratic-ai-unveils-polaris-6-ultra-the-first-healthcare-model-with-bedside-intuition-built-on-real-life-experience-with-lower-pricing/" target="_blank" rel="noopener">累計募資 4.44 億美元、逾 2.5 億通語音互動、300 多個上線臨床場景</a>；<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/hippocratic-ai-banks-141m-series-b-hits-unicorn-status-it-rolls-out-ai" target="_blank" rel="noopener">B 輪 1.41 億美元時成為獨角獸並推出 agent 應用市集</a>。新稿未給任何單價或具名客戶。</span>
+            <span class="en">Shipped Polaris 6 Ultra on Nov 2, on <a href="https://healthtechnologynet.com/2026/11/02/hippocratic-ai-unveils-polaris-6-ultra-the-first-healthcare-model-with-bedside-intuition-built-on-real-life-experience-with-lower-pricing/" target="_blank" rel="noopener">$444M raised, over 250 million voice interactions and 300-plus live clinical use cases</a>; it <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/hippocratic-ai-banks-141m-series-b-hits-unicorn-status-it-rolls-out-ai" target="_blank" rel="noopener">reached unicorn status on a $141M Series B and launched an agent app store</a>. The new release gives no unit price and names no customer.</span>
+          </td>
+          <td>
+            <span class="zh">護城河是 3.23 億通對話語料加上「以病歷為條件的 ASR」，這兩者都不是靠換更大的通用模型能追上的。弱點是計價單位：agent 工時直接對上醫院的人力預算，而人力預算有簽核人、有工會、有編制。對手是 Nuance／Microsoft 的病人端外撥、各家 CRM 廠商，以及最便宜的替代品——不做。</span>
+            <span class="en">The moat is 323 million conversations of training data plus chart-conditioned ASR, neither of which a bigger general model closes. The weakness is the unit: agent-hours line up directly against a hospital's labor budget, and labor budgets have signatories, unions and headcount plans. Competitors are Nuance/Microsoft's patient outreach, the CRM vendors, and the cheapest substitute of all — not doing it.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>OpenEvidence</strong><br><span class="zh-inline">醫師端證據搜尋，藥廠廣告付費</span><span class="en-inline">Physician evidence search, paid by pharma ads</span></td>
+          <td>
+            <span class="zh"><a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openevidence-raises-250m-at-15b-valuation/" target="_blank" rel="noopener">9 月以 150 億美元估值募得 2.5 億美元（a16z 與 Byers Capital 領投），1 月時為 120 億，累計募資近 10 億美元</a>；<a href="https://clinicalaireport.com/open-evidence-valuation" target="_blank" rel="noopener">Sacra 估年化營收由 2024 年底 790 萬成長到 2025 年底 1.5 億、2026 年 7 月約 3 億美元</a>；<a href="https://clinicalaireport.com/is-openevidence-free" target="_blank" rel="noopener">CPM 逾 1,000 美元但僅約 5% 存貨賣出，2025 年 9 月併購廣告投放最佳化公司 Amaro</a>。10/29 進 NYU Langone 的 Epic。</span>
+            <span class="en"><a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openevidence-raises-250m-at-15b-valuation/" target="_blank" rel="noopener">Raised $250M at a $15B valuation in September, led by a16z and Byers Capital, up from $12B in January, for close to $1B in total</a>; <a href="https://clinicalaireport.com/open-evidence-valuation" target="_blank" rel="noopener">Sacra estimates annualized revenue rising from about $7.9M at end-2024 to $150M at end-2025 and roughly $300M by July 2026</a>; <a href="https://clinicalaireport.com/is-openevidence-free" target="_blank" rel="noopener">CPMs above $1,000 with only about 5% of inventory sold, and it acquired ad-deployment optimizer Amaro in September 2025</a>. Entered NYU Langone's Epic on Oct 29.</span>
+          </td>
+          <td>
+            <span class="zh">護城河是醫師網路效應加上 NEJM 與 JAMA 的授權內容，再加上 Epic 內的席位。但 150 億美元約是 3 億營收的 50 倍，而那 3 億是估值機構推估、不是公司揭露；更關鍵的是賣出率只有 5%——這既是巨大的成長空間，也意味著現在的 CPM 可能撐不住存貨放大。真正的風險在今天那篇 Nature Health：一旦「AI 建議偏向原廠藥」被監管機關認真看待，廣告支撐的臨床決策支援會是第一個被盯上的商業模式。</span>
+            <span class="en">The moat is physician network effects, licensed NEJM and JAMA content and a seat inside Epic. But $15B is roughly 50x the $300M figure, and that figure is an outside estimate, not a company disclosure; more to the point, only 5% of inventory is sold — simultaneously enormous headroom and a sign that today's CPM may not hold as inventory scales. The real risk is today's Nature Health paper: once "AI advice skews to originator brands" becomes a regulatory concern, ad-funded clinical decision support is the first business model in the room.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Vera Health</strong><br><span class="zh-inline">證據分級搜尋，企業版付費</span><span class="en-inline">Evidence-graded search, enterprise-funded</span></td>
+          <td>
+            <span class="zh"><a href="https://hitconsultant.net/2026/10/27/vera-health-raises-28m-series-a-threshold-ventures-evidence-graded-clinical-ai/" target="_blank" rel="noopener">10/27 完成 2,850 萬美元 A 輪（Threshold Ventures 領投），累計 3,200 萬美元，12 名員工、零企業行銷預算，800,000 名臨床醫師、190 國</a>；<a href="https://dealroom.co/news/167199-vera-health-raises-28-5m-series-a-as-clinical-ai-tool-hits-800-000-users/" target="_blank" rel="noopener">自 2026 年 6 月起每月全球下載量第一，9 月超過 OpenEvidence 與 Doximity 相加</a>。估值與營收未揭露。</span>
+            <span class="en"><a href="https://hitconsultant.net/2026/10/27/vera-health-raises-28m-series-a-threshold-ventures-evidence-graded-clinical-ai/" target="_blank" rel="noopener">Closed a $28.5M Series A led by Threshold Ventures on Oct 27 for $32M total, on twelve employees and a zero-dollar enterprise marketing budget, with 800,000 clinicians across 190 countries</a>; <a href="https://dealroom.co/news/167199-vera-health-raises-28-5m-series-a-as-clinical-ai-tool-hits-800-000-users/" target="_blank" rel="noopener">the top-downloaded clinical app worldwide every month since June 2026, beating OpenEvidence and Doximity combined in September</a>. Valuation and revenue undisclosed.</span>
+          </td>
+          <td>
+            <span class="zh">護城河是歐洲與全球市場的先行佔位，加上 ACEP 的官方內容嵌入。它不跟 OpenEvidence 在美國正面打，而是去 OpenEvidence 條款明文排除的地方長大。弱點很單純：3,200 萬美元對上近 10 億美元，一旦 OpenEvidence 決定做 GDPR 合規版本進歐洲，Vera 沒有資本可以對打行銷戰——它唯一的防線是那時候醫師已經習慣了。</span>
+            <span class="en">The moat is first position in Europe and the rest of the world, plus embedded official ACEP content. It is not fighting OpenEvidence head-on in the US; it is growing where OpenEvidence's terms explicitly exclude it. The weakness is plain: $32M against close to $1B. If OpenEvidence builds a GDPR-compliant European version, Vera has no capital for a marketing war — its only defense is that physicians will already be used to it by then.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Mayo Clinic Platform</strong><br><span class="zh-inline">醫療體系自建並外售的 CDS</span><span class="en-inline">A health system building CDS and selling it on</span></td>
+          <td>
+            <span class="zh"><a href="https://hitconsultant.net/2026/11/03/mayo-clinic-platform-launches-ai-clinical-decision-support-ehr-solution/" target="_blank" rel="noopener">11/3 商業上線 AI 臨床決策支援：35 個以上次專科臨床聊天、22 個風險與診斷計算器、知識庫每日更新，供 Mayo 臨床人員與平台方案的外部機構使用</a>。定價、支援 EHR、外部客戶數、任何準確率數字皆未公開。</span>
+            <span class="en"><a href="https://hitconsultant.net/2026/11/03/mayo-clinic-platform-launches-ai-clinical-decision-support-ehr-solution/" target="_blank" rel="noopener">Commercially launched AI clinical decision support on Nov 3: subspecialty clinical chat across 35-plus specialties, 22 risk and diagnostic calculators, daily knowledge updates, for Mayo clinicians and outside organizations in its platform programs</a>. Pricing, supported EHRs, outside customer count and any accuracy figure are all undisclosed.</span>
+          </td>
+          <td>
+            <span class="zh">護城河是品牌與自建並驗證過的演算法——同一批文獻，掛 Mayo 的招牌，這是 OpenEvidence 與 Vera 都買不到的東西。弱點是通路：Mayo 沒有 Epic 那種 42% 的席位，也沒有 OpenEvidence 那種醫師自發採用，它得一家一家賣。真正的對手是 UpToDate 的機構授權預算，而不是這兩家新創。</span>
+            <span class="en">The moat is the brand plus proprietary validated algorithms — the same literature under the Mayo signature, which neither OpenEvidence nor Vera can buy. The weakness is distribution: Mayo has neither Epic's 42% seat nor OpenEvidence's bottom-up physician adoption, so it sells one institution at a time. Its real competitor is the UpToDate institutional licensing budget, not either startup.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Abridge</strong><br><span class="zh-inline">環境聽寫，企業訂閱</span><span class="en-inline">Ambient documentation, enterprise subscription</span></td>
+          <td>
+            <span class="zh"><a href="https://valueaddvc.com/blog/abridge-valuation-2026-5-3b-100m-arr-and-how-the-ai-scribe-beat-nuance-and-ambience" target="_blank" rel="noopener">估值 53 億美元（2025 年 6 月 E 輪 3 億由 a16z 領投，2026 年 4 月 3.16 億美元延伸輪維持同一估值），已實現 ARR 於 2025 年中破 1 億美元，逾 300 家醫療體系上線（2024 年約 100 家），Kaiser Permanente 全部 40 家醫院約 24,600 名醫師，VA 逾 75 個醫學中心，10/8 與德州大學系統簽全系統協議，公司自述 2026 年將支援逾 1 億次醫病對話</a>。</span>
+            <span class="en"><a href="https://valueaddvc.com/blog/abridge-valuation-2026-5-3b-100m-arr-and-how-the-ai-scribe-beat-nuance-and-ambience" target="_blank" rel="noopener">Valued at $5.3B (a $300M Series E led by a16z in June 2025, plus a $316M extension in April 2026 at the same price), realized ARR crossed $100M by mid-2025, more than 300 health systems live against roughly 100 in 2024, all 40 Kaiser Permanente hospitals and about 24,600 physicians, over 75 VA medical centers, a University of Texas System-wide agreement on Oct 8, and a company claim of supporting over 100 million patient-clinician conversations in 2026</a>.</span>
+          </td>
+          <td>
+            <span class="zh">護城河是 Epic 內的深度整合與收入循環那一端的黏著度（<a href="https://valueaddvc.com/blog/abridge-valuation-2026-5-3b-100m-arr-and-how-the-ai-scribe-beat-nuance-and-ambience" target="_blank" rel="noopener">連兩年 Best in KLAS</a>）。但兩輪都定在 53 億美元沒有上調，而 eClinicalWorks 這種「AI 當贈品」的打法是對它最直接的壓力。對手是 Nuance DAX 的既有通路、Ambience（12.5 億估值）、Suki、Nabla。</span>
+            <span class="en">The moat is deep Epic integration and stickiness at the revenue-cycle end (<a href="https://valueaddvc.com/blog/abridge-valuation-2026-5-3b-100m-arr-and-how-the-ai-scribe-beat-nuance-and-ambience" target="_blank" rel="noopener">two consecutive years of Best in KLAS</a>). But two rounds priced flat at $5.3B, and eClinicalWorks's give-the-AI-away play is the most direct pressure on it. Competitors are Nuance DAX's installed distribution, Ambience (at $1.25B), Suki and Nabla.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>eClinicalWorks / healow</strong><br><span class="zh-inline">EHR 席位，AI 免費送</span><span class="en-inline">The EHR seat, with AI thrown in</span></td>
+          <td>
+            <span class="zh"><a href="https://www.eclinicalworks.com/eclinicalworks-and-healow-announce-record-revenues-exceeding-1-3-billion-for-2026-driven-by-accelerating-ai-adoption/" target="_blank" rel="noopener">10/23 宣布 2026 年合計營收預期逾 13 億美元、healow 1.75 億，約 6,500 名員工；Agentic RCM 自述自動化約 98% 人工作業，AI Workbench 新增 MCP 端點支援，並新開 AI 原生住院 EHR 與藥局管理兩條業務線</a>。<a href="https://www.newsweek.com/pro/health-care/eclinicalworks-ceo-girish-navani-ai-interview-access-health-12632119" target="_blank" rel="noopener">執行長公開主張 AI 不該是獨立收費項目</a>。</span>
+            <span class="en"><a href="https://www.eclinicalworks.com/eclinicalworks-and-healow-announce-record-revenues-exceeding-1-3-billion-for-2026-driven-by-accelerating-ai-adoption/" target="_blank" rel="noopener">Said on Oct 23 that combined 2026 revenue should exceed $1.3B with healow at $175M, on about 6,500 employees; Agentic RCM claims roughly 98% automation of manual work, AI Workbench added MCP endpoint support, and two new lines opened — an AI-native inpatient EHR and pharmacy management</a>. <a href="https://www.newsweek.com/pro/health-care/eclinicalworks-ceo-girish-navani-ai-interview-access-health-12632119" target="_blank" rel="noopener">Its CEO argues publicly that AI should not be a separate line item</a>.</span>
+          </td>
+          <td>
+            <span class="zh">護城河是已經簽好的 EHR 合約——AI 不必比對手好，只要夠用且不用另外簽採購。這是對所有單點 AI 廠商最難防的攻擊方式。弱點是「夠用」的門檻會隨著 Polaris 這類專用模型往上移，而一家做 EHR 的公司要同時追上語音、RCM、住院與藥局四條線的模型品質，難度不小。</span>
+            <span class="en">The moat is the EHR contract already signed — the AI does not have to be better, only good enough and requiring no separate procurement. That is the hardest attack for any point-solution AI vendor to defend. The weakness is that the bar for "good enough" keeps rising as purpose-built models like Polaris ship, and an EHR company chasing model quality across voice, RCM, inpatient and pharmacy at once is attempting four races.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Anthropic</strong><br><span class="zh-inline">模型公司，直接持有藥物資產</span><span class="en-inline">A model company that now owns drug assets</span></td>
+          <td>
+            <span class="zh"><a href="https://www.anthropic.com/research/early-progress-drug-development" target="_blank" rel="noopener">10/27 收購一人公司 Mithril Medicine（金額未揭露），並公布與 BigHat、Bristol Myers Squibb、Divergence Labs、Enveda、Generate Biomedicines、The Column Group 六家的臨床前結果</a>；<a href="https://histalk2.com/2026/11/04/healthcare-ai-news-11-4-26/" target="_blank" rel="noopener">11/2 athenahealth 開出 MCP 連線讓病人把病歷接給 Claude</a>。</span>
+            <span class="en"><a href="https://www.anthropic.com/research/early-progress-drug-development" target="_blank" rel="noopener">Acquired the one-person Mithril Medicine on Oct 27 for an undisclosed sum and published preclinical results with six partners: BigHat, Bristol Myers Squibb, Divergence Labs, Enveda, Generate Biomedicines and The Column Group</a>; <a href="https://histalk2.com/2026/11/04/healthcare-ai-news-11-4-26/" target="_blank" rel="noopener">on Nov 2 athenahealth opened an MCP connection letting patients hand their records to Claude</a>.</span>
+          </td>
+          <td>
+            <span class="zh">它在醫療場上的位置不是跟上面任何一家競爭，而是同時當所有人的底層與自己的客戶。護城河是模型本身加上現在開始累積的資產持有部位；要打折的地方是這種垂直整合會讓它的夥伴（包括藥廠）開始算一件事：把最好的化學問題交給一家自己也在開發藥物的公司，是不是個好主意。</span>
+            <span class="en">Its position in healthcare is not competition with anyone above; it is being everyone's substrate and its own customer at once. The moat is the model plus an asset position it is now starting to accumulate. The discount: this kind of vertical integration makes its partners, pharma among them, start doing a calculation about whether handing your best chemistry problem to a company that also develops drugs is a good idea.</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="zh"><strong>一句話收束：這個市場的分水嶺不再是模型品質，而是「誰有理由替醫師付錢」。</strong>五種答案已經全部出現在同一週裡——醫院付（Hippocratic 的 agent 工時、Abridge 的訂閱）、藥廠付（OpenEvidence 的廣告）、醫院的既有合約順便付（eClinicalWorks 把 AI 當贈品）、醫療體系自己做並轉賣（Mayo Clinic Platform）、以及不收錢直接持有資產（Anthropic）。而它們的失效模式各不相同：工時制怕用量上升、廣告制怕 Nature Health 那類研究、贈品制怕模型品質追不上、自建制怕通路、持有制怕夥伴信任。選供應商之前，先問它靠什麼活著——因為那決定了當利益衝突出現時，它會往哪邊倒。</span>
+      <span class="en"><strong>In one sentence: the dividing line in this market is no longer model quality but who has a reason to pay for the physician.</strong> All five answers showed up in a single week — the hospital pays (Hippocratic's agent-hours, Abridge's subscription), pharma pays (OpenEvidence's ads), the hospital's existing contract pays by default (eClinicalWorks treating AI as a giveaway), the health system builds it and resells (Mayo Clinic Platform), and nobody pays because the vendor owns the asset instead (Anthropic). Each fails differently: hourly billing fears rising volume, advertising fears papers like today's Nature Health, the giveaway fears falling behind on quality, the in-house build fears distribution, and asset ownership fears partner trust. Before choosing a vendor, ask what keeps it alive — because that decides which way it leans when the interests conflict.</span>
+    </p>
+  </div>
+</section>
+
+<section id="taiwan">
+  <h2>04 — Taiwan Angle</h2>
+  <div class="sec-title">
+    <span class="zh">同樣的技術，到台灣會長成另一個形狀——因為沒有藥廠 DTC 廣告市場，也因為指引早就寫了一條</span>
+    <span class="en">The same technology grows a different shape here — because there is no DTC pharma ad market, and because the guidance already has a clause for it</span>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="zh"><strong>(1) 廣告模型在台灣沒有對應市場，所以免費的那一端只剩兩條路。</strong>OpenEvidence 的整個商業模式建立在美國允許藥廠向醫師大規模投放處方藥廣告，<a href="https://clinicalaireport.com/is-openevidence-free" target="_blank" rel="noopener">CPM 可以喊到 1,000 美元以上</a>。台灣沒有這個規模的醫藥廣告市場，意思是「對醫師免費」在台灣只能靠兩種方式支撐：醫院付企業授權（Vera Spaces 或 UpToDate 那條路），或由公部門／學會補貼。這一點決定了台灣醫院評估這類工具時，該直接跳過廣告支撐的版本去談企業版條件，而不是先讓醫師免費用起來、再處理資料治理——因為免費版的資料流向在台灣沒有相應的廣告法規可以約束。</span>
+      <span class="en"><strong>(1) The ad model has no counterpart market in Taiwan, so "free" here has only two roads.</strong> OpenEvidence's entire business rests on the US permitting pharmaceutical companies to advertise prescription drugs to physicians at scale, <a href="https://clinicalaireport.com/is-openevidence-free" target="_blank" rel="noopener">with CPMs quoted above $1,000</a>. Taiwan has no pharmaceutical advertising market of that size, which means "free for clinicians" can only be carried here by a hospital paying an enterprise license (the Vera Spaces or UpToDate road) or by public or society subsidy. That should change how Taiwanese hospitals evaluate these tools: go straight to enterprise terms rather than letting physicians adopt a free tier first and sorting out data governance later, because the data flows of a free tier have no corresponding advertising regulation here to constrain them.</span>
+    </p>
+    <p>
+      <span class="zh"><strong>(2) Polaris 這種病人端外撥 agent，在台灣的第一道門是一條揭露義務。</strong><a href="https://www.hst.org.tw/tw/board/regulations/6" target="_blank" rel="noopener">衛福部 115 年 5 月 29 日以衛部醫字第 1151663164 號函頒的「醫療機構應用生成式人工智慧指引」已經明文要求：AI 工具若直接與民眾對話，須主動揭露其為 AI，不能等民眾詢問才說明；若具錄影功能亦應事先告知病患</a>。這條規定對 Polaris 6 Ultra 的核心賣點是正面衝撞——它花了 7.4 兆參數在讓對話聽起來自然、加入呼吸聲與停頓節奏，而台灣的指引要求它一開口就說「我是 AI」。這不是不能做，而是導入前就該把揭露話術、病人拒接後的人工接續流程，以及錄音告知寫進 SOP，不要等上線才補。</span>
+      <span class="en"><strong>(2) For an outbound patient-facing agent like Polaris, the first gate in Taiwan is a disclosure duty.</strong> <a href="https://www.hst.org.tw/tw/board/regulations/6" target="_blank" rel="noopener">The MOHW's Guidance on the Use of Generative AI by Medical Institutions, issued on May 29, 2026 under letter 1151663164, already requires that an AI tool speaking directly with the public proactively disclose that it is AI rather than waiting to be asked, and that patients be told in advance if recording is involved</a>. That collides head-on with Polaris 6 Ultra's central pitch: it spends 7.4 trillion parameters making the conversation sound natural, complete with breaths and pacing, while Taiwan's guidance requires it to open by saying it is AI. Not a blocker — but the disclosure script, the human fallback path when a patient declines, and the recording notice all belong in the SOP before go-live, not after.</span>
+    </p>
+    <p>
+      <span class="zh"><strong>(3) 台灣已經在做的，是「交班文書」而不是「打電話給病人」。</strong><a href="https://www.ctee.com.tw/news/20261022700391-431202" target="_blank" rel="noopener">10 月 22 日大甲與苑裡李綜合醫院同步導入易晨智能的生成式 AI 語音交班紀錄系統，支援國語、台語、客語、英語與醫療專有名詞，具即時辨識、贅字過濾與語者分離，再由生成式 AI 彙整交班重點並產出 Care Plan，兩院同時升級護理行動推車、HIS 與病房電子白板</a>。注意這個選擇的合理性：交班紀錄的失效後果可控、不涉病人直接互動、不需處理揭露義務，而多語（尤其台語與客語）才是台灣真正的技術門檻——Polaris 的 629 個英文藥名發音測試在台灣完全不適用。台灣廠商的機會窗口就在這裡：不是追 7.4 兆參數，是把台語與客語的臨床語音做到可用。</span>
+      <span class="en"><strong>(3) What Taiwan is actually deploying is shift-handover documentation, not outbound patient calls.</strong> <a href="https://www.ctee.com.tw/news/20261022700391-431202" target="_blank" rel="noopener">On October 22 the Dajia and Yuanli branches of the Lee's General Hospital system both went live with Yichen Intelligence's generative-AI voice handover record system, covering Mandarin, Taiwanese, Hakka, English and medical terminology, with real-time recognition, filler removal and speaker separation, then generative AI summarizing handover points and producing a care plan, alongside upgrades to nursing carts, the HIS and ward electronic whiteboards</a>. Note why that choice is sound: the consequences of a handover error are contained, there is no direct patient interaction, no disclosure duty to handle — and multilingual recognition, Taiwanese and Hakka above all, is the real technical bar here. Polaris's 629-English-drug-name pronunciation test does not transfer at all. That is the window for Taiwanese vendors: not chasing 7.4 trillion parameters, but making clinical speech in Taiwanese and Hakka actually work.</span>
+    </p>
+    <p>
+      <span class="zh"><strong>(4) 那篇 Nature Health 對台灣的意義在健保，不在成本。</strong>論文的成本推估是美國藥價基礎，<a href="https://coolhealth.com.tw/ai-drug-brand-bias" target="_blank" rel="noopener">報導本身也說明不能直接套用至台灣健保</a>。但「原廠藥被推薦的勝算是學名藥的 20.5 倍」這一項與定價無關，它是語料偏誤，會原封不動地跟著模型進台灣。在台灣的制度下，這不會變成採購成本爆增（健保有給付規則與藥價基準），而會變成另一種摩擦：AI 建議的品項與健保給付的品項不一致，產生更多的事前審查與事後核刪爭議。要在導入前處理的不是價格，是把健保給付規則與醫院處方集餵進檢索層——這正好是 Vera Spaces 那種「上傳自家處方集並優先排序」的功能在台灣最值得買的理由。</span>
+      <span class="en"><strong>(4) For Taiwan, the Nature Health paper matters through the single payer, not through cost.</strong> Its cost projection is built on US drug prices, and <a href="https://coolhealth.com.tw/ai-drug-brand-bias" target="_blank" rel="noopener">the coverage itself says it cannot be transferred to Taiwan's NHI</a>. But the 20.5x odds favoring originator brands has nothing to do with pricing — it is corpus bias, and it travels into Taiwan with the model untouched. Under Taiwan's system that will not show up as an acquisition-cost explosion, because reimbursement rules and reference pricing already bound that. It will show up as a different friction: the AI recommends an item the NHI does not reimburse on those terms, generating more prior-review and post-hoc disallowance disputes. What has to be handled before go-live is not price but feeding NHI reimbursement rules and the hospital's own formulary into the retrieval layer — which is exactly why a Vera Spaces-style "upload your formulary and prioritize it" feature is the thing most worth paying for here.</span>
+    </p>
+  </div>
+</section>
+
+<section id="reading">
+  <h2>05 — Further Reading</h2>
+  <div class="sec-title">
+    <span class="zh">挑選標準：能改變你對某一家公司估值或某一個產品風險的判斷，而不只是補充細節</span>
+    <span class="en">Chosen for one thing: each should change how you price a company or weigh a product's risk, not merely add detail</span>
+  </div>
+
+  <ol class="reading">
+    <li>
+      <a href="https://www.nature.com/articles/s44360-026-00205-y" target="_blank" rel="noopener">Large language models show product name convergence in drug recommendations — Nature Health (2026-10-29)</a>
+      <p class="why"><span class="zh">今天唯一一篇同儕審查的原始研究，而且它量化的是整個產業最不想被量化的那一件事。Wikipedia 條目對應 3.00 倍推薦勝算這個數字，值得任何在做 RAG 的人盯著看三分鐘。</span><span class="en">The only peer-reviewed primary research today, and it quantifies the thing the industry least wants quantified. The 3.00x recommendation odds attached to having a Wikipedia entry deserves three minutes from anyone building RAG.</span></p>
+    </li>
+    <li>
+      <a href="https://healthtechnologynet.com/2026/11/02/hippocratic-ai-unveils-polaris-6-ultra-the-first-healthcare-model-with-bedside-intuition-built-on-real-life-experience-with-lower-pricing/" target="_blank" rel="noopener">Hippocratic AI Unveils Polaris 6 Ultra — 新聞稿全文 / full release (2026-11-02)</a>
+      <p class="why"><span class="zh">直接讀新聞稿而不是二手摘要，是因為那份 2,778 通通話的 ASR 稽核表格值得逐列看——它示範了語音醫療 AI 的評估報告應該長什麼樣子，也讓你看出哪些數字是自家 benchmark。</span><span class="en">Read the release rather than a summary, because the ASR audit table across 2,778 calls is worth going through row by row — it models what an evaluation report for clinical voice AI should look like, and makes clear which numbers come from an in-house benchmark.</span></p>
+    </li>
+    <li>
+      <a href="https://hitconsultant.net/2026/10/27/vera-health-raises-28m-series-a-threshold-ventures-evidence-graded-clinical-ai/" target="_blank" rel="noopener">Vera Health Raises $28.5M for Clinical AI Search Engine — HIT Consultant (2026-10-27)</a>
+      <p class="why"><span class="zh">一份關於「先檢索評分、再生成」與「先生成、再補引用」差別的實作案例。12 人團隊對上近 10 億美元資本這組對比，也是本年度最值得追蹤的競爭實驗之一。</span><span class="en">A working case study in the difference between retrieve-and-grade-then-generate and generate-then-cite. Twelve people against close to a billion dollars of capital is also one of the year's more instructive competitive experiments.</span></p>
+    </li>
+    <li>
+      <a href="https://www.anthropic.com/research/early-progress-drug-development" target="_blank" rel="noopener">Early progress on accelerating drug development with Claude — Anthropic (2026-10-27)</a>
+      <p class="why"><span class="zh">把六家夥伴的臨床前數字攤在同一份文件裡，少見地誠實標註了哪幾項沒有量化結果。Enveda 那段 1,061 頁文件、89% 審閱時間縮短，是整份文件裡最接近可立即落地的一項。</span><span class="en">Six partners' preclinical numbers in one document, unusually honest about which items carry no quantitative result at all. The Enveda passage — 1,061 pages of documentation, an 89% cut in review time — is the closest thing here to immediately deployable.</span></p>
+    </li>
+    <li>
+      <a href="https://healthcareaiguy.com/p/healthcare-ai-guy-weekly-11-3" target="_blank" rel="noopener">Healthcare AI Guy Weekly 11/3 — (2026-11-03)</a>
+      <p class="why"><span class="zh">本週整個 agentic 醫療的進度在這一份裡最密集：Zocdoc 的 agent 流量自 7 月起成長近 30 倍、UnitedHealthcare 的 Avery 從約 660 萬擴到 2,100 萬會員且自述約 90% 互動不需人工。這兩個數字決定明年誰在跟病人說話。</span><span class="en">The densest single read on this week's agentic healthcare: Zocdoc's agent traffic up nearly 30x since July, UnitedHealthcare's Avery expanding from about 6.6M to 21M members claiming roughly 90% of interactions resolved without a human. Those two numbers decide who is talking to patients next year.</span></p>
+    </li>
+  </ol>
+</section>
+
+<section id="refs">
+  <h2>06 — References</h2>
+  <div class="sec-title">
+    <span class="zh">參考文獻</span>
+    <span class="en">References</span>
+  </div>
+
+  <div class="panel">
+    <ol class="refs">
+      <li>Hippocratic AI Unveils Polaris 6 Ultra to Deliver Real-Time Bedside Intuition in Autonomous Voice Care. <em>HIT Consultant</em>, 2026-11-02. <a href="https://hitconsultant.net/2026/11/02/hippocratic-ai-unveils-polaris-6-ultra-bedside-intuition-healthcare-model/" target="_blank" rel="noopener">hitconsultant.net</a></li>
+      <li>Hippocratic AI Unveils Polaris 6 Ultra, the First Healthcare Model With Bedside Intuition, Built on Real-Life Experience, With Lower Pricing（新聞稿全文）. <em>Health Technology Net</em>, 2026-11-02. <a href="https://healthtechnologynet.com/2026/11/02/hippocratic-ai-unveils-polaris-6-ultra-the-first-healthcare-model-with-bedside-intuition-built-on-real-life-experience-with-lower-pricing/" target="_blank" rel="noopener">healthtechnologynet.com</a></li>
+      <li>Press Release index（Polaris 6 官方稿日期 2026-10-31）. <em>Hippocratic AI</em>. <a href="https://hippocraticai.com/category/press-release/" target="_blank" rel="noopener">hippocraticai.com</a></li>
+      <li>Hippocratic AI banks $141M series B, hits 'unicorn' status as it rolls out AI agent app store. <em>Fierce Healthcare</em>. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/hippocratic-ai-banks-141m-series-b-hits-unicorn-status-it-rolls-out-ai" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>Mayo Clinic Platform Unveils EHR-Integrated Clinical Decision Support Engine Across 35+ Subspecialties. <em>HIT Consultant</em>, 2026-11-03. <a href="https://hitconsultant.net/2026/11/03/mayo-clinic-platform-launches-ai-clinical-decision-support-ehr-solution/" target="_blank" rel="noopener">hitconsultant.net</a></li>
+      <li>AI-enabled Mayo Clinic tool supports individualized patient care decisions. <em>News-Medical</em>, 2026-11-04. <a href="https://www.news-medical.net/news/20261104/AI-enabled-Mayo-Clinic-tool-supports-individualized-patient-care-decisions.aspx" target="_blank" rel="noopener">news-medical.net</a></li>
+      <li>Large language models show product name convergence in drug recommendations. <em>Nature Health</em>, 2026. <a href="https://www.nature.com/articles/s44360-026-00205-y" target="_blank" rel="noopener">nature.com</a></li>
+      <li>AI 推薦的藥物你敢吃嗎？88 萬次測試曝光：原廠藥勝算高 20.5 倍. <em>CoolHealth</em>, 2026-10-29（2026-11-03 更新）. <a href="https://coolhealth.com.tw/ai-drug-brand-bias" target="_blank" rel="noopener">coolhealth.com.tw</a></li>
+      <li>Vera Health Raises $28.5M for Clinical AI Search Engine: Surpasses 800,000 Global Physician Users. <em>HIT Consultant</em>, 2026-10-27. <a href="https://hitconsultant.net/2026/10/27/vera-health-raises-28m-series-a-threshold-ventures-evidence-graded-clinical-ai/" target="_blank" rel="noopener">hitconsultant.net</a></li>
+      <li>Vera Health secures $28.5M series A for AI-driven clinical search engine. <em>Fierce Healthcare</em>, 2026-10-27. <a href="https://www.fiercehealthcare.com/finance/vera-health-secures-285m-series-ai-driven-clinical-search-engine" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>Vera Health raises $28.5M Series A as clinical AI tool hits 800,000 users. <em>Dealroom</em>, 2026-10. <a href="https://dealroom.co/news/167199-vera-health-raises-28-5m-series-a-as-clinical-ai-tool-hits-800-000-users/" target="_blank" rel="noopener">dealroom.co</a></li>
+      <li>OpenEvidence and NYU Langone Health Partner to Bring Patient-Aware Intelligence to 12 Million Visits in New York City. <em>NYU Langone Health</em>, 2026-10-29. <a href="https://nyulangone.org/news/openevidence-and-nyu-langone-health-partner-bring-patient-aware-intelligence-12-million-visits-new-york-city" target="_blank" rel="noopener">nyulangone.org</a></li>
+      <li>NYU Langone Embeds OpenEvidence in Epic EHR for 12M Annual Visits. <em>Unite.AI</em>, 2026-10-29. <a href="https://www.unite.ai/nyu-langone-embeds-openevidence-in-epic-ehr-for-12m-annual-visits/" target="_blank" rel="noopener">unite.ai</a></li>
+      <li>OpenEvidence raises $250M at $15B valuation. <em>Becker's Hospital Review</em>, 2026-09-28. <a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openevidence-raises-250m-at-15b-valuation/" target="_blank" rel="noopener">beckershospitalreview.com</a></li>
+      <li>OpenEvidence Valuation 2026: $15 Billion, Funding, Revenue（引用 Sacra 營收估計）. <em>Clinical AI Report</em>, 2026-10-19. <a href="https://clinicalaireport.com/open-evidence-valuation" target="_blank" rel="noopener">clinicalaireport.com</a></li>
+      <li>Is OpenEvidence Free? Yes. Here's Who Pays for It（廣告模型與 CPM）. <em>Clinical AI Report</em>, 2026. <a href="https://clinicalaireport.com/is-openevidence-free" target="_blank" rel="noopener">clinicalaireport.com</a></li>
+      <li>OpenEvidence raises $250M at $15B, pivots into drug development. <em>Dealroom</em>, 2026-09. <a href="https://dealroom.co/news/155918-openevidence-raises-250m-at-15b-pivots-into-drug-development/" target="_blank" rel="noopener">dealroom.co</a></li>
+      <li>Healthcare AI News 11/4/26. <em>HIStalk</em>, 2026-11-04. <a href="https://histalk2.com/2026/11/04/healthcare-ai-news-11-4-26/" target="_blank" rel="noopener">histalk2.com</a></li>
+      <li>Healthcare AI Guy Weekly 11/3. <em>Healthcare AI Guy</em>, 2026-11-03. <a href="https://healthcareaiguy.com/p/healthcare-ai-guy-weekly-11-3" target="_blank" rel="noopener">healthcareaiguy.com</a></li>
+      <li>Health IT Business News — November 5, 2026. <em>Health IT Answers</em>, 2026-11-05. <a href="https://www.healthitanswers.net/health-it-business-news-november-5-2026/" target="_blank" rel="noopener">healthitanswers.net</a></li>
+      <li>Early progress on accelerating drug development with Claude. <em>Anthropic</em>, 2026-10-27. <a href="https://www.anthropic.com/research/early-progress-drug-development" target="_blank" rel="noopener">anthropic.com</a></li>
+      <li>Anthropic acquires one-person biotech Mithril, starts drug programs. <em>Quartz</em>, 2026-10-28. <a href="https://qz.com/anthropic-mithril-medicine-acquisition-drug-programs-102826" target="_blank" rel="noopener">qz.com</a></li>
+      <li>eClinicalWorks and healow Announce Record Revenues Exceeding $1.3 Billion for 2026, Driven by Accelerating AI Adoption. <em>eClinicalWorks</em>, 2026-10-23. <a href="https://www.eclinicalworks.com/eclinicalworks-and-healow-announce-record-revenues-exceeding-1-3-billion-for-2026-driven-by-accelerating-ai-adoption/" target="_blank" rel="noopener">eclinicalworks.com</a></li>
+      <li>CEO of eClinicalWorks Says AI Will 'Cost a Lot.' So Why Offer It for Free?（付費牆）. <em>Newsweek</em>. <a href="https://www.newsweek.com/pro/health-care/eclinicalworks-ceo-girish-navani-ai-interview-access-health-12632119" target="_blank" rel="noopener">newsweek.com</a></li>
+      <li>Abridge Valuation 2026: $5.3B After $316M Extension. <em>ValueAdd VC</em>, 2026-08-25（2026-10-31 更新）. <a href="https://valueaddvc.com/blog/abridge-valuation-2026-5-3b-100m-arr-and-how-the-ai-scribe-beat-nuance-and-ambience" target="_blank" rel="noopener">valueaddvc.com</a></li>
+      <li>衛生福利部公告「醫療機構應用生成式人工智慧指引」（115-05-29 衛部醫字第 1151663164 號）. <em>醫院協會 / HST</em>, 2026-06-04. <a href="https://www.hst.org.tw/tw/board/regulations/6" target="_blank" rel="noopener">hst.org.tw</a></li>
+      <li>AI 語音解鎖醫療痛點 李綜合醫院導入 AI. <em>工商時報</em>, 2026-10-22. <a href="https://www.ctee.com.tw/news/20261022700391-431202" target="_blank" rel="noopener">ctee.com.tw</a></li>
+      <li>高醫大論壇揭示 AI 醫療新局！衛福部推「333 政策」國家 489 億預算力挺. <em>聯合報</em>, 2026-06-27. <a href="https://udn.com/news/story/7266/9592218" target="_blank" rel="noopener">udn.com</a></li>
+      <li>UnitedHealthcare expands AI companion Avery to 21M members. <em>Fierce Healthcare</em>（約 2026-10-27，經 Curie 轉述）. <a href="https://curie.md/briefs/33488" target="_blank" rel="noopener">curie.md</a></li>
+    </ol>
+    <div class="note">
+      <span class="zh"><strong>編輯說明：</strong>本期為週五深度分析，窗口取 10/27–11/5，比平日的 24–72 小時放寬，因為兩個拆解對象（Polaris 6 Ultra 於 11/2、Vera Health A 輪於 10/27）需要並置才成立；Anthropic／Mithril（10/27）、eClinicalWorks 營收（10/23）、Abridge 估值（E 輪 2025-06、延伸輪 2026-04）、OpenEvidence 150 億美元輪（2026-09）皆為背景資料，已於文中標示原始日期，請勿誤讀為本週新事件。<strong>廠商自述未經第三方稽核的數字：</strong>Polaris 6 Ultra 的全部 benchmark 與「輕微傷害率 0.00%」、Hippocratic 的 2.5 億通互動與 300 多個場景、Vera Health 的 800,000 使用者與各國醫師比例與下載排名、eClinicalWorks 的 13 億美元（「預期超過」而非審計結果）與「自動化約 98%」、Abridge 的「逾 1 億次對話」、Mayo CDS 的規模數字、OpenEvidence 的「多數美國醫師每日使用」。<strong>第三方估計而非公司揭露：</strong>OpenEvidence 的營收（Sacra 估計）與廣告 CPM／存貨賣出率。<strong>付費牆：</strong>Newsweek 對 eClinicalWorks 執行長的專訪僅依公開可見的標題與導言引述其主張。<strong>引自二手來源：</strong>Nature Health 論文的全部數字取自中文二手報導（CoolHealth），原始論文頁面於本次產製時無法取回全文，所有數字請以原始論文為準；UnitedHealthcare Avery 的會員數與 90% 解決率經 Curie 轉述 Fierce Healthcare；華盛頓州與 Johns Hopkins Bayview 兩起外洩引自 HIStalk 與 Healthcare AI Guy，非機構原始通知函。<strong>推估而非實際發生：</strong>Nature Health 的「每年採購成本增加 5,560 萬美元、增幅 1,019%」是在「醫師照 AI 建議分布開藥」假設下的模擬值。本報告為新聞整理與分析，不構成投資或醫療建議。</span>
+      <span class="en"><strong>Editor's note:</strong> This is the Friday deep-dive edition, so the window runs Oct 27 – Nov 5 rather than the usual 24–72 hours: the two subjects (Polaris 6 Ultra on Nov 2, Vera Health's Series A on Oct 27) only work placed side by side. Anthropic/Mithril (Oct 27), eClinicalWorks revenue (Oct 23), Abridge's valuation (Series E June 2025, extension April 2026) and OpenEvidence's $15B round (September 2026) are all background, dated in the text — please do not read them as this week's events. <strong>Vendor-reported and not independently audited:</strong> every Polaris 6 Ultra benchmark and the "0.00% minor-harm rate," Hippocratic's 250 million interactions and 300-plus use cases, Vera Health's 800,000 users, per-country physician shares and download rankings, eClinicalWorks's $1.3B ("expected to exceed," not an audited result) and "about 98% automated," Abridge's "over 100 million conversations," Mayo's CDS scale figures, and OpenEvidence's "majority of US physicians use it daily." <strong>Third-party estimates rather than company disclosures:</strong> OpenEvidence's revenue (Sacra) and its ad CPM and inventory sell-through. <strong>Paywalled:</strong> the Newsweek interview with eClinicalWorks's CEO is cited only from the publicly visible headline and lede. <strong>Cited from secondary coverage:</strong> every figure from the Nature Health paper comes from Chinese-language secondary reporting (CoolHealth) because the primary paper page could not be retrieved in full during this run — defer to the paper itself; UnitedHealthcare Avery's membership and 90% resolution rate reach us via Curie relaying Fierce Healthcare; the Washington state and Johns Hopkins Bayview breaches come from HIStalk and Healthcare AI Guy, not the institutions' own notification letters. <strong>Projected, not incurred:</strong> Nature Health's "$55.6M a year, a 1,019% increase" is a simulation conditional on physicians prescribing according to the AI's recommendation distribution. This report is news synthesis and analysis, not investment or medical advice.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-row">
+    <div>
+      <span class="zh">AI／醫療AI 每日新知日報 · 由 Claude 於台北時間每日自動產出 · 本期主題：星期五／產品與公司深度分析<br>本報告內容經來源查證，但不構成投資或醫療建議。所有數據請以原始出處為準。</span>
+      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Friday / Product &amp; Company Deep Dive<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
+    </div>
+    <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com / 返回 peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
+  </div>
+</footer>
+</main>
+
+<div class="fabs">
+  <button class="up" id="up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+  <a class="home-fab" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg></a>
+</div>
+
+<script>
+function setLang(l){
+  document.body.classList.remove('lang-zh','lang-en');
+  document.body.classList.add('lang-'+l);
+  document.documentElement.lang = (l==='zh') ? 'zh-Hant' : 'en';
+  document.getElementById('b-zh').classList.toggle('on', l==='zh');
+  document.getElementById('b-en').classList.toggle('on', l==='en');
+  document.title = (l==='zh')
+    ? 'AI／醫療AI 每日新知日報 · 2026-11-06'
+    : 'AI & Medical AI Daily · 2026-11-06';
+}
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.getElementById('theme-ic').textContent =
+    document.body.classList.contains('dark') ? '◑' : '◐';
+}
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.body.classList.add('dark');
+  document.getElementById('theme-ic').textContent = '◑';
+}
+window.addEventListener('scroll', function(){
+  document.getElementById('up').classList.toggle('show', window.scrollY > 600);
+});
+
+(function(){
+  var el = document.getElementById('ghs');
+  if (!el || typeof fetch !== 'function') return;
+  fetch('https://api.github.com/repos/tingwei161803/ai-medical-daily', {headers:{Accept:'application/vnd.github+json'}})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if (!d || typeof d.stargazers_count !== 'number') return;
+      var n = d.stargazers_count;
+      el.textContent = n >= 1000 ? (Math.round(n/100)/10) + 'k' : String(n);
+    })
+    .catch(function(){});
+})();
+</script>
+</body>
+</html>
