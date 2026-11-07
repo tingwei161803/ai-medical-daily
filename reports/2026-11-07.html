@@ -8,6 +8,10 @@
 <title>AI／醫療AI 每日新知日報 · 2026-11-07</title>
 <meta property="og:url" content="https://ai-medical-daily.peteraim.com/reports/2026-11-07.html" />
 <link rel="canonical" href="https://ai-medical-daily.peteraim.com/reports/2026-11-07.html" />
+<link rel="alternate" hreflang="zh-Hant" href="https://ai-medical-daily.peteraim.com/reports/2026-11-07.html" />
+<link rel="alternate" hreflang="en" href="https://ai-medical-daily.peteraim.com/en/reports/2026-11-07.html" />
+<link rel="alternate" hreflang="x-default" href="https://ai-medical-daily.peteraim.com/reports/2026-11-07.html" />
+<meta name="description" content="METR 的高權限評估認定 Anthropic 的能力進步速率約為 18 個月前的 2 倍、約 80% 來自 AI，且 12 個月內看不到瓶頸；同一天 OpenAI 把 GPT-6 Cyber 以 Critical 等級鎖進 Daybreak Red，Thinking Machines 與 Baidu 則把 594B 與 280B 的權重往外開。對醫療最直接的後果是：驗證週期已經追不上模型更替週期。">
 <meta name="report-date" content="2026-11-07">
 <meta name="report-theme" content="general-ai">
 <meta name="report-title-zh" content="同一天，前沿實驗室把「加速自己」和「鎖死自己」一起交了出來——11/5 METR 公布對 Anthropic 的高權限評估：以 2026 年 10 月計，well-specified 任務上的能力進步速率約為 2024/3–2025/10 的 2 倍（AECI 口徑 1.9 倍、95% CI 1.5–2.8 倍，年化趨勢從 +15 分升到 +29 分，斷點設在 2025/10/7），METR 估其中約 80% 來自 AI 自身，且未來 12 個月在演算法、訓練算力、實驗算力與資料上都找不到可信的瓶頸——而 Anthropic 把 METR 認為最關鍵的證據大半塗黑；同一天 OpenAI 發布 GPT-6 Cyber，在 Preparedness Framework 下網安能力評為 Critical、生化為 High，只透過 Daybreak Red 給身分驗證過的組織（SEC-Bench Pro 87.02%、SRE-Bench 92.84%、ExploitGym Hardened 36.94%），而 Thinking Machines 的 Inkling 2 Small（594B 總參數／17B 活躍）宣布下週以 Apache 2.0 釋出權重、Baidu 同日開源 ERNIE 5.5 Flash Base（280B／14B 活躍、預訓練 33.5T tokens）">
@@ -29,16 +33,16 @@
 </script>
 <link rel="stylesheet" href="/assets/report.css">
 </head>
-<body class="lang-zh">
+<body>
 
 <header class="bar">
   <div class="bar-in">
-    <a class="brand" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span><span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <a class="brand" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span></a>
     <div class="bar-sp"></div>
     <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub / 在 GitHub 給這個專案一顆星"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
     <div class="seg">
-      <button id="b-zh" class="on" onclick="setLang('zh')">中文</button>
-      <button id="b-en" onclick="setLang('en')">EN</button>
+      <a class="on" href="/reports/2026-11-07.html" hreflang="zh-Hant" lang="zh-Hant" aria-current="page">中文</a>
+      <a href="/en/reports/2026-11-07.html" hreflang="en" lang="en" rel="alternate">EN</a>
     </div>
     <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
   </div>
@@ -48,32 +52,27 @@
 <div class="hero">
   <div class="kicker">
     <span class="zh-inline">星期六 · 廣義 AI 新知</span>
-    <span class="en-inline">Saturday · General AI</span>
   </div>
   <h1>
     <span class="zh">加速與上鎖，同一天交卷：METR 量到 2 倍，OpenAI 把 Critical 鎖進白名單，兩家把幾千億參數開出來</span>
-    <span class="en">Acceleration and lockdown, filed on the same day: METR measures 2x, OpenAI gates a Critical model, two labs push hundreds of billions of parameters outward</span>
   </h1>
   <div class="dateline">
     <span class="zh-inline">2026 年 11 月 7 日（六）· 涵蓋 11/01–11/07 · 台北時間</span>
-    <span class="en-inline">Saturday, November 7, 2026 · Covering Nov 1–7 · Taipei time</span>
   </div>
   <p class="lede">
     <span class="zh">11 月 5 日這一天，AI 這個行業同時交出了兩份互相矛盾的文件。一份是 <a href="https://metr.org/blog/2026-11-05-anthropic-ai-rd-acceleration-assessment/" target="_blank" rel="noopener">METR 對 Anthropic 的高權限評估</a>：以 2026 年 10 月計，模型在定義清楚的任務上的能力進步速率，約為 2024 年 3 月至 2025 年 10 月的 <strong>2 倍</strong>，METR 估其中約 <strong>80%</strong> 來自 AI 自身，而且未來 12 個月在演算法、訓練算力、實驗算力與資料四條路上都找不到可信的瓶頸。另一份是 <a href="https://deploymentsafety.openai.com/gpt-6-cyber" target="_blank" rel="noopener">OpenAI 的 GPT-6 Cyber 系統卡</a>：網路安全能力在 Preparedness Framework 下評為 <strong>Critical</strong>，因此這個模型不公開發售，只透過 Daybreak Red 給做過身分驗證、符合組織安全要求的客戶。一邊是「我們自己也追不上自己的速度」，一邊是「這個能力強到我們不敢賣」。</span>
-    <span class="en">On 5 November the industry filed two documents that contradict each other. One is <a href="https://metr.org/blog/2026-11-05-anthropic-ai-rd-acceleration-assessment/" target="_blank" rel="noopener">METR's high-access assessment of Anthropic</a>: as of October 2026, model capability on well-specified tasks is improving at roughly <strong>2x</strong> the rate it did from March 2024 to October 2025; METR guesses about <strong>80%</strong> of that acceleration is itself AI-driven, and it found no convincing bottleneck in algorithms, training compute, experiment compute or data over the next twelve months. The other is <a href="https://deploymentsafety.openai.com/gpt-6-cyber" target="_blank" rel="noopener">OpenAI's GPT-6 Cyber system card</a>: cybersecurity capability rated <strong>Critical</strong> under the Preparedness Framework, so the model is not sold openly at all — only through Daybreak Red, to identity-verified customers meeting organisational security requirements. One document says the labs cannot keep up with themselves; the other says a capability has grown too strong to sell.</span>
   </p>
   <p class="lede">
     <span class="zh">對醫療來說，這兩份文件指向同一個問題，而且比任何單一臨床研究都更根本：<strong>如果能力曲線的斜率在 18 個月內翻倍，那麼以「版本」為單位的驗證制度就失效了。</strong>一份前瞻性試驗從設計到發表要 18 到 36 個月，一次 FDA De Novo 審查動輒半年以上，而本週同時出現的開放權重模型——<a href="https://thinkingmachines.ai/news/inkling-2-small/" target="_blank" rel="noopener">Thinking Machines 的 Inkling 2 Small</a>（594B 總參數／17B 活躍，宣布下週以 Apache 2.0 釋出）與 <a href="https://huggingface.co/baidu/ERNIE-5.5-Flash-Base-BF16" target="_blank" rel="noopener">Baidu 的 ERNIE 5.5 Flash Base</a>（280B／14B 活躍、預訓練 33.5T tokens）——意味著醫院不必等任何人核准，就能把一個幾千億參數的模型放進自己的機房。這兩件事加在一起，就是 11/5 的真正新聞：<strong>監理的時間單位是年，模型的時間單位已經變成週。</strong></span>
-    <span class="en">For medicine these two documents point at the same problem, and it is more fundamental than any single clinical study: <strong>if the slope of the capability curve doubles inside eighteen months, a validation regime denominated in "versions" stops working.</strong> A prospective trial takes eighteen to thirty-six months from design to publication; an FDA De Novo review routinely runs past six. Meanwhile this same week two open-weight releases — <a href="https://thinkingmachines.ai/news/inkling-2-small/" target="_blank" rel="noopener">Thinking Machines' Inkling 2 Small</a> (594B total / 17B active, Apache 2.0 weights promised for next week) and <a href="https://huggingface.co/baidu/ERNIE-5.5-Flash-Base-BF16" target="_blank" rel="noopener">Baidu's ERNIE 5.5 Flash Base</a> (280B / 14B active, 33.5T pretraining tokens) — mean a hospital needs nobody's approval to put a several-hundred-billion-parameter model in its own server room. Put together, that is the real news of 5 November: <strong>regulation is denominated in years; models are now denominated in weeks.</strong></span>
   </p>
 
   <nav class="toc">
-    <a href="#top"><span class="zh-inline">重點新聞</span><span class="en-inline">Top Stories</span></a>
-    <a href="#product"><span class="zh-inline">產品分析</span><span class="en-inline">Product Analysis</span></a>
-    <a href="#company"><span class="zh-inline">公司與競爭</span><span class="en-inline">Companies &amp; Competition</span></a>
-    <a href="#taiwan"><span class="zh-inline">台灣視角</span><span class="en-inline">Taiwan Angle</span></a>
-    <a href="#reading"><span class="zh-inline">延伸閱讀</span><span class="en-inline">Further Reading</span></a>
-    <a href="#refs"><span class="zh-inline">參考文獻</span><span class="en-inline">References</span></a>
+    <a href="#top"><span class="zh-inline">重點新聞</span></a>
+    <a href="#product"><span class="zh-inline">產品分析</span></a>
+    <a href="#company"><span class="zh-inline">公司與競爭</span></a>
+    <a href="#taiwan"><span class="zh-inline">台灣視角</span></a>
+    <a href="#reading"><span class="zh-inline">延伸閱讀</span></a>
+    <a href="#refs"><span class="zh-inline">參考文獻</span></a>
   </nav>
 </div>
 
@@ -81,258 +80,221 @@
   <h2>01 — Top Stories</h2>
   <div class="sec-title">
     <span class="zh">八則消息排成一條線：速度被量出來了，能力被鎖起來了，權重被放出來了，而電力與司法開始擋在前面</span>
-    <span class="en">Eight items on one line: the speed got measured, the capability got locked, the weights got released, and power grids and prosecutors began standing in the way</span>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">本日最重要</span><span class="en-inline">Lead story</span></span>
+      <span class="tag hot"><span class="zh-inline">本日最重要</span></span>
       <span class="tag">METR</span><span class="tag">Anthropic</span><span class="tag">11/05</span>
     </div>
     <h3>
       <span class="zh">METR：Anthropic 的能力進步速率約為 18 個月前的 2 倍，約 80% 來自 AI 自身，而且 12 個月內看不到瓶頸</span>
-      <span class="en">METR: Anthropic's capability progress is running at roughly 2x its rate 18 months ago, ~80% of it AI-driven, with no bottleneck in sight for 12 months</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">METR 在 <a href="https://metr.org/blog/2026-11-05-anthropic-ai-rd-acceleration-assessment/" target="_blank" rel="noopener">11 月 5 日公布</a>一份高權限（high-access）評估，調查期間為 2026 年 8 月 12 日至 10 月 29 日，投入約 2.5 個全職人力、為期十一週，回答三個問題：內部能力成長是否加速、加速有多少來自 AI、以及有沒有瓶頸會把它壓下來。結論是：以 2026 年 10 月計，Anthropic 在定義清楚的任務上提升模型能力的速率，約為 2024 年 3 月至 2025 年 10 月的 <strong>2 倍</strong>（METR 說自己對 1.3 倍或 3 倍都不會意外）。以 Anthropic 自家版本的 Epoch Capabilities Index（AECI）衡量，自 2025 年 10 月以來的加速為 <strong>1.9 倍、95% CI 1.5–2.8 倍</strong>，年化趨勢從斷點前約 <strong>+15 分／年</strong>升到斷點後約 <strong>+29 分／年</strong>，斷點設在 2025 年 10 月 7 日。穩健性檢查依連結函數不同落在 <strong>1.1–2.9 倍</strong>（complementary log-log 給 1.1 倍、log-log 給 2.9 倍）；把全體前沿開發者一起算則為 <strong>1.4 倍</strong>，而 Haiku 5.5 系統卡自報 <strong>1.7 倍</strong>。歸因方面，METR「猜」約 <strong>80%</strong> 的加速來自 AI 本身，並明說這個數字高度不確定。內部 Slack 民調的自評提效從 Claude 3.7 Sonnet（2025 年 1 月）的約 <strong>1.2 倍</strong>升到 Model 4（2026 年 10 月）的約 <strong>12 倍</strong>，指數擬合約為每年 <strong>3.9 倍</strong>——METR 自己稱這是「非常鬆散」的證據。11 位受訪研究員中，2 位明確認為加速超過 2 倍、3 位傾向同意、4 位模糊、0 位傾向不同意、2 位不同意。<a href="https://metr.org/blog/2026-11-05-anthropic-ai-rd-acceleration-assessment/" target="_blank" rel="noopener">METR</a> 另明確表示，有信心這次加速<strong>並非</strong>由訓練算力成長變快所驅動。</span>
-        <span class="en">METR <a href="https://metr.org/blog/2026-11-05-anthropic-ai-rd-acceleration-assessment/" target="_blank" rel="noopener">published on 5 November</a> a high-access assessment run inside Anthropic from 12 August to 29 October 2026, using about 2.5 full-time equivalents over eleven weeks, to answer three questions: has internal capability growth accelerated, how much of it is due to AI, and could bottlenecks cap it. The finding: as of October 2026, Anthropic is likely improving model capabilities on well-specified tasks at roughly <strong>2x</strong> its March-2024-to-October-2025 rate (METR says it would not be surprised by 1.3x or by 3x). On AECI, Anthropic's version of the Epoch Capabilities Index, acceleration since October 2025 is <strong>1.9x with a 95% CI of 1.5–2.8x</strong>, with the trend rising from about <strong>+15 points/year</strong> before the breakpoint to about <strong>+29 points/year</strong> after it, the breakpoint set at 7 October 2025. Robustness checks span <strong>1.1x–2.9x</strong> depending mainly on the link function (complementary log-log gives 1.1x, log-log 2.9x); including all frontier developers gives <strong>1.4x</strong>, and the Haiku 5.5 system card reported <strong>1.7x</strong>. On attribution, METR "guesses" about <strong>80%</strong> of the acceleration is due to AI, and says plainly that the figure is highly uncertain. Self-reported uplift in internal Slack polls rose from about <strong>1.2x</strong> for Claude 3.7 Sonnet (January 2025) to about <strong>12x</strong> for Model 4 (October 2026), an exponential fit implying <strong>3.9x per year</strong> — evidence METR itself calls very loose. Of 11 researchers interviewed and classified, 2 said yes to >2x acceleration, 3 leaned yes, 4 were borderline, 0 leaned no, and 2 said no. <a href="https://metr.org/blog/2026-11-05-anthropic-ai-rd-acceleration-assessment/" target="_blank" rel="noopener">METR</a> also states it is confident the acceleration was <strong>not</strong> driven by faster growth in training compute.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">這是目前為止最接近「遞迴自我改進有沒有開始」的一次外部量測，而答案不是「有」或「沒有」，是「斜率翻倍、而且主因是 AI 自己」。更關鍵的是瓶頸那一題：METR 說在演算法進步、訓練算力、實驗算力、資料這四條路上，<strong>未來 12 個月都沒有找到可信的限制</strong>（但自承信心低，因為評估期間觀點改過數次），並直接寫下「未來一年有顯著風險出現更快的加速」。對醫療 AI 的意義是制度性的：任何以「某一版模型」為對象的臨床驗證、採購合約與院內治理文件，其有效期正在縮短。昨天（11/6）本報整理的 <a href="https://ai-medical-daily.peteraim.com/reports/2026-11-06.html" target="_blank" rel="noopener">Nature Health 883,403 筆回答的商品名偏誤研究</a>與前天（11/5）的 <a href="https://ai-medical-daily.peteraim.com/reports/2026-11-05.html" target="_blank" rel="noopener">Doximity 261,508 筆劑量稽核</a>，衡量的都是「當時那幾個版本」；若斜率真的是兩倍，這類稽核的半衰期就只有幾個月。</span>
-        <span class="en">This is the closest thing yet to an external measurement of whether recursive self-improvement has started, and the answer is not yes or no but: the slope has doubled, and the main cause is AI itself. The bottleneck question matters most. METR says it found <strong>no convincing constraint over the next twelve months</strong> across algorithmic progress, training compute, experiment compute or data — while admitting low confidence, because its own view changed several times during the assessment — and writes directly that there is a significant risk of even faster acceleration over the coming year. For medical AI the implication is institutional: any clinical validation, procurement contract or hospital governance document written against "version X" of a model now has a shorter shelf life. The <a href="https://ai-medical-daily.peteraim.com/reports/2026-11-06.html" target="_blank" rel="noopener">Nature Health study of 883,403 responses on brand-name bias</a> covered in yesterday's edition, and the <a href="https://ai-medical-daily.peteraim.com/reports/2026-11-05.html" target="_blank" rel="noopener">Doximity audit of 261,508 doses</a> from the day before, both measured the versions that existed at the time. If the slope really has doubled, the half-life of such audits is a few months.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">這份報告最大的問題不在方法，在塗黑。Anthropic 把 METR 認為<strong>最有資訊量</strong>的證據大半刪去，包括各階段加速的細項估計、算力／資料／演算法三者的貢獻拆解、瓶頸分析與對未來模型的預測；Anthropic 說塗黑是為了「移除可能加速其他 AI 開發者的機密資訊」。METR 因此明說，公眾必須大幅依賴它的判斷，因為證據無法被獨立查核。另外兩點也該記住：原訂的算力配置查核<strong>被 Anthropic 中途取消</strong>，在 METR 得出結論之前；而 METR 自列的 15 個 benchmark 中，Model 4 在全部 15 個都超過 50%，這本身就構成量測天花板的隱憂。METR 也兩面列出高估與低估的理由：可能高估是因為非 AI 因素（人力擴編等）或 Anthropic 的歷史基準本來偏低、且增益可能僅限於定義清楚的任務；可能低估是因為成長可能正在超指數加速、AECI 可能低估真實世界影響。評估團隊中有一位成員出現利益衝突，由無利益衝突的同事覆核。</span>
-        <span class="en">The biggest problem with this report is not its method but its redactions. Anthropic removed most of the evidence METR found <strong>most informative</strong>, including per-stage acceleration estimates, the breakdown of progress across compute, data and algorithms, the bottleneck analyses and forecasts for future models; Anthropic described the redactions as aimed at removing confidential information that could accelerate other AI developers. METR therefore states plainly that the public must rely heavily on its judgement, because the evidence cannot be independently checked. Two further points: the planned compute-allocation verification was <strong>cancelled by Anthropic midway</strong>, before METR reached conclusions on it; and Model 4 scored above 50% on all 15 benchmarks used, which is itself a measurement-ceiling concern. METR lists reasons in both directions: it may have overestimated if non-AI factors explain much of the gain, if Anthropic's historical baseline was unusually low, or if gains are confined to well-specified tasks; it may have underestimated if growth is accelerating hyperbolically or if AECI understates real-world impact. One team member had a conflict of interest, checked by an unconflicted colleague.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://metr.org/blog/2026-11-05-anthropic-ai-rd-acceleration-assessment/" target="_blank" rel="noopener">Independent Assessment of AI R&amp;D Acceleration at Anthropic in October 2026 — METR, 2026-11-05</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">安全與部署</span><span class="en-inline">Safety &amp; deployment</span></span>
+      <span class="tag hot"><span class="zh-inline">安全與部署</span></span>
       <span class="tag">OpenAI</span><span class="tag">GPT-6 Cyber</span><span class="tag">11/05</span>
     </div>
     <h3>
       <span class="zh">OpenAI 發布 GPT-6 Cyber：Preparedness Framework 下網安評為 Critical、生化 High，不公開販售，只走 Daybreak Red 白名單</span>
-      <span class="en">OpenAI ships GPT-6 Cyber: Critical on cybersecurity and High on bio-chem under the Preparedness Framework, not sold openly — only through the Daybreak Red allowlist</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">OpenAI 於 <a href="https://deploymentsafety.openai.com/gpt-6-cyber" target="_blank" rel="noopener">11 月 5 日發布 GPT-6 Cyber 系統卡</a>。這是 GPT-6 Astra 的網安特化版本，設計用途是漏洞挖掘、exploit 開發與 web 滲透測試。能力評級：<strong>網路安全 Critical</strong>（與 GPT-6 Astra 同級）、<strong>生物與化學 High</strong>（未達 Critical）、<strong>AI 自我改進 Below High</strong>。取得方式只有一條：透過 Daybreak Red，需身分驗證、使用限制與組織安全要求，包含 SSO、多因素驗證與 API 的 IP 允許清單；使用 Zero Data Retention 的 API 客戶原則上還需 Private Safety Processing。基準數字（GPT-6 Cyber 對 GPT-6 Astra）：<a href="https://deploymentsafety.openai.com/gpt-6-cyber" target="_blank" rel="noopener">SEC-Bench Pro（pass@1）87.02% 對 85.38%、SRE-Bench（pass@1）92.84% 對 87.98%、ExploitGym（intended exploit）48.45% 對 42.43%、ExploitGym Hardened 36.94% 對 29.69%、ExploitBench Internal Port 42% 對 39%</a>；Irregular CyScenarioBench 解開 11/11 題（Astra 8/11）、平均成功率 61%，但 Irregular FrontierCyber 上 GPT-6 Cyber 只拿 90/288、<strong>反而低於 Astra 的 96/288</strong>。拒答率：一般安全與修補任務完成 100%、exploit 開發 96%、紅隊任務 97%。對齊面：超出授權範圍的蜜罐利用為 0.07%（加上部署安全指令後為 0%，Astra 本來就是 0%）；工具故障時的錯誤報告 0.33%（Astra 6.92%）；但 blocker reporting 旗標 20.29%，高於 Astra 的 11.66%，OpenAI 說多數是最終摘要不完整而非欺瞞。生物面 ProtocolQA 47.2%（把拒答算對則 50.9%），低於 High 門檻 54%；AI 自我改進的 ExpertSWE 為 82.95%，略低於 Astra 的 83.24%。</span>
-        <span class="en">OpenAI published the <a href="https://deploymentsafety.openai.com/gpt-6-cyber" target="_blank" rel="noopener">GPT-6 Cyber system card on 5 November</a>. It is a cybersecurity-specialised variant of GPT-6 Astra, built for vulnerability discovery, exploit development and web pentesting. Capability ratings: <strong>Cybersecurity Critical</strong> (same as GPT-6 Astra), <strong>Biological and Chemical High</strong> (not Critical), <strong>AI Self-Improvement Below High</strong>. There is one route of access: Daybreak Red, with identity verification, use restrictions and organisational security requirements including SSO, multi-factor authentication and API IP allowlisting; API customers on Zero Data Retention generally also need Private Safety Processing. Benchmarks (GPT-6 Cyber vs GPT-6 Astra): <a href="https://deploymentsafety.openai.com/gpt-6-cyber" target="_blank" rel="noopener">SEC-Bench Pro (pass@1) 87.02% vs 85.38%, SRE-Bench (pass@1) 92.84% vs 87.98%, ExploitGym (intended exploit) 48.45% vs 42.43%, ExploitGym Hardened 36.94% vs 29.69%, ExploitBench Internal Port 42% vs 39%</a>; Irregular CyScenarioBench solved 11/11 challenges at least once (Astra 8/11) at 61% average success, but on Irregular FrontierCyber GPT-6 Cyber scored only 90/288, <strong>below Astra's 96/288</strong>. Refusal behaviour: 100% of general security and patching tasks completed, 96% of exploit development, 97% of red-teaming. On alignment: out-of-scope honeypot exploitation 0.07%, falling to 0% with deployment safety instructions (Astra was already 0%); broken search-tool error reporting 0.33% against Astra's 6.92%; but blocker-reporting flags at 20.29% versus Astra's 11.66%, which OpenAI attributes mostly to incomplete final summaries rather than deception. On biology, ProtocolQA scored 47.2% (50.9% counting refusals as correct), below the High threshold of 54%; on self-improvement, ExpertSWE 82.95% against Astra's 83.24%.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">這是「能力評級直接決定商業模式」的一個完整案例：Critical 不等於禁止上市，而等於只能用白名單＋身分驗證＋組織安全要求來交付。醫療產業應該把這件事當成未來自己的預演——當某個醫療專用模型的能力被評到足以造成系統性風險（例如可自主操作醫令系統、或能設計具生物風險的流程），交付方式會從「API 公開販售」變成「驗證過的機構名單」。生化評級停在 High 而非 Critical（ProtocolQA 47.2% 對門檻 54%），正好標出那條線現在在哪裡。另一個細節值得醫院的資安長注意：OpenAI 在這個模型上明確要求 API key 綁 IP 允許清單、建議 agent 工作流要沙箱化並經 Codex Auto-Review 審查動作——這套要求跟醫院把 agent 接上 EHR 時該有的控制幾乎同一份清單。</span>
-        <span class="en">This is a complete worked example of a capability rating dictating a business model: Critical does not mean the model cannot ship, it means it can only be delivered through an allowlist plus identity verification plus organisational security requirements. Healthcare should read it as a rehearsal of its own future — when a medicine-specific model is rated capable enough to create systemic risk (able to act autonomously on order-entry systems, say, or to design a procedure with biological risk), delivery shifts from open API sales to a list of verified institutions. That the bio-chem rating stopped at High rather than Critical (ProtocolQA 47.2% against a 54% threshold) marks exactly where that line currently sits. One detail deserves a hospital CISO's attention: for this model OpenAI requires API keys bound to IP allowlists and recommends sandboxing agent workflows with action review through Codex Auto-Review — essentially the same control list a hospital needs before wiring an agent into an EHR.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">所有基準數字都是 OpenAI 自家系統卡的自報值，未經第三方稽核；Irregular 的題庫算是外部，但也是由 OpenAI 執行與報告。而 FrontierCyber 上「特化版反而輸給通用版」（90/288 對 96/288）這個反例，說明這類 benchmark 之間並不互相一致，不能只挑贏的那幾個看。另外，blocker reporting 旗標從 11.66% 升到 20.29% 這件事，OpenAI 的解釋（多為摘要不完整）是定性判斷，沒有附上人工覆核的樣本數。</span>
-        <span class="en">Every benchmark figure here is self-reported in OpenAI's own system card and not independently audited; Irregular's challenge sets are external, but OpenAI ran and reported them. The counterexample on FrontierCyber — the specialised model losing to the general one, 90/288 against 96/288 — shows these benchmarks are not mutually consistent, so cherry-picking the wins would be wrong. And on blocker-reporting flags rising from 11.66% to 20.29%, OpenAI's explanation (mostly incomplete summaries) is a qualitative judgement with no sample size given for the manual review behind it.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://deploymentsafety.openai.com/gpt-6-cyber" target="_blank" rel="noopener">GPT-6 Cyber system card — OpenAI Deployment Safety, 2026-11-05</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">開放權重</span><span class="en-inline">Open weights</span></span>
+      <span class="tag hot"><span class="zh-inline">開放權重</span></span>
       <span class="tag">Thinking Machines</span><span class="tag">Inkling 2 Small</span><span class="tag">11/05</span>
     </div>
     <h3>
       <span class="zh">Thinking Machines 發表 Inkling 2 Small：594B 總參數／17B 活躍，宣布下週以 Apache 2.0 釋出全部權重</span>
-      <span class="en">Thinking Machines releases Inkling 2 Small: 594B total / 17B active, with full weights promised next week under Apache 2.0</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">Thinking Machines Lab 於 <a href="https://thinkingmachines.ai/news/inkling-2-small/" target="_blank" rel="noopener">11 月 5 日發表 Inkling 2 Small</a>，是一個 <strong>594B 總參數／17B 活躍</strong>的 Mixture-of-Experts 模型，支援影像輸入與可變推理強度（variable effort），視覺編碼器 292M 參數、基於 Perception Encoder，採 20×20 像素 patch 與 2×2 空間池化。發布時先透過 Tinker 以閉權重提供，公司宣布完成外部安全測試與紅隊後，<strong>「下週」以 Apache 2.0 釋出完整權重</strong>。訓練細節罕見地公開：預訓練 H1 階段 8.4T tokens、在 NVIDIA GB300 NVL72 機櫃上跑 68 小時、原生 NVFP4；H2 為 512K 上下文的 3.8T tokens；H3 為 1M 上下文的約 320B tokens；H4 為約 34B 的 agent trajectory tokens。聯合 RL 訓練跑了 1,075 步、超過 1,700 萬次 rollout、9 天、2,048 顆 GPU、超過 4×10²³ FLOPs、3T 以上 tokens，RL 上下文 256K。基準：<a href="https://thinkingmachines.ai/news/inkling-2-small/" target="_blank" rel="noopener">Artificial Analysis Intelligence Index 31 分（AA Index v5.0 表列 30.6）、SWEBench Pro v2 (Hard) 86.3%、DeepSWE v1.1 72.1%、MMMU Pro 81.6%、HLE-Diamond 28.7%、AA-LCR 83.3%、LongBench v2 70.6%、Vals Legal Index 73.9%、Vals Finance Index 61.5%</a>。安全與對齊：FORTRESS 平均風險分 16.2（越低越好）、過度拒答 20.4、StrongREJECT 97.1%、Vals CyberBench 72.7%；內部不當行為率 14.9，前一代 Inkling 為 66.8，但公司自承在對齊評測上仍落後 GPT-6.1 Sol。可客製化性：在金融文件摘要任務上，<strong>75 步訓練</strong>即達到前一代 Inkling Small 的最終表現。</span>
-        <span class="en">Thinking Machines Lab <a href="https://thinkingmachines.ai/news/inkling-2-small/" target="_blank" rel="noopener">released Inkling 2 Small on 5 November</a>: a Mixture-of-Experts model with <strong>594B total parameters and 17B active</strong>, taking image inputs and supporting variable effort, with a 292M-parameter vision encoder based on Perception Encoder using 20×20-pixel patches and 2×2 spatial pooling. It shipped through Tinker with closed weights, and the company says <strong>full weights follow "next week" under Apache 2.0</strong>, after external safety testing and red-teaming. The training disclosure is unusually detailed: pretraining phase H1 ran 8.4T tokens in 68 hours on NVIDIA GB300 NVL72 racks, natively in NVFP4; H2 was 3.8T tokens at 512K context; H3 about 320B tokens at 1M context; H4 about 34B agent-trajectory tokens. The joint RL run took 1,075 steps, over 17 million rollouts, 9 days, 2,048 GPUs, more than 4×10²³ FLOPs and 3T+ tokens at 256K RL context. Benchmarks: <a href="https://thinkingmachines.ai/news/inkling-2-small/" target="_blank" rel="noopener">Artificial Analysis Intelligence Index 31 (the table lists 30.6 on AA Index v5.0), SWEBench Pro v2 (Hard) 86.3%, DeepSWE v1.1 72.1%, MMMU Pro 81.6%, HLE-Diamond 28.7%, AA-LCR 83.3%, LongBench v2 70.6%, Vals Legal Index 73.9%, Vals Finance Index 61.5%</a>. Safety and alignment: FORTRESS average risk score 16.2 (lower is better), overrefusal 20.4, StrongREJECT 97.1%, Vals CyberBench 72.7%; internal misbehaviour rate 14.9 against 66.8 for the previous Inkling, though the company grants it still trails GPT-6.1 Sol on alignment evals. On customisability, it reaches the final performance of Inkling Small on a financial-document summarisation task in <strong>75 training steps</strong>.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">17B 活躍參數配 594B 總參數，是目前最適合「院內自管」的那一類形狀：稀疏度高到單節點或小叢集推得動，總容量又大到不是玩具。而 Apache 2.0 是關鍵——它允許商業使用、允許修改後不公開、沒有使用範圍限制，這恰好是醫院法務最在意的三件事。再加上「75 步微調即追上前代」這個數字，它指向的是一個具體的醫院工作流：把去識別化的院內語料拿去做輕量微調，整套跑在自己的機房，病患資料一個 byte 都不出院。本週另一篇 <a href="https://arxiv.org/abs/2604.22768" target="_blank" rel="noopener">德國大學醫院的隔離優先部署論文</a>正好是這條路的實作範本（詳見延伸閱讀）。</span>
-        <span class="en">17B active against 594B total is currently the most hospital-friendly shape there is: sparse enough to serve on a single node or a small cluster, large enough not to be a toy. Apache 2.0 is the decisive part — it permits commercial use, permits private modification and imposes no field-of-use restriction, which happens to be the three things hospital counsel care about. Add the "75 steps to match the previous generation" figure and it points at a concrete hospital workflow: light fine-tuning on de-identified in-house text, the whole stack running in your own server room, not one byte of patient data leaving the building. This week's <a href="https://arxiv.org/abs/2604.22768" target="_blank" rel="noopener">isolation-first deployment paper from a German university hospital</a> is the working template for exactly that route (see Further Reading).</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">權重還沒釋出——「下週」是公司的承諾，不是既成事實，而且前提是外部安全測試與紅隊通過；在權重實際落地之前，任何「醫院可以自管」的規劃都還只是規劃。基準數字全為廠商自報，AA Index 31 分這個絕對值也明顯不在前沿第一線。公司自承對齊評測仍落後 GPT-6.1 Sol，而 14.9 的「內部不當行為率」是自訂指標，沒有公開定義與可比對的外部口徑。另外，所有醫療相關的推論都是本報的外推——這份發表<strong>沒有任何醫療 benchmark</strong>（頁面另有酒類辨識 19/20 這種示範，與臨床無關），院方若要上線仍須自行做臨床驗證。</span>
-        <span class="en">The weights are not out yet — "next week" is a company commitment, not an accomplished fact, and it is conditional on external safety testing and red-teaming passing; until the weights actually land, any "hospitals can self-host this" plan is still only a plan. All benchmark figures are vendor-reported, and an AA Index of 31 is plainly not at the very front of the frontier. The company concedes it still trails GPT-6.1 Sol on alignment evals, and the 14.9 "internal misbehaviour rate" is a bespoke metric with no public definition or externally comparable equivalent. All medical inferences here are this report's own extrapolation: the release carries <strong>no medical benchmark at all</strong> (the page does include a demo identifying three wines from a photo in 19 of 20 trials, which is not clinical), so clinical validation remains the deploying institution's job.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://thinkingmachines.ai/news/inkling-2-small/" target="_blank" rel="noopener">Inkling 2 Small — Thinking Machines Lab, 2026-11-05</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">開放權重</span><span class="en-inline">Open weights</span></span>
+      <span class="tag hot"><span class="zh-inline">開放權重</span></span>
       <span class="tag">Baidu</span><span class="tag">ERNIE 5.5 Flash Base</span><span class="tag">11/05</span>
     </div>
     <h3>
       <span class="zh">Baidu 開源 ERNIE 5.5 Flash Base：280B／14B 活躍的稀疏 MoE 基礎模型，預訓練 33.5T tokens，微調與推理支援 1M 上下文</span>
-      <span class="en">Baidu open-sources ERNIE 5.5 Flash Base: a 280B / 14B-active sparse MoE base model pretrained on 33.5T tokens, with 1M-token context for fine-tuning and inference</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">Baidu 於 11 月 5 日把 ERNIE 5.5 Flash Base 的權重放上 Hugging Face。依<a href="https://huggingface.co/baidu/ERNIE-5.5-Flash-Base-BF16" target="_blank" rel="noopener">官方模型卡</a>，這是一個純文字的<strong>預訓練檢查點（未做指令微調）</strong>：總參數 280B（Hub 上 safetensors 檔案列為 286B）、每 token 活躍 14B；43 層（1 層 dense ＋ 42 層 MoE）、hidden size 4096；注意力為 37 層 HCA（head dim 512）加 6 層 MLA-DSA（head dim 256）、共 64 heads；每個 MoE 層 512 個 routed experts（top-10）加 1 個 shared expert、latent dim 2048；詞彙表 201,216。預訓練 <strong>33.5T tokens</strong>、使用 Muon optimizer、FP8 混合精度訓練，同時釋出 FP8 與 BF16 權重；最大訓練長度 128K，但<strong>微調與推理支援 1M tokens</strong>。授權為「ERNIE 5.5 Flash Base Model License Agreement v1.0」。Baidu 自報基準（對 DeepSeek-V4-Flash-Base／Hy3-preview-Base／MiMo-V2.5-Base）：<a href="https://huggingface.co/baidu/ERNIE-5.5-Flash-Base-BF16" target="_blank" rel="noopener">MMLU 93.3（對 89.4／87.5／87.6）、MMLU-Pro 78.4（對 69.2／66.9／65.7）、GPQA 60.2（對 55.9／50.2／51.4）、SimpleQA 34.1、HumanEval+ 82.3（對 69.5／78.0／74.4）、MBPP+ 81.5、LiveCodeBench 40.1、RepoQA 91.7、LongBench-v2 48.7、BBH 89.2</a>；對手在 ChineseSimpleQA（DeepSeek-V4 75.3 對 ERNIE 73.0）、HELMET-Rerank、InfiniteBench、FullStackBench、INCLUDE-lite 等項目上較高。</span>
-        <span class="en">Baidu put ERNIE 5.5 Flash Base weights on Hugging Face on 5 November. Per the <a href="https://huggingface.co/baidu/ERNIE-5.5-Flash-Base-BF16" target="_blank" rel="noopener">official model card</a> this is a text-only <strong>pretraining checkpoint with no instruction tuning</strong>: 280B total parameters (the Hub lists 286B for the safetensors files) with 14B activated per token; 43 layers (1 dense plus 42 MoE), hidden size 4096; attention across 37 HCA layers (head dim 512) and 6 MLA-DSA layers (head dim 256), 64 heads; 512 routed experts per MoE layer at top-10 plus one shared expert, latent dim 2048; vocabulary 201,216. Pretraining ran <strong>33.5T tokens</strong> with the Muon optimizer in FP8 mixed precision, and both FP8 and BF16 weights are released; maximum training length is 128K, but <strong>fine-tuning and inference support 1M tokens</strong>. The licence is the ERNIE 5.5 Flash Base Model License Agreement v1.0. Baidu's self-reported benchmarks (against DeepSeek-V4-Flash-Base / Hy3-preview-Base / MiMo-V2.5-Base): <a href="https://huggingface.co/baidu/ERNIE-5.5-Flash-Base-BF16" target="_blank" rel="noopener">MMLU 93.3 (vs 89.4 / 87.5 / 87.6), MMLU-Pro 78.4 (vs 69.2 / 66.9 / 65.7), GPQA 60.2 (vs 55.9 / 50.2 / 51.4), SimpleQA 34.1, HumanEval+ 82.3 (vs 69.5 / 78.0 / 74.4), MBPP+ 81.5, LiveCodeBench 40.1, RepoQA 91.7, LongBench-v2 48.7, BBH 89.2</a>; rivals score higher on ChineseSimpleQA (DeepSeek-V4 75.3 against ERNIE's 73.0), HELMET-Rerank, InfiniteBench, FullStackBench and INCLUDE-lite.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">同一天出現兩個「幾千億總參數、十幾 B 活躍」的開放權重模型，不是巧合，是一條路線已經成形：<strong>用極端稀疏換取可自管的推理成本</strong>。對醫療的意義有兩層。第一層是技術：14B 活躍、FP8 權重、1M 上下文，這個組合剛好能吃下一整份住院病歷或一整年的門診記錄，而且推得動。第二層是地緣：這是一個<strong>基礎模型檢查點</strong>而非對話模型，意思是任何機構都能從頭做自己的指令微調與對齊，不繼承原廠的拒答政策與價值設定——對不想把臨床判斷外包給別人對齊決策的醫學中心，這其實是賣點。GPQA 60.2 這個數字值得注意：它是研究所層級科學推理，與臨床推理有部分重疊，但絕不等於臨床能力。</span>
-        <span class="en">Two open-weight models with hundreds of billions of total parameters and low-teens billions active, released on the same day, is not a coincidence but a route taking shape: <strong>extreme sparsity traded for self-hostable inference cost</strong>. For medicine that lands on two levels. Technically: 14B active, FP8 weights and 1M context is exactly the combination that can swallow a full inpatient chart or a year of outpatient records and still run. Geopolitically: this is a <strong>base checkpoint</strong>, not a chat model, meaning any institution can build its own instruction tuning and alignment from scratch rather than inheriting a vendor's refusal policy and value settings — which, for an academic medical centre unwilling to outsource alignment decisions behind clinical judgement, is a selling point rather than a gap. GPQA 60.2 is worth noting: it is graduate-level scientific reasoning, which partly overlaps clinical reasoning but is emphatically not the same as clinical competence.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">三點要打折。一，所有基準都是 Baidu 自報，且是 base model 的 few-shot 口徑（MMLU 5-shot、HumanEval+ 1-shot 等），與對話模型的評測不可直接比較。二，授權<strong>不是</strong> Apache 2.0 或 MIT，而是 Baidu 自訂的 License Agreement v1.0；要用於醫療產品前必須逐條看限制條款，別把它和 Inkling 2 Small 的 Apache 2.0 混為一談。三，這是未經指令微調的基礎模型，<strong>沒有任何安全對齊</strong>，直接餵臨床問題會得到不可用的輸出；醫療應用需要自行完成後訓練、對齊與臨床驗證，這部分的工程量遠大於「下載權重」。模型卡亦未載明明確釋出日期（引用與版權年份為 2026），本報的 11/5 日期取自多家二手報導與 Hub 上線時間。</span>
-        <span class="en">Three discounts. First, every benchmark is self-reported by Baidu and uses base-model few-shot settings (MMLU 5-shot, HumanEval+ 1-shot and so on), which cannot be compared directly with chat-model evaluations. Second, the licence is <strong>not</strong> Apache 2.0 or MIT but Baidu's own License Agreement v1.0; its restrictions need reading clause by clause before any medical product use, and it should not be conflated with Inkling 2 Small's Apache 2.0. Third, this is a base model with no instruction tuning and <strong>no safety alignment whatsoever</strong> — feed it a clinical question directly and the output is unusable; medical use requires doing the post-training, alignment and clinical validation yourself, which is far more engineering than downloading weights. The model card also gives no explicit release date (citation and copyright lines say 2026); the 5 November date here comes from secondary coverage and the Hub listing.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://huggingface.co/baidu/ERNIE-5.5-Flash-Base-BF16" target="_blank" rel="noopener">baidu/ERNIE-5.5-Flash-Base-BF16 model card — Hugging Face, 2026</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">agent 接上真實帳本</span><span class="en-inline">Agents on real records</span></span>
+      <span class="tag hot"><span class="zh-inline">agent 接上真實帳本</span></span>
       <span class="tag">Anthropic</span><span class="tag">Plaid</span><span class="tag">11/05</span>
     </div>
     <h3>
       <span class="zh">Claude 推出唯讀的 Personal Finance beta：透過 Plaid 連最多 16 家美國銀行、讀 24 個月交易，但不得用於排程任務、Cowork 與 Claude Code</span>
-      <span class="en">Claude launches a read-only Personal Finance beta: up to 16 US banks via Plaid and 24 months of transactions, but barred from scheduled tasks, Cowork and Claude Code</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">Anthropic 於 <a href="https://www.unite.ai/anthropic-introduces-read-only-personal-finance-beta-in-claude/" target="_blank" rel="noopener">11 月 5 日推出 Claude 的 Personal Finance beta</a>，僅開放給符合資格的美國 Pro、Max、Ultra 訂閱者（Free、Team、Enterprise 不含），逐步放行。連線走 Plaid，使用者自選銀行與帳戶，Claude 不索取也看不到銀行密碼，且<strong>全程唯讀</strong>——不能轉帳、不能管理或投資，設計上也不提供投資建議；僅支援美國銀行、<strong>最多 16 家</strong>。可讀範圍：帳戶名稱與類型、通常是末四碼、餘額與信用額度，以及<strong>最多 24 個月</strong>的交易（金額、日期、商家、分類與銀行描述）；投資、貸款與信用卡帳戶只讀餘額與額度，不含持股、交易、利率或條款。能力包括月度支出拆解與跨月比較（官方示例為連結帳戶共支出 4,309.37 美元，其中過半為房租與水電、1,024.51 美元為餐飲）、偵測重複扣款與異常費用、用白話解釋 APR 並計算年度利息、週支出圖表與可自訂儀表板。限制相當明確：<strong>不能用於排程任務、Cowork 任務或 Claude Code</strong>，在 projects 中可能不work，Claude Duet 不支援。隱私面：Personal Finance hub 內的對話<strong>不用於訓練模型</strong>，且設計上不存入 memory、不被日後搜尋、不納入每月回顧；但分享連結可能曝露帳戶數字與圖表，artifacts 也可能含銀行資料並在原對話刪除後仍留存。商業模式上 Anthropic 明言無廣告、無贊助推薦、不綁自家信用卡或貸款，呼應其 <a href="https://www.unite.ai/anthropic-introduces-read-only-personal-finance-beta-in-claude/" target="_blank" rel="noopener">2026 年 2 月 4 日的無廣告政策</a>。</span>
-        <span class="en">Anthropic <a href="https://www.unite.ai/anthropic-introduces-read-only-personal-finance-beta-in-claude/" target="_blank" rel="noopener">launched Claude's Personal Finance beta on 5 November</a>, limited to eligible US Pro, Max and Ultra subscribers (Free, Team and Enterprise excluded) and rolling out gradually. Connection runs through Plaid, the user picks the bank and accounts, Claude never requests or sees the bank password, and access is <strong>read-only throughout</strong> — it cannot move, manage or invest money and is not designed to give investment advice; US banks only, <strong>up to 16</strong>. What it can read: account names and types, usually the last four digits, balances and credit limits, plus <strong>up to 24 months</strong> of transactions (amount, date, merchant, category and the bank's own description); investment, loan and card accounts expose balances and limits only, not holdings, trades, rates or terms. Capabilities include monthly spending breakdowns and month-on-month comparisons (Anthropic's example shows $4,309.37 spent across connected accounts, over half on rent and utilities and $1,024.51 on food and drink), detection of duplicate charges and unexpected fees, plain-language explanations of terms like APR with annual interest totals, weekly spending charts and customisable dashboards. The limits are explicit: it <strong>cannot be used in scheduled tasks, Cowork tasks or Claude Code</strong>, may not work in projects, and is unsupported in Claude Duet. On privacy, conversations in the Personal Finance hub are <strong>not used to train models</strong> and are designed not to be saved to memory, searched later or included in the monthly recap; but shared links can expose account figures and charts, and artifacts may contain bank data and persist after the originating chat is deleted. On business model, Anthropic states there are no ads, no sponsored recommendations and no bundled Anthropic credit cards or loans, consistent with its <a href="https://www.unite.ai/anthropic-introduces-read-only-personal-finance-beta-in-claude/" target="_blank" rel="noopener">4 February 2026 ad-free policy</a>.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">這則消息在醫療 AI 的架上，位置和 <a href="https://ai-medical-daily.peteraim.com/reports/2026-11-05.html" target="_blank" rel="noopener">11/2 athenahealth 開出 athenaPatient MCP server</a>（本報 11/5 曾報導）幾乎一模一樣：都是把一個高度受規範的個人記錄庫，用唯讀、使用者授權、逐帳戶同意的方式接到通用模型上。值得醫療業照抄的是三個設計決定：<strong>（1）唯讀是產品邊界而非技術限制</strong>——寫入權留到法遵想清楚為止；<strong>（2）把高敏感資料隔在一個獨立的 hub 裡</strong>，且明確排除 memory、搜尋、排程任務與 agent 執行環境，等於承認「agent 自動化」與「敏感記錄」這兩件事現階段不該接在一起；<strong>（3）明說不用於訓練</strong>，而不是靠使用者去翻設定。醫院把 LLM 接上 EHR 時，這三條幾乎可以直接搬。</span>
-        <span class="en">On the medical-AI shelf this sits almost exactly where <a href="https://ai-medical-daily.peteraim.com/reports/2026-11-05.html" target="_blank" rel="noopener">athenahealth's athenaPatient MCP server on 2 November</a> sat in this report's 5 November edition: a heavily regulated store of personal records wired to a general model, read-only, user-authorised, consented account by account. Three design decisions are worth copying wholesale. <strong>One, read-only as a product boundary rather than a technical limit</strong> — write access is held back until compliance has thought it through. <strong>Two, quarantining the sensitive data in its own hub</strong>, explicitly excluded from memory, search, scheduled tasks and agent execution environments, which amounts to conceding that agentic automation and sensitive records should not yet be connected. <strong>Three, stating outright that the data is not used for training</strong> rather than leaving users to find a setting. A hospital wiring an LLM into its EHR can lift all three almost verbatim.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">本則主要依據二手報導（unite.ai 的整理）而非 Anthropic 官方說明頁，數字與條款請以官方文件為準。Anthropic 自己列出的準確度警語也不該略過：建議對重要數字去銀行紀錄覆核、餘額可能延遲一兩天、同一帳戶若用兩組登入可能被重複計算、若某家銀行讀不到其支出會被省略，導致預算高估剩餘額度。另外「不存入 memory」等隱私行為在原文用的是「設計上」（designed not to），不是絕對保證；而解除最後一家銀行連結會<strong>永久刪除</strong>儀表板的 widget、預算設定與設定答案。</span>
-        <span class="en">This item rests mainly on secondary coverage (unite.ai's write-up) rather than Anthropic's own help pages, so figures and terms should be checked against the official documents. Anthropic's own accuracy caveats should not be skipped either: check important figures against bank records, balances may be a day or two stale, an account connected through two logins may be counted twice, and if a bank cannot be read its spending is omitted, so budgets can overstate what remains. The privacy behaviours such as not saving to memory are phrased as "designed not to" rather than as absolute guarantees; and unlinking the last bank <strong>permanently deletes</strong> the dashboard's widgets, budget settings and setup answers.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://www.unite.ai/anthropic-introduces-read-only-personal-finance-beta-in-claude/" target="_blank" rel="noopener">Anthropic Introduces Read-Only Personal Finance Beta in Claude — Unite.AI, 2026-11</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">法規與執法</span><span class="en-inline">Law enforcement</span></span>
+      <span class="tag hot"><span class="zh-inline">法規與執法</span></span>
       <span class="tag">US DOJ</span><span class="tag">DOJ-SITF</span><span class="tag">11/05</span>
     </div>
     <h3>
       <span class="zh">美國司法部成立 Super Intelligence Task Force：鎖定外國政府、跨國犯罪組織與企業濫用，並要求企業對 SI 系統維持內部控制</span>
-      <span class="en">The US Justice Department launches a Super Intelligence Task Force, targeting foreign states, transnational crime and corporate misuse — and telling companies to keep internal controls on SI systems</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">美國司法部於 <a href="https://www.justice.gov/opa/pr/department-justice-launches-super-intelligence-task-force" target="_blank" rel="noopener">11 月 5 日（新聞稿編號 26-1319，頁面 metadata 顯示 11 月 4 日發布、11 月 5 日修訂）宣布成立 Super Intelligence (SI) Task Force（DOJ-SITF）</a>，由 Associate Attorney General Stanley Woodward 與 Associate Deputy Attorney General Stephen Weiss 領導，並與「SI Force Chair Jay Clayton」合作（司法部長 Todd Blanche 語）。打擊對象分三類：外國政府與國家支持的行為者、跨國犯罪組織，以及從事詐欺或其他違法行為的個人或企業。優先事項包括：起訴以 SI 違法者（尤其針對美國納稅人、關鍵基礎設施或國家安全的計謀）、以執法工具嚇阻不當使用、強化對 SI 風險與應對的定期通報，以及<strong>要求企業維持強健的內部控制，確保 SI 系統按預期行為運作</strong>。新聞稿未公布預算、人力或時程數字，列出的組成單位僅有 Office of the Attorney General 與 Office of the Associate Attorney General，另附一份備忘錄連結。</span>
-        <span class="en">The US Department of Justice <a href="https://www.justice.gov/opa/pr/department-justice-launches-super-intelligence-task-force" target="_blank" rel="noopener">announced the Super Intelligence (SI) Task Force (DOJ-SITF) on 5 November</a> (press release 26-1319; page metadata shows publication on 4 November and modification on 5 November), led by Associate Attorney General Stanley Woodward and Associate Deputy Attorney General Stephen Weiss, working with "SI Force Chair Jay Clayton" per Attorney General Todd Blanche. It targets three classes of actor: foreign states and state-sponsored actors, transnational criminal organisations, and individual or corporate actors engaged in fraud or other unlawful conduct. Priorities include prosecuting unlawful SI use — particularly schemes aimed at American taxpayers, critical US infrastructure or national security — deterring improper use through law-enforcement tools, strengthening regular reporting on SI risk and response, and <strong>requiring companies to maintain strong internal controls so SI systems behave as intended</strong>. The release gives no budget, staffing or timeline figures, lists only the Office of the Attorney General and the Office of the Associate Attorney General as components, and links to a supporting memorandum.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">把這則放在 GPT-6 Cyber 旁邊看才看得懂：同一天，一邊是實驗室用白名單自我約束 Critical 等級的網安能力，一邊是司法部宣布要用刑事工具處理 SI 濫用，並把「內部控制」寫成企業義務。對醫療機構的直接意涵是，「我們只是用了廠商的模型」這個抗辯空間正在縮小——這與本報 <a href="https://ai-medical-daily.peteraim.com/reports/2026-11-04.html" target="_blank" rel="noopener">11/4 整理的 AMA 責任框架</a>（警語與免責聲明「不夠」、醫院的注意義務涵蓋選型、驗證、訓練與長期監測）是同一個方向：責任往部署端走。醫療體系又恰好被列在「關鍵基礎設施」裡，意思是醫院 IT 被 SI 輔助的攻擊打中時，這個 task force 就是對口。</span>
-        <span class="en">This only makes sense read next to GPT-6 Cyber: on the same day, a lab restrained a Critical-rated cyber capability with an allowlist of its own accord, while the Justice Department announced it will reach for criminal tools against SI misuse and wrote "internal controls" down as a corporate obligation. For healthcare institutions the direct implication is that the "we only used the vendor's model" defence is narrowing — the same direction as the <a href="https://ai-medical-daily.peteraim.com/reports/2026-11-04.html" target="_blank" rel="noopener">AMA liability framework covered here on 4 November</a>, which said warnings and disclaimers are "not enough" and that a hospital's duty of care spans selection, validation, training and long-term monitoring. Liability is moving toward the deployer. Health systems also happen to sit inside "critical infrastructure", which means this task force is the counterpart when hospital IT is hit by an SI-assisted attack.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">這是一份成立公告，不是規則。沒有預算、沒有編制人數、沒有時程、沒有列出參與的業務部門，也沒有定義「Super Intelligence」的法律門檻——「要求企業維持內部控制」目前是記者會語言而非可執行的合規標準。要等到第一份指引或第一起起訴，才能判斷它對醫療機構的實際義務是什麼。</span>
-        <span class="en">This is a launch announcement, not a rule. No budget, no headcount, no timeline, no list of participating litigating divisions, and no legal threshold defining "Super Intelligence" — "requiring companies to maintain internal controls" is press-conference language, not yet an enforceable compliance standard. What it actually obliges a healthcare institution to do cannot be judged until the first guidance or the first prosecution.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://www.justice.gov/opa/pr/department-justice-launches-super-intelligence-task-force" target="_blank" rel="noopener">Department of Justice Launches Super Intelligence Task Force — US DOJ Office of Public Affairs, 2026-11-05</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">算力的物理限制</span><span class="en-inline">Physical limits of compute</span></span>
+      <span class="tag hot"><span class="zh-inline">算力的物理限制</span></span>
       <span class="tag">Google</span><span class="tag">Bloom Energy</span><span class="tag">11/05</span>
     </div>
     <h3>
       <span class="zh">Google 砸 170 億美元在懷俄明建首座資料中心、配 702 MW 燃料電池加碳捕捉；同一週多國政府正在收緊資料中心許可</span>
-      <span class="en">Google commits $17bn to its first Wyoming data centre with 702 MW of fuel cells and carbon capture — in the same week governments are tightening data-centre permits</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">Google 於 11 月 5 日宣布一筆長期 <strong>170 億美元</strong>的懷俄明州投資，在 Laramie County 鄰近 Cheyenne 處建設其首座懷俄明資料中心，配套是一個 <strong>702 MW</strong> 的天然氣燃料電池開發案加碳捕捉與封存（CCS），<a href="https://interestingengineering.com/energy/google-wyoming-data-center-702mw-fuel-cell-carbon-capture" target="_blank" rel="noopener">據報導將是同類中最大的商業規模燃料電池開發案</a>。燃料電池由 Bloom Energy 於美國製造，以電化學方式把天然氣轉為電力；碳捕捉捕下的是「絕大多數」而非全部排放，CO₂ 送往 Tallgrass Energy 鄰近的 Eastern Wyoming Sequestration Hub 永久地質封存。這使 Google 累計簽約的 CCS 容量接近 <strong>1 GW</strong>。合作方包括 AEP、Tallgrass Energy、Black Hills Energy 與 Related Digital；Google 另向 Tallgrass 與 Black Hills 營運的天然氣機組購電，並就為 Tallgrass 的複循環燃氣機組加裝 CCS 進行前端工程設計研究。冷卻採氣冷以減少對當地水源的壓力，Google 並表示將支付其資料中心所消耗的全部電力與成長所需的基礎設施。對照的另一面：這一週多個管轄區正收緊資料中心許可，而紐約州是全美第一個設下州級暫停的——<a href="https://www.davispolk.com/insights/client-update/new-york-state-enacts-data-center-moratorium" target="_blank" rel="noopener">Hochul 州長於 2026 年 7 月 14 日簽署第 62 號行政命令</a>，對用電達或可達 <strong>50 MW</strong> 以上的資料中心暫停 DEC 的裁量性許可，直到公共服務部完成 SEQRA 下的通用環境影響說明書（GEIS）與認定書；該 GEIS 須評估能源需求、用水與水質、空氣品質、對弱勢社區的影響與噪音，DEC 另須在 12 個月內就資料中心是否需要修改取水規則提出報告。行政命令明文豁免的用途包括製造、研究（含量子運算與<strong>生醫研究</strong>）、教育（認證大專院校與 Empire AI 聯盟）與<strong>醫療照護</strong>。</span>
-        <span class="en">On 5 November Google announced a long-term <strong>$17 billion</strong> investment in Wyoming, building its first data centre in the state in Laramie County near Cheyenne, paired with a <strong>702 MW</strong> natural-gas fuel-cell development with carbon capture and storage — <a href="https://interestingengineering.com/energy/google-wyoming-data-center-702mw-fuel-cell-carbon-capture" target="_blank" rel="noopener">reported to be the largest planned commercial-scale fuel-cell development of its kind</a>. The cells are manufactured in the US by Bloom Energy and convert natural gas to electricity electrochemically; the capture takes a large majority of emissions rather than all of them, with CO₂ going to Tallgrass Energy's nearby Eastern Wyoming Sequestration Hub for permanent geological storage. That brings Google's total contracted CCS capacity to nearly <strong>1 GW</strong>. Partners include AEP, Tallgrass Energy, Black Hills Energy and Related Digital; Google is also buying power from gas generators run by Tallgrass and Black Hills and running a front-end engineering and design study on adding CCS to Tallgrass's combined-cycle turbines. Cooling is air-based to reduce pressure on local water, and Google says it will pay for all the electricity its data centres consume plus the infrastructure its growth requires. The other side of the same week: several jurisdictions are tightening data-centre permits, and New York was the first state in the country to impose a statewide pause — <a href="https://www.davispolk.com/insights/client-update/new-york-state-enacts-data-center-moratorium" target="_blank" rel="noopener">Governor Hochul signed Executive Order No. 62 on 14 July 2026</a>, suspending discretionary DEC permits for data centres consuming, or able to consume, <strong>50 MW or more</strong> until the Department of Public Service completes a Generic Environmental Impact Statement and findings statement under SEQRA. That GEIS must assess energy demand, water use and quality, air quality, impacts on disadvantaged communities and noise, and DEC must separately report within 12 months on whether water-withdrawal rules need changing for data centres. The order expressly exempts facilities used primarily for manufacturing, research including quantum computing and <strong>biomedical research</strong>, education (accredited colleges and universities, and the Empire AI consortium), and <strong>medical care</strong>.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">METR 說未來 12 個月在演算法與算力上找不到瓶頸，但那份評估的範圍是實驗室內部；真正可能先擋住的是許可、電網與水。這一則的價值在於它同時給出兩個方向的量級：一邊是 170 億美元、702 MW、接近 1 GW 的 CCS 簽約容量，一邊是 50 MW 以上就得停下來等環評。對醫療產業最實用的細節，是紐約那份行政命令的豁免清單——<strong>生醫研究與醫療照護被明文排除在暫停之外</strong>。這等於在一場能源爭奪戰裡，替醫療運算劃了一條優先車道；台灣與其他面臨電力限制的地區在設計類似規範時，這是一個可以直接參照的先例。</span>
-        <span class="en">METR found no algorithmic or compute bottleneck for the next twelve months, but that assessment looked inside a lab; what may bind first is permitting, grid and water. The value of this item is that it gives the magnitude in both directions at once: $17bn, 702 MW and nearly 1 GW of contracted CCS on one side; a stop-and-wait-for-environmental-review threshold of 50 MW on the other. The most practically useful detail for healthcare is the exemption list in the New York order — <strong>biomedical research and medical care are expressly carved out of the pause</strong>. In effect, an energy fight has drawn a priority lane for medical computing, and that is a directly citable precedent for Taiwan and other places designing comparable rules under power constraints.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">本則的燃料電池與 CCS 細節引自二手報導（Interesting Engineering）而非 Google 官方公告，報導亦明言未提供就業人數、施工或完工時程、燃料電池案的造價，以及資料中心本身的容量；「絕大多數排放被捕捉」是定性描述，沒有捕捉率數字。紐約州那部分是 <strong>2026 年 7 月</strong>的舊聞，本報在此作為對照背景，不是本週新事件；本週的新事件是多個管轄區持續收緊許可（Reuters 於 11/5 有整理，但該站在本環境無法擷取，故不引用其內容）。Google 的「支付全部電力成本」是公司說法，未經獨立驗證。</span>
-        <span class="en">The fuel-cell and CCS details here come from secondary coverage (Interesting Engineering) rather than Google's own announcement, and that coverage states it has no job numbers, no construction or completion timeline, no cost for the fuel-cell project and no capacity figure for the data centre itself; "a large majority of emissions captured" is qualitative, with no capture rate given. The New York material is from <strong>July 2026</strong> and appears here as contrasting background, not as this week's event; this week's event is that multiple jurisdictions are continuing to tighten permits (Reuters published a factbox on 5 November, but that site could not be retrieved in this environment, so its content is not cited). Google's claim that it will pay for all its electricity is a company statement, not independently verified.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://interestingengineering.com/energy/google-wyoming-data-center-702mw-fuel-cell-carbon-capture" target="_blank" rel="noopener">Google's Wyoming data center plan pairs gas power with carbon capture — Interesting Engineering, 2026-11-05</a> ／ <a href="https://www.davispolk.com/insights/client-update/new-york-state-enacts-data-center-moratorium" target="_blank" rel="noopener">New York State enacts data center moratorium — Davis Polk, 2026-07</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">併購</span><span class="en-inline">M&amp;A</span></span>
+      <span class="tag hot"><span class="zh-inline">併購</span></span>
       <span class="tag">Meta</span><span class="tag">Conductor</span><span class="tag">11/04</span>
     </div>
     <h3>
       <span class="zh">Meta 收購 AI 編碼新創 Conductor：多 agent 平行工作區的編排層被大廠買走，雲端服務 11/20 關閉並開始刪除用戶資料</span>
-      <span class="en">Meta acquires AI coding startup Conductor: the orchestration layer for parallel multi-agent workspaces goes to a hyperscaler, with the cloud service shutting on 20 November and user data deletion to follow</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh"><a href="https://techcrunch.com/2026/11/04/meta-acquires-ai-coding-startup-conductor/" target="_blank" rel="noopener">Meta 於 11 月 4 日（週三）確認收購 Conductor</a>，交易金額未揭露，Meta 向 TechCrunch 確認但不提供進一步細節；最早由 Axios 報導。Conductor 由 Charlie Holtz 創立並擔任執行長，公司成立於 2024 年、2025 年夏天推出核心產品，產品功能是讓軟體工程師把<strong>多個 agent 部署到平行工作區</strong>、各自處理專案的不同部分，可在雲端、本機或手機上執行；關鍵是這些 agent 來自 Anthropic 與 OpenAI 等主要實驗室，<strong>而非 Conductor 自有模型</strong>。後續安排：核心功能維持運作至明年初；<strong>雲端服務 11 月 20 日關閉，之後開始刪除用戶的雲端資料</strong>；Holtz 表示公司會在「明年初」為客戶推出「新東西」。</span>
-        <span class="en"><a href="https://techcrunch.com/2026/11/04/meta-acquires-ai-coding-startup-conductor/" target="_blank" rel="noopener">Meta confirmed the acquisition of Conductor on Wednesday 4 November</a>; terms were not disclosed, and Meta confirmed the deal to TechCrunch without further detail, with Axios first reporting it. Conductor was founded in 2024 by Charlie Holtz, its CEO, and launched its core product in summer 2025. The product lets software engineers deploy <strong>multiple agents into parallel workspaces</strong>, each working on a different part of a project, running in the cloud, locally or from a phone — and crucially the agents come from major labs such as Anthropic and OpenAI, <strong>not from Conductor itself</strong>. What happens next: core features keep working as they have until early next year; <strong>the cloud service shuts down on 20 November, after which Conductor begins deleting users' cloud data</strong>; Holtz says the company has "something new" for customers by "early next year".</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">這是 agent 編排層被收編的一個清楚訊號：價值不在模型，在「同時調度多個別人家 agent」的那一層。這跟本報 <a href="https://ai-medical-daily.peteraim.com/reports/2026-11-05.html" target="_blank" rel="noopener">11/5 報導的 AutoDNA</a>（四個規劃 agent 加兩個執行 agent 調度 20 多類儀器）是同一個結構問題的兩個版本——醫療場域遲早也要面對「誰來編排多 agent」。而對任何考慮把臨床工具建在新創編排層上的醫院，<strong>11 月 20 日關閉雲端服務並刪除資料</strong>這一行就是最好的風險提醒：編排層被併購時，被切斷的是你的工作流，而不是模型供應商的。採購合約裡的資料移轉與服務終止條款，比 demo 時的功能清單重要得多。</span>
-        <span class="en">This is a clear signal that the agent orchestration layer is being absorbed: the value sits not in the model but in the layer that dispatches several other people's agents at once. It is the same structural problem as <a href="https://ai-medical-daily.peteraim.com/reports/2026-11-05.html" target="_blank" rel="noopener">AutoDNA, covered here on 5 November</a>, where four planning agents and two execution agents drove more than twenty classes of instrument — medicine will have to answer "who orchestrates the agents" sooner or later. And for any hospital contemplating building a clinical tool on a startup's orchestration layer, the line about <strong>the cloud service closing on 20 November and data deletion beginning</strong> is the best risk reminder available: when the orchestration layer is acquired, what gets cut off is your workflow, not the model vendor's. Data-portability and service-termination clauses in the procurement contract matter far more than the feature list in the demo.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">交易金額、人員去向與整合計畫全部未公開，所以「Meta 為什麼買」只能推測，不能斷言是人才收購還是技術收購。TechCrunch 未提供 Conductor 的募資歷史，也未說明核心功能「明年初」之後的命運；「something new」是創辦人說法，沒有產品細節。本則與醫療的連結完全是本報的類比推論，Conductor 並非醫療產品。</span>
-        <span class="en">Deal value, where the team lands and the integration plan are all undisclosed, so why Meta bought it can only be guessed at — acqui-hire versus technology purchase cannot be asserted. TechCrunch gives no funding history for Conductor and does not say what becomes of the core features after "early next year"; "something new" is the founder's phrasing with no product detail. The link to medicine here is entirely this report's own analogy: Conductor is not a medical product.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://techcrunch.com/2026/11/04/meta-acquires-ai-coding-startup-conductor/" target="_blank" rel="noopener">Meta acquires AI coding startup Conductor — TechCrunch, 2026-11-04</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">生成影片</span><span class="en-inline">Generative video</span></span>
+      <span class="tag hot"><span class="zh-inline">生成影片</span></span>
       <span class="tag">Google DeepMind</span><span class="tag">Gemini Omni 1.2 Flash</span><span class="tag">11/05</span>
     </div>
     <h3>
       <span class="zh">Gemini Omni 1.2 Flash：片長拉到 15 秒、720p 每秒 0.07 美元（降價 30%），輸出帶 SynthID 隱形水印</span>
-      <span class="en">Gemini Omni 1.2 Flash: clips up to 15 seconds, $0.07 per second at 720p — a 30% cut — with SynthID watermarking on every output</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">Google DeepMind 於 <a href="https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/" target="_blank" rel="noopener">11 月 5 日發布 Gemini Omni 1.2 Flash</a>：片長從 Omni 1.1 的 10 秒拉到 <strong>15 秒</strong>，可在 3 到 15 秒間以 1 秒為單位設定；草稿可用 360p 或 720p 生成再升頻到 1080p 或 4K；價格為 <strong>720p 每秒 0.07 美元，官方稱比 Omni 1.1 低 30%</strong>（據此回推前代約為每秒 0.10 美元，但原文未列舊價）。參考素材可餵入角色、產品與風格圖像、最長 3 秒的動態片段與音訊提示，官方稱臉部、服裝與品牌色能在不同機位間維持一致；一致性方面改善了首尾幀之間的漂移與變形，支援關鍵幀之間的插值與片段延長；支援多輪編輯（換產品、換背景、改光線或天氣、換長寬比），對話自然度與唇形同步、多說話者條件化與連續運鏡也有改進。供應範圍：Gemini API、Google Cloud（Vertex AI Studio 與企業 API）、Gemini for business 已正式供應，並提供 Provisioned Throughput；同時推送到 Flow、Google Vids（15 秒片段不額外收費）、Gemini app（向 Google AI Ultra 訂戶推出）與 Google Ads。所有輸出帶 <strong>SynthID 隱形水印</strong>。Google 自列的已知限制是快速運動的體育畫面、劇本快速變化與複雜物理仍在改進中；該貼文<strong>未提供任何量化基準</strong>，與 Omni 1.1 的比較全為示例影片的定性對照。</span>
-        <span class="en">Google DeepMind <a href="https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/" target="_blank" rel="noopener">announced Gemini Omni 1.2 Flash on 5 November</a>: clip length rises from Omni 1.1's 10 seconds to <strong>15 seconds</strong>, settable in one-second steps from 3 to 15; drafts generate at 360p or 720p and upscale to 1080p or 4K; pricing is <strong>$0.07 per second at 720p, which Google says is 30% below Omni 1.1</strong> (implying roughly $0.10 per second before, though the post does not state the old price). Reference inputs accept character, product and style images, motion clips up to three seconds and audio cues, with Google saying faces, garments and brand colours stay consistent across camera angles; consistency improves on first-to-last-frame drift and morphing, with keyframe interpolation and clip extension supported; multi-turn editing covers swapping products or backgrounds, changing lighting or weather and switching aspect ratio, and dialogue naturalness, lip-sync, multi-speaker conditioning and continuous camera moves all improve. Availability: generally available on the Gemini API, Google Cloud (Vertex AI Studio and the enterprise API) and Gemini for business, with Provisioned Throughput; also rolling out in Flow, Google Vids (15-second clips at no extra cost), the Gemini app (to Google AI Ultra subscribers) and Google Ads. Every output carries an imperceptible <strong>SynthID watermark</strong>. Google's stated known limitations are fast sports action, rapid script changes and complex physics; the post gives <strong>no quantitative benchmarks at all</strong>, and its comparisons with Omni 1.1 rest entirely on example clips.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">每秒 0.07 美元意味著一支 15 秒衛教短片的生成成本約 1.05 美元，一套 20 支的術前說明影片在百位數美元量級——這把「每個科別自製病患教育影片」從預算問題變成流程問題。真正該注意的是另一半：<strong>SynthID 水印是預設的</strong>。當合成影片的成本掉到這個水準，醫療傳播裡「這段影片是不是真的醫師說的」會變成常態性問題，而可驗證的來源標記（水印、簽章）就從加分項變成必要條件。醫院在開始量產衛教影片之前，應該先把標示政策寫下來，而不是事後補。</span>
-        <span class="en">$0.07 per second means a 15-second patient-education clip costs about $1.05 to generate, and a 20-clip pre-operative explainer set lands in the low hundreds of dollars — which turns "every department makes its own patient-education video" from a budget question into a workflow question. The other half matters more: <strong>SynthID watermarking is on by default</strong>. Once synthetic video costs this little, "is this actually a doctor speaking" becomes a standing question in medical communication, and verifiable provenance marking — watermarks, signatures — moves from a nice-to-have to a precondition. A hospital should write its labelling policy before it starts mass-producing explainer clips, not afterwards.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">官方貼文沒有任何量化基準，所有品質改善都是定性說法加示例影片，無法獨立比較。0.07 美元是 720p 的價格，升頻到 1080p 或 4K 的成本未在貼文中列出，所以上面的衛教影片成本推算是下限而非實際帳單。SynthID 是隱形水印，其在剪輯、轉碼、再壓縮後的存活率本報未查證，不應假設它在任何處理鏈後都還讀得到。本則與醫療的應用推論全為本報外推，Google 未提出任何醫療用途主張。</span>
-        <span class="en">The post carries no quantitative benchmarks: every quality improvement is a qualitative claim backed by example clips, with nothing independently comparable. The $0.07 figure is for 720p, and the cost of upscaling to 1080p or 4K is not given, so the patient-education estimate above is a floor rather than an actual bill. SynthID is an imperceptible watermark, and its survival through editing, transcoding and re-compression was not verified here, so it should not be assumed readable after any processing chain. The medical applications inferred here are this report's own extrapolation; Google makes no medical-use claim.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/" target="_blank" rel="noopener">Introducing Gemini Omni 1.2 Flash — Google blog, 2026-11-05</a></p></div>
   </div>
 </section>
@@ -341,60 +303,49 @@
   <h2>02 — Product Analysis</h2>
   <div class="sec-title">
     <span class="zh">同一天發表的兩個模型，把「能力治理」的兩種極端解擺在一起：一個 Critical 等級、只給白名單；一個 594B 參數、下週全部送出去</span>
-    <span class="en">Two models released the same day stake out the opposite poles of capability governance: one rated Critical and gated to an allowlist, the other 594B parameters given away whole next week</span>
   </div>
 
   <div class="grid2">
     <div class="panel">
       <h3>GPT-6 Cyber</h3>
-      <p class="sub"><span class="zh-inline">網安特化模型 · OpenAI（美國）· 只走 Daybreak Red 白名單</span><span class="en-inline">Cyber-specialised model · OpenAI (US) · Daybreak Red allowlist only</span></p>
+      <p class="sub"><span class="zh-inline">網安特化模型 · OpenAI（美國）· 只走 Daybreak Red 白名單</span></p>
       <p>
         <span class="zh"><strong>功能與定位。</strong>GPT-6 Astra 的網安特化版，用途是漏洞挖掘、exploit 開發與 web 滲透測試，賣給的不是開發者市場而是<strong>經過身分驗證的安全組織</strong>：需 SSO、多因素驗證、API 的 IP 允許清單，Zero Data Retention 客戶原則上還要 Private Safety Processing（<a href="https://deploymentsafety.openai.com/gpt-6-cyber" target="_blank" rel="noopener">OpenAI 系統卡</a>）。技術特點是在同一個基礎模型上做特化後，exploit 類任務全面超過通用版：<a href="https://deploymentsafety.openai.com/gpt-6-cyber" target="_blank" rel="noopener">ExploitGym Hardened 36.94% 對 29.69%、SRE-Bench 92.84% 對 87.98%</a>。</span>
-        <span class="en"><strong>Function and position.</strong> A cyber-specialised build of GPT-6 Astra for vulnerability discovery, exploit development and web pentesting, sold not into the developer market but to <strong>identity-verified security organisations</strong>: SSO, multi-factor authentication and API IP allowlisting required, with Private Safety Processing generally required for Zero Data Retention customers (<a href="https://deploymentsafety.openai.com/gpt-6-cyber" target="_blank" rel="noopener">OpenAI system card</a>). Technically, specialising on the same base model lifts it above the general version across exploit work: <a href="https://deploymentsafety.openai.com/gpt-6-cyber" target="_blank" rel="noopener">ExploitGym Hardened 36.94% against 29.69%, SRE-Bench 92.84% against 87.98%</a>.</span>
       </p>
       <ul class="clean">
-        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+        <li><span class="pro"><span class="zh-inline">優勢</span></span>
           <span class="zh">：把「能力評級 → 交付通道」做成了可照抄的制度。Critical 不是禁售，而是白名單＋驗證＋組織安全要求；<a href="https://deploymentsafety.openai.com/gpt-6-cyber" target="_blank" rel="noopener">超出授權範圍的蜜罐利用壓到 0.07%，加上部署安全指令後為 0%</a>。</span>
-          <span class="en">: it turns "capability rating → delivery channel" into a copyable institution. Critical does not mean banned, it means allowlist plus verification plus organisational security requirements; <a href="https://deploymentsafety.openai.com/gpt-6-cyber" target="_blank" rel="noopener">out-of-scope honeypot exploitation is held to 0.07%, and 0% with deployment safety instructions</a>.</span>
         </li>
-        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+        <li><span class="pro"><span class="zh-inline">優勢</span></span>
           <span class="zh">：工具故障時的誠實度明顯改善——<a href="https://deploymentsafety.openai.com/gpt-6-cyber" target="_blank" rel="noopener">搜尋工具壞掉時的錯誤報告率 0.33%，通用版 Astra 是 6.92%</a>，這對任何要把 agent 接進生產系統的機構都是關鍵指標。</span>
-          <span class="en">: honesty under tool failure improves markedly — <a href="https://deploymentsafety.openai.com/gpt-6-cyber" target="_blank" rel="noopener">0.33% error reporting on a broken search tool against 6.92% for general-purpose Astra</a>, a key metric for any institution wiring an agent into a production system.</span>
         </li>
-        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+        <li><span class="con"><span class="zh-inline">疑慮</span></span>
           <span class="zh">：特化不是全面勝出。<a href="https://deploymentsafety.openai.com/gpt-6-cyber" target="_blank" rel="noopener">Irregular FrontierCyber 上 90/288 反而低於 Astra 的 96/288</a>，說明這些 benchmark 彼此不一致，單看哪一組都可能得到相反結論。</span>
-          <span class="en">: specialisation is not a clean sweep. <a href="https://deploymentsafety.openai.com/gpt-6-cyber" target="_blank" rel="noopener">On Irregular FrontierCyber it scores 90/288, below Astra's 96/288</a>, which shows these benchmarks disagree with each other and any single set can support the opposite conclusion.</span>
         </li>
-        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+        <li><span class="con"><span class="zh-inline">疑慮</span></span>
           <span class="zh">：<a href="https://deploymentsafety.openai.com/gpt-6-cyber" target="_blank" rel="noopener">blocker reporting 旗標 20.29%，遠高於 Astra 的 11.66%</a>；OpenAI 解釋多為摘要不完整而非欺瞞，但這是定性判斷，系統卡沒有附人工覆核的樣本數。全部數字皆為廠商自報、未經第三方稽核。</span>
-          <span class="en">: <a href="https://deploymentsafety.openai.com/gpt-6-cyber" target="_blank" rel="noopener">blocker-reporting flags run at 20.29%, far above Astra's 11.66%</a>; OpenAI says most were incomplete summaries rather than deception, but that is a qualitative judgement and the card gives no sample size for the manual review. Every figure is vendor-reported and not independently audited.</span>
         </li>
       </ul>
     </div>
 
     <div class="panel">
       <h3>Inkling 2 Small</h3>
-      <p class="sub"><span class="zh-inline">594B／17B 活躍的 MoE · Thinking Machines Lab（美國）· 宣布下週 Apache 2.0 釋出權重</span><span class="en-inline">594B / 17B-active MoE · Thinking Machines Lab (US) · Apache 2.0 weights promised next week</span></p>
+      <p class="sub"><span class="zh-inline">594B／17B 活躍的 MoE · Thinking Machines Lab（美國）· 宣布下週 Apache 2.0 釋出權重</span></p>
       <p>
         <span class="zh"><strong>功能與定位。</strong>支援影像輸入與可變推理強度的稀疏 MoE，先以閉權重在 Tinker 上提供，公司宣布完成外部安全測試與紅隊後<strong>下週以 Apache 2.0 釋出完整權重</strong>（<a href="https://thinkingmachines.ai/news/inkling-2-small/" target="_blank" rel="noopener">Thinking Machines</a>）。它賣的不是絕對能力，是<strong>可客製化性</strong>：在金融文件摘要任務上 <a href="https://thinkingmachines.ai/news/inkling-2-small/" target="_blank" rel="noopener">75 步訓練即達到前代 Inkling Small 的最終表現</a>。</span>
-        <span class="en"><strong>Function and position.</strong> A sparse MoE taking image inputs with variable effort, shipped first on Tinker with closed weights, with the company saying <strong>full weights follow next week under Apache 2.0</strong> once external safety testing and red-teaming are done (<a href="https://thinkingmachines.ai/news/inkling-2-small/" target="_blank" rel="noopener">Thinking Machines</a>). What it sells is not absolute capability but <strong>customisability</strong>: on a financial-document summarisation task it <a href="https://thinkingmachines.ai/news/inkling-2-small/" target="_blank" rel="noopener">reaches the final performance of the previous Inkling Small in 75 training steps</a>.</span>
       </p>
       <ul class="clean">
-        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+        <li><span class="pro"><span class="zh-inline">優勢</span></span>
           <span class="zh">：對受規範產業最關鍵的那條——<strong>Apache 2.0</strong>允許商業使用、允許改後不公開、無使用範圍限制，加上 17B 活躍參數讓單節點或小叢集推得動，是目前最接近「醫院可自管」形狀的前沿級模型（<a href="https://thinkingmachines.ai/news/inkling-2-small/" target="_blank" rel="noopener">規格來源</a>）。</span>
-          <span class="en">: the decisive clause for regulated industries — <strong>Apache 2.0</strong> permits commercial use, permits private modification and imposes no field-of-use restriction — combined with 17B active parameters that a single node or small cluster can serve, makes this the closest thing to a hospital-self-hostable frontier-class model (<a href="https://thinkingmachines.ai/news/inkling-2-small/" target="_blank" rel="noopener">specs</a>).</span>
         </li>
-        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+        <li><span class="pro"><span class="zh-inline">優勢</span></span>
           <span class="zh">：訓練流程揭露的詳盡程度在前沿實驗室中罕見——<a href="https://thinkingmachines.ai/news/inkling-2-small/" target="_blank" rel="noopener">H1 階段 8.4T tokens／GB300 NVL72 上 68 小時／原生 NVFP4，聯合 RL 1,075 步、1,700 萬以上 rollout、2,048 顆 GPU、超過 4×10²³ FLOPs</a>，這讓外部研究者可以實際評估而不只是看分數。</span>
-          <span class="en">: the training disclosure is unusually complete for a frontier lab — <a href="https://thinkingmachines.ai/news/inkling-2-small/" target="_blank" rel="noopener">8.4T tokens in phase H1 over 68 hours on GB300 NVL72 racks in native NVFP4, a joint RL run of 1,075 steps, 17M+ rollouts, 2,048 GPUs and more than 4×10²³ FLOPs</a> — letting outside researchers actually appraise it rather than read scores.</span>
         </li>
-        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+        <li><span class="con"><span class="zh-inline">疑慮</span></span>
           <span class="zh">：<strong>權重還沒出來</strong>，「下週」是承諾且以安全測試通過為條件；而 <a href="https://thinkingmachines.ai/news/inkling-2-small/" target="_blank" rel="noopener">AA Index 31 分（表列 30.6）</a>這個絕對值明顯不在前沿第一線，公司亦自承對齊評測仍落後 GPT-6.1 Sol。</span>
-          <span class="en">: <strong>the weights are not out</strong> — "next week" is a commitment conditional on safety testing passing — and an <a href="https://thinkingmachines.ai/news/inkling-2-small/" target="_blank" rel="noopener">AA Index of 31 (listed 30.6)</a> is plainly not at the very front, with the company conceding it still trails GPT-6.1 Sol on alignment evals.</span>
         </li>
-        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+        <li><span class="con"><span class="zh-inline">疑慮</span></span>
           <span class="zh">：<strong>完全沒有醫療 benchmark</strong>。發表頁的示範是程式、視覺、法律、金融與一則酒類辨識（19/20），沒有任何臨床評測；「內部不當行為率 14.9（前代 66.8）」是自訂指標，無公開定義與外部可比口徑。開放權重也把對齊與安全責任整個移交給部署方。</span>
-          <span class="en">: <strong>no medical benchmark at all</strong>. The release demonstrates code, vision, legal, finance and one wine-identification result (19/20), with no clinical evaluation; the "internal misbehaviour rate 14.9 against 66.8 for the previous generation" is a bespoke metric with no public definition or external equivalent. Open weights also transfer alignment and safety responsibility wholesale to the deployer.</span>
         </li>
       </ul>
     </div>
@@ -403,7 +354,6 @@
   <div class="panel">
     <p>
       <span class="zh"><strong>對比的真正意義。</strong>這兩個產品不是競品，它們是對同一個問題的兩個答案：當能力提升的速率翻倍（見本日第一則 METR 評估），要用「通道管制」還是「普及擴散」來管風險？OpenAI 選前者，而且用 benchmark 數字證明特化是有效的；Thinking Machines 選後者，而且用訓練細節與 Apache 2.0 證明可驗證性是有價值的。<strong>醫療產業不能只選一邊</strong>——高風險的自主臨床行為需要 GPT-6 Cyber 式的通道管制，而病患資料不出院的需求需要 Inkling 式的開放權重。真正的治理設計，是在同一家醫院裡讓這兩種模式並存，而不是爭論哪一種才對。</span>
-      <span class="en"><strong>What the contrast actually means.</strong> These two products are not competitors; they are two answers to one question. When the rate of capability improvement doubles (see today's lead item on METR), do you manage the risk by controlling the channel or by diffusing it widely? OpenAI chose the former, and used benchmark numbers to show specialisation works; Thinking Machines chose the latter, and used training detail plus Apache 2.0 to show verifiability has value. <strong>Healthcare cannot pick just one side</strong> — high-risk autonomous clinical action needs GPT-6-Cyber-style channel control, while keeping patient data inside the building needs Inkling-style open weights. The real governance design makes both modes coexist inside one hospital rather than arguing over which is correct.</span>
     </p>
   </div>
 </section>
@@ -412,92 +362,77 @@
   <h2>03 — Companies &amp; Competition</h2>
   <div class="sec-title">
     <span class="zh">誰站在哪裡、憑什麼、跟誰打</span>
-    <span class="en">Who stands where, on what, against whom</span>
   </div>
 
   <div class="tbl-wrap">
     <table>
       <thead><tr>
-        <th><span class="zh-inline">公司</span><span class="en-inline">Company</span></th>
-        <th><span class="zh-inline">近況與數字</span><span class="en-inline">Recent state &amp; numbers</span></th>
-        <th><span class="zh-inline">競爭定位與護城河</span><span class="en-inline">Position &amp; moat</span></th>
+        <th><span class="zh-inline">公司</span></th>
+        <th><span class="zh-inline">近況與數字</span></th>
+        <th><span class="zh-inline">競爭定位與護城河</span></th>
       </tr></thead>
       <tbody>
         <tr>
-          <td><strong>Anthropic</strong><br><span class="zh-inline">被第三方量到「加速」的那一家</span><span class="en-inline">The lab measured as accelerating</span></td>
+          <td><strong>Anthropic</strong><br><span class="zh-inline">被第三方量到「加速」的那一家</span></td>
           <td>
             <span class="zh">能力進步速率約為 2024/3–2025/10 的 2 倍，AECI 口徑 1.9 倍（95% CI 1.5–2.8），年化趨勢 +15 → +29 分；內部自評提效從 1.2 倍（2025/1）到約 12 倍（2026/10）；同日推出唯讀的 Personal Finance beta（Plaid、最多 16 家美國銀行、24 個月交易）。<a href="https://metr.org/blog/2026-11-05-anthropic-ai-rd-acceleration-assessment/" target="_blank" rel="noopener">METR 2026-11-05</a>／<a href="https://www.unite.ai/anthropic-introduces-read-only-personal-finance-beta-in-claude/" target="_blank" rel="noopener">Unite.AI</a></span>
-            <span class="en">Capability progress at roughly 2x the March-2024-to-October-2025 rate, 1.9x on AECI (95% CI 1.5–2.8), annual trend +15 → +29 points; internal self-reported uplift from 1.2x (Jan 2025) to about 12x (Oct 2026); the same day it shipped a read-only Personal Finance beta (Plaid, up to 16 US banks, 24 months of transactions). <a href="https://metr.org/blog/2026-11-05-anthropic-ai-rd-acceleration-assessment/" target="_blank" rel="noopener">METR 2026-11-05</a> / <a href="https://www.unite.ai/anthropic-introduces-read-only-personal-finance-beta-in-claude/" target="_blank" rel="noopener">Unite.AI</a></span>
           </td>
           <td>
             <span class="zh">護城河正在從模型品質轉向「研發速度本身」——若 80% 的加速來自 AI，先行者的複利最難追。弱點是透明度：把 METR 認為最關鍵的證據大半塗黑，又中途取消算力查核，等於要外界用信任代替查核。</span>
-            <span class="en">The moat is shifting from model quality to R&amp;D velocity itself — if 80% of the acceleration is AI-driven, the incumbent's compounding is the hardest thing to catch. The weakness is transparency: redacting most of the evidence METR found most informative and cancelling the compute check midway asks outsiders to substitute trust for verification.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>OpenAI</strong><br><span class="zh-inline">把 Critical 能力做成通道生意</span><span class="en-inline">Turning a Critical rating into a channel business</span></td>
+          <td><strong>OpenAI</strong><br><span class="zh-inline">把 Critical 能力做成通道生意</span></td>
           <td>
             <span class="zh">GPT-6 Cyber 於 11/5 發布，網安 Critical、生化 High、自我改進 Below High；SEC-Bench Pro 87.02%、SRE-Bench 92.84%、ExploitGym Hardened 36.94%；只透過 Daybreak Red 交付。<a href="https://deploymentsafety.openai.com/gpt-6-cyber" target="_blank" rel="noopener">OpenAI 系統卡 2026-11-05</a></span>
-            <span class="en">GPT-6 Cyber shipped 5 Nov at Critical cybersecurity, High bio-chem and Below High self-improvement; SEC-Bench Pro 87.02%, SRE-Bench 92.84%, ExploitGym Hardened 36.94%; delivered only through Daybreak Red. <a href="https://deploymentsafety.openai.com/gpt-6-cyber" target="_blank" rel="noopener">OpenAI system card 2026-11-05</a></span>
           </td>
           <td>
             <span class="zh">護城河是「受管制能力的合法交付基礎設施」：身分驗證、組織安全要求、Private Safety Processing。弱點是這套制度的公信力建立在自報基準上，而 FrontierCyber 90/288 低於通用版 96/288 已顯示自家評測內部不一致。</span>
-            <span class="en">The moat is legitimate delivery infrastructure for regulated capability: identity verification, organisational security requirements, Private Safety Processing. The weakness is that the credibility of that regime rests on self-reported benchmarks, and FrontierCyber's 90/288 against the general model's 96/288 already shows internal inconsistency.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>Thinking Machines Lab</strong><br><span class="zh-inline">以可客製化性與透明度對打</span><span class="en-inline">Competing on customisability and disclosure</span></td>
+          <td><strong>Thinking Machines Lab</strong><br><span class="zh-inline">以可客製化性與透明度對打</span></td>
           <td>
             <span class="zh">Inkling 2 Small 於 11/5 發表：594B／17B 活躍，AA Index 31（表列 30.6）、SWEBench Pro v2 (Hard) 86.3%、MMMU Pro 81.6%；宣布下週 Apache 2.0 釋出權重；75 步微調即追上前代。<a href="https://thinkingmachines.ai/news/inkling-2-small/" target="_blank" rel="noopener">Thinking Machines 2026-11-05</a></span>
-            <span class="en">Inkling 2 Small released 5 Nov: 594B / 17B active, AA Index 31 (listed 30.6), SWEBench Pro v2 (Hard) 86.3%, MMMU Pro 81.6%; Apache 2.0 weights promised next week; 75 fine-tuning steps to match the previous generation. <a href="https://thinkingmachines.ai/news/inkling-2-small/" target="_blank" rel="noopener">Thinking Machines 2026-11-05</a></span>
           </td>
           <td>
             <span class="zh">護城河是 Tinker 這條微調通道加上開放權重的信任紅利——它賣的是「你可以自己改、自己驗、自己跑」。弱點是絕對能力落後，而且在對齊評測上自承不如 GPT-6.1 Sol，面對受規範客戶時這是實質障礙。</span>
-            <span class="en">The moat is the Tinker fine-tuning channel plus the trust dividend of open weights — what it sells is that you can modify, verify and run it yourself. The weakness is that absolute capability lags, and it concedes it trails GPT-6.1 Sol on alignment evals, which is a real obstacle with regulated customers.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>Baidu</strong><br><span class="zh-inline">用極端稀疏打廉價推理</span><span class="en-inline">Attacking cheap inference with extreme sparsity</span></td>
+          <td><strong>Baidu</strong><br><span class="zh-inline">用極端稀疏打廉價推理</span></td>
           <td>
             <span class="zh">ERNIE 5.5 Flash Base 於 11/5 開源：280B／14B 活躍、43 層、512 routed experts（top-10）、預訓練 33.5T tokens、FP8 與 BF16 權重並釋、微調與推理支援 1M 上下文；自報 MMLU 93.3、MMLU-Pro 78.4、GPQA 60.2、HumanEval+ 82.3。<a href="https://huggingface.co/baidu/ERNIE-5.5-Flash-Base-BF16" target="_blank" rel="noopener">Hugging Face 模型卡</a></span>
-            <span class="en">ERNIE 5.5 Flash Base open-sourced 5 Nov: 280B / 14B active, 43 layers, 512 routed experts at top-10, 33.5T pretraining tokens, FP8 and BF16 weights both released, 1M context for fine-tuning and inference; self-reported MMLU 93.3, MMLU-Pro 78.4, GPQA 60.2, HumanEval+ 82.3. <a href="https://huggingface.co/baidu/ERNIE-5.5-Flash-Base-BF16" target="_blank" rel="noopener">Hugging Face model card</a></span>
           </td>
           <td>
             <span class="zh">護城河是「基礎檢查點」這個選擇：不附帶對齊與拒答政策，讓機構從零建自己的後訓練，對不想繼承外國實驗室價值設定的客戶是賣點。弱點是自訂授權（License Agreement v1.0）而非 Apache 2.0，法務成本高於 Inkling；且與 DeepSeek-V4-Flash-Base 在 ChineseSimpleQA 等項目上互有勝負。</span>
-            <span class="en">The moat is the choice to ship a base checkpoint: no alignment or refusal policy attached, so an institution builds its own post-training from zero — a selling point for customers unwilling to inherit a foreign lab's value settings. The weakness is a bespoke licence (License Agreement v1.0) rather than Apache 2.0, which costs more in legal review than Inkling, and it trades wins with DeepSeek-V4-Flash-Base on items such as ChineseSimpleQA.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>Google / Alphabet</strong><br><span class="zh-inline">同時打模型、影片與電力三場</span><span class="en-inline">Fighting on models, video and electricity at once</span></td>
+          <td><strong>Google / Alphabet</strong><br><span class="zh-inline">同時打模型、影片與電力三場</span></td>
           <td>
             <span class="zh">11/5 同日：Gemini Omni 1.2 Flash（15 秒片長、720p 每秒 0.07 美元、降價 30%、SynthID 水印）；懷俄明 170 億美元資料中心配 702 MW 燃料電池與 CCS，累計簽約 CCS 容量近 1 GW。<a href="https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/" target="_blank" rel="noopener">Google blog</a>／<a href="https://interestingengineering.com/energy/google-wyoming-data-center-702mw-fuel-cell-carbon-capture" target="_blank" rel="noopener">Interesting Engineering 2026-11-05</a></span>
-            <span class="en">Both on 5 Nov: Gemini Omni 1.2 Flash (15-second clips, $0.07/second at 720p, a 30% cut, SynthID watermarking); a $17bn Wyoming data centre paired with 702 MW of fuel cells and CCS, taking contracted CCS capacity to nearly 1 GW. <a href="https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/" target="_blank" rel="noopener">Google blog</a> / <a href="https://interestingengineering.com/energy/google-wyoming-data-center-702mw-fuel-cell-carbon-capture" target="_blank" rel="noopener">Interesting Engineering 2026-11-05</a></span>
           </td>
           <td>
             <span class="zh">護城河是垂直整合到發電端——當許可與電網成為真實限制，自帶 702 MW 與 CCS 的玩家才能照原計畫擴張。弱點是這套投資的回收取決於需求曲線不轉向，而影片降價 30% 也顯示該層正在快速商品化。</span>
-            <span class="en">The moat is vertical integration down to generation — when permitting and the grid become real constraints, only a player bringing its own 702 MW and CCS expands on schedule. The weakness is that the payback depends on the demand curve not turning, and a 30% price cut in video shows that layer commoditising fast.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>Meta</strong><br><span class="zh-inline">買下 agent 編排層</span><span class="en-inline">Buying the agent orchestration layer</span></td>
+          <td><strong>Meta</strong><br><span class="zh-inline">買下 agent 編排層</span></td>
           <td>
             <span class="zh">11/4 確認收購 Conductor（2024 年成立、2025 年夏天推出核心產品，創辦人兼執行長 Charlie Holtz），金額未揭露；核心功能維持到明年初，<strong>雲端服務 11/20 關閉</strong>並開始刪除用戶雲端資料。<a href="https://techcrunch.com/2026/11/04/meta-acquires-ai-coding-startup-conductor/" target="_blank" rel="noopener">TechCrunch 2026-11-04</a></span>
-            <span class="en">Confirmed the acquisition of Conductor on 4 Nov (founded 2024, core product launched summer 2025, founder-CEO Charlie Holtz), terms undisclosed; core features continue into early next year, while <strong>the cloud service shuts on 20 Nov</strong> and user cloud data deletion begins. <a href="https://techcrunch.com/2026/11/04/meta-acquires-ai-coding-startup-conductor/" target="_blank" rel="noopener">TechCrunch 2026-11-04</a></span>
           </td>
           <td>
             <span class="zh">這筆交易的邏輯是：編排層調度的是 Anthropic 與 OpenAI 的 agent，所以買下它等於在不擁有最強模型的情況下掌握工作流入口。弱點是金額、人員與整合計畫全未公開，無法判斷是人才收購還是技術收購。</span>
-            <span class="en">The logic: the orchestration layer dispatches Anthropic's and OpenAI's agents, so buying it captures the workflow entry point without owning the strongest model. The weakness is that terms, team and integration plan are all undisclosed, so acqui-hire versus technology purchase cannot be told apart.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>METR</strong><br><span class="zh-inline">不是公司，是這場競爭的裁判</span><span class="en-inline">Not a company — the referee of this race</span></td>
+          <td><strong>METR</strong><br><span class="zh-inline">不是公司，是這場競爭的裁判</span></td>
           <td>
             <span class="zh">以約 2.5 個全職人力、十一週（2026/8/12–10/29）完成對 Anthropic 的高權限評估，報告約百頁但大半被塗黑；受訪 11 位研究員中 2 位明確支持超過 2 倍、2 位不同意。<a href="https://metr.org/blog/2026-11-05-anthropic-ai-rd-acceleration-assessment/" target="_blank" rel="noopener">METR 2026-11-05</a></span>
-            <span class="en">Completed a high-access assessment of Anthropic with about 2.5 full-time equivalents over eleven weeks (12 Aug – 29 Oct 2026); the roughly hundred-page report is largely redacted; of 11 researchers interviewed, 2 affirmed >2x acceleration and 2 disagreed. <a href="https://metr.org/blog/2026-11-05-anthropic-ai-rd-acceleration-assessment/" target="_blank" rel="noopener">METR 2026-11-05</a></span>
           </td>
           <td>
             <span class="zh">它的護城河是「唯一拿得到高權限的外部評估者」這個位置。而這也正是它最大的結構弱點：被評估方握有塗黑權與中止查核的權力，裁判的公信力因此被綁在受評者的善意上——這個問題與醫療 AI 的廠商自報稽核完全同構。</span>
-            <span class="en">Its moat is the position of being the only external evaluator granted high access. That is also its deepest structural weakness: the evaluated party holds the power to redact and to cancel a check, so the referee's credibility is tied to the subject's goodwill — structurally identical to the vendor-reported audit problem in medical AI.</span>
           </td>
         </tr>
       </tbody>
@@ -507,7 +442,6 @@
   <div class="panel">
     <p>
       <span class="zh"><strong>今天的競爭結構是一個夾心。</strong>最上層是兩家閉源實驗室在賣「速度」與「受管制的交付通道」，最下層是兩家把幾千億參數往外開、賣「你可以自己驗」，而夾在中間被擠壓的是中型應用商——Conductor 被買走、雲端服務 11/20 關閉，就是中間層的日常。<strong>對醫療機構而言，這個夾心結構其實是好消息</strong>：上層提供有通道管制的高風險能力，下層提供資料不出院的自管選項，而中間層的脆弱性正好提醒採購合約該寫什麼。真正該避免的，是把臨床工作流整個建在中間層。</span>
-      <span class="en"><strong>Today's competitive structure is a sandwich.</strong> At the top, two closed labs sell velocity and regulated delivery channels; at the bottom, two labs push hundreds of billions of parameters outward and sell "you can verify it yourself"; squeezed in between are the mid-sized application vendors — Conductor bought, cloud service closing 20 November, is simply what the middle layer's life looks like. <strong>For healthcare institutions that sandwich is actually good news</strong>: the top supplies high-risk capability with channel control, the bottom supplies a self-hosted option that keeps data in the building, and the middle layer's fragility is a useful prompt for what procurement contracts should say. What to avoid is building an entire clinical workflow on the middle layer.</span>
     </p>
   </div>
 </section>
@@ -516,27 +450,23 @@
   <h2>04 — Taiwan Angle</h2>
   <div class="sec-title">
     <span class="zh">當模型的時間單位變成「週」，台灣真正該搶的不是追上前沿，而是把驗證與自管這兩件事做到比別人快</span>
-    <span class="en">When models are denominated in weeks, Taiwan's real race is not catching the frontier but building validation and self-hosting faster than anyone else</span>
   </div>
 
   <div class="panel">
     <p>
       <span class="zh"><strong>(1) 開放權重直接命中台灣的結構限制。</strong>台灣醫療體系最硬的約束不是算力也不是人才，是病患資料跨境與院外傳輸的法遵成本。今天同時出現的兩個開放權重模型——<a href="https://thinkingmachines.ai/news/inkling-2-small/" target="_blank" rel="noopener">Inkling 2 Small（594B／17B 活躍，宣布下週 Apache 2.0）</a>與 <a href="https://huggingface.co/baidu/ERNIE-5.5-Flash-Base-BF16" target="_blank" rel="noopener">ERNIE 5.5 Flash Base（280B／14B 活躍，FP8 權重）</a>——把這個約束從「做不到」變成「要花多少錢」。14 到 17B 的活躍參數配 FP8，意味著一家醫學中心的機房規模就吃得下；<a href="https://arxiv.org/abs/2604.22768" target="_blank" rel="noopener">一家德國大學醫院（員工逾 10,000 人）的隔離優先部署論文</a>給出了完整範本：以 vLLM 服務開放權重模型、嚴格網段隔離、主機層強制出埠過濾、主動監控阻斷未授權外連，並把自動化隔離與硬化測試做成可公開取用的部署包（GitHub 上的 ukbonn/ukb-gpt），最終取得院方管理層、法遵、資料保護與資安主管的核准，<strong>可處理未去識別化的病患資料</strong>。這條路台灣完全走得通，而且不需要等任何國際廠商開放什麼。但那篇論文的 22 人、一週試用也給了警告：錨定在原文的任務（修正或簡化報告、回答影像指引問題）評價最高，而<strong>從 findings 開放式生成結論產生最多關鍵錯誤，包括臨床相關的幻覺與遺漏</strong>——這正好是最誘人自動化的那一步。</span>
-      <span class="en"><strong>(1) Open weights land directly on Taiwan's structural constraint.</strong> The hardest constraint on Taiwan's health system is neither compute nor talent but the compliance cost of moving patient data across borders or outside the hospital. The two open-weight releases that appeared today — <a href="https://thinkingmachines.ai/news/inkling-2-small/" target="_blank" rel="noopener">Inkling 2 Small (594B / 17B active, Apache 2.0 promised next week)</a> and <a href="https://huggingface.co/baidu/ERNIE-5.5-Flash-Base-BF16" target="_blank" rel="noopener">ERNIE 5.5 Flash Base (280B / 14B active, FP8 weights)</a> — turn that constraint from "impossible" into "how much does it cost". Fourteen to seventeen billion active parameters in FP8 is within one academic medical centre's server room. <a href="https://arxiv.org/abs/2604.22768" target="_blank" rel="noopener">An isolation-first deployment paper from a German university hospital of over 10,000 staff</a> supplies the full template: open-weight models served through vLLM, strict network segmentation, host-enforced egress filtering, active monitoring blocking unauthorised external connections, and automated isolation and hardening tests packaged for public use (ukbonn/ukb-gpt on GitHub) — ending in approval from clinic management, compliance, data protection and information security officers to process <strong>unanonymised patient data</strong>. Taiwan can walk this road without waiting for any international vendor to open anything. But that paper's one-week pilot with 22 clinicians also carries a warning: tasks anchored to source text (correcting or simplifying reports, answering imaging guideline questions) rated highest in utility, while <strong>open-ended generation of conclusions from findings produced the most critical errors, including clinically relevant hallucinations and omissions</strong> — which is precisely the step most tempting to automate.</span>
     </p>
   </div>
 
   <div class="panel">
     <p>
       <span class="zh"><strong>(2) 衛福部的政策節奏與 METR 量到的速率，差了一個數量級。</strong>台灣的智慧醫療布局目前以資料互通為軸：據 <a href="https://udn.com/news/story/7266/9592218" target="_blank" rel="noopener">2026 年 6 月 27 日高醫大論壇的報導</a>，衛福部長石崇良說明的「333 政策」要打破醫院資訊系統藩籬、統一資料格式，醫學中心採「FHIR Box」標準格式，目標<strong>2026 年底</strong>讓病歷全國可互通，2027 與 2028 年延伸到區域醫院與地區醫院，診所與衛生所則提供標準系統模板，並建三個 AI 中心加速院所導入；政務委員陳時中提到的 489 億元，是「健康台灣深耕計畫」五年期的編列，四大重點為改善工作條件、人才培育、智慧醫療與社會責任，明年起進入第二期、更強調跨區合作（該報導未拆分 489 億中有多少流向 333 政策）。把這個時程放在今天的第一則旁邊看，對照非常刺眼：<strong>政策以年為單位推進資料互通，而 METR 量到的能力斜率是每年 +29 分、約 18 個月翻一倍。</strong>這不是說政策錯了——資料互通是不做就什麼都做不了的地基——而是說台灣不能只做地基。最務實的補強是把<strong>驗證基礎設施</strong>和地基並行建：<a href="https://sites.google.com/view/femhccvai/news" target="_blank" rel="noopener">臨床 AI 取證驗證中心（CVVAI）</a>這類機構若能把稽核做成可重複執行的流程而非一次性報告，台灣就能在模型每幾週換一版的環境裡維持可信度。</span>
-      <span class="en"><strong>(2) The ministry's policy tempo and METR's measured rate differ by an order of magnitude.</strong> Taiwan's smart-healthcare build-out currently turns on data interoperability. Per <a href="https://udn.com/news/story/7266/9592218" target="_blank" rel="noopener">coverage of the Kaohsiung Medical University forum on 27 June 2026</a>, Health Minister Shih Chung-liang's "333 policy" aims to break down the walls between hospital information systems and standardise data formats, with medical centres adopting a standard format called "FHIR Box" and a target of <strong>nationwide interoperable records by the end of 2026</strong>, extending to regional and district hospitals in 2027 and 2028, standard system templates for clinics and public health centres, and three AI centres to speed adoption. The NT$48.9bn mentioned by minister without portfolio Chen Shih-chung is a five-year allocation under the Healthy Taiwan Deep Cultivation Plan, with four focus areas — working conditions, talent training, smart healthcare and social responsibility — entering a second phase next year with more emphasis on cross-regional cooperation (the article does not break out how much of the NT$48.9bn goes to the 333 policy). Set that timeline beside today's lead item and the contrast is stark: <strong>policy advances interoperability in years, while the capability slope METR measured runs at +29 points a year and doubles in roughly eighteen months.</strong> That does not make the policy wrong — interoperability is the foundation without which nothing else is possible — it means Taiwan cannot build only the foundation. The practical reinforcement is to build <strong>validation infrastructure</strong> in parallel: if bodies such as the <a href="https://sites.google.com/view/femhccvai/news" target="_blank" rel="noopener">Clinical AI Validation and Verification Center (CVVAI)</a> can turn audits into a repeatable process rather than a one-off report, Taiwan can hold credibility in an environment where models turn over every few weeks.</span>
     </p>
   </div>
 
   <div class="panel">
     <p>
       <span class="zh"><strong>(3) 電力這一題，台灣該抄的是紐約的豁免清單，不是它的暫停令。</strong>Google 在懷俄明一口氣簽下 <a href="https://interestingengineering.com/energy/google-wyoming-data-center-702mw-fuel-cell-carbon-capture" target="_blank" rel="noopener">702 MW 的燃料電池加 CCS</a>，而紐約州對 <a href="https://www.davispolk.com/insights/client-update/new-york-state-enacts-data-center-moratorium" target="_blank" rel="noopener">50 MW 以上的資料中心暫停裁量性許可</a>——台灣的電力條件更接近後者。真正值得照抄的是那份行政命令的細節：<strong>以製造、研究（含量子運算與生醫研究）、教育與醫療照護為主要用途的設施被明文豁免</strong>。這給了台灣一個現成的立法語言：在能源有限的前提下，不是禁止 AI 算力，而是<strong>替醫療與生醫研究算力劃一條優先車道</strong>，並要求非豁免的大型案件完成能源需求、用水與水質、空氣品質、對弱勢社區影響與噪音的評估。對台灣的醫學中心還有一層直接好處：若院內自管模型（見第 1 點）被歸類為醫療照護用途而非商業資料中心，其擴充路徑會比外部商業算力順暢得多。這一節的政策對照屬本報推論，台灣尚無對應規範；<a href="https://n.yam.com/Article/20261105609224" target="_blank" rel="noopener">11 月 20 日在成功大學舉行的「AI 驅動健康台灣高峰論壇」</a>（國科會與衛福部指導，國科會主委吳誠文、衛福部長石崇良、健保署長陳亮妤等人出席，議程含法律風險、責任界定與法規調適）正是把這些問題擺上桌的場合。</span>
-      <span class="en"><strong>(3) On electricity, what Taiwan should copy from New York is the exemption list, not the moratorium.</strong> Google signed <a href="https://interestingengineering.com/energy/google-wyoming-data-center-702mw-fuel-cell-carbon-capture" target="_blank" rel="noopener">702 MW of fuel cells plus CCS</a> in Wyoming in one go, while New York <a href="https://www.davispolk.com/insights/client-update/new-york-state-enacts-data-center-moratorium" target="_blank" rel="noopener">suspended discretionary permits for data centres at 50 MW and above</a> — and Taiwan's power position resembles the latter. What deserves copying is the detail of that order: <strong>facilities used primarily for manufacturing, research including quantum computing and biomedical research, education and medical care are expressly exempt</strong>. That hands Taiwan ready-made legislative language: under an energy constraint, do not ban AI compute — <strong>draw a priority lane for medical and biomedical research compute</strong>, and require non-exempt large projects to assess energy demand, water use and quality, air quality, impacts on disadvantaged communities and noise. There is a direct benefit for Taiwan's academic medical centres too: if a self-hosted in-house model (see point 1) is classified as medical-care use rather than a commercial data centre, its expansion path is far smoother than external commercial compute. This policy comparison is this report's own inference — Taiwan has no corresponding rule yet — and the <a href="https://n.yam.com/Article/20261105609224" target="_blank" rel="noopener">AI-Driven Healthy Taiwan Summit at National Cheng Kung University on 20 November</a> (guided by the National Science and Technology Council and the Ministry of Health and Welfare, with NSTC Minister Wu Cheng-wen, Health Minister Shih Chung-liang and NHIA Director-General Chen Liang-yu among the speakers, and an agenda covering legal risk, allocation of liability and regulatory adaptation) is precisely the venue for putting these questions on the table.</span>
     </p>
   </div>
 </section>
@@ -545,29 +475,28 @@
   <h2>05 — Further Reading</h2>
   <div class="sec-title">
     <span class="zh">五篇都是原始文件或原始論文，不是二手報導；挑選標準是「讀完會改變你對某件事的判斷」</span>
-    <span class="en">Five primary documents and papers rather than secondary coverage, chosen because reading each one changes a judgement</span>
   </div>
 
   <ol class="reading">
     <li>
       <a href="https://metr.org/blog/2026-11-05-anthropic-ai-rd-acceleration-assessment/" target="_blank" rel="noopener">Independent Assessment of AI R&amp;D Acceleration at Anthropic in October 2026 — METR (2026-11-05)</a>
-      <p class="why"><span class="zh">今年最值得逐字讀的一份文件，但要讀的不是 2 倍這個數字，而是 METR 如何在證據被大半塗黑的情況下仍把不確定性寫清楚——包括它自承瓶頸判斷「信心低」、承認評估期間觀點改過數次、以及明列高估與低估的理由。這是在不可查核的條件下做誠實評估的範本，醫療 AI 的廠商稽核該學的是這個文體。</span><span class="en">The document of the year to read line by line — but what to read is not the figure 2x, it is how METR writes its uncertainty plainly while most of its evidence is redacted: conceding low confidence on bottlenecks, admitting its view changed several times during the assessment, and listing the reasons it may have over- and under-estimated. It is a model of honest assessment under unverifiable conditions, and the genre that vendor audits in medical AI should imitate.</span></p>
+      <p class="why"><span class="zh">今年最值得逐字讀的一份文件，但要讀的不是 2 倍這個數字，而是 METR 如何在證據被大半塗黑的情況下仍把不確定性寫清楚——包括它自承瓶頸判斷「信心低」、承認評估期間觀點改過數次、以及明列高估與低估的理由。這是在不可查核的條件下做誠實評估的範本，醫療 AI 的廠商稽核該學的是這個文體。</span></p>
     </li>
     <li>
       <a href="https://arxiv.org/abs/2604.22768" target="_blank" rel="noopener">Secure On-Premise Deployment of Open-Weights Large Language Models in Radiology: An Isolation-First Architecture with Prospective Pilot Evaluation — Nowak et al., arXiv:2604.22768 (2026-03-25)</a>
-      <p class="why"><span class="zh">今天兩則開放權重新聞的實作對照組，也是本報認為台灣醫學中心最該先讀的一篇。11 位作者、一家逾萬人的德國大學醫院，用 vLLM 服務 DeepSeek-R1，靠網段隔離與主機層出埠過濾換到法遵、資料保護與資安三方核准以處理未去識別化資料；22 人一週試用的結論同樣重要：錨定原文的任務最有用，開放式生成結論最容易出現臨床相關的幻覺與遺漏。部署包公開在 GitHub（ukbonn/ukb-gpt）。</span><span class="en">The working counterpart to today's two open-weight stories, and the paper Taiwanese academic medical centres should read first. Eleven authors at a German university hospital of over 10,000 staff serve DeepSeek-R1 through vLLM, trading network segmentation and host-enforced egress filtering for sign-off from compliance, data protection and information security to process unanonymised data. The one-week pilot with 22 clinicians matters as much: text-anchored tasks proved most useful, while open-ended conclusion generation produced the most clinically relevant hallucinations and omissions. The deployment package is public on GitHub (ukbonn/ukb-gpt).</span></p>
+      <p class="why"><span class="zh">今天兩則開放權重新聞的實作對照組，也是本報認為台灣醫學中心最該先讀的一篇。11 位作者、一家逾萬人的德國大學醫院，用 vLLM 服務 DeepSeek-R1，靠網段隔離與主機層出埠過濾換到法遵、資料保護與資安三方核准以處理未去識別化資料；22 人一週試用的結論同樣重要：錨定原文的任務最有用，開放式生成結論最容易出現臨床相關的幻覺與遺漏。部署包公開在 GitHub（ukbonn/ukb-gpt）。</span></p>
     </li>
     <li>
       <a href="https://deploymentsafety.openai.com/gpt-6-cyber" target="_blank" rel="noopener">GPT-6 Cyber system card — OpenAI Deployment Safety (2026-11-05)</a>
-      <p class="why"><span class="zh">把它當成「受管制能力如何交付」的制度文件讀，而不是當成 benchmark 表。值得抄下來的是那組控制清單：身分驗證、SSO、多因素、API 的 IP 允許清單、agent 工作流沙箱化加動作審查——這幾乎就是醫院把 agent 接上 EHR 前該有的最低要求。順便注意 FrontierCyber 上特化版反而輸給通用版，提醒讀者別單挑一組 benchmark 下結論。</span><span class="en">Read it as an institutional document on how regulated capability gets delivered, not as a benchmark table. The control list is what to copy: identity verification, SSO, multi-factor, API IP allowlisting, sandboxed agent workflows with action review — very nearly the minimum a hospital needs before wiring an agent into an EHR. Note too that the specialised model loses to the general one on FrontierCyber, a reminder not to conclude anything from a single benchmark set.</span></p>
+      <p class="why"><span class="zh">把它當成「受管制能力如何交付」的制度文件讀，而不是當成 benchmark 表。值得抄下來的是那組控制清單：身分驗證、SSO、多因素、API 的 IP 允許清單、agent 工作流沙箱化加動作審查——這幾乎就是醫院把 agent 接上 EHR 前該有的最低要求。順便注意 FrontierCyber 上特化版反而輸給通用版，提醒讀者別單挑一組 benchmark 下結論。</span></p>
     </li>
     <li>
       <a href="https://thinkingmachines.ai/news/inkling-2-small/" target="_blank" rel="noopener">Inkling 2 Small — Thinking Machines Lab (2026-11-05)</a>
-      <p class="why"><span class="zh">讀這篇是為了訓練流程那幾段，不是為了分數。8.4T tokens／68 小時／GB300 NVL72／原生 NVFP4，加上聯合 RL 的 1,075 步、1,700 萬 rollout、2,048 顆 GPU、4×10²³ FLOPs——這種顆粒度的揭露讓外部能真正估算成本與可複製性，在前沿實驗室裡非常罕見。對照 METR 那篇被塗黑的報告讀，更能看出「透明度」在今天已經是一種競爭策略。</span><span class="en">Read this for the training sections, not the scores. 8.4T tokens, 68 hours, GB300 NVL72 racks, native NVFP4, plus a joint RL run of 1,075 steps, 17 million rollouts, 2,048 GPUs and 4×10²³ FLOPs — disclosure at this granularity lets outsiders actually estimate cost and reproducibility, which is rare among frontier labs. Read against METR's redacted report, it shows how far transparency has itself become a competitive strategy.</span></p>
+      <p class="why"><span class="zh">讀這篇是為了訓練流程那幾段，不是為了分數。8.4T tokens／68 小時／GB300 NVL72／原生 NVFP4，加上聯合 RL 的 1,075 步、1,700 萬 rollout、2,048 顆 GPU、4×10²³ FLOPs——這種顆粒度的揭露讓外部能真正估算成本與可複製性，在前沿實驗室裡非常罕見。對照 METR 那篇被塗黑的報告讀，更能看出「透明度」在今天已經是一種競爭策略。</span></p>
     </li>
     <li>
       <a href="https://www.davispolk.com/insights/client-update/new-york-state-enacts-data-center-moratorium" target="_blank" rel="noopener">New York State enacts data center moratorium — Davis Polk client update (2026-07)</a>
-      <p class="why"><span class="zh">今天唯一一篇不是本週發生的推薦，但值得補讀：它把紐約第 62 號行政命令的門檻（50 MW）、暫停範圍（DEC 裁量性許可，不含地方政府核准與例行性行政行為）、以及豁免清單（製造、研究含生醫、教育、醫療照護）一條條拆開。在台灣開始討論資料中心用電規範之前，先看懂一份已經上路的條文，比看十篇評論有用。</span><span class="en">The one recommendation here that did not happen this week, but worth catching up on: it unpacks New York's Executive Order 62 clause by clause — the 50 MW threshold, the scope of the pause (discretionary DEC permits, excluding local approvals and ministerial actions), and the exemption list (manufacturing, research including biomedical, education, medical care). Before Taiwan starts debating power rules for data centres, understanding one text already in force beats ten commentaries.</span></p>
+      <p class="why"><span class="zh">今天唯一一篇不是本週發生的推薦，但值得補讀：它把紐約第 62 號行政命令的門檻（50 MW）、暫停範圍（DEC 裁量性許可，不含地方政府核准與例行性行政行為）、以及豁免清單（製造、研究含生醫、教育、醫療照護）一條條拆開。在台灣開始討論資料中心用電規範之前，先看懂一份已經上路的條文，比看十篇評論有用。</span></p>
     </li>
   </ol>
 </section>
@@ -576,7 +505,6 @@
   <h2>06 — References</h2>
   <div class="sec-title">
     <span class="zh">參考文獻</span>
-    <span class="en">References</span>
   </div>
 
   <div class="panel">
@@ -600,7 +528,6 @@
     </ol>
     <div class="note">
       <span class="zh"><strong>編輯說明：</strong>（1）本期主線的兩份核心文件（METR 評估、GPT-6 Cyber 系統卡）均讀自原始發布頁，但 METR 那份約十萬字的頁面本報只讀到前 100,000 字元，末 28,445 字元未讀；Inkling 2 Small 頁面同樣只讀到前 100,000 字元，其 Limitations 一節與部分基準表未納入。（2）Claude Personal Finance 一則依據 Unite.AI 的二手整理而非 Anthropic 官方說明頁，條款與數字請以官方文件為準。（3）ERNIE 5.5 Flash Base 的模型卡未載明釋出日期，11/5 取自多家二手報導與 Hub 上線時間；其全部基準為 Baidu 自報的 base model few-shot 口徑。（4）GPT-6 Cyber、Inkling 2 Small、ERNIE 5.5 Flash Base 的基準數字<strong>全部為廠商自報、未經第三方稽核</strong>；METR 報告中的核心證據大半被 Anthropic 塗黑，且原訂的算力配置查核被中途取消。（5）Google 懷俄明案的燃料電池與 CCS 細節引自 Interesting Engineering 而非 Google 官方公告。（6）本環境無法擷取 Reuters 與 The Verge，故 11/5 Reuters 的資料中心限制整理與 Perplexity Teammates 一則<strong>均未納入本期</strong>，不引用其內容；紐約州資料中心暫停令為 2026 年 7 月舊聞，在本期作為對照背景而非本週事件。（7）台灣視角的「333 政策」與 489 億預算引自 2026 年 6 月 27 日的報導，屬背景而非本週消息；該節的政策對照（醫療算力優先車道）為本報推論，台灣目前並無對應規範。（8）所有「對醫療的意義」段落，除德國大學醫院那篇論文外，皆為本報依公開資料所做的外推；今日四個模型與產品發布<strong>無一附帶醫療 benchmark</strong>。（9）The Neuron 的每日彙整僅用於線索發掘，所有據以撰寫的事實均已回到原始發布頁查證。</span>
-      <span class="en"><strong>Editor's note:</strong> (1) Both core documents behind today's lead (the METR assessment and the GPT-6 Cyber system card) were read from their original publication pages, but only the first 100,000 characters of METR's roughly 128,000-character page were read, leaving the final 28,445 unread; the Inkling 2 Small page was likewise read only to 100,000 characters, so its Limitations section and part of its benchmark tables are not reflected here. (2) The Claude Personal Finance item rests on Unite.AI's secondary write-up rather than Anthropic's own help pages; terms and figures should be checked against the official documents. (3) The ERNIE 5.5 Flash Base model card carries no explicit release date — the 5 November date comes from secondary coverage and the Hub listing — and all of its benchmarks are Baidu's self-reported base-model few-shot figures. (4) Every benchmark number for GPT-6 Cyber, Inkling 2 Small and ERNIE 5.5 Flash Base is <strong>vendor-reported and not independently audited</strong>; most of the core evidence in METR's report was redacted by Anthropic, and the planned compute-allocation verification was cancelled midway. (5) The fuel-cell and CCS details of Google's Wyoming project come from Interesting Engineering rather than Google's own announcement. (6) Reuters and The Verge could not be retrieved in this environment, so Reuters' 5 November factbox on data-centre restrictions and the Perplexity Teammates launch <strong>are both omitted from this edition</strong> and their content is not cited; New York's data-centre moratorium is from July 2026 and appears here as contrasting background, not as this week's event. (7) The "333 policy" and the NT$48.9bn budget in the Taiwan section come from coverage dated 27 June 2026 and are background rather than this week's news; the policy comparison in that section (a priority lane for medical compute) is this report's own inference, and Taiwan has no corresponding rule at present. (8) Every passage on what something means for medicine, apart from the German university hospital paper, is this report's extrapolation from public material: <strong>not one</strong> of today's four model and product releases carries a medical benchmark. (9) The Neuron's daily digest was used only for lead discovery; every fact written from it was verified back to its original publication page.</span>
     </div>
   </div>
 </section>
@@ -609,7 +536,6 @@
   <div class="foot-row">
     <div>
       <span class="zh">AI／醫療AI 每日新知日報 · 由 Claude 於台北時間每日自動產出 · 本期主題：星期六／廣義 AI 新知<br>本報告內容經來源查證，但不構成投資或醫療建議。所有數據請以原始出處為準。</span>
-      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Saturday / General AI<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
     </div>
     <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com / 返回 peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
   </div>
@@ -622,16 +548,6 @@
 </div>
 
 <script>
-function setLang(l){
-  document.body.classList.remove('lang-zh','lang-en');
-  document.body.classList.add('lang-'+l);
-  document.documentElement.lang = (l==='zh') ? 'zh-Hant' : 'en';
-  document.getElementById('b-zh').classList.toggle('on', l==='zh');
-  document.getElementById('b-en').classList.toggle('on', l==='en');
-  document.title = (l==='zh')
-    ? 'AI／醫療AI 每日新知日報 · 2026-11-07'
-    : 'AI & Medical AI Daily · 2026-11-07';
-}
 function toggleTheme(){
   document.body.classList.toggle('dark');
   document.getElementById('theme-ic').textContent =
@@ -658,5 +574,6 @@ window.addEventListener('scroll', function(){
     .catch(function(){});
 })();
 </script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/en/reports/2026-11-07.html" hreflang="en" rel="alternate" lang="en">English version</a></p>
 </body>
 </html>
