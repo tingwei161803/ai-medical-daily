@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>AI &amp; Medical AI Daily · 2026-11-08</title>
+<meta property="og:url" content="https://ai-medical-daily.peteraim.com/en/reports/2026-11-08.html" />
+<link rel="canonical" href="https://ai-medical-daily.peteraim.com/en/reports/2026-11-08.html" />
+<link rel="alternate" hreflang="zh-Hant" href="https://ai-medical-daily.peteraim.com/reports/2026-11-08.html" />
+<link rel="alternate" hreflang="en" href="https://ai-medical-daily.peteraim.com/en/reports/2026-11-08.html" />
+<link rel="alternate" hreflang="x-default" href="https://ai-medical-daily.peteraim.com/reports/2026-11-08.html" />
+<meta name="description" content="Weekly review: METR put the rate of capability gain at roughly double, about 80% of it AI-driven; Anthropic's IPO valuation may be halved; Doximity found 2.3% of doses wrong while Stony Brook's physicians preferred the AI discharge summary in 95% of cases; and ONC deleted its AI disclosure requirement the same week. Seven days of signals point at one gap — nobody owns the proof. Google's 11/4 multi-method evaluation framework is the only supply-side answer.">
+<meta name="report-date" content="2026-11-08">
+<meta name="report-theme" content="weekly-review">
+<meta name="report-title-zh" content="本週把同一個問題問了七次：誰來證明它可靠——11/5 METR 判定 Anthropic 的能力進步速率約為 18 個月前的 2 倍、約 80% 來自 AI 自身、12 個月內找不到瓶頸，而 Anthropic 把最關鍵的證據大半塗黑；同一天 WSJ 報導其 1.5 兆美元 IPO 估值可能降到 1 兆，S&amp;P 500 單日跌 4.4%、Nasdaq 100 跌 6.3%（2025 年 4 月以來最大），而 11/2 修正版 S-1 攤出 Q3 營收 170 億、九個月淨損 1,040 億（其中 943 億非現金）、合約承諾 8,954 億美元。證據那一端同週給出三組互相打架的讀數：Doximity 對 261,508 筆劑量的稽核顯示至少 2.3% 給錯、每 1,000 個回答約 20 個含嚴重劑量錯誤；Stony Brook 的 60 筆長住院裡醫師在 95% 的個案偏好 AI 寫的出院摘要；而 11/3 ONC 的 HTI-5 定案反向刪掉預測型 AI 的來源屬性揭露。真正的新東西是 11/4 Google 發表健康 AI 多方法評估框架（arXiv:2611.05127）——這是本週唯一一份在問「該怎麼量」而不是「量到多少」的文件">
+<meta name="report-title-en" content="Seven days, one question asked seven ways: who certifies that it works — on 11/5 METR judged Anthropic's rate of capability gain to be roughly 2x what it was 18 months ago, about 80% of it driven by AI itself, with no credible bottleneck inside 12 months, while Anthropic redacted most of the evidence METR called decisive; the same day the WSJ reported its $1.5T IPO valuation may fall toward $1T, the S&amp;P 500 dropped 4.4% and the Nasdaq 100 6.3% (the worst since April 2025), and the 11/2 amended S-1 laid out $17.0B of Q3 revenue, a $104.0B nine-month net loss (of which $94.3B non-cash) and $895.4B in signed commitments. The evidence side produced three readings that contradict each other: Doximity's audit of 261,508 doses found at least 2.3% wrong and about 20 severe dosing errors per 1,000 answers; Stony Brook's physicians preferred the AI-written discharge summary in 95% of 60 long stays; and ONC's HTI-5, finalized 11/3, deleted source-attribute disclosure for predictive AI outright. The genuinely new thing is Google's multi-method evaluation framework for health AI, published 11/4 (arXiv:2611.05127) — the week's only document asking how to measure rather than reporting a measurement">
+<meta name="report-summary-zh" content="本週回顧：METR 說能力進步速率翻倍、約 80% 來自 AI，Anthropic 的 IPO 估值可能腰斬，Doximity 查出 2.3% 的劑量給錯而 Stony Brook 的醫師在 95% 個案偏好 AI 的出院摘要，ONC 同週刪掉 AI 揭露要求——七天的訊號全部指向同一個缺口：沒有人負責證明它可靠。Google 11/4 的多方法評估框架是唯一的供給端回應。">
+<meta name="report-summary-en" content="Weekly review: METR put the rate of capability gain at roughly double, about 80% of it AI-driven; Anthropic's IPO valuation may be halved; Doximity found 2.3% of doses wrong while Stony Brook's physicians preferred the AI discharge summary in 95% of cases; and ONC deleted its AI disclosure requirement the same week. Seven days of signals point at one gap — nobody owns the proof. Google's 11/4 multi-method evaluation framework is the only supply-side answer.">
+<meta property="og:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HJLDQZDK5V');
+</script>
+<link rel="stylesheet" href="/assets/report.css">
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><span>◆</span> <span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <div class="bar-sp"></div>
+    <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
+    <div class="seg">
+      <a href="/reports/2026-11-08.html" hreflang="zh-Hant" lang="zh-Hant" rel="alternate">中文</a>
+      <a class="on" href="/en/reports/2026-11-08.html" hreflang="en" lang="en" aria-current="page">EN</a>
+    </div>
+    <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="kicker">
+    <span class="en-inline">Sunday · Weekly Review &amp; Further Reading</span>
+  </div>
+  <h1>
+    <span class="en">Seven days, one question asked seven ways: who certifies that it works</span>
+  </h1>
+  <div class="dateline">
+    <span class="en-inline">Sunday, November 8, 2026 · Covering Nov 2–8 · Taipei time</span>
+  </div>
+  <p class="lede">
+    <span class="en">Lay the week flat and the unrelated stories turn out to be standing over the same hole. On November 5 <a href="https://metr.org/blog/2026-11-05-anthropic-ai-rd-acceleration-assessment/" target="_blank" rel="noopener">METR published its privileged-access assessment of Anthropic</a>: as of October 2026, the rate of capability gain on well-specified tasks is about 2x the March 2024–October 2025 baseline (1.9x on the AECI measure, 95% CI 1.5–2.8x), METR attributes roughly 80% of it to AI itself, and it finds no credible bottleneck in algorithms, training compute, experiment compute or data over the next 12 months — while Anthropic redacted most of what METR called the decisive evidence. The same day <a href="https://finance.yahoo.com/markets/stocks/articles/anthropic-ipo-valuation-could-fall-162858848.html" target="_blank" rel="noopener">the Wall Street Journal, citing three large investors planning to take part in the IPO</a>, reported the $1.5T valuation may come down toward $1T; the S&amp;P 500 fell 4.4% and the Nasdaq 100 6.3% that day, both the worst since April 2025, with the Philadelphia semiconductor index down 12.3% and NVIDIA down 9.2%. And <a href="https://www.stocktitan.net/articles/anthropic-ipo-amended-s1-2026-guide" target="_blank" rel="noopener">the amended S-1 filed November 2</a> put the books on the table: $17.0B of Q3 revenue against $1.4B a year earlier, a $104.0B nine-month net loss of which $94.3B is a non-cash charge tied to convertible notes, and about $895.4B in signed commitments, $69.8B of it falling due within 12 months of September 30, 2026. On the evidence side the same week returned three readings that fight each other: <a href="https://blog.doximity.com/articles/over-2-of-llm-doses-are-wrong-some-can-be-lethal" target="_blank" rel="noopener">Doximity's audit of 261,508 doses</a> found at least 2.3% wrong and roughly 20 answers per 1,000 carrying a severe dosing error; <a href="https://news.stonybrook.edu/university/sbu-study-ai-may-improve-patient-discharge-summaries/" target="_blank" rel="noopener">Stony Brook's 60 stays of 7–21 days</a> had physicians preferring the AI-written discharge summary in 95% of cases; and <a href="https://www.hhs.gov/press-room/hhs-finalizes-hti-5-deregulatory-rule.html" target="_blank" rel="noopener">ONC's HTI-5, finalized November 3</a>, moved the other way and deleted source-attribute disclosure for predictive AI. Only one genuinely new primary document this week addresses the hole itself: <a href="https://unite.ai/google-publishes-multi-method-framework-for-evaluating-health-ai" target="_blank" rel="noopener">Google's multi-method evaluation framework for health AI, published November 4</a> (arXiv:2611.05127).</span>
+  </p>
+
+  <nav class="toc">
+    <a href="#top"><span class="en-inline">The Week's Eight</span></a>
+    <a href="#product"><span class="en-inline">Product Analysis</span></a>
+    <a href="#company"><span class="en-inline">Companies &amp; Competition</span></a>
+    <a href="#taiwan"><span class="en-inline">Taiwan Angle</span></a>
+    <a href="#reading"><span class="en-inline">Further Reading</span></a>
+    <a href="#refs"><span class="en-inline">References</span></a>
+  </nav>
+</div>
+
+<!-- ============ 01 本週八件事 ============ -->
+<section id="top">
+  <h2>01 — Top Stories</h2>
+  <div class="sec-title">
+    <span class="en">Ranked by force exerted on healthcare, not by news heat. The first three set the next year's institutions; the last five set the next quarter's procurement.</span>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Story of the week</span></span>
+      <span class="tag">METR</span><span class="tag">Anthropic</span><span class="tag">11/05</span>
+    </div>
+    <h3>
+      <span class="en">METR: the rate of capability gain is about 2x its level 18 months ago, roughly 80% of it AI-driven — and the decisive evidence is redacted</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On November 5 <a href="https://metr.org/blog/2026-11-05-anthropic-ai-rd-acceleration-assessment/" target="_blank" rel="noopener">METR published its privileged-access assessment of AI R&amp;D acceleration at Anthropic</a>: as of October 2026 the rate of capability gain on well-specified tasks is about 2x the March 2024–October 2025 baseline, 1.9x on the AECI measure (95% CI 1.5–2.8x), with the annualized trend rising from +15 to +29 points per year and the breakpoint placed at October 7, 2025. METR estimates about 80% of that acceleration comes from AI itself, and says it can find no credible bottleneck over the next 12 months across algorithms, training compute, experiment compute or data. Anthropic redacted most of what METR identified as the decisive evidence.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Validation in medicine runs on a scale of years: prospective trials, IRB review, multi-site external validation, FDA clearance. If the generational turnover of models has genuinely doubled, the model that finished validation and the model actually in use come apart permanently — which is not an implementation problem but a mismatch of institutional time constants. Every document this week on liability, payment and certification implicitly assumes a model can be frozen long enough to be inspected.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">The "about 80% from AI" figure is METR's estimate, not a measurement, and the 1.5–2.8x confidence interval is itself wide; the supporting evidence METR called decisive was redacted by the party being assessed, so the report's auditability falls short of the strength of its conclusion.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://metr.org/blog/2026-11-05-anthropic-ai-rd-acceleration-assessment/" target="_blank" rel="noopener">METR, 2026-11-05</a> · <a href="https://ai-medical-daily.peteraim.com/reports/2026-11-07.html" target="_blank" rel="noopener">本報 11/07</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Capital</span></span>
+      <span class="tag">Anthropic</span><span class="tag">S-1/A</span><span class="tag">11/02–11/06</span>
+    </div>
+    <h3>
+      <span class="en">One week: $17.0B of Q3 revenue, $895.4B of commitments, a valuation possibly falling from $1.5T to $1T — and the market's worst single day since April 2025</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On November 2 <a href="https://www.stocktitan.net/articles/anthropic-ipo-amended-s1-2026-guide" target="_blank" rel="noopener">Anthropic filed an amended S-1 (S-1/A)</a>: Q3 (July–September) revenue of $17.0B, more than 12x the $1.4B a year earlier and about 47% above the prior quarter; a $23.3B quarterly net loss and a $104.0B nine-month net loss, of which $94.3B is a non-cash charge tied to convertible notes and similar instruments; and a $567M operating loss against a $974M operating profit in Q2. The filing discloses for the first time about $895.4B in total signed commitments, with seven named suppliers accounting for $643.8B and Broadcom, Google, SpaceX's AI unit and Amazon each above $100B; $69.8B falls due within 12 months of September 30, 2026, and Google's named amount was revised up to about $121.3B from about $114.5B in the October version. The amendment also carries a warning that the company's estimates "indicate that we may imminently meet" a safety-policy threshold, while stating that no current model exceeds it. On November 5 <a href="https://finance.yahoo.com/markets/stocks/articles/anthropic-ipo-valuation-could-fall-162858848.html" target="_blank" rel="noopener">the Wall Street Journal, citing three large investors planning to participate</a>, reported the $1.5T valuation may fall toward $1T and the raise from $100B to roughly $80B; the annualized revenue run rate passed $80B at the end of October, with $146.6B of cash as of September 30. The same day the S&amp;P 500 fell 4.4%, the Nasdaq 100 6.3%, the Philadelphia semiconductor index 12.3% and NVIDIA 9.2%.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This continues the fork described in <a href="https://ai-medical-daily.peteraim.com/reports/2026-11-03.html" target="_blank" rel="noopener">our November 3 edition</a>, and widens it: valuations in general-purpose AI are contracting (OpenAI cut this round's target from $30B to $20B, its valuation from $1.4T to $1.25T) while unit economics in medical AI are turning positive (Tempus posted its first positive adjusted EBITDA, Hinge Health delivered 52% growth at an 87% GAAP gross margin). For hospitals the practical meaning is that the cost of capital at the model layer is rising, and that cost eventually arrives as license prices and per-encounter pricing. $895.4B of signed commitments means the model vendors have no room to discount.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">The halved valuation is the WSJ citing three unnamed investors, not a priced outcome; $94.3B of the $104.0B loss is a non-cash charge, so reading it as a burn rate is a mistake. The November 5 selloff partly recovered the following day.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.stocktitan.net/articles/anthropic-ipo-amended-s1-2026-guide" target="_blank" rel="noopener">StockTitan, 2026-11-02</a> · <a href="https://finance.yahoo.com/markets/stocks/articles/anthropic-ipo-valuation-could-fall-162858848.html" target="_blank" rel="noopener">Decrypt／Yahoo Finance, 2026-11-06</a> · <a href="https://finance.yahoo.com/technology/live/anthropic-ipo-live-updates-frontier-ai-lab-discloses-revenue-and-risks-in-highly-anticipated-s-1-filing-141702607.html" target="_blank" rel="noopener">Yahoo Finance（S-1 原始揭露）</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Regulation</span></span>
+      <span class="tag">ONC</span><span class="tag">AMA</span><span class="tag">CMS</span><span class="tag">11/03–11/06</span>
+    </div>
+    <h3>
+      <span class="en">The same week Washington loosened one hand and raised the price with the other: HTI-5 deleted 14 certification criteria, the AMA pushed the duty of care onto hospitals, and CMS's 2027 OPPS final rule landed on November 6</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On November 3 <a href="https://www.hhs.gov/press-room/hhs-finalizes-hti-5-deregulatory-rule.html" target="_blank" rel="noopener">HHS finalized ONC's HTI-5 deregulatory rule</a>: of 60 certification criteria, 14 are removed and 7 revised, among them source-attribute disclosure for predictive AI; HHS estimates savings above $1.5B, effective December 28. The same day <a href="https://healthsystemcio.com/2026/10/29/ama-clinical-ai-liability/" target="_blank" rel="noopener">the AMA's clinical-AI liability framework</a> stated plainly that warnings and disclaimers are "not enough," that a hospital's duty of care covers selection, validation, training and ongoing monitoring, and that developers and deployers share it. Senator Cassidy's PATIENT AI Act discussion draft would have HHS build a Medicare coverage framework, payment methods and billing codes for AI services and have CMMI test an autonomous-AI payment model, with <a href="https://cei.org/blog/this-week-in-health-care-policy-october-31-november-6-2026/" target="_blank" rel="noopener">comments due December 1</a>. On November 6 <a href="https://cei.org/blog/this-week-in-health-care-policy-october-31-november-6-2026/" target="_blank" rel="noopener">CMS published CMS-1850-F, the 2027 OPPS final rule</a>, tying 340B drug payment to acquisition cost and expanding site-neutral payment for imaging.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Stack the three documents and the direction is unmistakable: the federal government no longer promises that certified AI is safe, yet the AMA and tort law still require someone to answer for it. The difference lands on the hospital's AI governance committee — the party most directly exposed to story one, where validation cannot keep pace with the models. Meanwhile the OPPS expansion of site-neutral payment thins the marginal revenue on outpatient imaging, so hospitals absorb a new monitoring duty in the same year their revenue narrows.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.hhs.gov/press-room/hhs-finalizes-hti-5-deregulatory-rule.html" target="_blank" rel="noopener">HHS, 2026-11-03</a> · <a href="https://cei.org/blog/this-week-in-health-care-policy-october-31-november-6-2026/" target="_blank" rel="noopener">CEI health policy weekly, 2026-11-06</a> · <a href="https://ai-medical-daily.peteraim.com/reports/2026-11-04.html" target="_blank" rel="noopener">本報 11/04</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Safety</span></span>
+      <span class="tag">Doximity</span><span class="tag">261,508 doses</span><span class="tag">10/29</span>
+    </div>
+    <h3>
+      <span class="en">The week's number that should stop a hospital: nine 2026 models, 2,204 drugs, 261,508 doses, at least 2.3% wrong</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en"><a href="https://blog.doximity.com/articles/over-2-of-llm-doses-are-wrong-some-can-be-lethal" target="_blank" rel="noopener">Doximity's dosing audit, published October 29</a>: nine 2026-vintage models, 2,204 drugs, 261,508 doses, at least 2.3% wrong; roughly 20 answers per 1,000 carry a severe dosing error and about 30.5 fall in NCC MERP categories E–H; of the errors caught, 43.8% were severe and 3.4% potentially lethal; drugs approved after 2024 carried 5.1x the odds of an error (95% CI 3.9–6.5).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">The audit points the opposite way from this week's Stony Brook discharge-summary study, and both are right: an LLM beats a tired resident at rewriting information it has been given, and misses systematically when it has to recall a precise number — the newer the drug, the worse, which is a direct consequence of how training data is distributed in time. A hospital's deployment question is therefore not whether the model is good enough but whether the task is rewriting or recall.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">This is research published by Doximity itself, and in the same week its earnings called AI Search an "eight-figure bookings product" — the audit's finding favors the sourced-and-grounded positioning it sells, so treat it as an interested party's own account.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://blog.doximity.com/articles/over-2-of-llm-doses-are-wrong-some-can-be-lethal" target="_blank" rel="noopener">Doximity Engineering Blog, 2026-10-29</a> · <a href="https://ai-medical-daily.peteraim.com/reports/2026-11-05.html" target="_blank" rel="noopener">本報 11/05</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">New this week</span></span>
+      <span class="tag">Google for Health</span><span class="tag">arXiv:2611.05127</span><span class="tag">11/04</span>
+    </div>
+    <h3>
+      <span class="en">Google publishes a multi-method framework for evaluating health AI: three methods stacked, with thresholds set by clinical risk rather than a universal cutoff</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On November 4 <a href="https://unite.ai/google-publishes-multi-method-framework-for-evaluating-health-ai" target="_blank" rel="noopener">Sarah Montgomery-Taylor, clinical evaluation lead at Google for Health, published a framework for evaluating general-purpose generative AI in health</a> (whitepaper at arXiv:2611.05127, with Elizabeth McGlynn and Dana Gelb Safran). It stacks three methods: closed-question benchmarks such as multiple choice serve only as a baseline, AI autoraters score open-ended answers against written rubrics, and expert human review including red-teaming handles complex cases and safety boundaries. Procedurally it requires mapping a "Critical User Journey" first — who uses the system, what they are trying to achieve, which steps they pass through, and how it is likely to be misused — before test cases are chosen; each application is assessed on accuracy, safety (weighing both severity and likelihood of harm) and usefulness; passing thresholds are set gate by gate according to that application's clinical risk rather than a universal cutoff; and evaluation runs before release through shadow trials and clinical pilots and continues as post-deployment monitoring. The authors note two physicians can diverge by 30–40% or more on a rating task, so rater variability has to be controlled for.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Every other document this week reports a measurement; only this one asks how to measure. It takes on METR's time-constant problem head-on by breaking evaluation into continuing gates rather than a one-time certification, which in principle can run at the pace of model turnover. It also fills the gap ONC left: once the federal disclosure requirement is deleted, what a hospital needs is exactly an evaluation method it can write into a procurement contract. But it comes from a model vendor, not a regulator and not a third party — who audits the audit method is a question this week still leaves unanswered.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://unite.ai/google-publishes-multi-method-framework-for-evaluating-health-ai" target="_blank" rel="noopener">Unite.AI, 2026-11-04</a> · <a href="https://arxiv.org/abs/2611.05127" target="_blank" rel="noopener">arXiv:2611.05127</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">New this week</span></span>
+      <span class="tag">Stony Brook</span><span class="tag">Penn Medicine</span><span class="tag">11/02</span>
+    </div>
+    <h3>
+      <span class="en">Two clinical readings where AI came out ahead: physicians preferred the AI discharge summary in 95% of 60 long stays, and Percival mined 400,000 CTs for diseases the scan was never ordered to find</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On November 2 <a href="https://news.stonybrook.edu/university/sbu-study-ai-may-improve-patient-discharge-summaries/" target="_blank" rel="noopener">Stony Brook described its discharge-summary study, published in npj Digital Medicine</a>: for 60 internal medicine stays of 7 to 21 days at its own hospital, LLM-generated discharge summaries were paired against human-authored ones and assessed by hospitalists and primary care physicians, who preferred the AI version in 95% of cases and scored it higher on overall quality, readability, accuracy and completeness, with fewer missing clinical details; primary care physicians found it easier to explain to patients and caregivers and more useful for follow-up. Both kinds of summary contained errors, but reviewers found no statistically significant difference in the estimated severity or likelihood of harm. Lead author Tyler Osborne is a computer science PhD candidate; Rachel Wong and Fusheng Wang are co-corresponding authors. At the other end, <a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/penn-medicine-ai-trained-on-400k-ct-scans-spots-hidden-disease/" target="_blank" rel="noopener">Becker's reported on October 30 on Penn Medicine's Percival</a>, also in npj Digital Medicine: trained on more than 400,000 CT images from nearly 52,000 patients in the Penn Medicine BioBank, it runs in the background and surfaces signs of disease the scan was not ordered to look for, including atrial fibrillation and chronic kidney disease, outperforming two other AI imaging models across 279 conditions on chest CT and 230 on abdomen/pelvis CT, with the widest margins in lung cancer and acute lymphoid leukemia.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Together these two studies locate AI in medicine more precisely than any benchmark: its edge lies in recomposing information already in hand into something more readable (the discharge summary) and in opportunistic screening of data already collected but never read for that purpose (incidental findings on CT) — neither of which asks the model to know a fact it was not given. This week's Doximity dosing audit is the exact converse.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">Stony Brook is a single hospital, 60 cases, with the model unnamed, and the authors themselves stress that "physician review and verification remain essential"; Percival is still in preclinical testing, its broader findings have not been validated on data from outside Penn Medicine, the team hopes to begin clinical testing only in early 2027, and the Becker's write-up reports no accuracy metric at all.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://news.stonybrook.edu/university/sbu-study-ai-may-improve-patient-discharge-summaries/" target="_blank" rel="noopener">Stony Brook University News, 2026-11-02</a> · <a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/penn-medicine-ai-trained-on-400k-ct-scans-spots-hidden-disease/" target="_blank" rel="noopener">Becker's Hospital Review, 2026-10-30</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Distribution</span></span>
+      <span class="tag">OpenEvidence</span><span class="tag">Doximity</span><span class="tag">STAT</span><span class="tag">11/04–11/05</span>
+    </div>
+    <h3>
+      <span class="en">The clinical AI search fight moves from answers to education and access: OpenEvidence ships Learn for free, Doximity's AI Search becomes an eight-figure product, and STAT asks whether hospitals block it or buy in</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On November 4 <a href="https://www.unite.ai/openevidence-launches-learn-a-free-ai-medical-education-platform/" target="_blank" rel="noopener">OpenEvidence launched Learn, a free medical education platform</a>: Test Prep carries more than 50,000 board-style questions across USMLE, COMLEX and specialty and subspecialty exams, Preceptor walks users through a simulated patient by Socratic questioning, Flashcards are reviewed at spaced intervals, and CME credit is awarded for clinical questions users have already asked inside OpenEvidence, with certificates held in one place; all four draw on the same peer-reviewed evidence and guidelines behind its clinical answers. Johns Hopkins School of Medicine and Penn's Perelman School of Medicine were named as launch partners. On November 5 <a href="https://finance.yahoo.com/healthcare/articles/doximity-inc-docs-q2-2027-052105623.html" target="_blank" rel="noopener">Doximity reported FY2027 Q2 results</a>: $175M of revenue, up 4%, at a 51% adjusted EBITDA margin, with non-GAAP gross margin down to 88% from 92% the prior quarter, attributed to higher AI investment costs; more than 190 health systems are now AI clients, up from 165, including 10 of the top 20 US hospitals; 16 of the top 20 pharma companies have bought AI Search with three more in contracting, described as "becoming an eight-figure bookings product," and the CFO said that revenue is primarily pharmaceutical advertising; quarterly active workflow prescribers grew 34% year over year to about half of the roughly 1.8 million US prescribers, more than 900,000. Also on November 5, <a href="https://www.statnews.com/2026/11/05/doctors-use-ai-chatbots-hipaa-compliance-questions/" target="_blank" rel="noopener">STAT reported the dilemma from the hospital side</a>: Monument Health in South Dakota and Wyoming blocked OpenEvidence outright, its CIO Patrick Woodard absorbing the clinical pushback, after a heavy user there stored more than a hundred patient records in OpenEvidence and used it to help make medical decisions.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Taken together, these three make clear that clinical AI search is no longer a product contest but a contest over access. OpenEvidence uses free education to lock in residents, pushing its distribution channel back to before licensure; Doximity turns a roster of 1.8 million prescribers into eight-figure pharma advertising bookings; and hospitals find they are neither the buyer nor the gatekeeper, because physicians bring the tool to work themselves. The Nature Health study cited in <a href="https://ai-medical-daily.peteraim.com/reports/2026-11-06.html" target="_blank" rel="noopener">our November 6 edition</a> — 883,403 answers, a first recommendation converging on a single brand name 97.5% of the time, branded drugs recommended at 20.5x the odds of generics — is the price of that revenue model.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.unite.ai/openevidence-launches-learn-a-free-ai-medical-education-platform/" target="_blank" rel="noopener">Unite.AI, 2026-11-04</a> · <a href="https://finance.yahoo.com/healthcare/articles/doximity-inc-docs-q2-2027-052105623.html" target="_blank" rel="noopener">Yahoo Finance／GuruFocus, 2026-11-05</a> · <a href="https://www.statnews.com/2026/11/05/doctors-use-ai-chatbots-hipaa-compliance-questions/" target="_blank" rel="noopener">STAT, 2026-11-05（付費牆）</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Funding &amp; M&amp;A</span></span>
+      <span class="tag">Ellipsis Health</span><span class="tag">nPhase</span><span class="tag">PulseAI</span><span class="tag">11/02–11/07</span>
+    </div>
+    <h3>
+      <span class="en">The middle of the market is consolidating: eight health AI rounds since October total $332.5M, and Ellipsis Health bought Kouper Health for its EHR wiring</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en"><a href="https://fourweekmba.com/ai-8-health-ai-rounds-took-332-5m-since-october-openai-in-1/" target="_blank" rel="noopener">Eight health AI rounds since October total $332.5M</a>: Suki's $90M Series E (10/13), Scarlet's $50M Series B (10/12), Coherence Neuro's $45M seed (10/21, with the OpenAI Startup Fund and Founders Fund), Healthleap's $38M (10/7), Vitalize's $31M Series A (10/6), nPhase's $30M Series D (11/2, led by Viking Global and its first equity raise since 2017), Vera Health's $28.5M Series A (10/27), and Midstream Health's $20M Series A (11/3, led by Valtruis with a16z, Foundry and CommonSpirit Ventures, $29.2M raised in all, serving customers representing over $100B in annual operating expenses across more than 250 hospitals). On the M&amp;A side, <a href="https://www.healthcare.digital/single-post/nelson-advisors-strategic-analysis-of-ellipsis-health-s-acquisition-of-kouper-health-and-the-platfo" target="_blank" rel="noopener">Nelson Advisors analyzed Ellipsis Health's acquisition of Kouper Health on November 7</a> (valuation undisclosed): Ellipsis's voice agent "Sage" detects depression and anxiety from vocal biomarkers, counts seven of the top 20 US health plans among its customers and has raised about $85M; Kouper, founded in New York in 2022 and backed by CVS Health Ventures, General Catalyst and 25madison, ingests real-time emergency, inpatient, ambulatory and home health data and interfaces with the major EHRs. Separately, <a href="https://www.prnewswire.com/news-releases/pulseai-receives-us-fda-510k-clearance-of-ai-powered-arrhythmia-analysis-model-for-wearables-302930913.html" target="_blank" rel="noopener">Belfast-based PulseAI received FDA 510(k) clearance on November 5</a> for a wearable arrhythmia analysis model that, in a 296-participant prospective study published in Heart Rhythm, improved AFib detection sensitivity over the Apple Watch's native algorithm and cut inconclusive interpretations by 92%.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">The logic behind Ellipsis buying Kouper is worth copying down: Sage can detect a patient's distress, but with no channel to act on it the insight is worth little — so what it bought was not a model but an EHR integration layer and the ability to book a follow-up. The week's funding distribution points the same way: the money went to operations and access (Midstream's financial operations, nPhase's clinical data platform, Suki's voice documentation), not to new models. Against $895.4B of commitments at the model layer, the middle of the market is rightly declining to fight on models.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">Ellipsis's cited 60% reduction in routine administrative outreach, sixfold faster enrollment and fourfold ROI are all self-reported from preliminary deployments and not independently audited; PulseAI's "up to 10x performance improvement" appears in a press release subheadline with no metric specified, and the release gives neither sensitivity nor specificity figures nor which wearable the clearance covers.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://fourweekmba.com/ai-8-health-ai-rounds-took-332-5m-since-october-openai-in-1/" target="_blank" rel="noopener">FourWeekMBA, 2026-11</a> · <a href="https://www.healthcareittoday.com/2026/11/06/midstream-health-raises-20m-series-a-nphase-secures-30-million-in-series-d-funding/" target="_blank" rel="noopener">Healthcare IT Today, 2026-11-06</a> · <a href="https://www.healthcare.digital/single-post/nelson-advisors-strategic-analysis-of-ellipsis-health-s-acquisition-of-kouper-health-and-the-platfo" target="_blank" rel="noopener">Nelson Advisors, 2026-11-07</a> · <a href="https://www.prnewswire.com/news-releases/pulseai-receives-us-fda-510k-clearance-of-ai-powered-arrhythmia-analysis-model-for-wearables-302930913.html" target="_blank" rel="noopener">PR Newswire, 2026-11-05</a></p></div>
+  </div>
+</section>
+
+<!-- ============ 02 產品分析 ============ -->
+<section id="product">
+  <h2>02 — Product Analysis</h2>
+  <div class="sec-title">
+    <span class="en">The week's two most instructive new things sit at opposite ends of the spectrum: one pushes distribution back to before licensure, the other mines data deeper than the reason it was ordered for.</span>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>OpenEvidence Learn</h3>
+      <p class="sub"><span class="en-inline">Free medical education platform · OpenEvidence (US) · 2026-11-04</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> Four modules: Test Prep (more than 50,000 board-style questions across USMLE, COMLEX and specialty and subspecialty exams), Preceptor (case-based Socratic tutoring through a simulated patient), Flashcards (generated from the question bank, missed questions or a chosen topic, reviewed at spaced intervals) and CME (credit for clinical questions the user has already asked inside OpenEvidence, with certificates held in one place). All four draw on the same peer-reviewed literature and guidelines behind its clinical answers. It is entirely free, requiring only registration; at launch Johns Hopkins School of Medicine and Penn's Perelman School of Medicine were named as the schools inviting trainees and attendings to test it and give feedback, <a href="https://www.unite.ai/openevidence-launches-learn-a-free-ai-medical-education-platform/" target="_blank" rel="noopener">per Unite.AI</a>.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: it pushes the distribution channel back to before licensure. A student who practiced clinical reasoning in Preceptor before Step 1 will not be comparing tools as an attending — the same habit moat UpToDate once built, except OpenEvidence has driven the cost of acquisition to zero. Its valuation case (<a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openevidence-raises-250m-at-15b-valuation/" target="_blank" rel="noopener">a $250M raise at a $15B valuation</a>) rested on the user base rather than revenue in the first place.</span>
+        </li>
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: the CME design is shrewd — rather than asking anyone to take a course, it converts the lookup behavior physicians already perform into credit, raising retention and data quality at the same time.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: the revenue comes from pharmaceutical advertising, and educational content is where recommendation bias is hardest to notice. <a href="https://www.nature.com/articles/s44360-026-00205-y" target="_blank" rel="noopener">The Nature Health analysis of 883,403 answers</a> found five models' first recommendation converging on a single brand name 97.5% of the time, a dominant product above 90% share in 96 of 123 scenarios, and branded drugs recommended at 20.5x the odds of generics. In a point-of-care answer that is a clinical problem; in a resident's study material it becomes a generation's prescribing habits. The Learn announcement does not describe how advertising and educational content are separated.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: there is no published audit of Test Prep's answer accuracy, no statement that Preceptor's clinical reasoning was validated by medical educators, and no description of an error-reporting channel. Measured against the three layers Google's framework asks for this same week, the public material on Learn does not report even the first of them.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>Percival（Penn Medicine）</h3>
+      <p class="sub"><span class="en-inline">Opportunistic CT screening model · Penn Medicine (US) · published in npj Digital Medicine</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> Trained on more than 400,000 CT images from nearly 52,000 patients in the Penn Medicine BioBank (which holds data on over 350,000 people gathered across two decades), it runs in the background and extracts, from scans already completed, signs of disease and future risk the scan was never ordered to look for — including atrial fibrillation and chronic kidney disease, which CT does not normally diagnose. Senior author Walter Witschey is an associate professor of radiology and associate vice chair of research IT at Penn; co-author Charles Kahn is a professor of radiology, <a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/penn-medicine-ai-trained-on-400k-ct-scans-spots-hidden-disease/" target="_blank" rel="noopener">per Becker's</a>.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: the marginal cost is close to zero. The patient has already been through the scanner, the dose has already been given, the images already exist — Percival needs only compute. In the same year that site-neutral payment for outpatient imaging expands (<a href="https://cei.org/blog/this-week-in-health-care-policy-october-31-november-6-2026/" target="_blank" rel="noopener">CMS-1850-F, published November 6</a>) and revenue per scan thins, extracting more information from the same image is one of the few value propositions that stands up without a new payment code.</span>
+        </li>
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: the coverage is genuinely broad — 279 conditions on chest CT and 230 on abdomen/pelvis CT, and it beat two other AI imaging models across that breadth, most widely on lung cancer and acute lymphoid leukemia. Most imaging AI is a single-indication point solution; Percival takes the foundation-model route.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: there are no accuracy figures. The Becker's write-up states outright that no specific accuracy metric is given, and "beat two other models" cannot be assessed without AUC, sensitivity, specificity and a calibration curve. The whole risk of opportunistic screening lies in the downstream cascade of tests that false positives set off — exactly the side a ranking cannot show.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: external validity is unknown. The broader findings have not been validated outside Penn Medicine, and the training set comes from a single biobank, which may differ from other health systems in population composition, scanner models and imaging protocols. The team hopes to begin clinical testing only in early 2027; for now it remains preclinical.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 公司與競爭 ============ -->
+<section id="company">
+  <h2>03 — Companies &amp; Competition</h2>
+  <div class="sec-title">
+    <span class="en">Who stands where, on what, against whom</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th><span class="en-inline">Company</span></th>
+        <th><span class="en-inline">Recent state &amp; numbers</span></th>
+        <th><span class="en-inline">Position &amp; moat</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Anthropic</strong><br><span class="en-inline">Frontier model vendor, filing to list on Nasdaq as ANT</span></td>
+          <td>
+            <span class="en">Q3 revenue of $17.0B, more than 12x year on year; a $23.3B quarterly net loss and a $104.0B nine-month net loss ($94.3B of it non-cash); a $567M quarterly operating loss; about $895.4B in signed commitments with $69.8B due within a year; an annualized run rate above $80B at the end of October and $146.6B of cash at September 30; government contracts rising from about 1% of revenue to under 2%, per <a href="https://www.stocktitan.net/articles/anthropic-ipo-amended-s1-2026-guide" target="_blank" rel="noopener">the amended S-1 of November 2</a>. The valuation is reported to be coming down from $1.5T toward $1T, <a href="https://finance.yahoo.com/markets/stocks/articles/anthropic-ipo-valuation-could-fall-162858848.html" target="_blank" rel="noopener">per the WSJ on November 5</a>.</span>
+          </td>
+          <td>
+            <span class="en">Its position on the healthcare side is infrastructural rather than applied: athenahealth's MCP server on November 2 connects a patient's labs, medications and diagnoses to Claude, and FlashProve, open-sourced November 3, aims to prove by cryptographic fingerprint which model an output came from (<a href="https://techcrunch.com/2026/11/03/anthropic-is-working-on-a-system-to-prove-ai-models-identity/" target="_blank" rel="noopener">TechCrunch</a>). The weakness is that METR's acceleration finding and the S-1's warning that it "may imminently meet" a safety-policy threshold point at the same thing: it is not sure where its own next model generation lands either.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>OpenEvidence</strong><br><span class="en-inline">Clinical evidence search, monetized by pharma advertising</span></td>
+          <td>
+            <span class="en">Launched the free Learn platform on November 4 (over 50,000 questions, CME, Johns Hopkins and Penn as first partners), <a href="https://www.unite.ai/openevidence-launches-learn-a-free-ai-medical-education-platform/" target="_blank" rel="noopener">per Unite.AI</a>; raised $250M at a $15B valuation in September, <a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openevidence-raises-250m-at-15b-valuation/" target="_blank" rel="noopener">per Becker's</a>; now embedded in NYU Langone's Epic across 12.4M annual visits, <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/nyu-langone-brings-openevidences-clinical-ai-ehr-systemwide" target="_blank" rel="noopener">per Fierce Healthcare</a>. Monument Health, however, has blocked it outright, <a href="https://www.statnews.com/2026/11/05/doctors-use-ai-chatbots-hipaa-compliance-questions/" target="_blank" rel="noopener">per STAT on November 5</a>.</span>
+          </td>
+          <td>
+            <span class="en">The moat is two-layered, physician habit plus EHR embedding, and Learn extends that layer back to medical students. Its real weakness is not a competitor but the employer: once physicians bring their own tool to work and paste records into it, the hospital's compliance office becomes the hardest adversary it faces — and in that fight OpenEvidence holds no cards, because it does not sell to hospitals.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Doximity</strong><br><span class="en-inline">Physician network plus pharma advertising, NYSE: DOCS</span></td>
+          <td>
+            <span class="en">FY2027 Q2, reported November 5: $175M of revenue, up 4% and 2% above the top of guidance; a 51% adjusted EBITDA margin with non-GAAP gross margin down from 92% to 88%; net revenue retention of 103% (106% among top-20 hospital and pharma customers), which management called a trough; more than 190 health systems as AI clients, up from 165; AI Search bought by 16 of the top 20 pharma companies and described as an eight-figure bookings product; and quarterly active workflow prescribers up 34% year on year to more than 900,000, <a href="https://finance.yahoo.com/healthcare/articles/doximity-inc-docs-q2-2027-052105623.html" target="_blank" rel="noopener">per GuruFocus/Yahoo Finance</a>.</span>
+          </td>
+          <td>
+            <span class="en">It mirrors OpenEvidence's business model, but Doximity has the roster — about half of the roughly 1.8 million US prescribers — where OpenEvidence has intensity of use. This week it turned the dosing audit into a grounded-and-sourced differentiator while shipping DoseCheck, a medication safety verifier, and folding UpToDate content into its AI answers: a well-played defensive hand. The four-point drop in gross margin is what it cost.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Ellipsis Health</strong><br><span class="en-inline">Vocal-biomarker voice agent (Sage), San Francisco</span></td>
+          <td>
+            <span class="en">Acquired New York care-navigation startup Kouper Health in November at an undisclosed valuation; Ellipsis has raised about $85M in all (a $26M Series A in 2021 and a $45M Series A in mid-2025), with customers including integrated delivery networks, academic medical centers and seven of the top 20 US health plans; Kouper is backed by CVS Health Ventures, General Catalyst and 25madison, <a href="https://www.healthcare.digital/single-post/nelson-advisors-strategic-analysis-of-ellipsis-health-s-acquisition-of-kouper-health-and-the-platfo" target="_blank" rel="noopener">per Nelson Advisors on November 7</a>.</span>
+          </td>
+          <td>
+            <span class="en">What it bought was wiring, not a model: Kouper's EHR integration layer lets Sage check a chart, match need against provider capacity and book the follow-up inside the EHR, sparing years of in-house adapter engineering. It is the template for the 2026 consolidation wave, alongside DexCare/Mila Health, Raintree/Spike and Elation/Aster. The weakness is that the clinical validity of detecting depression and anxiety from vocal biomarkers still lacks independent prospective validation.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Google for Health</strong><br><span class="en-inline">Supplying both the models and the methodology</span></td>
+          <td>
+            <span class="en">Published a multi-method evaluation framework for health AI on November 4 (arXiv:2611.05127), authored by clinical evaluation lead Sarah Montgomery-Taylor with Elizabeth McGlynn and Dana Gelb Safran, <a href="https://unite.ai/google-publishes-multi-method-framework-for-evaluating-health-ai" target="_blank" rel="noopener">per Unite.AI</a>; continued to push MedGemma 1.5 and MedASR for medical image interpretation and speech-to-text in the same period, <a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">per Google Research</a>; and on October 8 published in The Lancet the first real-world feasibility study of a patient-facing diagnostic AI, AMIE.</span>
+          </td>
+          <td>
+            <span class="en">It is simultaneously supplying the models, the weights (MedGemma can run locally inside a hospital) and the evaluation methodology — the last of which is the hardest of the three to displace. The moat is medical data plus a network of clinical collaborations (BIDMC, Johns Hopkins and others). The conflict of interest sits in the same place: a model vendor defining what counts as passing an evaluation complements the vacuum ONC left by deleting the disclosure requirement, and that vacuum was meant to be filled by a regulator or a third party.</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>Three trend lines from the week.</strong> First, <strong>capital is hardening at the model layer and turning toward operations at the application layer</strong>: $895.4B of signed commitments means model prices can only go up, while nearly all of the eight health AI rounds since October ($332.5M in total) went to financial operations, clinical data platforms, voice documentation — channels and workflow — and none to fighting on models. Second, <strong>liability is sinking downward while the burden of proof looks for an owner</strong>: the federal government deleted certification criteria (HTI-5), the AMA pushed the duty of care onto deployers, and CMS expanded site-neutral payment under OPPS while compressing imaging revenue — and the only party to offer a complete evaluation methodology was a model vendor. Third, <strong>the real division of labor for AI in medicine is being quantified</strong>: rewriting information already in hand (Stony Brook's 95%) and mining data already collected but unread (Percival's 400,000 CTs) are the strengths; precise recall (Doximity's 2.3%) and genuinely new information (5.1x the odds of error on drugs approved after 2024) are the weaknesses — and that boundary decides deployment outcomes more reliably than any benchmark score.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============ 04 台灣視角 ============ -->
+<section id="taiwan">
+  <h2>04 — Taiwan Angle</h2>
+  <div class="sec-title">
+    <span class="en">The US spent this week deleting a disclosure duty that Taiwan put into force six months ago — a rare case where the timing runs in Taiwan's favor.</span>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>(1) Taiwan's disclosure duty predates the US one by six months and points the opposite way.</strong> On May 29, 2026, the Ministry of Health and Welfare issued <a href="https://www.hst.org.tw/tw/board/regulations/6" target="_blank" rel="noopener">its Guidance on the Use of Generative AI in Medical Institutions</a> (ref. 衛部醫字第1151663164號), requiring an institution to notify patients in advance where a generative AI tool has recording functionality, and to disclose proactively, where an AI tool interacts directly with members of the public, that the person is interacting with AI. Set against <a href="https://www.hhs.gov/press-room/hhs-finalizes-hti-5-deregulatory-rule.html" target="_blank" rel="noopener">ONC's HTI-5, finalized November 3, which deletes source-attribute disclosure for predictive AI</a>, the two jurisdictions are moving in opposite directions. For Taiwanese vendors selling into the US this means building to the Taiwanese guidance as a baseline is not wasted work: disclosure has been demoted there from a certification requirement to a differentiator, but after the AMA pushed the duty of care onto hospitals the same week, hospitals will still ask for it at procurement.</span>
+    </p>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>(2) What lands in Taiwan is language and workflow, not models — and this week offered a clean sample.</strong> On November 6 <a href="https://n.yam.com/Article/20261106503743" target="_blank" rel="noopener">Dajia Lee General Hospital deployed three AI systems under the Healthy Taiwan deep-cultivation program</a>: a lobby guidance robot, a ward health-education robot, and a generative AI voice handover-record system built by Yi Chen Intelligence (CEO Hsu Yung-chang). What matters is not the model but three things: support for Mandarin, Taiwanese and English, with voice input able to mix Mandarin and Taiwanese and handle Hakka, and Indonesian and Vietnamese being added for migrant workers; a hospital-specific terminology database calibrated against common terms supplied by nurses, built in about three months; and standalone operation — the system runs without connecting to the electronic medical record. The hospital's and vendor's own figures are a handover record falling from 5 minutes to 1, at least 20 minutes saved on handover, health education for a new patient falling from 26 minutes to 20, and an 80.7% drop in the rate at which nursing staff request support. These are self-reported and not independently audited, but the shape itself shows where Taiwan's comparative advantage lies: many languages, a low integration threshold, a tight fit to workflow — not competing on models against $895.4B of commitments.</span>
+    </p>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>(3) The interoperability timetable collides with this week's validation gap.</strong> At a Kaohsiung Medical University forum on June 27, Minister of Health and Welfare Shih Chung-liang said Taiwan's medical centers are expected to achieve interoperable patient records by the end of 2026, with regional hospitals following in 2027 and district hospitals in 2028; at the same event Minister without Portfolio Chen Shih-chung set out the Healthy Taiwan deep-cultivation program's five-year NT$48.9 billion budget for hospital work on precision medicine and telehealth, <a href="https://udn.com/news/story/7266/9592218" target="_blank" rel="noopener">as reported by United Daily News</a>. Lay that timetable over this week's signals and the problem is clear: the moment interoperability is complete, Taiwanese hospitals acquire a large body of longitudinal data readable by AI — exactly the raw material an opportunistic screening model like Percival needs, and exactly the infrastructure that the "continuing post-deployment monitoring" in Google's framework most depends on. But Taiwan has no certification criteria corresponding to HTI-5 and no framework like the AMA's allocating the duty of care between developer and deployer. The three AI centers the Ministry launched with 16 hospitals in October 2024 address precisely the three pain points of deployment, clearance and reimbursement — and the US experience this week suggests the third will be the slowest: Cassidy's PATIENT AI Act is still only a discussion draft, with comments open until December 1.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============ 05 延伸閱讀 ============ -->
+<section id="reading">
+  <h2>05 — Further Reading</h2>
+  <div class="sec-title">
+    <span class="en">Five primary documents from the week worth keeping and reading slowly. The criterion: it changes your estimate of something, rather than adding one more item of news.</span>
+  </div>
+
+  <ol class="reading">
+    <li>
+      <a href="https://metr.org/blog/2026-11-05-anthropic-ai-rd-acceleration-assessment/" target="_blank" rel="noopener">Anthropic AI R&amp;D Acceleration Assessment — METR (2026-11-05)</a>
+      <p class="why"><span class="en">Read it not for the 2x but to watch how an external assessor words things when it has been let in and then had the decisive evidence redacted. Its methodology appendix is the most honest public account of how to measure AI accelerating AI — including the places it admits it cannot measure well.</span></p>
+    </li>
+    <li>
+      <a href="https://arxiv.org/abs/2611.05127" target="_blank" rel="noopener">A multi-method framework for evaluating generative AI in health — Google for Health (arXiv:2611.05127, 2026-11-04)</a>
+      <p class="why"><span class="en">The week's only document asking how to measure. For a hospital AI governance committee, the Critical User Journey and the risk-tiered, gate-by-gate thresholds can go straight into a procurement specification; the passage on two physicians diverging by 30–40% on a rating task is the warning any team planning its own internal evaluation should read first.</span></p>
+    </li>
+    <li>
+      <a href="https://blog.doximity.com/articles/over-2-of-llm-doses-are-wrong-some-can-be-lethal" target="_blank" rel="noopener">Over 2% of LLM doses are wrong — some can be lethal — Doximity Engineering (2026-10-29)</a>
+      <p class="why"><span class="en">The scale — nine models, 2,204 drugs, 261,508 doses — makes this the most citable audit of LLM medication safety available. The figure to remember is not 2.3% but the 5.1x odds of error on drugs approved after 2024: it means the error rate is not a fixed property of a model but a function drifting with the time distribution of training data, so last year's validation does not hold this year. Note that the publisher is an interested party.</span></p>
+    </li>
+    <li>
+      <a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(26)01535-7/abstract" target="_blank" rel="noopener">Conversational diagnostic AI in ambulatory primary care: a prospective feasibility study — The Lancet (2026-10-08)</a>
+      <p class="why"><span class="en">Published before this week, but it remains the only prospective study of a patient-facing diagnostic AI in the real world, and it rewards a weekend read. Google's AMIE let patients at a Beth Israel Deaconess urgent primary care clinic chat with it before their appointment: the final diagnosis fell within AMIE's top seven possibilities in 90% of cases, its top three in 75% and its single most likely in 56%; physicians said the summary helped them prepare in 75% of cases and may have shaped their approach in 57%. But it is single-center, uncontrolled, text-only and skewed young, the authors explicitly disclaim quantitative efficacy claims, and one interaction was rated somewhat harmful by a provider because lymphoma appeared on the list of possible diagnoses and alarmed the patient. <a href="https://www.unite.ai/googles-amie-primary-care-feasibility-study-published-in-the-lancet/" target="_blank" rel="noopener">Unite.AI's summary</a> is a serviceable entry point.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/articles/s44360-026-00205-y" target="_blank" rel="noopener">Brand-name convergence in LLM drug recommendations — Nature Health (2026-10-29)</a>
+      <p class="why"><span class="en">The scale — 883,403 answers — makes this the hardest evidence to sidestep in any discussion of clinical AI funded by pharmaceutical advertising: five models' first recommendation converged on a single brand name 97.5% of the time, a dominant product held above 90% share in 96 of 123 scenarios, branded drugs were recommended at 20.5x the odds of generics, and a drug with its own Wikipedia entry at 3.00x. With OpenEvidence launching a free education platform this week, the study's scope widens from clinical decisions to medical training.</span></p>
+    </li>
+  </ol>
+</section>
+
+<!-- ============ 06 參考文獻 ============ -->
+<section id="refs">
+  <h2>06 — References</h2>
+  <div class="sec-title">
+    <span class="en">References</span>
+  </div>
+
+  <div class="panel">
+    <ol class="refs">
+      <li>Anthropic AI R&amp;D Acceleration Assessment. <em>METR</em>, 2026-11-05. <a href="https://metr.org/blog/2026-11-05-anthropic-ai-rd-acceleration-assessment/" target="_blank" rel="noopener">metr.org</a></li>
+      <li>Anthropic IPO Filing Updated With New Results as Claude's Maker Heads to Nasdaq（S-1/A，Q3 財務與 8,954 億合約承諾）. <em>StockTitan</em>, 2026-11-02. <a href="https://www.stocktitan.net/articles/anthropic-ipo-amended-s1-2026-guide" target="_blank" rel="noopener">stocktitan.net</a></li>
+      <li>Anthropic IPO Valuation Could Be Slashed in Half to $1T After AI Stock Rout. <em>Decrypt / Yahoo Finance</em>（原始報導：《華爾街日報》2026-11-05）, 2026-11-06. <a href="https://finance.yahoo.com/markets/stocks/articles/anthropic-ipo-valuation-could-fall-162858848.html" target="_blank" rel="noopener">finance.yahoo.com</a></li>
+      <li>Anthropic IPO live updates: S-1 filing discloses $16.3B in first-half revenue, plans to list as 'ANT'. <em>Yahoo Finance</em>, 2026-10-26. <a href="https://finance.yahoo.com/technology/live/anthropic-ipo-live-updates-frontier-ai-lab-discloses-revenue-and-risks-in-highly-anticipated-s-1-filing-141702607.html" target="_blank" rel="noopener">finance.yahoo.com</a></li>
+      <li>HHS Finalizes HTI-5 Deregulatory Rule. <em>U.S. Department of Health and Human Services</em>, 2026-11-03. <a href="https://www.hhs.gov/press-room/hhs-finalizes-hti-5-deregulatory-rule.html" target="_blank" rel="noopener">hhs.gov</a></li>
+      <li>AMA: vendors and health systems join physicians in liability for clinical AI. <em>HealthSystemCIO</em>, 2026-10-29. <a href="https://healthsystemcio.com/2026/10/29/ama-clinical-ai-liability/" target="_blank" rel="noopener">healthsystemcio.com</a></li>
+      <li>This week in health care policy: October 31–November 6, 2026（含 CMS-1850-F 2027 OPPS 終局規則、PATIENT AI Act 討論稿、Stony Brook 與 Penn Percival 摘要）. <em>Competitive Enterprise Institute</em>, 2026-11-06. <a href="https://cei.org/blog/this-week-in-health-care-policy-october-31-november-6-2026/" target="_blank" rel="noopener">cei.org</a></li>
+      <li>Over 2% of LLM doses are wrong — some can be lethal. <em>Doximity Engineering Blog</em>, 2026-10-29. <a href="https://blog.doximity.com/articles/over-2-of-llm-doses-are-wrong-some-can-be-lethal" target="_blank" rel="noopener">blog.doximity.com</a></li>
+      <li>Google Publishes Multi-Method Framework for Evaluating Health AI. <em>Unite.AI</em>, 2026-11-04. <a href="https://unite.ai/google-publishes-multi-method-framework-for-evaluating-health-ai" target="_blank" rel="noopener">unite.ai</a></li>
+      <li>A multi-method framework for evaluating generative AI in health（白皮書）. <em>arXiv</em>, 2026-11. <a href="https://arxiv.org/abs/2611.05127" target="_blank" rel="noopener">arxiv.org</a></li>
+      <li>SBU Study: AI May Improve Patient Discharge Summaries. <em>Stony Brook University News</em>, 2026-11-02. <a href="https://news.stonybrook.edu/university/sbu-study-ai-may-improve-patient-discharge-summaries/" target="_blank" rel="noopener">news.stonybrook.edu</a></li>
+      <li>Physicians preferred AI discharge summaries in 95% of cases: Study. <em>Becker's Hospital Review</em>, 2026-11. <a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/physicians-preferred-ai-discharge-summaries-in-95-of-cases-study/" target="_blank" rel="noopener">beckershospitalreview.com</a></li>
+      <li>Penn Medicine AI trained on 400K CT scans spots hidden disease（Percival，刊於 npj Digital Medicine）. <em>Becker's Hospital Review</em>, 2026-10-30. <a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/penn-medicine-ai-trained-on-400k-ct-scans-spots-hidden-disease/" target="_blank" rel="noopener">beckershospitalreview.com</a></li>
+      <li>OpenEvidence Launches Learn, a Free AI Medical Education Platform. <em>Unite.AI</em>, 2026-11-04. <a href="https://www.unite.ai/openevidence-launches-learn-a-free-ai-medical-education-platform/" target="_blank" rel="noopener">unite.ai</a></li>
+      <li>Doximity Inc (DOCS) Q2 2027 Earnings Call Highlights: AI Search Becomes Eight-Figure Business. <em>GuruFocus / Yahoo Finance</em>, 2026-11-05. <a href="https://finance.yahoo.com/healthcare/articles/doximity-inc-docs-q2-2027-052105623.html" target="_blank" rel="noopener">finance.yahoo.com</a></li>
+      <li>As more doctors consult chatbots, health systems can block them — or buy in. <em>STAT News</em>（付費牆）, 2026-11-05. <a href="https://www.statnews.com/2026/11/05/doctors-use-ai-chatbots-hipaa-compliance-questions/" target="_blank" rel="noopener">statnews.com</a></li>
+      <li>8 Health AI Rounds Took $332.5M Since October; OpenAI in 1. <em>FourWeekMBA</em>, 2026-11. <a href="https://fourweekmba.com/ai-8-health-ai-rounds-took-332-5m-since-october-openai-in-1/" target="_blank" rel="noopener">fourweekmba.com</a></li>
+      <li>Midstream Health Raises $20M Series A; nPhase Secures $30M in Series D Funding. <em>Healthcare IT Today</em>, 2026-11-06. <a href="https://www.healthcareittoday.com/2026/11/06/midstream-health-raises-20m-series-a-nphase-secures-30-million-in-series-d-funding/" target="_blank" rel="noopener">healthcareittoday.com</a></li>
+      <li>Strategic Analysis of Ellipsis Health's Acquisition of Kouper Health and the Platform Consolidation Wave. <em>Nelson Advisors</em>, 2026-11-07. <a href="https://www.healthcare.digital/single-post/nelson-advisors-strategic-analysis-of-ellipsis-health-s-acquisition-of-kouper-health-and-the-platfo" target="_blank" rel="noopener">healthcare.digital</a></li>
+      <li>PulseAI Receives U.S. FDA 510(k) Clearance of AI-Powered Arrhythmia Analysis Model for Wearables. <em>PR Newswire</em>, 2026-11-05. <a href="https://www.prnewswire.com/news-releases/pulseai-receives-us-fda-510k-clearance-of-ai-powered-arrhythmia-analysis-model-for-wearables-302930913.html" target="_blank" rel="noopener">prnewswire.com</a></li>
+      <li>This Week in European HealthTech, MedTech and Health AI: 6th November 2026. <em>Nelson Advisors</em>, 2026-11-06. <a href="https://www.healthcare.digital/single-post/nelson-advisors-this-week-in-european-healthtech-medtech-and-health-ai-6th-november-2026" target="_blank" rel="noopener">healthcare.digital</a></li>
+      <li>Conversational diagnostic artificial intelligence in ambulatory primary care: a prospective feasibility study. <em>The Lancet</em>, 2026-10-08. <a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(26)01535-7/abstract" target="_blank" rel="noopener">thelancet.com</a></li>
+      <li>Google's AMIE Primary Care Feasibility Study Published in The Lancet. <em>Unite.AI</em>, 2026-10-09. <a href="https://www.unite.ai/googles-amie-primary-care-feasibility-study-published-in-the-lancet/" target="_blank" rel="noopener">unite.ai</a></li>
+      <li>Brand-name convergence in LLM drug recommendations. <em>Nature Health</em>, 2026-10-29. <a href="https://www.nature.com/articles/s44360-026-00205-y" target="_blank" rel="noopener">nature.com</a></li>
+      <li>OpenEvidence raises $250M at $15B valuation. <em>Becker's Hospital Review</em>, 2026-09. <a href="https://www.beckershospitalreview.com/healthcare-information-technology/ai/openevidence-raises-250m-at-15b-valuation/" target="_blank" rel="noopener">beckershospitalreview.com</a></li>
+      <li>NYU Langone brings OpenEvidence's clinical AI to EHR systemwide. <em>Fierce Healthcare</em>, 2026-10. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/nyu-langone-brings-openevidences-clinical-ai-ehr-systemwide" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>Anthropic is working on a system to prove AI models' identity（FlashProve）. <em>TechCrunch</em>, 2026-11-03. <a href="https://techcrunch.com/2026/11/03/anthropic-is-working-on-a-system-to-prove-ai-models-identity/" target="_blank" rel="noopener">techcrunch.com</a></li>
+      <li>Next-generation medical image interpretation with MedGemma 1.5 and medical speech-to-text with MedASR. <em>Google Research</em>, 2026-11. <a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">research.google</a></li>
+      <li>衛福部公告「醫療機構應用生成式人工智慧指引」（衛部醫字第1151663164號，2026-05-29）. <em>台灣醫院協會</em>, 2026-06-04. <a href="https://www.hst.org.tw/tw/board/regulations/6" target="_blank" rel="noopener">hst.org.tw</a></li>
+      <li>「講台語嘛會通」李綜合醫院導入AI智慧服務 提升醫護效率. <em>蕃薯藤 yam 新聞</em>, 2026-11-06. <a href="https://n.yam.com/Article/20261106503743" target="_blank" rel="noopener">n.yam.com</a></li>
+      <li>高醫大論壇揭示AI醫療新局！衛福部推「333政策」 國家489億預算力挺. <em>聯合報</em>, 2026-06-27. <a href="https://udn.com/news/story/7266/9592218" target="_blank" rel="noopener">udn.com</a></li>
+      <li>解決取證、健保、信任不足問題！衛福部攜 16 家醫院啟動三大 AI 中心. <em>科技新報 TechNews</em>, 2024-10-07. <a href="https://technews.tw/2024/10/07/three-major-ai-centers" target="_blank" rel="noopener">technews.tw</a></li>
+      <li>本報 2026-11-02 至 2026-11-07 各期（臨床、產業、法規、技術、產品、廣義 AI）. <em>AI／醫療AI 每日新知日報</em>. <a href="https://ai-medical-daily.peteraim.com/" target="_blank" rel="noopener">ai-medical-daily.peteraim.com</a></li>
+    </ol>
+    <div class="note">
+      <span class="en"><strong>Editor's note:</strong> (1) STAT News's November 5 piece sits behind a paywall; this report is written only from the publicly visible headline, subhead and opening, with no access to the full text, and the Monument Health block and Patrick Woodard's handling of it both come from the visible passage. (2) Anthropic's S-1 and S-1/A figures are taken from StockTitan's and Yahoo Finance's accounts of the filings rather than read from the original SEC documents; the $895.4B of commitments, the $94.3B non-cash charge and the per-supplier amounts are all as those secondary accounts report them. (3) The fall in valuation from $1.5T toward $1T is the Wall Street Journal citing three unnamed investors, not a priced outcome, and is flagged as such in the text. (4) We could not retrieve the Percival paper itself (npj Digital Medicine); the description follows Becker's Hospital Review's secondary coverage, which itself notes the article supplies no specific accuracy metric, so the claim that it beat two other AI imaging models carries no quantitative support here. (5) The Stony Brook description follows the university newsroom's release rather than the journal article, and the university did not name the model used. (6) The Doximity dosing audit was published by an interested party — Doximity also sells a clinical AI search product — and is not independently audited. (7) The time savings and support-request figures from Dajia Lee General Hospital and Yi Chen Intelligence, Ellipsis Health's 60%/sixfold/fourfold ROI claims, and PulseAI's "up to 10x performance improvement" are all self-reported by the institution or vendor and unverified. (8) This is a Sunday review, so the window for top stories is principally November 2–8; the Doximity audit (October 29), Penn's Percival (October 30), the Nature Health brand-bias study (October 29) and the Lancet AMIE study (October 8) were necessary to this week's argument and are included with their original dates marked. (9) The 333 policy and NT$48.9 billion budget (June 27, 2026) and the three AI centers (October 7, 2024) cited in the Taiwan section are background rather than news from this week, and are dated accordingly. (10) The amounts and dates for the eight funding rounds follow FourWeekMBA's compilation, in which some dates differ slightly from the original releases — Midstream Health's announcement was issued October 29 and carried by Healthcare IT Today on November 6, while FourWeekMBA records it as November 3.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-row">
+    <div>
+      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Sunday / Weekly Review &amp; Further Reading<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
+    </div>
+    <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
+  </div>
+</footer>
+</main>
+
+<div class="fabs">
+  <button class="up" id="up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+  <a class="home-fab" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg></a>
+</div>
+
+<script>
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.getElementById('theme-ic').textContent =
+    document.body.classList.contains('dark') ? '◑' : '◐';
+}
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.body.classList.add('dark');
+  document.getElementById('theme-ic').textContent = '◑';
+}
+window.addEventListener('scroll', function(){
+  document.getElementById('up').classList.toggle('show', window.scrollY > 600);
+});
+
+(function(){
+  var el = document.getElementById('ghs');
+  if (!el || typeof fetch !== 'function') return;
+  fetch('https://api.github.com/repos/tingwei161803/ai-medical-daily', {headers:{Accept:'application/vnd.github+json'}})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if (!d || typeof d.stargazers_count !== 'number') return;
+      var n = d.stargazers_count;
+      el.textContent = n >= 1000 ? (Math.round(n/100)/10) + 'k' : String(n);
+    })
+    .catch(function(){});
+})();
+</script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/reports/2026-11-08.html" hreflang="zh-Hant" rel="alternate" lang="zh-Hant">中文版</a></p>
+</body>
+</html>
