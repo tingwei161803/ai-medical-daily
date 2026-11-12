@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>AI &amp; Medical AI Daily · 2026-11-12</title>
+<meta property="og:url" content="https://ai-medical-daily.peteraim.com/en/reports/2026-11-12.html" />
+<link rel="canonical" href="https://ai-medical-daily.peteraim.com/en/reports/2026-11-12.html" />
+<link rel="alternate" hreflang="zh-Hant" href="https://ai-medical-daily.peteraim.com/reports/2026-11-12.html" />
+<link rel="alternate" hreflang="en" href="https://ai-medical-daily.peteraim.com/en/reports/2026-11-12.html" />
+<link rel="alternate" hreflang="x-default" href="https://ai-medical-daily.peteraim.com/reports/2026-11-12.html" />
+<meta name="description" content="On 11/10 Google sold a healthcare agent platform on connectors, governance and model routing while publishing no benchmarks at all. The same week three papers showed a 3D foundation model can hand back voxel masks as evidence, an LLM can hand-write a working classifier without seeing data, and black-box access audits a model as well as reading its weights — and that ten models fall from 0.99 to 0.18 the moment evidence has to be applied to a real patient.">
+<meta name="report-date" content="2026-11-12">
+<meta name="report-theme" content="technology">
+<meta name="report-title-zh" content="同一週的四種「技術突破」互相否證——11/10 Google Cloud 把 Gemini for healthcare 推上美國預覽，用 open.epic 與 Oracle Health Ignite FHIR API 接進 Epic 與 Oracle Health 但只讀不寫、用 smart routing 把高量行政任務丟給便宜模型、模型可選 Google／Anthropic／OpenAI，七家首發客戶包含 HCA、Northwell、Optum 與史丹佛醫學院，而整份新聞稿沒有一個 benchmark 數字、沒有一項模型規格、沒有一個價格；11/4 arXiv 的 HoloCT 用 195,921 份 CT、620 萬筆指令對話、280 萬組 CT-mask 配對把判讀與分割合成一個 3D 基礎模型，346 個任務、五院 11,455 例外部驗證贏競爭模型 18.2 與 15.3 分，甲狀腺與大腸病灶篩檢 85.1% 勝過參與閱片的四位放射科醫師；反方向同一週把地基挖開——11/9 Charité 團隊讓 Claude Opus 5.5 與 GPT-6 Astra 不看任何影像、直接手寫 CNN 權重，六個 MedMNIST 任務平均 AUC 0.719 與 0.711、以少於萬分之一的參數量贏 MedSigLIP 五項，卻輸給只用 256 張標註影像訓練的 Adam 基線 0.828，Astra 在骨盆 MRI 掉到 0.136 低於隨機；11/10 的 Med Evidence Bench 用 1,536 題讓十個模型的 Evidence Trace Score 從指引知識 0.975–0.997 崩到真實檢驗情境 0.182–0.447，其中「證據比對」0.165、「給出建議」0.160">
+<meta name="report-title-en" content="Four claims of a technical breakthrough in one week, each undercutting the next. On 11/10 Google Cloud put Gemini for healthcare into US preview, reading Epic and Oracle Health through open.epic and Ignite FHIR APIs but never writing back, routing high-volume administrative work to cheap models, and letting customers pick Google, Anthropic or OpenAI weights, with HCA, Northwell, Optum and Stanford School of Medicine among seven launch customers — and not one benchmark figure, model specification or price in the release. On 11/4 HoloCT fused interpretation and segmentation into a single 3D foundation model on 195,921 CT scans, 6.2 million instruction dialogues and 2.8 million CT-mask pairs, beating competing models by 18.2 and 15.3 points across 346 tasks and an 11,455-scan five-hospital validation, and reaching 85.1% on thyroid and colon lesion screening, above all four radiologists in its reader study. The same week dug under the foundations: on 11/9 a Charite-led team had Claude Opus 5.5 and GPT-6 Astra write CNN weights by hand without seeing a single image, averaging 0.719 and 0.711 AUC on six MedMNIST tasks and beating MedSigLIP on five with ten thousand times fewer parameters, yet losing to an Adam baseline trained on 256 labelled images at 0.828, with Astra collapsing to 0.136 on pelvic MRI. On 11/10 Med Evidence Bench used 1,536 physician-written items to drop ten models from 0.975-0.997 on guideline knowledge to 0.182-0.447 on real-world laboratory scenarios, with 0.165 for matching evidence and 0.160 for formulating recommendations">
+<meta name="report-summary-zh" content="Google 在 11/10 用連接器、治理與模型路由賣「醫療 agent 平台」卻不交出任何 benchmark，而同一週三篇論文分別證明：3D 基礎模型能用體素遮罩當證據、LLM 能不看資料手寫可用的分類器權重、黑箱存取稽核模型跟看權重一樣有效——以及十個模型一旦要把證據套到真實病人身上，分數從 0.99 掉到 0.18。">
+<meta name="report-summary-en" content="On 11/10 Google sold a healthcare agent platform on connectors, governance and model routing while publishing no benchmarks at all. The same week three papers showed a 3D foundation model can hand back voxel masks as evidence, an LLM can hand-write a working classifier without seeing data, and black-box access audits a model as well as reading its weights — and that ten models fall from 0.99 to 0.18 the moment evidence has to be applied to a real patient.">
+<meta property="og:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HJLDQZDK5V');
+</script>
+<link rel="stylesheet" href="/assets/report.css">
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><span>◆</span> <span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <div class="bar-sp"></div>
+    <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
+    <div class="seg">
+      <a href="/reports/2026-11-12.html" hreflang="zh-Hant" lang="zh-Hant" rel="alternate">中文</a>
+      <a class="on" href="/en/reports/2026-11-12.html" hreflang="en" lang="en" aria-current="page">EN</a>
+    </div>
+    <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="kicker">
+    <span class="en-inline">Thursday · Technology</span>
+  </div>
+  <h1>
+    <span class="en">Four claims of a technical breakthrough in one week, each undercutting the next: Google sells routing and connectors and publishes no benchmark, HoloCT hands back 3D masks as evidence, two papers show an LLM can write weights without data and that black-box auditing works as well as reading them — and then 1,536 items drop ten models from 0.99 to 0.18</span>
+  </h1>
+  <div class="dateline">
+    <span class="en-inline">Thursday, November 12, 2026 · Covering Nov 4–11 · Taipei time</span>
+  </div>
+  <p class="lede">
+    <span class="en">This week's technology news has an unusually symmetric shape. On the product side, <a href="https://www.googlecloudpresscorner.com/2026-11-10-Google-Cloud-Launches-Gemini-for-Healthcare" target="_blank" rel="noopener">Google Cloud launched Gemini for healthcare on 11/10</a>, and none of the pitch is about the model: read-only EHR connectors, reach into more than 400 healthcare applications, unified governance with audit logging, and smart routing that sends high-volume administrative work to cheap models — with not a single benchmark in the release. On the research side, three papers the same week took apart the question of what a model is actually good at: <a href="https://arxiv.org/abs/2611.06471" target="_blank" rel="noopener">HoloCT on 11/4</a> makes the model hand back 3D masks as its evidence, <a href="https://arxiv.org/abs/2611.12066" target="_blank" rel="noopener">weight-space programming on 11/9</a> has an LLM hand-write a working classifier with no training data at all, and <a href="https://arxiv.org/abs/2611.07847" target="_blank" rel="noopener">an auditing experiment on 11/5</a> finds that seeing a network's weights buys nothing over seeing only its predictions. Put the four together and what moved this week was not accuracy but auditability — and <a href="https://arxiv.org/abs/2611.13562" target="_blank" rel="noopener">Med Evidence Bench on 11/10</a> measures how far that road still runs: ten models score 0.975–0.997 on guideline recall and only 0.182–0.447 once the evidence has to be applied to a real laboratory scenario.</span>
+  </p>
+
+  <nav class="toc">
+    <a href="#top"><span class="en-inline">Top Stories</span></a>
+    <a href="#product"><span class="en-inline">Product Analysis</span></a>
+    <a href="#company"><span class="en-inline">Companies &amp; Competition</span></a>
+    <a href="#taiwan"><span class="en-inline">Taiwan Angle</span></a>
+    <a href="#reading"><span class="en-inline">Further Reading</span></a>
+    <a href="#refs"><span class="en-inline">References</span></a>
+  </nav>
+</div>
+
+<section id="top">
+  <h2>01 — Top Stories</h2>
+  <div class="sec-title">
+    <span class="en">A platform with no benchmarks, a foundation model that treats masks as evidence, two papers that demote weight access, and an item bank that drops the score from 0.99 to 0.18.</span>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Agent platform</span></span>
+      <span class="tag">Google Cloud</span><span class="tag">Gemini Enterprise</span><span class="tag">11/10</span>
+    </div>
+    <h3>
+      <span class="en">Gemini for healthcare enters US preview: read-only into Epic and Oracle Health, three vendors' weights to choose from, administrative work routed to cheap models — and zero benchmarks in the release</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Announced on November 10 in Sunnyvale, California. The <a href="https://www.googlecloudpresscorner.com/2026-11-10-Google-Cloud-Launches-Gemini-for-Healthcare" target="_blank" rel="noopener">official release</a> describes a healthcare-specific solution built on the universal Gemini agent, in preview, open to Gemini Enterprise Standard and Plus customers. Packaged skills cover medical records synthesis, pre-appointment preparation, coverage and policy review and payer benefit determination, and customers can build their own. EHR connectivity runs through Epic's open.epic APIs and Oracle Health's Ignite APIs for FHIR, retrieving active conditions, medications and recent labs — <strong>with no write-back to the EHR</strong>; NextGen Healthcare connectivity is still in development, slated for "the coming months". Around that sit InterSystems FHIR Server, Keragon with its reach into over 400 healthcare applications, and Verato for patient identity resolution; a lookup layer of CMS Coverage Data, the NPI Registry, RxNorm, ICD-10 and IMO Health's Knowledge Graph; an evidence layer of Optum EvidenceVue, ASCO guidelines and BMJ Digital Health; and a workflow layer of Suki, UiPath, Alteryx and Synthpop. Governance is access control, audit logging and verifiable citations; models can be chosen across Google, Anthropic and OpenAI, with smart routing sending high-volume administrative tasks to fast, low-cost models and reserving high-reasoning models for complex analysis. Seven launch customers: <a href="https://www.healthcareitnews.com/news/google-cloud-intros-new-ai-offering-gemini-healthcare" target="_blank" rel="noopener">Blue Cross Blue Shield of Massachusetts, Hartford HealthCare, HCA Healthcare, Highmark Health, Northwell Health, Optum and Stanford School of Medicine</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">The technical bet is orchestration, not weights. The model layer is deliberately commoditised — three vendors to choose from, with automatic routing by cost — and the differentiation sits in the connector list, identity and permissions, audit logs, and the claim that a citation goes back to a source. That also explains the read-only design: writing back to the EHR turns a suggestion into an order, and this platform is sold on governance rather than clinical judgement. The three figures the release leans on — clinicians losing nearly 28 hours a week to documentation and administration (a Harris Poll and Google Cloud study), 41.9% of physicians reporting burnout (<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/google-cloud-rolls-out-gemini-healthcare" target="_blank" rel="noopener">a 2025 AMA report</a>), administrative costs at an estimated 25%–35% of US health spending (the American Hospital Association) — size the problem, not the product's effect on it.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">The release contains no benchmark results and no model-level technical specifications; pricing is described only as per-user seat subscriptions or pay-as-you-go, with no dollar figures. Optum's network eligibility and coordination of benefits is in limited release and testing, and NextGen connectivity does not exist yet. <a href="https://histalk2.com/2026/11/11/healthcare-ai-news-11-11-26/" target="_blank" rel="noopener">HIStalk's write-up</a> confirms the Epic and Oracle connections are read-only. A preview customer list signals procurement intent, not validated clinical or financial benefit.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.googlecloudpresscorner.com/2026-11-10-Google-Cloud-Launches-Gemini-for-Healthcare" target="_blank" rel="noopener">Google Cloud Press Corner, 2026-11-10</a> ／ <a href="https://www.healthcareitnews.com/news/google-cloud-intros-new-ai-offering-gemini-healthcare" target="_blank" rel="noopener">Healthcare IT News</a> ／ <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/google-cloud-rolls-out-gemini-healthcare" target="_blank" rel="noopener">Fierce Healthcare</a> ／ <a href="https://cloud.google.com/blog/products/ai-machine-learning/gemini-for-healthcare" target="_blank" rel="noopener">Google Cloud Blog</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Foundation model</span></span>
+      <span class="tag">HoloCT</span><span class="tag">arXiv:2611.06471</span><span class="tag">11/4</span>
+    </div>
+    <h3>
+      <span class="en">HoloCT: interpretation and segmentation fused into one 3D model, 346 tasks, an 11,455-scan five-hospital validation, and 85.1% screening accuracy above all four radiologists</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Submitted to arXiv on November 4 (<a href="https://arxiv.org/abs/2611.06471" target="_blank" rel="noopener">arXiv:2611.06471</a>, Yulu Xie and 16 co-authors). The premise: a radiologist reading a CT judges what a finding is and where it sits in 3D anatomy at the same time, while existing models handle interpretation and segmentation separately. HoloCT fuses both into one 3D foundation model and <strong>emits 3D masks as the evidence for its output</strong>. The training set, HoloDATA, draws on 73 public datasets and six clinical cohorts: 195,921 CT scans, 6.2 million instruction dialogues and 2.8 million CT-mask pairs. Evaluation spans 346 tasks (segmentation, lesion screening, visual question answering, report generation) across 61 internal and 12 external datasets. In a multicentre validation of 11,455 scans from five hospitals it beat competing models by 18.2 points on lesion segmentation and 15.3 on report generation; it reached 85.1% mean accuracy screening thyroid tumours and colon lesions, above all four radiologists in a retrospective reader study; and language-guided segmentation of unseen structures and diffuse findings beat the leading approach by 22.1 points. The authors also report that making the model produce 3D masks alongside text <em>improved the interpretation itself</em>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This is the only one of today's four stories that builds auditability into the model's output rather than around it. An AI-written CT report could previously only be checked by reading it against the images; here every claim comes with a voxel-level mask, so a reviewer can point and ask where the finding is. The result that adding masks improved interpretation matters more than the accuracy number — it suggests that forcing a model to point at its evidence is a supervision signal rather than a tax on performance, which cuts directly against the familiar claim that explainability has to be paid for in accuracy.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">This is a preprint, not peer-reviewed. The reader study used four radiologists and was retrospective, not a prospective comparison; the abstract does not say what metric the "18.2 points" are points of. The abstract page does not state whether the weights are open, so it should not be treated as a downloadable open model until that is confirmed. Institutional affiliations are not listed on the arXiv abstract page.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://arxiv.org/abs/2611.06471" target="_blank" rel="noopener">A 3D foundation model unifying CT interpretation and segmentation, arXiv:2611.06471, 2026-11-04</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">New method</span></span>
+      <span class="tag">Claude Opus 5.5</span><span class="tag">GPT-6 Astra</span><span class="tag">11/9</span>
+    </div>
+    <h3>
+      <span class="en">Writing the weights by hand, having seen no images: LLM-authored medical image classifiers beat MedSigLIP on five of six tasks with ten thousand times fewer parameters — and lose to a baseline trained on 256 labelled images</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en"><a href="https://arxiv.org/abs/2611.12066" target="_blank" rel="noopener">arXiv:2611.12066</a>, submitted November 9 (Maximilian Lindholz and 14 co-authors, titled with the blunt question of whether training data is still needed), tests something extreme: can an LLM, from medical knowledge alone, write out every weight and bias of a small LeNet-style CNN in a single reply — <strong>with no optimisation, no tool use and no access to images</strong>? The authors call this weight-space programming (WSP). The subjects were Claude Opus 5.5 and GPT-6 Astra, against zero-shot MedSigLIP and the same architecture trained with Adam. Seven tasks across four modalities: chest X-ray, breast ultrasound and abdominal CT from MedMNIST (six tasks) plus pelvic MRI from SynthUterus. Mean test AUC on the six MedMNIST tasks: Opus 0.719, Astra 0.711, both beating MedSigLIP on five of six while using more than ten thousand times fewer parameters. But the same architecture trained with Adam on just <strong>256</strong> labelled images reached a mean AUC of 0.828, higher on every MedMNIST task. On SynthUterus, Opus scored 0.764 while Astra fell to 0.136 — below chance — from a systematic error. The protocol, logs and every generated weight set are on GitHub.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">The paper converts a usually hand-waved question into a price: how many labelled images is the medical knowledge inside a model worth? Fewer than 256. That is not a dismissal of WSP — read the other way, in rare disease, a novel indication, or any setting where labels simply cannot be assembled, an AUC of 0.72 from zero data is something from nothing, and it can serve as a prior to initialise training. But it also draws a clear floor under medical AI: as long as a couple of hundred labels can be obtained, conventional training still wins outright, and the claim that a strong enough model removes the need for data does not survive this experiment.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">The networks are toy-scale LeNets and MedMNIST is low-resolution; both sit a long way from clinical imaging, and the protocol allows a single reply with no iterative correction. Astra's 0.136 on pelvic MRI shows the method carries no reliability guarantee at all — within one paper the same approach both beats a vision-language model and falls below chance. This is a preprint.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://arxiv.org/abs/2611.12066" target="_blank" rel="noopener">Weight-Space Programming for Medical Imaging: Do We Still Need Training Data?, arXiv:2611.12066, 2026-11-09</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Auditability</span></span>
+      <span class="tag">GPT-6 Astra</span><span class="tag">arXiv:2611.07847</span><span class="tag">11/5</span>
+    </div>
+    <h3>
+      <span class="en">For auditing a clinical prediction model, black-box access works as well as reading the weights — and a well-written ordinary script matched the LLM</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en"><a href="https://arxiv.org/abs/2611.07847" target="_blank" rel="noopener">arXiv:2611.07847</a> (Zhiyu Liu, Xinyu Yang), submitted November 5 and revised November 6, separates two things earlier demonstrations had blended: when people showed an LLM auditing a clinical prediction model from its weight file, they mixed reading the weights with running code. This paper splits them in pre-specified simulation experiments. GPT-6 Astra and four other GPT models were pointed at small tanh networks, 105 to 38,401 weights, trained on simulated subarachnoid haemorrhage cohorts. Three conditions: weights in the prompt with no tools; a calculation-only tool with white-box weight access; the same tool with black-box access to predictions only. <strong>With no tools</strong>, Astra recovered the planted relationship in 353-weight networks but became unreliable at 3,457, and under the default system instruction declined 17 of 21 audit and repair tasks as unidentifiable — refusals that an explicit instruction removed entirely. <strong>With the tool</strong>, it recovered the planted relationship in all 39 runs on networks up to 38,401 weights, raised no false alarms across 21 null-network runs, and found the biased subgroup in 6 of 6 runs. Black-box access performed as well as white-box. Separately, a well-designed conventional script matched the comparator models on the audit and the best LLM repair. Code, simulated networks, prompts and replies are published on GitHub.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">The policy implication outruns the technical one. Whether model weights must be disclosed has run through regulatory debate on both sides of the Atlantic for a year; if black-box access to predictions alone is enough to surface a planted relationship and a biased subgroup, an audit regime can ask for a re-runnable calculation interface instead of the weights. The other half of the finding is just as important and less often said aloud: since an ordinary script matched the models, what the LLM supplies here is convenience rather than new capability — and the refusal behaviour swings sharply on how the system instruction is worded, which is a reproducibility risk for any regime that writes an LLM into the audit loop.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">All data were simulated; no real patient records were used. The largest target network had 38,401 weights, orders of magnitude below real clinical models and further still below foundation models, so the conclusion does not extrapolate directly. This is a preprint, and the pre-specification is the authors' own account.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://arxiv.org/abs/2611.07847" target="_blank" rel="noopener">Computation, not weight access: large language models as auditors of clinical prediction networks, arXiv:2611.07847, 2026-11-05</a> ／ <a href="https://arxiv.org/abs/2611.05341" target="_blank" rel="noopener">相關前作 arXiv:2611.05341</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot">Benchmark</span>
+      <span class="tag">Med Evidence Bench</span><span class="tag">arXiv:2611.13562</span><span class="tag">11/10</span>
+    </div>
+    <h3>
+      <span class="en">1,536 items drop ten models from 0.99 to 0.18: near-perfect on guideline recall, 0.165 once the evidence has to fit this patient</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en"><a href="https://arxiv.org/abs/2611.13562" target="_blank" rel="noopener">arXiv:2611.13562</a>, submitted November 10 (Zhiqun Zhao, Xiaodong Yang, Bruce Gu and 13 co-authors), argues that a medical LLM score cannot be interpreted when its grading criteria cannot be traced to clinical evidence. Their answer is Med Evidence Bench (MEB): 1,536 physician-written items at three levels — guideline knowledge, standardised clinical scenarios, and real-world laboratory scenarios — where <strong>every criterion stating a medical claim links back to a versioned span of source text</strong>. Ten LLMs were scored with an Evidence Trace Score (ETS), and the result is a cliff: 0.975–0.997 on guideline knowledge, 0.292–0.658 on standardised scenarios, 0.182–0.447 on real-world laboratory scenarios. The real-world subscores locate the failure: identifying clinical information averaged 0.770, matching evidence 0.165, formulating recommendations 0.160. Automated grading agreed with a three-physician majority vote at macro-F1 0.930 (95% CI 0.915–0.945) across 1,296 criterion-level judgements, though the authors note agreement was lower precisely on evidence application.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Read MEB against today's first story and the week's message resolves. Gemini for healthcare is sold on verifiable citations as a governance feature; MEB measures that a model can recall a guideline at 0.99 and pull the clinical information out of a record at 0.77, but falls to 0.165 the moment it has to judge whether a given piece of evidence applies to this patient. Producing a citation is not the same as producing the right one. That also explains why the week's other three papers circle evidence and auditing rather than chasing a higher single-point accuracy.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">The authors themselves flag three things: all materials are in Chinese, the study does not establish clinical effectiveness, and recalling a guideline guarantees nothing about patient-level evidence use. The arXiv abstract page does not name the ten models tested, so no vendor comparison is possible. This is a preprint. And the automated grader agreed least well on evidence application, which means the 0.165 figures themselves carry wider measurement uncertainty than the rest.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://arxiv.org/abs/2611.13562" target="_blank" rel="noopener">An evidence-traceable benchmark of clinical reasoning in large language models, arXiv:2611.13562, 2026-11-10</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Clinical validation</span></span>
+      <span class="tag">NYU Langone</span><span class="tag">PREVIA</span><span class="tag">11/9</span>
+    </div>
+    <h3>
+      <span class="en">PREVIA: a four-layer pipeline on open-source models with no fine-tuning at all, predicting PTSD a month out from one ED question — all 30 cases caught, but only half its positive predictions correct</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Published online in <em>Nature Communications</em> on November 9, with <a href="https://www.eurekalert.org/news-releases/1150072" target="_blank" rel="noopener">a same-day release from NYU Langone Health</a>. PREVIA is an ensemble of large language models whose only input is a patient's spontaneous answer to the routine emergency-department question of what brought them in, recorded and transcribed. The pipeline is layered: one layer scans for symptoms during the trauma and early in the ED, another weighs risk and protective factors, a third summarises those assessments, and a final layer combines the summary with demographics, trauma type and PTSD prevalence rates. The technical point is that <strong>the whole thing is built on open-source models with no training or fine-tuning</strong>; the authors compared simpler configurations, and the three-layer design did better on most metrics. Narratives from 145 ED patients were analysed and validated against CAPS-5 interviews, the diagnostic gold standard: it correctly identified more than 95.4% of at-risk patients. Among the 30 who went on to develop PTSD, PREVIA flagged 100%, against 89% for an ED clinician specialising in PTSD. Funding came from the US NIMH (R01 MH129856); the senior author is Katharina Schultebraucks.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This is the week's cleanest case of architecture-as-product: no proprietary data, no fine-tuning, no new weights, with the clinical signal coming entirely from the layered design and the prompt structure — and it out-recalled a specialist clinician. For a resource-constrained hospital, the significance is that this route does not wait on a labelled dataset. It also shows exactly where the route stops, which is the next row.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">The sample is 145 patients with 30 PTSD cases, and the head-to-head comparison was run on those 30; the release gives no sensitivity or specificity. <a href="https://histalk2.com/2026/11/11/healthcare-ai-news-11-11-26/" target="_blank" rel="noopener">HIStalk's write-up</a> supplies the missing half: only about half of its positive predictions were correct. The 100% recall is bought with a large number of false positives, and in an emergency department a false positive is follow-up capacity spent. The release also describes no external validation at other hospitals, presenting that as future work.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.eurekalert.org/news-releases/1150072" target="_blank" rel="noopener">NYU Langone Health via EurekAlert, 2026-11-09</a> ／ <a href="https://histalk2.com/2026/11/11/healthcare-ai-news-11-11-26/" target="_blank" rel="noopener">HIStalk Healthcare AI News, 2026-11-11</a></p></div>
+  </div>
+</section>
+
+<section id="product">
+  <h2>02 — Product Analysis</h2>
+  <div class="sec-title">
+    <span class="en">One publishes every number and no deployment path; the other publishes every connector and no number. Each is exactly what the other is missing.</span>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>Gemini for healthcare</h3>
+      <p class="sub"><span class="en-inline">Healthcare-specific agent platform · Google Cloud (US) · in preview</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> An agent orchestration layer sold to health systems and payers, not a new model. Packaged skills handle records synthesis, pre-appointment preparation, coverage review and benefit determination; data is read out of Epic and Oracle Health without write-back, patient records, prompts and outputs stay in the customer's own enterprise environment on Google Cloud, and Google states it does not use customer data to train its foundation models (<a href="https://www.googlecloudpresscorner.com/2026-11-10-Google-Cloud-Launches-Gemini-for-Healthcare" target="_blank" rel="noopener">official release</a>).</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: the breadth of connectors is genuinely hard to copy — InterSystems FHIR Server, Keragon's reach into over 400 healthcare applications, Verato identity resolution, plus CMS Coverage Data, the NPI Registry, RxNorm, ICD-10 and IMO Health's Knowledge Graph, and a payer-side row of Waystar, Cognizant Trizetto, GoodRx and Infinitus Relay (<a href="https://www.googlecloudpresscorner.com/2026-11-10-Google-Cloud-Launches-Gemini-for-Healthcare" target="_blank" rel="noopener">the full list is in the release</a>).</span>
+        </li>
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: model neutrality is a smart defensive move. Customers choose across Google, Anthropic and OpenAI, and smart routing then splits traffic by task cost — which takes the question of whose model is best, a question that flips every quarter, out of the procurement decision.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: not one benchmark. It claims verifiable citations without a single figure for how often a citation is right — and the same week <a href="https://arxiv.org/abs/2611.13562" target="_blank" rel="noopener">MEB measured ten models at 0.165 on matching evidence in real-world scenarios</a>. This is exactly where a number was owed.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: read-only keeps the liability line clean but leaves the loop open. A synthesised history or a drafted prior authorisation still has to be keyed back into the EHR by a human, so that step comes off whatever the 28-hour figure promises — and the release gives no measured time saving at all.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>HoloCT</h3>
+      <p class="sub"><span class="en-inline">3D CT foundation model · academic team (preprint) · not yet peer-reviewed</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> One model doing both CT interpretation and segmentation, with 3D masks as the evidence for its output. HoloDATA supplies 195,921 CT scans, 6.2 million instruction dialogues and 2.8 million CT-mask pairs, and evaluation spans 346 tasks (<a href="https://arxiv.org/abs/2611.06471" target="_blank" rel="noopener">arXiv:2611.06471</a>).</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: the external validation is firmer than most imaging preprints — <a href="https://arxiv.org/abs/2611.06471" target="_blank" rel="noopener">11,455 scans across five hospitals</a> plus 12 external datasets, with lesion segmentation and report generation ahead of competing models by 18.2 and 15.3 points.</span>
+        </li>
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: language-guided segmentation of unseen structures and diffuse findings <a href="https://arxiv.org/abs/2611.06471" target="_blank" rel="noopener">beat the leading approach by 22.1 points</a>, so it is not a segmenter locked to a fixed organ list — which fits how a clinician actually asks (outline this one for me) far better than a fixed label set.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: 85.1% above four radiologists comes from a retrospective reader study with four readers, which cannot statistically carry a beats-humans narrative — and the abstract page does not say whether the weights are open, so no third party can re-run these numbers.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: and here is the sharpest contrast of the day — it has a row of numbers and no route to deployment: no FDA clearance, no EHR integration, no pricing. Gemini for healthcare is the exact mirror image. What is actually usable sits between the two, and this week nobody is standing there.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="company">
+  <h2>03 — Companies &amp; Competition</h2>
+  <div class="sec-title">
+    <span class="en">Who stands where, on what, against whom</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th><span class="en-inline">Company</span></th>
+        <th><span class="en-inline">Recent state &amp; numbers</span></th>
+        <th><span class="en-inline">Position &amp; moat</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Google Cloud</strong><br><span class="en-inline">Healthcare agent orchestration</span></td>
+          <td>
+            <span class="en">Launched Gemini for healthcare into US preview on 11/10 with seven launch customers (HCA, Northwell, Optum, Highmark, Hartford HealthCare, BCBS of Massachusetts, Stanford School of Medicine) and 16 systems integrators including Accenture, Deloitte, KPMG, PwC, Cognizant, TCS, Wipro and HCL Tech (<a href="https://www.googlecloudpresscorner.com/2026-11-10-Google-Cloud-Launches-Gemini-for-Healthcare" target="_blank" rel="noopener">the release</a>). This is its fourth industry package after Gemini for government, Financial Services and Legal.</span>
+          </td>
+          <td>
+            <span class="en">The moat is connectors and governance rather than the model, which it deliberately makes swappable. The weakness is the absence of any performance figure, and that <a href="https://tech-ish.com/2026/11/11/gemini-for-healthcare-ai-agent-us-hospitals/" target="_blank" rel="noopener">OpenAI's and Anthropic's healthcare products shipped ten months earlier</a>.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Microsoft AI</strong><br><span class="en-inline">Diagnostic reasoning orchestration</span></td>
+          <td>
+            <span class="en">The MAI-DxO paper <a href="https://www.science.org/doi/10.1126/science.aeh7930" target="_blank" rel="noopener">appeared in <em>Science</em> in late October</a> (DOI 10.1126/science.aeh7930): 83% accuracy on 304 NEJM clinicopathological cases against 22% for 40 physicians averaging roughly 12 years of experience, and 80% against 47% on 304 MIMIC-IV-ED emergency encounters. On cost, a restrained configuration at close to 80% accuracy ran about $1,300 per case against over $4,700 for physicians (<a href="https://singularityhub.com/2026/11/04/microsofts-medical-ai-is-over-twice-as-good-diagnosing-diseases-as-doctors/" target="_blank" rel="noopener">SingularityHub, 11/4</a>).</span>
+          </td>
+          <td>
+            <span class="en">The same bet on orchestration rather than one model (agents that propose, challenge, price and coordinate), but with the numbers published far enough to be attacked — precisely what Google did not do this week. The weakness is that it is all text simulation, without images or time pressure, and the authors say they do not expect unsupervised AI diagnosticians soon.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Epic ／ Oracle Health</strong><br><span class="en-inline">The tollgate on the record</span></td>
+          <td>
+            <span class="en">Both appear as data sources for Gemini for healthcare in API form: Epic through open.epic and Oracle Health through Ignite APIs for FHIR, both read-only, returning active conditions, medications and recent labs (<a href="https://histalk2.com/2026/11/11/healthcare-ai-news-11-11-26/" target="_blank" rel="noopener">HIStalk, 11/11</a>). NextGen Healthcare connectivity has not shipped.</span>
+          </td>
+          <td>
+            <span class="en">Their moat was confirmed rather than challenged: every agent platform has to read through them, and write-back stays in their hands. Write access is the valuable half, and nobody got it this week.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Oura ／ Counsel Health</strong><br><span class="en-inline">Consumer-side agent vertical</span></td>
+          <td>
+            <span class="en">Announced on 11/10 an <a href="https://www.businesswire.com/news/home/20261110737835/en/Oura-to-Acquire-Counsel-Health-Advancing-Vision-for-More-Connected-Personalized-Healthcare" target="_blank" rel="noopener">all-cash acquisition of Counsel Health for $625 million</a>, expected to close by year-end. Counsel's core is a clinical AI harness calling specialised agents for history-taking, guideline retrieval, records review and emergency detection, plus a Clinician Cockpit for physicians. Oura has over six million members and more than 1,200 partners; quarterly revenue was $533 million, up 153% year over year, with $87 million adjusted EBITDA (16% margin), and fiscal 2026 revenue about $1.75 billion, up 92% (unaudited).</span>
+          </td>
+          <td>
+            <span class="en">The contrast with Google is clean: Google attaches agents at the hospital end, Oura at the consumer-physiology end, and it bought the physician-in-the-loop piece — which gives it a closed loop through prescriptions and referrals where Google has read-only. The weakness is that it also bought the segment carrying the heaviest regulatory and liability load.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Optum ／ IMO Health ／ BMJ ／ ASCO</strong><br><span class="en-inline">Evidence and terminology suppliers</span></td>
+          <td>
+            <span class="en">Inside Gemini for healthcare they are both customers and suppliers: Optum is a launch customer and also supplies EvidenceVue real-world evidence and (in limited release) network eligibility checks; IMO Health supplies a knowledge graph for coding accuracy; BMJ Digital Health supplies decision-support content; ASCO supplies guidelines and is working to include its Guidelines Assistant (<a href="https://www.googlecloudpresscorner.com/2026-11-10-Google-Cloud-Launches-Gemini-for-Healthcare" target="_blank" rel="noopener">the release</a>).</span>
+          </td>
+          <td>
+            <span class="en">This layer is the week's underrated winner: models are swappable and connectors are copyable, but copyrighted, authoritative evidence corpora are not. MEB scoring evidence-matching at 0.165 raises this layer's value rather than lowering it — the worse a model is at picking the right evidence itself, the more it needs a curated source to be pointed at.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>學術端（Charité、NYU Langone 等）</strong><br><span class="en-inline">Method innovation without weights</span></td>
+          <td>
+            <span class="en">The three most technically substantive papers of the week came from none of the big vendors: <a href="https://arxiv.org/abs/2611.12066" target="_blank" rel="noopener">weight-space programming (11/9)</a> uses someone else's model and one prompt, <a href="https://arxiv.org/abs/2611.07847" target="_blank" rel="noopener">the auditing experiment (11/5)</a> uses only simulated data, and <a href="https://www.eurekalert.org/news-releases/1150072" target="_blank" rel="noopener">PREVIA (11/9, Nature Communications)</a> does no fine-tuning at all on a single NIMH R01.</span>
+          </td>
+          <td>
+            <span class="en">Their moat is the right to set the question: they define what gets measured, and vendors can only compete on the metrics once defined. The weakness is that all of it stops at a preprint or a single-centre small sample, with no route of its own to the bedside.</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>Today's competitive structure is a gap.</strong> The model layer is commoditised to the point of a three-vendor dropdown, the connector layer is temporarily fenced by the breadth of a single Google launch, the evidence layer sits with Optum, IMO, BMJ and ASCO, and write access still sits with Epic and Oracle. The position nobody occupies is joining research-grade evidence output to production-grade workflow — HoloCT has voxel masks and no EHR, Gemini has the EHR and not one verifiable accuracy figure. Whoever welds those two halves together defines the next round.</span>
+    </p>
+  </div>
+</section>
+
+<section id="taiwan">
+  <h2>04 — Taiwan Angle</h2>
+  <div class="sec-title">
+    <span class="en">None of today's four stories matters to Taiwan at the model level. Three pieces of infrastructure do: how far FHIR has been laid, the missing Chinese-language clinical evaluation, and whether an audit needs the weights.</span>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>(1) Whether a platform like Gemini lands in Taiwan depends on FHIR, not on the model.</strong> Every data capability it has rests on Epic's open.epic and Oracle Health's Ignite FHIR APIs — without a standardised FHIR interface there is no product. Taiwan's own timeline: the Ministry of Health and Welfare has been standardising record formats at medical centres through "FHIR Box", targeting interoperability across medical centres by the end of 2026, extending to regional and district hospitals in 2027–2028, with a separate standard system planned for primary care (<a href="https://udn.com/news/story/7266/9592218" target="_blank" rel="noopener">Minister Shih Chung-liang, United Daily News, 2026-06-27</a>). The practical consequence is that international agent platforms will arrive in Taiwan one to two years behind their launch cadence, and that gap is the only window local vendors get.</span>
+    </p>
+    <p>
+      <span class="en"><strong>(2) MEB's materials are entirely in Chinese, and Taiwan has no equivalent public evaluation — that gap now carries a price.</strong> <a href="https://arxiv.org/abs/2611.13562" target="_blank" rel="noopener">MEB's finding</a> is that recalling a guideline (0.975–0.997) says nothing about applying evidence to a patient (0.165). Taiwan's clinical context, traditional-character usage, NHI coverage conditions and local guidelines all differ from MEB's materials, so where that cliff falls locally has not been measured by anyone. Among the three AI centres the ministry stood up in 2024, the Clinical AI Evidence Validation Center (with TFDA, using cross-hospital EMR data from a hospital alliance for external validation) and the AI Impact Research Center (with the National Health Insurance Administration, running cross-system trials to establish a basis for reimbursement pricing) were built for exactly this (<a href="https://www.mohw.gov.tw/cp-16-80155-1.html" target="_blank" rel="noopener">MOHW</a>). MEB's design — every grading criterion linked to a versioned span of source text — is a methodology available off the shelf, and it requires building no model at all.</span>
+    </p>
+    <p>
+      <span class="en"><strong>(3) If black-box auditing suffices, Taiwan's verification requirements shift from handing over weights to handing over a re-runnable calculation interface.</strong> <a href="https://arxiv.org/abs/2611.07847" target="_blank" rel="noopener">The 11/5 experiment</a> found black-box access to predictions performed as well as white-box weight access, and that an ordinary script matched the LLM. For TFDA and hospital practice that weakens the case for compelling weight disclosure and strengthens the case for requiring a stable query endpoint, pinned versions, and prompts and scripts a third party can re-run. The direction matches the agenda of the AI-Driven Healthy Taiwan summit at National Cheng Kung University on November 20, which puts legal risk and liability in medical AI (Chen Yu-pei) beside NHI digital transformation (NHIA Director Chen Liang-yu) in its keynotes (<a href="https://n.yam.com/Article/20261105609224" target="_blank" rel="noopener">Yam News, 2026-11-05</a>) — Taiwan's governance vocabulary is moving from accuracy to auditability too.</span>
+    </p>
+  </div>
+</section>
+
+<section id="reading">
+  <h2>05 — Further Reading</h2>
+  <div class="sec-title">
+    <span class="en">Chosen for changing how today's six stories read, not for volume of information.</span>
+  </div>
+
+  <ol class="reading">
+    <li>
+      <a href="https://arxiv.org/abs/2611.13562" target="_blank" rel="noopener">An evidence-traceable benchmark of clinical reasoning in large language models — arXiv:2611.13562 (2026-11-10)</a>
+      <p class="why"><span class="en">The one to read first today. Not another leaderboard but an operational answer to why scores cannot be interpreted: every criterion links back to a versioned source span. After that 0.99-to-0.18 cliff, you will ask a different set of questions of anything claiming verifiable citations.</span></p>
+    </li>
+    <li>
+      <a href="https://arxiv.org/abs/2611.12066" target="_blank" rel="noopener">Weight-Space Programming for Medical Imaging: Do We Still Need Training Data? — arXiv:2611.12066 (2026-11-09)</a>
+      <p class="why"><span class="en">Read it for the experimental design rather than the conclusion: it puts the medical knowledge inside a model and labelled data on one scale and converts between them, arriving at fewer than 256 images. The passage where Astra falls to 0.136 is the part worth lingering on — it shows how cleanly a method breaks when nothing guards it.</span></p>
+    </li>
+    <li>
+      <a href="https://arxiv.org/abs/2611.07847" target="_blank" rel="noopener">Computation, not weight access: LLMs as auditors of clinical prediction networks — arXiv:2611.07847 (2026-11-05)</a>
+      <p class="why"><span class="en">For the regulatory and procurement reader. It turns the weight-disclosure argument from a matter of position into a runnable experiment, and notes in passing that a script can replace the LLM here — a cheap advance warning for any regime about to write an LLM into its audit loop.</span></p>
+    </li>
+    <li>
+      <a href="https://arxiv.org/abs/2611.06471" target="_blank" rel="noopener">A 3D foundation model unifying CT interpretation and segmentation — arXiv:2611.06471 (2026-11-04)</a>
+      <p class="why"><span class="en">Worth reading for one counterintuitive result: making the model emit 3D masks alongside text <em>improved the interpretation itself</em>. If that holds, it inverts the assumption that explainability costs performance, with implications well beyond CT.</span></p>
+    </li>
+    <li>
+      <a href="https://www.science.org/doi/10.1126/science.aeh7930" target="_blank" rel="noopener">Sequential diagnosis with language models — Science, DOI 10.1126/science.aeh7930 (2026-10)</a>
+      <p class="why"><span class="en">The only recommendation here from outside the seven-day window, but it is the prototype for every orchestration-beats-the-model argument this week, and it treats cost as a first-class evaluation metric (about $1,300 per case against over $4,700 for physicians). It is what shows you what Gemini for healthcare's smart routing is aiming at.</span></p>
+    </li>
+    <li>
+      <a href="https://histalk2.com/2026/11/11/healthcare-ai-news-11-11-26/" target="_blank" rel="noopener">Healthcare AI News 11/11/26 — HIStalk (2026-11-11)</a>
+      <p class="why"><span class="en">The most useful round-up of the week, and it does what no press release will: supplies the figure that only about half of PREVIA's positive predictions were correct. As a cheap sweep to check what you missed this week, nothing beats it.</span></p>
+    </li>
+  </ol>
+</section>
+
+<section id="refs">
+  <h2>06 — References</h2>
+  <div class="sec-title">
+    <span class="en">References</span>
+  </div>
+
+  <div class="panel">
+    <ol class="refs">
+      <li>Google Cloud Launches Gemini for Healthcare. <em>Google Cloud Press Corner</em>, 2026-11-10. <a href="https://www.googlecloudpresscorner.com/2026-11-10-Google-Cloud-Launches-Gemini-for-Healthcare" target="_blank" rel="noopener">googlecloudpresscorner.com</a></li>
+      <li>Gemini for healthcare. <em>Google Cloud Blog</em>, 2026-11-10. <a href="https://cloud.google.com/blog/products/ai-machine-learning/gemini-for-healthcare" target="_blank" rel="noopener">cloud.google.com</a></li>
+      <li>Google Cloud intros new AI offering, Gemini for healthcare. <em>Healthcare IT News</em>, 2026-11-10. <a href="https://www.healthcareitnews.com/news/google-cloud-intros-new-ai-offering-gemini-healthcare" target="_blank" rel="noopener">healthcareitnews.com</a></li>
+      <li>Google Cloud rolls out Gemini for healthcare. <em>Fierce Healthcare</em>, 2026-11-10. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/google-cloud-rolls-out-gemini-healthcare" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>Google Cloud launches Gemini for Healthcare in preview. <em>AI News</em>, 2026-11-10. <a href="https://www.artificialintelligence-news.com/news/google-cloud-launches-gemini-for-healthcare-in-preview/" target="_blank" rel="noopener">artificialintelligence-news.com</a></li>
+      <li>Google launches Gemini for healthcare, ten months after OpenAI and Anthropic launched their own. <em>tech-ish</em>, 2026-11-11. <a href="https://tech-ish.com/2026/11/11/gemini-for-healthcare-ai-agent-us-hospitals/" target="_blank" rel="noopener">tech-ish.com</a></li>
+      <li>Healthcare AI News 11/11/26. <em>HIStalk</em>, 2026-11-11. <a href="https://histalk2.com/2026/11/11/healthcare-ai-news-11-11-26/" target="_blank" rel="noopener">histalk2.com</a></li>
+      <li>Xie Y. et al. A 3D foundation model unifying CT interpretation and segmentation. <em>arXiv:2611.06471</em>, 2026-11-04. <a href="https://arxiv.org/abs/2611.06471" target="_blank" rel="noopener">arxiv.org</a></li>
+      <li>Lindholz M. et al. Weight-Space Programming for Medical Imaging: Do We Still Need Training Data? <em>arXiv:2611.12066</em>, 2026-11-09. <a href="https://arxiv.org/abs/2611.12066" target="_blank" rel="noopener">arxiv.org</a></li>
+      <li>Liu Z., Yang X. Computation, not weight access: large language models as auditors of clinical prediction networks. <em>arXiv:2611.07847</em>, 2026-11-05 (v2 2026-11-06). <a href="https://arxiv.org/abs/2611.07847" target="_blank" rel="noopener">arxiv.org</a></li>
+      <li>Weight-space programming for auditing clinical decision networks. <em>arXiv:2611.05341</em>, 2026-11. <a href="https://arxiv.org/abs/2611.05341" target="_blank" rel="noopener">arxiv.org</a></li>
+      <li>Zhao Z. et al. An evidence-traceable benchmark of clinical reasoning in large language models. <em>arXiv:2611.13562</em>, 2026-11-10. <a href="https://arxiv.org/abs/2611.13562" target="_blank" rel="noopener">arxiv.org</a></li>
+      <li>PREVIA: A Clinically-Informed LLM Ensemble for Early PTSD Risk Prediction from ED Trauma Narratives. <em>Nature Communications</em> / NYU Langone Health news release via EurekAlert, 2026-11-09. <a href="https://www.eurekalert.org/news-releases/1150072" target="_blank" rel="noopener">eurekalert.org</a></li>
+      <li>Nori H., Horvitz E. et al. Sequential diagnosis with language models. <em>Science</em>, DOI 10.1126/science.aeh7930, 2026-10. <a href="https://www.science.org/doi/10.1126/science.aeh7930" target="_blank" rel="noopener">science.org</a></li>
+      <li>Microsoft's Medical AI Is Over Twice as Good Diagnosing Diseases as Doctors. <em>SingularityHub</em>, 2026-11-04. <a href="https://singularityhub.com/2026/11/04/microsofts-medical-ai-is-over-twice-as-good-diagnosing-diseases-as-doctors/" target="_blank" rel="noopener">singularityhub.com</a></li>
+      <li>Oura to Acquire Counsel Health. <em>Business Wire</em>, 2026-11-10. <a href="https://www.businesswire.com/news/home/20261110737835/en/Oura-to-Acquire-Counsel-Health-Advancing-Vision-for-More-Connected-Personalized-Healthcare" target="_blank" rel="noopener">businesswire.com</a></li>
+      <li>Next generation medical image interpretation with MedGemma 1.5 and medical speech to text with MedASR. <em>Google Research Blog</em>, 2026-01. <a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">research.google</a></li>
+      <li>高醫大論壇揭示AI醫療新局！衛福部推「333政策」 國家489億預算力挺. <em>聯合報</em>, 2026-06-27. <a href="https://udn.com/news/story/7266/9592218" target="_blank" rel="noopener">udn.com</a></li>
+      <li>衛生福利部三大AI中心啟動記者會. <em>衛生福利部</em>, 2024-10-07. <a href="https://www.mohw.gov.tw/cp-16-80155-1.html" target="_blank" rel="noopener">mohw.gov.tw</a></li>
+      <li>AI驅動健康台灣高峰論壇 聚焦智慧醫療落地與治理. <em>蕃新聞</em>, 2026-11-05. <a href="https://n.yam.com/Article/20261105609224" target="_blank" rel="noopener">n.yam.com</a></li>
+    </ol>
+    <div class="note">
+      <span class="en"><strong>Editor's note:</strong> (1) Four of the research items here are arXiv preprints (2611.06471, 2611.12066, 2611.07847, 2611.13562); none is peer-reviewed and every figure is the authors' own. (2) HoloCT's "18.2 / 15.3 / 22.1 points" carry no stated unit in the abstract, and are quoted as published rather than converted. (3) The PREVIA paper itself in <em>Nature Communications</em> sits behind subscription access; the figures here come from NYU Langone's release via EurekAlert, and the point that only about half its positive predictions were correct comes from HIStalk's secondary write-up rather than the paper. (4) The MAI-DxO paper in <em>Science</em> (late October) falls outside this edition's seven-day window and is cited only as background and contrast; its figures come from SingularityHub's write-up, as the <em>Science</em> article is paywalled. (5) Gemini for healthcare's three framing figures — 28 hours a week, 41.9% burnout, administrative costs at 25%–35% — come respectively from a Harris Poll and Google Cloud commissioned study, a 2025 AMA report and the American Hospital Association, and none evaluates this product. (6) On Taiwan, the "FHIR Box" programme and the end-of-2026 medical-centre interoperability target come from a 2026-06-27 United Daily News report of Health Minister Shih Chung-liang, and the three AI centres' remits from the ministry's 2024-10-07 launch release; neither is news from this week, and both are used as dated background. (7) During research, arXiv:2611.13297 (an echocardiography video foundation model) could not be read because of rate limiting, and the <em>Nature Medicine</em> pathology foundation model page (s41591-026-04521-4) and a taiwan-healthcare.org report on NHI payment for AI both failed to fetch; none of the three is reflected in this edition.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-row">
+    <div>
+      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Thursday / Technology<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
+    </div>
+    <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
+  </div>
+</footer>
+</main>
+
+<div class="fabs">
+  <button class="up" id="up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+  <a class="home-fab" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg></a>
+</div>
+
+<script>
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.getElementById('theme-ic').textContent =
+    document.body.classList.contains('dark') ? '◑' : '◐';
+}
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.body.classList.add('dark');
+  document.getElementById('theme-ic').textContent = '◑';
+}
+window.addEventListener('scroll', function(){
+  document.getElementById('up').classList.toggle('show', window.scrollY > 600);
+});
+
+/* GitHub 星星數：無需授權，失敗或被限流時靜默保留佔位符 */
+(function(){
+  var el = document.getElementById('ghs');
+  if (!el || typeof fetch !== 'function') return;
+  fetch('https://api.github.com/repos/tingwei161803/ai-medical-daily', {headers:{Accept:'application/vnd.github+json'}})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if (!d || typeof d.stargazers_count !== 'number') return;
+      var n = d.stargazers_count;
+      el.textContent = n >= 1000 ? (Math.round(n/100)/10) + 'k' : String(n);
+    })
+    .catch(function(){});
+})();
+</script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/reports/2026-11-12.html" hreflang="zh-Hant" rel="alternate" lang="zh-Hant">中文版</a></p>
+</body>
+</html>
