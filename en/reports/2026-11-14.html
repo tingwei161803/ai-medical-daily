@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>AI &amp; Medical AI Daily · 2026-11-14</title>
+<meta property="og:url" content="https://ai-medical-daily.peteraim.com/en/reports/2026-11-14.html" />
+<link rel="canonical" href="https://ai-medical-daily.peteraim.com/en/reports/2026-11-14.html" />
+<link rel="alternate" hreflang="zh-Hant" href="https://ai-medical-daily.peteraim.com/reports/2026-11-14.html" />
+<link rel="alternate" hreflang="en" href="https://ai-medical-daily.peteraim.com/en/reports/2026-11-14.html" />
+<link rel="alternate" hreflang="x-default" href="https://ai-medical-daily.peteraim.com/reports/2026-11-14.html" />
+<meta name="description" content="Nvidia changes CEO, agents get hands and a payment card, and the one model with checkable benchmarks says it is not for clinical use — the general-AI week of Nov 10–13, and what it means for medicine.">
+<meta name="report-date" content="2026-11-14">
+<meta name="report-theme" content="general-ai">
+<meta name="report-title-zh" content="同一週交出去的權限比查得動的證據多——11/12 輝達董事會宣布黃仁勳辭去總裁、執行長與董事職務，由 CFO Colette Kress 暫代執行長、Harvey Jones 接任董事長，公司未說明原因；股價盤中一度跌約 14%、收跌 4.34%，而過去一個月已有約 1.4 兆美元市值蒸發，這家公司掌握估計九成的先進 AI 晶片市場。同一週被交付權限的是代理人的手、錢與一間實驗室：11/10 Gemini Robotics 2.5 在 200 多項任務上成功率較前代提高 30–100%、速度快 20–30%，在 Mercedes-Benz 匈牙利與德國產線的汽車套件分揀概念驗證達 96%；11/13 OpenAI 的 ChatGPT Wallet 讓 dots 代理人直接結帳，限美國少量 ChatGPT Pro、18 歲以上、每筆仍需 Face ID 或指紋，但支出上限與類別／時段規則官方明寫「尚未推出」；11/12 由前 Anthropic 研究者創立的 Mirendil 以 Kleiner Perkins 與 Clearlake 領投募得 10 億美元 A 輪，自稱代理人寫下 Mirendil-Base 預訓練 99% 以上的程式碼、全部算力不到 1,000 萬美元，至今沒有任何第三方評測。唯一把可查證數字攤開的是 11/11 的 AlphaGenome 2：在 TenK10K 的 28 種原級免疫細胞上，找出的致因變異從前代 16% 提高到 30%、方向性基因效應從 23% 到 43%，訓練用超過 1.07 億個單細胞輪廓、涵蓋 68 種組織——而它在自己的公告裡明寫僅供研究、未經臨床或診斷用途核准。同一週 11/10 上線的一篇 KDD 2026 論文量出了這件事的另一半：72 個有標準答案的測試案例裡，軌跡式評測 F1 達 0.90，純文字評測召回率相同但誤報多 5 倍，而功能測試與安全紅隊找出的 24 個新失效模式「零重疊」。">
+<meta name="report-title-en" content="The week handed out more authority than anyone could check — on Nov 12 Nvidia's board announced that Jensen Huang had resigned as president, chief executive and director, with CFO Colette Kress as interim CEO and Harvey Jones as board chair, and no reason given by the company; the stock fell as much as 14% intraday and closed down 4.34%, after roughly US$1.4tn of market value had already gone over the previous month, at a company holding an estimated 90% of the advanced AI chip market. The same week, what got handed over was an agent's hands, its card and its laboratory: Gemini Robotics 2.5 (Nov 10) raised success rates 30–100% over its predecessor across more than 200 tasks and ran 20–30% faster, hitting 96% on an automotive kitting proof-of-concept on Mercedes-Benz lines in Hungary and Germany; OpenAI's ChatGPT Wallet (Nov 13) let its dots agents check out — a small number of US ChatGPT Pro subscribers, 18 and over, Face ID or fingerprint on every purchase — while spending limits and category or time rules are described by OpenAI itself as not yet available; and Mirendil, founded by former Anthropic researchers, raised a US$1bn Series A led by Kleiner Perkins and Clearlake on Nov 12, claiming its agents wrote over 99% of the code for the Mirendil-Base pretraining run on under US$10m of compute all-in, with no third-party evaluation published to date. The one release that opened checkable numbers was AlphaGenome 2 (Nov 11): on TenK10K's 28 primary immune cell types it found causal variants in 30% of cases against the previous generation's 16%, and directional gene effects 43% against 23%, trained on over 107 million single-cell profiles across 68 tissues — and its own announcement says it is research-only and not approved for clinical or diagnostic use. A KDD 2026 paper posted on Nov 10 measured the other half of the problem: across 72 ground-truth test cases trace-based evaluation reached F1 0.90, text-only evaluation matched its recall but raised 5x more false alarms, and the 24 novel failure modes found by functional testing and by security red-teaming had zero overlap.">
+<meta name="report-summary-zh" content="輝達換帥、代理人拿到手與付款卡、而唯一公布可查證基準的模型明寫不得臨床使用——11/10–11/13 的廣義 AI 進展，以及它們對醫療的意義。">
+<meta name="report-summary-en" content="Nvidia changes CEO, agents get hands and a payment card, and the one model with checkable benchmarks says it is not for clinical use — the general-AI week of Nov 10–13, and what it means for medicine.">
+<meta property="og:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HJLDQZDK5V');
+</script>
+<link rel="stylesheet" href="/assets/report.css">
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><span>◆</span> <span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <div class="bar-sp"></div>
+    <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
+    <!-- 剛好一組 .seg，建置時整塊會換成指向另一語言網址的真連結 -->
+    <div class="seg">
+      <a href="/reports/2026-11-14.html" hreflang="zh-Hant" lang="zh-Hant" rel="alternate">中文</a>
+      <a class="on" href="/en/reports/2026-11-14.html" hreflang="en" lang="en" aria-current="page">EN</a>
+    </div>
+    <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="kicker">
+    <span class="en-inline">Saturday · General AI</span>
+  </div>
+  <h1>
+        <span class="en">The week handed out more authority than anyone could check — on Nov 12 Nvidia's board announced that Jensen Huang had resigned as president, chief executive and director, with CFO Colette Kress as interim CEO and Harvey Jones as board chair, and no reason given by the company; the stock fell as much as 14% intraday and closed down 4.34%, after roughly US$1.4tn of market value had already gone over the previous month, at a company holding an estimated 90% of the advanced AI chip market. The same week, what got handed over was an agent's hands, its card and its laboratory: Gemini Robotics 2.5 (Nov 10) raised success rates 30–100% over its predecessor across more than 200 tasks and ran 20–30% faster, hitting 96% on an automotive kitting proof-of-concept on Mercedes-Benz lines in Hungary and Germany; OpenAI's ChatGPT Wallet (Nov 13) let its dots agents check out — a small number of US ChatGPT Pro subscribers, 18 and over, Face ID or fingerprint on every purchase — while spending limits and category or time rules are described by OpenAI itself as not yet available; and Mirendil, founded by former Anthropic researchers, raised a US$1bn Series A led by Kleiner Perkins and Clearlake on Nov 12, claiming its agents wrote over 99% of the code for the Mirendil-Base pretraining run on under US$10m of compute all-in, with no third-party evaluation published to date. The one release that opened checkable numbers was AlphaGenome 2 (Nov 11): on TenK10K's 28 primary immune cell types it found causal variants in 30% of cases against the previous generation's 16%, and directional gene effects 43% against 23%, trained on over 107 million single-cell profiles across 68 tissues — and its own announcement says it is research-only and not approved for clinical or diagnostic use. A KDD 2026 paper posted on Nov 10 measured the other half of the problem: across 72 ground-truth test cases trace-based evaluation reached F1 0.90, text-only evaluation matched its recall but raised 5x more false alarms, and the 24 novel failure modes found by functional testing and by security red-teaming had zero overlap.</span>
+  </h1>
+  <div class="dateline">
+    <span class="en-inline">Saturday, November 14, 2026 · Covering Nov 10–13 · Taipei time</span>
+  </div>
+  <p class="lede">
+        <span class="en">This week's general-AI news reads along a single line: authority was handed over faster than the evidence could be checked. On Nov 12 Nvidia's board announced that Jensen Huang had resigned as president, chief executive and director, with no reason given by the company — at a firm holding an estimated 90% of the advanced AI chip market, which had already shed about US$1.4tn of market value over the previous month (<a href="https://www.aljazeera.com/news/2026/11/12/why-did-nvidia-ceo-jensen-huang-resign-and-who-is-colette-kress" target="_blank" rel="noopener">Al Jazeera</a>, <a href="https://www.abc.net.au/news/2026-11-13/nvidia-founder-jensen-huang-resigns/107376470" target="_blank" rel="noopener">ABC News</a>). In the same week three products handed agents more decision rights: <a href="https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/" target="_blank" rel="noopener">Gemini Robotics 2.5</a> handed over the hands (more than 200 tasks, pipetting among them), <a href="https://techcrunch.com/2026/11/13/chatgpts-new-wallet-lets-ai-agents-shop-and-check-out-for-you/" target="_blank" rel="noopener">ChatGPT Wallet</a> handed over the card (spending limits "not yet available"), and <a href="https://www.techtimes.com/articles/330614/20261113/ai-lab-mirendil-raises-1b-series-release-names-no-valuation-cites-only-company-tests.htm" target="_blank" rel="noopener">Mirendil</a> handed over a whole laboratory on a US$1bn Series A (zero third-party evaluation). The one release that opened its control group was <a href="https://deepmind.google/blog/alphagenome-2-deciphering-how-cells-read-dna-to-better-understand-disease/" target="_blank" rel="noopener">AlphaGenome 2</a> — which states on the same page that it is research-only and not approved for clinical or diagnostic use. And a <a href="https://arxiv.org/abs/2611.14493v1" target="_blank" rel="noopener">KDD 2026 paper</a> posted on Nov 10 measured precisely what is missing: of 24 novel failure modes, those found by functional testing and those found by security red-teaming had zero overlap.</span>
+  </p>
+
+  <nav class="toc">
+    <a href="#top"><span class="en-inline">Top Stories</span></a>
+    <a href="#product"><span class="en-inline">Product Analysis</span></a>
+    <a href="#company"><span class="en-inline">Companies &amp; Competition</span></a>
+    <a href="#taiwan"><span class="en-inline">Taiwan Angle</span></a>
+    <a href="#reading"><span class="en-inline">Further Reading</span></a>
+    <a href="#refs"><span class="en-inline">References</span></a>
+  </nav>
+</div>
+
+<section id="top">
+  <h2>01 — Top Stories</h2>
+  <div class="sec-title">
+        <span class="en">Eight items on one line: who was given more authority, and who published numbers anyone can rerun.</span>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Governance</span></span>
+      <span class="tag">NVIDIA</span>
+      <span class="tag">Colette Kress</span>
+      <span class="tag">11/12</span>
+    </div>
+    <h3>
+        <span class="en">Nvidia's board announces Huang's resignation as CEO and director; the CFO steps in and the company gives no reason</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On Nov 12 Nvidia's board announced that Jensen Huang had resigned as president, chief executive and board member with immediate effect, ending a 33-year run as CEO, with CFO Colette Kress as interim chief executive and Harvey Jones as board chair; <a href="https://www.aljazeera.com/news/2026/11/12/why-did-nvidia-ceo-jensen-huang-resign-and-who-is-colette-kress" target="_blank" rel="noopener">Al Jazeera</a> notes the company gave no reason for the departure. Huang had admitted the previous Sunday to being unfaithful to his wife and apologised to his family and employees, and <a href="https://www.abc.net.au/news/2026-11-13/nvidia-founder-jensen-huang-resigns/107376470" target="_blank" rel="noopener">ABC News</a> reports the board opened an independent investigation after he acknowledged a relationship with a Chinese business associate. The share reaction belongs to two different windows: <a href="https://www.mirrormedia.mg/story/20261113-183mon-124604" target="_blank" rel="noopener">Mirror Media</a> records a 14% intraday fall on Nov 12 and a 4.34% close, while ABC separately notes the stock had already lost at least 24% over the previous month, about US$1.4tn of market value, from roughly US$4tn before the decline. Kress has been CFO since September 2013, over which Nvidia's annual revenue grew from US$4.13bn in fiscal 2014 to US$215.9bn in fiscal 2026; Jones said he expects operations, customer commitments and the product road map to continue without interruption.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This is a capital-structure event, not only a personnel one. <a href="https://udn.com/news/story/7238/9876163" target="_blank" rel="noopener">Economic Daily News</a> sets out three transmission paths: besides selling chips, Huang backed AI labs and cloud builders through equity investments, chip credit lines and financing guarantees, and Bernstein's analyst asks directly what becomes of those investments, that financing support and the residual-value guarantees. If the new management turns conservative, what moves first is customers' funding and build-out plans, and only then demand for chips, advanced packaging and servers. The relevance to medical AI is direct: inference costs at the hospital end have fallen for two years on the assumption that a build-out financed by a single vendor acting as both seller and lender keeps running. What was shaken this week is that assumption, not any medical model.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">Nvidia gave no official reason. The Chinese-intelligence thread is a New York Times report of a US intelligence conclusion, denied by Beijing, with Nvidia saying it has "no reason to believe" national security or company secrets were compromised. A proposed class action alleging that Nvidia and Huang defrauded shareholders by concealing the relationship is an allegation, not a finding, and House Foreign Affairs chair Brian Mast's statement that he expects testimony within about a week is an expectation rather than a scheduled hearing (<a href="https://www.abc.net.au/news/2026-11-13/nvidia-founder-jensen-huang-resigns/107376470" target="_blank" rel="noopener">ABC News</a>). The 14% intraday and the 4.34% close are different windows and must not be mixed, and the US$500bn and US$1.4tn figures for lost market value come from different measurement periods.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.aljazeera.com/news/2026/11/12/why-did-nvidia-ceo-jensen-huang-resign-and-who-is-colette-kress" target="_blank" rel="noopener">Al Jazeera, 2026-11-12</a> · <a href="https://www.abc.net.au/news/2026-11-13/nvidia-founder-jensen-huang-resigns/107376470" target="_blank" rel="noopener">ABC News, 2026-11-13</a> · <a href="https://www.mirrormedia.mg/story/20261113-183mon-124604" target="_blank" rel="noopener">鏡週刊 Mirror Media, 2026-11-13</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Genomics</span></span>
+      <span class="tag">Google DeepMind</span>
+      <span class="tag">AlphaGenome 2</span>
+      <span class="tag">11/11</span>
+    </div>
+    <h3>
+        <span class="en">AlphaGenome 2 pushes variant interpretation from tissue level to cell state — and rules out clinical use in its own announcement</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+         Google DeepMind published AlphaGenome 2 (authors Adam Gayoso, Natasha Latysheva, Pushmeet Kohli and Žiga Avsec). Where the previous generation emitted fixed parallel outputs for bulk tissues and cell lines, this one is conditional: it takes a biological condition — a tissue, cell type or state — plus about one million DNA letters, and predicts one condition at a time. Readouts cover gene expression, histone modifications and chromatin accessibility, plus DNA methylation, which the previous model did not predict; training draws on bulk and single-cell human and mouse data, over 107 million single-cell profiles across 68 tissues (<a href="https://deepmind.google/blog/alphagenome-2-deciphering-how-cells-read-dna-to-better-understand-disease/" target="_blank" rel="noopener">DeepMind Blog</a>). On TenK10K's 28 primary immune cell types it identifies causal variants in 30% of cases against 16% for the original AlphaGenome fine-tuned on single-cell data, and directional gene effects 43% against 23%. It also reproduced computationally a published finding that a variant in a distant regulatory switch overactivates <span class="en-inline">ETS2</span> in gut macrophages, linked to inflammatory bowel disease. Access is from today for non-commercial research through the AlphaGenome API, with a private preview for commercial research and a feedback form closing Nov 30.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">GWAS hits have been stuck in the same place for years: the signal sits in non-coding regions, and tissue-level models cannot separate neighbouring cell types within one tissue. The substantive change here is the cell encoder — researchers can condition the model on their own single-cell data, and <a href="https://deepmind.google/blog/alphagenome-2-deciphering-how-cells-read-dna-to-better-understand-disease/" target="_blank" rel="noopener">DeepMind</a> says that starting from a single-cell RNA-seq snapshot of a few dozen cells, with no retraining, it matches or outperforms models trained or fine-tuned directly on those datasets; Human Cell Atlas co-founder Sarah Teichmann's phrasing is that it "adapts directly to new single-cell data without retraining." Cross-modality imputation is the other practical face: given one measurement, such as single-cell gene activity, it predicts an unmeasured property such as chromatin accessibility — which changes the cost structure, not the accuracy, for a lab that can only afford one assay.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">The announcement itself states the model is for research use only and is not validated or approved for clinical or diagnostic purposes, and that directional predictions are reported only where the model is confident. The baselines are the previous AlphaGenome fine-tuned on single-cell data and "other specialised tools", chosen and run by the publisher rather than in an independent benchmark, and the post's own introduction says "more than 100 million" profiles where the detail says 107 million. The licence matters too: only non-commercial research is open today, with commercial research in private preview.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://deepmind.google/blog/alphagenome-2-deciphering-how-cells-read-dna-to-better-understand-disease/" target="_blank" rel="noopener">Google DeepMind Blog, 2026-11-11</a> · <a href="https://siliconangle.com/2026/11/11/google-deepmind-releases-new-advanced-robotics-ai-model-and-next-generation-gene-prediction-model/" target="_blank" rel="noopener">SiliconANGLE, 2026-11-11</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Embodied AI</span></span>
+      <span class="tag">Google DeepMind</span>
+      <span class="tag">Gemini Robotics 2.5</span>
+      <span class="tag">11/10</span>
+    </div>
+    <h3>
+        <span class="en">Gemini Robotics 2.5 lists pipetting among its tasks, and the per-task numbers show where the ceiling still is</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On Nov 10 DeepMind published Gemini Robotics 2.5, described as its most capable vision-language-action model to date, evaluated across more than 200 distinct tasks — a list that includes serving food with tongs, tying a bow on a gift box, and pipetting liquid. Success rates are 30% to 100% higher than the previous generation depending on task type, with tasks completed 20–30% faster. The per-task figures show the shape better: closing the lid of a black toolbox went 0%→93%, packing pastries with tongs 5%→100%, untying ribbon bows 0%→70%, hanging a cardigan 0%→62%, folding pants 0%→40% (<a href="https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/" target="_blank" rel="noopener">DeepMind Blog</a>). The field component is with Apptronik and Mercedes-Benz, using the Apollo 2 humanoid for automotive kitting on active production lines in Kecskemét, Hungary and Sindelfingen, Germany, at a 96% proof-of-concept success rate, with Gemini Robotics ER tracking the workflow and 2.5 controlling the arms. On safety, inference-time reasoning guidance raised safe task completion by 33% around obstacles and 43% around nearby people, and the team open-sourced ASIMOV-Jailbreak on Hugging Face, where Gemini 4 Argon resists 99.5% of attempts against 82% for the previous baseline, Gemini Robotics ER 2.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Medicine's nearest contact point here is not the ward but the bench. Pipetting appearing on the task list means models of this class are starting to touch the most repetitive, most error-prone and most heavily regulated motions in laboratory and research workflows — while folding pants at 0%→40% says generalisable dexterity is nowhere near hands-off. What is most worth copying is how the safety numbers are reported: 33% and 43% are given per scenario rather than as one aggregate, and <a href="https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/" target="_blank" rel="noopener">DeepMind</a> open-sourced the jailbreak benchmark so third parties can rerun the same prompts — which is precisely what the week's other releases did not do.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">Rollout is to robotics partners only — Agile Robots SE, Apptronik and Boston Dynamics among them — with no broader availability mentioned on the official page. The 96% is a Google and Apptronik proof-of-concept figure, not an audited production yield, and "30–100% higher" spans several tasks where the previous model scored 0%, so the denominator is zero and the range reads better than the capability jump it actually represents.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/" target="_blank" rel="noopener">Google DeepMind Blog, 2026-11-10</a> · <a href="https://siliconangle.com/2026/11/11/google-deepmind-releases-new-advanced-robotics-ai-model-and-next-generation-gene-prediction-model/" target="_blank" rel="noopener">SiliconANGLE, 2026-11-11</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Agentic commerce</span></span>
+      <span class="tag">OpenAI</span>
+      <span class="tag">ChatGPT Wallet</span>
+      <span class="tag">11/13</span>
+    </div>
+    <h3>
+        <span class="en">ChatGPT Wallet lets agents check out — and OpenAI itself says spending limits are not yet available</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On Nov 13 OpenAI launched ChatGPT Wallet, letting its agents — called dots — help decide what to buy and then complete the purchase, with OpenAI saying users are "fully in control" of those purchases. Mechanically: a user adds eligible cards to Wallet once, then asks a dot to buy; before checkout they review the items, the total and the card, and approve each purchase with a security check such as Face ID or a fingerprint, which creates a transaction record. Wallet charges the card through a payment token, so card details never reach the dot or the merchant, while the dot passes shipping and contact details to the merchant; card rewards and protections such as transaction disputes are preserved (<a href="https://techcrunch.com/2026/11/13/chatgpts-new-wallet-lets-ai-agents-shop-and-check-out-for-you/" target="_blank" rel="noopener">TechCrunch</a>). The rollout is deliberately narrow: a restricted number of US ChatGPT Pro subscribers, aged 18 and over, with a US-issued Visa, Mastercard or American Express card. OpenAI also published a Commerce Partner Playbook for retailers wanting to support agent shopping.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Today's consent model is a biometric approval on every transaction, which is strict. The real signal is the next sentence: <a href="https://techcrunch.com/2026/11/13/chatgpts-new-wallet-lets-ai-agents-shop-and-check-out-for-you/" target="_blank" rel="noopener">TechCrunch</a> notes that spending limits, and rules by purchase category or time period, are features intended for pre-approved autonomous buying — and that those controls are not yet available. The roadmap has written down its destination, which is purchasing without per-transaction approval, and the guardrails have not arrived. The medical analogue has the same shape: procurement, consumables restocking, even self-pay checkout are low-value, high-frequency, clearly-ruled work, exactly the class that gets delegated first — and what decides whether it can be is not model accuracy but whether limits and category rules exist at all.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">No participating merchants are named. TechCrunch notes DoorDash and Uber report low agent-placed order volumes, while Amazon blocks AI agents to steer users toward its own agent, Alexa — so reach is unproven. OpenAI frames the limited launch as a way to test and improve the feature rather than a general release.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://techcrunch.com/2026/11/13/chatgpts-new-wallet-lets-ai-agents-shop-and-check-out-for-you/" target="_blank" rel="noopener">TechCrunch, 2026-11-13</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Funding</span></span>
+      <span class="tag">Mirendil</span>
+      <span class="tag">Lor / Fern</span>
+      <span class="tag">11/12</span>
+    </div>
+    <h3>
+        <span class="en">Mirendil sells agents-run-the-lab for a US$1bn Series A, with no third-party evaluation published</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        opic researchers, announced a US$1bn Series A led by Kleiner Perkins and Clearlake Capital, with Google on the participant list and Nvidia having invested after the seed round; the June seed was US$200m at a US$1bn valuation. The named co-founders are Behnam Neyshabur and Harsh Mehta, and the June launch described a founding team of 20 researchers and engineers from Anthropic, xAI, Google DeepMind and OpenAI (<a href="https://www.techtimes.com/articles/330614/20261113/ai-lab-mirendil-raises-1b-series-release-names-no-valuation-cites-only-company-tests.htm" target="_blank" rel="noopener">Tech Times</a>). There are two products: <span class="en-inline">Lor</span>, which the company says does "the work of an entire AI lab" — agents write code, run experiments and iterate on results for days, currently in private beta, and the agents provision their own compute — and <span class="en-inline">Fern</span>, its first model pretrained from scratch, with a context window of up to 10M tokens (<a href="https://mirendil.com/" target="_blank" rel="noopener">Mirendil</a>). The company says agents wrote over 99% of the code for the Mirendil-Base pretraining run, directed by one researcher over 3.5 months, on under US$10m of compute all-in, and its CEO puts a Google Cloud deal at "upward of US$100 million", a figure Google Cloud does not give.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This round buys a narrative about automating AI research itself rather than any verified capability. What is worth recording is the company's own restraint: Mirendil says plainly that the model was not built autonomously and that it has not reached fully autonomous recursive self-improvement, only that it is closer than before. Seen against the rest of the week, this and ChatGPT Wallet are two faces of one question — both hand more authority to agents, and Lor's authority, provisioning its own compute and running experiments for days, is harder to claw back than a card limit.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">No independent evaluation of any Mirendil model has been published. The one quasi-external number is bits-per-byte on seven external code repositories: Mirendil-Base 0.222 against Kimi-K3's 0.193 — lower is better, so Mirendil is the one behind — and prediction loss on code does not show coding, reasoning or tool-use performance. The 10M-token context claim rests on a basic RULER test, and simple retrieval tests overstate long-context ability. No safety checks, sandboxing or spending limits are described for Lor. The interests should be on the table too: Google is both investor and compute supplier, and Nvidia sells the chips labs of this kind run on. No valuation was published; Bloomberg reported talks at US$5bn, unconfirmed as final (<a href="https://www.techtimes.com/articles/330614/20261113/ai-lab-mirendil-raises-1b-series-release-names-no-valuation-cites-only-company-tests.htm" target="_blank" rel="noopener">Tech Times</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.techtimes.com/articles/330614/20261113/ai-lab-mirendil-raises-1b-series-release-names-no-valuation-cites-only-company-tests.htm" target="_blank" rel="noopener">Tech Times, 2026-11-13</a> · <a href="https://mirendil.com/" target="_blank" rel="noopener">Mirendil, 2026-11</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Funding</span></span>
+      <span class="tag">Agile Robots</span>
+      <span class="tag">SoftBank</span>
+      <span class="tag">11/12</span>
+    </div>
+    <h3>
+        <span class="en">Agile Robots raises US$500m at US$8.5bn — and is also a Gemini Robotics 2.5 partner</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On Nov 12 Germany's Agile Robots announced a US$500m Series F at an US$8.5bn valuation, led by SoftBank with Nvidia, Hitachi and T Capital participating, taking total funding to about US$2bn. The company was founded in 2018 as a spinout from the German Aerospace Center (DLR), with Dr. Zhaopeng Chen as founder and CEO. Its range includes the Diana 7 force-sensitive arm with torque sensors on all seven axes, and the Agile One, Agile One S and Agile One SN humanoids, the last with five-finger hands preconfigured for Nvidia's Isaac GR00T models; subsidiaries are BÄR Automation, Franka Robotics, Idealworks and Krause Automation. About 20,000 industrial robotic solutions have been deployed, and a plant at Fürstenfeldbruck near Munich that opened in early 2026 can produce up to 10,000 humanoids a year. The round funds US expansion, engineering hires and production scale-up (<a href="https://siliconangle.com/2026/11/12/agile-robots-raises-500m-funding-led-by-softbank-at-8-5b-valuation/" target="_blank" rel="noopener">SiliconANGLE</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This is only interesting read alongside the week's robotics model: Agile Robots appears on <a href="https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/" target="_blank" rel="noopener">DeepMind</a>'s list of Gemini Robotics 2.5 partners, and the Franka Duo platform from its Franka subsidiary is one of the hardware targets that model supports — the model release and this round are two layers of one stack. Nvidia, meanwhile, is an investor in the round, the supplier of Isaac GR00T and the chip vendor: the same dual role as in the Mirendil round, in the same week that company's chief executive resigned.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">No revenue or headcount disclosed. The 10,000-a-year figure is nameplate plant capacity, not shipments, and the 20,000 figure covers industrial robotic solutions across the group rather than humanoids.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://siliconangle.com/2026/11/12/agile-robots-raises-500m-funding-led-by-softbank-at-8-5b-valuation/" target="_blank" rel="noopener">SiliconANGLE, 2026-11-12</a> · <a href="https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/" target="_blank" rel="noopener">Google DeepMind Blog, 2026-11-10</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Productivity</span></span>
+      <span class="tag">Anthropic</span>
+      <span class="tag">Claude Meetings</span>
+      <span class="tag">11/10</span>
+    </div>
+    <h3>
+        <span class="en">Claude joins the video call, and "leaves automatically if an external guest joins" is the week's one fail-closed consent default</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On Nov 10 Anthropic launched Claude Meetings, Whiteboards and Sheets. Meetings puts Claude into video calls as a visible participant that follows the conversation and works in real time — drafting the plan under discussion, mapping a timeline on a whiteboard, answering questions in the meeting chat and pulling from connected work apps, with notes, action items and materials available in claude.ai afterwards. The permission design is the point of this item: Claude identifies itself as a participant and posts a notice in the meeting chat, will not join calls with external guests unless an admin authorises it, and leaves automatically if an external guest joins (<a href="https://techcrunch.com/2026/11/10/anthropic-launches-claude-meetings-to-turn-workplace-discussions-into-plans-and-tasks/" target="_blank" rel="noopener">TechCrunch</a>). Meetings is in beta on Team and Enterprise plans, with Google Meet supported at launch; Whiteboards and Sheets are in beta on paid plans across web, desktop and mobile. Claude Data, formerly Claude Dashboards, is now generally available, connecting to data warehouses and CRMs and answering with dashboards, written data stories or narrated videos, while interactive connectors open full versions of Adobe, Atlassian and HubSpot inside conversations.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Three products this week handed more authority to agents, and only this one defaults to failing closed: faced with an unauthorised external participant, the behaviour is to leave rather than to continue and log. For a hospital's security and compliance function, "leaves automatically if an external guest joins" is a specification that can be written into an audit clause and verified; "users are fully in control" is not. The clinical analogue is plain — cross-institution meetings, discussions with a pharma or vendor representative on the line, a family member joining a video call — and what decides whether this is usable was never whether the model can take minutes, but what it does when there is one more person in the room than there should be.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">Meetings, Whiteboards and Sheets are all in beta, with Google Meet the only supported platform at launch. <a href="https://techcrunch.com/2026/11/10/anthropic-launches-claude-meetings-to-turn-workplace-discussions-into-plans-and-tasks/" target="_blank" rel="noopener">TechCrunch</a>'s report gives no pricing, user counts or revenue figures, and no implementation detail or third-party verification for the permission rules above; the visible-participant behaviour and the automatic exit are both vendor-described.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://techcrunch.com/2026/11/10/anthropic-launches-claude-meetings-to-turn-workplace-discussions-into-plans-and-tasks/" target="_blank" rel="noopener">TechCrunch, 2026-11-10</a> · <a href="https://betanews.com/article/claude-meetings-whiteboards-sheets-anthropic/" target="_blank" rel="noopener">BetaNews, 2026-11</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Evaluation</span></span>
+      <span class="tag">arXiv</span>
+      <span class="tag">KDD 2026</span>
+      <span class="tag">11/10</span>
+    </div>
+    <h3>
+        <span class="en">A KDD 2026 paper measures the gap in agent evaluation: functional testing and security red-teaming found novel failures with zero overlap</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">arXiv preprint 2611.14493v1, posted Nov 10 (authors Howard Zhang, Chuck Arvin, Logan Brown, Mihir Bhatia, Neelu Choudhary and Lily Miao; 9 pages, 3 figures; accepted to KDD 2026 in Jeju), compares three evaluation frameworks for LLM-based analytics agents — trace-based LLM judging, text-only LLM judging with red-teaming, and deterministic heuristics — applying them to two agents over frozen execution traces in three phases (<a href="https://arxiv.org/abs/2611.14493v1" target="_blank" rel="noopener">arXiv</a>). Phase one, stability: 97% of configurations met the stability threshold, and the stability patterns were agent-independent. Phase two, known-risk detection: across 72 ground-truth test cases the trace-based framework had the best precision-recall balance at F1 0.90, while text-only evaluation matched its recall but produced five times more false alarms. Phase three, unknown-risk discovery: 24 novel failures, with zero overlap between what functional testing found and what security red-teaming found. The authors recommend running two frameworks: trace-based evaluation for function, adversarial red-teaming for security.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">The zero overlap is this paper's real finding, and the control group for everything else this week. If functional testing and security red-teaming surface two disjoint sets of failures, then a single evaluation suite — which is what most procurement processes actually ask for — measures roughly half of what it claims to cover. The other directly transferable conclusion is that what the evaluation harness can see determines evaluation quality: the framework with access to execution traces reached F1 0.90, while the one seeing only text output raised five times more false alarms. Put in clinical terms: validating a clinical agent by reading only its final paragraph, rather than which data it called, in what order, and what it changed along the way, measures composition rather than safety.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">The subject is enterprise analytics agents, not a clinical setting, and only two agents were tested, over frozen traces, with the number of repeated runs not stated. The three frameworks were compared by the authors on their own setup rather than cross-validated independently, and this is a preprint — accepted to KDD 2026, but the final version may still change.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://arxiv.org/abs/2611.14493v1" target="_blank" rel="noopener">arXiv:2611.14493v1, 2026-11-10</a></p></div>
+  </div>
+</section>
+
+<section id="product">
+  <h2>02 — Product Analysis</h2>
+  <div class="sec-title">
+        <span class="en">One week, one question: both products claim to push research productivity forward, and only one of them wrote down its control group.</span>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>AlphaGenome 2</h3>
+      <p class="sub"><span class="en-inline">Conditional DNA sequence model · Google DeepMind (UK/US)</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> Takes a biological condition plus about one million DNA letters and predicts, for that one condition, gene expression, histone modifications, chromatin accessibility and DNA methylation. The users are human-genetics and single-cell biologists, and delivery is an API rather than a software licence; the <a href="https://deepmind.google/blog/alphagenome-2-deciphering-how-cells-read-dna-to-better-understand-disease/" target="_blank" rel="noopener">DeepMind announcement</a> states access opens today for non-commercial research with commercial research in private preview.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+        <span class="en">: the baselines are named and rerunnable. On TenK10K's 28 primary immune cell types, causal variants 30% against the previous generation's 16% and directional gene effects 43% against 23%, with the comparison stated as the previous model fine-tuned on single-cell data (<a href="https://deepmind.google/blog/alphagenome-2-deciphering-how-cells-read-dna-to-better-understand-disease/" target="_blank" rel="noopener">DeepMind</a>).</span>
+        </li>
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+        <span class="en">: it conditions on the user's own single-cell data without retraining, matching models fine-tuned on a dataset from a snapshot of a few dozen cells — which, for a lab with no compute to retrain, is the line between usable and not.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+        <span class="en">: the announcement rules out clinical use itself — research only, not approved for clinical or diagnostic purposes — and directional predictions are reported only where the model is confident, with the confidence threshold not published.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+        <span class="en">: every figure was chosen and run by the publisher, and what is missing is a third party rerunning it on unseen data; the post's "more than 100 million" and its detailed "107 million" single-cell profiles also differ slightly.</span>
+        </li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>Lor / Fern (Mirendil)</h3>
+      <p class="sub"><span class="en-inline">Agent-driven AI R&D stack · Mirendil (US)</span></p>
+      <p>
+        an class="en-inline">Lor</span> has agents write code, run experiments and iterate for days while provisioning their own compute, currently in private beta; <span class="en-inline">Fern</span> is the first in-house model, pretrained from scratch with a context window up to 10M tokens. The buyers are other AI labs and R&D teams, and the company states its mission as democratising frontier AI R&D (<a href="https://mirendil.com/" target="_blank" rel="noopener">Mirendil</a>).</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+        <span class="en">: if the cost claim holds, it does move the threshold — the company says Mirendil-Base was completed by one researcher directing agents over 3.5 months on under US$10m of compute all-in (<a href="https://www.techtimes.com/articles/330614/20261113/ai-lab-mirendil-raises-1b-series-release-names-no-valuation-cites-only-company-tests.htm" target="_blank" rel="noopener">Tech Times</a>).</span>
+        </li>
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+        <span class="en">: the company is measured about its own claims, saying plainly that the model was not built autonomously and has not reached fully autonomous recursive self-improvement — at this narrative density, that restraint is itself a signal.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+        <span class="en">: there is no third-party evaluation. The one quasi-external metric is bits-per-byte on seven external code repositories at 0.222 against Kimi-K3's 0.193 — lower is better, so it is the one behind — and the 10M-token figure rests on a basic RULER test, which overstates long-context ability.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+        <span class="en">: what is missing is not data but guardrails. Lor's agents provision their own compute, and nothing in the public material describes safety checks, sandboxing or spending limits; the investor list overlaps heavily with the compute supplier and the chip vendor.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="company">
+  <h2>03 — Companies &amp; Competition</h2>
+  <div class="sec-title">
+        <span class="en">Who stands where, on what, against whom</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th><span class="en-inline">Company</span></th>
+        <th><span class="en-inline">Recent state &amp; numbers</span></th>
+        <th><span class="en-inline">Position &amp; moat</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>NVIDIA</strong><br><span class="en-inline">Supplier of advanced AI chips and financier of the AI build-out</span></td>
+          <td>
+        <span class="en">On Nov 12 Huang resigned as president, CEO and director, with CFO Colette Kress interim and Harvey Jones as chair; the stock fell 14% intraday and closed down 4.34%, after about US$1.4tn of market value went over the previous month, at an estimated 90% share of the advanced AI chip market (<a href="https://www.aljazeera.com/news/2026/11/12/why-did-nvidia-ceo-jensen-huang-resign-and-who-is-colette-kress" target="_blank" rel="noopener">Al Jazeera</a>, <a href="https://www.abc.net.au/news/2026-11-13/nvidia-founder-jensen-huang-resigns/107376470" target="_blank" rel="noopener">ABC News</a>).</span>
+          </td>
+          <td>
+        <span class="en">The moat is the dual role of chips plus financial guarantees; the weakness is that same thing — <a href="https://udn.com/news/story/7238/9876163" target="_blank" rel="noopener">Economic Daily News</a> cites Bernstein questioning what becomes of the investments, financing support and residual-value guarantees, while BofA sees AMD, Broadcom and Marvell gaining.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Google DeepMind</strong><br><span class="en-inline">The only lab that shipped both a biomedical and a robotics model this week</span></td>
+          <td>
+        <span class="en">AlphaGenome 2 on Nov 11 (107m single-cell profiles, 68 tissues, causal variants 30% against 16% on TenK10K) and Gemini Robotics 2.5 on Nov 10 (200+ tasks, success +30–100%, a 96% Mercedes-Benz proof-of-concept) (<a href="https://deepmind.google/blog/alphagenome-2-deciphering-how-cells-read-dna-to-better-understand-disease/" target="_blank" rel="noopener">DeepMind</a>, <a href="https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/" target="_blank" rel="noopener">DeepMind</a>).</span>
+          </td>
+          <td>
+        <span class="en">The moat is data plus distribution: Human Cell Atlas-scale training data and a hardware partner network spanning Apptronik, Boston Dynamics and Agile Robots. The weakness is the line it drew itself — the biomedical side is explicitly not for clinical or diagnostic use, so the monetisation path does not run through hospitals.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>OpenAI</strong><br><span class="en-inline">The consumer channel pushing agents into the payment step</span></td>
+          <td>
+        <span class="en">ChatGPT Wallet launched Nov 13 for a restricted number of US ChatGPT Pro subscribers aged 18+, requiring a US-issued Visa, Mastercard or Amex, with Face ID or fingerprint on every purchase and spending limits and category rules not yet available (<a href="https://techcrunch.com/2026/11/13/chatgpts-new-wallet-lets-ai-agents-shop-and-check-out-for-you/" target="_blank" rel="noopener">TechCrunch</a>).</span>
+          </td>
+          <td>
+        <span class="en">The moat is consumer scale and card-network relationships; the weakness is the merchant side — DoorDash and Uber report low agent-placed order volumes and Amazon blocks AI agents outright in favour of its own Alexa.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Anthropic</strong><br><span class="en-inline">The enterprise side putting agents into workflows and meetings</span></td>
+          <td>
+        <span class="en">On Nov 10 it launched Claude Meetings (Team/Enterprise beta, Google Meet at launch), Whiteboards and Sheets (paid-plan beta), made Claude Data generally available and opened interactive connectors for Adobe, Atlassian and HubSpot (<a href="https://techcrunch.com/2026/11/10/anthropic-launches-claude-meetings-to-turn-workplace-discussions-into-plans-and-tasks/" target="_blank" rel="noopener">TechCrunch</a>).</span>
+          </td>
+          <td>
+        <span class="en">The moat is auditable permission design — not joining calls with external guests without admin authorisation, and leaving automatically when one joins, is a specification a compliance team can put in a clause. The weakness is that it is all still beta, on one meeting platform at launch.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Mirendil</strong><br><span class="en-inline">The newcomer claiming agents can run an AI lab</span></td>
+          <td>
+        <span class="en">Closed a US$1bn Series A on Nov 12 (Kleiner Perkins and Clearlake leading, Google participating, Nvidia having invested after the seed), following a US$200m seed at US$1bn in June; no valuation was published for this round, and Bloomberg reported talks at US$5bn, unconfirmed (<a href="https://www.techtimes.com/articles/330614/20261113/ai-lab-mirendil-raises-1b-series-release-names-no-valuation-cites-only-company-tests.htm" target="_blank" rel="noopener">Tech Times</a>).</span>
+          </td>
+          <td>
+        <span class="en">The moat today is provenance — Anthropic, xAI, DeepMind, OpenAI — plus a compute agreement; the weakness is the absence of any independent evaluation, with the one quasi-external number, bits-per-byte 0.222, behind Kimi-K3's 0.193.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Agile Robots</strong><br><span class="en-inline">A DLR spinout turned European industrial and humanoid robotics group</span></td>
+          <td>
+        <span class="en">Raised a US$500m Series F at US$8.5bn on Nov 12 (SoftBank leading, with Nvidia, Hitachi and T Capital), taking total funding to about US$2bn; some 20,000 industrial robotic solutions deployed, and a plant near Munich with nameplate capacity for 10,000 humanoids a year (<a href="https://siliconangle.com/2026/11/12/agile-robots-raises-500m-funding-led-by-softbank-at-8-5b-valuation/" target="_blank" rel="noopener">SiliconANGLE</a>).</span>
+          </td>
+          <td>
+        <span class="en">The moat is capacity and installed industrial customers, plus the fact that its Franka subsidiary's platform is one of the hardware targets Gemini Robotics 2.5 supports (<a href="https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/" target="_blank" rel="noopener">DeepMind</a>). The weakness is undisclosed revenue, and that 10,000 humanoids a year is nameplate capacity rather than shipments.</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <p>
+        <span class="en"><strong>Today's competitive structure has the shape of authority running ahead of measurement.</strong> Three companies handed agents more decision rights in the same week — checkout, compute provisioning, the meeting room — one company lost the person who held its supply chain together, and the one lab that published checkable baselines ruled medical use out itself. The dividing line is not a capability ranking, but who is willing to publish the control group and the guardrails alongside the claim.</span>
+    </p>
+  </div>
+</section>
+
+<section id="taiwan">
+  <h2>04 — Taiwan Angle</h2>
+  <div class="sec-title">
+        <span class="en">Three things: where the supply-chain risk actually sits, the gap between agent authority and existing rules, and an API open only to non-commercial research</span>
+  </div>
+
+  <div class="panel">
+    <p>
+        <span class="en"><strong>(1) The supply-chain risk is not capacity — it is order intake and the guarantee arrangements.</strong> Several analysts put the direct impact on TSMC low: Counterpoint Research's William Li says there is no sign of Nvidia cutting orders, and Switchyard Partners' Kasser believes TSMC can shift capacity to other customers quickly (<a href="https://news.pts.org.tw/article/835639" target="_blank" rel="noopener">PTS News</a>). What is actually moving is procedure — <a href="https://udn.com/news/story/7238/9876163" target="_blank" rel="noopener">Economic Daily News</a>, citing Nikkei, reports a Taiwanese server executive travelling to Southeast Asia personally to verify that small customers' AI servers are switched on and running, a check that never previously required someone at that level, while another server maker has told sales to stop accepting orders from unfamiliar new and small customers across Nvidia, AMD and Intel products, and Taiwanese firms have tightened customer and destination checks of their own accord before any new US restrictions are published. Taishin Financial Holdings chief economist Lee Chen-yu reads Huang as having held the AI supply chain together through personal standing, with decisions likely to turn conservative; Chris Hampden of Bain's Proxima argues a change of CEO is no basis for inferring a chip squeeze, and that what matters is orders, long-term capacity commitments, sales channels and regulatory change. For a medical-AI team in Taiwan, the actionable indicator is therefore not Nvidia's share price but whether lead times and long-term contract terms for on-premise GPUs change.</span>
+    </p>
+  </div>
+  <div class="panel">
+    <p>
+        <span class="en"><strong>(2) The authority being handed to agents already exceeds what Taiwan's generative-AI guidance for healthcare institutions addresses.</strong> Taiwan's Ministry of Health and Welfare issued its Guidance on the Use of Generative AI in Healthcare Institutions on 29 May 2026 (ref. 1151663164), centred on patient privacy and the right to be informed: patients must be told in advance where generative AI with recording capability is used, and an AI tool that speaks directly with the public must disclose itself (<a href="https://www.hst.org.tw/tw/board/regulations/6" target="_blank" rel="noopener">Taiwan Hospital Association</a>). Measured against that ruler, this week's three products land differently. Claude Meetings' self-identification as a participant and its notice in the meeting chat is close to an engineering implementation of that disclosure principle, with a fail-closed layer on top — no joining calls with external guests without admin authorisation, and leaving as soon as one joins (<a href="https://techcrunch.com/2026/11/10/anthropic-launches-claude-meetings-to-turn-workplace-discussions-into-plans-and-tasks/" target="_blank" rel="noopener">TechCrunch</a>). ChatGPT Wallet's model — biometric approval per transaction, spending limits not yet available — falls outside the guidance entirely: disclosure and informed consent address whether the patient knows AI is present, not how large a decision an agent may take on an institution's behalf, under what limit, and who can reverse it afterwards. That is a regulatory gap rather than a violation — products of this kind did not exist when the guidance was issued.</span>
+    </p>
+  </div>
+  <div class="panel">
+    <p>
+        <span class="en"><strong>(3) For Taiwan, AlphaGenome 2 is a usable research tool, and its licence terms are also its ceiling.</strong> The access terms deserve attention: the API opens today for non-commercial research with commercial research in private preview, and the announcement states plainly that the model is research-only and not validated or approved for clinical or diagnostic purposes (<a href="https://deepmind.google/blog/alphagenome-2-deciphering-how-cells-read-dna-to-better-understand-disease/" target="_blank" rel="noopener">DeepMind</a>). The property that matters most — conditioning on your own single-cell data without retraining, matching fine-tuned models from a snapshot of a few dozen cells — is worth most to academic labs without a large compute budget, which is where most of Taiwan's genomics groups sit. To be explicit, what follows is this report's inference rather than anything drawn from the sources: those terms mean that wiring the model into self-pay testing, LDTs or a clinical reporting pipeline does not work under the current licence. What it can do is hypothesis generation and variant prioritisation, still followed by experimental validation — which is the boundary DeepMind drew itself.</span>
+    </p>
+  </div>
+</section>
+
+<section id="reading">
+  <h2>05 — Further Reading</h2>
+  <div class="sec-title">
+        <span class="en">Chosen for primary publications and analyses that show their method, rather than summaries of summaries; each with a reason to spend the time.</span>
+  </div>
+
+  <ol class="reading">
+    <li>
+      <a href="https://deepmind.google/blog/alphagenome-2-deciphering-how-cells-read-dna-to-better-understand-disease/" target="_blank" rel="noopener">AlphaGenome 2: deciphering how cells read DNA to better understand disease — Google DeepMind (2026-11-11)</a>
+      <p class="why">
+        <span class="en">The one release this week that put its baselines, data scale and usage limits on the same page; to understand the difference between a conditional model and parallel outputs, this is faster than any secondary coverage.</span></p>
+    </li>
+    <li>
+      <a href="https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/" target="_blank" rel="noopener">Gemini Robotics 2.5 accelerates real-world physical intelligence — Google DeepMind (2026-11-10)</a>
+      <p class="why">
+        <span class="en">Read it for the per-task table rather than the headline: folding pants 0%→40%, packing pastries 5%→100% — one page that shows where generalisable dexterity actually stops.</span></p>
+    </li>
+    <li>
+      <a href="https://arxiv.org/abs/2611.14493v1" target="_blank" rel="noopener">Comparative Analysis of Agent Evaluation Frameworks — arXiv:2611.14493v1, KDD 2026 (2026-11-10)</a>
+      <p class="why">
+        <span class="en">"Zero overlap between the novel failures found by functional testing and by security red-teaming" is the sentence procurement most needs to read this week; if you are drafting a validation plan for a clinical agent, this is a ready-made skeleton.</span></p>
+    </li>
+    <li>
+      <a href="https://udn.com/news/story/7238/9876163" target="_blank" rel="noopener">黃仁勳下台牽動 AI 產業：資金、訂單、出口管制三大考驗波及台灣 — 經濟日報／UDN (2026-11-13)</a>
+      <p class="why">
+        <span class="en">Unusually, it breaks the transmission into three paths rather than only discussing the share price, and cites named analysts and concrete operational changes — paused order intake, executives verifying installations in person — making it the most actionable piece for readers in Taiwan.</span></p>
+    </li>
+    <li>
+      <a href="https://www.techtimes.com/articles/330614/20261113/ai-lab-mirendil-raises-1b-series-release-names-no-valuation-cites-only-company-tests.htm" target="_blank" rel="noopener">AI Lab Mirendil Raises $1B Series A: Release Names No Valuation, Cites Only Company Tests — Tech Times (2026-11-13)</a>
+      <p class="why">
+        <span class="en">A demonstration of how to read a large round: it separates company claims, reported figures and third-party verification, and flags conflicts such as Google being both investor and compute supplier.</span></p>
+    </li>
+  </ol>
+</section>
+
+<section id="refs">
+  <h2>06 — References</h2>
+  <div class="sec-title">
+        <span class="en">References</span>
+  </div>
+
+  <div class="panel">
+    <ol class="refs">
+      <li>Why did Nvidia CEO Jensen Huang resign, and who is Colette Kress?. <em>Al Jazeera</em>, 2026-11-12. <a href="https://www.aljazeera.com/news/2026/11/12/why-did-nvidia-ceo-jensen-huang-resign-and-who-is-colette-kress" target="_blank" rel="noopener">aljazeera.com</a></li>
+      <li>Nvidia founder Jensen Huang resigns as CEO. <em>ABC News (Australia)</em>, 2026-11-13. <a href="https://www.abc.net.au/news/2026-11-13/nvidia-founder-jensen-huang-resigns/107376470" target="_blank" rel="noopener">abc.net.au</a></li>
+      <li>輝達換帥變局／輝達跌、台積電漲！AI 熱錢大搬家. <em>鏡週刊 Mirror Media</em>, 2026-11-13. <a href="https://www.mirrormedia.mg/story/20261113-183mon-124604" target="_blank" rel="noopener">mirrormedia.mg</a></li>
+      <li>黃仁勳請辭輝達執行長 對台灣供應鏈與全球 AI 產業影響一次看. <em>公視新聞 PTS</em>, 2026-11-13. <a href="https://news.pts.org.tw/article/835639" target="_blank" rel="noopener">news.pts.org.tw</a></li>
+      <li>黃仁勳下台牽動 AI 產業 資金、訂單、出口管制三大考驗波及台灣. <em>經濟日報／UDN</em>, 2026-11-13. <a href="https://udn.com/news/story/7238/9876163" target="_blank" rel="noopener">udn.com</a></li>
+      <li>AlphaGenome 2: deciphering how cells read DNA to better understand disease. <em>Google DeepMind Blog</em>, 2026-11-11. <a href="https://deepmind.google/blog/alphagenome-2-deciphering-how-cells-read-dna-to-better-understand-disease/" target="_blank" rel="noopener">deepmind.google</a></li>
+      <li>Gemini Robotics 2.5 accelerates real-world physical intelligence. <em>Google DeepMind Blog</em>, 2026-11-10. <a href="https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/" target="_blank" rel="noopener">deepmind.google</a></li>
+      <li>Google DeepMind releases new advanced robotics AI model and next-generation gene prediction model. <em>SiliconANGLE</em>, 2026-11-11. <a href="https://siliconangle.com/2026/11/11/google-deepmind-releases-new-advanced-robotics-ai-model-and-next-generation-gene-prediction-model/" target="_blank" rel="noopener">siliconangle.com</a></li>
+      <li>Agile Robots raises $500M funding led by SoftBank at $8.5B valuation. <em>SiliconANGLE</em>, 2026-11-12. <a href="https://siliconangle.com/2026/11/12/agile-robots-raises-500m-funding-led-by-softbank-at-8-5b-valuation/" target="_blank" rel="noopener">siliconangle.com</a></li>
+      <li>ChatGPT's new Wallet lets AI agents shop and check out for you. <em>TechCrunch</em>, 2026-11-13. <a href="https://techcrunch.com/2026/11/13/chatgpts-new-wallet-lets-ai-agents-shop-and-check-out-for-you/" target="_blank" rel="noopener">techcrunch.com</a></li>
+      <li>Anthropic launches Claude Meetings to turn workplace discussions into plans and tasks. <em>TechCrunch</em>, 2026-11-10. <a href="https://techcrunch.com/2026/11/10/anthropic-launches-claude-meetings-to-turn-workplace-discussions-into-plans-and-tasks/" target="_blank" rel="noopener">techcrunch.com</a></li>
+      <li>Anthropic puts Claude in Google Meet calls, adds Whiteboards and Sheets. <em>BetaNews</em>, 2026-11. <a href="https://betanews.com/article/claude-meetings-whiteboards-sheets-anthropic/" target="_blank" rel="noopener">betanews.com</a></li>
+      <li>Mirendil Raises $1B to Democratize Frontier AI R&D（公司官網）. <em>Mirendil</em>, 2026-11. <a href="https://mirendil.com/" target="_blank" rel="noopener">mirendil.com</a></li>
+      <li>AI Lab Mirendil Raises $1B Series A: Release Names No Valuation, Cites Only Company Tests. <em>Tech Times</em>, 2026-11-13. <a href="https://www.techtimes.com/articles/330614/20261113/ai-lab-mirendil-raises-1b-series-release-names-no-valuation-cites-only-company-tests.htm" target="_blank" rel="noopener">techtimes.com</a></li>
+      <li>Comparative Analysis of Agent Evaluation Frameworks: Stability, Detection, and Discovery in Enterprise Analytics Agents. <em>arXiv:2611.14493v1（KDD 2026 接受）</em>, 2026-11-10. <a href="https://arxiv.org/abs/2611.14493v1" target="_blank" rel="noopener">arxiv.org</a></li>
+      <li>衛福部公告「醫療機構應用生成式人工智慧指引」（衛部醫字第 1151663164 號，115-05-29 函頒）. <em>台灣醫院協會</em>, 2026-06-04. <a href="https://www.hst.org.tw/tw/board/regulations/6" target="_blank" rel="noopener">hst.org.tw</a></li>
+    </ol>
+    <div class="note">
+        <span class="en"><strong>Editor's note:</strong> (1) On Nvidia: the company gave no reason for the departure. The Chinese-intelligence material is a New York Times report of a US intelligence conclusion, denied by Beijing, with Nvidia stating it has no reason to believe national security or company secrets were compromised; the class action is an allegation, not a finding; and congressional testimony is the House Foreign Affairs chair's expectation, not a scheduled hearing. The share figures belong to different windows: roughly 14% intraday and a 4.34% close are Nov 12 alone, about US$1.4tn of lost market value covers the previous month, and PTS separately cites about US$500bn over another period — the three cannot be added or substituted for one another. (2) Two CNBC pages cited in this edition (the Nvidia live file and ChatGPT Wallet) could not be retrieved at production time; those facts rest on Al Jazeera, ABC News and TechCrunch instead, and no unreachable page was used as a source. (3) Vendor-reported figures not independently audited include: Gemini Robotics 2.5's 96% automotive kitting result, which is a proof-of-concept, and its safety and jailbreak numbers, measured by DeepMind itself; all AlphaGenome 2 baselines, chosen and run by the publisher; and Mirendil's US$10m compute, 99% of code, 10M-token context and bits-per-byte, all company-run with no independent evaluation to date. Agile Robots' 10,000 humanoids a year is nameplate capacity, and Claude Meetings' permission behaviour is vendor-described. (4) Mirendil's valuation for this round is unconfirmed, and Bloomberg's US$5bn is a figure under negotiation; the company site names neither founders nor dates, so founder and round details come from Tech Times' secondary account. (5) The Ministry of Health and Welfare guidance is summarised from the Taiwan Hospital Association page rather than checked clause by clause against the full PDF, so only the three points stated on that page are cited here. (6) arXiv:2611.14493v1 is a preprint, accepted to KDD 2026, and the final version may change. (7) The third point in the Taiwan section is marked in the text as this report's inference rather than drawn from a source. No paywalled sources were used in this edition, and every link was visited at production time.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-row">
+    <div>
+      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Saturday / General AI<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
+    </div>
+    <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
+  </div>
+</footer>
+</main>
+
+<div class="fabs">
+  <button class="up" id="up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+  <a class="home-fab" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg></a>
+</div>
+
+<script>
+/* setLang 只有並排原稿用得到，建置時會自動拆掉，其餘保留。原樣帶上就好。 */
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.getElementById('theme-ic').textContent =
+    document.body.classList.contains('dark') ? '◑' : '◐';
+}
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.body.classList.add('dark');
+  document.getElementById('theme-ic').textContent = '◑';
+}
+window.addEventListener('scroll', function(){
+  document.getElementById('up').classList.toggle('show', window.scrollY > 600);
+});
+
+/* GitHub 星星數：無需授權，失敗或被限流時靜默保留佔位符 */
+(function(){
+  var el = document.getElementById('ghs');
+  if (!el || typeof fetch !== 'function') return;
+  fetch('https://api.github.com/repos/tingwei161803/ai-medical-daily', {headers:{Accept:'application/vnd.github+json'}})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if (!d || typeof d.stargazers_count !== 'number') return;
+      var n = d.stargazers_count;
+      el.textContent = n >= 1000 ? (Math.round(n/100)/10) + 'k' : String(n);
+    })
+    .catch(function(){});
+})();
+</script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/reports/2026-11-14.html" hreflang="zh-Hant" rel="alternate" lang="zh-Hant">中文版</a></p>
+</body>
+</html>
