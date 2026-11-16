@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>AI &amp; Medical AI Daily · 2026-11-16</title>
+<meta property="og:url" content="https://ai-medical-daily.peteraim.com/en/reports/2026-11-16.html" />
+<link rel="canonical" href="https://ai-medical-daily.peteraim.com/en/reports/2026-11-16.html" />
+<link rel="alternate" hreflang="zh-Hant" href="https://ai-medical-daily.peteraim.com/reports/2026-11-16.html" />
+<link rel="alternate" hreflang="en" href="https://ai-medical-daily.peteraim.com/en/reports/2026-11-16.html" />
+<link rel="alternate" hreflang="x-default" href="https://ai-medical-daily.peteraim.com/reports/2026-11-16.html" />
+<meta name="description" content="Clinical applications and research: the week's only randomized trial (PARAMOUNT, win ratio 2.00) won on diagnostic certainty and prescribing rather than hard outcomes; its largest study (237,905 exams) was run by the vendor on a device not for sale in the US; its prettiest numbers (ALMA 3's 99.5%/90.9%) are conference abstracts; and WCIM 2026 in Taipei is reviewing 14 draft principles requiring physicians to verify AI and keep the power to switch it off.">
+<meta name="report-date" content="2026-11-16">
+<meta name="report-theme" content="clinical">
+<meta name="report-title-zh" content="本週攤出來的臨床 AI 數字幾乎沒有一個經過同儕審查——11/7 AHA 2026 的 PARAMOUNT 是第一個把 AI 冠狀動脈斑塊分析隨機化的試驗，21 個中心、530 人隨機、523 人納入分析，180 天階層式複合終點 win ratio 2.00（95% CI 1.37–2.56，p&lt;0.0001），但貢獻最大的那一項是「醫師對胸痛是否為冠心病更有把握」（win difference 16.6 個百分點），降脂藥使用率 31%→75%（對照組 32%→47%），完整數據要等 2027 年初；11/9 同一會場的 DETECT-HF 用 563 人、46 個中心驗證手機語音分析，平均提前 24.6 天預測逾七成心衰事件，卻一個 specificity 數字都沒公布；11/11 Radiology Partners 全資子公司 Mosaic 回頭掃 237,905 筆已判讀的 CT 與 X 光，自報 VLM 草稿的加強偵測率平均約 40%、最高 110%，胸部 X 光草稿 91.2% 完全無誤勝過原始報告 83.0%——而這套裝置在美國「不得銷售」，研究是自家做的；11/13–14 AMP 2026 在西雅圖，ALMA 3 用逾 11 萬份甲基化樣本在 81 個亞型上做到 99.5% 敏感度、90.9% 正預測值，密西根的 TPO-Agent 把報告論述有引證支持的比例從 65% 拉到 95%——樣本是 10 個病人、28 份報告。同一週 11/12–15 台北的 WCIM 2026 正在審一份 14 項原則的《人工智慧、醫療與人文台北聲明》草案，明文要醫師查證 AI 產出、並保有停用系統的能力；而 Doximity 11/12 的 3,379 人調查顯示 52% 的美國醫師每日用 AI、只有 28% 的機構給得出明確政策">
+<meta name="report-title-en" content="Almost none of this week's clinical AI numbers have been peer reviewed — PARAMOUNT, presented 7 Nov at AHA 2026, is the first randomized trial of AI coronary plaque analysis: 21 sites, 530 randomized, 523 analyzed, a 180-day hierarchical composite win ratio of 2.00 (95% CI 1.37–2.56, p&lt;0.0001), yet the largest contributor was physicians' certainty about whether chest pain was coronary (a 16.6-point win difference), with lipid-lowering therapy going 31%→75% against 32%→47% in usual care and full data due in early 2027; DETECT-HF, presented 9 Nov at the same meeting, validated smartphone voice analysis in 563 patients at 46 sites, predicting more than 70% of heart-failure events an average of 24.6 days ahead while publishing no specificity figure at all; on 11 Nov Mosaic, a wholly owned Radiology Partners subsidiary, re-read 237,905 already-reported CT and X-ray exams and self-reported enhanced detection averaging about 40% and reaching 110%, with 91.2% of chest X-ray drafts error-free against 83.0% of the original reports — for a device that is not for sale in the United States, in a study it ran itself; at AMP 2026 in Seattle on 13–14 Nov, ALMA 3 hit 99.5% sensitivity and 90.9% positive predictive value across 81 subtypes on more than 110,000 methylation samples, and Michigan's TPO-Agent raised evidence-backed report claims from 65% to 95% — on 10 patients and 28 reports. In the same week, WCIM 2026 in Taipei (12–15 Nov) was reviewing a draft Taipei Declaration on Artificial Intelligence, Medicine and Humanity whose 14 principles require physicians to verify AI output and keep the ability to switch a system off, while Doximity's 3,379-physician survey of 12 Nov found 52% using AI daily and only 28% working under clear institutional policy">
+<meta name="report-summary-zh" content="臨床應用與研究：本週唯一的隨機試驗（PARAMOUNT, win ratio 2.00）贏在診斷確定性與處方率而非硬終點；樣本最大的研究（237,905 筆影像）由廠商自家執行、裝置在美不得銷售；最漂亮的數字（ALMA 3 的 99.5%／90.9%）是年會摘要；而台北的 WCIM 2026 正在審一份要醫師查證 AI、保有停用能力的 14 項原則草案。">
+<meta name="report-summary-en" content="Clinical applications and research: the week's only randomized trial (PARAMOUNT, win ratio 2.00) won on diagnostic certainty and prescribing rather than hard outcomes; its largest study (237,905 exams) was run by the vendor on a device not for sale in the US; its prettiest numbers (ALMA 3's 99.5%/90.9%) are conference abstracts; and WCIM 2026 in Taipei is reviewing 14 draft principles requiring physicians to verify AI and keep the power to switch it off.">
+<meta property="og:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HJLDQZDK5V');
+</script>
+<link rel="stylesheet" href="/assets/report.css">
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><span>◆</span> <span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <div class="bar-sp"></div>
+    <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
+    <div class="seg">
+      <a href="/reports/2026-11-16.html" hreflang="zh-Hant" lang="zh-Hant" rel="alternate">中文</a>
+      <a class="on" href="/en/reports/2026-11-16.html" hreflang="en" lang="en" aria-current="page">EN</a>
+    </div>
+    <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="kicker">
+    <span class="en-inline">Monday · Clinical Applications &amp; Research</span>
+  </div>
+  <h1>
+    <span class="en">Almost none of this week's clinical AI numbers have been peer reviewed</span>
+  </h1>
+  <div class="dateline">
+    <span class="en-inline">Monday, November 16, 2026 · Covering Nov 07–16 · Taipei time</span>
+  </div>
+  <p class="lede">
+    <span class="en">This week's clinical AI evidence came in three shapes, and none of them is final evidence yet. The first is a randomized trial: on 7 November, Cleerly presented <a href="https://finance.yahoo.com/healthcare/articles/paramount-first-randomized-trial-ai-154500139.html" target="_blank" rel="noopener">PARAMOUNT</a> (NCT06713239) as Late-Breaking Science at AHA Scientific Sessions 2026 in Chicago — 21 sites, 530 randomized, 523 analyzed, a 180-day hierarchical composite win ratio of 2.00 (95% CI 1.37–2.56, p&lt;0.0001) — while stating in its own release that the results are not yet peer reviewed and that full data are due in early 2027. The second is scale: on 11 November, Mosaic, a wholly owned Radiology Partners subsidiary, re-read <a href="https://www.businesswire.com/news/home/20261111171256/en/Vision-Language-Model-Powered-Radiology-Shows-Gains-in-Detection-and-Efficiency-in-Research-Study-of-Over-237000-Exams" target="_blank" rel="noopener">237,905 already-reported CT and X-ray exams</a> and self-reported enhanced detection averaging about 40% — for a device that is not for sale in the United States, in a study it ran itself. The third is conference abstracts: at <a href="https://clpmag.com/diagnostic-technologies/digital-pathology/ai-tools-cancer-classification-reporting-amp-2026/" target="_blank" rel="noopener">AMP 2026 in Seattle</a> on 13–14 November, the prettiest figures of the week — 99.5% sensitivity, 90.9% positive predictive value — came from an oral presentation in coverage that labels most of the work preliminary. In the same week, 12–15 November, <a href="https://health.tvbs.com.tw/medical/367344" target="_blank" rel="noopener">WCIM 2026</a> in Taipei was reviewing a 14-principle draft whose first demand is that physicians verify AI output and keep the ability to switch a system off — while Doximity's 12 November survey reports that <a href="https://www.businesswire.com/news/home/20261112758368/en/More-Than-Half-of-U.S.-Physicians-Now-Use-AI-In-Their-Practice-Daily-But-Few-Have-Clear-Rules-For-It" target="_blank" rel="noopener">52% of US physicians already use AI daily and only 28% work under clear institutional policy</a>.</span>
+  </p>
+
+  <nav class="toc">
+    <a href="#top"><span class="en-inline">Top Stories</span></a>
+    <a href="#product"><span class="en-inline">Product Analysis</span></a>
+    <a href="#company"><span class="en-inline">Companies &amp; Competition</span></a>
+    <a href="#taiwan"><span class="en-inline">Taiwan Angle</span></a>
+    <a href="#reading"><span class="en-inline">Further Reading</span></a>
+    <a href="#refs"><span class="en-inline">References</span></a>
+  </nav>
+</div>
+
+<section id="top">
+  <h2>01 — Top Stories</h2>
+  <div class="sec-title">
+    <span class="en">Seven items, ordered by strength of evidence rather than noise: one randomized trial, one prospective validation, one six-figure retrospective, then conference abstracts and a survey</span>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Randomized trial</span></span>
+      <span class="tag">Cleerly</span><span class="tag">AI-QCT</span><span class="tag">11/07</span>
+    </div>
+    <h3>
+      <span class="en">The first randomized trial of AI coronary plaque analysis meets its primary endpoint — on physicians' certainty and prescribing</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On 7 November, Cleerly presented preliminary results from PARAMOUNT (NCT06713239) as Late-Breaking Science at AHA Scientific Sessions 2026 in Chicago. Between January 2025 and February 2026, 530 patients were randomized at 21 sites and 523 analyzed: 57% women (300), median age 57, median baseline LDL-C 127 mg/dL, with enrollment requiring LDL-C of at least 100 mg/dL. The intervention arm received AI-based quantitative coronary CT analysis (AI-QCT); the control arm received stress testing under current AHA/ACC guidelines. The prespecified 180-day hierarchical composite endpoint gave a win ratio of 2.00 (95% CI 1.37–2.56, p&lt;0.0001). In unmatched pairwise comparisons, the plaque-based patient had the better result 46.7% of the time against 23.4% for usual care. Lipid-lowering therapy rose from 31% to 75% in the AI-QCT arm and from 32% to 47% in usual care. Among patients who underwent invasive angiography, 38% in the AI-QCT arm did not proceed to PCI or bypass surgery, against 60% in usual care (<a href="https://finance.yahoo.com/healthcare/articles/paramount-first-randomized-trial-ai-154500139.html" target="_blank" rel="noopener">Business Wire, 2026-11-07</a>; <a href="https://www.medicaldevice-network.com/news/aha26-ai-plaque-analysis-bests-standard-of-care-in-suspected-cad-patients/" target="_blank" rel="noopener">Medical Device Network</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">For a decade, imaging AI has argued its case with retrospective AUCs; randomized trials have been rare. This is the first to randomize AI image interpretation as a care strategy rather than a reading tool. But it is worth being precise about what it won. The single largest contributor to the win ratio was diagnostic certainty about whether chest pain was caused by coronary disease, a win difference of 16.6 percentage points. What the trial mainly demonstrates, then, is that physicians were more certain, more patients left on lipid-lowering therapy, and fewer invasive angiograms ended without an intervention — not that infarctions or deaths fell. A 180-day window could not have shown hard outcomes anyway. For reimbursement debates in Taiwan this is the hardest class of evidence to handle: the process gain is clear and the hard endpoint is unknown.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">Every figure comes from Cleerly's own release, which states that the results are not yet peer reviewed and that full data are due in early 2027. The release does not say which components make up the hierarchical composite endpoint, how they were weighted or ordered, nor does it report safety, radiation dose or cost. The quoted voices are co-principal investigator Todd C. Villines and Cleerly's own Chief Medical, Scientific and AI Officer, Udo Hoffmann.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://finance.yahoo.com/healthcare/articles/paramount-first-randomized-trial-ai-154500139.html" target="_blank" rel="noopener">Business Wire / Yahoo Finance, 2026-11-07</a> · <a href="https://www.medicaldevice-network.com/news/aha26-ai-plaque-analysis-bests-standard-of-care-in-suspected-cad-patients/" target="_blank" rel="noopener">Medical Device Network</a> · <a href="https://thefuturehealth.substack.com/p/ai-guided-chest-pain-care-now-has" target="_blank" rel="noopener">The Future Health, 2026-11-09</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Prospective validation</span></span>
+      <span class="tag">Cordio Medical</span><span class="tag">HearO</span><span class="tag">11/09</span>
+    </div>
+    <h3>
+      <span class="en">Smartphone voice analysis flags heart-failure events 24.6 days ahead across 563 patients and 46 sites — with no specificity reported</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On 9 November, Cordio Medical of Or Yehuda, Israel, released results from DETECT-HF, also as Late-Breaking Science at AHA Scientific Sessions 2026: a blinded, prospective, multicenter study of 563 patients at 46 sites, primarily in the United States with international academic centers participating, in English, Spanish, Hebrew, Russian and Arabic. Its HearO system analyzes speech recorded on an ordinary smartphone. The reported results: more than 70% of heart-failure events predicted, an average of 24.6 days in advance; 85% of scheduled daily recordings completed; usability rated 4.7 to 4.9 out of 5; 2.65 unexplained alerts per patient-year against a prespecified goal of fewer than three; and no device-related adverse events (<a href="https://www.prnewswire.com/news-releases/pivotal-study-validates-cordio-medicals-smartphone-based-voice-analysis-for-remote-heart-failure-monitoring-302933206.html" target="_blank" rel="noopener">PR Newswire, 2026-11-09</a>). The system holds FDA Breakthrough Device designation and a European CE mark and is approved in Israel; in the US it remains investigational, with a De Novo submission and a 2027 launch planned.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Heart-failure readmission is a central target of payment policy, and current home monitoring almost always needs consumables or wearables: scales, cuffs, implanted pulmonary artery pressure sensors. Voice is the one physiological signal that can be sampled with hardware the patient already owns, at a marginal cost near zero and across languages — which is precisely why this study enrolled in five. If the 24.6-day lead time holds, it falls on a timescale where outpatient care can act (adjusting diuretics, bringing the visit forward) rather than one where the only option is an ambulance.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">The release reports no specificity and no exact sensitivity — "more than 70%" is a lower bound. The lead investigator says sensitivity was well above daily weight monitoring but gives no comparison figure. The 2.65 unexplained alerts per patient-year is effectively a stand-in for false positives, and its definition is not published. The release does not say whether the study has been submitted for peer review; all figures are company-supplied and independently unverified, including the cited 7.7 million US adults with heart failure and more than 40 billion dollars in annual cost.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.prnewswire.com/news-releases/pivotal-study-validates-cordio-medicals-smartphone-based-voice-analysis-for-remote-heart-failure-monitoring-302933206.html" target="_blank" rel="noopener">PR Newswire, 2026-11-09</a> · <a href="https://www.healthcareittoday.com/2026/11/15/bonus-features-november-15-2026-69-or-healthcare-pros-want-their-orgs-to-use-more-ai-38-of-patients-are-comfortable-using-ai-to-schedule-appointments-plus-36-more-stories/" target="_blank" rel="noopener">Healthcare IT Today, 2026-11-15</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Retrospective</span></span>
+      <span class="tag">Mosaic / Cognita</span><span class="tag">Radiology Partners</span><span class="tag">11/11</span>
+    </div>
+    <h3>
+      <span class="en">237,905 exams re-read: VLM drafts add about 40% more confirmed findings — for a device not for sale in the US, in a study the vendor ran itself</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On 11 November, Mosaic Clinical Technologies, a wholly owned subsidiary of Radiology Partners, published results for vision-language models (VLMs) built by its AI lab, Cognita Imaging. The retrospective analysis covered 237,905 CT and X-ray exams that radiologists had previously read without AI (71,707 CT, 100,000 chest X-ray, 66,198 musculoskeletal and abdominal X-ray), comparing model and original report across 50 significant conditions, with US board-certified radiologist panels blinded to source re-reviewing a random subset. The primary metric, enhanced detection rate (EDR) — findings the models added that experts confirmed — averaged about 40% and reached 110%: across 35 CT conditions, 40.9% on average (range 5.2% to 109.6%; head fractures 73.4%, abdominal and pelvic fractures 68.1%, pancreatic masses 50.4%, free intra-abdominal air 40.6%); across 10 chest X-ray conditions, 43.4% (12.7% to 57.5%; lung nodules or masses 57.5%, malpositioned devices 51.6%, pneumothorax 46.5%); across 5 musculoskeletal and abdominal X-ray conditions, 23.9% (suspicious bone lesions 45.8%, bone infections 27.1%). On error rates, 91.2% of chest X-ray drafts were error-free against 83.0% of the original reports, and 3.7% of musculoskeletal and abdominal X-ray drafts carried a clinically significant error against 6.5% of originals; for CT the release says only "comparable to or lower" with no figures. Among radiologists who had read at least 50 AI drafts, efficiency improved by more than 27% on CT and 31% on X-ray against their own pre-AI performance. Through 22 October, nearly 8 million exams had been drafted (about 6.3 million X-ray, 1.7 million CT), averaging more than 37,000 a day (<a href="https://www.businesswire.com/news/home/20261111171256/en/Vision-Language-Model-Powered-Radiology-Shows-Gains-in-Detection-and-Efficiency-in-Research-Study-of-Over-237000-Exams" target="_blank" rel="noopener">Business Wire, 2026-11-11</a>). Cognita's comprehensive chest X-ray model received FDA Breakthrough Device designation in March 2026.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This is the only clinical AI figure of the week with a sample in six digits, and it measures something more useful than "the model beats the doctor": after a radiologist has already signed the report, how many additional expert-confirmed findings does the model surface? EDR shifts the argument from AUC to incremental missed findings, which is the side radiology actually cares about. The same release also demonstrates the field's central methodological problem: funder, investigator, user and commercial beneficiary are divisions of one company, and the comparator is these same radiologists' own past performance rather than a separate group. What would let anyone read these numbers properly is the detail in the two papers after RSNA 2026 on 29 November to 3 December.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">The study was run by Mosaic and Cognita, and the practice that used the models, Radiology Partners Clinical Services, belongs to the same group. The release states that the devices are investigational and not for sale in the United States, that the results are preliminary and that the study is ongoing. The efficiency figures are a before-and-after within the same radiologists, not a controlled trial; expert panels reviewed only a random subset of flagged cases; there are no confidence intervals, no statistical methods, no panel sizes and no specific CT error rates. The two papers sit on the company's own RSNA Event Hub with no statement of peer review. Mosaic says it monitors how often radiologists keep or change AI findings to detect over-reliance, but publishes none of that monitoring.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.businesswire.com/news/home/20261111171256/en/Vision-Language-Model-Powered-Radiology-Shows-Gains-in-Detection-and-Efficiency-in-Research-Study-of-Over-237000-Exams" target="_blank" rel="noopener">Business Wire, 2026-11-11</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Conference abstract</span></span>
+      <span class="tag">ALMA Genomics</span><span class="tag">ALMA 3</span><span class="tag">11/13</span>
+    </div>
+    <h3>
+      <span class="en">A methylation foundation model reports 99.5% sensitivity and 90.9% PPV across 81 blood-cancer subtypes, trained on more than 110,000 samples</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">The Association for Molecular Pathology (AMP) 2026 Annual Meeting ran in Seattle on 13–14 November. ALMA 3, developed by ALMA Genomics with the University of Pennsylvania, MIT and others, is a foundation model that identifies and classifies blood cancers from DNA methylation patterns. Trained on more than 110,000 patient samples, it reported 99.5% sensitivity for detecting hematolymphoid tumors and 90.9% positive predictive value for assigning a specific subtype across 81 subtypes. Pedro Orsini led the work; Francisco Marchi gave the oral presentation on 13 November and the poster on 14 November (Abstract H071) (<a href="https://clpmag.com/diagnostic-technologies/digital-pathology/ai-tools-cancer-classification-reporting-amp-2026/" target="_blank" rel="noopener">Clinical Lab Products, 2026-11-13</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Classifying blood cancers today takes a multi-step combination of morphology, flow cytometry, cytogenetics and next-generation sequencing — slow, and spread across specimens and laboratories. Methylation is not morphology; it reads cell of origin and differentiation state directly off the DNA, so in principle a single specimen could carry the whole subtype call. The selling point is not the 99.5% sensitivity, since detecting whether a tumor is present is comparatively easy, but the 90.9% subtype PPV: 81 subtypes is a fine granularity, and the WHO classification of hematolymphoid tumors is itself revised repeatedly. If that number holds prospectively, the classification pathway collapses from several steps into one test.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">This is a conference abstract, not a journal paper, and the coverage itself notes at the outset that most of the work is preliminary. The size of the independent test set is not published, nor is per-subtype performance, confidence intervals or the number of cases for rare subtypes — if 90.9% is an average across all 81, rare subtypes are likely to sit far below it. Nothing is said about whether the 110,000-plus training samples cover non-European ancestries.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://clpmag.com/diagnostic-technologies/digital-pathology/ai-tools-cancer-classification-reporting-amp-2026/" target="_blank" rel="noopener">Clinical Lab Products, 2026-11-13</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Conference abstract</span></span>
+      <span class="tag">Michigan / MSK / Mount Sinai / Stanford</span><span class="tag">AMP 2026</span><span class="tag">11/13–14</span>
+    </div>
+    <h3>
+      <span class="en">Pathology AI shifts from reading to drafting and triage: evidence-backed claims from 65% to 95%, and 33% of lung specimens able to defer rapid EGFR testing</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Three further groups at the same AMP 2026 meeting. At the University of Michigan, Marcin Cieslik's team presented Turnkey Precision Oncology, an open-source platform that processes DNA and RNA sequencing results and drafts reports for pathologist review; its AI component, TPO-Agent, checks that each claim is backed by cited evidence. Across 50 genetic alterations in 10 patients and 28 reports, about 95% of claims were evidence-backed against 65% for a conventional AI approach, and the 28 reports agreed with the clinical laboratory on individual alterations about 95% of the time (Abstracts I040 and I068). Memorial Sloan Kettering and the Icahn School of Medicine at Mount Sinai used the TAPFM and EAGLE models on digital pathology slides to decide which lung cancer specimens could skip rapid EGFR testing: in 80 consecutive lung adenocarcinoma cases reviewed by six molecular pathology fellows, 26 (33%) could have deferred rapid testing without missing any confirmed EGFR-positive case, though the approach was less reliable for certain gene fusions (Abstract I070; lead Nicholas Dcunha, senior author Chad Vanderbilt). At Stanford, a group overseen by Kiran Nijjer used a foundation model to predict mutations in four cancer-related genes from slide images, reaching 0.80 for PIK3CA and 0.77 for CDH1 in 367 gastric cancer patients (0.50 is chance, 1.0 perfect) and stating explicitly that validation in other populations is needed (Abstract I069, 14 November) (<a href="https://clpmag.com/diagnostic-technologies/digital-pathology/ai-tools-cancer-classification-reporting-amp-2026/" target="_blank" rel="noopener">Clinical Lab Products, 2026-11-13</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Read together, the three show where pathology AI has moved this year: not another classifier that beats the pathologist, but an attack on the three most labor-intensive points of the reporting line — drafting the report (Michigan), deciding who needs the expensive urgent test (MSK and Mount Sinai), and reading molecular information in advance off the H&amp;E slide that already exists (Stanford). TPO-Agent is the one to watch: it measures not diagnostic accuracy but whether every sentence is traceable to a citation, and 65% to 95% goes straight at the hallucination problem that is hardest to handle in LLM-written reports, in a way that can be audited. MSK's triage question is pure economics: rapid EGFR testing is expensive and occupies slots, so if a third of specimens can safely wait, laboratory scheduling loosens immediately.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">The three samples are 10 patients and 28 reports, 80 cases, and 367 patients; all are abstract-level, and none is prospective or multicenter. TPO-Agent's 95% means claims traceable to a citation, which is not clinical correctness — a right citation with a wrong reading still passes. MSK's 80 cases were reviewed by six fellows rather than attendings, and the authors themselves flag weaker reliability for gene fusions, which is the category one can least afford to miss. Stanford's 0.80 and 0.77 are discrimination scores, not a clinically usable threshold.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://clpmag.com/diagnostic-technologies/digital-pathology/ai-tools-cancer-classification-reporting-amp-2026/" target="_blank" rel="noopener">Clinical Lab Products, 2026-11-13</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Draft consensus</span></span>
+      <span class="tag">WCIM 2026</span><span class="tag"><span class="en-inline">Taipei</span></span><span class="tag">11/12–15</span>
+    </div>
+    <h3>
+      <span class="en">Taipei is reviewing a 14-principle draft declaration on medical AI that explicitly preserves the physician's power to switch a system off</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">From 12 to 15 November, the 38th World Congress of Internal Medicine (WCIM 2026) was held jointly with the Taiwan Society of Internal Medicine annual meeting and the Taiwan Medical Association's 119th general academic lecture at Hall 2 of the Nangang Exhibition Center in Taipei. A global forum on the afternoon of 13 November reviewed a draft Taipei Declaration on Artificial Intelligence, Medicine and Humanity: 14 principles covering human-centered care, patient trust, professional responsibility, health data governance and global equity, explicitly requiring physicians to verify AI output, weigh patient values, and retain the ability to question, correct or stop an AI system. The draft was discussed with representatives of international internal medicine societies and the American College of Physicians and still awaits forum review. The meeting ran on four themes: medical robotics and clinical AI, medical AI ethics, generative AI in digestive medicine, and research integrity in the age of AI. The 13 November robotics sessions covered surgical and tumor-ablation robots, generative AI for patient companionship and health education, and humanoid robots; a 15 November session addressed AI-assisted paper writing and research integrity. Chairs and speakers included NTUH president Yu Chung-jen, Li Chien-chang of the Ministry of Health and Welfare, Tsai Fu-chang of the NTUH Ethics Center, C. Jason Wang of Stanford, Joseph JJ Sung of Singapore, Peng Li-chun of the National Science and Technology Council and Sun Yi-han of Academia Sinica (<a href="https://health.tvbs.com.tw/medical/367344" target="_blank" rel="noopener">TVBS Health 2.0</a>; <a href="https://www.mirrormedia.mg/external/5678_202611101122579190" target="_blank" rel="noopener">Mirror Media, 2026-11-10</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">Set beside the week's other six items, the timing of this draft becomes legible: almost every international clinical AI figure published this week was reported, run and interpreted by the vendor itself, and the Taipei draft puts responsibility squarely back on the physician — verify the output, keep the power to stop it. The difficulty is that this design assumes the physician can verify. When the comparator is the same radiologists' own past performance, when full data wait until 2027, when per-subtype results across 81 subtypes are not published, verifying AI output is not operationally possible. That Taiwan hosts this forum is not incidental: the AI impact research system the Ministry of Health and Welfare has run since 2024 is one of the few national designs that closes the loop from trial to evidence to reimbursement.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">The draft is not final, the full text of the 14 principles is not public, and the coverage names no single proposing body. Mirror Media is internally inconsistent on the congress number, calling it both the 37th and the 38th; this report follows the 38th, as given officially and by TVBS. The declaration carries no binding force and touches neither reimbursement nor regulation.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://health.tvbs.com.tw/medical/367344" target="_blank" rel="noopener">TVBS 健康 2.0</a> · <a href="https://www.mirrormedia.mg/external/5678_202611101122579190" target="_blank" rel="noopener">鏡週刊, 2026-11-10</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Survey</span></span>
+      <span class="tag">Doximity</span><span class="tag">3,379</span><span class="tag">11/12</span>
+    </div>
+    <h3>
+      <span class="en">52% of US physicians use AI daily; only 28% work under clear institutional policy</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On 12 November, Doximity released its 2026 Doctor-Driven AI Report, from a September 2026 survey of 3,379 US physicians across 20 specialties. 85% use AI for work at least weekly, up from 51% in 2025, and 52% daily, up from 37%; oncologists lead at more than 93% weekly. 46% say after-hours administrative work has fallen, up from 36%. 81% say AI has taught them something clinical they did not know. About three in four encountered a factual inaccuracy at work in the past 12 months, and two thirds verify AI-generated clinical information all or almost all of the time. About three in four say patients have become more likely over the past six months to arrive with a self-diagnosis or treatment plan from a generative AI tool, and about one in three say patients are better informed than in the Dr. Google era. On governance: the vast majority say AI use is permitted or supported by their organization, but only 28% report clear policies and approval processes; 34% name legal and regulatory uncertainty as the top constraint; and 82% say physicians should make the rules for AI in medicine (<a href="https://www.businesswire.com/news/home/20261112758368/en/More-Than-Half-of-U.S.-Physicians-Now-Use-AI-In-Their-Practice-Daily-But-Few-Have-Clear-Rules-For-It" target="_blank" rel="noopener">Business Wire, 2026-11-12</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This survey is the denominator for every piece of clinical evidence above. Whether PARAMOUNT's win ratio or ALMA 3's 90.9% ultimately hold, 52% of physicians are already using AI every day; about three quarters of them saw an error in the past year and two thirds verify output themselves. The duty to verify has effectively devolved to the individual, and only 28% of institutions have supplied rules. That is exactly what the first of the Taipei principles addresses and what principles alone cannot fix. Weekly use jumping from 51% to 85% in a year also means any governance design premised on AI not yet being widespread is already out of date.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">Respondents are Doximity's own members, not a random sample of US physicians, so the results generalize poorly, and Doximity sells AI products — including DoseCheck, which it says raises medication dosing accuracy above 99% — which is a conflict of interest. The release gives no response rate, margin of error, weighting or full question wording, and does not say whether the 2025 baseline was measured the same way. Error rates, time saved and learning are self-reported perceptions rather than measurements; phrases such as "more than half" and "the vast majority" carry no exact figures; and no specialty other than oncology is broken out.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.businesswire.com/news/home/20261112758368/en/More-Than-Half-of-U.S.-Physicians-Now-Use-AI-In-Their-Practice-Daily-But-Few-Have-Clear-Rules-For-It" target="_blank" rel="noopener">Business Wire, 2026-11-12</a> · <a href="https://www.healthcareittoday.com/2026/11/15/bonus-features-november-15-2026-69-or-healthcare-pros-want-their-orgs-to-use-more-ai-38-of-patients-are-comfortable-using-ai-to-schedule-appointments-plus-36-more-stories/" target="_blank" rel="noopener">Healthcare IT Today, 2026-11-15</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="en-inline">Peer reviewed</span></span>
+      <span class="tag">Nature</span><span class="tag">UC Berkeley</span><span class="tag">2026-06-24</span>
+    </div>
+    <h3>
+      <span class="en">The ECG sudden-death model recirculating this week was externally validated on a Taiwanese hospital registry</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">A ScienceDaily repost on 14 November put the Nature paper "An ECG biomarker for sudden cardiac death discovered with deep learning," by Obermeyer and colleagues, back into wide circulation this week; the paper itself first appeared on 24 June 2026 (Nature vol. 655, issue 8121, pp. 210–218). Trained on ECGs from a Swedish region linked to death certificates, the model identified a high-risk group comprising 2.2% of the sample with a 7.0% annual rate of sudden cardiac death, against 1.9% of the sample and a 4.6% annual rate for the group with reduced left ventricular ejection fraction (LVEF). LVEF failed to flag 86.1% of the patients the model called high risk. Among high-risk patients who received an implanted defibrillator, mortality was 54.4% lower than expected. External validation was performed in a US health system, predicting the ventricular arrhythmias that cause sudden death, and in a Taiwanese hospital registry, predicting future arrhythmic cardiac arrest (<a href="https://www.nature.com/articles/s41586-026-10674-6" target="_blank" rel="noopener">Nature, 2026-06-24</a>; <a href="https://www.sciencedaily.com/releases/2026/11/261112230456.htm" target="_blank" rel="noopener">ScienceDaily, 2026-11-14</a>).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This is the week's only peer-reviewed study that states what AI improves on in operational terms. Defibrillator implantation decisions still rest mainly on LVEF, and LVEF missed 86.1% of the patients this model flagged as high risk — not a matter of slightly better accuracy, but two measures pointing at two nearly disjoint groups of people. It also shows how the comparator should be set: not against physicians, but against the one clinical decision variable actually in use. For Taiwanese readers there is a second layer: one of the external validation cohorts is in Taiwan, and the fact that Taiwanese data serves as a validation site rather than a development site in work like this is worth sitting with.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">This is not new research this week: the paper was published on 24 June, and the only event this week was the ScienceDaily repost. It is included here for its Taiwanese validation cohort and its methodological value, dated to the original publication. The 54.4% lower mortality among those who received defibrillators is an observational comparison, not a randomized treatment effect, and is subject to selection bias. The sample sizes and performance metrics for the Taiwanese and US validation cohorts are not given in the abstract.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.nature.com/articles/s41586-026-10674-6" target="_blank" rel="noopener">Nature, 2026-06-24</a> · <a href="https://www.sciencedaily.com/releases/2026/11/261112230456.htm" target="_blank" rel="noopener">ScienceDaily, 2026-11-14</a></p></div>
+  </div>
+</section>
+
+<section id="product">
+  <h2>02 — Product Analysis</h2>
+  <div class="sec-title">
+    <span class="en">Two products with numbers this week, answering the same question two ways: one changes the physician's decision, the other changes the physician's output</span>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>Cleerly AI-QCT（Cleerly Labs / Cleerly ISCHEMIA）</h3>
+      <p class="sub"><span class="en-inline">AI quantitative coronary plaque analysis on CT · Cleerly (Colorado, USA)</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> It turns a single coronary CT into segment-by-segment quantification of plaque volume, composition and stenosis, producing a report a clinician can prescribe from. Its buyer is not radiology but the cardiology outpatient decision pathway: PARAMOUNT's comparator was stress testing rather than another reading tool, which places the product as a replacement for a test rather than an aid to an interpretation (<a href="https://www.medicaldevice-network.com/news/aha26-ai-plaque-analysis-bests-standard-of-care-in-suspected-cad-patients/" target="_blank" rel="noopener">Medical Device Network, AHA 2026</a>).</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: the only AI imaging product with randomized evidence in hand — 21 sites, 523 patients, a 180-day composite win ratio of 2.00 (<a href="https://finance.yahoo.com/healthcare/articles/paramount-first-randomized-trial-ai-154500139.html" target="_blank" rel="noopener">95% CI 1.37–2.56, p&lt;0.0001</a>). At a reimbursement table that outweighs any retrospective AUC.</span>
+        </li>
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: the behavior change is directly measurable — lipid-lowering therapy went <a href="https://www.medicaldevice-network.com/news/aha26-ai-plaque-analysis-bests-standard-of-care-in-suspected-cad-patients/" target="_blank" rel="noopener">from 31% to 75% against 32% to 47%</a> in usual care, and angiograms that ended without an intervention fell from 60% to 38%, which is where the expensive waste sits.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: the winning component was diagnostic certainty (a 16.6-point win difference), not infarction or death. A 180-day window cannot show hard outcomes, and the company states that full data are due in early 2027 and the results are not yet peer reviewed.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: the components, weights and ordering of the hierarchical composite are not published at all — conclusions from such endpoints are highly sensitive to that ordering, and without it the result cannot be checked. Safety, radiation dose and cost are all absent.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>Cognita Imaging VLM（MosaicOS）</h3>
+      <p class="sub"><span class="en-inline">Vision-language models that draft radiology reports · Cognita Imaging / Mosaic Clinical Technologies (a Radiology Partners subsidiary, USA)</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> The model writes the report first; the radiologist reviews, edits and signs. It covers chest, abdominal and musculoskeletal X-ray plus head, cervical spine, chest and abdomen-pelvis CT. The pitch is not a detection rate for one finding but throughput across the whole reporting line — nearly 8 million exams drafted through 22 October, averaging more than 37,000 a day (<a href="https://www.businesswire.com/news/home/20261111171256/en/Vision-Language-Model-Powered-Radiology-Shows-Gains-in-Detection-and-Efficiency-in-Research-Study-of-Over-237000-Exams" target="_blank" rel="noopener">Business Wire, 2026-11-11</a>).</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: it measures the right thing. <a href="https://www.businesswire.com/news/home/20261111171256/en/Vision-Language-Model-Powered-Radiology-Shows-Gains-in-Detection-and-Efficiency-in-Research-Study-of-Over-237000-Exams" target="_blank" rel="noopener">Enhanced detection rate</a> asks how many expert-confirmed findings the model adds after the radiologist has signed — 40.9% on average across 35 CT conditions and 43.4% across 10 chest X-ray conditions, all of them findings that had been missed.</span>
+        </li>
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: error rates move the right way rather than only speed: 91.2% of chest X-ray drafts error-free against 83.0% of originals, and clinically significant errors of 3.7% against 6.5% on musculoskeletal and abdominal X-ray. Speed, more than 27% on CT and 31% on X-ray, is a side effect.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: the devices are investigational and not for sale in the United States, and they are already drafting more than 37,000 reports a day. Both being true at once means a gap between the regulatory category and the actual scale of use.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: the study was run in house, the comparator is the same radiologists before adoption, and there are no confidence intervals, statistical methods or panel sizes, with CT error rates left out. The company says it monitors over-reliance but publishes none of it — which is precisely the risk AI-drafted reports most need measured.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="company">
+  <h2>03 — Companies &amp; Competition</h2>
+  <div class="sec-title">
+    <span class="en">Who stands where, on what, against whom</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th><span class="en-inline">Company</span></th>
+        <th><span class="en-inline">Recent state &amp; numbers</span></th>
+        <th><span class="en-inline">Position &amp; moat</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Cleerly</strong><br><span class="en-inline">AI coronary plaque quantification (Colorado, USA)</span></td>
+          <td>
+            <span class="en">On 7 November at AHA 2026 it presented PARAMOUNT (NCT06713239): 21 sites, 530 randomized and 523 analyzed, a 180-day composite win ratio of 2.00 (95% CI 1.37–2.56, p&lt;0.0001) and lipid-lowering therapy from 31% to 75%, with <a href="https://finance.yahoo.com/healthcare/articles/paramount-first-randomized-trial-ai-154500139.html" target="_blank" rel="noopener">full data in early 2027 and no peer review yet</a>.</span>
+          </td>
+          <td>
+            <span class="en">The moat is the randomized trial itself; the rivals are established tests such as stress testing and FFR-CT rather than other AI companies. The weakness: it won on diagnostic certainty with hard outcomes unproven, and if the full 2027 data narrow the margin, the reimbursement argument loses its fulcrum at once.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Cordio Medical</strong><br><span class="en-inline">Voice-analysis remote heart-failure monitoring (Israel)</span></td>
+          <td>
+            <span class="en">On 9 November at AHA 2026 it presented DETECT-HF: 563 patients, 46 sites, five languages, more than 70% of heart-failure events predicted <a href="https://www.prnewswire.com/news-releases/pivotal-study-validates-cordio-medicals-smartphone-based-voice-analysis-for-remote-heart-failure-monitoring-302933206.html" target="_blank" rel="noopener">an average of 24.6 days ahead</a>, and 2.65 unexplained alerts per patient-year. It holds FDA Breakthrough designation, a CE mark and Israeli approval, with a De Novo path and 2027 US launch planned.</span>
+          </td>
+          <td>
+            <span class="en">The moat is zero hardware cost and linguistic reach — enrolling in five languages was deliberate. The rivals are bathroom scales and implanted pulmonary artery pressure sensors. The weakness: no specificity published, and remote monitoring products live or die on the false-positive burden.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Radiology Partners<br>（Mosaic / Cognita）</strong><br><span class="en-inline">Radiology practice group plus in-house AI lab (USA)</span></td>
+          <td>
+            <span class="en">On 11 November it published a <a href="https://www.businesswire.com/news/home/20261111171256/en/Vision-Language-Model-Powered-Radiology-Shows-Gains-in-Detection-and-Efficiency-in-Research-Study-of-Over-237000-Exams" target="_blank" rel="noopener">retrospective study of 237,905 exams</a>: enhanced detection averaging about 40% and reaching 110%; 91.2% of chest X-ray drafts error-free against 83.0%; efficiency up more than 27% on CT and 31% on X-ray; nearly 8 million exams drafted through 22 October at more than 37,000 a day. The devices are not for sale in the US.</span>
+          </td>
+          <td>
+            <span class="en">The moat is vertical integration: it owns the case volume, the data, the model and the user. The rivals are companies that sell software to others, such as Aidoc and Lunit. The weakness is the same fact — all the evidence is produced by the interested party, which makes it hard for an outside institution to purchase on.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>ALMA Genomics</strong><br><span class="en-inline">Methylation foundation models (USA, with Penn and MIT)</span></td>
+          <td>
+            <span class="en">On 13 November at AMP 2026 it reported ALMA 3: more than 110,000 training samples, 99.5% sensitivity for detecting hematolymphoid tumors and <a href="https://clpmag.com/diagnostic-technologies/digital-pathology/ai-tools-cancer-classification-reporting-amp-2026/" target="_blank" rel="noopener">90.9% subtype positive predictive value</a> across 81 subtypes (Abstract H071). The independent test set size is not published.</span>
+          </td>
+          <td>
+            <span class="en">The moat is the training corpus: 110,000 annotated methylation samples are hard to reproduce. The rivals are the existing morphology-plus-flow-plus-sequencing stack, and image-based players such as Tempus and Paige. The weakness: abstract-level evidence, with no prospective validation and nothing on population representativeness.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Tempus AI</strong><br><span class="en-inline">Computational pathology and molecular data (USA)</span></td>
+          <td>
+            <span class="en">A multicenter study with Pfizer reported at ESMO 2026 in Madrid: <a href="https://clpmag.com/disease-states/cancer/lung-cancer/ai-analysis-pathology-slides-shows-promise-guiding-lung-cancer-biomarker-testing/" target="_blank" rel="noopener">60,459 advanced non-small cell lung cancer cases from 56,969 patients</a>, with sensitivity above 80% for all 12 biomarkers and above 90% for several. The tool is still in development and explicitly does not replace established molecular or immunohistochemistry testing (reported 19 October 2026).</span>
+          </td>
+          <td>
+            <span class="en">The moat is volume: 60,000 H&amp;E slides with paired molecular results, plus pharma partnerships. Within this week's frame its rivals are ALMA's methylation route and MSK's triage models. The weakness: positioning as pre-screening rather than replacement caps its own price ceiling.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Doximity</strong><br><span class="en-inline">Physician network and AI tools (USA, NYSE: DOCS)</span></td>
+          <td>
+            <span class="en">On 12 November it released the 2026 Doctor-Driven AI Report: <a href="https://www.businesswire.com/news/home/20261112758368/en/More-Than-Half-of-U.S.-Physicians-Now-Use-AI-In-Their-Practice-Daily-But-Few-Have-Clear-Rules-For-It" target="_blank" rel="noopener">3,379 physicians across 20 specialties</a>, weekly use from 51% to 85%, daily from 37% to 52%, and only 28% under clear institutional policy. Its own DoseCheck claims to raise medication dosing accuracy above 99%.</span>
+          </td>
+          <td>
+            <span class="en">The moat is member reach and verified physician identity, not models. The rivals are clinical lookup front doors such as OpenEvidence, UpToDate and epocrates. The weakness: selling AI while surveying AI adoption is a conflict of interest that stops these figures functioning as a neutral industry benchmark.</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>The competitive structure this week is about who will hand their evidence over to be checked.</strong> The six companies' figures differ by three orders of magnitude, but sample size is not what separates them. Cleerly's 523 patients can be challenged from outside because the allocation was random, the trial is registered and confidence intervals and a p-value were reported. Mosaic's 237,905 exams cannot be purchased on, because the comparator is itself, the study is in-house and no confidence intervals were given. ALMA's 99.5% and Tempus's 80% stop at a conference abstract and a product in development respectively, and Cordio has not published a specificity at all. On this axis the strongest player is not the one with the biggest number, but the one that submitted itself for review first.</span>
+    </p>
+  </div>
+</section>
+
+<section id="taiwan">
+  <h2>04 — Taiwan Angle</h2>
+  <div class="sec-title">
+    <span class="en">Taiwan played three roles this week at once: host of a draft consensus, conductor of its own trials, and validation site for other people's models</span>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>(1) Host: the 14 principles under review in Taipei are the mirror image of this week's evidence gaps.</strong> WCIM 2026 ran 12–15 November at Hall 2 of the Nangang Exhibition Center, and a global forum on the afternoon of 13 November reviewed the draft Taipei Declaration on Artificial Intelligence, Medicine and Humanity, whose 14 principles explicitly require physicians to verify AI output and keep the ability to question, correct or stop a system (<a href="https://health.tvbs.com.tw/medical/367344" target="_blank" rel="noopener">TVBS Health 2.0</a>). Read against this week's material, the difficulty of enforcement appears immediately: Cleerly did not publish the components of its composite endpoint, Mosaic published no confidence intervals or CT error rates, ALMA no independent test set size, Cordio no specificity. To verify output, a physician needs something to verify. The question worth pressing on this draft is not whether the principles are right, but whether anything obliges vendors to disclose enough to make them operable.</span>
+    </p>
+    <p>
+      <span class="en"><strong>(2) Conductor: Taiwan has already run the kind of trial this week's international news lacks.</strong> Tri-Service General Hospital's "AI-enabled ECG alert for potassium imbalance treatment" is a pragmatic randomized controlled trial in emergency care, with the AI embedded in the hospital's electronic medical record and randomization at physician level so clinical workflow was not interrupted. Nearly 15,000 patients were analyzed, and among those the AI flagged as at high risk of hyperkalemia, the intervention group was significantly more likely to be treated within one hour, without an increase in overtreatment; the paper appeared in Nature Communications (<a href="https://aicenter.mohw.gov.tw/AC/cp-7200-85070-208.html" target="_blank" rel="noopener">MOHW smart healthcare center, 9 January 2026</a>). Its design is exactly the half Mosaic could not supply: randomized, embedded in existing workflow, with how quickly the patient got treated as the endpoint rather than a detection rate. The same institutional arrangement comes from the AI impact research system the Ministry of Health and Welfare has run since 2024, with five demonstration centers — Taipei Veterans General, Taichung Veterans General, Tri-Service General, National Cheng Kung University Hospital and National Taiwan University Hospital — a central review board (C-IRB) and multi-center data-streaming analysis, closing the loop from trial to evidence to reimbursement with the National Health Insurance Administration taking part (<a href="https://www.mohw.gov.tw/cp-16-84592-1.html" target="_blank" rel="noopener">Ministry of Health and Welfare, 20 November 2025</a>).</span>
+    </p>
+    <p>
+      <span class="en"><strong>(3) Validation site: where Taiwanese data appears in international research is worth noting.</strong> One external validation cohort of the Nature ECG sudden-death model recirculating this week was a Taiwanese hospital registry, used to predict future arrhythmic cardiac arrest (<a href="https://www.nature.com/articles/s41586-026-10674-6" target="_blank" rel="noopener">Nature, 24 June 2026</a>). That Taiwan's ECG and mortality registry data is good enough to serve as the external validation set for an international paper is a demonstration of capability; but in that same paper, development, modeling and publication all happened in Sweden and the United States, and Taiwan's role was to validate. The division of labor is not in itself bad, though it invites a question: if the data is good enough to validate with, why not to develop with? The answer usually lies not in the data but in the governance and compute arrangements needed to link it — which is precisely what the AI impact research system and the C-IRB are meant to address.</span>
+    </p>
+    <p>
+      <span class="en"><strong>(4) Deployment: hospital-level adoption still lacks numbers.</strong> A 9 November report describes Wei Gong Memorial Hospital adopting an AI imaging aid for intracranial hemorrhage and midline shift: after a non-contrast head CT, the system marks suspect slices back into PACS and notifies the physician through the hospital information system. The superintendent says the time from completed CT to neurology consultation for acute hemorrhagic stroke patients has shortened since adoption, but the report gives no seconds or percentages, no accuracy figure, no case count and no vendor (<a href="https://n.yam.com/Article/20261109113871" target="_blank" rel="noopener">Yam News, 9 November 2026</a>). This is the other end of the same fault as the international news this week: abroad, plenty of numbers that cannot be checked; at home, real process improvement with no numbers at all. For hospitals able to run clinical research, adoptions like this are the easiest raw material to turn into a publishable before-and-after or pragmatic trial.</span>
+    </p>
+  </div>
+</section>
+
+<section id="reading">
+  <h2>05 — Further Reading</h2>
+  <div class="sec-title">
+    <span class="en">Most of this week's news cannot be checked, so this list picks five peer-reviewed pieces whose methods are worth copying</span>
+  </div>
+
+  <ol class="reading">
+    <li>
+      <a href="https://www.nature.com/articles/s41591-026-04601-5" target="_blank" rel="noopener">Prospective evaluation of a large language model clinical decision support system in the emergency department — Nature Medicine (2026-08-19)</a>
+      <p class="why"><span class="en">The antidote to every accuracy story this week. This DECIDE-AI stage 1 evaluation followed 1,138 emergency patients, with expert review judging 99 of 100 sampled outputs clinically appropriate and no adverse events — yet clinician adoption fell from 68% to 30% and tracked workload (OR = 0.72 per shift hour, 95% CI 0.62–0.83), while emergency length of stay was identical in both units (4.9 h, P = 0.99). The authors conclude the bottleneck is sustained clinical engagement, not algorithmic accuracy (<a href="https://clinicaltrials.gov/study/NCT06902675" target="_blank" rel="noopener">NCT06902675</a>).</span></p>
+    </li>
+    <li>
+      <a href="https://www.unite.ai/microsoft-diagnostic-ai-outperforms-generalist-physicians-in-science-study/" target="_blank" rel="noopener">Sequential diagnosis with language models — Science 394(6822):423–428 (2026-10-22)</a>
+      <p class="why"><span class="en">What is worth reading is not the 83.2% against 36.1% headline but that cost is built into the score: across 304 NEJM clinicopathological conference cases, the unconstrained configuration reached 83.2% accuracy at an average test cost of 5,431 dollars per case, while budget-constrained runs gave 80.9% at 2,241 dollars and 79.6% at 1,303. Open-book physicians scored 36.1% at 4,725 dollars. Putting diagnostic accuracy and what it cost on one table is what none of this week's product news does.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/articles/s41591-026-04553-w" target="_blank" rel="noopener">Divergent impacts of explainable AI for dermatological diagnosis on clinicians versus lay people — Nature Medicine (2026-08-04)</a>
+      <p class="why"><span class="en">Doximity's survey says 81% of physicians feel AI taught them something new and about three in four see patients arriving with AI self-diagnoses — this paper measures the boundary between those two facts: the same explainable AI affects experts and non-experts in opposite directions, with non-experts more easily misled (see also <a href="https://news.mit.edu/2026/medical-ai-assistance-benefits-vary-based-on-user-expertise-0804" target="_blank" rel="noopener">the MIT News summary</a>). For any discussion of patients self-diagnosing with AI, this is the starting point.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/articles/s41586-026-10674-6" target="_blank" rel="noopener">An ECG biomarker for sudden cardiac death discovered with deep learning — Nature 655(8121):210–218 (2026-06-24)</a>
+      <p class="why"><span class="en">A textbook example of how to choose a comparator: not against physicians but against the one decision variable actually in use, LVEF — which is why the conclusion can change clinical practice directly. LVEF missed 86.1% of the patients the model flagged, so the two measures point at nearly disjoint groups. One external validation cohort is in Taiwan.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/collections/gggiehejee" target="_blank" rel="noopener">Making AI work in healthcare — Nature Medicine collection (2026-10-14)</a>
+      <p class="why"><span class="en">The fastest way to put every figure above into context. The collection gathers deployment lessons from Stanford's ChatEHR, early experience from an AI-agent eye clinic in China, the practicalities of scaling from one hospital to over a million patients screened, and a comment on why prospective evidence for conversational medical AI is non-negotiable — the class of problem that only arrives after the clinical AI is built.</span></p>
+    </li>
+  </ol>
+</section>
+
+<section id="refs">
+  <h2>06 — References</h2>
+  <div class="sec-title">
+    <span class="en">References</span>
+  </div>
+
+  <div class="panel">
+    <ol class="refs">
+      <li>PARAMOUNT, the First Randomized Trial of AI-Enabled Plaque-Based Care, Meets Primary Endpoint in Late-Breaking Results at AHA 2026. <em>Business Wire / Yahoo Finance</em>, 2026-11-07. <a href="https://finance.yahoo.com/healthcare/articles/paramount-first-randomized-trial-ai-154500139.html" target="_blank" rel="noopener">finance.yahoo.com</a></li>
+      <li>AHA26: AI plaque analysis bests standard of care in suspected CAD patients. <em>Medical Device Network</em>, 2026-11. <a href="https://www.medicaldevice-network.com/news/aha26-ai-plaque-analysis-bests-standard-of-care-in-suspected-cad-patients/" target="_blank" rel="noopener">medicaldevice-network.com</a></li>
+      <li>AI-guided chest pain care now has randomised trial evidence. <em>The Future Health</em>, 2026-11-09. <a href="https://thefuturehealth.substack.com/p/ai-guided-chest-pain-care-now-has" target="_blank" rel="noopener">thefuturehealth.substack.com</a></li>
+      <li>Cleerly's AI-guided coronary care meets primary endpoint in PARAMOUNT trial. <em>Webull News</em>, 2026-11. <a href="https://www.webull.com/news/15883278814331904" target="_blank" rel="noopener">webull.com</a></li>
+      <li>Pivotal Study Validates Cordio Medical's Smartphone-Based Voice Analysis for Remote Heart Failure Monitoring (DETECT-HF). <em>PR Newswire</em>, 2026-11-09. <a href="https://www.prnewswire.com/news-releases/pivotal-study-validates-cordio-medicals-smartphone-based-voice-analysis-for-remote-heart-failure-monitoring-302933206.html" target="_blank" rel="noopener">prnewswire.com</a></li>
+      <li>Vision-Language Model-Powered Radiology Shows Gains in Detection and Efficiency in Research Study of Over 237,000 Exams. <em>Business Wire</em>, 2026-11-11. <a href="https://www.businesswire.com/news/home/20261111171256/en/Vision-Language-Model-Powered-Radiology-Shows-Gains-in-Detection-and-Efficiency-in-Research-Study-of-Over-237000-Exams" target="_blank" rel="noopener">businesswire.com</a></li>
+      <li>AI Tools Take on Cancer Classification, Reporting, and Test Triage at AMP 2026. <em>Clinical Lab Products</em>, 2026-11-13. <a href="https://clpmag.com/diagnostic-technologies/digital-pathology/ai-tools-cancer-classification-reporting-amp-2026/" target="_blank" rel="noopener">clpmag.com</a></li>
+      <li>More Than Half of U.S. Physicians Now Use AI In Their Practice Daily, But Few Have Clear Rules For It (2026 Doctor-Driven AI Report). <em>Business Wire / Doximity</em>, 2026-11-12. <a href="https://www.businesswire.com/news/home/20261112758368/en/More-Than-Half-of-U.S.-Physicians-Now-Use-AI-In-Their-Practice-Daily-But-Few-Have-Clear-Rules-For-It" target="_blank" rel="noopener">businesswire.com</a></li>
+      <li>Bonus Features — November 15, 2026. <em>Healthcare IT Today</em>, 2026-11-15. <a href="https://www.healthcareittoday.com/2026/11/15/bonus-features-november-15-2026-69-or-healthcare-pros-want-their-orgs-to-use-more-ai-38-of-patients-are-comfortable-using-ai-to-schedule-appointments-plus-36-more-stories/" target="_blank" rel="noopener">healthcareittoday.com</a></li>
+      <li>AI 看病、機器人手術來了？內科醫學年會邀國際專家討論 14 項原則攸關病人權益. <em>TVBS 健康 2.0</em>, 2026-11. <a href="https://health.tvbs.com.tw/medical/367344" target="_blank" rel="noopener">health.tvbs.com.tw</a></li>
+      <li>臺大醫院攜手醫界 領航 AI 導入醫療發展. <em>鏡週刊</em>, 2026-11-10. <a href="https://www.mirrormedia.mg/external/5678_202611101122579190" target="_blank" rel="noopener">mirrormedia.mg</a></li>
+      <li>導入 AI 智慧影像偵測 醫院爭取急重症黃金救援時間. <em>蕃新聞</em>, 2026-11-09. <a href="https://n.yam.com/Article/20261109113871" target="_blank" rel="noopener">n.yam.com</a></li>
+      <li>Obermeyer Z, Schubert A, Ross J, Mullainathan S, Lingman M. An ECG biomarker for sudden cardiac death discovered with deep learning. <em>Nature</em> 655(8121):210–218, 2026-06-24. <a href="https://www.nature.com/articles/s41586-026-10674-6" target="_blank" rel="noopener">nature.com</a></li>
+      <li>AI discovers a hidden heart signal that could predict sudden death. <em>ScienceDaily</em>, 2026-11-14. <a href="https://www.sciencedaily.com/releases/2026/11/261112230456.htm" target="_blank" rel="noopener">sciencedaily.com</a></li>
+      <li>Leibovitch L, Ahituv A, Gorenshtein A, Aran D, Sorka M, Miron K, Shelly S. Prospective evaluation of a large language model clinical decision support system in the emergency department. <em>Nature Medicine</em>, 2026-08-19. <a href="https://www.nature.com/articles/s41591-026-04601-5" target="_blank" rel="noopener">nature.com</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/42618632/" target="_blank" rel="noopener">PubMed 42618632</a> · <a href="https://clinicaltrials.gov/study/NCT06902675" target="_blank" rel="noopener">NCT06902675</a></li>
+      <li>Sequential diagnosis with language models. <em>Science</em> 394(6822):423–428, 2026-10-22（經 <em>Unite.AI</em> 二手報導取得數字）. <a href="https://www.unite.ai/microsoft-diagnostic-ai-outperforms-generalist-physicians-in-science-study/" target="_blank" rel="noopener">unite.ai</a></li>
+      <li>Divergent impacts of explainable AI for dermatological diagnosis on clinicians versus lay people. <em>Nature Medicine</em>, 2026-08-04. <a href="https://www.nature.com/articles/s41591-026-04553-w" target="_blank" rel="noopener">nature.com</a> · <a href="https://news.mit.edu/2026/medical-ai-assistance-benefits-vary-based-on-user-expertise-0804" target="_blank" rel="noopener">MIT News</a></li>
+      <li>Making AI work in healthcare（Nature Medicine 真實世界臨床 AI 部署合輯）. <em>Nature Medicine</em>, 2026-10-14. <a href="https://www.nature.com/collections/gggiehejee" target="_blank" rel="noopener">nature.com</a></li>
+      <li>AI Analysis of Pathology Slides Shows Promise for Guiding Lung Cancer Biomarker Testing（Tempus AI × Pfizer, ESMO 2026）. <em>Clinical Lab Products</em>, 2026-10-19. <a href="https://clpmag.com/disease-states/cancer/lung-cancer/ai-analysis-pathology-slides-shows-promise-guiding-lung-cancer-biomarker-testing/" target="_blank" rel="noopener">clpmag.com</a></li>
+      <li>三軍總醫院發表 AI 臨床實證研究成果刊登於 Nature Communications（AI-enabled ECG alert for potassium imbalance treatment）. <em>衛生福利部智慧醫療中心</em>, 2026-01-09. <a href="https://aicenter.mohw.gov.tw/AC/cp-7200-85070-208.html" target="_blank" rel="noopener">aicenter.mohw.gov.tw</a></li>
+      <li>衛福部舉辦「臺灣 AI 影響性研究中心聯合啟動大會暨國際研討會」. <em>衛生福利部</em>, 2025-11-20. <a href="https://www.mohw.gov.tw/cp-16-84592-1.html" target="_blank" rel="noopener">mohw.gov.tw</a></li>
+      <li>Study in The Lancet suggests AI could improve patient-physician relationships（AMIE × Beth Israel Deaconess, 98 位病人）. <em>Google Blog</em>, 2026-10-08. <a href="https://blog.google/innovation-and-ai/technology/health/amie-clinical-study-lancet/" target="_blank" rel="noopener">blog.google</a></li>
+      <li>Mammography should include artificial intelligence support. <em>The Lancet</em>, 2026. <a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(26)00659-8/abstract" target="_blank" rel="noopener">thelancet.com</a></li>
+    </ol>
+    <div class="note">
+      <span class="en"><strong>Editor's note:</strong> (1) Of the seven top stories, only the Nature ECG sudden-death model is peer reviewed, and its first publication date of 24 June 2026 falls outside this edition's window; it is included for its Taiwanese external validation cohort and methodological value, with the card stating explicitly that the only event this week was a ScienceDaily repost on 14 November. (2) All PARAMOUNT and DETECT-HF figures come from vendor releases (Cleerly, Cordio Medical) issued after Late-Breaking Science presentations at AHA 2026; Cleerly states the results are not yet peer reviewed with full data due in early 2027, and DETECT-HF publishes no specificity. (3) The Mosaic / Cognita study of 237,905 exams was run inside the Radiology Partners group, the devices are not for sale in the United States, the comparator is the same radiologists before adoption, there are no confidence intervals or statistical methods, and the two papers sit only on the company's own RSNA Event Hub. (4) All four AMP 2026 items (ALMA 3, Turnkey Precision Oncology, the MSK and Mount Sinai EGFR triage work, and the Stanford gastric cancer model) are conference abstracts, and the source coverage itself notes that most of the work is preliminary. (5) The Doximity survey draws on the company's own members rather than a random sample, and the company sells AI products. (6) Figures from the Science paper "Sequential diagnosis with language models" were taken from secondary coverage at Unite.AI rather than from the article itself. (7) Some pages on nature.com, pubmed.ncbi.nlm.nih.gov and dicardiology.com could not be retrieved during production; bibliographic details and abstract figures for the two Nature and Nature Medicine papers were instead checked against Europe PMC REST API metadata. (8) Mirror Media is internally inconsistent on the WCIM congress number (37th versus 38th); this report follows the 38th. (9) The Ministry of Health and Welfare release on the Tri-Service General Hospital Nature Communications paper gives no specific statistics, so only its qualitative conclusion is reported here. (10) The Wei Gong Memorial Hospital item supplies no quantitative figures and no vendor name, as stated in the text.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-row">
+    <div>
+      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Monday / Clinical Applications &amp; Research<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
+    </div>
+    <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
+  </div>
+</footer>
+</main>
+
+<div class="fabs">
+  <button class="up" id="up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+  <a class="home-fab" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg></a>
+</div>
+
+<script>
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.getElementById('theme-ic').textContent =
+    document.body.classList.contains('dark') ? '◑' : '◐';
+}
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.body.classList.add('dark');
+  document.getElementById('theme-ic').textContent = '◑';
+}
+window.addEventListener('scroll', function(){
+  document.getElementById('up').classList.toggle('show', window.scrollY > 600);
+});
+
+/* GitHub 星星數：無需授權，失敗或被限流時靜默保留佔位符 */
+(function(){
+  var el = document.getElementById('ghs');
+  if (!el || typeof fetch !== 'function') return;
+  fetch('https://api.github.com/repos/tingwei161803/ai-medical-daily', {headers:{Accept:'application/vnd.github+json'}})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if (!d || typeof d.stargazers_count !== 'number') return;
+      var n = d.stargazers_count;
+      el.textContent = n >= 1000 ? (Math.round(n/100)/10) + 'k' : String(n);
+    })
+    .catch(function(){});
+})();
+</script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/reports/2026-11-16.html" hreflang="zh-Hant" rel="alternate" lang="zh-Hant">中文版</a></p>
+</body>
+</html>
