@@ -8,6 +8,10 @@
 <title>AI／醫療AI 每日新知日報 · 2026-11-19</title>
 <meta property="og:url" content="https://ai-medical-daily.peteraim.com/reports/2026-11-19.html" />
 <link rel="canonical" href="https://ai-medical-daily.peteraim.com/reports/2026-11-19.html" />
+<link rel="alternate" hreflang="zh-Hant" href="https://ai-medical-daily.peteraim.com/reports/2026-11-19.html" />
+<link rel="alternate" hreflang="en" href="https://ai-medical-daily.peteraim.com/en/reports/2026-11-19.html" />
+<link rel="alternate" hreflang="x-default" href="https://ai-medical-daily.peteraim.com/reports/2026-11-19.html" />
+<meta name="description" content="MedJev-4B 把自迴歸生成整個拆掉、以 Apache 2.0 開源，四個 benchmark 平均 69.06%、快 6.04 倍卻零臨床驗證；Isomorphic Labs 的 50 億美元 C 輪沒有估值、沒有 program 數、沒有試驗時程；Synaptiq 把頭頸輪廓從 97 分鐘壓到 2.7 分鐘，對照卻用別人 80 人的舊資料集。本週唯一同儕審查的數字是 65.4% 比 79.6%——AI 寫的胸片報告仍輸給放射科醫師，而把這件事排進議程的是 RSNA 自己。">
 <meta name="report-date" content="2026-11-19">
 <meta name="report-theme" content="technology">
 <meta name="report-title-zh" content="這一週的技術突破把秒數量到小數點，把臨床效益整格留空——11/17 一篇 arXiv 論文把醫療視覺語言模型的自迴歸生成整個拆掉、改成單次前向運算直接給答案，MedJev-4B 以 Apache 2.0 開源權重上架 Hugging Face，四個 benchmark 平均準確率 69.06%、較 Qwen3.5-4B 骨幹高 7.93 個百分點、端到端快 6.04 倍，而單張 H20、batch size 1 的平均延遲 113.4 毫秒是實驗室條件下量的，臨床驗證一筆沒有，HAM10000 只到 68.39%、MedThinkVQA 只到 51.94%；同一天 Isomorphic Labs 宣布 50 億美元 C 輪、由 Greenoaks 與 Sequoia 共同領投、a16z 新進、Alphabet 加碼，錢要拿去養 IsoDDE 藥物設計引擎與基礎生物學模型，而公告裡沒有估值、沒有 program 數、沒有任何臨床試驗時程，只寫 preclinical 結果「為臨床進入鋪路」；11/18 羅馬尼亞的 Synaptiq 把腫瘤與危急器官輪廓描繪合進同一套流程，250 多個 OAR 與淋巴結區域、每位病人初次處理約 30 秒、頭頸部平均從 97 分鐘降到 2.7 分鐘、92.1% 的輪廓不需修改，拿到 MDR Class IIa CE 標誌，而對照組用的是 2023 年一篇 Frontiers 研究的 80 人資料集、那篇研究裡並沒有 Synaptiq，腫瘤控制與存活數據一個都沒有。本週唯一經過同儕審查的數字指向反方向：11/6 刊在 Current Problems in Diagnostic Radiology 的回顧裡，2025 年 ACR 年會盲測中只有 65.4% 的 AI 胸部 X 光報告被主治醫師判為臨床可接受，放射科醫師自己寫的是 79.6%，而 CT-Chat、Merlin、BrainGPT、Mammo-FM 全被列為臨床驗證有限。而把這件事寫進議程的是 RSNA 自己——11/29 至 12/3 芝加哥的年會排了「廠商自述指標不保證良好臨床表現」、「AI 不一定降低放射科醫師的認知負荷，有時還增加」、「AI 只是移轉診斷風險而非消除」三場">
@@ -29,16 +33,16 @@
 </script>
 <link rel="stylesheet" href="/assets/report.css">
 </head>
-<body class="lang-zh">
+<body>
 
 <header class="bar">
   <div class="bar-in">
-    <a class="brand" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span><span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <a class="brand" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span></a>
     <div class="bar-sp"></div>
     <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub / 在 GitHub 給這個專案一顆星"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
     <div class="seg">
-      <button id="b-zh" class="on" onclick="setLang('zh')">中文</button>
-      <button id="b-en" onclick="setLang('en')">EN</button>
+      <a class="on" href="/reports/2026-11-19.html" hreflang="zh-Hant" lang="zh-Hant" aria-current="page">中文</a>
+      <a href="/en/reports/2026-11-19.html" hreflang="en" lang="en" rel="alternate">EN</a>
     </div>
     <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
   </div>
@@ -48,28 +52,24 @@
 <div class="hero">
   <div class="kicker">
     <span class="zh-inline">星期四 · 技術突破</span>
-    <span class="en-inline">Thursday · Technology</span>
   </div>
   <h1>
     <span class="zh">把秒數量到小數點，把臨床效益整格留空</span>
-    <span class="en">Seconds measured to the decimal, clinical benefit left blank</span>
   </h1>
   <div class="dateline">
     <span class="zh-inline">2026 年 11 月 19 日（四）· 涵蓋 11/06–11/19 · 台北時間</span>
-    <span class="en-inline">Thursday, November 19, 2026 · Covering Nov 06–19 · Taipei time</span>
   </div>
   <p class="lede">
     <span class="zh">這一週交出來的技術數字有一個共同形狀：延遲量到毫秒、省時量到小數點，臨床效益那一格空著。11/17 一篇 arXiv 論文把醫療視覺語言模型的自迴歸生成整個拆掉，<a href="https://arxiv.org/abs/2611.20992" target="_blank" rel="noopener">MedJev</a> 改成單次前向運算直接給答案，<a href="https://huggingface.co/Karl28/MedJev-4B" target="_blank" rel="noopener">MedJev-4B 以 Apache 2.0 權重上架 Hugging Face</a>，四個 benchmark 平均準確率 69.06%、較骨幹高 7.93 個百分點、端到端快 6.04 倍——而臨床驗證一筆沒有。同一天 <a href="https://www.prnewswire.com/news-releases/isomorphic-labs-announces-5-billion-series-c-funding-302942062.html" target="_blank" rel="noopener">Isomorphic Labs 宣布 50 億美元 C 輪</a>，公告裡沒有估值、沒有 program 數、沒有任何臨床試驗時程。11/18 <a href="https://www.unite.ai/synaptiq-ai-tumor-organ-contouring-radiotherapy-planning/" target="_blank" rel="noopener">Synaptiq 把頭頸部輪廓描繪從平均 97 分鐘壓到 2.7 分鐘</a>，對照卻用 2023 年一篇研究的 80 人舊資料集。本週唯一經過同儕審查的數字指向反方向：<a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/article/16425308/deephealth-foundation-models-show-promise-in-radiology-as-drafting-assistants" target="_blank" rel="noopener">盲測中只有 65.4% 的 AI 胸片報告被判為臨床可接受，放射科醫師自己寫的是 79.6%</a>。而把這件事排進議程的，是 <a href="https://www.auntminnie.com/resources/conference/rsna/2026/artificial-intelligence-preview/article/16425187/road-to-rsna-2026-ai-preview" target="_blank" rel="noopener">RSNA 自己</a>。</span>
-    <span class="en">Every technical figure handed over this week has the same shape: latency measured in milliseconds, time savings to the decimal place, and the clinical-benefit cell left empty. On 11/17 an arXiv paper tore autoregressive generation out of medical vision-language models altogether — <a href="https://arxiv.org/abs/2611.20992" target="_blank" rel="noopener">MedJev</a> maps image, question and candidate answers to a decision in one forward pass, and <a href="https://huggingface.co/Karl28/MedJev-4B" target="_blank" rel="noopener">MedJev-4B shipped on Hugging Face under Apache 2.0</a> at 69.06% average accuracy across four benchmarks, 7.93 points above its backbone and 6.04x faster end to end — with no clinical validation whatsoever. The same day <a href="https://www.prnewswire.com/news-releases/isomorphic-labs-announces-5-billion-series-c-funding-302942062.html" target="_blank" rel="noopener">Isomorphic Labs announced a $5 billion Series C</a>, a release carrying no valuation, no programme count and no trial timing. On 11/18 <a href="https://www.unite.ai/synaptiq-ai-tumor-organ-contouring-radiotherapy-planning/" target="_blank" rel="noopener">Synaptiq compressed head-and-neck contouring from an average 97 minutes to 2.7</a>, benchmarked against the 80-patient dataset of a 2023 study. The week's one peer-reviewed figure runs the other way: <a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/article/16425308/deephealth-foundation-models-show-promise-in-radiology-as-drafting-assistants" target="_blank" rel="noopener">blinded attendings judged just 65.4% of AI chest radiograph reports clinically acceptable, against 79.6% for radiologists' own</a>. And the body that put that on the programme is <a href="https://www.auntminnie.com/resources/conference/rsna/2026/artificial-intelligence-preview/article/16425187/road-to-rsna-2026-ai-preview" target="_blank" rel="noopener">RSNA itself</a>.</span>
   </p>
 
   <nav class="toc">
-    <a href="#top"><span class="zh-inline">重點新聞</span><span class="en-inline">Top Stories</span></a>
-    <a href="#product"><span class="zh-inline">產品分析</span><span class="en-inline">Product Analysis</span></a>
-    <a href="#company"><span class="zh-inline">公司與競爭</span><span class="en-inline">Companies &amp; Competition</span></a>
-    <a href="#taiwan"><span class="zh-inline">台灣視角</span><span class="en-inline">Taiwan Angle</span></a>
-    <a href="#reading"><span class="zh-inline">延伸閱讀</span><span class="en-inline">Further Reading</span></a>
-    <a href="#refs"><span class="zh-inline">參考文獻</span><span class="en-inline">References</span></a>
+    <a href="#top"><span class="zh-inline">重點新聞</span></a>
+    <a href="#product"><span class="zh-inline">產品分析</span></a>
+    <a href="#company"><span class="zh-inline">公司與競爭</span></a>
+    <a href="#taiwan"><span class="zh-inline">台灣視角</span></a>
+    <a href="#reading"><span class="zh-inline">延伸閱讀</span></a>
+    <a href="#refs"><span class="zh-inline">參考文獻</span></a>
   </nav>
 </div>
 
@@ -77,232 +77,197 @@
   <h2>01 — Top Stories</h2>
   <div class="sec-title">
     <span class="zh">七則消息，按「量得出來的東西離病人多遠」排序</span>
-    <span class="en">Seven items, ordered by how far the measured thing sits from the patient</span>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">架構</span><span class="en-inline">Architecture</span></span>
+      <span class="tag hot"><span class="zh-inline">架構</span></span>
       <span class="tag">CUHK · NUS · Tsinghua</span><span class="tag">MedJev-4B</span><span class="tag">11/17</span>
     </div>
     <h3>
       <span class="zh">把生成整個拆掉：MedJev 用單次前向運算回答醫療影像問題，開源權重快 6.04 倍</span>
-      <span class="en">Generation removed entirely: MedJev answers medical imaging questions in one forward pass, open weights 6.04x faster</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">11 月 17 日，一篇由 Fan Zhang、Hao Wu、Jinyang Wu、Hongyu Qu、Zheng Lian、Dongfu Yin、Qingsong Wen 與 Pheng-Ann Heng 等人掛名的論文上線 arXiv（<a href="https://arxiv.org/abs/2611.20992" target="_blank" rel="noopener">arXiv:2611.20992</a>），把醫療視覺語言模型的做法反過來寫。現行模型是自迴歸逐字生成推理與答案，推論成本隨回答長度增長，而且答案還要從自由文字裡解析出來；MedJev 直接把醫療影像、問題與所有候選答案一起吃進去，在<strong>單一次多模態前向運算</strong>裡替每個候選答案打分，完全不生成文字。做法是砍掉語言模型上層與生成輸出路徑、保留完整視覺路徑與所有視覺 token，再接一個用預訓練 query-key 匹配打分的決策頭，外加一層輕量 MLP 殘差做任務專屬的非線性區辨（<a href="https://arxivsignals.io/papers/2611.20992" target="_blank" rel="noopener">ArXivSignals 的論文摘要頁</a>）。主模型 MedJev-4B 建在 Qwen3.5-4B 上，<a href="https://huggingface.co/Karl28/MedJev-4B" target="_blank" rel="noopener">Hugging Face 的模型卡</a>寫明以 Apache 2.0 釋出、訓練張量合計 25,768,961 個參數（其中決策頭 1,966,593 個），在 HAM10000、PneumoniaMNIST、MedThinkVQA 與 PMC-VQA 四個 benchmark 的訓練切分共 174,360 筆資料上跑了一個 epoch。<a href="https://github.com/zfkarl/MedJev" target="_blank" rel="noopener">程式碼在 GitHub 上公開</a>。</span>
-        <span class="en">On November 17 a paper credited to Fan Zhang, Hao Wu, Jinyang Wu, Hongyu Qu, Zheng Lian, Dongfu Yin, Qingsong Wen and Pheng-Ann Heng went up on arXiv (<a href="https://arxiv.org/abs/2611.20992" target="_blank" rel="noopener">arXiv:2611.20992</a>), inverting how medical vision-language models work. Current models generate reasoning and answer tokens autoregressively, so inference cost grows with response length and the answer still has to be parsed out of free text. MedJev takes the image, the question and every candidate answer together and scores each candidate in <strong>a single multimodal forward pass</strong>, generating no text at all. It strips out the upper language layers and the generative output pathway, keeps the full vision pathway and all visual tokens, then adds a decision head that scores candidates by pretrained query-key matching, with a lightweight MLP residual for task-specific nonlinear discrimination (<a href="https://arxivsignals.io/papers/2611.20992" target="_blank" rel="noopener">ArXivSignals' paper page</a>). MedJev-4B is built on Qwen3.5-4B; the <a href="https://huggingface.co/Karl28/MedJev-4B" target="_blank" rel="noopener">Hugging Face model card</a> states Apache 2.0 release, 25,768,961 trained tensor parameters (1,966,593 of them in the decision head), and one epoch over 174,360 examples from the training splits of four benchmarks: HAM10000, PneumoniaMNIST, MedThinkVQA and PMC-VQA. The <a href="https://github.com/zfkarl/MedJev" target="_blank" rel="noopener">code is public on GitHub</a>.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">數字</span><span class="en-inline">Numbers</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">數字</span></div>
       <p class="val">
         <span class="zh">依<a href="https://huggingface.co/Karl28/MedJev-4B" target="_blank" rel="noopener">模型卡上唯一那張評測表</a>，準確率分別是 PneumoniaMNIST 94.23%、HAM10000 68.39%、PMC-VQA 61.68%、MedThinkVQA 51.94%，平均 69.06%；單張 H20、batch size 1 的平均延遲分別為 64.8、73.3、65.0 與 250.7 毫秒，三個單張影像 benchmark 平均 113.4 毫秒。作者自述較骨幹模型平均準確率高 7.93 個百分點、端到端快 6.04 倍，並聲稱在 4B–9B 級別的 20 個通用與醫療視覺語言模型比較中同時拿下準確率與推論速度的 state of the art。</span>
-        <span class="en">Per the <a href="https://huggingface.co/Karl28/MedJev-4B" target="_blank" rel="noopener">single evaluation table on the model card</a>: 94.23% on PneumoniaMNIST, 68.39% on HAM10000, 61.68% on PMC-VQA and 51.94% on MedThinkVQA, averaging 69.06%. Mean latency on one H20 at batch size 1 was 64.8, 73.3, 65.0 and 250.7 ms respectively, averaging 113.4 ms across the three single-image benchmarks. The authors report a 7.93-point average accuracy gain over the backbone and a 6.04x end-to-end speedup, and claim state-of-the-art accuracy and inference speed against 20 general and medical VLMs in the 4B–9B range.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">這是本週唯一一則「東西可以下載、數字可以重跑」的技術消息。Apache 2.0 加上 4B 規模意味著它跑得動單張消費級或院內 GPU，不需要把病人影像送出院外——對無法把資料送雲端的醫院來說，架構層的取捨比準確率小數點更重要。更值得注意的是它的方法論立場：把推理生成視為可砍的成本而非必要能力，直接挑戰過去兩年「讓模型把思路寫出來才可信」的主流路線。若這條路線成立，醫療影像問答的部署成本結構會整個換一遍。</span>
-        <span class="en">This is the week's one technical item where the artefact can be downloaded and the numbers rerun. Apache 2.0 plus 4B scale means it runs on a single consumer or on-premise GPU, with no need to send patient images outside the hospital — and for institutions that cannot ship data to a cloud, that architectural trade-off matters more than a decimal point of accuracy. More notable is its methodological stance: it treats generated reasoning as a removable cost rather than a necessary capability, which cuts directly against the past two years' orthodoxy that a model must write out its chain of thought to be trustworthy. If the approach holds, the cost structure of deploying medical image QA changes wholesale.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">四個 benchmark 的訓練切分模型自己訓過，所以這不是零樣本成績；平均 69.06% 被 PneumoniaMNIST 的 94.23% 拉高，而 MedThinkVQA 的 51.94% 在四選一任務上離隨機猜測沒有很遠。延遲是單張 H20、batch size 1 的實驗室條件，不是臨床系統的端到端反應時間。全部評測都是多選題打分，而真實的影像判讀不會附上候選答案。最關鍵的是：臨床驗證一筆沒有，沒有任何前瞻性研究、沒有讀者實驗、沒有任何監管申請。這是一篇 arXiv 預印本，尚未經同儕審查，「20 個模型比較」與「state of the art」都是作者自述。</span>
-        <span class="en">The model trained on the training splits of all four benchmarks, so these are not zero-shot results. The 69.06% average is pulled up by 94.23% on PneumoniaMNIST, while 51.94% on MedThinkVQA is not far from chance on a four-option task. The latency figures come from one H20 at batch size 1 under lab conditions, not end-to-end response time in a clinical system. Every evaluation is multiple-choice scoring, and real image interpretation does not arrive with candidate answers attached. Most important: there is no clinical validation of any kind — no prospective study, no reader study, no regulatory filing. This is an arXiv preprint, not yet peer reviewed, and both the 20-model comparison and the state-of-the-art claim are the authors' own.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://arxiv.org/abs/2611.20992" target="_blank" rel="noopener">MedJev: A System One Vision-Language Decision Model, arXiv:2611.20992, 2026-11-17</a> · <a href="https://huggingface.co/Karl28/MedJev-4B" target="_blank" rel="noopener">Karl28/MedJev-4B, Hugging Face</a> · <a href="https://github.com/zfkarl/MedJev" target="_blank" rel="noopener">zfkarl/MedJev, GitHub</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">募資</span><span class="en-inline">Funding</span></span>
+      <span class="tag hot"><span class="zh-inline">募資</span></span>
       <span class="tag">Isomorphic Labs</span><span class="tag">IsoDDE</span><span class="tag">11/17</span>
     </div>
     <h3>
       <span class="zh">50 億美元買一個還沒進臨床的藥物設計引擎：Isomorphic Labs 的 C 輪沒有估值、沒有 program 數、沒有試驗時程</span>
-      <span class="en">$5 billion for a drug design engine not yet in the clinic: Isomorphic Labs' Series C carries no valuation, no programme count, no trial timing</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">11 月 17 日倫敦時間上午，DeepMind 分拆出來的 Isomorphic Labs <a href="https://www.prnewswire.com/news-releases/isomorphic-labs-announces-5-billion-series-c-funding-302942062.html" target="_blank" rel="noopener">宣布完成 50 億美元 C 輪</a>，自述超額認購，由 Greenoaks 與 Sequoia Capital 共同領投，Andreessen Horowitz 與其他數家新投資人加入，Alphabet 再次大幅加碼，既有投資人 Thrive Capital、MGX、GV、CapitalG、Temasek 與英國主權 AI 基金跟投。<a href="https://www.bloomberg.com/news/articles/2026-11-17/sequoia-greenoaks-lead-isomorphic-lab-s-5-billion-funding-round" target="_blank" rel="noopener">彭博同日報導</a>了同一輪。公司 2021 年成立，總部倫敦，另有麻州劍橋與瑞士洛桑辦公室，由 Demis Hassabis 任執行長、Max Jaderberg 任總裁，<a href="https://siliconangle.com/2026/11/17/alphabets-isomorphic-labs-raises-5b-to-accelerate-drug-discovery-with-ai/" target="_blank" rel="noopener">SiliconANGLE 指出</a>這是繼 21 億美元 B 輪之後的一輪。</span>
-        <span class="en">On the morning of November 17 London time, DeepMind spinout Isomorphic Labs <a href="https://www.prnewswire.com/news-releases/isomorphic-labs-announces-5-billion-series-c-funding-302942062.html" target="_blank" rel="noopener">announced a $5 billion Series C</a>, described as oversubscribed, co-led by Greenoaks and Sequoia Capital, with Andreessen Horowitz and several other new investors joining and Alphabet making a significant further investment. Existing backers Thrive Capital, MGX, GV, CapitalG, Temasek and the UK Sovereign AI Fund also took part. <a href="https://www.bloomberg.com/news/articles/2026-11-17/sequoia-greenoaks-lead-isomorphic-lab-s-5-billion-funding-round" target="_blank" rel="noopener">Bloomberg reported the same round</a> that day. Founded in 2021, the company is headquartered in London with offices in Cambridge, Massachusetts and Lausanne, led by CEO Demis Hassabis and President Max Jaderberg; <a href="https://siliconangle.com/2026/11/17/alphabets-isomorphic-labs-raises-5b-to-accelerate-drug-discovery-with-ai/" target="_blank" rel="noopener">SiliconANGLE notes</a> it follows a $2.1 billion Series B.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">技術標的</span><span class="en-inline">What the money buys</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">技術標的</span></div>
       <p class="val">
         <span class="zh">公告列了四項用途：讓藥物設計引擎 <strong>IsoDDE</strong> 成熟並建立基礎生物學模型；圍繞疾病生物學建立合作夥伴生態；建置 AI 主導生物工程的全球基礎設施；以及為候選藥物推進臨床而建的「AI 優先」轉譯與臨床開發基礎設施。IsoDDE 被描述為一套跨多個治療領域與藥物劑型的基礎模擬 AI 模型，加上自有 AI 代理人。值得注意的是：<a href="https://www.prnewswire.com/news-releases/isomorphic-labs-announces-5-billion-series-c-funding-302942062.html" target="_blank" rel="noopener">公告全文沒有提到 AlphaFold 3</a>——這家公司過去最常被引用的技術招牌，在它最大一輪募資的說明裡沒有出現。</span>
-        <span class="en">The release lists four uses: maturing its drug design engine <strong>IsoDDE</strong> and building foundational biology models; building a partner ecosystem around disease biology; global infrastructure for AI-led bioengineering; and AI-first translational and clinical development infrastructure as candidates advance toward trials. IsoDDE is described as a suite of foundational simulation AI models spanning multiple therapeutic areas and drug modalities, plus proprietary AI agents. Worth noting: <a href="https://www.prnewswire.com/news-releases/isomorphic-labs-announces-5-billion-series-c-funding-302942062.html" target="_blank" rel="noopener">the release never mentions AlphaFold 3</a> — the technical banner this company is most often cited for does not appear in the account of its largest round.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">50 億美元是一間尚未有任何藥物進入臨床試驗的公司單輪募資額，而且它上一輪才 21 億。這個數字的意義不在藥，在算力與時間的賭注規模：投資人買的是「把藥物設計變成可重複的最佳化問題」這個命題能在幾年內收斂。Greenoaks 的 Neil Mehta 說新藥開發是「幾乎無限尺度的最佳化挑戰」，這句話同時是論點也是風險告知。對照同一週 MedJev 用 174,360 筆資料與一張 H20 做出可下載的成果，兩者之間的距離就是今天醫療 AI 的資本結構。</span>
-        <span class="en">Five billion dollars is a single round for a company with no drug yet in clinical trials, and its previous round was $2.1 billion. The number's significance is not pharmacological but a measure of how large a bet on compute and time investors will take: what they are buying is the proposition that drug design can be made a repeatable optimisation problem, and that it converges within a few years. Greenoaks' Neil Mehta calls new medicine development "an optimization challenge of almost infinite scale" — a claim and a risk disclosure in the same sentence. Set against MedJev the same week, producing a downloadable artefact from 174,360 examples and one H20, the distance between the two is the capital structure of medical AI today.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">公告沒有估值、沒有 program 數、沒有具名的藥廠合作夥伴、沒有任何臨床試驗時程，也沒有員工人數。對 preclinical 成果的描述是「在腫瘤學與免疫學的內部與合作 program 取得正向結果」、「為臨床進入鋪路」——沒有一個數字、沒有任何第三方驗證、沒有指出是哪些適應症。Hassabis 說引擎「正在以前所未有的精確度與速度產生分子」，Jaderberg 說「我們每週都在做出可重複的科學進展」；這兩句都是公司自述，沒有可查證的對照。</span>
-        <span class="en">The release gives no valuation, no programme count, no named pharma partners, no trial timing and no headcount. Preclinical work is described as "positive results" in oncology and immunology across internal and partnered programmes, "setting the stage for clinical entry" — with not one figure, no third-party verification and no indication named. Hassabis says the engine is "generating molecules with unprecedented precision and speed"; Jaderberg says "every week we are making repeatable scientific advancements". Both are company statements with no verifiable comparator attached.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://www.prnewswire.com/news-releases/isomorphic-labs-announces-5-billion-series-c-funding-302942062.html" target="_blank" rel="noopener">Isomorphic Labs announces $5 Billion Series C funding, PR Newswire, 2026-11-17</a> · <a href="https://siliconangle.com/2026/11/17/alphabets-isomorphic-labs-raises-5b-to-accelerate-drug-discovery-with-ai/" target="_blank" rel="noopener">SiliconANGLE, 2026-11-17</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">放射治療</span><span class="en-inline">Radiotherapy</span></span>
+      <span class="tag hot"><span class="zh-inline">放射治療</span></span>
       <span class="tag">Synaptiq</span><span class="tag">Mediq RT</span><span class="tag">11/18</span>
     </div>
     <h3>
       <span class="zh">頭頸輪廓從 97 分鐘到 2.7 分鐘：Synaptiq 拿到 CE Class IIa，對照組用的是別人 2023 年的 80 人資料集</span>
-      <span class="en">Head and neck from 97 minutes to 2.7: Synaptiq takes a Class IIa CE mark, benchmarked on someone else's 80-patient dataset from 2023</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">11 月 18 日，<a href="https://www.unite.ai/synaptiq-ai-tumor-organ-contouring-radiotherapy-planning/" target="_blank" rel="noopener">羅馬尼亞健康科技公司 Synaptiq 宣布</a>把腫瘤描繪與危急器官（OAR）輪廓合進 Mediq RT 平台的同一套放射治療規劃流程，臨床醫師保留輪廓核准權。技術路徑是「自動分割後接互動式修正」，公司稱之為 Active Intelligence：醫師只畫一張 gross tumor volume 切面，AI 把輪廓延伸到整個體積，在某一張切面上的修正會引導其他切面一併修改。平台支援跨解剖癌症部位的 250 多個 OAR 與淋巴結區域，每位病人初次輪廓處理約 30 秒，互動提示的反應約 1 到 2 秒；輸入是成人具放射治療適應症的 3D CT 影像，使用者設定為受訓過的放射腫瘤科醫師與醫學物理師，透過 DICOM 接既有治療規劃系統與 PACS，可雲端或院內部署。</span>
-        <span class="en">On November 18 <a href="https://www.unite.ai/synaptiq-ai-tumor-organ-contouring-radiotherapy-planning/" target="_blank" rel="noopener">Romanian health-tech company Synaptiq announced</a> that it had folded tumour delineation and organ-at-risk (OAR) contouring into a single radiotherapy planning workflow in its Mediq RT platform, with clinicians retaining approval of contours. The approach is automatic segmentation followed by interactive refinement, which the company calls Active Intelligence: a clinician outlines one gross tumour volume slice, the AI extends the contour through the rest of the volume, and corrections on one slice guide revisions elsewhere. The platform supports more than 250 OAR and lymph node regions across anatomical cancer sites; initial contour processing takes about 30 seconds per patient and responses to interactive prompts 1 to 2 seconds. Input is 3D CT of adults with a radiotherapy indication, intended users are trained radiation oncologists and medical physicists, and it connects to existing treatment-planning systems and PACS over DICOM, running in the cloud or on hospital premises.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">數字</span><span class="en-inline">Numbers</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">數字</span></div>
       <p class="val">
         <span class="zh">公司自報 CT 輪廓描繪時間相較人工平均減少 92.6%（含醫師審閱與修正，不只 AI 推論本身），頭頸部平均從 97 分鐘降到 2.7 分鐘，為 97.2% 的減少。評估涵蓋頭頸、胸、腹、骨盆 CT 案例；全部 CT 評估中 92.1% 的 AI 輪廓未經修改即被接受、7.6% 需要小幅修正、不到 0.3% 需要大幅修正。對照方面，Synaptiq 把自家結果比到 2023 年一篇 Frontiers 研究的 80 人資料集上，自報頭頸部修正時間 2.7 分鐘對次快系統的 4.4 分鐘。監管狀態是腫瘤輪廓描繪取得歐盟 MDR 下的 Class IIa CE 標誌，美國市場計畫以 FDA 510(k) 送件、尚未取得核准。公司 2021 年於 Cluj-Napoca 成立，自稱客戶分布 11 國、真實世界已處理超過 63,000 位病人。</span>
-        <span class="en">The company reports an average 92.6% reduction in CT contouring time versus manual work — including clinician review and correction, not raw AI inference alone — with head and neck falling from an average 97 minutes to 2.7, a 97.2% reduction. The evaluation covered head-and-neck, thorax, abdomen and pelvis CT cases; across it, 92.1% of AI contours were accepted without edits, 7.6% needed minor edits and under 0.3% needed major corrections. For comparison, Synaptiq benchmarked itself against the 80-patient dataset of a 2023 Frontiers study, reporting 2.7 minutes of head-and-neck correction time against 4.4 for the next-fastest system. Regulatory status is a Class IIa CE mark under the EU MDR covering tumour contouring; US entry is planned via an FDA 510(k) submission, with no clearance yet. Founded in Cluj-Napoca in 2021, the company says it serves customers in 11 countries and has processed more than 63,000 patients in real-world use.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">輪廓描繪是放射治療規劃最耗人力的一段，而且它是少數「省下的時間可以直接換算成病人等待天數」的環節——頭頸部病例一個醫師畫 97 分鐘，排程瓶頸就在那裡。92.1% 無需修改這個數字比單純的省時百分比更有意義，因為它量的是臨床醫師實際接受程度，而非演算法與標準答案的幾何相似度。它也是本週唯一一則拿到歐盟醫療器材認證、且把對照系統具名比較的技術消息。</span>
-        <span class="en">Contouring is the most labour-intensive stage of radiotherapy planning, and one of the few where saved time converts directly into patient waiting days — when a clinician spends 97 minutes on a head-and-neck case, that is where the scheduling bottleneck sits. The 92.1% accepted-unedited figure means more than a bare time-saving percentage, because it measures what clinicians actually accepted rather than geometric similarity between algorithm and ground truth. It is also the week's only technical item carrying an EU medical device certification and a named comparison against competing systems.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">全部效率與接受率數字都是公司自家量的，沒有第三方稽核。對照方式有結構問題：Synaptiq 把自家結果套到 2023 年那篇 Frontiers 研究的 80 人資料集上，而那篇研究評的是另外五家廠商、裡面並沒有 Synaptiq——這是事後把自己放進別人的比較表，不是同期盲測。最關鍵的是終點選擇：這些數字量的是輪廓效率與臨床可接受度，沒有一個顯示總治療等待時間縮短、腫瘤控制改善或存活獲益。CE Class IIa 只涵蓋腫瘤輪廓描繪，美國尚未核准。</span>
-        <span class="en">Every efficiency and acceptance figure is the company's own, with no third-party audit. The comparison has a structural problem: Synaptiq mapped its results onto the 80-patient dataset of that 2023 Frontiers study, which evaluated five other vendors and did not include Synaptiq — placing itself into someone else's comparison table after the fact, not a contemporaneous blinded test. Most important is the choice of endpoint: these figures measure contouring efficiency and clinical acceptability, and none of them shows reduced total treatment waiting time, better tumour control or a survival benefit. The Class IIa CE mark covers tumour contouring only, and there is no US clearance.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://www.unite.ai/synaptiq-ai-tumor-organ-contouring-radiotherapy-planning/" target="_blank" rel="noopener">Synaptiq Combines AI Tumor and Organ Contouring to Speed Radiotherapy Planning, Unite.AI, 2026-11-18</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">同儕審查</span><span class="en-inline">Peer-reviewed</span></span>
+      <span class="tag hot"><span class="zh-inline">同儕審查</span></span>
       <span class="tag">University of Washington</span><span class="tag">CT-Chat · Merlin · BrainGPT</span><span class="tag">11/06</span>
     </div>
     <h3>
       <span class="zh">本週唯一同儕審查的數字指向反方向：65.4% 比 79.6%，AI 寫的胸片報告仍輸給放射科醫師</span>
-      <span class="en">The week's one peer-reviewed figure runs the other way: 65.4% against 79.6%, AI chest reports still behind radiologists</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">11 月 6 日刊於 Current Problems in Diagnostic Radiology 的一篇回顧，由華盛頓大學的 Yee Seng Ng 與 Elise Dunning 執筆，檢視 foundation model 作為放射科報告草稿助手的現況；<a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/article/16425308/deephealth-foundation-models-show-promise-in-radiology-as-drafting-assistants" target="_blank" rel="noopener">AuntMinnie 於 11 月 12 日報導</a>。文中引述 2025 年美國放射學會年會一場 AI 挑戰賽的盲測結果：主治放射科醫師判定 <strong>65.4%</strong> 的 AI 生成胸部 X 光報告臨床可接受，而放射科醫師自己寫的報告可接受率為 <strong>79.6%</strong>。回顧同時點名了幾個目前臨床驗證有限的模型：CT 領域的 CT-Chat、Merlin 與 BrainGPT，乳房攝影領域的 Mammo-FM；評估工具則列出 CheXbert、GREEN 與 CheXprompt。訓練側常用的 MIMIC-CXR 胸部 X 光資料集含超過 370,000 組影像與報告配對。</span>
-        <span class="en">A review published November 6 in <em>Current Problems in Diagnostic Radiology</em>, written by Yee Seng Ng and Elise Dunning of the University of Washington, examines where foundation models stand as drafting assistants for radiology reports; <a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/article/16425308/deephealth-foundation-models-show-promise-in-radiology-as-drafting-assistants" target="_blank" rel="noopener">AuntMinnie covered it on November 12</a>. It cites blinded results from an AI challenge at the 2025 American College of Radiology Annual Meeting: attending radiologists judged <strong>65.4%</strong> of AI-generated chest radiograph reports clinically acceptable, against <strong>79.6%</strong> for reports radiologists wrote themselves. The review names several models with limited clinical validation to date: CT-Chat, Merlin and BrainGPT for CT, and Mammo-FM for mammography; evaluation tools listed include CheXbert, GREEN and CheXprompt. MIMIC-CXR, commonly used on the training side, holds more than 370,000 image-report pairs.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">把這 14.2 個百分點的落差跟今天前三則對齊看，就是本期的主線：MedJev 量延遲、Synaptiq 量省時、Isomorphic 量募資額，而唯一量了「醫師願不願意用」的數字是 65.4%——而且是輸的那一邊。這個落差也解釋了為什麼草稿助手的敘事能同時成立與失敗：65.4% 作為「需要人審的草稿起點」是可用的，作為「可替代放射科醫師」則不是，而這兩種解讀在廠商簡報裡經常被混用。回顧本身的價值在於它把一批被頻繁引用的 foundation model 標為臨床驗證有限——包括那些出現在今年多場會議議程上的模型。</span>
-        <span class="en">Line this 14.2-point gap up against today's first three items and you have the issue's spine: MedJev measures latency, Synaptiq measures time saved, Isomorphic measures the size of a round — and the one figure measuring whether clinicians would accept the output is 65.4%, on the losing side. The gap also explains how the drafting-assistant story can be simultaneously true and false: 65.4% works as a starting draft for human review, and does not work as a substitute for a radiologist, and those two readings are routinely conflated in vendor decks. The review's own value is that it labels a set of frequently cited foundation models as having limited clinical validation — including ones appearing on this year's conference programmes.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">這是一篇回顧，不是原始研究，沒有新的試驗設計。<a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/article/16425308/deephealth-foundation-models-show-promise-in-radiology-as-drafting-assistants" target="_blank" rel="noopener">報導中未公布那場盲測的報告份數與讀者人數</a>，所以 65.4% 與 79.6% 的樣本規模不明，兩者之間的差異是否具統計意義無法判斷。報導也沒有給任何準確率、敏感度、特異度或一致性統計，挑戰賽的題目難度與案例組成未說明。此外該挑戰賽辦在 2025 年，一年內模型已多次迭代，這個數字對 2026 年底的模型不一定成立——但也沒有更新的同等盲測可以替代它，這本身就是問題。</span>
-        <span class="en">This is a review, not original research, with no new trial design. <a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/article/16425308/deephealth-foundation-models-show-promise-in-radiology-as-drafting-assistants" target="_blank" rel="noopener">The coverage does not give the number of reports or readers in that blinded test</a>, so the sample behind 65.4% and 79.6% is unknown and whether the difference is statistically meaningful cannot be judged. No accuracy, sensitivity, specificity or agreement statistics are reported, and the challenge's case mix and difficulty are not described. The challenge also ran in 2025, and models have iterated repeatedly since, so the figure may not hold for late-2026 systems — though no more recent equivalent blinded test exists to replace it, which is itself the problem.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/article/16425308/deephealth-foundation-models-show-promise-in-radiology-as-drafting-assistants" target="_blank" rel="noopener">Foundation models show promise in radiology as drafting assistants, AuntMinnie, 2026-11-12</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">會議議程</span><span class="en-inline">Conference</span></span>
+      <span class="tag hot"><span class="zh-inline">會議議程</span></span>
       <span class="tag">RSNA 2026</span><span class="tag">McCormick Place</span><span class="tag">11/11</span>
     </div>
     <h3>
       <span class="zh">把「廠商數字不保證臨床表現」排進議程的是 RSNA 自己：11/29–12/3 芝加哥，三場講 AI 的反面</span>
-      <span class="en">RSNA itself scheduled the sessions on vendor numbers not guaranteeing performance: Nov 29–Dec 3 in Chicago, three on AI's downside</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh"><a href="https://www.auntminnie.com/resources/conference/rsna/2026/artificial-intelligence-preview/article/16425187/road-to-rsna-2026-ai-preview" target="_blank" rel="noopener">AuntMinnie 於 11 月 11 日發布的 RSNA 2026 AI 議程預覽</a>（作者 Erik L. Ridley，11 月 13 日最後修訂）顯示，年會在芝加哥 McCormick Place 舉行，所列場次從 11 月 29 日星期日排到 12 月 3 日星期四。議程裡有三場直接處理 AI 的反面：12 月 1 日一場講「廠商自述的效能指標不保證良好的臨床表現」；11 月 30 日一場講「AI 不一定降低放射科醫師的認知負荷，有時還增加」，同日另有一場討論用 AI 輔助報告工具的使用記錄來量測認知負荷；12 月 2 日一場主張「AI 在放射科裡移轉診斷風險，而非消除風險」。同一天的議程還包括一份報告指出在綜合中風中心導入 AI 並未可測量地改善病人結果，以及一份腦內微出血研究發現 AI 標出的微出血遠多於放射科醫師、但誤報也更多。</span>
-        <span class="en">The <a href="https://www.auntminnie.com/resources/conference/rsna/2026/artificial-intelligence-preview/article/16425187/road-to-rsna-2026-ai-preview" target="_blank" rel="noopener">RSNA 2026 AI programme preview published by AuntMinnie on November 11</a> (by Erik L. Ridley, last modified November 13) places the meeting at McCormick Place in Chicago, with listed sessions running Sunday November 29 through Thursday December 3. Three sessions take AI's downside head on: on December 1, one argues vendor-reported performance metrics do not guarantee good clinical performance; on November 30, one finds AI does not always reduce radiologists' mental workload and sometimes adds to it, with a companion session on using AI-assisted reporting usage logs to measure cognitive load; and on December 2, one holds that AI shifts diagnostic risk in radiology rather than eliminating it. The same day's programme includes a report that implementing AI at a comprehensive stroke centre did not measurably improve patient outcomes, and a cerebral microbleed study finding AI flagged far more microbleeds than a radiologist but also produced more false alarms.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">另外幾場值得先記住</span><span class="en-inline">Worth noting in advance</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">另外幾場值得先記住</span></div>
       <p class="val">
         <span class="zh">同一份預覽裡，11 月 30 日有一套開源 AI 系統自稱在常規 CT 上於臨床診斷前將近一年就偵測到胰臟癌；同日另有研究指出常規胸部 X 光上的深度學習模型預測心血管風險的準確度約與美國心臟協會的 PREVENT 風險分數相當。12 月 3 日有一組研究者描述在三家醫院部署 11 套檢傷 AI 演算法的經驗。11 月 29 日則有甲狀腺超音波 AI 的大規模真實世界部署結果，自述與放射科醫師高度一致。</span>
-        <span class="en">In the same preview: on November 30, an open-source AI system is reported to have detected pancreatic cancer on routine CT nearly a year before clinical diagnosis, and a separate study finds deep-learning models on routine chest x-rays predict cardiovascular risk about as accurately as the American Heart Association's PREVENT score. On December 3, a group describes rolling out 11 triage AI algorithms across three hospitals. On November 29, a large real-world deployment of thyroid ultrasound AI reports high agreement with radiologists.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">議程是一個領域對自己的評價，而且它比任何單篇論文更難被公關改寫。北美放射學會把「廠商數字不保證臨床表現」「AI 增加認知負荷」「AI 只是移轉風險」排進正式議程，意味著這些不再是評論者的意見而是領域內部的研究題目。對照本期前三則都是廠商或作者自述的數字，RSNA 的議程提供了一個時間表：今天讀到的那些效能數字，兩週後在芝加哥會被同一群人放到讀者實驗與部署現場裡檢查。</span>
-        <span class="en">A programme is a field's assessment of itself, and it is harder for communications teams to rewrite than any single paper. That the Radiological Society of North America has put vendor metrics not guaranteeing performance, AI adding to cognitive burden, and AI shifting rather than removing risk on its formal programme means these are no longer commentators' opinions but research questions inside the field. Against today's first three items — all vendor- or author-reported — the RSNA programme supplies a timetable: the performance figures read today will, in two weeks in Chicago, be put in front of reader studies and deployment sites by the same community.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">這些全是尚未發表的會議摘要，不是經同儕審查的論文。<a href="https://www.auntminnie.com/resources/conference/rsna/2026/artificial-intelligence-preview/article/16425187/road-to-rsna-2026-ai-preview" target="_blank" rel="noopener">預覽本身未列出任何機構名稱，也沒有任何研究的樣本數</a>——除了「近一年」的胰臟癌提前偵測與「三家醫院、11 套演算法」兩處，其餘量化細節缺乏，微出血那則只有定性描述。會議摘要與最終論文的結論常有差距，部分場次最後可能撤回或改寫。</span>
-        <span class="en">These are unpublished conference abstracts, not peer-reviewed papers. <a href="https://www.auntminnie.com/resources/conference/rsna/2026/artificial-intelligence-preview/article/16425187/road-to-rsna-2026-ai-preview" target="_blank" rel="noopener">The preview names no institutions and gives no sample size for any study</a> — apart from the "nearly a year" pancreatic lead time and "11 algorithms across three hospitals", quantitative detail is absent, and the microbleed finding is described only qualitatively. Conference abstracts and final papers often diverge, and some sessions may ultimately be withdrawn or rewritten.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://www.auntminnie.com/resources/conference/rsna/2026/artificial-intelligence-preview/article/16425187/road-to-rsna-2026-ai-preview" target="_blank" rel="noopener">Road to RSNA 2026: AI Preview, AuntMinnie, 2026-11-11</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">住院代理人</span><span class="en-inline">Inpatient agents</span></span>
+      <span class="tag hot"><span class="zh-inline">住院代理人</span></span>
       <span class="tag">Ambience Healthcare</span><span class="tag">Chorus</span><span class="tag">11/17</span>
     </div>
     <h3>
       <span class="zh">Ambience 把住院照護交給代理人協調：1,100 多次住院多抓出 59% 診斷，而這是一份付費新聞稿</span>
-      <span class="en">Ambience hands inpatient coordination to agents: 59% more diagnoses across 1,100-plus stays — in a paid press release</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">11 月 17 日太平洋時間上午 8 點，<a href="https://finance.yahoo.com/healthcare/articles/ambience-healthcare-launches-care-orchestration-160000435.html" target="_blank" rel="noopener">Ambience Healthcare 透過 Business Wire 宣布</a>為其住院 AI 套件推出照護協調（care orchestration）功能，點名兩個元件：Rounding Assistant 把隔夜事件、病情變化、住院過程與一份動態的建議臨床任務清單合在一起，協助臨床醫師安排每個班次的優先順序；Discharge Readiness 持續彙整病人狀態，在住院較早期就把臨床、營運與社會面的出院障礙浮上來。公司表示其平台 Ambience Chorus 支援門診、急診與住院場域超過 200 個專科的文件、編碼、決策支援與照護協調流程，並稱已有兩年住院 AI 開發與部署經驗。</span>
-        <span class="en">At 8:00 am PST on November 17, <a href="https://finance.yahoo.com/healthcare/articles/ambience-healthcare-launches-care-orchestration-160000435.html" target="_blank" rel="noopener">Ambience Healthcare announced via Business Wire</a> care orchestration capabilities for its inpatient AI suite, naming two components. Rounding Assistant combines overnight events, changes in patient condition, the hospital course and a dynamic list of suggested clinical tasks to help clinicians prioritise each shift. Discharge Readiness continuously synthesises patient status and surfaces clinical, operational and social discharge barriers earlier in the stay. The company says its platform, Ambience Chorus, supports documentation, coding, decision support and care coordination workflows across more than 200 specialties in outpatient, emergency and inpatient settings, and cites two years of inpatient AI development and deployment.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">數字</span><span class="en-inline">Numbers</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">數字</span></div>
       <p class="val">
         <span class="zh">公告列出的數字：某醫療系統分析超過 1,100 次住院後，入院病歷多擷取到 59% 用於 Vizient 品質量測的診斷；臨床醫師使用率自述 80%（文末樣板寫為「臨床醫師在 80% 的病人就診使用 Ambience」）；St. Luke's Health System 的問卷中 88% 受訪住院臨床醫師回報省時、60% 回報認知負荷降低；Onvida Health 使用 Ambience 的出院案例，case mix index 較前一年配對期間高 6.5%，該院財務長表示約 1.5% 的 CMI 增幅即為投資門檻、初期結果為門檻的四倍以上，並稱財務團隊獨立驗證了這些發現；客戶自述可透過編碼準確度與效率達到 3 倍投資報酬，收費與結果連動。平台客戶名單列出 Cleveland Clinic、Mayo Clinic、Providence、Houston Methodist 與 Memorial Hermann。</span>
-        <span class="en">Figures in the release: after one health system analysed more than 1,100 stays, admission notes captured 59% more diagnoses used in Vizient quality measurement; clinician utilisation is reported at 80% (the boilerplate states clinicians use Ambience for 80% of patient visits); in a St. Luke's Health System survey, 88% of inpatient clinicians reported time savings and 60% reduced cognitive load; at Onvida Health, case mix index was 6.5% higher on Ambience-supported discharges than a matched prior-year period, with the CFO saying roughly a 1.5% CMI gain was the investment threshold and initial results more than four times that, and the finance team independently validating the findings. Clients reportedly achieve 3x ROI through coding accuracy and efficiency, with fees tied to results. Named clients include Cleveland Clinic, Mayo Clinic, Providence, Houston Methodist and Memorial Hermann.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">這是本期唯一一則把代理人放進住院照護決策順序的消息，而且它的經濟學講得比技術清楚：59% 更多診斷與 6.5% 更高的 case mix index 指向的不是診斷正確性，而是醫院向付費方申報的嚴重度。這個機制值得注意——同一套系統若把編碼完整度當成主要價值主張，它優化的方向就會是申報而非照護。11 月 17 日那期日報記錄過 Ambience 作為 OpenAI computer-use 代理人的部署對象之一；這次是它自己的產品線往住院端推進。</span>
-        <span class="en">This is the issue's only item placing agents inside the ordering of inpatient care decisions, and its economics are stated more clearly than its technology: 59% more diagnoses and a 6.5% higher case mix index point not at diagnostic correctness but at the severity a hospital reports to payers. The mechanism deserves attention — a system whose main value proposition is coding completeness will optimise toward billing rather than care. The November 17 issue recorded Ambience as one of the sites where OpenAI's computer-use agents were deployed; this is its own product line pushing into the inpatient setting.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">這是一份付費新聞稿，全部效能主張來自廠商與其客戶，唯一提到的第三方檢視是 Onvida 自家的財務團隊——那是客戶內部而非獨立稽核。公告沒有架構、整合或資料處理細節，沒有模型名稱。募資金額與部署數（醫院數、床數、臨床醫師數）一概未公布，所以「80% 使用率」的分母不明。問卷結果是自我回報的主觀感受，不是量測到的省時或負荷。59% 這個數字只有一家醫療系統、一份自家分析支撐，沒有對照組設計說明。</span>
-        <span class="en">This is a paid press release; every performance claim comes from the vendor and its customers, and the only third-party review mentioned is Onvida's own finance team — internal to the client, not an independent audit. The release gives no architecture, integration or data-handling detail and names no model. Funding amounts and deployment counts (hospitals, beds, clinicians) are all undisclosed, so the denominator behind "80% utilisation" is unknown. The survey results are self-reported perceptions, not measured time or load. The 59% figure rests on one health system's own analysis, with no control design described.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://finance.yahoo.com/healthcare/articles/ambience-healthcare-launches-care-orchestration-160000435.html" target="_blank" rel="noopener">Ambience Healthcare Launches Care Orchestration for Inpatient Teams, Business Wire via Yahoo Finance, 2026-11-17</a></p></div>
   </div>
 
   <div class="card">
     <div class="tags">
-      <span class="tag hot"><span class="zh-inline">基礎模型</span><span class="en-inline">Foundation models</span></span>
+      <span class="tag hot"><span class="zh-inline">基礎模型</span></span>
       <span class="tag">Aevius</span><span class="tag">Mass General Brigham</span><span class="tag">11/17</span>
     </div>
     <h3>
       <span class="zh">把病人變成一個會更新的數學狀態：Aevius 帶 2,200 萬美元從 Mass General Brigham 分拆出來</span>
-      <span class="en">Turning a patient into a refreshable mathematical state: Aevius spins out of Mass General Brigham with $22 million</span>
     </h3>
-    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span></div>
       <p class="val">
         <span class="zh">11 月 17 日，<a href="https://hitconsultant.net/2026/11/17/aevius-raises-22-million-insight-partners-make-medicine-computable/" target="_blank" rel="noopener">HIT Consultant 報導</a>波士頓的臨床智慧公司 Aevius 以 Insight Partners 領投的 2,200 萬美元啟動，為 Mass General Brigham 的分拆公司。技術路線是在結構化 EHR 欄位、非結構化臨床病歷，以及病理、影像、基因體等專科資料上訓練多模態模型，建立能學習病人完整病史縱向關係的基礎模型，輸出一個「可重新整理的多模態病人表徵」——報導描述為病人病情與軌跡的活體、可計算的數學狀態，隨新的就診、檢查與治療而更新。報導把這與純文字 LLM 對比：後者每次只能就一個問題重建病人脈絡。應用面列出結果預測、臨床相似性搜尋、縱向疾病進程追蹤、候選生物標記發現，以及臨床試驗的自動化病人世代識別。<a href="https://www.mobihealthnews.com/news/aevius-launches-22m-clinical-ai" target="_blank" rel="noopener">MobiHealthNews 同日亦有報導</a>。</span>
-        <span class="en">On November 17, <a href="https://hitconsultant.net/2026/11/17/aevius-raises-22-million-insight-partners-make-medicine-computable/" target="_blank" rel="noopener">HIT Consultant reported</a> that Boston clinical intelligence company Aevius launched with $22 million led by Insight Partners, as a spinout from Mass General Brigham. Its approach trains multimodal models on structured EHR fields, unstructured clinical notes and specialty data such as pathology, imaging and genomics, building foundation models that learn longitudinal relationships across a patient's full medical history. The output is a "refreshable multimodal patient representation", which the report describes as a living, computable mathematical state of the patient's condition and trajectory, updating as new encounters, diagnostics and treatments occur. The report contrasts this with text-only LLMs, which reconstruct patient context one question at a time. Applications listed: outcome forecasting, clinical similarity search, longitudinal disease progression tracking, candidate biomarker discovery and automated cohort identification for clinical trials. <a href="https://www.mobihealthnews.com/news/aevius-launches-22m-clinical-ai" target="_blank" rel="noopener">MobiHealthNews covered it the same day</a>.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">誰在做</span><span class="en-inline">Who is behind it</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">誰在做</span></div>
       <p class="val">
         <span class="zh">創辦團隊為執行長 Rowland Pettit（MD, PhD）、技術長 Ming Yang (Max) Lu（PhD）、Faisal Mahmood（PhD）與 Long Phi Le。報導指出這群人先前建立的 Modella AI 已被 AstraZeneca 收購，而 Eric Topol 擔任 Aevius 科學顧問委員會主席。目標客戶為醫院網路、健康計畫與生技製藥企業。</span>
-        <span class="en">The founding team is CEO Rowland Pettit (MD, PhD), CTO Ming Yang (Max) Lu (PhD), Faisal Mahmood (PhD) and Long Phi Le. The report notes this group previously built Modella AI, which AstraZeneca acquired, and that Eric Topol chairs Aevius's Scientific Advisory Board. Target customers are hospital networks, health plans and biopharmaceutical enterprises.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span></div>
       <p class="val">
         <span class="zh">這是今天最清楚的一次架構路線分歧。過去兩年醫療 AI 的主流是把病歷餵進語言模型、一次回答一個問題；Aevius 主張的是反過來——先建一個持續更新的病人狀態表徵，再讓多個應用從同一個表徵取值。若這條路走得通，預測、世代識別與生物標記發現就不再各建一套模型。而這也正是它與 MedJev 的共同點：兩者都在質疑「把答案生成出來」是不是必要的中間步驟。</span>
-        <span class="en">This is today's clearest architectural fork. For two years the mainstream in medical AI has been to feed records into a language model and answer one question at a time; Aevius proposes the inverse — build a continuously updated patient state representation first, then have many applications read from the same representation. If that works, forecasting, cohort identification and biomarker discovery stop needing a separate model each. It is also what Aevius shares with MedJev: both question whether generating an answer in text is a necessary intermediate step.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span></div>
       <p class="val">
         <span class="zh">這是一則啟動公告，技術主張全部來自公司。沒有任何模型效能數字、沒有 benchmark、沒有已發表論文被引用、沒有具名客戶。「可計算的病人狀態」目前是一個產品敘事而非可驗證的規格——報導自己也指出文中並未正式定義「computable medicine」。2,200 萬美元在今天的尺度上是小額，與同一天 Isomorphic 的 50 億相差 227 倍，而兩者都還沒有可查證的臨床結果。</span>
-        <span class="en">This is a launch announcement and every technical claim comes from the company. There are no model performance figures, no benchmarks, no published papers cited and no named customers. A "computable patient state" is at present a product narrative rather than a verifiable specification — the report itself notes that it never formally defines "computable medicine". At $22 million this is small by today's standards, 227 times smaller than Isomorphic's $5 billion the same day, and neither has verifiable clinical results yet.</span>
       </p></div>
-    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span></div>
       <p class="val"><a href="https://hitconsultant.net/2026/11/17/aevius-raises-22-million-insight-partners-make-medicine-computable/" target="_blank" rel="noopener">Mass General Brigham Spinout Aevius Raises $22M to Make Medicine Computable, HIT Consultant, 2026-11-17</a> · <a href="https://www.mobihealthnews.com/news/aevius-launches-22m-clinical-ai" target="_blank" rel="noopener">MobiHealthNews, 2026-11-17</a></p></div>
   </div>
 </section>
@@ -311,59 +276,48 @@
   <h2>02 — Product Analysis</h2>
   <div class="sec-title">
     <span class="zh">兩個產品都在賣速度，差別在一個把速度公開到可重現、另一個把速度包進認證裡</span>
-    <span class="en">Two products selling speed — one publishes it so it can be reproduced, the other wraps it in a certification</span>
   </div>
 
   <div class="grid2">
     <div class="panel">
       <h3>MedJev-4B</h3>
-      <p class="sub"><span class="zh-inline">非自迴歸醫療視覺語言決策模型 · 學術團隊（香港中大／新加坡國大／清華）</span><span class="en-inline">Non-autoregressive medical VLM decision model · academic team (CUHK / NUS / Tsinghua)</span></p>
+      <p class="sub"><span class="zh-inline">非自迴歸醫療視覺語言決策模型 · 學術團隊（香港中大／新加坡國大／清華）</span></p>
       <p>
         <span class="zh"><strong>功能與定位。</strong>它不做報告生成，只做一件事：給定影像、問題與候選答案，在一次前向運算裡挑出答案。目標使用者是要把醫療影像問答部署在受限硬體上的研究者與院內工程團隊，不是臨床科室。<a href="https://huggingface.co/Karl28/MedJev-4B" target="_blank" rel="noopener">模型卡</a>把評測表、延遲、參數數與訓練資料量全部攤開，<a href="https://github.com/zfkarl/MedJev" target="_blank" rel="noopener">程式碼公開</a>，Apache 2.0 授權允許商業使用。</span>
-        <span class="en"><strong>Function and position.</strong> It does not generate reports. It does one thing: given an image, a question and candidate answers, pick the answer in a single forward pass. Intended users are researchers and in-house engineering teams deploying medical image QA on constrained hardware, not clinical departments. The <a href="https://huggingface.co/Karl28/MedJev-4B" target="_blank" rel="noopener">model card</a> lays out the evaluation table, latency, parameter counts and training volume in full, the <a href="https://github.com/zfkarl/MedJev" target="_blank" rel="noopener">code is public</a>, and the Apache 2.0 licence permits commercial use.</span>
       </p>
       <ul class="clean">
-        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+        <li><span class="pro"><span class="zh-inline">優勢</span></span>
           <span class="zh">：可重現性。<a href="https://huggingface.co/Karl28/MedJev-4B" target="_blank" rel="noopener">權重、授權、四個 benchmark 的逐項準確率與逐項延遲全部公開</a>，任何人都能在自己的硬體上重跑並否證它——這在本期七則消息裡是唯一一則做到的。</span>
-          <span class="en">: reproducibility. <a href="https://huggingface.co/Karl28/MedJev-4B" target="_blank" rel="noopener">Weights, licence, per-benchmark accuracy and per-benchmark latency are all public</a>, so anyone can rerun it on their own hardware and falsify it — the only one of today's seven items that clears that bar.</span>
         </li>
-        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+        <li><span class="pro"><span class="zh-inline">優勢</span></span>
           <span class="zh">：部署成本結構。4B 規模加上單次前向運算，使它能在院內單張 GPU 上跑，病人影像不必離開機構；<a href="https://arxivsignals.io/papers/2611.20992" target="_blank" rel="noopener">端到端 6.04 倍的加速</a>來自砍掉生成而非量化壓縮，所以不是用準確率換速度。</span>
-          <span class="en">: deployment cost structure. At 4B with a single forward pass it runs on one on-premise GPU and patient images need never leave the institution; the <a href="https://arxivsignals.io/papers/2611.20992" target="_blank" rel="noopener">6.04x end-to-end speedup</a> comes from removing generation rather than quantisation, so it is not trading accuracy for speed.</span>
         </li>
-        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+        <li><span class="con"><span class="zh-inline">疑慮</span></span>
           <span class="zh">：任務形狀與臨床不符。它要求候選答案隨題目一起輸入，而真實判讀沒有選項；<a href="https://huggingface.co/Karl28/MedJev-4B" target="_blank" rel="noopener">MedThinkVQA 的 51.94%</a> 顯示一旦題目需要推理，優勢就消失。臨床驗證數字是零——不是少，是沒有。</span>
-          <span class="en">: the task shape does not match the clinic. It requires candidate answers to be supplied with the question, and real interpretation offers no options; <a href="https://huggingface.co/Karl28/MedJev-4B" target="_blank" rel="noopener">51.94% on MedThinkVQA</a> shows the advantage vanishing as soon as a question needs reasoning. Clinical validation figures are zero — not few, none.</span>
         </li>
-        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+        <li><span class="con"><span class="zh-inline">疑慮</span></span>
           <span class="zh">：評測與訓練重疊。四個 benchmark 的訓練切分都進了那 174,360 筆、一個 epoch 的訓練，所以成績不是零樣本，對未見過的資料集泛化能力未知；論文尚未同儕審查。</span>
-          <span class="en">: evaluation overlaps training. The training splits of all four benchmarks went into that one epoch over 174,360 examples, so the scores are not zero-shot and generalisation to unseen datasets is unknown; the paper is not yet peer reviewed.</span>
         </li>
       </ul>
     </div>
     <div class="panel">
       <h3>Synaptiq Mediq RT</h3>
-      <p class="sub"><span class="zh-inline">放射治療輪廓描繪平台 · Synaptiq（羅馬尼亞）</span><span class="en-inline">Radiotherapy contouring platform · Synaptiq (Romania)</span></p>
+      <p class="sub"><span class="zh-inline">放射治療輪廓描繪平台 · Synaptiq（羅馬尼亞）</span></p>
       <p>
         <span class="zh"><strong>功能與定位。</strong>賣給放射腫瘤科與醫學物理團隊的規劃工具，把腫瘤描繪與 250 多個危急器官及淋巴結區域的輪廓放進同一套流程，醫師畫一張切面、AI 延伸整個體積，透過 DICOM 接既有治療規劃系統與 PACS，可雲端或院內部署（<a href="https://www.unite.ai/synaptiq-ai-tumor-organ-contouring-radiotherapy-planning/" target="_blank" rel="noopener">Unite.AI 2026-11-18</a>）。腫瘤輪廓描繪已取得歐盟 MDR Class IIa CE 標誌，美國計畫以 510(k) 送件。</span>
-        <span class="en"><strong>Function and position.</strong> A planning tool sold to radiation oncology and medical physics teams, putting tumour delineation and contouring of 250-plus organ-at-risk and lymph node regions into one workflow: the clinician draws one slice, the AI extends through the volume, and it connects to existing treatment-planning systems and PACS over DICOM, cloud or on-premise (<a href="https://www.unite.ai/synaptiq-ai-tumor-organ-contouring-radiotherapy-planning/" target="_blank" rel="noopener">Unite.AI, 2026-11-18</a>). Tumour contouring carries an EU MDR Class IIa CE mark; US entry is planned via a 510(k).</span>
       </p>
       <ul class="clean">
-        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+        <li><span class="pro"><span class="zh-inline">優勢</span></span>
           <span class="zh">：終點選得比同業近病人。<a href="https://www.unite.ai/synaptiq-ai-tumor-organ-contouring-radiotherapy-planning/" target="_blank" rel="noopener">92.1% 的輪廓未經修改即被接受、7.6% 需小修、不到 0.3% 需大改</a>——這量的是臨床醫師的實際接受行為，而非演算法與標準答案的 Dice 係數。</span>
-          <span class="en">: its endpoint sits closer to the patient than peers'. <a href="https://www.unite.ai/synaptiq-ai-tumor-organ-contouring-radiotherapy-planning/" target="_blank" rel="noopener">92.1% of contours accepted unedited, 7.6% needing minor edits, under 0.3% major corrections</a> — measuring what clinicians actually accepted, not a Dice coefficient against ground truth.</span>
         </li>
-        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+        <li><span class="pro"><span class="zh-inline">優勢</span></span>
           <span class="zh">：有認證、有部署量。腫瘤輪廓描繪的 <a href="https://www.unite.ai/synaptiq-ai-tumor-organ-contouring-radiotherapy-planning/" target="_blank" rel="noopener">MDR Class IIa CE 標誌</a>代表通過歐盟公告機構審查，公司並自稱客戶分布 11 國、真實世界已處理逾 63,000 位病人——本期唯一同時有監管認證與真實世界量的產品。</span>
-          <span class="en">: it has certification and deployment volume. The <a href="https://www.unite.ai/synaptiq-ai-tumor-organ-contouring-radiotherapy-planning/" target="_blank" rel="noopener">Class IIa CE mark under MDR</a> for tumour contouring means EU notified-body review, and the company says it serves 11 countries and has processed more than 63,000 patients — the only product today with both a regulatory certification and a real-world volume.</span>
         </li>
-        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+        <li><span class="con"><span class="zh-inline">疑慮</span></span>
           <span class="zh">：對照是事後套上去的。公司把自家結果比到<a href="https://www.unite.ai/synaptiq-ai-tumor-organ-contouring-radiotherapy-planning/" target="_blank" rel="noopener">2023 年一篇 Frontiers 研究的 80 人資料集</a>，而那篇評的是另外五家、沒有 Synaptiq，所以「2.7 分鐘對 4.4 分鐘」不是同期盲測，是把自己放進別人的表。</span>
-          <span class="en">: the comparison was applied after the fact. The company benchmarks itself against <a href="https://www.unite.ai/synaptiq-ai-tumor-organ-contouring-radiotherapy-planning/" target="_blank" rel="noopener">the 80-patient dataset of a 2023 Frontiers study</a> that evaluated five other vendors and not Synaptiq, so "2.7 minutes versus 4.4" is not a contemporaneous blinded test but a self-insertion into someone else's table.</span>
         </li>
-        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+        <li><span class="con"><span class="zh-inline">疑慮</span></span>
           <span class="zh">：省下的時間沒有接到結果。<a href="https://www.unite.ai/synaptiq-ai-tumor-organ-contouring-radiotherapy-planning/" target="_blank" rel="noopener">報導明確指出</a>這些數字不顯示總治療等待時間縮短、腫瘤控制改善或存活獲益，而全部效率數字為公司自量、未經第三方稽核。</span>
-          <span class="en">: the time saved is not connected to an outcome. <a href="https://www.unite.ai/synaptiq-ai-tumor-organ-contouring-radiotherapy-planning/" target="_blank" rel="noopener">The coverage states plainly</a> that these figures do not show reduced total treatment waiting time, better tumour control or a survival benefit — and all efficiency numbers are company-measured, with no third-party audit.</span>
         </li>
       </ul>
     </div>
@@ -372,7 +326,6 @@
   <div class="panel">
     <p>
       <span class="zh"><strong>把兩者並排，差別不在誰的數字漂亮，在誰的數字可以被否證。</strong>MedJev 把權重、授權、逐項準確率與逐項延遲全部放上網，任何人都能在自己的硬體上重跑並推翻它，代價是它離臨床最遠——零臨床驗證，任務形狀還要求候選答案隨題目輸入。Synaptiq 走到了臨床，有 CE 認證、有 63,000 位病人的真實世界量、有醫師實際接受率，代價是它的對照只能事後套到別人 2023 年的 80 人資料集上，而且 92.6% 的省時至今沒有接到任何病人結果。兩種不完整各有誠實的形狀：一邊是「可查證但還不是醫療器材」，一邊是「已是醫療器材但數字自己量」。今天沒有一個產品同時做到兩件事。</span>
-      <span class="en"><strong>Side by side, the difference is not whose numbers look better but whose numbers can be falsified.</strong> MedJev puts weights, licence, per-benchmark accuracy and per-benchmark latency online, so anyone can rerun it on their own hardware and overturn it — at the cost of sitting furthest from the clinic, with zero clinical validation and a task shape that requires candidate answers to be supplied with the question. Synaptiq reached the clinic, with a CE mark, 63,000 patients of real-world volume and a measured clinician acceptance rate — at the cost of a comparison it could only apply retroactively to someone else's 80-patient dataset from 2023, and a 92.6% time saving that connects to no patient outcome at all. Each incompleteness has an honest shape: one is checkable but not yet a medical device, the other is a medical device whose numbers it measured itself. Today no product does both.</span>
     </p>
   </div>
 </section>
@@ -381,103 +334,86 @@
   <h2>03 — Companies &amp; Competition</h2>
   <div class="sec-title">
     <span class="zh">誰站在哪裡、憑什麼、跟誰打</span>
-    <span class="en">Who stands where, on what, against whom</span>
   </div>
 
   <div class="tbl-wrap">
     <table>
       <thead><tr>
-        <th><span class="zh-inline">公司</span><span class="en-inline">Company</span></th>
-        <th><span class="zh-inline">近況與數字</span><span class="en-inline">Recent state &amp; numbers</span></th>
-        <th><span class="zh-inline">競爭定位與護城河</span><span class="en-inline">Position &amp; moat</span></th>
+        <th><span class="zh-inline">公司</span></th>
+        <th><span class="zh-inline">近況與數字</span></th>
+        <th><span class="zh-inline">競爭定位與護城河</span></th>
       </tr></thead>
       <tbody>
         <tr>
-          <td><strong>Isomorphic Labs</strong><br><span class="zh-inline">DeepMind 分拆的 AI 藥物設計公司</span><span class="en-inline">DeepMind spinout, AI drug design</span></td>
+          <td><strong>Isomorphic Labs</strong><br><span class="zh-inline">DeepMind 分拆的 AI 藥物設計公司</span></td>
           <td>
             <span class="zh">11/17 完成 <a href="https://www.prnewswire.com/news-releases/isomorphic-labs-announces-5-billion-series-c-funding-302942062.html" target="_blank" rel="noopener">50 億美元 C 輪</a>，Greenoaks 與 Sequoia 共同領投，a16z 新進、Alphabet 大幅加碼，前一輪 B 輪為 21 億美元。2021 年成立，倫敦總部，Hassabis 任執行長。公告無估值、無 program 數、無臨床試驗時程。</span>
-            <span class="en">Closed a <a href="https://www.prnewswire.com/news-releases/isomorphic-labs-announces-5-billion-series-c-funding-302942062.html" target="_blank" rel="noopener">$5B Series C</a> on 11/17, co-led by Greenoaks and Sequoia, a16z new and Alphabet adding significantly, following a $2.1B Series B. Founded 2021, London HQ, Hassabis as CEO. No valuation, programme count or trial timing in the release.</span>
           </td>
           <td>
             <span class="zh">護城河是 DeepMind 的結構預測血統加上 Alphabet 的算力與資本續命能力。弱點是整個命題還沒有任何臨床讀出：沒有一個候選藥進試驗，公告只敢寫 preclinical「為臨床進入鋪路」。對手是 Recursion、Insilico 等 AI 製藥同業，以及自建 AI 的大型藥廠。</span>
-            <span class="en">The moat is DeepMind's structure-prediction lineage plus Alphabet's compute and capital staying power. The weakness is that the whole proposition has no clinical readout yet: not one candidate in trials, and the release ventures only that preclinical work is "setting the stage for clinical entry". Competitors are AI-pharma peers such as Recursion and Insilico, plus large pharma building in-house.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>Synaptiq</strong><br><span class="zh-inline">放射治療輪廓描繪，羅馬尼亞</span><span class="en-inline">Radiotherapy contouring, Romania</span></td>
+          <td><strong>Synaptiq</strong><br><span class="zh-inline">放射治療輪廓描繪，羅馬尼亞</span></td>
           <td>
             <span class="zh">11/18 宣布腫瘤與 OAR 輪廓合流，<a href="https://www.unite.ai/synaptiq-ai-tumor-organ-contouring-radiotherapy-planning/" target="_blank" rel="noopener">支援 250 多個區域、初次處理約 30 秒、頭頸 97→2.7 分鐘、92.1% 無需修改</a>，取得 MDR Class IIa CE 標誌，FDA 510(k) 待送。2021 年成立於 Cluj-Napoca，自稱 11 國客戶、逾 63,000 位病人。</span>
-            <span class="en">On 11/18 announced merged tumour and OAR contouring: <a href="https://www.unite.ai/synaptiq-ai-tumor-organ-contouring-radiotherapy-planning/" target="_blank" rel="noopener">250-plus regions, about 30 seconds of initial processing, head and neck 97 to 2.7 minutes, 92.1% accepted unedited</a>, with an MDR Class IIa CE mark and a 510(k) pending. Founded 2021 in Cluj-Napoca; claims customers in 11 countries and over 63,000 patients.</span>
           </td>
           <td>
             <span class="zh">護城河是互動式修正的使用體驗加上 CE 認證門檻——輪廓描繪的競爭早已不是誰的 Dice 高，而是誰讓醫師少改幾刀。弱點是沒有美國市場、對照只能事後套用別人資料集，且在 Varian、Elekta、Limbus AI、MVision 這些既有玩家前面缺乏規模。</span>
-            <span class="en">The moat is the interactive-refinement experience plus the CE certification barrier — contouring competition stopped being about whose Dice is highest and became about whose output a clinician edits least. The weakness is no US market, a comparison it can only apply retroactively to someone else's dataset, and a lack of scale against incumbents such as Varian, Elekta, Limbus AI and MVision.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>Aevius</strong><br><span class="zh-inline">多模態病人表徵，Mass General Brigham 分拆</span><span class="en-inline">Multimodal patient representation, MGB spinout</span></td>
+          <td><strong>Aevius</strong><br><span class="zh-inline">多模態病人表徵，Mass General Brigham 分拆</span></td>
           <td>
             <span class="zh">11/17 以 <a href="https://hitconsultant.net/2026/11/17/aevius-raises-22-million-insight-partners-make-medicine-computable/" target="_blank" rel="noopener">Insight Partners 領投的 2,200 萬美元</a>啟動，創辦人先前的 Modella AI 已被 AstraZeneca 收購，Eric Topol 任科學顧問委員會主席。無模型效能數字、無具名客戶。</span>
-            <span class="en">Launched 11/17 with <a href="https://hitconsultant.net/2026/11/17/aevius-raises-22-million-insight-partners-make-medicine-computable/" target="_blank" rel="noopener">$22M led by Insight Partners</a>; the founders' earlier company Modella AI was acquired by AstraZeneca, and Eric Topol chairs the Scientific Advisory Board. No model performance figures, no named customers.</span>
           </td>
           <td>
             <span class="zh">護城河是 MGB 的資料近用與一次成功退出的團隊紀錄。弱點是它賣的「可計算病人狀態」目前只是敘事，沒有 benchmark 也沒有已發表論文支撐，而同一個位置上有 Epic 的原生模型、Truveta 與 Tempus 的資料資產，以及各大 EHR 廠商的內建預測工具。</span>
-            <span class="en">The moat is data access through MGB and a team with one successful exit behind it. The weakness is that the "computable patient state" it sells is so far a narrative with no benchmark and no published paper behind it, while the same position is contested by Epic's native models, the data assets of Truveta and Tempus, and prediction tools built into every major EHR.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>Ambience Healthcare</strong><br><span class="zh-inline">環境文件與住院照護協調</span><span class="en-inline">Ambient documentation and inpatient orchestration</span></td>
+          <td><strong>Ambience Healthcare</strong><br><span class="zh-inline">環境文件與住院照護協調</span></td>
           <td>
             <span class="zh">11/17 推出住院照護協調功能，<a href="https://finance.yahoo.com/healthcare/articles/ambience-healthcare-launches-care-orchestration-160000435.html" target="_blank" rel="noopener">自述 1,100 多次住院多擷取 59% 診斷、Onvida CMI 高 6.5%、St. Luke's 88% 回報省時、客戶 3 倍投資報酬</a>。客戶名單含 Cleveland Clinic、Mayo Clinic。a16z、Kleiner Perkins、Oak HC/FT 與 OpenAI Startup Fund 投資，募資額與部署數未公布。</span>
-            <span class="en">Launched inpatient care orchestration on 11/17, <a href="https://finance.yahoo.com/healthcare/articles/ambience-healthcare-launches-care-orchestration-160000435.html" target="_blank" rel="noopener">reporting 59% more diagnoses across 1,100-plus stays, a 6.5% higher CMI at Onvida, 88% of St. Luke's clinicians reporting time savings and 3x client ROI</a>. Clients include Cleveland Clinic and Mayo Clinic. Backed by a16z, Kleiner Perkins, Oak HC/FT and the OpenAI Startup Fund; funding and deployment counts undisclosed.</span>
           </td>
           <td>
             <span class="zh">護城河是把文件、編碼與決策支援綁在同一套工作流，並把收費與編碼結果連動——這讓財務長而非資訊長成為決策者。弱點是它的主要價值主張指向申報嚴重度而非照護品質，而 Abridge、Nuance/Microsoft、Commure 在同一塊地上貼身競爭。</span>
-            <span class="en">The moat is binding documentation, coding and decision support into one workflow and tying fees to coding results — which makes the CFO, not the CIO, the buyer. The weakness is that its central value proposition points at reported severity rather than care quality, while Abridge, Nuance/Microsoft and Commure compete on the same ground.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>Abridge</strong><br><span class="zh-inline">環境文件，擴進護理端</span><span class="en-inline">Ambient documentation, expanding to nursing</span></td>
+          <td><strong>Abridge</strong><br><span class="zh-inline">環境文件，擴進護理端</span></td>
           <td>
             <span class="zh">本週推出 <a href="https://www.healthcareitnews.com/news/abridge-releases-ambient-ai-tech-nurses" target="_blank" rel="noopener">Abridge for Nurses</a>，由 Epic 參與開發、與 Mayo Clinic 共同開發兩年，開放給全美所有醫療系統客戶，名列 Bon Secours Mercy Health、Corewell Health、Emory Healthcare、Johns Hopkins Medicine 等七家。省時與效能數字：零。</span>
-            <span class="en">Released <a href="https://www.healthcareitnews.com/news/abridge-releases-ambient-ai-tech-nurses" target="_blank" rel="noopener">Abridge for Nurses</a> this week, developed with Epic and co-developed with Mayo Clinic over two years, available to all its US health system clients, with seven named including Bon Secours Mercy Health, Corewell Health, Emory Healthcare and Johns Hopkins Medicine. Time-saving and performance figures: none.</span>
           </td>
           <td>
             <span class="zh">護城河是 Epic 整合深度與醫學中心的採用慣性，加上近期把 NEJM 與 JAMA Network 的同儕審查研究納入臨床證據來源。弱點是護理文件的工作流與醫師不同，而這次公告一個效能數字都沒給——在 Ambience 已經把 CMI 與投資報酬攤出來的市場上，這是明顯的資訊落差。</span>
-            <span class="en">The moat is depth of Epic integration and academic-centre adoption inertia, plus its recent addition of peer-reviewed NEJM and JAMA Network research as clinical evidence sources. The weakness is that nursing documentation workflows differ from physicians', and this announcement gave not one performance figure — a conspicuous gap in a market where Ambience has already put CMI and ROI on the table.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>Viz.ai + Wolters Kluwer</strong><br><span class="zh-inline">照護協調平台併入臨床證據</span><span class="en-inline">Care coordination platform plus clinical evidence</span></td>
+          <td><strong>Viz.ai + Wolters Kluwer</strong><br><span class="zh-inline">照護協調平台併入臨床證據</span></td>
           <td>
             <span class="zh">11/16 宣布把 <a href="https://www.viz.ai/news/viz-ai-and-wolters-kluwer-partner-to-unite-patient-identification-care-coordination-and-uptodate-clinical-evidence-on-a-single-platform" target="_blank" rel="noopener">UpToDate Expert AI 整合進 Viz.ai One</a>。自述 2,000 家美國醫院使用、50 多條 AI 照護路徑、與 14 家最大藥廠及醫材商合作（10 項為 2023 年後啟動）；UpToDate 由逾 7,600 位醫師作者與審閱者維護。Wolters Kluwer 2025 年營收 61 億歐元、約 21,100 名員工。</span>
-            <span class="en">On 11/16 announced integrating <a href="https://www.viz.ai/news/viz-ai-and-wolters-kluwer-partner-to-unite-patient-identification-care-coordination-and-uptodate-clinical-evidence-on-a-single-platform" target="_blank" rel="noopener">UpToDate Expert AI into Viz.ai One</a>. It claims 2,000 US hospitals, more than 50 AI care pathways and work with 14 of the largest pharma and device companies (10 of those since 2023); UpToDate is maintained by over 7,600 physician authors and reviewers. Wolters Kluwer reported €6.1B 2025 revenue and about 21,100 staff.</span>
           </td>
           <td>
             <span class="zh">護城河是 2,000 家醫院的既有通路加上 CMS 給付的先行者地位，而 UpToDate 提供的是「可引用的出處」——在本期主線（數字無法查證）的對面，賣的正是查證。弱點是公告沒說上線時間，也沒有這次整合的任何臨床驗證資料；同一週 Wolters Kluwer 也把 UpToDate 授權給 Doximity Ask，顯示它賣的是非專屬的內容層。</span>
-            <span class="en">The moat is an installed channel of 2,000 hospitals plus first-mover status on CMS reimbursement, with UpToDate supplying citable provenance — selling verification, precisely opposite today's spine of unverifiable numbers. The weakness is that the release gives no availability date and no clinical validation for the integration; the same week Wolters Kluwer also licensed UpToDate to Doximity Ask, showing it is selling a non-exclusive content layer.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>GE HealthCare</strong><br><span class="zh-inline">裝置端 AI，影像硬體</span><span class="en-inline">On-device AI, imaging hardware</span></td>
+          <td><strong>GE HealthCare</strong><br><span class="zh-inline">裝置端 AI，影像硬體</span></td>
           <td>
             <span class="zh">11/17 取得 <a href="https://investor.gehealthcare.com/news-releases/news-release-details/ge-healthcares-critical-care-suite-30-brings-first-device-ai" target="_blank" rel="noopener">Critical Care Suite 3.0 的 FDA 510(k)（K253502）</a>，鼻胃管偵測首度納入兒科，廠商自測敏感度 99.2%、平均 Dice 91.6%，AI 跑在行動 X 光機上、不需網路或雲端。引用 IMV 2024 報告指行動 X 光使用 75% 發生在急診、51% 在加護病房。11/16 另擴大光子計數 CT 研究網路。</span>
-            <span class="en">On 11/17 received <a href="https://investor.gehealthcare.com/news-releases/news-release-details/ge-healthcares-critical-care-suite-30-brings-first-device-ai" target="_blank" rel="noopener">FDA 510(k) clearance for Critical Care Suite 3.0 (K253502)</a>, bringing feeding-tube detection to paediatric patients for the first time, with vendor-tested 99.2% sensitivity and 91.6% mean DICE, running on the mobile x-ray device with no internet or cloud needed. It cites an IMV 2024 report putting 75% of mobile x-ray use in emergency departments and 51% in intensive care. On 11/16 it also expanded its photon-counting CT research network.</span>
           </td>
           <td>
             <span class="zh">護城河是硬體裝機量：AI 跑在自家機器上，不必跟 PACS 或雲端廠商分帳，也繞過院內網路限制。弱點是 99.2% 與 91.6% 都是自家測試數據而非臨床結果，公告未給任何誤置率或省時數字；在演算法層它面對的是 Aidoc、Nanox.AI 這類跨硬體的中介層。</span>
-            <span class="en">The moat is installed hardware: the AI runs on its own machines, so it shares no revenue with PACS or cloud vendors and sidesteps hospital network constraints. The weakness is that both 99.2% and 91.6% are in-house test results rather than clinical outcomes, and the release gives no misplacement rate or time saving; at the algorithm layer it faces cross-hardware middle layers such as Aidoc and Nanox.AI.</span>
           </td>
         </tr>
         <tr>
-          <td><strong>Nanox Imaging</strong><br><span class="zh-inline">數位斷層合成與 CT 演算法</span><span class="en-inline">Digital tomosynthesis and CT algorithms</span></td>
+          <td><strong>Nanox Imaging</strong><br><span class="zh-inline">數位斷層合成與 CT 演算法</span></td>
           <td>
             <span class="zh">11/18 宣布在 <a href="https://www.globenewswire.com/news-release/2026/11/18/3405617/0/en/nanox-to-showcase-its-innovative-technology-and-advances-across-nanox-arc-x-and-nanox-ai-at-rsna-2026.html" target="_blank" rel="noopener">RSNA 2026 展出 Nanox.ARC X 與 Nanox.AI</a>（展位 #1759），ARC X 自述已獲 FDA 清列並入選 TIME 2026 年度最佳發明。多平面與體積重建、兒科適應症、行動版 ARC、主動脈瓣鈣化評估與身體組成分析均標示為尚未核准。公告無任何臨床效能或裝機數字，並揭露 2025 年 20-F 中的繼續經營疑慮。</span>
-            <span class="en">On 11/18 announced it would show <a href="https://www.globenewswire.com/news-release/2026/11/18/3405617/0/en/nanox-to-showcase-its-innovative-technology-and-advances-across-nanox-arc-x-and-nanox-ai-at-rsna-2026.html" target="_blank" rel="noopener">Nanox.ARC X and Nanox.AI at RSNA 2026</a> (booth #1759), stating ARC X is FDA-cleared and a TIME Best Invention of 2026. Multiplanar and volumetric reconstruction, paediatric indications, Mobile ARC, aortic valve calcification assessment and body composition are all marked not cleared. The release gives no clinical performance or installed-base figures, and discloses the going-concern doubt from its 2025 Form 20-F.</span>
           </td>
           <td>
             <span class="zh">護城河理論上是自有數位 X 光源讓 3D 影像進入更多場域。弱點很直接：公告裡沒有敏感度、特異度、劑量、解析度或掃描時間，沒有裝機數，最吸睛的兩項功能（主動脈瓣鈣化、身體組成）都還沒核准，而公司自己揭露繼續經營疑慮。對照同一場會議的 GE 與 Sectra，它賣的是展位上的願景而非已清列的能力。</span>
-            <span class="en">The moat is, in theory, a proprietary digital x-ray source bringing 3D imaging to more settings. The weakness is blunt: the release carries no sensitivity, specificity, dose, resolution or scan time, no installed base, and its two most eye-catching capabilities — aortic valve calcification and body composition — are both uncleared, while the company itself discloses going-concern doubt. Against GE and Sectra at the same meeting, it is selling a booth vision rather than cleared capability.</span>
           </td>
         </tr>
       </tbody>
@@ -487,7 +423,6 @@
   <div class="panel">
     <p>
       <span class="zh"><strong>今天的競爭結構分成三層，而三層之間沒有共用的計分板。</strong>最上層是資本：Isomorphic 的 50 億美元與 Aevius 的 2,200 萬相差 227 倍，兩者都還沒有臨床讀出，所以投資人比的是敘事而不是數字。中間層是工作流：Ambience、Abridge、Viz.ai 在爭的是誰的東西被接進既有流程，而這一層的計分板已經偏向財務指標——Ambience 把 CMI 與投資報酬攤出來，Abridge 連一個效能數字都沒給，兩者卻在同一塊地上賣。最下層是裝置與演算法：GE 把 AI 放進自家行動 X 光機、拿到 510(k) 並有自測的 99.2%，Nanox 在同一場會議展出未核准的功能並揭露繼續經營疑慮，Synaptiq 有 CE 認證與 63,000 位病人。唯一能被外人重跑的是這三層之外的 MedJev——它沒有募資、沒有客戶、沒有認證，只有權重與可重現的延遲表。</span>
-      <span class="en"><strong>Today's competitive structure has three tiers and no shared scoreboard between them.</strong> At the top is capital: Isomorphic's $5 billion and Aevius's $22 million are 227 times apart, neither has a clinical readout, so investors are comparing narratives rather than numbers. In the middle is workflow: Ambience, Abridge and Viz.ai contest whose product gets wired into existing processes, and this tier's scoreboard has already tilted to financial metrics — Ambience puts CMI and ROI on the table while Abridge gives not a single performance figure, and both sell on the same ground. At the bottom are devices and algorithms: GE puts AI on its own mobile x-ray units with a 510(k) and a self-tested 99.2%, Nanox shows uncleared features at the same meeting while disclosing going-concern doubt, and Synaptiq has a CE mark and 63,000 patients. The only thing an outsider can rerun sits outside all three tiers — MedJev, with no funding, no customers and no certification, just weights and a reproducible latency table.</span>
     </p>
   </div>
 </section>
@@ -496,27 +431,23 @@
   <h2>04 — Taiwan Angle</h2>
   <div class="sec-title">
     <span class="zh">4B 的開源權重、院內單張 GPU，與一份 2028 年的時程表</span>
-    <span class="en">4B open weights, one on-premise GPU, and a timetable that ends in 2028</span>
   </div>
 
   <div class="panel">
     <p>
       <span class="zh"><strong>(1) MedJev 的規模剛好落在台灣醫院跑得動的那一格。</strong>台灣醫療 AI 落地最常卡住的不是模型能力而是資料不能出院：影像上雲在多數醫學中心都要走冗長的 IRB 與資安流程。<a href="https://huggingface.co/Karl28/MedJev-4B" target="_blank" rel="noopener">MedJev-4B 是 Apache 2.0、建在 Qwen3.5-4B 上、推論延遲在單張 H20 上平均 113.4 毫秒</a>——這代表它跑得動的硬體規格，是一台院內工作站而非一座機房。對照<a href="https://udn.com/news/story/7266/9795500" target="_blank" rel="noopener">衛福部 10 月 5 日「國產AI，3D醫療影像暨元宇宙應用大會」上資訊處長李建璋提出的 FHIR Box 與 3D PACS 構想</a>——前者不換醫院底層系統就把資料轉成 HL7 FHIR 格式，後者讓 3D 影像能在臨床環境儲傳共享——缺的那一塊正是「跑在院內、不需外送」的模型層。開源權重把這一塊的成本從授權談判變成一張顯卡。</span>
-      <span class="en"><strong>(1) MedJev's scale lands exactly in the bracket Taiwanese hospitals can actually run.</strong> What usually blocks medical AI deployment in Taiwan is not model capability but that data cannot leave the hospital: putting images in a cloud means a long IRB and information-security process at most academic centres. <a href="https://huggingface.co/Karl28/MedJev-4B" target="_blank" rel="noopener">MedJev-4B is Apache 2.0, built on Qwen3.5-4B, with mean inference latency of 113.4 ms on one H20</a> — meaning the hardware it needs is a workstation inside the hospital, not a machine room. Set against <a href="https://udn.com/news/story/7266/9795500" target="_blank" rel="noopener">the FHIR Box and 3D PACS plans that Ministry of Health and Welfare information director Li Chien-chang set out at the ministry's October 5 conference on domestic AI, 3D medical imaging and metaverse applications</a> — the first converting data to HL7 FHIR without replacing a hospital's underlying systems, the second letting 3D images be stored and shared in clinical settings — the missing piece is precisely a model layer that runs on-premise without sending data out. Open weights turn the cost of that piece from a licensing negotiation into one graphics card.</span>
     </p>
   </div>
 
   <div class="panel">
     <p>
       <span class="zh"><strong>(2) 台灣的時程表寫到 2028，而今天的數字顯示終點還沒被定義。</strong>同一場大會上，<a href="https://udn.com/news/story/7266/9795500" target="_blank" rel="noopener">台大醫院院長余忠仁表示預計 2028 年完成全院 AI 3D 醫療影像自動化轉譯架構</a>，智捷醫學科技則展示 Anatomy Cloud AI 平台、自稱最快約 5 分鐘完成 2D 轉 3D 建模，並捐贈 10 台工作站由衛福部部署至醫學中心與部立醫院作為示範設備；台中榮總榮譽院長陳適安指出 3D 影像要普及需先建立服務與支付機制，部分院所已申請 3D 影像自費醫令碼。這些都是部署時程與給付路徑，而今天七則消息顯示的問題在另一端：<a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/article/16425308/deephealth-foundation-models-show-promise-in-radiology-as-drafting-assistants" target="_blank" rel="noopener">65.4% 對 79.6%</a> 說明連「AI 草稿可不可接受」都還沒有穩定答案，而 <a href="https://www.unite.ai/synaptiq-ai-tumor-organ-contouring-radiotherapy-planning/" target="_blank" rel="noopener">Synaptiq 的 92.6% 省時明確沒有接到病人結果</a>。若 2028 年的驗收標準寫的是導入家數與建模秒數，而不是醫師接受率與病人結果，那條時程表會在期限內達成一件沒人能證明有用的事。</span>
-      <span class="en"><strong>(2) Taiwan's timetable runs to 2028, and today's numbers show the finish line has not been defined.</strong> At the same conference, <a href="https://udn.com/news/story/7266/9795500" target="_blank" rel="noopener">National Taiwan University Hospital superintendent Yu Chong-jen said the hospital expects to complete a hospital-wide AI 3D medical imaging automated translation architecture by 2028</a>, while Chih-Chieh Medical Technology showed its Anatomy Cloud AI platform, claiming 2D-to-3D modelling in about five minutes at best and donating 10 workstations for the ministry to deploy to academic and public hospitals as demonstration equipment; Taichung Veterans General Hospital honorary superintendent Chen Shih-ann noted that 3D imaging needs a service and payment mechanism before it spreads, with some institutions having applied for self-pay order codes for 3D imaging. These are deployment timetables and reimbursement pathways. Today's seven items show the problem sitting at the other end: <a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/article/16425308/deephealth-foundation-models-show-promise-in-radiology-as-drafting-assistants" target="_blank" rel="noopener">65.4% against 79.6%</a> says there is not yet a stable answer to whether an AI draft is even acceptable, and <a href="https://www.unite.ai/synaptiq-ai-tumor-organ-contouring-radiotherapy-planning/" target="_blank" rel="noopener">Synaptiq's 92.6% time saving explicitly connects to no patient outcome</a>. If the 2028 acceptance criteria are written as hospitals onboarded and seconds per model rather than clinician acceptance and patient outcomes, that timetable will deliver, on schedule, something nobody can show to be useful.</span>
     </p>
   </div>
 
   <div class="panel">
     <p>
       <span class="zh"><strong>(3) 兩週後的芝加哥是台灣廠商可以直接拿去用的檢查清單。</strong><a href="https://www.auntminnie.com/resources/conference/rsna/2026/artificial-intelligence-preview/article/16425187/road-to-rsna-2026-ai-preview" target="_blank" rel="noopener">RSNA 2026 排在 11 月 29 日至 12 月 3 日</a>，議程裡有「廠商自述指標不保證良好臨床表現」、「AI 不一定降低認知負荷」、「AI 移轉而非消除診斷風險」，還有「在三家醫院部署 11 套檢傷演算法」的實務經驗與一份綜合中風中心導入 AI 未改善病人結果的報告。對正在向醫院銷售或向衛福部申請示範場域的台灣團隊來說，這份議程比任何白皮書都適合當採購問題清單：你的數字是誰量的、對照是誰、醫師改了幾刀、認知負荷有沒有量、病人結果在哪一格。今天這七則消息裡，能把這五題全部答出來的是零則。</span>
-      <span class="en"><strong>(3) Chicago in two weeks is a checklist Taiwanese vendors can use as it stands.</strong> <a href="https://www.auntminnie.com/resources/conference/rsna/2026/artificial-intelligence-preview/article/16425187/road-to-rsna-2026-ai-preview" target="_blank" rel="noopener">RSNA 2026 runs November 29 to December 3</a>, with sessions on vendor-reported metrics not guaranteeing good clinical performance, on AI not always reducing cognitive burden, and on AI shifting rather than eliminating diagnostic risk — plus practical experience of rolling out 11 triage algorithms across three hospitals, and a report that AI at a comprehensive stroke centre did not improve patient outcomes. For Taiwanese teams selling to hospitals or applying to the ministry for demonstration sites, that programme makes a better procurement questionnaire than any white paper: who measured your numbers, what were they compared against, how many edits did the clinician make, was cognitive load measured, and which cell holds the patient outcome. Of today's seven items, the number that answer all five is zero.</span>
     </p>
   </div>
 </section>
@@ -525,29 +456,28 @@
   <h2>05 — Further Reading</h2>
   <div class="sec-title">
     <span class="zh">五篇：兩篇讓你自己重跑數字，三篇讓你知道數字該被怎麼問</span>
-    <span class="en">Five: two let you rerun the numbers yourself, three tell you how numbers should be questioned</span>
   </div>
 
   <ol class="reading">
     <li>
       <a href="https://arxiv.org/abs/2611.20992" target="_blank" rel="noopener">MedJev: A System One Vision-Language Decision Model for Fast and Effective Medical Image Understanding — arXiv (2026-11-17)</a>
-      <p class="why"><span class="zh">值得讀的是它的消去法：砍掉語言模型上層與生成路徑之後還剩下什麼能力，比它的準確率更有資訊量。配著 <a href="https://huggingface.co/Karl28/MedJev-4B" target="_blank" rel="noopener">Hugging Face 模型卡</a>的逐項延遲表一起看。</span><span class="en">What makes it worth reading is its subtraction: what capability survives after the upper language layers and the generative pathway are cut out is more informative than its accuracy. Read it alongside the per-benchmark latency table on the <a href="https://huggingface.co/Karl28/MedJev-4B" target="_blank" rel="noopener">Hugging Face model card</a>.</span></p>
+      <p class="why"><span class="zh">值得讀的是它的消去法：砍掉語言模型上層與生成路徑之後還剩下什麼能力，比它的準確率更有資訊量。配著 <a href="https://huggingface.co/Karl28/MedJev-4B" target="_blank" rel="noopener">Hugging Face 模型卡</a>的逐項延遲表一起看。</span></p>
     </li>
     <li>
       <a href="https://www.auntminnie.com/resources/conference/rsna/2026/artificial-intelligence-preview/article/16425187/road-to-rsna-2026-ai-preview" target="_blank" rel="noopener">Road to RSNA 2026: AI Preview — AuntMinnie (2026-11-11)</a>
-      <p class="why"><span class="zh">把它當採購問題清單讀，不是當會議預告。一個領域願意把「我們的工具增加認知負荷」「廠商數字不保證臨床表現」排進正式議程，這份清單的價值就在它是從內部長出來的。</span><span class="en">Read it as a procurement questionnaire, not a conference listing. When a field is willing to put "our tools add to cognitive burden" and "vendor numbers do not guarantee clinical performance" on its formal programme, the list's value is that it grew from the inside.</span></p>
+      <p class="why"><span class="zh">把它當採購問題清單讀，不是當會議預告。一個領域願意把「我們的工具增加認知負荷」「廠商數字不保證臨床表現」排進正式議程，這份清單的價值就在它是從內部長出來的。</span></p>
     </li>
     <li>
       <a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/article/16425308/deephealth-foundation-models-show-promise-in-radiology-as-drafting-assistants" target="_blank" rel="noopener">Foundation models show promise in radiology as drafting assistants — AuntMinnie (2026-11-12)</a>
-      <p class="why"><span class="zh">65.4% 對 79.6% 這組數字本身不難記，難的是分清楚它支持什麼結論、不支持什麼結論。這篇同時點名了 CT-Chat、Merlin、BrainGPT、Mammo-FM 的臨床驗證狀態，是一份有用的對照表。</span><span class="en">The 65.4%-against-79.6% pair is easy to remember; what is hard is keeping straight which conclusion it supports and which it does not. The piece also names the clinical validation status of CT-Chat, Merlin, BrainGPT and Mammo-FM, making it a useful reference table.</span></p>
+      <p class="why"><span class="zh">65.4% 對 79.6% 這組數字本身不難記，難的是分清楚它支持什麼結論、不支持什麼結論。這篇同時點名了 CT-Chat、Merlin、BrainGPT、Mammo-FM 的臨床驗證狀態，是一份有用的對照表。</span></p>
     </li>
     <li>
       <a href="https://www.nature.com/articles/s41591-026-04501-8" target="_blank" rel="noopener">Evaluating the robustness and readiness of large frontier models in health AI applications — Nature Medicine (2026-06-26)</a>
-      <p class="why"><span class="zh">今年六月的論文，今天讀起來更貼切：它的核心發現是模型在關鍵輸入被移除後仍常常答對，意思是它並沒有在用完整題目。今天 MedJev 的 benchmark 成績該怎麼折價，這篇給了方法而不只是態度。</span><span class="en">A June paper that reads more aptly today: its core finding is that models often answer correctly even when key inputs are removed, meaning they were not using the full problem. On how much to discount MedJev's benchmark scores, this supplies a method rather than just a posture.</span></p>
+      <p class="why"><span class="zh">今年六月的論文，今天讀起來更貼切：它的核心發現是模型在關鍵輸入被移除後仍常常答對，意思是它並沒有在用完整題目。今天 MedJev 的 benchmark 成績該怎麼折價，這篇給了方法而不只是態度。</span></p>
     </li>
     <li>
       <a href="https://histalk2.com/2026/11/18/healthcare-ai-news-11-18-26/" target="_blank" rel="noopener">Healthcare AI News 11/18/26 — HIStalk (2026-11-18)</a>
-      <p class="why"><span class="zh">讀它是為了 CHIME Digital Health Most Wired 的那組數字：AI 使用率達受訪者 93%、完整生成式 AI 採用率一年內從 31% 升到 55%，而有治理與監督政策的只有 16%。今天所有自述數字的接收端，就是這 16% 以外的那些機構。</span><span class="en">Read it for the CHIME Digital Health Most Wired figures: AI use reached 93% of respondents, full generative AI adoption rose from 31% to 55% in twelve months, and only 16% of AI users have governance and oversight policies. The institutions receiving all of today's self-reported numbers are the ones outside that 16%.</span></p>
+      <p class="why"><span class="zh">讀它是為了 CHIME Digital Health Most Wired 的那組數字：AI 使用率達受訪者 93%、完整生成式 AI 採用率一年內從 31% 升到 55%，而有治理與監督政策的只有 16%。今天所有自述數字的接收端，就是這 16% 以外的那些機構。</span></p>
     </li>
   </ol>
 </section>
@@ -556,7 +486,6 @@
   <h2>06 — References</h2>
   <div class="sec-title">
     <span class="zh">參考文獻</span>
-    <span class="en">References</span>
   </div>
 
   <div class="panel">
@@ -585,7 +514,6 @@
     </ol>
     <div class="note">
       <span class="zh"><strong>編輯說明：</strong>（1）MedJev 的架構說明與「20 個模型比較」「state of the art」等主張，因 arXiv 原文頁在產製期間連續回報速率限制而無法直接讀取，改引自 <a href="https://arxivsignals.io/papers/2611.20992" target="_blank" rel="noopener">ArXivSignals 的論文頁</a>與 <a href="https://huggingface.co/Karl28/MedJev-4B" target="_blank" rel="noopener">Hugging Face 模型卡</a>；四個 benchmark 的逐項準確率與延遲數字取自模型卡上的評測表，為作者自報，未經第三方重跑。論文為預印本，尚未同儕審查。（2）彭博該篇報導為付費牆內容，本報僅依公開可見的標題與導言確認「Sequoia 與 Greenoaks 領投 50 億美元輪」這一事實，所有細節取自 <a href="https://www.prnewswire.com/news-releases/isomorphic-labs-announces-5-billion-series-c-funding-302942062.html" target="_blank" rel="noopener">PR Newswire 的公司公告原文</a>。（3）Synaptiq 一則引自 <a href="https://www.unite.ai/synaptiq-ai-tumor-organ-contouring-radiotherapy-planning/" target="_blank" rel="noopener">Unite.AI</a>，該文自我標示為 AI 生成並經編輯審閱，屬二手報導而非公司原始發布；其中所有效率與接受率數字為 Synaptiq 自報。（4）65.4% 與 79.6% 兩個數字出自 <a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/article/16425308/deephealth-foundation-models-show-promise-in-radiology-as-drafting-assistants" target="_blank" rel="noopener">AuntMinnie 對一篇回顧的報導</a>，原始回顧刊於 Current Problems in Diagnostic Radiology（2026-11-06），該期刊頁面未取用；報導未公布盲測的報告份數與讀者人數。（5）RSNA 2026 各場次內容為尚未發表的會議摘要，<a href="https://www.auntminnie.com/resources/conference/rsna/2026/artificial-intelligence-preview/article/16425187/road-to-rsna-2026-ai-preview" target="_blank" rel="noopener">預覽本身未列機構名稱與樣本數</a>，日期區間依該頁所列場次推定為 11/29–12/3。（6）Ambience 一則為付費新聞稿，全部效能數字為廠商與其客戶自述，唯一第三方檢視為 Onvida 自家財務團隊；募資額與部署數未公布。（7）Abridge for Nurses 一則，<a href="https://www.healthcareitnews.com/news/abridge-releases-ambient-ai-tech-nurses" target="_blank" rel="noopener">原報導未標示確切日期</a>，僅稱「本週」，本報據此置於 11/16–11/19 窗口內，未指定單一日期；該則沒有任何省時或效能數字。（8）Nature Medicine 該篇原文頁在產製期間回報 client error 無法讀取，其出版日期（2026-06-26）、作者名單與摘要論點取自 <a href="https://www.microsoft.com/en-us/research/publication/evaluating-the-robustness-and-readiness-of-large-frontier-models-in-health-ai-applications/" target="_blank" rel="noopener">微軟研究院的出版品頁面</a>，具體量化結果未取得，故本報未引用任何該論文的數字。該篇為 6 月出版，已超出本期 7 天窗口，僅作為方法論背景引用。（9）台灣視角所引衛福部大會與台大 2028 時程出自 <a href="https://udn.com/news/story/7266/9795500" target="_blank" rel="noopener">2026 年 10 月 5 日的聯合報報導</a>，同樣超出 7 天窗口，因本週無相關台灣消息而作為既有政策背景引用；智捷「最快約 5 分鐘建模」為業者自述。（10）GE HealthCare 的 510(k) 一則已於 11 月 18 日那期日報記錄過，本期僅在公司表中作為裝置端 AI 的對照保留，未重複列為重點新聞。</span>
-      <span class="en"><strong>Editor's note:</strong> (1) MedJev's architectural description and its "20-model comparison" and "state of the art" claims are cited from <a href="https://arxivsignals.io/papers/2611.20992" target="_blank" rel="noopener">ArXivSignals' paper page</a> and the <a href="https://huggingface.co/Karl28/MedJev-4B" target="_blank" rel="noopener">Hugging Face model card</a>, because the arXiv page itself returned rate-limit errors repeatedly during production and could not be read directly; the per-benchmark accuracy and latency figures come from the model card's evaluation table, are author-reported, and have not been rerun by a third party. The paper is a preprint and not peer reviewed. (2) The Bloomberg piece is paywalled; this report confirms only the publicly visible fact that Sequoia and Greenoaks led a $5 billion round from its headline and lede, with all details taken from <a href="https://www.prnewswire.com/news-releases/isomorphic-labs-announces-5-billion-series-c-funding-302942062.html" target="_blank" rel="noopener">the company's own release on PR Newswire</a>. (3) The Synaptiq item is cited from <a href="https://www.unite.ai/synaptiq-ai-tumor-organ-contouring-radiotherapy-planning/" target="_blank" rel="noopener">Unite.AI</a>, which labels itself AI-generated and editorially reviewed and is therefore secondary coverage rather than the company's primary release; all efficiency and acceptance figures in it are Synaptiq's own. (4) The 65.4% and 79.6% figures come from <a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/article/16425308/deephealth-foundation-models-show-promise-in-radiology-as-drafting-assistants" target="_blank" rel="noopener">AuntMinnie's coverage of a review</a> published in <em>Current Problems in Diagnostic Radiology</em> on 2026-11-06; the journal page itself was not accessed, and the coverage does not give the number of reports or readers in the blinded test. (5) The RSNA 2026 sessions are unpublished conference abstracts; <a href="https://www.auntminnie.com/resources/conference/rsna/2026/artificial-intelligence-preview/article/16425187/road-to-rsna-2026-ai-preview" target="_blank" rel="noopener">the preview names no institutions and gives no sample sizes</a>, and the Nov 29–Dec 3 range is inferred from the sessions it lists. (6) The Ambience item is a paid press release; every performance figure is reported by the vendor and its customers, the only third-party review is Onvida's own finance team, and funding and deployment counts are undisclosed. (7) For Abridge for Nurses, <a href="https://www.healthcareitnews.com/news/abridge-releases-ambient-ai-tech-nurses" target="_blank" rel="noopener">the original coverage gives no exact date</a>, saying only "this week", so this report places it in the Nov 16–19 window without assigning a single date; the item carries no time-saving or performance figures at all. (8) The <em>Nature Medicine</em> article page returned a client error during production and could not be read; its publication date (2026-06-26), author list and abstract arguments are taken from <a href="https://www.microsoft.com/en-us/research/publication/evaluating-the-robustness-and-readiness-of-large-frontier-models-in-health-ai-applications/" target="_blank" rel="noopener">Microsoft Research's publication page</a>, no quantitative results were obtained, and so no figures from that paper are cited here. Published in June, it falls outside this issue's seven-day window and is cited only as methodological background. (9) The Taiwan section's ministry conference and NTUH 2028 timetable come from <a href="https://udn.com/news/story/7266/9795500" target="_blank" rel="noopener">a United Daily News report of October 5, 2026</a>, also outside the seven-day window, cited as existing policy background because no comparable Taiwanese item appeared this week; Chih-Chieh's "about five minutes at best" modelling time is the vendor's own claim. (10) GE HealthCare's 510(k) was already recorded in the November 18 issue and is retained here only in the company table as a comparator for on-device AI, not repeated as a top story.</span>
     </div>
   </div>
 </section>
@@ -594,7 +522,6 @@
   <div class="foot-row">
     <div>
       <span class="zh">AI／醫療AI 每日新知日報 · 由 Claude 於台北時間每日自動產出 · 本期主題：星期四／技術突破<br>本報告內容經來源查證，但不構成投資或醫療建議。所有數據請以原始出處為準。</span>
-      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Thursday / Technology<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
     </div>
     <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com / 返回 peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
   </div>
@@ -608,16 +535,6 @@
 
 <script>
 /* setLang 只有並排原稿用得到，建置時會自動拆掉，其餘保留。原樣帶上就好。 */
-function setLang(l){
-  document.body.classList.remove('lang-zh','lang-en');
-  document.body.classList.add('lang-'+l);
-  document.documentElement.lang = (l==='zh') ? 'zh-Hant' : 'en';
-  document.getElementById('b-zh').classList.toggle('on', l==='zh');
-  document.getElementById('b-en').classList.toggle('on', l==='en');
-  document.title = (l==='zh')
-    ? 'AI／醫療AI 每日新知日報 · 2026-11-19'
-    : 'AI & Medical AI Daily · 2026-11-19';
-}
 function toggleTheme(){
   document.body.classList.toggle('dark');
   document.getElementById('theme-ic').textContent =
@@ -645,5 +562,6 @@ window.addEventListener('scroll', function(){
     .catch(function(){});
 })();
 </script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/en/reports/2026-11-19.html" hreflang="en" rel="alternate" lang="en">English version</a></p>
 </body>
 </html>
