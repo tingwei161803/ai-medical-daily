@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>AI／醫療AI 每日新知日報 · 2026-11-20</title>
+<meta property="og:url" content="https://ai-medical-daily.peteraim.com/reports/2026-11-20.html" />
+<link rel="canonical" href="https://ai-medical-daily.peteraim.com/reports/2026-11-20.html" />
+<meta name="report-date" content="2026-11-20">
+<meta name="report-theme" content="product">
+<meta name="report-title-zh" content="本週所有人賣的都是病歷之上那一層，而幾乎沒有一個數字是廠商以外的人量出來的——11/10 Google Cloud 的 Gemini for Healthcare 以 preview 上線，對 Epic 與 Oracle Health 只給讀取、明寫不回寫，五個預設 skill、七家 launch 客戶（Northwell、HCA、Optum、Highmark、麻州 BCBS、Hartford HealthCare、史丹佛醫學院），Fortune 看到的 demo 是 35 秒把病況、用藥、過敏、檢驗拉齊並揪出一筆漏掉的過敏，而通篇沒有價格、沒有任何第三方評估、省下多少全是前瞻性說法；11/16 Suki 發表 Suki OS，把事前授權與 CDI 兩個代理人架在語音病歷之上，450 家機構、10 月 9,000 萬美元 E 輪、2026 年就診量成長逾 190%，唯一真正不同的是 Suki Guarantee——沒達到談定的績效目標最高退 100% 的款，而哪些目標、哪些客戶適用沒有公布；11/13 Abridge 把 Assistant 免費開給 NACHC 的 10.8 萬名社區健康中心臨床人員（這些中心服務約 5,200 萬人、每七個美國人有一個、每三個鄉村居民有一個），免費期限與財務條件一字未提；11/17 Ambience 的 Care Orchestration 自報 Onvida Health 的 CMI 拉升 6.5%、夥伴平均約 3 倍 ROI，方法、樣本數、期間一概沒有；11/16 Commure 併下 Elaborate，自報收件匣時間最多少 36%、病人訊息少 15%、97% 臨床人員認同，成交條件未揭露。全週唯一經過監管機關的數字來自一個單點功能：GE HealthCare 的 Critical Care Suite 3.0 取得 FDA 510(k)，鼻胃管偵測敏感度 99.2%、定位平均 Dice 91.6%，在行動式 X 光機上就地運算、不需連網或雲端——而這也是廠商對照放射科醫師標註自報的。">
+<meta name="report-title-en" content="Everything sold this week sits one layer above the chart, and almost none of the numbers were measured by anyone but the vendor — on 11/10 Google Cloud put Gemini for Healthcare into preview with read-only access to Epic and Oracle Health and no write-back, five preset skills and seven launch customers (Northwell, HCA, Optum, Highmark, Blue Cross Blue Shield of Massachusetts, Hartford HealthCare, Stanford School of Medicine); the demo Fortune watched took 35 seconds to reconcile conditions, medications, allergies and labs and catch a missed allergy, while the launch carries no price, no independent evaluation, and savings stated only as forward-looking claims. On 11/16 Suki shipped Suki OS, stacking a prior authorization agent and a CDI agent on top of ambient documentation — 450+ organizations, a $90M Series E in October, encounters up more than 190% in 2026 — and the one genuinely different thing in it is the Suki Guarantee: up to 100% of fees back if agreed performance targets are missed, with neither the targets nor the eligible customers disclosed. On 11/13 Abridge opened its Assistant free to 108,000 clinicians at NACHC community health centers, which serve roughly 52 million people — one in seven Americans and one in three rural residents — with no term length and no financial terms stated. On 11/17 Ambience's Care Orchestration self-reported a 6.5% case mix index lift at Onvida Health and about 3x average partner ROI, with no methodology, sample size or period. On 11/16 Commure bought Elaborate on undisclosed terms, self-reporting up to 36% less inbox time, 15% fewer patient messages and 97% clinician alignment. The week's only figure that passed through a regulator belongs to a single narrow feature: GE HealthCare's Critical Care Suite 3.0 cleared FDA 510(k) with 99.2% feeding-tube detection sensitivity and a 91.6% mean Dice for localization, running on the mobile x-ray unit itself with no internet or cloud — and that, too, is the vendor's own number against radiologist annotations.">
+<meta name="report-summary-zh" content="產品日：Google 的 Gemini for Healthcare 讀得到 Epic 卻不准回寫、Suki OS 用最高退 100% 的保證代替數據、Abridge 把 Assistant 免費送給 10.8 萬人搶通路——全週唯一經過監管機關的數字是 GE 的 510(k)。">
+<meta name="report-summary-en" content="Product day: Gemini for Healthcare can read Epic but not write to it, Suki OS offers a 100% money-back guarantee in place of evidence, and Abridge gives its Assistant free to 108,000 clinicians — the week's only regulator-checked number is GE's 510(k).">
+<meta property="og:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HJLDQZDK5V');
+</script>
+<link rel="stylesheet" href="/assets/report.css">
+</head>
+<body class="lang-zh">
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span><span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <div class="bar-sp"></div>
+    <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub / 在 GitHub 給這個專案一顆星"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
+    <div class="seg">
+      <button id="b-zh" class="on" onclick="setLang('zh')">中文</button>
+      <button id="b-en" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="kicker">
+    <span class="zh-inline">星期五 · 產品與公司深度分析</span><span class="en-inline">Friday · Product &amp; Company Deep Dive</span>
+  </div>
+  <h1>
+    <span class="zh">本週所有人賣的都是病歷之上那一層，而幾乎沒有一個數字是廠商以外的人量出來的——11/10 Google Cloud 的 Gemini for Healthcare 以 preview 上線，對 Epic 與 Oracle Health 只給讀取、明寫不回寫，五個預設 skill、七家 launch 客戶（Northwell、HCA、Optum、Highmark、麻州 BCBS、Hartford HealthCare、史丹佛醫學院），Fortune 看到的 demo 是 35 秒把病況、用藥、過敏、檢驗拉齊並揪出一筆漏掉的過敏，而通篇沒有價格、沒有任何第三方評估、省下多少全是前瞻性說法；11/16 Suki 發表 Suki OS，把事前授權與 CDI 兩個代理人架在語音病歷之上，450 家機構、10 月 9,000 萬美元 E 輪、2026 年就診量成長逾 190%，唯一真正不同的是 Suki Guarantee——沒達到談定的績效目標最高退 100% 的款，而哪些目標、哪些客戶適用沒有公布；11/13 Abridge 把 Assistant 免費開給 NACHC 的 10.8 萬名社區健康中心臨床人員（這些中心服務約 5,200 萬人、每七個美國人有一個、每三個鄉村居民有一個），免費期限與財務條件一字未提；11/17 Ambience 的 Care Orchestration 自報 Onvida Health 的 CMI 拉升 6.5%、夥伴平均約 3 倍 ROI，方法、樣本數、期間一概沒有；11/16 Commure 併下 Elaborate，自報收件匣時間最多少 36%、病人訊息少 15%、97% 臨床人員認同，成交條件未揭露。全週唯一經過監管機關的數字來自一個單點功能：GE HealthCare 的 Critical Care Suite 3.0 取得 FDA 510(k)，鼻胃管偵測敏感度 99.2%、定位平均 Dice 91.6%，在行動式 X 光機上就地運算、不需連網或雲端——而這也是廠商對照放射科醫師標註自報的。</span>
+        <span class="en">Everything sold this week sits one layer above the chart, and almost none of the numbers were measured by anyone but the vendor — on 11/10 Google Cloud put Gemini for Healthcare into preview with read-only access to Epic and Oracle Health and no write-back, five preset skills and seven launch customers (Northwell, HCA, Optum, Highmark, Blue Cross Blue Shield of Massachusetts, Hartford HealthCare, Stanford School of Medicine); the demo Fortune watched took 35 seconds to reconcile conditions, medications, allergies and labs and catch a missed allergy, while the launch carries no price, no independent evaluation, and savings stated only as forward-looking claims. On 11/16 Suki shipped Suki OS, stacking a prior authorization agent and a CDI agent on top of ambient documentation — 450+ organizations, a $90M Series E in October, encounters up more than 190% in 2026 — and the one genuinely different thing in it is the Suki Guarantee: up to 100% of fees back if agreed performance targets are missed, with neither the targets nor the eligible customers disclosed. On 11/13 Abridge opened its Assistant free to 108,000 clinicians at NACHC community health centers, which serve roughly 52 million people — one in seven Americans and one in three rural residents — with no term length and no financial terms stated. On 11/17 Ambience's Care Orchestration self-reported a 6.5% case mix index lift at Onvida Health and about 3x average partner ROI, with no methodology, sample size or period. On 11/16 Commure bought Elaborate on undisclosed terms, self-reporting up to 36% less inbox time, 15% fewer patient messages and 97% clinician alignment. The week's only figure that passed through a regulator belongs to a single narrow feature: GE HealthCare's Critical Care Suite 3.0 cleared FDA 510(k) with 99.2% feeding-tube detection sensitivity and a 91.6% mean Dice for localization, running on the mobile x-ray unit itself with no internet or cloud — and that, too, is the vendor's own number against radiologist annotations.</span>
+  </h1>
+  <div class="dateline">
+    <span class="zh-inline">2026 年 11 月 20 日（五）· 涵蓋 11/10–11/19 · 台北時間</span><span class="en-inline">Friday, November 20, 2026 · Covering Nov 10–19 · Taipei time</span>
+  </div>
+  <p class="lede">
+    <span class="zh">星期五的題目是挑一兩個產品拆開來看，而這一週的材料把挑選標準替我們定好了：11 月 10 日到 19 日之間，至少七家公司發表了同一個東西的不同版本——架在電子病歷之上、替人處理事前授權、文件缺口、收件匣與出院障礙的代理人層。值得拆的不是它們的功能表，而是它們各自把護城河押在哪裡，以及它們願不願意讓別人來量。本報今天拆兩個：Google Cloud 的 <a href="https://www.googlecloudpresscorner.com/2026-11-10-Google-Cloud-Launches-Gemini-for-Healthcare" target="_blank" rel="noopener">Gemini for Healthcare</a>（11/10，preview，七家 launch 客戶，對 Epic 與 Oracle Health <strong>只讀不回寫</strong>，零效能數字、零價格），以及 Suki 的 <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/suki-launches-agentic-operating-system" target="_blank" rel="noopener">Suki OS</a>（11/16，事前授權與 CDI 兩個代理人，450 家機構，附帶一紙<strong>沒達標最高退 100%</strong> 的保證，而條款未公布）。前者押廣度，後者押風險承擔。對照組放在最後：全週唯一經過監管機關的數字，是 GE HealthCare 一個「鼻胃管在哪裡」的單點功能拿到的 <a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/news/16541813/ge-healthcare-gehc-gets-fda-clearance-for-feeding-tube-ai-on-mobile-xray" target="_blank" rel="noopener">FDA 510(k)</a>。</span>
+        <span class="en">Friday's brief is to take one or two products apart, and this week's material set the selection criteria for us: between November 10 and 19, at least seven companies shipped different versions of the same thing — an agent layer stacked on the electronic record, handling prior authorization, documentation gaps, the inbox and discharge barriers. What is worth dismantling is not their feature lists but where each one has placed its moat, and whether it will let anyone else do the measuring. Two today: Google Cloud's <a href="https://www.googlecloudpresscorner.com/2026-11-10-Google-Cloud-Launches-Gemini-for-Healthcare" target="_blank" rel="noopener">Gemini for Healthcare</a> (11/10, in preview, seven launch customers, <strong>read-only on Epic and Oracle Health with no write-back</strong>, zero performance figures and zero pricing), and Suki's <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/suki-launches-agentic-operating-system" target="_blank" rel="noopener">Suki OS</a> (11/16, a prior authorization agent and a CDI agent, 450+ organizations, carrying a <strong>up-to-100% money-back</strong> guarantee whose terms are unpublished). The first bets on breadth, the second on risk-bearing. The counterweight comes last: the week's only regulator-checked numbers belong to a single narrow feature — where is the feeding tube — in GE HealthCare's <a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/news/16541813/ge-healthcare-gehc-gets-fda-clearance-for-feeding-tube-ai-on-mobile-xray" target="_blank" rel="noopener">FDA 510(k)</a>.</span>
+  </p>
+
+  <nav class="toc">
+    <a href="#top"><span class="zh-inline">重點新聞</span><span class="en-inline">Top Stories</span></a>
+    <a href="#product"><span class="zh-inline">產品分析</span><span class="en-inline">Product Analysis</span></a>
+    <a href="#company"><span class="zh-inline">公司與競爭</span><span class="en-inline">Companies &amp; Competition</span></a>
+    <a href="#taiwan"><span class="zh-inline">台灣視角</span><span class="en-inline">Taiwan Angle</span></a>
+    <a href="#reading"><span class="zh-inline">延伸閱讀</span><span class="en-inline">Further Reading</span></a>
+    <a href="#refs"><span class="zh-inline">參考文獻</span><span class="en-inline">References</span></a>
+  </nav>
+</div>
+
+<section id="top">
+  <h2>01 — Top Stories</h2>
+  <div class="sec-title">
+    <span class="zh">八則按「離病歷的距離」排：從讀不到的外圈，到唯一能回寫的那一層，再到自己還在解釋超支的那一方</span>
+        <span class="en">Eight items ordered by distance from the chart: from the outer ring that cannot reach it, to the only layer that can write, to the party still explaining its own overrun</span>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">平台</span><span class="en-inline">Platform</span></span>
+      <span class="tag">Google Cloud</span><span class="tag">Gemini for Healthcare</span><span class="tag">11/10</span>
+    </div>
+    <h3>
+      <span class="zh">Google Cloud 的 Gemini for Healthcare 讀得到 Epic，卻明寫不回寫病歷</span>
+        <span class="en">Google Cloud's Gemini for Healthcare can read Epic — and is explicitly barred from writing to it</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">Google Cloud 於 11 月 10 日推出 Gemini for Healthcare，以 preview 形式提供給 Gemini Enterprise Standard 與 Plus 客戶，可選每人席次訂閱或用量計價，<a href="https://www.googlecloudpresscorner.com/2026-11-10-Google-Cloud-Launches-Gemini-for-Healthcare" target="_blank" rel="noopener">公告</a>沒有列出任何價格。產品由五類東西組成：五個預設 skill（病歷彙整、就診前準備、保險給付與政策審閱、付款方給付判定等）、EHR 連接器（Epic 走 open.epic API、Oracle Health 走 Ignite FHIR API，<strong>皆為讀取，不回寫 EHR</strong>）、行政與標準查詢（CMS 給付資料、NPI Registry、RxNorm、ICD-10、IMO Health 知識圖譜）、醫學文獻庫（Optum EvidenceVue、ASCO 指引、BMJ Digital Health），以及模型選擇——Google、Anthropic 與 OpenAI 的模型並存，由智慧路由把高量行政任務送到低成本模型、複雜分析送到高推理模型。首批客戶為 Northwell Health、HCA Healthcare、Optum、Highmark Health、麻州 Blue Cross Blue Shield、Hartford HealthCare 與史丹佛醫學院，ASCO 為內容貢獻者。<a href="https://fortune.com/2026/11/10/google-gemini-for-healthcare-and-hospitals-northwell-medical-costs-affordability-insurance/" target="_blank" rel="noopener">Fortune</a>現場看到的 demo 是 35 秒內把一位病人的病況、用藥、過敏與檢驗拉齊，與院外專科醫師的報告比對，並標出新的檢驗結果與一筆漏掉的過敏。</span>
+        <span class="en">Google Cloud launched Gemini for Healthcare on November 10, in preview, for Gemini Enterprise Standard and Plus customers, with a choice of per-user seat subscriptions or pay-as-you-go pricing; the <a href="https://www.googlecloudpresscorner.com/2026-11-10-Google-Cloud-Launches-Gemini-for-Healthcare" target="_blank" rel="noopener">announcement</a> lists no prices. The product is five things: five preset skills (records synthesis, pre-appointment prep, coverage and policy review, payer benefit determination among them); EHR connectors (Epic via open.epic APIs, Oracle Health via Ignite FHIR APIs, <strong>read access only, with no write-back to the EHR</strong>); administrative and standards lookups (CMS coverage data, the NPI Registry, RxNorm, ICD-10, IMO Health's Knowledge Graph); medical repositories (Optum EvidenceVue, ASCO guidelines, BMJ Digital Health); and model choice — Google, Anthropic and OpenAI models side by side, with smart routing sending high-volume administrative work to cheaper models and complex analysis to high-reasoning ones. Launch customers are Northwell Health, HCA Healthcare, Optum, Highmark Health, Blue Cross Blue Shield of Massachusetts, Hartford HealthCare and Stanford School of Medicine, with ASCO contributing content. The demo <a href="https://fortune.com/2026/11/10/google-gemini-for-healthcare-and-hospitals-northwell-medical-costs-affordability-insurance/" target="_blank" rel="noopener">Fortune</a> watched took 35 seconds to pull a patient's conditions, medications, allergies and labs, compare them against an outside specialist's report, and flag new lab results and a missed allergy.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">不回寫這一條是整個產品策略的形狀。Google 賣的不是病歷系統，而是病歷之上的讀取與編排層，所以它的護城河只能是連接器的廣度——11 月 17 至 19 日一連串夥伴公告正是在補這一層：<a href="https://www.prnewswire.com/news-releases/keragon-accelerates-enterprise-ai-transformation-with-google-clouds-gemini-for-healthcare-302934882.html" target="_blank" rel="noopener">Keragon</a>用單一 MCP 連線接上逾 400 個醫療應用，<a href="https://www.prnewswire.com/news-releases/verato-accelerates-enterprise-ai-transformation-with-google-clouds-gemini-for-healthcare-302934517.html" target="_blank" rel="noopener">Verato</a>把病人身分解析做成 MCP server。需求面的數字也都在公告裡：臨床人員每週約有 28 小時花在文件與行政（Harris Poll／Google Cloud 調查）、41.9% 的醫師自述過勞（2025 年 AMA 報告）、行政成本占美國醫療支出的 25% 到 35%（AHA）。Northwell 執行長 John D'Angelo 本身是急診醫師，他說醫院約有 400 名員工全職處理保險否准、推翻率超過九成，但那是純粹的人力成本，而醫院「最好的情況也只是 1% 利潤率的生意」。Highmark 則說已有 78% 數位送件並核准的門診事前授權是自動處理完成的。</span>
+        <span class="en">The no-write-back line is the shape of the whole strategy. Google is not selling a system of record; it is selling a read-and-orchestrate layer above one, so its only possible moat is the breadth of its connectors — which is exactly what the partner announcements of November 17–19 were filling in: <a href="https://www.prnewswire.com/news-releases/keragon-accelerates-enterprise-ai-transformation-with-google-clouds-gemini-for-healthcare-302934882.html" target="_blank" rel="noopener">Keragon</a> wiring 400+ healthcare applications through a single MCP connection, and <a href="https://www.prnewswire.com/news-releases/verato-accelerates-enterprise-ai-transformation-with-google-clouds-gemini-for-healthcare-302934517.html" target="_blank" rel="noopener">Verato</a> turning patient identity resolution into an MCP server. The demand-side numbers are all in the release: clinicians lose nearly 28 hours a week to documentation and administrative work (a Harris Poll/Google Cloud study), 41.9% of physicians reported burnout (2025 AMA report), and administrative costs run 25% to 35% of US health spending (AHA). Northwell CEO John D'Angelo, an emergency physician himself, says about 400 employees fight insurance denials full time and overturn more than 90% of them — pure labor cost in what he calls \"a 1% margin business at best.\" Highmark says 78% of approved outpatient prior authorizations submitted digitally are already processed automatically.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">整場發表沒有一個產品本身的效能數字。省下的時間、縮短的等待、提早發現疾病，全是主管與 Google 的前瞻性說法，沒有任何已量測的結果、沒有價格、也沒有獨立評估。連接器清單裡有兩項還沒真正到位：NextGen Healthcare 的 EHR 連線寫的是「未來幾個月」釋出，Optum 的 Network Eligibility 與 Coordination of Benefits 則處於限定釋出與測試中。</span>
+        <span class="en">The launch carries no performance figure for the product itself. Savings, shorter waits and earlier detection are forward-looking statements by executives and by Google — no measured results, no pricing, no independent evaluation. Two items on the connector list are not actually there yet either: NextGen Healthcare EHR connectivity is \"slated for release in the coming months,\" and Optum Network Eligibility and Coordination of Benefits is in limited release and testing.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.googlecloudpresscorner.com/2026-11-10-Google-Cloud-Launches-Gemini-for-Healthcare" target="_blank" rel="noopener">Google Cloud Press Corner, 2026-11-10</a> · <a href="https://fortune.com/2026/11/10/google-gemini-for-healthcare-and-hospitals-northwell-medical-costs-affordability-insurance/" target="_blank" rel="noopener">Fortune, 2026-11-10</a> · <a href="https://www.healthitanswers.net/health-it-business-news-november-19-2026/" target="_blank" rel="noopener">Health IT Answers, 2026-11-19</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">產品</span><span class="en-inline">Product</span></span>
+      <span class="tag">Suki</span><span class="tag">Suki OS</span><span class="tag">11/16</span>
+    </div>
+    <h3>
+      <span class="zh">Suki 用「沒達標最高退 100%」代替它拿不出來的臨床數據</span>
+        <span class="en">Suki offers up to 100% of your money back in place of the clinical data it does not have</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">Suki 在 HLTH 2026 發表 Suki OS，把語音病歷平台往上長成一套代理人作業系統，<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/suki-launches-agentic-operating-system" target="_blank" rel="noopener">Fierce Healthcare</a>報導它由三根柱子組成：夥伴生態（Insight Partners 把自家情報接進 Suki 的病人脈絡，Platform Partners 把 Suki 的 AI 嵌進自家產品）、統一的 AI 代理人，以及一紙績效保證。首批兩個代理人是 Suki Prior Authorization（辨識事前授權要求並蒐集支持性臨床文件）與 CDI Agent（找出文件缺口、改善準確性並支援編碼與營收循環）。公司數字：逾 450 家醫療機構使用、10 月完成 9,000 萬美元 E 輪、累計募資逾 2.5 億美元、2026 年其工具支援的就診量年增逾 190%、2025 年營收翻倍且今年預計相近。創辦人暨執行長 Punit Soni 的說法是，醫療的問題不是 AI 不夠，而是「執行問題」，而「理解只是開始」。</span>
+        <span class="en">At HLTH 2026, Suki introduced Suki OS, growing its ambient documentation platform upward into an agentic operating system. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/suki-launches-agentic-operating-system" target="_blank" rel="noopener">Fierce Healthcare</a> reports three pillars: a partner ecosystem (Insight Partners plug their intelligence into Suki's patient context; Platform Partners embed Suki's AI into their own products), unified AI agents, and a performance guarantee. The first two agents are Suki Prior Authorization (identifying requirements and gathering supporting clinical documentation) and a CDI Agent (finding documentation gaps, improving accuracy, supporting coding and revenue cycle work). The company figures: more than 450 healthcare organizations, a $90 million Series E in October, more than $250 million raised in total, encounters supported by its tools up more than 190% year over year in 2026, and revenue doubled in 2025 with similar growth expected this year. Founder and CEO Punit Soni's framing is that healthcare has an \"execution problem\" rather than an AI shortage, and that \"understanding is only the beginning.\"</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">Suki Guarantee 是本週最值得注意的一件事，因為它把舉證責任換了位置：符合條件的客戶若未達到談定的績效目標，最高可取回 100% 的費用。在一個滿地都是「最多減少 36%」「拉升 6.5%」而沒有方法學的市場裡，願意把錢綁在目標上的廠商，等於承認買方已經不信自述數字了。值得一併記住的是 Suki 同時出現在 <a href="https://www.googlecloudpresscorner.com/2026-11-10-Google-Cloud-Launches-Gemini-for-Healthcare" target="_blank" rel="noopener">Gemini for Healthcare 的應用夥伴名單</a>裡（列為 ambient clinical intelligence）——它既是 Google 平台上的一塊磚，又在賣自己的作業系統，和 Google 搶的是同一個位置。</span>
+        <span class="en">The Suki Guarantee is the most interesting thing anyone shipped this week, because it moves the burden of proof: eligible customers can get back up to 100% of fees if agreed performance targets are not met. In a market carpeted with \"up to 36%\" and \"6.5% lift\" and no methodology, a vendor willing to put money behind a target is conceding that buyers have stopped believing self-reported numbers. Worth holding alongside that: Suki also appears on <a href="https://www.googlecloudpresscorner.com/2026-11-10-Google-Cloud-Launches-Gemini-for-Healthcare" target="_blank" rel="noopener">Gemini for Healthcare's application partner list</a> as ambient clinical intelligence — simultaneously a brick in Google's platform and a seller of its own operating system, competing for the same slot.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">保證的條款沒有公布：哪些績效目標、如何量測、誰算「符合條件的客戶」、退款上限怎麼算，全部沒有。報導裡說 Suki「有獨立驗證的臨床與財務成果」，但沒有列出任何一項，也沒有點名任何一家客戶。190% 的就診量成長與營收翻倍都是公司自述，未經稽核。</span>
+        <span class="en">The guarantee's terms are not published: which targets, measured how, who counts as an eligible customer, how the cap is computed — none of it. The coverage says Suki has \"independently validated clinical and financial outcomes\" but names not one of them, and names no customer either. The 190% encounter growth and the doubled revenue are company-reported and unaudited.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.fiercehealthcare.com/ai-and-machine-learning/suki-launches-agentic-operating-system" target="_blank" rel="noopener">Fierce Healthcare, 2026-11-16</a> · <a href="https://www.financialcontent.com/article/bizwire-2026-11-16-suki-introduces-suki-os-an-agentic-operating-system-built-on-top-of-ambient-clinical-intelligence" target="_blank" rel="noopener">Business Wire via FinancialContent, 2026-11-16</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="zh-inline">通路</span><span class="en-inline">Distribution</span></span>
+      <span class="tag">Abridge</span><span class="tag">NACHC</span><span class="tag">Assistant</span><span class="tag">11/13</span>
+    </div>
+    <h3>
+      <span class="zh">Abridge 把 Assistant 免費送給 10.8 萬名社區健康中心臨床人員，對手是免費的 OpenEvidence</span>
+        <span class="en">Abridge gives its Assistant free to 108,000 community health center clinicians — against a rival that is already free</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">11 月 13 日，Abridge 與美國社區健康中心全國協會（NACHC）宣布，Abridge Assistant 將<a href="https://www.abridge.com/press-release/abridge-national-association-community-health-centers" target="_blank" rel="noopener">免費提供</a>給 NACHC 會員社區健康中心的臨床人員，約 10.8 萬人，而且不限於已採用 Abridge 文件產品的機構。這些中心服務約 5,200 萬人，接近每七個美國人就有一人、每三個鄉村居民就有一人。Assistant 的功能是回答臨床問題並引用同儕審查文獻與臨床指引來源，涵蓋篩檢指引、治療選項、建議檢查，並支援鑑別診斷、藥物比較與臨床計算，最終判斷留給臨床人員。Abridge 自述 2018 年成立，預計今年平台支援逾 1.2 億次醫病互動、橫跨逾 300 個美國醫療系統、已在 28 種以上語言的就診情境驗證，並連續在 2025 與 2026 年獲 Best in KLAS 的 ambient AI 類別。三天後（11/16）Wiley 宣布<a href="https://www.businesswire.com/news/home/20261116095169/en/Wiley-and-Abridge-Partner-to-Bring-the-Evidence-that-Informs-Clinical-Guidelines-Worldwide-into-the-Abridge-Assistant" target="_blank" rel="noopener">與 Abridge 合作</a>，把形成全球臨床指引的證據送進 Assistant。</span>
+        <span class="en">On November 13, Abridge and the National Association of Community Health Centers announced that the Abridge Assistant will be <a href="https://www.abridge.com/press-release/abridge-national-association-community-health-centers" target="_blank" rel="noopener">free</a> to clinicians at NACHC member community health centers — about 108,000 people — whether or not their organization uses Abridge's documentation product. Those centers serve roughly 52 million people, nearly one in seven Americans and one in three rural residents. The Assistant answers clinical questions with citations to peer-reviewed literature and clinical guidelines, covering screening guidelines, treatment options and recommended workups, and supports differential diagnosis, medication comparison and clinical calculators, leaving the final decision with the clinician. Abridge says it was founded in 2018, expects its platform to support more than 120 million patient-clinician encounters this year across more than 300 US health systems, has validated encounters in 28+ languages, and won Best in KLAS for ambient AI in both 2025 and 2026. Three days later, on November 16, Wiley announced a <a href="https://www.businesswire.com/news/home/20261116095169/en/Wiley-and-Abridge-Partner-to-Bring-the-Evidence-that-Informs-Clinical-Guidelines-Worldwide-into-the-Abridge-Assistant" target="_blank" rel="noopener">partnership with Abridge</a> to bring the evidence behind global clinical guidelines into the Assistant.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這是一次通路占領，不是一次慈善。Abridge 的本業是語音病歷，而 Assistant 是臨床問答——後者的現任霸主是 OpenEvidence，一個對醫師全面免費、由藥廠與醫材廣告養的產品，<a href="https://aimagazine.com/news/openevidence-doctors-ai-search-engine-valued-at-us-15bn" target="_blank" rel="noopener">據報</a>在 2025 年 12 月已有約 76 萬名註冊美國醫師、超過美國醫師的四成。要在一個免費產品面前搶使用者，你只能也免費，而且要帶著對手沒有的東西進場：Abridge 帶的是它已經在病人床邊錄音的那條管線，以及 Wiley 的指引證據。社區健康中心是最好的灘頭堡——預算最緊、最不可能自己付錢買臨床問答，而一旦臨床人員習慣在同一個介面裡問問題，文件產品的銷售就變成順水推舟。</span>
+        <span class="en">This is a distribution land-grab, not charity. Abridge's core business is ambient documentation; the Assistant is clinical question-answering, a category whose incumbent is OpenEvidence — free to all physicians and funded by pharmaceutical and device advertising, with <a href="https://aimagazine.com/news/openevidence-doctors-ai-search-engine-valued-at-us-15bn" target="_blank" rel="noopener">reportedly</a> about 760,000 registered US physicians by December 2025, more than 40% of American doctors. To take users from something already free, you have to be free too, and arrive carrying something the incumbent lacks: in Abridge's case, the pipeline it already runs at the bedside, plus Wiley's guideline evidence. Community health centers are the right beachhead — the tightest budgets, the least likely to buy clinical Q&amp;A on their own — and once clinicians are asking questions inside the same interface, selling them the documentation product is downhill work.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">免費期限沒有寫，其他財務條件也沒有寫。新聞稿沒有點名任何一家社區健康中心，也沒有給 Assistant 的任何使用量或成效數據。1.2 億次互動是對今年的預估，不是已實現的數字。</span>
+        <span class="en">No term length is stated and no other financial terms are given. The release names no individual health center and provides no usage or outcome data for the Assistant at all. The 120 million encounters is a projection for this year, not a realized figure.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.abridge.com/press-release/abridge-national-association-community-health-centers" target="_blank" rel="noopener">Abridge press release, 2026-11-13</a> · <a href="https://www.businesswire.com/news/home/20261116095169/en/Wiley-and-Abridge-Partner-to-Bring-the-Evidence-that-Informs-Clinical-Guidelines-Worldwide-into-the-Abridge-Assistant" target="_blank" rel="noopener">Business Wire, 2026-11-16</a> · <a href="https://aimagazine.com/news/openevidence-doctors-ai-search-engine-valued-at-us-15bn" target="_blank" rel="noopener">AI Magazine (OpenEvidence 背景／background)</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="zh-inline">住院端</span><span class="en-inline">Inpatient</span></span>
+      <span class="tag">Ambience Healthcare</span><span class="tag">Care Orchestration</span><span class="tag">11/17</span>
+    </div>
+    <h3>
+      <span class="zh">Ambience 把代理人推進查房與出院，自報 CMI 拉升 6.5%——方法學一字未附</span>
+        <span class="en">Ambience pushes agents into rounding and discharge, self-reporting a 6.5% CMI lift with no methodology attached</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">11 月 17 日，Ambience Healthcare 在 Chorus 平台上<a href="https://hitconsultant.net/2026/11/17/ambience-healthcare-introduces-inpatient-care-orchestration-cmi-discharge-readiness/" target="_blank" rel="noopener">加入住院照護編排</a>，跨出文件、進到床邊流程協調，公司說這建立在兩年的住院 AI 開發與部署之上。兩具引擎：Rounding Assistant 在每個班別開始時，把夜間事件、生理變化、檢驗更新與住院病程合成一份依優先序排列的臨床待辦清單；Discharge Readiness 則在整段住院期間持續標出阻礙出院的臨床、營運與社會因素——等待後急性期安置、耐用醫療器材需求、藥物取得問題——並提早通知個案管理師、社工與醫師，讓出院規劃在病情穩定之前就開始。兩者都架在既有工具上：History and Physical Generator、Conditions Advisor、Copy-Forward Intelligence 與 Discharge Summary Generator。數字方面，Onvida Health 的 case mix index 拉升 6.5%，夥伴平均投資報酬率約 3 倍，歸因於編碼準確性與營運效率的改善。</span>
+        <span class="en">On November 17, Ambience Healthcare <a href="https://hitconsultant.net/2026/11/17/ambience-healthcare-introduces-inpatient-care-orchestration-cmi-discharge-readiness/" target="_blank" rel="noopener">added inpatient care orchestration</a> to its Chorus platform, stepping past documentation into bedside workflow coordination on what it says is two years of inpatient AI development and deployment. Two engines: the Rounding Assistant, which at the start of each shift combines overnight events, physiological changes, lab updates and the hospital course into a prioritized list of suggested clinical tasks; and Discharge Readiness, which runs throughout the admission flagging clinical, operational and social barriers to discharge — pending post-acute placement, durable medical equipment needs, medication access problems — and alerting case managers, social workers and physicians early enough for discharge planning to begin before clinical stability. Both sit on existing tools: the History and Physical Generator, Conditions Advisor, Copy-Forward Intelligence and Discharge Summary Generator. On numbers: a 6.5% case mix index lift at Onvida Health, and an average partner return on investment of about 3x, attributed to better coding accuracy and operational efficiency.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">CMI 是本週最誠實的一個指標選擇，因為它直接換算成錢：case mix index 上升代表住院給付權重上升，醫院財務長看得懂，也會買。這也說明住院端 AI 的商業模式已經定型——賣的不是醫師的時間，而是編碼與營收循環的回收。Ambience 另外提到採用與成果連動的商務收費結構，和 Suki 的退款保證是同一個方向：廠商開始願意把報酬綁在買方量得到的東西上。</span>
+        <span class="en">Case mix index is the most honest metric choice of the week, because it converts directly into money: a higher CMI means higher inpatient payment weights, which a hospital CFO understands and will buy. It also shows the inpatient AI business model has settled — what is being sold is not physician time but coding and revenue cycle recovery. Ambience also mentions outcome-aligned commercial fee structures, pointing the same way as Suki's refund guarantee: vendors are starting to tie their own pay to something the buyer can measure.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">6.5% 這個數字沒有方法、沒有樣本數、沒有期間、沒有獨立驗證，而 Onvida Health 是唯一被點名的客戶。另一個流傳的數字「59% 更多診斷（Vizient）」只出現在報導的 meta description 裡，本文沒有任何脈絡，本報不採信為正文事實。約 3 倍 ROI 同樣是廠商自述的平均值，沒有分布也沒有分母。</span>
+        <span class="en">The 6.5% comes with no methodology, no sample size, no time period and no independent verification, and Onvida Health is the only named customer. A second figure in circulation — \"59% more diagnoses (Vizient)\" — appears only in the article's meta description with no context in the body, and this report does not treat it as an established fact. The ~3x ROI is likewise a vendor-reported average with no distribution and no denominator.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://hitconsultant.net/2026/11/17/ambience-healthcare-introduces-inpatient-care-orchestration-cmi-discharge-readiness/" target="_blank" rel="noopener">HIT Consultant, 2026-11-17</a> · <a href="https://www.financialcontent.com/article/bizwire-2026-11-17-ambience-healthcare-launches-care-orchestration-for-inpatient-teams" target="_blank" rel="noopener">Business Wire via FinancialContent, 2026-11-17</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="zh-inline">併購</span><span class="en-inline">M&amp;A</span></span>
+      <span class="tag">Commure</span><span class="tag">Elaborate</span><span class="tag">11/16</span>
+    </div>
+    <h3>
+      <span class="zh">Commure 併下 Elaborate，把代理人推進門診後的收件匣</span>
+        <span class="en">Commure buys Elaborate, pushing agents into the post-visit inbox</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">11 月 16 日，Commure 宣布<a href="https://www.globenewswire.com/news-release/2026/11/16/3403471/0/en/commure-acquires-elaborate-to-cure-the-clinician-inbox.html" target="_blank" rel="noopener">併購 Elaborate</a>，交易條件未揭露。Elaborate 自我定位為臨床人員收件匣的臨床情報平台，在 EHR 內運作、遵循各機構臨床人員自己掌控的流程協定：在病人送出訊息之前先幫他們理解自己的照護，把進來的訊息路由給正確的照護團隊成員，並自動化具臨床判斷含量的工作流。Elaborate 自報的數字是收件匣時間最多減少 36%、病人訊息量下降 15%、97% 的臨床人員認同自動化的處理；背景數字是每位病人的病人門戶訊息量從 2020 到 2025 年成長了 153%，遠超過門診就診量的成長。Commure 的規模：每年數千萬次就診經過平台、上線於逾 500 家醫療機構（含兩家美國最大的營利醫院系統）、逾 50 萬名使用者、約占美國醫療就診的 7%，HCA Healthcare 被點名為使用者。共同創辦人暨執行長 Tanay Tandon 說，合併後的代理人「從第一天就能影響平台上數萬名活躍臨床人員」。</span>
+        <span class="en">On November 16, Commure announced it had <a href="https://www.globenewswire.com/news-release/2026/11/16/3403471/0/en/commure-acquires-elaborate-to-cure-the-clinician-inbox.html" target="_blank" rel="noopener">acquired Elaborate</a> on undisclosed terms. Elaborate describes itself as a clinical intelligence platform for the clinician inbox, working inside the EHR and following protocols each organization's own clinicians control: helping patients understand their care before they send a message, routing incoming messages to the right care team member, and automating clinically informed workflows. Elaborate's self-reported figures are up to 36% less time in the inbox, a 15% drop in patient message volume, and 97% clinician alignment with the automation; the background figure is that patient portal messages per patient rose 153% from 2020 to 2025, far outpacing growth in office visits. Commure's scale: tens of millions of appointments a year, live in 500+ healthcare organizations including two of the largest for-profit hospital systems in the US, 500,000+ users, and about 7% of American healthcare appointments, with HCA Healthcare named as a user. Co-founder and CEO Tanay Tandon says the combined agents \"can impact tens of thousands of active clinicians on the platform from day one.\"</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">收件匣是 ambient AI 廠商的下一塊地，原因很簡單：語音病歷解決的是就診中那 15 分鐘，而門診後的訊息、檢驗追蹤與轉介才是真正吃掉臨床人員下班時間的東西，而且它有一個漂亮的成長曲線（+153%）可以賣。Commure 的位置和 Google 相反——它不是從外面讀病歷，而是已經在 EHR 裡面、在 7% 的美國就診裡面，所以它買的是功能，不是通路。這一週同樣往收件匣走的還有 <a href="https://digitalhealthwire.com/hlth-2026-recap-and-major-announcements/" target="_blank" rel="noopener">OpenAI 與 Abridge 的 computer-use 代理人合作</a>。</span>
+        <span class="en">The inbox is the next plot of land for ambient AI vendors, for a simple reason: ambient documentation solves the fifteen minutes inside the visit, while post-visit messages, result follow-up and referrals are what actually eat a clinician's evening — and it comes with a beautiful growth curve (+153%) to sell against. Commure sits opposite Google here: it is not reading the chart from outside but is already inside the EHR and inside 7% of US appointments, so what it bought was a capability, not distribution. Also heading for the inbox this week: <a href="https://digitalhealthwire.com/hlth-2026-recap-and-major-announcements/" target="_blank" rel="noopener">OpenAI's computer-use agent work with Abridge</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">成交金額未揭露，所以無法判斷這是人才收購還是規模收購。36%、15%、97% 三個數字全部出自新聞稿，沒有獨立驗證，「最多減少」的措辭意味著那是最佳案例而非平均。約 7% 的美國就診占比也是公司自述。</span>
+        <span class="en">The price is undisclosed, so there is no telling whether this was a talent buy or a scale buy. The 36%, 15% and 97% all come from the press release with no independent verification, and \"up to\" means best case rather than average. The ~7% of US appointments is also a company figure.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.globenewswire.com/news-release/2026/11/16/3403471/0/en/commure-acquires-elaborate-to-cure-the-clinician-inbox.html" target="_blank" rel="noopener">GlobeNewswire, 2026-11-16</a> · <a href="https://www.modernhealthcare.com/health-tech/mh-commure-elaborate-acquisition-inbox-automation/" target="_blank" rel="noopener">Modern Healthcare, 2026-11-16</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">法規</span><span class="en-inline">Regulatory</span></span>
+      <span class="tag">GE HealthCare</span><span class="tag">Critical Care Suite 3.0</span><span class="tag">FDA 510(k)</span><span class="tag">11/17</span>
+    </div>
+    <h3>
+      <span class="zh">全週唯一過了監管機關的數字：GE 的鼻胃管 AI 拿到 510(k)，而且就跑在 X 光機上</span>
+        <span class="en">The week's only regulator-checked numbers: GE's feeding-tube AI clears 510(k), running on the x-ray unit itself</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">GE HealthCare 的 Critical Care Suite 3.0 取得美國 FDA 510(k) 許可（<a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/news/16541813/ge-healthcare-gehc-gets-fda-clearance-for-feeding-tube-ai-on-mobile-xray" target="_blank" rel="noopener">AuntMinnie 於 11/17 報導</a>，報導未另給許可日期與許可號）。功能是偵測腸道餵食管（鼻胃管），辨識管路路徑、管尖與側孔，並標出氣道與橫膈作為解剖參考點，以支援管路位置的判讀。它直接在 GE 的行動式 X 光機上運算，廠商說不需要網路或雲端連線。適用成人與小兒病人——這是 Critical Care Suite 的餵食管演算法第一次支援小兒。廠商對照放射科專家標註所報的效能是：管路偵測敏感度 99.2%、定位平均 Dice 係數 91.6%。軟體同時包含 GE 的 Quality Care Suite 影像品質錯誤縮減演算法。</span>
+        <span class="en">GE HealthCare's Critical Care Suite 3.0 received US FDA 510(k) clearance (<a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/news/16541813/ge-healthcare-gehc-gets-fda-clearance-for-feeding-tube-ai-on-mobile-xray" target="_blank" rel="noopener">reported by AuntMinnie on November 17</a>; the report gives no separate clearance date or number). It detects enteric feeding tubes, identifies the tube path, tip and side port, and highlights the airways and diaphragm as anatomical reference points to support assessment of tube placement. It runs directly on GE's mobile x-ray systems and, per the vendor, needs no internet or cloud connectivity. It is indicated for adult and pediatric patients — the first Critical Care Suite release in which the feeding tube algorithm supports pediatrics. Vendor-reported performance against expert radiologist annotations: 99.2% tube detection sensitivity and a 91.6% mean Dice score for localization. The software also bundles GE's Quality Care Suite algorithms for reducing image quality errors.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">把這一則擺在今天的其他六則旁邊，差別一目了然。這是一個範圍窄到近乎無聊的功能——一條管子在哪裡——但它有明確的適用族群、有對照專家標註的效能指標、有一條走完的監管路徑，而且是在裝置上就地運算，所以它在沒有網路的加護病房與夜間行動 X 光作業裡照樣能用。今天那些賣「代理人作業系統」的產品，沒有一個能拿出這三樣中的任何一樣。錯置的鼻胃管是會致死的事件，而小兒支援是真正的新東西——這也是為什麼它需要 510(k)，而病歷彙整不需要。</span>
+        <span class="en">Set this beside the week's other six items and the difference is plain. This is a feature narrow to the point of dullness — where is the tube — but it has a defined population, a performance metric against expert annotations, a completed regulatory pathway, and on-device execution, so it still works in an ICU with no network and on overnight mobile x-ray rounds. Not one of today's \"agentic operating systems\" can produce any of those three things. A misplaced feeding tube is a fatal event, and pediatric support is genuinely new here — which is also why this needs a 510(k) and records synthesis does not.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">99.2% 與 91.6% 都是廠商自報、對照放射科專家標註的結果，報導沒有給測試集大小、族群組成、站點數，也沒有獨立的前瞻性臨床驗證。510(k) 是實質等同性許可，不是療效證明——它說的是這個裝置和既有裝置一樣安全有效，不是說它改善了病人結果。</span>
+        <span class="en">Both 99.2% and 91.6% are vendor-reported against expert radiologist annotations; the coverage gives no test set size, no population composition, no site count, and no independent prospective clinical validation. A 510(k) is a substantial-equivalence clearance, not proof of benefit — it says the device is as safe and effective as an existing one, not that it improves patient outcomes.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/news/16541813/ge-healthcare-gehc-gets-fda-clearance-for-feeding-tube-ai-on-mobile-xray" target="_blank" rel="noopener">AuntMinnie, 2026-11-17</a> · <a href="https://radiologybusiness.com/topics/healthcare-management/healthcare-policy/fda-clears-ge-healthcares-imaging-ai-feeding-tube-detection-software" target="_blank" rel="noopener">Radiology Business, 2026-11-17</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="zh-inline">研究</span><span class="en-inline">Research</span></span>
+      <span class="tag">Apple</span><span class="tag">OpenEvidence</span><span class="tag">Health AI Usage Study</span><span class="tag">11/15</span>
+    </div>
+    <h3>
+      <span class="zh">Apple 要用 20 萬人研究大家怎麼拿 AI 問健康問題，臨床引擎是 OpenEvidence</span>
+        <span class="en">Apple will study how 200,000 people ask AI about their health, with OpenEvidence as the clinical engine</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">11 月 15 日，Apple <a href="https://www.apple.com/newsroom/2026/11/apple-launches-research-study-to-explore-the-use-of-ai-for-health/" target="_blank" rel="noopener">發布 Health AI Usage Study</a>：一個虛擬研究與配套 App，研究人們如何使用對話式健康 AI 工具，要量的是什麼影響使用者信任、回答品質、理解程度與日常健康行動。規模最多 20 萬人，限美國、21 歲以上，需要支援 Apple Intelligence 的 iPhone（iPhone 15 Pro 或更新）並執行 iOS 26 或更新版本。臨床夥伴是 OpenEvidence，其回答取材自《新英格蘭醫學雜誌》、《JAMA》、《Nature》等醫學文獻，研究設計由 Apple 提供。參與者可以用較白話的語言問日常健康問題、看到每個回答後面可點擊的同儕審查引文，並可選擇性分享 HealthKit 資料（靜息心率、活動量、睡眠、檢驗結果）以觀察個人資料如何影響相關性與理解。隱私方面：研究資料不會用於訓練 AI 模型，參與者自行控制是否分享；另有護欄會偵測特定令人擔憂的問題並建議聯繫醫療提供者或其他資源。Apple 健康與健身副總裁 Sumbul Desai 與加州大學舊金山分校內科主任 Robert M. Wachter 受訪，後者指出病人與臨床人員正在用「在彼此分開的世界裡被打造與測試」的 AI 工具。</span>
+        <span class="en">On November 15, Apple <a href="https://www.apple.com/newsroom/2026/11/apple-launches-research-study-to-explore-the-use-of-ai-for-health/" target="_blank" rel="noopener">launched the Health AI Usage Study</a>: a virtual study and companion app examining how people use conversational health AI, measuring what affects trust, response quality, comprehension and everyday health actions. Up to 200,000 participants, US only, aged 21 or older, requiring an Apple Intelligence-enabled iPhone (15 Pro or later) on iOS 26 or later. The clinical partner is OpenEvidence, whose answers draw on medical literature including the <em>New England Journal of Medicine</em>, <em>JAMA</em> and <em>Nature</em>; Apple supplied the research design. Participants can ask everyday health questions in plainer language, see linked peer-reviewed citations behind each response, and optionally share HealthKit data — resting heart rate, activity, sleep, lab results — to see how personal data changes relevance and understanding. On privacy: study data will not be used to train AI models, participants control what they share, and guardrails are meant to detect certain concerning questions and point to a provider or other resources. Apple VP of Health and Fitness Sumbul Desai and UCSF chair of medicine Robert M. Wachter are quoted, the latter noting that patients and clinicians are using AI tools \"being built and tested in separate worlds.\"</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這件事的意義在於它把「病人端的健康 AI」第一次做成可以被研究的對象，而不是一個商業黑盒。但更值得看的是對 OpenEvidence 的含義：它原本是醫師端產品，<a href="https://aimagazine.com/news/openevidence-doctors-ai-search-engine-valued-at-us-15bn" target="_blank" rel="noopener">據報</a>在 2026 年 9 月一輪約 2.5 億美元後估值達 150 億美元（約為年化營收的 50 倍），2026 年 1 月的 D 輪是 2.5 億美元、估值 120 億美元，2025 年 2 月的 A 輪是 7,500 萬美元、估值 10 億美元；使用面，2025 年 12 月約 76 萬名註冊美國醫師、當月約 1,800 萬次臨床諮詢，2026 年 3 月 10 日單日突破 100 萬次。它對醫師免費、靠藥廠與醫材廣告賺錢。現在它同時成為 Apple 研究的臨床引擎，而 Google 在 Gemini for Healthcare 裡接的是 Optum EvidenceVue、ASCO 與 BMJ——同一塊「有引證的臨床答案」正在被三方搶。</span>
+        <span class="en">What matters here is that patient-facing health AI becomes an object of study rather than a commercial black box. But the sharper read is what it means for OpenEvidence, until now a physician-facing product: <a href="https://aimagazine.com/news/openevidence-doctors-ai-search-engine-valued-at-us-15bn" target="_blank" rel="noopener">reportedly</a> valued at $15 billion after a roughly $250 million round in September 2026 (about 50 times annualised revenue), following a $250 million Series D at $12 billion in January 2026 and a $75 million Series A at $1 billion in February 2025; on usage, about 760,000 registered US physicians and some 18 million clinical consultations in December 2025, with a single day passing one million consultations on March 10, 2026. It is free to doctors and paid for by pharmaceutical and device advertising. Now it is also the clinical engine inside an Apple study — while Google wired Optum EvidenceVue, ASCO and BMJ into Gemini for Healthcare. The same slot, cited clinical answers, is being contested from three directions at once.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">研究才剛開放招募，沒有任何結果。OpenEvidence 的營收數字是 Sacra 的估計值而非公司公布，150 億美元估值是「據報」而非經確認；「超過四成美國醫師」是 2025 年 12 月的數字。另外要注意這個研究的樣本天生偏斜：它只收得到買得起 iPhone 15 Pro 以上機型、且願意裝研究 App 的美國成年人。</span>
+        <span class="en">The study has only just opened enrollment and has no results. OpenEvidence's revenue figures are Sacra estimates rather than company disclosures, and the $15 billion valuation is reported rather than confirmed; \"more than 40% of US doctors\" is a December 2025 figure. Note also that the study's sample is skewed by construction: it can only reach US adults who own an iPhone 15 Pro or better and are willing to install a research app.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.apple.com/newsroom/2026/11/apple-launches-research-study-to-explore-the-use-of-ai-for-health/" target="_blank" rel="noopener">Apple Newsroom, 2026-11-15</a> · <a href="https://techcrunch.com/2026/11/15/apple-launches-new-app-to-study-how-people-use-ai-for-health/" target="_blank" rel="noopener">TechCrunch, 2026-11-15</a> · <a href="https://aimagazine.com/news/openevidence-doctors-ai-search-engine-valued-at-us-15bn" target="_blank" rel="noopener">AI Magazine</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag"><span class="zh-inline">對照組</span><span class="en-inline">Counterweight</span></span>
+      <span class="tag">Oracle Health</span><span class="tag">VA</span><span class="tag">EHRM</span><span class="tag">11/18</span>
+    </div>
+    <h3>
+      <span class="zh">所有人想站上去的那層病歷，自己還在參議院解釋為什麼多花 170 億美元</span>
+        <span class="en">The system of record everyone wants to sit on top of spent Wednesday explaining a $17B overrun to the Senate</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">11 月 18 日，Oracle 共同執行長 Mike Sicilia 與退伍軍人部（VA）電子病歷現代化整合辦公室執行主任 Neil Evans 出席參議院退伍軍人事務委員會聽證（<a href="https://histalk2.com/2026/11/18/morning-headlines-11-19-26/" target="_blank" rel="noopener">HIStalk 彙整</a>）。報導的標題句是 Sicilia 的「我不是來宣布勝利的」。聽證的核心是病歷推展成本增加 170 億美元，官員說這低於 Oracle 夏天最初的提案。同一天另一則報導指出，一名前員工主張在 VA 病歷現代化過程中，安全警示未獲解決，涉及藥局作業安全、醫學受訓人員的督導，以及臨床人員訓練不足。</span>
+        <span class="en">On November 18, Oracle co-CEO Mike Sicilia and VA Electronic Health Record Modernization Integration Office program executive director Neil Evans appeared before the Senate Veterans' Affairs Committee (<a href="https://histalk2.com/2026/11/18/morning-headlines-11-19-26/" target="_blank" rel="noopener">per HIStalk</a>). The quoted line is Sicilia's: \"I'm not here to declare victory.\" At issue was a $17 billion increase in the cost of the EHR rollout, which officials said was less than Oracle's initial summer proposal. A separate report the same day says a former employee claims safety warnings went unresolved during the VA's modernization, covering pharmacy operations safety, supervision of medical trainees and inadequate clinician training.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">今天前面六則的共同前提是：病歷系統存在、資料乾淨、連接器接得上，剩下的工作是在上面長代理人。這一則提醒那個前提要花多少錢、多少年、多少安全事件才成立。Google 的 Gemini for Healthcare 之所以選擇只讀不寫，部分理由就在這裡——回寫病歷的責任、稽核與臨床安全責任，是另一個量級的工程與法律問題。買方讀今天的新聞時值得把順序倒過來問：在上面那層之前，下面那層到位了嗎？</span>
+        <span class="en">The six items above all assume the same thing: that the system of record exists, the data is clean and the connectors connect, leaving agents to be grown on top. This one is a reminder of what that assumption costs in dollars, years and safety incidents. Part of the reason Gemini for Healthcare reads but does not write sits right here — write-back carries liability, audit and clinical-safety obligations an order of magnitude harder than reading. A buyer reading today's news is entitled to reverse the question: before the layer on top, is the layer underneath actually in place?</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">這一則引自 HIStalk 的頭條彙整與其所連結的報導，本報沒有取得聽證會逐字紀錄，也沒有獨立查核 170 億美元的組成。前員工的主張是一方說法，未經裁決。</span>
+        <span class="en">This item comes from HIStalk's headline roundup and the pieces it links; this report has not obtained the hearing transcript and has not independently verified the composition of the $17 billion. The former employee's account is one party's claim and has not been adjudicated.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://histalk2.com/2026/11/18/morning-headlines-11-19-26/" target="_blank" rel="noopener">HIStalk Morning Headlines, 2026-11-18</a></p></div>
+  </div>
+
+</section>
+
+<section id="product">
+  <h2>02 — Product Analysis</h2>
+  <div class="sec-title">
+    <span class="zh">兩個方向完全相反的押注：Google 押連接器廣度而放棄最後一哩，Suki 押風險承擔而規模最小。兩邊的共同問題是同一個——誰來量</span>
+        <span class="en">Two bets pointing opposite ways: Google wagers connector breadth and gives up the last mile; Suki wagers risk-bearing from the smallest scale. Both share the same unanswered question — who does the measuring</span>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>Gemini for Healthcare</h3>
+      <p class="sub"><span class="zh-inline">水平編排層 · Google Cloud（美國）</span><span class="en-inline">Horizontal orchestration layer · Google Cloud (US)</span></p>
+      <p>
+        <span class="zh"><strong>功能與定位。</strong>它不是病歷系統，而是架在病歷之上的讀取與編排層，賣給醫療提供者與健保計畫。五個預設 skill 處理病歷彙整、就診前準備、給付與政策審閱、付款方給付判定；連接器往下接 Epic（open.epic API）與 Oracle Health（Ignite FHIR API），往旁接 InterSystems FHIR Server、Keragon 的 400 多個應用、Verato 的病人身分比對，以及 Waystar、Cognizant Trizetto、GoodRx、Infinitus Relay 這些營收循環系統，文獻端接 Optum EvidenceVue、ASCO 指引與 BMJ Digital Health（<a href="https://www.googlecloudpresscorner.com/2026-11-10-Google-Cloud-Launches-Gemini-for-Healthcare" target="_blank" rel="noopener">來源</a>）。病人紀錄、prompt 與輸出留在客戶自己的企業環境，Google 聲明不用客戶資料訓練基礎模型。</span>
+        <span class="en"><strong>Function and position.</strong> Not a system of record but a read-and-orchestrate layer above one, sold to providers and health plans. Five preset skills handle records synthesis, pre-appointment prep, coverage and policy review and payer benefit determination; connectors reach down into Epic (open.epic APIs) and Oracle Health (Ignite FHIR APIs), sideways into InterSystems FHIR Server, Keragon's 400+ applications and Verato's patient identity matching, plus revenue cycle systems Waystar, Cognizant Trizetto, GoodRx and Infinitus Relay, and into the literature via Optum EvidenceVue, ASCO guidelines and BMJ Digital Health (<a href="https://www.googlecloudpresscorner.com/2026-11-10-Google-Cloud-Launches-Gemini-for-Healthcare" target="_blank" rel="noopener">source</a>). Patient records, prompts and outputs stay in the customer's own enterprise environment, and Google states it does not use customer data to train its foundation models.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：廣度確實是別人補不起來的：一次發表就帶上七家 launch 客戶（含 HCA、Optum、Northwell）、16 家系統整合商（Accenture、Deloitte、KPMG、PwC、TCS、Wipro 等），以及 Google、Anthropic、OpenAI 三家的模型並存與智慧路由（<a href="https://www.googlecloudpresscorner.com/2026-11-10-Google-Cloud-Launches-Gemini-for-Healthcare" target="_blank" rel="noopener">連接器與夥伴清單</a>）。</span>
+        <span class="en">: The breadth is not something a rival can assemble quickly: one launch carrying seven named customers (HCA, Optum and Northwell among them), sixteen systems integrators (Accenture, Deloitte, KPMG, PwC, TCS, Wipro and more), and Google, Anthropic and OpenAI models side by side under smart routing (<a href="https://www.googlecloudpresscorner.com/2026-11-10-Google-Cloud-Launches-Gemini-for-Healthcare" target="_blank" rel="noopener">connector and partner list</a>).</span>
+        </li>
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：引證落在正確的地方：回答以已驗證的病歷與核可的指引為依據並附來源，代理人有各自的身分、繼承使用者的角色權限，並納入稽核日誌與集中政策管理。<a href="https://fortune.com/2026/11/10/google-gemini-for-healthcare-and-hospitals-northwell-medical-costs-affordability-insurance/" target="_blank" rel="noopener">Fortune 看到的 35 秒病歷比對</a>是這類產品少見的、具體到可以複驗的描述。</span>
+        <span class="en">: The citation discipline is in the right place: answers are grounded in verified charts and approved guidelines with sources attached, agents carry distinct identities, inherit users' role-based permissions, and fall under audit logging and central policy management. The <a href="https://fortune.com/2026/11/10/google-gemini-for-healthcare-and-hospitals-northwell-medical-costs-affordability-insurance/" target="_blank" rel="noopener">35-second reconciliation Fortune watched</a> is an unusually concrete, re-testable description for this class of product.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：不能回寫病歷，所以它永遠只能建議、不能完成。所有需要落到醫令、排程或計費的動作，最後一哩都要人手完成，而那一哩正是省時間的大部分來源。這也意味著只要 Epic 或 Oracle 自己把同樣的 skill 做進系統內，Google 這一層的價值就被壓縮。</span>
+        <span class="en">: It cannot write to the chart, so it can only ever suggest, never finish. Anything that must land as an order, a schedule or a charge still needs a human for the last mile — and that last mile is where most of the time saving lives. It also means that the moment Epic or Oracle build the same skills natively, the value of this layer compresses.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：零效能數字。發表材料裡所有的量化內容都是在描述問題（每週 28 小時行政、41.9% 過勞、行政成本占 25–35%），沒有一個是在描述這個產品的表現。價格也沒有公布，preview 階段的客戶等於在沒有單位成本與沒有效果估計的情況下做採購決策。</span>
+        <span class="en">: Zero performance figures. Every quantitative claim in the launch material describes the problem — 28 hours a week on admin, 41.9% burnout, 25–35% administrative share — and none describes the product. No price is published either, so preview customers are making a procurement decision with neither a unit cost nor an effect estimate.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：連接器清單上有兩項還沒到位（NextGen 的 EHR 連線排在「未來幾個月」、Optum 的資格查驗與給付協調在限定釋出測試），而智慧路由把任務分派給不同廠商的模型這件事，在臨床情境下會讓「為什麼這個回答長這樣」的可追溯性變得更難。</span>
+        <span class="en">: Two connectors are not there yet (NextGen EHR connectivity is \"in the coming months,\" Optum eligibility and coordination of benefits is in limited release and testing), and routing tasks across three vendors' models makes \"why does this answer look like this\" harder to trace in a clinical setting.</span>
+        </li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>Suki OS</h3>
+      <p class="sub"><span class="zh-inline">垂直代理人作業系統 · Suki（美國）</span><span class="en-inline">Vertical agentic operating system · Suki (US)</span></p>
+      <p>
+        <span class="zh"><strong>功能與定位。</strong>從語音病歷往上長的作業系統，賣給已經在用 ambient 文件工具的醫療機構。三根柱子：夥伴生態（Insight Partners 把情報接進 Suki 的病人脈絡、Platform Partners 把 Suki 的 AI 嵌進自家產品）、統一的 AI 代理人、以及績效保證。首批代理人是 Suki Prior Authorization 與 CDI Agent，後續規劃涵蓋臨床、營運與財務流程，設計上都在人類監督下執行複雜任務（<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/suki-launches-agentic-operating-system" target="_blank" rel="noopener">來源</a>）。公司規模：逾 450 家醫療機構、10 月 9,000 萬美元 E 輪、累計逾 2.5 億美元、2026 年就診量年增逾 190%。</span>
+        <span class="en"><strong>Function and position.</strong> An operating system grown upward out of ambient documentation, sold to organizations already running ambient tools. Three pillars: a partner ecosystem (Insight Partners feeding intelligence into Suki's patient context, Platform Partners embedding Suki's AI in their own products), unified AI agents, and a performance guarantee. The first agents are Suki Prior Authorization and a CDI Agent, with clinical, operational and financial workflows planned, all designed to run complex tasks under human oversight (<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/suki-launches-agentic-operating-system" target="_blank" rel="noopener">source</a>). Company scale: 450+ organizations, a $90M Series E in October, $250M+ raised in total, encounters up more than 190% year over year in 2026.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：Suki Guarantee 是這一週唯一在結構上有新意的東西：符合條件的客戶若未達成談定的績效目標，最高可退回 100% 的費用（<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/suki-launches-agentic-operating-system" target="_blank" rel="noopener">Fierce Healthcare</a>）。這把風險從買方移回賣方，也是對「廠商自述數字」這個市場病徵最直接的回應。</span>
+        <span class="en">: The Suki Guarantee is the only structurally new thing anyone shipped this week: eligible customers can recover up to 100% of fees if agreed performance targets are missed (<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/suki-launches-agentic-operating-system" target="_blank" rel="noopener">Fierce Healthcare</a>). It moves risk back from buyer to seller, and it is the most direct answer anyone has given to this market's self-reported-numbers problem.</span>
+        </li>
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：起點選得對。事前授權與 CDI 都是現金流項目而非體驗項目——前者是 AMA 算過每位醫師每週約 40 件、約 13 小時醫師與員工時間的工作（<a href="https://fortune.com/2026/11/10/google-gemini-for-healthcare-and-hospitals-northwell-medical-costs-affordability-insurance/" target="_blank" rel="noopener">引自 Fortune 整理</a>），後者直接連到編碼與給付權重。從語音病歷的錄音管線往這兩個方向長，資料是現成的。</span>
+        <span class="en">: The starting point is well chosen. Prior authorization and CDI are cash-flow items, not experience items — the AMA puts prior auth at about 40 per physician per week, roughly 13 hours of physician and staff time (<a href="https://fortune.com/2026/11/10/google-gemini-for-healthcare-and-hospitals-northwell-medical-costs-affordability-insurance/" target="_blank" rel="noopener">as compiled by Fortune</a>) — and CDI connects straight to coding and payment weights. Growing into both from an existing ambient capture pipeline means the data is already there.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：保證的條款完全沒有公布：哪些目標、怎麼量、誰符合條件、退款上限如何計算。一紙沒有條款的保證在採購上等於沒有保證，買方必須在合約裡逼出可稽核的量測定義，否則它只是行銷語言。</span>
+        <span class="en">: The guarantee's terms are entirely unpublished: which targets, measured how, who qualifies, how the cap is calculated. A guarantee without terms is not a guarantee in procurement; the buyer has to force an auditable measurement definition into the contract or it is marketing language.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：「有獨立驗證的臨床與財務成果」被寫進了公司說法，但報導沒有列出任何一項，也沒有點名任何一家客戶——在同一週 Ambience 至少點了 Onvida Health、Commure 至少點了 HCA 的情況下，這個缺口更明顯。</span>
+        <span class="en">: \"Independently validated clinical and financial outcomes\" appears in the company's framing, but the coverage lists not one and names no customer — a gap that stands out in a week when Ambience at least named Onvida Health and Commure at least named HCA.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：它同時是 Google 的應用夥伴（在 <a href="https://www.googlecloudpresscorner.com/2026-11-10-Google-Cloud-Launches-Gemini-for-Healthcare" target="_blank" rel="noopener">Gemini for Healthcare 名單</a>中列為 ambient clinical intelligence）又在賣自己的作業系統，而 Google 的智慧路由與五個預設 skill 正在吃同一塊編排價值。這條路上還有 Microsoft、Abridge、Ambience、Commure，450 家機構在這個分母裡不算大。</span>
+        <span class="en">: It is simultaneously a Google application partner (listed as ambient clinical intelligence on the <a href="https://www.googlecloudpresscorner.com/2026-11-10-Google-Cloud-Launches-Gemini-for-Healthcare" target="_blank" rel="noopener">Gemini for Healthcare roster</a>) and a seller of its own operating system, while Google's smart routing and five preset skills eat the same orchestration value. Microsoft, Abridge, Ambience and Commure are on this road too, and 450 organizations is not large against that denominator.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="company">
+  <h2>03 — Companies &amp; Competition</h2>
+  <div class="sec-title">
+    <span class="zh">誰站在哪裡、憑什麼、跟誰打——本週的八個玩家按「離病歷的距離」排</span>
+        <span class="en">Who stands where, on what, against whom — this week's eight players, ordered by distance from the chart</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th><span class="zh-inline">公司</span><span class="en-inline">Company</span></th>
+        <th><span class="zh-inline">近況與數字</span><span class="en-inline">Recent state &amp; numbers</span></th>
+        <th><span class="zh-inline">競爭定位與護城河</span><span class="en-inline">Position &amp; moat</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Google Cloud</strong><br><span class="zh-inline">病歷之上的水平編排層</span><span class="en-inline">Horizontal layer above the chart</span></td>
+          <td>
+            <span class="zh">11/10 推出 Gemini for Healthcare（preview），七家 launch 客戶、模型可選 Google／Anthropic／OpenAI、Epic 與 Oracle Health 僅讀取不回寫；11/17–19 補上 Keragon（400+ 應用）與 Verato 身分解析的 MCP 連線（<a href="https://www.googlecloudpresscorner.com/2026-11-10-Google-Cloud-Launches-Gemini-for-Healthcare" target="_blank" rel="noopener">公告</a>、<a href="https://www.healthitanswers.net/health-it-business-news-november-19-2026/" target="_blank" rel="noopener">夥伴彙整</a>）。</span>
+        <span class="en">Launched Gemini for Healthcare in preview on 11/10 with seven named customers, a choice of Google/Anthropic/OpenAI models, and read-only access to Epic and Oracle Health with no write-back; filled in Keragon (400+ apps) and Verato identity MCP connections on 11/17–19 (<a href="https://www.googlecloudpresscorner.com/2026-11-10-Google-Cloud-Launches-Gemini-for-Healthcare" target="_blank" rel="noopener">announcement</a>, <a href="https://www.healthitanswers.net/health-it-business-news-november-19-2026/" target="_blank" rel="noopener">partner roundup</a>).</span>
+          </td>
+          <td>
+            <span class="zh">護城河是連接器廣度與企業銷售通路。弱點是不能回寫，等於永遠少了最後一哩，而這一哩握在 Epic 與 Oracle 手上。</span>
+        <span class="en">The moat is connector breadth and enterprise distribution. The weakness is no write-back — permanently short of the last mile, and that mile belongs to Epic and Oracle.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Microsoft</strong><br><span class="zh-inline">在流程裡面，而且量得出來</span><span class="en-inline">Inside the workflow, and counted</span></td>
+          <td>
+            <span class="zh">Satya Nadella 在 10/28 財報電話會議說，有 10 家醫療系統各自自 2026 年起累計逾 100 萬次 AI 記錄的就診（點名 Advocate Health、Intermountain Health、Mass General Brigham、Mercy），該季跨客戶自動化 3,000 萬次就診、年增 70%；Mass General Brigham 的 Dragon Copilot 推展到逾 4,000 名提供者。7 月的財季數字是 2,800 萬次，當時說 2026 曆年上看逾 1 億次（<a href="https://www.beckershospitalreview.com/healthcare-information-technology/digital-health/10-health-systems-top-1m-ai-documented-encounters-with-microsoft/" target="_blank" rel="noopener">Becker's</a>）。</span>
+        <span class="en">On the 10/28 earnings call Satya Nadella said 10 health systems have each documented more than 1 million encounters with its AI since the start of calendar 2026 (naming Advocate Health, Intermountain Health, Mass General Brigham and Mercy), with 30 million encounters automated across customers that quarter, up 70% year over year; Mass General Brigham rolled Dragon Copilot out to more than 4,000 providers. The July fiscal quarter figure was 28 million, on pace then for more than 100 million in calendar 2026 (<a href="https://www.beckershospitalreview.com/healthcare-information-technology/digital-health/10-health-systems-top-1m-ai-documented-encounters-with-microsoft/" target="_blank" rel="noopener">Becker's</a>).</span>
+          </td>
+          <td>
+            <span class="zh">護城河是 Nuance 的既有裝機量加上與 Epic 的深度整合，而且它是本週唯一拿得出經過上市公司財報揭露紀律的量化規模的玩家。弱點是這些數字講的是量，不是結果。</span>
+        <span class="en">The moat is Nuance's installed base plus deep Epic integration, and it is the only player this week with volume figures that passed through public-company disclosure discipline. The weakness is that those numbers measure volume, not outcomes.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Epic</strong><br><span class="zh-inline">系統紀錄本身，唯一能回寫的那一方</span><span class="en-inline">The system of record — the only party that can write</span></td>
+          <td>
+            <span class="zh">用於 3,620 家美國醫院與醫療系統、約 38% 的美國住院 EHR 市占、約 3.25 億人的病歷；Cosmos 累積 163 億次就診、逾 3 億名不重複病人、310 個醫療系統；與 Microsoft Research、耶魯醫學院共同開發的 CoMET 以 1.18 億名病人、1,150 億筆離散醫療事件（1,510 億 token）預訓練；代理人 Art（臨床）、Emmie（病人端 MyChart）、Penny（營收循環，已上線）（<a href="https://www.healthcareitnews.com/news/epic-unveils-ai-agents-showcases-new-foundational-models" target="_blank" rel="noopener">Healthcare IT News</a>）。</span>
+        <span class="en">In use at 3,620 US hospitals and health systems, about 38% of the US inpatient EHR market, with records for roughly 325 million people; Cosmos holds 16.3 billion encounters, 300M+ unique patients and 310 health systems; CoMET, built with Microsoft Research and Yale School of Medicine, was pretrained on 118 million patients and 115 billion discrete medical events (151 billion tokens); agents Art (clinical), Emmie (patient-facing in MyChart) and Penny (revenue cycle, already live) (<a href="https://www.healthcareitnews.com/news/epic-unveils-ai-agents-showcases-new-foundational-models" target="_blank" rel="noopener">Healthcare IT News</a>).</span>
+          </td>
+          <td>
+            <span class="zh">護城河是每一個其他玩家都要向它申請讀取權。它只要把別人的 skill 做成原生功能，上層那些產品的價值就被吸收。弱點是部署節奏慢，而這些數字出自 UGM 2025 的報導，不是本週新數據。</span>
+        <span class="en">The moat is that every other player has to ask it for read access. If it builds rivals' skills natively, the value of the layer above gets absorbed. The weakness is deployment pace — and these figures come from UGM 2025 coverage, not from this week.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Abridge</strong><br><span class="zh-inline">語音病歷量最大，正用免費搶臨床問答</span><span class="en-inline">Largest ambient volume, buying its way into clinical Q&amp;A</span></td>
+          <td>
+            <span class="zh">自述今年支援逾 1.2 億次醫病互動、逾 300 個美國醫療系統、28 種以上語言驗證、2025 與 2026 連續 Best in KLAS；11/13 把 Assistant 免費開給 NACHC 10.8 萬名臨床人員，11/16 與 Wiley 合作把指引證據接進 Assistant；HLTH 上也公布本地化路徑與 OpenAI computer-use 代理人合作（<a href="https://www.abridge.com/press-release/abridge-national-association-community-health-centers" target="_blank" rel="noopener">新聞稿</a>、<a href="https://digitalhealthwire.com/hlth-2026-recap-and-major-announcements/" target="_blank" rel="noopener">HLTH 彙整</a>）。</span>
+        <span class="en">Says it will support more than 120 million patient-clinician encounters this year across 300+ US health systems, validated in 28+ languages, Best in KLAS for ambient AI in 2025 and 2026; opened the Assistant free to 108,000 NACHC clinicians on 11/13 and partnered with Wiley on 11/16 to pipe guideline evidence into it; also announced local pathways and computer-use agent work with OpenAI at HLTH (<a href="https://www.abridge.com/press-release/abridge-national-association-community-health-centers" target="_blank" rel="noopener">release</a>, <a href="https://digitalhealthwire.com/hlth-2026-recap-and-major-announcements/" target="_blank" rel="noopener">HLTH roundup</a>).</span>
+          </td>
+          <td>
+            <span class="zh">護城河是錄音管線的規模與醫療系統合約。弱點是它進攻的臨床問答市場，對手已經免費且規模更大，而它自己沒有公布 Assistant 的任何使用數據。</span>
+        <span class="en">The moat is capture-pipeline scale and health system contracts. The weakness is that the clinical Q&amp;A market it is attacking already has a free, larger incumbent — and it has published no usage data for the Assistant at all.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>OpenEvidence</strong><br><span class="zh-inline">廣告養的免費臨床答案引擎</span><span class="en-inline">Ad-funded free clinical answer engine</span></td>
+          <td>
+            <span class="zh">據報 2026 年 9 月一輪約 2.5 億美元後估值 150 億美元（約年化營收 50 倍）；2026 年 1 月 D 輪 2.5 億美元／120 億美元估值、2025 年 2 月 A 輪 7,500 萬美元／10 億美元估值；2025 年 12 月約 76 萬名註冊美國醫師（逾四成）、當月約 1,800 萬次諮詢，2026/3/10 單日破 100 萬次；11/15 成為 Apple 20 萬人研究的臨床引擎（<a href="https://aimagazine.com/news/openevidence-doctors-ai-search-engine-valued-at-us-15bn" target="_blank" rel="noopener">AI Magazine</a>、<a href="https://www.apple.com/newsroom/2026/11/apple-launches-research-study-to-explore-the-use-of-ai-for-health/" target="_blank" rel="noopener">Apple</a>）。</span>
+        <span class="en">Reportedly valued at $15 billion after a roughly $250 million round in September 2026 (about 50x annualised revenue), following a $250 million Series D at $12 billion in January 2026 and a $75 million Series A at $1 billion in February 2025; about 760,000 registered US physicians (more than 40%) and some 18 million consultations in December 2025, passing one million in a single day on 2026-03-10; became the clinical engine for Apple's 200,000-participant study on 11/15 (<a href="https://aimagazine.com/news/openevidence-doctors-ai-search-engine-valued-at-us-15bn" target="_blank" rel="noopener">AI Magazine</a>, <a href="https://www.apple.com/newsroom/2026/11/apple-launches-research-study-to-explore-the-use-of-ai-for-health/" target="_blank" rel="noopener">Apple</a>).</span>
+          </td>
+          <td>
+            <span class="zh">護城河是醫師端的使用習慣與廣告變現模型——免費讓它幾乎無法被價格打敗。弱點是它不在工作流裡面：它是另開一個分頁，而 Google 與 Abridge 正在把同樣的引證答案塞進病歷旁邊。</span>
+        <span class="en">The moat is physician habit plus ad monetization — being free makes it nearly impossible to beat on price. The weakness is that it is not in the workflow: it is another tab, while Google and Abridge are putting the same cited answers next to the chart.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Suki</strong><br><span class="zh-inline">用退款保證換信任的垂直玩家</span><span class="en-inline">Vertical player trading a refund guarantee for trust</span></td>
+          <td>
+            <span class="zh">11/16 發表 Suki OS 與 Suki Guarantee（未達談定績效目標最高退 100%）；逾 450 家機構、10 月 9,000 萬美元 E 輪、累計逾 2.5 億美元、2026 年就診量年增逾 190%、2025 年營收翻倍（<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/suki-launches-agentic-operating-system" target="_blank" rel="noopener">Fierce Healthcare</a>）。同時列名 Gemini for Healthcare 的應用夥伴。</span>
+        <span class="en">Shipped Suki OS and the Suki Guarantee on 11/16 (up to 100% back if agreed performance targets are missed); 450+ organizations, $90M Series E in October, $250M+ total, encounters up 190%+ in 2026, revenue doubled in 2025 (<a href="https://www.fiercehealthcare.com/ai-and-machine-learning/suki-launches-agentic-operating-system" target="_blank" rel="noopener">Fierce Healthcare</a>). Also listed as a Gemini for Healthcare application partner.</span>
+          </td>
+          <td>
+            <span class="zh">護城河目前是風險承擔意願，不是技術——這在短期有效，但可複製。弱點是規模最小、沒有點名客戶，而且同時依附在競爭者的平台上。</span>
+        <span class="en">The moat right now is willingness to carry risk, not technology — effective short-term, and copyable. The weakness is the smallest scale of the group, no named customers, and dependence on a competitor's platform at the same time.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Ambience Healthcare</strong><br><span class="zh-inline">住院端的編碼與營收回收</span><span class="en-inline">Inpatient coding and revenue recovery</span></td>
+          <td>
+            <span class="zh">11/17 在 Chorus 上推出 Care Orchestration（Rounding Assistant、Discharge Readiness）；自報 Onvida Health 的 case mix index 拉升 6.5%、夥伴平均約 3 倍 ROI，並提供與成果連動的收費結構（<a href="https://hitconsultant.net/2026/11/17/ambience-healthcare-introduces-inpatient-care-orchestration-cmi-discharge-readiness/" target="_blank" rel="noopener">HIT Consultant</a>）。</span>
+        <span class="en">Launched Care Orchestration on Chorus on 11/17 (Rounding Assistant, Discharge Readiness); self-reports a 6.5% case mix index lift at Onvida Health and about 3x average partner ROI, and offers outcome-aligned fee structures (<a href="https://hitconsultant.net/2026/11/17/ambience-healthcare-introduces-inpatient-care-orchestration-cmi-discharge-readiness/" target="_blank" rel="noopener">HIT Consultant</a>).</span>
+          </td>
+          <td>
+            <span class="zh">護城河是住院情境的深度——查房與出院阻礙需要的脈絡比門診文件深得多。弱點是所有關鍵數字都只有一家客戶、沒有方法學。</span>
+        <span class="en">The moat is inpatient depth — rounding and discharge barriers need far more context than ambulatory documentation. The weakness is that every key figure rests on one customer and no methodology.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Commure</strong><br><span class="zh-inline">已經在 EHR 裡面的流程整併者</span><span class="en-inline">Workflow consolidator already inside the EHR</span></td>
+          <td>
+            <span class="zh">11/16 併購 Elaborate（條件未揭露），把門診後收件匣自動化併進既有的 ambient 文件、編碼與營收循環產品線；自述每年數千萬次就診、逾 500 家機構、逾 50 萬名使用者、約占美國就診 7%，點名 HCA Healthcare（<a href="https://www.globenewswire.com/news-release/2026/11/16/3403471/0/en/commure-acquires-elaborate-to-cure-the-clinician-inbox.html" target="_blank" rel="noopener">GlobeNewswire</a>）。</span>
+        <span class="en">Acquired Elaborate on 11/16 on undisclosed terms, folding post-visit inbox automation into existing ambient documentation, coding and revenue cycle lines; says tens of millions of appointments a year, 500+ organizations, 500,000+ users, about 7% of US appointments, naming HCA Healthcare (<a href="https://www.globenewswire.com/news-release/2026/11/16/3403471/0/en/commure-acquires-elaborate-to-cure-the-clinician-inbox.html" target="_blank" rel="noopener">GlobeNewswire</a>).</span>
+          </td>
+          <td>
+            <span class="zh">護城河是已部署的廣度加上它自己的前線部署工程團隊（把協定調成每家機構的做法）。弱點是靠併購拼出來的產品線，整合風險與定位重疊都在自己身上。</span>
+        <span class="en">The moat is deployed breadth plus its own forward-deployed engineering teams tuning protocols to each organization's practice. The weakness is a product line assembled by acquisition, carrying its own integration risk and internal overlap.</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="zh"><strong>今天的競爭結構是一個夾心。</strong>最上層是賣廣度但不能回寫的水平平台（Google），最下層是唯一能回寫、而且可以把上層功能原生化的系統紀錄（Epic、Oracle），中間擠著一排靠捕捉管線往上長的垂直玩家（Microsoft、Abridge、Suki、Ambience、Commure）。被夾住的那一排最清楚自己的處境，所以它們這一週開始賣的不是功能而是風險承擔——Suki 的退款保證、Ambience 與成果連動的收費。真正的分水嶺不會是誰的代理人聰明，而是誰先願意在合約裡寫下可稽核的量測定義。</span>
+        <span class="en"><strong>Today's competitive structure is a sandwich.</strong> On top, a horizontal platform selling breadth but unable to write (Google). At the bottom, the only parties that can write and that can make the upper layer's features native (Epic, Oracle). Squeezed between them, a row of vertical players growing upward out of their capture pipelines (Microsoft, Abridge, Suki, Ambience, Commure). The squeezed row understands its position best, which is why what it started selling this week was not capability but risk-bearing — Suki's refund guarantee, Ambience's outcome-aligned fees. The real dividing line will not be whose agent is cleverer, but who first agrees to put an auditable measurement definition into the contract.</span>
+    </p>
+  </div>
+</section>
+
+<section id="taiwan">
+  <h2>04 — Taiwan Angle</h2>
+  <div class="sec-title">
+    <span class="zh">今天這些產品共同缺的那樣東西，台灣剛好蓋了一個機構專門生產它</span>
+        <span class="en">What every product above is missing is the one thing Taiwan built an institution to produce</span>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="zh"><strong>(1) 台灣把「誰來量」做成了制度，而不是廠商的自願。</strong>衛福部自 2024 年 10 月 7 日起成立三大 AI 中心（<a href="https://www.mohw.gov.tw/cp-16-80155-1.html" target="_blank" rel="noopener">衛福部公告</a>、<a href="https://aicenter.mohw.gov.tw/" target="_blank" rel="noopener">三大中心網站</a>）：負責任 AI 執行中心負責資安與隱私管理辦法、公開模型與資料與效能資訊、可解釋性分析與 AI 模型生命週期管理；臨床 AI 取證驗證中心組成醫院聯盟、串接跨層級電子病歷資料協助廠商驗證模型；AI 影響性研究中心建立跨體系臨床試驗機制，評估臨床效益並建立「科學性的定價基礎」以爭取健保給付。徵案過程是 30 家醫院提了 48 案、三階段評選後 16 家醫院的 19 案通過決選（臺大、中榮、北榮、成大、中醫大、三總、林口長庚等）。把今天的新聞對照著看：Suki 要自己掏錢做保證、Ambience 只能拿一家客戶的 CMI 說話，而台灣的制度設計是先假設廠商自述不可採信，再蓋一個第三方來量。</span>
+        <span class="en"><strong>(1) Taiwan turned \"who does the measuring\" into an institution rather than a vendor's volunteer act.</strong> Since October 7, 2024 the Ministry of Health and Welfare has run three AI centers (<a href="https://www.mohw.gov.tw/cp-16-80155-1.html" target="_blank" rel="noopener">MOHW announcement</a>, <a href="https://aicenter.mohw.gov.tw/" target="_blank" rel="noopener">center site</a>): a Responsible AI Implementation Center covering security and privacy rules, disclosure of models, data and performance, explainability analysis and AI model lifecycle management; a Clinical AI Validation Center that forms a hospital consortium and links EHR data across care levels to help vendors validate models; and an AI Impact Research Center that builds cross-system clinical trial machinery to assess clinical benefit and establish a \"scientific basis for pricing\" in pursuit of National Health Insurance coverage. In the call for proposals, 30 hospitals submitted 48 proposals and, after three rounds, 19 proposals from 16 hospitals were selected (NTU Hospital, Taichung and Taipei Veterans General, NCKU Hospital, China Medical University Hospital, Tri-Service General and Linkou Chang Gung among them). Read against today's news: Suki has to fund its own guarantee and Ambience can only speak through one customer's CMI, while Taiwan's design starts from the assumption that vendor self-reporting is not credible and builds a third party to do the measuring.</span>
+    </p>
+    <p>
+      <span class="zh"><strong>(2) 那條給付路徑的時間尺度是三年，不是一次發表會。</strong>AI 影響性研究中心與國際論壇於 2025 年 11 月 20 日舉行聯合啟動（<a href="https://udn.com/news/story/7266/9152553" target="_blank" rel="noopener">聯合報</a>），主題是「以臨床實證推動 AI 醫療創新」，由北榮、中榮、三總、成大、臺大五家醫學中心執行本土臨床試驗與醫療科技評估——官方的說法是過去的評估依賴國外 RCT 資料。五家醫院的試驗資料會送健保署的 HTA 評估中心，再進健保共擬會（成員含專家、學者與公民代表）決定是否納入給付；衛福部資訊處長李建璋表示預計約三年後送件，並指出健保一旦納入給付的藥品與服務極少被移除，所以試驗設計必須謹慎。把今天的三個數字放進這條管線想一遍：「最多減少 36% 收件匣時間」「CMI 拉升 6.5%」「約 3 倍 ROI」沒有一個帶著方法學、樣本數與期間，也就沒有一個進得了 HTA 的門。對台灣廠商而言，這是一個很實際的提醒：你在美國市場學來的那套新聞稿數字，在這條路徑上不構成證據。</span>
+        <span class="en"><strong>(2) That reimbursement path runs on a three-year clock, not a launch event.</strong> The AI Impact Research Center held its joint launch and international forum on November 20, 2025 (<a href="https://udn.com/news/story/7266/9152553" target="_blank" rel="noopener">UDN</a>) under the theme of advancing AI medical innovation through clinical evidence, with five medical centers — Taipei Veterans General, Taichung Veterans General, Tri-Service General, NCKU Hospital and NTU Hospital — running domestic trials and health technology assessment, officials noting that past evaluations leaned on overseas RCT data. Trial data from the five goes to the NHI Administration's HTA evaluation center and then to the NHI Joint Drafting Committee, whose members include experts, scholars and public representatives, which decides on coverage; MOHW Information Department director Lee Chien-chang expects submission in about three years, noting that drugs and services once covered are rarely removed, so trial design has to be careful. Now run today's three numbers through that pipeline: \"up to 36% less inbox time,\" \"6.5% CMI lift\" and \"about 3x ROI\" carry no methodology, sample size or period between them, so not one of them gets through the HTA door. For Taiwanese vendors that is a practical warning: the press-release arithmetic learned from the US market does not count as evidence on this path.</span>
+    </p>
+    <p>
+      <span class="zh"><strong>(3) Gemini for Healthcare 的護城河在台灣幾乎不存在，因為下面那層還沒鋪完。</strong>Google 這個產品的價值全部建立在連接器上——Epic 的 open.epic API、Oracle Health 的 Ignite FHIR API。台灣的醫院多數跑自建 HIS，這兩個連接器在這裡接不到任何東西，所以真正的前置條件是資料標準化：衛福部的 333 政策推 FHIR Box 格式，目標是 2026 年底醫學中心病歷全國互通，2027 與 2028 年擴及區域與地區醫院，診所與衛生所則給標準化的公版系統樣板（<a href="https://udn.com/news/story/7266/9592218" target="_blank" rel="noopener">聯合報，2026-06-27</a>；健康台灣深耕計畫五年 489 億元、第二期自 2027 年起）。換句話說，美國在爭的是病歷之上那一層，台灣多數機構還在鋪病歷之間那一層。這對本地團隊其實是機會：編排層的競爭已經證明會被連接器廣度決定，而在台灣，誰先把跨院互通的讀取層做對，誰就站在 Google 在美國站的那個位置。</span>
+        <span class="en"><strong>(3) Gemini for Healthcare's moat barely exists in Taiwan, because the layer beneath it is not finished.</strong> The entire value of Google's product rests on connectors — Epic's open.epic APIs, Oracle Health's Ignite FHIR APIs. Most Taiwanese hospitals run self-built HIS, so neither connector reaches anything here, which makes data standardization the real precondition: the MOHW's \"333\" policy is rolling out a FHIR Box format with the goal of nationwide interoperability of medical center records by the end of 2026, extending to regional and district hospitals in 2027 and 2028, with a standardized public template for clinics and health centers (<a href="https://udn.com/news/story/7266/9592218" target="_blank" rel="noopener">UDN, 2026-06-27</a>; the Healthy Taiwan program carries NT$48.9 billion over five years, with a second phase from 2027). Put differently: the US is fighting over the layer above the chart while most institutions here are still laying the layer between charts. That is an opening for local teams — the orchestration fight has already demonstrated that connector breadth decides it, and in Taiwan whoever first gets the cross-institution read layer right stands where Google stands in the US.</span>
+    </p>
+    <p>
+      <span class="zh"><strong>(4) 回寫與不回寫的界線，在台灣會先變成一份指引的問題。</strong>衛福部委託臺北醫學大學協助起草醫療機構使用生成式 AI 的指引，當時的規劃是 2026 年上半年召集相關機關討論定案；在指引生效前，醫院仍可試辦 AI 醫療服務，但須保護病人個資並管理資安風險，醫事司副司長劉玉菁說指引目的是控制 AI 風險與保護病人安全（<a href="https://news.pts.org.tw/article/784708" target="_blank" rel="noopener">公視新聞，2025-12-07</a>）。Google 選擇只讀不寫是一個商業與責任的計算；在台灣，這條線很可能由指引先畫出來，而不是由廠商自己選。要注意的是上面這則報導時間較早（2025 年 12 月），指引的最終內容與時程本報未取得更新來源，不應據此推論現況。</span>
+        <span class="en"><strong>(4) The write/no-write line will show up in Taiwan as a guideline question first.</strong> The MOHW commissioned Taipei Medical University to help draft a guideline for medical institutions using generative AI, with the plan at the time being to convene the relevant agencies in the first half of 2026 to settle it; until it takes effect hospitals may still pilot AI medical services provided they protect patient data and manage cybersecurity risk, and Department of Medical Affairs deputy director Liu Yu-ching said the guideline is meant to control AI risk and protect patient safety (<a href="https://news.pts.org.tw/article/784708" target="_blank" rel="noopener">PTS News, 2025-12-07</a>). Google's read-only choice is a commercial and liability calculation; in Taiwan that line will likely be drawn by guideline rather than by vendor preference. Note that this report is older (December 2025) and this daily has not obtained an updated source on the guideline's final content or timing, so nothing about the current state should be inferred from it.</span>
+    </p>
+  </div>
+</section>
+
+<section id="reading">
+  <h2>05 — Further Reading</h2>
+  <div class="sec-title">
+    <span class="zh">挑的標準是：能讓你自己複驗今天結論的東西優先，其次是把本週全部發表擺在一起的清單</span>
+        <span class="en">Chosen for what lets you re-check today's conclusions yourself, then for the one list that holds the whole week</span>
+  </div>
+
+  <ol class="reading">
+    <li>
+      <a href="https://www.googlecloudpresscorner.com/2026-11-10-Google-Cloud-Launches-Gemini-for-Healthcare" target="_blank" rel="noopener">Google Cloud Launches Gemini for Healthcare — Google Cloud Press Corner (2026-11-10)</a>
+      <p class="why"><span class="zh">連接器與夥伴清單在這裡是逐項列出的，包括「讀取 Epic、不回寫 EHR」那一句。今天任何關於這個產品能力邊界的判斷，都應該回到這一頁核對，而不是靠二手報導。</span>
+        <span class="en">The connector and partner lists are itemized here, including the line about reading Epic with no write-back to the EHR. Any judgment about this product's capability boundary should be checked against this page rather than secondary coverage.</span></p>
+    </li>
+    <li>
+      <a href="https://fortune.com/2026/11/10/google-gemini-for-healthcare-and-hospitals-northwell-medical-costs-affordability-insurance/" target="_blank" rel="noopener">Google launches Gemini for healthcare, and hospitals like Northwell hope it brings down your medical bill — Fortune (2026-11-10)</a>
+      <p class="why"><span class="zh">唯一同時報導了 demo 細節（35 秒、揪出漏掉的過敏）與買方財務處境（Northwell 400 名員工處理否准、1% 利潤率）的一篇。要理解醫院為什麼在沒有效果數據的情況下也願意買，看這篇。</span>
+        <span class="en">The only piece that reports both the demo detail (35 seconds, catching a missed allergy) and the buyer's financial position (Northwell's 400 denial staff, a 1% margin). Read it to understand why hospitals will buy without an effect estimate.</span></p>
+    </li>
+    <li>
+      <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/suki-launches-agentic-operating-system" target="_blank" rel="noopener">HLTH 2026: Suki unveils agentic OS to automate complex healthcare workflows — Fierce Healthcare (2026-11-16)</a>
+      <p class="why"><span class="zh">對 Suki Guarantee 講得最清楚的一篇，也把「醫療的問題是執行而不是 AI」這個論點完整留下來。如果你在做採購，這一篇是你要求對方把條款寫進合約時的引用來源。</span>
+        <span class="en">The clearest account of the Suki Guarantee, and it preserves the \"execution problem, not an AI shortage\" argument in full. If you are buying, this is what you cite when you ask for the terms in writing.</span></p>
+    </li>
+    <li>
+      <a href="https://www.apple.com/newsroom/2026/11/apple-launches-research-study-to-explore-the-use-of-ai-for-health/" target="_blank" rel="noopener">Apple launches research study to explore the use of AI for health — Apple Newsroom (2026-11-15)</a>
+      <p class="why"><span class="zh">研究設計的第一手描述：量什麼、收誰、HealthKit 資料如何選擇性加入、資料不用於訓練模型。這會是未來討論病人端健康 AI 時最常被引用的方法學文件之一，值得先讀原文而不是摘要。</span>
+        <span class="en">First-hand description of the design: what is measured, who is eligible, how HealthKit data is optionally added, and that study data is not used to train models. This will become one of the most-cited methodology documents in patient-facing health AI, so read the original rather than a summary.</span></p>
+    </li>
+    <li>
+      <a href="https://digitalhealthwire.com/hlth-2026-recap-and-major-announcements/" target="_blank" rel="noopener">HLTH 2026 Recap and Major Announcements — Digital Health Wire (2026-11-19)</a>
+      <p class="why"><span class="zh">本週所有發表擺在一起的唯一一份清單，包括本報沒有獨立查核、因此未寫進正文的項目（Fold Health、TytoCare、Wheel、Availity Extend、Personify Health 等）。當你想確認今天漏了什麼，從這裡開始比從搜尋引擎開始快。</span>
+        <span class="en">The only list that holds the whole week in one place, including items this report did not independently verify and therefore left out of the body (Fold Health, TytoCare, Wheel, Availity Extend, Personify Health and others). When you want to know what today missed, start here rather than with a search engine.</span></p>
+    </li>
+  </ol>
+</section>
+
+<section id="refs">
+  <h2>06 — References</h2>
+  <div class="sec-title">
+    <span class="zh">參考文獻</span>
+        <span class="en">References</span>
+  </div>
+
+  <div class="panel">
+    <ol class="refs">
+      <li>Google Cloud Launches Gemini for Healthcare. <em>Google Cloud Press Corner</em>, 2026-11-10. <a href="https://www.googlecloudpresscorner.com/2026-11-10-Google-Cloud-Launches-Gemini-for-Healthcare" target="_blank" rel="noopener">googlecloudpresscorner.com</a></li>
+      <li>Google Cloud Launches Gemini for Healthcare. <em>PR Newswire</em>, 2026-11-10. <a href="https://www.prnewswire.com/news-releases/google-cloud-launches-gemini-for-healthcare-302934461.html" target="_blank" rel="noopener">prnewswire.com</a></li>
+      <li>Google launches Gemini for healthcare, and hospitals like Northwell hope it brings down your medical bill. <em>Fortune</em>, 2026-11-10. <a href="https://fortune.com/2026/11/10/google-gemini-for-healthcare-and-hospitals-northwell-medical-costs-affordability-insurance/" target="_blank" rel="noopener">fortune.com</a></li>
+      <li>Keragon Accelerates Enterprise AI Transformation with Google Cloud's Gemini for Healthcare. <em>PR Newswire</em>, 2026-11. <a href="https://www.prnewswire.com/news-releases/keragon-accelerates-enterprise-ai-transformation-with-google-clouds-gemini-for-healthcare-302934882.html" target="_blank" rel="noopener">prnewswire.com</a></li>
+      <li>Verato Accelerates Enterprise AI Transformation with Google Cloud's Gemini for Healthcare. <em>PR Newswire</em>, 2026-11. <a href="https://www.prnewswire.com/news-releases/verato-accelerates-enterprise-ai-transformation-with-google-clouds-gemini-for-healthcare-302934517.html" target="_blank" rel="noopener">prnewswire.com</a></li>
+      <li>Health IT Business News — November 19, 2026. <em>Health IT Answers</em>, 2026-11-19. <a href="https://www.healthitanswers.net/health-it-business-news-november-19-2026/" target="_blank" rel="noopener">healthitanswers.net</a></li>
+      <li>HLTH 2026: Suki unveils agentic OS to automate complex healthcare workflows. <em>Fierce Healthcare</em>, 2026-11-16. <a href="https://www.fiercehealthcare.com/ai-and-machine-learning/suki-launches-agentic-operating-system" target="_blank" rel="noopener">fiercehealthcare.com</a></li>
+      <li>Suki Introduces Suki OS, an Agentic Operating System Built on top of Ambient Clinical Intelligence. <em>Business Wire / FinancialContent</em>, 2026-11-16. <a href="https://www.financialcontent.com/article/bizwire-2026-11-16-suki-introduces-suki-os-an-agentic-operating-system-built-on-top-of-ambient-clinical-intelligence" target="_blank" rel="noopener">financialcontent.com</a></li>
+      <li>Abridge and NACHC Making the Abridge Assistant Available to 108,000 Community Health Center Clinicians. <em>Abridge</em>, 2026-11-13. <a href="https://www.abridge.com/press-release/abridge-national-association-community-health-centers" target="_blank" rel="noopener">abridge.com</a></li>
+      <li>Wiley and Abridge Partner to Bring the Evidence that Informs Clinical Guidelines Worldwide into the Abridge Assistant. <em>Business Wire</em>, 2026-11-16. <a href="https://www.businesswire.com/news/home/20261116095169/en/Wiley-and-Abridge-Partner-to-Bring-the-Evidence-that-Informs-Clinical-Guidelines-Worldwide-into-the-Abridge-Assistant" target="_blank" rel="noopener">businesswire.com</a></li>
+      <li>Ambience Healthcare Launches Care Orchestration Suite to Lift Case Mix Index by 6.5% and Accelerate Hospital Discharge. <em>HIT Consultant</em>, 2026-11-17. <a href="https://hitconsultant.net/2026/11/17/ambience-healthcare-introduces-inpatient-care-orchestration-cmi-discharge-readiness/" target="_blank" rel="noopener">hitconsultant.net</a></li>
+      <li>Ambience Healthcare Launches Care Orchestration for Inpatient Teams. <em>Business Wire / FinancialContent</em>, 2026-11-17. <a href="https://www.financialcontent.com/article/bizwire-2026-11-17-ambience-healthcare-launches-care-orchestration-for-inpatient-teams" target="_blank" rel="noopener">financialcontent.com</a></li>
+      <li>Commure Acquires Elaborate to Cure the Clinician Inbox. <em>GlobeNewswire</em>, 2026-11-16. <a href="https://www.globenewswire.com/news-release/2026/11/16/3403471/0/en/commure-acquires-elaborate-to-cure-the-clinician-inbox.html" target="_blank" rel="noopener">globenewswire.com</a></li>
+      <li>Commure acquires inbox automation platform Elaborate. <em>Modern Healthcare</em>, 2026-11-16. <a href="https://www.modernhealthcare.com/health-tech/mh-commure-elaborate-acquisition-inbox-automation/" target="_blank" rel="noopener">modernhealthcare.com</a></li>
+      <li>GE HealthCare (GEHC) gets FDA clearance for feeding tube AI on mobile x-ray. <em>AuntMinnie</em>, 2026-11-17. <a href="https://www.auntminnie.com/imaging-informatics/artificial-intelligence/news/16541813/ge-healthcare-gehc-gets-fda-clearance-for-feeding-tube-ai-on-mobile-xray" target="_blank" rel="noopener">auntminnie.com</a></li>
+      <li>FDA clears GE HealthCare's imaging-AI feeding tube detection software. <em>Radiology Business</em>, 2026-11-17. <a href="https://radiologybusiness.com/topics/healthcare-management/healthcare-policy/fda-clears-ge-healthcares-imaging-ai-feeding-tube-detection-software" target="_blank" rel="noopener">radiologybusiness.com</a></li>
+      <li>Apple launches research study to explore the use of AI for health. <em>Apple Newsroom</em>, 2026-11-15. <a href="https://www.apple.com/newsroom/2026/11/apple-launches-research-study-to-explore-the-use-of-ai-for-health/" target="_blank" rel="noopener">apple.com</a></li>
+      <li>Apple launches new app to study how people use AI for health. <em>TechCrunch</em>, 2026-11-15. <a href="https://techcrunch.com/2026/11/15/apple-launches-new-app-to-study-how-people-use-ai-for-health/" target="_blank" rel="noopener">techcrunch.com</a></li>
+      <li>OpenEvidence: Doctors' AI Search Engine Valued at US$15bn. <em>AI Magazine</em>, 2026. <a href="https://aimagazine.com/news/openevidence-doctors-ai-search-engine-valued-at-us-15bn" target="_blank" rel="noopener">aimagazine.com</a></li>
+      <li>OpenEvidence, the 'ChatGPT for doctors,' doubles valuation to $12 billion. <em>CNBC</em>, 2026-01-21. <a href="https://www.cnbc.com/2026/01/21/openevidence-chatgpt-for-doctors-doubles-valuation-to-12-billion.html" target="_blank" rel="noopener">cnbc.com</a></li>
+      <li>Morning Headlines 11/19/26. <em>HIStalk</em>, 2026-11-18. <a href="https://histalk2.com/2026/11/18/morning-headlines-11-19-26/" target="_blank" rel="noopener">histalk2.com</a></li>
+      <li>10 health systems top 1M AI-documented encounters with Microsoft. <em>Becker's Hospital Review</em>, 2026-10-29. <a href="https://www.beckershospitalreview.com/healthcare-information-technology/digital-health/10-health-systems-top-1m-ai-documented-encounters-with-microsoft/" target="_blank" rel="noopener">beckershospitalreview.com</a></li>
+      <li>Epic unveils AI agents, showcases new foundational models. <em>Healthcare IT News</em>, UGM 2025. <a href="https://www.healthcareitnews.com/news/epic-unveils-ai-agents-showcases-new-foundational-models" target="_blank" rel="noopener">healthcareitnews.com</a></li>
+      <li>HLTH 2026 Recap and Major Announcements. <em>Digital Health Wire</em>, 2026-11-19. <a href="https://digitalhealthwire.com/hlth-2026-recap-and-major-announcements/" target="_blank" rel="noopener">digitalhealthwire.com</a></li>
+      <li>Greenway Health's Novare, an AI-Native Platform That Carries Patient Context From First Appointment to Final Payment, Now Available. <em>PR Newswire</em>, 2026-11-19. <a href="https://www.prnewswire.com/news-releases/greenway-healths-novare-an-ai-native-platform-that-carries-patient-context-from-first-appointment-to-final-payment-now-available-302939797.html" target="_blank" rel="noopener">prnewswire.com</a></li>
+      <li>衛生福利部三大AI中心啟動記者會. <em>衛生福利部</em>, 2024-10-07. <a href="https://www.mohw.gov.tw/cp-16-80155-1.html" target="_blank" rel="noopener">mohw.gov.tw</a></li>
+      <li>臺灣智慧醫療三大中心. <em>衛生福利部</em>, —. <a href="https://aicenter.mohw.gov.tw/" target="_blank" rel="noopener">aicenter.mohw.gov.tw</a></li>
+      <li>台灣AI影響性研究中心啟動 導入AI臨床試驗盼供健保共擬會給付參考. <em>聯合報</em>, 2025-11-20. <a href="https://udn.com/news/story/7266/9152553" target="_blank" rel="noopener">udn.com</a></li>
+      <li>高醫大論壇揭示AI醫療新局！衛福部推「333政策」 國家489億預算力挺. <em>聯合報</em>, 2026-06-27. <a href="https://udn.com/news/story/7266/9592218" target="_blank" rel="noopener">udn.com</a></li>
+      <li>醫療機器人走入臨床 衛福部明年擬訂生成式AI指引. <em>公視新聞網 PNN</em>, 2025-12-07. <a href="https://news.pts.org.tw/article/784708" target="_blank" rel="noopener">news.pts.org.tw</a></li>
+    </ol>
+    <div class="note">
+      <span class="zh"><strong>編輯說明：</strong>今天是星期五的產品與公司深度分析，窗口以 11/10–11/19 為主。須誠實交代的有六點。<strong>一、</strong>所有產品效能數字都是廠商自述且未經第三方稽核：Suki 的 190% 就診量成長與營收翻倍、Ambience 的 6.5% CMI 與約 3 倍 ROI、Commure／Elaborate 的 36%／15%／97%、Abridge 的 1.2 億次互動（今年預估值）、GE 的 99.2% 敏感度與 91.6% Dice（對照放射科專家標註）。本報在每一則的「要打折的地方」逐項標出，不在正文把它們當既成事實使用。<strong>二、</strong>Ambience 流傳的「59% 更多診斷（Vizient）」只出現在報導的 meta description、本文無任何脈絡，故未採用為正文事實，僅在該則打折欄說明。<strong>三、</strong>Epic 的市占、Cosmos 與 CoMET 數字出自 UGM 2025 的報導，早於本週窗口，純為競爭結構背景，已在表格內註明。<strong>四、</strong>OpenEvidence 的營收為 Sacra 估計值、150 億美元估值為「據報」而非經確認，使用者數為 2025 年 12 月的數字。<strong>五、</strong>台灣視角使用的三份資料都早於本週窗口（衛福部三大 AI 中心 2024-10-07、AI 影響性研究中心啟動 2025-11-20、333 政策與 489 億預算 2026-06-27、生成式 AI 指引報導 2025-12-07），之所以仍然納入，是因為今天的主題需要的是制度框架而非當日新聞；每一處都標了原始日期，請勿據此推論現況。另有一個預定引用的來源（taiwan-healthcare.org 關於 AI 醫療給付的報導）抓取失敗，因此完全未引用、未納入參考文獻。<strong>六、</strong>Oracle／VA 那一則引自 HIStalk 的頭條彙整與其連結報導，本報未取得聽證會逐字紀錄，170 億美元的組成未經獨立查核，前員工的主張為一方說法。Fortune 一文可能受計次付費牆限制，本報引用的內容為造訪時可見的正文。</span>
+        <span class="en"><strong>Editor's note:</strong> Friday's rotation is product and company deep analysis, with the window running mainly 11/10–11/19. Six things to account for. <strong>One,</strong> every product performance figure here is vendor-reported and unaudited: Suki's 190% encounter growth and doubled revenue, Ambience's 6.5% CMI and ~3x ROI, Commure/Elaborate's 36%/15%/97%, Abridge's 120 million encounters (a projection for this year), and GE's 99.2% sensitivity and 91.6% Dice (against radiologist annotations). Each is flagged in its story's \"Discount this\" row, and none is used in the body as established fact. <strong>Two,</strong> Ambience's circulating \"59% more diagnoses (Vizient)\" appears only in an article's meta description with no context in the body, so it is not treated as fact and is noted only in that story's discount row. <strong>Three,</strong> Epic's market share and the Cosmos and CoMET figures come from UGM 2025 coverage, predating this week's window; they are included purely as competitive background and marked as such in the table. <strong>Four,</strong> OpenEvidence's revenue figures are Sacra estimates, the $15 billion valuation is reported rather than confirmed, and the user counts are from December 2025. <strong>Five,</strong> all three sources behind the Taiwan section predate this week's window (the MOHW's three AI centers, 2024-10-07; the AI Impact Research Center launch, 2025-11-20; the \"333\" policy and NT$48.9 billion budget, 2026-06-27; the generative AI guideline report, 2025-12-07). They are included because today's theme needs the institutional frame rather than the day's news; each carries its original date, and nothing about the present state should be inferred from them. One source intended for citation (a taiwan-healthcare.org report on NHI payment for medical AI) failed to fetch and is therefore not cited anywhere and not listed in the references. <strong>Six,</strong> the Oracle/VA item comes from HIStalk's headline roundup and the pieces it links; this report has not obtained the hearing transcript, the composition of the $17 billion is not independently verified, and the former employee's account is one party's claim. The Fortune article may sit behind a metered paywall; what is cited here was visible in the body on the visit.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-row">
+    <div>
+      <span class="zh">AI／醫療AI 每日新知日報 · 由 Claude 於台北時間每日自動產出 · 本期主題：星期五／產品與公司深度分析<br>本報告內容經來源查證，但不構成投資或醫療建議。所有數據請以原始出處為準。</span>
+        <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Friday / Product &amp; Company Deep Dive<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
+    </div>
+    <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com / 返回 peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
+  </div>
+</footer>
+</main>
+
+<div class="fabs">
+  <button class="up" id="up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+  <a class="home-fab" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg></a>
+</div>
+
+<script>
+function setLang(l){
+  document.body.classList.remove('lang-zh','lang-en');
+  document.body.classList.add('lang-'+l);
+  document.documentElement.lang = (l==='zh') ? 'zh-Hant' : 'en';
+  document.getElementById('b-zh').classList.toggle('on', l==='zh');
+  document.getElementById('b-en').classList.toggle('on', l==='en');
+  document.title = (l==='zh')
+    ? 'AI／醫療AI 每日新知日報 · 2026-11-20'
+    : 'AI & Medical AI Daily · 2026-11-20';
+}
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.getElementById('theme-ic').textContent =
+    document.body.classList.contains('dark') ? '◑' : '◐';
+}
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.body.classList.add('dark');
+  document.getElementById('theme-ic').textContent = '◑';
+}
+window.addEventListener('scroll', function(){
+  document.getElementById('up').classList.toggle('show', window.scrollY > 600);
+});
+
+/* GitHub 星星數：無需授權，失敗或被限流時靜默保留佔位符 */
+(function(){
+  var el = document.getElementById('ghs');
+  if (!el || typeof fetch !== 'function') return;
+  fetch('https://api.github.com/repos/tingwei161803/ai-medical-daily', {headers:{Accept:'application/vnd.github+json'}})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if (!d || typeof d.stargazers_count !== 'number') return;
+      var n = d.stargazers_count;
+      el.textContent = n >= 1000 ? (Math.round(n/100)/10) + 'k' : String(n);
+    })
+    .catch(function(){});
+})();
+</script>
+</body>
+</html>
