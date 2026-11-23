@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>AI／醫療AI 每日新知日報 · 2026-11-23</title>
+<meta property="og:url" content="https://ai-medical-daily.peteraim.com/reports/2026-11-23.html" />
+<link rel="canonical" href="https://ai-medical-daily.peteraim.com/reports/2026-11-23.html" />
+<meta name="report-date" content="2026-11-23">
+<meta name="report-theme" content="clinical">
+<meta name="report-title-zh" content="RSNA 開幕前一週，廠商把數字先發出來，而大會自己的議程排滿了反證——SimonMed 11/16 公布兩篇 RSNA 研究，超過 51 萬張肌肉骨骼 X 光從 2022 年導入到 2025 年全面整合，骨折陽性案件的平均報告周轉時間下降 83.8%、從約兩天縮到八小時以內，另一篇視覺語言模型以 500 多萬組胸部 X 光影像—報告配對預訓練、再用 15 萬多筆自家門診檢查微調，肺結節敏感度從 62.6% 升到 80.8%、特異度小幅下降而降幅未公布；DeepHealth 11/19 報出甲狀腺 AI 在九萬多件真實世界檢查中有 88.7% 的結節描述未被放射科醫師修改，並引用 European Radiology 一篇稱可在維持 98.4% 顯著癌敏感度下少做近五分之一的攝護腺切片、以及 Radiology 一篇在 Erasmus MC 的 39,323 件胸部 CT 中校正後報告時間中位數減少 14.6%；HeartLung.AI 九篇摘要裡最硬的數字來自 MESA 與 Framingham——Agatston 分數為零的人有 21.7% 仍被 AI 驗出鈣化，這群人二十年冠心病發生率 7.7%、沒驗出的 3.8%；Lunit 11/17 宣布帶 17 篇研究進芝加哥、11 篇口頭報告，其中一篇正面比較四個已獲 FDA 許可的乳癌 AI。但 RSNA 自己排的議程寫著另一件事：綜合型中風中心導入 AI 沒有量到病人結果改善、腦微出血 AI 標出遠比放射科醫師多的病灶同時也多出更多假警報、廠商自述指標不保證臨床表現、AI 只是移轉診斷風險而非消除。而全週唯一走完同儕審查又拿到大會最高榮譽的研究講的是影像的真偽：17 位來自六國十二個中心的放射科醫師在不知情時只有 41% 自己察覺混進來的 GPT-4o 合成 X 光，被告知後平均辨識率 74.8%，而他們對合成影像判讀「病灶」的準確率是 92.4%、比真實影像的 91.3% 還高，資歷年數與辨識能力無關。">
+<meta name="report-title-en" content="A week before RSNA, the vendors released their numbers while the society's own programme filled up with counter-evidence — SimonMed disclosed two RSNA studies on Nov 16: across more than 510,000 musculoskeletal radiographs spanning the 2022 rollout to full integration in 2025, mean report turnaround for fracture-positive exams fell 83.8%, from about two days to under eight hours; a second study pre-trained a vision-language model on over 5 million chest X-ray image-report pairs, then fine-tuned it on more than 150,000 of its own outpatient exams, lifting pulmonary nodule sensitivity from 62.6% to 80.8% at an unquantified cost in specificity. DeepHealth reported on Nov 19 that radiologists left all five AI-generated nodule descriptors unmodified in 88.7% of nodules across more than 90,000 real-world thyroid exams, and cited a European Radiology paper claiming nearly one biopsy in five could have been avoided while holding 98.4% sensitivity for clinically significant prostate cancer, plus a Radiology paper reporting a 14.6% cut in adjusted median reporting time across 39,323 chest CTs at Erasmus MC. The hardest number among HeartLung.AI's nine abstracts comes from MESA and Framingham: 21.7% of people with an Agatston score of zero still had AI-detectable calcium, and their 20-year coronary heart disease incidence was 7.7% against 3.8% for those without. Lunit said on Nov 17 it is bringing 17 studies to Chicago, 11 of them oral, including a head-to-head comparison of four FDA-cleared breast AI products. But the society's own programme says something else: AI at a comprehensive stroke centre did not measurably improve patient outcomes; microbleed AI flagged far more lesions than radiologists and far more false alarms with them; vendor-reported metrics do not guarantee clinical performance; AI shifts diagnostic risk rather than eliminating it. The one study that cleared peer review and took the meeting's highest honour is about whether images are real at all: 17 radiologists from 12 centres in six countries spontaneously noticed the GPT-4o synthetic X-rays only 41% of the time, averaged 74.8% once told, and read abnormalities off the synthetic images with 92.4% accuracy — higher than the 91.3% they managed on authentic ones — with years of experience making no difference.">
+<meta name="report-summary-zh" content="RSNA 2026 開幕前一週，廠商的新聞稿量的是周轉時間與敏感度，大會自己的議程量的是病人結果與假警報——而兩邊幾乎沒有交集。">
+<meta name="report-summary-en" content="A week out from RSNA 2026, vendor press releases measure turnaround time and sensitivity while the society's own programme measures patient outcomes and false alarms — and the two barely overlap.">
+<meta property="og:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HJLDQZDK5V');
+</script>
+<link rel="stylesheet" href="/assets/report.css">
+</head>
+<body class="lang-zh">
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span><span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <div class="bar-sp"></div>
+    <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub / 在 GitHub 給這個專案一顆星"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
+    <div class="seg">
+      <button id="b-zh" class="on" onclick="setLang('zh')">中文</button>
+      <button id="b-en" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="kicker">
+    <span class="zh-inline">星期一 · 臨床應用與研究</span>
+    <span class="en-inline">Monday · Clinical Applications &amp; Research</span>
+  </div>
+  <h1>
+    <span class="zh">開幕前一週，廠商量的是周轉時間，大會量的是病人結果</span>
+    <span class="en">A week before the meeting, vendors measure turnaround time and the society measures patient outcomes</span>
+  </h1>
+  <div class="dateline">
+    <span class="zh-inline">2026 年 11 月 23 日（一）· 涵蓋 11/16–11/23 · 台北時間</span>
+    <span class="en-inline">Monday, November 23, 2026 · Covering Nov 16–23 · Taipei time</span>
+  </div>
+  <p class="lede">
+    <span class="zh">RSNA 2026 在 11/29 於芝加哥開幕，開幕前一週是醫療影像 AI 一年當中新聞稿最密的七天。今年這七天有一個很乾淨的對照組：廠商發出來的數字幾乎都是流程端點——周轉時間、敏感度、描述被接受的比例；而 <a href="https://www.auntminnie.com/resources/conference/rsna/2026/artificial-intelligence-preview/article/16425187/road-to-rsna-2026-artificial-intelligence-preview" target="_blank" rel="noopener">RSNA 自己排進議程</a> 的題目幾乎都是結果端點——病人結果、假警報、認知負荷、診斷風險往哪裡移。兩邊量的不是同一件事，而今天值得記下來的是這個落差本身。本期每一個數字都就地附上出處；凡是廠商自述、會議摘要尚未同儕審查、或我讀不到全文的，都在該則的「要打折的地方」寫明。</span>
+    <span class="en">RSNA 2026 opens in Chicago on Nov 29, and the week before it is the densest seven days of the year for medical-imaging AI press releases. This year those seven days came with an unusually clean control group: almost every number the vendors put out is a process endpoint — turnaround time, sensitivity, the share of AI descriptors a radiologist leaves alone — while almost every topic <a href="https://www.auntminnie.com/resources/conference/rsna/2026/artificial-intelligence-preview/article/16425187/road-to-rsna-2026-artificial-intelligence-preview" target="_blank" rel="noopener">the society put on its own podium</a> is an outcome endpoint: patient outcomes, false alarms, cognitive load, where diagnostic risk moves to. The two sides are not measuring the same thing, and that gap is what is worth recording today. Every figure below carries its source inline; anything vendor-reported, anything from a conference abstract not yet peer-reviewed, and anything whose full text I could not read is flagged in that item's "Discount this" row.</span>
+  </p>
+
+  <nav class="toc">
+    <a href="#top"><span class="zh-inline">重點新聞</span><span class="en-inline">Top Stories</span></a>
+    <a href="#product"><span class="zh-inline">產品分析</span><span class="en-inline">Product Analysis</span></a>
+    <a href="#company"><span class="zh-inline">公司與競爭</span><span class="en-inline">Companies &amp; Competition</span></a>
+    <a href="#taiwan"><span class="zh-inline">台灣視角</span><span class="en-inline">Taiwan Angle</span></a>
+    <a href="#reading"><span class="zh-inline">延伸閱讀</span><span class="en-inline">Further Reading</span></a>
+    <a href="#refs"><span class="zh-inline">參考文獻</span><span class="en-inline">References</span></a>
+  </nav>
+</div>
+
+<!-- ============ 01 重點新聞 ============ -->
+<section id="top">
+  <h2>01 — Top Stories</h2>
+  <div class="sec-title">
+    <span class="zh">八則消息，按「誰在量什麼」排序：先是廠商量的流程，再是大會量的結果，最後是期刊這五天實際出了什麼。</span>
+    <span class="en">Eight items, ordered by who is measuring what: the process the vendors measured, then the outcomes the society measured, then what the journals actually published in these five days.</span>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">流程端點</span><span class="en-inline">Process endpoint</span></span>
+      <span class="tag">SimonMed</span><span class="tag">MSK X-ray / Chest VLM</span><span class="tag">11/16</span>
+    </div>
+    <h3>
+      <span class="zh">51 萬張肌肉骨骼 X 光：骨折報告從兩天縮到八小時，降幅 83.8%</span>
+      <span class="en">510,000 musculoskeletal X-rays: fracture reports go from two days to eight hours, down 83.8%</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">SimonMed 的 CMO 兼創新長 Sean Raj 將在 RSNA 2026 報告兩篇研究，<a href="https://www.itnonline.com/node/91332" target="_blank" rel="noopener">11/16 發稿、11/19 刊出</a>。第一篇評估 AI 工作清單重新排序對報告周轉時間的影響：分析全美超過 200 個中心、<strong>51 萬張以上</strong>肌肉骨骼 X 光，涵蓋 2022 年導入前到 2025 年全面整合，骨折陽性檢查的平均周轉時間下降 <strong>83.8%</strong>、從約兩天降到八小時以內，骨折陰性檢查的周轉也改善而未拖慢常規流程（12/2 口頭報告）。第二篇評估一個視覺語言模型自動產生門診胸部 X 光報告：以 <strong>500 多萬組</strong>影像—報告配對預訓練，再用 <strong>15 萬多筆</strong> SimonMed 成人門診檢查做機構專屬微調，於 143 個門診中心的連續世代測試，微調後敏感度上升、特異度小幅下降，其中<strong>肺結節敏感度從 62.6% 升到 80.8%</strong>，是所有發現中增幅最大的一項（12/2 壁報）。</span>
+        <span class="en">Sean Raj, SimonMed's chief medical and innovation officer, will present two studies at RSNA 2026, <a href="https://www.itnonline.com/node/91332" target="_blank" rel="noopener">datelined Nov 16 and published Nov 19</a>. The first evaluates AI worklist reprioritisation against report turnaround time across more than 200 US centres and <strong>over 510,000</strong> musculoskeletal radiographs, spanning the period before the system's 2022 introduction through full integration in 2025: mean turnaround for fracture-positive exams fell <strong>83.8%</strong>, from about two days to under eight hours, while fracture-negative studies also improved without slowing routine workflow (podium, Dec 2). The second evaluates a vision-language model generating outpatient chest X-ray reports: pre-trained on <strong>more than 5 million</strong> image-report pairs, then fine-tuned on <strong>more than 150,000</strong> SimonMed adult outpatient exams and tested on a consecutive cohort from 143 outpatient centres. Fine-tuning raised sensitivity with a modest loss of specificity, and <strong>pulmonary nodule sensitivity rose from 62.6% to 80.8%</strong>, the largest gain of any finding (poster, Dec 2).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">周轉時間是 AI 最可靠能推動的端點，因為它量的是排隊順序而不是判讀本身——把骨折片插到隊伍前面，不需要模型比人準。而肺結節那 18 個百分點值得注意的不是絕對值，是它來自「機構專屬微調」：同一個通用模型在換到自家資料前後差這麼多，等於替「通用基礎模型可以開箱即用」這個說法標了一個價。</span>
+        <span class="en">Turnaround time is the endpoint AI most reliably moves, because it measures queue order rather than interpretation — putting fracture films at the front of the list does not require the model to beat a human. What is notable about the 18-point nodule gain is not its size but its source: institution-specific fine-tuning. A generic model differing that much before and after it meets local data puts a price on the claim that general-purpose foundation models work out of the box.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">兩篇都是會議摘要、尚未同儕審查，數字來自公司新聞稿。周轉時間那篇是回溯設計、跨 2022–2025 三年，這段期間機構的人力、排班與 PACS 都在變，83.8% 不能全部歸給 AI。第二篇的特異度「小幅下降」究竟降多少，新聞稿沒寫；模型本身被標為 investigational。</span>
+        <span class="en">Both are conference abstracts, not peer-reviewed, and the figures come from a company release. The turnaround study is retrospective and spans 2022–2025, years in which staffing, scheduling and the PACS itself all changed, so the 83.8% cannot all be attributed to AI. How far specificity fell in the second study is not stated, and the model is labelled investigational.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.itnonline.com/node/91332" target="_blank" rel="noopener">Imaging Technology News, 2026-11-19</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">流程端點</span><span class="en-inline">Process endpoint</span></span>
+      <span class="tag">DeepHealth / RadNet</span><span class="tag">Thyroid · DBT · Prostate</span><span class="tag">11/19</span>
+    </div>
+    <h3>
+      <span class="zh">九萬多件甲狀腺超音波，88.7% 的 AI 結節描述放射科醫師一字未改</span>
+      <span class="en">Across 90,000-plus thyroid ultrasounds, radiologists changed nothing in 88.7% of AI nodule descriptions</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">RadNet 旗下 DeepHealth <a href="https://www.globenewswire.com/news-release/2026/11/19/3406383/0/en/deephealth-to-present-recent-clinical-evidence-demonstrating-the-breadth-and-impact-of-its-ai-portfolio-at-rsna-2026.html" target="_blank" rel="noopener">11/19 公布</a> 五篇口頭報告與兩篇壁報，涵蓋乳房、甲狀腺、肺與攝護腺。最硬的一個數字是甲狀腺：在美國<strong>九萬多件</strong>真實世界檢查的前瞻部署中，放射科醫師對 <strong>88.7% 的結節</strong>保留了全部五項 AI 產生的描述、未作修改（11/29 報告）。乳房緻密組織那篇建立在已發表於 Nature Health 的 ASSURE 研究之上（<strong>579,583 件</strong>檢查、<strong>2,762 例</strong>癌症），12/1 報告稱緻密乳房族群的整體癌、侵襲癌與侵襲性較高的癌偵測率都提升。新聞稿另引兩篇已發表論文：European Radiology（Guenzel 等）稱結合放射科醫師判讀與 AI 風險分級，可在維持顯著癌 <strong>98.4% 敏感度</strong>下避免近五分之一的攝護腺切片；Radiology（Paramasamy 等）在 Erasmus MC 的 <strong>39,323 件</strong>胸部 CT 中，肺部 AI 與校正後報告時間中位數減少 <strong>14.6%</strong> 相關，而該肺部 AI 在美國未上市。</span>
+        <span class="en">DeepHealth, a RadNet subsidiary, <a href="https://www.globenewswire.com/news-release/2026/11/19/3406383/0/en/deephealth-to-present-recent-clinical-evidence-demonstrating-the-breadth-and-impact-of-its-ai-portfolio-at-rsna-2026.html" target="_blank" rel="noopener">announced on Nov 19</a> five podium presentations and two posters across breast, thyroid, lung and prostate imaging. The hardest number is the thyroid one: in a prospective real-world deployment covering <strong>more than 90,000</strong> US exams, radiologists left all five AI-generated descriptors unmodified in <strong>88.7% of nodules</strong> (Nov 29). The dense-breast work builds on the ASSURE study already published in Nature Health (<strong>579,583</strong> exams, <strong>2,762</strong> cancers); the Dec 1 talk reports higher overall, invasive and aggressive cancer detection in women with dense breasts. The release also cites two published papers: in European Radiology (Guenzel et al.), combining radiologist assessment with AI risk classification could have avoided nearly one prostate biopsy in five while holding <strong>98.4% sensitivity</strong> for clinically significant cancer; in Radiology (Paramasamy et al.), across <strong>39,323</strong> chest CTs at Erasmus Medical Center the lung AI was associated with a <strong>14.6%</strong> reduction in adjusted median reporting time — and that lung AI is listed as not available in the US.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">88.7% 這個指標本身很有意思，因為它量的不是對錯，是「醫師懶得改」。在結構化報告的世界裡，高接受率既可以讀成 AI 寫得好，也可以讀成自動化偏誤的前兆——同一個數字在廠商簡報裡是賣點，在 RSNA 的認知負荷場次裡是風險指標。而 DeepHealth 是這週唯一把會議摘要掛在已發表同儕審查論文上的廠商，這個做法本身就值得其他家學。</span>
+        <span class="en">The 88.7% figure is interesting precisely because it does not measure correctness; it measures how often a physician did not bother to edit. In a structured-reporting world a high acceptance rate reads either as the AI writing well or as the leading edge of automation bias — the same number is a selling point in a vendor deck and a risk indicator in RSNA's cognitive-load sessions. DeepHealth is also the only vendor this week to hang its conference abstracts on already peer-reviewed publications, which is a habit the rest of the field could copy.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">這是促銷新聞稿。七篇 RSNA 發表當中，只有甲狀腺那篇在稿裡給了數字；緻密乳房「偵測率提升」沒有任何率值，攝護腺多讀者研究、影像風險模型、乳房動脈鈣化、納入舊片降低假陽性四篇一個數字都沒有。98.4% 與 14.6% 來自已發表論文但我未取得全文，僅憑新聞稿轉述。</span>
+        <span class="en">This is a promotional release. Of the seven RSNA presentations, only the thyroid one carries a number in the release; the dense-breast item gives no detection rate at all, and the prostate multi-reader study, the image-only risk model, the breast arterial calcification poster and the priors-for-false-positives poster give none. The 98.4% and 14.6% come from published papers whose full texts I did not obtain, and are relayed here from the release only.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.globenewswire.com/news-release/2026/11/19/3406383/0/en/deephealth-to-present-recent-clinical-evidence-demonstrating-the-breadth-and-impact-of-its-ai-portfolio-at-rsna-2026.html" target="_blank" rel="noopener">GlobeNewswire, 2026-11-19</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">世代研究</span><span class="en-inline">Cohort study</span></span>
+      <span class="tag">HeartLung.AI</span><span class="tag">Agatston-2.0 · AI-CVD · Sybil</span><span class="tag">11/16</span>
+    </div>
+    <h3>
+      <span class="zh">鈣化分數為零的人裡，21.7% 被 AI 驗出鈣化——二十年冠心病發生率 7.7% 對 3.8%</span>
+      <span class="en">Among people scoring zero for calcium, AI found calcium in 21.7% — and their 20-year coronary risk was 7.7% against 3.8%</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">HeartLung.AI <a href="https://www.heartlung.ai/post/heartlung-ai-to-present-nine-abstracts-at-rsna-2026" target="_blank" rel="noopener">11/16 公布</a> 九篇 RSNA 摘要，全部圍繞「用別的理由做的影像順便讀心血管風險」。最強的一筆在 MESA 與 Framingham Heart Study：傳統 Agatston 分數為零的人當中，<strong>21.7%</strong> 仍被 Agatston-2.0 驗出可偵測的鈣化，而這群人的二十年冠心病發生率是 <strong>7.7%</strong>、未驗出者 <strong>3.8%</strong>（12/1 報告）。胸部 X 光風險模型 AI-CX-CVD 在 MIMIC-CXR 的外部驗證中，對複合心血管事件 <strong>AUC 0.751</strong>、對心血管死亡 <strong>AUC 0.790</strong>（12/2）。Sybil 肺癌風險模型用冠狀動脈鈣化 CT 追蹤十五年，<strong>一年 AUC 0.83、十五年降到 0.70</strong>（11/30）。Miami Heart Study 則顯示低鈣化族群中，心包脂肪最高四分位的非鈣化斑塊體積中位數 <strong>34.5 mm³</strong>、最低四分位 <strong>11.9 mm³</strong>（12/1）。另一篇比較 Sybil 與流行病學模型 PLCOm2012，Sybil 在西班牙世代的區辨力顯著較好，美國世代差異未達顯著。</span>
+        <span class="en">HeartLung.AI <a href="https://www.heartlung.ai/post/heartlung-ai-to-present-nine-abstracts-at-rsna-2026" target="_blank" rel="noopener">announced nine RSNA abstracts on Nov 16</a>, all built on reading cardiovascular risk off scans acquired for some other reason. The strongest sits in MESA and the Framingham Heart Study: among people whose conventional Agatston score was zero, <strong>21.7%</strong> still had calcium detectable by Agatston-2.0, and their 20-year coronary heart disease incidence was <strong>7.7%</strong> against <strong>3.8%</strong> for those without (Dec 1). On external validation in MIMIC-CXR, the chest-radiograph risk model AI-CX-CVD reached <strong>AUC 0.751</strong> for incident composite cardiovascular disease and <strong>AUC 0.790</strong> for cardiovascular mortality (Dec 2). The Sybil lung cancer risk model, run on coronary artery calcium CT over fifteen years, scored <strong>AUC 0.83 at one year, falling to 0.70 at fifteen</strong> (Nov 30). In the Miami Heart Study, among low-CAC participants median noncalcified plaque volume was <strong>34.5 mm³</strong> in the highest epicardial fat quartile against <strong>11.9 mm³</strong> in the lowest (Dec 1). A further abstract compares Sybil with the epidemiologic PLCOm2012 model: Sybil discriminated significantly better in the Spanish cohort, while the US difference did not reach significance.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">零分那一組是目前被明確告知「低風險」的人，而 21.7% 加上兩倍的二十年發生率，意味著一個現行分級把相當比例的人分錯邊。這類「機會式篩檢」不需要新的檢查、不需要新的輻射劑量，只需要重讀既有影像——這是醫療 AI 少見的、成本結構對自己有利的場景。Sybil 的 AUC 從 0.83 掉到 0.70 也是個誠實的數字：影像模型的預測力有時效，而大多數廠商不會把十五年那一欄印出來。</span>
+        <span class="en">The zero-score group is the population currently told it is low risk, and 21.7% plus a doubled 20-year incidence implies that current stratification puts a sizeable share of people on the wrong side of the line. This kind of opportunistic screening needs no new exam and no new radiation dose, only a re-read of images already acquired — one of the rare settings where the cost structure favours medical AI. The Sybil AUC falling from 0.83 to 0.70 is an honest number too: an imaging model's predictive power has a shelf life, and most vendors do not print the fifteen-year column.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">全部是觀察性世代研究加會議摘要，沒有任何介入——沒有人證明依這些分級改變處置會改善結果。數字由公司自己整理公布，九篇中有四篇在公布頁上完全沒有數值。Sybil 在美國世代的差異未達顯著這點，公司在同一頁也寫了，但「分類更多人為高風險」在沒有結果數據時既可能是更敏感、也可能只是更吵。Agatston-2.0 與 AI-CVD 在這些世代中的表現無第三方稽核。</span>
+        <span class="en">All of it is observational cohort work presented as conference abstracts, with no intervention anywhere — nobody has shown that acting on these classifications improves outcomes. The figures were compiled and released by the company, and four of the nine abstracts carry no numbers at all on that page. The company does state that the US Sybil difference was not significant, but "classifies more people as high risk" without outcome data could mean more sensitive or merely noisier. Agatston-2.0 and AI-CVD performance in these cohorts is not independently audited.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.heartlung.ai/post/heartlung-ai-to-present-nine-abstracts-at-rsna-2026" target="_blank" rel="noopener">HeartLung.AI, 2026-11-16</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">頭對頭比較</span><span class="en-inline">Head-to-head</span></span>
+      <span class="tag">Lunit</span><span class="tag">INSIGHT</span><span class="tag">11/17</span>
+    </div>
+    <h3>
+      <span class="zh">Lunit 帶 17 篇進芝加哥，其中一篇正面比較四個已獲 FDA 許可的乳癌 AI</span>
+      <span class="en">Lunit brings 17 studies to Chicago, one of them a head-to-head of four FDA-cleared breast AI products</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">Lunit（KOSDAQ: 328130）<a href="https://en.sedaily.com/business/2026/11/17/lunit-to-present-17-ai-studies-at-worlds-largest-radiology" target="_blank" rel="noopener">11/17 宣布</a> 在 RSNA 2026 發表 <strong>17 篇</strong>研究，比去年的 14 篇增加，其中 <strong>11 篇</strong>獲選口頭報告。<strong>15 篇</strong>聚焦乳癌，涵蓋偵測、風險預測、乳房緻密度分析與影像品管。最值得注意的是一篇<strong>大規模比較四個已獲 FDA 許可的 AI 產品</strong>在乳癌偵測上的表現；另有一篇評估 AI 預測五年乳癌風險的準確度，一篇檢視 AI 輔助判讀的效益如何隨醫師資歷不同。兩篇進入學會推薦的乳房影像場次：一篇是 AI 獨立判讀低度懷疑的乳房攝影以標出需進一步檢查者，一篇是為緻密乳房女性指引後續檢查。兩篇胸部 X 光研究分別處理自動報告產生，以及 AI 獨立判讀「很可能正常」影像的安全性。執行長徐範錫表示會在現場積極行銷，讓研究成果轉為業務成果。</span>
+        <span class="en">Lunit (KOSDAQ: 328130) <a href="https://en.sedaily.com/business/2026/11/17/lunit-to-present-17-ai-studies-at-worlds-largest-radiology" target="_blank" rel="noopener">said on Nov 17</a> it will present <strong>17</strong> studies at RSNA 2026, up from 14 last year, with <strong>11</strong> selected for oral presentation. <strong>Fifteen</strong> concern breast cancer, spanning detection, risk prediction, density analysis and imaging quality control. The most notable is a <strong>large-scale comparison of four FDA-cleared AI products</strong> on breast cancer detection; another assesses how accurately AI predicts five-year breast cancer risk, and another examines how the benefit of AI-assisted reading varies with physician experience. Two appear in a society-recommended breast imaging session: one on AI independently reading mammograms with low suspicion of cancer to flag patients needing further testing, one on guiding follow-up exams for women with dense breast tissue. Two chest X-ray studies cover automated report generation and the safety of AI independently reading images likely to be normal. CEO Suh Beom-seok said the company would market actively on site so that the research leads to business results.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這個領域最缺的就是同一批影像上跑不同廠商模型的比較，因為各家用自己的資料集報自己的數字，彼此的敏感度不可相互比較。四個 FDA 許可產品的頭對頭如果方法站得住，會是今年最有用的一篇。另一個軸是「AI 獨立判讀」——讓 AI 自己清掉很可能正常的片子，是降低放射科人力瓶頸最直接的做法，也是監管上最硬的一關；Lunit 同時在乳房攝影與胸部 X 光兩邊推這件事。</span>
+        <span class="en">What the field most lacks is any comparison of different vendors' models on the same images, because each reports its own numbers on its own dataset, which makes their sensitivities mutually incomparable. A head-to-head of four FDA-cleared products, if the methodology holds, would be the most useful paper of the year. The other axis is autonomous reading — letting AI clear the probably-normal studies by itself is the most direct answer to the radiologist bottleneck and the hardest regulatory ask; Lunit is pushing it on both mammography and chest radiography at once.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">Lunit 自己就是被比較的四家之一，由利害關係人主持的頭對頭需要看清方法與閾值設定。公布內容一個數字都沒有——沒有樣本數、沒有敏感度、沒有哪四個產品的名字；也沒有具名任何合作機構。報導來自韓國媒體英文版，非公司公告原文。</span>
+        <span class="en">Lunit is itself one of the four products being compared, and a head-to-head run by an interested party needs its methodology and operating thresholds inspected. The announcement contains no figures at all — no sample size, no sensitivity, not even which four products — and names no collaborating institution. The report comes from the English edition of a Korean outlet rather than the company's own filing.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://en.sedaily.com/business/2026/11/17/lunit-to-present-17-ai-studies-at-worlds-largest-radiology" target="_blank" rel="noopener">Seoul Economic Daily, 2026-11-17</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">結果端點</span><span class="en-inline">Outcome endpoint</span></span>
+      <span class="tag">RSNA 2026</span><span class="tag">Scientific programme</span><span class="tag">11/29–12/3</span>
+    </div>
+    <h3>
+      <span class="zh">大會自己把反證排上講台：中風 AI 沒改善結果、微出血 AI 多抓也多吵</span>
+      <span class="en">The society put the counter-evidence on its own podium: stroke AI did not improve outcomes, microbleed AI caught more and shouted more</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">AuntMinnie 的 <a href="https://www.auntminnie.com/resources/conference/rsna/2026/artificial-intelligence-preview/article/16425187/road-to-rsna-2026-artificial-intelligence-preview" target="_blank" rel="noopener">RSNA 2026 AI 議程預覽</a> 列出的二十場裡，有一整組是負面或限定性結果：綜合型中風中心導入 AI <strong>沒有量到病人結果改善</strong>（12/2, W3-SSNR10-3）；腦 MRI 微出血 AI 標出的病灶<strong>遠多於放射科醫師、假警報也更多</strong>（12/2, W3-SSNR10-6）；<strong>廠商自述指標不保證臨床表現</strong>（12/1, T7-SSNPM02-4）；<strong>AI 只是把診斷風險移轉而非消除</strong>（12/2, W3-SSIN06-3）；<strong>AI 不一定降低放射科醫師的認知負荷，有時還增加</strong>（11/30, M3-SSIN02-3）；還有一場談放射科醫師如何使用與記錄 AI 可能影響陪審團、進而影響醫療糾紛（11/30, M3-SSIN02-8）。同一份預覽裡的正面題目同樣具體：一套開源系統可在臨床診斷前<strong>將近一年</strong>於常規 CT 上偵測胰臟癌（11/30, M3-SSGI03-3）；胸部 X 光深度學習預測心血管風險<strong>約與 AHA PREVENT 分數相當</strong>（11/30, M6-SSCA03-1）；以及<strong>11 套分流演算法在三家醫院</strong>實際推行後結果不一（12/3, R3-SSIN07-1）。</span>
+        <span class="en">Of the twenty sessions listed in AuntMinnie's <a href="https://www.auntminnie.com/resources/conference/rsna/2026/artificial-intelligence-preview/article/16425187/road-to-rsna-2026-artificial-intelligence-preview" target="_blank" rel="noopener">RSNA 2026 AI programme preview</a>, a whole cluster reports negative or qualified findings: AI at a comprehensive stroke centre <strong>did not measurably improve patient outcomes</strong> (Dec 2, W3-SSNR10-3); microbleed AI on brain MRI flagged <strong>far more lesions than radiologists and far more false alarms</strong> (Dec 2, W3-SSNR10-6); <strong>vendor-reported metrics do not guarantee clinical performance</strong> (Dec 1, T7-SSNPM02-4); <strong>AI shifts diagnostic risk rather than eliminating it</strong> (Dec 2, W3-SSIN06-3); <strong>AI does not always reduce radiologists' mental workload and sometimes increases it</strong> (Nov 30, M3-SSIN02-3); and one talk asks how radiologists' use and documentation of AI could sway jurors, and with them malpractice outcomes (Nov 30, M3-SSIN02-8). The positive items in the same preview are equally specific: an open-source system detecting pancreatic cancer on routine CT <strong>nearly a year</strong> before clinical diagnosis (Nov 30, M3-SSGI03-3); deep learning on chest radiographs predicting cardiovascular risk <strong>about as accurately as the AHA PREVENT score</strong> (Nov 30, M6-SSCA03-1); and <strong>eleven triage algorithms rolled out across three hospitals</strong> with uneven real-world results (Dec 3, R3-SSIN07-1).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這不是評論者的抱怨，是學會自己的科學委員會把這些題目選上講台。放在一起看，本週廠商的新聞稿與大會的議程構成一組完整的對照：前者量周轉時間、敏感度、描述接受率，後者量病人結果、假警報率、認知負荷與法律責任。醫療 AI 的採購決策幾乎都是用前者那組數字做的，而真正決定能不能留下來的是後者。微出血那一場尤其值得一聽——「抓得更多」在摘要標題裡是優點，在臨床工作流裡可能是每天多出來的幾十個需要排除的病灶。</span>
+        <span class="en">This is not critics complaining; it is the society's own scientific committee choosing these topics for the podium. Read side by side, this week's vendor releases and the meeting's programme form a complete control pair: the first measures turnaround time, sensitivity and descriptor acceptance, the second measures patient outcomes, false-alarm rates, cognitive load and legal exposure. Procurement decisions in medical AI are made almost entirely on the first set of numbers, while what determines whether a tool survives in a department is the second. The microbleed session is the one to attend — "catches more" is a virtue in an abstract title and, in a workflow, possibly several dozen extra lesions a day that someone has to rule out.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">這是會前預覽，絕大多數場次只有一句結論、沒有樣本數、沒有效應量、沒有作者與機構；AuntMinnie 自己也沒列出這些。該頁標為「第 1 頁／共 2 頁」，我只讀到第一頁，所以這份清單不完整。所有結論都還沒在期刊上出現，口頭報告的內容到現場可能與摘要不同。</span>
+        <span class="en">This is a pre-meeting preview: most sessions come with a single sentence of conclusion and no sample size, no effect size, and no authors or institutions — AuntMinnie does not list them either. The page is marked "Page 1 of 2" and I read only the first, so this list is incomplete. None of these conclusions has appeared in a journal, and what is said at the podium may differ from the abstract.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.auntminnie.com/resources/conference/rsna/2026/artificial-intelligence-preview/article/16425187/road-to-rsna-2026-artificial-intelligence-preview" target="_blank" rel="noopener">AuntMinnie, Road to RSNA 2026: AI Preview</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">同儕審查</span><span class="en-inline">Peer-reviewed</span></span>
+      <span class="tag">Mount Sinai</span><span class="tag">Radiology · Margulis Award</span><span class="tag">11/29</span>
+    </div>
+    <h3>
+      <span class="zh">合成 X 光：不知情時只有 41% 察覺，而醫師在假影像上「判讀病灶」的準確率 92.4%</span>
+      <span class="en">Synthetic X-rays: only 41% noticed when unwarned, and radiologists read abnormalities off the fakes with 92.4% accuracy</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">Radiology 期刊論文〈The Rise of Deepfake Medical Imaging: Radiologists' Diagnostic Accuracy in Detecting ChatGPT-generated Radiographs〉獲得 RSNA <a href="https://www.dotmed.com/news/story/66916" target="_blank" rel="noopener">2026 年 Alexander R. Margulis 科學卓越獎</a>，表彰該年度 Radiology 最佳原創科學論文，將於 <strong>11/29</strong> 在芝加哥頒給共同第一作者 Mickael Tordjman 與 Murat Yuce（Icahn School of Medicine at Mount Sinai）。三階段回溯設計，<strong>17 位</strong>放射科醫師來自<strong>六國十二個中心</strong>（美、法、德、土耳其、英、阿聯），資歷 0 至 40 年。兩組影像：154 張 X 光（GPT-4o 合成 77 張）與 110 張胸部 X 光（RoentGen 合成 55 張）。結果：不知情階段 <strong>17 人中 7 人（41%）</strong>自行察覺有合成影像；<a href="https://www.rsna.org/media/press/2026/2645" target="_blank" rel="noopener">被告知後</a>平均辨識率 GPT-4o 組 <strong>74.8%</strong>、RoentGen 組 <strong>70%</strong>，個人落在 58% 到 92% 之間；對異常所見的診斷準確率，真實影像 <strong>91.3%</strong>、合成影像 <strong>92.4%</strong>。多模態大模型辨識 GPT-4o 合成影像：GPT-4o 自己 <strong>85.1%</strong>、GPT-5 <strong>82.5%</strong>，均優於 Gemini 2.5 Pro 與 Llama 4 Maverick，但沒有任何模型抓出全部。資歷年數與辨識能力無相關；肌肉骨骼次專科醫師顯著較準。作者建議的防線是數位水印、密碼學驗證與 AI 偵測系統。</span>
+        <span class="en">The Radiology paper "The Rise of Deepfake Medical Imaging: Radiologists' Diagnostic Accuracy in Detecting ChatGPT-generated Radiographs" has won RSNA's <a href="https://www.dotmed.com/news/story/66916" target="_blank" rel="noopener">2026 Alexander R. Margulis Award for Scientific Excellence</a>, given to the best original scientific article published in Radiology during the award year, to be presented on <strong>Nov 29</strong> in Chicago to co-lead authors Mickael Tordjman and Murat Yuce of the Icahn School of Medicine at Mount Sinai. The three-phase retrospective study used <strong>17</strong> radiologists from <strong>12 centres in six countries</strong> (US, France, Germany, Turkey, UK, UAE), with 0 to 40 years of experience, and two image sets: 154 X-rays (77 GPT-4o synthetic) and 110 chest X-rays (55 RoentGen synthetic). Results: in the unwarned phase, <strong>7 of 17 readers (41%)</strong> spontaneously identified synthetic images; <a href="https://www.rsna.org/media/press/2026/2645" target="_blank" rel="noopener">once informed</a>, mean classification accuracy was <strong>74.8%</strong> on the GPT-4o set and <strong>70%</strong> on the RoentGen set, with individuals ranging from 58% to 92%. Diagnostic accuracy for abnormalities was <strong>91.3%</strong> on authentic images and <strong>92.4%</strong> on synthetic ones. Among multimodal LLMs on the GPT-4o set, GPT-4o itself scored <strong>85.1%</strong> and GPT-5 <strong>82.5%</strong>, both beating Gemini 2.5 Pro and Llama 4 Maverick, though no model caught every fake. Years of experience showed no correlation with detection, while musculoskeletal subspecialists were significantly more accurate. The authors' proposed defences are watermarking, cryptographic authentication and AI-based detection.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這篇得獎的理由不在 74.8%，而在 92.4%。醫師在完全虛構的影像上，以比真實影像還高的準確率「診斷」出病灶——也就是說合成影像不只騙過真偽判斷，還順暢地通過了整套臨床判讀流程，產出一個關於不存在病人的具體診斷。整個醫療 AI 的安全論述建立在「最後有人看」這個前提上，而這篇量出了那個人看不出來。放在今天其他七則旁邊：所有廠商都在用自家資料證明模型多準，而影像本身是否為真沒有任何一方在驗。</span>
+        <span class="en">The reason this paper won is not the 74.8% but the 92.4%. Radiologists "diagnosed" abnormalities off wholly fabricated images more accurately than off real ones — meaning the synthetic images not only beat the authenticity check but passed cleanly through the entire clinical reading pipeline, yielding a specific diagnosis about a patient who does not exist. The whole safety argument for medical AI rests on a human looking at the end, and this paper measures that human not seeing it. Set beside the other seven items today: every vendor is using its own data to prove how accurate its model is, and nobody is verifying that the image was real.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">這是讀者研究，不是真實世界的偽造事件：醫師知道自己在做研究、影像由研究團隊而非惡意第三方產生、也沒有臨床脈絡或前片可供交叉比對。17 位讀者是小樣本。論文本身發表於 <a href="https://www.rsna.org/media/press/2026/2645" target="_blank" rel="noopener">2026 年 3 月</a>、不是本週新事；今天收進來的理由是獎項將於 11/29 頒出。兩個來源對 RoentGen 組的數字略有差異（RSNA 新聞稿寫 62%–78% 區間、dotmed 寫平均 70%），我同時列出。論文全文我未取得，數字引自 RSNA 官方新聞稿與 dotmed 報導。</span>
+        <span class="en">This is a reader study, not a real-world forgery: the radiologists knew they were in a study, the images came from the research team rather than a malicious third party, and there was no clinical context or prior imaging to cross-check against. Seventeen readers is a small sample. The paper itself appeared in <a href="https://www.rsna.org/media/press/2026/2645" target="_blank" rel="noopener">March 2026</a> and is not new this week; it is carried today because the award is presented on Nov 29. The two sources differ slightly on the RoentGen set (the RSNA release gives a 62%–78% range, dotmed a 70% mean) and both are given here. I did not obtain the full text; the figures are relayed from RSNA's own release and dotmed's report.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.dotmed.com/news/story/66916" target="_blank" rel="noopener">DOTmed News, 2026-10-23</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">法規許可</span><span class="en-inline">Clearance</span></span>
+      <span class="tag">a2z Radiology AI</span><span class="tag">a2z-Omni-Triage</span><span class="tag">11/19</span>
+    </div>
+    <h3>
+      <span class="zh">一張 510(k) 涵蓋九個所見：腹部骨盆 CT 分流拿到 FDA 許可，但沒有公布任何效能數字</span>
+      <span class="en">Nine findings in one 510(k): abdominopelvic CT triage cleared by the FDA, with no performance figures published</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">a2z Radiology AI 的 a2z-Omni-Triage 取得 FDA 510(k) 許可，作為腹部骨盆 CT 的輔助性 AI 分流軟體，<a href="https://www.diagnosticimaging.com/view/fda-emerging-ai-triage-software-nine-findings-abdominopelvic-ct" target="_blank" rel="noopener">公司 11/19 公告、Diagnostic Imaging 11/20 報導</a>。可用於打對比劑與未打對比劑的 CT，標記九個可疑所見：<strong>氣胸、中度或大量分層肋膜積液、複雜肋膜積聚、腸道穿孔、非薦椎骨盆骨折、薦椎或尾椎骨折、軟組織膿瘍、中度或重度腎水腫、大於或等於 5 公分的主動脈瘤</strong>。</span>
+        <span class="en">a2z Radiology AI's a2z-Omni-Triage received FDA 510(k) clearance as adjunctive AI triage software for abdominopelvic CT, <a href="https://www.diagnosticimaging.com/view/fda-emerging-ai-triage-software-nine-findings-abdominopelvic-ct" target="_blank" rel="noopener">announced by the company on Nov 19 and reported by Diagnostic Imaging on Nov 20</a>. It may be used on contrast-enhanced and non-contrast CT and flags nine suspicious findings: <strong>pneumothorax, moderate or large layering pleural effusion, complex pleural collection, bowel perforation, non-sacral pelvic fracture, sacral or coccygeal fracture, soft tissue abscess, moderate or severe hydronephrosis, and aortic aneurysm of 5 cm or larger</strong>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">一次拿下九個所見對分流裝置來說相當寬——多數 CADt 許可一次只處理一到兩個時間敏感的所見（顱內出血、肺栓塞之類）。腹部骨盆 CT 又是急診斷層量最大的一塊，所以潛在覆蓋面很廣。但這也正是 RSNA 那場「廠商自述指標不保證臨床表現」要講的東西：許可範圍寬不等於每個所見都一樣可靠，九個所見攤在一張 510(k) 底下，使用端很難知道哪一個是強項、哪一個是勉強過關。</span>
+        <span class="en">Nine findings in a single clearance is unusually broad for a triage device — most CADt clearances cover one or two time-critical findings, such as intracranial haemorrhage or pulmonary embolism. Abdominopelvic CT is also the highest-volume cross-section in emergency imaging, so the potential footprint is large. But this is exactly what the RSNA session on vendor metrics is about: a broad indication does not mean every finding is equally reliable, and with nine spread under one 510(k) the buyer has little way of knowing which is a strength and which barely cleared.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">沒有任何效能數字公開：敏感度、特異度、樣本數、驗證資料集全部沒有，Diagnostic Imaging 的報導也沒引用任何研究。這些要等 FDA 的 510(k) summary 或廠商自己的技術資料。「輔助性」三個字也要讀清楚：這類裝置的定位是排序與提醒，不是自主判讀。</span>
+        <span class="en">No performance data is public: no sensitivity, no specificity, no sample size, no validation dataset, and Diagnostic Imaging's report cites no study at all. Those would have to come from the FDA 510(k) summary or the manufacturer's own materials. The word "adjunctive" also deserves attention: devices in this class are positioned to prioritise and prompt, not to read autonomously.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.diagnosticimaging.com/view/fda-emerging-ai-triage-software-nine-findings-abdominopelvic-ct" target="_blank" rel="noopener">Diagnostic Imaging, 2026-11-20</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">期刊動向</span><span class="en-inline">Journal watch</span></span>
+      <span class="tag">npj Digital Medicine</span><span class="tag">ECG · Voice · Governance</span><span class="tag">11/18–11/22</span>
+    </div>
+    <h3>
+      <span class="zh">五天 12 篇：基礎模型從影像走進心電圖與語音，而十二篇裡有三篇在談治理而非準確度</span>
+      <span class="en">Twelve papers in five days: foundation models move from imaging into ECG and voice, and three of the twelve are about governance rather than accuracy</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">npj Digital Medicine 在 11/18 至 11/22 這五天刊出 <a href="https://www.nature.com/npjdigitalmed/articles?searchType=journalSearch&amp;sort=PubDate" target="_blank" rel="noopener">12 篇文章</a>。臨床取向最強的幾篇：<a href="https://www.nature.com/articles/s41746-026-03474-9" target="_blank" rel="noopener">用於年輕競技運動員心血管篩檢的心電圖基礎模型</a>（11/21）、<a href="https://www.nature.com/articles/s41746-026-03434-3" target="_blank" rel="noopener">放射組學與多模態 AI 於大腸癌診斷與存活預測的多中心評估</a>（11/19）、<a href="https://www.nature.com/articles/s41746-026-03472-x" target="_blank" rel="noopener">影像生物年齡差與死亡率、新發疾病風險的系統性回顧與統合分析</a>（11/19）、<a href="https://www.nature.com/articles/s41746-026-03465-w" target="_blank" rel="noopener">結合語音、臨床與人口學因子的氣喘多模態數位生物標記</a>（11/22）、<a href="https://www.nature.com/articles/s41746-026-03454-z" target="_blank" rel="noopener">Tele-Cranio：免 CT 的顱顎面畸形遠距診斷與手術規劃</a>（11/20）、<a href="https://www.nature.com/articles/s41746-026-03495-4" target="_blank" rel="noopener">虛擬心房顫動動態與導管電燒後臨床結果的對應</a>（11/20）、<a href="https://www.nature.com/articles/s41746-026-03382-y" target="_blank" rel="noopener">以流行病學知識引導的圖神經網路預測院內感染傳播</a>（11/20）。部署與治理那一側則有：<a href="https://www.nature.com/articles/s41746-026-03477-6" target="_blank" rel="noopener">雲端與地端大型語言模型用於病人門戶急迫訊息篩選的比較評估</a>（11/20）、<a href="https://www.nature.com/articles/s41746-026-03484-7" target="_blank" rel="noopener">醫師揭露使用 AI、病情嚴重度與民眾信任</a>（11/19）、<a href="https://www.nature.com/articles/s41746-026-03475-8" target="_blank" rel="noopener">歐盟醫療器材法規改革草案對 AI 醫材的影響</a>（11/18）。</span>
+        <span class="en">npj Digital Medicine published <a href="https://www.nature.com/npjdigitalmed/articles?searchType=journalSearch&amp;sort=PubDate" target="_blank" rel="noopener">12 articles</a> over the five days from Nov 18 to Nov 22. The most clinically oriented: <a href="https://www.nature.com/articles/s41746-026-03474-9" target="_blank" rel="noopener">ECG foundation models for cardiovascular screening in young competitive athletes</a> (Nov 21); <a href="https://www.nature.com/articles/s41746-026-03434-3" target="_blank" rel="noopener">a multicentre evaluation of radiomics and multimodal AI for colorectal cancer diagnosis and survival prediction</a> (Nov 19); <a href="https://www.nature.com/articles/s41746-026-03472-x" target="_blank" rel="noopener">a systematic review and meta-analysis of imaging-based biological age gap against mortality and incident disease</a> (Nov 19); <a href="https://www.nature.com/articles/s41746-026-03465-w" target="_blank" rel="noopener">a multimodal digital biomarker for asthma combining vocal, clinical and demographic factors</a> (Nov 22); <a href="https://www.nature.com/articles/s41746-026-03454-z" target="_blank" rel="noopener">Tele-Cranio, a CT-free solution for remote diagnosis and planning of craniomaxillofacial deformities</a> (Nov 20); <a href="https://www.nature.com/articles/s41746-026-03495-4" target="_blank" rel="noopener">virtual atrial fibrillation dynamics mapped against clinical outcomes after catheter ablation</a> (Nov 20); and <a href="https://www.nature.com/articles/s41746-026-03382-y" target="_blank" rel="noopener">epidemiology-informed graph neural networks for predicting transmissible hospital-acquired infections</a> (Nov 20). On the deployment and governance side: <a href="https://www.nature.com/articles/s41746-026-03477-6" target="_blank" rel="noopener">a comparative evaluation of cloud versus on-premise LLMs for urgent patient-portal message screening</a> (Nov 20); <a href="https://www.nature.com/articles/s41746-026-03484-7" target="_blank" rel="noopener">physician AI disclosure, condition severity and public trust</a> (Nov 19); and <a href="https://www.nature.com/articles/s41746-026-03475-8" target="_blank" rel="noopener">a comment on the proposed reform of the EU Medical Device Regulation and its implications for AI-enabled devices</a> (Nov 18).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這份清單的形狀比任何單篇都有訊息量。第一，基礎模型的概念正從醫學影像外溢到心電圖與語音——這兩種訊號的取得成本遠低於 CT 或 MRI，若真的做得起來，篩檢的經濟結構會變。第二，十二篇裡有三篇完全不談準確度，談的是地端與雲端怎麼選、揭露使用 AI 之後民眾怎麼看醫師、歐盟法規改革會動到什麼——這個比例跟兩三年前倒過來了。第三，大腸癌那篇是多中心，影像生物年齡那篇是統合分析，都屬於「把既有結果收攏」的研究類型，這通常出現在一個題目開始成熟的時候。</span>
+        <span class="en">The shape of this list carries more information than any single paper. First, the foundation-model idea is spilling out of imaging into ECG and voice — two signals far cheaper to acquire than CT or MRI, so if they work the economics of screening change. Second, three of twelve papers are not about accuracy at all but about choosing between on-premise and cloud, how the public views a physician who discloses AI use, and what the EU's regulatory reform would move — a ratio that is the reverse of two or three years ago. Third, the colorectal paper is multicentre and the biological-age one is a meta-analysis, both consolidation genres that tend to appear when a topic starts to mature.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh"><strong>這一則沒有任何效應量，因為我取不到全文。</strong>nature.com 的文章頁在本次執行中一律無法擷取，只有期刊的文章列表頁讀得到，因此上面每一篇都只有標題、日期與連結是經過查證的；樣本數、AUC、敏感度一概沒有引用，也請不要從標題推測結論。幾篇標題看起來是方法學或模擬研究（心臟力學代理模型、虛擬心房顫動動態），不應與臨床驗證混為一談。</span>
+        <span class="en"><strong>This item carries no effect sizes, because I could not retrieve the full texts.</strong> Article pages on nature.com failed to fetch throughout this run and only the journal's article listing was readable, so for every paper above only the title, date and link are verified; no sample size, AUC or sensitivity is quoted, and none should be inferred from a title. Several titles look like methodological or simulation work (the cardiac mechanics surrogate, the virtual atrial fibrillation dynamics) and should not be confused with clinical validation.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.nature.com/npjdigitalmed/articles?searchType=journalSearch&amp;sort=PubDate" target="_blank" rel="noopener">npj Digital Medicine, article listing, 2026-11-18 – 2026-11-22</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">機會式篩檢</span><span class="en-inline">Opportunistic screening</span></span>
+      <span class="tag">Nanox</span><span class="tag">Nanox.ARC X · Nanox.AI</span><span class="tag">11/18</span>
+    </div>
+    <h3>
+      <span class="zh">Nanox 把主動脈瓣鈣化 AI 排進 RSNA 講台，同時標明它還沒取得許可</span>
+      <span class="en">Nanox puts aortic valve calcification AI on an RSNA stage while labelling it not yet cleared</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">Nanox <a href="https://www.globenewswire.com/news-release/2026/11/18/3405617/0/en/nanox-to-showcase-its-innovative-technology-and-advances-across-nanox-arc-x-and-nanox-ai-at-rsna-2026.html" target="_blank" rel="noopener">11/18 公布</a> RSNA 2026 展出內容：已獲 FDA 許可的多源數位斷層合成系統 Nanox.ARC X（獲選 TIME 2026 年度最佳發明），以及已獲 FDA 許可、從常規 CT 分析慢性病早期徵象的 Nanox.AI，另有 USARAD 遠距放射與 Nanox Health IT 服務。12/1 的創新講台由 Cedars-Sinai 的 Ofir Koren 談主動脈瓣鈣化 AI，新聞稿同時註明他是 Nanox.AI 的顧問、也是該研究的第一作者。預覽但<strong>明確標示未獲許可、不得用於臨床</strong>的功能包括：Nanox.ARC X 的多平面與體積重建、兒科適應症、行動版 Nanox.ARC，以及 Nanox.AI 的主動脈瓣鈣化評估與身體組成分析。</span>
+        <span class="en">Nanox <a href="https://www.globenewswire.com/news-release/2026/11/18/3405617/0/en/nanox-to-showcase-its-innovative-technology-and-advances-across-nanox-arc-x-and-nanox-ai-at-rsna-2026.html" target="_blank" rel="noopener">announced on Nov 18</a> what it will show at RSNA 2026: the FDA-cleared multi-source digital tomosynthesis system Nanox.ARC X, named a TIME Best Inventions of 2026 honoree, and the FDA-cleared Nanox.AI, which analyses routine CT for early signs of chronic conditions, alongside USARAD teleradiology and Nanox Health IT services. On Dec 1 an Innovation Theater session has Ofir Koren of Cedars-Sinai on an AI solution for aortic valve calcification; the release notes in the same breath that he is a consultant to Nanox.AI and the study's lead author. Features previewed but <strong>explicitly marked as not cleared or approved for clinical use</strong> include multiplanar and volumetric reconstruction and paediatric indications for Nanox.ARC X, a mobile Nanox.ARC, and aortic valve calcification assessment and body composition for Nanox.AI.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">Nanox.AI 與 HeartLung.AI 走的是同一條路——把既有 CT 重讀成慢性病風險評估，而主動脈瓣鈣化是其中商業上最誘人的一格，因為它直接連到 TAVR 這條高單價治療路徑。值得記下的是這份新聞稿的揭露品質：主講者的顧問身分與論文作者身分、以及哪些功能尚未取得許可，都寫在同一頁上。在本週八則消息裡，這是少數能讓讀者自己判斷利益關係的一份。</span>
+        <span class="en">Nanox.AI is on the same road as HeartLung.AI — re-reading existing CT as chronic-disease risk assessment — and aortic valve calcification is the commercially most attractive square on that board, because it leads straight into the high-ticket TAVR pathway. What is worth recording is the disclosure quality of this release: the speaker's consultancy and authorship, and which features are not yet cleared, are stated on the same page. Among this week's eight items, it is one of the few that lets a reader judge the conflicts themselves.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">沒有任何臨床數字：Koren 的研究在新聞稿裡只被提到，沒有結果、沒有統計、沒有樣本數。也沒有任何裝機數、掃描量或客戶數。TIME 最佳發明是媒體獎項，不是臨床證據。預覽功能的可用性、適應症與時程公司自己聲明可能變動。</span>
+        <span class="en">There are no clinical numbers: Koren's study is only mentioned, with no results, no statistics and no sample size. Nor are there installation counts, scan volumes or customer numbers. A TIME Best Inventions listing is a media award, not clinical evidence. The company itself states that the previewed features, their indications and their availability may change.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.globenewswire.com/news-release/2026/11/18/3405617/0/en/nanox-to-showcase-its-innovative-technology-and-advances-across-nanox-arc-x-and-nanox-ai-at-rsna-2026.html" target="_blank" rel="noopener">GlobeNewswire, 2026-11-18</a></p></div>
+  </div>
+</section>
+
+<!-- ============ 02 產品分析 ============ -->
+<section id="product">
+  <h2>02 — Product Analysis</h2>
+  <div class="sec-title">
+    <span class="zh">兩個今天出現的東西，剛好站在光譜兩端：一個把數字攤到小數點但還是 investigational，一個拿到 FDA 許可卻一個數字都沒公布。</span>
+    <span class="en">Two things that surfaced today sit at opposite ends of a spectrum: one reports its numbers to the decimal and is still investigational, the other is FDA-cleared and has published no number at all.</span>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>SimonMed Chest X-ray VLM</h3>
+      <p class="sub"><span class="zh-inline">門診胸部 X 光自動報告產生 · SimonMed（美國）· 研究用</span><span class="en-inline">Automated outpatient chest X-ray reporting · SimonMed (US) · investigational</span></p>
+      <p>
+        <span class="zh"><strong>功能與定位。</strong>一個視覺語言模型，直接從門診胸部 X 光產出報告草稿。以 <a href="https://www.itnonline.com/node/91332" target="_blank" rel="noopener">500 多萬組影像—報告配對</a>預訓練，再用 15 萬多筆 SimonMed 成人門診檢查做機構專屬微調，於 143 個門診中心的連續世代測試。賣的對象不是醫院而是自家這張全美門診網路——SimonMed 是美國最大的獨立門診影像業者之一，模型的訓練資料與部署場域是同一批機器、同一群放射科醫師。</span>
+        <span class="en"><strong>Function and position.</strong> A vision-language model that drafts reports directly from outpatient chest radiographs, pre-trained on <a href="https://www.itnonline.com/node/91332" target="_blank" rel="noopener">more than 5 million image-report pairs</a>, fine-tuned on over 150,000 SimonMed adult outpatient exams, and tested on a consecutive cohort from 143 outpatient centres. It is not being sold to hospitals but pointed at SimonMed's own nationwide outpatient network — one of the largest independent outpatient imaging operators in the US — so the training data and the deployment site are the same machines read by the same radiologists.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：機構專屬微調的效果被量了出來，<a href="https://www.itnonline.com/node/91332" target="_blank" rel="noopener">肺結節敏感度從 62.6% 升到 80.8%</a>——這是整份新聞稿裡唯一一個能支撐「通用模型不足以直接上線」這個論點的實測值。</span>
+          <span class="en">: the effect of institution-specific fine-tuning is actually measured — <a href="https://www.itnonline.com/node/91332" target="_blank" rel="noopener">pulmonary nodule sensitivity rising from 62.6% to 80.8%</a> — the one measured value in the whole release that supports the claim that a generic model is not enough to deploy as-is.</span>
+        </li>
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：測試用的是 143 個中心的<strong>連續世代</strong>，而非挑選過的資料集；連續收案是這類研究裡最難作弊的設計之一。</span>
+          <span class="en">: testing used a <strong>consecutive cohort</strong> from 143 centres rather than a curated dataset, and consecutive enrolment is one of the harder designs to game in this literature.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：特異度「小幅下降」的幅度沒有公布。報告產生模型的假陽性成本是下游檢查，18 個百分點的敏感度換多少特異度，缺了這個數字就無法評估。</span>
+          <span class="en">: the "modest" fall in specificity is not quantified. For a report-generation model the cost of a false positive is downstream imaging, and without that figure there is no way to judge what the 18-point sensitivity gain was bought with.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：同一批資料訓練又在同一個網路測試，外部效度不明；模型仍標為 investigational，沒有監管許可，而全部證據目前只有一張壁報。</span>
+          <span class="en">: trained on and tested within the same network, its external validity is unknown; the model is still labelled investigational with no regulatory clearance, and the entire evidence base is currently one poster.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>a2z-Omni-Triage</h3>
+      <p class="sub"><span class="zh-inline">腹部骨盆 CT 輔助分流 · a2z Radiology AI · 已獲 FDA 510(k)</span><span class="en-inline">Adjunctive abdominopelvic CT triage · a2z Radiology AI · FDA 510(k) cleared</span></p>
+      <p>
+        <span class="zh"><strong>功能與定位。</strong>在腹部骨盆 CT 上標記九個可疑所見，用於工作清單排序，<a href="https://www.diagnosticimaging.com/view/fda-emerging-ai-triage-software-nine-findings-abdominopelvic-ct" target="_blank" rel="noopener">對比劑與非對比劑影像皆可</a>。定位是輔助性（adjunctive）——提醒與排序，不取代判讀。買家是急診影像量大的醫院與影像中心，價值主張是把需要立刻處理的片子推到隊伍前面。</span>
+        <span class="en"><strong>Function and position.</strong> Flags nine suspicious findings on abdominopelvic CT for worklist prioritisation, <a href="https://www.diagnosticimaging.com/view/fda-emerging-ai-triage-software-nine-findings-abdominopelvic-ct" target="_blank" rel="noopener">on both contrast-enhanced and non-contrast studies</a>. It is positioned as adjunctive — prompting and ordering, not replacing interpretation. The buyers are hospitals and imaging centres with heavy emergency volume, and the pitch is moving the studies that need acting on to the front of the queue.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：<a href="https://www.diagnosticimaging.com/view/fda-emerging-ai-triage-software-nine-findings-abdominopelvic-ct" target="_blank" rel="noopener">九個所見寫進同一張 510(k)</a>，覆蓋面比典型只處理一兩個所見的 CADt 裝置寬得多，而腹部骨盆 CT 是急診斷層裡量最大的一塊。</span>
+          <span class="en">: <a href="https://www.diagnosticimaging.com/view/fda-emerging-ai-triage-software-nine-findings-abdominopelvic-ct" target="_blank" rel="noopener">nine findings written into one 510(k)</a> is far broader coverage than the typical CADt device handling one or two, and abdominopelvic CT is the largest single slice of emergency cross-sectional volume.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：<strong>效能數字完全沒有公布</strong>——敏感度、特異度、樣本數、驗證資料集一概沒有，報導也沒引用任何研究。九個所見攤在一張許可下，買方無法知道哪一個撐得住、哪一個勉強過關。</span>
+          <span class="en">: <strong>no performance figures are public at all</strong> — no sensitivity, specificity, sample size or validation dataset, and the coverage cites no study. With nine findings under one clearance, a buyer cannot tell which hold up and which barely cleared.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：分流裝置的真正風險是假警報帶來的疲乏，而這正是 RSNA <a href="https://www.auntminnie.com/resources/conference/rsna/2026/artificial-intelligence-preview/article/16425187/road-to-rsna-2026-artificial-intelligence-preview" target="_blank" rel="noopener">12/3 那場「11 套分流演算法在三家醫院結果不一」</a>要談的題目；同時部署多套分流 AI 的醫院已經在量這個代價。</span>
+          <span class="en">: the real risk in a triage device is alarm fatigue, which is precisely the subject of RSNA's <a href="https://www.auntminnie.com/resources/conference/rsna/2026/artificial-intelligence-preview/article/16425187/road-to-rsna-2026-artificial-intelligence-preview" target="_blank" rel="noopener">Dec 3 session on eleven triage algorithms producing uneven results across three hospitals</a> — departments running several triage models at once are already measuring that cost.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 公司與競爭 ============ -->
+<section id="company">
+  <h2>03 — Companies &amp; Competition</h2>
+  <div class="sec-title">
+    <span class="zh">誰站在哪裡、憑什麼、跟誰打</span>
+    <span class="en">Who stands where, on what, against whom</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th><span class="zh-inline">公司</span><span class="en-inline">Company</span></th>
+        <th><span class="zh-inline">近況與數字</span><span class="en-inline">Recent state &amp; numbers</span></th>
+        <th><span class="zh-inline">競爭定位與護城河</span><span class="en-inline">Position &amp; moat</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>SimonMed Imaging</strong><br><span class="zh-inline">美國大型獨立門診影像網路，自己既是買方也是研究者</span><span class="en-inline">Large US independent outpatient imaging network, both buyer and investigator</span></td>
+          <td>
+            <span class="zh">RSNA 2026 兩篇：51 萬張以上 MSK X 光、骨折陽性周轉時間降 83.8%；胸部 VLM 肺結節敏感度 62.6%→80.8%（<a href="https://www.itnonline.com/node/91332" target="_blank" rel="noopener">ITN, 2026-11-19</a>）。另於 2026 年 6 月以資深作者身分發表 Radiography 論文，與 AZmed 的 Rayvolve 套件在 26 國 100 個中心、258,373 張 X 光上評估：AZtrauma AUC 98.3%、敏感度 97.4%、特異度 96.4%（195,706 件）；AZchest AUC 97.8%、敏感度 96.7%、特異度 87.9%（61,418 件）（<a href="https://healthtechdigital.com/simonmed-leads-largest-global-study-of-ai-in-x-ray-analyzing-258373-exams-across-26-countries/" target="_blank" rel="noopener">Health Tech Digital, 2026-06-23</a>）。</span>
+            <span class="en">Two RSNA 2026 studies: 510,000-plus MSK radiographs with fracture-positive turnaround down 83.8%, and a chest VLM lifting nodule sensitivity 62.6%→80.8% (<a href="https://www.itnonline.com/node/91332" target="_blank" rel="noopener">ITN, 2026-11-19</a>). In June 2026 its CMO was senior author on a Radiography paper evaluating AZmed's Rayvolve suite across 258,373 X-rays from 100 centres in 26 countries: AZtrauma AUC 98.3%, sensitivity 97.4%, specificity 96.4% (195,706 exams); AZchest AUC 97.8%, sensitivity 96.7%, specificity 87.9% (61,418 exams) (<a href="https://healthtechdigital.com/simonmed-leads-largest-global-study-of-ai-in-x-ray-analyzing-258373-exams-across-26-countries/" target="_blank" rel="noopener">Health Tech Digital, 2026-06-23</a>).</span>
+          </td>
+          <td>
+            <span class="zh">護城河是部署規模本身：200 多個中心的連續資料讓它能量到別人量不到的周轉時間與微調增益。弱點是它同時是研究者與受益者，外部效度未經他人驗證。</span>
+            <span class="en">The moat is deployment scale itself: consecutive data from 200-plus centres lets it measure turnaround and fine-tuning gains nobody else can. The weakness is that it is both investigator and beneficiary, with external validity unverified by anyone else.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>DeepHealth（RadNet）</strong><br><span class="zh-inline">影像 AI 組合＋雲端平台，母公司是美國最大門診影像業者</span><span class="en-inline">Imaging AI portfolio plus cloud platform, owned by the largest US outpatient imaging operator</span></td>
+          <td>
+            <span class="zh">RSNA 2026 五篇口頭、兩篇壁報；甲狀腺 AI 九萬多件檢查中 88.7% 結節描述未被修改；ASSURE 研究 579,583 件檢查、2,762 例癌症（Nature Health）；攝護腺 AI 稱可少做近五分之一切片而維持 98.4% 敏感度（European Radiology）；Erasmus MC 39,323 件胸部 CT 報告時間中位數減 14.6%（Radiology）（<a href="https://www.globenewswire.com/news-release/2026/11/19/3406383/0/en/deephealth-to-present-recent-clinical-evidence-demonstrating-the-breadth-and-impact-of-its-ai-portfolio-at-rsna-2026.html" target="_blank" rel="noopener">GlobeNewswire, 2026-11-19</a>）。</span>
+            <span class="en">Five podium talks and two posters at RSNA 2026; 88.7% of nodule descriptions unmodified across 90,000-plus thyroid exams; the ASSURE study at 579,583 exams and 2,762 cancers in Nature Health; prostate AI claimed to avoid nearly one biopsy in five while holding 98.4% sensitivity (European Radiology); and a 14.6% cut in median reporting time across 39,323 chest CTs at Erasmus MC (Radiology) (<a href="https://www.globenewswire.com/news-release/2026/11/19/3406383/0/en/deephealth-to-present-recent-clinical-evidence-demonstrating-the-breadth-and-impact-of-its-ai-portfolio-at-rsna-2026.html" target="_blank" rel="noopener">GlobeNewswire, 2026-11-19</a>).</span>
+          </td>
+          <td>
+            <span class="zh">和 SimonMed 同一種結構（自有網路＋自有 AI），但多了一層：它把會議摘要掛在已發表的同儕審查論文上，這是本週唯一這樣做的廠商。弱點是肺部 AI 在美國未上市，而七篇 RSNA 發表只有一篇在稿裡給了數字。</span>
+            <span class="en">The same structure as SimonMed — own network plus own AI — with one layer more: it hangs its abstracts on published peer-reviewed papers, the only vendor doing so this week. The weaknesses are that the lung AI is not available in the US and that only one of seven RSNA presentations carries a number in the release.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Lunit</strong><br><span class="zh-inline">韓國上市醫療影像 AI（KOSDAQ: 328130），主攻乳房與胸部</span><span class="en-inline">Listed Korean imaging AI (KOSDAQ: 328130), focused on breast and chest</span></td>
+          <td>
+            <span class="zh">RSNA 2026 帶 17 篇（去年 14 篇）、11 篇口頭、15 篇乳癌；含一篇四個 FDA 許可產品的頭對頭比較、一篇五年風險預測、兩篇 AI 獨立判讀（乳攝低度懷疑、胸片很可能正常）。無任何數字或合作機構公布（<a href="https://en.sedaily.com/business/2026/11/17/lunit-to-present-17-ai-studies-at-worlds-largest-radiology" target="_blank" rel="noopener">Seoul Economic Daily, 2026-11-17</a>）。</span>
+            <span class="en">Seventeen studies at RSNA 2026, up from 14, with 11 oral and 15 on breast cancer, including a head-to-head of four FDA-cleared products, a five-year risk prediction study, and two on autonomous reading (low-suspicion mammograms, probably-normal chest films). No figures and no collaborating institutions disclosed (<a href="https://en.sedaily.com/business/2026/11/17/lunit-to-present-17-ai-studies-at-worlds-largest-radiology" target="_blank" rel="noopener">Seoul Economic Daily, 2026-11-17</a>).</span>
+          </td>
+          <td>
+            <span class="zh">護城河是發表量與國際篩檢計畫的佈點——論文數本身就是進人口篩檢標案的門票。弱點是它沒有自己的影像網路，資料得靠合作機構，而這次 17 篇裡一個機構名字都沒有公布。</span>
+            <span class="en">The moat is publication volume plus placement in national screening programmes — paper count is itself the ticket into population-screening tenders. The weakness is that it owns no imaging network, so data depends on partner institutions, and not one is named among these 17 studies.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>HeartLung.AI</strong><br><span class="zh-inline">機會式心血管風險評估，從既有 CT 與胸片重讀</span><span class="en-inline">Opportunistic cardiovascular risk assessment, re-read from existing CT and chest films</span></td>
+          <td>
+            <span class="zh">RSNA 2026 九篇摘要；Agatston 零分者 21.7% 仍驗出鈣化、二十年冠心病 7.7% 對 3.8%（MESA／Framingham）；AI-CX-CVD 於 MIMIC-CXR 外部驗證 AUC 0.751／0.790；Sybil 一年 AUC 0.83、十五年 0.70（<a href="https://www.heartlung.ai/post/heartlung-ai-to-present-nine-abstracts-at-rsna-2026" target="_blank" rel="noopener">HeartLung.AI, 2026-11-16</a>）。</span>
+            <span class="en">Nine RSNA 2026 abstracts; 21.7% of those scoring zero on Agatston still had detectable calcium, with 20-year coronary heart disease at 7.7% against 3.8% (MESA/Framingham); AI-CX-CVD externally validated in MIMIC-CXR at AUC 0.751 and 0.790; Sybil at AUC 0.83 at one year falling to 0.70 at fifteen (<a href="https://www.heartlung.ai/post/heartlung-ai-to-present-nine-abstracts-at-rsna-2026" target="_blank" rel="noopener">HeartLung.AI, 2026-11-16</a>).</span>
+          </td>
+          <td>
+            <span class="zh">護城河是公開世代資料的深度使用（MESA、Framingham、MIMIC-CXR、Miami Heart Study），不需要自有醫院也能做長期結果分析，這是小公司少見的優勢。弱點是全部觀察性、零介入，而「重新分類風險」在沒有結果試驗前無法主張臨床效益。</span>
+            <span class="en">The moat is deep use of public cohorts — MESA, Framingham, MIMIC-CXR, the Miami Heart Study — which lets a small company do long-horizon outcome analysis without owning hospitals, a rare advantage at its size. The weakness is that it is all observational with zero intervention, and reclassifying risk cannot claim clinical benefit before an outcome trial.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Nanox</strong><br><span class="zh-inline">硬體（數位斷層合成）＋AI＋遠距放射的垂直組合</span><span class="en-inline">A vertical stack of hardware (digital tomosynthesis), AI and teleradiology</span></td>
+          <td>
+            <span class="zh">RSNA 2026 展出已獲 FDA 許可的 Nanox.ARC X 與 Nanox.AI；主動脈瓣鈣化評估與身體組成分析列為預覽、明確標示未獲許可；12/1 講者為 Cedars-Sinai 的 Ofir Koren，新聞稿同頁揭露其顧問與第一作者身分。無任何臨床數字、裝機數或掃描量（<a href="https://www.globenewswire.com/news-release/2026/11/18/3405617/0/en/nanox-to-showcase-its-innovative-technology-and-advances-across-nanox-arc-x-and-nanox-ai-at-rsna-2026.html" target="_blank" rel="noopener">GlobeNewswire, 2026-11-18</a>）。</span>
+            <span class="en">Shows the FDA-cleared Nanox.ARC X and Nanox.AI at RSNA 2026, with aortic valve calcification assessment and body composition listed as previews explicitly marked not cleared; the Dec 1 speaker is Ofir Koren of Cedars-Sinai, whose consultancy and lead authorship are disclosed on the same page. No clinical figures, installation counts or scan volumes (<a href="https://www.globenewswire.com/news-release/2026/11/18/3405617/0/en/nanox-to-showcase-its-innovative-technology-and-advances-across-nanox-arc-x-and-nanox-ai-at-rsna-2026.html" target="_blank" rel="noopener">GlobeNewswire, 2026-11-18</a>).</span>
+          </td>
+          <td>
+            <span class="zh">和 HeartLung.AI 在主動脈瓣鈣化、身體組成這類機會式讀取上正面重疊，但 Nanox 多了自己的影像硬體，理論上能把 AI 綁進裝機。弱點是這週的揭露誠實卻空洞——沒有任何可比較的效能或商業數字。</span>
+            <span class="en">It overlaps directly with HeartLung.AI on opportunistic reads such as aortic valve calcification and body composition, but Nanox also owns imaging hardware and can in principle bundle the AI into installations. The weakness is that this week's disclosure, while honest, is empty: no comparable performance or commercial figures at all.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>a2z Radiology AI</strong><br><span class="zh-inline">單點分流裝置，剛取得寬範圍 510(k)</span><span class="en-inline">Point-solution triage device, newly holding a broad 510(k)</span></td>
+          <td>
+            <span class="zh">a2z-Omni-Triage 取得 FDA 510(k)，涵蓋腹部骨盆 CT 九個所見，對比劑與非對比劑皆可；效能數字、樣本數、驗證資料集全部未公布（<a href="https://www.diagnosticimaging.com/view/fda-emerging-ai-triage-software-nine-findings-abdominopelvic-ct" target="_blank" rel="noopener">Diagnostic Imaging, 2026-11-20</a>）。</span>
+            <span class="en">a2z-Omni-Triage received FDA 510(k) clearance covering nine findings on abdominopelvic CT, contrast and non-contrast; no performance figures, sample size or validation dataset disclosed (<a href="https://www.diagnosticimaging.com/view/fda-emerging-ai-triage-software-nine-findings-abdominopelvic-ct" target="_blank" rel="noopener">Diagnostic Imaging, 2026-11-20</a>).</span>
+          </td>
+          <td>
+            <span class="zh">護城河就是那張許可的寬度——九個所見一次過，對手得一個個申請。弱點是單點分流最容易被平台商整合掉：AZmed 的 X 光 AI 本月已經透過 RapidAI 平台上架（<a href="https://www.healthitanswers.net/ai-in-healthcare-news-and-updates-november-2026/" target="_blank" rel="noopener">Health IT Answers, 2026-11-18</a>），分流裝置的終局通常是進別人的貨架。</span>
+            <span class="en">The moat is the breadth of that clearance — nine findings at once, where rivals must file one at a time. The weakness is that point-solution triage is the easiest thing for platforms to absorb: AZmed's X-ray AI became available through RapidAI's platform this month (<a href="https://www.healthitanswers.net/ai-in-healthcare-news-and-updates-november-2026/" target="_blank" rel="noopener">Health IT Answers, 2026-11-18</a>), and triage devices usually end up on somebody else's shelf.</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="zh"><strong>今天的競爭結構是「誰擁有連續資料」。</strong>SimonMed 與 DeepHealth 能報出周轉時間與微調增益，是因為它們自己就是門診網路；HeartLung.AI 沒有醫院，於是改用 MESA 與 Framingham 這類公開世代，換到的是長期結果但換不到介入；Lunit 發表最多卻一個合作機構都沒公布，資料來源是它最薄的一環；Nanox 用硬體綁 AI，a2z 用一張寬許可卡位。而這六家沒有一家在賣「病人結果改善」——那一格目前空著，RSNA 的議程正是在指這件事。</span>
+      <span class="en"><strong>Today's competitive structure is about who owns consecutive data.</strong> SimonMed and DeepHealth can report turnaround times and fine-tuning gains because they are the outpatient networks; HeartLung.AI owns no hospitals and substitutes public cohorts like MESA and Framingham, buying long-horizon outcomes but no intervention; Lunit publishes the most yet names no partner institution, leaving data provenance as its thinnest link; Nanox bundles AI with hardware and a2z stakes a claim with one broad clearance. None of the six is selling improved patient outcomes — that square is currently empty, and RSNA's programme is pointing straight at it.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============ 04 台灣視角 ============ -->
+<section id="taiwan">
+  <h2>04 — Taiwan Angle</h2>
+  <div class="sec-title">
+    <span class="zh">台灣的制度設計剛好押在今天這個落差上：不是再多幾篇準確度論文，而是隨機分派的結果試驗</span>
+    <span class="en">Taiwan's institutional design is bet on exactly today's gap: not more accuracy papers, but randomised outcome trials</span>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="zh"><strong>(1) 衛福部的三大 AI 中心，第三個中心做的就是 RSNA 今年在講的事。</strong>衛福部補助設立的<a href="https://aicenter.mohw.gov.tw/AC/cp-7200-81206-208.html" target="_blank" rel="noopener">三大中心共 19 處</a>：負責任 AI 執行中心 10 處（治理、透明揭露、可解釋性、生命週期監控）、臨床 AI 取證驗證中心 4 處（以 FHIR 跨院驗證資料庫與聯邦學習平台加速取證）、AI 影響性研究中心 5 處——而第三類的任務白紙黑字寫著<strong>「以隨機對照試驗衡量 AI 相對於傳統照護的真實臨床效益，作為未來定價與給付決策的科學依據」</strong>。對照今天本報的主線：廠商這一週交出的全是周轉時間、敏感度、描述接受率，而台灣的制度把給付資格綁在隨機分派的結果數據上。這不是跟風，是把全球醫療 AI 現在最缺的那一格直接寫成預算項目。</span>
+      <span class="en"><strong>(1) The third of the MOHW's three AI centres does exactly what RSNA is talking about this year.</strong> The ministry subsidises <a href="https://aicenter.mohw.gov.tw/AC/cp-7200-81206-208.html" target="_blank" rel="noopener">19 centres across three types</a>: 10 Responsible AI Execution Centres (governance, transparency disclosure, explainability, lifecycle monitoring), 4 Clinical AI Validation Centres (a FHIR-based cross-hospital validation database and a federated learning platform to speed up approval), and 5 Clinical AI Impact Evaluation Centres — whose stated mission is, in so many words, to <strong>use randomised controlled trials to measure the real-world clinical benefit of AI against conventional care, as the scientific basis for future pricing and reimbursement decisions</strong>. Set that against today's through-line: everything the vendors filed this week is turnaround time, sensitivity and descriptor acceptance, while Taiwan's institutions tie reimbursement eligibility to randomised outcome data. That is not following a trend; it writes the field's emptiest square directly into a budget line.</span>
+    </p>
+    <p>
+      <span class="zh"><strong>(2) 三個問題的框架出自衛福部資訊處自己，而它點名的失敗案例是台灣公司。</strong>資訊處長李建璋在<a href="https://blog.mohw.gov.tw/1270/" target="_blank" rel="noopener">衛福部部落格</a>把醫療 AI 的障礙拆成落地、取證、給付三題：落地對應負責任 AI 中心，要求廠商公布<strong>九項透明性指標</strong>並提供可解釋性分析，且因資料漂移必須<strong>每三到六個月定期重新檢核</strong>；取證的門檻是<strong>上萬筆等級</strong>的驗證資料集，單一醫院湊不出來，所以要跨層級醫院聯盟共用；給付則因為多數 AI 工具無法自費、全額納保又不現實，必須靠對照試驗證明「AI 加醫師優於醫師」。同一篇點名台灣首家取得美國 FDA 許可的 Deep01 在四到五年後停止營運，作為本地生態尚未成熟的證據。這段文字值得台灣的醫療 AI 團隊逐句讀——它是主管機關對自己市場的診斷書。</span>
+      <span class="en"><strong>(2) The three-problem framing comes from the ministry's own information office, and the failure it names is a Taiwanese company.</strong> Information Department director Lee Chien-chang, writing on the <a href="https://blog.mohw.gov.tw/1270/" target="_blank" rel="noopener">MOHW blog</a>, splits the obstacles into implementation, validation and reimbursement: implementation maps to the Responsible AI centres, where vendors must publish <strong>nine transparency indicators</strong> and supply explainability analysis, with <strong>mandatory re-checks every three to six months</strong> because clinical data drifts; validation faces a bar of <strong>tens of thousands of cases</strong>, which no single hospital can assemble, hence the cross-tier hospital alliance pooling data; and reimbursement, since most AI tools cannot be paid for out of pocket while full insurance coverage is unrealistic, has to rest on controlled trials showing that AI plus a clinician beats the clinician alone. The same post names Deep01 — the first Taiwanese company to win US FDA clearance, which ceased operations after four to five years — as evidence that the local ecosystem is not yet mature. It is worth reading line by line, because it is the regulator's own diagnosis of its own market.</span>
+    </p>
+    <p>
+      <span class="zh"><strong>(3) 資料標準先行這一步，已經換到國際合作的議價能力。</strong>衛福部與羅氏醫療診斷 <a href="https://www.ctee.com.tw/news/20260821701431-431205" target="_blank" rel="noopener">2026 年 8 月 21 日簽署 MOU</a>，首波聚焦慢性腎臟病，用常規檢驗資料做風險分層與腎功能惡化預警。值得注意的是羅氏方的說法：全球臨床決策支援業務負責人 Matthew Prime 表示 AI 模型必須以真實世界資料持續驗證才能適應各國醫療體系，而台灣的標準化資料與跨院驗證使其成為有力夥伴。衛福部長石崇良的對應說法是「面對全球 AI 醫療快速發展，臺灣選擇先建構資料標準與治理制度」。同一篇提到衛福部採用 FHIR 並自行開發 FHIR Box，長庚、馬偕、中國醫藥大學附設醫院已完成即時跨院病歷交換。把這三則放在一起讀：今天國際廠商在搶的是「連續資料」這個護城河，而台灣正在用制度把全國尺度的連續資料變成可驗證、可給付的公共基礎設施——這是六家廠商裡沒有任何一家能自己做到的事。</span>
+      <span class="en"><strong>(3) Putting data standards first has already bought bargaining power in international partnerships.</strong> The MOHW and Roche Diagnostics <a href="https://www.ctee.com.tw/news/20260821701431-431205" target="_blank" rel="noopener">signed an MOU on August 21, 2026</a>, with chronic kidney disease as the first phase, using routine laboratory data for risk stratification and early warning of declining kidney function. What is notable is Roche's framing: Matthew Prime, who heads its global clinical decision support and algorithms business, said AI models must be continuously validated against real-world data to suit different countries' health systems, and that Taiwan's standardised data and cross-hospital validation make it a strong partner. Health Minister Shih Chung-liang's matching line was that "faced with the rapid global development of AI in medicine, Taiwan chose to build data standards and governance systems first." The same report notes the ministry's adoption of FHIR and its own FHIR Box technology, with Chang Gung, Mackay and China Medical University Hospital having completed real-time cross-hospital record exchange. Read the three together: what the international vendors are fighting over today is the moat of consecutive data, and Taiwan is using institutions to turn nationwide consecutive data into verifiable, reimbursable public infrastructure — something none of the six companies above can do on its own.</span>
+    </p>
+    <p>
+      <span class="zh"><strong>一個要誠實標出的不一致：</strong>驗證中心的數量在兩份官方文件裡不同——<a href="https://aicenter.mohw.gov.tw/AC/cp-7200-81206-208.html" target="_blank" rel="noopener">三大中心網站</a>（2026-06 更新）寫 4 處臨床 AI 取證驗證中心、5 處 AI 影響性研究中心，而<a href="https://blog.mohw.gov.tw/1270/" target="_blank" rel="noopener">資訊處的部落格文章</a>（2025-03 發布）寫 5 處驗證中心。兩份都是衛福部來源，本報同時列出而不選邊。</span>
+      <span class="en"><strong>One inconsistency worth flagging:</strong> the number of validation centres differs between two official documents — the <a href="https://aicenter.mohw.gov.tw/AC/cp-7200-81206-208.html" target="_blank" rel="noopener">three-centres site</a> (updated 2026-06) gives 4 Clinical AI Validation Centres and 5 Impact Evaluation Centres, while the <a href="https://blog.mohw.gov.tw/1270/" target="_blank" rel="noopener">information office's blog post</a> (published 2025-03) gives 5 validation centres. Both are MOHW sources; this report gives both rather than picking one.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============ 05 延伸閱讀 ============ -->
+<section id="reading">
+  <h2>05 — Further Reading</h2>
+  <div class="sec-title">
+    <span class="zh">挑選標準：能改變你對本期主線判斷的東西，不是本期已經轉述過的新聞稿</span>
+    <span class="en">Chosen for what could change your reading of today's through-line, not for press releases already relayed above</span>
+  </div>
+
+  <ol class="reading">
+    <li>
+      <a href="https://www.auntminnie.com/resources/conference/rsna/2026/artificial-intelligence-preview/article/16425187/road-to-rsna-2026-artificial-intelligence-preview" target="_blank" rel="noopener">Road to RSNA 2026: AI Preview — AuntMinnie</a>
+      <p class="why"><span class="zh">把二十場議程的場次代碼與一句結論列齊，是這週唯一能讓你自己排出「要去聽哪幾場」的文件；負面結果那一組全在裡面。注意它標為第 1 頁／共 2 頁。</span><span class="en">It lists twenty sessions with their codes and a one-line conclusion each, the only document this week that lets you build your own list of which talks to attend — and the negative-findings cluster is all in it. Note that it is marked page 1 of 2.</span></p>
+    </li>
+    <li>
+      <a href="https://www.rsna.org/media/press/2026/2645" target="_blank" rel="noopener">Deepfake X-Rays Fool Radiologists and AI — RSNA press release (2026-03-24)</a>
+      <p class="why"><span class="zh">得獎論文的官方新聞稿，比二手報導多了合成影像的辨識特徵描述（骨骼過於平滑、脊椎不自然地直、肺野對稱、血管紋理均勻、骨折只出現在骨頭一側），這部分對實際判讀有用。</span><span class="en">The official release for the award-winning paper, and it carries something the secondary coverage lacks: a description of what gives the fakes away — over-smooth bone, unnaturally straight spines, symmetrical lungs, uniform vessel patterns, clean fractures confined to one side of the bone. That part is actually usable at the workstation.</span></p>
+    </li>
+    <li>
+      <a href="https://blog.mohw.gov.tw/1270/" target="_blank" rel="noopener">AI 要真正落實於醫療，有落地、取證、健保如何支付等三大問題必須解決 — 衛福部部落格</a>
+      <p class="why"><span class="zh">主管機關親自寫的市場診斷書，含九項透明性指標、三到六個月重新檢核、上萬筆驗證門檻這些具體義務，以及點名 Deep01 收場作為生態未成熟的證據。在台灣做醫療 AI 的人應該逐句讀。</span><span class="en">The regulator's own diagnosis of its market, with concrete obligations — nine transparency indicators, re-checks every three to six months, a validation bar in the tens of thousands of cases — and Deep01's closure named as evidence of an immature ecosystem. Anyone building medical AI in Taiwan should read it line by line.</span></p>
+    </li>
+    <li>
+      <a href="https://www.nature.com/npjdigitalmed/articles?searchType=journalSearch&amp;sort=PubDate" target="_blank" rel="noopener">npj Digital Medicine — 依發表日排序的文章列表</a>
+      <p class="why"><span class="zh">不是讀某一篇，是讀這份清單的形狀：五天 12 篇裡有三篇談治理與部署而非準確度，基礎模型正外溢到心電圖與語音。用它來校正自己對研究前沿位置的感覺。</span><span class="en">Not for any single paper but for the shape of the list: three of twelve papers in five days are about governance and deployment rather than accuracy, and foundation models are spilling into ECG and voice. Use it to recalibrate where you think the research frontier is.</span></p>
+    </li>
+    <li>
+      <a href="https://healthtechdigital.com/simonmed-leads-largest-global-study-of-ai-in-x-ray-analyzing-258373-exams-across-26-countries/" target="_blank" rel="noopener">SimonMed leads largest global study of AI in X-ray, 258,373 exams across 26 countries — Health Tech Digital (2026-06-23)</a>
+      <p class="why"><span class="zh">今年少見的大規模多國評估，而且把四個模組分開報：AZtrauma 特異度 96.4%、AZchest 只有 87.9%，同一套產品線內差這麼多，正好說明為什麼「產品級敏感度」這種說法沒有意義。</span><span class="en">A rare large multi-country evaluation this year, and it reports its four modules separately: AZtrauma at 96.4% specificity against AZchest at 87.9%. That spread inside one product line is the clearest illustration of why a single product-level sensitivity figure means nothing.</span></p>
+    </li>
+  </ol>
+</section>
+
+<!-- ============ 06 參考文獻 ============ -->
+<section id="refs">
+  <h2>06 — References</h2>
+  <div class="sec-title">
+    <span class="zh">參考文獻</span>
+    <span class="en">References</span>
+  </div>
+
+  <div class="panel">
+    <ol class="refs">
+      <li>SimonMed to Present Updates on Advances in AI-Powered Fracture Detection, Automated Radiology Reporting at RSNA 2026. <em>Imaging Technology News</em>, 2026-11-19（內文日期 2026-11-16）. <a href="https://www.itnonline.com/node/91332" target="_blank" rel="noopener">itnonline.com</a></li>
+      <li>DeepHealth to Present Recent Clinical Evidence Demonstrating the Breadth and Impact of Its AI Portfolio at RSNA 2026. <em>GlobeNewswire</em>, 2026-11-19. <a href="https://www.globenewswire.com/news-release/2026/11/19/3406383/0/en/deephealth-to-present-recent-clinical-evidence-demonstrating-the-breadth-and-impact-of-its-ai-portfolio-at-rsna-2026.html" target="_blank" rel="noopener">globenewswire.com</a></li>
+      <li>HeartLung.AI to Present Nine Abstracts at RSNA 2026. <em>HeartLung.AI</em>, 2026-11-16. <a href="https://www.heartlung.ai/post/heartlung-ai-to-present-nine-abstracts-at-rsna-2026" target="_blank" rel="noopener">heartlung.ai</a></li>
+      <li>Lunit to Present 17 AI Studies at World's Largest Radiology Meeting. <em>Seoul Economic Daily</em>, 2026-11-17. <a href="https://en.sedaily.com/business/2026/11/17/lunit-to-present-17-ai-studies-at-worlds-largest-radiology" target="_blank" rel="noopener">en.sedaily.com</a></li>
+      <li>Road to RSNA 2026: AI Preview. <em>AuntMinnie</em>（會前預覽，標示第 1 頁／共 2 頁）. <a href="https://www.auntminnie.com/resources/conference/rsna/2026/artificial-intelligence-preview/article/16425187/road-to-rsna-2026-artificial-intelligence-preview" target="_blank" rel="noopener">auntminnie.com</a></li>
+      <li>Study on AI-generated X-rays wins RSNA's 2026 best scientific article award. <em>DOTmed News</em>, 2026-10-23. <a href="https://www.dotmed.com/news/story/66916" target="_blank" rel="noopener">dotmed.com</a></li>
+      <li>Deepfake X-Rays Fool Radiologists and AI. <em>RSNA press release</em>, 2026-03-24（論文：Tordjman M, Yuce M, et al. The Rise of Deepfake Medical Imaging: Radiologists' Diagnostic Accuracy in Detecting ChatGPT-generated Radiographs. <em>Radiology</em>, doi 10.1148/radiol.252094）. <a href="https://www.rsna.org/media/press/2026/2645" target="_blank" rel="noopener">rsna.org</a></li>
+      <li>FDA Clears Emerging AI Triage Software for Nine Findings on Abdominopelvic CT. <em>Diagnostic Imaging</em>, 2026-11-20（公司公告 2026-11-19）. <a href="https://www.diagnosticimaging.com/view/fda-emerging-ai-triage-software-nine-findings-abdominopelvic-ct" target="_blank" rel="noopener">diagnosticimaging.com</a></li>
+      <li>Nanox to Showcase Its Innovative Technology and Advances Across Nanox.ARC X and Nanox.AI at RSNA 2026. <em>GlobeNewswire</em>, 2026-11-18. <a href="https://www.globenewswire.com/news-release/2026/11/18/3405617/0/en/nanox-to-showcase-its-innovative-technology-and-advances-across-nanox-arc-x-and-nanox-ai-at-rsna-2026.html" target="_blank" rel="noopener">globenewswire.com</a></li>
+      <li>npj Digital Medicine，依發表日排序之文章列表（2026-11-18 至 2026-11-22 共 12 篇）. <em>Nature Portfolio</em>. <a href="https://www.nature.com/npjdigitalmed/articles?searchType=journalSearch&amp;sort=PubDate" target="_blank" rel="noopener">nature.com</a></li>
+      <li>ECG foundation models for cardiovascular screening in a cohort of young competitive athletes. <em>npj Digital Medicine</em>, 2026-11-21. <a href="https://www.nature.com/articles/s41746-026-03474-9" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Multicenter evaluation of radiomics and multimodal artificial intelligence for colorectal cancer diagnosis and survival prediction. <em>npj Digital Medicine</em>, 2026-11-19. <a href="https://www.nature.com/articles/s41746-026-03434-3" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Imaging-based biological age gap and risk of mortality and incident diseases: a systematic review and meta-analysis. <em>npj Digital Medicine</em>, 2026-11-19. <a href="https://www.nature.com/articles/s41746-026-03472-x" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Physician AI disclosure, condition severity, and public trust in digital medicine. <em>npj Digital Medicine</em>, 2026-11-19. <a href="https://www.nature.com/articles/s41746-026-03484-7" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Multimodal digital biomarker for asthma: complementary roles of vocal, clinical and demographic factors. <em>npj Digital Medicine</em>, 2026-11-22. <a href="https://www.nature.com/articles/s41746-026-03465-w" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Cloud vs. on-premise large language models for urgent patient-portal message screening: a comparative evaluation. <em>npj Digital Medicine</em>, 2026-11-20. <a href="https://www.nature.com/articles/s41746-026-03477-6" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Tele-Cranio: a CT-free AI solution for remote diagnosis and planning of craniomaxillofacial deformities. <em>npj Digital Medicine</em>, 2026-11-20. <a href="https://www.nature.com/articles/s41746-026-03454-z" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Virtual atrial fibrillation dynamics reflect clinical outcomes after catheter ablation. <em>npj Digital Medicine</em>, 2026-11-20. <a href="https://www.nature.com/articles/s41746-026-03495-4" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Epidemiology-informed graph neural networks for predicting and interpreting transmissible hospital-acquired infections. <em>npj Digital Medicine</em>, 2026-11-20. <a href="https://www.nature.com/articles/s41746-026-03382-y" target="_blank" rel="noopener">nature.com</a></li>
+      <li>The proposed reform of the Medical Device Regulation and its implications for AI-enabled medical devices in the EU. <em>npj Digital Medicine</em>, 2026-11-18. <a href="https://www.nature.com/articles/s41746-026-03475-8" target="_blank" rel="noopener">nature.com</a></li>
+      <li>SimonMed leads largest global study of AI in X-ray, analyzing 258,373 exams across 26 countries. <em>Health Tech Digital</em>, 2026-06-23（原始發表於 <em>Radiography</em>）. <a href="https://healthtechdigital.com/simonmed-leads-largest-global-study-of-ai-in-x-ray-analyzing-258373-exams-across-26-countries/" target="_blank" rel="noopener">healthtechdigital.com</a></li>
+      <li>AI in Healthcare News and Updates — November 2026. <em>Health IT Answers</em>, 2026-11-18. <a href="https://www.healthitanswers.net/ai-in-healthcare-news-and-updates-november-2026/" target="_blank" rel="noopener">healthitanswers.net</a></li>
+      <li>臺灣智慧醫療三大中心. <em>衛生福利部</em>（2025-01-13 發布，2026-06-01 更新）. <a href="https://aicenter.mohw.gov.tw/AC/cp-7200-81206-208.html" target="_blank" rel="noopener">aicenter.mohw.gov.tw</a></li>
+      <li>李建璋，AI 要真正落實於醫療，有落地、取證、健保如何支付等三大問題必須解決. <em>衛生福利部部落格</em>, 2025-03-10（2025-07-22 修訂）. <a href="https://blog.mohw.gov.tw/1270/" target="_blank" rel="noopener">blog.mohw.gov.tw</a></li>
+      <li>衛生福利部攜手羅氏醫療診斷簽署合作備忘錄. <em>工商時報</em>, 2026-08-21. <a href="https://www.ctee.com.tw/news/20260821701431-431205" target="_blank" rel="noopener">ctee.com.tw</a></li>
+    </ol>
+    <div class="note">
+      <span class="zh"><strong>編輯說明：</strong>（一）<strong>本期最大的限制：nature.com 的個別文章頁在本次執行中一律無法擷取</strong>，只有期刊的文章列表頁讀得到。因此第八則與參考文獻 11–20 的 npj Digital Medicine 論文，只有標題、發表日期與連結經過查證，<strong>沒有任何樣本數、AUC、敏感度或效應量</strong>——這些數字不是被省略，是我讀不到，請勿從標題推測結論。（二）本期主線建立在 RSNA 2026 的會前新聞稿與議程預覽上，<strong>幾乎全部是尚未同儕審查的會議摘要</strong>；SimonMed 的 83.8%、62.6%→80.8%，DeepHealth 的 88.7%，HeartLung.AI 的 21.7%／7.7%／3.8%／AUC 數值，全部由各公司自行整理公布、無第三方稽核。（三）DeepHealth 引用的 98.4%（European Radiology）與 14.6%（Radiology）出自已發表論文，但我未取得原文，係自該公司新聞稿轉述。（四）Margulis 獎論文的數字引自 RSNA 官方新聞稿與 DOTmed 報導，論文全文未取得；兩個來源對 RoentGen 組的呈現略有差異（RSNA 寫 62%–78% 區間、DOTmed 寫平均 70%），本報同時列出。（五）該論文本體發表於 2026 年 3 月，超出本期七天窗口，收入的理由是獎項將於 11/29 頒出。（六）AZmed／SimonMed 的 Radiography 論文為 2026 年 6 月，作為背景而非本週新聞；該則數字引自 Health Tech Digital 之報導而非期刊原文。（七）AuntMinnie 的議程預覽標示為第 1 頁／共 2 頁，我只讀到第一頁，故該則清單不完整，且絕大多數場次沒有樣本數與效應量。（八）台灣視角三份官方來源中，驗證中心數量在兩份衛福部文件間不一致（4 處對 5 處），已在該節正文標明並同時列出。（九）本期未使用任何付費牆後內容。（十）Fierce Healthcare 的 AI 專頁在本次執行中回傳的是 2025 年的舊內容，故未採用。</span>
+      <span class="en"><strong>Editor's note:</strong> (1) <strong>The largest limitation of this issue: individual article pages on nature.com failed to fetch throughout this run</strong>, and only the journal's article listing was readable. For story eight and references 11–20, therefore, only the titles, publication dates and links of the npj Digital Medicine papers are verified, and <strong>no sample size, AUC, sensitivity or effect size is given</strong> — those figures are not omitted but unread, and nothing should be inferred from the titles. (2) This issue's through-line rests on RSNA 2026 pre-meeting releases and the programme preview, which are <strong>almost entirely conference abstracts not yet peer-reviewed</strong>; SimonMed's 83.8% and 62.6%→80.8%, DeepHealth's 88.7%, and HeartLung.AI's 21.7%/7.7%/3.8% and AUC values were all compiled and released by the companies themselves, with no independent audit. (3) The 98.4% (European Radiology) and 14.6% (Radiology) that DeepHealth cites come from published papers whose originals I did not obtain, and are relayed from that company's release. (4) The Margulis Award paper's figures are relayed from RSNA's own release and DOTmed's report, the full text not having been obtained; the two differ slightly on the RoentGen set (RSNA gives a 62%–78% range, DOTmed a 70% mean) and both are given here. (5) That paper itself appeared in March 2026, outside this issue's seven-day window, and is carried because the award is presented on Nov 29. (6) The AZmed/SimonMed paper in Radiography dates from June 2026 and appears as background rather than as news from this week; its figures are relayed from Health Tech Digital's coverage rather than the journal text. (7) AuntMinnie's programme preview is marked page 1 of 2 and I read only the first, so that list is incomplete, and most sessions carry no sample size or effect size. (8) Among the three official Taiwanese sources, the number of validation centres is inconsistent between two MOHW documents (4 against 5); this is flagged in that section and both figures are given. (9) No paywalled content was used in this issue. (10) Fierce Healthcare's AI page returned 2025 content during this run and was therefore not used.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-row">
+    <div>
+      <span class="zh">AI／醫療AI 每日新知日報 · 由 Claude 於台北時間每日自動產出 · 本期主題：星期一／臨床應用與研究<br>本報告內容經來源查證，但不構成投資或醫療建議。所有數據請以原始出處為準。</span>
+      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Monday / Clinical Applications &amp; Research<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
+    </div>
+    <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com / 返回 peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
+  </div>
+</footer>
+</main>
+
+<div class="fabs">
+  <button class="up" id="up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+  <a class="home-fab" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg></a>
+</div>
+
+<script>
+function setLang(l){
+  document.body.classList.remove('lang-zh','lang-en');
+  document.body.classList.add('lang-'+l);
+  document.documentElement.lang = (l==='zh') ? 'zh-Hant' : 'en';
+  document.getElementById('b-zh').classList.toggle('on', l==='zh');
+  document.getElementById('b-en').classList.toggle('on', l==='en');
+  document.title = (l==='zh')
+    ? 'AI／醫療AI 每日新知日報 · 2026-11-23'
+    : 'AI & Medical AI Daily · 2026-11-23';
+}
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.getElementById('theme-ic').textContent =
+    document.body.classList.contains('dark') ? '◑' : '◐';
+}
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.body.classList.add('dark');
+  document.getElementById('theme-ic').textContent = '◑';
+}
+window.addEventListener('scroll', function(){
+  document.getElementById('up').classList.toggle('show', window.scrollY > 600);
+});
+
+/* GitHub 星星數：無需授權，失敗或被限流時靜默保留佔位符 */
+(function(){
+  var el = document.getElementById('ghs');
+  if (!el || typeof fetch !== 'function') return;
+  fetch('https://api.github.com/repos/tingwei161803/ai-medical-daily', {headers:{Accept:'application/vnd.github+json'}})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if (!d || typeof d.stargazers_count !== 'number') return;
+      var n = d.stargazers_count;
+      el.textContent = n >= 1000 ? (Math.round(n/100)/10) + 'k' : String(n);
+    })
+    .catch(function(){});
+})();
+</script>
+</body>
+</html>
