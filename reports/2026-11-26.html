@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>AI／醫療AI 每日新知日報 · 2026-11-26</title>
+<meta property="og:url" content="https://ai-medical-daily.peteraim.com/reports/2026-11-26.html" />
+<link rel="canonical" href="https://ai-medical-daily.peteraim.com/reports/2026-11-26.html" />
+<meta name="report-date" content="2026-11-26">
+<meta name="report-theme" content="technology">
+<meta name="report-title-zh" content="開放權重這一週真的進了醫療，而同一批人發的評測說最強的模型只有 49.1 分——11/23 螞蟻把 LingSante-3.1-flash（560B 總參數、每 token 活化約 25B、100 萬 token 上下文）與 LingSante-3.1-air-VL（124B／5.5B 活化、256K 上下文）以 MIT 授權放上 Hugging Face 的 inclusionAI，兩張模型卡都明寫研究與評估用、非醫療器材、不得獨立做診斷處方或檢傷；flash 自報 InclusionMed 綜合 45.064、23 個模型設定中第五，而 InclusionMed 這份 11/16 上 arXiv 的評測由螞蟻與史丹佛、哈佛、北京協和等 29 個機構的研究者共同推出，22 個模型的指數落在 17.5 到 49.1 之間、第一名是 Gemini 4 Argon 的 49.1，五個 benchmark 只覆蓋九宮格裡的三格、1,034 個任務有 964 個是英文、338 個可判定國別的任務裡 318 個是美國，而且沒有一個主要評估對病人與公眾的協助。同一週另外三份報告把尺度推向兩端：NAVER 與 KT 的 KMed-31B 用多教師 on-policy 差量蒸餾（MOPD²）把 Gemma-4-31B-IT 的 HealthBench Hard 從 23.80 推到 51.48，但長度校正後只剩 25.25、GPT-5.6-sol 是 41.21；John Snow Labs 11/23 推出醫療決策模型，Small 在九類任務平均 0.917、每筆病歷約 40 毫秒、百萬筆 GPU 成本約 13–15.6 美元，約 300 萬參數的 PHI Guard v0.7 在單一 CPU 執行緒上 1.8 小時掃完百萬筆；OpenAI 11/24 說 GPT-6 用通用推理與程式碼設計蛋白質，322 個 de novo minibinder 在 Onava 的濕實驗室裡 35 個（10.9%）結合到目標，但自己註明這一輪仍靠 Boltz-2、OpenDDE、ESMFold2 篩選、由序列預測結構的 TM-score 只有 0.26 而 ESMFold2 是 0.93。而 11/24 上 arXiv 的 Clinical3D-Bench 把問題問回醫院走廊：3,368 題病房空間推理，最好的閉源模型 53.6%、最好的開源 45.7%、答案先驗基線 40.8%，五位醫師在 400 題子集上 79.0%。">
+<meta name="report-title-en" content="Open weights really did arrive in medicine this week, and the benchmark published alongside them says the best model in the world scores 49.1 out of 100 — on Nov 23 Ant put LingSante-3.1-flash (560B total parameters, about 25B active per token, a 1M-token context) and LingSante-3.1-air-VL (124B total, 5.5B active, 256K context) on Hugging Face under inclusionAI with MIT licences, both model cards stating plainly that these are research models, not medical devices, and must not independently diagnose, prescribe or triage; flash self-reports an InclusionMed composite of 45.064, fifth of 23 model configurations, and InclusionMed itself — posted to arXiv on Nov 16 by Ant with researchers from 29 institutions including Stanford, Harvard and Peking Union Medical College — puts 22 model releases between 17.5 and 49.1, with Gemini 4 Argon top at 49.1, its five benchmarks covering three of nine role-capability cells, 964 of 1,034 tasks in English, 318 of the 338 country-attributable tasks American, and not one of them primarily measuring help for patients and the public. Three more reports the same week pushed scale to both extremes: NAVER and KT's KMed-31B used multi-teacher on-policy delta distillation (MOPD²) to lift Gemma-4-31B-IT on HealthBench Hard from 23.80 to 51.48, but length-adjusted it falls to 25.25 against GPT-5.6-sol's 41.21; John Snow Labs shipped medical decision models on Nov 23, with Small averaging 0.917 across nine clinical task areas at roughly 40 ms per note and $13.00–15.60 of GPU compute per million notes, and a roughly 3-million-parameter PHI Guard v0.7 screening a million notes in about 1.8 hours on one CPU thread; and OpenAI said on Nov 24 that GPT-6 designs proteins with general reasoning and code, 35 of 322 de novo minibinders (10.9%) binding their targets in partner Onava's wet lab — while noting the campaign still leaned on Boltz-2, OpenDDE and ESMFold2 to filter, and that its sequence-to-structure TM-score is 0.26 against ESMFold2's 0.93. Clinical3D-Bench, posted to arXiv on Nov 24, took the question back into the hospital corridor: on 3,368 ward spatial-reasoning items the best proprietary model scores 53.6%, the best open model 45.7%, an answer-prior baseline 40.8%, and five physicians 79.0% on a 400-item subset.">
+<meta name="report-summary-zh" content="螞蟻以 MIT 授權開源 560B 醫療模型的同一週，它共同推出的 InclusionMed 評測說最強的模型只有 49.1 分；KMed-31B、John Snow Labs 的決策模型、GPT-6 的蛋白質設計與 Clinical3D-Bench，把「醫療 AI 要多大才夠」推向四個互相矛盾的答案。">
+<meta name="report-summary-en" content="In the same week Ant open-sourced a 560B medical model under MIT, the InclusionMed benchmark it co-published put the best model in the world at 49.1 out of 100 — while KMed-31B, John Snow Labs' decision models, GPT-6's protein design and Clinical3D-Bench pushed the question of how big a medical model needs to be towards four contradictory answers.">
+<meta property="og:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HJLDQZDK5V');
+</script>
+<link rel="stylesheet" href="/assets/report.css">
+</head>
+<body class="lang-zh">
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><span>◆</span> <span class="zh-inline">AI／醫療AI 日報</span><span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <div class="bar-sp"></div>
+    <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub / 在 GitHub 給這個專案一顆星"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
+    <div class="seg">
+      <button id="b-zh" class="on" onclick="setLang('zh')">中文</button>
+      <button id="b-en" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="kicker">
+    <span class="zh-inline">星期四 · 技術突破</span>
+    <span class="en-inline">Thursday · Technology</span>
+  </div>
+  <h1>
+    <span class="zh">開放權重真的進了醫療，而同一批人發的評測說最強的模型只有 49.1 分</span>
+    <span class="en">Open weights arrived in medicine, and the benchmark published alongside them says the best model scores 49.1 out of 100</span>
+  </h1>
+  <div class="dateline">
+    <span class="zh-inline">2026 年 11 月 26 日（四）· 涵蓋 11/16–11/26 · 台北時間</span>
+    <span class="en-inline">Thursday, November 26, 2026 · Covering Nov 16–26 · Taipei time</span>
+  </div>
+  <p class="lede">
+    <span class="zh">這一週醫療 AI 的技術面同時往四個方向拉開，而每個方向都附了一把自己的尺。最大的那一端是 11 月 23 日螞蟻集團把百靈醫療健康大模型的兩款放上 Hugging Face 的 inclusionAI 組織、<a href="https://huggingface.co/inclusionAI/LingSante-3.1-flash" target="_blank" rel="noopener">採 MIT 授權</a>：<a href="https://technode.global/2026/11/24/ant-group-open-weight-lingsante-medical-ai-models/" target="_blank" rel="noopener">LingSante-3.1-flash 560B 總參數、每 token 活化約 25B、上下文 100 萬 token</a>，另一款多模態的 air-VL 是 124B／5.5B 活化、256K 上下文。最小的那一端是同一天 John Snow Labs 發表的醫療決策模型，<a href="https://www.globenewswire.com/news-release/2026/11/23/3408483/0/en/john-snow-labs-launches-first-commercially-available-decision-models-for-healthcare.html" target="_blank" rel="noopener">Nano 只需約 2GB GPU 記憶體或純 CPU、每筆病歷約 24 毫秒</a>。中間那一端是 NAVER 與 KT 的 KMed-31B，<a href="https://www.alphaxiv.org/abs/2611.28719" target="_blank" rel="noopener">用蒸餾把一個開放權重的 31B 基礎模型推到 HealthBench Hard 51.48</a>。而最遠的那一端是 OpenAI 說<a href="https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities/" target="_blank" rel="noopener">通用模型不必呼叫專用生物模型就能設計出會結合目標的蛋白質</a>。把這四個方向放在一起看的那把尺，恰好也在同一週出現：<a href="https://www.alphaxiv.org/abs/2611.21218" target="_blank" rel="noopener">螞蟻與 29 個機構研究者共同推出的 InclusionMed 指數，22 個模型落在 17.5 到 49.1 分之間</a>——換句話說，這一週所有人都在往前跑，而最前面那個離滿分還有一半。</span>
+    <span class="en">Medical AI pulled in four directions this week, and each direction arrived carrying its own ruler. At the largest end, on November 23 Ant Group put two of its LingSante medical models on Hugging Face under the inclusionAI organisation, <a href="https://huggingface.co/inclusionAI/LingSante-3.1-flash" target="_blank" rel="noopener">both under MIT licences</a>: <a href="https://technode.global/2026/11/24/ant-group-open-weight-lingsante-medical-ai-models/" target="_blank" rel="noopener">LingSante-3.1-flash at 560B total parameters, about 25B active per token and a 1M-token context</a>, alongside a multimodal air-VL at 124B total, 5.5B active, 256K context. At the smallest end, the same day, John Snow Labs shipped medical decision models whose <a href="https://www.globenewswire.com/news-release/2026/11/23/3408483/0/en/john-snow-labs-launches-first-commercially-available-decision-models-for-healthcare.html" target="_blank" rel="noopener">Nano needs about 2GB of GPU memory or a plain CPU and takes roughly 24 ms per note</a>. In between sat NAVER and KT's KMed-31B, which <a href="https://www.alphaxiv.org/abs/2611.28719" target="_blank" rel="noopener">distilled an open-weight 31B base up to 51.48 on HealthBench Hard</a>. And furthest out, OpenAI said that <a href="https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities/" target="_blank" rel="noopener">a general model can design proteins that bind their targets without calling a specialised biology model for the design step</a>. The ruler that makes all four legible landed in the same week: <a href="https://www.alphaxiv.org/abs/2611.21218" target="_blank" rel="noopener">the InclusionMed Index, published by Ant with researchers from 29 institutions, places 22 model releases between 17.5 and 49.1</a> — which is to say everyone ran forward this week, and the one out front is still short of halfway.</span>
+  </p>
+
+  <nav class="toc">
+    <a href="#top"><span class="zh-inline">重點新聞</span><span class="en-inline">Top Stories</span></a>
+    <a href="#product"><span class="zh-inline">產品分析</span><span class="en-inline">Product Analysis</span></a>
+    <a href="#company"><span class="zh-inline">公司與競爭</span><span class="en-inline">Companies &amp; Competition</span></a>
+    <a href="#taiwan"><span class="zh-inline">台灣視角</span><span class="en-inline">Taiwan Angle</span></a>
+    <a href="#reading"><span class="zh-inline">延伸閱讀</span><span class="en-inline">Further Reading</span></a>
+    <a href="#refs"><span class="zh-inline">參考文獻</span><span class="en-inline">References</span></a>
+  </nav>
+</div>
+
+<!-- ============ 01 重點新聞 ============ -->
+<section id="top">
+  <h2>01 — Top Stories</h2>
+  <div class="sec-title">
+    <span class="zh">八則消息裡有六則附了自己的評測，而唯一不是廠商出的那兩把尺，量到的都是同一件事：單題會了，不代表整件事會了</span>
+    <span class="en">Six of these eight came with a benchmark attached; the only two rulers nobody sold measured the same thing — passing the items is not the same as doing the job</span>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">開源模型</span><span class="en-inline">Open weights</span></span>
+      <span class="tag">Ant Group</span><span class="tag">LingSante 3.1</span><span class="tag">11/23</span>
+    </div>
+    <h3>
+      <span class="zh">螞蟻把 560B 的醫療模型以 MIT 授權放上 Hugging Face，模型卡自己寫「不得獨立做診斷、處方或檢傷」</span>
+      <span class="en">Ant puts a 560B medical model on Hugging Face under MIT, and the model card itself says it must not independently diagnose, prescribe or triage</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">11 月 23 日，螞蟻集團宣布百靈醫療健康大模型開源，同日把兩款權重放上 Hugging Face 的 inclusionAI 組織：<a href="https://huggingface.co/inclusionAI/LingSante-3.1-flash" target="_blank" rel="noopener">LingSante-3.1-flash</a> 是純文字的深度推理模型，560B 總參數、每 token 活化約 25B、上下文 100 萬 token，架構沿用 Ling-3.1-flash 的 hybrid-linear MoE（63 層 KDA 加 9 層 Gated MLA、512 個 routed expert 中每 token 活化 8 個）；<a href="https://huggingface.co/inclusionAI/LingSante-3.1-air-VL" target="_blank" rel="noopener">LingSante-3.1-air-VL</a> 是原生多模態，124B 總參數、5.5B 活化、256K 上下文，建在 Ling-3.0-flash-VL 之上。兩者<a href="https://technode.global/2026/11/24/ant-group-open-weight-lingsante-medical-ai-models/" target="_blank" rel="noopener">皆為 MIT 授權</a>。<a href="https://www.21jingji.com/article/20261123/herald/2aa126e4459353215c25576a5e8ad1d8.html" target="_blank" rel="noopener">21 世紀經濟報導說這個家族還有三款會分階段釋出</a>：能預測六年內 150 多種疾病風險的 LingSante Pulse、辨識安全與倫理風險的 MedGuard，以及同時處理語音與視覺的即時代理人 LingSante Live。</span>
+        <span class="en">On November 23 Ant Group announced it was open-sourcing its LingSante medical model family and the same day put two sets of weights on Hugging Face under the inclusionAI organisation. <a href="https://huggingface.co/inclusionAI/LingSante-3.1-flash" target="_blank" rel="noopener">LingSante-3.1-flash</a> is a text-only deep-reasoning model: 560B total parameters, about 25B active per token, a 1M-token context, keeping Ling-3.1-flash's hybrid-linear MoE architecture (63 KDA layers plus 9 Gated MLA, 8 of 512 routed experts active per token). <a href="https://huggingface.co/inclusionAI/LingSante-3.1-air-VL" target="_blank" rel="noopener">LingSante-3.1-air-VL</a> is natively multimodal: 124B total, 5.5B active, 256K context, built on Ling-3.0-flash-VL. Both are <a href="https://technode.global/2026/11/24/ant-group-open-weight-lingsante-medical-ai-models/" target="_blank" rel="noopener">released under MIT</a>. <a href="https://www.21jingji.com/article/20261123/herald/2aa126e4459353215c25576a5e8ad1d8.html" target="_blank" rel="noopener">21st Century Business Herald reports three more in the family will follow in stages</a>: LingSante Pulse, which it says forecasts risk for over 150 diseases across six years; MedGuard for safety and ethics risk; and LingSante Live, a real-time agent handling speech and vision together.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">在這之前，醫療領域能下載的最強開放權重大致以 Google 的 MedGemma 為代表——<a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">今年 1 月 13 日的 MedGemma 1.5 是 4B，刻意做成離線可跑</a>。560B 是另一個量級的東西：它不是給單機跑的，而是把「前沿級醫療模型」這件事從 API 後面搬到任何人都能自架、自己微調、自己審計的位置。MIT 授權尤其關鍵，因為它不限制商業使用、不要求回饋修改，也沒有 Llama 式的使用者數上限。</span>
+        <span class="en">Until now the strongest downloadable weights in medicine were essentially Google's MedGemma — <a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">January 13's MedGemma 1.5 was a 4B model, deliberately sized to run offline</a>. 560B is a different category of object: not something you run on a laptop, but a frontier-scale medical model moved out from behind an API to somewhere anyone can host, fine-tune and audit it themselves. The MIT licence matters most here, because it places no restriction on commercial use, requires no contribution back, and carries no Llama-style user ceiling.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">兩張模型卡都把界線寫得比新聞稿清楚：<a href="https://huggingface.co/inclusionAI/LingSante-3.1-air-VL" target="_blank" rel="noopener">這是研究與評估用的模型、不是醫療器材，不得獨立做診斷、處方、治療決定或檢傷，benchmark 與模擬結果不構成臨床有效性的證據</a>。detail 的 benchmark 表在模型卡上是圖片而非文字，所以表內數字無法逐項核對。螞蟻自報的使用規模——<a href="https://technode.global/2026/11/24/ant-group-open-weight-lingsante-medical-ai-models/" target="_blank" rel="noopener">阿福（原 AQ）約 1.5 億使用者、每天近 2,000 萬次諮詢</a>——是公司自己的數字，沒有第三方稽核。而「開源」也不等於「跑得起來」：<a href="https://www.unite.ai/ant-group-begins-open-weight-release-of-lingsante-medical-ai-models/" target="_blank" rel="noopener">unite.ai 整理的服務需求是 air-VL 要四張 141GB 級 GPU 或八張 H100／H800、flash 要八張 H200</a>（該站標示其文章由 AI 生成、經編輯審閱）。</span>
+        <span class="en">Both model cards draw the line more sharply than the press coverage does: <a href="https://huggingface.co/inclusionAI/LingSante-3.1-air-VL" target="_blank" rel="noopener">these are research and evaluation models, not medical devices; they must not independently diagnose, prescribe, determine treatment or make triage decisions; and benchmark or simulated results do not establish clinical effectiveness</a>. The detailed benchmark tables appear on the cards as images rather than text, so the figures inside them cannot be checked line by line. Ant's usage figures — <a href="https://technode.global/2026/11/24/ant-group-open-weight-lingsante-medical-ai-models/" target="_blank" rel="noopener">about 150 million users of its Afu app (formerly AQ) and nearly 20 million consultations a day</a> — are the company's own, with no third-party audit. And open does not mean runnable: <a href="https://www.unite.ai/ant-group-begins-open-weight-release-of-lingsante-medical-ai-models/" target="_blank" rel="noopener">unite.ai puts serving requirements at four 141GB-class GPUs or eight H100/H800s for air-VL and eight H200s for flash</a> (that site states its articles are AI-generated and editorially reviewed).</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://technode.global/2026/11/24/ant-group-open-weight-lingsante-medical-ai-models/" target="_blank" rel="noopener">TechNode Global, 2026-11-24</a> · <a href="https://huggingface.co/inclusionAI/LingSante-3.1-flash" target="_blank" rel="noopener">Hugging Face: inclusionAI/LingSante-3.1-flash</a> · <a href="https://www.21jingji.com/article/20261123/herald/2aa126e4459353215c25576a5e8ad1d8.html" target="_blank" rel="noopener">21 世紀經濟報導, 2026-11-23</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">Benchmark</span><span class="en-inline">Benchmark</span></span>
+      <span class="tag">InclusionMed</span><span class="tag">29 institutions</span><span class="tag">11/16</span>
+    </div>
+    <h3>
+      <span class="zh">同一週的那把尺：22 個模型落在 17.5 到 49.1 分，第一名是 Gemini 4 Argon，而五個 benchmark 只覆蓋九宮格裡的三格</span>
+      <span class="en">The ruler that came with it: 22 model releases between 17.5 and 49.1, Gemini 4 Argon on top, and five benchmarks covering three of nine cells</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">11 月 16 日上 arXiv 的 <a href="https://www.alphaxiv.org/abs/2611.21218" target="_blank" rel="noopener">InclusionMed: Benchmarking AI for Inclusive Healthcare</a> 由「InclusionMed Collaboration」署名，<a href="https://www.unite.ai/ant-group-begins-open-weight-release-of-lingsante-medical-ai-models/" target="_blank" rel="noopener">unite.ai 說它由螞蟻集團與史丹佛、哈佛、北京協和等 29 個機構的研究者共同推出</a>。它把評測排成「三種醫療角色 × 三種 AI 能力」的九宮格（稱為 Atlas），首發從 388 個候選 benchmark 中經稽核與獨立重現挑出四個公開評測——HealthBench Professional、PhysicianBench、ALE-CLI v1.0: Health and Medicine、CHI-Bench——再加上私有的診斷推理評測 InclusionMed-DxFiles，五者各佔 20%。<a href="https://www.alphaxiv.org/abs/2611.21218" target="_blank" rel="noopener">22 個模型版本的指數落在 17.5 到 49.1（滿分 100）之間：Gemini 4 Argon 49.1 居首、Kimi K3 37.9、GPT-5.6 Luna 36.9</a>；分項上 Claude Opus 5.5 以 55.6 居醫療專業人員類之首、GPT-6 Astra 居推理類之首、Claude Fable 5.1 以 46.1 居代理人類之首。</span>
+        <span class="en"><a href="https://www.alphaxiv.org/abs/2611.21218" target="_blank" rel="noopener">InclusionMed: Benchmarking AI for Inclusive Healthcare</a>, posted to arXiv on November 16 under the byline "The InclusionMed Collaboration", is described by <a href="https://www.unite.ai/ant-group-begins-open-weight-release-of-lingsante-medical-ai-models/" target="_blank" rel="noopener">unite.ai as launched by Ant Group with researchers from 29 institutions including Stanford, Harvard and Peking Union Medical College</a>. It arranges evaluation as a 3×3 grid of healthcare roles against AI capabilities — the Atlas — and the first release picks four public benchmarks out of 388 candidates after audits and independent reproduction: HealthBench Professional, PhysicianBench, ALE-CLI v1.0: Health and Medicine and CHI-Bench, plus the private diagnostic-reasoning benchmark InclusionMed-DxFiles, each weighted 20%. <a href="https://www.alphaxiv.org/abs/2611.21218" target="_blank" rel="noopener">The Index places 22 model releases between 17.5 and 49.1 out of 100: Gemini 4 Argon leads at 49.1, Kimi K3 is at 37.9, GPT-5.6 Luna at 36.9</a>; by category, Claude Opus 5.5 leads the healthcare-professional cut at 55.6, GPT-6 Astra leads reasoning, and Claude Fable 5.1 leads agency at 46.1.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這份論文最有用的結論不是排名，而是排名會動：<a href="https://www.alphaxiv.org/abs/2611.21218" target="_blank" rel="noopener">換一個醫療角色或一種能力，名次就重排，而前十名的模型在「病人溝通」上的分數全部高於「臨床決策」</a>。它也直接否定了「一個分數決定採購」的做法——指數相近的模型，推估的推論成本差很多。對照本報過去兩天看到的廠商自述數字，這是今年少見的、把方法學和排除標準都寫出來的醫療評測。</span>
+        <span class="en">The paper's most useful finding is not the ranking but that the ranking moves: <a href="https://www.alphaxiv.org/abs/2611.21218" target="_blank" rel="noopener">change the healthcare role or the capability and the order rearranges, and all ten top-ranked models score higher on patient communication than on clinical decision-making</a>. It also undercuts procurement by single score: models with similar Index values differ widely in estimated inference cost. Against the vendor-reported figures this daily has been logging all week, it is a rare medical evaluation that writes down its methodology and its exclusion screens.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">作者自己列的限制比多數人的批評更嚴厲：<a href="https://www.alphaxiv.org/abs/2611.21218" target="_blank" rel="noopener">五個 benchmark 只覆蓋九宮格裡的三格，沒有一個主要評估「對病人與公眾的協助」；1,034 個任務裡 964 個是英文，338 個可判定國別的任務裡 318 個屬於美國；成本估算排除失敗重跑與評分者、搜尋、工具、沙箱與平台費用；指數是等權平均，不預測臨床成功；也沒有跟 HELM 或 MedHELM 這類既有套件對照過</a>。還有一個結構性問題：螞蟻同時是這份評測的共同推出者與被評測者，而 <a href="https://huggingface.co/inclusionAI/LingSante-3.1-flash" target="_blank" rel="noopener">LingSante-3.1-flash 的模型卡自報 InclusionMed 綜合 45.064、23 個模型設定中排第五</a>。</span>
+        <span class="en">The authors' own limitations are harsher than most outside criticism: <a href="https://www.alphaxiv.org/abs/2611.21218" target="_blank" rel="noopener">five benchmarks cover three of nine cells and none primarily measures help for patients and the public; 964 of 1,034 tasks are in English and 318 of the 338 country-attributable tasks are American; cost estimates exclude failed runs, retries and judge, search, tool, sandbox and platform charges; the Index is an equal-weighted mean that does not predict clinical success; and the approach was never tested against suites such as HELM or MedHELM</a>. There is also a structural problem: Ant is both a co-publisher of the benchmark and a subject of it, and <a href="https://huggingface.co/inclusionAI/LingSante-3.1-flash" target="_blank" rel="noopener">LingSante-3.1-flash's model card self-reports an InclusionMed composite of 45.064, fifth of 23 model configurations</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.alphaxiv.org/abs/2611.21218" target="_blank" rel="noopener">InclusionMed, arXiv:2611.21218, 2026-11-16</a> · <a href="https://arxiv.org/pdf/2611.21218v1" target="_blank" rel="noopener">arXiv PDF</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">新架構</span><span class="en-inline">New method</span></span>
+      <span class="tag">NAVER · KT</span><span class="tag">KMed-31B</span><span class="tag">11/21</span>
+    </div>
+    <h3>
+      <span class="zh">NAVER 與 KT 用多教師差量蒸餾把 31B 推到 HealthBench Hard 51.48，而論文自己做了長度校正，分數掉回 25.25</span>
+      <span class="en">NAVER and KT distil a 31B to 51.48 on HealthBench Hard — then adjust for length themselves, and it falls back to 25.25</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">11 月 21 日上 arXiv 的 <a href="https://www.alphaxiv.org/abs/2611.28719" target="_blank" rel="noopener">KMed-31B Technical Report</a>（署名 KMed Team at NAVER，頁面同時出現 NAVER 與 KT 的標誌）提出 MOPD²：多教師 on-policy 差量蒸餾。做法是把醫療訓練切成四類任務、每類訓一個專家模型，然後讓單一學生模型自己生成回答，由各個凍結的專家相對於一個預訓練參考模型提供 token 級回饋；推論時只用學生。基礎模型是開放權重的 Gemma-4-31B-IT。結果是<a href="https://aiweekly.co/alerts/navers-kmed-31b-tops-healthbench-hard-among-tested-models" target="_blank" rel="noopener">HealthBench Hard 非思考模式 22.95 → 41.87、思考模式 23.80 → 51.48；HealthBench Professional 非思考 37.92 → 50.20、思考 41.97 → 59.18</a>。同一套配方換到 Qwen3.8-27B 上也抬升了兩個 HealthBench 分數。</span>
+        <span class="en">The <a href="https://www.alphaxiv.org/abs/2611.28719" target="_blank" rel="noopener">KMed-31B Technical Report</a>, posted to arXiv on November 21 under "KMed Team at NAVER" (the page carries both NAVER and KT logos), introduces MOPD²: multi-teacher on-policy delta distillation. Medical training is split into four task categories with a specialist trained for each; a single student then generates its own responses while each frozen specialist supplies token-level feedback relative to a pretrained reference model, and only the student runs at inference. The base is the open-weight Gemma-4-31B-IT. The result: <a href="https://aiweekly.co/alerts/navers-kmed-31b-tops-healthbench-hard-among-tested-models" target="_blank" rel="noopener">HealthBench Hard goes 22.95 → 41.87 non-thinking and 23.80 → 51.48 thinking; HealthBench Professional 37.92 → 50.20 and 41.97 → 59.18</a>. The same recipe applied to Qwen3.8-27B lifted both HealthBench scores as well.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這是本週唯一一份把「為什麼要自己養模型」寫成技術理由而非商業理由的報告：<a href="https://www.alphaxiv.org/abs/2611.28719" target="_blank" rel="noopener">論文寫的動機是院內自建部署</a>，而 31B 是真的能在一家醫院的機房裡跑的尺寸。方法上也值得注意——螞蟻的 <a href="https://huggingface.co/inclusionAI/LingSante-3.1-flash" target="_blank" rel="noopener">LingSante-3.1-flash 最後一個訓練階段同樣是多教師 on-policy 蒸餾</a>。兩個團隊在同一週、以相隔十幾倍的參數量，收斂到同一種把多個專家壓進單一模型的技術。</span>
+        <span class="en">This is the only report this week that argues for running your own model on technical rather than commercial grounds: <a href="https://www.alphaxiv.org/abs/2611.28719" target="_blank" rel="noopener">the stated motivation is on-premises deployment</a>, and 31B is a size a single hospital's server room can actually host. The method is worth noting too — <a href="https://huggingface.co/inclusionAI/LingSante-3.1-flash" target="_blank" rel="noopener">the final training stage of Ant's LingSante-3.1-flash is also multi-teacher on-policy distillation</a>. Two teams, in the same week, an order of magnitude apart in parameter count, converged on the same way of compressing several specialists into one model.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">這份報告最誠實的一段是自己拆自己的台：<a href="https://www.alphaxiv.org/abs/2611.28719" target="_blank" rel="noopener">未校正的 rubric 分數傾向偏好較長的回答，做長度校正後 HealthBench Hard 非思考模式的 KMed-31B 只有 25.25，而 GPT-5.6-sol 是 41.21、Claude-Opus-5 是 31.97——排名整個翻轉</a>。其他限制也寫得清楚：評分者與 HealthBench 原始報告用的不同；與內部 Mix-RL 基線的比較不是乾淨的因果檢定（兩次訓練起點不同、步數 200 對 100）；思考模式下四個選擇題 benchmark 的變化只在 −0.16 到 +0.26 之間；而「院內部署」這個動機本身並沒有在真實部署中驗證過。權重是否釋出、採什麼授權，頁面沒寫。</span>
+        <span class="en">The most honest passage in the report is the one that dismantles its own headline: <a href="https://www.alphaxiv.org/abs/2611.28719" target="_blank" rel="noopener">unadjusted rubric scores favour longer answers, and after length adjustment KMed-31B scores 25.25 on non-thinking HealthBench Hard against GPT-5.6-sol's 41.21 and Claude-Opus-5's 31.97 — the ranking inverts entirely</a>. The other limitations are stated plainly: the grader differs from the one in the original HealthBench reports; the comparison against the internal Mix-RL baseline is not a clean causal test (different starting checkpoints, 200 steps versus 100); in thinking mode the four multiple-choice benchmarks move only between −0.16 and +0.26; and the on-premises motivation was never tested in an actual deployment. Whether the weights are released, and under what licence, the page does not say.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.alphaxiv.org/abs/2611.28719" target="_blank" rel="noopener">KMed-31B Technical Report, arXiv:2611.28719, 2026-11-21</a> · <a href="https://arxiv.org/pdf/2611.28719" target="_blank" rel="noopener">arXiv PDF</a> · <a href="https://aiweekly.co/alerts/navers-kmed-31b-tops-healthbench-hard-among-tested-models" target="_blank" rel="noopener">AI Weekly, 2026-11-25</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">小模型</span><span class="en-inline">Small models</span></span>
+      <span class="tag">John Snow Labs</span><span class="tag">Medical DM</span><span class="tag">11/23</span>
+    </div>
+    <h3>
+      <span class="zh">把生成拿掉：John Snow Labs 推出醫療「決策模型」，24 毫秒一筆病歷、九類任務平均 0.901，約 300 萬參數的 PHI 檢查器跑在一條 CPU 執行緒上</span>
+      <span class="en">Take generation out: John Snow Labs ships medical "decision models" at 24 ms a note, 0.901 across nine task areas, and a 3-million-parameter PHI checker on one CPU thread</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">11 月 23 日，John Snow Labs <a href="https://www.globenewswire.com/news-release/2026/11/23/3408483/0/en/john-snow-labs-launches-first-commercially-available-decision-models-for-healthcare.html" target="_blank" rel="noopener">發表它稱為首批商用的醫療決策模型（Medical Decision Models）</a>。這類模型不生成文字：給它一份文件和一個有固定答案集的問題，它回傳一個帶機率的型別化答案——是／否、清單中的一項，或量尺上的一級。公司自報的數字是 Medical DM Small 在九類臨床任務上綜合平均 0.917（族群識別 0.958）、Nano 平均 0.901（藥物不良事件 0.972）；Small 在單張 24GB GPU 上約 40 毫秒一筆、百萬筆 10–12 小時、GPU 成本約 13.00–15.60 美元，Nano 約 24 毫秒一筆、6–7 小時、約 7.85–9.42 美元（以每 GPU 小時 1.30 美元計）。另外釋出的 PHI Guard v0.7 用於去識別化品管，主測試集 PR-AUC 0.986、判斷原始病歷是否含 PHI 達 0.9992，約 300 萬參數、在單一 CPU 執行緒上約 1.8 小時掃完百萬筆。執行長 David Talby 的說法是「不該期待一個大模型什麼都做」。</span>
+        <span class="en">On November 23 John Snow Labs <a href="https://www.globenewswire.com/news-release/2026/11/23/3408483/0/en/john-snow-labs-launches-first-commercially-available-decision-models-for-healthcare.html" target="_blank" rel="noopener">launched what it calls the first commercially available medical decision models</a>. These do not generate text: given a document and a question with a fixed answer set, they return a typed answer with a probability — yes/no, one option from a list, or a level on a scale. The company's own figures: Medical DM Small averages 0.917 composite across nine clinical task areas (0.958 on cohort identification) and Nano averages 0.901 (0.972 on adverse drug events); Small runs about 40 ms per note on one 24GB GPU, a million notes in 10–12 hours for roughly $13.00–15.60 of GPU compute, and Nano about 24 ms per note, 6–7 hours, roughly $7.85–9.42 (at $1.30 per GPU hour). Shipped alongside, PHI Guard v0.7 does de-identification QC at 0.986 PR-AUC on the primary test set and 0.9992 at detecting whether an original note contains PHI, at about 3 million parameters, screening a million notes in about 1.8 hours on a single CPU thread. CEO David Talby's framing: "One large model shouldn't be expected to do everything."</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這是本週 560B 那一端最直接的反命題，而且它瞄準的正是醫療 AI 真正的工作量所在：<a href="https://www.globenewswire.com/news-release/2026/11/23/3408483/0/en/john-snow-labs-launches-first-commercially-available-decision-models-for-healthcare.html" target="_blank" rel="noopener">癌症登記摘錄、編碼與事前審查、族群識別、藥物不良事件審閱、品質指標審查、臨床試驗資格篩選、去識別化資料品管</a>——這些是重複、結構化、要跑幾百萬筆的判斷，不是需要推理的疑難雜症。固定答案集帶來兩個操作上的好處：不確定的案例可以直接路由給人審，而改判準只要改問題、不必重訓。對照本報 11 月 24 日記的 <a href="https://ai-medical-daily.peteraim.com/reports/2026-11-24.html" target="_blank" rel="noopener">CB Insights Digital Health 50 裡有 26 家做的是減少行政工作</a>，這一塊的單位成本才是生意。</span>
+        <span class="en">This is the week's most direct counter-thesis to the 560B end, and it aims at where medical AI's actual volume sits: <a href="https://www.globenewswire.com/news-release/2026/11/23/3408483/0/en/john-snow-labs-launches-first-commercially-available-decision-models-for-healthcare.html" target="_blank" rel="noopener">cancer registry abstraction, coding and prior authorisation, cohort identification, adverse drug event review, quality measure review, trial eligibility screening and QC of de-identified data</a> — repetitive, structured judgements run across millions of records, not hard cases that need reasoning. The fixed answer set buys two operational things: uncertain cases can be routed straight to human review, and changing the criteria means editing the question rather than retraining. Set against the <a href="https://ai-medical-daily.peteraim.com/reports/2026-11-24.html" target="_blank" rel="noopener">26 of CB Insights' Digital Health 50 that work on reducing administrative load</a>, as this daily logged on November 24, unit cost on this layer is the business.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">所有數字都是廠商自報，沒有第三方稽核，也<a href="https://www.globenewswire.com/news-release/2026/11/23/3408483/0/en/john-snow-labs-launches-first-commercially-available-decision-models-for-healthcare.html" target="_blank" rel="noopener">沒有具名客戶</a>。「與五個通用決策模型在八類任務上比較、Small 平均 0.930 最高」這句話裡的五個對照模型沒有一個被點名，所以這個比較無法重現；而最差的分項分數也沒有公布。公告也沒有列價，只給了 GPU 運算成本的估算——那不是客戶付的錢。而 0.917 這種綜合平均會掩蓋分項的差異：公告給了最好的兩個分項（0.958、0.972），沒給最差的。</span>
+        <span class="en">Every figure is vendor-reported, with no third-party audit and <a href="https://www.globenewswire.com/news-release/2026/11/23/3408483/0/en/john-snow-labs-launches-first-commercially-available-decision-models-for-healthcare.html" target="_blank" rel="noopener">no named customers</a>. The claim that Small averaged highest at 0.930 against five general-purpose decision models across eight task areas names none of the five, so the comparison cannot be reproduced. The release lists no price either, only estimated GPU compute cost — which is not what a customer pays. And a 0.917 composite hides the spread: the release gives the two best sub-scores (0.958, 0.972) and not the worst.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.globenewswire.com/news-release/2026/11/23/3408483/0/en/john-snow-labs-launches-first-commercially-available-decision-models-for-healthcare.html" target="_blank" rel="noopener">GlobeNewswire, 2026-11-23</a> · <a href="https://hitconsultant.net/2026/11/23/john-snow-labs-launches-first-commercial-decision-models-healthcare/" target="_blank" rel="noopener">HIT Consultant, 2026-11-23</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">通用模型</span><span class="en-inline">General models</span></span>
+      <span class="tag">OpenAI · Onava</span><span class="tag">GPT-6.2</span><span class="tag">11/24</span>
+    </div>
+    <h3>
+      <span class="zh">OpenAI 說 GPT-6 用推理與程式碼就能設計蛋白質：322 個 minibinder 有 35 個（10.9%）在濕實驗室結合到目標，而由序列預測結構的 TM-score 只有 0.26</span>
+      <span class="en">OpenAI says GPT-6 designs proteins with reasoning and code: 35 of 322 minibinders (10.9%) bound in the wet lab, while sequence-to-structure TM-score sits at 0.26</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">11 月 24 日，OpenAI <a href="https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities/" target="_blank" rel="noopener">發表預印本《GPT-6 as a Universal Foundation Model for Protein Biology: Beyond Specialized Models》</a>，主張 GPT-6 家族能用推理與通用程式碼設計蛋白質結構與胺基酸序列，設計這一步不呼叫專用生物模型。合作夥伴 Onava 負責製造與測試。兩組濕實驗室結果：de novo minibinder 322 個中 35 個（10.9%）結合到目標（VEGF-A 8 個、IL-17A 18 個、PD-L1 5 個、IL-7Rα 3 個、TrkA 1 個）；為既有結構設計新序列的成功率則高得多——MDM2 75/88（85%）、VEGF-A 26/42（62%）、PD-1 8/59（14%）。抗體方向，針對 IL-4Rα 的 VHH loop 182 個中 128 個（70%）顯示結合，五種治療性抗體片段 272 個中 179 個（66%）。計算 benchmark 上，內部研究模型在 30 項 MotifBench 任務上 43.7% 對 RFdiffusion 的 27.8%，PoseBusters 小分子對接 96% 對 DiffDock-L 的 50%。</span>
+        <span class="en">On November 24 OpenAI <a href="https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities/" target="_blank" rel="noopener">published a preprint, "GPT-6 as a Universal Foundation Model for Protein Biology: Beyond Specialized Models"</a>, arguing the GPT-6 family can design protein structures and amino-acid sequences using reasoning and general-purpose code, without calling a specialised biology model for the design step. Partner Onava made and tested the proteins. Two wet-lab sets: of 322 de novo minibinders, 35 (10.9%) bound their intended target (VEGF-A 8, IL-17A 18, PD-L1 5, IL-7Rα 3, TrkA 1); designing new sequences for existing structures did far better — MDM2 75/88 (85%), VEGF-A 26/42 (62%), PD-1 8/59 (14%). On antibodies, 128 of 182 VHH loops against IL-4Rα (70%) showed binding, and 179 of 272 therapeutic antibody fragments (66%). On computational benchmarks an internal research model hit 43.7% on 30 MotifBench tasks against RFdiffusion's 27.8%, and 96% on PoseBusters small-molecule docking against DiffDock-L's 50%.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">如果通用模型真的能在專用模型的地盤上做出可用的設計，那麼「每個生醫問題都需要一個領域模型」這個前提就鬆動了——而這正好是本週另外三則消息（LingSante、KMed-31B、Medical DM）全都建立在其上的前提。對照本報記過的 <a href="https://investor.nvidia.com/news/press-release-details/2026/Healthcare-and-Life-Sciences-Leaders-Build-on-NVIDIA-to-Advance-Drug-Discovery-and-Expand-Patient-Care/default.aspx" target="_blank" rel="noopener">NVIDIA 與 UW 蛋白質設計研究所在 10 月 21 日推出的 RFD4-Proteina</a>，兩條路線現在正面撞上。</span>
+        <span class="en">If a general model really can produce usable designs on specialised models' home turf, the premise that every biomedical problem needs its own domain model loosens — and that premise is exactly what the week's other three stories (LingSante, KMed-31B, Medical DM) are built on. Against <a href="https://investor.nvidia.com/news/press-release-details/2026/Healthcare-and-Life-Sciences-Leaders-Build-on-NVIDIA-to-Advance-Drug-Discovery-and-Expand-Patient-Care/default.aspx" target="_blank" rel="noopener">RFD4-Proteina, which NVIDIA and the UW Institute for Protein Design released on October 21</a>, the two routes now collide head-on.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">OpenAI 自己把反證寫進公告，而且寫得比標題清楚：<a href="https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities/" target="_blank" rel="noopener">這一輪仍然靠 Boltz-2、OpenDDE、ESMFold2 來篩選候選，所以並沒有證明端到端、零樣本、不靠專用模型的 de novo 設計；由序列預測完整結構仍是重大弱點，內部模型 TM-score 平均 0.38、GPT-6.2 是 0.26，而 ESMFold2 是 0.93；部分 benchmark 結果可能反映記憶或訓練資料樣態，公開的抗體—標的結構可能在訓練中見過；命中率高度取決於篩選方式與「結合」的定義；而結合只是最早的一步，專一性、穩定性、生物活性、安全性與療效都還沒建立</a>。RFdiffusion 原始研究自報的命中率更高，OpenAI 的計算設計分數也略低於它。此外公告也提到生物安全風險由其 Preparedness Framework 處理，但未說明這批設計的具體審查結果。</span>
+        <span class="en">OpenAI writes the counter-evidence into its own announcement, more plainly than the headline: <a href="https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities/" target="_blank" rel="noopener">the campaign still relied on Boltz-2, OpenDDE and ESMFold2 to filter candidates, so it does not demonstrate end-to-end zero-shot de novo design without specialised help; predicting full structure from sequence remains a major weakness, with the internal model averaging TM-score 0.38 and GPT-6.2 0.26 against ESMFold2's 0.93; some benchmark results may reflect memorisation or training-data patterns, and public antibody–target structures may have been seen in training; hit rates depend heavily on filtering and on how binding is defined; and binding is only the earliest step, with specificity, stability, biological activity, safety and efficacy all still to be established</a>. The original RFdiffusion study reported higher hit rates, and OpenAI's computational design scores came in slightly below it. The announcement notes biosecurity risk is handled under its Preparedness Framework, without reporting what that review concluded for this particular set of designs.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities/" target="_blank" rel="noopener">OpenAI, 2026-11-24</a> · <a href="https://aiweekly.co/alerts/openais-gpt-62-hits-109-wet-lab-rate-on-new-minibinders" target="_blank" rel="noopener">AI Weekly, 2026-11-25</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">多模態 Benchmark</span><span class="en-inline">Multimodal benchmark</span></span>
+      <span class="tag">A*STAR · USTC</span><span class="tag">Clinical3D-Bench</span><span class="tag">11/24</span>
+    </div>
+    <h3>
+      <span class="zh">把問題問回醫院走廊：3,368 題病房空間推理，最好的閉源模型 53.6%、答案先驗基線 40.8%、五位醫師 79.0%</span>
+      <span class="en">Taking the question back into the corridor: on 3,368 ward spatial-reasoning items the best proprietary model scores 53.6%, an answer-prior baseline 40.8%, and five physicians 79.0%</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">11 月 24 日上 arXiv 的 <a href="https://www.alphaxiv.org/abs/2611.32094" target="_blank" rel="noopener">Clinical3D-Bench</a>（Yang Bai、Yingzhi Xia、Ling Lin、Jun Cheng、Lin Fu、Huazhu Fu，隸屬 A*STAR、中國科大與溫州醫科大學）測的不是看片，而是從第一人稱走動影片理解醫院空間：3,368 題、八種題型，取自 16 類病房家族、373 種佈局的 569 段十秒影片，另附 44,750 題的 Clinical3D-45K 訓練集。題型包括物件計數與再識別、燈具歸屬與相似儀器指認、以病人為基準的左右方向、朝向與路線，以及寬度受限通道的通行性（急救車 0.9 公尺、推床 1.2 公尺）。評測 35 個多模態 LLM 的結果：<a href="https://www.alphaxiv.org/abs/2611.32094" target="_blank" rel="noopener">最好的閉源模型 53.6%、最好的開源 45.7%、只猜答案分布的先驗基線 40.8%；32 個開源模型裡有 27 個在「以病人為基準的左右二分」上低於 40%</a>。五位醫師在另取的 400 題子集（每型 50 題）上 79.0%。</span>
+        <span class="en"><a href="https://www.alphaxiv.org/abs/2611.32094" target="_blank" rel="noopener">Clinical3D-Bench</a>, posted to arXiv on November 24 by Yang Bai, Yingzhi Xia, Ling Lin, Jun Cheng, Lin Fu and Huazhu Fu of A*STAR, USTC and Wenzhou Medical University, does not test reading scans. It tests understanding hospital space from egocentric walkthrough video: 3,368 items across eight question types, drawn from 569 ten-second clips of 373 layouts in 16 hospital-room families, with a 44,750-item Clinical3D-45K training set alongside. The types cover object counting and re-identification, light ownership and look-alike device reference, patient-relative left/right, orientation and routes, and passability through width-constrained passages (0.9 m for a crash cart, 1.2 m for a transport bed). Across 35 multimodal LLMs: <a href="https://www.alphaxiv.org/abs/2611.32094" target="_blank" rel="noopener">the best proprietary model scores 53.6%, the best open model 45.7%, and a baseline that merely guesses the answer distribution gets 40.8%; 27 of 32 open models fall below 40% on two-way patient-relative direction</a>. Five physicians scored 79.0% on a separate 400-item subset, 50 per type.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">「最好的閉源 53.6%、先驗基線 40.8%」這組對照是本週最有訊息量的一個數字：差距只有 12.8 個百分點，意思是這些模型對病房空間的理解，比純粹猜答案分布好得不多。而這正是醫療 AI 下一步要去的地方——護理機器人、手術室導航、院內物流、以及任何需要「病人的左邊」而不是「畫面的左邊」的代理人。論文另一個發現更尖銳：<a href="https://www.alphaxiv.org/abs/2611.32094" target="_blank" rel="noopener">「shuffle twins」測試顯示微調後的模型其實大致忽略 3D 地圖輸入——把另一段影片的地圖換進去，準確率幾乎不變</a>。也就是說，它們的進步可能不是學會了空間，而是學會了題型。</span>
+        <span class="en">The pairing of 53.6% against a 40.8% answer-prior is the most informative number of the week: a gap of 12.8 points means these models understand ward space barely better than guessing the answer distribution. And this is precisely where medical AI is heading next — nursing robots, operating-room navigation, in-hospital logistics, and any agent that needs the patient's left rather than the frame's left. A sharper finding sits underneath: <a href="https://www.alphaxiv.org/abs/2611.32094" target="_blank" rel="noopener">"shuffle twins" tests show fine-tuned models largely ignore the 3D map inputs — swap in another clip's map and accuracy barely moves</a>. Their gains may not be learned space so much as learned question format.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">作者把限制寫得很完整：<a href="https://www.alphaxiv.org/abs/2611.32094" target="_blank" rel="noopener">所有場景都是合成的、靜態的、無人的；訓練集與測試集共用產生器、素材與模板；提出的 GeoJeV 方法（75.7%）依賴估計出來的幾何（VGGT 深度與姿態、偵測、追蹤）；真實影片的評測留待未來；論文未報端到端延遲，而額外的重建與基元計算會增加成本；而這些提升都只是 benchmark 上的提升，沒有臨床驗證</a>。醫師的 79.0% 來自另一個 400 題子集，作者自己提醒不能與全集分數直接比較。微調後的 73.9%／75.7% 看起來超越閉源模型 20 個百分點，但那是在與訓練集同源的測試集上取得的。</span>
+        <span class="en">The authors' limitations are thorough: <a href="https://www.alphaxiv.org/abs/2611.32094" target="_blank" rel="noopener">all scenes are synthetic, static and unoccupied; training and test sets share generators, assets and templates; the proposed GeoJeV method (75.7%) relies on estimated geometry — VGGT depth and pose, detection, tracking; real-video evaluation is future work; no end-to-end latency is reported while the added reconstruction and primitive computation costs something; and the gains are benchmark gains with no clinical validation</a>. The physicians' 79.0% comes from a separate 400-item subset, and the authors warn it is not directly comparable to full-set scores. The fine-tuned 73.9%/75.7% appear to beat proprietary models by 20 points, but they were obtained on a test set sharing its generator with the training data.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.alphaxiv.org/abs/2611.32094" target="_blank" rel="noopener">Clinical3D-Bench, arXiv:2611.32094, 2026-11-24</a> · <a href="https://arxiv.org/abs/2611.32094" target="_blank" rel="noopener">arXiv abstract</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">AI Agent</span><span class="en-inline">AI agents</span></span>
+      <span class="tag">Phylo</span><span class="tag">Biomni Swarm</span><span class="tag">11/25</span>
+    </div>
+    <h3>
+      <span class="zh">Phylo 把 1,000 個生醫代理人排成一支隊伍：500 個做 100 種罕病的知識圖譜，50 個把 CYP 抑制預測誤差降 10.2%</span>
+      <span class="en">Phylo lines up 1,000 biomedical agents: 500 built a knowledge-graph atlas of 100 rare diseases, 50 cut CYP inhibition prediction error by 10.2%</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">11 月 25 日，Phylo 在它的 Biomni Lab（公司稱為「Integrated Biology Environment」）上<a href="https://emergent.sh/news/phylo-biomni-swarm-launches-1-000-parallel-ai" target="_blank" rel="noopener">推出 Biomni Swarm</a>：科學家用自然語言給一個領導代理人一個研究目標，它把工作拆成子任務、分派給代理人、監看執行並彙整結果。代理池上限 1,000 個、同時執行 10 個。公司示範了兩件事：500 個代理人建出涵蓋 10 個器官系統、100 種罕見疾病的知識圖譜；一支 50 個代理人的隊伍跑了五輪模型訓練，把 CYP 抑制預測的誤差相對單一代理人基線降低 10.2%。Swarm 目前對 Biomni Lab Pro 與 Team 方案開放 beta。公司另稱每個任務都會記錄所用工具、程式碼、資料來源與執行軌跡。</span>
+        <span class="en">On November 25 Phylo <a href="https://emergent.sh/news/phylo-biomni-swarm-launches-1-000-parallel-ai" target="_blank" rel="noopener">launched Biomni Swarm</a> inside its Biomni Lab, which the company calls an Integrated Biology Environment: a scientist gives a lead agent a research objective in natural language, and it splits the work into sub-tasks, assigns them, monitors execution and aggregates results. The agent pool runs up to 1,000, with 10 executing concurrently. Two demonstrations: 500 agents built a knowledge-graph atlas covering 100 rare diseases across 10 organ systems; a 50-agent team ran five rounds of model training and cut CYP inhibition prediction error by 10.2% against a single-agent baseline. Swarm is in beta for Biomni Lab Pro and Team subscribers. The company also says each task logs its tools, code, data sources and execution trace.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">本週的四種技術路線都在談「模型」，只有這一則談的是「要幾個模型、怎麼排班」。這是代理人這條線在生醫領域從單一助手走向編排層的一步，而編排層能不能算一種技術突破，關鍵在那個 10.2%——如果多代理人只是把同一個模型跑很多次，那它賣的是運算量，不是方法。Phylo 自己提的可追溯紀錄（工具、程式碼、資料來源、執行軌跡）比吞吐量更值得注意：生醫研究的瓶頸從來不是跑得快，而是跑完之後能不能重現。它的客戶名單也已經不只是示範——<a href="https://www.prnewswire.com/news-releases/phylos-biomni-lab-to-expand-the-use-of-ai-agents-in-scientific-research-at-bayer-302917080.html" target="_blank" rel="noopener">10 月 22 日宣布與拜耳的合作，讓拜耳科學家全面使用 Biomni Lab 做文獻綜整與 omics 證據流程</a>。</span>
+        <span class="en">All four of the week's technical routes argue about the model; only this one argues about how many models and how to roster them. It is the biomedical agent line moving from a single assistant to an orchestration layer, and whether orchestration counts as a technical advance turns on that 10.2% — if a swarm is just the same model run many times, what it sells is compute, not method. Phylo's own claim of traceable records (tools, code, data sources, execution traces) deserves more attention than throughput: the bottleneck in biomedical research was never speed but whether a result can be reproduced afterwards. Its customer list is past the demo stage too — <a href="https://www.prnewswire.com/news-releases/phylos-biomni-lab-to-expand-the-use-of-ai-agents-in-scientific-research-at-bayer-302917080.html" target="_blank" rel="noopener">an October 22 partnership gives Bayer scientists full access to Biomni Lab for literature synthesis and omics evidence workflows</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh">10.2% 與 100 種罕病圖譜都是 Phylo 自己的示範，<a href="https://emergent.sh/news/phylo-biomni-swarm-launches-1-000-parallel-ai" target="_blank" rel="noopener">沒有獨立 benchmark、第三方稽核、同儕審查結果或外部評估者</a>。而且公告沒說 10.2% 是相對還是絕對的降幅——在誤差指標上這兩者差距可以很大。「上限 1,000 個代理人、同時 10 個」也值得算一下：以同時 10 個的併發度跑 500 個代理人，是 50 輪的序列化工作，和「500 個同時思考」是兩回事。拜耳的合作被描述為合作關係，但公告沒有提供任何成果數據。價格也沒公布。</span>
+        <span class="en">The 10.2% and the 100-disease atlas are both Phylo's own demonstrations, with <a href="https://emergent.sh/news/phylo-biomni-swarm-launches-1-000-parallel-ai" target="_blank" rel="noopener">no independent benchmark, third-party audit, peer-reviewed result or external evaluator</a>. The announcement also does not say whether 10.2% is a relative or absolute reduction — on an error metric those differ a great deal. "Up to 1,000 agents, 10 concurrent" is worth doing the arithmetic on: running 500 agents at a concurrency of 10 is 50 sequential rounds, which is not the same thing as 500 minds working at once. The Bayer partnership is described as a collaboration with no outcome data attached. No pricing is given.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://emergent.sh/news/phylo-biomni-swarm-launches-1-000-parallel-ai" target="_blank" rel="noopener">Emergent, 2026-11-25</a> · <a href="https://www.prnewswire.com/news-releases/phylos-biomni-lab-to-expand-the-use-of-ai-agents-in-scientific-research-at-bayer-302917080.html" target="_blank" rel="noopener">PR Newswire: Phylo × Bayer, 2026-10-22</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="zh-inline">方法學</span><span class="en-inline">Methods</span></span>
+      <span class="tag">Virginia Tech</span><span class="tag">PNAS</span><span class="tag">11/23</span>
+    </div>
+    <h3>
+      <span class="zh">合成影像能不能頂替真病人？PNAS 一篇用計算拓樸學做的統計工具，正在跟 FDA 談上市前後的評估用途</span>
+      <span class="en">Can synthetic images stand in for real patients? A PNAS statistical tool built on computational topology, now in talks with the FDA on pre- and post-market evaluation</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="zh-inline">發生什麼</span><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="zh">11 月 23 日，《PNAS》刊出維吉尼亞理工、馬里蘭大學巴爾的摩郡分校、德州理工與普林斯頓合作的研究（DOI 10.1073/pnas.2622414123），提出一套判斷「AI 生成的資料能否頂替病人資料進臨床試驗」的統計方法，結合計算拓樸學與統計學來量測並比較複雜影像資料。團隊的驗證方式是拿合成乳房攝影與真實病人資料對照，看乳癌對不同輻射劑量的反應，以評估合成影像作為人體資料替代品的忠實程度。維吉尼亞理工統計學教授 Yulia R. Gel 與研究生 Jaidev Goel 是作者之一。<a href="https://www.news-medical.net/news/20261124/AI-generated-data-could-accelerate-medical-imaging-trials-with-new-validation-tool.aspx" target="_blank" rel="noopener">News-Medical 11 月 24 日的報導說，團隊正在與 FDA 討論把這個模型客製化用於上市前與上市後的評估</a>。</span>
+        <span class="en">On November 23 PNAS published work from Virginia Tech, the University of Maryland Baltimore County, Texas Tech and Princeton (DOI 10.1073/pnas.2622414123) proposing a statistical method for deciding whether AI-generated data can stand in for patient data in clinical trials, combining computational topology with statistics to measure and compare complex image data. The team validated it by comparing synthetic mammograms against real patient data on how breast cancer responds to different radiation doses, assessing how faithful the synthetic images are as a replacement for human data. Virginia Tech statistics professor Yulia R. Gel and graduate student Jaidev Goel are among the authors. <a href="https://www.news-medical.net/news/20261124/AI-generated-data-could-accelerate-medical-imaging-trials-with-new-validation-tool.aspx" target="_blank" rel="noopener">News-Medical reported on November 24 that the team is in discussion with the FDA about customising the model for pre- and post-market evaluation</a>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">為什麼重要</span><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="zh">這一週前面七則消息全都在造模型、量模型，只有這一則在處理一個更上游的問題：那些餵給模型、也用來驗證模型的合成資料，憑什麼算數。Clinical3D-Bench 的 3,368 題全部來自合成場景、44,750 題訓練集也是，而作者自己把「場景全是合成、靜態、無人」列為第一條限制——如果有一把尺能說合成資料在哪些統計性質上忠實、在哪些上不忠實，那條限制就從「只能承認」變成「可以量化」。這也是少數在本週出現、而且是同儕審查的技術消息。</span>
+        <span class="en">The week's other seven stories all build models or measure them; only this one addresses something further upstream: on what grounds the synthetic data that feeds and validates those models counts at all. All 3,368 Clinical3D-Bench items come from synthetic scenes, as does its 44,750-item training set, and its authors list "all scenes synthetic, static and unoccupied" as their first limitation — if a ruler can say which statistical properties synthetic data is faithful on and which it is not, that limitation moves from something you concede to something you quantify. It is also one of the few peer-reviewed technical items of the week.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">要打折的地方</span><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="zh"><a href="https://www.news-medical.net/news/20261124/AI-generated-data-could-accelerate-medical-imaging-trials-with-new-validation-tool.aspx" target="_blank" rel="noopener">News-Medical 的報導沒有給這套方法一個名字，也沒有報任何數值結果</a>——本報沒有取得 PNAS 原文的內容，所以這一則的具體效能無法在此核對，只能照報導寫下方法與驗證方式。報導也沒有限制章節。「與 FDA 討論中」不等於 FDA 接受或採用；本報 11 月 25 日記過 <a href="https://ai-medical-daily.peteraim.com/reports/2026-11-25.html" target="_blank" rel="noopener">FDA 自 11/16 起把公開文件裡的 AI 改寫成 SI、同時明寫不替送件者新增任何義務</a>，所以任何「正在與 FDA 談」的說法，目前都還只是一方的敘述。</span>
+        <span class="en"><a href="https://www.news-medical.net/news/20261124/AI-generated-data-could-accelerate-medical-imaging-trials-with-new-validation-tool.aspx" target="_blank" rel="noopener">The News-Medical write-up gives the method no name and reports no numerical results</a> — this daily did not obtain the PNAS text itself, so the method's performance cannot be checked here, only its approach and validation as reported. The write-up carries no limitations section either. "In discussion with the FDA" is not FDA acceptance or adoption; as this daily logged on November 25, <a href="https://ai-medical-daily.peteraim.com/reports/2026-11-25.html" target="_blank" rel="noopener">the FDA has been rewriting AI as SI in public documents since November 16 while stating plainly that this adds no obligation for submitters</a>, so any claim of talks under way remains, for now, one party's account.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="zh-inline">來源</span><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.news-medical.net/news/20261124/AI-generated-data-could-accelerate-medical-imaging-trials-with-new-validation-tool.aspx" target="_blank" rel="noopener">News-Medical, 2026-11-24（原文：PNAS, 2026-11-23, DOI 10.1073/pnas.2622414123）</a></p></div>
+  </div>
+</section>
+
+<!-- ============ 02 產品分析 ============ -->
+<section id="product">
+  <h2>02 — Product Analysis</h2>
+  <div class="sec-title">
+    <span class="zh">同一天發表的兩個產品，對「醫療 AI 要多大」給出相差十八萬倍的答案：560B 的推理模型，與約 300 萬參數的判斷器</span>
+    <span class="en">Two products shipped the same day, answering "how big does medical AI need to be" with a factor of about 180,000 between them: a 560B reasoner and a 3-million-parameter judge</span>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>LingSante-3.1-flash</h3>
+      <p class="sub"><span class="zh-inline">560B 醫療深度推理模型 · 螞蟻集團（中國）· MIT 授權</span><span class="en-inline">560B medical deep-reasoning model · Ant Group (China) · MIT licence</span></p>
+      <p>
+        <span class="zh"><strong>功能與定位。</strong>賣給（或者說送給）有能力自架前沿模型的機構：醫院資訊部門、藥廠、研究單位、以及想做醫療應用但不想把病歷送上 API 的開發者。定位是複雜醫療推理、專業醫療溝通、證據取向研究與較長的多階段任務，<a href="https://huggingface.co/inclusionAI/LingSante-3.1-flash" target="_blank" rel="noopener">能跑多輪檢索、查核醫學證據與呼叫工具</a>。<a href="https://www.21jingji.com/article/20261123/herald/2aa126e4459353215c25576a5e8ad1d8.html" target="_blank" rel="noopener">螞蟻稱它在 InclusionMed 綜合指數上是全球開源模型第一</a>。</span>
+        <span class="en"><strong>Function and position.</strong> Sold — or rather given — to institutions able to host a frontier model themselves: hospital IT departments, pharma, research groups, and developers who want medical applications without sending records to an API. Positioned for complex medical reasoning, professional healthcare communication, evidence-based research and longer multi-stage tasks, <a href="https://huggingface.co/inclusionAI/LingSante-3.1-flash" target="_blank" rel="noopener">running multi-round retrieval, checking medical evidence and calling tools</a>. <a href="https://www.21jingji.com/article/20261123/herald/2aa126e4459353215c25576a5e8ad1d8.html" target="_blank" rel="noopener">Ant says it ranks first among global open-source models on the InclusionMed composite</a>.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：授權真的乾淨。<a href="https://huggingface.co/inclusionAI/LingSante-3.1-flash" target="_blank" rel="noopener">MIT 意味著可商用、可改、可閉源再散布</a>，這在醫療領域尤其重要——醫院的部署通常不能承受授權條款的不確定性。</span>
+          <span class="en">: the licence is genuinely clean. <a href="https://huggingface.co/inclusionAI/LingSante-3.1-flash" target="_blank" rel="noopener">MIT means commercial use, modification and closed redistribution are all permitted</a>, which matters more in medicine than elsewhere: hospital deployments rarely tolerate uncertainty in licence terms.</span>
+        </li>
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：架構是為成本設計的。<a href="https://huggingface.co/inclusionAI/LingSante-3.1-flash" target="_blank" rel="noopener">560B 總參數但每 token 只活化約 25B（512 個 routed expert 取 8 個）</a>，而 <a href="https://www.unite.ai/ant-group-begins-open-weight-release-of-lingsante-medical-ai-models/" target="_blank" rel="noopener">InclusionMed 上每任務推估成本約 0.25 美元、落在分數—成本的 Pareto 前沿</a>。</span>
+          <span class="en">: the architecture is designed around cost. <a href="https://huggingface.co/inclusionAI/LingSante-3.1-flash" target="_blank" rel="noopener">560B total but only about 25B active per token, 8 of 512 routed experts</a>, and <a href="https://www.unite.ai/ant-group-begins-open-weight-release-of-lingsante-medical-ai-models/" target="_blank" rel="noopener">an estimated $0.25 per task on InclusionMed, on the score–cost Pareto frontier</a>.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：門檻在硬體，不在授權。<a href="https://www.unite.ai/ant-group-begins-open-weight-release-of-lingsante-medical-ai-models/" target="_blank" rel="noopener">unite.ai 整理的服務需求是八張 H200</a>；台灣多數區域醫院不具備這個規模的推論叢集，所以「開源」在實務上會先變成「雲端代管」，而那又回到了資料離院的問題。</span>
+          <span class="en">: the barrier is hardware, not licensing. <a href="https://www.unite.ai/ant-group-begins-open-weight-release-of-lingsante-medical-ai-models/" target="_blank" rel="noopener">unite.ai puts serving at eight H200s</a>; most regional hospitals in Taiwan have no inference cluster of that size, so in practice "open" becomes "hosted" — and that returns to the problem of records leaving the building.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：最強的那一句話是自報的，而且評測的共同推出者就是它自己。<a href="https://www.alphaxiv.org/abs/2611.21218" target="_blank" rel="noopener">InclusionMed 的 Atlas 自承只覆蓋九宮格裡的三格、1,034 個任務裡 964 個是英文</a>，所以在繁體中文或台灣臨床情境下的表現，目前沒有任何數字——缺就是缺。</span>
+          <span class="en">: the strongest claim is self-reported, and the benchmark's co-publisher is the model's own maker. <a href="https://www.alphaxiv.org/abs/2611.21218" target="_blank" rel="noopener">InclusionMed's Atlas concedes it covers three of nine cells and that 964 of 1,034 tasks are in English</a>, so there is no figure at all for Traditional Chinese or Taiwanese clinical settings. That gap is simply a gap.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>John Snow Labs Medical Decision Models</h3>
+      <p class="sub"><span class="zh-inline">固定答案集的判斷器（Small／Nano／PHI Guard）· John Snow Labs（美國）· 商業授權</span><span class="en-inline">Fixed-answer-set judges (Small/Nano/PHI Guard) · John Snow Labs (US) · commercial licence</span></p>
+      <p>
+        <span class="zh"><strong>功能與定位。</strong>賣給要跑幾百萬筆病歷的營運單位：癌症登記、編碼與事前審查、族群識別、藥物不良事件審閱、品質指標、臨床試驗資格篩選。<a href="https://www.globenewswire.com/news-release/2026/11/23/3408483/0/en/john-snow-labs-launches-first-commercially-available-decision-models-for-healthcare.html" target="_blank" rel="noopener">它回傳的是型別化答案加機率，而非文字</a>，並在客戶自己的環境裡執行。Small 需單張約 16GB 記憶體的 GPU、Nano 約 2GB 或純 CPU、七款 PHI Guard 在 CPU 上約 1GB。</span>
+        <span class="en"><strong>Function and position.</strong> Sold to operations teams processing millions of notes: cancer registry, coding and prior authorisation, cohort identification, adverse drug event review, quality measures, trial eligibility screening. <a href="https://www.globenewswire.com/news-release/2026/11/23/3408483/0/en/john-snow-labs-launches-first-commercially-available-decision-models-for-healthcare.html" target="_blank" rel="noopener">It returns a typed answer with a probability rather than prose</a>, and runs inside the customer's own environment. Small needs one GPU with about 16GB, Nano about 2GB or a plain CPU, and the seven PHI Guard models about 1GB on CPU.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：成本與延遲是可編列預算的量級。<a href="https://www.globenewswire.com/news-release/2026/11/23/3408483/0/en/john-snow-labs-launches-first-commercially-available-decision-models-for-healthcare.html" target="_blank" rel="noopener">Nano 約 24 毫秒一筆、百萬筆 6–7 小時、GPU 成本約 7.85–9.42 美元</a>；這是任何用 LLM 逐筆生成都做不到的數量級。</span>
+          <span class="en">: cost and latency land in a range you can actually budget. <a href="https://www.globenewswire.com/news-release/2026/11/23/3408483/0/en/john-snow-labs-launches-first-commercially-available-decision-models-for-healthcare.html" target="_blank" rel="noopener">Nano runs about 24 ms per note, a million notes in 6–7 hours, for roughly $7.85–9.42 of GPU compute</a> — an order of magnitude no per-note LLM generation reaches.</span>
+        </li>
+        <li><span class="pro"><span class="zh-inline">優勢</span><span class="en-inline">Strength</span></span>
+          <span class="zh">：治理上的形狀對。固定答案集讓機率有意義，<a href="https://www.globenewswire.com/news-release/2026/11/23/3408483/0/en/john-snow-labs-launches-first-commercially-available-decision-models-for-healthcare.html" target="_blank" rel="noopener">不確定的案例可以直接路由給人審，改判準只要改問題、不必重訓</a>——這正是醫院稽核與法規變動時最需要的性質。</span>
+          <span class="en">: the governance shape is right. A fixed answer set makes the probability mean something, <a href="https://www.globenewswire.com/news-release/2026/11/23/3408483/0/en/john-snow-labs-launches-first-commercially-available-decision-models-for-healthcare.html" target="_blank" rel="noopener">uncertain cases route straight to human review, and changing the criteria means editing the question rather than retraining</a> — exactly what hospital audit and shifting regulation demand.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：對照組是黑的。<a href="https://www.globenewswire.com/news-release/2026/11/23/3408483/0/en/john-snow-labs-launches-first-commercially-available-decision-models-for-healthcare.html" target="_blank" rel="noopener">「與五個通用決策模型比較、Small 平均 0.930 最高」裡的五個模型沒有一個被點名</a>，所以這個比較無法重現；而最差的分項分數也沒有公布。</span>
+          <span class="en">: the comparison set is dark. <a href="https://www.globenewswire.com/news-release/2026/11/23/3408483/0/en/john-snow-labs-launches-first-commercially-available-decision-models-for-healthcare.html" target="_blank" rel="noopener">The claim that Small averaged highest at 0.930 against five general-purpose decision models names none of them</a>, so it cannot be reproduced — and the lowest sub-score is not published either.</span>
+        </li>
+        <li><span class="con"><span class="zh-inline">疑慮</span><span class="en-inline">Concern</span></span>
+          <span class="zh">：它只能回答問得出來的問題。這個設計的代價是把判斷的邊界前移到「誰定義答案集」——而癌症登記或事前審查的判準本身就是爭議所在。公告<a href="https://www.globenewswire.com/news-release/2026/11/23/3408483/0/en/john-snow-labs-launches-first-commercially-available-decision-models-for-healthcare.html" target="_blank" rel="noopener">沒有具名客戶、也沒有列價</a>，所以實際導入後的錯誤率與人審負荷都還是未知。</span>
+          <span class="en">: it can only answer questions someone can pose. The cost of the design is to move the boundary of judgement up to whoever defines the answer set — and in cancer registry or prior authorisation the criteria are themselves the contested part. The release <a href="https://www.globenewswire.com/news-release/2026/11/23/3408483/0/en/john-snow-labs-launches-first-commercially-available-decision-models-for-healthcare.html" target="_blank" rel="noopener">names no customers and lists no price</a>, so post-deployment error rates and human-review load remain unknown.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 公司與競爭 ============ -->
+<section id="company">
+  <h2>03 — Companies &amp; Competition</h2>
+  <div class="sec-title">
+    <span class="zh">誰站在哪裡、憑什麼、跟誰打</span>
+    <span class="en">Who stands where, on what, against whom</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th><span class="zh-inline">公司</span><span class="en-inline">Company</span></th>
+        <th><span class="zh-inline">近況與數字</span><span class="en-inline">Recent state &amp; numbers</span></th>
+        <th><span class="zh-inline">競爭定位與護城河</span><span class="en-inline">Position &amp; moat</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Ant Group</strong><br><span class="zh-inline">以開源奪取醫療模型的預設地位</span><span class="en-inline">Buying default status in medical models with open weights</span></td>
+          <td>
+            <span class="zh">11/23 以 MIT 授權開源 <a href="https://huggingface.co/inclusionAI/LingSante-3.1-flash" target="_blank" rel="noopener">LingSante-3.1-flash（560B／25B 活化／1M 上下文）</a>與 air-VL（124B／5.5B／256K）；自報 <a href="https://www.unite.ai/ant-group-begins-open-weight-release-of-lingsante-medical-ai-models/" target="_blank" rel="noopener">InclusionMed 綜合 45.1、HealthBench Professional 65.7、CHI-Bench 26.2、PhysicianBench 57.0</a>；阿福 App <a href="https://technode.global/2026/11/24/ant-group-open-weight-lingsante-medical-ai-models/" target="_blank" rel="noopener">約 1.5 億使用者、日諮詢近 2,000 萬次、AQ for Doctor 連結逾 30 萬名已驗證醫師</a>（均為公司自報）。</span>
+            <span class="en">On Nov 23 open-sourced <a href="https://huggingface.co/inclusionAI/LingSante-3.1-flash" target="_blank" rel="noopener">LingSante-3.1-flash (560B/25B active/1M context)</a> and air-VL (124B/5.5B/256K) under MIT; self-reports <a href="https://www.unite.ai/ant-group-begins-open-weight-release-of-lingsante-medical-ai-models/" target="_blank" rel="noopener">an InclusionMed composite of 45.1, HealthBench Professional 65.7, CHI-Bench 26.2, PhysicianBench 57.0</a>; its Afu app claims <a href="https://technode.global/2026/11/24/ant-group-open-weight-lingsante-medical-ai-models/" target="_blank" rel="noopener">about 150m users, nearly 20m consultations a day, and AQ for Doctor connecting over 300,000 verified physicians</a> — all company figures.</span>
+          </td>
+          <td>
+            <span class="zh">護城河是「規模 × 免費」：用 MIT 授權把前沿級醫療模型變成業界基線，讓別人的付費 API 難以定價。薄弱處是信任與驗證——它同時是評測的共同推出者與被評測者，而<a href="https://huggingface.co/inclusionAI/LingSante-3.1-air-VL" target="_blank" rel="noopener">模型卡自己寫 benchmark 不構成臨床有效性</a>。</span>
+            <span class="en">The moat is scale times free: an MIT licence makes a frontier-scale medical model the industry's baseline and makes rivals' paid APIs hard to price. The thin part is trust and validation — Ant is both co-publisher and subject of the benchmark, and <a href="https://huggingface.co/inclusionAI/LingSante-3.1-air-VL" target="_blank" rel="noopener">its own model card says benchmarks do not establish clinical effectiveness</a>.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Google / DeepMind</strong><br><span class="zh-inline">原本的開放醫療模型預設值</span><span class="en-inline">The incumbent default in open medical models</span></td>
+          <td>
+            <span class="zh"><a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">1/13 推出 MedGemma 1.5 4B 與 MedASR：MRI 分類 51%→65%、Chest ImaGenome 定位 IoU 3%→38%、EHRQA 68%→90%；MedASR 在胸部 X 光口述上 WER 5.2% 對 Whisper large-v3 的 12.5%</a>；<a href="https://aiweekly.co/alerts/googles-medgemma-open-4b-27b-medical-vlms-in-nature-medicine" target="_blank" rel="noopener">10/10 MedGemma 的 4B／27B 論文登上《Nature Medicine》，視覺編碼器以逾 3,300 萬組醫學影像—文字配對微調</a>。<a href="https://www.alphaxiv.org/abs/2611.21218" target="_blank" rel="noopener">InclusionMed 上 Gemini 4 Argon 以 49.1 居首</a>。</span>
+            <span class="en"><a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">Shipped MedGemma 1.5 4B and MedASR on Jan 13: MRI classification 51%→65%, Chest ImaGenome localisation IoU 3%→38%, EHRQA 68%→90%; MedASR at 5.2% WER on chest X-ray dictation against Whisper large-v3's 12.5%</a>; <a href="https://aiweekly.co/alerts/googles-medgemma-open-4b-27b-medical-vlms-in-nature-medicine" target="_blank" rel="noopener">on Oct 10 the MedGemma 4B/27B paper appeared in Nature Medicine, its vision encoder fine-tuned on over 33m medical image–text pairs</a>. <a href="https://www.alphaxiv.org/abs/2611.21218" target="_blank" rel="noopener">On InclusionMed, Gemini 4 Argon leads at 49.1</a>.</span>
+          </td>
+          <td>
+            <span class="zh">護城河是同儕審查與尺寸紀律：4B 能離線跑，而論文進了《Nature Medicine》——這是螞蟻目前沒有的東西。薄弱處是授權不如 MIT 乾淨（條款另掛在 HAI-DEF 使用條件下），且 <a href="https://aiweekly.co/alerts/googles-medgemma-open-4b-27b-medical-vlms-in-nature-medicine" target="_blank" rel="noopener">3D 影像序列與基因體明確不在範圍內</a>。</span>
+            <span class="en">The moat is peer review and size discipline: a 4B that runs offline, with a paper in Nature Medicine — something Ant does not have. The thin part is licensing, which is less clean than MIT (terms sit separately under HAI-DEF), and <a href="https://aiweekly.co/alerts/googles-medgemma-open-4b-27b-medical-vlms-in-nature-medicine" target="_blank" rel="noopener">3D imaging series and genomics are explicitly out of scope</a>.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>NAVER × KT</strong><br><span class="zh-inline">把院內自建做成技術主張</span><span class="en-inline">On-premises as a technical thesis</span></td>
+          <td>
+            <span class="zh">11/21 的 <a href="https://www.alphaxiv.org/abs/2611.28719" target="_blank" rel="noopener">KMed-31B 技術報告</a>：以 MOPD² 把 Gemma-4-31B-IT 的 HealthBench Hard 推到 51.48（思考模式）、Professional 59.18；gap recovery 在 HealthBench Hard 82%、MedXpertQA Text 89%、JAMA Clinical Challenge 僅 17%。<a href="https://www.alphaxiv.org/abs/2611.28719" target="_blank" rel="noopener">長度校正後非思考模式只有 25.25</a>。</span>
+            <span class="en">The <a href="https://www.alphaxiv.org/abs/2611.28719" target="_blank" rel="noopener">KMed-31B technical report</a> of Nov 21: MOPD² lifts Gemma-4-31B-IT to 51.48 on HealthBench Hard (thinking) and 59.18 on Professional; gap recovery is 82% on HealthBench Hard, 89% on MedXpertQA Text and just 17% on the JAMA Clinical Challenge. <a href="https://www.alphaxiv.org/abs/2611.28719" target="_blank" rel="noopener">Length-adjusted non-thinking falls to 25.25</a>.</span>
+          </td>
+          <td>
+            <span class="zh">護城河是韓國醫療體系的通路加 KT 的機房：31B 是一家醫院真的搬得進去的尺寸。薄弱處有兩個——權重是否釋出、採何授權，報告沒寫；而 JAMA Clinical Challenge 只恢復 17% 顯示這套蒸餾對真正的疑難雜症幫助有限。</span>
+            <span class="en">The moat is access to Korea's health system plus KT's data centres: 31B is a size a single hospital can actually take in. Two thin spots — the report does not say whether the weights are released or under what licence, and 17% gap recovery on the JAMA Clinical Challenge suggests the recipe does little for genuinely hard cases.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>John Snow Labs</strong><br><span class="zh-inline">用小模型搶走高量判斷工作</span><span class="en-inline">Taking the high-volume judgement work with small models</span></td>
+          <td>
+            <span class="zh">11/23 推出 <a href="https://www.globenewswire.com/news-release/2026/11/23/3408483/0/en/john-snow-labs-launches-first-commercially-available-decision-models-for-healthcare.html" target="_blank" rel="noopener">Medical DM Small（九類任務平均 0.917）與 Nano（0.901），Nano 約 24 毫秒一筆、百萬筆約 7.85–9.42 美元；PHI Guard v0.7 約 300 萬參數、PR-AUC 0.986</a>；可在客戶的 AWS、Azure、Databricks 或 Snowflake 上私有部署，PHI Guard 隨 Healthcare NLP 7.0.1 出貨。</span>
+            <span class="en">On Nov 23 shipped <a href="https://www.globenewswire.com/news-release/2026/11/23/3408483/0/en/john-snow-labs-launches-first-commercially-available-decision-models-for-healthcare.html" target="_blank" rel="noopener">Medical DM Small (0.917 average across nine task areas) and Nano (0.901), with Nano at about 24 ms a note and roughly $7.85–9.42 per million; PHI Guard v0.7 at about 3m parameters and 0.986 PR-AUC</a>; private deployment on the customer's AWS, Azure, Databricks or Snowflake, with PHI Guard shipping inside Healthcare NLP 7.0.1.</span>
+          </td>
+          <td>
+            <span class="zh">護城河是單位成本與既有的 Healthcare NLP 通路：它不跟 560B 比推理，而是把百萬筆的判斷工作變成一條不需要 LLM 的管線。薄弱處是<a href="https://www.globenewswire.com/news-release/2026/11/23/3408483/0/en/john-snow-labs-launches-first-commercially-available-decision-models-for-healthcare.html" target="_blank" rel="noopener">沒有具名客戶、對照模型全不點名</a>，而這類「商業授權小模型」最容易被一次開源釋出直接抹平。</span>
+            <span class="en">The moat is unit cost plus the existing Healthcare NLP channel: it does not race a 560B on reasoning, it turns million-record judgement into a pipeline that needs no LLM at all. The thin part is that it <a href="https://www.globenewswire.com/news-release/2026/11/23/3408483/0/en/john-snow-labs-launches-first-commercially-available-decision-models-for-healthcare.html" target="_blank" rel="noopener">names no customers and no comparison models</a> — and commercially licensed small models are the category a single open release can flatten.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>OpenAI × Onava</strong><br><span class="zh-inline">主張通用模型吃下專用模型的地盤</span><span class="en-inline">Arguing the general model takes the specialist's ground</span></td>
+          <td>
+            <span class="zh">11/24 的預印本與濕實驗室結果：<a href="https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities/" target="_blank" rel="noopener">322 個 de novo minibinder 命中 35 個（10.9%）、IL-4Rα 的 VHH loop 128/182（70%）、治療性抗體片段 179/272（66%）；MotifBench 43.7% 對 RFdiffusion 27.8%、PoseBusters 96% 對 DiffDock-L 50%；但序列預測結構 TM-score 僅 0.26–0.38，ESMFold2 是 0.93</a>。製造與測試由 Onava 執行。</span>
+            <span class="en">The Nov 24 preprint and wet-lab results: <a href="https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities/" target="_blank" rel="noopener">35 of 322 de novo minibinders hit (10.9%), 128/182 VHH loops against IL-4Rα (70%), 179/272 therapeutic antibody fragments (66%); MotifBench 43.7% against RFdiffusion's 27.8%, PoseBusters 96% against DiffDock-L's 50% — while sequence-to-structure TM-score is only 0.26–0.38 against ESMFold2's 0.93</a>. Onava made and tested the proteins.</span>
+          </td>
+          <td>
+            <span class="zh">護城河是通用能力的外溢：如果一個模型既能寫程式又能設計蛋白質，領域模型的採購理由就被削弱。薄弱處是它自己承認<a href="https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities/" target="_blank" rel="noopener">這一輪仍靠 Boltz-2、OpenDDE、ESMFold2 篩選</a>——正面競爭者正是 <a href="https://investor.nvidia.com/news/press-release-details/2026/Healthcare-and-Life-Sciences-Leaders-Build-on-NVIDIA-to-Advance-Drug-Discovery-and-Expand-Patient-Care/default.aspx" target="_blank" rel="noopener">NVIDIA 與 UW 蛋白質設計研究所 10/21 推出的 RFD4-Proteina</a>。</span>
+            <span class="en">The moat is spillover from general capability: if one model both writes code and designs proteins, the case for buying a domain model weakens. The thin part is its own admission that <a href="https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities/" target="_blank" rel="noopener">the campaign still leaned on Boltz-2, OpenDDE and ESMFold2 to filter</a> — and its direct competitor is <a href="https://investor.nvidia.com/news/press-release-details/2026/Healthcare-and-Life-Sciences-Leaders-Build-on-NVIDIA-to-Advance-Drug-Discovery-and-Expand-Patient-Care/default.aspx" target="_blank" rel="noopener">RFD4-Proteina, released by NVIDIA and the UW Institute for Protein Design on Oct 21</a>.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Phylo</strong><br><span class="zh-inline">賣編排層，不賣模型</span><span class="en-inline">Selling the orchestration layer, not the model</span></td>
+          <td>
+            <span class="zh">11/25 推出 <a href="https://emergent.sh/news/phylo-biomni-swarm-launches-1-000-parallel-ai" target="_blank" rel="noopener">Biomni Swarm：代理池上限 1,000、同時執行 10 個；500 個代理人建出 100 種罕病、10 個器官系統的知識圖譜；50 個代理人把 CYP 抑制預測誤差降 10.2%</a>；<a href="https://www.prnewswire.com/news-releases/phylos-biomni-lab-to-expand-the-use-of-ai-agents-in-scientific-research-at-bayer-302917080.html" target="_blank" rel="noopener">10/22 與拜耳的合作讓其科學家全面使用 Biomni Lab</a>。</span>
+            <span class="en">Launched <a href="https://emergent.sh/news/phylo-biomni-swarm-launches-1-000-parallel-ai" target="_blank" rel="noopener">Biomni Swarm on Nov 25: a pool of up to 1,000 agents with 10 concurrent; 500 agents built a knowledge-graph atlas of 100 rare diseases across 10 organ systems; 50 agents cut CYP inhibition prediction error by 10.2%</a>; <a href="https://www.prnewswire.com/news-releases/phylos-biomni-lab-to-expand-the-use-of-ai-agents-in-scientific-research-at-bayer-302917080.html" target="_blank" rel="noopener">an Oct 22 Bayer partnership gives its scientists full access to Biomni Lab</a>.</span>
+          </td>
+          <td>
+            <span class="zh">護城河是模型無關性加可追溯紀錄：底層模型誰贏它都還在。薄弱處是這一層很容易被模型廠自己做掉（代理人框架正是各家都在發的東西），而<a href="https://emergent.sh/news/phylo-biomni-swarm-launches-1-000-parallel-ai" target="_blank" rel="noopener">10.2% 至今沒有獨立驗證</a>。</span>
+            <span class="en">The moat is model-agnosticism plus traceable records: whoever wins at the model layer, Phylo is still there. The thin part is that this layer is the easiest thing for a model vendor to absorb — agent frameworks are what everyone is shipping — and <a href="https://emergent.sh/news/phylo-biomni-swarm-launches-1-000-parallel-ai" target="_blank" rel="noopener">the 10.2% has no independent verification to date</a>.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>施吉生技 × 新竹臺大 × 亞太智能機器</strong><br><span class="zh-inline">台灣的繁體中文地端醫療 LLM</span><span class="en-inline">Taiwan's on-premises Traditional Chinese medical LLM</span></td>
+          <td>
+            <span class="zh"><a href="https://money.udn.com/money/story/5612/9890695" target="_blank" rel="noopener">11/20 宣布三方合作開發醫療專科 LLM：繁體中文醫療語言理解、臨床專科應用與醫療資安，採地端部署、由醫院自管資料，並對齊健保制度、醫療法規與臨床流程</a>；<a href="https://money.udn.com/money/story/5612/9890695" target="_blank" rel="noopener">施吉生技 11/23 以每股 80 元登錄興櫃</a>。模型的投入金額、訓練資料規模與效能數字一概未公布。</span>
+            <span class="en"><a href="https://money.udn.com/money/story/5612/9890695" target="_blank" rel="noopener">A three-way collaboration announced Nov 20 to build a medical specialty LLM for Traditional Chinese medical language understanding, clinical specialty applications and medical information security — deployed on premises with hospitals holding their own data, aligned to Taiwan's National Health Insurance system, medical regulation and clinical workflow</a>; <a href="https://money.udn.com/money/story/5612/9890695" target="_blank" rel="noopener">Shiji Biotech listed on Taiwan's emerging-stock board on Nov 23 at a reference price of NT$80</a>. No investment figure, training-data size or performance number has been published.</span>
+          </td>
+          <td>
+            <span class="zh">護城河是語言與制度的契合：繁體中文醫療語料、健保給付邏輯與台灣臨床流程，是 <a href="https://www.alphaxiv.org/abs/2611.21218" target="_blank" rel="noopener">InclusionMed 那 964／1,034 的英文任務</a>照不到的地方。薄弱處是現在只有一紙合作、零個數字，而對手是一個 MIT 授權、可以直接拿去微調繁中語料的 560B。</span>
+            <span class="en">The moat is fit to language and institution: Traditional Chinese medical text, NHI reimbursement logic and Taiwanese clinical workflow are precisely what <a href="https://www.alphaxiv.org/abs/2611.21218" target="_blank" rel="noopener">InclusionMed's 964-of-1,034 English tasks</a> cannot see. The thin part is that this is an agreement with zero figures attached — against a competitor that is a 560B under MIT, available to fine-tune on Traditional Chinese text today.</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="zh"><strong>今天的競爭結構是一個被兩頭拉開的啞鈴。</strong>一端是免費的 560B，把前沿醫療推理變成誰都拿得到的基線；另一端是 24 毫秒、約 300 萬到數億參數的判斷器，把醫院真正的工作量做成可編列預算的管線。中間那塊——需要付費 API、需要領域微調、需要廠商自報 benchmark 才賣得動的中型醫療模型——正是本週最難站的位置。而 <a href="https://www.alphaxiv.org/abs/2611.21218" target="_blank" rel="noopener">InclusionMed 的 49.1 分上限</a>與 <a href="https://www.alphaxiv.org/abs/2611.32094" target="_blank" rel="noopener">Clinical3D-Bench 的 53.6% 對 40.8% 先驗基線</a>合起來說了一件所有人都還沒解決的事：這場競爭現在比的還不是誰接近醫師，而是誰離亂猜遠一點。</span>
+      <span class="en"><strong>Today's competitive structure is a dumbbell pulled from both ends.</strong> At one end sits a free 560B that turns frontier medical reasoning into a baseline anyone can have; at the other, 24-millisecond judges of three million to a few hundred million parameters that turn a hospital's actual volume into a budgetable pipeline. The middle — mid-sized medical models that need a paid API, domain fine-tuning and a vendor-reported benchmark to sell — is the hardest place to stand this week. And <a href="https://www.alphaxiv.org/abs/2611.21218" target="_blank" rel="noopener">InclusionMed's 49.1 ceiling</a> together with <a href="https://www.alphaxiv.org/abs/2611.32094" target="_blank" rel="noopener">Clinical3D-Bench's 53.6% against a 40.8% answer-prior</a> say the thing none of them has solved: the race right now is not about who gets close to a physician, but about who gets further from guessing.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============ 04 台灣視角 ============ -->
+<section id="taiwan">
+  <h2>04 — Taiwan Angle</h2>
+  <div class="sec-title">
+    <span class="zh">這一週真正適合台灣讀的不是 560B，而是「評測裡沒有我們」這件事，以及 24 毫秒那一端</span>
+    <span class="en">What Taiwan should read this week is not the 560B, but the fact that the benchmarks contain nobody like us — and the 24-millisecond end</span>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="zh"><strong>(1) 本週最強的那把尺，量不到台灣。</strong><a href="https://www.alphaxiv.org/abs/2611.21218" target="_blank" rel="noopener">InclusionMed 自己把這點列為限制：1,034 個任務裡 964 個是英文，338 個可判定國別的任務裡 318 個屬於美國，五個 benchmark 只覆蓋九宮格裡的三格，而且沒有一個主要評估「對病人與公眾的協助」</a>。這對台灣有兩個直接後果。第一，任何廠商拿 InclusionMed 或 HealthBench 的分數來台灣投標，那個分數對繁體中文病歷、健保申報邏輯與本地臨床流程的預測力接近未知——不是比較低，是沒有量過。第二，這正好是 <a href="https://money.udn.com/money/story/5612/9890695" target="_blank" rel="noopener">11/20 施吉生技、新竹臺大分院與亞太智能機器三方合作要做的那件事：繁體中文醫療語言理解、地端部署、對齊健保制度與醫療法規</a>。只是這份合作目前只有方向，沒有任何訓練資料規模或效能數字；若要讓它成為台灣的基線，缺的不是模型，是一份公開、可重現、以繁中臨床任務為主的評測——而這件事沒有人會替台灣做。</span>
+      <span class="en"><strong>(1) The strongest ruler of the week cannot measure Taiwan.</strong> <a href="https://www.alphaxiv.org/abs/2611.21218" target="_blank" rel="noopener">InclusionMed lists this among its own limitations: 964 of 1,034 tasks are in English, 318 of the 338 country-attributable tasks are American, the five benchmarks cover three of nine cells, and none primarily measures help for patients and the public</a>. Two consequences follow directly for Taiwan. First, when a vendor brings an InclusionMed or HealthBench score to a Taiwanese tender, that score's predictive power for Traditional Chinese records, NHI claims logic and local clinical workflow is close to unknown — not lower, but unmeasured. Second, this is exactly what <a href="https://money.udn.com/money/story/5612/9890695" target="_blank" rel="noopener">the November 20 collaboration between Shiji Biotech, NTU Hospital Hsinchu Branch and APMIC set out to build: Traditional Chinese medical language understanding, on-premises deployment, aligned to the NHI system and medical regulation</a>. But that agreement currently has a direction and no numbers — no training-data size, no performance figure. To make it Taiwan's baseline, what is missing is not a model but a public, reproducible evaluation built around Traditional Chinese clinical tasks. Nobody else is going to build that for Taiwan.</span>
+    </p>
+    <p>
+      <span class="zh"><strong>(2) MIT 授權真正的禮物不是 560B，是 124B 那一款——而最實用的可能是 24 毫秒那一端。</strong>把本週兩端的硬體需求並排看：<a href="https://www.unite.ai/ant-group-begins-open-weight-release-of-lingsante-medical-ai-models/" target="_blank" rel="noopener">flash 要八張 H200、air-VL 要四張 141GB 級或八張 H100／H800</a>，而 <a href="https://www.globenewswire.com/news-release/2026/11/23/3408483/0/en/john-snow-labs-launches-first-commercially-available-decision-models-for-healthcare.html" target="_blank" rel="noopener">John Snow Labs 的 Nano 只要約 2GB GPU 記憶體或純 CPU，PHI Guard 在一條 CPU 執行緒上 1.8 小時掃完百萬筆病歷</a>。對台灣的醫學中心，第一組數字意味著要嘛上雲（資料離院）、要嘛排國網的 GPU；對區域醫院，第一組數字根本不是選項。但去識別化品管、編碼與事前審查、族群識別、臨床試驗資格篩選這些工作，在台灣的醫院一樣是人工在做，而那一端的硬體門檻是「現有的伺服器」。MIT 授權最實際的用法，反而是把 air-VL 當成繁中醫療語料的微調起點、再蒸餾成能在院內跑的小模型——<a href="https://www.alphaxiv.org/abs/2611.28719" target="_blank" rel="noopener">NAVER 與 KT 的 MOPD² 就是這條路線的公開配方</a>，而且它的基礎模型也是開放權重的。</span>
+      <span class="en"><strong>(2) The real gift of the MIT licence is not the 560B but the 124B — and the most useful end may be the 24-millisecond one.</strong> Put the week's two hardware requirements side by side: <a href="https://www.unite.ai/ant-group-begins-open-weight-release-of-lingsante-medical-ai-models/" target="_blank" rel="noopener">flash needs eight H200s and air-VL four 141GB-class GPUs or eight H100/H800s</a>, while <a href="https://www.globenewswire.com/news-release/2026/11/23/3408483/0/en/john-snow-labs-launches-first-commercially-available-decision-models-for-healthcare.html" target="_blank" rel="noopener">John Snow Labs' Nano needs about 2GB of GPU memory or a plain CPU, and PHI Guard screens a million notes in 1.8 hours on one CPU thread</a>. For a Taiwanese medical centre the first set means either the cloud (records leaving the building) or queuing for national GPU allocation; for a regional hospital it is not an option at all. Yet de-identification QC, coding and prior authorisation, cohort identification and trial eligibility screening are done by hand in Taiwanese hospitals too, and the hardware bar at that end is "the servers you already have". The most practical use of the MIT licence is therefore to take air-VL as a starting point for fine-tuning on Traditional Chinese medical text and then distil it down to something that runs in-house — <a href="https://www.alphaxiv.org/abs/2611.28719" target="_blank" rel="noopener">NAVER and KT's MOPD² is the published recipe for exactly that route</a>, and its base model is open-weight too.</span>
+    </p>
+    <p>
+      <span class="zh"><strong>(3) 12 月 3 日起的醫療科技展，是檢驗本週這套標準的現場。</strong><a href="https://www.cna.com.tw/news/afe/202611230032.aspx" target="_blank" rel="noopener">2026 台灣醫療科技展 12 月 3 至 6 日在南港展覽館 1 館舉行，佳世達集團 17 家公司以「AI 醫療與健康照護」四大情境參展</a>；<a href="https://www.cna.com.tw/business/chinese/451161" target="_blank" rel="noopener">叡揚資訊 11/25 預告展出疾病風險預測與 Vitals KPIM，技術說明包含以 AI Agent 加自然語言查詢取代 SQL、以及用可解釋 AI（XAI）揭示每一筆預測的主要影響因子</a>。XAI 這一項值得現場追問，因為本週的教訓剛好落在這裡：<a href="https://www.alphaxiv.org/abs/2611.32094" target="_blank" rel="noopener">Clinical3D-Bench 的「shuffle twins」測試發現微調後的模型其實大致忽略它被餵進去的 3D 地圖，換成另一段影片的地圖，準確率幾乎不變</a>——模型說它用了什麼，和它真的用了什麼，是兩件要分開驗證的事。本報的建議很簡單：在展場問每一個攤位三個問題——分母是多少、對照組是誰、誰做的驗證。這一週八則消息裡，能把三題都答出來的只有兩則。</span>
+      <span class="en"><strong>(3) The medical technology expo from December 3 is where this week's standard gets tested in person.</strong> <a href="https://www.cna.com.tw/news/afe/202611230032.aspx" target="_blank" rel="noopener">Healthcare Expo Taiwan 2026 runs December 3–6 at Nangang Exhibition Center Hall 1, with 17 Qisda Group companies exhibiting across four "AI medical and health care" scenarios</a>; <a href="https://www.cna.com.tw/business/chinese/451161" target="_blank" rel="noopener">Galaxy Software Services announced on November 25 that it will show disease risk prediction and its Vitals KPIM system, describing an AI agent with natural-language query in place of SQL and explainable AI to surface the main factors behind each prediction</a>. The XAI claim is worth pressing on the floor, because this week's lesson lands precisely there: <a href="https://www.alphaxiv.org/abs/2611.32094" target="_blank" rel="noopener">Clinical3D-Bench's "shuffle twins" test found fine-tuned models largely ignore the 3D maps fed to them — swap in another clip's map and accuracy barely moves</a>. What a model says it used and what it actually used are two things that need checking separately. This daily's suggestion is simple: ask every booth three questions — what is the denominator, who is the comparison group, and who did the validation. Of the eight stories above, only two answer all three.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============ 05 延伸閱讀 ============ -->
+<section id="reading">
+  <h2>05 — Further Reading</h2>
+  <div class="sec-title">
+    <span class="zh">挑選標準：方法學寫得出來、限制自己列、或者能把本週的樂觀數字放回分母裡</span>
+    <span class="en">Chosen for writing down a methodology, listing their own limitations, or putting this week's optimistic figures back over a denominator</span>
+  </div>
+
+  <ol class="reading">
+    <li>
+      <a href="https://www.alphaxiv.org/abs/2611.21218" target="_blank" rel="noopener">InclusionMed: Benchmarking AI for Inclusive Healthcare — arXiv:2611.21218 (2026-11-16)</a>
+      <p class="why"><span class="zh">今年最值得讀的醫療評測方法學：從 388 個候選 benchmark 篩到 5 個的稽核過程、九宮格覆蓋率的自我揭露、以及「排名會隨角色與能力重排」這個結論，比任何單一分數都有用。先看限制那一節。</span><span class="en">The medical-evaluation methodology paper of the year: the audit that narrowed 388 candidate benchmarks to five, the self-disclosed coverage of three of nine cells, and the finding that rankings rearrange by role and capability — all more useful than any single score. Read the limitations section first.</span></p>
+    </li>
+    <li>
+      <a href="https://arxiv.org/abs/2611.08369" target="_blank" rel="noopener">NPCBench: A Clinical Apprenticeship Benchmark for Multimodal Care-Pathway Reasoning in Nasopharyngeal Carcinoma — arXiv:2611.08369 (2026-11-06)</a>
+      <p class="why"><span class="zh">本月稍早但與本週直接相關的一份：4,777 個元件與諮詢題、外加 100 位病人的 CarePath 世代與 417 個計分任務，評測 30 個模型（含 21 個多模態）。結論是 21 個多模態模型裡，對同一位病人同時答對診斷與照護問題的嚴格成功率最高只有 23%——作者稱之為「組合落差」。這是「單題分數高」最有力的反證。</span><span class="en">Earlier this month but directly relevant to this week: 4,777 component and consultation items plus a 100-patient CarePath cohort with 417 scored tasks, across 30 models including 21 multimodal. Strict success — getting both the diagnostic and the care answer right for the same patient — tops out at 23%. The authors call it the composition gap, and it is the strongest counter-argument to high per-item scores.</span></p>
+    </li>
+    <li>
+      <a href="https://www.alphaxiv.org/abs/2611.28719" target="_blank" rel="noopener">KMed-31B Technical Report — arXiv:2611.28719 (2026-11-21)</a>
+      <p class="why"><span class="zh">讀它不是為了 51.48，而是為了那一段長度校正：作者自己把未校正分數會偏好長回答這件事攤開，然後給出校正後翻轉的排名。這是本週唯一一份主動削弱自己標題的技術報告，值得當成技術報告該怎麼寫的範例。</span><span class="en">Read it not for the 51.48 but for the length-adjustment passage: the authors lay out that unadjusted scores favour longer answers, then publish the adjusted ranking that inverts their own result. It is the only technical report of the week that actively undercuts its own headline, and a model of how such a report should be written.</span></p>
+    </li>
+    <li>
+      <a href="https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities/" target="_blank" rel="noopener">GPT-6 models demonstrate intrinsic protein design capabilities — OpenAI (2026-11-24)</a>
+      <p class="why"><span class="zh">把限制那幾段讀完再讀標題，順序很重要：篩選仍依賴專用模型、序列預測結構遠遜於 ESMFold2、部分 benchmark 可能反映訓練資料樣態、命中率取決於「結合」怎麼定義。這是一份自己把折扣算給你的公告，少見。</span><span class="en">Read the caveats before the headline; the order matters: filtering still depended on specialised models, sequence-to-structure prediction lags far behind ESMFold2, some benchmark results may reflect training-data patterns, and hit rates depend on how binding is defined. An announcement that computes its own discount — rare.</span></p>
+    </li>
+    <li>
+      <a href="https://warwick.ac.uk/fac/sci/med/research/ctu/trials/edith" target="_blank" rel="noopener">EDITH: Early Detection using Information Technology in Health — University of Warwick CTU</a>
+      <p class="why"><span class="zh">本週值得對照的一份非模型文件：NHS 的乳癌篩檢 AI 試驗規劃納入 66 萬名女性、30 個篩檢中心、由 NIHR HTA 資助，設計是人讀對上人加 AI 讀，分兩種 AI 介入方式，所有影像仍由人判讀、最終決定走標準人工仲裁，追蹤到篩檢週期結束後再四年，主要結果是癌症偵測率與召回率。本週所有模型都在比 benchmark，而這份文件在定義「怎麼才算證明有用」。</span><span class="en">The week's most instructive non-model document: the NHS breast screening AI trial plans 660,000 women across 30 screening centres, funded by NIHR HTA, comparing human reading against human-plus-AI in two configurations, with every image still read by a human and final decisions through standard arbitration, followed up for four years beyond the screening episode, on cancer detection rate and recall rate. Every model this week competed on benchmarks; this document defines what counts as proof of usefulness.</span></p>
+    </li>
+  </ol>
+</section>
+
+<!-- ============ 06 參考文獻 ============ -->
+<section id="refs">
+  <h2>06 — References</h2>
+  <div class="sec-title">
+    <span class="zh">參考文獻</span>
+    <span class="en">References</span>
+  </div>
+
+  <div class="panel">
+    <ol class="refs">
+      <li>Ant Group releases open-weight LingSante medical AI models. <em>TechNode Global</em>, 2026-11-24. <a href="https://technode.global/2026/11/24/ant-group-open-weight-lingsante-medical-ai-models/" target="_blank" rel="noopener">technode.global</a></li>
+      <li>LingSante-3.1-flash model card. <em>Hugging Face / inclusionAI</em>, 2026-11. <a href="https://huggingface.co/inclusionAI/LingSante-3.1-flash" target="_blank" rel="noopener">huggingface.co</a></li>
+      <li>LingSante-3.1-air-VL model card. <em>Hugging Face / inclusionAI</em>, 2026-11. <a href="https://huggingface.co/inclusionAI/LingSante-3.1-air-VL" target="_blank" rel="noopener">huggingface.co</a></li>
+      <li>螞蟻發布百靈醫療健康大模型. <em>21 世紀經濟報導</em>, 2026-11-23. <a href="https://www.21jingji.com/article/20261123/herald/2aa126e4459353215c25576a5e8ad1d8.html" target="_blank" rel="noopener">21jingji.com</a></li>
+      <li>Ant Group Begins Open-Weight Release of LingSante Medical AI Models. <em>Unite.AI</em>, 2026-11-23. <a href="https://www.unite.ai/ant-group-begins-open-weight-release-of-lingsante-medical-ai-models/" target="_blank" rel="noopener">unite.ai</a></li>
+      <li>螞蟻集團開源醫療 AI 模型　採 MIT 授權釋出兩款架構. <em>yam 蕃薯藤新聞</em>, 2026-11-24. <a href="https://n.yam.com/Article/20261124857907" target="_blank" rel="noopener">n.yam.com</a></li>
+      <li>InclusionMed: Benchmarking AI for Inclusive Healthcare. <em>arXiv:2611.21218</em>, 2026-11-16. <a href="https://www.alphaxiv.org/abs/2611.21218" target="_blank" rel="noopener">alphaxiv.org</a> · <a href="https://arxiv.org/pdf/2611.21218v1" target="_blank" rel="noopener">arxiv.org (PDF)</a></li>
+      <li>KMed-31B Technical Report. <em>arXiv:2611.28719</em>, 2026-11-21. <a href="https://www.alphaxiv.org/abs/2611.28719" target="_blank" rel="noopener">alphaxiv.org</a> · <a href="https://arxiv.org/pdf/2611.28719" target="_blank" rel="noopener">arxiv.org (PDF)</a></li>
+      <li>NAVER's KMed-31B tops HealthBench Hard among tested models. <em>AI Weekly</em>, 2026-11-25. <a href="https://aiweekly.co/alerts/navers-kmed-31b-tops-healthbench-hard-among-tested-models" target="_blank" rel="noopener">aiweekly.co</a></li>
+      <li>John Snow Labs Launches First Commercially Available Decision Models for Healthcare. <em>GlobeNewswire</em>, 2026-11-23. <a href="https://www.globenewswire.com/news-release/2026/11/23/3408483/0/en/john-snow-labs-launches-first-commercially-available-decision-models-for-healthcare.html" target="_blank" rel="noopener">globenewswire.com</a></li>
+      <li>John Snow Labs Launches First Commercial Medical Decision Models. <em>HIT Consultant</em>, 2026-11-23. <a href="https://hitconsultant.net/2026/11/23/john-snow-labs-launches-first-commercial-decision-models-healthcare/" target="_blank" rel="noopener">hitconsultant.net</a></li>
+      <li>GPT-6 models demonstrate intrinsic protein design capabilities. <em>OpenAI</em>, 2026-11-24. <a href="https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities/" target="_blank" rel="noopener">openai.com</a></li>
+      <li>OpenAI's GPT-6.2 hits 10.9% wet-lab rate on new minibinders. <em>AI Weekly</em>, 2026-11-25. <a href="https://aiweekly.co/alerts/openais-gpt-62-hits-109-wet-lab-rate-on-new-minibinders" target="_blank" rel="noopener">aiweekly.co</a></li>
+      <li>Clinical3D-Bench: Evaluating and Improving Spatial Intelligence of Multimodal LLMs in Hospital Environments. <em>arXiv:2611.32094</em>, 2026-11-24. <a href="https://www.alphaxiv.org/abs/2611.32094" target="_blank" rel="noopener">alphaxiv.org</a> · <a href="https://arxiv.org/abs/2611.32094" target="_blank" rel="noopener">arxiv.org</a></li>
+      <li>Phylo Biomni Swarm Launches 1,000 Parallel AI Scientists. <em>Emergent</em>, 2026-11-25. <a href="https://emergent.sh/news/phylo-biomni-swarm-launches-1-000-parallel-ai" target="_blank" rel="noopener">emergent.sh</a></li>
+      <li>Phylo's Biomni Lab to expand the use of AI agents in scientific research at Bayer. <em>PR Newswire</em>, 2026-10-22. <a href="https://www.prnewswire.com/news-releases/phylos-biomni-lab-to-expand-the-use-of-ai-agents-in-scientific-research-at-bayer-302917080.html" target="_blank" rel="noopener">prnewswire.com</a></li>
+      <li>AI-generated data could accelerate medical imaging trials with new validation tool. <em>News-Medical</em>, 2026-11-24（原研究：<em>PNAS</em>, 2026-11-23, DOI 10.1073/pnas.2622414123）. <a href="https://www.news-medical.net/news/20261124/AI-generated-data-could-accelerate-medical-imaging-trials-with-new-validation-tool.aspx" target="_blank" rel="noopener">news-medical.net</a></li>
+      <li>NPCBench: A Clinical Apprenticeship Benchmark for Multimodal Care-Pathway Reasoning in Nasopharyngeal Carcinoma. <em>arXiv:2611.08369</em>, 2026-11-06. <a href="https://arxiv.org/abs/2611.08369" target="_blank" rel="noopener">arxiv.org</a></li>
+      <li>Next generation medical image interpretation with MedGemma 1.5 and medical speech to text with MedASR. <em>Google Research Blog</em>, 2026-01-13. <a href="https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/" target="_blank" rel="noopener">research.google</a></li>
+      <li>Google's MedGemma: open 4B, 27B medical VLMs in Nature Medicine. <em>AI Weekly</em>, 2026-10-10（原研究：An open vision-language model for diverse medical applications, <em>Nature Medicine</em>）. <a href="https://aiweekly.co/alerts/googles-medgemma-open-4b-27b-medical-vlms-in-nature-medicine" target="_blank" rel="noopener">aiweekly.co</a> · <a href="https://www.nature.com/articles/s41591-026-04626-w" target="_blank" rel="noopener">nature.com</a></li>
+      <li>Healthcare and Life Sciences Leaders Build on NVIDIA to Advance Drug Discovery and Expand Patient Care. <em>NVIDIA</em>, 2026-10-21. <a href="https://investor.nvidia.com/news/press-release-details/2026/Healthcare-and-Life-Sciences-Leaders-Build-on-NVIDIA-to-Advance-Drug-Discovery-and-Expand-Patient-Care/default.aspx" target="_blank" rel="noopener">investor.nvidia.com</a></li>
+      <li>EDITH: Early Detection using Information Technology in Health. <em>University of Warwick Clinical Trials Unit</em>（頁面最後修訂 2026-01-19）. <a href="https://warwick.ac.uk/fac/sci/med/research/ctu/trials/edith" target="_blank" rel="noopener">warwick.ac.uk</a></li>
+      <li>NHS Opens EDITH Trial of AI-Assisted Breast Cancer Screening, Starting in Cambridgeshire. <em>CASRAI</em>, 2026-11-23. <a href="https://casrai.org/news/nhs-edith-ai-breast-screening-trial-2026-11-23" target="_blank" rel="noopener">casrai.org</a></li>
+      <li>施吉生技攜手新竹臺大、亞太智能機器 開發醫療專科 AI 模型. <em>經濟日報</em>, 2026-11-20. <a href="https://money.udn.com/money/story/5612/9890695" target="_blank" rel="noopener">money.udn.com</a></li>
+      <li>從健康大數據到智慧決策！叡揚發表 AI 醫療新方案 強化風險預測. <em>中央社財經訊息平台</em>, 2026-11-25. <a href="https://www.cna.com.tw/business/chinese/451161" target="_blank" rel="noopener">cna.com.tw</a></li>
+      <li>台灣醫療科技展 佳世達推 AI 醫療與健康照護 4 大看點. <em>中央社</em>, 2026-11-23. <a href="https://www.cna.com.tw/news/afe/202611230032.aspx" target="_blank" rel="noopener">cna.com.tw</a></li>
+      <li>Everything That Happened in AI Today, Wednesday, November 25. <em>The Neuron</em>, 2026-11-25. <a href="https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-november-25-2026/" target="_blank" rel="noopener">theneuron.ai</a></li>
+    </ol>
+    <div class="note">
+      <span class="zh"><strong>編輯說明：</strong>（1）本期窗口前推至 11/16，因為 InclusionMed（11/16 上 arXiv）與 KMed-31B（11/21）是理解本週三則 11/23–11/25 消息的必要背景；NPCBench（11/06）僅列入延伸閱讀，不計為當日新聞。（2）<strong>廠商自述、未經第三方稽核的數字</strong>：螞蟻的 InclusionMed 分項分數與阿福使用規模；John Snow Labs 所有準確率、延遲與成本數字（且五個對照模型全未點名，比較無法重現）；Phylo 的 10.2% 與 100 種罕病圖譜；NAVER／KT 的 HealthBench 分數（評分者與 HealthBench 原始報告所用不同）；OpenAI 的濕實驗室命中率（由合作夥伴 Onava 執行、非獨立機構）。（3）<strong>二手來源</strong>：螞蟻兩款模型的 GPU 服務需求與 InclusionMed 分項分數（45.1／65.7／26.2／57.0）引自 Unite.AI，該站明示其文章由 AI 生成並經編輯審閱；本報已以 Hugging Face 模型卡核對總參數、活化參數、上下文長度與授權，但模型卡的詳細 benchmark 表以圖片呈現，表內數字無法逐項文字核對。InclusionMed 與 KMed-31B、Clinical3D-Bench 的細節取自 alphaXiv 的論文頁；arxiv.org 在本次產製期間多次回報速率限制，原始 abs 頁未能全部取得。（4）<strong>未取得原文</strong>：PNAS 10.1073/pnas.2622414123 僅依 News-Medical 的報導撰寫，該報導未給方法名稱、未報任何數值結果；《Nature Medicine》MedGemma 論文與 Nature 系列頁面在本次產製期間無法取得，相關數字引自 Google Research 官方部落格與 AI Weekly 的摘要，已於文中標示。（5）EDITH 試驗的規模，Warwick 試驗頁寫 660,000 人、多家媒體報導為「近 700,000 人」，本報採用試驗單位頁面的數字。（6）本報不構成投資或醫療建議，所有數據請以原始出處為準。</span>
+      <span class="en"><strong>Editor's note:</strong> (1) The window was extended back to November 16 because InclusionMed (arXiv, Nov 16) and KMed-31B (Nov 21) are necessary background for the three November 23–25 stories; NPCBench (Nov 6) appears only under Further Reading and is not counted as a story of the day. (2) <strong>Vendor-reported figures with no third-party audit</strong>: Ant's InclusionMed sub-scores and Afu usage; every John Snow Labs accuracy, latency and cost figure (and none of its five comparison models is named, so that comparison cannot be reproduced); Phylo's 10.2% and its 100-disease atlas; NAVER/KT's HealthBench scores (graded with a different grader from the original HealthBench reports); and OpenAI's wet-lab hit rates, run by partner Onava rather than an independent body. (3) <strong>Secondary sources</strong>: the GPU serving requirements for Ant's two models and the InclusionMed sub-scores (45.1/65.7/26.2/57.0) are cited from Unite.AI, a site that states its articles are AI-generated and editorially reviewed; total and active parameters, context length and licence were checked against the Hugging Face model cards, but those cards present their detailed benchmark tables as images, so the figures inside them could not be checked as text. Details for InclusionMed, KMed-31B and Clinical3D-Bench come from alphaXiv's paper pages; arxiv.org returned rate limits repeatedly during production and not all original abstract pages could be retrieved. (4) <strong>Primary text not obtained</strong>: the PNAS paper (DOI 10.1073/pnas.2622414123) is written only from the News-Medical report, which gives the method no name and reports no numerical results; the Nature Medicine MedGemma paper and other Nature pages could not be retrieved during production, so the related figures come from Google's official research blog and an AI Weekly summary, as flagged in the text. (5) On EDITH's size, the Warwick trial page states 660,000 women while several news outlets report "nearly 700,000"; this daily uses the trial unit's own figure. (6) Nothing here is investment or medical advice; always verify figures against the primary source.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-row">
+    <div>
+      <span class="zh">AI／醫療AI 每日新知日報 · 由 Claude 於台北時間每日自動產出 · 本期主題：星期四／技術突破<br>本報告內容經來源查證，但不構成投資或醫療建議。所有數據請以原始出處為準。</span>
+      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Thursday / Technology<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
+    </div>
+    <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com / 返回 peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
+  </div>
+</footer>
+</main>
+
+<div class="fabs">
+  <button class="up" id="up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+  <a class="home-fab" href="../index.html" title="回到日報首頁" aria-label="回到日報首頁 / Back to all reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg></a>
+</div>
+
+<script>
+function setLang(l){
+  document.body.classList.remove('lang-zh','lang-en');
+  document.body.classList.add('lang-'+l);
+  document.documentElement.lang = (l==='zh') ? 'zh-Hant' : 'en';
+  document.getElementById('b-zh').classList.toggle('on', l==='zh');
+  document.getElementById('b-en').classList.toggle('on', l==='en');
+  document.title = (l==='zh')
+    ? 'AI／醫療AI 每日新知日報 · 2026-11-26'
+    : 'AI & Medical AI Daily · 2026-11-26';
+}
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.getElementById('theme-ic').textContent =
+    document.body.classList.contains('dark') ? '◑' : '◐';
+}
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.body.classList.add('dark');
+  document.getElementById('theme-ic').textContent = '◑';
+}
+window.addEventListener('scroll', function(){
+  document.getElementById('up').classList.toggle('show', window.scrollY > 600);
+});
+
+/* GitHub 星星數：無需授權，失敗或被限流時靜默保留佔位符 */
+(function(){
+  var el = document.getElementById('ghs');
+  if (!el || typeof fetch !== 'function') return;
+  fetch('https://api.github.com/repos/tingwei161803/ai-medical-daily', {headers:{Accept:'application/vnd.github+json'}})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if (!d || typeof d.stargazers_count !== 'number') return;
+      var n = d.stargazers_count;
+      el.textContent = n >= 1000 ? (Math.round(n/100)/10) + 'k' : String(n);
+    })
+    .catch(function(){});
+})();
+</script>
+</body>
+</html>
