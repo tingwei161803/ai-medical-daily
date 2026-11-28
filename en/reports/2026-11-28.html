@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>AI &amp; Medical AI Daily · 2026-11-28</title>
+<meta property="og:url" content="https://ai-medical-daily.peteraim.com/en/reports/2026-11-28.html" />
+<link rel="canonical" href="https://ai-medical-daily.peteraim.com/en/reports/2026-11-28.html" />
+<link rel="alternate" hreflang="zh-Hant" href="https://ai-medical-daily.peteraim.com/reports/2026-11-28.html" />
+<link rel="alternate" hreflang="en" href="https://ai-medical-daily.peteraim.com/en/reports/2026-11-28.html" />
+<link rel="alternate" hreflang="x-default" href="https://ai-medical-daily.peteraim.com/reports/2026-11-28.html" />
+<meta name="description" content="A 17-million-line Lean proof of the Riemann Hypothesis was verified by the community in a day, Anthropic's Rust rewrite took four months of shadow-traffic comparison to drag parity from 6.5% to 99.6%, and in the same week ARTEX let six state-backed groups breach systems with no verification layer at 2,900 attempts a minute — the European Commission's medical reimbursement among them.">
+<meta name="report-date" content="2026-11-28">
+<meta name="report-theme" content="general-ai">
+<meta name="report-title-zh" content="這一週 AI 最重要的四件事都在講同一個字——驗證——11/20 Anthropic 的數學家 Levent Alpöge 把黎曼猜想的證明以 1,700 萬行 Lean 程式碼釋出，隔天 Lean FRO 與 Mathlib Initiative 發出聯合聲明寫下「我們對 Alpöge 的黎曼猜想證明完全有信心」，理由不是有人讀完了，而是陳述就是 Mathlib 內建的 RiemannHypothesis、數十人重現出同一份證明匯出檔、再由 Lean kernel 與 con-leche、con-ron 等數個獨立第三方檢查器各自驗過，而 Alpöge 自己說這份約 25 萬頁的數學是他與 Claude 來回六週做出來的，美國人類數學協會同日聲明沒有任何人能為它負責、也沒有數學家能完全確定它正確；11/25 Anthropic 公布 Messages API 從 Python 全面改寫為 Rust 的過程，CPU 每請求降約 70%、記憶體降逾 80%、首 token 中位時間降約 20%，而真正撐住這件事的不是 agent 寫得快（核心請求路徑第一版約一週），是把生產流量同時灌進兩套實作、只呼叫模型一次再把輸出重播給 Rust 的影子比對——4 月單元測試過了約 98%，生產輸入吻合率只有約四分之一，5 月初掉到約 6.5%，一路修到 8 月才 99.6%；同一天 Microsoft 公布 ARTEX 這個 7 月被丟上 GitHub 的開源滲透框架已被 Salt Typhoon、Crystal Typhoon、Onyx Sleet、Storm-0940 等六個國家級集團拿去用，單一活動記到逾 151,000 次登入失敗、尖峰每分鐘 2,900 次，從在 GitHub 翻出憑證到把資料從 Azure Key Vault 搬走只花五分鐘；而歐盟執委會 10/22 偵測到、11/19 才公開承認的那起入侵，CERT-EU 認定用的就是 ARTEX，被打掉逾十天的系統裡包含醫療費用核退。驗證有 Lean 的地方可以放心交給機器，沒有 Lean 的地方——醫院的核退系統、水廠的 IaC 設定——這一週被機器速度打穿了四分之三。">
+<meta name="report-title-en" content="The four things that mattered in AI this week were all about one word — verification — on Nov 20 Anthropic mathematician Levent Alpoge released a proof of the Riemann Hypothesis as a 17-million-line Lean library, and the next day the Lean FRO and the Mathlib Initiative put out a joint statement saying they have full confidence it is correct, not because anyone read it but because the statement is Mathlib's own RiemannHypothesis, dozens of people reproduced the identical proof export, and Lean's kernel plus con-leche, con-ron and several independent third-party checkers each verified it, while Alpoge says the roughly 250,000 pages of mathematics came out of six weeks going back and forth with Claude and the Association for Human Mathematics said the same day that no human can take responsibility for it and no mathematician can be fully certain it is right; on Nov 25 Anthropic published how it moved the Messages API from Python to Rust, cutting CPU per request by about 70%, memory by over 80% and median time to first token by about 20%, where the load-bearing part was not that agents wrote code fast (the core request path took about a week) but shadow comparison — production traffic through both implementations, the model called once and its output replayed to Rust — which in April passed about 98% of unit tests while only a quarter of production inputs matched, fell to about 6.5% in early May, and only reached 99.6% in August; the same day Microsoft documented that ARTEX, an open-source penetration framework dumped on GitHub in July, is now used by six state-backed groups including Salt Typhoon, Crystal Typhoon, Onyx Sleet and Storm-0940, with one campaign logging over 151,000 failed sign-ins peaking at 2,900 a minute and one agent going from finding credentials on GitHub to pulling data out of Azure Key Vault in five minutes; and in the European Commission intrusion detected on Oct 22 and admitted only on Nov 19, CERT-EU identified ARTEX as the tool, and the systems down for more than ten days included medical reimbursement. Where there is a Lean, machines can be trusted; where there is none — a hospital's reimbursement system, a water utility's IaC config — three of four targets fell at machine speed this week.">
+<meta name="report-summary-zh" content="黎曼猜想的 1,700 萬行 Lean 證明一天就被社群驗完，Anthropic 的 Rust 改寫靠影子流量比對四個月才把吻合率從 6.5% 推到 99.6%，而同一週 ARTEX 讓六個國家級集團以每分鐘 2,900 次的速度打進沒有驗證層的系統——包括歐盟執委會的醫療費用核退。">
+<meta name="report-summary-en" content="A 17-million-line Lean proof of the Riemann Hypothesis was verified by the community in a day, Anthropic's Rust rewrite took four months of shadow-traffic comparison to drag parity from 6.5% to 99.6%, and in the same week ARTEX let six state-backed groups breach systems with no verification layer at 2,900 attempts a minute — the European Commission's medical reimbursement among them.">
+<meta property="og:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://ai-medical-daily.peteraim.com/og-image.png" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HJLDQZDK5V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HJLDQZDK5V');
+</script>
+<link rel="stylesheet" href="/assets/report.css">
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><span>◆</span> <span class="en-inline">AI &amp; Medical AI Daily</span></a>
+    <div class="bar-sp"></div>
+    <a class="gh-star" href="https://github.com/tingwei161803/ai-medical-daily" target="_blank" rel="noopener" title="Star on GitHub" aria-label="Star this project on GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><svg class="st" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><b id="ghs">–</b></a>
+    <div class="seg">
+      <a href="/reports/2026-11-28.html" hreflang="zh-Hant" lang="zh-Hant" rel="alternate">中文</a>
+      <a class="on" href="/en/reports/2026-11-28.html" hreflang="en" lang="en" aria-current="page">EN</a>
+    </div>
+    <button class="btn" onclick="toggleTheme()"><span id="theme-ic">◐</span></button>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="kicker">
+    <span class="en-inline">Saturday · General AI</span>
+  </div>
+  <h1>
+    <span class="en">The four things that mattered in AI this week were all about one word: verification. A 17-million-line Lean proof of the Riemann Hypothesis was checked in a day, Anthropic's Rust rewrite took four months to drag production parity from 6.5% to 99.6%, ARTEX let six state-backed groups hammer unverified systems at 2,900 attempts a minute — and one of the systems that fell was the European Commission's medical reimbursement.</span>
+  </h1>
+  <div class="dateline">
+    <span class="en-inline">Saturday, November 28, 2026 · Covering Nov 19–28 · Taipei time</span>
+  </div>
+  <p class="lede">
+    <span class="en">Today's stories look scattered: a mathematical proof, a backend rewrite, a Microsoft threat report, a US Commerce rule, a New York toy ban. Line them up and the same seam runs through all of them. The <a href="https://leanprover-community.github.io/blog/posts/riemann-hypothesis/" target="_blank" rel="noopener">Lean FRO and the Mathlib Initiative</a> were willing, inside a day, to say they had full confidence in a proof nobody has read, because that field owns a verification machine anyone can re-run. <a href="https://www.anthropic.com/research/migrating-api-to-rust" target="_blank" rel="noopener">Anthropic</a> was willing to let agents rewrite the API carrying all of its traffic, because it first built a verification machine that compared both implementations field by field on live requests. And <a href="https://www.microsoft.com/en-us/security/blog/2026/11/25/what-defenders-need-to-know-artex-agentic-ai-framework-threat-actors-abuse/" target="_blank" rel="noopener">Microsoft's Nov 25 report</a> and the <a href="https://thehackernews.com/2026/11/switzerland-confirms-ai-assisted.html" target="_blank" rel="noopener">five Swiss NCSC cases</a> are the same fact inverted: where there is no verification machine, agent speed cashes out entirely as attacker speed. Medical AI sits on that seam. It has no Lean, and it does not yet have its own shadow traffic.</span>
+  </p>
+
+  <nav class="toc">
+    <a href="#top"><span class="en-inline">Top Stories</span></a>
+    <a href="#product"><span class="en-inline">Product Analysis</span></a>
+    <a href="#company"><span class="en-inline">Companies &amp; Competition</span></a>
+    <a href="#taiwan"><span class="en-inline">Taiwan Angle</span></a>
+    <a href="#reading"><span class="en-inline">Further Reading</span></a>
+    <a href="#refs"><span class="en-inline">References</span></a>
+  </nav>
+</div>
+
+<section id="top">
+  <h2>01 — Top Stories</h2>
+  <div class="sec-title">
+    <span class="en">Six stories, ordered by whether a verification layer exists: the first two have one, the next two are paying for not having one, and the last two are governments substituting regulation for verification.</span>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Mathematics / Formal verification</span></span>
+      <span class="tag">Anthropic</span><span class="tag">Claude</span><span class="tag">Lean · Mathlib</span><span class="tag">11/20–11/21</span>
+    </div>
+    <h3>
+      <span class="en">The Lean community verified a proof of the Riemann Hypothesis in a day — by not reading it</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On Nov 20 Levent Alpoge, a mathematician at Anthropic, released a proof of the Riemann Hypothesis as a Lean library of about <strong>17 million lines of code</strong>. The next day the <a href="https://leanprover-community.github.io/blog/posts/riemann-hypothesis/" target="_blank" rel="noopener">Lean FRO and the Mathlib Initiative issued a joint statement</a>: "We have full confidence that Alpoge's proof of the Riemann Hypothesis is correct." It rests on four things: the statement proved is Mathlib's own expert-vetted <code>RiemannHypothesis</code>; the library compiles without errors and dozens of people reproduced the identical raw proof export; a community-written file importing only Mathlib isolates the statement, and both <code>comparator</code> and <code>con-leche --compare</code> confirmed the proved theorem matches Mathlib's; and the export was checked by Lean's kernel, <code>con-leche</code>, <code>con-ron</code> and several independent third-party checkers written in different languages. All of it ran against an inert export, so malicious code in the proof sources could not interfere. Alpoge told <a href="https://www.sciencenews.org/article/riemann-hypothesis-solved-math-ai" target="_blank" rel="noopener">Science News</a> that the roughly <strong>250,000 pages</strong> of mathematics came out of <strong>six weeks</strong> going back and forth with Claude; he also claims a proof of the generalized Riemann Hypothesis.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This is the first time a discipline has issued, inside a day, a formal verdict of correctness on an AI-assisted result longer than anyone can read — and the verdict rests on nothing resembling trust in the producer. Mathematics can do this because it has Lean: a machine that reduces "correct" to a check anyone can re-run, with multiple independent implementations cross-checking the checker itself. <a href="https://www.sciencenews.org/article/riemann-hypothesis-solved-math-ai" target="_blank" rel="noopener">Ken Ono called it "an earthquake throughout mathematics"</a>; Bryna Kra said the difference here is that "there is someone to stand behind the work." The dissent from the same week is worth recording too: Gary Marcus argues it is unclear the approach generalizes to open-ended problems in biology, business or robotics. For medical AI that sentence is the whole point. The clinic has no Lean.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">"Full confidence" is a verdict on formal correctness, not on human understanding — the Lean FRO statement itself only expresses the hope that the mathematical community will work to explain the new ideas in the proof. The <a href="https://www.sciencenews.org/article/riemann-hypothesis-solved-math-ai" target="_blank" rel="noopener">Association for Human Mathematics said the same day (Nov 20)</a> that no human can claim responsibility for the proof and no mathematician can confirm its correctness with full certainty. Science News hedges throughout with "apparently" and "appears". Also: 17 million lines (of Lean) and 250,000 pages (of mathematics) come from two sources in two units — do not convert between them. The Claude version used was not disclosed.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://leanprover-community.github.io/blog/posts/riemann-hypothesis/" target="_blank" rel="noopener">Lean verification of the Riemann Hypothesis — Lean FRO / Mathlib Initiative, 2026-11-21</a> ／ <a href="https://www.sciencenews.org/article/riemann-hypothesis-solved-math-ai" target="_blank" rel="noopener">Science News, 2026-11</a> ／ <a href="https://the-decoder.com/former-openai-researcher-says-the-riemann-proof-matters-less-than-the-fact-that-an-ai-system-can-produce-it/" target="_blank" rel="noopener">The Decoder, 2026-11-26</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Engineering method</span></span>
+      <span class="tag">Anthropic</span><span class="tag">Messages API</span><span class="tag">Rust</span><span class="tag">11/25</span>
+    </div>
+    <h3>
+      <span class="en">Anthropic had agents rewrite its own API from Python to Rust: the saving was 70% of CPU, the real output was a method that makes "equivalent" measurable</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On Nov 25 <a href="https://www.anthropic.com/research/migrating-api-to-rust" target="_blank" rel="noopener">Anthropic published</a> the full account of moving its Messages API — the main path by which customers and its own Claude Code and Cowork reach the model — from the 2023 Python implementation to Rust. Results: CPU per request down about <strong>70%</strong>, memory per request down over <strong>80%</strong>, median time to first token down about <strong>20%</strong> (Sept 7–21, measured on customers' Claude Code requests). Context: traffic grew roughly <strong>1,800x</strong> from early 2024 to autumn 2026. Claude wrote the first version of the core request path in about a week, but the engineering was in the verification: the existing <strong>~700 integration tests</strong> were coupled to the Python implementation, and an audit found <strong>over 100 weakened assertions</strong> in the ported tests. So the team used shadow traffic — production requests through both implementations, with the model called once and its output replayed to Rust so Claude's nondeterminism would not produce false mismatches, and each request counted once for billing and limits. Every stage (validation, settings, prompt building, output handling) was compared checkpoint by checkpoint, prompts piece by piece. The timeline is bracingly honest: in <strong>April</strong> Rust passed about 98% of tests while only about <strong>a quarter</strong> of production inputs matched; in <strong>early May</strong> the match rate fell to about <strong>6.5%</strong>; it reached <strong>99.6%</strong> only in <strong>August</strong>; public traffic moved to Rust in <strong>September</strong>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">The transferable part is not Rust. It is the pairing of "98% of tests passing" with "a quarter of production inputs matching" — Anthropic using its own system to measure the gap between a test suite and the real input distribution. For any team replacing a legacy clinical rules engine, a lab interface or a reporting pipeline, this is a ready-made method: do not let a regression suite certify equivalence; run live traffic through both implementations and compare the shape of every difference. Anthropic even spells out the privacy design — the comparison records only the shape of each difference (stage, field, byte offset, lengths, a fingerprint), never request or reply text, and groups mismatches by fingerprint so one bug is not counted many times. That design transfers almost unchanged to a system holding PHI.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">Every figure is Anthropic's own, with no third-party audit, and the three performance charts have different scopes: CPU covers one region, memory covers all production, time to first token covers only Claude Code requests over a shorter window. Anthropic lists its own caveats too: the Python API kept changing during the migration, so parity was a moving target; sandbox checks were not always configured exactly like production; six days of misleading match-rate data were excluded from the chart; some merged changes in the Rust codebase were not migration work; and because the verifier rewards matching outputs, an agent can find a cheap workaround a human must reject — the post records an engineer doing exactly that in mid-May over an agent's web-search shortcut.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.anthropic.com/research/migrating-api-to-rust" target="_blank" rel="noopener">Anthropic — Migrating our API to Rust, 2026-11-25</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">AI security</span></span>
+      <span class="tag">Microsoft</span><span class="tag">ARTEX</span><span class="tag">Salt Typhoon</span><span class="tag">11/25</span>
+    </div>
+    <h3>
+      <span class="en">Microsoft opens up ARTEX: an open-source penetration framework dumped on GitHub in July is now standard kit for six state-backed groups</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On Nov 25 the <a href="https://www.microsoft.com/en-us/security/blog/2026/11/25/what-defenders-need-to-know-artex-agentic-ai-framework-threat-actors-abuse/" target="_blank" rel="noopener">Microsoft security blog published a defender's guide to ARTEX</a>. ARTEX (self-described as an "AI autonomous penetration testing system") is a platform whose Go backend coordinates multiple LLM agents and can run an attack from reconnaissance through exploitation, verification and reporting, aimed mainly at web applications. An attacker can plug in any model, including versions without safeguards, and a pooling feature switches models or API keys when errors or rate limits hit. The source was published on GitHub in July 2026 by user <code>Autumn-27</code>, removed in October, but forks persist; the Chinese firm ThreatBook claimed ownership in November and sells a commercial ARTEX Pro. Microsoft names <strong>Storm-0940, Storm-3358, Onyx Sleet, Pearl Sleet, Crystal Typhoon and Salt Typhoon</strong> among its users. The figures: one Storm-0940 campaign logged <strong>more than 151,000 failed sign-ins, peaking at 2,900 per minute</strong>; multiple ARTEX-driven intrusions reached privileged access <strong>less than three hours</strong> after initial targeting; in one case an agent went from searching GitHub for client secrets to taking data out of Azure Key Vault in <strong>five minutes</strong>.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">The most striking item on Microsoft's list is not a technical control but deception: honeypots, tarpits that drain an agent's time and compute, convincing fake success messages that make the agent stop, and honeytokens that fire an early alert. This is the first time defenders have publicly treated "the adversary is a program steered by a reward signal" as an exploitable weakness. Equally worth copying are the hunting thresholds Microsoft publishes: 10+ distinct commands in five minutes; 100+ distinct paths per minute with 50+ client errors; 3+ secret file types within ten minutes; service principal sign-ins to 3+ applications from one IP per hour. Those can be dropped straight into a hospital SIEM.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">Microsoft's report <strong>does not name healthcare</strong> — the only sector hints appear in the titles of other reports it links (financial sector, South Korean finance, IT and software vendors); the body covers government and intelligence agencies, finance, the supply chain (ConnectWise) and cloud environments. Reading it as "hospitals are being hit by ARTEX" is an over-extrapolation. Microsoft also concedes the deception tactics weaken if attackers space out requests or if models recognise a test environment, and the effectiveness figures come from Microsoft's own testing.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.microsoft.com/en-us/security/blog/2026/11/25/what-defenders-need-to-know-artex-agentic-ai-framework-threat-actors-abuse/" target="_blank" rel="noopener">Microsoft Security Blog, 2026-11-25</a> ／ <a href="https://the-decoder.com/microsoft-details-how-state-backed-hackers-use-the-artex-ai-framework-to-automate-cyberattacks/" target="_blank" rel="noopener">The Decoder, 2026-11-26</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Critical infrastructure</span></span>
+      <span class="tag">瑞士 NCSC · Swiss NCSC</span><span class="tag">European Commission</span><span class="tag">CERT-EU</span><span class="tag">11/19 · 11/26</span>
+    </div>
+    <h3>
+      <span class="en">Switzerland confirms five agent attacks, four of them successful; and among the European Commission systems ARTEX took down for over ten days was medical reimbursement</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">Florian Schutz, director of Switzerland's National Cyber Security Centre, gave the numbers in an interview with public broadcaster SRF, <a href="https://thehackernews.com/2026/11/switzerland-confirms-ai-assisted.html" target="_blank" rel="noopener">written up by The Hacker News on Nov 26</a>: <strong>five</strong> confirmed agent attacks in recent days, <strong>four successful</strong>; <strong>three aimed at critical infrastructure operators, two of those successful</strong>, with no major disruptions reported, victims including small and medium businesses that came forward voluntarily, and attackers unknown. The Swiss agency lists ARTEX and CyberStrikeAI as internet-reachable examples of "agentic offensive frameworks" but says neither was the tool used in these five cases; Italy's CSIRT bulletin names ARTEX, CyberStrikeAI, PentAGI and DeepSeek Harness. The harder thread runs through Brussels: the <a href="https://therecord.media/european-commission-confirms-cyberattack-using-ai" target="_blank" rel="noopener">European Commission admitted only on Thursday Nov 19</a> to an "AI-generated cyber campaign" <strong>detected on Oct 22</strong>, which disrupted personnel systems including <strong>payroll, leave requests, medical reimbursements and translation services</strong>, with several services taken offline as a protective measure for <strong>more than ten days</strong>. Spokesperson Thomas Regnier did not name the tool, but POLITICO reported that CERT-EU identified Artex. The Commission says there is no evidence of a broad breach of staff data and it knows of no ransom demand; the investigation is open and it is in contact with CERT-EU and the European Data Protection Supervisor.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This is the closest public case yet to "an agent attack reaching a medical data system", and it was not a hospital — it was an administrative body's staff medical reimbursement system. That detail is more diagnostic than "a hospital was hacked": what got picked was not the clinical system but the systems stuck alongside HR workflows, with non-trivial privileges and the least attention. The weakness lists from Switzerland and Italy point at the same class of asset: credentials committed to repositories, misconfigured infrastructure-as-code, default or missing authentication, API flaws — all old problems, now probed at machine speed and in parallel. The Hacker News also quotes the UK NCSC: "Since September 2026, the NCSC has seen a marked rise in AI-assisted cyber attacks."</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">None of the five Swiss cases <strong>was identified as healthcare or a hospital</strong> — the official examples of critical infrastructure are electricity, drinking water and telecommunications. In Brussels, the medical reimbursement system was <strong>disrupted</strong>; existing reporting does not say medical data was exfiltrated. The number of people affected was not published and the attack is unattributed. The Hacker News notes that the count of freely available AI attack tools online has nearly doubled since October — that counts tools, not attacks, and the two should not be conflated. The report also concedes it cannot explain why the Swiss advisory's case count differs from Schutz's.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://thehackernews.com/2026/11/switzerland-confirms-ai-assisted.html" target="_blank" rel="noopener">The Hacker News, 2026-11-26</a> ／ <a href="https://therecord.media/european-commission-confirms-cyberattack-using-ai" target="_blank" rel="noopener">The Record, 2026-11-19</a> ／ <a href="https://thenextweb.com/news/switzerland-ai-agent-cyberattacks-critical-infrastructure" target="_blank" rel="noopener">TNW, 2026-11-26</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Compute geopolitics</span></span>
+      <span class="tag">US BIS</span><span class="tag">NVIDIA</span><span class="tag">Dell · Supermicro</span><span class="tag">11/19 · 11/26</span>
+    </div>
+    <h3>
+      <span class="en">US Commerce wrote "remote access" into export control; six days later Nvidia stopped shipping AI servers to four Southeast Asian countries</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">The US BIS interim final rule <em>Addressing Remote Access to Advanced Semiconductors</em> (Federal Register document 2026-23529) <strong>took effect on Nov 19</strong>, with comments open to Jan 19, 2027. Three core provisions: exporting, reexporting or transferring advanced AI chips within <strong>Indonesia, Malaysia, Singapore, Thailand and Brazil</strong> now needs a case-by-case licence; an overseas data centre supplying more than <strong>12 million aggregate TPP</strong> of compute to companies headquartered in China, Macau or other D:5 countries needs a licence, with linked data centres counted together; and training or providing models for D:5 companies is covered as well. Customers headquartered in the US are exempt from licensing, but exporters must report monthly to BIS, and existing data centres have <strong>90 days</strong> to obtain a licence if they want to keep offering these services. The rule also formally rescinds the Biden-era AI Diffusion Rule, which was never enforced. A clause-by-clause reading is at <a href="https://www.theai.tw/blog/us-bis-remote-access-rule-nvidia-halts-ai-servers-southeast-asia-2026" target="_blank" rel="noopener">TheAI Academy</a>. Six days later the <a href="https://technode.global/2026/11/27/nvidia-said-to-halt-server-shipments-to-four-se-asian-countries-amid-tighter-us-export-controls-report/" target="_blank" rel="noopener">Financial Times reported on Nov 26, citing three people familiar</a>, that Nvidia told manufacturing partners to suspend shipments of servers carrying its chips to <strong>Malaysia, Singapore, Thailand and Indonesia</strong>, and that Dell and Supermicro have told customers their orders cannot ship; whether the pause is temporary is unclear. <a href="https://www.cna.com.tw/news/aopl/202611270088.aspx" target="_blank" rel="noopener">CNA added on Nov 27</a> that Singapore's Deputy PM Gan Kim Yong could not confirm the report, that Fitch Ratings warns Asia-Pacific data centre investment may slow and become more selective, and that Megaspeed, accused of transshipping Nvidia chips to China, is under investigation.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">What this rule changes is not who can buy chips but who can rent compute — for the first time the control reaches past hardware location to the end user of GPU hours. For any research team renting GPUs across borders it is a schedule risk: the rule explicitly covers training or providing models for D:5 companies, and it tests headquarters location rather than customer nationality. One of TheAI Academy's concrete recommendations for Taiwanese teams is precisely to confirm with GPU cloud providers when new Southeast Asian capacity comes online, and to prepare a US or Japan fallback for large year-end training runs.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">The shipment halt rests on three anonymous sources at the Financial Times; Nvidia, Dell and Supermicro had not responded at publication, and CNA notes the pause may simply be a buffer while data centre operators obtain licences. Two figures quoted by TheAI Academy need care: Megaspeed reportedly arranged nearly <strong>$12 billion</strong> of Nvidia chip supply to Chinese firms between March 2024 and June 2025, which comes from the Wall Street Journal via a Nov 15 Liberty Times write-up; and Nvidia's Singapore subsidiary's roughly <strong>$104 billion</strong> 2025 revenue, up 72% year on year, which that article itself cautions includes Taiwan and China revenue booked in Singapore rather than goods landing there.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.theai.tw/blog/us-bis-remote-access-rule-nvidia-halts-ai-servers-southeast-asia-2026" target="_blank" rel="noopener">TheAI 學院, 2026-11-27</a> ／ <a href="https://technode.global/2026/11/27/nvidia-said-to-halt-server-shipments-to-four-se-asian-countries-amid-tighter-us-export-controls-report/" target="_blank" rel="noopener">TNGlobal, 2026-11-27</a> ／ <a href="https://www.cna.com.tw/news/aopl/202611270088.aspx" target="_blank" rel="noopener">中央社, 2026-11-27</a></p></div>
+  </div>
+
+  <div class="card">
+    <div class="tags">
+      <span class="tag hot"><span class="en-inline">Regulation / Child safety</span></span>
+      <span class="tag">New York State</span><span class="tag">S.9408A/A.11144B</span><span class="tag">11/24</span>
+    </div>
+    <h3>
+      <span class="en">New York bans toys with built-in AI chatbots for five years, with penalties up to $15,000 a day</span>
+    </h3>
+    <div class="row"><div class="lab"><span class="en-inline">What</span></div>
+      <p class="val">
+        <span class="en">On Nov 24 Governor Hochul signed <strong>S.9408A/A.11144B</strong> (sponsored by Senator Gounardes and Assemblymember Kassay), imposing a <strong>five-year</strong> statewide moratorium on making, selling and distributing toys with embedded or integrated AI chatbots — including talking plush animals, dolls and internet-connected robots that converse with children — effective <strong>90 days</strong> after signing (late February 2027), enforced by the attorney general with civil penalties of up to <strong>$15,000 per day</strong>. The <a href="https://www.governor.ny.gov/news/video-audio-photos-rush-transcript-consumers-begin-their-holiday-shopping-season-governor" target="_blank" rel="noopener">governor's office cited two cases</a> as the rationale: a Common Sense Media researcher who told a Miko 3 robot they liked jumping from high places received a dangerous suggestion in reply; and NBC News found a stuffed cat marketed for ages three and up that would describe extreme violence in detail. Hochul's line: "Any toy manufacturers that think they can ignore this new measure will think again." The release also notes two bills she signed the previous month, one on AI chatbots that coach self-harm and one on risky baby monitor technology.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Why it matters</span></div>
+      <p class="val">
+        <span class="en">This is the first US state measure to pull an entire class of AI consumer product off shelves rather than require labelling or disclosure, and the chosen entry point is children. It is one end of the same problem as <a href="/en/reports/2026-11-25.html">GAO-27-109184</a>, covered in the Nov 25 edition: the GAO found that in 2025 nearly one in five Americans aged 12 to 21 had used an AI chatbot for mental health advice, while as of November 2026 the FDA had granted no marketing authorization for any of them. New York's answer is not to wait for the FDA — where safety cannot be verified, ban it for five years. The lesson for medical AI is direct: when a product touches minors and has no verifiable safety boundary, the regulatory instrument jumps from review to suspension.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Discount this</span></div>
+      <p class="val">
+        <span class="en">Both cases are the governor's office relaying tests by Common Sense Media and NBC News; the release does not independently verify them, and this report has not obtained the underlying test records. The boundary of the law's scope — whether voice assistant devices or educational robots fall inside it — has to be read off the statute, which the release does not parse. The effective date "90 days after signing" is the release's wording, and outlets differ slightly on the exact date it converts to.</span>
+      </p></div>
+    <div class="row"><div class="lab"><span class="en-inline">Source</span></div>
+      <p class="val"><a href="https://www.governor.ny.gov/news/video-audio-photos-rush-transcript-consumers-begin-their-holiday-shopping-season-governor" target="_blank" rel="noopener">Office of the Governor of New York, 2026-11-24</a> ／ <a href="https://www.nbcnews.com/tech/tech-news/new-york-governor-kathy-hochul-sign-ai-toy-ban-law-rcna610962" target="_blank" rel="noopener">NBC News, 2026-11-24</a></p></div>
+  </div>
+</section>
+
+<section id="product">
+  <h2>02 — Product Analysis</h2>
+  <div class="sec-title">
+    <span class="en">Two agent frameworks, near-symmetric in architecture and opposite in purpose: one turns a program's security properties into machine-checkable proof, the other turns exploitation into a machine-speed pipeline. Reading them against each other is the fastest way to understand this week.</span>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>AlphaProof Code</h3>
+      <p class="sub"><span class="en-inline">Agent-generated Lean formal verification framework · Google DeepMind (UK/US)</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> Announced by DeepMind on Nov 10, the framework uses a mix of models to translate a target system's security goals into formal specifications, then has Gemini Carbon-powered agents generate Lean proofs. The first target was Signal's encryption protocol: a four-week proof of concept producing <strong>over 6 million lines of Lean</strong>, <a href="https://www.schneier.com/blog/archives/2026/11/formal-verification-of-the-signal-protocol-using-ai.html" target="_blank" rel="noopener">written up by Schneier on Nov 17</a>, with Tom's Hardware noting the verification reaches down to Arm machine code. The process design is the substance: human experts reviewed <strong>every</strong> formal specification, agents audited the generated proofs and flagged only about <strong>1%</strong> of the codebase for a human second look, leaving the rest to Lean's automatic checking. Who buys it? Nobody yet — this is a method demonstration plus a publicly released specification and proof.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: it comes with a rare negative control — run against older Signal versions with known, long-fixed vulnerabilities, the tool identified them and showed those versions could not be formally verified. That is the standard objection to formal methods (that it only proves unimportant properties) and here there is an answer; see <a href="https://deepmind.google/blog/introducing-alphaproof-code/" target="_blank" rel="noopener">DeepMind's announcement</a> and the <a href="https://deepmind.google/documents/36/Formal_Verification_of_Signal_4.pdf" target="_blank" rel="noopener">technical paper</a>.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: it verifies that a specification is satisfied, not that the specification is right — and the specification is drafted by models and reviewed by humans, a layer with no machine-checkable counterpart. The comments under Schneier's post ask the two sharp questions: who can second-read millions of lines, and whether a for-profit company is the appropriate source of such proofs. It also <strong>does not verify the whole Signal app</strong>, only the protocol-related parts.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <h3>ARTEX</h3>
+      <p class="sub"><span class="en-inline">Multi-agent autonomous penetration framework · anonymously published, commercial version sold by ThreatBook (China)</span></p>
+      <p>
+        <span class="en"><strong>Function and position.</strong> A Go backend coordinating multiple LLM agents that drive off-the-shelf tools — Nmap, Sqlmap, Metasploit, headless browsers — from reconnaissance through reporting, aimed mainly at web applications. Two design choices make it unusually hard to defend against: an attacker can plug in any model, including versions without safeguards, and a pooling feature automatically switches model or API key on errors or rate limits; and it typically runs <strong>two to three attack chains at once</strong>, shifting network paths quickly so that fixed-marker filtering fails. Who buys it? It was published free on GitHub in July, removed in October with forks still circulating, and in November ThreatBook claimed ownership and launched ARTEX Pro — the same thing is simultaneously a public good and a product. <a href="https://www.microsoft.com/en-us/security/blog/2026/11/25/what-defenders-need-to-know-artex-agentic-ai-framework-threat-actors-abuse/" target="_blank" rel="noopener">Full technical description in Microsoft's Nov 25 report</a>.</span>
+      </p>
+      <ul class="clean">
+        <li><span class="pro"><span class="en-inline">Strength</span></span>
+          <span class="en">: from the defender's side its "strength" is measured speed — Microsoft logged <strong>five minutes</strong> from finding credentials on GitHub to pulling data out of Azure Key Vault, privileged access in <strong>under three hours</strong> from initial targeting across several intrusions, and <strong>over 151,000</strong> sign-in attempts in one campaign peaking at <strong>2,900 per minute</strong>. What those numbers mean is that a human on-call rotation is no longer in the same order of magnitude.</span>
+        </li>
+        <li><span class="con"><span class="en-inline">Concern</span></span>
+          <span class="en">: it is steered by a reward signal, which is its one structural weakness, and Microsoft's recommendations aim squarely at it — convincing fake success messages that make the agent stop, tarpits that drain its time and compute. But Microsoft concedes those tactics weaken if attackers space out requests or if the model recognises a test environment. And the weaknesses it exploits are almost all old ones: credentials committed to repositories, misconfigured IaC, default or missing authentication, API flaws.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>Side by side, the difference is not the model but whether a cheap referee exists.</strong> AlphaProof Code can let agents emit millions of lines and still be trusted because Lean's kernel costs far less to check a line of proof than to produce it. ARTEX is hard to defend against because defenders have no referee that can decide "this set of requests is an attack" at comparable cost — only behavioural thresholds approximating one, as in Microsoft's rules. Medical AI currently stands on the ARTEX side of that line: no referee, only approximations (benchmarks, retrospective AUROC, vendor self-reports). Which is why every story in this report carries a "discount this" line.</span>
+    </p>
+  </div>
+</section>
+
+<section id="company">
+  <h2>03 — Companies &amp; Competition</h2>
+  <div class="sec-title">
+    <span class="en">Who stands where, on what, against whom</span>
+  </div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr>
+        <th><span class="en-inline">Company</span></th>
+        <th><span class="en-inline">Recent state &amp; numbers</span></th>
+        <th><span class="en-inline">Position &amp; moat</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Anthropic</strong><br><span class="en-inline">Frontier models; present this week in mathematics, engineering and enterprise security</span></td>
+          <td>
+            <span class="en">Its own mathematician completed a Riemann Hypothesis proof with Claude, <a href="https://leanprover-community.github.io/blog/posts/riemann-hypothesis/" target="_blank" rel="noopener">certified by the Lean community on Nov 21</a>; on <a href="https://www.anthropic.com/research/migrating-api-to-rust" target="_blank" rel="noopener">Nov 25 it published the Messages API rewrite in Rust</a> — CPU down about 70%, memory down over 80%, median time to first token down about 20%, with traffic up roughly 1,800x since early 2024; on Nov 23 Enterprise Frontier Safeguards went to beta; on <a href="https://www.swissinfo.ch/eng/anthropic-expands-in-zurich,-moving-to-tap-citys-ai-talent-pool/92435062" target="_blank" rel="noopener">Nov 25 it expanded its Zurich lease to about 2,500 m2 in the Fraumunsterpost building</a>, with healthcare described as a particular focus and Novartis CEO Vas Narasimhan on its board.</span>
+          </td>
+          <td>
+            <span class="en">The moat is shifting from benchmark scores to verifiable process — what the Rust post actually publishes is a methodology, harder to copy than a benchmark. The weakness: every figure is self-reported with no third-party audit, and the Zurich healthcare play so far amounts to a lease and hiring, not a product.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>OpenAI</strong><br><span class="en-inline">Frontier models; this week on enterprise privacy and usage pricing</span></td>
+          <td>
+            <span class="en"><a href="https://thenextweb.com/news/openai-private-inference-testing-customers" target="_blank" rel="noopener">Private Inference entered alpha on Nov 25</a>, using confidential computing to protect business prompts, with unnamed customers and no GA date; ChatGPT's Chat and Work allowances were merged, so heavy users may hit limits sooner, with a wider rollout in December; and after <a href="https://the-decoder.com/gpt-6-2-astra-users-now-hit-limits-40-faster-after-openai-patched-a-pricing-error/" target="_blank" rel="noopener">a pricing error was patched on Nov 26</a>, users now hit limits 40% faster on Astra and 25% faster on Sol than the week before, with extra resets for eligible subscribers and free Fast Mode for Business users through end-2026.</span>
+          </td>
+          <td>
+            <span class="en">It moved first on the question of whether regulated industries dare to adopt: Private Safety Processing (September) plus Private Inference (November) are complementary pieces. But the post-patch allowance shrinkage is a negative signal for healthcare buyers who have costed it into a workflow — what enterprise procurement fears most is unpredictable unit cost.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Google DeepMind</strong><br><span class="en-inline">Frontier models and formal verification</span></td>
+          <td>
+            <span class="en">AlphaProof Code's Gemini Carbon-powered agents produced over 6 million lines of Lean in four weeks, verifying key security properties of the Signal protocol, with the <a href="https://deepmind.google/blog/introducing-alphaproof-code/" target="_blank" rel="noopener">specification and proof released publicly</a>; after agent self-audit only about 1% needed a human second look. <a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/google-deepmind-ai-engineers-conjure-mathematical-proof-of-signals-encryption-protocol-alphaproof-code-framework-powered-human-bot-cooperation-for-speedy-work" target="_blank" rel="noopener">Tom's Hardware</a> notes the verification reaches Arm machine code.</span>
+          </td>
+          <td>
+            <span class="en">Its bet is that verifiability itself becomes the differentiator — if safety-critical software comes to require formal proof, whoever owns the proof-generating agents sells the shovels. The weakness is that the demand chain does not exist yet: no medical device regulation currently requires a Lean proof.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>NVIDIA</strong><br><span class="en-inline">AI compute hardware; squeezed this week by controls and credit</span></td>
+          <td>
+            <span class="en">Per the <a href="https://technode.global/2026/11/27/nvidia-said-to-halt-server-shipments-to-four-se-asian-countries-amid-tighter-us-export-controls-report/" target="_blank" rel="noopener">FT's Nov 26 report</a> it told manufacturing partners to suspend AI server shipments to Malaysia, Singapore, Thailand and Indonesia, with Dell and Supermicro telling customers their orders cannot ship; <a href="https://www.cna.com.tw/news/aopl/202611270088.aspx" target="_blank" rel="noopener">CEO Jensen Huang returned on Nov 23</a>; Moody's cut its outlook from positive to stable and S&amp;P raised concerns over Huang's departure and return; and two California-based Nvidia customers were reported to be Chinese-owned entities used to work around export controls.</span>
+          </td>
+          <td>
+            <span class="en">The moat is still CUDA plus system-level integration, but this week exposed channel risk: once controls reach past hardware location to compute tenants, it has to answer for its customers' customers. The competitor is not only AMD but Huawei — if the latter's HBM progress is real, it blunts the leverage the controls depend on.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Microsoft</strong><br><span class="en-inline">Cloud and security; speaking this week as the defender</span></td>
+          <td>
+            <span class="en">On <a href="https://www.microsoft.com/en-us/security/blog/2026/11/25/what-defenders-need-to-know-artex-agentic-ai-framework-threat-actors-abuse/" target="_blank" rel="noopener">Nov 25 it published an ARTEX defender's guide</a>, naming six groups — Storm-0940, Storm-3358, Onyx Sleet, Pearl Sleet, Crystal Typhoon and Salt Typhoon — with directly applicable hunting thresholds, and for the first time recommending deception (honeypots, tarpits, fake success messages, honeytokens) against agent attacks, saying its own tests showed sharply reduced successful attack traffic.</span>
+          </td>
+          <td>
+            <span class="en">Its position is unique: the attacks happen in its cloud, the secrets sit in its Key Vault, and the detection it sells is Defender. The report is both a public good and product marketing — nearly every recommendation points at an in-house SKU. For a Taiwanese hospital the value is in the threshold numbers, not the product names.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Ant Group / inclusionAI</strong><br><span class="en-inline">Open-weight multimodal; MIT licensed</span></td>
+          <td>
+            <span class="en">On <a href="https://technode.com/2026/11/25/ant-releases-ling-3-2-air-multimodal-model-under-mit-license/" target="_blank" rel="noopener">Nov 25 it released Ling-3.2-air under the MIT licence</a>: 124B total parameters in the language component with 5.5B activated per token, a hybrid linear-attention MoE handling text, images and video; it self-reports task completion on AutomationBench-AA rising from 15.7% for Ling-3.0-flash-VL to 61%; weights are on Hugging Face with SGLang and vLLM self-hosting instructions. This follows its MIT-licensed medical LingSante-3.1 release on Nov 23.</span>
+          </td>
+          <td>
+            <span class="en">In an environment where export controls pinch compute, its chosen route is to give the weights away for ecosystem position — and for Taiwanese hospitals it is one of the few fully on-premise, no-egress, cleanly licensed (MIT) multimodal options. The weakness is consistent: every score is measured by Ant on Ant's own benchmark, with zero independent verification.</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>Today's competitive structure is two axes crossing.</strong> The horizontal axis is access to compute, pulled into a political line by the BIS rule and Nvidia's shipments. The vertical axis is verifiability, pulled into an engineering line by Lean, shadow traffic and formal proof. The frontier labs are betting on both; medical AI vendors compete almost entirely on the horizontal one — whose model is bigger, who has more compute, whose benchmark is higher. Taken together, this week's four main stories say that the vertical axis is the one that will decide who gets into hospitals next.</span>
+    </p>
+  </div>
+</section>
+
+<section id="taiwan">
+  <h2>04 — Taiwan Angle</h2>
+  <div class="sec-title">
+    <span class="en">Three of today's international stories land on a Taiwanese desk for real: one regulatory deadline, one supply-chain assessment, and one ready-made hospital security checklist.</span>
+  </div>
+
+  <div class="panel">
+    <p>
+      <span class="en"><strong>(1) Taiwan is not on the BIS rule's five-country list, but IC design has a Dec 31 deadline.</strong> Per <a href="https://www.theai.tw/blog/us-bis-remote-access-rule-nvidia-halts-ai-servers-southeast-asia-2026" target="_blank" rel="noopener">TheAI Academy's reading of the rule effective Nov 19</a>, the licensing requirement covers transfers within Indonesia, Malaysia, Singapore, Thailand and Brazil; Taiwan is not among them. But Taiwan-headquartered IC design firms hold "authorized designer" status <strong>only until Dec 31, 2026</strong>, after which they must apply for a place on an approved roster, with status maintained for 180 days after filing. For Taiwanese firms with plants or data centres in Southeast Asia, the rule's practical effect is to turn "where is this customer's ultimate parent" into an export-compliance question — the recommended actions include inventorying orders shipped to Southeast Asia, confirming whether each consignee's headquarters is in the US (and preparing monthly reporting if relying on the US-HQ exemption), and adding use and sublease restrictions to cloud and hosting contracts. Wiwynn's rack integration plant in Senai, Johor, Malaysia, opened in October 2023, sits inside this new licensing perimeter.</span>
+    </p>
+    <p>
+      <span class="en"><strong>(2) The supply-chain read is "no impact for now", but that phrase has a defined scope.</strong> <a href="https://udn.com/news/story/7240/9905067" target="_blank" rel="noopener">Economic Daily News reported on Nov 27 (reporter Chou Ke-wei)</a> that analysts assess Nvidia's instruction to some partners to pause Southeast Asian shipments as having limited near-term effect on data centres already under construction, with medium-term AI investment slowdown "still uncertain", concluding there is no immediate impact on Taiwan's AI supply chain; they stay cautiously optimistic on Hon Hai and Quanta because ODM orders show no adjustment and AI-related capex has not been cut. The more exposed parties are brand vendors — Dell, Supermicro, HPE — whose diverse customer bases give them less visibility into where compute ends up. The assessment offers no revenue-share or shipment-share figures, which means it is an order-book observation rather than a quantified exposure. The same day <a href="https://www.cna.com.tw/news/aopl/202611270088.aspx" target="_blank" rel="noopener">CNA quoted Fitch</a> warning that Asia-Pacific data centre investment may slow and turn more selective. The two judgements do not contradict each other; they differ in time horizon.</span>
+    </p>
+    <p>
+      <span class="en"><strong>(3) The European Commission's downed medical reimbursement system is the case Taiwanese hospitals should read against themselves.</strong> What got picked was not the HIS, not the PACS, but an administrative system sitting beside HR workflows with non-trivial privileges and the least attention — and every medical centre in Taiwan runs a whole row of those: staff health checks, contracted-provider reimbursement, research grant accounting, IRB submission platforms, small tools each department built itself. The most directly usable part of <a href="https://www.microsoft.com/en-us/security/blog/2026/11/25/what-defenders-need-to-know-artex-agentic-ai-framework-threat-actors-abuse/" target="_blank" rel="noopener">Microsoft's Nov 25 report</a> is not the product advice but those four hunting thresholds (10+ distinct commands in five minutes; 100+ distinct paths per minute with 50+ client errors; 3+ secret file types within ten minutes; service principal sign-ins to 3+ applications from one IP per hour) and the list of old problems (credentials committed to repositories, misconfigured IaC, default or missing authentication, API flaws). Both the Swiss and Italian advisories note that the weaknesses exploited are almost all old ones, now probed in parallel at thousands of attempts a minute. Read that against the other side of the week: when Anthropic rewrote its own API, even its difference records captured only the shape, never the content. For a hospital integrating anything AI-shaped, that level of logging design is the kind you can actually explain to an IRB and an information security office.</span>
+    </p>
+  </div>
+</section>
+
+<section id="reading">
+  <h2>05 — Further Reading</h2>
+  <div class="sec-title">
+    <span class="en">All primary sources, and all documents about method rather than result — what is worth keeping from this week is the material you can actually follow.</span>
+  </div>
+
+  <ol class="reading">
+    <li>
+      <a href="https://www.anthropic.com/research/migrating-api-to-rust" target="_blank" rel="noopener">Migrating our API to Rust — Anthropic (2026-11-25)</a>
+      <p class="why"><span class="en">The one to read end to end. The point is not Rust but the shadow-traffic design: call the model once and replay its output, compare checkpoint by checkpoint, record only the shape of each difference, group by fingerprint. Any team replacing a legacy clinical system can lift it directly — and "98% of tests passing, a quarter of production inputs matching" belongs on a wall.</span></p>
+    </li>
+    <li>
+      <a href="https://leanprover-community.github.io/blog/posts/riemann-hypothesis/" target="_blank" rel="noopener">Lean verification of the Riemann Hypothesis — Lean FRO &amp; Mathlib Initiative (2026-11-21)</a>
+      <p class="why"><span class="en">Short, but it is a template for issuing a correctness verdict on an unreadable artefact inside a day: four criteria set out in order, down to details like running the checks on an inert export so malicious proof sources cannot interfere. As a thinking template for designing clinical AI acceptance criteria it beats any benchmark.</span></p>
+    </li>
+    <li>
+      <a href="https://www.microsoft.com/en-us/security/blog/2026/11/25/what-defenders-need-to-know-artex-agentic-ai-framework-threat-actors-abuse/" target="_blank" rel="noopener">What defenders need to know about ARTEX — Microsoft Security (2026-11-25)</a>
+      <p class="why"><span class="en">Skip the product recommendations and go to the hunting thresholds and the deception section. The first is numbers you can put into a SIEM today; the second is the first time defenders have treated "the adversary is a program driven by a reward signal" as the weakness to attack.</span></p>
+    </li>
+    <li>
+      <a href="https://deepmind.google/documents/36/Formal_Verification_of_Signal_4.pdf" target="_blank" rel="noopener">Formal Verification of Signal — Google DeepMind (technical paper, 2026-11)</a>
+      <p class="why"><span class="en">Read this if you want to see what an agent-generated formal proof actually looks like. The notable part is the negative control: run against older patched versions it identifies the vulnerabilities and shows those versions cannot be verified — a rare instance of formal methods supplying their own false-negative check.</span></p>
+    </li>
+    <li>
+      <a href="https://www.theai.tw/blog/us-bis-remote-access-rule-nvidia-halts-ai-servers-southeast-asia-2026" target="_blank" rel="noopener">美國新規 11/19 上路、輝達暫停對星馬泰印出貨 AI 伺服器 — TheAI 學院 (2026-11-27)</a>
+      <p class="why"><span class="en">The only Chinese-language analysis so far that walks Taiwanese readers through the BIS rule clause by clause: the 12 million TPP threshold, the 90-day licence window, the US-headquarters exemption with monthly reporting, and the Dec 31 deadline for Taiwanese IC design firms' authorized-designer status. Required if you rent GPUs across borders or ship into Southeast Asia.</span></p>
+    </li>
+  </ol>
+</section>
+
+<section id="refs">
+  <h2>06 — References</h2>
+  <div class="sec-title">
+    <span class="en">References</span>
+  </div>
+
+  <div class="panel">
+    <ol class="refs">
+      <li>Lean verification of the Riemann Hypothesis. <em>Lean FRO / Mathlib Initiative</em>, 2026-11-21. <a href="https://leanprover-community.github.io/blog/posts/riemann-hypothesis/" target="_blank" rel="noopener">leanprover-community.github.io</a></li>
+      <li>Math's holy grail, the Riemann hypothesis, appears solved with AI's help. <em>Science News</em>, 2026-11. <a href="https://www.sciencenews.org/article/riemann-hypothesis-solved-math-ai" target="_blank" rel="noopener">sciencenews.org</a></li>
+      <li>Former OpenAI researcher says the Riemann proof matters less than the fact that an AI system can produce it. <em>The Decoder</em>, 2026-11-26. <a href="https://the-decoder.com/former-openai-researcher-says-the-riemann-proof-matters-less-than-the-fact-that-an-ai-system-can-produce-it/" target="_blank" rel="noopener">the-decoder.com</a></li>
+      <li>Migrating our API to Rust. <em>Anthropic</em>, 2026-11-25. <a href="https://www.anthropic.com/research/migrating-api-to-rust" target="_blank" rel="noopener">anthropic.com</a></li>
+      <li>What defenders need to know about ARTEX, the agentic AI framework threat actors abuse. <em>Microsoft Security Blog</em>, 2026-11-25. <a href="https://www.microsoft.com/en-us/security/blog/2026/11/25/what-defenders-need-to-know-artex-agentic-ai-framework-threat-actors-abuse/" target="_blank" rel="noopener">microsoft.com</a></li>
+      <li>Microsoft details how state-backed hackers use the ARTEX AI framework to automate cyberattacks. <em>The Decoder</em>, 2026-11-26. <a href="https://the-decoder.com/microsoft-details-how-state-backed-hackers-use-the-artex-ai-framework-to-automate-cyberattacks/" target="_blank" rel="noopener">the-decoder.com</a></li>
+      <li>Switzerland Confirms AI-Assisted Cyberattacks Breached Critical Infrastructure Operators. <em>The Hacker News</em>, 2026-11-26. <a href="https://thehackernews.com/2026/11/switzerland-confirms-ai-assisted.html" target="_blank" rel="noopener">thehackernews.com</a></li>
+      <li>Switzerland confirms first AI agent cyberattacks on critical infrastructure. <em>TNW</em>, 2026-11-26. <a href="https://thenextweb.com/news/switzerland-ai-agent-cyberattacks-critical-infrastructure" target="_blank" rel="noopener">thenextweb.com</a></li>
+      <li>European Commission confirms cyberattack, says hackers used AI tool. <em>The Record</em>, 2026-11-19. <a href="https://therecord.media/european-commission-confirms-cyberattack-using-ai" target="_blank" rel="noopener">therecord.media</a></li>
+      <li>美國新規 11 月 19 日上路、輝達暫停對星馬泰印出貨 AI 伺服器. <em>TheAI 學院</em>, 2026-11-27. <a href="https://www.theai.tw/blog/us-bis-remote-access-rule-nvidia-halts-ai-servers-southeast-asia-2026" target="_blank" rel="noopener">theai.tw</a></li>
+      <li>Nvidia said to halt server shipments to four SE Asian countries amid tighter US export controls. <em>TNGlobal</em>, 2026-11-27. <a href="https://technode.global/2026/11/27/nvidia-said-to-halt-server-shipments-to-four-se-asian-countries-amid-tighter-us-export-controls-report/" target="_blank" rel="noopener">technode.global</a></li>
+      <li>美收緊先進AI晶片出口管制 東南亞AI基礎建設面臨考驗. <em>中央社</em>, 2026-11-27. <a href="https://www.cna.com.tw/news/aopl/202611270088.aspx" target="_blank" rel="noopener">cna.com.tw</a></li>
+      <li>輝達下禁令 法人評估暫不影響台廠 AI 供應鏈. <em>經濟日報／聯合新聞網</em>, 2026-11-27. <a href="https://udn.com/news/story/7240/9905067" target="_blank" rel="noopener">udn.com</a></li>
+      <li>Governor Hochul Signs Five-Year Ban on AI Chatbot Toys (rush transcript). <em>Office of the Governor of New York</em>, 2026-11-24. <a href="https://www.governor.ny.gov/news/video-audio-photos-rush-transcript-consumers-begin-their-holiday-shopping-season-governor" target="_blank" rel="noopener">governor.ny.gov</a></li>
+      <li>New York governor Kathy Hochul signs AI toy ban into law. <em>NBC News</em>, 2026-11-24. <a href="https://www.nbcnews.com/tech/tech-news/new-york-governor-kathy-hochul-sign-ai-toy-ban-law-rcna610962" target="_blank" rel="noopener">nbcnews.com</a></li>
+      <li>OpenAI is testing a way to shield business prompts while its models run. <em>TNW</em>, 2026-11-25. <a href="https://thenextweb.com/news/openai-private-inference-testing-customers" target="_blank" rel="noopener">thenextweb.com</a></li>
+      <li>Formal Verification of the Signal Protocol Using AI. <em>Schneier on Security</em>, 2026-11-17. <a href="https://www.schneier.com/blog/archives/2026/11/formal-verification-of-the-signal-protocol-using-ai.html" target="_blank" rel="noopener">schneier.com</a></li>
+      <li>Introducing AlphaProof Code. <em>Google DeepMind</em>, 2026-11-10. <a href="https://deepmind.google/blog/introducing-alphaproof-code/" target="_blank" rel="noopener">deepmind.google</a></li>
+      <li>Formal Verification of Signal (technical paper). <em>Google DeepMind</em>, 2026-11. <a href="https://deepmind.google/documents/36/Formal_Verification_of_Signal_4.pdf" target="_blank" rel="noopener">deepmind.google</a></li>
+      <li>Google DeepMind AI engineers conjure mathematical proof of Signal's encryption protocol. <em>Tom's Hardware</em>, 2026-11. <a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/google-deepmind-ai-engineers-conjure-mathematical-proof-of-signals-encryption-protocol-alphaproof-code-framework-powered-human-bot-cooperation-for-speedy-work" target="_blank" rel="noopener">tomshardware.com</a></li>
+      <li>Ant releases Ling-3.2-air multimodal model under MIT license. <em>TechNode</em>, 2026-11-25. <a href="https://technode.com/2026/11/25/ant-releases-ling-3-2-air-multimodal-model-under-mit-license/" target="_blank" rel="noopener">technode.com</a></li>
+      <li>GPT-6.2 Astra users now hit limits 40% faster after OpenAI patched a pricing error. <em>The Decoder</em>, 2026-11-26. <a href="https://the-decoder.com/gpt-6-2-astra-users-now-hit-limits-40-faster-after-openai-patched-a-pricing-error/" target="_blank" rel="noopener">the-decoder.com</a></li>
+      <li>Anthropic Expands in Zurich, Moving to Tap City's AI Talent Pool. <em>Bloomberg via SWI swissinfo.ch</em>, 2026-11-25. <a href="https://www.swissinfo.ch/eng/anthropic-expands-in-zurich,-moving-to-tap-citys-ai-talent-pool/92435062" target="_blank" rel="noopener">swissinfo.ch</a></li>
+    </ol>
+    <div class="note">
+      <span class="en"><strong>Editor's note:</strong> (1) All four main stories (Riemann/Lean, Anthropic's Rust rewrite, Microsoft's ARTEX report, New York's toy ban) come from primary sources. (2) <strong>Two Reuters pieces (Nov 26, on Chinese chip controls and model cadence, and on the Swiss agent attacks) could not be opened in this run (SITE_BLOCKED)</strong>, so the Swiss cases are instead based on The Hacker News and TNW write-ups. (3) The original report of Nvidia's Southeast Asian shipment halt is the Financial Times (paywalled); this report is written only from TNGlobal, CNA and TheAI Academy's accounts and quotes nothing from behind the paywall. Nvidia, Dell and Supermicro had not responded as of each report. (4) Bloomberg's original on Anthropic's Zurich lease is paywalled; this is written from the SWI swissinfo.ch syndication. (5) <strong>Vendor-reported figures with no third-party audit include:</strong> Anthropic's CPU, memory and time-to-first-token reductions (whose three charts have differing scopes), OpenAI's "sealed-off chips" and "strict verifiable controls", Ant's AutomationBench-AA scores for Ling-3.2-air, and Microsoft's effectiveness claims for deception tactics. (6) Three secondary stories that had been written up in full were cut from this edition for length (SpaceX's Starmind authorization, OpenAI's Private Inference, and Canada's AI Compute Access Fund); the Private Inference points are retained in the OpenAI row of the company table. (7) DeepMind announced AlphaProof Code on Nov 10, slightly before this edition's main Nov 19–28 window, so it appears in product analysis and further reading rather than top stories. (8) The two toy cases behind the New York bill are the governor's office relaying tests by Common Sense Media and NBC News; this report did not obtain the underlying test records. (9) No clinical story leads this edition because Saturday's rotation is general AI; where healthcare relevance is drawn, each story marks what is reported fact and what is this report's inference.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-row">
+    <div>
+      <span class="en">AI &amp; Medical AI Daily · Generated automatically by Claude, daily, Taipei time · Today's rotation: Saturday / General AI<br>Sourced and checked, but not investment or medical advice. Always verify figures against the primary source.</span>
+    </div>
+    <div class="social"><a href="https://www.peteraim.com" target="_blank" rel="noopener" title="peteraim.com" aria-label="Back to peteraim.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"></path></svg></a><a href="https://www.linkedin.com/in/ai-med/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn (opens in new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"></path></svg></a></div>
+  </div>
+</footer>
+</main>
+
+<div class="fabs">
+  <button class="up" id="up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+  <a class="home-fab" href="../index.html" title="Back to all reports" aria-label="Back to all reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3z"/></svg></a>
+</div>
+
+<script>
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  document.getElementById('theme-ic').textContent =
+    document.body.classList.contains('dark') ? '◑' : '◐';
+}
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.body.classList.add('dark');
+  document.getElementById('theme-ic').textContent = '◑';
+}
+window.addEventListener('scroll', function(){
+  document.getElementById('up').classList.toggle('show', window.scrollY > 600);
+});
+
+/* GitHub 星星數：無需授權，失敗或被限流時靜默保留佔位符 */
+(function(){
+  var el = document.getElementById('ghs');
+  if (!el || typeof fetch !== 'function') return;
+  fetch('https://api.github.com/repos/tingwei161803/ai-medical-daily', {headers:{Accept:'application/vnd.github+json'}})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){
+      if (!d || typeof d.stargazers_count !== 'number') return;
+      var n = d.stargazers_count;
+      el.textContent = n >= 1000 ? (Math.round(n/100)/10) + 'k' : String(n);
+    })
+    .catch(function(){});
+})();
+</script>
+<p class="lang-alt-link" style="text-align:center;padding:12px;"><a href="/reports/2026-11-28.html" hreflang="zh-Hant" rel="alternate" lang="zh-Hant">中文版</a></p>
+</body>
+</html>
